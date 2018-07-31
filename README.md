@@ -6,8 +6,14 @@ The Consumer Data Right is intended to apply sector by sector across the whole e
 
 This work is being delivered by a newly formed team within Data61 - the Consumer Data Standards team - acting as the interim standards body. The work of the team will be overseen by Mr. Andrew Stevens as interim Chair, with industry and consumer advice provided by an Advisory Committee. Data61 will be working closely with the Australian Competition and Consumer Commission (ACCC) as lead regulator of the Consumer Data Right, supported by the Office of the Australian Information Commissioner (OAIC).
 
-A number of working groups are being established to support Data61 designing and testing the open standards it develops. Input provided by the Advisory Committee and working groups, alongside draft guidance materials, API specifications and implementation materials will be shared openly.
+A number of working groups are being established to support Data61 designing and testing the open standards it develops. Input provided by the Advisory Committee and working groups, alongside draft guidance materials, API specifications and implementation materials will be shared openly. At present, three work streams are being proposed:
 
-This repository will be used to seek feedback from working groups, share drafts and proposals and reviewing standards as they develop.
+* API Standards
+* Information Security
+* Consumer Experience
+
+This repository will be used to seek feedback from working groups, share drafts and proposals and review standards as they develop. Feedback on proposed decisions by the Data Standards Body will be collated and presented to the Chair, who has decision-making authority in relation to the Standards. 
+
+The API Standards Working Group is led by James Bligh. You can see open and proposed decision points for feedback on the Issues page [here](https://github.com/ConsumerDataStandardsAustralia/open-banking/issues)
 
 For more information, contact cdr-data61@csiro.au. Further updates will be added to this page as the Consumer Data Standards work gets underway.
