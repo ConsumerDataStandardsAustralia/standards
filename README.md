@@ -1,4 +1,4 @@
-# Consumer Data Rights Standards
+# Consumer Data Right Standards
 
 Data61 has been appointed as technical advisor to the interim data standards body by the Australian federal government, as part of the introduction of [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
