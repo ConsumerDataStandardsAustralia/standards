@@ -1,3 +1,3 @@
-## Errors
+## Error Handling
 
 XXXX

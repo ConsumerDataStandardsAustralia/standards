@@ -6,6 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
+    <link href="images/images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -230,7 +231,34 @@
                     <a href="#principles" class="toc-h2 toc-link" data-title="Principles">Principles</a>
                   </li>
                   <li>
-                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                    <a href="#versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
+                  </li>
+                  <li>
+                    <a href="#uri-structure" class="toc-h2 toc-link" data-title="URI Structure">URI Structure</a>
+                  </li>
+                  <li>
+                    <a href="#http-headers" class="toc-h2 toc-link" data-title="HTTP Headers">HTTP Headers</a>
+                  </li>
+                  <li>
+                    <a href="#http-response-codes" class="toc-h2 toc-link" data-title="HTTP Response Codes">HTTP Response Codes</a>
+                  </li>
+                  <li>
+                    <a href="#error-handling" class="toc-h2 toc-link" data-title="Error Handling">Error Handling</a>
+                  </li>
+                  <li>
+                    <a href="#payload-structure-amp-conventions" class="toc-h2 toc-link" data-title="Payload Structure &amp; Conventions">Payload Structure &amp; Conventions</a>
+                  </li>
+                  <li>
+                    <a href="#common-field-types" class="toc-h2 toc-link" data-title="Common Field Types">Common Field Types</a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#id-permanence" class="toc-h2 toc-link" data-title="ID Permanence">ID Permanence</a>
+                  </li>
+                  <li>
+                    <a href="#extensibility" class="toc-h2 toc-link" data-title="Extensibility">Extensibility</a>
                   </li>
               </ul>
           </li>
@@ -271,18 +299,237 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>XXXX</p>
+        <!---
+TODO
+- Finish standards section
+- Add scopes to security
+- Mock out APIs
+--->
+<h1 id='introduction'>Introduction</h1>
+<p>These standards have been developed as part of the introduction in Australia of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
+
+<p>The Consumer Data Right is intended to apply sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
+
+<p>These standards are governed by the Consumer Data Standards team inside Data61.  Data61 has been appointed as the interim standards body. The work of the team is  overseen by Mr. Andrew Stevens as interim Chair, with industry and consumer advice provided by an Advisory Committee. Data61 works closely with the Australian Competition and Consumer Commission (ACCC) as lead regulator of the Consumer Data Right, supported by the Office of the Australian Information Commissioner (OAIC).</p>
 <h1 id='standards'>Standards</h1>
-<p>XXXX</p>
+<p>These standards represent <strong>version 1</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
+<p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.
 <h2 id='principles'>Principles</h2>
+<p>The following principles, classified as Outcome Principles and Technical Principles, are the basis for the development of the standards for the Consumer Data Right.</p>
+<h3 id='outcome-principles'>Outcome Principles</h3>
+<p>These principles articulate qualitative outcomes that the API definitions should seek to deliver.</p>
+<h4 id='principle-1-apis-are-secure'>Principle 1: APIs are secure</h4>
+<p>The API definitions will consider and incorporate the need for a high degree of security to protect customer data.  This includes the risk of technical breach but also additional concerns of inadvertent data leakage through overly broad data payloads and scopes.  The security of customer data is a first order outcome that the API standards must seek to deliver.</p>
+<h4 id='principle-2-apis-use-open-standards'>Principle 2: APIs use open standards</h4>
+<p>In order to promote widespread adoption, open standards that are robust and widely used in the industry will be used wherever possible.</p>
+<h4 id='principle-3-apis-provide-a-good-customer-experience'>Principle 3: APIs provide a good customer experience</h4>
+<p>The API definitions will consider and incorporate the customer experience implications.  The APIs should support the creation of customer experiences that are simple and enticing to use.</p>
+<h4 id='principle-4-apis-provide-a-good-developer-experience'>Principle 4: APIs provide a good developer experience</h4>
+<p>To ensure that the entry hurdle for new developers is low the experience of the developers that are building clients using the APIs will be considered.  The ability for a developer to easily understand and write code using the APIs in modern development environments should be facilitated by the API standards.</p>
+<h3 id='technical-principles'>Technical Principles</h3>
+<p>These principles articulate specific technical outcomes that the API definitions should seek to deliver.</p>
+<h4 id='principle-5-apis-are-restful'>Principle 5: APIs are RESTful</h4>
+<p>The API standards will adhere to RESTful API concepts where possible and sensible to do so.  In particular the concepts of statelessness and resource orientation will be followed.</p>
+<h4 id='principle-6-apis-are-implementation-agnostic'>Principle 6: APIs are implementation agnostic</h4>
+<p>The underlying implementation of the APIs should not be constrained or driven by the API definitions and standards.  Conversely, the underlying implementation choices should not be visible or derivable to the client applications using the APIs.</p>
+<h4 id='principle-7-apis-are-simple'>Principle 7: APIs are simple</h4>
+<p>As complexity will increase implementation costs for both providers and clients as well as reduce the utility of the APIs, API definitions should seek to be as simple as possible but no simpler.</p>
+<h4 id='principle-8-apis-are-rich-in-capability'>Principle 8: APIs are rich in capability</h4>
+<p>As the APIs are defined care should be taken to ensure that the data payloads defined represent rich data sets that can be used in many scenarios, including scenarios not necessarily front of mind during the design process.</p>
+<h4 id='principle-9-apis-are-performant'>Principle 9: APIs are performant</h4>
+<p>The API definitions should consider and incorporate performance implications during design ensuring that repeated calls are not necessary for simple use cases and that payload sizes do not introduce performance issues.</p>
+<h4 id='principle-10-apis-are-consistent'>Principle 10: APIs are consistent</h4>
+<p>The API definitions across the full suite of APIs should be consistent with each other as much as possible.  Where possible common data structures and patterns should be defined and reused.</p>
+<h4 id='principle-11-apis-are-version-controlled-and-backwards-compatible'>Principle 11: APIs are version controlled and backwards compatible</h4>
+<p>As the API definitions evolve care will be taken to ensure the operation of existing clients are protected when breaking changes occur.  Breaking changes will be protected by a well defined version control model and by a policy of whereby previous versions are maintained for a period of time to allow for backwards compatibility.</p>
+<h4 id='principle-12-apis-are-extensible'>Principle 12: APIs are extensible</h4>
+<p>The API definitions and standards should be built for extensibility.  This extensibility should accommodate future APIs categories and industry sectors but it should also allow for extension by data providers to create unique, value add offerings to the ecosystem.</p></p>
+
+<h2 id='versioning'>Versioning</h2>
+
+<p>The standards have adopted a two level versioning strategy.  The high level standards (including principles, URI structure, payload naming conventions, etc) be versioned and each API end point will have an additional version specific to that end point.</p>
+
+<h3 id='standard-versioning'>Standard Versioning</h3>
+
+<blockquote>
+<p>The base URI structure containing the version for this standard is:<br>
+<code>http://&lt;provider path&gt;/cds-au/v1/&lt;resource&gt;</code></p>
+</blockquote>
+
+<p>The high level standard will be versioned and this version will be in embedded in the <a href="#uri-structure">URI Structure</a> for the APIs.  This documentation relates specifically to <strong>version 1</strong> of the high level standards.</p>
+
+<h3 id='end-point-versioning'>End Point Versioning</h3>
+
+<p>Each end point will have multiple versions independent of other end points.  A specific end point version will be requested by a client using a HTTP header. This header will be supported by all end points under the API standards.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on how versions are requested and supplied under the standards.</p>
+
+<h2 id='uri-structure'>URI Structure</h2>
+
+<blockquote>
+<p>Some example URIs that meet this standard are:<br>
+<code>http://www.bank.com.au/api/cds-au/v1/banking/accounts</code><br>
+<code>http://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products</code><br>
+<code>http://www.energyretailer.com.au/api/cds-au/v1/energy/usage</code></p>
+</blockquote>
+
+<p>The URI structure for API end points in the standards MUST be implemented as follows:<br>
+<code>&lt;provider path&gt; / cds-au / &lt;version&gt; / &lt;industry&gt; / &lt;resource&gt;</code></p>
+
+<p>The components of this URI structure are described as follows:</p>
+
+<ul>
+<li><strong>Provider Path</strong>: The provider path is a base path set by the data provider. It can be any URI desired by the provider.</li>
+<li><strong>“cds-au”</strong>: This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base provider path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
+<li><strong>Version</strong>: The version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the version as a positive integer (e.g. v1, v12 or v76).</li>
+<li><strong>Industry</strong>: A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.</li>
+<li><strong>Resource</strong>: The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li>
+</ul>
+
+<p>Note that the currently accepted values for the <code>Industry</code> component of the base path are:</p>
+
+<ul>
+<li><strong>banking</strong> – for APIs related to banking and potentially wider financial services data</li>
+<li><strong>energy</strong> – for APIs related to the energy distribution industry</li>
+<li><strong>telco</strong> – for APIs related to telecommunications</li>
+<li><strong>common</strong> – for APIs that potentially span industries</li>
+</ul>
+
+<h2 id='http-headers'>HTTP Headers</h2>
 
 <p>XXXX</p>
 
-<h2 id='errors'>Errors</h2>
+<h2 id='http-response-codes'>HTTP Response Codes</h2>
 
 <p>XXXX</p>
+
+<h2 id='error-handling'>Error Handling</h2>
+
+<p>XXXX</p>
+
+<h2 id='payload-structure-amp-conventions'>Payload Structure &amp; Conventions</h2>
+
+<p>XXXX</p>
+
+<h2 id='common-field-types'>Common Field Types</h2>
+
+<p>XXXX</p>
+
+<h2 id='pagination'>Pagination</h2>
+
+<p>XXXX</p>
+
+<h2 id='id-permanence'>ID Permanence</h2>
+
+<p>XXXX</p>
+
+<h2 id='extensibility'>Extensibility</h2>
+
+<p>The Consumer Data Right standards will not cover all possible data sets or APIs that participants may wish to expose. Participants may also wish to innovate on top of the API standards by offering additional data to meet specific market opportunities. It is desirable that the standards not only allow for this to occur but actively encourage it with specific additions to the standards to enable such extension.</p>
+
+<p>At the same time, it is important that a participant seeking to provide extensions does not hinder a data consumer that is only built for the published standards.</p>
+
+<p>To accommodate these concerns the standards incorporate the following considerations specifically related to extension by data providers.</p>
+
+<p>The three types of extension that the standards address are:</p>
+
+<ol>
+<li>Data provider offering entirely new API categories that are not covered by the API Standards</li>
+<li>Data provider offering additional end points to an API category that is already covered by the standards</li>
+<li>Data provider offering additional fields to the response payloads for an end point defined in the
+standards</li>
+</ol>
+
+<h3 id='provider-identifier'>Provider Identifier</h3>
+
+<blockquote>
+<p>For example, the prefixes for the four major Banks required to implement by 1st July 2019 would be:
+<ul>
+<li>CBA – Commonwealth Bank</li>
+<li>WBC – Westpac Banking Corporation</li>
+<li>ANZ – ANZ Banking Group</li>
+<li>NAB – National Australia Bank</li>
+</ul></p>
+</blockquote>
+
+<p>Data providers seeking to extend the standards MUST nominate a prefix to identify all extensions.  Extended fields and end points and would use this prefix consistently. This prefix would be, by preference, the ASX symbol for the provider. Care should be taken not to use a prefix already adopted by another provider in the regime.</p>
+
+<p>In these standards, where a Provider Identifier would be included, the term <code>&lt;PID&gt;</code> will be used.</p>
+
+<h3 id='new-api-categories'>New API Categories</h3>
+
+<p>When extending by adding new API categories a provider MUST add these to the overall URI structure by substituting the industry element with the Provider ID.</p>
+
+<p>For instance, the standard URI base path is structured as:<br>
+<code>&lt;provider path&gt; / cds-au / &lt;version&gt; / &lt;industry&gt; / &lt;resource&gt;</code></p>
+
+<p>For the extension API categories for a specific provider they would be structured as:<br>
+<code>&lt;provider path&gt; / cds-au / &lt;version&gt; / &lt;PID&gt; / &lt;resource&gt;</code></p>
+
+<p>The end points defined under this structure, including the payloads of these end points do not need to be prefixed in any way. The fact that they are underneath the provider section implies that they are additional to the standard.</p>
+
+<p>Note that:</p>
+
+<ul>
+<li>This mechanism MUST NOT be used to create modified duplicates of the end points defined in the API Standards</li>
+<li>The end points in this area MUST comply with the overall standards including naming conventions and data types.</li>
+</ul>
+
+<h3 id='new-end-points-in-existing-api-categories'>New End Points In Existing API Categories</h3>
+
+<p>When creating new end points that are in parallel to existing API categories in the standard the Provider Identifier MUST be used to prefix the highest URI element where divergence occurs.</p>
+
+<p>For example, assume an existing balance end point is defined as follows:<br>
+<code>&lt;base path&gt;/accounts/{account ID}/transactions</code></p>
+
+<p>and the provider wishes to add an end point that summarises balance movement for a specific time period then they may define the end point as:<br>
+<code>&lt;base path&gt;/account/{account ID}/&lt;PID&gt;-balance-movement</code></p>
+
+<p>Note that:</p>
+
+<ul>
+<li>The prefix is defined as the Provider Identifier followed by a hyphen.</li>
+<li>As the entire end point is new, the request and payload fields do not need to be prefixed in any way.</li>
+<li>Care should be taken to ensure there is no collision with an end point defined in the standards by specifying an extension at the same level as a variable URI element (such as at the same level of the {account ID} in the example above).</li>
+<li>If an end point has multiple levels in the resource path only the highest point where divergence with the standard occurs needs to be prefixed.</li>
+<li>The new end point MUST comply with the overall standards including naming conventions and data types.</li>
+</ul>
+
+<h3 id='additional-fields-in-an-existing-response-payload'>Additional Fields In An Existing Response Payload</h3>
+
+<p>When adding a new field in an existing payload the field can be added to the JSON by prefixing the string <code>&lt;PID&gt;-</code>.</p>
+
+<p>If an object is being added as an extension only the highest level object name needs to be prefixed. Any fields inside the extended object can be named normally.</p>
+
+<p>Note that:</p>
+
+<ul>
+<li>Existing fields MUST NOT be modified in any way. This includes adding new enumeration values to enum type fields.</li>
+<li>A mandatory field MUST NOT be made optional as the result of an extension.</li>
+<li>Request payloads can also be extended but the resulting end point should still execute successfully if the extension field is not present (by implication, extension fields in request payloads MUST be optional).</li>
+<li>New query parameters MAY be added along the same lines as a new field in a request payload (i.e. prefixed, non-mandatory and no side effects if not present).</li>
+<li>New headers MAY be added along the same lines as a new field in a request payload with the exception that the new header should be prefixed <code>x-&lt;PID&gt;-</code>.</li>
+<li>New fields MUST comply with the overall naming conventions and data type standards used.</li>
+</ul>
+
+<h3 id='extension-versioning'>Extension Versioning</h3>
+
+<p>As described previously in the <a href="#versioning">versioning section</a> the standard provides for multiple versions of each API end point.  This implies the need for extensions to also be versioned.</p>
+
+<p>An optional header <code>x-&lt;PID&gt;-v</code> will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on the use of this header.</p>
+
+<!---
+TODO:
+- HTTP headers
+  - Version description in Headers
+- Response codes
+- Error handling
+- payload conventions
+    - Include unions
+    - Include plurals
+- types
+- pagination
+- id permanence
+--->
 <h1 id='security'>Security</h1>
 <p>XXXX</p>
 <h1 id='banking-apis'>Banking APIs</h1>
