@@ -22,3 +22,22 @@ Note that the currently accepted values for the `Industry` component of the base
 * **energy** – for APIs related to the energy distribution industry
 * **telco** – for APIs related to telecommunications
 * **common** – for APIs that potentially span industries
+
+### Resource URIs
+
+Resources that are collections, and members of collections, will follow the [JSONAPI.org](http://jsonapi.org) recommendation.
+
+Under this model collections, individual members and collection sub-resources would be accessed as follows:
+
+[]() | []()
+-|-
+`GET …\accounts` | Returns an array of accounts
+`GET …\accounts\{id}` | Returns the detail of a specific account
+`GET …\accounts\transactions` | Returns the transactions of multiple accounts
+`GET …\accounts\{id}\transactions` | Returns the transactions of a specific account
+`POST …\accounts` | Create a new account
+`POST …\accounts\search` | Returns an array of accounts based on a complex query
+
+The final example above represents a complex query accessed via a POST request.  In this situation the POST URI should be applied to a sub-resource of the collection.  A POST to a collection is reserved for the creation of a new collection member
+
+If no valid sub-resource exists then a dedicated sub-resource should be created, such as the “search” URI listed in the example above.

@@ -13,7 +13,7 @@ toc_footers:
 includes:
   - intro
   - standards
-  - auth
+  - security
   - banking
   - common
 
@@ -23,7 +23,6 @@ search: true
 
 <!---
 TODO
-- Finish standards section
 - Add scopes to security
 - Mock out APIs
 --->
