@@ -9,12 +9,12 @@ Note that the use of paging for an end point does not require or preclude the us
 The consumer will stipulate pagination requirements on the request using query parameters. When paging is supported the consumer MAY provide the following query parameters:
 
 * **page** – the page number being requested (with the first page being 1)
-* **pageSize** – the number of records to return in each page
+* **page-size** – the number of records to return in each page
 
 If the query parameters are not provided the following defaults will be assumed:
 
 * **page** – a default of 1 (the first page) will be assumed
-* **pageSize** – a default of 25 will be assumed
+* **page-size** – a default of 25 will be assumed
 
 ### Response Fields
 
