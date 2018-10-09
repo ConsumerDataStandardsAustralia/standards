@@ -937,6 +937,11 @@ the same name.</p>
 <td>Masked credit card number. Lower case ‘x’ should be used to mask numbers and only the last four digits should be exposed to facilitate identification.</td>
 <td>&quot;xxxxxxxxxxxx1234&quot;</td>
 </tr>
+<tr>
+<td>URI</td>
+<td>A valid URI</td>
+<td>&quot;http://www.google.com&quot;</td>
+</tr>
 </tbody></table>
 
 <h2 id='pagination'>Pagination</h2>
@@ -951,14 +956,14 @@ the same name.</p>
 
 <ul>
 <li><strong>page</strong> – the page number being requested (with the first page being 1)</li>
-<li><strong>pageSize</strong> – the number of records to return in each page</li>
+<li><strong>page-size</strong> – the number of records to return in each page</li>
 </ul>
 
 <p>If the query parameters are not provided the following defaults will be assumed:</p>
 
 <ul>
 <li><strong>page</strong> – a default of 1 (the first page) will be assumed</li>
-<li><strong>pageSize</strong> – a default of 25 will be assumed</li>
+<li><strong>page-size</strong> – a default of 25 will be assumed</li>
 </ul>
 
 <h3 id='response-fields'>Response Fields</h3>
