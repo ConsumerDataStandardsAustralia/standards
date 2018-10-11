@@ -18,6 +18,8 @@ The API Standards Working Group is led by James Bligh. You can see open and prop
 
 For more information, contact cdr-data61@csiro.au. Further updates will be added to this page as the Consumer Data Standards work gets underway.
 
+The current draft standard that is being added to as decisions are made can be found [here](https://consumerdatastandardsaustralia.github.io/standards/).
+
 ## Rules of engagement
 
 We're committed to undertaking conversations relating to the technical standards in the open. Questions or comments that participants might ask us via email or private message are likely to be questions or comments other participants have as well. Our answers will be of interest to everyone. There are likely to be experiences and lessons everybody working in this ecosystem can learn from. Having these conversations transparently helps us reduce duplication, resolve issues faster and keep everyone up to date with the conversation.
