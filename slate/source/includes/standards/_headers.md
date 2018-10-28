@@ -1,6 +1,6 @@
 ## HTTP Headers
 
-Supported HTTP headers, and there usage, for the standards are as laid out in the following sections.
+Supported HTTP headers, and their usage, for the standards are as laid out in the following sections.
 
 ### Request Headers
 >A sample set of headers requesting version 3 to 5:  
