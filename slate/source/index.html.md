@@ -23,6 +23,8 @@ search: true
 
 <!---
 TODO
-- Add scopes to security
-- Mock out APIs
+Payloads
+- Go through payloads and ensure PositiveInteger gets transferred to NaturalNumber where appropriate
+- Align the product information across product and account details
+
 --->

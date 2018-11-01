@@ -8,7 +8,8 @@ String | Standard UTF-8 string but unrestricted in content. Any valid Unicode ch
 ASCIIString | Standard UTF-8 string but limited to the ASCII character set. |  
 Boolean | Standard JSON boolean | true<br/>false
 Enum | String representing an option from a defined list of values<br/>- All possible values should be provided<br/>- Values should be in all caps<br/>- Spaces should be replaced with under bars '_'<br/>- Values should be limited to the ASCII character set | “OPTION1”<br/>“ANOTHER_OPTION”<br/>“VAL_ABC_123”
-PositiveInteger | A positive integer inclusive of zero | 0<br/>1<br/>10000
+NaturalNumber | A natural number (ie. a positive integer inclusive of zero) | 0<br/>1<br/>10000
+PositiveInteger | A positive integer (zero excluded) | 1<br/>10000
 NegativeInteger | A negative integer inclusive of zero | 0<br/>-1<br/>-10000
 Integer | Any positive or negative integer inclusive of zero | 1<br/>0<br/>-1
 Number | A standard floating point number. Can be positive, negative or zero | 0.1<br/>-100.09<br/>10<br/>90.09

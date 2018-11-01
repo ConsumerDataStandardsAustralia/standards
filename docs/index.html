@@ -263,7 +263,16 @@
             <a href="#security" class="toc-h1 toc-link" data-title="Security">Security</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#high-level-profile" class="toc-h2 toc-link" data-title="High Level Profile">High Level Profile</a>
+                  </li>
+                  <li>
+                    <a href="#additional-constraints" class="toc-h2 toc-link" data-title="Additional Constraints">Additional Constraints</a>
+                  </li>
+                  <li>
                     <a href="#authorisation-scopes" class="toc-h2 toc-link" data-title="Authorisation Scopes">Authorisation Scopes</a>
+                  </li>
+                  <li>
+                    <a href="#oidc-scopes-amp-claims" class="toc-h2 toc-link" data-title="OIDC Scopes &amp; Claims">OIDC Scopes &amp; Claims</a>
                   </li>
               </ul>
           </li>
@@ -284,8 +293,14 @@
       <div class="content">
         <!---
 TODO
-- Add scopes to security
-- Mock out APIs
+Security
+- Add authorisation flow considerations
+- Add TLS content
+
+Payloads
+- Go through payloads and ensure PositiveInteger gets transferred to NaturalNumber where appropriate
+- Align the product information across product and account details
+
 --->
 <h1 id='introduction'>Introduction</h1>
 <p>These standards have been developed as part of the introduction in Australia of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
@@ -450,7 +465,11 @@ TODO
 
 <h2 id='http-headers'>HTTP Headers</h2>
 
-<p>Supported HTTP headers, and there usage, for the standards are as laid out in the following sections.</p>
+<p>Supported HTTP headers, and their usage, for the standards are as laid out in the following sections.</p>
+
+<aside class="warning">
+Please note that there will be a requirement to support specific headers for security purposes.  These are yet to be fully determined.
+</aside>
 
 <h3 id='request-headers'>Request Headers</h3>
 
@@ -883,9 +902,14 @@ the same name.</p>
 <td>“OPTION1”<br/>“ANOTHER_OPTION”<br/>“VAL_ABC_123”</td>
 </tr>
 <tr>
-<td>PositiveInteger</td>
-<td>A positive integer inclusive of zero</td>
+<td>NaturalNumber</td>
+<td>A natural number (ie. a positive integer inclusive of zero)</td>
 <td>0<br/>1<br/>10000</td>
+</tr>
+<tr>
+<td>PositiveInteger</td>
+<td>A positive integer (zero excluded)</td>
+<td>1<br/>10000</td>
 </tr>
 <tr>
 <td>NegativeInteger</td>
@@ -1114,10 +1138,40 @@ standards</li>
 <p>An optional header <code>x-&lt;PID&gt;-v</code> will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on the use of this header.</p>
 <h1 id='security'>Security</h1>
 <aside class="warning">
-This section is still under development as a series of decision proposals progress to finalisation.<br/>
+This section is still under development as the Information Security Working Group defines the specific implementation considerations for the standard.<br/>
 <br/>
 Where content is present it represents decisions that have been completed.
 </aside>
+
+<h2 id='high-level-profile'>High Level Profile</h2>
+
+<p>Securing of the API end points defined by the standards will be accomplished through alignment with well defined industry protocols and security profiles.  Context specific constraints are then applied to these profiles to provide implementation clarity or reduce risk.</p>
+
+<p>In particular the standards are aligned to the <a href="http://openid.net/specs/openid-financial-api-part-2.html">Financial API (FAPI) Read/Wite profile</a>.</p>
+
+<p>Note that the FAPI Read/Write profile builds on the <a href="http://openid.net/specs/openid-financial-api-part-1.html">FAPI Read Only profile</a>  and implies alignment with the use of <a href="https://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect</a>.</p>
+
+<h2 id='additional-constraints'>Additional Constraints</h2>
+
+<p>The FAPI Read/Write profile implies specific implementation decisions that are worthy of explicit statement. There are also some additional, specific constraints are applicable for implementations conforming to these standards:</p>
+
+<ul>
+<li>Only the Hybrid Authorisation flow will be supported</li>
+<li>Public Clients will not be supported.  All payload data will be transferred via backchannel communication</li>
+<li>Use of TLS mandated for all interactions</li>
+<li>  Requirement to use TLS 1.2 or greater</li>
+<li>  The version and configuration of TLS for implementations conforming with standards will not be a lower version, or less secure, than that of other digital channels deployed by the data provider</li>
+<li>  A TLS server certificate check shall be performed, as per RFC 6125</li>
+<li>  Mutual TLS will be used to secure back-channel communication between the data consumer and data provider</li>
+<li>For all interactions (except for authorisation) the cipher suites that may be used will be limited to:
+
+<ul>
+<li>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</li>
+<li>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</li>
+<li>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</li>
+<li>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</li>
+</ul></li>
+</ul>
 
 <h2 id='authorisation-scopes'>Authorisation Scopes</h2>
 
@@ -1126,34 +1180,61 @@ Where content is present it represents decisions that have been completed.
 <table><thead>
 <tr>
 <th>Scope Name</th>
+<th>Scope ID</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><strong>Basic Bank Account Data</strong></td>
+<td>bank-basic-acct</td>
 <td>This scope would allow for the third party to access basic information of the customer’s accounts.<br/><br/>Includes simple account information including balance.<br/>Does not include account identifiers, product information or transaction data.</td>
 </tr>
 <tr>
 <td><strong>Detailed Bank Account Data</strong></td>
+<td>bank-detailed-acct</td>
 <td>This scope would allow for the third party to access detailed information of the customer’s accounts. This scope is effectively additional authorisation to the Basic Bank Account Data scope. Granting this authorisation only makes sense if the Bank Account Data scope is also authorised.<br/><br/>Includes basic account information plus account identifiers and product information.<br/>Does not include transaction data.</td>
 </tr>
 <tr>
 <td><strong>Bank Transaction Data</strong></td>
+<td>bank-transaction</td>
 <td>This scope would allow the third party to access transaction data for accounts.  This scope is effectively additional authorisation to the Basic Bank Account Data scope.  Granting this authorisation only makes sense if the Basic Bank Account Data scope is also authorised.<br/><br/>Includes all account transaction data.</td>
 </tr>
 <tr>
 <td><strong>Bank Payee Data</strong></td>
+<td>bank-payee</td>
 <td>This scope allows access to payee information stored by the customer.<br/><br/>Includes payee information such as billers, international beneficiaries and domestic payees.</td>
 </tr>
 <tr>
-<td><strong>Customer Data</strong></td>
-<td>The scope would allow the third party to access personally identifiable information about the customer.  For retail customers this would be information about the customer themselves.  For business customers it would imply information about the specific user but also information about the business.<br/><br/>Includes name, date of birth and contact information.</td>
+<td><strong>Basic Customer Data</strong></td>
+<td>common-basic-cust</td>
+<td>The scope would allow the third party to access personally identifiable information about the customer.  For retail customers this would be information about the customer themselves.  For business customers it would imply the name of specific user but also information about the business.<br/><br/>Includes name and occupation for individuals or name, business numbers and industry code for organisations</td>
+</tr>
+<tr>
+<td><strong>Detailed Customer Data</strong></td>
+<td>common-detailed-cust</td>
+<td>The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.</td>
 </tr>
 <tr>
 <td><strong>Public</strong></td>
+<td>NA</td>
 <td>Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.</td>
 </tr>
 </tbody></table>
+
+<h2 id='oidc-scopes-amp-claims'>OIDC Scopes &amp; Claims</h2>
+
+<p>In addition to the Consumer Data Standards specific scopes above the following standard scopes and claims described by OpenID Connect core will be supported:</p>
+
+<ul>
+<li>openid scope</li>
+<li>profile scope
+
+<ul>
+<li>name claim</li>
+<li>family_name claim</li>
+<li>given_name claim</li>
+</ul></li>
+</ul>
 <h1 id='banking-apis'>Banking APIs</h1>
 <aside class="warning">
 This section is still under development as the API end points and payloads have not yet been finalised.<br/>
