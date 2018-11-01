@@ -25,9 +25,8 @@ search: true
 <!---
 TODO
 Payloads
-- Move all of the common objects down a Level
-- Fix each of the end point core entries
 - Split core entries into separate files
+- Fix each of the end point core entries
 - Fix payees
 - Fix directdebits
 - Fix transactions
