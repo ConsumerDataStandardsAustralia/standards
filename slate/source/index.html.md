@@ -16,6 +16,7 @@ includes:
   - security
   - banking
   - common
+  - shared
 
 search: true
 ---
@@ -24,7 +25,17 @@ search: true
 <!---
 TODO
 Payloads
-- Go through payloads and ensure PositiveInteger gets transferred to NaturalNumber where appropriate
+- Move all of the common objects down a Level
+- Fix each of the end point core entries
+- Split core entries into separate files
+- Fix payees
+- Fix directdebits
+- Fix transactions
+- Fix account basic
+- Fix balances
+- Fix product
+- Fix account details
 - Align the product information across product and account details
-
+- Add PAF Addtress schema
+- Add updated swagger
 --->

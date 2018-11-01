@@ -455,7 +455,7 @@ Obtain transactions for a specific account.
 |x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
 |x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
 |x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|start-time|query|string(date-time)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
+|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
 |text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
@@ -711,7 +711,7 @@ Obtain transactions for multiple, filtered accounts.
 |x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
 |x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|start-time|query|string(date-time)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
+|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
 |text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
@@ -872,7 +872,7 @@ Obtain transactions for a specific list of account Ids.
 |x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
 |x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
 |x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|start-time|query|string(date-time)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
+|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
 |text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
@@ -1022,7 +1022,7 @@ Obtain a list of products that are currently openly offered to the market.
 |x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |effective|query|boolean|false|If true then only include products that are effective right now and exclude products that may be available at a future time.  If false only include products effective in the future. If absent defaults to include all products.|
-|updated-since|query|string(date-time)|false|Only include products that have been updated after the specified date and time.  If absent defaults to include all products.|
+|updated-since|query|[DateTimeString](#common-field-types)|false|Only include products that have been updated after the specified date and time.  If absent defaults to include all products.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
 
@@ -3324,8 +3324,8 @@ openId ( Scopes: basic_bank_account )
 |transactionId|[TransactionId](#schematransactionid)|false|none|A unique ID of the transaction adhering to the standards for ID permanence. This field is mandatory in this payload as it is a reflection of the requested transaction in the path parameter.|
 |status|[TransactionStatus](#schematransactionstatus)|true|none|Status of the transaction.|
 |description|string|true|none|The transaction description as applied by the financial institution.|
-|postDateTime|string(date-time)|false|none|The time the transaction was posted. This field is MANDATORY if the transaction has status POSTED. This is the time that appears on a standard statement.|
-|executionDateTime|string(date-time)|false|none|The time the transaction was executed by the originating customer, if available.|
+|postDateTime|[DateTimeString](#common-field-types)|false|none|The time the transaction was posted. This field is MANDATORY if the transaction has status POSTED. This is the time that appears on a standard statement.|
+|executionDateTime|[DateTimeString](#common-field-types)|false|none|The time the transaction was executed by the originating customer, if available.|
 |amount|[CurrencyAmount](#schemacurrencyamount)|false|none|The value of the transaction. Negative values mean money was outgoing.|
 |reference|string|true|none|The reference for the transaction provided by the originating institution.|
 
@@ -3509,7 +3509,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |accountId|[AccountId](#schemaaccountid)|true|none|A unique ID of the account adhering to the standards for ID permanence.|
 |authorisedEntity|[AuthorisedEntity](#schemaauthorisedentity)|false|none|none|
-|lastDebitDateTime|string(date-time)|false|none|The date and time of the last debit executed under this authorisation|
+|lastDebitDateTime|[DateTimeString](#common-field-types)|false|none|The date and time of the last debit executed under this authorisation|
 |lastDebitAmount|number|false|none|none|
 
 <h2 id="tocSauthorisedentity">AuthorisedEntity</h2>
@@ -3925,9 +3925,9 @@ openId ( Scopes: basic_bank_account )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |productId|string(ASCII)|true|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
-|effectiveFrom|string(date-time)|false|none|A description of the product.|
-|effectiveTo|string(date-time)|false|none|The date and time at which this product will be retired and will no longer be offered.|
-|lastUpdated|string(date-time)|true|none|A description of the product.|
+|effectiveFrom|[DateTimeString](#common-field-types)|false|none|A description of the product.|
+|effectiveTo|[DateTimeString](#common-field-types)|false|none|The date and time at which this product will be retired and will no longer be offered.|
+|lastUpdated|[DateTimeString](#common-field-types)|true|none|A description of the product.|
 |productCategory|[ProductCategory](#schemaproductcategory)|true|none|The the product category an account aligns withs.|
 |name|string|true|none|The display name of the product.|
 |description|string|true|none|The description of the product.|
@@ -4859,7 +4859,7 @@ openId ( Scopes: basic_bank_account )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» additionalValue|string(date-time)|false|none|When the fixed rate will expire.|
+|» additionalValue|[DateTimeString](#common-field-types)|false|none|When the fixed rate will expire.|
 |» discountType|string|false|none|none|
 
 #### Enumerated Values
@@ -4899,7 +4899,7 @@ openId ( Scopes: basic_bank_account )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» additionalValue|string(date-time)|false|none|When the honeymoon rate will expire.|
+|» additionalValue|[DateTimeString](#common-field-types)|false|none|When the honeymoon rate will expire.|
 |» discountType|string|false|none|none|
 
 #### Enumerated Values
@@ -5129,7 +5129,7 @@ openId ( Scopes: basic_bank_account )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» additionalValue|string(date-time)|false|none|When the fixed rate will expire.|
+|» additionalValue|[DateTimeString](#common-field-types)|false|none|When the fixed rate will expire.|
 |» discountType|string|false|none|none|
 
 #### Enumerated Values
@@ -6923,4 +6923,3 @@ openId ( Scopes: basic_bank_account )
 |code|string|true|none|none|
 |title|string|true|none|none|
 |detail|string|true|none|none|
-
