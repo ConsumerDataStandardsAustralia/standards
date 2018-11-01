@@ -1,2177 +1,6 @@
-<!--
-<h1 id="CDS-AU-Open-Banking-API-Bank-Account-Direct-Debits">Bank Account Direct Debits</h1>
+## Common Schemas
 
-Everything about the Bank Account Direct Debits
--->
-
-## getAccountDirectDebits
-
-<a id="opIdgetAccountDirectDebits"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/{accountId}/direct-debits \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/{accountId}/direct-debits',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/{accountId}/direct-debits`
-
-*Account Specific Direct Debit Authorisations.*
-
-Obtain direct debit authorisations for a specific accounnt list of accounts.
-
-<h3 id="getaccountdirectdebits-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "directDebitAuthorisations": [
-      {
-        "accountId": "string",
-        "authorisedEntity": {
-          "name": "string",
-          "financialInsitution": "string",
-          "abn": "string",
-          "acn": "string"
-        },
-        "lastDebitDateTime": "2018-11-01T05:33:52Z",
-        "lastDebitAmount": 300.56
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getaccountdirectdebits-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountDirectDebitsResponse](#schemaaccountdirectdebitsresponse)|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: detailed_bank_account )
-</aside>
-
-## getAccountsDirectDebits
-
-<a id="opIdgetAccountsDirectDebits"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/direct-debits \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/direct-debits',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/direct-debits`
-
-*Bulk Direct Debit Authorisations Data.*
-
-Obtain direct debit authorisations for multiple, filtered accounts.
-
-<h3 id="getaccountsdirectdebits-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "directDebitAuthorisations": [
-      {
-        "accountId": "string",
-        "authorisedEntity": {
-          "name": "string",
-          "financialInsitution": "string",
-          "abn": "string",
-          "acn": "string"
-        },
-        "lastDebitDateTime": "2018-11-01T05:33:52Z",
-        "lastDebitAmount": 300.56
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getaccountsdirectdebits-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountDirectDebitsResponse](#schemaaccountdirectdebitsresponse)|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: detailed_bank_account )
-</aside>
-
-## findSpecificDirectDebits
-
-<a id="opIdfindSpecificDirectDebits"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://myserver.com/cds-au/banking/v1/accounts/direct-debits \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/direct-debits',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`POST /accounts/direct-debits`
-
-*Specific Direct Debit Authorisations Data.*
-
-Obtain direct debit authorisations for a specified list of accounts.
-
-> Body parameter
-
-```json
-{
-  "data": [
-    "string"
-  ]
-}
-```
-
-<h3 id="findspecificdirectdebits-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-|body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
-|» data|body|[string]|true|Array of  accountIds.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "directDebitAuthorisations": [
-      {
-        "accountId": "string",
-        "authorisedEntity": {
-          "name": "string",
-          "financialInsitution": "string",
-          "abn": "string",
-          "acn": "string"
-        },
-        "lastDebitDateTime": "2018-11-01T05:33:52Z",
-        "lastDebitAmount": 300.56
-      }
-    ]
-  }
-}
-```
-
-<h3 id="findspecificdirectdebits-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountDirectDebitsResponse](#schemaaccountdirectdebitsresponse)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.|Inline|
-
-<h3 id="findspecificdirectdebits-responseschema">Response Schema</h3>
-
-Status Code **422**
-
-*List of Errors.*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: basic_bank_account )
-</aside>
-
-<!--
-<h1 id="CDS-AU-Open-Banking-API-Bank-Account-Transactions">Bank Account Transactions</h1>
-
-Everything about the Bank Account Transactions
--->
-
-## getAccountTransactions
-
-<a id="opIdgetAccountTransactions"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/{accountId}/transactions \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/{accountId}/transactions',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/{accountId}/transactions`
-
-*Account Specific Transactions.*
-
-Obtain transactions for a specific account.
-
-<h3 id="getaccounttransactions-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
-|min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
-|max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "transactions": [
-      {
-        "transactionId": "string",
-        "status": "PENDING",
-        "description": "string",
-        "postDateTime": "2018-11-01T05:33:52Z",
-        "executionDateTime": "2018-11-01T05:33:52Z",
-        "amount": {
-          "amount": 300.56,
-          "currency": "AUD"
-        },
-        "reference": "string"
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getaccounttransactions-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountTransactionsResponse](#schemaaccounttransactionsresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transaction )
-</aside>
-
-## getAccountTransaction
-
-<a id="opIdgetAccountTransaction"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/{accountId}/transactions/{transactionId} \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/{accountId}/transactions/{transactionId}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/{accountId}/transactions/{transactionId}`
-
-*Detailed Transaction Data.*
-
-Obtain additional information for a specific transaction for a specific account.
-
-<h3 id="getaccounttransaction-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|transactionId|path|[TransactionId](#schematransactionid)|true|ID of the Transaction obtained from a previous call to one of the transaction end points.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "transaction": {
-      "transactionId": "string",
-      "status": "PENDING",
-      "description": "string",
-      "postDateTime": "2018-11-01T05:33:52Z",
-      "executionDateTime": "2018-11-01T05:33:52Z",
-      "amount": {
-        "amount": 300.56,
-        "currency": "AUD"
-      },
-      "reference": "string",
-      "extendedData": {
-        "payer": "string",
-        "payee": "string",
-        "extensionType": "extendedDescription",
-        "extendedDescription": "string",
-        "service": "X2P1.01"
-      }
-    }
-  }
-}
-```
-
-<h3 id="getaccounttransaction-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountTransactionResponse](#schemaaccounttransactionresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transaction )
-</aside>
-
-## getAccountsTransactions
-
-<a id="opIdgetAccountsTransactions"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/transactions \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/transactions',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/transactions`
-
-*Bulk Transaction Data.*
-
-Obtain transactions for multiple, filtered accounts.
-
-<h3 id="getaccountstransactions-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
-|min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
-|max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "transactions": [
-      {
-        "transactionId": "string",
-        "status": "PENDING",
-        "description": "string",
-        "postDateTime": "2018-11-01T05:33:52Z",
-        "executionDateTime": "2018-11-01T05:33:52Z",
-        "amount": {
-          "amount": 300.56,
-          "currency": "AUD"
-        },
-        "reference": "string",
-        "accountId": "string",
-        "isDetailAvailable": true
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getaccountstransactions-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsTransactionsResponse](#schemaaccountstransactionsresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transaction )
-</aside>
-
-## findSpecificAccountTransactions
-
-<a id="opIdfindSpecificAccountTransactions"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://myserver.com/cds-au/banking/v1/accounts/transactions \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/transactions',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`POST /accounts/transactions`
-
-*Specific Transactions Data.*
-
-Obtain transactions for a specific list of account Ids.
-
-> Body parameter
-
-```json
-{
-  "data": [
-    "string"
-  ]
-}
-```
-
-<h3 id="findspecificaccounttransactions-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
-|min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
-|max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-|body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
-|» data|body|[string]|true|Array of  accountIds.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "balances": [
-      {
-        "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
-          "currentBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          },
-          "availableBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-<h3 id="findspecificaccounttransactions-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsBalancesResponse](#schemaaccountsbalancesresponse)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.|Inline|
-
-<h3 id="findspecificaccounttransactions-responseschema">Response Schema</h3>
-
-Status Code **422**
-
-*List of Errors.*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transaction )
-</aside>
-
-<!--
-<h1 id="CDS-AU-Open-Banking-API-Bank-Products">Bank Products</h1>
-
-Everything about the Bank Products
--->
-
-## getProducts
-
-<a id="opIdgetProducts"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/products \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/products',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /products`
-
-*Product List Data.*
-
-Obtain a list of products that are currently openly offered to the market.
-
-<h3 id="getproducts-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|effective|query|boolean|false|If true then only include products that are effective right now and exclude products that may be available at a future time.  If false only include products effective in the future. If absent defaults to include all products.|
-|updated-since|query|[DateTimeString](#common-field-types)|false|Only include products that have been updated after the specified date and time.  If absent defaults to include all products.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "products": [
-      {
-        "productId": "string",
-        "effectiveFrom": "2018-11-01T05:33:52Z",
-        "effectiveTo": "2018-11-01T05:33:52Z",
-        "lastUpdated": "2018-11-01T05:33:52Z",
-        "productCategory": "PERS_AT_CALL_DEPOSITS",
-        "name": "string",
-        "description": "string",
-        "applicationUri": "http://example.com",
-        "isNegotiable": true,
-        "additionalInformation": {
-          "overviewUri": "http://example.com",
-          "termsUri": "http://example.com",
-          "eligibilityUri": "http://example.com",
-          "feesAndPricingUri": "http://example.com",
-          "bundleUri": "http://example.com"
-        }
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getproducts-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[ProductsResponse](#schemaproductsresponse)|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: openid )
-</aside>
-
-## getProduct
-
-<a id="opIdgetProduct"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/products/{productId} \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/products/{productId}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /products/{productId}`
-
-*Detailed Product Data.*
-
-Obtain detailed information on a single product offered openly to the market.
-
-<h3 id="getproduct-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|productId|path|string(ASCII)|true|ID of the specific Product request.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "productId": "string",
-    "effectiveFrom": "2018-11-01T05:33:52Z",
-    "effectiveTo": "2018-11-01T05:33:52Z",
-    "lastUpdated": "2018-11-01T05:33:52Z",
-    "productCategory": "PERS_AT_CALL_DEPOSITS",
-    "name": "string",
-    "description": "string",
-    "applicationUri": "http://example.com",
-    "isNegotiable": true,
-    "additionalInformation": {
-      "overviewUri": "http://example.com",
-      "termsUri": "http://example.com",
-      "eligibilityUri": "http://example.com",
-      "feesAndPricingUri": "http://example.com",
-      "bundleUri": "http://example.com"
-    },
-    "features": [
-      {
-        "featureType": "DEBIT_CARD",
-        "discountType": "DEBIT_CARD"
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "PERIODIC",
-        "amount": 0,
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "discounts": [
-          {
-            "discountType": "BALANCE",
-            "additionalValue": 0
-          }
-        ],
-        "additionalValue": "DAILY"
-      }
-    ],
-    "depositRates": [
-      {
-        "rate": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "depositRateType": "FIXED",
-        "additionalValue": "2018-11-01T05:33:52Z",
-        "discountType": "FIXED"
-      }
-    ],
-    "lendingRates": [
-      {
-        "rate": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "lendingRateType": "FIXED",
-        "additionalValue": "2018-11-01T05:33:52Z",
-        "discountType": "FIXED"
-      }
-    ],
-    "constraints": [
-      {
-        "constraintType": "MIN_BALANCE",
-        "additionalValue": 0
-      }
-    ],
-    "eligibility": [
-      {
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "eligibilityType": "BUSINESS"
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getproduct-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[ProductResponse](#schemaproductresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: openid )
-</aside>
-
-<!--
-<h1 id="CDS-AU-Open-Banking-API-Bank-Payees">Bank Payees</h1>
-
-Everything about the Bank Payees
--->
-
-## getPayees
-
-<a id="opIdgetPayees"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/payees \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/payees',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /payees`
-
-*Payee Data.*
-
-Obtain a list of pre-registered payees.
-
-<h3 id="getpayees-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|type|query|[PayeeTypeEnum](#schemapayeetypeenum)|false|Filter on type payee.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|type|DOMESTIC|
-|type|INTERNATIONAL|
-|type|BILLER|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "payees": [
-      {
-        "payeeId": "string",
-        "nickname": "string",
-        "description": "string",
-        "type": "DOMESTIC"
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getpayees-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[PayeesResponse](#schemapayeesresponse)|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_payees )
-</aside>
-
-## getPayee
-
-<a id="opIdgetPayee"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/payees/{payeeId} \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/payees/{payeeId}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /payees/{payeeId}`
-
-*Detailed Payee Data.*
-
-Obtain detailed information on a single payee.
-
-<h3 id="getpayee-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|payeeId|path|[PayeeId](#schemapayeeid)|true|ID of the payee requested.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "data": {
-    "payeeId": "string",
-    "nickname": "string",
-    "description": "string",
-    "type": "DOMESTIC",
-    "payee": {
-      "payeeType": "domestic",
-      "domesticAccountPayee": {
-        "domesticPayeeType": "payId",
-        "name": "string",
-        "identifier": "string",
-        "type": "EMAIL"
-      }
-    }
-  }
-}
-```
-
-<h3 id="getpayee-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[PayeeResponse](#schemapayeeresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_payees )
-</aside>
-
-<!--
-<h1 id="CDS-AU-Open-Banking-API-Bank-Accounts">Bank Accounts</h1>
--->
-
-## getAccounts
-
-<a id="opIdgetAccounts"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts`
-
-*Account List Data.*
-
-Obtain list of accounts.
-
-<h3 id="getaccounts-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
-|open-status|OPEN|
-|open-status|CLOSED|
-|open-status|ALL|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "accounts": [
-      {
-        "accountId": "string",
-        "displayName": "string",
-        "nickname": "string",
-        "maskedNumber": "string",
-        "productCategory": "PERS_AT_CALL_DEPOSITS",
-        "providerType": "string",
-        "balance": {
-          "balanceType": "deposits",
-          "currentBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          },
-          "availableBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getaccounts-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsResponse](#schemaaccountsresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: basic_bank_account )
-</aside>
-
-## getAccount
-
-<a id="opIdgetAccount"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/{accountId} \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/{accountId}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/{accountId}`
-
-*Detailed Account Data.*
-
-Obtain detailed information on a single account.
-
-<h3 id="getaccount-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "maskedNumber": "string",
-    "productCategory": "PERS_AT_CALL_DEPOSITS",
-    "providerType": "string",
-    "balance": {
-      "balanceType": "deposits",
-      "currentBalance": {
-        "amount": 300.56,
-        "currency": "AUD"
-      },
-      "availableBalance": {
-        "amount": 300.56,
-        "currency": "AUD"
-      }
-    },
-    "features": [
-      {
-        "featureType": "DEBIT_CARD",
-        "discountType": "DEBIT_CARD"
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "PERIODIC",
-        "amount": 0,
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "discounts": [
-          {
-            "discountType": "BALANCE",
-            "additionalValue": 0
-          }
-        ],
-        "additionalValue": "DAILY"
-      }
-    ],
-    "depositRates": [
-      {
-        "rate": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "depositRateType": "FIXED",
-        "additionalValue": "2018-11-01T05:33:52Z",
-        "discountType": "FIXED"
-      }
-    ],
-    "lendingRates": [
-      {
-        "rate": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "http://example.com",
-        "lendingRateType": "FIXED",
-        "additionalValue": "2018-11-01T05:33:52Z",
-        "discountType": "FIXED"
-      }
-    ],
-    "bundleName": "string",
-    "specificAccount": {
-      "accountType": "termDeposit",
-      "depositDate": "2018-11-01",
-      "maturityDate": "2018-11-01",
-      "maturityAmount": 0
-    },
-    "address": {
-      "addressType": "simple",
-      "mailingName": "string",
-      "addressLine1": "string",
-      "addressLine2": "string",
-      "addressLine3": "string",
-      "postcode": "string",
-      "city": "string",
-      "state": "string",
-      "country": "AUS"
-    }
-  }
-}
-```
-
-<h3 id="getaccount-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountResponse](#schemaaccountresponse)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: detailed_bank_account )
-</aside>
-
-## getAccountsBalances
-
-<a id="opIdgetAccountsBalances"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://myserver.com/cds-au/banking/v1/accounts/balances \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/balances',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /accounts/balances`
-
-*Multiple Balances Data.*
-
-Obtain balances for multiple, filtered accounts.
-
-<h3 id="getaccountsbalances-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "balances": [
-      {
-        "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
-          "currentBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          },
-          "availableBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-<h3 id="getaccountsbalances-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsBalancesResponse](#schemaaccountsbalancesresponse)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.|Inline|
-
-<h3 id="getaccountsbalances-responseschema">Response Schema</h3>
-
-Status Code **422**
-
-*List of Errors.*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: basic_bank_account )
-</aside>
-
-## findSpecificAccountBalances
-
-<a id="opIdfindSpecificAccountBalances"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://myserver.com/cds-au/banking/v1/accounts/balances \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'x-v: 1' \
-  -H 'x-min-v: 1' \
-  -H 'x-<<PID>>-Id: string' \
-  -H 'x-Correlation-Id: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'1',
-  'x-min-v':'1',
-  'x-<<PID>>-Id':'string',
-  'x-Correlation-Id':'string',
-  'Authorization':'Bearer {access-token}'
-
-};
-
-$.ajax({
-  url: 'https://myserver.com/cds-au/banking/v1/accounts/balances',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`POST /accounts/balances`
-
-*Specific Balances Data.*
-
-Obtain balances for a specified list of account Ids.
-
-> Body parameter
-
-```json
-{
-  "data": [
-    "string"
-  ]
-}
-```
-
-<h3 id="findspecificaccountbalances-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
-|» data|body|[string]|true|Array of  accountIds.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
-  "data": {
-    "balances": [
-      {
-        "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
-          "currentBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          },
-          "availableBalance": {
-            "amount": 300.56,
-            "currency": "AUD"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-<h3 id="findspecificaccountbalances-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsBalancesResponse](#schemaaccountsbalancesresponse)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.|Inline|
-
-<h3 id="findspecificaccountbalances-responseschema">Response Schema</h3>
-
-Status Code **422**
-
-*List of Errors.*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: basic_bank_account )
-</aside>
-
-<!--
-# Schemas
--->
-
-<h2 id="tocSaccountsresponse">AccountsResponse</h2>
+<h3 id="tocSaccountsresponse">AccountsResponse</h3>
 
 <a id="schemaaccountsresponse"></a>
 
@@ -2231,7 +60,7 @@ openId ( Scopes: basic_bank_account )
 |» data|object|true|none|none|
 |»» accounts|[[Account](#schemaaccount)]|true|none|List of Accounts.|
 
-<h2 id="tocSaccountresponse">AccountResponse</h2>
+<h3 id="tocSaccountresponse">AccountResponse</h3>
 
 <a id="schemaaccountresponse"></a>
 
@@ -2342,7 +171,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|object|false|none|none|
 |» data|[AccountDetail](#schemaaccountdetail)|true|none|none|
 
-<h2 id="tocSaccountsbalancesresponse">AccountsBalancesResponse</h2>
+<h3 id="tocSaccountsbalancesresponse">AccountsBalancesResponse</h3>
 
 <a id="schemaaccountsbalancesresponse"></a>
 
@@ -2397,7 +226,7 @@ openId ( Scopes: basic_bank_account )
 |» data|object|true|none|none|
 |»» balances|[[AccountBalance](#schemaaccountbalance)]|true|none|List of Balances.|
 
-<h2 id="tocSaccountstransactionsresponse">AccountsTransactionsResponse</h2>
+<h3 id="tocSaccountstransactionsresponse">AccountsTransactionsResponse</h3>
 
 <a id="schemaaccountstransactionsresponse"></a>
 
@@ -2452,7 +281,7 @@ openId ( Scopes: basic_bank_account )
 |» data|object|true|none|none|
 |»» transactions|[[AccountTransaction](#schemaaccounttransaction)]|true|none|none|
 
-<h2 id="tocSaccounttransactionresponse">AccountTransactionResponse</h2>
+<h3 id="tocSaccounttransactionresponse">AccountTransactionResponse</h3>
 
 <a id="schemaaccounttransactionresponse"></a>
 
@@ -2516,7 +345,7 @@ openId ( Scopes: basic_bank_account )
 |»» nickname|string|false|none|A customer supplied nickname for the account.|
 |»» transaction|[TransactionDetail](#schematransactiondetail)|false|none|none|
 
-<h2 id="tocSaccounttransactionsresponse">AccountTransactionsResponse</h2>
+<h3 id="tocSaccounttransactionsresponse">AccountTransactionsResponse</h3>
 
 <a id="schemaaccounttransactionsresponse"></a>
 
@@ -2575,7 +404,7 @@ openId ( Scopes: basic_bank_account )
 |»» nickname|string|false|none|A customer supplied nickname for the account.|
 |»» transactions|[[TransactionBasic](#schematransactionbasic)]|true|none|The list of transactions returned. These are expected to be ordered with the most recent transaction first.|
 
-<h2 id="tocSaccountdirectdebitsresponse">AccountDirectDebitsResponse</h2>
+<h3 id="tocSaccountdirectdebitsresponse">AccountDirectDebitsResponse</h3>
 
 <a id="schemaaccountdirectdebitsresponse"></a>
 
@@ -2627,7 +456,7 @@ openId ( Scopes: basic_bank_account )
 |» data|object|true|none|none|
 |»» directDebitAuthorisations|[[AccountDirectDebit](#schemaaccountdirectdebit)]|true|none|The list of authorisations returned.|
 
-<h2 id="tocSproductsresponse">ProductsResponse</h2>
+<h3 id="tocSproductsresponse">ProductsResponse</h3>
 
 <a id="schemaproductsresponse"></a>
 
@@ -2686,7 +515,7 @@ openId ( Scopes: basic_bank_account )
 |» data|object|true|none|none|
 |»» products|[[Product](#schemaproduct)]|true|none|The list of products returned.|
 
-<h2 id="tocSproductresponse">ProductResponse</h2>
+<h3 id="tocSproductresponse">ProductResponse</h3>
 
 <a id="schemaproductresponse"></a>
 
@@ -2795,7 +624,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|object|false|none|none|
 |» data|[ProductDetail](#schemaproductdetail)|true|none|none|
 
-<h2 id="tocSpayeesresponse">PayeesResponse</h2>
+<h3 id="tocSpayeesresponse">PayeesResponse</h3>
 
 <a id="schemapayeesresponse"></a>
 
@@ -2842,7 +671,7 @@ openId ( Scopes: basic_bank_account )
 |» data|object|true|none|none|
 |»» payees|[[Payee](#schemapayee)]|true|none|The list of payyees returned.|
 
-<h2 id="tocSpayeeresponse">PayeeResponse</h2>
+<h3 id="tocSpayeeresponse">PayeeResponse</h3>
 
 <a id="schemapayeeresponse"></a>
 
@@ -2889,7 +718,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|object|false|none|none|
 |» data|[PayeeDetail](#schemapayeedetail)|true|none|none|
 
-<h2 id="tocSpayeetypeenum">PayeeTypeEnum</h2>
+<h3 id="tocSpayeetypeenum">PayeeTypeEnum</h3>
 
 <a id="schemapayeetypeenum"></a>
 
@@ -2914,7 +743,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|INTERNATIONAL|
 |*anonymous*|BILLER|
 
-<h2 id="tocSpayeeid">PayeeId</h2>
+<h3 id="tocSpayeeid">PayeeId</h3>
 
 <a id="schemapayeeid"></a>
 
@@ -2931,7 +760,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string(ASCII)|false|none|ID of the payee adhering to the rules of ID permanence.|
 
-<h2 id="tocSpayee">Payee</h2>
+<h3 id="tocSpayee">Payee</h3>
 
 <a id="schemapayee"></a>
 
@@ -2954,7 +783,7 @@ openId ( Scopes: basic_bank_account )
 |description|string|false|none|A description of the payee provided by the customer.|
 |type|[PayeeTypeEnum](#schemapayeetypeenum)|true|none|The enumeration of payee types.|
 
-<h2 id="tocSpayeedetail">PayeeDetail</h2>
+<h3 id="tocSpayeedetail">PayeeDetail</h3>
 
 <a id="schemapayeedetail"></a>
 
@@ -3010,7 +839,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |»» *anonymous*|[InternationalPayeeType](#schemainternationalpayeetype)|false|none|none|
 
-<h2 id="tocSpayeetype">PayeeType</h2>
+<h3 id="tocSpayeetype">PayeeType</h3>
 
 <a id="schemapayeetype"></a>
 
@@ -3035,7 +864,7 @@ openId ( Scopes: basic_bank_account )
 |payeeType|biller|
 |payeeType|international|
 
-<h2 id="tocSdomesticpayeesubtype">DomesticPayeeSubType</h2>
+<h3 id="tocSdomesticpayeesubtype">DomesticPayeeSubType</h3>
 
 <a id="schemadomesticpayeesubtype"></a>
 
@@ -3059,7 +888,7 @@ openId ( Scopes: basic_bank_account )
 |domesticPayeeType|account|
 |domesticPayeeType|payId|
 
-<h2 id="tocSaccountdomesticpayeetype">AccountDomesticPayeeType</h2>
+<h3 id="tocSaccountdomesticpayeetype">AccountDomesticPayeeType</h3>
 
 <a id="schemaaccountdomesticpayeetype"></a>
 
@@ -3097,7 +926,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |domesticPayeeType|account|
 
-<h2 id="tocSpayiddomesticpayeetype">PayIDDomesticPayeeType</h2>
+<h3 id="tocSpayiddomesticpayeetype">PayIDDomesticPayeeType</h3>
 
 <a id="schemapayiddomesticpayeetype"></a>
 
@@ -3138,7 +967,7 @@ openId ( Scopes: basic_bank_account )
 |type|ORG_NUMBER|
 |domesticPayeeType|payId|
 
-<h2 id="tocSdomesticpayeetype">DomesticPayeeType</h2>
+<h3 id="tocSdomesticpayeetype">DomesticPayeeType</h3>
 
 <a id="schemadomesticpayeetype"></a>
 
@@ -3194,7 +1023,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |payeeType|domestic|
 
-<h2 id="tocSbillerpayeetype">BillerPayeeType</h2>
+<h3 id="tocSbillerpayeetype">BillerPayeeType</h3>
 
 <a id="schemabillerpayeetype"></a>
 
@@ -3232,7 +1061,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |payeeType|biller|
 
-<h2 id="tocSinternationalpayeetype">InternationalPayeeType</h2>
+<h3 id="tocSinternationalpayeetype">InternationalPayeeType</h3>
 
 <a id="schemainternationalpayeetype"></a>
 
@@ -3297,7 +1126,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |payeeType|international|
 
-<h2 id="tocStransactionbasic">TransactionBasic</h2>
+<h3 id="tocStransactionbasic">TransactionBasic</h3>
 
 <a id="schematransactionbasic"></a>
 
@@ -3329,7 +1158,7 @@ openId ( Scopes: basic_bank_account )
 |amount|[CurrencyAmount](#schemacurrencyamount)|false|none|The value of the transaction. Negative values mean money was outgoing.|
 |reference|string|true|none|The reference for the transaction provided by the originating institution.|
 
-<h2 id="tocStransactiondetail">TransactionDetail</h2>
+<h3 id="tocStransactiondetail">TransactionDetail</h3>
 
 <a id="schematransactiondetail"></a>
 
@@ -3371,7 +1200,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|object|false|none|A transaction with extended detail.|
 |» extendedData|[ExtendedTransactionData](#schemaextendedtransactiondata)|false|none|Contains more detailed information specific to transactions originated via NPP.|
 
-<h2 id="tocSaccounttransaction">AccountTransaction</h2>
+<h3 id="tocSaccounttransaction">AccountTransaction</h3>
 
 <a id="schemaaccounttransaction"></a>
 
@@ -3409,7 +1238,7 @@ openId ( Scopes: basic_bank_account )
 |» accountId|[AccountId](#schemaaccountid)|true|none|A unique ID of the account adhering to the standards for ID permanence.|
 |» isDetailAvailable|boolean|true|none|none|
 
-<h2 id="tocSextendedtransactiondata">ExtendedTransactionData</h2>
+<h3 id="tocSextendedtransactiondata">ExtendedTransactionData</h3>
 
 <a id="schemaextendedtransactiondata"></a>
 
@@ -3443,7 +1272,7 @@ openId ( Scopes: basic_bank_account )
 |extensionType|extendedDescription|
 |service|X2P1.01|
 
-<h2 id="tocStransactionstatus">TransactionStatus</h2>
+<h3 id="tocStransactionstatus">TransactionStatus</h3>
 
 <a id="schematransactionstatus"></a>
 
@@ -3467,7 +1296,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|PENDING|
 |*anonymous*|POSTED|
 
-<h2 id="tocStransactionid">TransactionId</h2>
+<h3 id="tocStransactionid">TransactionId</h3>
 
 <a id="schematransactionid"></a>
 
@@ -3484,7 +1313,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string(ASCII)|false|none|A unique ID of the transaction adhering to the standards for ID permanence. This field is mandatory in this payload as it is a reflection of the requested transaction in the path parameter.|
 
-<h2 id="tocSaccountdirectdebit">AccountDirectDebit</h2>
+<h3 id="tocSaccountdirectdebit">AccountDirectDebit</h3>
 
 <a id="schemaaccountdirectdebit"></a>
 
@@ -3512,7 +1341,7 @@ openId ( Scopes: basic_bank_account )
 |lastDebitDateTime|[DateTimeString](#common-field-types)|false|none|The date and time of the last debit executed under this authorisation|
 |lastDebitAmount|number|false|none|none|
 
-<h2 id="tocSauthorisedentity">AuthorisedEntity</h2>
+<h3 id="tocSauthorisedentity">AuthorisedEntity</h3>
 
 <a id="schemaauthorisedentity"></a>
 
@@ -3535,7 +1364,7 @@ openId ( Scopes: basic_bank_account )
 |abn|[ABN](#schemaabn)|false|none|Australian Business Number.|
 |acn|[ACN](#schemaacn)|false|none|Australian Company Number.|
 
-<h2 id="tocSabn">ABN</h2>
+<h3 id="tocSabn">ABN</h3>
 
 <a id="schemaabn"></a>
 
@@ -3552,7 +1381,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string|false|none|Australian Business Number.|
 
-<h2 id="tocSacn">ACN</h2>
+<h3 id="tocSacn">ACN</h3>
 
 <a id="schemaacn"></a>
 
@@ -3569,7 +1398,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string|false|none|Australian Company Number.|
 
-<h2 id="tocSaccount">Account</h2>
+<h3 id="tocSaccount">Account</h3>
 
 <a id="schemaaccount"></a>
 
@@ -3626,7 +1455,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |» *anonymous*|[MultiCurrencyPursesType](#schemamulticurrencypursestype)|false|none|none|
 
-<h2 id="tocSaccountdetail">AccountDetail</h2>
+<h3 id="tocSaccountdetail">AccountDetail</h3>
 
 <a id="schemaaccountdetail"></a>
 
@@ -3771,7 +1600,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |»» *anonymous*|[PAFAddress](#schemapafaddress)|false|none|none|
 
-<h2 id="tocSaddress">Address</h2>
+<h3 id="tocSaddress">Address</h3>
 
 <a id="schemaaddress"></a>
 
@@ -3795,7 +1624,7 @@ openId ( Scopes: basic_bank_account )
 |addressType|simple|
 |addressType|paf|
 
-<h2 id="tocSsimpleaddress">SimpleAddress</h2>
+<h3 id="tocSsimpleaddress">SimpleAddress</h3>
 
 <a id="schemasimpleaddress"></a>
 
@@ -3843,7 +1672,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |addressType|simple|
 
-<h2 id="tocSpafaddress">PAFAddress</h2>
+<h3 id="tocSpafaddress">PAFAddress</h3>
 
 <a id="schemapafaddress"></a>
 
@@ -3877,7 +1706,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |addressType|paf|
 
-<h2 id="tocScountrycodeiso">CountryCodeISO</h2>
+<h3 id="tocScountrycodeiso">CountryCodeISO</h3>
 
 <a id="schemacountrycodeiso"></a>
 
@@ -3894,7 +1723,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string|false|none|A valid ISO 3166 Alph-3 country code.|
 
-<h2 id="tocSproduct">Product</h2>
+<h3 id="tocSproduct">Product</h3>
 
 <a id="schemaproduct"></a>
 
@@ -3940,7 +1769,7 @@ openId ( Scopes: basic_bank_account )
 |» feesAndPricingUri|string(uri)|false|none|Description of fees, pricing, discounts, exemptions and bonuses for the product.|
 |» bundleUri|string(uri)|false|none|Description of a bundle that this product can be part of.|
 
-<h2 id="tocSproductdetail">ProductDetail</h2>
+<h3 id="tocSproductdetail">ProductDetail</h3>
 
 <a id="schemaproductdetail"></a>
 
@@ -4108,7 +1937,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |»» *anonymous*|[OtherEligibilityType](#schemaothereligibilitytype)|false|none|Another elibility criteria exists as described in the additionalInfo field|
 
-<h2 id="tocSproductcommon">ProductCommon</h2>
+<h3 id="tocSproductcommon">ProductCommon</h3>
 
 <a id="schemaproductcommon"></a>
 
@@ -4370,7 +2199,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |» *anonymous*|[VariableLendingRateType](#schemavariablelendingratetype)|false|none|A variable base rate for the product.|
 
-<h2 id="tocSeligibilitytype">EligibilityType</h2>
+<h3 id="tocSeligibilitytype">EligibilityType</h3>
 
 <a id="schemaeligibilitytype"></a>
 
@@ -4402,7 +2231,7 @@ openId ( Scopes: basic_bank_account )
 |eligibilityType|STAFF|
 |eligibilityType|OTHER|
 
-<h2 id="tocSbusinesseligibilitytype">BusinessEligibilityType</h2>
+<h3 id="tocSbusinesseligibilitytype">BusinessEligibilityType</h3>
 
 <a id="schemabusinesseligibilitytype"></a>
 
@@ -4438,7 +2267,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |eligibilityType|BUSINESS|
 
-<h2 id="tocSpensionrecipienteligibilitytype">PensionRecipientEligibilityType</h2>
+<h3 id="tocSpensionrecipienteligibilitytype">PensionRecipientEligibilityType</h3>
 
 <a id="schemapensionrecipienteligibilitytype"></a>
 
@@ -4474,7 +2303,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |eligibilityType|PERSON_RECIPIENT|
 
-<h2 id="tocSminageeligibilitytype">MinAgeEligibilityType</h2>
+<h3 id="tocSminageeligibilitytype">MinAgeEligibilityType</h3>
 
 <a id="schemaminageeligibilitytype"></a>
 
@@ -4512,7 +2341,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |eligibilityType|MIN_AGE|
 
-<h2 id="tocSminturnovereligibilitytype">MinTurnoverEligibilityType</h2>
+<h3 id="tocSminturnovereligibilitytype">MinTurnoverEligibilityType</h3>
 
 <a id="schemaminturnovereligibilitytype"></a>
 
@@ -4550,7 +2379,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |eligibilityType|MIN_TURNOVER|
 
-<h2 id="tocSstaffeligibilitytype">StaffEligibilityType</h2>
+<h3 id="tocSstaffeligibilitytype">StaffEligibilityType</h3>
 
 <a id="schemastaffeligibilitytype"></a>
 
@@ -4586,7 +2415,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |eligibilityType|STAFF|
 
-<h2 id="tocSothereligibilitytype">OtherEligibilityType</h2>
+<h3 id="tocSothereligibilitytype">OtherEligibilityType</h3>
 
 <a id="schemaothereligibilitytype"></a>
 
@@ -4624,7 +2453,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |eligibilityType|OTHER|
 
-<h2 id="tocSconstrainttype">ConstraintType</h2>
+<h3 id="tocSconstrainttype">ConstraintType</h3>
 
 <a id="schemaconstrainttype"></a>
 
@@ -4650,7 +2479,7 @@ openId ( Scopes: basic_bank_account )
 |constraintType|MAX_LIMIT|
 |constraintType|MIN_LIMIT|
 
-<h2 id="tocSminbalanceconstrainttype">MinBalanceConstraintType</h2>
+<h3 id="tocSminbalanceconstrainttype">MinBalanceConstraintType</h3>
 
 <a id="schemaminbalanceconstrainttype"></a>
 
@@ -4686,7 +2515,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |constraintType|MIN_BALANCE|
 
-<h2 id="tocSopeningbalanceconstrainttype">OpeningBalanceConstraintType</h2>
+<h3 id="tocSopeningbalanceconstrainttype">OpeningBalanceConstraintType</h3>
 
 <a id="schemaopeningbalanceconstrainttype"></a>
 
@@ -4722,7 +2551,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |constraintType|OPENING_BALANCE|
 
-<h2 id="tocSmaxlimitconstrainttype">MaxLimitConstraintType</h2>
+<h3 id="tocSmaxlimitconstrainttype">MaxLimitConstraintType</h3>
 
 <a id="schemamaxlimitconstrainttype"></a>
 
@@ -4758,7 +2587,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |constraintType|MAX_LIMIT|
 
-<h2 id="tocSminlimitconstrainttype">MinLimitConstraintType</h2>
+<h3 id="tocSminlimitconstrainttype">MinLimitConstraintType</h3>
 
 <a id="schemaminlimitconstrainttype"></a>
 
@@ -4794,7 +2623,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |constraintType|MIN_LIMIT|
 
-<h2 id="tocSlendingratetype">LendingRateType</h2>
+<h3 id="tocSlendingratetype">LendingRateType</h3>
 
 <a id="schemalendingratetype"></a>
 
@@ -4828,7 +2657,7 @@ openId ( Scopes: basic_bank_account )
 |lendingRateType|BUNDLE_DISCOUNT|
 |lendingRateType|VARIABLE|
 
-<h2 id="tocSfixedlendingratetype">FixedLendingRateType</h2>
+<h3 id="tocSfixedlendingratetype">FixedLendingRateType</h3>
 
 <a id="schemafixedlendingratetype"></a>
 
@@ -4868,7 +2697,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|FIXED|
 
-<h2 id="tocShoneymoonlendingratetype">HoneymoonLendingRateType</h2>
+<h3 id="tocShoneymoonlendingratetype">HoneymoonLendingRateType</h3>
 
 <a id="schemahoneymoonlendingratetype"></a>
 
@@ -4908,7 +2737,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|HONEYMOON|
 
-<h2 id="tocSdiscountlendingratetype">DiscountLendingRateType</h2>
+<h3 id="tocSdiscountlendingratetype">DiscountLendingRateType</h3>
 
 <a id="schemadiscountlendingratetype"></a>
 
@@ -4948,7 +2777,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|DISCOUNT|
 
-<h2 id="tocSpenaltylendingratetype">PenaltyLendingRateType</h2>
+<h3 id="tocSpenaltylendingratetype">PenaltyLendingRateType</h3>
 
 <a id="schemapenaltylendingratetype"></a>
 
@@ -4988,7 +2817,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|PENALTY|
 
-<h2 id="tocSbundlediscountlendingratetype">BundleDiscountLendingRateType</h2>
+<h3 id="tocSbundlediscountlendingratetype">BundleDiscountLendingRateType</h3>
 
 <a id="schemabundlediscountlendingratetype"></a>
 
@@ -5028,7 +2857,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|BUNDLE_DISCOUNT|
 
-<h2 id="tocSvariablelendingratetype">VariableLendingRateType</h2>
+<h3 id="tocSvariablelendingratetype">VariableLendingRateType</h3>
 
 <a id="schemavariablelendingratetype"></a>
 
@@ -5066,7 +2895,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|VARIABLE|
 
-<h2 id="tocSdepositratetype">DepositRateType</h2>
+<h3 id="tocSdepositratetype">DepositRateType</h3>
 
 <a id="schemadepositratetype"></a>
 
@@ -5098,7 +2927,7 @@ openId ( Scopes: basic_bank_account )
 |depositRateType|BUNDLE_BONUS|
 |depositRateType|VARIABLE|
 
-<h2 id="tocSfixeddepositratetype">FixedDepositRateType</h2>
+<h3 id="tocSfixeddepositratetype">FixedDepositRateType</h3>
 
 <a id="schemafixeddepositratetype"></a>
 
@@ -5138,7 +2967,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|FIXED|
 
-<h2 id="tocSbonusdepositratetype">BonusDepositRateType</h2>
+<h3 id="tocSbonusdepositratetype">BonusDepositRateType</h3>
 
 <a id="schemabonusdepositratetype"></a>
 
@@ -5178,7 +3007,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|BONUS|
 
-<h2 id="tocSvariabledepositratetype">VariableDepositRateType</h2>
+<h3 id="tocSvariabledepositratetype">VariableDepositRateType</h3>
 
 <a id="schemavariabledepositratetype"></a>
 
@@ -5216,7 +3045,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|VARIABLE|
 
-<h2 id="tocSfeaturetype">FeatureType</h2>
+<h3 id="tocSfeaturetype">FeatureType</h3>
 
 <a id="schemafeaturetype"></a>
 
@@ -5252,7 +3081,7 @@ openId ( Scopes: basic_bank_account )
 |featureType|INT_FREE_DAYS_TRNSFRS|
 |featureType|INT_FREE_MONTHS_TRNSFRS|
 
-<h2 id="tocSdebitcardfeaturetype">DebitCardFeatureType</h2>
+<h3 id="tocSdebitcardfeaturetype">DebitCardFeatureType</h3>
 
 <a id="schemadebitcardfeaturetype"></a>
 
@@ -5287,7 +3116,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|DEBIT_CARD|
 
-<h2 id="tocSadditionalcardsfeaturetype">AdditionalCardsFeatureType</h2>
+<h3 id="tocSadditionalcardsfeaturetype">AdditionalCardsFeatureType</h3>
 
 <a id="schemaadditionalcardsfeaturetype"></a>
 
@@ -5324,7 +3153,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|ADDITIONAL_CARDS|
 
-<h2 id="tocSunlimitedtransactionsfeaturetype">UnlimitedTransactionsFeatureType</h2>
+<h3 id="tocSunlimitedtransactionsfeaturetype">UnlimitedTransactionsFeatureType</h3>
 
 <a id="schemaunlimitedtransactionsfeaturetype"></a>
 
@@ -5359,7 +3188,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|UNLIMITED_TXNS|
 
-<h2 id="tocSfreetransactionsfeaturetype">FreeTransactionsFeatureType</h2>
+<h3 id="tocSfreetransactionsfeaturetype">FreeTransactionsFeatureType</h3>
 
 <a id="schemafreetransactionsfeaturetype"></a>
 
@@ -5396,7 +3225,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|FREE_TXNS|
 
-<h2 id="tocSloyaltyprogramfeaturetype">LoyaltyProgramFeatureType</h2>
+<h3 id="tocSloyaltyprogramfeaturetype">LoyaltyProgramFeatureType</h3>
 
 <a id="schemaloyaltyprogramfeaturetype"></a>
 
@@ -5433,7 +3262,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|LOYALTY_PROGRAM|
 
-<h2 id="tocSoffsetfeaturetype">OffsetFeatureType</h2>
+<h3 id="tocSoffsetfeaturetype">OffsetFeatureType</h3>
 
 <a id="schemaoffsetfeaturetype"></a>
 
@@ -5468,7 +3297,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|OFFSET|
 
-<h2 id="tocSoverdraftfeaturetype">OverdraftFeatureType</h2>
+<h3 id="tocSoverdraftfeaturetype">OverdraftFeatureType</h3>
 
 <a id="schemaoverdraftfeaturetype"></a>
 
@@ -5503,7 +3332,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|OVERDRAFT|
 
-<h2 id="tocSredrawfeaturetype">RedrawFeatureType</h2>
+<h3 id="tocSredrawfeaturetype">RedrawFeatureType</h3>
 
 <a id="schemaredrawfeaturetype"></a>
 
@@ -5538,7 +3367,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|REDRAW|
 
-<h2 id="tocSinsurancefeaturetype">InsuranceFeatureType</h2>
+<h3 id="tocSinsurancefeaturetype">InsuranceFeatureType</h3>
 
 <a id="schemainsurancefeaturetype"></a>
 
@@ -5575,7 +3404,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|INSURANCE|
 
-<h2 id="tocSbalancetransfersfeaturetype">BalanceTransfersFeatureType</h2>
+<h3 id="tocSbalancetransfersfeaturetype">BalanceTransfersFeatureType</h3>
 
 <a id="schemabalancetransfersfeaturetype"></a>
 
@@ -5610,7 +3439,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|BALANCE_TRANSFERS|
 
-<h2 id="tocSintfreedaysfeaturetype">IntFreeDaysFeatureType</h2>
+<h3 id="tocSintfreedaysfeaturetype">IntFreeDaysFeatureType</h3>
 
 <a id="schemaintfreedaysfeaturetype"></a>
 
@@ -5647,7 +3476,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|INT_FREE_DAYS|
 
-<h2 id="tocSintfreemonthsfeaturetype">IntFreeMonthsFeatureType</h2>
+<h3 id="tocSintfreemonthsfeaturetype">IntFreeMonthsFeatureType</h3>
 
 <a id="schemaintfreemonthsfeaturetype"></a>
 
@@ -5684,7 +3513,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|INT_FREE_MONTHS|
 
-<h2 id="tocSintfreedaystransfersfeaturetype">IntFreeDaysTransfersFeatureType</h2>
+<h3 id="tocSintfreedaystransfersfeaturetype">IntFreeDaysTransfersFeatureType</h3>
 
 <a id="schemaintfreedaystransfersfeaturetype"></a>
 
@@ -5721,7 +3550,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|INT_FREE_DAYS_TRNSFRS|
 
-<h2 id="tocSintfreemonthstransfersfeaturetype">IntFreeMonthsTransfersFeatureType</h2>
+<h3 id="tocSintfreemonthstransfersfeaturetype">IntFreeMonthsTransfersFeatureType</h3>
 
 <a id="schemaintfreemonthstransfersfeaturetype"></a>
 
@@ -5758,7 +3587,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|INT_FREE_MONTHS_TRNSFRS|
 
-<h2 id="tocSfeetype">FeeType</h2>
+<h3 id="tocSfeetype">FeeType</h3>
 
 <a id="schemafeetype"></a>
 
@@ -5826,7 +3655,7 @@ openId ( Scopes: basic_bank_account )
 |feeType|REDRAW|
 |feeType|OTHER_EVENT|
 
-<h2 id="tocSdiscounttype">DiscountType</h2>
+<h3 id="tocSdiscounttype">DiscountType</h3>
 
 <a id="schemadiscounttype"></a>
 
@@ -5852,7 +3681,7 @@ openId ( Scopes: basic_bank_account )
 |discountType|PAYMENTS|
 |discountType|BUNDLE|
 
-<h2 id="tocSbalancediscounttype">BalanceDiscountType</h2>
+<h3 id="tocSbalancediscounttype">BalanceDiscountType</h3>
 
 <a id="schemabalancediscounttype"></a>
 
@@ -5888,7 +3717,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|BALANCE|
 
-<h2 id="tocSdepositsdiscounttype">DepositsDiscountType</h2>
+<h3 id="tocSdepositsdiscounttype">DepositsDiscountType</h3>
 
 <a id="schemadepositsdiscounttype"></a>
 
@@ -5924,7 +3753,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|DEPOSITS|
 
-<h2 id="tocSpaymentsdiscounttype">PaymentsDiscountType</h2>
+<h3 id="tocSpaymentsdiscounttype">PaymentsDiscountType</h3>
 
 <a id="schemapaymentsdiscounttype"></a>
 
@@ -5960,7 +3789,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|PAYMENTS|
 
-<h2 id="tocSbundlediscounttype">BundleDiscountType</h2>
+<h3 id="tocSbundlediscounttype">BundleDiscountType</h3>
 
 <a id="schemabundlediscounttype"></a>
 
@@ -5996,7 +3825,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |discountType|BUNDLE|
 
-<h2 id="tocSperiodicfeetype">PeriodicFeeType</h2>
+<h3 id="tocSperiodicfeetype">PeriodicFeeType</h3>
 
 <a id="schemaperiodicfeetype"></a>
 
@@ -6042,7 +3871,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|PERIODIC|
 
-<h2 id="tocStransactionfeetype">TransactionFeeType</h2>
+<h3 id="tocStransactionfeetype">TransactionFeeType</h3>
 
 <a id="schematransactionfeetype"></a>
 
@@ -6088,7 +3917,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|TRANSACTION|
 
-<h2 id="tocSexitfeetype">ExitFeeType</h2>
+<h3 id="tocSexitfeetype">ExitFeeType</h3>
 
 <a id="schemaexitfeetype"></a>
 
@@ -6132,7 +3961,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|EXIT|
 
-<h2 id="tocSoverdrawfeetype">OverdrawFeeType</h2>
+<h3 id="tocSoverdrawfeetype">OverdrawFeeType</h3>
 
 <a id="schemaoverdrawfeetype"></a>
 
@@ -6176,7 +4005,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|OVERDRAW|
 
-<h2 id="tocSminbalancefeetype">MinBalanceFeeType</h2>
+<h3 id="tocSminbalancefeetype">MinBalanceFeeType</h3>
 
 <a id="schemaminbalancefeetype"></a>
 
@@ -6222,7 +4051,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|MIN_BALANCE|
 
-<h2 id="tocSredrawfeetype">RedrawFeeType</h2>
+<h3 id="tocSredrawfeetype">RedrawFeeType</h3>
 
 <a id="schemaredrawfeetype"></a>
 
@@ -6266,7 +4095,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|REDRAW|
 
-<h2 id="tocSothereventfeetype">OtherEventFeeType</h2>
+<h3 id="tocSothereventfeetype">OtherEventFeeType</h3>
 
 <a id="schemaothereventfeetype"></a>
 
@@ -6312,7 +4141,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |feeType|OTHER_EVENT|
 
-<h2 id="tocSchargeperiod">ChargePeriod</h2>
+<h3 id="tocSchargeperiod">ChargePeriod</h3>
 
 <a id="schemachargeperiod"></a>
 
@@ -6340,7 +4169,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|SEMI_ANNUALLY|
 |*anonymous*|ANNUALLY|
 
-<h2 id="tocSaccounttype">AccountType</h2>
+<h3 id="tocSaccounttype">AccountType</h3>
 
 <a id="schemaaccounttype"></a>
 
@@ -6365,7 +4194,7 @@ openId ( Scopes: basic_bank_account )
 |accountType|creditCard|
 |accountType|loan|
 
-<h2 id="tocStermdepositaccounttype">TermDepositAccountType</h2>
+<h3 id="tocStermdepositaccounttype">TermDepositAccountType</h3>
 
 <a id="schematermdepositaccounttype"></a>
 
@@ -6403,7 +4232,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |accountType|termDeposit|
 
-<h2 id="tocScreditcardaccounttype">CreditCardAccountType</h2>
+<h3 id="tocScreditcardaccounttype">CreditCardAccountType</h3>
 
 <a id="schemacreditcardaccounttype"></a>
 
@@ -6439,7 +4268,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |accountType|creditCard|
 
-<h2 id="tocSloanaccounttype">LoanAccountType</h2>
+<h3 id="tocSloanaccounttype">LoanAccountType</h3>
 
 <a id="schemaloanaccounttype"></a>
 
@@ -6500,7 +4329,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |accountType|loan|
 
-<h2 id="tocSmaskedaccountnumber">MaskedAccountNumber</h2>
+<h3 id="tocSmaskedaccountnumber">MaskedAccountNumber</h3>
 
 <a id="schemamaskedaccountnumber"></a>
 
@@ -6517,7 +4346,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string|false|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked.|
 
-<h2 id="tocSaccountid">AccountId</h2>
+<h3 id="tocSaccountid">AccountId</h3>
 
 <a id="schemaaccountid"></a>
 
@@ -6534,7 +4363,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |*anonymous*|string(ASCII)|false|none|A unique ID of the account adhering to the standards for ID permanence.|
 
-<h2 id="tocSaccountbalance">AccountBalance</h2>
+<h3 id="tocSaccountbalance">AccountBalance</h3>
 
 <a id="schemaaccountbalance"></a>
 
@@ -6581,7 +4410,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |» *anonymous*|[MultiCurrencyPursesType](#schemamulticurrencypursestype)|false|none|none|
 
-<h2 id="tocSbalancetype">BalanceType</h2>
+<h3 id="tocSbalancetype">BalanceType</h3>
 
 <a id="schemabalancetype"></a>
 
@@ -6606,7 +4435,7 @@ openId ( Scopes: basic_bank_account )
 |balanceType|lending|
 |balanceType|purses|
 
-<h2 id="tocSdepositbalancetype">DepositBalanceType</h2>
+<h3 id="tocSdepositbalancetype">DepositBalanceType</h3>
 
 <a id="schemadepositbalancetype"></a>
 
@@ -6648,7 +4477,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |balanceType|deposits|
 
-<h2 id="tocSlendingbalancetype">LendingBalanceType</h2>
+<h3 id="tocSlendingbalancetype">LendingBalanceType</h3>
 
 <a id="schemalendingbalancetype"></a>
 
@@ -6700,7 +4529,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |balanceType|lending|
 
-<h2 id="tocSmulticurrencypursestype">MultiCurrencyPursesType</h2>
+<h3 id="tocSmulticurrencypursestype">MultiCurrencyPursesType</h3>
 
 <a id="schemamulticurrencypursestype"></a>
 
@@ -6739,7 +4568,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|
 |balanceType|purses|
 
-<h2 id="tocSproductcategory">ProductCategory</h2>
+<h3 id="tocSproductcategory">ProductCategory</h3>
 
 <a id="schemaproductcategory"></a>
 
@@ -6779,7 +4608,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|FOREIGN_CURRRENCT_OVERDRAFT|
 |*anonymous*|TRAVEL_CARD|
 
-<h2 id="tocScurrencyamount">CurrencyAmount</h2>
+<h3 id="tocScurrencyamount">CurrencyAmount</h3>
 
 <a id="schemacurrencyamount"></a>
 
@@ -6798,7 +4627,7 @@ openId ( Scopes: basic_bank_account )
 |amount|number|true|none|none|
 |currency|string|false|none|none|
 
-<h2 id="tocSapiresponse">APIResponse</h2>
+<h3 id="tocSapiresponse">APIResponse</h3>
 
 <a id="schemaapiresponse"></a>
 
@@ -6821,7 +4650,7 @@ openId ( Scopes: basic_bank_account )
 |---|---|---|---|---|
 |links|[Links](#schemalinks)|true|none|none|
 
-<h2 id="tocSapiresponsemeta">APIResponseMeta</h2>
+<h3 id="tocSapiresponsemeta">APIResponseMeta</h3>
 
 <a id="schemaapiresponsemeta"></a>
 
@@ -6857,7 +4686,7 @@ openId ( Scopes: basic_bank_account )
 |*anonymous*|object|false|none|none|
 |» meta|[Meta](#schemameta)|true|none|none|
 
-<h2 id="tocSmeta">Meta</h2>
+<h3 id="tocSmeta">Meta</h3>
 
 <a id="schemameta"></a>
 
@@ -6876,7 +4705,7 @@ openId ( Scopes: basic_bank_account )
 |totalRecords|integer(int32)|true|none|The total number of records in the  full set.|
 |totalPages|integer(int32)|true|none|The total number of pages in the  full set.|
 
-<h2 id="tocSlinks">Links</h2>
+<h3 id="tocSlinks">Links</h3>
 
 <a id="schemalinks"></a>
 
@@ -6901,7 +4730,7 @@ openId ( Scopes: basic_bank_account )
 |next|string(uri)|false|none|URI to the next page of this set. Mandatory if this response is not the last page.|
 |last|string(uri)|false|none|URI to the last page of this set.  Mandatory if this response is not the last page.|
 
-<h2 id="tocSerror">Error</h2>
+<h3 id="tocSerror">Error</h3>
 
 <a id="schemaerror"></a>
 
