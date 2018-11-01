@@ -25,8 +25,6 @@ search: true
 <!---
 TODO
 Payloads
-- Split core entries into separate files
-- Fix each of the end point core entries
 - Fix payees
 - Fix directdebits
 - Fix transactions

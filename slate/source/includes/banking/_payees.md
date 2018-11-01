@@ -49,21 +49,9 @@ Obtain a list of pre-registered payees.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |type|query|[PayeeTypeEnum](#schemapayeetypeenum)|false|Filter on type payee.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 #### Enumerated Values
 
@@ -79,6 +67,16 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
+  "data": {
+    "payees": [
+      {
+        "payeeId": "string",
+        "nickname": "string",
+        "description": "string",
+        "type": "DOMESTIC"
+      }
+    ]
+  },
   "links": {
     "self": "http://example.com",
     "first": "http://example.com",
@@ -89,16 +87,6 @@ If all versions requested are not supported then the provider should respond wit
   "meta": {
     "totalRecords": 6,
     "totalPages": 2
-  },
-  "data": {
-    "payees": [
-      {
-        "payeeId": "string",
-        "nickname": "string",
-        "description": "string",
-        "type": "DOMESTIC"
-      }
-    ]
   }
 }
 ```
@@ -113,6 +101,30 @@ If all versions requested are not supported then the provider should respond wit
 To perform this operation, you must be authenticated by means of one of the following methods:
 openId ( Scopes: bank_payees )
 </aside>
+
+<h3 id="tocSpayeesresponse">PayeesResponse</h3>
+
+<a id="schemapayeesresponse"></a>
+
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|object|true|none|none|
+|»» payees|[[Payee](#schemapayee)]|true|none|The list of payyees returned.|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[PaginatedResponse](#paginatedresponse)|false|none|none|
+
+
 
 ## Get Payee Detail
 
@@ -166,18 +178,6 @@ Obtain detailed information on a single payee.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |payeeId|path|[PayeeId](#schemapayeeid)|true|ID of the payee requested.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 > Example responses
 
@@ -185,13 +185,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
   "data": {
     "payeeId": "string",
     "nickname": "string",
@@ -206,6 +199,11 @@ If all versions requested are not supported then the provider should respond wit
         "type": "EMAIL"
       }
     }
+  },
+  "links": {
+    "self": "http://example.com",
+  },
+  "meta": {
   }
 }
 ```
@@ -216,14 +214,28 @@ If all versions requested are not supported then the provider should respond wit
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[PayeeResponse](#schemapayeeresponse)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
 openId ( Scopes: bank_payees )
 </aside>
+
+<h3 id="tocSpayeeresponse">PayeeResponse</h3>
+
+<a id="schemapayeeresponse"></a>
+
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|[PayeeDetail](#schemapayeedetail)|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[StandardResponse](#standardresponse)|false|none|none|

@@ -49,46 +49,12 @@ Obtain a list of products that are currently openly offered to the market.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |effective|query|boolean|false|If true then only include products that are effective right now and exclude products that may be available at a future time.  If false only include products effective in the future. If absent defaults to include all products.|
 |updated-since|query|[DateTimeString](#common-field-types)|false|Only include products that have been updated after the specified date and time.  If absent defaults to include all products.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
 
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -96,17 +62,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "products": [
       {
@@ -128,6 +83,17 @@ If all versions requested are not supported then the provider should respond wit
         }
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -141,6 +107,28 @@ If all versions requested are not supported then the provider should respond wit
 <aside class="notice">
 This operation can be performed without authentication
 </aside>
+
+<h3 id="tocSproductsresponse">ProductsResponse</h3>
+
+<a id="schemaproductsresponse"></a>
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|object|true|none|none|
+|»» products|[[Product](#schemaproduct)]|true|none|The list of products returned.|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[PaginatedResponse](#paginatedresponse)|false|none|none|
+
 
 ## Get Product Detail
 
@@ -194,18 +182,6 @@ Obtain detailed information on a single product offered openly to the market.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|string(ASCII)|true|ID of the specific Product request.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 > Example responses
 
@@ -213,17 +189,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "productId": "string",
     "effectiveFrom": "2018-11-01T05:33:52Z",
@@ -296,6 +261,17 @@ If all versions requested are not supported then the provider should respond wit
         "eligibilityType": "BUSINESS"
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -306,13 +282,26 @@ If all versions requested are not supported then the provider should respond wit
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[ProductResponse](#schemaproductresponse)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
 <aside class="notice">
 This operation can be performed without authentication
 </aside>
+
+<h3 id="tocSproductresponse">ProductResponse</h3>
+
+<a id="schemaproductresponse"></a>
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|[ProductDetail](#schemaproductdetail)|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[PaginatedResponse](#paginatedresponse)|false|none|none|

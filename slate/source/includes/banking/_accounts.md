@@ -49,45 +49,15 @@ Obtain list of accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
 
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
 #### Enumerated Values
 
 |Parameter|Value|
 |---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -98,17 +68,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "accounts": [
       {
@@ -131,6 +90,17 @@ If all versions requested are not supported then the provider should respond wit
         }
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -141,17 +111,32 @@ If all versions requested are not supported then the provider should respond wit
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsResponse](#schemaaccountsresponse)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
 openId ( Scopes: bank_basic_accounts )
 </aside>
+
+<h3 id="tocSaccountsresponse">AccountsResponse</h3>
+
+<a id="schemaaccountsresponse"></a>
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|object|true|none|none|
+|»» accounts|[[Account](#schemaaccount)]|true|none|List of Accounts.|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[PaginatedResponse](#paginatedresponse)|false|none|none|
+
 
 ## Get Account Detail
 
@@ -205,18 +190,6 @@ Obtain detailed information on a single account.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 > Example responses
 
@@ -224,13 +197,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
   "data": {
     "accountId": "string",
     "displayName": "string",
@@ -309,6 +275,11 @@ If all versions requested are not supported then the provider should respond wit
       "state": "string",
       "country": "AUS"
     }
+  },
+  "links": {
+    "self": "http://example.com"
+  },
+  "meta": {
   }
 }
 ```
@@ -319,17 +290,31 @@ If all versions requested are not supported then the provider should respond wit
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountResponse](#schemaaccountresponse)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
 openId ( Scopes: bank_detailed_accounts )
 </aside>
+
+<h3 id="tocSaccountresponse">AccountResponse</h3>
+
+<a id="schemaaccountresponse"></a>
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|[AccountDetail](#schemaaccountdetail)|true|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[StandardResponse](#standardresponse)|false|none|none|
+
 
 ## Get Bulk Balances
 
@@ -382,44 +367,8 @@ Obtain balances for multiple, filtered accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
-|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -427,17 +376,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "balances": [
       {
@@ -455,6 +393,17 @@ If all versions requested are not supported then the provider should respond wit
         }
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -478,13 +427,6 @@ Status Code **422**
 |» code|string|true|none|none|
 |» title|string|true|none|none|
 |» detail|string|true|none|none|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -554,20 +496,9 @@ Obtain balances for a specified list of account Ids.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
 |» data|body|[string]|true|Array of  accountIds.|
 
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 > Example responses
 
@@ -575,17 +506,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "balances": [
       {
@@ -603,6 +523,17 @@ If all versions requested are not supported then the provider should respond wit
         }
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -627,14 +558,28 @@ Status Code **422**
 |» title|string|true|none|none|
 |» detail|string|true|none|none|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|integer|int32|The version of the API end point that the provider has responded with.|
-|200|x-Correlation-Id|string||Reflected value of the correlation ID provided by the data consumer in the request headers. If no correlation ID was provided in the request this header should not be supplied. If a correlation ID was provided in the request then this header is mandatory.|
-
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
 openId ( Scopes: bank_basic_accounts )
 </aside>
+
+<h3 id="tocSaccountsbalancesresponse">AccountsBalancesResponse</h3>
+
+<a id="schemaaccountsbalancesresponse"></a>
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|object|true|none|none|
+|»» balances|[[AccountBalance](#schemaaccountbalance)]|true|none|List of Balances.|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[PaginatedResponse](#paginatedresponse)|false|none|none|

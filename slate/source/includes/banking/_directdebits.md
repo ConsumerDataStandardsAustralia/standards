@@ -50,20 +50,8 @@ Obtain direct debit authorisations for a specific accounnt list of accounts.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 > Example responses
 
@@ -71,17 +59,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "directDebitAuthorisations": [
       {
@@ -96,6 +73,17 @@ If all versions requested are not supported then the provider should respond wit
         "lastDebitAmount": 300.56
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -162,44 +150,10 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
 
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
-|product-category|TERM_DEPOSITS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
-|product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -207,17 +161,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "directDebitAuthorisations": [
       {
@@ -232,6 +175,17 @@ If all versions requested are not supported then the provider should respond wit
         "lastDebitAmount": 300.56
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
@@ -310,22 +264,10 @@ Obtain direct debit authorisations for a specified list of accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|integer(int32)|true|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.|
-|x-min-v|header|integer(int32)|false|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.|
-|x-<<PID>>-Id|header|string|false|A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.|
-|x-Correlation-Id|header|string|false|The version of the API end point that the provider has responded with.|
 |page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
 |page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
 |body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
 |» data|body|[string]|true|Array of  accountIds.|
-
-#### Detailed descriptions
-
-**x-v**: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
-
-**x-min-v**: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.
-
-If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 
 > Example responses
 
@@ -333,17 +275,6 @@ If all versions requested are not supported then the provider should respond wit
 
 ```json
 {
-  "links": {
-    "self": "http://example.com",
-    "first": "http://example.com",
-    "prev": "http://example.com",
-    "next": "http://example.com",
-    "last": "http://example.com"
-  },
-  "meta": {
-    "totalRecords": 6,
-    "totalPages": 2
-  },
   "data": {
     "directDebitAuthorisations": [
       {
@@ -358,9 +289,21 @@ If all versions requested are not supported then the provider should respond wit
         "lastDebitAmount": 300.56
       }
     ]
+  },
+  "links": {
+    "self": "http://example.com",
+    "first": "http://example.com",
+    "prev": "http://example.com",
+    "next": "http://example.com",
+    "last": "http://example.com"
+  },
+  "meta": {
+    "totalRecords": 6,
+    "totalPages": 2
   }
 }
 ```
+
 
 <h3 id="findspecificdirectdebits-responses">Responses</h3>
 
@@ -387,8 +330,24 @@ To perform this operation, you must be authenticated by means of one of the foll
 openId ( Scopes: bank_detailed_accounts )
 </aside>
 
-<!--
-<h1 id="CDS-AU-Open-Banking-API-Bank-Account-Transactions">Bank Account Transactions</h1>
+<h3 id="tocSaccountdirectdebitsresponse">AccountDirectDebitsResponse</h3>
 
-Everything about the Bank Account Transactions
--->
+<a id="schemaaccountdirectdebitsresponse"></a>
+
+
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|object|false|none|none|
+|» data|object|true|none|none|
+|»» directDebitAuthorisations|[[AccountDirectDebit](#schemaaccountdirectdebit)]|true|none|The list of authorisations returned.|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[PaginatedResponse](#paginatedresponse)|false|none|none|
