@@ -1372,14 +1372,14 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts <span class="se">\</
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
@@ -1422,9 +1422,9 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts <span class="se">\</
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERS_AT_CALL_DEPOSITS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"balanceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposits"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposits"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deposits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"currentBalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.56</span><span class="p">,</span><span class="w">
             </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
@@ -1593,14 +1593,14 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts/balances <span class
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
@@ -1791,16 +1791,16 @@ curl -X POST https://myserver.com/cds-au/banking/v1/accounts/balances <span clas
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccountids">accountIds</a></td>
+<td>accountIds</td>
 <td>true</td>
-<td>Request for an array of specific accountIds.</td>
+<td>Request for an array of <a href="#schemaaccountid">accountIds</a>.</td>
 </tr>
 <tr>
 <td>» data</td>
 <td>body</td>
 <td>[string]</td>
 <td>true</td>
-<td>Array of  accountIds.</td>
+<td>Array of accountIds.</td>
 </tr>
 </tbody></table>
 
@@ -2064,21 +2064,21 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts/<span class="o">{</s
 <tr>
 <td>text</td>
 <td>query</td>
-<td>string(ASCII)</td>
+<td>ASCIIString</td>
 <td>false</td>
 <td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
@@ -2449,21 +2449,21 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts/transactions <span c
 <tr>
 <td>text</td>
 <td>query</td>
-<td>string(ASCII)</td>
+<td>ASCIIString</td>
 <td>false</td>
 <td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
@@ -2765,30 +2765,30 @@ curl -X POST https://myserver.com/cds-au/banking/v1/accounts/transactions <span 
 <tr>
 <td>text</td>
 <td>query</td>
-<td>string(ASCII)</td>
+<td>ASCIIString</td>
 <td>false</td>
 <td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccountids">accountIds</a></td>
+<td>accountIds</td>
 <td>true</td>
-<td>Request for an array of specific accountIds.</td>
+<td>Request for an array of specific <a href="#schemaaccountid">accountIds</a>.</td>
 </tr>
 <tr>
 <td>» data</td>
@@ -2978,14 +2978,14 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts/<span class="o">{</s
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
@@ -3116,14 +3116,14 @@ curl -X GET https://myserver.com/cds-au/banking/v1/accounts/direct-debits <span 
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
@@ -3260,23 +3260,23 @@ curl -X POST https://myserver.com/cds-au/banking/v1/accounts/direct-debits <span
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  of results to  request  (standard  pagination).</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>false</td>
 <td>Page  size to  request. Default is  25 (standard pagination).</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccountids">accountIds</a></td>
+<td>accountIds(</td>
 <td>true</td>
-<td>Request for an array of specific accountIds.</td>
+<td>Request for an array of specific <a href="#schemaaccountid">accountIds</a>.</td>
 </tr>
 <tr>
 <td>» data</td>
@@ -3833,7 +3833,7 @@ openId ( Scopes: bank_detailed_accounts )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td>string(ASCII)</td>
+<td>ASCIIString</td>
 <td>false</td>
 <td>none</td>
 <td>A unique ID of the transaction adhering to the standards for ID permanence. This field is mandatory in this payload as it is a reflection of the requested transaction in the path parameter.</td>
@@ -4015,9 +4015,9 @@ openId ( Scopes: bank_detailed_accounts )
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERS_AT_CALL_DEPOSITS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"balanceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposits"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposits"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deposits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"currentBalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.56</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
@@ -4075,7 +4075,7 @@ openId ( Scopes: bank_detailed_accounts )
 <td>The the product category an account aligns withs.</td>
 </tr>
 <tr>
-<td>providerType</td>
+<td>productType</td>
 <td>string</td>
 <td>true</td>
 <td>none</td>
@@ -4118,15 +4118,15 @@ openId ( Scopes: bank_detailed_accounts )
 </tr>
 </thead><tbody>
 <tr>
-<td>balance$Type</td>
+<td>balance$type</td>
 <td>deposits</td>
 </tr>
 <tr>
-<td>balance$Type</td>
+<td>balance$type</td>
 <td>lending</td>
 </tr>
 <tr>
-<td>balance$Type</td>
+<td>balance$type</td>
 <td>purses</td>
 </tr>
 </tbody></table>
@@ -4525,7 +4525,7 @@ openId ( Scopes: bank_detailed_accounts )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td>string(ASCII)</td>
+<td>ASCIIString</td>
 <td>false</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence.</td>
@@ -4538,7 +4538,8 @@ openId ( Scopes: bank_detailed_accounts )
 
 <p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="s2">&quot;balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;balance$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deposits&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;deposits&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;currentBalance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.56</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUD&quot;</span><span class="w">
@@ -4568,73 +4569,54 @@ openId ( Scopes: bank_detailed_accounts )
 <td>A unique ID of the account adhering to the standards for ID permanence.</td>
 </tr>
 <tr>
-<td>balance</td>
-<td>any</td>
+<td>»»balance$type</td>
+<td>string</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>The type of balance object provided by the account provider (akin to model number)</td>
 </tr>
-</tbody></table></p>
-
-<p><em>oneOf</em></p>
-
-<table><thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» <em>anonymous</em></td>
+<td>»»anonymous</td>
 <td><a href="#schemadepositbalancetype">DepositBalanceType</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
-</tbody></table>
-
-<p><em>xor</em></p>
-
-<table><thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» <em>anonymous</em></td>
+<td>»»anonymous</td>
 <td><a href="#schemalendingbalancetype">LendingBalanceType</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
-</tbody></table>
-
-<p><em>xor</em></p>
-
-<table><thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» <em>anonymous</em></td>
+<td>»»anonymous</td>
 <td><a href="#schemamulticurrencypursestype">MultiCurrencyPursesType</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>balance$type</td>
+<td>deposits</td>
+</tr>
+<tr>
+<td>balance$type</td>
+<td>lending</td>
+</tr>
+<tr>
+<td>balance$type</td>
+<td>purses</td>
+</tr>
+</tbody></table></p>
 
 <h3 id="tocSdepositbalancetype">DepositBalanceType</h3>
 
@@ -4819,7 +4801,7 @@ openId ( Scopes: bank_detailed_accounts )
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -6190,7 +6172,7 @@ openId ( Scopes: common_detail_customer )
 </thead><tbody>
 <tr>
 <td>self</td>
-<td>string(uri)</td>
+<td>URIString</td>
 <td>true</td>
 <td>none</td>
 <td>Fully qualified link  to this  API  call.</td>
@@ -6283,35 +6265,35 @@ openId ( Scopes: common_detail_customer )
 </thead><tbody>
 <tr>
 <td>self</td>
-<td>string(uri)</td>
+<td>URIString</td>
 <td>true</td>
 <td>none</td>
 <td>Fully qualified link  to this  API  call.</td>
 </tr>
 <tr>
 <td>first</td>
-<td>string(uri)</td>
+<td>URIString</td>
 <td>false</td>
 <td>none</td>
 <td>URI to  the  first  page of this set. Mandatory  if this  response is  not  the  first  page.</td>
 </tr>
 <tr>
 <td>prev</td>
-<td>string(uri)</td>
+<td>URIString</td>
 <td>false</td>
 <td>none</td>
 <td>URI to  the  previous page of this set. Mandatory if this response is not the first page.</td>
 </tr>
 <tr>
 <td>next</td>
-<td>string(uri)</td>
+<td>URIString</td>
 <td>false</td>
 <td>none</td>
 <td>URI to the next page of this set. Mandatory if this response is not the last page.</td>
 </tr>
 <tr>
 <td>last</td>
-<td>string(uri)</td>
+<td>URIString</td>
 <td>false</td>
 <td>none</td>
 <td>URI to the last page of this set.  Mandatory if this response is not the last page.</td>
@@ -6338,14 +6320,14 @@ openId ( Scopes: common_detail_customer )
 </thead><tbody>
 <tr>
 <td>totalRecords</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>true</td>
 <td>none</td>
 <td>The total number of records in the  full set.</td>
 </tr>
 <tr>
 <td>totalPages</td>
-<td>integer(int32)</td>
+<td>NaturalNumber</td>
 <td>true</td>
 <td>none</td>
 <td>The total number of pages in the  full set.</td>

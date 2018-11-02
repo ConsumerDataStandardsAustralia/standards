@@ -43,7 +43,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|string(uri)|true|none|Fully qualified link  to this  API  call.|
+|self|URIString|true|none|Fully qualified link  to this  API  call.|
 
 
 
@@ -102,11 +102,11 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|string(uri)|true|none|Fully qualified link  to this  API  call.|
-|first|string(uri)|false|none|URI to  the  first  page of this set. Mandatory  if this  response is  not  the  first  page.|
-|prev|string(uri)|false|none|URI to  the  previous page of this set. Mandatory if this response is not the first page.|
-|next|string(uri)|false|none|URI to the next page of this set. Mandatory if this response is not the last page.|
-|last|string(uri)|false|none|URI to the last page of this set.  Mandatory if this response is not the last page.|
+|self|URIString|true|none|Fully qualified link  to this  API  call.|
+|first|URIString|false|none|URI to  the  first  page of this set. Mandatory  if this  response is  not  the  first  page.|
+|prev|URIString|false|none|URI to  the  previous page of this set. Mandatory if this response is not the first page.|
+|next|URIString|false|none|URI to the next page of this set. Mandatory if this response is not the last page.|
+|last|URIString|false|none|URI to the last page of this set.  Mandatory if this response is not the last page.|
 
 
 <h3 id="tocSmeta">Meta - Paginated</h3>
@@ -125,8 +125,8 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|totalRecords|integer(int32)|true|none|The total number of records in the  full set.|
-|totalPages|integer(int32)|true|none|The total number of pages in the  full set.|
+|totalRecords|NaturalNumber|true|none|The total number of records in the  full set.|
+|totalPages|NaturalNumber|true|none|The total number of pages in the  full set.|
 
 
 <h2 id="tocSerror">Error</h2>

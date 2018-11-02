@@ -185,7 +185,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string(ASCII)|false|none|A unique ID of the transaction adhering to the standards for ID permanence. This field is mandatory in this payload as it is a reflection of the requested transaction in the path parameter.|
+|*anonymous*|ASCIIString|false|none|A unique ID of the transaction adhering to the standards for ID permanence. This field is mandatory in this payload as it is a reflection of the requested transaction in the path parameter.|
 
 <h3 id="tocSaccountdirectdebit">AccountDirectDebit</h3>
 
@@ -284,7 +284,7 @@
   "maskedNumber": "string",
   "productCategory": "PERS_AT_CALL_DEPOSITS",
   "productType": "string",
-  "balance$Type": "deposits",
+  "balance$type": "deposits",
   "deposits": {
     "currentBalance": {
       "amount": 300.56,
@@ -505,7 +505,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string(ASCII)|false|none|A unique ID of the account adhering to the standards for ID permanence.|
+|*anonymous*|ASCIIString|false|none|A unique ID of the account adhering to the standards for ID permanence.|
 
 <h3 id="tocSaccountbalance">AccountBalance</h3>
 
@@ -514,7 +514,7 @@
 ```json
 {
   "accountId": "string",
-  "balance$Type": "deposits",
+  "balance$type": "deposits",
   "deposits": {
     "currentBalance": {
       "amount": 300.56,

@@ -51,8 +51,8 @@ Obtain list of accounts.
 |---|---|---|---|---|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
 
 #### Enumerated Values
 
@@ -77,7 +77,7 @@ Obtain list of accounts.
         "maskedNumber": "string",
         "productCategory": "PERS_AT_CALL_DEPOSITS",
         "productType": "string",
-        "balance$Type": "deposits",
+        "balance$type": "deposits",
         "deposits": {
           "currentBalance": {
             "amount": 300.56,
@@ -188,8 +188,8 @@ Obtain balances for multiple, filtered accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
 
 > Example responses
 
@@ -317,8 +317,8 @@ Obtain balances for a specified list of account Ids.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
-|» data|body|[string]|true|Array of  accountIds.|
+|body|body|accountIds|true|Request for an array of [accountIds](#schemaaccountid).|
+|» data|body|[string]|true|Array of accountIds.|
 
 
 > Example responses
