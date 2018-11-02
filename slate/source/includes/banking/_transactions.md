@@ -475,8 +475,8 @@ Obtain transactions for a specific list of account Ids.
     "balances": [
       {
         "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
+        "balance$type": "deposits",
+        "deposits": {
           "currentBalance": {
             "amount": 300.56,
             "currency": "AUD"

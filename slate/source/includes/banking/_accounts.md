@@ -201,8 +201,8 @@ Obtain balances for multiple, filtered accounts.
     "balances": [
       {
         "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
+        "$balance$type": "deposits",
+        "deposits": {
           "currentBalance": {
             "amount": 300.56,
             "currency": "AUD"
@@ -331,8 +331,8 @@ Obtain balances for a specified list of account Ids.
     "balances": [
       {
         "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
+        "balance$type" : "deposits",
+        "deposits": {
           "currentBalance": {
             "amount": 300.56,
             "currency": "AUD"

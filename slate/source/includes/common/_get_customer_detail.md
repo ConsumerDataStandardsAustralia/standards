@@ -54,49 +54,51 @@ Obtain detailed information on the customer that has authorised the current sess
   },
   "data": {
     "customer$type": "person",
-    "lastUpdateTime": "2018-11-01T05:32:18Z",
-    "firstName": "string",
-    "lastName": "string",
-    "middleNames": [
-      "string"
-    ],
-    "prefix": "string",
-    "suffix": "string",
-    "occupationCode": "string",
-    "phoneNumbers": [
-      {
-        "isPreferred": true,
-        "purpose": "MOBILE",
-        "countryCode": "61",
-        "areaCode": "string",
-        "number": "string",
-        "extension": "string",
-        "fullNumber": "string"
-      }
-    ],
-    "emailAddresses": [
-      {
-        "isPreferred": true,
-        "purpose": "WORK",
-        "address": "user@example.com"
-      }
-    ],
-    "physicalAddresses": [
-      {
-        "purpose": "REGISTERED",
-        "address": {
-          "addressType": "simple",
-          "mailingName": "string",
-          "addressLine1": "string",
-          "addressLine2": "string",
-          "addressLine3": "string",
-          "postcode": "string",
-          "city": "string",
-          "state": "string",
-          "country": "AUS"
+    "person": {
+      "lastUpdateTime": "2018-11-01T05:32:18Z",
+      "firstName": "string",
+      "lastName": "string",
+      "middleNames": [
+        "string"
+      ],
+      "prefix": "string",
+      "suffix": "string",
+      "occupationCode": "string",
+      "phoneNumbers": [
+        {
+          "isPreferred": true,
+          "purpose": "MOBILE",
+          "countryCode": "61",
+          "areaCode": "string",
+          "number": "string",
+          "extension": "string",
+          "fullNumber": "string"
         }
-      }
-    ]
+      ],
+      "emailAddresses": [
+        {
+          "isPreferred": true,
+          "purpose": "WORK",
+          "address": "user@example.com"
+        }
+      ],
+      "physicalAddresses": [
+        {
+          "purpose": "REGISTERED",
+          "address": {
+           "addressType": "simple",
+           "mailingName": "string",
+           "addressLine1": "string",
+           "addressLine2": "string",
+            "addressLine3": "string",
+            "postcode": "string",
+            "city": "string",
+            "state": "string",
+            "country": "AUS"
+            }
+        }
+      ]
+    }
   }
 }
 ```
