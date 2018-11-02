@@ -76,9 +76,9 @@ Obtain list of accounts.
         "nickname": "string",
         "maskedNumber": "string",
         "productCategory": "PERS_AT_CALL_DEPOSITS",
-        "providerType": "string",
-        "balance": {
-          "balanceType": "deposits",
+        "productType": "string",
+        "balance$Type": "deposits",
+        "deposits": {
           "currentBalance": {
             "amount": 300.56,
             "currency": "AUD"

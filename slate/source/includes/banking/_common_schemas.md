@@ -283,9 +283,9 @@
   "nickname": "string",
   "maskedNumber": "string",
   "productCategory": "PERS_AT_CALL_DEPOSITS",
-  "providerType": "string",
-  "balance": {
-    "balanceType": "deposits",
+  "productType": "string",
+  "balance$Type": "deposits",
+  "deposits": {
     "currentBalance": {
       "amount": 300.56,
       "currency": "AUD"
@@ -308,7 +308,7 @@
 |nickname|string|false|none|A customer supplied nick name for the account.|
 |maskedNumber|[MaskedAccountNumber](#schemamaskedaccountnumber)|true|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked.|
 |productCategory|[ProductCategory](#schemaproductcategory)|false|none|The the product category an account aligns withs.|
-|providerType|string|true|none|The unique type as defined by the account provider.|
+|productType|string|true|none|The unique type as defined by the account provider.|
 |»»balance$type|string|true|none|The type of balance object provided by the account provider (akin to model number)|
 |»»anonymous|[DepositBalanceType](#schemadepositbalancetype)|false|none|none|
 |»»anonymous|[LendingBalanceType](#schemalendingbalancetype)|false|none|none|
@@ -318,9 +318,9 @@
 
 |Property|Value|
 |---|---|
-|balance$Type|deposits|
-|balance$Type|lending|
-|balance$Type|purses|
+|balance$type|deposits|
+|balance$type|lending|
+|balance$type|purses|
 
 <h3 id="tocSaddress">Address</h3>
 
@@ -514,7 +514,8 @@
 ```json
 {
   "accountId": "string",
-  "balance": {
+  "balance$Type": "deposits",
+  "deposits": {
     "currentBalance": {
       "amount": 300.56,
       "currency": "AUD"
@@ -533,25 +534,18 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |accountId|[AccountId](#schemaaccountid)|true|none|A unique ID of the account adhering to the standards for ID permanence.|
-|balance|any|true|none|none|
+|»»balance$type|string|true|none|The type of balance object provided by the account provider (akin to model number)|
+|»»anonymous|[DepositBalanceType](#schemadepositbalancetype)|false|none|none|
+|»»anonymous|[LendingBalanceType](#schemalendingbalancetype)|false|none|none|
+|»»anonymous|[MultiCurrencyPursesType](#schemamulticurrencypursestype)|false|none|none|
 
-*oneOf*
+#### Enumerated Values
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» *anonymous*|[DepositBalanceType](#schemadepositbalancetype)|false|none|none|
-
-*xor*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» *anonymous*|[LendingBalanceType](#schemalendingbalancetype)|false|none|none|
-
-*xor*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» *anonymous*|[MultiCurrencyPursesType](#schemamulticurrencypursestype)|false|none|none|
+|Property|Value|
+|---|---|
+|balance$type|deposits|
+|balance$type|lending|
+|balance$type|purses|
 
 <h3 id="tocSdepositbalancetype">DepositBalanceType</h3>
 
