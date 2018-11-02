@@ -16,6 +16,7 @@ includes:
   - security
   - banking
   - common
+  - shared
 
 search: true
 ---
@@ -23,6 +24,15 @@ search: true
 
 <!---
 TODO
-- Add scopes to security
-- Mock out APIs
+Payloads
+- Fix payees
+- Fix directdebits
+- Fix transactions
+- Fix account basic
+- Fix balances
+- Fix product
+- Fix account details
+- Align the product information across product and account details
+- Add PAF Addtress schema
+- Add updated swagger
 --->

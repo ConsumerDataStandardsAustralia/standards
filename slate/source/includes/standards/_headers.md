@@ -2,6 +2,10 @@
 
 Supported HTTP headers, and their usage, for the standards are as laid out in the following sections.
 
+<aside class="warning">
+Please note that there will be a requirement to support specific headers for security purposes.  These are yet to be fully determined.
+</aside>
+
 ### Request Headers
 >A sample set of headers requesting version 3 to 5:  
 `Content-Type = application/json`  
