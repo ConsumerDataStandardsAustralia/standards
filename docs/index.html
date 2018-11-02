@@ -4134,11 +4134,7 @@ openId ( Scopes: bank_detailed_accounts )
 <h3 id="tocSaddress">Address</h3>
 
 <p><a id="schemaaddress"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-12'>Properties</h3>
+<h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4148,36 +4144,12 @@ openId ( Scopes: bank_detailed_accounts )
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>addressType</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>The Address type.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>addressType</td>
-<td>simple</td>
-</tr>
-<tr>
-<td>addressType</td>
-<td>paf</td>
-</tr>
 </tbody></table>
 
 <h3 id="tocSsimpleaddress">SimpleAddress</h3>
 
 <p><a id="schemasimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4283,32 +4255,12 @@ openId ( Scopes: bank_detailed_accounts )
 <td>none</td>
 <td>A valid ISO 3166 Alph-3 country code.</td>
 </tr>
-<tr>
-<td>» addressType</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>addressType</td>
-<td>simple</td>
-</tr>
 </tbody></table>
 
 <h3 id="tocSpafaddress">PAFAddress</h3>
 
 <p><a id="schemapafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -4352,30 +4304,11 @@ openId ( Scopes: bank_detailed_accounts )
 <td>none</td>
 </tr>
 <tr>
-<td>» addressType</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
 <td>» data</td>
 <td>object</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>addressType</td>
-<td>paf</td>
 </tr>
 </tbody></table>
 
@@ -4438,7 +4371,7 @@ openId ( Scopes: bank_detailed_accounts )
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -4597,7 +4530,7 @@ openId ( Scopes: bank_detailed_accounts )
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4801,7 +4734,7 @@ openId ( Scopes: bank_detailed_accounts )
 </tr>
 </tbody></table>
 
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -5207,17 +5140,17 @@ curl -X GET https://myserver.com/cds-au/common/v1/customer/detail <span class="s
       </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REGISTERED"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-           </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
-           </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-           </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-           </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"address$type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">

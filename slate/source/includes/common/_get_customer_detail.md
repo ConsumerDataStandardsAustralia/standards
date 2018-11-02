@@ -85,17 +85,17 @@ Obtain detailed information on the customer that has authorised the current sess
       "physicalAddresses": [
         {
           "purpose": "REGISTERED",
-          "address": {
-           "addressType": "simple",
-           "mailingName": "string",
-           "addressLine1": "string",
-           "addressLine2": "string",
+          "address$type": "simple",
+          "simple": {
+            "mailingName": "string",
+            "addressLine1": "string",
+            "addressLine2": "string",
             "addressLine3": "string",
             "postcode": "string",
             "city": "string",
             "state": "string",
             "country": "AUS"
-            }
+          }
         }
       ]
     }

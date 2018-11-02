@@ -326,25 +326,10 @@
 
 <a id="schemaaddress"></a>
 
-```json
-{
-  "addressType": "simple"
-}
-
-```
-
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|addressType|string|true|none|The Address type.|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|addressType|simple|
-|addressType|paf|
+|---|----|---|---|---|
 
 <h3 id="tocSsimpleaddress">SimpleAddress</h3>
 
@@ -352,7 +337,6 @@
 
 ```json
 {
-  "addressType": "simple",
   "mailingName": "string",
   "addressLine1": "string",
   "addressLine2": "string",
@@ -386,13 +370,6 @@
 |» city|string|true|none|none|
 |» state|string|true|none|Free text if the country is not Australia.  If country is Australia then must be one of the values defined by the ISO 3166:AU standard.|
 |» country|[CountryCodeISO](#schemacountrycodeiso)|false|none|A valid ISO 3166 Alph-3 country code.|
-|» addressType|string|false|none|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|addressType|simple|
 
 <h3 id="tocSpafaddress">PAFAddress</h3>
 
@@ -400,7 +377,6 @@
 
 ```json
 {
-  "addressType": "paf",
   "data": {}
 }
 
@@ -419,14 +395,8 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
-|» addressType|string|false|none|none|
 |» data|object|true|none|none|
 
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|addressType|paf|
 
 <h3 id="tocScountrycodeiso">CountryCodeISO</h3>
 
