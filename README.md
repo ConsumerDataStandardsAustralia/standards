@@ -1,5 +1,7 @@
 # Consumer Data Right Standards
 
+https://consumerdatastandards.org.au/
+
 Data61 has been appointed as technical advisor to the interim data standards body by the Australian federal government, as part of the introduction of [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
 
 The Consumer Data Right is intended to apply sector by sector across the whole economy, beginning in the banking sector. The energy and telecommunications sectors will follow. In the first instance Australia’s four major banks have been tasked with implementing an open banking standard by 1 July 2019, and so developing an open banking standard - building on existing open banking and financial API standards - is Data61’s immediate focus. All other banks will need to comply with these standards by 1 July 2020.
