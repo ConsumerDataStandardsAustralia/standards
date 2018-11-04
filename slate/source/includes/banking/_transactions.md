@@ -54,9 +54,9 @@ Obtain transactions for a specific account.
 |start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
+|text|query|ASCIIString|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
 
 > Example responses
 
@@ -291,9 +291,9 @@ Obtain transactions for multiple, filtered accounts.
 |start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
+|text|query|ASCIIString|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
 
 
 > Example responses
@@ -459,10 +459,10 @@ Obtain transactions for a specific list of account Ids.
 |start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|string(ASCII)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-|body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
+|text|query|ASCIIString|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|body|body|accountIds|true|Request for an array of specific [accountIds](#schemaaccountid).|
 |» data|body|[string]|true|Array of  accountIds.|
 
 > Example responses
@@ -475,8 +475,8 @@ Obtain transactions for a specific list of account Ids.
     "balances": [
       {
         "accountId": "string",
-        "balance": {
-          "balanceType": "deposits",
+        "balance$type": "deposits",
+        "deposits": {
           "currentBalance": {
             "amount": 300.56,
             "currency": "AUD"

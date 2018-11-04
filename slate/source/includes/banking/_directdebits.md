@@ -50,8 +50,8 @@ Obtain direct debit authorisations for a specific accounnt list of accounts.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
 
 > Example responses
 
@@ -151,8 +151,8 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
 
 
 > Example responses
@@ -264,9 +264,9 @@ Obtain direct debit authorisations for a specified list of accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|integer(int32)|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|integer(int32)|false|Page  size to  request. Default is  25 (standard pagination).|
-|body|body|[accountIds](#schemaaccountids)|true|Request for an array of specific accountIds.|
+|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|body|body|accountIds(|true|Request for an array of specific [accountIds](#schemaaccountid).|
 |» data|body|[string]|true|Array of  accountIds.|
 
 > Example responses

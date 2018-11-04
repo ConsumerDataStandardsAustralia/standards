@@ -52,7 +52,6 @@ Obtain basic information on the customer that has authorised the current session
   "data": {
     "customer$type": "person",
     "person": {
-      "customerType": "person",
       "lastUpdateTime": "2018-11-01T05:32:18Z",
       "firstName": "string",
       "lastName": "string",

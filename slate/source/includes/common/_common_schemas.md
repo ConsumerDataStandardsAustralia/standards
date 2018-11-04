@@ -1,4 +1,4 @@
-## Common Schemas
+<h2 id="tocCommonCommonSchemas">Common Schemas</h2>
 
 <h3 id="tocSperson">Person</h3>
 
