@@ -25,14 +25,9 @@ search: true
 <!---
 TODO
 Payloads
-- Fix payees
-- Fix directdebits
-- Fix transactions
-- Fix account basic
-- Fix balances
 - Fix product
 - Fix account details
 - Align the product information across product and account details
-- Add PAF Addtress schema
+- Add PAF Address schema
 - Add updated swagger
 --->

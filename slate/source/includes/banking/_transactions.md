@@ -40,23 +40,33 @@ $.ajax({
 
 ```
 
-`GET /accounts/{accountId}/transactions`
+`GET /banking/accounts/{accountId}/transactions`
 
 *Account Specific Transactions.*
 
 Obtain transactions for a specific account.
 
+Some general notes that apply to all end points that retrieve transactions:
+
+- Where multiple transactions are returned transactions should be ordered according to effective date in descending order
+- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
+    - Posted date/time if available, then
+    - Execution date/time if available, then
+    - A reasonable date/time nominated by the data provider using internal data structures
+- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
+
 <h3 id="getaccounttransactions-parameters">Parameters</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
+|accountId|path|[AccountId](#schemaaccountid)|true|ID of the account to get transactions for. Must have previously been returned by one of the account list end points.|
+|start-time|query|[DateTimeString](#common-field-types)|false|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type.|
+|end-time|query|[DateTimeString](#common-field-types)|false|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|ASCIIString|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|text|query|[ASCII String](#common-field-types)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string.|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
 
 > Example responses
 
@@ -71,14 +81,13 @@ Obtain transactions for a specific account.
     "transactions": [
       {
         "transactionId": "string",
+        "isDetailAvailable": true,
         "status": "PENDING",
         "description": "string",
         "postDateTime": "2018-11-01T05:33:52Z",
         "executionDateTime": "2018-11-01T05:33:52Z",
-        "amount": {
-          "amount": 300.56,
-          "currency": "AUD"
-        },
+        "amount": 300.56,
+        "currency": "AUD",
         "reference": "string"
       }
     ]
@@ -175,7 +184,7 @@ $.ajax({
 
 ```
 
-`GET /accounts/{accountId}/transactions/{transactionId}`
+`GET /banking/accounts/{accountId}/transactions/{transactionId}`
 
 *Detailed Transaction Data.*
 
@@ -277,7 +286,7 @@ $.ajax({
 
 ```
 
-`GET /accounts/transactions`
+`GET /banking/accounts/transactions`
 
 *Bulk Transaction Data.*
 
@@ -288,12 +297,13 @@ Obtain transactions for multiple, filtered accounts.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
+|start-time|query|[DateTimeString](#common-field-types)|false|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type.|
+|end-time|query|[DateTimeString](#common-field-types)|false|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|ASCIIString|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|text|query|[ASCII String](#common-field-types)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string.|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
 
 
 > Example responses
@@ -305,18 +315,16 @@ Obtain transactions for multiple, filtered accounts.
   "data": {
     "transactions": [
       {
+        "accountId": "string",
         "transactionId": "string",
+        "isDetailAvailable": true,
         "status": "PENDING",
         "description": "string",
         "postDateTime": "2018-11-01T05:33:52Z",
         "executionDateTime": "2018-11-01T05:33:52Z",
-        "amount": {
-          "amount": 300.56,
-          "currency": "AUD"
-        },
+        "amount": 300.56,
+        "currency": "AUD",
         "reference": "string",
-        "accountId": "string",
-        "isDetailAvailable": true
       }
     ]
   },
@@ -366,6 +374,8 @@ openId ( Scopes: bank_transactions )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|[PaginatedResponse](#"paginatedresponse")|false|none|none|
+
+
 
 <h3 id="tocSaccounttransactionresponse">AccountTransactionResponse</h3>
 
@@ -436,7 +446,7 @@ $.ajax({
 
 ```
 
-`POST /accounts/transactions`
+`POST /banking/accounts/transactions`
 
 *Specific Transactions Data.*
 
@@ -446,9 +456,13 @@ Obtain transactions for a specific list of account Ids.
 
 ```json
 {
-  "data": [
-    "string"
-  ]
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {
+  }
 }
 ```
 
@@ -456,14 +470,22 @@ Obtain transactions for a specific list of account Ids.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|start-time|query|[DateTimeString](#common-field-types)|false|Constrains the transaction history request to transactions with effective time at or after this date/time.  If absent, defaults to today.|
+|start-time|query|[DateTimeString](#common-field-types)|false|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type.|
+|end-time|query|[DateTimeString](#common-field-types)|false|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type.|
 |min-amount|query|number|false|Filter transactions to only transactions with amounts higher or equal to than this amount.|
 |max-amount|query|number|false|Filter transactions to only transactions with amounts less than or equal to than this amount.|
-|text|query|ASCIIString|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields.|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
-|body|body|accountIds|true|Request for an array of specific [accountIds](#schemaaccountid).|
-|» data|body|[string]|true|Array of  accountIds.|
+|text|query|[ASCII String](#common-field-types)|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string.|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
+
+<h3>Request Schema</h3>
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|true|none||
+|» accountIds|[[AccountId](#schemaaccountid)]|true|none|Array of accountIds requested|
+|meta|object|true|none||
+
 
 > Example responses
 
@@ -475,8 +497,8 @@ Obtain transactions for a specific list of account Ids.
     "balances": [
       {
         "accountId": "string",
-        "balance$type": "deposits",
-        "deposits": {
+        "balance": {
+          "balanceType": "deposits",
           "currentBalance": {
             "amount": 300.56,
             "currency": "AUD"
@@ -507,7 +529,7 @@ Obtain transactions for a specific list of account Ids.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsBalancesResponse](#schemaaccountsbalancesresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsTransactionsResponse](#schemaaccountstransactionsresponse)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.|Inline|
 
 <h3 id="findspecificaccounttransactions-responseschema">Response Schema</h3>
@@ -518,10 +540,7 @@ Status Code **422**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
+|errors|[[Error](#error)]|false|none|List of Errors.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:

@@ -43,7 +43,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|URIString|true|none|Fully qualified link  to this  API  call.|
+|self|string(uri)|true|none|Fully qualified link  to this  API  call.|
 
 
 
@@ -102,11 +102,11 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|URIString|true|none|Fully qualified link  to this  API  call.|
-|first|URIString|false|none|URI to  the  first  page of this set. Mandatory  if this  response is  not  the  first  page.|
-|prev|URIString|false|none|URI to  the  previous page of this set. Mandatory if this response is not the first page.|
-|next|URIString|false|none|URI to the next page of this set. Mandatory if this response is not the last page.|
-|last|URIString|false|none|URI to the last page of this set.  Mandatory if this response is not the last page.|
+|self|string(uri)|true|none|Fully qualified link  to this  API  call.|
+|first|string(uri)|false|none|URI to  the  first  page of this set. Mandatory  if this  response is  not  the  first  page.|
+|prev|string(uri)|false|none|URI to  the  previous page of this set. Mandatory if this response is not the first page.|
+|next|string(uri)|false|none|URI to the next page of this set. Mandatory if this response is not the last page.|
+|last|string(uri)|false|none|URI to the last page of this set.  Mandatory if this response is not the last page.|
 
 
 <h3 id="tocSmeta">Meta - Paginated</h3>
@@ -125,8 +125,8 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|totalRecords|NaturalNumber|true|none|The total number of records in the  full set.|
-|totalPages|NaturalNumber|true|none|The total number of pages in the  full set.|
+|totalRecords|integer(int32)|true|none|The total number of records in the  full set.|
+|totalPages|integer(int32)|true|none|The total number of pages in the  full set.|
 
 
 <h2 id="tocSerror">Error</h2>
@@ -137,7 +137,9 @@
 {
   "code": "string",
   "title": "string",
-  "detail": "string"
+  "detail": "string",
+  "meta": {
+  }
 }
 
 ```
@@ -148,6 +150,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|code|string|true|none|none|
-|title|string|true|none|none|
-|detail|string|true|none|none|
+|code|string|true|none|The code of the error|
+|title|string|true|none|A displayable title of the error type|
+|detail|string|true|none|Detail of the error|
+|meta|object|false|none|Optional additional data for specific error types|

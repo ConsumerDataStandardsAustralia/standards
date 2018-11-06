@@ -39,7 +39,7 @@ $.ajax({
 
 ```
 
-`GET /accounts`
+`GET /banking/accounts`
 
 *Account List Data.*
 
@@ -51,8 +51,8 @@ Obtain list of accounts.
 |---|---|---|---|---|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed.|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
 
 #### Enumerated Values
 
@@ -129,7 +129,7 @@ openId ( Scopes: bank_basic_accounts )
 |---|---|---|---|---|
 |*anonymous*|object|false|none|none|
 |» data|object|true|none|none|
-|»» accounts|[[Account](#schemaaccount)]|true|none|List of Accounts.|
+|»» accounts|[[Account](#schemaaccount)]|true|none|The list of accounts returned. If the filter results in an empty set then this array may have no records.|
 
 *and*
 
@@ -178,7 +178,7 @@ $.ajax({
 
 ```
 
-`GET /accounts/balances`
+`GET /banking/accounts/balances`
 
 *Multiple Balances Data.*
 
@@ -188,8 +188,9 @@ Obtain balances for multiple, filtered accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
 
 > Example responses
 
@@ -234,25 +235,12 @@ Obtain balances for multiple, filtered accounts.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[AccountsBalancesResponse](#schemaaccountsbalancesresponse)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.|Inline|
-
-<h3 id="getaccountsbalances-responseschema">Response Schema</h3>
-
-Status Code **422**
-
-*List of Errors.*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
 openId ( Scopes: bank_basic_accounts )
 </aside>
+
 
 ## Get Balances For Specific Accounts
 
@@ -297,7 +285,7 @@ $.ajax({
 
 ```
 
-`POST /accounts/balances`
+`POST /banking/accounts/balances`
 
 *Specific Balances Data.*
 
@@ -307,18 +295,23 @@ Obtain balances for a specified list of account Ids.
 
 ```json
 {
-  "data": [
-    "string"
-  ]
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {
+  }
 }
 ```
 
-<h3 id="findspecificaccountbalances-parameters">Parameters</h3>
+<h3>Request Schema</h3>
 
-|Parameter|In|Type|Required|Description|
+|Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|body|body|accountIds|true|Request for an array of [accountIds](#schemaaccountid).|
-|» data|body|[string]|true|Array of accountIds.|
+|data|object|true|none||
+|» accountIds|[[AccountId](#schemaaccountid)]|true|none|Array of accountIds requested|
+|meta|object|true|none||
 
 
 > Example responses
@@ -374,10 +367,7 @@ Status Code **422**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
+|errors|[[Error](#error)]|false|none|List of Errors.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:

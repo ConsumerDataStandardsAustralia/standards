@@ -39,7 +39,7 @@ $.ajax({
 
 ```
 
-`GET /accounts/{accountId}/direct-debits`
+`GET /banking/accounts/{accountId}/direct-debits`
 
 *Account Specific Direct Debit Authorisations.*
 
@@ -50,8 +50,8 @@ Obtain direct debit authorisations for a specific accounnt list of accounts.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[AccountId](#schemaaccountid)|true|ID of the Account.  Must have previously been returned from one of the account list end points.|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
 
 > Example responses
 
@@ -140,7 +140,7 @@ $.ajax({
 
 ```
 
-`GET /accounts/direct-debits`
+`GET /banking/accounts/direct-debits`
 
 *Bulk Direct Debit Authorisations Data.*
 
@@ -151,8 +151,8 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |product-category|query|[ProductCategory](#schemaproductcategory)|false|Used to filter results on the productCategory field in the account end points. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
 
 
 > Example responses
@@ -244,7 +244,7 @@ $.ajax({
 
 ```
 
-`POST /accounts/direct-debits`
+`POST /banking/accounts/direct-debits`
 
 *Specific Direct Debit Authorisations Data.*
 
@@ -254,9 +254,13 @@ Obtain direct debit authorisations for a specified list of accounts.
 
 ```json
 {
-  "data": [
-    "string"
-  ]
+  "data": {
+    "accountIds": [
+      "string"
+    ]
+  },
+  "meta": {
+  }
 }
 ```
 
@@ -264,10 +268,17 @@ Obtain direct debit authorisations for a specified list of accounts.
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|NaturalNumber|false|Page  of results to  request  (standard  pagination).|
-|page-size|query|NaturalNumber|false|Page  size to  request. Default is  25 (standard pagination).|
-|body|body|accountIds(|true|Request for an array of specific [accountIds](#schemaaccountid).|
-|» data|body|[string]|true|Array of  accountIds.|
+|page|query|[PositiveInteger](#common-field-types)|false|Page  of results to  request  (standard  pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|false|Page  size to  request. Default is  25 (standard pagination).|
+
+<h3>Request Schema</h3>
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|true|none||
+|» accountIds|[[AccountId](#schemaaccountid)]|true|none|Array of accountIds requested|
+|meta|object|true|none||
+
 
 > Example responses
 
@@ -320,10 +331,7 @@ Status Code **422**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[[Error](#schemaerror)]|false|none|List of Errors.|
-|» code|string|true|none|none|
-|» title|string|true|none|none|
-|» detail|string|true|none|none|
+|errors|[[Error](#error)]|false|none|List of Errors.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
