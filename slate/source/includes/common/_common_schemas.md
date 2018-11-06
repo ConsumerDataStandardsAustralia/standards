@@ -1,8 +1,8 @@
 <h2 id="tocCommonCommonSchemas">Common Schemas</h2>
 
+<a id="schemaperson"></a>
 <h3 id="tocSperson">Person</h3>
 
-<a id="schemaperson"></a>
 
 ### Properties
 
@@ -22,9 +22,9 @@
 
 
 
+<a id="schemaorganisation"></a>
 <h3 id="tocSorganisation">Organisation</h3>
 
-<a id="schemaorganisation"></a>
 
 ### Properties
 

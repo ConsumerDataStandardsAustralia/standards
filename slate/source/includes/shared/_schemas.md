@@ -28,9 +28,10 @@
 |*anonymous*|object|false|none|none|
 |» meta|Empty Object|true|none|none|
 
-<h3 id="tocSlinks">Links - Standard</h3>
 
 <a id="linksstandard"></a>
+<h3 id="tocSlinks">Links - Standard</h3>
+
 
 ```json
 {
@@ -83,9 +84,10 @@
 |*anonymous*|object|false|none|none|
 |» meta|[Meta - Paginated](#metapaginated)|true|none|none|
 
-<h3 id="tocSlinks">Links - Paginated</h3>
 
 <a id="linkspaginated"></a>
+<h3 id="tocSlinks">Links - Paginated</h3>
+
 
 ```json
 {
@@ -109,9 +111,9 @@
 |last|string(uri)|false|none|URI to the last page of this set.  Mandatory if this response is not the last page.|
 
 
+<a id="metapaginated"></a>
 <h3 id="tocSmeta">Meta - Paginated</h3>
 
-<a id="metapaginated"></a>
 
 ```json
 {
@@ -129,9 +131,9 @@
 |totalPages|integer(int32)|true|none|The total number of pages in the  full set.|
 
 
+<a id="error"></a>
 <h2 id="tocSerror">Error</h2>
 
-<a id="error"></a>
 
 ```json
 {

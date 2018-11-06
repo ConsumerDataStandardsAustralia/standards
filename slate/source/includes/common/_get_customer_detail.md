@@ -114,9 +114,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemacustomerdetailresponse"></a>
 <h3 id="tocScustomerdetailresponse">CustomerDetailResponse</h3>
 
-<a id="schemacustomerdetailresponse"></a>
 
 
 ### Properties
@@ -151,9 +151,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemapersondetail"></a>
 <h3 id="tocSpersondetail">PersonDetail</h3>
 
-<a id="schemapersondetail"></a>
 
 ### Properties
 
@@ -173,9 +173,9 @@ openId ( Scopes: common_detail_customer )
 |» physicalAddresses|[[PhysicalAddress](#schemaphysicaladdress)]|true|none|Must contain at least one address.  One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL.  If zero then the REGISTERED address is to be used for mail.|
 
 
+<a id="schemaorganisationdetail"></a>
 <h3 id="tocSorganisationdetail">OrganisationDetail</h3>
 
-<a id="schemaorganisationdetail"></a>
 
 ### Properties
 
@@ -194,9 +194,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemaphonenumber"></a>
 <h3 id="tocSphonenumber">PhoneNumber</h3>
 
-<a id="schemaphonenumber"></a>
 
 ```json
 {
@@ -240,9 +240,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemaemailaddress"></a>
 <h3 id="tocSemailaddress">EmailAddress</h3>
 
-<a id="schemaemailaddress"></a>
 
 ```json
 {
@@ -275,9 +275,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemaphysicaladdress"></a>
 <h3 id="tocSphysicaladdress">PhysicalAddress</h3>
 
-<a id="schemaphysicaladdress"></a>
 
 ### Properties
 
@@ -285,7 +285,6 @@ openId ( Scopes: common_detail_customer )
 |---|---|---|---|---|
 |purpose|string|true|none|none|
 |address$type|string|true|none|The type of address object that is present|
-|address|any|true|none|none|
 |simple|[SimpleAddress](#schemasimpleaddress)|false|none|none|
 |paf|[PAFAddress](#schemapafaddress)|false|none|none|
 
@@ -305,9 +304,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemasimpleaddress"></a>
 <h3 id="tocSsimpleaddress">SimpleAddress</h3>
 
-<a id="schemasimpleaddress"></a>
 
 
 ### Properties
@@ -335,9 +334,9 @@ openId ( Scopes: common_detail_customer )
 
 
 
+<a id="schemapafaddress"></a>
 <h3 id="tocSpafaddress">PAFAddress</h3>
 
-<a id="schemapafaddress"></a>
 
 ### Properties
 

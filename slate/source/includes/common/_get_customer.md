@@ -99,9 +99,8 @@ To perform this operation, you must be authenticated by means of one of the foll
 openId ( Scopes: common_basic_customer )
 </aside>
 
-<h3 id="tocScustomerresponse">CustomerResponse</h3>
-
 <a id="schemacustomerresponse"></a>
+<h3 id="tocScustomerresponse">CustomerResponse</h3>
 
 ### Properties
 

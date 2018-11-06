@@ -105,9 +105,9 @@ openId ( Scopes: bank_basic_accounts )
 
 
 
+<a id="schemapayeesresponse"></a>
 <h3 id="tocSpayeesresponse">PayeesResponse</h3>
 
-<a id="schemapayeesresponse"></a>
 
 ### Properties
 
@@ -220,11 +220,8 @@ To perform this operation, you must be authenticated by means of one of the foll
 openId ( Scopes: bank_payees )
 </aside>
 
-<h3 id="tocSpayeeresponse">PayeeResponse</h3>
-
 <a id="schemapayeeresponse"></a>
-
-
+<h3 id="tocSpayeeresponse">PayeeResponse</h3>
 
 ### Properties
 
@@ -243,9 +240,9 @@ openId ( Scopes: bank_payees )
 
 
 
+<a id="schemapayeeid"></a>
 <h3 id="tocSpayeeid">PayeeId</h3>
 
-<a id="schemapayeeid"></a>
 
 ```json
 "string"
@@ -262,9 +259,9 @@ openId ( Scopes: bank_payees )
 
 
 
+<a id="schemapayee"></a>
 <h3 id="tocSpayee">Payee</h3>
 
-<a id="schemapayee"></a>
 
 ```json
 {
@@ -294,9 +291,9 @@ openId ( Scopes: bank_payees )
 |type|BILLER|
 
 
+<a id="schemapayeedetail"></a>
 <h3 id="tocSpayeedetail">PayeeDetail</h3>
 
-<a id="schemapayeedetail"></a>
 
 ```json
 {
@@ -353,9 +350,9 @@ openId ( Scopes: bank_payees )
 |payee$type|international|
 
 
+<a id="schemadomesticpayeetype"></a>
 <h3 id="tocSdomesticpayeetype">DomesticPayeeType</h3>
 
-<a id="schemadomesticpayeetype"></a>
 
 ```json
 {
@@ -417,9 +414,9 @@ openId ( Scopes: bank_payees )
 |type|ORG_NAME|
 
 
+<a id="schemabillerpayeetype"></a>
 <h3 id="tocSbillerpayeetype">BillerPayeeType</h3>
 
-<a id="schemabillerpayeetype"></a>
 
 ```json
 {
@@ -440,9 +437,9 @@ openId ( Scopes: bank_payees )
 |» billerName|string|true|none|Name of the Biller.|
 
 
+<a id="schemainternationalpayeetype"></a>
 <h3 id="tocSinternationalpayeetype">InternationalPayeeType</h3>
 
-<a id="schemainternationalpayeetype"></a>
 
 ```json
 {

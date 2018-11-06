@@ -338,9 +338,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 openId ( Scopes: bank_detailed_accounts )
 </aside>
 
+<a id="schemaaccountdirectdebitsresponse"></a>
 <h3 id="tocSaccountdirectdebitsresponse">AccountDirectDebitsResponse</h3>
 
-<a id="schemaaccountdirectdebitsresponse"></a>
 
 
 

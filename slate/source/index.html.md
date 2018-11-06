@@ -7,7 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>Consumer Data Right Home</a>
+  - <a href='https://consumerdatastandards.org.au/'>Consumer Data Right Home</a>
   - <a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a>
 
 includes:
@@ -25,9 +25,6 @@ search: true
 <!---
 TODO
 Payloads
-- Fix product
-- Fix account details
-- Align the product information across product and account details
 - Add PAF Address schema
 - Add updated swagger
 --->

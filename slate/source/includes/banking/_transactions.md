@@ -117,11 +117,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 openId ( Scopes: bank_transactions )
 </aside>
 
-<h3 id="tocSaccounttransactionsresponse">AccountTransactionsResponse</h3>
 
 <a id="schemaaccounttransactionsresponse"></a>
-
-
+<h3 id="tocSaccounttransactionsresponse">AccountTransactionsResponse</h3>
 
 ### Properties
 
@@ -353,10 +351,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 openId ( Scopes: bank_transactions )
 </aside>
 
-<h3 id="tocSaccountstransactionsresponse">AccountsTransactionsResponse</h3>
 
 <a id="schemaaccountstransactionsresponse"></a>
-
+<h3 id="tocSaccountstransactionsresponse">AccountsTransactionsResponse</h3>
 
 
 ### Properties
@@ -377,10 +374,8 @@ openId ( Scopes: bank_transactions )
 
 
 
-<h3 id="tocSaccounttransactionresponse">AccountTransactionResponse</h3>
-
 <a id="schemaaccounttransactionresponse"></a>
-
+<h3 id="tocSaccounttransactionresponse">AccountTransactionResponse</h3>
 
 
 ### Properties
