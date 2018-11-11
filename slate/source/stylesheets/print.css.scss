@@ -36,6 +36,12 @@ body {
   display: block;
 }
 
+.logo {
+  background-color: black;
+  margin-bottom: 10px;
+  width:100%;
+}
+
 .content {
   font-size: 12px;
 
@@ -90,6 +96,7 @@ body {
     border: 2px solid $print-color-light;
     border-width: 2px 0;
     text-align: center;
+    page-break-before: always;
   }
 
   h2 {
