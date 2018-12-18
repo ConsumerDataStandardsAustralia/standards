@@ -441,24 +441,28 @@ parameters:
     description: Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type
     required: false
     type: string
+    format: DateTimeString
   ParamEndTime:
     name: end-time
     in: query
     description: Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type
     required: false
     type: string
+    format: DateTimeString
   ParamTransactionMinAmount:
     name: min-amount
     in: query
     description: Filter transactions to only transactions with amounts higher or equal to than this amount
     required: false
     type: string
+    format: AmountString
   ParamTransactionMaxAmount:
     name: max-amount
     in: query
     description: Filter transactions to only transactions with amounts less than or equal to than this amount
     required: false
     type: string
+    format: AmountString
   ParamTransactionText:
     name: text
     in: query
@@ -891,7 +895,7 @@ definitions:
       - maskedNumber
       - productCategory
       - providerType
-      - balance$type
+      - balanceUType
     properties:
       accountid:
         type: string
@@ -912,7 +916,7 @@ definitions:
       providerType:
         type: string
         description: The unique type as defined by the account provider
-      balance$type:
+      balanceUType:
         type: string
         description: 'The type of balance object provided for the account. Must be one of: debit Debit Balance Type (see above) Conditional credit Credit Balance Type (see above) Conditional Multi Currency Purses Type (see above) Conditional purses debit credit purses'
         enum:
@@ -945,12 +949,12 @@ definitions:
       - $ref: '#/definitions/Account'
       - type: object
         required:
-          - address$type
+          - addressUType
         properties:
           bundleName:
             type: string
             description: Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer
-          specificAccount$type:
+          specificAccountUType:
             type: string
             description: The type of structure to present account specific fields.
             enum:
@@ -982,9 +986,9 @@ definitions:
           address:
             type: object
             required:
-              - address$type
+              - addressUType
             properties:
-              address$type:
+              addressUType:
                 type: string
                 description: The type of address object present
                 enum:
@@ -1416,14 +1420,14 @@ definitions:
               payee:
                 type: string
                 description: Label of the target PayID. Mandatory for an outbound payment
-              extension$type:
+              extensionUType:
                 type: string
                 description: Optional extended data provided specific to transaction originated via NPP
                 enum:
                   - extendedDescription
               extendedDescription:
                 type: string
-                description: An extended string description. Only present if specified by the extensionType field
+                description: An extended string description. Only present if specified by the extensionUType field
               service:
                 type: string
                 description: Identifier of the applicable overlay service
@@ -1453,12 +1457,12 @@ definitions:
     type: object
     required:
       - accountId
-      - balance$type
+      - balanceUType
     properties:
       accountid:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
-      balance$type:
+      balanceUType:
         type: string
         description: The type of balance object provided for the account
         enum:
@@ -1573,9 +1577,9 @@ definitions:
       - $ref: '#/definitions/Payee'
       - type: object
         required:
-          - payee$type
+          - payeeUType
         properties:
-          payee$type:
+          payeeUType:
             type: string
             description: Type of object included that describes the payee in detail
             enum:
@@ -1591,15 +1595,15 @@ definitions:
   DomesticPayee:
     type: object
     required:
-      - payeeAccount$type
+      - payeeAccountUType
     properties:
-      payeeAccount$type:
+      payeeAccountUType:
         type: string
-        description: 'Type of account object included. Valid values are: { payeeAccount$type - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP'
+        description: 'Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP'
         enum:
           - account
           - card
-          - payid
+          - payId
       account:
         $ref: '#/definitions/DomesticPayeeAccount'
       card:
@@ -1683,7 +1687,7 @@ definitions:
             description: Name of the beneficiary
           country:
             type: string
-            description: Country where the beneficiary resides
+            description: Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code
           message:
             type: string
             description: Response message for the payment
@@ -1695,7 +1699,7 @@ definitions:
         properties:
           country:
             type: string
-            description: Country of the recipient institution
+            description: Country of the recipient institution. A valid ISO 3166 Alpha-3 country code
           accountNumber:
             type: string
             description: Account Targeted for payment
@@ -1794,9 +1798,9 @@ definitions:
       data:
         type: object
         required:
-          - customer$type
+          - customerUType
         properties:
-          customer$type:
+          customerUType:
             type: string
             description: The type of customer object that is present
             enum:
@@ -1820,9 +1824,9 @@ definitions:
       data:
         type: object
         required:
-          - customer$type
+          - customerUType
         properties:
-          customer$type:
+          customerUType:
             type: string
             description: The type of customer object that is present
             enum:
@@ -1865,7 +1869,7 @@ definitions:
         description: Used for a trailing suffix to the name (e.g. Jr)
       occupationCode:
         type: string
-        description: Occupation code as defined by the ANZSCO  v1.2 Standard Classification of Occupations
+        description: 'Value should be a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.'
   PersonDetail:
     allOf:
       - $ref: '#/definitions/Person'
@@ -1932,7 +1936,7 @@ definitions:
         description: True if registered with the ACNC.  False if not. Absent or null if not confirmed.
       industryCode:
         type: string
-        description: ANZSIC (2006) code for the organisation.
+        description: '[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.'
       organisationType:
         type: string
         description: Legal organisation type
@@ -2023,7 +2027,7 @@ definitions:
     type: object
     required:
       - purpose
-      - address$type
+      - addressUType
     properties:
       purpose:
         type: string
@@ -2034,7 +2038,7 @@ definitions:
           - PHYSICAL
           - WORK
           - OTHER
-      address$type:
+      addressUType:
         type: string
         description: The type of address object present
         enum:
