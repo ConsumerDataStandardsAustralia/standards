@@ -1,6 +1,0 @@
-{
-  "preset": "google",
-  "maximumLineLength": null,
-  "disallowSpacesInsideObjectBrackets": null,
-  "requireCurlyBraces": false
-}
