@@ -158,12 +158,12 @@ A Boolean value of false is not considered to be equivalent to `null`. Optional 
 “data”: {
 	[
 		{
-			“shape$type”: “circle”,
+			“shapeType”: “circle”,
 			“circle”: {
 			}
 		},
 		{
-			“shape$type”: “square”,
+			“shapeType”: “square”,
 			“square”: {
 			}
 		}
@@ -179,4 +179,4 @@ For union objects an additional field, with a known suffix, is used to identify 
 
 As the name of this field is constant it can be used to perform an indirect lookup on the object type that has actually been provided removing the need to scan for which object is present.
 
-A field of this type could be specified to always have the suffix `$type`.
+A field of this type will always be specified with the suffix `UType` meaning Union Type.
