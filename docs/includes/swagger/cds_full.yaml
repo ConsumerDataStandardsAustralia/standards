@@ -36,7 +36,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingAccounts'
+            $ref: '#/definitions/ResponseBankingAccounts'
       x-version: '1'
   '/banking/accounts/{accountId}':
     get:
@@ -55,7 +55,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingAccount'
+            $ref: '#/definitions/ResponseBankingAccount'
       x-version: '1'
   /banking/accounts/balances:
     get:
@@ -72,7 +72,7 @@ paths:
         '200':
           description: resource listing the financial balances for the account
           schema:
-            $ref: '#/definitions/RequestBankingAccountsBalances'
+            $ref: '#/definitions/ResponseBankingAccountsBalances'
       x-version: '1'
     post:
       summary: Get Balances For Specific Accounts
@@ -91,7 +91,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingAccountsBalances'
+            $ref: '#/definitions/ResponseBankingAccountsBalances'
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -121,7 +121,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingTransactions'
+            $ref: '#/definitions/ResponseBankingTransactions'
       x-version: '1'
   '/banking/accounts/{accountId}/transactions/{transactionId}':
     get:
@@ -145,7 +145,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingTransactionDetail'
+            $ref: '#/definitions/ResponseBankingTransactionDetail'
       x-version: '1'
   /banking/accounts/transactions:
     get:
@@ -167,7 +167,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingTransactions'
+            $ref: '#/definitions/ResponseBankingTransactions'
       x-version: '1'
     post:
       summary: Get Transactions For Specific Accounts
@@ -193,7 +193,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingTransactions'
+            $ref: '#/definitions/ResponseBankingTransactions'
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -218,7 +218,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingDirectDebits'
+            $ref: '#/definitions/ResponseBankingDirectDebits'
       x-version: '1'
   /banking/accounts/direct-debits:
     get:
@@ -235,7 +235,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingDirectDebits'
+            $ref: '#/definitions/ResponseBankingDirectDebits'
       x-version: '1'
     post:
       summary: Get Direct Debits For Specific Accounts
@@ -254,7 +254,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingDirectDebits'
+            $ref: '#/definitions/ResponseBankingDirectDebits'
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -284,7 +284,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingPayees'
+            $ref: '#/definitions/ResponseBankingPayees'
       x-version: '1'
   '/banking/payees/{payeeId}':
     get:
@@ -303,7 +303,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestBankingPayeeDetails'
+            $ref: '#/definitions/ResponseBankingPayeeDetails'
       x-version: '1'
   /banking/products:
     get:
@@ -368,7 +368,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestCommonCustomer'
+            $ref: '#/definitions/ResponseCommonCustomer'
       x-version: '1'
   /common/customer/detail:
     get:
@@ -382,7 +382,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RequestCommonCustomerDetailed'
+            $ref: '#/definitions/ResponseCommonCustomerDetailed'
       x-version: '1'
 parameters:
   ParamAccountOpenStatus:
@@ -863,7 +863,7 @@ definitions:
         type: string
         description: Link to a web page with more information  on this fee
         format: URIString
-  RequestBankingAccounts:
+  ResponseBankingAccounts:
     type: object
     required:
       - data
@@ -927,7 +927,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/CurrencyAmount'
-  RequestBankingAccount:
+  ResponseBankingAccount:
     type: object
     required:
       - data
@@ -1288,7 +1288,7 @@ definitions:
         type: string
         description: Link to a web page with more information  on this fee
         format: URIString
-  RequestBankingTransactions:
+  ResponseBankingTransactions:
     type: object
     required:
       - data
@@ -1366,7 +1366,7 @@ definitions:
       reference:
         type: string
         description: The reference for the transaction provided by the originating institution
-  RequestBankingTransactionDetail:
+  ResponseBankingTransactionDetail:
     type: object
     required:
       - data
@@ -1429,7 +1429,7 @@ definitions:
                 description: Identifier of the applicable overlay service
                 enum:
                   - X2P1.01
-  RequestBankingAccountsBalances:
+  ResponseBankingAccountsBalances:
     type: object
     required:
       - data
@@ -1511,7 +1511,7 @@ definitions:
         type: string
         description: If not present assumes AUD
         format: CurrencyString
-  RequestBankingPayees:
+  ResponseBankingPayees:
     type: object
     required:
       - data
@@ -1532,7 +1532,7 @@ definitions:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  RequestBankingPayeeDetails:
+  ResponseBankingPayeeDetails:
     type: object
     required:
       - data
@@ -1726,7 +1726,7 @@ definitions:
           routingNumber:
             type: string
             description: International bank routing number
-  RequestBankingDirectDebits:
+  ResponseBankingDirectDebits:
     type: object
     required:
       - data
@@ -1784,7 +1784,7 @@ definitions:
       acn:
         type: string
         description: Australian Business Number for the authorised entity
-  RequestCommonCustomer:
+  ResponseCommonCustomer:
     type: object
     required:
       - data
@@ -1810,7 +1810,7 @@ definitions:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  RequestCommonCustomerDetailed:
+  ResponseCommonCustomerDetailed:
     type: object
     required:
       - data

@@ -62,7 +62,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingAccounts"
+              "$ref": "#/definitions/ResponseBankingAccounts"
             }
           }
         },
@@ -90,7 +90,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingAccount"
+              "$ref": "#/definitions/ResponseBankingAccount"
             }
           }
         },
@@ -120,7 +120,7 @@
           "200": {
             "description": "resource listing the financial balances for the account",
             "schema": {
-              "$ref": "#/definitions/RequestBankingAccountsBalances"
+              "$ref": "#/definitions/ResponseBankingAccountsBalances"
             }
           }
         },
@@ -148,7 +148,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingAccountsBalances"
+              "$ref": "#/definitions/ResponseBankingAccountsBalances"
             }
           },
           "422": {
@@ -203,7 +203,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingTransactions"
+              "$ref": "#/definitions/ResponseBankingTransactions"
             }
           }
         },
@@ -238,7 +238,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingTransactionDetail"
+              "$ref": "#/definitions/ResponseBankingTransactionDetail"
             }
           }
         },
@@ -283,7 +283,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingTransactions"
+              "$ref": "#/definitions/ResponseBankingTransactions"
             }
           }
         },
@@ -332,7 +332,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingTransactions"
+              "$ref": "#/definitions/ResponseBankingTransactions"
             }
           },
           "422": {
@@ -372,7 +372,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingDirectDebits"
+              "$ref": "#/definitions/ResponseBankingDirectDebits"
             }
           }
         },
@@ -402,7 +402,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingDirectDebits"
+              "$ref": "#/definitions/ResponseBankingDirectDebits"
             }
           }
         },
@@ -430,7 +430,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingDirectDebits"
+              "$ref": "#/definitions/ResponseBankingDirectDebits"
             }
           },
           "422": {
@@ -476,7 +476,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingPayees"
+              "$ref": "#/definitions/ResponseBankingPayees"
             }
           }
         },
@@ -504,7 +504,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestBankingPayeeDetails"
+              "$ref": "#/definitions/ResponseBankingPayeeDetails"
             }
           }
         },
@@ -603,7 +603,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestCommonCustomer"
+              "$ref": "#/definitions/ResponseCommonCustomer"
             }
           }
         },
@@ -623,7 +623,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RequestCommonCustomerDetailed"
+              "$ref": "#/definitions/ResponseCommonCustomerDetailed"
             }
           }
         },
@@ -1258,7 +1258,7 @@
         }
       }
     },
-    "RequestBankingAccounts": {
+    "ResponseBankingAccounts": {
       "type": "object",
       "required": [
         "data",
@@ -1347,7 +1347,7 @@
         }
       }
     },
-    "RequestBankingAccount": {
+    "ResponseBankingAccount": {
       "type": "object",
       "required": [
         "data",
@@ -1826,7 +1826,7 @@
         }
       }
     },
-    "RequestBankingTransactions": {
+    "ResponseBankingTransactions": {
       "type": "object",
       "required": [
         "data",
@@ -1931,7 +1931,7 @@
         }
       }
     },
-    "RequestBankingTransactionDetail": {
+    "ResponseBankingTransactionDetail": {
       "type": "object",
       "required": [
         "data",
@@ -2025,7 +2025,7 @@
         }
       ]
     },
-    "RequestBankingAccountsBalances": {
+    "ResponseBankingAccountsBalances": {
       "type": "object",
       "required": [
         "data",
@@ -2144,7 +2144,7 @@
         }
       }
     },
-    "RequestBankingPayees": {
+    "ResponseBankingPayees": {
       "type": "object",
       "required": [
         "data",
@@ -2175,7 +2175,7 @@
         }
       }
     },
-    "RequestBankingPayeeDetails": {
+    "ResponseBankingPayeeDetails": {
       "type": "object",
       "required": [
         "data",
@@ -2451,7 +2451,7 @@
         }
       }
     },
-    "RequestBankingDirectDebits": {
+    "ResponseBankingDirectDebits": {
       "type": "object",
       "required": [
         "data",
@@ -2533,7 +2533,7 @@
         }
       }
     },
-    "RequestCommonCustomer": {
+    "ResponseCommonCustomer": {
       "type": "object",
       "required": [
         "data",
@@ -2571,7 +2571,7 @@
         }
       }
     },
-    "RequestCommonCustomerDetailed": {
+    "ResponseCommonCustomerDetailed": {
       "type": "object",
       "required": [
         "data",
