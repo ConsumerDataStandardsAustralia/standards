@@ -2274,7 +2274,7 @@
           "enum": [
             "account",
             "card",
-            "payid"
+            "payId"
           ]
         },
         "account": {
@@ -2391,7 +2391,7 @@
             },
             "country": {
               "type": "string",
-              "description": "Country where the beneficiary resides"
+              "description": "Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code"
             },
             "message": {
               "type": "string",
@@ -2408,7 +2408,7 @@
           "properties": {
             "country": {
               "type": "string",
-              "description": "Country of the recipient institution"
+              "description": "Country of the recipient institution. A valid ISO 3166 Alpha-3 country code"
             },
             "accountNumber": {
               "type": "string",
@@ -2650,7 +2650,7 @@
         },
         "occupationCode": {
           "type": "string",
-          "description": "Occupation code as defined by the ANZSCO  v1.2 Standard Classification of Occupations"
+          "description": "Value should be a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
         }
       }
     },
@@ -2745,7 +2745,7 @@
         },
         "industryCode": {
           "type": "string",
-          "description": "ANZSIC (2006) code for the organisation."
+          "description": "[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation."
         },
         "organisationType": {
           "type": "string",
