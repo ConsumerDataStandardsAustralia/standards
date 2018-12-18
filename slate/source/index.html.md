@@ -19,6 +19,7 @@ includes:
   - banking
   - common
   - shared
+  - changelog
 
 search: true
 ---
@@ -26,6 +27,11 @@ search: true
 
 <!---
 TODO
+Swagger
+- Fix up baseline
+- Tool chain
+- Incorporate George feedback
+- Incorporate changes from feedback
 Payloads
 - Add versions
 - Add PAF Address schema
