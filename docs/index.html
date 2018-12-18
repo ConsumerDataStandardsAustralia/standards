@@ -930,12 +930,12 @@ the same name.</p>
 <pre class="highlight plaintext"><code>“data”: {
     [
         {
-            “shape$type”: “circle”,
+            “shapeType”: “circle”,
             “circle”: {
             }
         },
         {
-            “shape$type”: “square”,
+            “shapeType”: “square”,
             “square”: {
             }
         }
@@ -951,7 +951,7 @@ the same name.</p>
 
 <p>As the name of this field is constant it can be used to perform an indirect lookup on the object type that has actually been provided removing the need to scan for which object is present.</p>
 
-<p>A field of this type could be specified to always have the suffix <code>$type</code>.</p>
+<p>A field of this type will always be specified with the suffix <code>UType</code> meaning Union Type.</p>
 
 <h2 id='common-field-types'>Common Field Types</h2>
 
@@ -1041,12 +1041,12 @@ the same name.</p>
 </tr>
 <tr>
 <td>MaskedPANString</td>
-<td>Masked credit card number. Lower case ‘x’ should be used to mask numbers and only the last four digits should be exposed to facilitate identification.</td>
-<td>&quot;xxxxxxxxxxxx1234&quot;</td>
+<td>Masked credit card number. Lower case ‘x’ should be used to mask numbers and only the last four digits should be exposed to facilitate identification. This type is expected to be used for display so the format should be logical for this context</td>
+<td>&quot;xxxx xxxx xxxx 1234&quot;</td>
 </tr>
 <tr>
 <td>MaskedAccountString</td>
-<td>Masked bank account number genericised for a variety of account types.  Should be represented as the full account number would normally be represented (including spaces) but with only the last four digits shown.</td>
+<td>Masked bank account number genericised for a variety of account types.  Should be represented as the full account number would normally be represented for display (including formatting) but with all digits except the last four replaced with a lowercase x. This type is expected to be used for display so the format should be logical for this context</td>
 <td>&quot;xxxx xxxx xxxx 1234&quot;<br/>&quot;xxx-xxx xxxxx1234&quot;</td>
 </tr>
 <tr>
@@ -9904,7 +9904,17 @@ openId ( Scopes: common_detail_customer )
 <tr>
 <td>18/12/2018</td>
 <td>Updated swagger files</td>
-<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li></ul></td>
+<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li></ul></td>
+</tr>
+<tr>
+<td>19/12/2018</td>
+<td>Masking rules</td>
+<td>Added specificity to the masking guidance for the masked string primitives</td>
+</tr>
+<tr>
+<td>18/12/2018</td>
+<td>Updated swagger files</td>
+<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul></td>
 </tr>
 <tr>
 <td>18/12/2018</td>

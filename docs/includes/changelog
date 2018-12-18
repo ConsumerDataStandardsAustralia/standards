@@ -11,7 +11,17 @@
 <tr>
 <td>18/12/2018</td>
 <td>Updated swagger files</td>
-<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li></ul></td>
+<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li></ul></td>
+</tr>
+<tr>
+<td>19/12/2018</td>
+<td>Masking rules</td>
+<td>Added specificity to the masking guidance for the masked string primitives</td>
+</tr>
+<tr>
+<td>18/12/2018</td>
+<td>Updated swagger files</td>
+<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul></td>
 </tr>
 <tr>
 <td>18/12/2018</td>
