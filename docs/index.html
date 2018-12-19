@@ -1031,7 +1031,7 @@ the same name.</p>
 </tr>
 <tr>
 <td>RateString</td>
-<td>A string representing a percentage interest rate<br/>- A positive number (or zero)<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
+<td>A string representing an interest rate.  A rate of 100% would be represented by the value 1.0<br/>- A positive number (or zero)<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
 <td>“82”<br/>“0.05”<br/>“12.3456789”<br/>“99.123456789123”</td>
 </tr>
 <tr>
@@ -1050,7 +1050,7 @@ the same name.</p>
 <td>&quot;xxxx xxxx xxxx 1234&quot;<br/>&quot;xxx-xxx xxxxx1234&quot;</td>
 </tr>
 <tr>
-<td>URI</td>
+<td>URIString</td>
 <td>A valid URI</td>
 <td>&quot;http://www.google.com&quot;</td>
 </tr>
@@ -9903,8 +9903,23 @@ openId ( Scopes: common_detail_customer )
 </thead><tbody>
 <tr>
 <td>19/12/2018</td>
+<td>PAFAddress</td>
+<td>Added detail for the PAFAddress model based on the Australia Post PAF file format definition</td>
+</tr>
+<tr>
+<td>19/12/2018</td>
+<td>RateString common type</td>
+<td>Changed the RateString type to represent rates such that 100% is represented by the value 1.0</td>
+</tr>
+<tr>
+<td>19/12/2018</td>
+<td>URIString common type</td>
+<td>Corrected the name of the URIString common type</td>
+</tr>
+<tr>
+<td>19/12/2018</td>
 <td>Updated swagger files</td>
-<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a> except addition of PAFAddress</li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul></td>
+<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a> except addition of PAFAddress</li><li>Added all minor amendments raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a></li><li>Modifications according to responses in technical feedback section documented in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a></li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul></td>
 </tr>
 <tr>
 <td>19/12/2018</td>

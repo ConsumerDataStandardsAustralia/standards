@@ -26,6 +26,7 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamAccountOpenStatus'
+        - $ref: '#/parameters/ParamAccountIsOwned'
         - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
@@ -68,6 +69,7 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamAccountOpenStatus'
+        - $ref: '#/parameters/ParamAccountIsOwned'
         - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
@@ -170,6 +172,7 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamAccountOpenStatus'
+        - $ref: '#/parameters/ParamAccountIsOwned'
         - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamStartTime'
         - $ref: '#/parameters/ParamEndTime'
@@ -250,6 +253,7 @@ paths:
       tags:
         - Direct Debits
       parameters:
+        - $ref: '#/parameters/ParamAccountIsOwned'
         - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
@@ -345,9 +349,14 @@ paths:
       parameters:
         - name: effective
           in: query
-          description: If true then only include products that are effective right now and exclude products that may be available at a future time. If false only include products effective in the future. If absent defaults to include all products
+          description: Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'
           required: false
-          type: boolean
+          type: string
+          enum:
+            - CURRENT
+            - FUTURE
+            - ALL
+          default: CURRENT
         - name: updated-since
           in: query
           description: Only include products that have been updated after the specified date and time. If absent defaults to include all products
@@ -458,6 +467,17 @@ parameters:
       - FOREIGN_CURR_LOAN
       - FOREIGN_CURRRENCT_OVERDRAFT
       - TRAVEL_CARD
+  ParamAccountIsOwned:
+    name: is-owned
+    in: query
+    description: Filters accounts based on whether they are owned by the authorised customer
+    required: false
+    type: string
+    enum:
+      - OWNED
+      - NOT_OWNED
+      - ALL
+    default: ALL
   ParamPage:
     name: page
     in: query
@@ -555,7 +575,7 @@ definitions:
       - name
       - description
       - brand
-      - isNegotiable
+      - isTailored
     properties:
       productId:
         type: string
@@ -563,11 +583,11 @@ definitions:
         format: ASCIIString
       effectiveFrom:
         type: string
-        description: The date and time from which this product is effective (ie. is available for origination)
+        description: The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate
         format: DateTimeString
       effectiveTo:
         type: string
-        description: The date and time at which this product will be retired and will no longer be offered
+        description: The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products
         format: DateTimeString
       lastUpdated:
         type: string
@@ -591,9 +611,9 @@ definitions:
         type: string
         description: A link to the an application web page where this product can be applied for.
         format: URIString
-      isNegotiable:
+      isTailored:
         type: boolean
-        description: Indicates whether the product is specifically designed so that fees and prices are negotiated depending on context. While all products are open to a degree of negotiation this flag indicates that negotiation is expected and thus that the provision of specific fees and rates is not applicable
+        description: Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable
       additionalInformation:
         type: object
         properties:
@@ -690,6 +710,8 @@ definitions:
     type: object
     required:
       - featureType
+    x-conditional:
+      - additionalValue
     properties:
       featureType:
         type: string
@@ -721,6 +743,8 @@ definitions:
     type: object
     required:
       - constraintType
+    x-conditional:
+      - additionalValue
     properties:
       constraintType:
         type: string
@@ -737,6 +761,9 @@ definitions:
     type: object
     required:
       - eligibilityType
+    x-conditional:
+      - additionalValue
+      - additionalInfo
     properties:
       eligibilityType:
         type: string
@@ -768,6 +795,11 @@ definitions:
     required:
       - name
       - feeType
+    x-conditional:
+      - additionalValue
+      - amount
+      - balanceRate
+      - transactionRate
     properties:
       name:
         type: string
@@ -825,6 +857,8 @@ definitions:
       - description
       - discountType
       - amount
+    x-conditional:
+      - additionalValue
     properties:
       description:
         type: string
@@ -849,6 +883,8 @@ definitions:
     required:
       - depositRateType
       - rate
+    x-conditional:
+      - additionalValue
     properties:
       depositRateType:
         type: string
@@ -878,6 +914,8 @@ definitions:
     required:
       - lendingRateType
       - rate
+    x-conditional:
+      - additionalValue
     properties:
       lendingRateType:
         type: string
@@ -935,9 +973,12 @@ definitions:
       - maskedNumber
       - productCategory
       - productName
-      - balanceUType
+    x-conditional:
+      - deposit
+      - lending
+      - purses
     properties:
-      accountid:
+      accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
         format: ASCIIString
@@ -967,21 +1008,6 @@ definitions:
       productName:
         type: string
         description: A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display
-      balanceUType:
-        type: string
-        description: 'The type of balance object provided for the account. Must be one of: debit Debit Balance Type (see above) Conditional credit Credit Balance Type (see above) Conditional Multi Currency Purses Type (see above) Conditional purses debit credit purses'
-        enum:
-          - deposits
-          - lending
-          - purses
-      deposits:
-        $ref: '#/definitions/DepositsBalance'
-      lending:
-        $ref: '#/definitions/LendingBalance'
-      purses:
-        type: array
-        items:
-          $ref: '#/definitions/CurrencyAmount'
   ResponseBankingAccount:
     type: object
     required:
@@ -1001,7 +1027,17 @@ definitions:
       - type: object
         required:
           - addressUType
+        x-conditional:
+          - termDeposit
+          - creditCard
+          - loan
         properties:
+          bsb:
+            type: string
+            description: The unmasked BSB for the account.  Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces
+          accountNumber:
+            type: string
+            description: The unmasked account number for the account.  Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces
           bundleName:
             type: string
             description: Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer
@@ -1090,11 +1126,6 @@ definitions:
         format: DateString
   LoanAccount:
     type: object
-    required:
-      - loanEndDate
-      - nextInstalmentDate
-      - minInstalmentAmount
-      - repaymentFrequency
     properties:
       originalStartDate:
         type: string
@@ -1162,6 +1193,8 @@ definitions:
     type: object
     required:
       - featureType
+    x-conditional:
+      - additionalValue
     properties:
       featureType:
         type: string
@@ -1194,6 +1227,11 @@ definitions:
     required:
       - name
       - feeType
+    x-conditional:
+      - additionalValue
+      - amount
+      - balanceRate
+      - transactionRate
     properties:
       name:
         type: string
@@ -1250,6 +1288,8 @@ definitions:
       - description
       - discountType
       - amount
+    x-conditional:
+      - additionalValue
     properties:
       description:
         type: string
@@ -1274,6 +1314,8 @@ definitions:
     required:
       - depositRateType
       - rate
+    x-conditional:
+      - additionalValue
     properties:
       depositRateType:
         type: string
@@ -1303,6 +1345,8 @@ definitions:
     required:
       - lendingRateType
       - rate
+    x-conditional:
+      - additionalValue
     properties:
       lendingRateType:
         type: string
@@ -1367,33 +1411,52 @@ definitions:
     required:
       - accountId
       - isDetailAvailable
+      - type
       - status
       - description
       - reference
+    x-conditional:
+      - transactionId
+      - postingDateTime
     properties:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
         format: ASCIIString
-      transactionid:
+      transactionId:
         type: string
         description: A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type
         format: ASCIIString
       isDetailAvailable:
         type: boolean
         description: True if extended information is available using the transaction detail end point. False if extended data is not available
+      type:
+        type: string
+        description: The type of the transaction
+        enum:
+          - FEE
+          - INTEREST_CHARGED
+          - INTEREST_PAID
+          - TRANSFER_OUTGOING
+          - TRANSFER_INCOMING
+          - PAYMENT
+          - OTHER
       status:
         type: string
-        description: Status of the transaction
+        description: Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction
         enum:
           - PENDING
           - POSTED
       description:
         type: string
         description: The transaction description as applied by the financial institution
-      postDateTime:
+      postingDateTime:
         type: string
         description: The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement
+        format: DateTimeString
+      valueDateTime:
+        type: string
+        description: 'Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry'
         format: DateTimeString
       executionDateTime:
         type: string
@@ -1410,6 +1473,24 @@ definitions:
       reference:
         type: string
         description: The reference for the transaction provided by the originating institution.  Empty string if no data provided
+      merchantName:
+        type: string
+        description: Name of the merchant for an outgoing payment to a merchant
+      merchantCategoryCode:
+        type: string
+        description: The merchant category code (or MCC) for an outgoing payment to a merchant
+      billerCode:
+        type: string
+        description: BPay Biller Code for the transaction (if available)
+      billerName:
+        type: string
+        description: Name of the BPay biller for the transaction (if available)
+      crn:
+        type: string
+        description: BPay CRN for the transaction (if available)
+      apcaNumber:
+        type: string
+        description: 6 Digit APCA number for the initiating institution
   ResponseBankingTransactionDetail:
     type: object
     required:
@@ -1453,13 +1534,17 @@ definitions:
             type: object
             required:
               - service
+            x-conditional:
+              - payer
+              - payee
+              - extendedDescription
             properties:
               payer:
                 type: string
-                description: Label of the originating payer.  Mandatory for inbound payment
+                description: Name or description of the originating payer.  Mandatory for inbound payment
               payee:
                 type: string
-                description: Label of the target PayID. Mandatory for an outbound payment
+                description: Name or description of the target payee. Mandatory for an outbound payment
               extensionUType:
                 type: string
                 description: Optional extended data provided specific to transaction originated via NPP
@@ -1468,9 +1553,9 @@ definitions:
               extendedDescription:
                 type: string
                 description: An extended string description. Only present if specified by the extensionUType field
-              service:
+              serviceId:
                 type: string
-                description: Identifier of the applicable overlay service
+                description: Identifier of the applicable NPP payment service
                 enum:
                   - X2P1.01
   ResponseBankingAccountsBalances:
@@ -1498,8 +1583,12 @@ definitions:
     required:
       - accountId
       - balanceUType
+    x-conditional:
+      - deposit
+      - lending
+      - purses
     properties:
-      accountid:
+      accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
         format: ASCIIString
@@ -1507,18 +1596,18 @@ definitions:
         type: string
         description: The type of balance object provided for the account
         enum:
-          - debit
+          - deposit
           - lending
           - purses
-      deposits:
-        $ref: '#/definitions/DepositsBalance'
+      deposit:
+        $ref: '#/definitions/DepositBalance'
       lending:
         $ref: '#/definitions/LendingBalance'
       purses:
         type: array
         items:
           $ref: '#/definitions/CurrencyAmount'
-  DepositsBalance:
+  DepositBalance:
     type: object
     required:
       - currentBalance
@@ -1614,12 +1703,20 @@ definitions:
           - DOMESTIC
           - INTERNATIONAL
           - BILLER
+      creationDate:
+        type: string
+        description: The date the payee was created by the customer
+        format: DateString
   PayeeDetail:
     allOf:
       - $ref: '#/definitions/Payee'
       - type: object
         required:
           - payeeUType
+        x-conditional:
+          - domestic
+          - biller
+          - international
         properties:
           payeeUType:
             type: string
@@ -1638,6 +1735,10 @@ definitions:
     type: object
     required:
       - payeeAccountUType
+    x-conditional:
+      - account
+      - card
+      - payId
     properties:
       payeeAccountUType:
         type: string
@@ -1680,7 +1781,6 @@ definitions:
   DomesticPayeePayId:
     type: object
     required:
-      - name
       - identifier
       - type
     properties:
@@ -1703,6 +1803,8 @@ definitions:
     required:
       - billerCode
       - billerName
+    x-conditional:
+      - crn
     properties:
       billerCode:
         type: string
@@ -1759,7 +1861,7 @@ definitions:
                 description: Address of the recipient Bank
           beneficiaryBankBIC:
             type: string
-            description: Swift bank code
+            description: 'Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)'
           fedWireNumber:
             type: string
             description: Number for Fedwire payment (Federal Reserve Wire Network)
@@ -1772,6 +1874,9 @@ definitions:
           routingNumber:
             type: string
             description: International bank routing number
+          legalEntityIdentifier:
+            type: string
+            description: 'The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)'
   ResponseBankingDirectDebits:
     type: object
     required:
@@ -1830,12 +1935,18 @@ definitions:
       acn:
         type: string
         description: Australian Business Number for the authorised entity
+      arbn:
+        type: string
+        description: Australian Registered Body Number for the authorised entity
   ResponseCommonCustomer:
     type: object
     required:
       - data
       - links
       - meta
+    x-conditional:
+      - person
+      - organisation
     properties:
       data:
         type: object
@@ -1862,6 +1973,9 @@ definitions:
       - data
       - links
       - meta
+    x-conditional:
+      - person
+      - organisation
     properties:
       data:
         type: object
@@ -1912,7 +2026,7 @@ definitions:
         description: Used for a trailing suffix to the name (e.g. Jr)
       occupationCode:
         type: string
-        description: 'Value should be a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.'
+        description: 'Value is a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.'
   PersonDetail:
     allOf:
       - $ref: '#/definitions/Person'
@@ -2015,6 +2129,9 @@ definitions:
       - purpose
       - number
       - fullNumber
+    x-conditional:
+      - isPreferred
+      - areaCode
     properties:
       isPreferred:
         type: boolean
@@ -2085,6 +2202,9 @@ definitions:
     type: object
     required:
       - addressUType
+    x-conditional:
+      - simple
+      - paf
     properties:
       addressUType:
         type: string
@@ -2102,6 +2222,8 @@ definitions:
       - addressLine1
       - city
       - state
+    x-conditional:
+      - postcode
     properties:
       mailingName:
         type: string
@@ -2129,6 +2251,72 @@ definitions:
         description: A valid ISO 3166 Alpha-3 country code
   PAFAddress:
     type: object
+    description: 'Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)'
+    required:
+      - localityName
+      - postcode
+      - state
+    properties:
+      dpid:
+        type: string
+        description: Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier
+      thoroughfareNumber1:
+        type: integer
+        description: Thoroughfare number for a property (first number in a property ranged address)
+      thoroughfareNumber1Suffix:
+        type: string
+        description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated
+      thoroughfareNumber2:
+        type: integer
+        description: Second thoroughfare number (only used if the property has a ranged address eg 23-25)
+      thoroughfareNumber2Suffix:
+        type: string
+        description: Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated
+      flatUnitNumber:
+        type: string
+        description: 'Unit number (including suffix, if applicable)'
+      floorLevelNumber:
+        type: string
+        description: Floor or level number (including alpha characters)
+      lotNumber:
+        type: integer
+        description: Allotment number for the address
+      buildingName1:
+        type: string
+        description: Building/Property name 1
+      buildingName2:
+        type: string
+        description: Building/Property name 2
+      streetName:
+        type: string
+        description: The name of the street
+      streetType:
+        type: string
+        description: The street type. Valid enumeration defined by Australia Post PAF code file
+      streetSuffix:
+        type: string
+        description: The street type suffix. Valid enumeration defined by Australia Post PAF code file
+      postalDeliveryType:
+        type: string
+        description: Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file
+      postalDeliveryNumber:
+        type: integer
+        description: Postal delivery number if the address is a postal delivery type
+      postalDeliveryNumberPrefix:
+        type: string
+        description: Postal delivery number prefix related to the postal delivery number
+      postalDeliveryNumberSuffix:
+        type: string
+        description: Postal delivery number suffix related to the postal delivery number
+      localityName:
+        type: string
+        description: Full name of locality
+      postcode:
+        type: string
+        description: Postcode for the locality
+      state:
+        type: string
+        description: State in which the address belongs. Valid enumeration defined by Australia Post PAF code file
   Links:
     type: object
     properties:
@@ -2140,6 +2328,11 @@ definitions:
     type: object
   LinksPaginated:
     type: object
+    x-conditional:
+      - prev
+      - next
+      - first
+      - last
     properties:
       self:
         type: string
