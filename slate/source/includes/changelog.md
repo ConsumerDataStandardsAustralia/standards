@@ -4,6 +4,13 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Description|Detail Of change|
 |-----------|-----------|----------------|
+|20/12/2018|Known issues|Added a section identifying known issues with the standards that are under review|
+|20/12/2018|Cursor based pagination|Added commentary in pagination section on the potential use of cursors|
+|20/12/2018|Minor amendments to response codes|Additional wording to support caching and inserted a cross reference to the error payload section|
+|20/12/2018|Minor amendments to extensibility|Minor wording changes for clarity and included reference to addition of new query parameters|
+|20/12/2018|Unauthenticated end points|Modified URI structure commentary to allow for a different provider path for unauthenticated end points|
+|20/12/2018|Festive spirit|Critical update - added a Santa hat to the logo|
+|20/12/2018|FAPI Headers|Added FAPI specific headers arising from the InfoSec work|
 |19/12/2018|PAFAddress|Added detail for the PAFAddress model based on the Australia Post PAF file format definition|
 |19/12/2018|RateString common type|Changed the RateString type to represent rates such that 100% is represented by the value 1.0|
 |19/12/2018|URIString common type|Corrected the name of the URIString common type|

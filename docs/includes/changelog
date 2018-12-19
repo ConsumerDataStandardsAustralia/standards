@@ -9,6 +9,41 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>20/12/2018</td>
+<td>Known issues</td>
+<td>Added a section identifying known issues with the standards that are under review</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Cursor based pagination</td>
+<td>Added commentary in pagination section on the potential use of cursors</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Minor amendments to response codes</td>
+<td>Additional wording to support caching and inserted a cross reference to the error payload section</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Minor amendments to extensibility</td>
+<td>Minor wording changes for clarity and included reference to addition of new query parameters</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Unauthenticated end points</td>
+<td>Modified URI structure commentary to allow for a different provider path for unauthenticated end points</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Festive spirit</td>
+<td>Critical update - added a Santa hat to the logo</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>FAPI Headers</td>
+<td>Added FAPI specific headers arising from the InfoSec work</td>
+</tr>
+<tr>
 <td>19/12/2018</td>
 <td>PAFAddress</td>
 <td>Added detail for the PAFAddress model based on the Australia Post PAF file format definition</td>

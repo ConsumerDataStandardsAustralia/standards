@@ -20,7 +20,7 @@ If the query parameters are not provided the following defaults will be assumed:
 
 In addition to the data requested a provider MUST provide the following additional information in the response payload:
 
-* In the links object the following fields are to be provided:
+* <a name="pagination_links"></a>In the links object the following fields are to be provided:
     * **first** - A URI to request the first page. This field MUST be present.
     * **last** -  A URI to request the last page. This field MUST be present unless there is only one page in the set.
     * **prev** - A URI to the previous page. This field MUST be present unless the current page is the first page.
@@ -36,3 +36,11 @@ values.
 
 * Providers are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.
 * A maximum page size of `1000` records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then a HTTP status of `422 Unprocessable Entity` SHOULD be returned.
+
+### Cursor Support
+
+For performance reasons data providers may wish to support other pagination patterns such as cursors or continuation tokens.  While the standard does not explicitly support these additional mechanisms it is considered allowable to implement these patterns and expose them via the [pagination links](#pagination_links).
+
+In this scenario the URIs included in the links for other pages may not be compliant with the standard and may, instead, include other query parameters that support another pagination pattern. It is expected that all other pagination requirements such as link fields and meta fields will still be supported if other patterns are implemented.
+
+To allow for a more performant implementation data consumers are encouraged to utilise [pagination links](#pagination_links) wherever possible and only use constructed URIs for the first page or if random access to a specific set of records is required.

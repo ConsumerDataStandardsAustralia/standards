@@ -210,7 +210,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logoSanta.png" class="logo" alt="Logosanta" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="javascript">javascript</a>
@@ -360,6 +360,9 @@
               </ul>
           </li>
           <li>
+            <a href="#known-issues" class="toc-h1 toc-link" data-title="Known Issues">Known Issues</a>
+          </li>
+          <li>
             <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
           </li>
       </ul>
@@ -488,7 +491,7 @@ Payloads
 <p>The components of this URI structure are described as follows:</p>
 
 <ul>
-<li><strong>Provider Path</strong>: The provider path is a base path set by the data provider. It can be any URI desired by the provider.</li>
+<li><strong>Provider Path</strong>: The provider path is a base path set by the data provider. It can be any URI desired by the provider. While all authenticated end points must be accessible under the same provider path the data provider may stipulate a different provider path for unauthenticated end points.</li>
 <li><strong>“cds-au”</strong>: This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base provider path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
 <li><strong>Version</strong>: The version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the version as a positive integer (e.g. v1, v12 or v76).</li>
 <li><strong>Industry</strong>: A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.</li>
@@ -550,10 +553,6 @@ Payloads
 
 <p>Supported HTTP headers, and their usage, for the standards are as laid out in the following sections.</p>
 
-<aside class="warning">
-Please note that there will be a requirement to support specific headers for security purposes.  These are yet to be fully determined.
-</aside>
-
 <h3 id='request-headers'>Request Headers</h3>
 
 <blockquote>
@@ -592,8 +591,20 @@ Please note that there will be a requirement to support specific headers for sec
 <td>A provider specific version of extension fields. Should not be used in conjunction with <code>x-min-v</code>.</td>
 </tr>
 <tr>
-<td><strong>x-Correlation-Id</strong></td>
-<td>Optional correlation ID provided by the data consumer that should be reflected back in the response headers. Can be used for reporting and logging.</td>
+<td><strong>x-fapi-financial-id</strong></td>
+<td>The unique id of the data provider to which the request is issued.  The unique id will be issued by the CDR Directory managed by ACCC.  If the value does not match the expected value the data provider must reject the request with a 403 (Not Authorized) status code.</td>
+</tr>
+<tr>
+<td><strong>x-fapi-customer-last-logged-time</strong></td>
+<td>The time when the customer last logged in to the data recipient</td>
+</tr>
+<tr>
+<td><strong>x-fapi-customer-ip-address</strong></td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient.  The presence of this header indicates that the API is being called in a customer present context</td>
+</tr>
+<tr>
+<td><strong>x-fapi-interaction-id</strong></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id.  If provided, the data provider must &quot;play back&quot; this value in the x-fapi-interaction-id response header.</td>
 </tr>
 </tbody></table>
 
@@ -625,6 +636,11 @@ Please note that there will be a requirement to support specific headers for sec
 <td><strong>x-Correlation-Id</strong></td>
 <td>Reflected value of the correlation ID provided by the data consumer in the request headers.<br/>If no correlation ID was provided in the request this header should not be supplied.<br/>If a correlation ID was provided in the request then this header is mandatory.</td>
 <td>Optional</td>
+</tr>
+<tr>
+<td><strong>x-fapi-interaction-id</strong></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>Mandatory</td>
 </tr>
 </tbody></table>
 
@@ -669,6 +685,14 @@ Please note that there will be a requirement to support specific headers for sec
 <td>No</td>
 <td>No</td>
 <td>Yes</td>
+</tr>
+<tr>
+<td>The response is not modified since last call</td>
+<td>304 Not Modified</td>
+<td>May be returned if standard caching headers such as ETag or If-modified-since are utilised</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Request has malformed, missing or non-compliant JSON body or URL parameters</td>
@@ -721,7 +745,7 @@ Please note that there will be a requirement to support specific headers for sec
 <tr>
 <td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
 <td>422 Unprocessable Entity</td>
-<td></td>
+<td>If applicable to the HTTP method it is expected that this error will result in an <a href="#error_payload">error payload</a></td>
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
@@ -852,7 +876,7 @@ Please note that there will be a requirement to support specific headers for sec
 
 <p>The links object MUST contain a field named <code>self</code> that will have the fully qualified URI to the current request as a value.</p>
 
-<p>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
+<p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
 
 <ul>
 <li><code>code</code> field MUST be present: holds an end point specific error code</li>
@@ -1083,7 +1107,7 @@ the same name.</p>
 <p>In addition to the data requested a provider MUST provide the following additional information in the response payload:</p>
 
 <ul>
-<li>In the links object the following fields are to be provided:
+<li><a name="pagination_links"></a>In the links object the following fields are to be provided:
 
 <ul>
 <li><strong>first</strong> - A URI to request the first page. This field MUST be present.</li>
@@ -1108,6 +1132,14 @@ values.</p>
 <li>Providers are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.</li>
 <li>A maximum page size of <code>1000</code> records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then a HTTP status of <code>422 Unprocessable Entity</code> SHOULD be returned.</li>
 </ul>
+
+<h3 id='cursor-support'>Cursor Support</h3>
+
+<p>For performance reasons data providers may wish to support other pagination patterns such as cursors or continuation tokens.  While the standard does not explicitly support these additional mechanisms it is considered allowable to implement these patterns and expose them via the <a href="#pagination_links">pagination links</a>.</p>
+
+<p>In this scenario the URIs included in the links for other pages may not be compliant with the standard and may, instead, include other query parameters that support another pagination pattern. It is expected that all other pagination requirements such as link fields and meta fields will still be supported if other patterns are implemented.</p>
+
+<p>To allow for a more performant implementation data consumers are encouraged to utilise <a href="#pagination_links">pagination links</a> wherever possible and only use constructed URIs for the first page or if random access to a specific set of records is required.</p>
 
 <h2 id='id-permanence'>ID Permanence</h2>
 
@@ -1174,7 +1206,7 @@ standards</li>
 
 <ul>
 <li>This mechanism MUST NOT be used to create modified duplicates of the end points defined in the API Standards</li>
-<li>The end points in this area MUST comply with the overall standards including naming conventions and data types.</li>
+<li>The end points in this area MUST comply with the standard&#39;s conventions and principles including naming conventions and data types.</li>
 </ul>
 
 <h3 id='new-end-points-in-existing-api-categories'>New End Points In Existing API Categories</h3>
@@ -1194,7 +1226,7 @@ standards</li>
 <li>As the entire end point is new, the request and payload fields do not need to be prefixed in any way.</li>
 <li>Care should be taken to ensure there is no collision with an end point defined in the standards by specifying an extension at the same level as a variable URI element (such as at the same level of the {account ID} in the example above).</li>
 <li>If an end point has multiple levels in the resource path only the highest point where divergence with the standard occurs needs to be prefixed.</li>
-<li>The new end point MUST comply with the overall standards including naming conventions and data types.</li>
+<li>The new end point MUST comply with standard&#39;s conventions and principles including naming conventions and data types.</li>
 </ul>
 
 <h3 id='additional-fields-in-an-existing-response-payload'>Additional Fields In An Existing Response Payload</h3>
@@ -1211,8 +1243,12 @@ standards</li>
 <li>Request payloads can also be extended but the resulting end point should still execute successfully if the extension field is not present (by implication, extension fields in request payloads MUST be optional).</li>
 <li>New query parameters MAY be added along the same lines as a new field in a request payload (i.e. prefixed, non-mandatory and no side effects if not present).</li>
 <li>New headers MAY be added along the same lines as a new field in a request payload with the exception that the new header should be prefixed <code>x-&lt;PID&gt;-</code>.</li>
-<li>New fields MUST comply with the overall naming conventions and data type standards used.</li>
+<li>New fields MUST comply with the naming conventions and data type standards used.</li>
 </ul>
+
+<h3 id='additional-query-parameters'>Additional Query Parameters</h3>
+
+<p>When adding support for a new query parameter to an existing end point that a data consumer is expected to supply the new parameter should be prefixed by the string <code>&lt;PID&gt;-</code> to avoid potential collision with extension by another data provider.</p>
 
 <h3 id='extension-versioning'>Extension Versioning</h3>
 
@@ -9891,6 +9927,44 @@ openId ( Scopes: common_detail_customer )
 <td>Optional additional data for specific error types</td>
 </tr>
 </tbody></table>
+<h1 id='known-issues'>Known Issues</h1>
+<p>There are certain aspects of the standards that are actively under review.  These known issues are articulated in the following table.</p>
+
+<table><thead>
+<tr>
+<th>Issue</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Product reference payloads</td>
+<td>The product reference payloads are under active review and have not yet been substantially changed from the version published on 2nd November 2018.  It is expected that changes arising from feedback will be made in the near term</td>
+</tr>
+<tr>
+<td>Specific error codes</td>
+<td>Feedback has been provided that additional specific errors would be of value.  This is under consideration</td>
+</tr>
+<tr>
+<td>Discoverability</td>
+<td>A proposal for end point and version discoverability is under consideration.</td>
+</tr>
+<tr>
+<td>Administration end points</td>
+<td>The end points to support administration and reporting are outstanding.  The definition of these end points is dependent on clarity of the directory specification.</td>
+</tr>
+<tr>
+<td>InfoSec merge</td>
+<td>The informations security standards have been under development under a separate repository.  Once this work stabilises it will be merged with these standards into a single site.</td>
+</tr>
+<tr>
+<td>Additional link fields</td>
+<td>The inclusion of additional links to aid traversal of the end points has been suggested.  This is under consideration.</td>
+</tr>
+<tr>
+<td>Non-functional requirements</td>
+<td>Non-functional requirements are being reviewed and a proposal has been provided to the community for feedback.  More work is required before this issue can be resolved.</td>
+</tr>
+</tbody></table>
 <h1 id='change-log'>Change Log</h1>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
@@ -9901,6 +9975,41 @@ openId ( Scopes: common_detail_customer )
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>20/12/2018</td>
+<td>Known issues</td>
+<td>Added a section identifying known issues with the standards that are under review</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Cursor based pagination</td>
+<td>Added commentary in pagination section on the potential use of cursors</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Minor amendments to response codes</td>
+<td>Additional wording to support caching and inserted a cross reference to the error payload section</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Minor amendments to extensibility</td>
+<td>Minor wording changes for clarity and included reference to addition of new query parameters</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Unauthenticated end points</td>
+<td>Modified URI structure commentary to allow for a different provider path for unauthenticated end points</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Festive spirit</td>
+<td>Critical update - added a Santa hat to the logo</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>FAPI Headers</td>
+<td>Added FAPI specific headers arising from the InfoSec work</td>
+</tr>
 <tr>
 <td>19/12/2018</td>
 <td>PAFAddress</td>

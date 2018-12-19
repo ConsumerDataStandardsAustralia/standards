@@ -10,7 +10,7 @@ The URI structure for API end points in the standards MUST be implemented as fol
 
 The components of this URI structure are described as follows:
 
-* **Provider Path**: The provider path is a base path set by the data provider. It can be any URI desired by the provider.
+* **Provider Path**: The provider path is a base path set by the data provider. It can be any URI desired by the provider. While all authenticated end points must be accessible under the same provider path the data provider may stipulate a different provider path for unauthenticated end points.
 * **“cds-au”**: This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base provider path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.
 * **Version**: The version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the version as a positive integer (e.g. v1, v12 or v76).
 * **Industry**: A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.

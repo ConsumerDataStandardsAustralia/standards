@@ -19,6 +19,7 @@ includes:
   - banking
   - common
   - shared
+  - known-issues
   - changelog
 
 search: true

@@ -78,7 +78,7 @@ The `links` object will contain links to related API end points. This will inclu
 
 The links object MUST contain a field named `self` that will have the fully qualified URI to the current request as a value.
 
-The `errors` object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:
+<a name="error_payload"></a>The `errors` object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:
 
 * `code` field MUST be present: holds an end point specific error code
 * `title` field MUST be present: holds a human readable label of the error that is constant

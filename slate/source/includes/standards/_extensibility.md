@@ -44,7 +44,7 @@ The end points defined under this structure, including the payloads of these end
 Note that:
 
 * This mechanism MUST NOT be used to create modified duplicates of the end points defined in the API Standards
-* The end points in this area MUST comply with the overall standards including naming conventions and data types.
+* The end points in this area MUST comply with the standard's conventions and principles including naming conventions and data types.
 
 ###New End Points In Existing API Categories
 
@@ -63,7 +63,7 @@ Note that:
 * As the entire end point is new, the request and payload fields do not need to be prefixed in any way.
 * Care should be taken to ensure there is no collision with an end point defined in the standards by specifying an extension at the same level as a variable URI element (such as at the same level of the {account ID} in the example above).
 * If an end point has multiple levels in the resource path only the highest point where divergence with the standard occurs needs to be prefixed.
-* The new end point MUST comply with the overall standards including naming conventions and data types.
+* The new end point MUST comply with standard's conventions and principles including naming conventions and data types.
 
 ###Additional Fields In An Existing Response Payload
 
@@ -79,7 +79,11 @@ Note that:
 * Request payloads can also be extended but the resulting end point should still execute successfully if the extension field is not present (by implication, extension fields in request payloads MUST be optional).
 * New query parameters MAY be added along the same lines as a new field in a request payload (i.e. prefixed, non-mandatory and no side effects if not present).
 * New headers MAY be added along the same lines as a new field in a request payload with the exception that the new header should be prefixed `x-<PID>-`.
-* New fields MUST comply with the overall naming conventions and data type standards used.
+* New fields MUST comply with the naming conventions and data type standards used.
+
+###Additional Query Parameters
+
+When adding support for a new query parameter to an existing end point that a data consumer is expected to supply the new parameter should be prefixed by the string `<PID>-` to avoid potential collision with extension by another data provider.
 
 ###Extension Versioning
 
