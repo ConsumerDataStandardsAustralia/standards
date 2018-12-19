@@ -20,6 +20,8 @@ paths:
       summary: Get Accounts
       description: Obtain a list of accounts
       operationId: listAccounts
+      x-scopes:
+        - bank_basic_accounts
       tags:
         - Accounts
       parameters:
@@ -43,6 +45,8 @@ paths:
       summary: Get Account Detail
       description: Obtain detailed information on a single account
       operationId: getAccountDetail
+      x-scopes:
+        - bank_detailed_accounts
       tags:
         - Accounts
       parameters:
@@ -62,6 +66,8 @@ paths:
       summary: Get Bulk Balances
       description: 'Obtain balances for multiple, filtered accounts'
       operationId: listBalancesBulk
+      x-scopes:
+        - bank_basic_accounts
       tags:
         - Accounts
       parameters:
@@ -78,6 +84,8 @@ paths:
       summary: Get Balances For Specific Accounts
       description: Obtain balances for a specified list of accounts
       operationId: listBalancesSpecificAccounts
+      x-scopes:
+        - bank_basic_accounts
       tags:
         - Accounts
       parameters:
@@ -102,6 +110,8 @@ paths:
       summary: Get Transactions For Account
       description: Obtain transactions for a specific account
       operationId: getTransactions
+      x-scopes:
+        - bank_transactions
       tags:
         - Accounts
       parameters:
@@ -128,6 +138,8 @@ paths:
       summary: Get Transaction Detail
       description: Obtain detailed information on a transaction for a specific account
       operationId: getTransactionDetail
+      x-scopes:
+        - bank_transactions
       tags:
         - Accounts
       parameters:
@@ -152,6 +164,8 @@ paths:
       summary: Get Transactions For Multiple Accounts
       description: 'Obtain transactions for multiple, filtered accounts'
       operationId: listTransactionsBulk
+      x-scopes:
+        - bank_transactions
       tags:
         - Accounts
       parameters:
@@ -173,6 +187,8 @@ paths:
       summary: Get Transactions For Specific Accounts
       description: Obtain transactions for a specified list of transactions.
       operationId: listTransactionsSpecificAccounts
+      x-scopes:
+        - bank_transactions
       tags:
         - Accounts
       parameters:
@@ -204,6 +220,8 @@ paths:
       summary: Get Direct Debits For Account
       description: Obtain direct debit authorisations for a specific account
       operationId: listDirectDebits
+      x-scopes:
+        - bank_detailed_accounts
       tags:
         - Direct Debits
       parameters:
@@ -225,6 +243,8 @@ paths:
       summary: Get Bulk Direct Debits
       description: 'Obtain direct debit authorisations for multiple, filtered accounts'
       operationId: listDirectDebitsBulk
+      x-scopes:
+        - bank_detailed_accounts
       tags:
         - Direct Debits
       parameters:
@@ -241,6 +261,8 @@ paths:
       summary: Get Direct Debits For Specific Accounts
       description: Obtain direct debit authorisations for a specified list of accounts
       operationId: listDirectDebitsSpecificAccounts
+      x-scopes:
+        - bank_detailed_accounts
       tags:
         - Direct Debits
       parameters:
@@ -265,6 +287,8 @@ paths:
       summary: Get Payees
       description: Obtain a list of pre-registered payees
       operationId: listPayees
+      x-scopes:
+        - bank_basic_accounts
       tags:
         - Payees
       parameters:
@@ -291,6 +315,8 @@ paths:
       summary: Get Payee Detail
       description: Obtain detailed information on a single payee
       operationId: getPayeeDetail
+      x-scopes:
+        - bank_payees
       tags:
         - Payees
       parameters:
@@ -310,6 +336,7 @@ paths:
       summary: Get Products
       description: Obtain a list of products that are currently openly offered to the market
       operationId: listProducts
+      x-scopes: []
       tags:
         - Products
       parameters:
@@ -342,6 +369,7 @@ paths:
       summary: Get Product Detail
       description: Obtain detailed information on a single product offered openly to the market
       operationId: getProductDetail
+      x-scopes: []
       tags:
         - Products
       parameters:
@@ -361,6 +389,8 @@ paths:
       summary: Get Customer
       description: Obtain basic information on the customer that has authorised the current session
       operationId: getCustomer
+      x-scopes:
+        - common_basic_customer
       tags:
         - Customer
       parameters: []
@@ -375,6 +405,8 @@ paths:
       summary: Get Customer Detail
       description: Obtain detailed information on the authorised customer within the current session.
       operationId: getCustomerDetail
+      x-scopes:
+        - common_detailed_customer
       tags:
         - Customer
       parameters: []
@@ -438,7 +470,7 @@ parameters:
   ParamStartTime:
     name: start-time
     in: query
-    description: Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type
+    description: Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type
     required: false
     type: string
     format: DateTimeString
@@ -894,7 +926,7 @@ definitions:
       - displayName
       - maskedNumber
       - productCategory
-      - providerType
+      - productName
       - balanceUType
     properties:
       accountid:
@@ -911,11 +943,22 @@ definitions:
         type: string
         description: 'A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked'
         format: MaskedAccountString
+      openStatus:
+        type: string
+        description: Open or closed status for the account.  If not present then OPEN is assumed
+        enum:
+          - OPEN
+          - CLOSED
+        default: OPEN
+      isOwned:
+        type: boolean
+        description: 'Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then ''true'' is assumed'
+        default: 'true'
       productCategory:
         $ref: '#/definitions/EnumProductCategory'
-      providerType:
+      productName:
         type: string
-        description: The unique type as defined by the account provider
+        description: A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display
       balanceUType:
         type: string
         description: 'The type of balance object provided for the account. Must be one of: debit Debit Balance Type (see above) Conditional credit Credit Balance Type (see above) Conditional Multi Currency Purses Type (see above) Conditional purses debit credit purses'
@@ -984,20 +1027,7 @@ definitions:
             items:
               $ref: '#/definitions/AccountLendingRates'
           address:
-            type: object
-            required:
-              - addressUType
-            properties:
-              addressUType:
-                type: string
-                description: The type of address object present
-                enum:
-                  - simple
-                  - paf
-              simple:
-                $ref: '#/definitions/SimpleAddress'
-              paf:
-                $ref: '#/definitions/PAFAddress'
+            $ref: '#/definitions/PhysicalAddress'
   TermDepositAccount:
     type: object
     required:
@@ -1097,6 +1127,7 @@ definitions:
       minRedraw:
         type: string
         description: Minimum redraw amount
+        format: AmountString
       minRedrawCurrency:
         type: string
         description: If absent assumes AUD
@@ -1109,12 +1140,12 @@ definitions:
         description: The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation
         items:
           type: string
-      repaymentType:
-        type: string
-        description: Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST
       repaymentFrequency:
         type: string
         description: The expected or required repayment frequency. Formatted according to ISO 8601 Durations
+      repaymentType:
+        type: string
+        description: Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST
         enum:
           - INTEREST_ONLY
           - PRINCIPAL_AND_INTEREST
@@ -1361,7 +1392,7 @@ definitions:
         format: DateTimeString
       amount:
         type: string
-        description: The value of the transaction. Negative values mean money was outgoing
+        description: The value of the transaction. Negative values mean money was outgoing from the account
         format: AmountString
       currency:
         type: string
@@ -1369,7 +1400,7 @@ definitions:
         format: CurrencyString
       reference:
         type: string
-        description: The reference for the transaction provided by the originating institution
+        description: The reference for the transaction provided by the originating institution.  Empty string if no data provided
   ResponseBankingTransactionDetail:
     type: object
     required:
@@ -1845,6 +1876,7 @@ definitions:
     required:
       - lastUpdateTime
       - lastName
+      - middleNames
     properties:
       lastUpdateTime:
         type: string
@@ -1893,7 +1925,7 @@ definitions:
             type: array
             description: 'Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail'
             items:
-              $ref: '#/definitions/PhysicalAddress'
+              $ref: '#/definitions/PhysicalAddressWithPurpose'
   Organisation:
     type: object
     required:
@@ -1959,24 +1991,23 @@ definitions:
       - $ref: '#/definitions/Organisation'
       - type: object
         required:
-          - physicalAddress
+          - physicalAddresses
         properties:
-          physicalAddress:
+          physicalAddresses:
             type: array
             description: 'Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail'
             items:
-              $ref: '#/definitions/PhysicalAddress'
+              $ref: '#/definitions/PhysicalAddressWithPurpose'
   PhoneNumber:
     type: object
     required:
-      - isPreferred
       - purpose
       - number
       - fullNumber
     properties:
       isPreferred:
         type: boolean
-        description: Required to be true for one and only one entry to indicate the preferred phone number
+        description: Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present
       purpose:
         type: string
         description: The purpose of the number as specified by the customer
@@ -2023,21 +2054,27 @@ definitions:
       address:
         type: string
         description: 'A correctly formatted email address, as defined by the addr_spec format in RFC_5322'
+  PhysicalAddressWithPurpose:
+    allOf:
+      - type: object
+        required:
+          - purpose
+        properties:
+          purpose:
+            type: string
+            description: Enumeration of values indicating the purpose of the physical address
+            enum:
+              - REGISTERED
+              - MAIL
+              - PHYSICAL
+              - WORK
+              - OTHER
+      - $ref: '#/definitions/PhysicalAddress'
   PhysicalAddress:
     type: object
     required:
-      - purpose
       - addressUType
     properties:
-      purpose:
-        type: string
-        description: Enumeration of values indicating the purpose of the physical address
-        enum:
-          - REGISTERED
-          - MAIL
-          - PHYSICAL
-          - WORK
-          - OTHER
       addressUType:
         type: string
         description: The type of address object present

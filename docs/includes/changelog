@@ -9,9 +9,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>18/12/2018</td>
+<td>19/12/2018</td>
 <td>Updated swagger files</td>
-<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li></ul></td>
+<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a> except addition of PAFAddress</li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul></td>
 </tr>
 <tr>
 <td>19/12/2018</td>
