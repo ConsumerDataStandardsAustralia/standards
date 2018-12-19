@@ -26,6 +26,7 @@
         "summary": "Get Accounts",
         "description": "Obtain a list of accounts",
         "operationId": "listAccounts",
+        "x-scopes": ["bank_basic_accounts"],
         "tags": [
           "Accounts"
         ],
@@ -74,6 +75,7 @@
         "summary": "Get Account Detail",
         "description": "Obtain detailed information on a single account",
         "operationId": "getAccountDetail",
+        "x-scopes": ["bank_detailed_accounts"],
         "tags": [
           "Accounts"
         ],
@@ -102,6 +104,7 @@
         "summary": "Get Bulk Balances",
         "description": "Obtain balances for multiple, filtered accounts",
         "operationId": "listBalancesBulk",
+        "x-scopes": ["bank_basic_accounts"],
         "tags": [
           "Accounts"
         ],
@@ -130,6 +133,7 @@
         "summary": "Get Balances For Specific Accounts",
         "description": "Obtain balances for a specified list of accounts",
         "operationId": "listBalancesSpecificAccounts",
+        "x-scopes": ["bank_basic_accounts"],
         "tags": [
           "Accounts"
         ],
@@ -166,6 +170,7 @@
         "summary": "Get Transactions For Account",
         "description": "Obtain transactions for a specific account",
         "operationId": "getTransactions",
+        "x-scopes": ["bank_transactions"],
         "tags": [
           "Accounts"
         ],
@@ -215,6 +220,7 @@
         "summary": "Get Transaction Detail",
         "description": "Obtain detailed information on a transaction for a specific account",
         "operationId": "getTransactionDetail",
+        "x-scopes": ["bank_transactions"],
         "tags": [
           "Accounts"
         ],
@@ -250,6 +256,7 @@
         "summary": "Get Transactions For Multiple Accounts",
         "description": "Obtain transactions for multiple, filtered accounts",
         "operationId": "listTransactionsBulk",
+        "x-scopes": ["bank_transactions"],
         "tags": [
           "Accounts"
         ],
@@ -293,6 +300,7 @@
         "summary": "Get Transactions For Specific Accounts",
         "description": "Obtain transactions for a specified list of transactions.",
         "operationId": "listTransactionsSpecificAccounts",
+        "x-scopes": ["bank_transactions"],
         "tags": [
           "Accounts"
         ],
@@ -350,6 +358,7 @@
         "summary": "Get Direct Debits For Account",
         "description": "Obtain direct debit authorisations for a specific account",
         "operationId": "listDirectDebits",
+        "x-scopes": ["bank_detailed_accounts"],
         "tags": [
           "Direct Debits"
         ],
@@ -384,6 +393,7 @@
         "summary": "Get Bulk Direct Debits",
         "description": "Obtain direct debit authorisations for multiple, filtered accounts",
         "operationId": "listDirectDebitsBulk",
+        "x-scopes": ["bank_detailed_accounts"],
         "tags": [
           "Direct Debits"
         ],
@@ -412,6 +422,7 @@
         "summary": "Get Direct Debits For Specific Accounts",
         "description": "Obtain direct debit authorisations for a specified list of accounts",
         "operationId": "listDirectDebitsSpecificAccounts",
+        "x-scopes": ["bank_detailed_accounts"],
         "tags": [
           "Direct Debits"
         ],
@@ -448,6 +459,7 @@
         "summary": "Get Payees",
         "description": "Obtain a list of pre-registered payees",
         "operationId": "listPayees",
+        "x-scopes": ["bank_basic_accounts"],
         "tags": [
           "Payees"
         ],
@@ -488,6 +500,7 @@
         "summary": "Get Payee Detail",
         "description": "Obtain detailed information on a single payee",
         "operationId": "getPayeeDetail",
+        "x-scopes": ["bank_payees"],
         "tags": [
           "Payees"
         ],
@@ -516,6 +529,7 @@
         "summary": "Get Products",
         "description": "Obtain a list of products that are currently openly offered to the market",
         "operationId": "listProducts",
+        "x-scopes": [],
         "tags": [
           "Products"
         ],
@@ -567,6 +581,7 @@
         "summary": "Get Product Detail",
         "description": "Obtain detailed information on a single product offered openly to the market",
         "operationId": "getProductDetail",
+        "x-scopes": [],
         "tags": [
           "Products"
         ],
@@ -595,6 +610,7 @@
         "summary": "Get Customer",
         "description": "Obtain basic information on the customer that has authorised the current session",
         "operationId": "getCustomer",
+        "x-scopes": ["common_basic_customer"],
         "tags": [
           "Customer"
         ],
@@ -615,6 +631,7 @@
         "summary": "Get Customer Detail",
         "description": "Obtain detailed information on the authorised customer within the current session.",
         "operationId": "getCustomerDetail",
+        "x-scopes": ["common_detailed_customer"],
         "tags": [
           "Customer"
         ],
@@ -691,30 +708,34 @@
     "ParamStartTime": {
       "name": "start-time",
       "in": "query",
-      "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type",
+      "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type",
       "required": false,
-      "type": "string"
+      "type": "string",
+      "format": "DateTimeString"
     },
     "ParamEndTime": {
       "name": "end-time",
       "in": "query",
       "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
       "required": false,
-      "type": "string"
+      "type": "string",
+      "format": "DateTimeString"
     },
     "ParamTransactionMinAmount": {
       "name": "min-amount",
       "in": "query",
       "description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
       "required": false,
-      "type": "string"
+      "type": "string",
+      "format": "AmountString"
     },
     "ParamTransactionMaxAmount": {
       "name": "max-amount",
       "in": "query",
       "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
       "required": false,
-      "type": "string"
+      "type": "string",
+      "format": "AmountString"
     },
     "ParamTransactionText": {
       "name": "text",
@@ -1295,8 +1316,8 @@
         "displayName",
         "maskedNumber",
         "productCategory",
-        "providerType",
-        "balance$type"
+        "productName",
+        "balanceUType"
       ],
       "properties": {
         "accountid": {
@@ -1317,14 +1338,28 @@
           "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked",
           "format": "MaskedAccountString"
         },
+        "openStatus": {
+          "type": "string",
+          "description": "Open or closed status for the account.  If not present then OPEN is assumed",
+          "enum": [
+            "OPEN",
+            "CLOSED"
+          ],
+          "default": "OPEN"
+        },
+        "isOwned": {
+          "type": "boolean",
+          "description": "Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed",
+          "default": "true"
+        },
         "productCategory": {
           "$ref": "#/definitions/EnumProductCategory"
         },
-        "providerType": {
+        "productName": {
           "type": "string",
-          "description": "The unique type as defined by the account provider"
+          "description": "A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display"
         },
-        "balance$type": {
+        "balanceUType": {
           "type": "string",
           "description": "The type of balance object provided for the account. Must be one of: debit Debit Balance Type (see above) Conditional credit Credit Balance Type (see above) Conditional Multi Currency Purses Type (see above) Conditional purses debit credit purses",
           "enum": [
@@ -1374,14 +1409,14 @@
         {
           "type": "object",
           "required": [
-            "address$type"
+            "addressUType"
           ],
           "properties": {
             "bundleName": {
               "type": "string",
               "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
             },
-            "specificAccount$type": {
+            "specificAccountUType": {
               "type": "string",
               "description": "The type of structure to present account specific fields.",
               "enum": [
@@ -1424,26 +1459,7 @@
               }
             },
             "address": {
-              "type": "object",
-              "required": [
-                "address$type"
-              ],
-              "properties": {
-                "address$type": {
-                  "type": "string",
-                  "description": "The type of address object present",
-                  "enum": [
-                    "simple",
-                    "paf"
-                  ]
-                },
-                "simple": {
-                  "$ref": "#/definitions/SimpleAddress"
-                },
-                "paf": {
-                  "$ref": "#/definitions/PAFAddress"
-                }
-              }
+              "$ref": "#/definitions/PhysicalAddress"
             }
           }
         }
@@ -1573,7 +1589,8 @@
         },
         "minRedraw": {
           "type": "string",
-          "description": "Minimum redraw amount"
+          "description": "Minimum redraw amount",
+          "format": "AmountString"
         },
         "minRedrawCurrency": {
           "type": "string",
@@ -1591,13 +1608,13 @@
             "type": "string"
           }
         },
-        "repaymentType": {
-          "type": "string",
-          "description": "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST"
-        },
         "repaymentFrequency": {
           "type": "string",
-          "description": "The expected or required repayment frequency. Formatted according to ISO 8601 Durations",
+          "description": "The expected or required repayment frequency. Formatted according to ISO 8601 Durations"
+        },
+        "repaymentType": {
+          "type": "string",
+          "description": "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST",
           "enum": [
             "INTEREST_ONLY",
             "PRINCIPAL_AND_INTEREST"
@@ -1917,7 +1934,7 @@
         },
         "amount": {
           "type": "string",
-          "description": "The value of the transaction. Negative values mean money was outgoing",
+          "description": "The value of the transaction. Negative values mean money was outgoing from the account",
           "format": "AmountString"
         },
         "currency": {
@@ -1927,7 +1944,7 @@
         },
         "reference": {
           "type": "string",
-          "description": "The reference for the transaction provided by the originating institution"
+          "description": "The reference for the transaction provided by the originating institution.  Empty string if no data provided"
         }
       }
     },
@@ -2001,7 +2018,7 @@
                   "type": "string",
                   "description": "Label of the target PayID. Mandatory for an outbound payment"
                 },
-                "extension$type": {
+                "extensionUType": {
                   "type": "string",
                   "description": "Optional extended data provided specific to transaction originated via NPP",
                   "enum": [
@@ -2010,7 +2027,7 @@
                 },
                 "extendedDescription": {
                   "type": "string",
-                  "description": "An extended string description. Only present if specified by the extensionType field"
+                  "description": "An extended string description. Only present if specified by the extensionUType field"
                 },
                 "service": {
                   "type": "string",
@@ -2059,14 +2076,14 @@
       "type": "object",
       "required": [
         "accountId",
-        "balance$type"
+        "balanceUType"
       ],
       "properties": {
         "accountid": {
           "type": "string",
           "description": "A unique ID of the account adhering to the standards for ID permanence"
         },
-        "balance$type": {
+        "balanceUType": {
           "type": "string",
           "description": "The type of balance object provided for the account",
           "enum": [
@@ -2233,10 +2250,10 @@
         {
           "type": "object",
           "required": [
-            "payee$type"
+            "payeeUType"
           ],
           "properties": {
-            "payee$type": {
+            "payeeUType": {
               "type": "string",
               "description": "Type of object included that describes the payee in detail",
               "enum": [
@@ -2261,16 +2278,16 @@
     "DomesticPayee": {
       "type": "object",
       "required": [
-        "payeeAccount$type"
+        "payeeAccountUType"
       ],
       "properties": {
-        "payeeAccount$type": {
+        "payeeAccountUType": {
           "type": "string",
-          "description": "Type of account object included. Valid values are: { payeeAccount$type - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP",
+          "description": "Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP",
           "enum": [
             "account",
             "card",
-            "payid"
+            "payId"
           ]
         },
         "account": {
@@ -2387,7 +2404,7 @@
             },
             "country": {
               "type": "string",
-              "description": "Country where the beneficiary resides"
+              "description": "Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code"
             },
             "message": {
               "type": "string",
@@ -2404,7 +2421,7 @@
           "properties": {
             "country": {
               "type": "string",
-              "description": "Country of the recipient institution"
+              "description": "Country of the recipient institution. A valid ISO 3166 Alpha-3 country code"
             },
             "accountNumber": {
               "type": "string",
@@ -2544,10 +2561,10 @@
         "data": {
           "type": "object",
           "required": [
-            "customer$type"
+            "customerUType"
           ],
           "properties": {
-            "customer$type": {
+            "customerUType": {
               "type": "string",
               "description": "The type of customer object that is present",
               "enum": [
@@ -2582,10 +2599,10 @@
         "data": {
           "type": "object",
           "required": [
-            "customer$type"
+            "customerUType"
           ],
           "properties": {
-            "customer$type": {
+            "customerUType": {
               "type": "string",
               "description": "The type of customer object that is present",
               "enum": [
@@ -2613,7 +2630,8 @@
       "type": "object",
       "required": [
         "lastUpdateTime",
-        "lastName"
+        "lastName",
+        "middleNames"
       ],
       "properties": {
         "lastUpdateTime": {
@@ -2646,7 +2664,7 @@
         },
         "occupationCode": {
           "type": "string",
-          "description": "Occupation code as defined by the ANZSCO  v1.2 Standard Classification of Occupations"
+          "description": "Value should be a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
         }
       }
     },
@@ -2681,7 +2699,7 @@
               "type": "array",
               "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
               "items": {
-                "$ref": "#/definitions/PhysicalAddress"
+                "$ref": "#/definitions/PhysicalAddressWithPurpose"
               }
             }
           }
@@ -2741,7 +2759,7 @@
         },
         "industryCode": {
           "type": "string",
-          "description": "ANZSIC (2006) code for the organisation."
+          "description": "[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation."
         },
         "organisationType": {
           "type": "string",
@@ -2774,14 +2792,14 @@
         {
           "type": "object",
           "required": [
-            "physicalAddress"
+            "physicalAddresses"
           ],
           "properties": {
-            "physicalAddress": {
+            "physicalAddresses": {
               "type": "array",
               "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
               "items": {
-                "$ref": "#/definitions/PhysicalAddress"
+                "$ref": "#/definitions/PhysicalAddressWithPurpose"
               }
             }
           }
@@ -2791,7 +2809,6 @@
     "PhoneNumber": {
       "type": "object",
       "required": [
-        "isPreferred",
         "purpose",
         "number",
         "fullNumber"
@@ -2799,7 +2816,7 @@
       "properties": {
         "isPreferred": {
           "type": "boolean",
-          "description": "Required to be true for one and only one entry to indicate the preferred phone number"
+          "description": "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present"
         },
         "purpose": {
           "type": "string",
@@ -2863,25 +2880,39 @@
         }
       }
     },
+    "PhysicalAddressWithPurpose": {
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "purpose"
+          ],
+          "properties": {
+            "purpose": {
+              "type": "string",
+              "description": "Enumeration of values indicating the purpose of the physical address",
+              "enum": [
+                "REGISTERED",
+                "MAIL",
+                "PHYSICAL",
+                "WORK",
+                "OTHER"
+              ]
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/PhysicalAddress"
+        }
+      ]
+    },
     "PhysicalAddress": {
       "type": "object",
       "required": [
-        "purpose",
-        "address$type"
+        "addressUType"
       ],
       "properties": {
-        "purpose": {
-          "type": "string",
-          "description": "Enumeration of values indicating the purpose of the physical address",
-          "enum": [
-            "REGISTERED",
-            "MAIL",
-            "PHYSICAL",
-            "WORK",
-            "OTHER"
-          ]
-        },
-        "address$type": {
+        "addressUType": {
           "type": "string",
           "description": "The type of address object present",
           "enum": [
