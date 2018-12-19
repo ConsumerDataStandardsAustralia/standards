@@ -42,21 +42,6 @@
           },
           {
             "$ref": "#/parameters/ParamPageSize"
-          },
-          {
-            "$ref": "#/parameters/ParamStartTime"
-          },
-          {
-            "$ref": "#/parameters/ParamEndTime"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionMinAmount"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionMaxAmount"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionText"
           }
         ],
         "responses": {
@@ -110,6 +95,9 @@
           "Accounts"
         ],
         "parameters": [
+          {
+            "$ref": "#/parameters/ParamAccountOpenStatus"
+          },
           {
             "$ref": "#/parameters/ParamProductCategory"
           },
@@ -266,6 +254,9 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/ParamAccountOpenStatus"
+          },
+          {
             "$ref": "#/parameters/ParamProductCategory"
           },
           {
@@ -404,13 +395,13 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/ParamProductCategory"
+          },
+          {
             "$ref": "#/parameters/ParamPage"
           },
           {
             "$ref": "#/parameters/ParamPageSize"
-          },
-          {
-            "$ref": "#/parameters/ParamProductCategory"
           }
         ],
         "responses": {
