@@ -85,7 +85,8 @@
             "in": "path",
             "description": "A tokenised identifier for the account which is unique but not shareable",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           }
         ],
         "responses": {
@@ -180,7 +181,8 @@
             "in": "path",
             "description": "ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           },
           {
             "$ref": "#/parameters/ParamStartTime"
@@ -230,14 +232,16 @@
             "in": "path",
             "description": "The account id token that is used to uniquely represent the account",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           },
           {
             "name": "transactionId",
             "in": "path",
             "description": "The unique identifier for the specific transaction for which details are being requested",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           }
         ],
         "responses": {
@@ -368,7 +372,8 @@
             "in": "path",
             "description": "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           },
           {
             "$ref": "#/parameters/ParamPage"
@@ -510,7 +515,8 @@
             "in": "path",
             "description": "The ID used to locate the details of a particular payee",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           }
         ],
         "responses": {
@@ -546,7 +552,8 @@
             "in": "query",
             "description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products",
             "required": false,
-            "type": "string"
+            "type": "string",
+            "format": "DateTimeString"
           },
           {
             "name": "brand",
@@ -591,7 +598,8 @@
             "in": "path",
             "description": "ID of the specific product requested",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           }
         ],
         "responses": {
@@ -763,7 +771,8 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "description": "A valid account ID previously obtained from another end point"
+                "description": "A valid account ID previously obtained from another end point",
+                "format": "ASCIIString"
               }
             }
           }
@@ -856,7 +865,8 @@
         },
         "applicationUri": {
           "type": "string",
-          "description": "A link to the an application web page where this product can be applied for."
+          "description": "A link to the an application web page where this product can be applied for.",
+          "format": "URIString"
         },
         "isNegotiable": {
           "type": "boolean",
@@ -992,7 +1002,8 @@
           "type": "array",
           "description": "Array of product IDs for products included in the bundle",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           }
         }
       }
@@ -1476,12 +1487,12 @@
         "lodgementDate": {
           "type": "string",
           "description": "The lodgement date of the original deposit",
-          "format": "DateTimeString"
+          "format": "DateString"
         },
         "maturityDate": {
           "type": "string",
           "description": "Maturity date for the term deposit",
-          "format": "DateTimeString"
+          "format": "DateString"
         },
         "maturityAmount": {
           "type": "string",
@@ -1529,7 +1540,7 @@
         "paymentDueDate": {
           "type": "string",
           "description": "Date that the next payment for the card is due",
-          "format": "DateTimeString"
+          "format": "DateString"
         }
       }
     },
@@ -1545,7 +1556,7 @@
         "originalStartDate": {
           "type": "string",
           "description": "Optional original start date for the loan",
-          "format": "DateTimeString"
+          "format": "DateString"
         },
         "originalLoanAmount": {
           "type": "string",
@@ -1560,12 +1571,12 @@
         "loanEndDate": {
           "type": "string",
           "description": "Date that the loan is due to be repaid in full",
-          "format": "DateTimeString"
+          "format": "DateString"
         },
         "nextInstalmentDate": {
           "type": "string",
           "description": "Next date that an instalment is required",
-          "format": "DateTimeString"
+          "format": "DateString"
         },
         "minInstalmentAmount": {
           "type": "string",
@@ -1605,7 +1616,8 @@
           "type": "array",
           "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "ASCIIString"
           }
         },
         "repaymentFrequency": {
@@ -2081,7 +2093,8 @@
       "properties": {
         "accountid": {
           "type": "string",
-          "description": "A unique ID of the account adhering to the standards for ID permanence"
+          "description": "A unique ID of the account adhering to the standards for ID permanence",
+          "format": "ASCIIString"
         },
         "balanceUType": {
           "type": "string",
@@ -2221,7 +2234,8 @@
       "properties": {
         "payeeId": {
           "type": "string",
-          "description": "ID of the payee adhering to the rules of ID permanence"
+          "description": "ID of the payee adhering to the rules of ID permanence",
+          "format": "ASCIIString"
         },
         "nickname": {
           "type": "string",
@@ -2780,7 +2794,7 @@
         "establishmentDate": {
           "type": "string",
           "description": "The date the organisation described was established",
-          "format": "DateTimeString"
+          "format": "DateString"
         }
       }
     },

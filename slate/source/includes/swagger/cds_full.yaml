@@ -55,6 +55,7 @@ paths:
           description: A tokenised identifier for the account which is unique but not shareable
           required: true
           type: string
+          format: ASCIIString
       responses:
         '200':
           description: Success
@@ -120,6 +121,7 @@ paths:
           description: ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.
           required: true
           type: string
+          format: ASCIIString
         - $ref: '#/parameters/ParamStartTime'
         - $ref: '#/parameters/ParamEndTime'
         - $ref: '#/parameters/ParamTransactionMinAmount'
@@ -148,11 +150,13 @@ paths:
           description: The account id token that is used to uniquely represent the account
           required: true
           type: string
+          format: ASCIIString
         - name: transactionId
           in: path
           description: The unique identifier for the specific transaction for which details are being requested
           required: true
           type: string
+          format: ASCIIString
       responses:
         '200':
           description: Success
@@ -230,6 +234,7 @@ paths:
           description: ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.
           required: true
           type: string
+          format: ASCIIString
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
       responses:
@@ -325,6 +330,7 @@ paths:
           description: The ID used to locate the details of a particular payee
           required: true
           type: string
+          format: ASCIIString
       responses:
         '200':
           description: Success
@@ -350,6 +356,7 @@ paths:
           description: Only include products that have been updated after the specified date and time. If absent defaults to include all products
           required: false
           type: string
+          format: DateTimeString
         - name: brand
           in: query
           description: Filter results based on a specific brand
@@ -378,6 +385,7 @@ paths:
           description: ID of the specific product requested
           required: true
           type: string
+          format: ASCIIString
       responses:
         '200':
           description: Success
@@ -518,6 +526,7 @@ definitions:
             items:
               type: string
               description: A valid account ID previously obtained from another end point
+              format: ASCIIString
       meta:
         $ref: '#/definitions/Meta'
   ResponseBankingProducts:
@@ -584,6 +593,7 @@ definitions:
       applicationUri:
         type: string
         description: A link to the an application web page where this product can be applied for.
+        format: URIString
       isNegotiable:
         type: boolean
         description: Indicates whether the product is specifically designed so that fees and prices are negotiated depending on context. While all products are open to a degree of negotiation this flag indicates that negotiation is expected and thus that the provision of specific fees and rates is not applicable
@@ -678,6 +688,7 @@ definitions:
         description: Array of product IDs for products included in the bundle
         items:
           type: string
+          format: ASCIIString
   ProductFeatures:
     type: object
     required:
@@ -1038,11 +1049,11 @@ definitions:
       lodgementDate:
         type: string
         description: The lodgement date of the original deposit
-        format: DateTimeString
+        format: DateString
       maturityDate:
         type: string
         description: Maturity date for the term deposit
-        format: DateTimeString
+        format: DateString
       maturityAmount:
         type: string
         description: Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated
@@ -1079,7 +1090,7 @@ definitions:
       paymentDueDate:
         type: string
         description: Date that the next payment for the card is due
-        format: DateTimeString
+        format: DateString
   LoanAccount:
     type: object
     required:
@@ -1091,7 +1102,7 @@ definitions:
       originalStartDate:
         type: string
         description: Optional original start date for the loan
-        format: DateTimeString
+        format: DateString
       originalLoanAmount:
         type: string
         description: Optional original loan value
@@ -1103,11 +1114,11 @@ definitions:
       loanEndDate:
         type: string
         description: Date that the loan is due to be repaid in full
-        format: DateTimeString
+        format: DateString
       nextInstalmentDate:
         type: string
         description: Next date that an instalment is required
-        format: DateTimeString
+        format: DateString
       minInstalmentAmount:
         type: string
         description: Minimum amount of next instalment
@@ -1140,6 +1151,7 @@ definitions:
         description: The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation
         items:
           type: string
+          format: ASCIIString
       repaymentFrequency:
         type: string
         description: The expected or required repayment frequency. Formatted according to ISO 8601 Durations
@@ -1493,6 +1505,7 @@ definitions:
       accountid:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
+        format: ASCIIString
       balanceUType:
         type: string
         description: The type of balance object provided for the account
@@ -1590,6 +1603,7 @@ definitions:
       payeeId:
         type: string
         description: ID of the payee adhering to the rules of ID permanence
+        format: ASCIIString
       nickname:
         type: string
         description: The short display name of the payee as provided by the customer
@@ -1985,7 +1999,7 @@ definitions:
       establishmentDate:
         type: string
         description: The date the organisation described was established
-        format: DateTimeString
+        format: DateString
   OrganisationDetail:
     allOf:
       - $ref: '#/definitions/Organisation'
