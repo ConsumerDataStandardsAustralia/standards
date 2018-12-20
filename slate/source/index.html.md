@@ -8,7 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a>
   - <a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a>
-  - <a href='https://consumerdatastandardsaustralia.github.io/infosec'>CDR InfoSec Profile v0.10</a>
+  - <a href='https://consumerdatastandardsaustralia.github.io/infosec'>CDR InfoSec Profile</a>
   - <br/>
   - <a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a>
   - <a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a>
