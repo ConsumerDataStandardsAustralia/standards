@@ -4,6 +4,7 @@ There are certain aspects of the standards that are actively under review.  Thes
 
 |Issue|Description|
 |-----------|-----------|
+| Swagger limitations | Due to the use of Swagger 2 and limitations in swagger related to representation of OIDC flows and explicit formats for common types consideration is being given how best to represent this information |
 | End point version | End point versions are included in a swagger extension but are not appearing yet in the automatically generated documentation |
 | Conditional restriction | The conditionally required attribute for fields is included in a swagger extension but is not appearing yet in the automatically generated documentation |
 | Example data | Addition of example data for each field needs to be added to the swagger to improve the automatically generated sample json snippets |
