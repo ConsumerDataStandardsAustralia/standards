@@ -505,7 +505,8 @@
             "enum": [
               "DOMESTIC",
               "INTERNATIONAL",
-              "BILLER"
+              "BILLER",
+              "ALL"
             ],
             "default": "ALL"
           },

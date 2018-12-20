@@ -307,6 +307,7 @@ paths:
             - DOMESTIC
             - INTERNATIONAL
             - BILLER
+            - ALL
           default: ALL
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
