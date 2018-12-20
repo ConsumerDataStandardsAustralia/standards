@@ -1422,6 +1422,7 @@ Obtain a list of pre-registered payees
 |type|DOMESTIC|
 |type|INTERNATIONAL|
 |type|BILLER|
+|type|ALL|
 
 > Example responses
 
