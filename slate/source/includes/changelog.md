@@ -4,6 +4,8 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Description|Detail Of change|
 |-----------|-----------|----------------|
+|20/12/2018|Version 0.20|Version updated formally to version 0.20 for Christmas Draft|
+|20/12/2018|Updated documentation|Documentation has been automatically generated from the swagger for consistency|
 |20/12/2018|Known issues|Added a section identifying known issues with the standards that are under review|
 |20/12/2018|Cursor based pagination|Added commentary in pagination section on the potential use of cursors|
 |20/12/2018|Minor amendments to response codes|Additional wording to support caching and inserted a cross reference to the error payload section|

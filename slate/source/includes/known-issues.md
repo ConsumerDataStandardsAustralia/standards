@@ -4,6 +4,9 @@ There are certain aspects of the standards that are actively under review.  Thes
 
 |Issue|Description|
 |-----------|-----------|
+| End point version | End point versions are included in a swagger extension but are not appearing yet in the automatically generated documentation |
+| Conditional restriction | The conditionally required attribute for fields is included in a swagger extension but is not appearing yet in the automatically generated documentation |
+| Example data | Addition of example data for each field needs to be added to the swagger to improve the automatically generated sample json snippets |
 | Product reference payloads | The product reference payloads are under active review and have not yet been substantially changed from the version published on 2nd November 2018.  It is expected that changes arising from feedback will be made in the near term |
 | Specific error codes | Feedback has been provided that additional specific errors would be of value.  This is under consideration |
 | Discoverability | A proposal for end point and version discoverability is under consideration. |

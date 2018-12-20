@@ -8,6 +8,18 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>End point version</td>
+<td>End point versions are included in a swagger extension but are not appearing yet in the automatically generated documentation</td>
+</tr>
+<tr>
+<td>Conditional restriction</td>
+<td>The conditionally required attribute for fields is included in a swagger extension but is not appearing yet in the automatically generated documentation</td>
+</tr>
+<tr>
+<td>Example data</td>
+<td>Addition of example data for each field needs to be added to the swagger to improve the automatically generated sample json snippets</td>
+</tr>
+<tr>
 <td>Product reference payloads</td>
 <td>The product reference payloads are under active review and have not yet been substantially changed from the version published on 2nd November 2018.  It is expected that changes arising from feedback will be made in the near term</td>
 </tr>

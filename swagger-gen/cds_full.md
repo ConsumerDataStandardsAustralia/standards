@@ -1,4 +1,29 @@
-# Banking APIs
+---
+title: Consumer Data Standards
+language_tabs:
+  - http: HTTP
+  - javascript: Javascript
+toc_footers: []
+includes: []
+search: false
+highlight_theme: darkula
+headingLevel: 2
+
+---
+
+<h1 id="consumer-data-standards">Consumer Data Standards v1</h1>
+
+> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+
+API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
+
+Base URLs:
+
+* <a href="https://data.provider.com.au/cds-au/v1">https://data.provider.com.au/cds-au/v1</a>
+
+License: <a href="https://opensource.org/licenses/MIT">MIT Licence</a>
+
+<h1 id="consumer-data-standards-accounts">Accounts</h1>
 
 ## Get Accounts
 
@@ -114,9 +139,8 @@ Obtain a list of accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccounts](#schemaresponsebankingaccounts)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Account Detail
@@ -305,9 +329,8 @@ Obtain detailed information on a single account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccount](#schemaresponsebankingaccount)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Bulk Balances
@@ -452,9 +475,8 @@ Obtain balances for multiple, filtered accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|resource listing the financial balances for the account|[ResponseBankingAccountsBalances](#schemaresponsebankingaccountsbalances)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Balances For Specific Accounts
@@ -582,9 +604,8 @@ Obtain balances for a specified list of accounts
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalances](#schemaresponsebankingaccountsbalances)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ErrorList](#schemaerrorlist)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Transactions For Account
@@ -621,15 +642,6 @@ $.ajax({
 `GET /banking/accounts/{accountId}/transactions`
 
 Obtain transactions for a specific account
-
-Some general notes that apply to all end points that retrieve transactions:
-
-- Where multiple transactions are returned transactions should be ordered according to effective date in descending order
-- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
-    - Posted date/time if available, then
-    - Execution date/time if available, then
-    - A reasonable date/time nominated by the data provider using internal data structures
-- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
 
 <h3 id="get-transactions-for-account-parameters">Parameters</h3>
 
@@ -697,9 +709,8 @@ Some general notes that apply to all end points that retrieve transactions:
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactions](#schemaresponsebankingtransactions)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Transaction Detail
@@ -797,9 +808,8 @@ Obtain detailed information on a transaction for a specific account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionDetail](#schemaresponsebankingtransactiondetail)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Transactions For Multiple Accounts
@@ -934,9 +944,8 @@ Obtain transactions for multiple, filtered accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactions](#schemaresponsebankingtransactions)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Transactions For Specific Accounts
@@ -1056,10 +1065,11 @@ Obtain transactions for a specified list of transactions.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactions](#schemaresponsebankingtransactions)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ErrorList](#schemaerrorlist)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+<aside class="success">
+This operation does not require authentication
 </aside>
+
+<h1 id="consumer-data-standards-direct-debits">Direct Debits</h1>
 
 ## Get Direct Debits For Account
 
@@ -1146,9 +1156,8 @@ Obtain direct debit authorisations for a specific account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebits](#schemaresponsebankingdirectdebits)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Bulk Direct Debits
@@ -1263,9 +1272,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebits](#schemaresponsebankingdirectdebits)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Direct Debits For Specific Accounts
@@ -1367,10 +1375,11 @@ Obtain direct debit authorisations for a specified list of accounts
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebits](#schemaresponsebankingdirectdebits)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ErrorList](#schemaerrorlist)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
+
+<h1 id="consumer-data-standards-payees">Payees</h1>
 
 ## Get Payees
 
@@ -1460,9 +1469,8 @@ Obtain a list of pre-registered payees
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayees](#schemaresponsebankingpayees)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Payee Detail
@@ -1575,10 +1583,11 @@ Obtain detailed information on a single payee
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeDetails](#schemaresponsebankingpayeedetails)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_payees )
+<aside class="success">
+This operation does not require authentication
 </aside>
+
+<h1 id="consumer-data-standards-products">Products</h1>
 
 ## Get Products
 
@@ -1614,40 +1623,6 @@ $.ajax({
 `GET /banking/products`
 
 Obtain a list of products that are currently openly offered to the market
-
-Note that the results returned by this end point are expected to be ordered according to updated-since
-
-### Conventions
-In the product reference payloads there are a number of recurring conventions that are explained here, in one place.
-
-#### Arrays Of Features
-
-In the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:
-
-- Each element in an array has the same structure so that clients can reliably interpret the payloads
-- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
-- Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
-- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
-- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.
-
-#### URIs To More Information
-
-As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their on channels.
-
-These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
-
-#### Linkage To Accounts
-From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
-
-For this reason productCategory is a common field between accounts and products but there is not common linkage field specific to a product that appears within the account payloads.
-
-Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the full sets of options are not identical between the two entities.
-
-#### Dates
-It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained.
-
-In addition the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
-
 
 <h3 id="get-products-parameters">Parameters</h3>
 
@@ -1893,7 +1868,7 @@ Obtain detailed information on a single product offered openly to the market
 This operation does not require authentication
 </aside>
 
-# Common APIs
+<h1 id="consumer-data-standards-customer">Customer</h1>
 
 ## Get Customer
 
@@ -1979,9 +1954,8 @@ Obtain basic information on the customer that has authorised the current session
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemaresponsecommoncustomer)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: common_basic_customer )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Get Customer Detail
@@ -2162,12 +2136,11 @@ Obtain detailed information on the authorised customer within the current sessio
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetailed](#schemaresponsecommoncustomerdetailed)|
 
-<aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: common_detailed_customer )
+<aside class="success">
+This operation does not require authentication
 </aside>
 
-# Shared Schemas
+# Schemas
 
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
 
@@ -5414,3 +5387,4 @@ openId ( Scopes: common_detailed_customer )
 |*anonymous*|FOREIGN_CURR_LOAN|
 |*anonymous*|FOREIGN_CURRRENCT_OVERDRAFT|
 |*anonymous*|TRAVEL_CARD|
+

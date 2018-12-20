@@ -10,6 +10,16 @@
 </thead><tbody>
 <tr>
 <td>20/12/2018</td>
+<td>Version 0.20</td>
+<td>Version updated formally to version 0.20 for Christmas Draft</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td>Updated documentation</td>
+<td>Documentation has been automatically generated from the swagger for consistency</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
 <td>Known issues</td>
 <td>Added a section identifying known issues with the standards that are under review</td>
 </tr>
