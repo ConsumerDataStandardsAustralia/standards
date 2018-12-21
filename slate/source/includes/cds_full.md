@@ -651,9 +651,6 @@ Some general notes that apply to all end points that retrieve transactions:
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -751,9 +748,6 @@ Obtain detailed information on a transaction for a specific account
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transaction": [
       {
         "accountId": "string",
@@ -888,9 +882,6 @@ Obtain transactions for multiple, filtered accounts
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -1009,9 +1000,6 @@ Obtain transactions for a specified list of transactions.
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
