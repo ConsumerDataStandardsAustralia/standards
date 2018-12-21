@@ -1389,16 +1389,6 @@ definitions:
         required:
           - transactions
         properties:
-          accountId:
-            type: string
-            description: ID of the account for which transactions are provided
-            format: ASCIIString
-          displayName:
-            type: string
-            description: The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.
-          nickname:
-            type: string
-            description: A customer supplied nick name for the account
           transactions:
             type: array
             items:
@@ -1506,20 +1496,8 @@ definitions:
           - displayName
           - transaction
         properties:
-          accountId:
-            type: string
-            description: ID of the account for which transactions are provided
-            format: ASCIIString
-          displayName:
-            type: string
-            description: The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.
-          nickname:
-            type: string
-            description: A customer supplied nick name for the account
           transaction:
-            type: array
-            items:
-              $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/TransactionDetail'
       links:
         $ref: '#/definitions/Links'
       meta:

@@ -9,6 +9,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>21/12/2018</td>
+<td>Transaction payloads</td>
+<td>Removed incorrect inclusion of accountId, displayName and nickname for transaction response payloads</td>
+</tr>
+<tr>
 <td>20/12/2018</td>
 <td>Version 0.20</td>
 <td>Version updated formally to version 0.20 for Christmas Draft</td>

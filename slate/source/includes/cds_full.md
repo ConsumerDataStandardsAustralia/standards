@@ -3552,9 +3552,6 @@ openId ( Scopes: common_detailed_customer )
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -3598,9 +3595,6 @@ openId ( Scopes: common_detailed_customer )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|true|none|none|
-|» accountId|string(ASCIIString)|false|none|ID of the account for which transactions are provided|
-|» displayName|string|false|none|The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.|
-|» nickname|string|false|none|A customer supplied nick name for the account|
 |» transactions|[[Transaction](#schematransaction)]|true|none|none|
 |links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|true|none|none|
@@ -3677,38 +3671,33 @@ openId ( Scopes: common_detailed_customer )
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "transaction": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "FEE",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "string",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string",
-        "extendedData": {
-          "payer": "string",
-          "payee": "string",
-          "extensionUType": "extendedDescription",
-          "extendedDescription": "string",
-          "serviceId": "X2P1.01"
-        }
+    "transaction": {
+      "accountId": "string",
+      "transactionId": "string",
+      "isDetailAvailable": true,
+      "type": "FEE",
+      "status": "PENDING",
+      "description": "string",
+      "postingDateTime": "string",
+      "valueDateTime": "string",
+      "executionDateTime": "string",
+      "amount": "string",
+      "currency": "string",
+      "reference": "string",
+      "merchantName": "string",
+      "merchantCategoryCode": "string",
+      "billerCode": "string",
+      "billerName": "string",
+      "crn": "string",
+      "apcaNumber": "string",
+      "extendedData": {
+        "payer": "string",
+        "payee": "string",
+        "extensionUType": "extendedDescription",
+        "extendedDescription": "string",
+        "serviceId": "X2P1.01"
       }
-    ]
+    }
   },
   "links": {
     "self": "string"
@@ -3723,9 +3712,6 @@ openId ( Scopes: common_detailed_customer )
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|true|none|none|
-|» accountId|string(ASCIIString)|true|none|ID of the account for which transactions are provided|
-|» displayName|string|true|none|The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.|
-|» nickname|string|false|none|A customer supplied nick name for the account|
 |» transaction|[[TransactionDetail](#schematransactiondetail)]|true|none|none|
 |links|[Links](#schemalinks)|true|none|none|
 |meta|[Meta](#schemameta)|true|none|none|
