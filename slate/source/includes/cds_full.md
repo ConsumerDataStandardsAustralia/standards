@@ -748,35 +748,33 @@ Obtain detailed information on a transaction for a specific account
 ```json
 {
   "data": {
-    "transaction": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "FEE",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "string",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string",
-        "extendedData": {
-          "payer": "string",
-          "payee": "string",
-          "extensionUType": "extendedDescription",
-          "extendedDescription": "string",
-          "serviceId": "X2P1.01"
-        }
+    "transaction": {
+      "accountId": "string",
+      "transactionId": "string",
+      "isDetailAvailable": true,
+      "type": "FEE",
+      "status": "PENDING",
+      "description": "string",
+      "postingDateTime": "string",
+      "valueDateTime": "string",
+      "executionDateTime": "string",
+      "amount": "string",
+      "currency": "string",
+      "reference": "string",
+      "merchantName": "string",
+      "merchantCategoryCode": "string",
+      "billerCode": "string",
+      "billerName": "string",
+      "crn": "string",
+      "apcaNumber": "string",
+      "extendedData": {
+        "payer": "string",
+        "payee": "string",
+        "extensionUType": "extendedDescription",
+        "extendedDescription": "string",
+        "serviceId": "X2P1.01"
       }
-    ]
+    }
   },
   "links": {
     "self": "string"
