@@ -41,6 +41,9 @@ You're going to need:
  - **Linux or macOS** — Windows may work, but is unsupported.
  - **Ruby, version 2.3.1 or newer**
  - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
+ - **C++ Compiler** - A C++ compiler is required for some of the Bundler dependencies
+ - **LibXML Development Libraries** - LibXML Development libraries are required for the Bundler dependencies
+ - **NodeJS** - NodeJS is require for running middleman runtime
 
 ### Getting Set Up
 
