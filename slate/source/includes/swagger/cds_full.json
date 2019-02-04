@@ -987,19 +987,19 @@
             "bundles": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ProductBundles"
+                "$ref": "#/definitions/ProductBundle"
               }
             },
             "features": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ProductFeatures"
+                "$ref": "#/definitions/ProductFeature"
               }
             },
             "constraints": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ProductConstraints"
+                "$ref": "#/definitions/ProductConstraint"
               }
             },
             "eligibility": {
@@ -1011,26 +1011,26 @@
             "fees": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ProductFees"
+                "$ref": "#/definitions/ProductFee"
               }
             },
             "depositRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ProductDepositRates"
+                "$ref": "#/definitions/ProductDepositRate"
               }
             },
             "lendingRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ProductLendingRates"
+                "$ref": "#/definitions/ProductLendingRate"
               }
             }
           }
         }
       ]
     },
-    "ProductBundles": {
+    "ProductBundle": {
       "type": "object",
       "required": [
         "name",
@@ -1061,7 +1061,7 @@
         }
       }
     },
-    "ProductFeatures": {
+    "ProductFeature": {
       "type": "object",
       "required": [
         "featureType"
@@ -1101,7 +1101,7 @@
         }
       }
     },
-    "ProductConstraints": {
+    "ProductConstraint": {
       "type": "object",
       "required": [
         "constraintType"
@@ -1168,7 +1168,7 @@
         }
       }
     },
-    "ProductFees": {
+    "ProductFee": {
       "type": "object",
       "required": [
         "name",
@@ -1240,12 +1240,12 @@
         "discounts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductDiscounts"
+            "$ref": "#/definitions/ProductDiscount"
           }
         }
       }
     },
-    "ProductDiscounts": {
+    "ProductDiscount": {
       "type": "object",
       "required": [
         "description",
@@ -1281,7 +1281,7 @@
         }
       }
     },
-    "ProductDepositRates": {
+    "ProductDepositRate": {
       "type": "object",
       "required": [
         "depositRateType",
@@ -1322,7 +1322,7 @@
         }
       }
     },
-    "ProductLendingRates": {
+    "ProductLendingRate": {
       "type": "object",
       "required": [
         "lendingRateType",
@@ -1522,25 +1522,25 @@
             "features": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AccountFeatures"
+                "$ref": "#/definitions/AccountFeature"
               }
             },
             "fees": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AccountFees"
+                "$ref": "#/definitions/AccountFee"
               }
             },
             "depositRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AccountDepositRates"
+                "$ref": "#/definitions/AccountDepositRate"
               }
             },
             "lendingRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AccountLendingRates"
+                "$ref": "#/definitions/AccountLendingRate"
               }
             },
             "address": {
@@ -1702,7 +1702,7 @@
         }
       }
     },
-    "AccountFeatures": {
+    "AccountFeature": {
       "type": "object",
       "required": [
         "featureType"
@@ -1742,7 +1742,7 @@
         }
       }
     },
-    "AccountFees": {
+    "AccountFee": {
       "type": "object",
       "required": [
         "name",
@@ -1813,12 +1813,12 @@
         "discounts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/AccountDiscounts"
+            "$ref": "#/definitions/AccountDiscount"
           }
         }
       }
     },
-    "AccountDiscounts": {
+    "AccountDiscount": {
       "type": "object",
       "required": [
         "description",
@@ -1854,7 +1854,7 @@
         }
       }
     },
-    "AccountDepositRates": {
+    "AccountDepositRate": {
       "type": "object",
       "required": [
         "depositRateType",
@@ -1895,7 +1895,7 @@
         }
       }
     },
-    "AccountLendingRates": {
+    "AccountLendingRate": {
       "type": "object",
       "required": [
         "lendingRateType",
@@ -2635,7 +2635,7 @@
               "type": "array",
               "description": "The list of authorisations returned",
               "items": {
-                "$ref": "#/definitions/DirectDebits"
+                "$ref": "#/definitions/DirectDebit"
               }
             }
           }
@@ -2648,7 +2648,7 @@
         }
       }
     },
-    "DirectDebits": {
+    "DirectDebit": {
       "type": "object",
       "required": [
         "accountId"
