@@ -161,7 +161,7 @@
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ErrorList"
+              "$ref": "#/definitions/ResponseErrorList"
             }
           }
         },
@@ -366,7 +366,7 @@
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ErrorList"
+              "$ref": "#/definitions/ResponseErrorList"
             }
           }
         },
@@ -477,7 +477,7 @@
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ErrorList"
+              "$ref": "#/definitions/ResponseErrorList"
             }
           }
         },
@@ -3297,7 +3297,7 @@
         }
       }
     },
-    "ErrorList": {
+    "ResponseErrorList": {
       "type": "object",
       "required": [
         "errors"
