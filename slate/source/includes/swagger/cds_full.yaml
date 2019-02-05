@@ -34,7 +34,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingAccounts'
+            $ref: '#/definitions/ResponseBankingAccountList'
       x-version: '1'
   '/banking/accounts/{accountId}':
     get:
@@ -56,7 +56,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingAccount'
+            $ref: '#/definitions/ResponseBankingAccountById'
       x-version: '1'
   /banking/accounts/balances:
     get:
@@ -77,7 +77,7 @@ paths:
         '200':
           description: resource listing the financial balances for the account
           schema:
-            $ref: '#/definitions/ResponseBankingAccountsBalances'
+            $ref: '#/definitions/ResponseBankingAccountsBalanceList'
       x-version: '1'
     post:
       summary: Get Balances For Specific Accounts
@@ -98,7 +98,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingAccountsBalances'
+            $ref: '#/definitions/ResponseBankingAccountsBalanceList'
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -131,7 +131,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingTransactions'
+            $ref: '#/definitions/ResponseBankingTransactionList'
       x-version: '1'
   '/banking/accounts/{accountId}/transactions/{transactionId}':
     get:
@@ -159,7 +159,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingTransactionDetail'
+            $ref: '#/definitions/ResponseBankingTransactionById'
       x-version: '1'
   /banking/accounts/transactions:
     get:
@@ -185,7 +185,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingTransactions'
+            $ref: '#/definitions/ResponseBankingTransactionList'
       x-version: '1'
     post:
       summary: Get Transactions For Specific Accounts
@@ -213,7 +213,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingTransactions'
+            $ref: '#/definitions/ResponseBankingTransactionList'
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -241,7 +241,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingDirectDebits'
+            $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
       x-version: '1'
   /banking/accounts/direct-debits:
     get:
@@ -261,7 +261,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingDirectDebits'
+            $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
       x-version: '1'
     post:
       summary: Get Direct Debits For Specific Accounts
@@ -282,7 +282,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingDirectDebits'
+            $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -315,7 +315,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingPayees'
+            $ref: '#/definitions/ResponseBankingPayeeList'
       x-version: '1'
   '/banking/payees/{payeeId}':
     get:
@@ -337,7 +337,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingPayeeDetails'
+            $ref: '#/definitions/ResponseBankingPayeeById'
       x-version: '1'
   /banking/products:
     get:
@@ -376,7 +376,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingProducts'
+            $ref: '#/definitions/ResponseBankingProductList'
       x-version: '1'
   '/banking/products/{productId}':
     get:
@@ -397,7 +397,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseBankingProduct'
+            $ref: '#/definitions/ResponseBankingProductById'
       x-version: '1'
   /common/customer:
     get:
@@ -429,7 +429,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/ResponseCommonCustomerDetailed'
+            $ref: '#/definitions/ResponseCommonCustomerDetail'
       x-version: '1'
 parameters:
   ParamAccountOpenStatus:
@@ -547,7 +547,7 @@ definitions:
               format: ASCIIString
       meta:
         $ref: '#/definitions/Meta'
-  ResponseBankingProducts:
+  ResponseBankingProductList:
     type: object
     required:
       - data
@@ -562,12 +562,12 @@ definitions:
           products:
             type: array
             items:
-              $ref: '#/definitions/Product'
+              $ref: '#/definitions/BankingProduct'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  Product:
+  BankingProduct:
     type: object
     required:
       - productId
@@ -595,7 +595,7 @@ definitions:
         description: The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)
         format: DateTimeString
       productCategory:
-        $ref: '#/definitions/EnumProductCategory'
+        $ref: '#/definitions/BankingEnumProductCategory'
       name:
         type: string
         description: The display name of the product
@@ -638,7 +638,7 @@ definitions:
             type: string
             description: Description of a bundle that this product can be part of
             format: URIString
-  ResponseBankingProduct:
+  ResponseBankingProductById:
     type: object
     required:
       - data
@@ -646,45 +646,45 @@ definitions:
       - meta
     properties:
       data:
-        $ref: '#/definitions/ProductDetail'
+        $ref: '#/definitions/BankingProductDetail'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  ProductDetail:
+  BankingProductDetail:
     allOf:
-      - $ref: '#/definitions/Product'
+      - $ref: '#/definitions/BankingProduct'
       - type: object
         properties:
           bundles:
             type: array
             items:
-              $ref: '#/definitions/ProductBundles'
+              $ref: '#/definitions/BankingProductBundle'
           features:
             type: array
             items:
-              $ref: '#/definitions/ProductFeatures'
+              $ref: '#/definitions/BankingProductFeature'
           constraints:
             type: array
             items:
-              $ref: '#/definitions/ProductConstraints'
+              $ref: '#/definitions/BankingProductConstraint'
           eligibility:
             type: array
             items:
-              $ref: '#/definitions/ProductEligibility'
+              $ref: '#/definitions/BankingProductEligibility'
           fees:
             type: array
             items:
-              $ref: '#/definitions/ProductFees'
+              $ref: '#/definitions/BankingProductFee'
           depositRates:
             type: array
             items:
-              $ref: '#/definitions/ProductDepositRates'
+              $ref: '#/definitions/BankingProductDepositRate'
           lendingRates:
             type: array
             items:
-              $ref: '#/definitions/ProductLendingRates'
-  ProductBundles:
+              $ref: '#/definitions/BankingProductLendingRate'
+  BankingProductBundle:
     type: object
     required:
       - name
@@ -707,7 +707,7 @@ definitions:
         items:
           type: string
           format: ASCIIString
-  ProductFeatures:
+  BankingProductFeature:
     type: object
     required:
       - featureType
@@ -740,7 +740,7 @@ definitions:
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType
-  ProductConstraints:
+  BankingProductConstraint:
     type: object
     required:
       - constraintType
@@ -758,7 +758,7 @@ definitions:
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType
-  ProductEligibility:
+  BankingProductEligibility:
     type: object
     required:
       - eligibilityType
@@ -791,7 +791,7 @@ definitions:
         type: string
         description: Link to a web page with more information on this eligibility criteria
         format: URIString
-  ProductFees:
+  BankingProductFee:
     type: object
     required:
       - name
@@ -851,8 +851,8 @@ definitions:
       discounts:
         type: array
         items:
-          $ref: '#/definitions/ProductDiscounts'
-  ProductDiscounts:
+          $ref: '#/definitions/BankingProductDiscount'
+  BankingProductDiscount:
     type: object
     required:
       - description
@@ -879,7 +879,7 @@ definitions:
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType
-  ProductDepositRates:
+  BankingProductDepositRate:
     type: object
     required:
       - depositRateType
@@ -910,7 +910,7 @@ definitions:
         type: string
         description: Link to a web page with more information on this fee
         format: URIString
-  ProductLendingRates:
+  BankingProductLendingRate:
     type: object
     required:
       - lendingRateType
@@ -946,7 +946,7 @@ definitions:
         type: string
         description: Link to a web page with more information  on this fee
         format: URIString
-  ResponseBankingAccounts:
+  ResponseBankingAccountList:
     type: object
     required:
       - data
@@ -961,12 +961,12 @@ definitions:
           accounts:
             type: array
             items:
-              $ref: '#/definitions/Account'
+              $ref: '#/definitions/BankingAccount'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  Account:
+  BankingAccount:
     type: object
     required:
       - accountId
@@ -1005,11 +1005,11 @@ definitions:
         description: 'Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then ''true'' is assumed'
         default: 'true'
       productCategory:
-        $ref: '#/definitions/EnumProductCategory'
+        $ref: '#/definitions/BankingEnumProductCategory'
       productName:
         type: string
         description: A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display
-  ResponseBankingAccount:
+  ResponseBankingAccountById:
     type: object
     required:
       - data
@@ -1017,14 +1017,14 @@ definitions:
       - meta
     properties:
       data:
-        $ref: '#/definitions/AccountDetail'
+        $ref: '#/definitions/BankingAccountDetail'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  AccountDetail:
+  BankingAccountDetail:
     allOf:
-      - $ref: '#/definitions/Account'
+      - $ref: '#/definitions/BankingAccount'
       - type: object
         required:
           - addressUType
@@ -1050,30 +1050,30 @@ definitions:
               - creditCard
               - loan
           termDeposit:
-            $ref: '#/definitions/TermDepositAccount'
+            $ref: '#/definitions/BankingTermDepositAccount'
           creditCard:
-            $ref: '#/definitions/CreditCardAccount'
+            $ref: '#/definitions/BankingCreditCardAccount'
           loan:
-            $ref: '#/definitions/LoanAccount'
+            $ref: '#/definitions/BankingLoanAccount'
           features:
             type: array
             items:
-              $ref: '#/definitions/AccountFeatures'
+              $ref: '#/definitions/BankingAccountFeature'
           fees:
             type: array
             items:
-              $ref: '#/definitions/AccountFees'
+              $ref: '#/definitions/BankingAccountFee'
           depositRates:
             type: array
             items:
-              $ref: '#/definitions/AccountDepositRates'
+              $ref: '#/definitions/BankingAccountDepositRate'
           lendingRates:
             type: array
             items:
-              $ref: '#/definitions/AccountLendingRates'
+              $ref: '#/definitions/BankingAccountLendingRate'
           address:
-            $ref: '#/definitions/PhysicalAddress'
-  TermDepositAccount:
+            $ref: '#/definitions/CommonPhysicalAddress'
+  BankingTermDepositAccount:
     type: object
     required:
       - lodgementDate
@@ -1102,7 +1102,7 @@ definitions:
         enum:
           - ROLLED_OVER
           - PAID_OUT_AT_MATURITY
-  CreditCardAccount:
+  BankingCreditCardAccount:
     type: object
     required:
       - minPaymentAmount
@@ -1125,7 +1125,7 @@ definitions:
         type: string
         description: Date that the next payment for the card is due
         format: DateString
-  LoanAccount:
+  BankingLoanAccount:
     type: object
     properties:
       originalStartDate:
@@ -1190,7 +1190,7 @@ definitions:
         enum:
           - INTEREST_ONLY
           - PRINCIPAL_AND_INTEREST
-  AccountFeatures:
+  BankingAccountFeature:
     type: object
     required:
       - featureType
@@ -1223,7 +1223,7 @@ definitions:
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType
-  AccountFees:
+  BankingAccountFee:
     type: object
     required:
       - name
@@ -1282,8 +1282,8 @@ definitions:
       discounts:
         type: array
         items:
-          $ref: '#/definitions/AccountDiscounts'
-  AccountDiscounts:
+          $ref: '#/definitions/BankingAccountDiscount'
+  BankingAccountDiscount:
     type: object
     required:
       - description
@@ -1310,7 +1310,7 @@ definitions:
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType
-  AccountDepositRates:
+  BankingAccountDepositRate:
     type: object
     required:
       - depositRateType
@@ -1341,7 +1341,7 @@ definitions:
         type: string
         description: Link to a web page with more information on this fee
         format: URIString
-  AccountLendingRates:
+  BankingAccountLendingRate:
     type: object
     required:
       - lendingRateType
@@ -1377,7 +1377,7 @@ definitions:
         type: string
         description: Link to a web page with more information  on this fee
         format: URIString
-  ResponseBankingTransactions:
+  ResponseBankingTransactionList:
     type: object
     required:
       - data
@@ -1392,12 +1392,12 @@ definitions:
           transactions:
             type: array
             items:
-              $ref: '#/definitions/Transaction'
+              $ref: '#/definitions/BankingTransaction'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  Transaction:
+  BankingTransaction:
     type: object
     required:
       - accountId
@@ -1482,7 +1482,7 @@ definitions:
       apcaNumber:
         type: string
         description: 6 Digit APCA number for the initiating institution
-  ResponseBankingTransactionDetail:
+  ResponseBankingTransactionById:
     type: object
     required:
       - data
@@ -1497,14 +1497,14 @@ definitions:
           - transaction
         properties:
           transaction:
-            $ref: '#/definitions/TransactionDetail'
+            $ref: '#/definitions/BankingTransactionDetail'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  TransactionDetail:
+  BankingTransactionDetail:
     allOf:
-      - $ref: '#/definitions/Transaction'
+      - $ref: '#/definitions/BankingTransaction'
       - type: object
         required:
           - extendedData
@@ -1537,7 +1537,7 @@ definitions:
                 description: Identifier of the applicable NPP payment service
                 enum:
                   - X2P1.01
-  ResponseBankingAccountsBalances:
+  ResponseBankingAccountsBalanceList:
     type: object
     required:
       - data
@@ -1552,12 +1552,12 @@ definitions:
           balances:
             type: array
             items:
-              $ref: '#/definitions/Balance'
+              $ref: '#/definitions/BankingBalance'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  Balance:
+  BankingBalance:
     type: object
     required:
       - accountId
@@ -1579,24 +1579,24 @@ definitions:
           - lending
           - purses
       deposit:
-        $ref: '#/definitions/DepositBalance'
+        $ref: '#/definitions/BankingDepositBalance'
       lending:
-        $ref: '#/definitions/LendingBalance'
+        $ref: '#/definitions/BankingLendingBalance'
       purses:
         type: array
         items:
-          $ref: '#/definitions/CurrencyAmount'
-  DepositBalance:
+          $ref: '#/definitions/CommonCurrencyAmount'
+  BankingDepositBalance:
     type: object
     required:
       - currentBalance
       - availableBalance
     properties:
       currentBalance:
-        $ref: '#/definitions/CurrencyAmount'
+        $ref: '#/definitions/CommonCurrencyAmount'
       availableBalance:
-        $ref: '#/definitions/CurrencyAmount'
-  LendingBalance:
+        $ref: '#/definitions/CommonCurrencyAmount'
+  BankingLendingBalance:
     type: object
     required:
       - accountBalance
@@ -1604,27 +1604,14 @@ definitions:
       - creditLimit
     properties:
       accountBalance:
-        $ref: '#/definitions/CurrencyAmount'
+        $ref: '#/definitions/CommonCurrencyAmount'
       availableBalance:
-        $ref: '#/definitions/CurrencyAmount'
+        $ref: '#/definitions/CommonCurrencyAmount'
       creditLimit:
-        $ref: '#/definitions/CurrencyAmount'
+        $ref: '#/definitions/CommonCurrencyAmount'
       amortisedLimit:
-        $ref: '#/definitions/CurrencyAmount'
-  CurrencyAmount:
-    type: object
-    required:
-      - amount
-    properties:
-      amount:
-        type: string
-        description: The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking
-        format: AmountString
-      currency:
-        type: string
-        description: If not present assumes AUD
-        format: CurrencyString
-  ResponseBankingPayees:
+        $ref: '#/definitions/CommonCurrencyAmount'
+  ResponseBankingPayeeList:
     type: object
     required:
       - data
@@ -1640,12 +1627,12 @@ definitions:
             type: array
             description: The list of payees returned
             items:
-              $ref: '#/definitions/Payee'
+              $ref: '#/definitions/BankingPayee'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  ResponseBankingPayeeDetails:
+  ResponseBankingPayeeById:
     type: object
     required:
       - data
@@ -1653,12 +1640,12 @@ definitions:
       - meta
     properties:
       data:
-        $ref: '#/definitions/PayeeDetail'
+        $ref: '#/definitions/BankingPayeeDetail'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  Payee:
+  BankingPayee:
     type: object
     required:
       - payeeId
@@ -1686,9 +1673,9 @@ definitions:
         type: string
         description: The date the payee was created by the customer
         format: DateString
-  PayeeDetail:
+  BankingPayeeDetail:
     allOf:
-      - $ref: '#/definitions/Payee'
+      - $ref: '#/definitions/BankingPayee'
       - type: object
         required:
           - payeeUType
@@ -1705,12 +1692,12 @@ definitions:
               - biller
               - international
           domestic:
-            $ref: '#/definitions/DomesticPayee'
+            $ref: '#/definitions/BankingDomesticPayee'
           biller:
-            $ref: '#/definitions/BillerPayee'
+            $ref: '#/definitions/BankingBillerPayee'
           international:
-            $ref: '#/definitions/InternationalPayee'
-  DomesticPayee:
+            $ref: '#/definitions/BankingInternationalPayee'
+  BankingDomesticPayee:
     type: object
     required:
       - payeeAccountUType
@@ -1727,12 +1714,12 @@ definitions:
           - card
           - payId
       account:
-        $ref: '#/definitions/DomesticPayeeAccount'
+        $ref: '#/definitions/BankingDomesticPayeeAccount'
       card:
-        $ref: '#/definitions/DomesticPayeeCard'
+        $ref: '#/definitions/BankingDomesticPayeeCard'
       payId:
-        $ref: '#/definitions/DomesticPayeePayId'
-  DomesticPayeeAccount:
+        $ref: '#/definitions/BankingDomesticPayeePayId'
+  BankingDomesticPayeeAccount:
     type: object
     required:
       - accountName
@@ -1748,7 +1735,7 @@ definitions:
       accountNumber:
         type: string
         description: Number of the account to pay to
-  DomesticPayeeCard:
+  BankingDomesticPayeeCard:
     type: object
     required:
       - cardNumber
@@ -1757,7 +1744,7 @@ definitions:
         type: string
         description: Name of the account to pay to
         format: MaskedPANString
-  DomesticPayeePayId:
+  BankingDomesticPayeePayId:
     type: object
     required:
       - identifier
@@ -1777,7 +1764,7 @@ definitions:
           - MOBILE
           - ORG_NUMBER
           - ORG_NAME
-  BillerPayee:
+  BankingBillerPayee:
     type: object
     required:
       - billerCode
@@ -1794,7 +1781,7 @@ definitions:
       billerName:
         type: string
         description: Name of the Biller
-  InternationalPayee:
+  BankingInternationalPayee:
     type: object
     required:
       - beneficiaryDetails
@@ -1856,7 +1843,7 @@ definitions:
           legalEntityIdentifier:
             type: string
             description: 'The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)'
-  ResponseBankingDirectDebits:
+  ResponseBankingDirectDebitAuthorisationList:
     type: object
     required:
       - data
@@ -1872,12 +1859,12 @@ definitions:
             type: array
             description: The list of authorisations returned
             items:
-              $ref: '#/definitions/DirectDebits'
+              $ref: '#/definitions/BankingDirectDebit'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  DirectDebits:
+  BankingDirectDebit:
     type: object
     required:
       - accountId
@@ -1887,7 +1874,7 @@ definitions:
         description: A unique ID of the account adhering to the standards for ID permanence.
         format: ASCIIString
       authorisedEntity:
-        $ref: '#/definitions/AuthorisedEntity'
+        $ref: '#/definitions/BankingAuthorisedEntity'
       lastDebitDateTime:
         type: string
         description: The date and time of the last debit executed under this authorisation
@@ -1896,7 +1883,7 @@ definitions:
         type: string
         description: The amount of the last debit executed under this authorisation
         format: AmountString
-  AuthorisedEntity:
+  BankingAuthorisedEntity:
     type: object
     required:
       - name
@@ -1939,14 +1926,14 @@ definitions:
               - person
               - organisation
           person:
-            $ref: '#/definitions/Person'
+            $ref: '#/definitions/CommonPerson'
           organisation:
-            $ref: '#/definitions/Organisation'
+            $ref: '#/definitions/CommonOrganisation'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  ResponseCommonCustomerDetailed:
+  ResponseCommonCustomerDetail:
     type: object
     required:
       - data
@@ -1968,14 +1955,14 @@ definitions:
               - person
               - organisation
           person:
-            $ref: '#/definitions/PersonDetail'
+            $ref: '#/definitions/CommonPersonDetail'
           organisation:
-            $ref: '#/definitions/OrganisationDetail'
+            $ref: '#/definitions/CommonOrganisationDetail'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  Person:
+  CommonPerson:
     type: object
     required:
       - lastUpdateTime
@@ -2006,9 +1993,9 @@ definitions:
       occupationCode:
         type: string
         description: 'Value is a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.'
-  PersonDetail:
+  CommonPersonDetail:
     allOf:
-      - $ref: '#/definitions/Person'
+      - $ref: '#/definitions/CommonPerson'
       - type: object
         required:
           - phoneNumbers
@@ -2019,18 +2006,18 @@ definitions:
             type: array
             description: At least one record is required
             items:
-              $ref: '#/definitions/PhoneNumber'
+              $ref: '#/definitions/CommonPhoneNumber'
           emailAddresses:
             type: array
             description: May be empty
             items:
-              $ref: '#/definitions/EmailAddress'
+              $ref: '#/definitions/CommonEmailAddress'
           physicalAddresses:
             type: array
             description: 'Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail'
             items:
-              $ref: '#/definitions/PhysicalAddressWithPurpose'
-  Organisation:
+              $ref: '#/definitions/CommonPhysicalAddressWithPurpose'
+  CommonOrganisation:
     type: object
     required:
       - lastUpdateTime
@@ -2090,9 +2077,9 @@ definitions:
         type: string
         description: The date the organisation described was established
         format: DateString
-  OrganisationDetail:
+  CommonOrganisationDetail:
     allOf:
-      - $ref: '#/definitions/Organisation'
+      - $ref: '#/definitions/CommonOrganisation'
       - type: object
         required:
           - physicalAddresses
@@ -2101,8 +2088,8 @@ definitions:
             type: array
             description: 'Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail'
             items:
-              $ref: '#/definitions/PhysicalAddressWithPurpose'
-  PhoneNumber:
+              $ref: '#/definitions/CommonPhysicalAddressWithPurpose'
+  CommonPhoneNumber:
     type: object
     required:
       - purpose
@@ -2140,7 +2127,7 @@ definitions:
       fullNumber:
         type: string
         description: 'Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966'
-  EmailAddress:
+  CommonEmailAddress:
     type: object
     required:
       - isPreferred
@@ -2161,7 +2148,7 @@ definitions:
       address:
         type: string
         description: 'A correctly formatted email address, as defined by the addr_spec format in RFC_5322'
-  PhysicalAddressWithPurpose:
+  CommonPhysicalAddressWithPurpose:
     allOf:
       - type: object
         required:
@@ -2176,8 +2163,8 @@ definitions:
               - PHYSICAL
               - WORK
               - OTHER
-      - $ref: '#/definitions/PhysicalAddress'
-  PhysicalAddress:
+      - $ref: '#/definitions/CommonPhysicalAddress'
+  CommonPhysicalAddress:
     type: object
     required:
       - addressUType
@@ -2192,10 +2179,10 @@ definitions:
           - simple
           - paf
       simple:
-        $ref: '#/definitions/SimpleAddress'
+        $ref: '#/definitions/CommonSimpleAddress'
       paf:
-        $ref: '#/definitions/PAFAddress'
-  SimpleAddress:
+        $ref: '#/definitions/CommonPAFAddress'
+  CommonSimpleAddress:
     type: object
     required:
       - addressLine1
@@ -2228,7 +2215,7 @@ definitions:
       country:
         type: string
         description: A valid ISO 3166 Alpha-3 country code
-  PAFAddress:
+  CommonPAFAddress:
     type: object
     description: 'Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)'
     required:
@@ -2296,6 +2283,19 @@ definitions:
       state:
         type: string
         description: State in which the address belongs. Valid enumeration defined by Australia Post PAF code file
+  CommonCurrencyAmount:
+    type: object
+    required:
+      - amount
+    properties:
+      amount:
+        type: string
+        description: The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking
+        format: AmountString
+      currency:
+        type: string
+        description: If not present assumes AUD
+        format: CurrencyString
   Links:
     type: object
     properties:
@@ -2370,7 +2370,7 @@ definitions:
             meta:
               type: object
               description: Optional additional data for specific error types
-  EnumProductCategory:
+  BankingEnumProductCategory:
     type: string
     description: The list of available product categories for categorising products and accounts
     enum:
