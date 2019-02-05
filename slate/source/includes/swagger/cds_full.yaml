@@ -94,6 +94,8 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
+        - $ref: '#/parameters/ParamPage'
+        - $ref: '#/parameters/ParamPageSize'
       responses:
         '200':
           description: Success
@@ -278,6 +280,8 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
+        - $ref: '#/parameters/ParamPage'
+        - $ref: '#/parameters/ParamPageSize'
       responses:
         '200':
           description: Success

@@ -149,6 +149,12 @@
             "schema": {
               "$ref": "#/definitions/RequestAccountIds"
             }
+          },
+          {
+            "$ref": "#/parameters/ParamPage"
+          },
+          {
+            "$ref": "#/parameters/ParamPageSize"
           }
         ],
         "responses": {
@@ -465,6 +471,12 @@
             "schema": {
               "$ref": "#/definitions/RequestAccountIds"
             }
+          },
+          {
+            "$ref": "#/parameters/ParamPage"
+          },
+          {
+            "$ref": "#/parameters/ParamPageSize"
           }
         ],
         "responses": {
