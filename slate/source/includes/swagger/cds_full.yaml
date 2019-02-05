@@ -2291,6 +2291,8 @@ definitions:
         format: CurrencyString
   Links:
     type: object
+    required:
+      - self
     properties:
       self:
         type: string
@@ -2300,6 +2302,8 @@ definitions:
     type: object
   LinksPaginated:
     type: object
+    required:
+      - self
     x-conditional:
       - prev
       - next
@@ -2328,6 +2332,9 @@ definitions:
         format: URIString
   MetaPaginated:
     type: object
+    required:
+      - totalRecords
+      - totalPages
     properties:
       totalRecords:
         type: integer

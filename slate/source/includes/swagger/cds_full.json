@@ -3225,6 +3225,9 @@
     },
     "Links": {
       "type": "object",
+      "required": [
+        "self"
+      ],
       "properties": {
         "self": {
           "type": "string",
@@ -3238,6 +3241,9 @@
     },
     "LinksPaginated": {
       "type": "object",
+      "required": [
+        "self"
+      ],
       "x-conditional": [
         "prev",
         "next",
@@ -3274,6 +3280,10 @@
     },
     "MetaPaginated": {
       "type": "object",
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ],
       "properties": {
         "totalRecords": {
           "type": "integer",
