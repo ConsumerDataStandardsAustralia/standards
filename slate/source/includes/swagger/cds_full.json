@@ -2089,17 +2089,7 @@
       ],
       "properties": {
         "data": {
-          "type": "object",
-          "required": [
-            "accountId",
-            "displayName",
-            "transaction"
-          ],
-          "properties": {
-            "transaction": {
-              "$ref": "#/definitions/BankingTransactionDetail"
-            }
-          }
+          "$ref": "#/definitions/BankingTransactionDetail"
         },
         "links": {
           "$ref": "#/definitions/Links"
