@@ -94,6 +94,8 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
+        - $ref: '#/parameters/ParamPage'
+        - $ref: '#/parameters/ParamPageSize'
       responses:
         '200':
           description: Success
@@ -102,7 +104,7 @@ paths:
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
-            $ref: '#/definitions/ErrorList'
+            $ref: '#/definitions/ResponseErrorList'
       x-version: '1'
   '/banking/accounts/{accountId}/transactions':
     get:
@@ -217,7 +219,7 @@ paths:
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
-            $ref: '#/definitions/ErrorList'
+            $ref: '#/definitions/ResponseErrorList'
       x-version: '1'
   '/banking/accounts/{accountId}/direct-debits':
     get:
@@ -278,6 +280,8 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
+        - $ref: '#/parameters/ParamPage'
+        - $ref: '#/parameters/ParamPageSize'
       responses:
         '200':
           description: Success
@@ -286,7 +290,7 @@ paths:
         '422':
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
-            $ref: '#/definitions/ErrorList'
+            $ref: '#/definitions/ResponseErrorList'
       x-version: '1'
   /banking/payees:
     get:
@@ -1490,14 +1494,7 @@ definitions:
       - meta
     properties:
       data:
-        type: object
-        required:
-          - accountId
-          - displayName
-          - transaction
-        properties:
-          transaction:
-            $ref: '#/definitions/BankingTransactionDetail'
+        $ref: '#/definitions/BankingTransactionDetail'
       links:
         $ref: '#/definitions/Links'
       meta:
@@ -2298,6 +2295,8 @@ definitions:
         format: CurrencyString
   Links:
     type: object
+    required:
+      - self
     properties:
       self:
         type: string
@@ -2307,6 +2306,8 @@ definitions:
     type: object
   LinksPaginated:
     type: object
+    required:
+      - self
     x-conditional:
       - prev
       - next
@@ -2335,6 +2336,9 @@ definitions:
         format: URIString
   MetaPaginated:
     type: object
+    required:
+      - totalRecords
+      - totalPages
     properties:
       totalRecords:
         type: integer
@@ -2344,7 +2348,7 @@ definitions:
         type: integer
         description: The total number of pages in the full set
         format: NaturalNumber
-  ErrorList:
+  ResponseErrorList:
     type: object
     required:
       - errors

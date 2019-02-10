@@ -149,6 +149,12 @@
             "schema": {
               "$ref": "#/definitions/RequestAccountIds"
             }
+          },
+          {
+            "$ref": "#/parameters/ParamPage"
+          },
+          {
+            "$ref": "#/parameters/ParamPageSize"
           }
         ],
         "responses": {
@@ -161,7 +167,7 @@
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ErrorList"
+              "$ref": "#/definitions/ResponseErrorList"
             }
           }
         },
@@ -366,7 +372,7 @@
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ErrorList"
+              "$ref": "#/definitions/ResponseErrorList"
             }
           }
         },
@@ -465,6 +471,12 @@
             "schema": {
               "$ref": "#/definitions/RequestAccountIds"
             }
+          },
+          {
+            "$ref": "#/parameters/ParamPage"
+          },
+          {
+            "$ref": "#/parameters/ParamPageSize"
           }
         ],
         "responses": {
@@ -477,7 +489,7 @@
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ErrorList"
+              "$ref": "#/definitions/ResponseErrorList"
             }
           }
         },
@@ -2089,17 +2101,7 @@
       ],
       "properties": {
         "data": {
-          "type": "object",
-          "required": [
-            "accountId",
-            "displayName",
-            "transaction"
-          ],
-          "properties": {
-            "transaction": {
-              "$ref": "#/definitions/BankingTransactionDetail"
-            }
-          }
+          "$ref": "#/definitions/BankingTransactionDetail"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -3235,6 +3237,9 @@
     },
     "Links": {
       "type": "object",
+      "required": [
+        "self"
+      ],
       "properties": {
         "self": {
           "type": "string",
@@ -3248,6 +3253,9 @@
     },
     "LinksPaginated": {
       "type": "object",
+      "required": [
+        "self"
+      ],
       "x-conditional": [
         "prev",
         "next",
@@ -3284,6 +3292,10 @@
     },
     "MetaPaginated": {
       "type": "object",
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ],
       "properties": {
         "totalRecords": {
           "type": "integer",
@@ -3297,7 +3309,7 @@
         }
       }
     },
-    "ErrorList": {
+    "ResponseErrorList": {
       "type": "object",
       "required": [
         "errors"
