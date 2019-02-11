@@ -3,6 +3,7 @@ FROM nginx
 ENV RUBY_MAJOR 2.6
 ENV RUBY_VERSION 2.6.1
 ENV RUBY_DOWNLOAD_SHA256 47b629808e9fd44ce1f760cdf3ed14875fc9b19d4f334e82e2cf25cb2898f2f2
+ENV BUILDDEPS bison dpkg-dev libgdbm-dev wget ruby autoconf automake bzip2 dpkg-dev file g++ gcc imagemagick libbz2-dev libc6-dev libcurl4-openssl-dev libdb-dev libevent-dev libffi-dev libgdbm-dev libgeoip-dev libglib2.0-dev libjpeg-dev libkrb5-dev liblzma-dev libmagickcore-dev libmagickwand-dev libncurses5-dev libncursesw5-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libtool libwebp-dev libxml2-dev libxslt-dev libyaml-dev make patch unzip xz-utils zlib1g-dev
 
 
 #########
@@ -18,54 +19,8 @@ RUN mkdir -p /usr/local/etc \
 
 RUN set -ex \
 	\
-	&& buildDeps=' \
-		bison \
-		dpkg-dev \
-		libgdbm-dev \
-                wget \
-		ruby \
-                autoconf \
-                automake \
-                bzip2 \
-                dpkg-dev \
-                file \
-                g++ \
-                gcc \
-                imagemagick \
-                libbz2-dev \
-                libc6-dev \
-                libcurl4-openssl-dev \
-                libdb-dev \
-                libevent-dev \
-                libffi-dev \
-                libgdbm-dev \
-                libgeoip-dev \
-                libglib2.0-dev \
-                libjpeg-dev \
-                libkrb5-dev \
-                liblzma-dev \
-                libmagickcore-dev \
-                libmagickwand-dev \
-                libncurses5-dev \
-                libncursesw5-dev \
-                libpng-dev \
-                libpq-dev \
-                libreadline-dev \
-                libsqlite3-dev \
-                libssl-dev \
-                libtool \
-                libwebp-dev \
-                libxml2-dev \
-                libxslt-dev \
-                libyaml-dev \
-                make \
-                patch \
-                unzip \
-                xz-utils \
-                zlib1g-dev \
-	' \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends $buildDeps \
+	&& apt-get install -y --no-install-recommends $BUILDDEPS \
 	&& rm -rf /var/lib/apt/lists/* \
 	\
 	&& wget -O ruby.tar.xz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" \
@@ -125,7 +80,8 @@ RUN bundle install
 RUN bundle exec middleman build --clean
 
 # Strip out things ruby build pulled in
-RUN apt-get purge -y --auto-remove $buildDeps \
+RUN set -ex \ 
+    && apt-get purge -y --auto-remove $BUILDDEPS \
         && cd / \
         && rm -r /usr/src/ruby
 
