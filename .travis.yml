@@ -3,7 +3,7 @@ language: ruby
 
 env:
   global:
-    - IMAGE_NAME=consumerdatastandardsaustralia/standards
+    - IMAGE_NAME=cdsa/standards
 
 services:
   - docker
