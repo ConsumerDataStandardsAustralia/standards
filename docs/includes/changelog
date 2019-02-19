@@ -9,6 +9,16 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>19/2/2019</td>
+<td>Fees and Discounts</td>
+<td>Updated product and account fees, discounts and elibilities based on community feedback</td>
+</tr>
+<tr>
+<td>19/2/2019</td>
+<td>Doc Sync</td>
+<td>Synchronised the API documentation with the swagger files</td>
+</tr>
+<tr>
 <td>11/2/2019</td>
 <td>Consistency Fixes</td>
 <td>Fixes to end points for consistency across the standard.  Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul></td>

@@ -4,6 +4,8 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Description|Detail Of change|
 |-----------|-----------|----------------|
+|19/2/2019|Fees and Discounts|Updated product and account fees, discounts and elibilities based on community feedback|
+|19/2/2019|Doc Sync|Synchronised the API documentation with the swagger files|
 |11/2/2019|Consistency Fixes|Fixes to end points for consistency across the standard.  Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul>|
 |4/2/2019|Object Model Names|Updated the swagger json and yaml files to make the object model names consistent|
 |21/12/2018|Transaction payloads|Removed incorrect inclusion of accountId, displayName and nickname for transaction response payloads|

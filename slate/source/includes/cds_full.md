@@ -226,6 +226,8 @@ Obtain detailed information on a single account
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
         "currency": "string",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -235,7 +237,20 @@ Obtain detailed information on a single account
             "description": "string",
             "discountType": "BALANCE",
             "amount": "string",
-            "additionalValue": "string"
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "additionalValue": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "PENSION_RECIPIENT",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ]
       }
@@ -1832,6 +1847,8 @@ Obtain detailed information on a single product offered openly to the market
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
         "currency": "string",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -1841,7 +1858,20 @@ Obtain detailed information on a single product offered openly to the market
             "description": "string",
             "discountType": "BALANCE",
             "amount": "string",
-            "additionalValue": "string"
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "additionalValue": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "PENSION_RECIPIENT",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ]
       }
@@ -2348,6 +2378,8 @@ To perform this operation, you must be authenticated and authorised with the fol
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
         "currency": "string",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -2357,7 +2389,20 @@ To perform this operation, you must be authenticated and authorised with the fol
             "description": "string",
             "discountType": "BALANCE",
             "amount": "string",
-            "additionalValue": "string"
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "additionalValue": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "PENSION_RECIPIENT",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ]
       }
@@ -2458,6 +2503,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       "amount": "string",
       "balanceRate": "string",
       "transactionRate": "string",
+      "accruedRate": "string",
+      "accrualFrequency": "string",
       "currency": "string",
       "additionalValue": "string",
       "additionalInfo": "string",
@@ -2467,7 +2514,20 @@ To perform this operation, you must be authenticated and authorised with the fol
           "description": "string",
           "discountType": "BALANCE",
           "amount": "string",
-          "additionalValue": "string"
+          "balanceRate": "string",
+          "transactionRate": "string",
+          "accruedRate": "string",
+          "additionalValue": "string",
+          "eligibility": [
+            {
+              "discountEligibilityType": "PENSION_RECIPIENT",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
         }
       ]
     }
@@ -2661,6 +2721,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "balanceRate": "string",
   "transactionRate": "string",
+  "accruedRate": "string",
+  "accrualFrequency": "string",
   "currency": "string",
   "additionalValue": "string",
   "additionalInfo": "string",
@@ -2670,7 +2732,20 @@ To perform this operation, you must be authenticated and authorised with the fol
       "description": "string",
       "discountType": "BALANCE",
       "amount": "string",
-      "additionalValue": "string"
+      "balanceRate": "string",
+      "transactionRate": "string",
+      "accruedRate": "string",
+      "additionalValue": "string",
+      "eligibility": [
+        {
+          "discountEligibilityType": "PENSION_RECIPIENT",
+          "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
     }
   ]
 }
@@ -2683,9 +2758,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
@@ -2697,18 +2774,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Property|Value|
 |---|---|
 |feeType|PERIODIC|
-|feeType|TRANSACTION|
-|feeType|ESTABLISHMENT|
+|feeType|WITHDRAWAL|
+|feeType|DEPOSIT|
+|feeType|PAYMENT|
+|feeType|PURCHASE|
+|feeType|EVENT|
+|feeType|UPFRONT|
 |feeType|EXIT|
-|feeType|OVERDRAW|
-|feeType|MIN_BALANCE|
-|feeType|REDRAW|
-|feeType|CHEQUE_CASH|
-|feeType|CHEQUE_STOP|
-|feeType|CHEQUE_BOOK|
-|feeType|CARD_REPLACE|
-|feeType|PAPER_STATEMENT|
-|feeType|OTHER_EVENT|
 
 <h2 id="tocSbankingproductdiscount">BankingProductDiscount</h2>
 
@@ -2719,7 +2791,20 @@ To perform this operation, you must be authenticated and authorised with the fol
   "description": "string",
   "discountType": "BALANCE",
   "amount": "string",
-  "additionalValue": "string"
+  "balanceRate": "string",
+  "transactionRate": "string",
+  "accruedRate": "string",
+  "additionalValue": "string",
+  "eligibility": [
+    {
+      "discountEligibilityType": "PENSION_RECIPIENT",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
 }
 
 ```
@@ -2730,8 +2815,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|mandatory|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself|
+|amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
+|eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|none|
+|additionalInfo|string|optional|none|Display text providing more information on the discount|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
 
 #### Enumerated Values
 
@@ -2740,7 +2831,44 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountType|BALANCE|
 |discountType|DEPOSITS|
 |discountType|PAYMENTS|
-|discountType|BUNDLE|
+|discountType|FEE_CAP|
+|discountType|ELIGIBILITY_ONLY|
+
+<h2 id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h2>
+
+<a id="schemabankingproductdiscounteligibility"></a>
+
+```json
+{
+  "discountEligibilityType": "PENSION_RECIPIENT",
+  "additionalValue": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType|
+|additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility constraint|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|discountEligibilityType|PENSION_RECIPIENT|
+|discountEligibilityType|MIN_AGE|
+|discountEligibilityType|MAX_AGE|
+|discountEligibilityType|STAFF|
+|discountEligibilityType|STUDENT|
+|discountEligibilityType|EMPLOYMENT_STATUS|
+|discountEligibilityType|RESIDENCY_STATUS|
+|discountEligibilityType|OTHER|
 
 <h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
 
@@ -2963,6 +3091,8 @@ To perform this operation, you must be authenticated and authorised with the fol
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
         "currency": "string",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -2972,7 +3102,20 @@ To perform this operation, you must be authenticated and authorised with the fol
             "description": "string",
             "discountType": "BALANCE",
             "amount": "string",
-            "additionalValue": "string"
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "additionalValue": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "PENSION_RECIPIENT",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ]
       }
@@ -3110,6 +3253,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       "amount": "string",
       "balanceRate": "string",
       "transactionRate": "string",
+      "accruedRate": "string",
+      "accrualFrequency": "string",
       "currency": "string",
       "additionalValue": "string",
       "additionalInfo": "string",
@@ -3119,7 +3264,20 @@ To perform this operation, you must be authenticated and authorised with the fol
           "description": "string",
           "discountType": "BALANCE",
           "amount": "string",
-          "additionalValue": "string"
+          "balanceRate": "string",
+          "transactionRate": "string",
+          "accruedRate": "string",
+          "additionalValue": "string",
+          "eligibility": [
+            {
+              "discountEligibilityType": "PENSION_RECIPIENT",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
         }
       ]
     }
@@ -3314,7 +3472,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |minRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
 |offsetAccountEnabled|boolean|optional|none|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
-|repaymentFrequency|string|optional|none|The expected or required repayment frequency. Formatted according to ISO 8601 Durations|
+|repaymentFrequency|string|optional|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |repaymentType|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
 
 #### Enumerated Values
@@ -3378,6 +3536,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "balanceRate": "string",
   "transactionRate": "string",
+  "accruedRate": "string",
+  "accrualFrequency": "string",
   "currency": "string",
   "additionalValue": "string",
   "additionalInfo": "string",
@@ -3387,7 +3547,20 @@ To perform this operation, you must be authenticated and authorised with the fol
       "description": "string",
       "discountType": "BALANCE",
       "amount": "string",
-      "additionalValue": "string"
+      "balanceRate": "string",
+      "transactionRate": "string",
+      "accruedRate": "string",
+      "additionalValue": "string",
+      "eligibility": [
+        {
+          "discountEligibilityType": "PENSION_RECIPIENT",
+          "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
     }
   ]
 }
@@ -3400,9 +3573,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
@@ -3414,17 +3589,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Property|Value|
 |---|---|
 |feeType|PERIODIC|
-|feeType|TRANSACTION|
+|feeType|WITHDRAWAL|
+|feeType|DEPOSIT|
+|feeType|PAYMENT|
+|feeType|PURCHASE|
+|feeType|EVENT|
+|feeType|UPFRONT|
 |feeType|EXIT|
-|feeType|OVERDRAW|
-|feeType|MIN_BALANCE|
-|feeType|REDRAW|
-|feeType|CHEQUE_CASH|
-|feeType|CHEQUE_STOP|
-|feeType|CHEQUE_BOOK|
-|feeType|CARD_REPLACE|
-|feeType|PAPER_STATEMENT|
-|feeType|OTHER_EVENT|
 
 <h2 id="tocSbankingaccountdiscount">BankingAccountDiscount</h2>
 
@@ -3435,7 +3606,20 @@ To perform this operation, you must be authenticated and authorised with the fol
   "description": "string",
   "discountType": "BALANCE",
   "amount": "string",
-  "additionalValue": "string"
+  "balanceRate": "string",
+  "transactionRate": "string",
+  "accruedRate": "string",
+  "additionalValue": "string",
+  "eligibility": [
+    {
+      "discountEligibilityType": "PENSION_RECIPIENT",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
 }
 
 ```
@@ -3446,8 +3630,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|mandatory|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself|
+|amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
+|eligibility|[[BankingAccountDiscountEligibility](#schemabankingaccountdiscounteligibility)]|optional|none|none|
+|additionalInfo|string|optional|none|Display text providing more information on the discount|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
 
 #### Enumerated Values
 
@@ -3456,7 +3646,44 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountType|BALANCE|
 |discountType|DEPOSITS|
 |discountType|PAYMENTS|
-|discountType|BUNDLE|
+|discountType|FEE_CAP|
+|discountType|ELIGIBILITY_ONLY|
+
+<h2 id="tocSbankingaccountdiscounteligibility">BankingAccountDiscountEligibility</h2>
+
+<a id="schemabankingaccountdiscounteligibility"></a>
+
+```json
+{
+  "discountEligibilityType": "PENSION_RECIPIENT",
+  "additionalValue": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType|
+|additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility constraint|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|discountEligibilityType|PENSION_RECIPIENT|
+|discountEligibilityType|MIN_AGE|
+|discountEligibilityType|MAX_AGE|
+|discountEligibilityType|STAFF|
+|discountEligibilityType|STUDENT|
+|discountEligibilityType|EMPLOYMENT_STATUS|
+|discountEligibilityType|RESIDENCY_STATUS|
+|discountEligibilityType|OTHER|
 
 <h2 id="tocSbankingaccountdepositrate">BankingAccountDepositRate</h2>
 

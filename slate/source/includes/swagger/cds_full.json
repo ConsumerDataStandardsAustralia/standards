@@ -1207,7 +1207,8 @@
         "additionalValue",
         "amount",
         "balanceRate",
-        "transactionRate"
+        "transactionRate",
+        "accruedRate"
       ],
       "properties": {
         "name": {
@@ -1219,34 +1220,39 @@
           "description": "The type of fee",
           "enum": [
             "PERIODIC",
-            "TRANSACTION",
-            "ESTABLISHMENT",
-            "EXIT",
-            "OVERDRAW",
-            "MIN_BALANCE",
-            "REDRAW",
-            "CHEQUE_CASH",
-            "CHEQUE_STOP",
-            "CHEQUE_BOOK",
-            "CARD_REPLACE",
-            "PAPER_STATEMENT",
-            "OTHER_EVENT"
+            "WITHDRAWAL",
+            "DEPOSIT",
+            "PAYMENT",
+            "PURCHASE",
+            "EVENT",
+            "UPFRONT",
+            "EXIT"
           ]
         },
         "amount": {
           "type": "string",
-          "description": "The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "description": "The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "AmountString"
         },
         "balanceRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "RateString"
         },
         "transactionRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "RateString"
+        },
+        "accruedRate": {
+          "type": "string",
+          "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "format": "RateString"
+        },
+        "accrualFrequency": {
+          "type": "string",
+          "description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+          "format": "CurrencyString"
         },
         "currency": {
           "type": "string",
@@ -1278,10 +1284,13 @@
       "type": "object",
       "required": [
         "description",
-        "discountType",
-        "amount"
+        "discountType"
       ],
       "x-conditional": [
+        "amount",
+        "balanceRate",
+        "transactionRate",
+        "accruedRate",
         "additionalValue"
       ],
       "properties": {
@@ -1296,17 +1305,86 @@
             "BALANCE",
             "DEPOSITS",
             "PAYMENTS",
-            "BUNDLE"
+            "FEE_CAP",
+            "ELIGIBILITY_ONLY"
           ]
         },
         "amount": {
           "type": "string",
-          "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself",
+          "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "AmountString"
+        },
+        "balanceRate": {
+          "type": "string",
+          "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "format": "RateString"
+        },
+        "transactionRate": {
+          "type": "string",
+          "description": "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "format": "RateString"
+        },
+        "accruedRate": {
+          "type": "string",
+          "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "format": "RateString"
         },
         "additionalValue": {
           "type": "string",
           "description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType"
+        },
+        "eligibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingProductDiscountEligibility"
+          }
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the discount"
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this discount",
+          "format": "URIString"
+        }
+      }
+    },
+    "BankingProductDiscountEligibility": {
+      "type": "object",
+      "required": [
+        "discountEligibilityType"
+      ],
+      "x-conditional": [
+        "additionalValue"
+      ],
+      "properties": {
+        "discountEligibilityType": {
+          "type": "string",
+          "description": "The type of the specific eligibility constraint for a discount",
+          "enum": [
+            "PENSION_RECIPIENT",
+            "MIN_AGE",
+            "MAX_AGE",
+            "STAFF",
+            "STUDENT",
+            "EMPLOYMENT_STATUS",
+            "RESIDENCY_STATUS",
+            "OTHER"
+          ]
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType"
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on this eligibility constraint"
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this eligibility constraint",
+          "format": "URIString"
         }
       }
     },
@@ -1719,7 +1797,7 @@
         },
         "repaymentFrequency": {
           "type": "string",
-          "description": "The expected or required repayment frequency. Formatted according to ISO 8601 Durations"
+          "description": "The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
         },
         "repaymentType": {
           "type": "string",
@@ -1781,7 +1859,8 @@
         "additionalValue",
         "amount",
         "balanceRate",
-        "transactionRate"
+        "transactionRate",
+        "accruedRate"
       ],
       "properties": {
         "name": {
@@ -1793,33 +1872,39 @@
           "description": "The type of fee",
           "enum": [
             "PERIODIC",
-            "TRANSACTION",
-            "EXIT",
-            "OVERDRAW",
-            "MIN_BALANCE",
-            "REDRAW",
-            "CHEQUE_CASH",
-            "CHEQUE_STOP",
-            "CHEQUE_BOOK",
-            "CARD_REPLACE",
-            "PAPER_STATEMENT",
-            "OTHER_EVENT"
+            "WITHDRAWAL",
+            "DEPOSIT",
+            "PAYMENT",
+            "PURCHASE",
+            "EVENT",
+            "UPFRONT",
+            "EXIT"
           ]
         },
         "amount": {
           "type": "string",
-          "description": "The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "description": "The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "AmountString"
         },
         "balanceRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "RateString"
         },
         "transactionRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "RateString"
+        },
+        "accruedRate": {
+          "type": "string",
+          "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "format": "RateString"
+        },
+        "accrualFrequency": {
+          "type": "string",
+          "description": "The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+          "format": "CurrencyString"
         },
         "currency": {
           "type": "string",
@@ -1851,10 +1936,13 @@
       "type": "object",
       "required": [
         "description",
-        "discountType",
-        "amount"
+        "discountType"
       ],
       "x-conditional": [
+        "amount",
+        "balanceRate",
+        "transactionRate",
+        "accruedRate",
         "additionalValue"
       ],
       "properties": {
@@ -1869,17 +1957,86 @@
             "BALANCE",
             "DEPOSITS",
             "PAYMENTS",
-            "BUNDLE"
+            "FEE_CAP",
+            "ELIGIBILITY_ONLY"
           ]
         },
         "amount": {
           "type": "string",
-          "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself",
+          "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
           "format": "AmountString"
+        },
+        "balanceRate": {
+          "type": "string",
+          "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "format": "RateString"
+        },
+        "transactionRate": {
+          "type": "string",
+          "description": "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "format": "RateString"
+        },
+        "accruedRate": {
+          "type": "string",
+          "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "format": "RateString"
         },
         "additionalValue": {
           "type": "string",
           "description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType"
+        },
+        "eligibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingAccountDiscountEligibility"
+          }
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the discount"
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this discount",
+          "format": "URIString"
+        }
+      }
+    },
+    "BankingAccountDiscountEligibility": {
+      "type": "object",
+      "required": [
+        "discountEligibilityType"
+      ],
+      "x-conditional": [
+        "additionalValue"
+      ],
+      "properties": {
+        "discountEligibilityType": {
+          "type": "string",
+          "description": "The type of the specific eligibility constraint for a discount",
+          "enum": [
+            "PENSION_RECIPIENT",
+            "MIN_AGE",
+            "MAX_AGE",
+            "STAFF",
+            "STUDENT",
+            "EMPLOYMENT_STATUS",
+            "RESIDENCY_STATUS",
+            "OTHER"
+          ]
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType"
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on this eligibility constraint"
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this eligibility constraint",
+          "format": "URIString"
         }
       }
     },
