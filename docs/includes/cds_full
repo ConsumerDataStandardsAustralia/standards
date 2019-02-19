@@ -1,4 +1,5 @@
-<h1 id='banking-apis'>Banking APIs</h1><h2 id='get-accounts'>Get Accounts</h2>
+<h1 id="consumer-data-standards-banking-apis">Banking APIs</h1>
+<h2 id='get-accounts'>Get Accounts</h2>
 <p><a id="opIdlistAccounts"></a></p>
 
 <blockquote>
@@ -43,35 +44,35 @@
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer</td>
 </tr>
 <tr>
 <td>product-category</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -227,13 +228,13 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingaccounts">ResponseBankingAccounts</a></td>
+<td><a href="#schemaresponsebankingaccountlist">ResponseBankingAccountList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 <h2 id='get-account-detail'>Get Account Detail</h2>
 <p><a id="opIdgetAccountDetail"></a></p>
@@ -280,7 +281,7 @@ openId ( Scopes: bank_basic_accounts )
 <td>accountId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>A tokenised identifier for the account which is unique but not shareable</td>
 </tr>
 </tbody></table>
@@ -437,13 +438,13 @@ openId ( Scopes: bank_basic_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingaccount">ResponseBankingAccount</a></td>
+<td><a href="#schemaresponsebankingaccountbyid">ResponseBankingAccountById</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 <h2 id='get-bulk-balances'>Get Bulk Balances</h2>
 <p><a id="opIdlistBalancesBulk"></a></p>
@@ -490,35 +491,35 @@ openId ( Scopes: bank_detailed_accounts )
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer</td>
 </tr>
 <tr>
 <td>product-category</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -702,13 +703,13 @@ openId ( Scopes: bank_detailed_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>resource listing the financial balances for the account</td>
-<td><a href="#schemaresponsebankingaccountsbalances">ResponseBankingAccountsBalances</a></td>
+<td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 <h2 id='get-balances-for-specific-accounts'>Get Balances For Specific Accounts</h2>
 <p><a id="opIdlistBalancesSpecificAccounts"></a></p>
@@ -766,10 +767,24 @@ openId ( Scopes: bank_basic_accounts )
 </tr>
 </thead><tbody>
 <tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>optional</td>
+<td>Page of results to request (standard pagination)</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td>integer</td>
+<td>optional</td>
+<td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemarequestaccountids">RequestAccountIds</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>The list of account IDs to obtain information for</td>
 </tr>
 </tbody></table>
@@ -849,19 +864,19 @@ openId ( Scopes: bank_basic_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingaccountsbalances">ResponseBankingAccountsBalances</a></td>
+<td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
-<td><a href="#schemaerrorlist">ErrorList</a></td>
+<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 <h2 id='get-transactions-for-account'>Get Transactions For Account</h2>
 <p><a id="opIdgetTransactions"></a></p>
@@ -891,19 +906,15 @@ openId ( Scopes: bank_basic_accounts )
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/transactions</code></p>
 
-<p>Obtain transactions for a specific account</p>
-
-<p>Some general notes that apply to all end points that retrieve transactions:</p>
+<p>Obtain transactions for a specific account
+Some general notes that apply to all end points that retrieve transactions:</p>
 
 <ul>
 <li>Where multiple transactions are returned transactions should be ordered according to effective date in descending order</li>
 <li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
-
-<ul>
-<li>Posted date/time if available, then</li>
-<li>Execution date/time if available, then</li>
-<li>A reasonable date/time nominated by the data provider using internal data structures</li>
-</ul></li>
+    - Posted date/time if available, then
+    - Execution date/time if available, then
+    - A reasonable date/time nominated by the data provider using internal data structures</li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
 </ul>
 
@@ -922,56 +933,56 @@ openId ( Scopes: bank_basic_accounts )
 <td>accountId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
 <tr>
 <td>start-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>end-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
 <tr>
 <td>text</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -1033,13 +1044,13 @@ openId ( Scopes: bank_basic_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingtransactions">ResponseBankingTransactions</a></td>
+<td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 <h2 id='get-transaction-detail'>Get Transaction Detail</h2>
 <p><a id="opIdgetTransactionDetail"></a></p>
@@ -1086,14 +1097,14 @@ openId ( Scopes: bank_transactions )
 <td>accountId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>The account id token that is used to uniquely represent the account</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>The unique identifier for the specific transaction for which details are being requested</td>
 </tr>
 </tbody></table>
@@ -1105,32 +1116,30 @@ openId ( Scopes: bank_transactions )
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isDetailAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postingDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"merchantCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isDetailAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postingDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchantCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1153,13 +1162,13 @@ openId ( Scopes: bank_transactions )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingtransactiondetail">ResponseBankingTransactionDetail</a></td>
+<td><a href="#schemaresponsebankingtransactionbyid">ResponseBankingTransactionById</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 <h2 id='get-transactions-for-multiple-accounts'>Get Transactions For Multiple Accounts</h2>
 <p><a id="opIdlistTransactionsBulk"></a></p>
@@ -1206,70 +1215,70 @@ openId ( Scopes: bank_transactions )
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
 </tr>
 <tr>
 <td>is-owned</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer</td>
 </tr>
 <tr>
 <td>product-category</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>start-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>end-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
 <tr>
 <td>text</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -1435,13 +1444,13 @@ openId ( Scopes: bank_transactions )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingtransactions">ResponseBankingTransactions</a></td>
+<td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 <h2 id='get-transactions-for-specific-accounts'>Get Transactions For Specific Accounts</h2>
 <p><a id="opIdlistTransactionsSpecificAccounts"></a></p>
@@ -1502,56 +1511,56 @@ openId ( Scopes: bank_transactions )
 <td>start-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>end-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
 <tr>
 <td>text</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemarequestaccountids">RequestAccountIds</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>The list of account IDs to obtain information for</td>
 </tr>
 </tbody></table>
@@ -1613,19 +1622,19 @@ openId ( Scopes: bank_transactions )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingtransactions">ResponseBankingTransactions</a></td>
+<td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
-<td><a href="#schemaerrorlist">ErrorList</a></td>
+<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_transactions )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 <h2 id='get-direct-debits-for-account'>Get Direct Debits For Account</h2>
 <p><a id="opIdlistDirectDebits"></a></p>
@@ -1672,21 +1681,21 @@ openId ( Scopes: bank_transactions )
 <td>accountId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -1740,13 +1749,13 @@ openId ( Scopes: bank_transactions )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingdirectdebits">ResponseBankingDirectDebits</a></td>
+<td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 <h2 id='get-bulk-direct-debits'>Get Bulk Direct Debits</h2>
 <p><a id="opIdlistDirectDebitsBulk"></a></p>
@@ -1793,28 +1802,28 @@ openId ( Scopes: bank_detailed_accounts )
 <td>is-owned</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer</td>
 </tr>
 <tr>
 <td>product-category</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -1960,13 +1969,13 @@ openId ( Scopes: bank_detailed_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingdirectdebits">ResponseBankingDirectDebits</a></td>
+<td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 <h2 id='get-direct-debits-for-specific-accounts'>Get Direct Debits For Specific Accounts</h2>
 <p><a id="opIdlistDirectDebitsSpecificAccounts"></a></p>
@@ -2024,10 +2033,24 @@ openId ( Scopes: bank_detailed_accounts )
 </tr>
 </thead><tbody>
 <tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>optional</td>
+<td>Page of results to request (standard pagination)</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td>integer</td>
+<td>optional</td>
+<td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemarequestaccountids">RequestAccountIds</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>The list of account IDs to obtain information for</td>
 </tr>
 </tbody></table>
@@ -2081,19 +2104,19 @@ openId ( Scopes: bank_detailed_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingdirectdebits">ResponseBankingDirectDebits</a></td>
+<td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
-<td><a href="#schemaerrorlist">ErrorList</a></td>
+<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 <h2 id='get-payees'>Get Payees</h2>
 <p><a id="opIdlistPayees"></a></p>
@@ -2140,21 +2163,21 @@ openId ( Scopes: bank_detailed_accounts )
 <td>type</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -2227,13 +2250,13 @@ openId ( Scopes: bank_detailed_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingpayees">ResponseBankingPayees</a></td>
+<td><a href="#schemaresponsebankingpayeelist">ResponseBankingPayeeList</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_basic_accounts )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 <h2 id='get-payee-detail'>Get Payee Detail</h2>
 <p><a id="opIdgetPayeeDetail"></a></p>
@@ -2280,7 +2303,7 @@ openId ( Scopes: bank_basic_accounts )
 <td>payeeId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>The ID used to locate the details of a particular payee</td>
 </tr>
 </tbody></table>
@@ -2361,13 +2384,13 @@ openId ( Scopes: bank_basic_accounts )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingpayeedetails">ResponseBankingPayeeDetails</a></td>
+<td><a href="#schemaresponsebankingpayeebyid">ResponseBankingPayeeById</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_payees )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_payees</a>
 </aside>
 <h2 id='get-products'>Get Products</h2>
 <p><a id="opIdlistProducts"></a></p>
@@ -2442,42 +2465,42 @@ openId ( Scopes: bank_payees )
 <td>effective</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to &#39;CURRENT&#39;</td>
 </tr>
 <tr>
 <td>updated-since</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>Only include products that have been updated after the specified date and time. If absent defaults to include all products</td>
 </tr>
 <tr>
 <td>brand</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Filter results based on a specific brand</td>
 </tr>
 <tr>
 <td>product-category</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 </tbody></table>
@@ -2631,7 +2654,7 @@ openId ( Scopes: bank_payees )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingproducts">ResponseBankingProducts</a></td>
+<td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
 </tr>
 </tbody></table>
 
@@ -2683,7 +2706,7 @@ This operation does not require authentication
 <td>productId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>ID of the specific product requested</td>
 </tr>
 </tbody></table>
@@ -2803,14 +2826,16 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingproduct">ResponseBankingProduct</a></td>
+<td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
 </tr>
 </tbody></table>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h1 id='common-apis'>Common APIs</h1><h2 id='get-customer'>Get Customer</h2>
+
+<h1 id="consumer-data-standards-common-apis">Common APIs</h1>
+<h2 id='get-customer'>Get Customer</h2>
 <p><a id="opIdgetCustomer"></a></p>
 
 <blockquote>
@@ -2901,8 +2926,8 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: common_basic_customer )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">common_basic_customer</a>
 </aside>
 <h2 id='get-customer-detail'>Get Customer Detail</h2>
 <p><a id="opIdgetCustomerDetail"></a></p>
@@ -3084,15 +3109,15 @@ openId ( Scopes: common_basic_customer )
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsecommoncustomerdetailed">ResponseCommonCustomerDetailed</a></td>
+<td><a href="#schemaresponsecommoncustomerdetail">ResponseCommonCustomerDetail</a></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: common_detailed_customer )
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">common_detailed_customer</a>
 </aside>
-<h1 id='shared-schemas'>Shared Schemas</h1>
+<h1 id='schemas'>Schemas</h1>
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
 
 <p><a id="schemarequestaccountids"></a></p>
@@ -3118,29 +3143,29 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» accountIds</td>
 <td>[string]</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingproducts">ResponseBankingProducts</h2>
+<h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
-<p><a id="schemaresponsebankingproducts"></a></p>
+<p><a id="schemaresponsebankingproductlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3192,36 +3217,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» products</td>
-<td>[<a href="#schemaproduct">Product</a>]</td>
-<td>true</td>
+<td>[<a href="#schemabankingproduct">BankingProduct</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinkspaginated">LinksPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemametapaginated">MetaPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSproduct">Product</h2>
+<h2 id="tocSbankingproduct">BankingProduct</h2>
 
-<p><a id="schemaproduct"></a></p>
+<p><a id="schemabankingproduct"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3256,127 +3281,127 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>productId</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.</td>
 </tr>
 <tr>
 <td>effectiveFrom</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate</td>
 </tr>
 <tr>
 <td>effectiveTo</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products</td>
 </tr>
 <tr>
 <td>lastUpdated</td>
 <td>string(DateTimeString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)</td>
 </tr>
 <tr>
 <td>productCategory</td>
-<td><a href="#schemaenumproductcategory">EnumProductCategory</a></td>
-<td>true</td>
+<td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>The list of available product categories for categorising products and accounts</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The display name of the product</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A description of the product</td>
 </tr>
 <tr>
 <td>brand</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required</td>
 </tr>
 <tr>
 <td>brandName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>An optional display name of the brand</td>
 </tr>
 <tr>
 <td>applicationUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>A link to the an application web page where this product can be applied for.</td>
 </tr>
 <tr>
 <td>isTailored</td>
 <td>boolean</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable</td>
 </tr>
 <tr>
 <td>additionalInformation</td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» overviewUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>General overview of the product</td>
 </tr>
 <tr>
 <td>» termsUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Terms and conditions for the product</td>
 </tr>
 <tr>
 <td>» eligibilityUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Eligibility rules and criteria for the product</td>
 </tr>
 <tr>
 <td>» feesAndPricingUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Description of fees, pricing, discounts, exemptions and bonuses for the product</td>
 </tr>
 <tr>
 <td>» bundleUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Description of a bundle that this product can be part of</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingproduct">ResponseBankingProduct</h2>
+<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
-<p><a id="schemaresponsebankingproduct"></a></p>
+<p><a id="schemaresponsebankingproductbyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3485,30 +3510,30 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemaproductdetail">ProductDetail</a></td>
-<td>true</td>
+<td><a href="#schemabankingproductdetail">BankingProductDetail</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinks">Links</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductdetail">ProductDetail</h2>
+<h2 id="tocSbankingproductdetail">BankingProductDetail</h2>
 
-<p><a id="schemaproductdetail"></a></p>
+<p><a id="schemabankingproductdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3613,8 +3638,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemaproduct">Product</a></td>
-<td>false</td>
+<td><a href="#schemabankingproduct">BankingProduct</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -3634,64 +3659,64 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» bundles</td>
-<td>[<a href="#schemaproductbundles">ProductBundles</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductbundle">BankingProductBundle</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» features</td>
-<td>[<a href="#schemaproductfeatures">ProductFeatures</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductfeature">BankingProductFeature</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» constraints</td>
-<td>[<a href="#schemaproductconstraints">ProductConstraints</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductconstraint">BankingProductConstraint</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» eligibility</td>
-<td>[<a href="#schemaproducteligibility">ProductEligibility</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproducteligibility">BankingProductEligibility</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» fees</td>
-<td>[<a href="#schemaproductfees">ProductFees</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductfee">BankingProductFee</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» depositRates</td>
-<td>[<a href="#schemaproductdepositrates">ProductDepositRates</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRate</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemaproductlendingrates">ProductLendingRates</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductbundles">ProductBundles</h2>
+<h2 id="tocSbankingproductbundle">BankingProductBundle</h2>
 
-<p><a id="schemaproductbundles"></a></p>
+<p><a id="schemabankingproductbundle"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3714,36 +3739,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>name</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the bundle</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Description of the bundle</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on the bundle criteria and benefits</td>
 </tr>
 <tr>
 <td>productIds</td>
 <td>[string]</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Array of product IDs for products included in the bundle</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductfeatures">ProductFeatures</h2>
+<h2 id="tocSbankingproductfeature">BankingProductFeature</h2>
 
-<p><a id="schemaproductfeatures"></a></p>
+<p><a id="schemabankingproductfeature"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -3762,14 +3787,14 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>featureType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of feature described</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType</td>
 </tr>
@@ -3859,9 +3884,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductconstraints">ProductConstraints</h2>
+<h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
 
-<p><a id="schemaproductconstraints"></a></p>
+<p><a id="schemabankingproductconstraint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -3880,14 +3905,14 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>constraintType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of constraint described.  See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType</td>
 </tr>
@@ -3917,9 +3942,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSproducteligibility">ProductEligibility</h2>
+<h2 id="tocSbankingproducteligibility">BankingProductEligibility</h2>
 
-<p><a id="schemaproducteligibility"></a></p>
+<p><a id="schemabankingproducteligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3940,28 +3965,28 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>eligibilityType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this eligibility criteria</td>
 </tr>
@@ -4019,9 +4044,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductfees">ProductFees</h2>
+<h2 id="tocSbankingproductfee">BankingProductFee</h2>
 
-<p><a id="schemaproductfees"></a></p>
+<p><a id="schemabankingproductfee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERIODIC"</span><span class="p">,</span><span class="w">
@@ -4055,70 +4080,70 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>name</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the fee</td>
 </tr>
 <tr>
 <td>feeType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of fee</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td>string(RateString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td>string(RateString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The currency the fee will be charged in. Assumes AUD if absent</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Display text providing more information on the fee</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
 </tr>
 <tr>
 <td>discounts</td>
-<td>[<a href="#schemaproductdiscounts">ProductDiscounts</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingproductdiscount">BankingProductDiscount</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -4184,9 +4209,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductdiscounts">ProductDiscounts</h2>
+<h2 id="tocSbankingproductdiscount">BankingProductDiscount</h2>
 
-<p><a id="schemaproductdiscounts"></a></p>
+<p><a id="schemabankingproductdiscount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
@@ -4207,28 +4232,28 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>description</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Description of the discount</td>
 </tr>
 <tr>
 <td>discountType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of discount. See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string(AmountString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType</td>
 </tr>
@@ -4258,9 +4283,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductdepositrates">ProductDepositRates</h2>
+<h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
 
-<p><a id="schemaproductdepositrates"></a></p>
+<p><a id="schemabankingproductdepositrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4282,35 +4307,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>depositRateType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>rate</td>
 <td>string(RateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Display text providing more information on the fee</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
 </tr>
@@ -4344,9 +4369,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSproductlendingrates">ProductLendingRates</h2>
+<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
 
-<p><a id="schemaproductlendingrates"></a></p>
+<p><a id="schemabankingproductlendingrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4368,35 +4393,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>lendingRateType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>rate</td>
 <td>string(RateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Display text providing more information on the fee.</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information  on this fee</td>
 </tr>
@@ -4450,9 +4475,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingaccounts">ResponseBankingAccounts</h2>
+<h2 id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
 
-<p><a id="schemaresponsebankingaccounts"></a></p>
+<p><a id="schemaresponsebankingaccountlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4494,36 +4519,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» accounts</td>
-<td>[<a href="#schemaaccount">Account</a>]</td>
-<td>true</td>
+<td>[<a href="#schemabankingaccount">BankingAccount</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinkspaginated">LinksPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemametapaginated">MetaPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccount">Account</h2>
+<h2 id="tocSbankingaccount">BankingAccount</h2>
 
-<p><a id="schemaaccount"></a></p>
+<p><a id="schemabankingaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4548,56 +4573,56 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>accountId</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
 </tr>
 <tr>
 <td>displayName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The display name of the account. If a customer provided nickname is available that value should be returned</td>
 </tr>
 <tr>
 <td>nickname</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>A customer supplied nick name for the account</td>
 </tr>
 <tr>
 <td>maskedNumber</td>
 <td>string(MaskedAccountString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked</td>
 </tr>
 <tr>
 <td>openStatus</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Open or closed status for the account.  If not present then OPEN is assumed</td>
 </tr>
 <tr>
 <td>isOwned</td>
 <td>boolean</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then &#39;true&#39; is assumed</td>
 </tr>
 <tr>
 <td>productCategory</td>
-<td><a href="#schemaenumproductcategory">EnumProductCategory</a></td>
-<td>true</td>
+<td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>The list of available product categories for categorising products and accounts</td>
 </tr>
 <tr>
 <td>productName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display</td>
 </tr>
@@ -4619,9 +4644,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingaccount">ResponseBankingAccount</h2>
+<h2 id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
 
-<p><a id="schemaresponsebankingaccount"></a></p>
+<p><a id="schemaresponsebankingaccountbyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4767,30 +4792,30 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemaaccountdetail">AccountDetail</a></td>
-<td>true</td>
+<td><a href="#schemabankingaccountdetail">BankingAccountDetail</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinks">Links</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccountdetail">AccountDetail</h2>
+<h2 id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
-<p><a id="schemaaccountdetail"></a></p>
+<p><a id="schemabankingaccountdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4932,8 +4957,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemaaccount">Account</a></td>
-<td>false</td>
+<td><a href="#schemabankingaccount">BankingAccount</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -4953,91 +4978,91 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» bsb</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The unmasked BSB for the account.  Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces</td>
 </tr>
 <tr>
 <td>» accountNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The unmasked account number for the account.  Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces</td>
 </tr>
 <tr>
 <td>» bundleName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer</td>
 </tr>
 <tr>
 <td>» specificAccountUType</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The type of structure to present account specific fields.</td>
 </tr>
 <tr>
 <td>» termDeposit</td>
-<td><a href="#schematermdepositaccount">TermDepositAccount</a></td>
-<td>false</td>
+<td><a href="#schemabankingtermdepositaccount">BankingTermDepositAccount</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» creditCard</td>
-<td><a href="#schemacreditcardaccount">CreditCardAccount</a></td>
-<td>false</td>
+<td><a href="#schemabankingcreditcardaccount">BankingCreditCardAccount</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» loan</td>
-<td><a href="#schemaloanaccount">LoanAccount</a></td>
-<td>false</td>
+<td><a href="#schemabankingloanaccount">BankingLoanAccount</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» features</td>
-<td>[<a href="#schemaaccountfeatures">AccountFeatures</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingaccountfeature">BankingAccountFeature</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» fees</td>
-<td>[<a href="#schemaaccountfees">AccountFees</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingaccountfee">BankingAccountFee</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» depositRates</td>
-<td>[<a href="#schemaaccountdepositrates">AccountDepositRates</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingaccountdepositrate">BankingAccountDepositRate</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemaaccountlendingrates">AccountLendingRates</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingaccountlendingrate">BankingAccountLendingRate</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» address</td>
-<td><a href="#schemaphysicaladdress">PhysicalAddress</a></td>
-<td>false</td>
+<td><a href="#schemacommonphysicaladdress">CommonPhysicalAddress</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -5063,9 +5088,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocStermdepositaccount">TermDepositAccount</h2>
+<h2 id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
 
-<p><a id="schematermdepositaccount"></a></p>
+<p><a id="schemabankingtermdepositaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5087,35 +5112,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>lodgementDate</td>
 <td>string(DateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The lodgement date of the original deposit</td>
 </tr>
 <tr>
 <td>maturityDate</td>
 <td>string(DateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Maturity date for the term deposit</td>
 </tr>
 <tr>
 <td>maturityAmount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated</td>
 </tr>
 <tr>
 <td>maturityCurrency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>maturityInstructions</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Current instructions on action to be taken at maturity</td>
 </tr>
@@ -5137,9 +5162,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocScreditcardaccount">CreditCardAccount</h2>
+<h2 id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
 
-<p><a id="schemacreditcardaccount"></a></p>
+<p><a id="schemabankingcreditcardaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"minPaymentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5160,36 +5185,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>minPaymentAmount</td>
 <td>string(AmountString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The minimum payment amount due for the next card payment</td>
 </tr>
 <tr>
 <td>paymentDueAmount</td>
 <td>string(AmountString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The amount due for the next card payment</td>
 </tr>
 <tr>
 <td>paymentCurrency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>paymentDueDate</td>
 <td>string(DateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Date that the next payment for the card is due</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSloanaccount">LoanAccount</h2>
+<h2 id="tocSbankingloanaccount">BankingLoanAccount</h2>
 
-<p><a id="schemaloanaccount"></a></p>
+<p><a id="schemabankingloanaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"originalStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"originalLoanAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5223,105 +5248,105 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>originalStartDate</td>
 <td>string(DateString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Optional original start date for the loan</td>
 </tr>
 <tr>
 <td>originalLoanAmount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Optional original loan value</td>
 </tr>
 <tr>
 <td>originalLoanCurrency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>loanEndDate</td>
 <td>string(DateString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Date that the loan is due to be repaid in full</td>
 </tr>
 <tr>
 <td>nextInstalmentDate</td>
 <td>string(DateString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Next date that an instalment is required</td>
 </tr>
 <tr>
 <td>minInstalmentAmount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Minimum amount of next instalment</td>
 </tr>
 <tr>
 <td>minInstalmentCurrency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>maxRedraw</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account</td>
 </tr>
 <tr>
 <td>maxRedrawCurrency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>minRedraw</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Minimum redraw amount</td>
 </tr>
 <tr>
 <td>minRedrawCurrency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>offsetAccountEnabled</td>
 <td>boolean</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Set to true if one or more offset accounts are configured for this loan account</td>
 </tr>
 <tr>
 <td>offsetAccountIds</td>
 <td>[string]</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation</td>
 </tr>
 <tr>
 <td>repaymentFrequency</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The expected or required repayment frequency. Formatted according to ISO 8601 Durations</td>
 </tr>
 <tr>
 <td>repaymentType</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST</td>
 </tr>
@@ -5343,9 +5368,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccountfeatures">AccountFeatures</h2>
+<h2 id="tocSbankingaccountfeature">BankingAccountFeature</h2>
 
-<p><a id="schemaaccountfeatures"></a></p>
+<p><a id="schemabankingaccountfeature"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5364,14 +5389,14 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>featureType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of feature described</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType</td>
 </tr>
@@ -5461,9 +5486,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccountfees">AccountFees</h2>
+<h2 id="tocSbankingaccountfee">BankingAccountFee</h2>
 
-<p><a id="schemaaccountfees"></a></p>
+<p><a id="schemabankingaccountfee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERIODIC"</span><span class="p">,</span><span class="w">
@@ -5497,70 +5522,70 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>name</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the fee</td>
 </tr>
 <tr>
 <td>feeType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of fee</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td>string(RateString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td>string(RateString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The currency the fee will be charged in. Assumes AUD if absent</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Display text providing more information on the fee</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
 </tr>
 <tr>
 <td>discounts</td>
-<td>[<a href="#schemaaccountdiscounts">AccountDiscounts</a>]</td>
-<td>false</td>
+<td>[<a href="#schemabankingaccountdiscount">BankingAccountDiscount</a>]</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -5622,9 +5647,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccountdiscounts">AccountDiscounts</h2>
+<h2 id="tocSbankingaccountdiscount">BankingAccountDiscount</h2>
 
-<p><a id="schemaaccountdiscounts"></a></p>
+<p><a id="schemabankingaccountdiscount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
@@ -5645,28 +5670,28 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>description</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Description of the discount</td>
 </tr>
 <tr>
 <td>discountType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of discount. See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string(AmountString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType</td>
 </tr>
@@ -5696,9 +5721,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccountdepositrates">AccountDepositRates</h2>
+<h2 id="tocSbankingaccountdepositrate">BankingAccountDepositRate</h2>
 
-<p><a id="schemaaccountdepositrates"></a></p>
+<p><a id="schemabankingaccountdepositrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5720,35 +5745,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>depositRateType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>rate</td>
 <td>string(RateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Display text providing more information on the fee</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
 </tr>
@@ -5782,9 +5807,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSaccountlendingrates">AccountLendingRates</h2>
+<h2 id="tocSbankingaccountlendingrate">BankingAccountLendingRate</h2>
 
-<p><a id="schemaaccountlendingrates"></a></p>
+<p><a id="schemabankingaccountlendingrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5806,35 +5831,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>lendingRateType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning</td>
 </tr>
 <tr>
 <td>rate</td>
 <td>string(RateString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType</td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Display text providing more information on the fee.</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information  on this fee</td>
 </tr>
@@ -5888,9 +5913,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingtransactions">ResponseBankingTransactions</h2>
+<h2 id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
 
-<p><a id="schemaresponsebankingtransactions"></a></p>
+<p><a id="schemaresponsebankingtransactionlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5942,36 +5967,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» transactions</td>
-<td>[<a href="#schematransaction">Transaction</a>]</td>
-<td>true</td>
+<td>[<a href="#schemabankingtransaction">BankingTransaction</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinkspaginated">LinksPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemametapaginated">MetaPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocStransaction">Transaction</h2>
+<h2 id="tocSbankingtransaction">BankingTransaction</h2>
 
-<p><a id="schematransaction"></a></p>
+<p><a id="schemabankingtransaction"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6006,126 +6031,126 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>accountId</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>string(ASCIIString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type</td>
 </tr>
 <tr>
 <td>isDetailAvailable</td>
 <td>boolean</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>True if extended information is available using the transaction detail end point. False if extended data is not available</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of the transaction</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The transaction description as applied by the financial institution</td>
 </tr>
 <tr>
 <td>postingDateTime</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement</td>
 </tr>
 <tr>
 <td>valueDateTime</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry</td>
 </tr>
 <tr>
 <td>executionDateTime</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The time the transaction was executed by the originating customer, if available</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The value of the transaction. Negative values mean money was outgoing from the account</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string(CurrencyString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The currency for the transaction amount. AUD assumed if not present</td>
 </tr>
 <tr>
 <td>reference</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The reference for the transaction provided by the originating institution.  Empty string if no data provided</td>
 </tr>
 <tr>
 <td>merchantName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Name of the merchant for an outgoing payment to a merchant</td>
 </tr>
 <tr>
 <td>merchantCategoryCode</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The merchant category code (or MCC) for an outgoing payment to a merchant</td>
 </tr>
 <tr>
 <td>billerCode</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>BPay Biller Code for the transaction (if available)</td>
 </tr>
 <tr>
 <td>billerName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Name of the BPay biller for the transaction (if available)</td>
 </tr>
 <tr>
 <td>crn</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>BPay CRN for the transaction (if available)</td>
 </tr>
 <tr>
 <td>apcaNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>6 Digit APCA number for the initiating institution</td>
 </tr>
@@ -6175,37 +6200,35 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingtransactiondetail">ResponseBankingTransactionDetail</h2>
+<h2 id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h2>
 
-<p><a id="schemaresponsebankingtransactiondetail"></a></p>
+<p><a id="schemaresponsebankingtransactionbyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isDetailAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postingDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"merchantCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isDetailAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postingDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"merchantCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6226,37 +6249,30 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>object</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» transaction</td>
-<td>[<a href="#schematransactiondetail">TransactionDetail</a>]</td>
-<td>true</td>
+<td><a href="#schemabankingtransactiondetail">BankingTransactionDetail</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinks">Links</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocStransactiondetail">TransactionDetail</h2>
+<h2 id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
 
-<p><a id="schematransactiondetail"></a></p>
+<p><a id="schemabankingtransactiondetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6299,8 +6315,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schematransaction">Transaction</a></td>
-<td>false</td>
+<td><a href="#schemabankingtransaction">BankingTransaction</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -6320,49 +6336,49 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» extendedData</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>»» payer</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Name or description of the originating payer.  Mandatory for inbound payment</td>
 </tr>
 <tr>
 <td>»» payee</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Name or description of the target payee. Mandatory for an outbound payment</td>
 </tr>
 <tr>
 <td>»» extensionUType</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Optional extended data provided specific to transaction originated via NPP</td>
 </tr>
 <tr>
 <td>»» extendedDescription</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>An extended string description. Only present if specified by the extensionUType field</td>
 </tr>
 <tr>
 <td>»» serviceId</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Identifier of the applicable NPP payment service</td>
 </tr>
@@ -6384,9 +6400,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingaccountsbalances">ResponseBankingAccountsBalances</h2>
+<h2 id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h2>
 
-<p><a id="schemaresponsebankingaccountsbalances"></a></p>
+<p><a id="schemaresponsebankingaccountsbalancelist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6456,36 +6472,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» balances</td>
-<td>[<a href="#schemabalance">Balance</a>]</td>
-<td>true</td>
+<td>[<a href="#schemabankingbalance">BankingBalance</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinkspaginated">LinksPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemametapaginated">MetaPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSbalance">Balance</h2>
+<h2 id="tocSbankingbalance">BankingBalance</h2>
 
-<p><a id="schemabalance"></a></p>
+<p><a id="schemabankingbalance"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"balanceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
@@ -6538,35 +6554,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>accountId</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
 </tr>
 <tr>
 <td>balanceUType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of balance object provided for the account</td>
 </tr>
 <tr>
 <td>deposit</td>
-<td><a href="#schemadepositbalance">DepositBalance</a></td>
-<td>false</td>
+<td><a href="#schemabankingdepositbalance">BankingDepositBalance</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>lending</td>
-<td><a href="#schemalendingbalance">LendingBalance</a></td>
-<td>false</td>
+<td><a href="#schemabankinglendingbalance">BankingLendingBalance</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>purses</td>
-<td>[<a href="#schemacurrencyamount">CurrencyAmount</a>]</td>
-<td>false</td>
+<td>[<a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a>]</td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -6592,9 +6608,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSdepositbalance">DepositBalance</h2>
+<h2 id="tocSbankingdepositbalance">BankingDepositBalance</h2>
 
-<p><a id="schemadepositbalance"></a></p>
+<p><a id="schemabankingdepositbalance"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentBalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6618,23 +6634,23 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td>currentBalance</td>
-<td><a href="#schemacurrencyamount">CurrencyAmount</a></td>
-<td>true</td>
+<td><a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>availableBalance</td>
-<td><a href="#schemacurrencyamount">CurrencyAmount</a></td>
-<td>true</td>
+<td><a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSlendingbalance">LendingBalance</h2>
+<h2 id="tocSbankinglendingbalance">BankingLendingBalance</h2>
 
-<p><a id="schemalendingbalance"></a></p>
+<p><a id="schemabankinglendingbalance"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountBalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6666,71 +6682,37 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td>accountBalance</td>
-<td><a href="#schemacurrencyamount">CurrencyAmount</a></td>
-<td>true</td>
+<td><a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>availableBalance</td>
-<td><a href="#schemacurrencyamount">CurrencyAmount</a></td>
-<td>true</td>
+<td><a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>creditLimit</td>
-<td><a href="#schemacurrencyamount">CurrencyAmount</a></td>
-<td>true</td>
+<td><a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>amortisedLimit</td>
-<td><a href="#schemacurrencyamount">CurrencyAmount</a></td>
-<td>false</td>
+<td><a href="#schemacommoncurrencyamount">CommonCurrencyAmount</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocScurrencyamount">CurrencyAmount</h2>
+<h2 id="tocSresponsebankingpayeelist">ResponseBankingPayeeList</h2>
 
-<p><a id="schemacurrencyamount"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-34'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>string(AmountString)</td>
-<td>true</td>
-<td>none</td>
-<td>The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>string(CurrencyString)</td>
-<td>false</td>
-<td>none</td>
-<td>If not present assumes AUD</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocSresponsebankingpayees">ResponseBankingPayees</h2>
-
-<p><a id="schemaresponsebankingpayees"></a></p>
+<p><a id="schemaresponsebankingpayeelist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6756,7 +6738,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6769,36 +6751,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» payees</td>
-<td>[<a href="#schemapayee">Payee</a>]</td>
-<td>true</td>
+<td>[<a href="#schemabankingpayee">BankingPayee</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The list of payees returned</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinkspaginated">LinksPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemametapaginated">MetaPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingpayeedetails">ResponseBankingPayeeDetails</h2>
+<h2 id="tocSresponsebankingpayeebyid">ResponseBankingPayeeById</h2>
 
-<p><a id="schemaresponsebankingpayeedetails"></a></p>
+<p><a id="schemaresponsebankingpayeebyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6856,7 +6838,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6868,30 +6850,30 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemapayeedetail">PayeeDetail</a></td>
-<td>true</td>
+<td><a href="#schemabankingpayeedetail">BankingPayeeDetail</a></td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinks">Links</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSpayee">Payee</h2>
+<h2 id="tocSbankingpayee">BankingPayee</h2>
 
-<p><a id="schemapayee"></a></p>
+<p><a id="schemabankingpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6900,7 +6882,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-37'>Properties</h3>
+</span></code></pre><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6913,35 +6895,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>payeeId</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>ID of the payee adhering to the rules of ID permanence</td>
 </tr>
 <tr>
 <td>nickname</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The short display name of the payee as provided by the customer</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>A description of the payee provided by the customer</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY</td>
 </tr>
 <tr>
 <td>creationDate</td>
 <td>string(DateString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The date the payee was created by the customer</td>
 </tr>
@@ -6967,9 +6949,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSpayeedetail">PayeeDetail</h2>
+<h2 id="tocSbankingpayeedetail">BankingPayeeDetail</h2>
 
-<p><a id="schemapayeedetail"></a></p>
+<p><a id="schemabankingpayeedetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7021,7 +7003,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-38'>Properties</h3>
+</span></code></pre><h3 id='properties-37'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -7035,8 +7017,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemapayee">Payee</a></td>
-<td>false</td>
+<td><a href="#schemabankingpayee">BankingPayee</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -7056,35 +7038,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» payeeUType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Type of object included that describes the payee in detail</td>
 </tr>
 <tr>
 <td>» domestic</td>
-<td><a href="#schemadomesticpayee">DomesticPayee</a></td>
-<td>false</td>
+<td><a href="#schemabankingdomesticpayee">BankingDomesticPayee</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» biller</td>
-<td><a href="#schemabillerpayee">BillerPayee</a></td>
-<td>false</td>
+<td><a href="#schemabankingbillerpayee">BankingBillerPayee</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» international</td>
-<td><a href="#schemainternationalpayee">InternationalPayee</a></td>
-<td>false</td>
+<td><a href="#schemabankinginternationalpayee">BankingInternationalPayee</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -7110,9 +7092,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSdomesticpayee">DomesticPayee</h2>
+<h2 id="tocSbankingdomesticpayee">BankingDomesticPayee</h2>
 
-<p><a id="schemadomesticpayee"></a></p>
+<p><a id="schemabankingdomesticpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7130,7 +7112,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-39'>Properties</h3>
+</span></code></pre><h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7143,28 +7125,28 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>payeeAccountUType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP</td>
 </tr>
 <tr>
 <td>account</td>
-<td><a href="#schemadomesticpayeeaccount">DomesticPayeeAccount</a></td>
-<td>false</td>
+<td><a href="#schemabankingdomesticpayeeaccount">BankingDomesticPayeeAccount</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>card</td>
-<td><a href="#schemadomesticpayeecard">DomesticPayeeCard</a></td>
-<td>false</td>
+<td><a href="#schemabankingdomesticpayeecard">BankingDomesticPayeeCard</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>payId</td>
-<td><a href="#schemadomesticpayeepayid">DomesticPayeePayId</a></td>
-<td>false</td>
+<td><a href="#schemabankingdomesticpayeepayid">BankingDomesticPayeePayId</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -7190,13 +7172,53 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSdomesticpayeeaccount">DomesticPayeeAccount</h2>
+<h2 id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h2>
 
-<p><a id="schemadomesticpayeeaccount"></a></p>
+<p><a id="schemabankingdomesticpayeeaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-39'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountName</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Name of the account to pay to</td>
+</tr>
+<tr>
+<td>bsb</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>BSB of the account to pay to</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Number of the account to pay to</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h2>
+
+<p><a id="schemabankingdomesticpayeecard"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"cardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-40'>Properties</h3>
@@ -7210,33 +7232,21 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </thead><tbody>
 <tr>
-<td>accountName</td>
-<td>string</td>
-<td>true</td>
+<td>cardNumber</td>
+<td>string(MaskedPANString)</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the account to pay to</td>
 </tr>
-<tr>
-<td>bsb</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>BSB of the account to pay to</td>
-</tr>
-<tr>
-<td>accountNumber</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Number of the account to pay to</td>
-</tr>
 </tbody></table>
 
-<h2 id="tocSdomesticpayeecard">DomesticPayeeCard</h2>
+<h2 id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h2>
 
-<p><a id="schemadomesticpayeecard"></a></p>
+<p><a id="schemabankingdomesticpayeepayid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"cardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-41'>Properties</h3>
@@ -7250,51 +7260,23 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </thead><tbody>
 <tr>
-<td>cardNumber</td>
-<td>string(MaskedPANString)</td>
-<td>true</td>
-<td>none</td>
-<td>Name of the account to pay to</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocSdomesticpayeepayid">DomesticPayeePayId</h2>
-
-<p><a id="schemadomesticpayeepayid"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-42'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
 <td>name</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The name assigned to the PayID by the owner of the PayID</td>
 </tr>
 <tr>
 <td>identifier</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The identifier of the PayID (dependent on type)</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of the PayID</td>
 </tr>
@@ -7324,16 +7306,16 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSbillerpayee">BillerPayee</h2>
+<h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
-<p><a id="schemabillerpayee"></a></p>
+<p><a id="schemabankingbillerpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-43'>Properties</h3>
+</span></code></pre><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7346,29 +7328,29 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>billerCode</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>BPay Biller Code of the Biller</td>
 </tr>
 <tr>
 <td>crn</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
 </tr>
 <tr>
 <td>billerName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the Biller</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSinternationalpayee">InternationalPayee</h2>
+<h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
 
-<p><a id="schemainternationalpayee"></a></p>
+<p><a id="schemabankinginternationalpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"beneficiaryDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7391,7 +7373,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-44'>Properties</h3>
+</span></code></pre><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7404,120 +7386,120 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>beneficiaryDetails</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» name</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Name of the beneficiary</td>
 </tr>
 <tr>
 <td>» country</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code</td>
 </tr>
 <tr>
 <td>» message</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Response message for the payment</td>
 </tr>
 <tr>
 <td>bankDetails</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» country</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Country of the recipient institution. A valid ISO 3166 Alpha-3 country code</td>
 </tr>
 <tr>
 <td>» accountNumber</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Account Targeted for payment</td>
 </tr>
 <tr>
 <td>» bankAddress</td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>»» name</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the recipient Bank</td>
 </tr>
 <tr>
 <td>»» address</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Address of the recipient Bank</td>
 </tr>
 <tr>
 <td>» beneficiaryBankBIC</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Swift bank code.  Aligns with standard <a href="https://www.iso.org/standard/60390.html">ISO 9362</a></td>
 </tr>
 <tr>
 <td>» fedWireNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Number for Fedwire payment (Federal Reserve Wire Network)</td>
 </tr>
 <tr>
 <td>» sortCode</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Sort code used for account identification in some jurisdictions</td>
 </tr>
 <tr>
 <td>» chipNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Number for the Clearing House Interbank Payments System</td>
 </tr>
 <tr>
 <td>» routingNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>International bank routing number</td>
 </tr>
 <tr>
 <td>» legalEntityIdentifier</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The legal entity identifier (LEI) for the beneficiary.  Aligns with <a href="https://www.iso.org/standard/59771.html">ISO 17442</a></td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingdirectdebits">ResponseBankingDirectDebits</h2>
+<h2 id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h2>
 
-<p><a id="schemaresponsebankingdirectdebits"></a></p>
+<p><a id="schemaresponsebankingdirectdebitauthorisationlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"directDebitAuthorisations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7548,7 +7530,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-45'>Properties</h3>
+</span></code></pre><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7561,36 +7543,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» directDebitAuthorisations</td>
-<td>[<a href="#schemadirectdebits">DirectDebits</a>]</td>
-<td>true</td>
+<td>[<a href="#schemabankingdirectdebit">BankingDirectDebit</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The list of authorisations returned</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinkspaginated">LinksPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemametapaginated">MetaPaginated</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSdirectdebits">DirectDebits</h2>
+<h2 id="tocSbankingdirectdebit">BankingDirectDebit</h2>
 
-<p><a id="schemadirectdebits"></a></p>
+<p><a id="schemabankingdirectdebit"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorisedEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7604,7 +7586,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"lastDebitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-46'>Properties</h3>
+</span></code></pre><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7617,36 +7599,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>accountId</td>
 <td>string(ASCIIString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence.</td>
 </tr>
 <tr>
 <td>authorisedEntity</td>
-<td><a href="#schemaauthorisedentity">AuthorisedEntity</a></td>
-<td>false</td>
+<td><a href="#schemabankingauthorisedentity">BankingAuthorisedEntity</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>lastDebitDateTime</td>
 <td>string(DateTimeString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The date and time of the last debit executed under this authorisation</td>
 </tr>
 <tr>
 <td>lastDebitAmount</td>
 <td>string(AmountString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The amount of the last debit executed under this authorisation</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSauthorisedentity">AuthorisedEntity</h2>
+<h2 id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h2>
 
-<p><a id="schemaauthorisedentity"></a></p>
+<p><a id="schemabankingauthorisedentity"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7655,7 +7637,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-47'>Properties</h3>
+</span></code></pre><h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7668,35 +7650,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>name</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the authorised entity</td>
 </tr>
 <tr>
 <td>financialInstitution</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the financial institution through which the direct debit will be executed</td>
 </tr>
 <tr>
 <td>abn</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Australian Business Number for the authorised entity</td>
 </tr>
 <tr>
 <td>acn</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Australian Business Number for the authorised entity</td>
 </tr>
 <tr>
 <td>arbn</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Australian Registered Body Number for the authorised entity</td>
 </tr>
@@ -7742,7 +7724,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-48'>Properties</h3>
+</span></code></pre><h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7755,42 +7737,42 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» customerUType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of customer object that is present</td>
 </tr>
 <tr>
 <td>» person</td>
-<td><a href="#schemaperson">Person</a></td>
-<td>false</td>
+<td><a href="#schemacommonperson">CommonPerson</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» organisation</td>
-<td><a href="#schemaorganisation">Organisation</a></td>
-<td>false</td>
+<td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinks">Links</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -7812,9 +7794,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsecommoncustomerdetailed">ResponseCommonCustomerDetailed</h2>
+<h2 id="tocSresponsecommoncustomerdetail">ResponseCommonCustomerDetail</h2>
 
-<p><a id="schemaresponsecommoncustomerdetailed"></a></p>
+<p><a id="schemaresponsecommoncustomerdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
@@ -7946,7 +7928,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-49'>Properties</h3>
+</span></code></pre><h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7959,42 +7941,42 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>data</td>
 <td>object</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» customerUType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of customer object that is present</td>
 </tr>
 <tr>
 <td>» person</td>
-<td><a href="#schemapersondetail">PersonDetail</a></td>
-<td>false</td>
+<td><a href="#schemacommonpersondetail">CommonPersonDetail</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» organisation</td>
-<td><a href="#schemaorganisationdetail">OrganisationDetail</a></td>
-<td>false</td>
+<td><a href="#schemacommonorganisationdetail">CommonOrganisationDetail</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>links</td>
 <td><a href="#schemalinks">Links</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8016,9 +7998,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSperson">Person</h2>
+<h2 id="tocScommonperson">CommonPerson</h2>
 
-<p><a id="schemaperson"></a></p>
+<p><a id="schemacommonperson"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8031,7 +8013,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-50'>Properties</h3>
+</span></code></pre><h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8044,57 +8026,57 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>lastUpdateTime</td>
 <td>string(DateTimeString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data</td>
 </tr>
 <tr>
 <td>firstName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>For people with single names this field need not be present.  The single name should be in the lastName field</td>
 </tr>
 <tr>
 <td>lastName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>For people with single names the single name should be in this field</td>
 </tr>
 <tr>
 <td>middleNames</td>
 <td>[string]</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Field is mandatory but array may be empty</td>
 </tr>
 <tr>
 <td>prefix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)</td>
 </tr>
 <tr>
 <td>suffix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 <tr>
 <td>occupationCode</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZCO v1.2</a> Standard Occupation classification.</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSpersondetail">PersonDetail</h2>
+<h2 id="tocScommonpersondetail">CommonPersonDetail</h2>
 
-<p><a id="schemapersondetail"></a></p>
+<p><a id="schemacommonpersondetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8163,7 +8145,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-51'>Properties</h3>
+</span></code></pre><h3 id='properties-50'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -8177,8 +8159,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemaperson">Person</a></td>
-<td>false</td>
+<td><a href="#schemacommonperson">CommonPerson</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8198,36 +8180,36 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» phoneNumbers</td>
-<td>[<a href="#schemaphonenumber">PhoneNumber</a>]</td>
-<td>true</td>
+<td>[<a href="#schemacommonphonenumber">CommonPhoneNumber</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>At least one record is required</td>
 </tr>
 <tr>
 <td>» emailAddresses</td>
-<td>[<a href="#schemaemailaddress">EmailAddress</a>]</td>
-<td>true</td>
+<td>[<a href="#schemacommonemailaddress">CommonEmailAddress</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>May be empty</td>
 </tr>
 <tr>
 <td>» physicalAddresses</td>
-<td>[<a href="#schemaphysicaladdresswithpurpose">PhysicalAddressWithPurpose</a>]</td>
-<td>true</td>
+<td>[<a href="#schemacommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSorganisation">Organisation</h2>
+<h2 id="tocScommonorganisation">CommonOrganisation</h2>
 
-<p><a id="schemaorganisation"></a></p>
+<p><a id="schemacommonorganisation"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8245,7 +8227,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-52'>Properties</h3>
+</span></code></pre><h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8258,98 +8240,98 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>lastUpdateTime</td>
 <td>string(DateTimeString)</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data</td>
 </tr>
 <tr>
 <td>agentFirstName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field</td>
 </tr>
 <tr>
 <td>agentLastName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field</td>
 </tr>
 <tr>
 <td>agentRole</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known</td>
 </tr>
 <tr>
 <td>businessName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the organisation</td>
 </tr>
 <tr>
 <td>legalName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Legal name, if different to the business name</td>
 </tr>
 <tr>
 <td>shortName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Short name used for communication, if  different to the business name</td>
 </tr>
 <tr>
 <td>abn</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Australian Business Number for the organisation</td>
 </tr>
 <tr>
 <td>acn</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type</td>
 </tr>
 <tr>
 <td>isACNCRegistered</td>
 <td>boolean</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>True if registered with the ACNC.  False if not. Absent or null if not confirmed.</td>
 </tr>
 <tr>
 <td>industryCode</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td><a href="http://www.abs.gov.au/anzsic">ANZSIC (2006)</a> code for the organisation.</td>
 </tr>
 <tr>
 <td>organisationType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Legal organisation type</td>
 </tr>
 <tr>
 <td>registeredCountry</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent</td>
 </tr>
 <tr>
 <td>establishmentDate</td>
 <td>string(DateString)</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The date the organisation described was established</td>
 </tr>
@@ -8387,9 +8369,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSorganisationdetail">OrganisationDetail</h2>
+<h2 id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
 
-<p><a id="schemaorganisationdetail"></a></p>
+<p><a id="schemacommonorganisationdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8445,7 +8427,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-53'>Properties</h3>
+</span></code></pre><h3 id='properties-52'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -8459,8 +8441,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemaorganisation">Organisation</a></td>
-<td>false</td>
+<td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8480,22 +8462,22 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» physicalAddresses</td>
-<td>[<a href="#schemaphysicaladdresswithpurpose">PhysicalAddressWithPurpose</a>]</td>
-<td>true</td>
+<td>[<a href="#schemacommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</a>]</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSphonenumber">PhoneNumber</h2>
+<h2 id="tocScommonphonenumber">CommonPhoneNumber</h2>
 
-<p><a id="schemaphonenumber"></a></p>
+<p><a id="schemacommonphonenumber"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBILE"</span><span class="p">,</span><span class="w">
@@ -8506,7 +8488,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"fullNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-54'>Properties</h3>
+</span></code></pre><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8519,49 +8501,49 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>isPreferred</td>
 <td>boolean</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be &#39;false&#39; if not present</td>
 </tr>
 <tr>
 <td>purpose</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The purpose of the number as specified by the customer</td>
 </tr>
 <tr>
 <td>countryCode</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>If absent, assumed to be Australia (+61). The + should be included</td>
 </tr>
 <tr>
 <td>areaCode</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.</td>
 </tr>
 <tr>
 <td>number</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The actual phone number, with leading zeros as appropriate</td>
 </tr>
 <tr>
 <td>extension</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>An extension number (if applicable)</td>
 </tr>
 <tr>
 <td>fullNumber</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966</td>
 </tr>
@@ -8599,16 +8581,16 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSemailaddress">EmailAddress</h2>
+<h2 id="tocScommonemailaddress">CommonEmailAddress</h2>
 
-<p><a id="schemaemailaddress"></a></p>
+<p><a id="schemacommonemailaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WORK"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-55'>Properties</h3>
+</span></code></pre><h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8621,21 +8603,21 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>isPreferred</td>
 <td>boolean</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Required for one and only one email record in the collection. Denotes the default email address</td>
 </tr>
 <tr>
 <td>purpose</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The purpose for the email, as specified by the customer (Enumeration)</td>
 </tr>
 <tr>
 <td>address</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A correctly formatted email address, as defined by the addr_spec format in RFC_5322</td>
 </tr>
@@ -8665,9 +8647,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSphysicaladdresswithpurpose">PhysicalAddressWithPurpose</h2>
+<h2 id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
 
-<p><a id="schemaphysicaladdresswithpurpose"></a></p>
+<p><a id="schemacommonphysicaladdresswithpurpose"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REGISTERED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
@@ -8705,7 +8687,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-56'>Properties</h3>
+</span></code></pre><h3 id='properties-55'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -8720,14 +8702,14 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» purpose</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
@@ -8746,8 +8728,8 @@ openId ( Scopes: common_detailed_customer )
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemaphysicaladdress">PhysicalAddress</a></td>
-<td>false</td>
+<td><a href="#schemacommonphysicaladdress">CommonPhysicalAddress</a></td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8781,9 +8763,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSphysicaladdress">PhysicalAddress</h2>
+<h2 id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
 
-<p><a id="schemaphysicaladdress"></a></p>
+<p><a id="schemacommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8820,7 +8802,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-57'>Properties</h3>
+</span></code></pre><h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8833,21 +8815,21 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>addressUType</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The type of address object present</td>
 </tr>
 <tr>
 <td>simple</td>
-<td><a href="#schemasimpleaddress">SimpleAddress</a></td>
-<td>false</td>
+<td><a href="#schemacommonsimpleaddress">CommonSimpleAddress</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>paf</td>
-<td><a href="#schemapafaddress">PAFAddress</a></td>
-<td>false</td>
+<td><a href="#schemacommonpafaddress">CommonPAFAddress</a></td>
+<td>conditional</td>
 <td>none</td>
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
@@ -8869,9 +8851,9 @@ openId ( Scopes: common_detailed_customer )
 </tr>
 </tbody></table>
 
-<h2 id="tocSsimpleaddress">SimpleAddress</h2>
+<h2 id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
 
-<p><a id="schemasimpleaddress"></a></p>
+<p><a id="schemacommonsimpleaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8883,7 +8865,7 @@ openId ( Scopes: common_detailed_customer )
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-58'>Properties</h3>
+</span></code></pre><h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8896,64 +8878,64 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>mailingName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
 </tr>
 <tr>
 <td>addressLine1</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>First line of the standard address object</td>
 </tr>
 <tr>
 <td>addressLine2</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Second line of the standard address object</td>
 </tr>
 <tr>
 <td>addressLine3</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Third line of the standard address object</td>
 </tr>
 <tr>
 <td>postcode</td>
 <td>string</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>Mandatory for Australian addresses</td>
 </tr>
 <tr>
 <td>city</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Name of the city or locality</td>
 </tr>
 <tr>
 <td>state</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard</td>
 </tr>
 <tr>
 <td>country</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>A valid ISO 3166 Alpha-3 country code</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSpafaddress">PAFAddress</h2>
+<h2 id="tocScommonpafaddress">CommonPAFAddress</h2>
 
-<p><a id="schemapafaddress"></a></p>
+<p><a id="schemacommonpafaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -8979,7 +8961,7 @@ openId ( Scopes: common_detailed_customer )
 
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></em></p>
-<h3 id='properties-59'>Properties</h3>
+<h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8992,142 +8974,176 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>dpid</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
 </tr>
 <tr>
 <td>thoroughfareNumber1</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Thoroughfare number for a property (first number in a property ranged address)</td>
 </tr>
 <tr>
 <td>thoroughfareNumber1Suffix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2Suffix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
 </tr>
 <tr>
 <td>flatUnitNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Unit number (including suffix, if applicable)</td>
 </tr>
 <tr>
 <td>floorLevelNumber</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Floor or level number (including alpha characters)</td>
 </tr>
 <tr>
 <td>lotNumber</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Allotment number for the address</td>
 </tr>
 <tr>
 <td>buildingName1</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Building/Property name 1</td>
 </tr>
 <tr>
 <td>buildingName2</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Building/Property name 2</td>
 </tr>
 <tr>
 <td>streetName</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The name of the street</td>
 </tr>
 <tr>
 <td>streetType</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
 <td>streetSuffix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
 <td>postalDeliveryType</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
 <td>postalDeliveryNumber</td>
 <td>integer</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Postal delivery number if the address is a postal delivery type</td>
 </tr>
 <tr>
 <td>postalDeliveryNumberPrefix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Postal delivery number prefix related to the postal delivery number</td>
 </tr>
 <tr>
 <td>postalDeliveryNumberSuffix</td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Postal delivery number suffix related to the postal delivery number</td>
 </tr>
 <tr>
 <td>localityName</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Full name of locality</td>
 </tr>
 <tr>
 <td>postcode</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Postcode for the locality</td>
 </tr>
 <tr>
 <td>state</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocScommoncurrencyamount">CommonCurrencyAmount</h2>
+
+<p><a id="schemacommoncurrencyamount"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-59'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>string(AmountString)</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(CurrencyString)</td>
+<td>optional</td>
+<td>none</td>
+<td>If not present assumes AUD</td>
 </tr>
 </tbody></table>
 
@@ -9151,7 +9167,7 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>self</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Fully qualified link to this API call</td>
 </tr>
@@ -9189,35 +9205,35 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>self</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Fully qualified link to this API call</td>
 </tr>
 <tr>
 <td>first</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>URI to the first page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>prev</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>URI to the first previous page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>next</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>URI to the first next page of this set. Mandatory if this response is not the last page</td>
 </tr>
 <tr>
 <td>last</td>
 <td>string(URIString)</td>
-<td>false</td>
+<td>conditional</td>
 <td>none</td>
 <td>URI to the first last page of this set. Mandatory if this response is not the last page</td>
 </tr>
@@ -9244,22 +9260,22 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>totalRecords</td>
 <td>integer(NaturalNumber)</td>
-<td>false</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The total number of records in the full set</td>
 </tr>
 <tr>
 <td>totalPages</td>
 <td>integer(NaturalNumber)</td>
-<td>false</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The total number of pages in the full set</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSerrorlist">ErrorList</h2>
+<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<p><a id="schemaerrorlist"></a></p>
+<p><a id="schemaresponseerrorlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9284,43 +9300,43 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td>errors</td>
 <td>[object]</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» code</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The code of the error</td>
 </tr>
 <tr>
 <td>» title</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>A displayable title of the error type</td>
 </tr>
 <tr>
 <td>» detail</td>
 <td>string</td>
-<td>true</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Detail of the error</td>
 </tr>
 <tr>
 <td>» meta</td>
 <td>object</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>Optional additional data for specific error types</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocSenumproductcategory">EnumProductCategory</h2>
+<h2 id="tocSbankingenumproductcategory">BankingEnumProductCategory</h2>
 
-<p><a id="schemaenumproductcategory"></a></p>
+<p><a id="schemabankingenumproductcategory"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"PERS_AT_CALL_DEPOSITS"</span><span class="w">
 
 </span></code></pre>
@@ -9338,7 +9354,7 @@ openId ( Scopes: common_detailed_customer )
 <tr>
 <td><em>anonymous</em></td>
 <td>string</td>
-<td>false</td>
+<td>optional</td>
 <td>none</td>
 <td>The list of available product categories for categorising products and accounts</td>
 </tr>

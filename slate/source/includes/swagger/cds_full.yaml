@@ -23,6 +23,7 @@ paths:
       x-scopes:
         - bank_basic_accounts
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamAccountOpenStatus'
@@ -44,6 +45,7 @@ paths:
       x-scopes:
         - bank_detailed_accounts
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - name: accountId
@@ -66,6 +68,7 @@ paths:
       x-scopes:
         - bank_basic_accounts
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamAccountOpenStatus'
@@ -86,6 +89,7 @@ paths:
       x-scopes:
         - bank_basic_accounts
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - name: accountIds
@@ -109,11 +113,12 @@ paths:
   '/banking/accounts/{accountId}/transactions':
     get:
       summary: Get Transactions For Account
-      description: Obtain transactions for a specific account
+      description: " Obtain transactions for a specific account\n Some general notes that apply to all end points that retrieve transactions:\n \n - Where multiple transactions are returned transactions should be ordered according to effective date in descending order\n - As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:\n \t\t- Posted date/time if available, then\n \t\t- Execution date/time if available, then\n \t\t- A reasonable date/time nominated by the data provider using internal data structures\n - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account"
       operationId: getTransactions
       x-scopes:
         - bank_transactions
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - name: accountId
@@ -143,6 +148,7 @@ paths:
       x-scopes:
         - bank_transactions
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - name: accountId
@@ -171,6 +177,7 @@ paths:
       x-scopes:
         - bank_transactions
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamAccountOpenStatus'
@@ -196,6 +203,7 @@ paths:
       x-scopes:
         - bank_transactions
       tags:
+        - Banking APIs
         - Accounts
       parameters:
         - $ref: '#/parameters/ParamStartTime'
@@ -229,6 +237,7 @@ paths:
       x-scopes:
         - bank_detailed_accounts
       tags:
+        - Banking APIs
         - Direct Debits
       parameters:
         - name: accountId
@@ -253,6 +262,7 @@ paths:
       x-scopes:
         - bank_detailed_accounts
       tags:
+        - Banking APIs
         - Direct Debits
       parameters:
         - $ref: '#/parameters/ParamAccountIsOwned'
@@ -272,6 +282,7 @@ paths:
       x-scopes:
         - bank_detailed_accounts
       tags:
+        - Banking APIs
         - Direct Debits
       parameters:
         - name: accountIds
@@ -300,6 +311,7 @@ paths:
       x-scopes:
         - bank_basic_accounts
       tags:
+        - Banking APIs
         - Payees
       parameters:
         - name: type
@@ -329,6 +341,7 @@ paths:
       x-scopes:
         - bank_payees
       tags:
+        - Banking APIs
         - Payees
       parameters:
         - name: payeeId
@@ -350,6 +363,7 @@ paths:
       operationId: listProducts
       x-scopes: []
       tags:
+        - Banking APIs
         - Products
       parameters:
         - name: effective
@@ -389,6 +403,7 @@ paths:
       operationId: getProductDetail
       x-scopes: []
       tags:
+        - Banking APIs
         - Products
       parameters:
         - name: productId
@@ -411,6 +426,7 @@ paths:
       x-scopes:
         - common_basic_customer
       tags:
+        - Common APIs
         - Customer
       parameters: []
       responses:
@@ -427,6 +443,7 @@ paths:
       x-scopes:
         - common_detailed_customer
       tags:
+        - Common APIs
         - Customer
       parameters: []
       responses:
