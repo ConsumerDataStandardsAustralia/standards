@@ -1,0 +1,60 @@
+121c121
+< <a href="#authorisation-scopes">bank_basic_accounts</a>
+---
+> [bank_basic_accounts](#authorisation-scopes)
+312c312
+< <a href="#authorisation-scopes">bank_detailed_accounts</a>
+---
+> [bank_detailed_accounts](#authorisation-scopes)
+459c459
+< <a href="#authorisation-scopes">bank_basic_accounts</a>
+---
+> [bank_basic_accounts](#authorisation-scopes)
+591c591
+< <a href="#authorisation-scopes">bank_basic_accounts</a>
+---
+> [bank_basic_accounts](#authorisation-scopes)
+702c702
+< <a href="#authorisation-scopes">bank_transactions</a>
+---
+> [bank_transactions](#authorisation-scopes)
+795c795
+< <a href="#authorisation-scopes">bank_transactions</a>
+---
+> [bank_transactions](#authorisation-scopes)
+929c929
+< <a href="#authorisation-scopes">bank_transactions</a>
+---
+> [bank_transactions](#authorisation-scopes)
+1048c1048
+< <a href="#authorisation-scopes">bank_transactions</a>
+---
+> [bank_transactions](#authorisation-scopes)
+1138c1138
+< <a href="#authorisation-scopes">bank_detailed_accounts</a>
+---
+> [bank_detailed_accounts](#authorisation-scopes)
+1255c1255
+< <a href="#authorisation-scopes">bank_detailed_accounts</a>
+---
+> [bank_detailed_accounts](#authorisation-scopes)
+1361c1361
+< <a href="#authorisation-scopes">bank_detailed_accounts</a>
+---
+> [bank_detailed_accounts](#authorisation-scopes)
+1455c1455
+< <a href="#authorisation-scopes">bank_basic_accounts</a>
+---
+> [bank_basic_accounts](#authorisation-scopes)
+1570c1570
+< <a href="#authorisation-scopes">bank_payees</a>
+---
+> [bank_payees](#authorisation-scopes)
+1973c1973
+< <a href="#authorisation-scopes">common_basic_customer</a>
+---
+> [common_basic_customer](#authorisation-scopes)
+2156c2156
+< <a href="#authorisation-scopes">common_detailed_customer</a>
+---
+> [common_detailed_customer](#authorisation-scopes)

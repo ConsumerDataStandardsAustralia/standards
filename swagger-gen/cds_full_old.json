@@ -54,7 +54,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountList"
+              "$ref": "#/definitions/ResponseBankingAccounts"
             }
           }
         },
@@ -87,7 +87,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountById"
+              "$ref": "#/definitions/ResponseBankingAccount"
             }
           }
         },
@@ -127,7 +127,7 @@
           "200": {
             "description": "resource listing the financial balances for the account",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountsBalanceList"
+              "$ref": "#/definitions/ResponseBankingAccountsBalances"
             }
           }
         },
@@ -153,25 +153,19 @@
             "schema": {
               "$ref": "#/definitions/RequestAccountIds"
             }
-          },
-          {
-            "$ref": "#/parameters/ParamPage"
-          },
-          {
-            "$ref": "#/parameters/ParamPageSize"
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountsBalanceList"
+              "$ref": "#/definitions/ResponseBankingAccountsBalances"
             }
           },
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
+              "$ref": "#/definitions/ErrorList"
             }
           }
         },
@@ -225,7 +219,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingTransactionList"
+              "$ref": "#/definitions/ResponseBankingTransactions"
             }
           }
         },
@@ -266,7 +260,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingTransactionById"
+              "$ref": "#/definitions/ResponseBankingTransactionDetail"
             }
           }
         },
@@ -321,7 +315,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingTransactionList"
+              "$ref": "#/definitions/ResponseBankingTransactions"
             }
           }
         },
@@ -374,13 +368,13 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingTransactionList"
+              "$ref": "#/definitions/ResponseBankingTransactions"
             }
           },
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
+              "$ref": "#/definitions/ErrorList"
             }
           }
         },
@@ -419,7 +413,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingDirectDebitAuthorisationList"
+              "$ref": "#/definitions/ResponseBankingDirectDebits"
             }
           }
         },
@@ -456,7 +450,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingDirectDebitAuthorisationList"
+              "$ref": "#/definitions/ResponseBankingDirectDebits"
             }
           }
         },
@@ -482,25 +476,19 @@
             "schema": {
               "$ref": "#/definitions/RequestAccountIds"
             }
-          },
-          {
-            "$ref": "#/parameters/ParamPage"
-          },
-          {
-            "$ref": "#/parameters/ParamPageSize"
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingDirectDebitAuthorisationList"
+              "$ref": "#/definitions/ResponseBankingDirectDebits"
             }
           },
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
             "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
+              "$ref": "#/definitions/ErrorList"
             }
           }
         },
@@ -545,7 +533,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingPayeeList"
+              "$ref": "#/definitions/ResponseBankingPayees"
             }
           }
         },
@@ -578,7 +566,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingPayeeById"
+              "$ref": "#/definitions/ResponseBankingPayeeDetails"
             }
           }
         },
@@ -638,7 +626,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingProductList"
+              "$ref": "#/definitions/ResponseBankingProducts"
             }
           }
         },
@@ -669,7 +657,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseBankingProductById"
+              "$ref": "#/definitions/ResponseBankingProduct"
             }
           }
         },
@@ -717,7 +705,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ResponseCommonCustomerDetail"
+              "$ref": "#/definitions/ResponseCommonCustomerDetailed"
             }
           }
         },
@@ -864,7 +852,7 @@
         }
       }
     },
-    "ResponseBankingProductList": {
+    "ResponseBankingProducts": {
       "type": "object",
       "required": [
         "data",
@@ -881,7 +869,7 @@
             "products": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProduct"
+                "$ref": "#/definitions/Product"
               }
             }
           }
@@ -894,7 +882,7 @@
         }
       }
     },
-    "BankingProduct": {
+    "Product": {
       "type": "object",
       "required": [
         "productId",
@@ -927,7 +915,7 @@
           "format": "DateTimeString"
         },
         "productCategory": {
-          "$ref": "#/definitions/BankingEnumProductCategory"
+          "$ref": "#/definitions/EnumProductCategory"
         },
         "name": {
           "type": "string",
@@ -986,7 +974,7 @@
         }
       }
     },
-    "ResponseBankingProductById": {
+    "ResponseBankingProduct": {
       "type": "object",
       "required": [
         "data",
@@ -995,7 +983,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingProductDetail"
+          "$ref": "#/definitions/ProductDetail"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -1005,10 +993,10 @@
         }
       }
     },
-    "BankingProductDetail": {
+    "ProductDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingProduct"
+          "$ref": "#/definitions/Product"
         },
         {
           "type": "object",
@@ -1016,50 +1004,50 @@
             "bundles": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductBundle"
+                "$ref": "#/definitions/ProductBundles"
               }
             },
             "features": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductFeature"
+                "$ref": "#/definitions/ProductFeatures"
               }
             },
             "constraints": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductConstraint"
+                "$ref": "#/definitions/ProductConstraints"
               }
             },
             "eligibility": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductEligibility"
+                "$ref": "#/definitions/ProductEligibility"
               }
             },
             "fees": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductFee"
+                "$ref": "#/definitions/ProductFees"
               }
             },
             "depositRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductDepositRate"
+                "$ref": "#/definitions/ProductDepositRates"
               }
             },
             "lendingRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductLendingRate"
+                "$ref": "#/definitions/ProductLendingRates"
               }
             }
           }
         }
       ]
     },
-    "BankingProductBundle": {
+    "ProductBundles": {
       "type": "object",
       "required": [
         "name",
@@ -1090,7 +1078,7 @@
         }
       }
     },
-    "BankingProductFeature": {
+    "ProductFeatures": {
       "type": "object",
       "required": [
         "featureType"
@@ -1130,7 +1118,7 @@
         }
       }
     },
-    "BankingProductConstraint": {
+    "ProductConstraints": {
       "type": "object",
       "required": [
         "constraintType"
@@ -1155,7 +1143,7 @@
         }
       }
     },
-    "BankingProductEligibility": {
+    "ProductEligibility": {
       "type": "object",
       "required": [
         "eligibilityType"
@@ -1197,7 +1185,7 @@
         }
       }
     },
-    "BankingProductFee": {
+    "ProductFees": {
       "type": "object",
       "required": [
         "name",
@@ -1269,12 +1257,12 @@
         "discounts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingProductDiscount"
+            "$ref": "#/definitions/ProductDiscounts"
           }
         }
       }
     },
-    "BankingProductDiscount": {
+    "ProductDiscounts": {
       "type": "object",
       "required": [
         "description",
@@ -1310,7 +1298,7 @@
         }
       }
     },
-    "BankingProductDepositRate": {
+    "ProductDepositRates": {
       "type": "object",
       "required": [
         "depositRateType",
@@ -1351,7 +1339,7 @@
         }
       }
     },
-    "BankingProductLendingRate": {
+    "ProductLendingRates": {
       "type": "object",
       "required": [
         "lendingRateType",
@@ -1397,7 +1385,7 @@
         }
       }
     },
-    "ResponseBankingAccountList": {
+    "ResponseBankingAccounts": {
       "type": "object",
       "required": [
         "data",
@@ -1414,7 +1402,7 @@
             "accounts": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingAccount"
+                "$ref": "#/definitions/Account"
               }
             }
           }
@@ -1427,7 +1415,7 @@
         }
       }
     },
-    "BankingAccount": {
+    "Account": {
       "type": "object",
       "required": [
         "accountId",
@@ -1475,7 +1463,7 @@
           "default": "true"
         },
         "productCategory": {
-          "$ref": "#/definitions/BankingEnumProductCategory"
+          "$ref": "#/definitions/EnumProductCategory"
         },
         "productName": {
           "type": "string",
@@ -1483,7 +1471,7 @@
         }
       }
     },
-    "ResponseBankingAccountById": {
+    "ResponseBankingAccount": {
       "type": "object",
       "required": [
         "data",
@@ -1492,7 +1480,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingAccountDetail"
+          "$ref": "#/definitions/AccountDetail"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -1502,10 +1490,10 @@
         }
       }
     },
-    "BankingAccountDetail": {
+    "AccountDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingAccount"
+          "$ref": "#/definitions/Account"
         },
         {
           "type": "object",
@@ -1540,46 +1528,46 @@
               ]
             },
             "termDeposit": {
-              "$ref": "#/definitions/BankingTermDepositAccount"
+              "$ref": "#/definitions/TermDepositAccount"
             },
             "creditCard": {
-              "$ref": "#/definitions/BankingCreditCardAccount"
+              "$ref": "#/definitions/CreditCardAccount"
             },
             "loan": {
-              "$ref": "#/definitions/BankingLoanAccount"
+              "$ref": "#/definitions/LoanAccount"
             },
             "features": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingAccountFeature"
+                "$ref": "#/definitions/AccountFeatures"
               }
             },
             "fees": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingAccountFee"
+                "$ref": "#/definitions/AccountFees"
               }
             },
             "depositRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingAccountDepositRate"
+                "$ref": "#/definitions/AccountDepositRates"
               }
             },
             "lendingRates": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingAccountLendingRate"
+                "$ref": "#/definitions/AccountLendingRates"
               }
             },
             "address": {
-              "$ref": "#/definitions/CommonPhysicalAddress"
+              "$ref": "#/definitions/PhysicalAddress"
             }
           }
         }
       ]
     },
-    "BankingTermDepositAccount": {
+    "TermDepositAccount": {
       "type": "object",
       "required": [
         "lodgementDate",
@@ -1617,7 +1605,7 @@
         }
       }
     },
-    "BankingCreditCardAccount": {
+    "CreditCardAccount": {
       "type": "object",
       "required": [
         "minPaymentAmount",
@@ -1647,7 +1635,7 @@
         }
       }
     },
-    "BankingLoanAccount": {
+    "LoanAccount": {
       "type": "object",
       "properties": {
         "originalStartDate": {
@@ -1731,7 +1719,7 @@
         }
       }
     },
-    "BankingAccountFeature": {
+    "AccountFeatures": {
       "type": "object",
       "required": [
         "featureType"
@@ -1771,7 +1759,7 @@
         }
       }
     },
-    "BankingAccountFee": {
+    "AccountFees": {
       "type": "object",
       "required": [
         "name",
@@ -1842,12 +1830,12 @@
         "discounts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingAccountDiscount"
+            "$ref": "#/definitions/AccountDiscounts"
           }
         }
       }
     },
-    "BankingAccountDiscount": {
+    "AccountDiscounts": {
       "type": "object",
       "required": [
         "description",
@@ -1883,7 +1871,7 @@
         }
       }
     },
-    "BankingAccountDepositRate": {
+    "AccountDepositRates": {
       "type": "object",
       "required": [
         "depositRateType",
@@ -1924,7 +1912,7 @@
         }
       }
     },
-    "BankingAccountLendingRate": {
+    "AccountLendingRates": {
       "type": "object",
       "required": [
         "lendingRateType",
@@ -1970,7 +1958,7 @@
         }
       }
     },
-    "ResponseBankingTransactionList": {
+    "ResponseBankingTransactions": {
       "type": "object",
       "required": [
         "data",
@@ -1987,7 +1975,7 @@
             "transactions": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingTransaction"
+                "$ref": "#/definitions/Transaction"
               }
             }
           }
@@ -2000,7 +1988,7 @@
         }
       }
     },
-    "BankingTransaction": {
+    "Transaction": {
       "type": "object",
       "required": [
         "accountId",
@@ -2109,7 +2097,7 @@
         }
       }
     },
-    "ResponseBankingTransactionById": {
+    "ResponseBankingTransactionDetail": {
       "type": "object",
       "required": [
         "data",
@@ -2118,7 +2106,17 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingTransactionDetail"
+          "type": "object",
+          "required": [
+            "accountId",
+            "displayName",
+            "transaction"
+          ],
+          "properties": {
+            "transaction": {
+              "$ref": "#/definitions/TransactionDetail"
+            }
+          }
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -2128,10 +2126,10 @@
         }
       }
     },
-    "BankingTransactionDetail": {
+    "TransactionDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingTransaction"
+          "$ref": "#/definitions/Transaction"
         },
         {
           "type": "object",
@@ -2182,7 +2180,7 @@
         }
       ]
     },
-    "ResponseBankingAccountsBalanceList": {
+    "ResponseBankingAccountsBalances": {
       "type": "object",
       "required": [
         "data",
@@ -2199,7 +2197,7 @@
             "balances": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingBalance"
+                "$ref": "#/definitions/Balance"
               }
             }
           }
@@ -2212,7 +2210,7 @@
         }
       }
     },
-    "BankingBalance": {
+    "Balance": {
       "type": "object",
       "required": [
         "accountId",
@@ -2239,20 +2237,20 @@
           ]
         },
         "deposit": {
-          "$ref": "#/definitions/BankingDepositBalance"
+          "$ref": "#/definitions/DepositBalance"
         },
         "lending": {
-          "$ref": "#/definitions/BankingLendingBalance"
+          "$ref": "#/definitions/LendingBalance"
         },
         "purses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CommonCurrencyAmount"
+            "$ref": "#/definitions/CurrencyAmount"
           }
         }
       }
     },
-    "BankingDepositBalance": {
+    "DepositBalance": {
       "type": "object",
       "required": [
         "currentBalance",
@@ -2260,14 +2258,14 @@
       ],
       "properties": {
         "currentBalance": {
-          "$ref": "#/definitions/CommonCurrencyAmount"
+          "$ref": "#/definitions/CurrencyAmount"
         },
         "availableBalance": {
-          "$ref": "#/definitions/CommonCurrencyAmount"
+          "$ref": "#/definitions/CurrencyAmount"
         }
       }
     },
-    "BankingLendingBalance": {
+    "LendingBalance": {
       "type": "object",
       "required": [
         "accountBalance",
@@ -2276,20 +2274,38 @@
       ],
       "properties": {
         "accountBalance": {
-          "$ref": "#/definitions/CommonCurrencyAmount"
+          "$ref": "#/definitions/CurrencyAmount"
         },
         "availableBalance": {
-          "$ref": "#/definitions/CommonCurrencyAmount"
+          "$ref": "#/definitions/CurrencyAmount"
         },
         "creditLimit": {
-          "$ref": "#/definitions/CommonCurrencyAmount"
+          "$ref": "#/definitions/CurrencyAmount"
         },
         "amortisedLimit": {
-          "$ref": "#/definitions/CommonCurrencyAmount"
+          "$ref": "#/definitions/CurrencyAmount"
         }
       }
     },
-    "ResponseBankingPayeeList": {
+    "CurrencyAmount": {
+      "type": "object",
+      "required": [
+        "amount"
+      ],
+      "properties": {
+        "amount": {
+          "type": "string",
+          "description": "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking",
+          "format": "AmountString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "If not present assumes AUD",
+          "format": "CurrencyString"
+        }
+      }
+    },
+    "ResponseBankingPayees": {
       "type": "object",
       "required": [
         "data",
@@ -2307,7 +2323,7 @@
               "type": "array",
               "description": "The list of payees returned",
               "items": {
-                "$ref": "#/definitions/BankingPayee"
+                "$ref": "#/definitions/Payee"
               }
             }
           }
@@ -2320,7 +2336,7 @@
         }
       }
     },
-    "ResponseBankingPayeeById": {
+    "ResponseBankingPayeeDetails": {
       "type": "object",
       "required": [
         "data",
@@ -2329,7 +2345,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingPayeeDetail"
+          "$ref": "#/definitions/PayeeDetail"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -2339,7 +2355,7 @@
         }
       }
     },
-    "BankingPayee": {
+    "Payee": {
       "type": "object",
       "required": [
         "payeeId",
@@ -2376,10 +2392,10 @@
         }
       }
     },
-    "BankingPayeeDetail": {
+    "PayeeDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingPayee"
+          "$ref": "#/definitions/Payee"
         },
         {
           "type": "object",
@@ -2402,19 +2418,19 @@
               ]
             },
             "domestic": {
-              "$ref": "#/definitions/BankingDomesticPayee"
+              "$ref": "#/definitions/DomesticPayee"
             },
             "biller": {
-              "$ref": "#/definitions/BankingBillerPayee"
+              "$ref": "#/definitions/BillerPayee"
             },
             "international": {
-              "$ref": "#/definitions/BankingInternationalPayee"
+              "$ref": "#/definitions/InternationalPayee"
             }
           }
         }
       ]
     },
-    "BankingDomesticPayee": {
+    "DomesticPayee": {
       "type": "object",
       "required": [
         "payeeAccountUType"
@@ -2435,17 +2451,17 @@
           ]
         },
         "account": {
-          "$ref": "#/definitions/BankingDomesticPayeeAccount"
+          "$ref": "#/definitions/DomesticPayeeAccount"
         },
         "card": {
-          "$ref": "#/definitions/BankingDomesticPayeeCard"
+          "$ref": "#/definitions/DomesticPayeeCard"
         },
         "payId": {
-          "$ref": "#/definitions/BankingDomesticPayeePayId"
+          "$ref": "#/definitions/DomesticPayeePayId"
         }
       }
     },
-    "BankingDomesticPayeeAccount": {
+    "DomesticPayeeAccount": {
       "type": "object",
       "required": [
         "accountName",
@@ -2467,7 +2483,7 @@
         }
       }
     },
-    "BankingDomesticPayeeCard": {
+    "DomesticPayeeCard": {
       "type": "object",
       "required": [
         "cardNumber"
@@ -2480,7 +2496,7 @@
         }
       }
     },
-    "BankingDomesticPayeePayId": {
+    "DomesticPayeePayId": {
       "type": "object",
       "required": [
         "identifier",
@@ -2507,7 +2523,7 @@
         }
       }
     },
-    "BankingBillerPayee": {
+    "BillerPayee": {
       "type": "object",
       "required": [
         "billerCode",
@@ -2531,7 +2547,7 @@
         }
       }
     },
-    "BankingInternationalPayee": {
+    "InternationalPayee": {
       "type": "object",
       "required": [
         "beneficiaryDetails",
@@ -2618,7 +2634,7 @@
         }
       }
     },
-    "ResponseBankingDirectDebitAuthorisationList": {
+    "ResponseBankingDirectDebits": {
       "type": "object",
       "required": [
         "data",
@@ -2636,7 +2652,7 @@
               "type": "array",
               "description": "The list of authorisations returned",
               "items": {
-                "$ref": "#/definitions/BankingDirectDebit"
+                "$ref": "#/definitions/DirectDebits"
               }
             }
           }
@@ -2649,7 +2665,7 @@
         }
       }
     },
-    "BankingDirectDebit": {
+    "DirectDebits": {
       "type": "object",
       "required": [
         "accountId"
@@ -2661,7 +2677,7 @@
           "format": "ASCIIString"
         },
         "authorisedEntity": {
-          "$ref": "#/definitions/BankingAuthorisedEntity"
+          "$ref": "#/definitions/AuthorisedEntity"
         },
         "lastDebitDateTime": {
           "type": "string",
@@ -2675,7 +2691,7 @@
         }
       }
     },
-    "BankingAuthorisedEntity": {
+    "AuthorisedEntity": {
       "type": "object",
       "required": [
         "name",
@@ -2731,10 +2747,10 @@
               ]
             },
             "person": {
-              "$ref": "#/definitions/CommonPerson"
+              "$ref": "#/definitions/Person"
             },
             "organisation": {
-              "$ref": "#/definitions/CommonOrganisation"
+              "$ref": "#/definitions/Organisation"
             }
           }
         },
@@ -2746,7 +2762,7 @@
         }
       }
     },
-    "ResponseCommonCustomerDetail": {
+    "ResponseCommonCustomerDetailed": {
       "type": "object",
       "required": [
         "data",
@@ -2773,10 +2789,10 @@
               ]
             },
             "person": {
-              "$ref": "#/definitions/CommonPersonDetail"
+              "$ref": "#/definitions/PersonDetail"
             },
             "organisation": {
-              "$ref": "#/definitions/CommonOrganisationDetail"
+              "$ref": "#/definitions/OrganisationDetail"
             }
           }
         },
@@ -2788,7 +2804,7 @@
         }
       }
     },
-    "CommonPerson": {
+    "Person": {
       "type": "object",
       "required": [
         "lastUpdateTime",
@@ -2830,10 +2846,10 @@
         }
       }
     },
-    "CommonPersonDetail": {
+    "PersonDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/CommonPerson"
+          "$ref": "#/definitions/Person"
         },
         {
           "type": "object",
@@ -2847,28 +2863,28 @@
               "type": "array",
               "description": "At least one record is required",
               "items": {
-                "$ref": "#/definitions/CommonPhoneNumber"
+                "$ref": "#/definitions/PhoneNumber"
               }
             },
             "emailAddresses": {
               "type": "array",
               "description": "May be empty",
               "items": {
-                "$ref": "#/definitions/CommonEmailAddress"
+                "$ref": "#/definitions/EmailAddress"
               }
             },
             "physicalAddresses": {
               "type": "array",
               "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
               "items": {
-                "$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
+                "$ref": "#/definitions/PhysicalAddressWithPurpose"
               }
             }
           }
         }
       ]
     },
-    "CommonOrganisation": {
+    "Organisation": {
       "type": "object",
       "required": [
         "lastUpdateTime",
@@ -2946,10 +2962,10 @@
         }
       }
     },
-    "CommonOrganisationDetail": {
+    "OrganisationDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/CommonOrganisation"
+          "$ref": "#/definitions/Organisation"
         },
         {
           "type": "object",
@@ -2961,14 +2977,14 @@
               "type": "array",
               "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
               "items": {
-                "$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
+                "$ref": "#/definitions/PhysicalAddressWithPurpose"
               }
             }
           }
         }
       ]
     },
-    "CommonPhoneNumber": {
+    "PhoneNumber": {
       "type": "object",
       "required": [
         "purpose",
@@ -3018,7 +3034,7 @@
         }
       }
     },
-    "CommonEmailAddress": {
+    "EmailAddress": {
       "type": "object",
       "required": [
         "isPreferred",
@@ -3046,7 +3062,7 @@
         }
       }
     },
-    "CommonPhysicalAddressWithPurpose": {
+    "PhysicalAddressWithPurpose": {
       "allOf": [
         {
           "type": "object",
@@ -3068,11 +3084,11 @@
           }
         },
         {
-          "$ref": "#/definitions/CommonPhysicalAddress"
+          "$ref": "#/definitions/PhysicalAddress"
         }
       ]
     },
-    "CommonPhysicalAddress": {
+    "PhysicalAddress": {
       "type": "object",
       "required": [
         "addressUType"
@@ -3091,14 +3107,14 @@
           ]
         },
         "simple": {
-          "$ref": "#/definitions/CommonSimpleAddress"
+          "$ref": "#/definitions/SimpleAddress"
         },
         "paf": {
-          "$ref": "#/definitions/CommonPAFAddress"
+          "$ref": "#/definitions/PAFAddress"
         }
       }
     },
-    "CommonSimpleAddress": {
+    "SimpleAddress": {
       "type": "object",
       "required": [
         "addressLine1",
@@ -3143,7 +3159,7 @@
         }
       }
     },
-    "CommonPAFAddress": {
+    "PAFAddress": {
       "type": "object",
       "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
       "required": [
@@ -3234,29 +3250,8 @@
         }
       }
     },
-    "CommonCurrencyAmount": {
-      "type": "object",
-      "required": [
-        "amount"
-      ],
-      "properties": {
-        "amount": {
-          "type": "string",
-          "description": "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking",
-          "format": "AmountString"
-        },
-        "currency": {
-          "type": "string",
-          "description": "If not present assumes AUD",
-          "format": "CurrencyString"
-        }
-      }
-    },
     "Links": {
       "type": "object",
-      "required": [
-        "self"
-      ],
       "properties": {
         "self": {
           "type": "string",
@@ -3270,9 +3265,6 @@
     },
     "LinksPaginated": {
       "type": "object",
-      "required": [
-        "self"
-      ],
       "x-conditional": [
         "prev",
         "next",
@@ -3309,10 +3301,6 @@
     },
     "MetaPaginated": {
       "type": "object",
-      "required": [
-        "totalRecords",
-        "totalPages"
-      ],
       "properties": {
         "totalRecords": {
           "type": "integer",
@@ -3326,7 +3314,7 @@
         }
       }
     },
-    "ResponseErrorList": {
+    "ErrorList": {
       "type": "object",
       "required": [
         "errors"
@@ -3363,7 +3351,7 @@
         }
       }
     },
-    "BankingEnumProductCategory": {
+    "EnumProductCategory": {
       "type": "string",
       "description": "The list of available product categories for categorising products and accounts",
       "enum": [

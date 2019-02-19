@@ -1,29 +1,6 @@
----
-title: Consumer Data Standards
-language_tabs:
-  - http: HTTP
-  - javascript: Javascript
-toc_footers: []
-includes: []
-search: false
-highlight_theme: darkula
-headingLevel: 2
 
----
 
-<h1 id="consumer-data-standards">Consumer Data Standards v1</h1>
-
-> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
-
-API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-
-Base URLs:
-
-* <a href="https://data.provider.com.au/cds-au/v1">https://data.provider.com.au/cds-au/v1</a>
-
-License: <a href="https://opensource.org/licenses/MIT">MIT Licence</a>
-
-<h1 id="consumer-data-standards-accounts">Accounts</h1>
+<h1 id="consumer-data-standards-banking-apis">Banking APIs</h1>
 
 ## Get Accounts
 
@@ -64,11 +41,11 @@ Obtain a list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|string|false|Filters accounts based on whether they are owned by the authorised customer|
-|product-category|query|string|false|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
+|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -137,10 +114,11 @@ Obtain a list of accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccounts](#schemaresponsebankingaccounts)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountList](#schemaresponsebankingaccountlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 
 ## Get Account Detail
@@ -182,7 +160,7 @@ Obtain detailed information on a single account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|true|A tokenised identifier for the account which is unique but not shareable|
+|accountId|path|string(ASCIIString)|mandatory|A tokenised identifier for the account which is unique but not shareable|
 
 > Example responses
 
@@ -327,10 +305,11 @@ Obtain detailed information on a single account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccount](#schemaresponsebankingaccount)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountById](#schemaresponsebankingaccountbyid)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 
 ## Get Bulk Balances
@@ -372,11 +351,11 @@ Obtain balances for multiple, filtered accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|string|false|Filters accounts based on whether they are owned by the authorised customer|
-|product-category|query|string|false|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
+|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -473,10 +452,11 @@ Obtain balances for multiple, filtered accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|resource listing the financial balances for the account|[ResponseBankingAccountsBalances](#schemaresponsebankingaccountsbalances)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|resource listing the financial balances for the account|[ResponseBankingAccountsBalanceList](#schemaresponsebankingaccountsbalancelist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 
 ## Get Balances For Specific Accounts
@@ -533,7 +513,9 @@ Obtain balances for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[RequestAccountIds](#schemarequestaccountids)|true|The list of account IDs to obtain information for|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
 
@@ -601,11 +583,12 @@ Obtain balances for a specified list of accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalances](#schemaresponsebankingaccountsbalances)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ErrorList](#schemaerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemaresponsebankingaccountsbalancelist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 
 ## Get Transactions For Account
@@ -642,19 +625,27 @@ $.ajax({
 `GET /banking/accounts/{accountId}/transactions`
 
 Obtain transactions for a specific account
+Some general notes that apply to all end points that retrieve transactions:
+
+- Where multiple transactions are returned transactions should be ordered according to effective date in descending order
+- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
+		- Posted date/time if available, then
+		- Execution date/time if available, then
+		- A reasonable date/time nominated by the data provider using internal data structures
+- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
 
 <h3 id="get-transactions-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|true|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
-|start-time|query|string(DateTimeString)|false|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string(DateTimeString)|false|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
-|min-amount|query|string(AmountString)|false|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string(AmountString)|false|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|accountId|path|string(ASCIIString)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
+|start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+|end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 > Example responses
 
@@ -663,9 +654,6 @@ Obtain transactions for a specific account
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -707,10 +695,11 @@ Obtain transactions for a specific account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactions](#schemaresponsebankingtransactions)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 
 ## Get Transaction Detail
@@ -752,8 +741,8 @@ Obtain detailed information on a transaction for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|true|The account id token that is used to uniquely represent the account|
-|transactionId|path|string(ASCIIString)|true|The unique identifier for the specific transaction for which details are being requested|
+|accountId|path|string(ASCIIString)|mandatory|The account id token that is used to uniquely represent the account|
+|transactionId|path|string(ASCIIString)|mandatory|The unique identifier for the specific transaction for which details are being requested|
 
 > Example responses
 
@@ -763,37 +752,30 @@ Obtain detailed information on a transaction for a specific account
 {
   "data": {
     "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "transaction": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "FEE",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "string",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string",
-        "extendedData": {
-          "payer": "string",
-          "payee": "string",
-          "extensionUType": "extendedDescription",
-          "extendedDescription": "string",
-          "serviceId": "X2P1.01"
-        }
-      }
-    ]
+    "transactionId": "string",
+    "isDetailAvailable": true,
+    "type": "FEE",
+    "status": "PENDING",
+    "description": "string",
+    "postingDateTime": "string",
+    "valueDateTime": "string",
+    "executionDateTime": "string",
+    "amount": "string",
+    "currency": "string",
+    "reference": "string",
+    "merchantName": "string",
+    "merchantCategoryCode": "string",
+    "billerCode": "string",
+    "billerName": "string",
+    "crn": "string",
+    "apcaNumber": "string",
+    "extendedData": {
+      "payer": "string",
+      "payee": "string",
+      "extensionUType": "extendedDescription",
+      "extendedDescription": "string",
+      "serviceId": "X2P1.01"
+    }
   },
   "links": {
     "self": "string"
@@ -806,10 +788,11 @@ Obtain detailed information on a transaction for a specific account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionDetail](#schemaresponsebankingtransactiondetail)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionById](#schemaresponsebankingtransactionbyid)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 
 ## Get Transactions For Multiple Accounts
@@ -851,16 +834,16 @@ Obtain transactions for multiple, filtered accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|false|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|string|false|Filters accounts based on whether they are owned by the authorised customer|
-|product-category|query|string|false|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|start-time|query|string(DateTimeString)|false|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string(DateTimeString)|false|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
-|min-amount|query|string(AmountString)|false|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string(AmountString)|false|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
+|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+|end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -898,9 +881,6 @@ Obtain transactions for multiple, filtered accounts
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -942,10 +922,11 @@ Obtain transactions for multiple, filtered accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactions](#schemaresponsebankingtransactions)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
 
 ## Get Transactions For Specific Accounts
@@ -1002,14 +983,14 @@ Obtain transactions for a specified list of transactions.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|start-time|query|string(DateTimeString)|false|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string(DateTimeString)|false|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
-|min-amount|query|string(AmountString)|false|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string(AmountString)|false|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|false|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
-|body|body|[RequestAccountIds](#schemarequestaccountids)|true|The list of account IDs to obtain information for|
+|start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+|end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
 
@@ -1018,9 +999,6 @@ Obtain transactions for a specified list of transactions.
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -1062,14 +1040,13 @@ Obtain transactions for a specified list of transactions.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactions](#schemaresponsebankingtransactions)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ErrorList](#schemaerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_transactions</a>
 </aside>
-
-<h1 id="consumer-data-standards-direct-debits">Direct Debits</h1>
 
 ## Get Direct Debits For Account
 
@@ -1110,9 +1087,9 @@ Obtain direct debit authorisations for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|true|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|accountId|path|string(ASCIIString)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 > Example responses
 
@@ -1154,10 +1131,11 @@ Obtain direct debit authorisations for a specific account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebits](#schemaresponsebankingdirectdebits)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 
 ## Get Bulk Direct Debits
@@ -1199,10 +1177,10 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|is-owned|query|string|false|Filters accounts based on whether they are owned by the authorised customer|
-|product-category|query|string|false|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
+|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1270,10 +1248,11 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebits](#schemaresponsebankingdirectdebits)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 
 ## Get Direct Debits For Specific Accounts
@@ -1330,7 +1309,9 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[RequestAccountIds](#schemarequestaccountids)|true|The list of account IDs to obtain information for|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
 
@@ -1372,14 +1353,13 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebits](#schemaresponsebankingdirectdebits)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ErrorList](#schemaerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
-
-<h1 id="consumer-data-standards-payees">Payees</h1>
 
 ## Get Payees
 
@@ -1420,9 +1400,9 @@ Obtain a list of pre-registered payees
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|false|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1431,6 +1411,7 @@ Obtain a list of pre-registered payees
 |type|DOMESTIC|
 |type|INTERNATIONAL|
 |type|BILLER|
+|type|ALL|
 
 > Example responses
 
@@ -1467,10 +1448,11 @@ Obtain a list of pre-registered payees
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayees](#schemaresponsebankingpayees)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeList](#schemaresponsebankingpayeelist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
 </aside>
 
 ## Get Payee Detail
@@ -1512,7 +1494,7 @@ Obtain detailed information on a single payee
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|payeeId|path|string(ASCIIString)|true|The ID used to locate the details of a particular payee|
+|payeeId|path|string(ASCIIString)|mandatory|The ID used to locate the details of a particular payee|
 
 > Example responses
 
@@ -1581,13 +1563,12 @@ Obtain detailed information on a single payee
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeDetails](#schemaresponsebankingpayeedetails)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeById](#schemaresponsebankingpayeebyid)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_payees</a>
 </aside>
-
-<h1 id="consumer-data-standards-products">Products</h1>
 
 ## Get Products
 
@@ -1624,16 +1605,49 @@ $.ajax({
 
 Obtain a list of products that are currently openly offered to the market
 
+Note that the results returned by this end point are expected to be ordered according to updated-since
+
+### Conventions
+In the product reference payloads there are a number of recurring conventions that are explained here, in one place.
+
+#### Arrays Of Features
+
+In the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:
+
+- Each element in an array has the same structure so that clients can reliably interpret the payloads
+- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
+- Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
+- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
+- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.
+
+#### URIs To More Information
+
+As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their on channels.
+
+These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
+
+#### Linkage To Accounts
+From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
+
+For this reason productCategory is a common field between accounts and products but there is not common linkage field specific to a product that appears within the account payloads.
+
+Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the full sets of options are not identical between the two entities.
+
+#### Dates
+It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained.
+
+In addition the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+
 <h3 id="get-products-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|effective|query|string|false|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'|
-|updated-since|query|string(DateTimeString)|false|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
-|brand|query|string|false|Filter results based on a specific brand|
-|product-category|query|string|false|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer|false|Page of results to request (standard pagination)|
-|page-size|query|integer|false|Page size to request. Default is 25 (standard pagination)|
+|effective|query|string|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'|
+|updated-since|query|string(DateTimeString)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
+|brand|query|string|optional|Filter results based on a specific brand|
+|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|page|query|integer|optional|Page of results to request (standard pagination)|
+|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1709,7 +1723,7 @@ Obtain a list of products that are currently openly offered to the market
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProducts](#schemaresponsebankingproducts)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductList](#schemaresponsebankingproductlist)|
 
 <aside class="success">
 This operation does not require authentication
@@ -1754,7 +1768,7 @@ Obtain detailed information on a single product offered openly to the market
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|productId|path|string(ASCIIString)|true|ID of the specific product requested|
+|productId|path|string(ASCIIString)|mandatory|ID of the specific product requested|
 
 > Example responses
 
@@ -1862,13 +1876,13 @@ Obtain detailed information on a single product offered openly to the market
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProduct](#schemaresponsebankingproduct)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductById](#schemaresponsebankingproductbyid)|
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-<h1 id="consumer-data-standards-customer">Customer</h1>
+<h1 id="consumer-data-standards-common-apis">Common APIs</h1>
 
 ## Get Customer
 
@@ -1954,8 +1968,9 @@ Obtain basic information on the customer that has authorised the current session
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemaresponsecommoncustomer)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">common_basic_customer</a>
 </aside>
 
 ## Get Customer Detail
@@ -2134,10 +2149,11 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetailed](#schemaresponsecommoncustomerdetailed)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetail](#schemaresponsecommoncustomerdetail)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">common_detailed_customer</a>
 </aside>
 
 # Schemas
@@ -2162,13 +2178,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» accountIds|[string]|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|object|mandatory|none|none|
+|» accountIds|[string]|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
-<h2 id="tocSresponsebankingproducts">ResponseBankingProducts</h2>
+<h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
-<a id="schemaresponsebankingproducts"></a>
+<a id="schemaresponsebankingproductlist"></a>
 
 ```json
 {
@@ -2215,14 +2231,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» products|[[Product](#schemaproduct)]|true|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|true|none|none|
+|data|object|mandatory|none|none|
+|» products|[[BankingProduct](#schemabankingproduct)]|mandatory|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSproduct">Product</h2>
+<h2 id="tocSbankingproduct">BankingProduct</h2>
 
-<a id="schemaproduct"></a>
+<a id="schemabankingproduct"></a>
 
 ```json
 {
@@ -2252,27 +2268,27 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|productId|string(ASCIIString)|true|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
-|effectiveFrom|string(DateTimeString)|false|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
-|effectiveTo|string(DateTimeString)|false|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
-|lastUpdated|string(DateTimeString)|true|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[EnumProductCategory](#schemaenumproductcategory)|true|none|The list of available product categories for categorising products and accounts|
-|name|string|true|none|The display name of the product|
-|description|string|true|none|A description of the product|
-|brand|string|true|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
-|brandName|string|false|none|An optional display name of the brand|
-|applicationUri|string(URIString)|false|none|A link to the an application web page where this product can be applied for.|
-|isTailored|boolean|true|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
-|additionalInformation|object|false|none|none|
-|» overviewUri|string(URIString)|false|none|General overview of the product|
-|» termsUri|string(URIString)|false|none|Terms and conditions for the product|
-|» eligibilityUri|string(URIString)|false|none|Eligibility rules and criteria for the product|
-|» feesAndPricingUri|string(URIString)|false|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
-|» bundleUri|string(URIString)|false|none|Description of a bundle that this product can be part of|
+|productId|string(ASCIIString)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+|effectiveFrom|string(DateTimeString)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
+|effectiveTo|string(DateTimeString)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
+|lastUpdated|string(DateTimeString)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts|
+|name|string|mandatory|none|The display name of the product|
+|description|string|mandatory|none|A description of the product|
+|brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
+|brandName|string|optional|none|An optional display name of the brand|
+|applicationUri|string(URIString)|optional|none|A link to the an application web page where this product can be applied for.|
+|isTailored|boolean|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
+|additionalInformation|object|optional|none|none|
+|» overviewUri|string(URIString)|optional|none|General overview of the product|
+|» termsUri|string(URIString)|optional|none|Terms and conditions for the product|
+|» eligibilityUri|string(URIString)|optional|none|Eligibility rules and criteria for the product|
+|» feesAndPricingUri|string(URIString)|optional|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
+|» bundleUri|string(URIString)|optional|none|Description of a bundle that this product can be part of|
 
-<h2 id="tocSresponsebankingproduct">ResponseBankingProduct</h2>
+<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
-<a id="schemaresponsebankingproduct"></a>
+<a id="schemaresponsebankingproductbyid"></a>
 
 ```json
 {
@@ -2377,13 +2393,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|[ProductDetail](#schemaproductdetail)|true|none|none|
-|links|[Links](#schemalinks)|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|[BankingProductDetail](#schemabankingproductdetail)|mandatory|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
-<h2 id="tocSproductdetail">ProductDetail</h2>
+<h2 id="tocSbankingproductdetail">BankingProductDetail</h2>
 
-<a id="schemaproductdetail"></a>
+<a id="schemabankingproductdetail"></a>
 
 ```json
 {
@@ -2484,24 +2500,24 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[Product](#schemaproduct)|false|none|none|
+|*anonymous*|[BankingProduct](#schemabankingproduct)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» bundles|[[ProductBundles](#schemaproductbundles)]|false|none|none|
-|» features|[[ProductFeatures](#schemaproductfeatures)]|false|none|none|
-|» constraints|[[ProductConstraints](#schemaproductconstraints)]|false|none|none|
-|» eligibility|[[ProductEligibility](#schemaproducteligibility)]|false|none|none|
-|» fees|[[ProductFees](#schemaproductfees)]|false|none|none|
-|» depositRates|[[ProductDepositRates](#schemaproductdepositrates)]|false|none|none|
-|» lendingRates|[[ProductLendingRates](#schemaproductlendingrates)]|false|none|none|
+|*anonymous*|object|optional|none|none|
+|» bundles|[[BankingProductBundle](#schemabankingproductbundle)]|optional|none|none|
+|» features|[[BankingProductFeature](#schemabankingproductfeature)]|optional|none|none|
+|» constraints|[[BankingProductConstraint](#schemabankingproductconstraint)]|optional|none|none|
+|» eligibility|[[BankingProductEligibility](#schemabankingproducteligibility)]|optional|none|none|
+|» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|none|
+|» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|none|
+|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|none|
 
-<h2 id="tocSproductbundles">ProductBundles</h2>
+<h2 id="tocSbankingproductbundle">BankingProductBundle</h2>
 
-<a id="schemaproductbundles"></a>
+<a id="schemabankingproductbundle"></a>
 
 ```json
 {
@@ -2519,14 +2535,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|true|none|Name of the bundle|
-|description|string|true|none|Description of the bundle|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information on the bundle criteria and benefits|
-|productIds|[string]|true|none|Array of product IDs for products included in the bundle|
+|name|string|mandatory|none|Name of the bundle|
+|description|string|mandatory|none|Description of the bundle|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
+|productIds|[string]|mandatory|none|Array of product IDs for products included in the bundle|
 
-<h2 id="tocSproductfeatures">ProductFeatures</h2>
+<h2 id="tocSbankingproductfeature">BankingProductFeature</h2>
 
-<a id="schemaproductfeatures"></a>
+<a id="schemabankingproductfeature"></a>
 
 ```json
 {
@@ -2540,8 +2556,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|featureType|string|true|none|The type of feature described|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
+|featureType|string|mandatory|none|The type of feature described|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
 
 #### Enumerated Values
 
@@ -2567,9 +2583,9 @@ This operation does not require authentication
 |featureType|DONATE_INTEREST|
 |featureType|BILL_PAYMENT|
 
-<h2 id="tocSproductconstraints">ProductConstraints</h2>
+<h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
 
-<a id="schemaproductconstraints"></a>
+<a id="schemabankingproductconstraint"></a>
 
 ```json
 {
@@ -2583,8 +2599,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|constraintType|string|true|none|The type of constraint described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType|
+|constraintType|string|mandatory|none|The type of constraint described.  See the next section for an overview of valid values and their meaning|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType|
 
 #### Enumerated Values
 
@@ -2595,9 +2611,9 @@ This operation does not require authentication
 |constraintType|MAX_LIMIT|
 |constraintType|MIN_LIMIT|
 
-<h2 id="tocSproducteligibility">ProductEligibility</h2>
+<h2 id="tocSbankingproducteligibility">BankingProductEligibility</h2>
 
-<a id="schemaproducteligibility"></a>
+<a id="schemabankingproducteligibility"></a>
 
 ```json
 {
@@ -2613,10 +2629,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|eligibilityType|string|true|none|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType|
-|additionalInfo|string|false|none|Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information on this eligibility criteria|
+|eligibilityType|string|mandatory|none|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType|
+|additionalInfo|string|conditional|none|Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility criteria|
 
 #### Enumerated Values
 
@@ -2634,9 +2650,9 @@ This operation does not require authentication
 |eligibilityType|RESIDENCY_STATUS|
 |eligibilityType|OTHER|
 
-<h2 id="tocSproductfees">ProductFees</h2>
+<h2 id="tocSbankingproductfee">BankingProductFee</h2>
 
-<a id="schemaproductfees"></a>
+<a id="schemabankingproductfee"></a>
 
 ```json
 {
@@ -2665,16 +2681,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|true|none|Name of the fee|
-|feeType|string|true|none|The type of fee|
-|amount|string(AmountString)|false|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|balanceRate|string(RateString)|false|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|transactionRate|string(RateString)|false|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|currency|string(CurrencyString)|false|none|The currency the fee will be charged in. Assumes AUD if absent|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
-|additionalInfo|string|false|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information on this fee|
-|discounts|[[ProductDiscounts](#schemaproductdiscounts)]|false|none|none|
+|name|string|mandatory|none|Name of the fee|
+|feeType|string|mandatory|none|The type of fee|
+|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
+|additionalInfo|string|optional|none|Display text providing more information on the fee|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+|discounts|[[BankingProductDiscount](#schemabankingproductdiscount)]|optional|none|none|
 
 #### Enumerated Values
 
@@ -2694,9 +2710,9 @@ This operation does not require authentication
 |feeType|PAPER_STATEMENT|
 |feeType|OTHER_EVENT|
 
-<h2 id="tocSproductdiscounts">ProductDiscounts</h2>
+<h2 id="tocSbankingproductdiscount">BankingProductDiscount</h2>
 
-<a id="schemaproductdiscounts"></a>
+<a id="schemabankingproductdiscount"></a>
 
 ```json
 {
@@ -2712,10 +2728,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|description|string|true|none|Description of the discount|
-|discountType|string|true|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|true|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
+|description|string|mandatory|none|Description of the discount|
+|discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
+|amount|string(AmountString)|mandatory|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
 
 #### Enumerated Values
 
@@ -2726,9 +2742,9 @@ This operation does not require authentication
 |discountType|PAYMENTS|
 |discountType|BUNDLE|
 
-<h2 id="tocSproductdepositrates">ProductDepositRates</h2>
+<h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
 
-<a id="schemaproductdepositrates"></a>
+<a id="schemabankingproductdepositrate"></a>
 
 ```json
 {
@@ -2745,11 +2761,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|depositRateType|string|true|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|true|none|The rate to be applied|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
-|additionalInfo|string|false|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information on this fee|
+|depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
+|rate|string(RateString)|mandatory|none|The rate to be applied|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
+|additionalInfo|string|optional|none|Display text providing more information on the fee|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
 
 #### Enumerated Values
 
@@ -2761,9 +2777,9 @@ This operation does not require authentication
 |depositRateType|VARIABLE|
 |depositRateType|INTRODUCTORY|
 
-<h2 id="tocSproductlendingrates">ProductLendingRates</h2>
+<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
 
-<a id="schemaproductlendingrates"></a>
+<a id="schemabankingproductlendingrate"></a>
 
 ```json
 {
@@ -2780,11 +2796,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lendingRateType|string|true|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|true|none|The rate to be applied|
-|additionalValue|string|false|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
-|additionalInfo|string|false|none|Display text providing more information on the fee.|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information  on this fee|
+|lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
+|rate|string(RateString)|mandatory|none|The rate to be applied|
+|additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
+|additionalInfo|string|optional|none|Display text providing more information on the fee.|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
 
 #### Enumerated Values
 
@@ -2801,9 +2817,9 @@ This operation does not require authentication
 |lendingRateType|VARIABLE|
 |lendingRateType|COMPARISON|
 
-<h2 id="tocSresponsebankingaccounts">ResponseBankingAccounts</h2>
+<h2 id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
 
-<a id="schemaresponsebankingaccounts"></a>
+<a id="schemaresponsebankingaccountlist"></a>
 
 ```json
 {
@@ -2840,14 +2856,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» accounts|[[Account](#schemaaccount)]|true|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|true|none|none|
+|data|object|mandatory|none|none|
+|» accounts|[[BankingAccount](#schemabankingaccount)]|mandatory|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSaccount">Account</h2>
+<h2 id="tocSbankingaccount">BankingAccount</h2>
 
-<a id="schemaaccount"></a>
+<a id="schemabankingaccount"></a>
 
 ```json
 {
@@ -2867,14 +2883,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|true|none|A unique ID of the account adhering to the standards for ID permanence|
-|displayName|string|true|none|The display name of the account. If a customer provided nickname is available that value should be returned|
-|nickname|string|false|none|A customer supplied nick name for the account|
-|maskedNumber|string(MaskedAccountString)|true|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
-|openStatus|string|false|none|Open or closed status for the account.  If not present then OPEN is assumed|
-|isOwned|boolean|false|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
-|productCategory|[EnumProductCategory](#schemaenumproductcategory)|true|none|The list of available product categories for categorising products and accounts|
-|productName|string|true|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
+|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|displayName|string|mandatory|none|The display name of the account. If a customer provided nickname is available that value should be returned|
+|nickname|string|optional|none|A customer supplied nick name for the account|
+|maskedNumber|string(MaskedAccountString)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
+|openStatus|string|optional|none|Open or closed status for the account.  If not present then OPEN is assumed|
+|isOwned|boolean|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts|
+|productName|string|mandatory|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
 
 #### Enumerated Values
 
@@ -2883,9 +2899,9 @@ This operation does not require authentication
 |openStatus|OPEN|
 |openStatus|CLOSED|
 
-<h2 id="tocSresponsebankingaccount">ResponseBankingAccount</h2>
+<h2 id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
 
-<a id="schemaresponsebankingaccount"></a>
+<a id="schemaresponsebankingaccountbyid"></a>
 
 ```json
 {
@@ -3027,13 +3043,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|[AccountDetail](#schemaaccountdetail)|true|none|none|
-|links|[Links](#schemalinks)|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|[BankingAccountDetail](#schemabankingaccountdetail)|mandatory|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
-<h2 id="tocSaccountdetail">AccountDetail</h2>
+<h2 id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
-<a id="schemaaccountdetail"></a>
+<a id="schemabankingaccountdetail"></a>
 
 ```json
 {
@@ -3171,25 +3187,25 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[Account](#schemaaccount)|false|none|none|
+|*anonymous*|[BankingAccount](#schemabankingaccount)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» bsb|string|false|none|The unmasked BSB for the account.  Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» accountNumber|string|false|none|The unmasked account number for the account.  Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» bundleName|string|false|none|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
-|» specificAccountUType|string|false|none|The type of structure to present account specific fields.|
-|» termDeposit|[TermDepositAccount](#schematermdepositaccount)|false|none|none|
-|» creditCard|[CreditCardAccount](#schemacreditcardaccount)|false|none|none|
-|» loan|[LoanAccount](#schemaloanaccount)|false|none|none|
-|» features|[[AccountFeatures](#schemaaccountfeatures)]|false|none|none|
-|» fees|[[AccountFees](#schemaaccountfees)]|false|none|none|
-|» depositRates|[[AccountDepositRates](#schemaaccountdepositrates)]|false|none|none|
-|» lendingRates|[[AccountLendingRates](#schemaaccountlendingrates)]|false|none|none|
-|» address|[PhysicalAddress](#schemaphysicaladdress)|false|none|none|
+|*anonymous*|object|optional|none|none|
+|» bsb|string|optional|none|The unmasked BSB for the account.  Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
+|» accountNumber|string|optional|none|The unmasked account number for the account.  Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
+|» bundleName|string|optional|none|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
+|» specificAccountUType|string|optional|none|The type of structure to present account specific fields.|
+|» termDeposit|[BankingTermDepositAccount](#schemabankingtermdepositaccount)|conditional|none|none|
+|» creditCard|[BankingCreditCardAccount](#schemabankingcreditcardaccount)|conditional|none|none|
+|» loan|[BankingLoanAccount](#schemabankingloanaccount)|conditional|none|none|
+|» features|[[BankingAccountFeature](#schemabankingaccountfeature)]|optional|none|none|
+|» fees|[[BankingAccountFee](#schemabankingaccountfee)]|optional|none|none|
+|» depositRates|[[BankingAccountDepositRate](#schemabankingaccountdepositrate)]|optional|none|none|
+|» lendingRates|[[BankingAccountLendingRate](#schemabankingaccountlendingrate)]|optional|none|none|
+|» address|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
 
 #### Enumerated Values
 
@@ -3199,9 +3215,9 @@ This operation does not require authentication
 |specificAccountUType|creditCard|
 |specificAccountUType|loan|
 
-<h2 id="tocStermdepositaccount">TermDepositAccount</h2>
+<h2 id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
 
-<a id="schematermdepositaccount"></a>
+<a id="schemabankingtermdepositaccount"></a>
 
 ```json
 {
@@ -3218,11 +3234,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lodgementDate|string(DateString)|true|none|The lodgement date of the original deposit|
-|maturityDate|string(DateString)|true|none|Maturity date for the term deposit|
-|maturityAmount|string(AmountString)|false|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
-|maturityCurrency|string(CurrencyString)|false|none|If absent assumes AUD|
-|maturityInstructions|string|true|none|Current instructions on action to be taken at maturity|
+|lodgementDate|string(DateString)|mandatory|none|The lodgement date of the original deposit|
+|maturityDate|string(DateString)|mandatory|none|Maturity date for the term deposit|
+|maturityAmount|string(AmountString)|optional|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
+|maturityCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|maturityInstructions|string|mandatory|none|Current instructions on action to be taken at maturity|
 
 #### Enumerated Values
 
@@ -3231,9 +3247,9 @@ This operation does not require authentication
 |maturityInstructions|ROLLED_OVER|
 |maturityInstructions|PAID_OUT_AT_MATURITY|
 
-<h2 id="tocScreditcardaccount">CreditCardAccount</h2>
+<h2 id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
 
-<a id="schemacreditcardaccount"></a>
+<a id="schemabankingcreditcardaccount"></a>
 
 ```json
 {
@@ -3249,14 +3265,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|minPaymentAmount|string(AmountString)|true|none|The minimum payment amount due for the next card payment|
-|paymentDueAmount|string(AmountString)|true|none|The amount due for the next card payment|
-|paymentCurrency|string(CurrencyString)|false|none|If absent assumes AUD|
-|paymentDueDate|string(DateString)|true|none|Date that the next payment for the card is due|
+|minPaymentAmount|string(AmountString)|mandatory|none|The minimum payment amount due for the next card payment|
+|paymentDueAmount|string(AmountString)|mandatory|none|The amount due for the next card payment|
+|paymentCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|paymentDueDate|string(DateString)|mandatory|none|Date that the next payment for the card is due|
 
-<h2 id="tocSloanaccount">LoanAccount</h2>
+<h2 id="tocSbankingloanaccount">BankingLoanAccount</h2>
 
-<a id="schemaloanaccount"></a>
+<a id="schemabankingloanaccount"></a>
 
 ```json
 {
@@ -3285,21 +3301,21 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|originalStartDate|string(DateString)|false|none|Optional original start date for the loan|
-|originalLoanAmount|string(AmountString)|false|none|Optional original loan value|
-|originalLoanCurrency|string(CurrencyString)|false|none|If absent assumes AUD|
-|loanEndDate|string(DateString)|false|none|Date that the loan is due to be repaid in full|
-|nextInstalmentDate|string(DateString)|false|none|Next date that an instalment is required|
-|minInstalmentAmount|string(AmountString)|false|none|Minimum amount of next instalment|
-|minInstalmentCurrency|string(CurrencyString)|false|none|If absent assumes AUD|
-|maxRedraw|string(AmountString)|false|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
-|maxRedrawCurrency|string(CurrencyString)|false|none|If absent assumes AUD|
-|minRedraw|string(AmountString)|false|none|Minimum redraw amount|
-|minRedrawCurrency|string(CurrencyString)|false|none|If absent assumes AUD|
-|offsetAccountEnabled|boolean|false|none|Set to true if one or more offset accounts are configured for this loan account|
-|offsetAccountIds|[string]|false|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
-|repaymentFrequency|string|false|none|The expected or required repayment frequency. Formatted according to ISO 8601 Durations|
-|repaymentType|string|false|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
+|originalStartDate|string(DateString)|optional|none|Optional original start date for the loan|
+|originalLoanAmount|string(AmountString)|optional|none|Optional original loan value|
+|originalLoanCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|loanEndDate|string(DateString)|optional|none|Date that the loan is due to be repaid in full|
+|nextInstalmentDate|string(DateString)|optional|none|Next date that an instalment is required|
+|minInstalmentAmount|string(AmountString)|optional|none|Minimum amount of next instalment|
+|minInstalmentCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|maxRedraw|string(AmountString)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
+|maxRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|minRedraw|string(AmountString)|optional|none|Minimum redraw amount|
+|minRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|offsetAccountEnabled|boolean|optional|none|Set to true if one or more offset accounts are configured for this loan account|
+|offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
+|repaymentFrequency|string|optional|none|The expected or required repayment frequency. Formatted according to ISO 8601 Durations|
+|repaymentType|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
 
 #### Enumerated Values
 
@@ -3308,9 +3324,9 @@ This operation does not require authentication
 |repaymentType|INTEREST_ONLY|
 |repaymentType|PRINCIPAL_AND_INTEREST|
 
-<h2 id="tocSaccountfeatures">AccountFeatures</h2>
+<h2 id="tocSbankingaccountfeature">BankingAccountFeature</h2>
 
-<a id="schemaaccountfeatures"></a>
+<a id="schemabankingaccountfeature"></a>
 
 ```json
 {
@@ -3324,8 +3340,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|featureType|string|true|none|The type of feature described|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
+|featureType|string|mandatory|none|The type of feature described|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
 
 #### Enumerated Values
 
@@ -3351,9 +3367,9 @@ This operation does not require authentication
 |featureType|DONATE_INTEREST|
 |featureType|BILL_PAYMENT|
 
-<h2 id="tocSaccountfees">AccountFees</h2>
+<h2 id="tocSbankingaccountfee">BankingAccountFee</h2>
 
-<a id="schemaaccountfees"></a>
+<a id="schemabankingaccountfee"></a>
 
 ```json
 {
@@ -3382,16 +3398,16 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|true|none|Name of the fee|
-|feeType|string|true|none|The type of fee|
-|amount|string(AmountString)|false|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|balanceRate|string(RateString)|false|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|transactionRate|string(RateString)|false|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
-|currency|string(CurrencyString)|false|none|The currency the fee will be charged in. Assumes AUD if absent|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
-|additionalInfo|string|false|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information on this fee|
-|discounts|[[AccountDiscounts](#schemaaccountdiscounts)]|false|none|none|
+|name|string|mandatory|none|Name of the fee|
+|feeType|string|mandatory|none|The type of fee|
+|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory|
+|currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
+|additionalInfo|string|optional|none|Display text providing more information on the fee|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+|discounts|[[BankingAccountDiscount](#schemabankingaccountdiscount)]|optional|none|none|
 
 #### Enumerated Values
 
@@ -3410,9 +3426,9 @@ This operation does not require authentication
 |feeType|PAPER_STATEMENT|
 |feeType|OTHER_EVENT|
 
-<h2 id="tocSaccountdiscounts">AccountDiscounts</h2>
+<h2 id="tocSbankingaccountdiscount">BankingAccountDiscount</h2>
 
-<a id="schemaaccountdiscounts"></a>
+<a id="schemabankingaccountdiscount"></a>
 
 ```json
 {
@@ -3428,10 +3444,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|description|string|true|none|Description of the discount|
-|discountType|string|true|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|true|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
+|description|string|mandatory|none|Description of the discount|
+|discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
+|amount|string(AmountString)|mandatory|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
 
 #### Enumerated Values
 
@@ -3442,9 +3458,9 @@ This operation does not require authentication
 |discountType|PAYMENTS|
 |discountType|BUNDLE|
 
-<h2 id="tocSaccountdepositrates">AccountDepositRates</h2>
+<h2 id="tocSbankingaccountdepositrate">BankingAccountDepositRate</h2>
 
-<a id="schemaaccountdepositrates"></a>
+<a id="schemabankingaccountdepositrate"></a>
 
 ```json
 {
@@ -3461,11 +3477,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|depositRateType|string|true|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|true|none|The rate to be applied|
-|additionalValue|string|false|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
-|additionalInfo|string|false|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information on this fee|
+|depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
+|rate|string(RateString)|mandatory|none|The rate to be applied|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
+|additionalInfo|string|optional|none|Display text providing more information on the fee|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
 
 #### Enumerated Values
 
@@ -3477,9 +3493,9 @@ This operation does not require authentication
 |depositRateType|VARIABLE|
 |depositRateType|INTRODUCTORY|
 
-<h2 id="tocSaccountlendingrates">AccountLendingRates</h2>
+<h2 id="tocSbankingaccountlendingrate">BankingAccountLendingRate</h2>
 
-<a id="schemaaccountlendingrates"></a>
+<a id="schemabankingaccountlendingrate"></a>
 
 ```json
 {
@@ -3496,11 +3512,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lendingRateType|string|true|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|true|none|The rate to be applied|
-|additionalValue|string|false|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
-|additionalInfo|string|false|none|Display text providing more information on the fee.|
-|additionalInfoUri|string(URIString)|false|none|Link to a web page with more information  on this fee|
+|lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
+|rate|string(RateString)|mandatory|none|The rate to be applied|
+|additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
+|additionalInfo|string|optional|none|Display text providing more information on the fee.|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
 
 #### Enumerated Values
 
@@ -3517,16 +3533,13 @@ This operation does not require authentication
 |lendingRateType|VARIABLE|
 |lendingRateType|COMPARISON|
 
-<h2 id="tocSresponsebankingtransactions">ResponseBankingTransactions</h2>
+<h2 id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
 
-<a id="schemaresponsebankingtransactions"></a>
+<a id="schemaresponsebankingtransactionlist"></a>
 
 ```json
 {
   "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
     "transactions": [
       {
         "accountId": "string",
@@ -3569,17 +3582,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» accountId|string(ASCIIString)|false|none|ID of the account for which transactions are provided|
-|» displayName|string|false|none|The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.|
-|» nickname|string|false|none|A customer supplied nick name for the account|
-|» transactions|[[Transaction](#schematransaction)]|true|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|true|none|none|
+|data|object|mandatory|none|none|
+|» transactions|[[BankingTransaction](#schemabankingtransaction)]|mandatory|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocStransaction">Transaction</h2>
+<h2 id="tocSbankingtransaction">BankingTransaction</h2>
 
-<a id="schematransaction"></a>
+<a id="schemabankingtransaction"></a>
 
 ```json
 {
@@ -3609,24 +3619,24 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|true|none|A unique ID of the account adhering to the standards for ID permanence|
-|transactionId|string(ASCIIString)|false|none|A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
-|isDetailAvailable|boolean|true|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
-|type|string|true|none|The type of the transaction|
-|status|string|true|none|Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
-|description|string|true|none|The transaction description as applied by the financial institution|
-|postingDateTime|string(DateTimeString)|false|none|The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement|
-|valueDateTime|string(DateTimeString)|false|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
-|executionDateTime|string(DateTimeString)|false|none|The time the transaction was executed by the originating customer, if available|
-|amount|string(AmountString)|false|none|The value of the transaction. Negative values mean money was outgoing from the account|
-|currency|string(CurrencyString)|false|none|The currency for the transaction amount. AUD assumed if not present|
-|reference|string|true|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
-|merchantName|string|false|none|Name of the merchant for an outgoing payment to a merchant|
-|merchantCategoryCode|string|false|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
-|billerCode|string|false|none|BPay Biller Code for the transaction (if available)|
-|billerName|string|false|none|Name of the BPay biller for the transaction (if available)|
-|crn|string|false|none|BPay CRN for the transaction (if available)|
-|apcaNumber|string|false|none|6 Digit APCA number for the initiating institution|
+|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|transactionId|string(ASCIIString)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
+|isDetailAvailable|boolean|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
+|type|string|mandatory|none|The type of the transaction|
+|status|string|mandatory|none|Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
+|description|string|mandatory|none|The transaction description as applied by the financial institution|
+|postingDateTime|string(DateTimeString)|conditional|none|The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement|
+|valueDateTime|string(DateTimeString)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
+|executionDateTime|string(DateTimeString)|optional|none|The time the transaction was executed by the originating customer, if available|
+|amount|string(AmountString)|optional|none|The value of the transaction. Negative values mean money was outgoing from the account|
+|currency|string(CurrencyString)|optional|none|The currency for the transaction amount. AUD assumed if not present|
+|reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
+|merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
+|merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
+|billerCode|string|optional|none|BPay Biller Code for the transaction (if available)|
+|billerName|string|optional|none|Name of the BPay biller for the transaction (if available)|
+|crn|string|optional|none|BPay CRN for the transaction (if available)|
+|apcaNumber|string|optional|none|6 Digit APCA number for the initiating institution|
 
 #### Enumerated Values
 
@@ -3642,45 +3652,38 @@ This operation does not require authentication
 |status|PENDING|
 |status|POSTED|
 
-<h2 id="tocSresponsebankingtransactiondetail">ResponseBankingTransactionDetail</h2>
+<h2 id="tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h2>
 
-<a id="schemaresponsebankingtransactiondetail"></a>
+<a id="schemaresponsebankingtransactionbyid"></a>
 
 ```json
 {
   "data": {
     "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "transaction": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "FEE",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "string",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string",
-        "extendedData": {
-          "payer": "string",
-          "payee": "string",
-          "extensionUType": "extendedDescription",
-          "extendedDescription": "string",
-          "serviceId": "X2P1.01"
-        }
-      }
-    ]
+    "transactionId": "string",
+    "isDetailAvailable": true,
+    "type": "FEE",
+    "status": "PENDING",
+    "description": "string",
+    "postingDateTime": "string",
+    "valueDateTime": "string",
+    "executionDateTime": "string",
+    "amount": "string",
+    "currency": "string",
+    "reference": "string",
+    "merchantName": "string",
+    "merchantCategoryCode": "string",
+    "billerCode": "string",
+    "billerName": "string",
+    "crn": "string",
+    "apcaNumber": "string",
+    "extendedData": {
+      "payer": "string",
+      "payee": "string",
+      "extensionUType": "extendedDescription",
+      "extendedDescription": "string",
+      "serviceId": "X2P1.01"
+    }
   },
   "links": {
     "self": "string"
@@ -3694,17 +3697,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» accountId|string(ASCIIString)|true|none|ID of the account for which transactions are provided|
-|» displayName|string|true|none|The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.|
-|» nickname|string|false|none|A customer supplied nick name for the account|
-|» transaction|[[TransactionDetail](#schematransactiondetail)]|true|none|none|
-|links|[Links](#schemalinks)|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|[BankingTransactionDetail](#schemabankingtransactiondetail)|mandatory|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
-<h2 id="tocStransactiondetail">TransactionDetail</h2>
+<h2 id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
 
-<a id="schematransactiondetail"></a>
+<a id="schemabankingtransactiondetail"></a>
 
 ```json
 {
@@ -3743,19 +3742,19 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[Transaction](#schematransaction)|false|none|none|
+|*anonymous*|[BankingTransaction](#schemabankingtransaction)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» extendedData|object|true|none|none|
-|»» payer|string|false|none|Name or description of the originating payer.  Mandatory for inbound payment|
-|»» payee|string|false|none|Name or description of the target payee. Mandatory for an outbound payment|
-|»» extensionUType|string|false|none|Optional extended data provided specific to transaction originated via NPP|
-|»» extendedDescription|string|false|none|An extended string description. Only present if specified by the extensionUType field|
-|»» serviceId|string|false|none|Identifier of the applicable NPP payment service|
+|*anonymous*|object|optional|none|none|
+|» extendedData|object|mandatory|none|none|
+|»» payer|string|conditional|none|Name or description of the originating payer.  Mandatory for inbound payment|
+|»» payee|string|conditional|none|Name or description of the target payee. Mandatory for an outbound payment|
+|»» extensionUType|string|optional|none|Optional extended data provided specific to transaction originated via NPP|
+|»» extendedDescription|string|conditional|none|An extended string description. Only present if specified by the extensionUType field|
+|»» serviceId|string|optional|none|Identifier of the applicable NPP payment service|
 
 #### Enumerated Values
 
@@ -3764,9 +3763,9 @@ This operation does not require authentication
 |extensionUType|extendedDescription|
 |serviceId|X2P1.01|
 
-<h2 id="tocSresponsebankingaccountsbalances">ResponseBankingAccountsBalances</h2>
+<h2 id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h2>
 
-<a id="schemaresponsebankingaccountsbalances"></a>
+<a id="schemaresponsebankingaccountsbalancelist"></a>
 
 ```json
 {
@@ -3831,14 +3830,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» balances|[[Balance](#schemabalance)]|true|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|true|none|none|
+|data|object|mandatory|none|none|
+|» balances|[[BankingBalance](#schemabankingbalance)]|mandatory|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSbalance">Balance</h2>
+<h2 id="tocSbankingbalance">BankingBalance</h2>
 
-<a id="schemabalance"></a>
+<a id="schemabankingbalance"></a>
 
 ```json
 {
@@ -3886,11 +3885,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|true|none|A unique ID of the account adhering to the standards for ID permanence|
-|balanceUType|string|true|none|The type of balance object provided for the account|
-|deposit|[DepositBalance](#schemadepositbalance)|false|none|none|
-|lending|[LendingBalance](#schemalendingbalance)|false|none|none|
-|purses|[[CurrencyAmount](#schemacurrencyamount)]|false|none|none|
+|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|balanceUType|string|mandatory|none|The type of balance object provided for the account|
+|deposit|[BankingDepositBalance](#schemabankingdepositbalance)|conditional|none|none|
+|lending|[BankingLendingBalance](#schemabankinglendingbalance)|conditional|none|none|
+|purses|[[CommonCurrencyAmount](#schemacommoncurrencyamount)]|conditional|none|none|
 
 #### Enumerated Values
 
@@ -3900,9 +3899,9 @@ This operation does not require authentication
 |balanceUType|lending|
 |balanceUType|purses|
 
-<h2 id="tocSdepositbalance">DepositBalance</h2>
+<h2 id="tocSbankingdepositbalance">BankingDepositBalance</h2>
 
-<a id="schemadepositbalance"></a>
+<a id="schemabankingdepositbalance"></a>
 
 ```json
 {
@@ -3922,12 +3921,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|currentBalance|[CurrencyAmount](#schemacurrencyamount)|true|none|none|
-|availableBalance|[CurrencyAmount](#schemacurrencyamount)|true|none|none|
+|currentBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
+|availableBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
 
-<h2 id="tocSlendingbalance">LendingBalance</h2>
+<h2 id="tocSbankinglendingbalance">BankingLendingBalance</h2>
 
-<a id="schemalendingbalance"></a>
+<a id="schemabankinglendingbalance"></a>
 
 ```json
 {
@@ -3955,33 +3954,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountBalance|[CurrencyAmount](#schemacurrencyamount)|true|none|none|
-|availableBalance|[CurrencyAmount](#schemacurrencyamount)|true|none|none|
-|creditLimit|[CurrencyAmount](#schemacurrencyamount)|true|none|none|
-|amortisedLimit|[CurrencyAmount](#schemacurrencyamount)|false|none|none|
+|accountBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
+|availableBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
+|creditLimit|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
+|amortisedLimit|[CommonCurrencyAmount](#schemacommoncurrencyamount)|optional|none|none|
 
-<h2 id="tocScurrencyamount">CurrencyAmount</h2>
+<h2 id="tocSresponsebankingpayeelist">ResponseBankingPayeeList</h2>
 
-<a id="schemacurrencyamount"></a>
-
-```json
-{
-  "amount": "string",
-  "currency": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|amount|string(AmountString)|true|none|The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking|
-|currency|string(CurrencyString)|false|none|If not present assumes AUD|
-
-<h2 id="tocSresponsebankingpayees">ResponseBankingPayees</h2>
-
-<a id="schemaresponsebankingpayees"></a>
+<a id="schemaresponsebankingpayeelist"></a>
 
 ```json
 {
@@ -4015,14 +3995,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» payees|[[Payee](#schemapayee)]|true|none|The list of payees returned|
-|links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|true|none|none|
+|data|object|mandatory|none|none|
+|» payees|[[BankingPayee](#schemabankingpayee)]|mandatory|none|The list of payees returned|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSresponsebankingpayeedetails">ResponseBankingPayeeDetails</h2>
+<h2 id="tocSresponsebankingpayeebyid">ResponseBankingPayeeById</h2>
 
-<a id="schemaresponsebankingpayeedetails"></a>
+<a id="schemaresponsebankingpayeebyid"></a>
 
 ```json
 {
@@ -4088,13 +4068,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|[PayeeDetail](#schemapayeedetail)|true|none|none|
-|links|[Links](#schemalinks)|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|[BankingPayeeDetail](#schemabankingpayeedetail)|mandatory|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
-<h2 id="tocSpayee">Payee</h2>
+<h2 id="tocSbankingpayee">BankingPayee</h2>
 
-<a id="schemapayee"></a>
+<a id="schemabankingpayee"></a>
 
 ```json
 {
@@ -4111,11 +4091,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|payeeId|string(ASCIIString)|true|none|ID of the payee adhering to the rules of ID permanence|
-|nickname|string|true|none|The short display name of the payee as provided by the customer|
-|description|string|false|none|A description of the payee provided by the customer|
-|type|string|true|none|The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY|
-|creationDate|string(DateString)|false|none|The date the payee was created by the customer|
+|payeeId|string(ASCIIString)|mandatory|none|ID of the payee adhering to the rules of ID permanence|
+|nickname|string|mandatory|none|The short display name of the payee as provided by the customer|
+|description|string|optional|none|A description of the payee provided by the customer|
+|type|string|mandatory|none|The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY|
+|creationDate|string(DateString)|optional|none|The date the payee was created by the customer|
 
 #### Enumerated Values
 
@@ -4125,9 +4105,9 @@ This operation does not require authentication
 |type|INTERNATIONAL|
 |type|BILLER|
 
-<h2 id="tocSpayeedetail">PayeeDetail</h2>
+<h2 id="tocSbankingpayeedetail">BankingPayeeDetail</h2>
 
-<a id="schemapayeedetail"></a>
+<a id="schemabankingpayeedetail"></a>
 
 ```json
 {
@@ -4189,17 +4169,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[Payee](#schemapayee)|false|none|none|
+|*anonymous*|[BankingPayee](#schemabankingpayee)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» payeeUType|string|true|none|Type of object included that describes the payee in detail|
-|» domestic|[DomesticPayee](#schemadomesticpayee)|false|none|none|
-|» biller|[BillerPayee](#schemabillerpayee)|false|none|none|
-|» international|[InternationalPayee](#schemainternationalpayee)|false|none|none|
+|*anonymous*|object|optional|none|none|
+|» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
+|» domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
+|» biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
+|» international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
 
 #### Enumerated Values
 
@@ -4209,9 +4189,9 @@ This operation does not require authentication
 |payeeUType|biller|
 |payeeUType|international|
 
-<h2 id="tocSdomesticpayee">DomesticPayee</h2>
+<h2 id="tocSbankingdomesticpayee">BankingDomesticPayee</h2>
 
-<a id="schemadomesticpayee"></a>
+<a id="schemabankingdomesticpayee"></a>
 
 ```json
 {
@@ -4237,10 +4217,10 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|payeeAccountUType|string|true|none|Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP|
-|account|[DomesticPayeeAccount](#schemadomesticpayeeaccount)|false|none|none|
-|card|[DomesticPayeeCard](#schemadomesticpayeecard)|false|none|none|
-|payId|[DomesticPayeePayId](#schemadomesticpayeepayid)|false|none|none|
+|payeeAccountUType|string|mandatory|none|Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP|
+|account|[BankingDomesticPayeeAccount](#schemabankingdomesticpayeeaccount)|conditional|none|none|
+|card|[BankingDomesticPayeeCard](#schemabankingdomesticpayeecard)|conditional|none|none|
+|payId|[BankingDomesticPayeePayId](#schemabankingdomesticpayeepayid)|conditional|none|none|
 
 #### Enumerated Values
 
@@ -4250,9 +4230,9 @@ This operation does not require authentication
 |payeeAccountUType|card|
 |payeeAccountUType|payId|
 
-<h2 id="tocSdomesticpayeeaccount">DomesticPayeeAccount</h2>
+<h2 id="tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h2>
 
-<a id="schemadomesticpayeeaccount"></a>
+<a id="schemabankingdomesticpayeeaccount"></a>
 
 ```json
 {
@@ -4267,13 +4247,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountName|string|true|none|Name of the account to pay to|
-|bsb|string|true|none|BSB of the account to pay to|
-|accountNumber|string|true|none|Number of the account to pay to|
+|accountName|string|mandatory|none|Name of the account to pay to|
+|bsb|string|mandatory|none|BSB of the account to pay to|
+|accountNumber|string|mandatory|none|Number of the account to pay to|
 
-<h2 id="tocSdomesticpayeecard">DomesticPayeeCard</h2>
+<h2 id="tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h2>
 
-<a id="schemadomesticpayeecard"></a>
+<a id="schemabankingdomesticpayeecard"></a>
 
 ```json
 {
@@ -4286,11 +4266,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|cardNumber|string(MaskedPANString)|true|none|Name of the account to pay to|
+|cardNumber|string(MaskedPANString)|mandatory|none|Name of the account to pay to|
 
-<h2 id="tocSdomesticpayeepayid">DomesticPayeePayId</h2>
+<h2 id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h2>
 
-<a id="schemadomesticpayeepayid"></a>
+<a id="schemabankingdomesticpayeepayid"></a>
 
 ```json
 {
@@ -4305,9 +4285,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|false|none|The name assigned to the PayID by the owner of the PayID|
-|identifier|string|true|none|The identifier of the PayID (dependent on type)|
-|type|string|true|none|The type of the PayID|
+|name|string|optional|none|The name assigned to the PayID by the owner of the PayID|
+|identifier|string|mandatory|none|The identifier of the PayID (dependent on type)|
+|type|string|mandatory|none|The type of the PayID|
 
 #### Enumerated Values
 
@@ -4318,9 +4298,9 @@ This operation does not require authentication
 |type|ORG_NUMBER|
 |type|ORG_NAME|
 
-<h2 id="tocSbillerpayee">BillerPayee</h2>
+<h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
-<a id="schemabillerpayee"></a>
+<a id="schemabankingbillerpayee"></a>
 
 ```json
 {
@@ -4335,13 +4315,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|billerCode|string|true|none|BPay Biller Code of the Biller|
-|crn|string|false|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
-|billerName|string|true|none|Name of the Biller|
+|billerCode|string|mandatory|none|BPay Biller Code of the Biller|
+|crn|string|conditional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+|billerName|string|mandatory|none|Name of the Biller|
 
-<h2 id="tocSinternationalpayee">InternationalPayee</h2>
+<h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
 
-<a id="schemainternationalpayee"></a>
+<a id="schemabankinginternationalpayee"></a>
 
 ```json
 {
@@ -4372,26 +4352,26 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|beneficiaryDetails|object|true|none|none|
-|» name|string|false|none|Name of the beneficiary|
-|» country|string|true|none|Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code|
-|» message|string|false|none|Response message for the payment|
-|bankDetails|object|true|none|none|
-|» country|string|true|none|Country of the recipient institution. A valid ISO 3166 Alpha-3 country code|
-|» accountNumber|string|true|none|Account Targeted for payment|
-|» bankAddress|object|false|none|none|
-|»» name|string|true|none|Name of the recipient Bank|
-|»» address|string|true|none|Address of the recipient Bank|
-|» beneficiaryBankBIC|string|false|none|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
-|» fedWireNumber|string|false|none|Number for Fedwire payment (Federal Reserve Wire Network)|
-|» sortCode|string|false|none|Sort code used for account identification in some jurisdictions|
-|» chipNumber|string|false|none|Number for the Clearing House Interbank Payments System|
-|» routingNumber|string|false|none|International bank routing number|
-|» legalEntityIdentifier|string|false|none|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
+|beneficiaryDetails|object|mandatory|none|none|
+|» name|string|optional|none|Name of the beneficiary|
+|» country|string|mandatory|none|Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code|
+|» message|string|optional|none|Response message for the payment|
+|bankDetails|object|mandatory|none|none|
+|» country|string|mandatory|none|Country of the recipient institution. A valid ISO 3166 Alpha-3 country code|
+|» accountNumber|string|mandatory|none|Account Targeted for payment|
+|» bankAddress|object|optional|none|none|
+|»» name|string|mandatory|none|Name of the recipient Bank|
+|»» address|string|mandatory|none|Address of the recipient Bank|
+|» beneficiaryBankBIC|string|optional|none|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
+|» fedWireNumber|string|optional|none|Number for Fedwire payment (Federal Reserve Wire Network)|
+|» sortCode|string|optional|none|Sort code used for account identification in some jurisdictions|
+|» chipNumber|string|optional|none|Number for the Clearing House Interbank Payments System|
+|» routingNumber|string|optional|none|International bank routing number|
+|» legalEntityIdentifier|string|optional|none|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
 
-<h2 id="tocSresponsebankingdirectdebits">ResponseBankingDirectDebits</h2>
+<h2 id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h2>
 
-<a id="schemaresponsebankingdirectdebits"></a>
+<a id="schemaresponsebankingdirectdebitauthorisationlist"></a>
 
 ```json
 {
@@ -4430,14 +4410,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» directDebitAuthorisations|[[DirectDebits](#schemadirectdebits)]|true|none|The list of authorisations returned|
-|links|[LinksPaginated](#schemalinkspaginated)|true|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|true|none|none|
+|data|object|mandatory|none|none|
+|» directDebitAuthorisations|[[BankingDirectDebit](#schemabankingdirectdebit)]|mandatory|none|The list of authorisations returned|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSdirectdebits">DirectDebits</h2>
+<h2 id="tocSbankingdirectdebit">BankingDirectDebit</h2>
 
-<a id="schemadirectdebits"></a>
+<a id="schemabankingdirectdebit"></a>
 
 ```json
 {
@@ -4459,14 +4439,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|true|none|A unique ID of the account adhering to the standards for ID permanence.|
-|authorisedEntity|[AuthorisedEntity](#schemaauthorisedentity)|false|none|none|
-|lastDebitDateTime|string(DateTimeString)|false|none|The date and time of the last debit executed under this authorisation|
-|lastDebitAmount|string(AmountString)|false|none|The amount of the last debit executed under this authorisation|
+|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence.|
+|authorisedEntity|[BankingAuthorisedEntity](#schemabankingauthorisedentity)|optional|none|none|
+|lastDebitDateTime|string(DateTimeString)|optional|none|The date and time of the last debit executed under this authorisation|
+|lastDebitAmount|string(AmountString)|optional|none|The amount of the last debit executed under this authorisation|
 
-<h2 id="tocSauthorisedentity">AuthorisedEntity</h2>
+<h2 id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h2>
 
-<a id="schemaauthorisedentity"></a>
+<a id="schemabankingauthorisedentity"></a>
 
 ```json
 {
@@ -4483,11 +4463,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|true|none|Name of the authorised entity|
-|financialInstitution|string|true|none|Name of the financial institution through which the direct debit will be executed|
-|abn|string|false|none|Australian Business Number for the authorised entity|
-|acn|string|false|none|Australian Business Number for the authorised entity|
-|arbn|string|false|none|Australian Registered Body Number for the authorised entity|
+|name|string|mandatory|none|Name of the authorised entity|
+|financialInstitution|string|mandatory|none|Name of the financial institution through which the direct debit will be executed|
+|abn|string|optional|none|Australian Business Number for the authorised entity|
+|acn|string|optional|none|Australian Business Number for the authorised entity|
+|arbn|string|optional|none|Australian Registered Body Number for the authorised entity|
 
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 
@@ -4537,12 +4517,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» customerUType|string|true|none|The type of customer object that is present|
-|» person|[Person](#schemaperson)|false|none|none|
-|» organisation|[Organisation](#schemaorganisation)|false|none|none|
-|links|[Links](#schemalinks)|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|object|mandatory|none|none|
+|» customerUType|string|mandatory|none|The type of customer object that is present|
+|» person|[CommonPerson](#schemacommonperson)|optional|none|none|
+|» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
 #### Enumerated Values
 
@@ -4551,9 +4531,9 @@ This operation does not require authentication
 |customerUType|person|
 |customerUType|organisation|
 
-<h2 id="tocSresponsecommoncustomerdetailed">ResponseCommonCustomerDetailed</h2>
+<h2 id="tocSresponsecommoncustomerdetail">ResponseCommonCustomerDetail</h2>
 
-<a id="schemaresponsecommoncustomerdetailed"></a>
+<a id="schemaresponsecommoncustomerdetail"></a>
 
 ```json
 {
@@ -4693,12 +4673,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|object|true|none|none|
-|» customerUType|string|true|none|The type of customer object that is present|
-|» person|[PersonDetail](#schemapersondetail)|false|none|none|
-|» organisation|[OrganisationDetail](#schemaorganisationdetail)|false|none|none|
-|links|[Links](#schemalinks)|true|none|none|
-|meta|[Meta](#schemameta)|true|none|none|
+|data|object|mandatory|none|none|
+|» customerUType|string|mandatory|none|The type of customer object that is present|
+|» person|[CommonPersonDetail](#schemacommonpersondetail)|optional|none|none|
+|» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|optional|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
 
 #### Enumerated Values
 
@@ -4707,9 +4687,9 @@ This operation does not require authentication
 |customerUType|person|
 |customerUType|organisation|
 
-<h2 id="tocSperson">Person</h2>
+<h2 id="tocScommonperson">CommonPerson</h2>
 
-<a id="schemaperson"></a>
+<a id="schemacommonperson"></a>
 
 ```json
 {
@@ -4730,17 +4710,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|string(DateTimeString)|true|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
-|firstName|string|false|none|For people with single names this field need not be present.  The single name should be in the lastName field|
-|lastName|string|true|none|For people with single names the single name should be in this field|
-|middleNames|[string]|true|none|Field is mandatory but array may be empty|
-|prefix|string|false|none|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|suffix|string|false|none|Used for a trailing suffix to the name (e.g. Jr)|
-|occupationCode|string|false|none|Value is a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.|
+|lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
+|lastName|string|mandatory|none|For people with single names the single name should be in this field|
+|middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
+|prefix|string|optional|none|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|suffix|string|optional|none|Used for a trailing suffix to the name (e.g. Jr)|
+|occupationCode|string|optional|none|Value is a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.|
 
-<h2 id="tocSpersondetail">PersonDetail</h2>
+<h2 id="tocScommonpersondetail">CommonPersonDetail</h2>
 
-<a id="schemapersondetail"></a>
+<a id="schemacommonpersondetail"></a>
 
 ```json
 {
@@ -4819,20 +4799,20 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[Person](#schemaperson)|false|none|none|
+|*anonymous*|[CommonPerson](#schemacommonperson)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» phoneNumbers|[[PhoneNumber](#schemaphonenumber)]|true|none|At least one record is required|
-|» emailAddresses|[[EmailAddress](#schemaemailaddress)]|true|none|May be empty|
-|» physicalAddresses|[[PhysicalAddressWithPurpose](#schemaphysicaladdresswithpurpose)]|true|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|*anonymous*|object|optional|none|none|
+|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|At least one record is required|
+|» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h2 id="tocSorganisation">Organisation</h2>
+<h2 id="tocScommonorganisation">CommonOrganisation</h2>
 
-<a id="schemaorganisation"></a>
+<a id="schemacommonorganisation"></a>
 
 ```json
 {
@@ -4858,20 +4838,20 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|string(DateTimeString)|true|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
-|agentFirstName|string|false|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
-|agentLastName|string|true|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
-|agentRole|string|true|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
-|businessName|string|true|none|Name of the organisation|
-|legalName|string|false|none|Legal name, if different to the business name|
-|shortName|string|false|none|Short name used for communication, if  different to the business name|
-|abn|string|false|none|Australian Business Number for the organisation|
-|acn|string|false|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
-|isACNCRegistered|boolean|false|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
-|industryCode|string|false|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
-|organisationType|string|true|none|Legal organisation type|
-|registeredCountry|string|false|none|Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent|
-|establishmentDate|string(DateString)|false|none|The date the organisation described was established|
+|lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
+|agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
+|agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
+|businessName|string|mandatory|none|Name of the organisation|
+|legalName|string|optional|none|Legal name, if different to the business name|
+|shortName|string|optional|none|Short name used for communication, if  different to the business name|
+|abn|string|optional|none|Australian Business Number for the organisation|
+|acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
+|isACNCRegistered|boolean|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
+|industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
+|organisationType|string|mandatory|none|Legal organisation type|
+|registeredCountry|string|optional|none|Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent|
+|establishmentDate|string(DateString)|optional|none|The date the organisation described was established|
 
 #### Enumerated Values
 
@@ -4884,9 +4864,9 @@ This operation does not require authentication
 |organisationType|GOVERNMENT_ENTITY|
 |organisationType|OTHER|
 
-<h2 id="tocSorganisationdetail">OrganisationDetail</h2>
+<h2 id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
 
-<a id="schemaorganisationdetail"></a>
+<a id="schemacommonorganisationdetail"></a>
 
 ```json
 {
@@ -4952,18 +4932,18 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[Organisation](#schemaorganisation)|false|none|none|
+|*anonymous*|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» physicalAddresses|[[PhysicalAddressWithPurpose](#schemaphysicaladdresswithpurpose)]|true|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|*anonymous*|object|optional|none|none|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h2 id="tocSphonenumber">PhoneNumber</h2>
+<h2 id="tocScommonphonenumber">CommonPhoneNumber</h2>
 
-<a id="schemaphonenumber"></a>
+<a id="schemacommonphonenumber"></a>
 
 ```json
 {
@@ -4982,13 +4962,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|false|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
-|purpose|string|true|none|The purpose of the number as specified by the customer|
-|countryCode|string|false|none|If absent, assumed to be Australia (+61). The + should be included|
-|areaCode|string|false|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
-|number|string|true|none|The actual phone number, with leading zeros as appropriate|
-|extension|string|false|none|An extension number (if applicable)|
-|fullNumber|string|true|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966|
+|isPreferred|boolean|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+|purpose|string|mandatory|none|The purpose of the number as specified by the customer|
+|countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
+|areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
+|number|string|mandatory|none|The actual phone number, with leading zeros as appropriate|
+|extension|string|optional|none|An extension number (if applicable)|
+|fullNumber|string|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966|
 
 #### Enumerated Values
 
@@ -5001,9 +4981,9 @@ This operation does not require authentication
 |purpose|INTERNATIONAL|
 |purpose|UNSPECIFIED|
 
-<h2 id="tocSemailaddress">EmailAddress</h2>
+<h2 id="tocScommonemailaddress">CommonEmailAddress</h2>
 
-<a id="schemaemailaddress"></a>
+<a id="schemacommonemailaddress"></a>
 
 ```json
 {
@@ -5018,9 +4998,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|true|none|Required for one and only one email record in the collection. Denotes the default email address|
-|purpose|string|true|none|The purpose for the email, as specified by the customer (Enumeration)|
-|address|string|true|none|A correctly formatted email address, as defined by the addr_spec format in RFC_5322|
+|isPreferred|boolean|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
+|address|string|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in RFC_5322|
 
 #### Enumerated Values
 
@@ -5031,9 +5011,9 @@ This operation does not require authentication
 |purpose|OTHER|
 |purpose|UNSPECIFIED|
 
-<h2 id="tocSphysicaladdresswithpurpose">PhysicalAddressWithPurpose</h2>
+<h2 id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
 
-<a id="schemaphysicaladdresswithpurpose"></a>
+<a id="schemacommonphysicaladdresswithpurpose"></a>
 
 ```json
 {
@@ -5081,14 +5061,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» purpose|string|true|none|Enumeration of values indicating the purpose of the physical address|
+|*anonymous*|object|optional|none|none|
+|» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[PhysicalAddress](#schemaphysicaladdress)|false|none|none|
+|*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5100,9 +5080,9 @@ This operation does not require authentication
 |purpose|WORK|
 |purpose|OTHER|
 
-<h2 id="tocSphysicaladdress">PhysicalAddress</h2>
+<h2 id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
 
-<a id="schemaphysicaladdress"></a>
+<a id="schemacommonphysicaladdress"></a>
 
 ```json
 {
@@ -5147,9 +5127,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|addressUType|string|true|none|The type of address object present|
-|simple|[SimpleAddress](#schemasimpleaddress)|false|none|none|
-|paf|[PAFAddress](#schemapafaddress)|false|none|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
+|addressUType|string|mandatory|none|The type of address object present|
+|simple|[CommonSimpleAddress](#schemacommonsimpleaddress)|conditional|none|none|
+|paf|[CommonPAFAddress](#schemacommonpafaddress)|conditional|none|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
 
 #### Enumerated Values
 
@@ -5158,9 +5138,9 @@ This operation does not require authentication
 |addressUType|simple|
 |addressUType|paf|
 
-<h2 id="tocSsimpleaddress">SimpleAddress</h2>
+<h2 id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
 
-<a id="schemasimpleaddress"></a>
+<a id="schemacommonsimpleaddress"></a>
 
 ```json
 {
@@ -5180,18 +5160,18 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|mailingName|string|false|none|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|addressLine1|string|true|none|First line of the standard address object|
-|addressLine2|string|false|none|Second line of the standard address object|
-|addressLine3|string|false|none|Third line of the standard address object|
-|postcode|string|false|none|Mandatory for Australian addresses|
-|city|string|true|none|Name of the city or locality|
-|state|string|true|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard|
-|country|string|false|none|A valid ISO 3166 Alpha-3 country code|
+|mailingName|string|optional|none|Name of the individual or business formatted for inclusion in an address used for physical mail|
+|addressLine1|string|mandatory|none|First line of the standard address object|
+|addressLine2|string|optional|none|Second line of the standard address object|
+|addressLine3|string|optional|none|Third line of the standard address object|
+|postcode|string|conditional|none|Mandatory for Australian addresses|
+|city|string|mandatory|none|Name of the city or locality|
+|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard|
+|country|string|optional|none|A valid ISO 3166 Alpha-3 country code|
 
-<h2 id="tocSpafaddress">PAFAddress</h2>
+<h2 id="tocScommonpafaddress">CommonPAFAddress</h2>
 
-<a id="schemapafaddress"></a>
+<a id="schemacommonpafaddress"></a>
 
 ```json
 {
@@ -5225,26 +5205,45 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|dpid|string|false|none|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|thoroughfareNumber1|integer|false|none|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|false|none|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|thoroughfareNumber2|integer|false|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|false|none|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|flatUnitNumber|string|false|none|Unit number (including suffix, if applicable)|
-|floorLevelNumber|string|false|none|Floor or level number (including alpha characters)|
-|lotNumber|integer|false|none|Allotment number for the address|
-|buildingName1|string|false|none|Building/Property name 1|
-|buildingName2|string|false|none|Building/Property name 2|
-|streetName|string|false|none|The name of the street|
-|streetType|string|false|none|The street type. Valid enumeration defined by Australia Post PAF code file|
-|streetSuffix|string|false|none|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryType|string|false|none|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|integer|false|none|Postal delivery number if the address is a postal delivery type|
-|postalDeliveryNumberPrefix|string|false|none|Postal delivery number prefix related to the postal delivery number|
-|postalDeliveryNumberSuffix|string|false|none|Postal delivery number suffix related to the postal delivery number|
-|localityName|string|true|none|Full name of locality|
-|postcode|string|true|none|Postcode for the locality|
-|state|string|true|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file|
+|dpid|string|optional|none|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|thoroughfareNumber1|integer|optional|none|Thoroughfare number for a property (first number in a property ranged address)|
+|thoroughfareNumber1Suffix|string|optional|none|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|thoroughfareNumber2|integer|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|thoroughfareNumber2Suffix|string|optional|none|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|flatUnitNumber|string|optional|none|Unit number (including suffix, if applicable)|
+|floorLevelNumber|string|optional|none|Floor or level number (including alpha characters)|
+|lotNumber|integer|optional|none|Allotment number for the address|
+|buildingName1|string|optional|none|Building/Property name 1|
+|buildingName2|string|optional|none|Building/Property name 2|
+|streetName|string|optional|none|The name of the street|
+|streetType|string|optional|none|The street type. Valid enumeration defined by Australia Post PAF code file|
+|streetSuffix|string|optional|none|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryType|string|optional|none|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryNumber|integer|optional|none|Postal delivery number if the address is a postal delivery type|
+|postalDeliveryNumberPrefix|string|optional|none|Postal delivery number prefix related to the postal delivery number|
+|postalDeliveryNumberSuffix|string|optional|none|Postal delivery number suffix related to the postal delivery number|
+|localityName|string|mandatory|none|Full name of locality|
+|postcode|string|mandatory|none|Postcode for the locality|
+|state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file|
+
+<h2 id="tocScommoncurrencyamount">CommonCurrencyAmount</h2>
+
+<a id="schemacommoncurrencyamount"></a>
+
+```json
+{
+  "amount": "string",
+  "currency": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|amount|string(AmountString)|mandatory|none|The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking|
+|currency|string(CurrencyString)|optional|none|If not present assumes AUD|
 
 <h2 id="tocSlinks">Links</h2>
 
@@ -5261,7 +5260,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|string(URIString)|false|none|Fully qualified link to this API call|
+|self|string(URIString)|mandatory|none|Fully qualified link to this API call|
 
 <h2 id="tocSmeta">Meta</h2>
 
@@ -5295,11 +5294,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|string(URIString)|false|none|Fully qualified link to this API call|
-|first|string(URIString)|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|string(URIString)|false|none|URI to the first previous page of this set. Mandatory if this response is not the first page|
-|next|string(URIString)|false|none|URI to the first next page of this set. Mandatory if this response is not the last page|
-|last|string(URIString)|false|none|URI to the first last page of this set. Mandatory if this response is not the last page|
+|self|string(URIString)|mandatory|none|Fully qualified link to this API call|
+|first|string(URIString)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
+|prev|string(URIString)|conditional|none|URI to the first previous page of this set. Mandatory if this response is not the first page|
+|next|string(URIString)|conditional|none|URI to the first next page of this set. Mandatory if this response is not the last page|
+|last|string(URIString)|conditional|none|URI to the first last page of this set. Mandatory if this response is not the last page|
 
 <h2 id="tocSmetapaginated">MetaPaginated</h2>
 
@@ -5317,12 +5316,12 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|totalRecords|integer(NaturalNumber)|false|none|The total number of records in the full set|
-|totalPages|integer(NaturalNumber)|false|none|The total number of pages in the full set|
+|totalRecords|integer(NaturalNumber)|mandatory|none|The total number of records in the full set|
+|totalPages|integer(NaturalNumber)|mandatory|none|The total number of pages in the full set|
 
-<h2 id="tocSerrorlist">ErrorList</h2>
+<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<a id="schemaerrorlist"></a>
+<a id="schemaresponseerrorlist"></a>
 
 ```json
 {
@@ -5342,15 +5341,15 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|errors|[object]|true|none|none|
-|» code|string|true|none|The code of the error|
-|» title|string|true|none|A displayable title of the error type|
-|» detail|string|true|none|Detail of the error|
-|» meta|object|false|none|Optional additional data for specific error types|
+|errors|[object]|mandatory|none|none|
+|» code|string|mandatory|none|The code of the error|
+|» title|string|mandatory|none|A displayable title of the error type|
+|» detail|string|mandatory|none|Detail of the error|
+|» meta|object|optional|none|Optional additional data for specific error types|
 
-<h2 id="tocSenumproductcategory">EnumProductCategory</h2>
+<h2 id="tocSbankingenumproductcategory">BankingEnumProductCategory</h2>
 
-<a id="schemaenumproductcategory"></a>
+<a id="schemabankingenumproductcategory"></a>
 
 ```json
 "PERS_AT_CALL_DEPOSITS"
@@ -5363,7 +5362,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|false|none|The list of available product categories for categorising products and accounts|
+|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts|
 
 #### Enumerated Values
 
