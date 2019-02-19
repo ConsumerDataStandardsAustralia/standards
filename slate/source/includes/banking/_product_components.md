@@ -72,18 +72,13 @@ Description of the usage of the feeType field as it applies to products.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |PERIODIC|A periodic fee such as a monthly account servicing fee|The period of charge.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|TRANSACTION|A fee for each transaction (above any free transactions in a period)|A description of the type of transaction (eg. Assisted Transaction, Teller Transaction, Cheque)|
-|ESTABLISHMENT|An establishment fee for the product|NA|
+|WITHDRAWAL|A fee associated with making a withdrawal|NA|
+|DEPOSIT|A fee associated with making a deposit|NA|
+|PAYMENT|A fee associated with making a payment|NA|
+|PURCHASE|A fee associated with making a purchase at a merchant|NA|
+|EVENT|A fee in relation to a particular event (e.g. NA ordering a new card, viewing a balance or stopping a cheque)|NA|
+|UPFRONT|A fee paid at the beginning of the product NA lifecycle, such as an establishment fee, loyalty program fee or application fee|NA|
 |EXIT|A fee for closing the product|NA|
-|OVERDRAW|A fee for overdrawing the account|NA|
-|MIN_BALANCE|A periodic fee for being below the minimum balance|The period of charge. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|REDRAW|A fee for performing a redraw transaction|NA|
-|CHEQUE_CASH|A fee for cashing a cheque|NA|
-|CHEQUE_STOP|A fee for stopping a cheque|NA|
-|CHEQUE_BOOK|A fee for ordering a new cheque book|NA|
-|CARD_REPLACE|A fee for ordering a replacement card|NA|
-|PAPER_STATEMENT|A fee for obtaining a paper statement|NA|
-|OTHER_EVENT|A fee for another type of event not already specified in the list of valid values|Text description of the event|
 
 
 
@@ -97,7 +92,27 @@ Description of the usage of the discountType field as it applies to products.
 |BALANCE|Discount on a fee for maintaining a set balance.  As the discount applies to a fee the period is the same as for the fee|The minimum balance in AmountString format|
 |DEPOSITS|Discount for depositing a certain amount of money in a period.  As the discount applies to a fee the period is the same as for the fee|The minimum deposit amount in AmountString format|
 |PAYMENTS|Discount for outbound payments from the account under a certain amount of money in a period.  As the discount applies to a fee the period is the same as for the fee|The payment threshold amount in AmountString format|
-|BUNDLE|Discount for originating a bundle instead of a standalone product|The name of the applicable bundle|
+|FEE_CAP|The amount, balanceRate, transactionRate or calculatedInterestRate fields of the discount represent the maximum amount charged in a time period|The time period for which the fee cap applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|ELIGIBILITY_ONLY|Discount applies based on customer eligibility (eligibility array must be populated)|N/A|
+
+
+
+<a id="productdiscounteligibilitydoc"></a>
+<h3 id="tocSproductdiscounteligibilitydoc">Product Discount Eligibility Types</h3>
+
+Description of the usage of the discountEligibilityType field as it applies to products.
+
+|Value|Description|Use of additionalValue Field|
+|-----|-----------|----------------------------|
+|PENSION_RECIPIENT|A recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
+|MIN_AGE|Only customers older than a minimum age receive the discount|The minimum age in years|
+|MAX_AGE|Only customers younger than a maximum age receive the discount|The maximum age in years
+|STAFF|Only a staff member of the provider may receive the discount|NA|
+|STUDENT|Only students may receive the discount|Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?|
+|EMPLOYMENT_STATUS|An eligibility constraint based on employment status applies|A description of the status required|
+|RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
+|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
+
 
 
 
@@ -173,17 +188,13 @@ Description of the usage of the feeType field as it applies to accounts.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |PERIODIC|A periodic fee such as a monthly account servicing fee|The period of charge.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|TRANSACTION|A fee for each transaction (above any free transactions in a period)|A description of the type of transaction (eg. Assisted Transaction, Teller Transaction, Cheque)|
+|WITHDRAWAL|A fee associated with making a withdrawal|NA|
+|DEPOSIT|A fee associated with making a deposit|NA|
+|PAYMENT|A fee associated with making a payment|NA|
+|PURCHASE|A fee associated with making a purchase at a merchant|NA|
+|EVENT|A fee in relation to a particular event (e.g. NA ordering a new card, viewing a balance or stopping a cheque)|NA|
+|UPFRONT|A fee paid at the beginning of the product NA lifecycle, such as an establishment fee, loyalty program fee or application fee|NA|
 |EXIT|A fee for closing the product|NA|
-|OVERDRAW|A fee for overdrawing the account|NA|
-|MIN_BALANCE|A periodic fee for being below the minimum balance|The period of charge. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|REDRAW|A fee for performing a redraw transaction|NA|
-|CHEQUE_CASH|A fee for cashing a cheque|NA|
-|CHEQUE_STOP|A fee for stopping a cheque|NA|
-|CHEQUE_BOOK|A fee for ordering a new cheque book|NA|
-|CARD_REPLACE|A fee for ordering a replacement card|NA|
-|PAPER_STATEMENT|A fee for obtaining a paper statement|NA|
-|OTHER_EVENT|A fee for another type of event not already specified in the list of valid values|Text description of the event|
 
 
 
@@ -197,7 +208,28 @@ Description of the usage of the discountType field as it applies to accounts.
 |BALANCE|Discount on a fee for maintaining a set balance.  As the discount applies to a fee the period is the same as for the fee|The minimum balance in AmountString format|
 |DEPOSITS|Discount for depositing a certain amount of money in a period.  As the discount applies to a fee the period is the same as for the fee|The minimum deposit amount in AmountString format|
 |PAYMENTS|Discount for outbound payments from the account under a certain amount of money in a period.  As the discount applies to a fee the period is the same as for the fee|The payment threshold amount in AmountString format|
-|BUNDLE|Discount for originating a bundle instead of a standalone product|The name of the applicable bundle|
+|FEE_CAP|The amount, balanceRate, transactionRate or calculatedInterestRate fields of the discount represent the maximum amount charged in a time period|The time period for which the fee cap applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|ELIGIBILITY_ONLY|Discount applies based on customer eligibility (eligibility array must be populated)|N/A|
+
+
+
+
+<a id="accountdiscounteligibilitydoc"></a>
+<h3 id="tocSaccountdiscounteligibilitydoc">Account Discount Eligibility Types</h3>
+
+Description of the usage of the discountEligibilityType field as it applies to accounts.
+
+|Value|Description|Use of additionalValue Field|
+|-----|-----------|----------------------------|
+|PENSION_RECIPIENT|A recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
+|MIN_AGE|Only customers older than a minimum age receive the discount|The minimum age in years|
+|MAX_AGE|Only customers younger than a maximum age receive the discount|The maximum age in years
+|STAFF|Only a staff member of the provider may receive the discount|NA|
+|STUDENT|Only students may receive the discount|Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?|
+|EMPLOYMENT_STATUS|An eligibility constraint based on employment status applies|A description of the status required|
+|RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
+|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
+
 
 
 
