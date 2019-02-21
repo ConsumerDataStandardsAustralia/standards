@@ -256,12 +256,14 @@ Description of the usage of the lendingRateType field as it applies to accounts.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |FIXED|Fixed rate for a period of time|DateTimeString representing when the fixed rate will expire|
+|VARIABLE|A variable base rate for the product|NA|
 |INTRODUCTORY|An introductory discount that will expire after a set period|DateTimeString representing when the introductory rate will expire|
 |DISCOUNT|A specific discount rate that may be applied.  A discount rate reduces the interest payable|Description of the discount rate that is applicable|
 |PENALTY|A specific penalty rate that may be applied.  A penalty rate increases the interest payable|Description of the penalty rate that is applicable|
-|BUNDLE_DISCOUNT|A discount rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
 |FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
 |MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
 |CASH_ADVANCE|Specific rate applied to case advances from the account|NA|
-|VARIABLE|A variable base rate for the product|NA|
-|COMPARISON|A comparison rate for the product|Description of the comparison algorithm applied (eg. AAPR)|
+|BUNDLE_DISCOUNT_FIXED|A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
+|BUNDLE_DISCOUNT_VARIABLE|A discount rate off the variable rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
+|COMPARISON_FIXED|The 'effective' fixed rate that incorporates other fees or costs to better enable comparison when these vary|Description of the comparison algorithm applied (eg. AAPR)|
+|COMPARISON_VARIABLE|The 'effective' variable rate that incorporates other fees or costs to better enable comparison when these vary|Description of the comparison algorithm applied (eg. AAPR)|

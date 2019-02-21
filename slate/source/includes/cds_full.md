@@ -211,7 +211,8 @@ Obtain detailed information on a single account
         "string"
       ],
       "repaymentFrequency": "string",
-      "repaymentType": "INTEREST_ONLY"
+      "repaymentType": "string",
+      "loanPurpose": "INTEREST_ONLY"
     },
     "features": [
       {
@@ -259,6 +260,8 @@ Obtain detailed information on a single account
       {
         "depositRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -268,6 +271,9 @@ Obtain detailed information on a single account
       {
         "lendingRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "paymentStructureType": "IN_ARREARS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -1880,6 +1886,36 @@ Obtain detailed information on a single product offered openly to the market
       {
         "depositRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "tiers": [
+          {
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": [
+              {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "subTiers": [
+              {
+                "unitOfMeasure": "DOLLAR",
+                "minimumValue": 0,
+                "maximumValue": 0,
+                "rateApplicationMethod": "WHOLE_BALANCE",
+                "applicabilityConditions": [
+                  {
+                    "additionalInfo": "string",
+                    "additionalInfoUri": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -1889,6 +1925,37 @@ Obtain detailed information on a single product offered openly to the market
       {
         "lendingRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "paymentStructureType": "IN_ARREARS",
+        "tiers": [
+          {
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": [
+              {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "subTiers": [
+              {
+                "unitOfMeasure": "DOLLAR",
+                "minimumValue": 0,
+                "maximumValue": 0,
+                "rateApplicationMethod": "WHOLE_BALANCE",
+                "applicabilityConditions": [
+                  {
+                    "additionalInfo": "string",
+                    "additionalInfoUri": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2411,6 +2478,36 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "depositRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "tiers": [
+          {
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": [
+              {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "subTiers": [
+              {
+                "unitOfMeasure": "DOLLAR",
+                "minimumValue": 0,
+                "maximumValue": 0,
+                "rateApplicationMethod": "WHOLE_BALANCE",
+                "applicabilityConditions": [
+                  {
+                    "additionalInfo": "string",
+                    "additionalInfoUri": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2420,6 +2517,37 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "lendingRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "paymentStructureType": "IN_ARREARS",
+        "tiers": [
+          {
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": [
+              {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "subTiers": [
+              {
+                "unitOfMeasure": "DOLLAR",
+                "minimumValue": 0,
+                "maximumValue": 0,
+                "rateApplicationMethod": "WHOLE_BALANCE",
+                "applicabilityConditions": [
+                  {
+                    "additionalInfo": "string",
+                    "additionalInfoUri": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2536,6 +2664,36 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "depositRateType": "FIXED",
       "rate": "string",
+      "calculationFrequency": "string",
+      "applicationFrequency": "string",
+      "tiers": [
+        {
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "subTiers": [
+            {
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": [
+                {
+                  "additionalInfo": "string",
+                  "additionalInfoUri": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -2545,6 +2703,37 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "lendingRateType": "FIXED",
       "rate": "string",
+      "calculationFrequency": "string",
+      "applicationFrequency": "string",
+      "paymentStructureType": "IN_ARREARS",
+      "tiers": [
+        {
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "subTiers": [
+            {
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": [
+                {
+                  "additionalInfo": "string",
+                  "additionalInfoUri": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -2878,6 +3067,36 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "depositRateType": "FIXED",
   "rate": "string",
+  "calculationFrequency": "string",
+  "applicationFrequency": "string",
+  "tiers": [
+    {
+      "unitOfMeasure": "DOLLAR",
+      "minimumValue": 0,
+      "maximumValue": 0,
+      "rateApplicationMethod": "WHOLE_BALANCE",
+      "applicabilityConditions": [
+        {
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "subTiers": [
+        {
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -2891,6 +3110,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
 |rate|string(RateString)|mandatory|none|The rate to be applied|
+|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
@@ -2913,6 +3135,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "lendingRateType": "FIXED",
   "rate": "string",
+  "calculationFrequency": "string",
+  "applicationFrequency": "string",
+  "paymentStructureType": "IN_ARREARS",
+  "tiers": [
+    {
+      "unitOfMeasure": "DOLLAR",
+      "minimumValue": 0,
+      "maximumValue": 0,
+      "rateApplicationMethod": "WHOLE_BALANCE",
+      "applicabilityConditions": [
+        {
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "subTiers": [
+        {
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -2926,6 +3179,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
 |rate|string(RateString)|mandatory|none|The rate to be applied|
+|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|paymentStructureType|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
+|tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%|
 |additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee.|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
@@ -2935,15 +3192,109 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Property|Value|
 |---|---|
 |lendingRateType|FIXED|
+|lendingRateType|VARIABLE|
 |lendingRateType|INTRODUCTORY|
 |lendingRateType|DISCOUNT|
 |lendingRateType|PENALTY|
-|lendingRateType|BUNDLE_DISCOUNT|
 |lendingRateType|FLOATING|
 |lendingRateType|MARKET_LINKED|
 |lendingRateType|CASH_ADVANCE|
-|lendingRateType|VARIABLE|
-|lendingRateType|COMPARISON|
+|lendingRateType|BUNDLE_DISCOUNT_FIXED|
+|lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
+|lendingRateType|COMPARISON_FIXED|
+|lendingRateType|COMPARISON_VARIABLE|
+|paymentStructureType|IN_ARREARS|
+|paymentStructureType|IN_ADVANCE|
+
+<h2 id="tocSbankingproductratetier">BankingProductRateTier</h2>
+
+<a id="schemabankingproductratetier"></a>
+
+```json
+{
+  "unitOfMeasure": "DOLLAR",
+  "minimumValue": 0,
+  "maximumValue": 0,
+  "rateApplicationMethod": "WHOLE_BALANCE",
+  "applicabilityConditions": [
+    {
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "subTiers": [
+    {
+      "unitOfMeasure": "DOLLAR",
+      "minimumValue": 0,
+      "maximumValue": 0,
+      "rateApplicationMethod": "WHOLE_BALANCE",
+      "applicabilityConditions": [
+        {
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+*Defines the criteria and conditions for which a rate applies*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|unitOfMeasure|string|mandatory|none|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)|
+|minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
+|maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
+|rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
+|applicabilityConditions|[[BankingProductRateCondition](#schemabankingproductratecondition)]|optional|none|Other conditions required to be met for this rate to apply|
+|subTiers|[object]|optional|none|Sub tiers applicable within this tier|
+|» unitOfMeasure|string|mandatory|none|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)|
+|» minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
+|» maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
+|» rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
+|» applicabilityConditions|[[BankingProductRateCondition](#schemabankingproductratecondition)]|optional|none|Other conditions required to be met for this rate to apply|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|unitOfMeasure|DOLLAR|
+|unitOfMeasure|PERCENT|
+|unitOfMeasure|MONTH|
+|unitOfMeasure|DAY|
+|rateApplicationMethod|WHOLE_BALANCE|
+|rateApplicationMethod|PER_TIER|
+|unitOfMeasure|DOLLAR|
+|unitOfMeasure|PERCENT|
+|unitOfMeasure|MONTH|
+|unitOfMeasure|DAY|
+|rateApplicationMethod|WHOLE_BALANCE|
+|rateApplicationMethod|PER_TIER|
+
+<h2 id="tocSbankingproductratecondition">BankingProductRateCondition</h2>
+
+<a id="schemabankingproductratecondition"></a>
+
+```json
+{
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
+}
+
+```
+
+*Defines a condition for the applicability of a tiered rate*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|additionalInfo|string|optional|none|Display text providing more information on the rate condition|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this rate condition|
 
 <h2 id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
 
@@ -3076,7 +3427,8 @@ To perform this operation, you must be authenticated and authorised with the fol
         "string"
       ],
       "repaymentFrequency": "string",
-      "repaymentType": "INTEREST_ONLY"
+      "repaymentType": "string",
+      "loanPurpose": "INTEREST_ONLY"
     },
     "features": [
       {
@@ -3124,6 +3476,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "depositRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -3133,6 +3487,9 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "lendingRateType": "FIXED",
         "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "paymentStructureType": "IN_ARREARS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -3238,7 +3595,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       "string"
     ],
     "repaymentFrequency": "string",
-    "repaymentType": "INTEREST_ONLY"
+    "repaymentType": "string",
+    "loanPurpose": "INTEREST_ONLY"
   },
   "features": [
     {
@@ -3286,6 +3644,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "depositRateType": "FIXED",
       "rate": "string",
+      "calculationFrequency": "string",
+      "applicationFrequency": "string",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -3295,6 +3655,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "lendingRateType": "FIXED",
       "rate": "string",
+      "calculationFrequency": "string",
+      "applicationFrequency": "string",
+      "paymentStructureType": "IN_ARREARS",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -3450,7 +3813,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     "string"
   ],
   "repaymentFrequency": "string",
-  "repaymentType": "INTEREST_ONLY"
+  "repaymentType": "string",
+  "loanPurpose": "INTEREST_ONLY"
 }
 
 ```
@@ -3473,14 +3837,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |offsetAccountEnabled|boolean|optional|none|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
 |repaymentFrequency|string|optional|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|repaymentType|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
+|repaymentType|string|optional|none|The reason for taking out the loan. The purpose generally affects the rate offered due to different risk profiles|
+|loanPurpose|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|repaymentType|INTEREST_ONLY|
-|repaymentType|PRINCIPAL_AND_INTEREST|
+|loanPurpose|INTEREST_ONLY|
+|loanPurpose|PRINCIPAL_AND_INTEREST|
 
 <h2 id="tocSbankingaccountfeature">BankingAccountFeature</h2>
 
@@ -3693,6 +4058,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "depositRateType": "FIXED",
   "rate": "string",
+  "calculationFrequency": "string",
+  "applicationFrequency": "string",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3706,6 +4073,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
 |rate|string(RateString)|mandatory|none|The rate to be applied|
+|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
@@ -3728,6 +4097,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "lendingRateType": "FIXED",
   "rate": "string",
+  "calculationFrequency": "string",
+  "applicationFrequency": "string",
+  "paymentStructureType": "IN_ARREARS",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3741,6 +4113,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
 |rate|string(RateString)|mandatory|none|The rate to be applied|
+|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|paymentStructureType|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee.|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
@@ -3750,15 +4125,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Property|Value|
 |---|---|
 |lendingRateType|FIXED|
+|lendingRateType|VARIABLE|
 |lendingRateType|INTRODUCTORY|
 |lendingRateType|DISCOUNT|
 |lendingRateType|PENALTY|
-|lendingRateType|BUNDLE_DISCOUNT|
 |lendingRateType|FLOATING|
 |lendingRateType|MARKET_LINKED|
 |lendingRateType|CASH_ADVANCE|
-|lendingRateType|VARIABLE|
-|lendingRateType|COMPARISON|
+|lendingRateType|BUNDLE_DISCOUNT_FIXED|
+|lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
+|lendingRateType|COMPARISON_FIXED|
+|lendingRateType|COMPARISON_VARIABLE|
+|paymentStructureType|IN_ARREARS|
+|paymentStructureType|IN_ADVANCE|
 
 <h2 id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
 

@@ -1015,6 +1015,17 @@ definitions:
         type: string
         description: The rate to be applied
         format: RateString
+      calculationFrequency:
+        type: string
+        description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      applicationFrequency:
+        type: string
+        description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      tiers:
+        type: array
+        description: 'Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%'
+        items:
+          $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
@@ -1038,19 +1049,38 @@ definitions:
         description: 'The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning'
         enum:
           - FIXED
+          - VARIABLE
           - INTRODUCTORY
           - DISCOUNT
           - PENALTY
-          - BUNDLE_DISCOUNT
           - FLOATING
           - MARKET_LINKED
           - CASH_ADVANCE
-          - VARIABLE
-          - COMPARISON
+          - BUNDLE_DISCOUNT_FIXED
+          - BUNDLE_DISCOUNT_VARIABLE
+          - COMPARISON_FIXED
+          - COMPARISON_VARIABLE
       rate:
         type: string
         description: The rate to be applied
         format: RateString
+      calculationFrequency:
+        type: string
+        description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      applicationFrequency:
+        type: string
+        description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      paymentStructureType:
+        type: string
+        description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
+        enum:
+          - IN_ARREARS
+          - IN_ADVANCE
+      tiers:
+        type: array
+        description: 'Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%'
+        items:
+          $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
         description: Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType
@@ -1060,6 +1090,86 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information  on this fee
+        format: URIString
+  BankingProductRateTier:
+    type: object
+    description: Defines the criteria and conditions for which a rate applies
+    required:
+      - unitOfMeasure
+      - minimumValue
+      - maximumValue
+    properties:
+      unitOfMeasure:
+        type: string
+        description: 'The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. ''DOLLAR'', ''MONTH'' (in the case of term deposit tiers), ''PERCENT'' (in the case of loan-to-value ratio or LVR)'
+        enum:
+          - DOLLAR
+          - PERCENT
+          - MONTH
+          - DAY
+      minimumValue:
+        type: number
+        description: The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+      maximumValue:
+        type: number
+        description: 'The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)'
+      rateApplicationMethod:
+        type: string
+        description: The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+        enum:
+          - WHOLE_BALANCE
+          - PER_TIER
+      applicabilityConditions:
+        type: array
+        description: Other conditions required to be met for this rate to apply
+        items:
+          $ref: '#/definitions/BankingProductRateCondition'
+      subTiers:
+        type: array
+        description: Sub tiers applicable within this tier
+        items:
+          type: object
+          description: Defines the sub-tier criteria and conditions for which a rate applies
+          required:
+            - unitOfMeasure
+            - minimumValue
+            - maximumValue
+          properties:
+            unitOfMeasure:
+              type: string
+              description: 'The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. ''DOLLAR'', ''MONTH'' (in the case of term deposit tiers), ''PERCENT'' (in the case of loan-to-value ratio or LVR)'
+              enum:
+                - DOLLAR
+                - PERCENT
+                - MONTH
+                - DAY
+            minimumValue:
+              type: number
+              description: The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+            maximumValue:
+              type: number
+              description: 'The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)'
+            rateApplicationMethod:
+              type: string
+              description: The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+              enum:
+                - WHOLE_BALANCE
+                - PER_TIER
+            applicabilityConditions:
+              type: array
+              description: Other conditions required to be met for this rate to apply
+              items:
+                $ref: '#/definitions/BankingProductRateCondition'
+  BankingProductRateCondition:
+    type: object
+    description: Defines a condition for the applicability of a tiered rate
+    properties:
+      additionalInfo:
+        type: string
+        description: Display text providing more information on the rate condition
+      additionalInfoUri:
+        type: string
+        description: Link to a web page with more information  on this rate condition
         format: URIString
   ResponseBankingAccountList:
     type: object
@@ -1301,6 +1411,9 @@ definitions:
         description: 'The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
       repaymentType:
         type: string
+        description: The reason for taking out the loan. The purpose generally affects the rate offered due to different risk profiles
+      loanPurpose:
+        type: string
         description: Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST
         enum:
           - INTEREST_ONLY
@@ -1507,6 +1620,12 @@ definitions:
         type: string
         description: The rate to be applied
         format: RateString
+      calculationFrequency:
+        type: string
+        description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      applicationFrequency:
+        type: string
+        description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
@@ -1530,19 +1649,33 @@ definitions:
         description: 'The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning'
         enum:
           - FIXED
+          - VARIABLE
           - INTRODUCTORY
           - DISCOUNT
           - PENALTY
-          - BUNDLE_DISCOUNT
           - FLOATING
           - MARKET_LINKED
           - CASH_ADVANCE
-          - VARIABLE
-          - COMPARISON
+          - BUNDLE_DISCOUNT_FIXED
+          - BUNDLE_DISCOUNT_VARIABLE
+          - COMPARISON_FIXED
+          - COMPARISON_VARIABLE
       rate:
         type: string
         description: The rate to be applied
         format: RateString
+      calculationFrequency:
+        type: string
+        description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      applicationFrequency:
+        type: string
+        description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+      paymentStructureType:
+        type: string
+        description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
+        enum:
+          - IN_ARREARS
+          - IN_ADVANCE
       additionalValue:
         type: string
         description: Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType
