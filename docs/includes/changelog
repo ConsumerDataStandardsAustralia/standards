@@ -9,6 +9,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>22/2/2019</td>
+<td>Rate tier name</td>
+<td>Addition of a name field for rate tiers</td>
+</tr>
+<tr>
 <td>21/2/2019</td>
 <td>Rate tiering</td>
 <td>Added rate tiering and additional rate types based on community feedback</td>

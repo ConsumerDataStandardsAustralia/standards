@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Description|Detail Of change|
 |-----------|-----------|----------------|
+|22/2/2019|Rate tier name|Addition of a name field for rate tiers|
 |21/2/2019|Rate tiering|Added rate tiering and additional rate types based on community feedback|
 |19/2/2019|Fees and Discounts|Updated product and account fees, discounts and elibilities based on community feedback|
 |19/2/2019|Doc Sync|Synchronised the API documentation with the swagger files|
