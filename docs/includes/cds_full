@@ -2831,6 +2831,7 @@ This operation does not require authentication
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2843,6 +2844,7 @@ This operation does not require authentication
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2871,6 +2873,7 @@ This operation does not require authentication
         </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2883,6 +2886,7 @@ This operation does not require authentication
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3593,6 +3597,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3605,6 +3610,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3633,6 +3639,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3645,6 +3652,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3800,6 +3808,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3812,6 +3821,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3840,6 +3850,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3852,6 +3863,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4700,6 +4712,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4712,6 +4725,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4838,6 +4852,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4850,6 +4865,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5012,6 +5028,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemabankingproductratetier"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5024,6 +5041,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"subTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5050,6 +5068,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>A display name for the tier</td>
+</tr>
 <tr>
 <td>unitOfMeasure</td>
 <td>string</td>
@@ -5091,6 +5116,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>optional</td>
 <td>none</td>
 <td>Sub tiers applicable within this tier</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>A display name for the tier</td>
 </tr>
 <tr>
 <td>» unitOfMeasure</td>

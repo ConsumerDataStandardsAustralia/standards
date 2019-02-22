@@ -1095,10 +1095,14 @@ definitions:
     type: object
     description: Defines the criteria and conditions for which a rate applies
     required:
+      - name
       - unitOfMeasure
       - minimumValue
       - maximumValue
     properties:
+      name:
+        type: string
+        description: A display name for the tier
       unitOfMeasure:
         type: string
         description: 'The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. ''DOLLAR'', ''MONTH'' (in the case of term deposit tiers), ''PERCENT'' (in the case of loan-to-value ratio or LVR)'
@@ -1131,10 +1135,14 @@ definitions:
           type: object
           description: Defines the sub-tier criteria and conditions for which a rate applies
           required:
+            - name
             - unitOfMeasure
             - minimumValue
             - maximumValue
           properties:
+            name:
+              type: string
+              description: A display name for the tier
             unitOfMeasure:
               type: string
               description: 'The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. ''DOLLAR'', ''MONTH'' (in the case of term deposit tiers), ''PERCENT'' (in the case of loan-to-value ratio or LVR)'
