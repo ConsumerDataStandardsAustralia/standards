@@ -2680,23 +2680,15 @@ definitions:
               description: Optional additional data for specific error types
   BankingEnumProductCategory:
     type: string
-    description: The list of available product categories for categorising products and accounts
+    description: 'The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details'
     enum:
-      - PERS_AT_CALL_DEPOSITS
-      - BUS_AT_CALL_DEPOSITS
+      - TRANS_AND_SAVINGS_ACCOUNTS
       - TERM_DEPOSITS
+      - TRAVEL_CARDS
+      - REGULATED_TRUST_ACCOUNTS
       - RESIDENTIAL_MORTGAGES
-      - PERS_CRED_AND_CHRG_CARDS
-      - BUS_CRED_AND_CHRG_CARDS
+      - CRED_AND_CHRG_CARDS
       - PERS_LOANS
-      - PERS_LEASING
-      - BUS_LEASING
+      - MARGIN_LOANS
+      - LEASES
       - TRADE_FINANCE
-      - PERS_OVERDRAFT
-      - BUS_OVERDRAFT
-      - BUS_LOANS
-      - FOREIGN_CURR_AT_CALL_DEPOSITS
-      - FOREIGN_CURR_TERM_DEPOSITS
-      - FOREIGN_CURR_LOAN
-      - FOREIGN_CURRRENCT_OVERDRAFT
-      - TRAVEL_CARD

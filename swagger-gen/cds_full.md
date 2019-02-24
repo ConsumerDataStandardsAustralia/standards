@@ -91,7 +91,7 @@ Obtain a list of accounts
         "maskedNumber": "string",
         "openStatus": "OPEN",
         "isOwned": "true",
-        "productCategory": "PERS_AT_CALL_DEPOSITS",
+        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "productName": "string"
       }
     ]
@@ -175,7 +175,7 @@ Obtain detailed information on a single account
     "maskedNumber": "string",
     "openStatus": "OPEN",
     "isOwned": "true",
-    "productCategory": "PERS_AT_CALL_DEPOSITS",
+    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "productName": "string",
     "bsb": "string",
     "accountNumber": "string",
@@ -1709,7 +1709,7 @@ In addition the concept of effective date and time has also been included. This 
         "effectiveFrom": "string",
         "effectiveTo": "string",
         "lastUpdated": "string",
-        "productCategory": "PERS_AT_CALL_DEPOSITS",
+        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "name": "string",
         "description": "string",
         "brand": "string",
@@ -1802,7 +1802,7 @@ Obtain detailed information on a single product offered openly to the market
     "effectiveFrom": "string",
     "effectiveTo": "string",
     "lastUpdated": "string",
-    "productCategory": "PERS_AT_CALL_DEPOSITS",
+    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "name": "string",
     "description": "string",
     "brand": "string",
@@ -1888,8 +1888,19 @@ Obtain detailed information on a single product offered openly to the market
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "tiers": [
-          {
+        "tier": {
+          "name": "string",
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "subTier": {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -1900,24 +1911,9 @@ Obtain detailed information on a single product offered openly to the market
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "subTiers": [
-              {
-                "name": "string",
-                "unitOfMeasure": "DOLLAR",
-                "minimumValue": 0,
-                "maximumValue": 0,
-                "rateApplicationMethod": "WHOLE_BALANCE",
-                "applicabilityConditions": [
-                  {
-                    "additionalInfo": "string",
-                    "additionalInfoUri": "string"
-                  }
-                ]
-              }
             ]
           }
-        ],
+        },
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -1930,8 +1926,19 @@ Obtain detailed information on a single product offered openly to the market
         "calculationFrequency": "string",
         "applicationFrequency": "string",
         "paymentStructureType": "IN_ARREARS",
-        "tiers": [
-          {
+        "tier": {
+          "name": "string",
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "subTier": {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -1942,24 +1949,9 @@ Obtain detailed information on a single product offered openly to the market
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "subTiers": [
-              {
-                "name": "string",
-                "unitOfMeasure": "DOLLAR",
-                "minimumValue": 0,
-                "maximumValue": 0,
-                "rateApplicationMethod": "WHOLE_BALANCE",
-                "applicabilityConditions": [
-                  {
-                    "additionalInfo": "string",
-                    "additionalInfoUri": "string"
-                  }
-                ]
-              }
             ]
           }
-        ],
+        },
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2296,7 +2288,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "effectiveFrom": "string",
         "effectiveTo": "string",
         "lastUpdated": "string",
-        "productCategory": "PERS_AT_CALL_DEPOSITS",
+        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "name": "string",
         "description": "string",
         "brand": "string",
@@ -2347,7 +2339,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "effectiveFrom": "string",
   "effectiveTo": "string",
   "lastUpdated": "string",
-  "productCategory": "PERS_AT_CALL_DEPOSITS",
+  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "name": "string",
   "description": "string",
   "brand": "string",
@@ -2373,7 +2365,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |effectiveFrom|string(DateTimeString)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|string(DateTimeString)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|string(DateTimeString)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
@@ -2398,7 +2390,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "effectiveFrom": "string",
     "effectiveTo": "string",
     "lastUpdated": "string",
-    "productCategory": "PERS_AT_CALL_DEPOSITS",
+    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "name": "string",
     "description": "string",
     "brand": "string",
@@ -2484,8 +2476,19 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "tiers": [
-          {
+        "tier": {
+          "name": "string",
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "subTier": {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -2496,24 +2499,9 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "subTiers": [
-              {
-                "name": "string",
-                "unitOfMeasure": "DOLLAR",
-                "minimumValue": 0,
-                "maximumValue": 0,
-                "rateApplicationMethod": "WHOLE_BALANCE",
-                "applicabilityConditions": [
-                  {
-                    "additionalInfo": "string",
-                    "additionalInfoUri": "string"
-                  }
-                ]
-              }
             ]
           }
-        ],
+        },
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2526,8 +2514,19 @@ To perform this operation, you must be authenticated and authorised with the fol
         "calculationFrequency": "string",
         "applicationFrequency": "string",
         "paymentStructureType": "IN_ARREARS",
-        "tiers": [
-          {
+        "tier": {
+          "name": "string",
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": [
+            {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "subTier": {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -2538,24 +2537,9 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "subTiers": [
-              {
-                "name": "string",
-                "unitOfMeasure": "DOLLAR",
-                "minimumValue": 0,
-                "maximumValue": 0,
-                "rateApplicationMethod": "WHOLE_BALANCE",
-                "applicabilityConditions": [
-                  {
-                    "additionalInfo": "string",
-                    "additionalInfoUri": "string"
-                  }
-                ]
-              }
             ]
           }
-        ],
+        },
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2588,7 +2572,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "effectiveFrom": "string",
   "effectiveTo": "string",
   "lastUpdated": "string",
-  "productCategory": "PERS_AT_CALL_DEPOSITS",
+  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "name": "string",
   "description": "string",
   "brand": "string",
@@ -2674,8 +2658,19 @@ To perform this operation, you must be authenticated and authorised with the fol
       "rate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
-      "tiers": [
-        {
+      "tier": {
+        "name": "string",
+        "unitOfMeasure": "DOLLAR",
+        "minimumValue": 0,
+        "maximumValue": 0,
+        "rateApplicationMethod": "WHOLE_BALANCE",
+        "applicabilityConditions": [
+          {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "subTier": {
           "name": "string",
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
@@ -2686,24 +2681,9 @@ To perform this operation, you must be authenticated and authorised with the fol
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             }
-          ],
-          "subTiers": [
-            {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": [
-                {
-                  "additionalInfo": "string",
-                  "additionalInfoUri": "string"
-                }
-              ]
-            }
           ]
         }
-      ],
+      },
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -2716,8 +2696,19 @@ To perform this operation, you must be authenticated and authorised with the fol
       "calculationFrequency": "string",
       "applicationFrequency": "string",
       "paymentStructureType": "IN_ARREARS",
-      "tiers": [
-        {
+      "tier": {
+        "name": "string",
+        "unitOfMeasure": "DOLLAR",
+        "minimumValue": 0,
+        "maximumValue": 0,
+        "rateApplicationMethod": "WHOLE_BALANCE",
+        "applicabilityConditions": [
+          {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "subTier": {
           "name": "string",
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
@@ -2728,24 +2719,9 @@ To perform this operation, you must be authenticated and authorised with the fol
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             }
-          ],
-          "subTiers": [
-            {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": [
-                {
-                  "additionalInfo": "string",
-                  "additionalInfoUri": "string"
-                }
-              ]
-            }
           ]
         }
-      ],
+      },
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -3081,8 +3057,19 @@ To perform this operation, you must be authenticated and authorised with the fol
   "rate": "string",
   "calculationFrequency": "string",
   "applicationFrequency": "string",
-  "tiers": [
-    {
+  "tier": {
+    "name": "string",
+    "unitOfMeasure": "DOLLAR",
+    "minimumValue": 0,
+    "maximumValue": 0,
+    "rateApplicationMethod": "WHOLE_BALANCE",
+    "applicabilityConditions": [
+      {
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "subTier": {
       "name": "string",
       "unitOfMeasure": "DOLLAR",
       "minimumValue": 0,
@@ -3093,24 +3080,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
-      ],
-      "subTiers": [
-        {
-          "name": "string",
-          "unitOfMeasure": "DOLLAR",
-          "minimumValue": 0,
-          "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ]
-        }
       ]
     }
-  ],
+  },
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3126,7 +3098,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rate|string(RateString)|mandatory|none|The rate to be applied|
 |calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%|
+|tier|[BankingProductRateTier](#schemabankingproductratetier)|optional|none|Defines the criteria and conditions for which a rate applies|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
@@ -3152,8 +3124,19 @@ To perform this operation, you must be authenticated and authorised with the fol
   "calculationFrequency": "string",
   "applicationFrequency": "string",
   "paymentStructureType": "IN_ARREARS",
-  "tiers": [
-    {
+  "tier": {
+    "name": "string",
+    "unitOfMeasure": "DOLLAR",
+    "minimumValue": 0,
+    "maximumValue": 0,
+    "rateApplicationMethod": "WHOLE_BALANCE",
+    "applicabilityConditions": [
+      {
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "subTier": {
       "name": "string",
       "unitOfMeasure": "DOLLAR",
       "minimumValue": 0,
@@ -3164,24 +3147,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
-      ],
-      "subTiers": [
-        {
-          "name": "string",
-          "unitOfMeasure": "DOLLAR",
-          "minimumValue": 0,
-          "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ]
-        }
       ]
     }
-  ],
+  },
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3198,7 +3166,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |paymentStructureType|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%|
+|tier|[BankingProductRateTier](#schemabankingproductratetier)|optional|none|Defines the criteria and conditions for which a rate applies|
 |additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee.|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
@@ -3239,21 +3207,19 @@ To perform this operation, you must be authenticated and authorised with the fol
       "additionalInfoUri": "string"
     }
   ],
-  "subTiers": [
-    {
-      "name": "string",
-      "unitOfMeasure": "DOLLAR",
-      "minimumValue": 0,
-      "maximumValue": 0,
-      "rateApplicationMethod": "WHOLE_BALANCE",
-      "applicabilityConditions": [
-        {
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
-        }
-      ]
-    }
-  ]
+  "subTier": {
+    "name": "string",
+    "unitOfMeasure": "DOLLAR",
+    "minimumValue": 0,
+    "maximumValue": 0,
+    "rateApplicationMethod": "WHOLE_BALANCE",
+    "applicabilityConditions": [
+      {
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ]
+  }
 }
 
 ```
@@ -3270,7 +3236,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
 |rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
 |applicabilityConditions|[[BankingProductRateCondition](#schemabankingproductratecondition)]|optional|none|Other conditions required to be met for this rate to apply|
-|subTiers|[object]|optional|none|Sub tiers applicable within this tier|
+|subTier|object|optional|none|Defines the sub-tier criteria and conditions for which a rate applies|
 |» name|string|mandatory|none|A display name for the tier|
 |» unitOfMeasure|string|mandatory|none|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)|
 |» minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
@@ -3331,7 +3297,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "maskedNumber": "string",
         "openStatus": "OPEN",
         "isOwned": "true",
-        "productCategory": "PERS_AT_CALL_DEPOSITS",
+        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "productName": "string"
       }
     ]
@@ -3372,7 +3338,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "maskedNumber": "string",
   "openStatus": "OPEN",
   "isOwned": "true",
-  "productCategory": "PERS_AT_CALL_DEPOSITS",
+  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "productName": "string"
 }
 
@@ -3388,7 +3354,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |maskedNumber|string(MaskedAccountString)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
 |openStatus|string|optional|none|Open or closed status for the account.  If not present then OPEN is assumed|
 |isOwned|boolean|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
 |productName|string|mandatory|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
 
 #### Enumerated Values
@@ -3411,7 +3377,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "maskedNumber": "string",
     "openStatus": "OPEN",
     "isOwned": "true",
-    "productCategory": "PERS_AT_CALL_DEPOSITS",
+    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "productName": "string",
     "bsb": "string",
     "accountNumber": "string",
@@ -3579,7 +3545,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "maskedNumber": "string",
   "openStatus": "OPEN",
   "isOwned": "true",
-  "productCategory": "PERS_AT_CALL_DEPOSITS",
+  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "productName": "string",
   "bsb": "string",
   "accountNumber": "string",
@@ -5978,38 +5944,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a id="schemabankingenumproductcategory"></a>
 
 ```json
-"PERS_AT_CALL_DEPOSITS"
+"TRANS_AND_SAVINGS_ACCOUNTS"
 
 ```
 
-*The list of available product categories for categorising products and accounts*
+*The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts|
+|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|*anonymous*|PERS_AT_CALL_DEPOSITS|
-|*anonymous*|BUS_AT_CALL_DEPOSITS|
+|*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
 |*anonymous*|TERM_DEPOSITS|
+|*anonymous*|TRAVEL_CARDS|
+|*anonymous*|REGULATED_TRUST_ACCOUNTS|
 |*anonymous*|RESIDENTIAL_MORTGAGES|
-|*anonymous*|PERS_CRED_AND_CHRG_CARDS|
-|*anonymous*|BUS_CRED_AND_CHRG_CARDS|
+|*anonymous*|CRED_AND_CHRG_CARDS|
 |*anonymous*|PERS_LOANS|
-|*anonymous*|PERS_LEASING|
-|*anonymous*|BUS_LEASING|
+|*anonymous*|MARGIN_LOANS|
+|*anonymous*|LEASES|
 |*anonymous*|TRADE_FINANCE|
-|*anonymous*|PERS_OVERDRAFT|
-|*anonymous*|BUS_OVERDRAFT|
-|*anonymous*|BUS_LOANS|
-|*anonymous*|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|*anonymous*|FOREIGN_CURR_TERM_DEPOSITS|
-|*anonymous*|FOREIGN_CURR_LOAN|
-|*anonymous*|FOREIGN_CURRRENCT_OVERDRAFT|
-|*anonymous*|TRAVEL_CARD|
 

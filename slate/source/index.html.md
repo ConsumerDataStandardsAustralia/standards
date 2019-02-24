@@ -21,6 +21,7 @@ includes:
 #  - common
 #  - shared
   - cds_full
+  - banking/product_categories
   - banking/product_components
   - known-issues
   - changelog
