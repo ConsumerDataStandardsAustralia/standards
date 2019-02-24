@@ -1021,11 +1021,8 @@ definitions:
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-      tiers:
-        type: array
-        description: 'Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%'
-        items:
-          $ref: '#/definitions/BankingProductRateTier'
+      tier:
+        $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
@@ -1076,11 +1073,8 @@ definitions:
         enum:
           - IN_ARREARS
           - IN_ADVANCE
-      tiers:
-        type: array
-        description: 'Properties of the product that determined whether this rate applies. This criteria could be a single value (e.g. 3 month term deposit term) or a range of values that a factor must fall within for this rate to apply e.g. account balance in range $100,000 - $200,000, loan-to-value ratio in range 70% – 80%'
-        items:
-          $ref: '#/definitions/BankingProductRateTier'
+      tier:
+        $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
         description: Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType
@@ -1128,46 +1122,43 @@ definitions:
         description: Other conditions required to be met for this rate to apply
         items:
           $ref: '#/definitions/BankingProductRateCondition'
-      subTiers:
-        type: array
-        description: Sub tiers applicable within this tier
-        items:
-          type: object
-          description: Defines the sub-tier criteria and conditions for which a rate applies
-          required:
-            - name
-            - unitOfMeasure
-            - minimumValue
-            - maximumValue
-          properties:
-            name:
-              type: string
-              description: A display name for the tier
-            unitOfMeasure:
-              type: string
-              description: 'The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. ''DOLLAR'', ''MONTH'' (in the case of term deposit tiers), ''PERCENT'' (in the case of loan-to-value ratio or LVR)'
-              enum:
-                - DOLLAR
-                - PERCENT
-                - MONTH
-                - DAY
-            minimumValue:
-              type: number
-              description: The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-            maximumValue:
-              type: number
-              description: 'The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)'
-            rateApplicationMethod:
-              type: string
-              description: The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-              enum:
-                - WHOLE_BALANCE
-                - PER_TIER
-            applicabilityConditions:
-              type: array
-              description: Other conditions required to be met for this rate to apply
-              items:
-                $ref: '#/definitions/BankingProductRateCondition'
+      subTier:
+        type: object
+        description: Defines the sub-tier criteria and conditions for which a rate applies
+        required:
+          - name
+          - unitOfMeasure
+          - minimumValue
+          - maximumValue
+        properties:
+          name:
+            type: string
+            description: A display name for the tier
+          unitOfMeasure:
+            type: string
+            description: 'The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. ''DOLLAR'', ''MONTH'' (in the case of term deposit tiers), ''PERCENT'' (in the case of loan-to-value ratio or LVR)'
+            enum:
+              - DOLLAR
+              - PERCENT
+              - MONTH
+              - DAY
+          minimumValue:
+            type: number
+            description: The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+          maximumValue:
+            type: number
+            description: 'The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)'
+          rateApplicationMethod:
+            type: string
+            description: The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+            enum:
+              - WHOLE_BALANCE
+              - PER_TIER
+          applicabilityConditions:
+            type: array
+            description: Other conditions required to be met for this rate to apply
+            items:
+              $ref: '#/definitions/BankingProductRateCondition'
   BankingProductRateCondition:
     type: object
     description: Defines a condition for the applicability of a tiered rate
@@ -2689,23 +2680,15 @@ definitions:
               description: Optional additional data for specific error types
   BankingEnumProductCategory:
     type: string
-    description: The list of available product categories for categorising products and accounts
+    description: 'The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details'
     enum:
-      - PERS_AT_CALL_DEPOSITS
-      - BUS_AT_CALL_DEPOSITS
+      - TRANS_AND_SAVINGS_ACCOUNTS
       - TERM_DEPOSITS
+      - TRAVEL_CARDS
+      - REGULATED_TRUST_ACCOUNTS
       - RESIDENTIAL_MORTGAGES
-      - PERS_CRED_AND_CHRG_CARDS
-      - BUS_CRED_AND_CHRG_CARDS
+      - CRED_AND_CHRG_CARDS
       - PERS_LOANS
-      - PERS_LEASING
-      - BUS_LEASING
+      - MARGIN_LOANS
+      - LEASES
       - TRADE_FINANCE
-      - PERS_OVERDRAFT
-      - BUS_OVERDRAFT
-      - BUS_LOANS
-      - FOREIGN_CURR_AT_CALL_DEPOSITS
-      - FOREIGN_CURR_TERM_DEPOSITS
-      - FOREIGN_CURR_LOAN
-      - FOREIGN_CURRRENCT_OVERDRAFT
-      - TRAVEL_CARD
