@@ -217,7 +217,10 @@ Obtain detailed information on a single account
     "features": [
       {
         "featureType": "CARD_ACCESS",
-        "additionalValue": "string"
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "isActivated": "true"
       }
     ],
     "fees": [
@@ -244,7 +247,7 @@ Obtain detailed information on a single account
             "additionalValue": "string",
             "eligibility": [
               {
-                "discountEligibilityType": "PENSION_RECIPIENT",
+                "discountEligibilityType": "BUSINESS",
                 "additionalValue": "string",
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
@@ -273,7 +276,7 @@ Obtain detailed information on a single account
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "paymentStructureType": "IN_ARREARS",
+        "interestPaymentDue": "IN_ARREARS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -1829,7 +1832,9 @@ Obtain detailed information on a single product offered openly to the market
     "features": [
       {
         "featureType": "CARD_ACCESS",
-        "additionalValue": "string"
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
       }
     ],
     "constraints": [
@@ -1867,10 +1872,11 @@ Obtain detailed information on a single product offered openly to the market
             "balanceRate": "string",
             "transactionRate": "string",
             "accruedRate": "string",
+            "feeRate": "string",
             "additionalValue": "string",
             "eligibility": [
               {
-                "discountEligibilityType": "PENSION_RECIPIENT",
+                "discountEligibilityType": "BUSINESS",
                 "additionalValue": "string",
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
@@ -1888,19 +1894,8 @@ Obtain detailed information on a single product offered openly to the market
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "tier": {
-          "name": "string",
-          "unitOfMeasure": "DOLLAR",
-          "minimumValue": 0,
-          "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ],
-          "subTier": {
+        "tiers": [
+          {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -1911,9 +1906,22 @@ Obtain detailed information on a single product offered openly to the market
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ]
+            ],
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": [
+                {
+                  "additionalInfo": "string",
+                  "additionalInfoUri": "string"
+                }
+              ]
+            }
           }
-        },
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -1923,22 +1931,12 @@ Obtain detailed information on a single product offered openly to the market
       {
         "lendingRateType": "FIXED",
         "rate": "string",
+        "comparisonRate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "paymentStructureType": "IN_ARREARS",
-        "tier": {
-          "name": "string",
-          "unitOfMeasure": "DOLLAR",
-          "minimumValue": 0,
-          "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ],
-          "subTier": {
+        "interestPaymentDue": "IN_ARREARS",
+        "tiers": [
+          {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -1949,9 +1947,22 @@ Obtain detailed information on a single product offered openly to the market
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ]
+            ],
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": [
+                {
+                  "additionalInfo": "string",
+                  "additionalInfoUri": "string"
+                }
+              ]
+            }
           }
-        },
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2417,7 +2428,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     "features": [
       {
         "featureType": "CARD_ACCESS",
-        "additionalValue": "string"
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
       }
     ],
     "constraints": [
@@ -2455,10 +2468,11 @@ To perform this operation, you must be authenticated and authorised with the fol
             "balanceRate": "string",
             "transactionRate": "string",
             "accruedRate": "string",
+            "feeRate": "string",
             "additionalValue": "string",
             "eligibility": [
               {
-                "discountEligibilityType": "PENSION_RECIPIENT",
+                "discountEligibilityType": "BUSINESS",
                 "additionalValue": "string",
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
@@ -2476,19 +2490,8 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "tier": {
-          "name": "string",
-          "unitOfMeasure": "DOLLAR",
-          "minimumValue": 0,
-          "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ],
-          "subTier": {
+        "tiers": [
+          {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -2499,9 +2502,22 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ]
+            ],
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": [
+                {
+                  "additionalInfo": "string",
+                  "additionalInfoUri": "string"
+                }
+              ]
+            }
           }
-        },
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2511,22 +2527,12 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "lendingRateType": "FIXED",
         "rate": "string",
+        "comparisonRate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "paymentStructureType": "IN_ARREARS",
-        "tier": {
-          "name": "string",
-          "unitOfMeasure": "DOLLAR",
-          "minimumValue": 0,
-          "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ],
-          "subTier": {
+        "interestPaymentDue": "IN_ARREARS",
+        "tiers": [
+          {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
@@ -2537,9 +2543,22 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ]
+            ],
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": [
+                {
+                  "additionalInfo": "string",
+                  "additionalInfoUri": "string"
+                }
+              ]
+            }
           }
-        },
+        ],
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2599,7 +2618,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   "features": [
     {
       "featureType": "CARD_ACCESS",
-      "additionalValue": "string"
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
     }
   ],
   "constraints": [
@@ -2637,10 +2658,11 @@ To perform this operation, you must be authenticated and authorised with the fol
           "balanceRate": "string",
           "transactionRate": "string",
           "accruedRate": "string",
+          "feeRate": "string",
           "additionalValue": "string",
           "eligibility": [
             {
-              "discountEligibilityType": "PENSION_RECIPIENT",
+              "discountEligibilityType": "BUSINESS",
               "additionalValue": "string",
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -2658,19 +2680,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       "rate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
-      "tier": {
-        "name": "string",
-        "unitOfMeasure": "DOLLAR",
-        "minimumValue": 0,
-        "maximumValue": 0,
-        "rateApplicationMethod": "WHOLE_BALANCE",
-        "applicabilityConditions": [
-          {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "subTier": {
+      "tiers": [
+        {
           "name": "string",
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
@@ -2681,9 +2692,22 @@ To perform this operation, you must be authenticated and authorised with the fol
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             }
-          ]
+          ],
+          "subTier": {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": [
+              {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ]
+          }
         }
-      },
+      ],
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -2693,22 +2717,12 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "lendingRateType": "FIXED",
       "rate": "string",
+      "comparisonRate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
-      "paymentStructureType": "IN_ARREARS",
-      "tier": {
-        "name": "string",
-        "unitOfMeasure": "DOLLAR",
-        "minimumValue": 0,
-        "maximumValue": 0,
-        "rateApplicationMethod": "WHOLE_BALANCE",
-        "applicabilityConditions": [
-          {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "subTier": {
+      "interestPaymentDue": "IN_ARREARS",
+      "tiers": [
+        {
           "name": "string",
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
@@ -2719,9 +2733,22 @@ To perform this operation, you must be authenticated and authorised with the fol
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             }
-          ]
+          ],
+          "subTier": {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": [
+              {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ]
+          }
         }
-      },
+      ],
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -2784,7 +2811,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "featureType": "CARD_ACCESS",
-  "additionalValue": "string"
+  "additionalValue": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
 }
 
 ```
@@ -2795,6 +2824,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |featureType|string|mandatory|none|The type of feature described|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
+|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this feature|
 
 #### Enumerated Values
 
@@ -2819,6 +2850,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|NPP_ENABLED|
 |featureType|DONATE_INTEREST|
 |featureType|BILL_PAYMENT|
+|featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
+|featureType|BONUS_REWARDS|
+|featureType|NOTIFICATIONS|
+|featureType|OTHER|
 
 <h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
 
@@ -2885,6 +2920,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |eligibilityType|STUDENT|
 |eligibilityType|EMPLOYMENT_STATUS|
 |eligibilityType|RESIDENCY_STATUS|
+|eligibilityType|NATURAL_PERSON|
 |eligibilityType|OTHER|
 
 <h2 id="tocSbankingproductfee">BankingProductFee</h2>
@@ -2912,10 +2948,11 @@ To perform this operation, you must be authenticated and authorised with the fol
       "balanceRate": "string",
       "transactionRate": "string",
       "accruedRate": "string",
+      "feeRate": "string",
       "additionalValue": "string",
       "eligibility": [
         {
-          "discountEligibilityType": "PENSION_RECIPIENT",
+          "discountEligibilityType": "BUSINESS",
           "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string"
@@ -2935,9 +2972,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|amount|string(AmountString)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
@@ -2951,6 +2988,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Property|Value|
 |---|---|
 |feeType|PERIODIC|
+|feeType|TRANSACTION|
 |feeType|WITHDRAWAL|
 |feeType|DEPOSIT|
 |feeType|PAYMENT|
@@ -2971,10 +3009,11 @@ To perform this operation, you must be authenticated and authorised with the fol
   "balanceRate": "string",
   "transactionRate": "string",
   "accruedRate": "string",
+  "feeRate": "string",
   "additionalValue": "string",
   "eligibility": [
     {
-      "discountEligibilityType": "PENSION_RECIPIENT",
+      "discountEligibilityType": "BUSINESS",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -2992,10 +3031,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+|accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|feeRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
 |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|none|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
@@ -3017,7 +3057,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "discountEligibilityType": "PENSION_RECIPIENT",
+  "discountEligibilityType": "BUSINESS",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3038,13 +3078,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Property|Value|
 |---|---|
+|discountEligibilityType|BUSINESS|
 |discountEligibilityType|PENSION_RECIPIENT|
 |discountEligibilityType|MIN_AGE|
 |discountEligibilityType|MAX_AGE|
+|discountEligibilityType|MIN_INCOME|
+|discountEligibilityType|MIN_TURNOVER|
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
 |discountEligibilityType|EMPLOYMENT_STATUS|
 |discountEligibilityType|RESIDENCY_STATUS|
+|discountEligibilityType|NATURAL_PERSON|
+|discountEligibilityType|INTRODUCTORY|
 |discountEligibilityType|OTHER|
 
 <h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
@@ -3057,19 +3102,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "rate": "string",
   "calculationFrequency": "string",
   "applicationFrequency": "string",
-  "tier": {
-    "name": "string",
-    "unitOfMeasure": "DOLLAR",
-    "minimumValue": 0,
-    "maximumValue": 0,
-    "rateApplicationMethod": "WHOLE_BALANCE",
-    "applicabilityConditions": [
-      {
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "subTier": {
+  "tiers": [
+    {
       "name": "string",
       "unitOfMeasure": "DOLLAR",
       "minimumValue": 0,
@@ -3080,9 +3114,22 @@ To perform this operation, you must be authenticated and authorised with the fol
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
-      ]
+      ],
+      "subTier": {
+        "name": "string",
+        "unitOfMeasure": "DOLLAR",
+        "minimumValue": 0,
+        "maximumValue": 0,
+        "rateApplicationMethod": "WHOLE_BALANCE",
+        "applicabilityConditions": [
+          {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ]
+      }
     }
-  },
+  ],
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3098,7 +3145,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rate|string(RateString)|mandatory|none|The rate to be applied|
 |calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|tier|[BankingProductRateTier](#schemabankingproductratetier)|optional|none|Defines the criteria and conditions for which a rate applies|
+|tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
@@ -3112,6 +3159,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |depositRateType|BUNDLE_BONUS|
 |depositRateType|VARIABLE|
 |depositRateType|INTRODUCTORY|
+|depositRateType|FLOATING|
+|depositRateType|MARKET_LINKED|
 
 <h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
 
@@ -3121,22 +3170,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "lendingRateType": "FIXED",
   "rate": "string",
+  "comparisonRate": "string",
   "calculationFrequency": "string",
   "applicationFrequency": "string",
-  "paymentStructureType": "IN_ARREARS",
-  "tier": {
-    "name": "string",
-    "unitOfMeasure": "DOLLAR",
-    "minimumValue": 0,
-    "maximumValue": 0,
-    "rateApplicationMethod": "WHOLE_BALANCE",
-    "applicabilityConditions": [
-      {
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "subTier": {
+  "interestPaymentDue": "IN_ARREARS",
+  "tiers": [
+    {
       "name": "string",
       "unitOfMeasure": "DOLLAR",
       "minimumValue": 0,
@@ -3147,9 +3186,22 @@ To perform this operation, you must be authenticated and authorised with the fol
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
-      ]
+      ],
+      "subTier": {
+        "name": "string",
+        "unitOfMeasure": "DOLLAR",
+        "minimumValue": 0,
+        "maximumValue": 0,
+        "rateApplicationMethod": "WHOLE_BALANCE",
+        "applicabilityConditions": [
+          {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ]
+      }
     }
-  },
+  ],
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3163,10 +3215,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
 |rate|string(RateString)|mandatory|none|The rate to be applied|
+|comparisonRate|string(RateString)|optional|none|A comparison rate equivalent for this rate|
 |calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|paymentStructureType|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|tier|[BankingProductRateTier](#schemabankingproductratetier)|optional|none|Defines the criteria and conditions for which a rate applies|
+|interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
+|tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee.|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
@@ -3183,12 +3236,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |lendingRateType|FLOATING|
 |lendingRateType|MARKET_LINKED|
 |lendingRateType|CASH_ADVANCE|
+|lendingRateType|PURCHASE|
 |lendingRateType|BUNDLE_DISCOUNT_FIXED|
 |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
-|lendingRateType|COMPARISON_FIXED|
-|lendingRateType|COMPARISON_VARIABLE|
-|paymentStructureType|IN_ARREARS|
-|paymentStructureType|IN_ADVANCE|
+|interestPaymentDue|IN_ARREARS|
+|interestPaymentDue|IN_ADVANCE|
 
 <h2 id="tocSbankingproductratetier">BankingProductRateTier</h2>
 
@@ -3419,7 +3471,10 @@ To perform this operation, you must be authenticated and authorised with the fol
     "features": [
       {
         "featureType": "CARD_ACCESS",
-        "additionalValue": "string"
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "isActivated": "true"
       }
     ],
     "fees": [
@@ -3446,7 +3501,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             "additionalValue": "string",
             "eligibility": [
               {
-                "discountEligibilityType": "PENSION_RECIPIENT",
+                "discountEligibilityType": "BUSINESS",
                 "additionalValue": "string",
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
@@ -3475,7 +3530,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "paymentStructureType": "IN_ARREARS",
+        "interestPaymentDue": "IN_ARREARS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -3587,7 +3642,10 @@ To perform this operation, you must be authenticated and authorised with the fol
   "features": [
     {
       "featureType": "CARD_ACCESS",
-      "additionalValue": "string"
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string",
+      "isActivated": "true"
     }
   ],
   "fees": [
@@ -3614,7 +3672,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "additionalValue": "string",
           "eligibility": [
             {
-              "discountEligibilityType": "PENSION_RECIPIENT",
+              "discountEligibilityType": "BUSINESS",
               "additionalValue": "string",
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -3643,7 +3701,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "rate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
-      "paymentStructureType": "IN_ARREARS",
+      "interestPaymentDue": "IN_ARREARS",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -3840,7 +3898,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "featureType": "CARD_ACCESS",
-  "additionalValue": "string"
+  "additionalValue": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string",
+  "isActivated": "true"
 }
 
 ```
@@ -3851,6 +3912,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |featureType|string|mandatory|none|The type of feature described|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
+|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this feature|
+|isActivated|boolean|optional|none|True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent|
 
 #### Enumerated Values
 
@@ -3875,6 +3939,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|NPP_ENABLED|
 |featureType|DONATE_INTEREST|
 |featureType|BILL_PAYMENT|
+|featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
+|featureType|BONUS_REWARDS|
+|featureType|NOTIFICATIONS|
+|featureType|OTHER|
 
 <h2 id="tocSbankingaccountfee">BankingAccountFee</h2>
 
@@ -3904,7 +3972,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "additionalValue": "string",
       "eligibility": [
         {
-          "discountEligibilityType": "PENSION_RECIPIENT",
+          "discountEligibilityType": "BUSINESS",
           "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string"
@@ -3924,9 +3992,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|conditional|none|The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|amount|string(AmountString)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
@@ -3940,6 +4008,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Property|Value|
 |---|---|
 |feeType|PERIODIC|
+|feeType|TRANSACTION|
 |feeType|WITHDRAWAL|
 |feeType|DEPOSIT|
 |feeType|PAYMENT|
@@ -3963,7 +4032,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "additionalValue": "string",
   "eligibility": [
     {
-      "discountEligibilityType": "PENSION_RECIPIENT",
+      "discountEligibilityType": "BUSINESS",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -4006,7 +4075,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "discountEligibilityType": "PENSION_RECIPIENT",
+  "discountEligibilityType": "BUSINESS",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -4027,13 +4096,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Property|Value|
 |---|---|
+|discountEligibilityType|BUSINESS|
 |discountEligibilityType|PENSION_RECIPIENT|
 |discountEligibilityType|MIN_AGE|
 |discountEligibilityType|MAX_AGE|
+|discountEligibilityType|MIN_INCOME|
+|discountEligibilityType|MIN_TURNOVER|
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
 |discountEligibilityType|EMPLOYMENT_STATUS|
 |discountEligibilityType|RESIDENCY_STATUS|
+|discountEligibilityType|NATURAL_PERSON|
+|discountEligibilityType|INTRODUCTORY|
 |discountEligibilityType|OTHER|
 
 <h2 id="tocSbankingaccountdepositrate">BankingAccountDepositRate</h2>
@@ -4074,6 +4148,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |depositRateType|BUNDLE_BONUS|
 |depositRateType|VARIABLE|
 |depositRateType|INTRODUCTORY|
+|depositRateType|FLOATING|
+|depositRateType|MARKET_LINKED|
 
 <h2 id="tocSbankingaccountlendingrate">BankingAccountLendingRate</h2>
 
@@ -4085,7 +4161,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "rate": "string",
   "calculationFrequency": "string",
   "applicationFrequency": "string",
-  "paymentStructureType": "IN_ARREARS",
+  "interestPaymentDue": "IN_ARREARS",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -4101,7 +4177,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rate|string(RateString)|mandatory|none|The rate to be applied|
 |calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|paymentStructureType|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
+|interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee.|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
@@ -4118,12 +4194,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |lendingRateType|FLOATING|
 |lendingRateType|MARKET_LINKED|
 |lendingRateType|CASH_ADVANCE|
+|lendingRateType|PURCHASE|
 |lendingRateType|BUNDLE_DISCOUNT_FIXED|
 |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
-|lendingRateType|COMPARISON_FIXED|
-|lendingRateType|COMPARISON_VARIABLE|
-|paymentStructureType|IN_ARREARS|
-|paymentStructureType|IN_ADVANCE|
+|interestPaymentDue|IN_ARREARS|
+|interestPaymentDue|IN_ADVANCE|
 
 <h2 id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
 

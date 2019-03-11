@@ -1897,7 +1897,10 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1924,7 +1927,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1953,7 +1956,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -4326,7 +4329,9 @@ This operation does not require authentication
     </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4364,10 +4369,11 @@ This operation does not require authentication
             </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -4385,19 +4391,8 @@ This operation does not require authentication
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4408,9 +4403,22 @@ This operation does not require authentication
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -4420,22 +4428,12 @@ This operation does not require authentication
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4446,9 +4444,22 @@ This operation does not require authentication
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5084,7 +5095,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5122,10 +5135,11 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5143,19 +5157,8 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5166,9 +5169,22 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5178,22 +5194,12 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5204,9 +5210,22 @@ To perform this operation, you must be authenticated and authorised with the fol
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5287,7 +5306,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5325,10 +5346,11 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5346,19 +5368,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5369,9 +5380,22 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5381,22 +5405,12 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5407,9 +5421,22 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5564,7 +5591,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemabankingproductfeature"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-7'>Properties</h3>
@@ -5590,6 +5619,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType</td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Display text providing more information on the feature. Mandatory if the feature type is set to OTHER</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td>string(URIString)</td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this feature</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-7'>Enumerated Values</h4>
@@ -5674,6 +5717,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>featureType</td>
 <td>BILL_PAYMENT</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BONUS_REWARDS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NOTIFICATIONS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OTHER</td>
 </tr>
 </tbody></table>
 
@@ -5833,6 +5892,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>eligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
 <td>OTHER</td>
 </tr>
 </tbody></table>
@@ -5860,10 +5923,11 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5904,21 +5968,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string(AmountString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
@@ -5983,6 +6047,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>feeType</td>
+<td>TRANSACTION</td>
+</tr>
+<tr>
+<td>feeType</td>
 <td>WITHDRAWAL</td>
 </tr>
 <tr>
@@ -6021,10 +6089,11 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6063,28 +6132,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string(AmountString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+<td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+<td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>feeRate</td>
+<td>string(RateString)</td>
+<td>conditional</td>
+<td>none</td>
+<td>A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
 </tr>
 <tr>
 <td>additionalValue</td>
@@ -6148,7 +6224,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemabankingproductdiscounteligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6202,6 +6278,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>discountEligibilityType</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
 <td>PENSION_RECIPIENT</td>
 </tr>
 <tr>
@@ -6211,6 +6291,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>discountEligibilityType</td>
 <td>MAX_AGE</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_INCOME</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_TURNOVER</td>
 </tr>
 <tr>
 <td>discountEligibilityType</td>
@@ -6230,6 +6318,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>discountEligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>INTRODUCTORY</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
 <td>OTHER</td>
 </tr>
 </tbody></table>
@@ -6242,19 +6338,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -6265,9 +6350,22 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6312,11 +6410,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
-<td>tier</td>
-<td><a href="#schemabankingproductratetier">BankingProductRateTier</a></td>
+<td>tiers</td>
+<td>[<a href="#schemabankingproductratetier">BankingProductRateTier</a>]</td>
 <td>optional</td>
 <td>none</td>
-<td>Defines the criteria and conditions for which a rate applies</td>
+<td>Rate tiers applicable for this rate</td>
 </tr>
 <tr>
 <td>additionalValue</td>
@@ -6367,6 +6465,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>depositRateType</td>
 <td>INTRODUCTORY</td>
 </tr>
+<tr>
+<td>depositRateType</td>
+<td>FLOATING</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>MARKET_LINKED</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
@@ -6375,22 +6481,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -6401,9 +6497,22 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6434,6 +6543,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The rate to be applied</td>
 </tr>
 <tr>
+<td>comparisonRate</td>
+<td>string(RateString)</td>
+<td>optional</td>
+<td>none</td>
+<td>A comparison rate equivalent for this rate</td>
+</tr>
+<tr>
 <td>calculationFrequency</td>
 <td>string</td>
 <td>optional</td>
@@ -6448,18 +6564,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
-<td>paymentStructureType</td>
+<td>interestPaymentDue</td>
 <td>string</td>
 <td>optional</td>
 <td>none</td>
 <td>When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered</td>
 </tr>
 <tr>
-<td>tier</td>
-<td><a href="#schemabankingproductratetier">BankingProductRateTier</a></td>
+<td>tiers</td>
+<td>[<a href="#schemabankingproductratetier">BankingProductRateTier</a>]</td>
 <td>optional</td>
 <td>none</td>
-<td>Defines the criteria and conditions for which a rate applies</td>
+<td>Rate tiers applicable for this rate</td>
 </tr>
 <tr>
 <td>additionalValue</td>
@@ -6524,6 +6640,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>lendingRateType</td>
+<td>PURCHASE</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
 <td>BUNDLE_DISCOUNT_FIXED</td>
 </tr>
 <tr>
@@ -6531,19 +6651,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>BUNDLE_DISCOUNT_VARIABLE</td>
 </tr>
 <tr>
-<td>lendingRateType</td>
-<td>COMPARISON_FIXED</td>
-</tr>
-<tr>
-<td>lendingRateType</td>
-<td>COMPARISON_VARIABLE</td>
-</tr>
-<tr>
-<td>paymentStructureType</td>
+<td>interestPaymentDue</td>
 <td>IN_ARREARS</td>
 </tr>
 <tr>
-<td>paymentStructureType</td>
+<td>interestPaymentDue</td>
 <td>IN_ADVANCE</td>
 </tr>
 </tbody></table>
@@ -6997,7 +7109,10 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7024,7 +7139,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -7053,7 +7168,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -7186,7 +7301,10 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7213,7 +7331,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -7242,7 +7360,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -7723,7 +7841,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemabankingaccountfeature"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-24'>Properties</h3>
@@ -7749,6 +7870,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>conditional</td>
 <td>none</td>
 <td>Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType</td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Display text providing more information on the feature. Mandatory if the feature type is set to OTHER</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td>string(URIString)</td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this feature</td>
+</tr>
+<tr>
+<td>isActivated</td>
+<td>boolean</td>
+<td>optional</td>
+<td>none</td>
+<td>True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-20'>Enumerated Values</h4>
@@ -7834,6 +7976,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>featureType</td>
 <td>BILL_PAYMENT</td>
 </tr>
+<tr>
+<td>featureType</td>
+<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BONUS_REWARDS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NOTIFICATIONS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OTHER</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocSbankingaccountfee">BankingAccountFee</h2>
@@ -7862,7 +8020,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -7903,21 +8061,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string(AmountString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td>string(RateString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
@@ -7982,6 +8140,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>feeType</td>
+<td>TRANSACTION</td>
+</tr>
+<tr>
+<td>feeType</td>
 <td>WITHDRAWAL</td>
 </tr>
 <tr>
@@ -8023,7 +8185,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -8147,7 +8309,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemabankingaccountdiscounteligibility"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENSION_RECIPIENT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -8201,6 +8363,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>discountEligibilityType</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
 <td>PENSION_RECIPIENT</td>
 </tr>
 <tr>
@@ -8210,6 +8376,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>discountEligibilityType</td>
 <td>MAX_AGE</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_INCOME</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_TURNOVER</td>
 </tr>
 <tr>
 <td>discountEligibilityType</td>
@@ -8226,6 +8400,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>discountEligibilityType</td>
 <td>RESIDENCY_STATUS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>INTRODUCTORY</td>
 </tr>
 <tr>
 <td>discountEligibilityType</td>
@@ -8333,6 +8515,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>depositRateType</td>
 <td>INTRODUCTORY</td>
 </tr>
+<tr>
+<td>depositRateType</td>
+<td>FLOATING</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>MARKET_LINKED</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocSbankingaccountlendingrate">BankingAccountLendingRate</h2>
@@ -8343,7 +8533,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"paymentStructureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -8388,7 +8578,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
-<td>paymentStructureType</td>
+<td>interestPaymentDue</td>
 <td>string</td>
 <td>optional</td>
 <td>none</td>
@@ -8457,6 +8647,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>lendingRateType</td>
+<td>PURCHASE</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
 <td>BUNDLE_DISCOUNT_FIXED</td>
 </tr>
 <tr>
@@ -8464,19 +8658,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>BUNDLE_DISCOUNT_VARIABLE</td>
 </tr>
 <tr>
-<td>lendingRateType</td>
-<td>COMPARISON_FIXED</td>
-</tr>
-<tr>
-<td>lendingRateType</td>
-<td>COMPARISON_VARIABLE</td>
-</tr>
-<tr>
-<td>paymentStructureType</td>
+<td>interestPaymentDue</td>
 <td>IN_ARREARS</td>
 </tr>
 <tr>
-<td>paymentStructureType</td>
+<td>interestPaymentDue</td>
 <td>IN_ADVANCE</td>
 </tr>
 </tbody></table>
@@ -12053,7 +12239,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>CARD_ACCESS</td>
 <td>A card is available for the product to access funds</td>
-<td>NA</td>
+<td>Text describing list of card types that this product can be linked to</td>
 </tr>
 <tr>
 <td>ADDITIONAL_CARDS</td>
@@ -12144,6 +12330,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>BILL_PAYMENT</td>
 <td>The product can be attached to an automatic budgeting and bill payment service</td>
 <td>Optional name of the service</td>
+</tr>
+<tr>
+<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+<td>Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available</td>
+<td>Description of the complementary offering</td>
+</tr>
+<tr>
+<td>BONUS_REWARDS</td>
+<td>Bonus loyalty rewards points are available</td>
+<td>Number of points available</td>
+</tr>
+<tr>
+<td>NOTIFICATIONS</td>
+<td>Advanced notifications are available for the product</td>
+<td>Description of the notification capability</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type</td>
+<td>NA</td>
 </tr>
 </tbody></table>
 
@@ -12244,6 +12450,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A description of the status required</td>
 </tr>
 <tr>
+<td>NATURAL_PERSON</td>
+<td>The customer must be a natural person rather than another legal entity</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>OTHER</td>
 <td>Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)</td>
 <td>Value relevant to the criteria</td>
@@ -12266,6 +12477,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>PERIODIC</td>
 <td>A periodic fee such as a monthly account servicing fee</td>
 <td>The period of charge.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+</tr>
+<tr>
+<td>TRANSACTION</td>
+<td>A fee associated with any transaction (incorporates WITHDRAWAL, DEPOSIT, PAYMENT and PURCHASE)</td>
+<td>NA</td>
 </tr>
 <tr>
 <td>WITHDRAWAL</td>
@@ -12356,6 +12572,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>BUSINESS</td>
+<td>A business or other non-person legal entity</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>PENSION_RECIPIENT</td>
 <td>A recipient of a government pension may receive the discount</td>
 <td>Optional. Should contain a description of which pensions qualify</td>
@@ -12369,6 +12590,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>MAX_AGE</td>
 <td>Only customers younger than a maximum age receive the discount</td>
 <td>The maximum age in years</td>
+</tr>
+<tr>
+<td>MIN_INCOME</td>
+<td>The customer must have an income greater than a specified threshold to obtain the discount</td>
+<td>Minimum income in AmountString format</td>
+</tr>
+<tr>
+<td>MIN_TURNOVER</td>
+<td>Only a business with greater than a minimum turnover is eligible</td>
+<td>Minimum turnover in AmountString format</td>
 </tr>
 <tr>
 <td>STAFF</td>
@@ -12389,6 +12620,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>RESIDENCY_STATUS</td>
 <td>An eligibility constraint based on residency status applies</td>
 <td>A description of the status required</td>
+</tr>
+<tr>
+<td>NATURAL_PERSON</td>
+<td>The customer must be a natural person rather than another legal entity</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>INTRODUCTORY</td>
+<td>The discount is only available during an introductory period</td>
+<td>The period of time for the introductory discount.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>OTHER</td>
@@ -12454,6 +12695,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
+<td>VARIABLE</td>
+<td>A variable base rate for the product</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>INTRODUCTORY</td>
 <td>An introductory discount that will expire after a set period</td>
 <td>The period of time for the introductory rate.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -12467,11 +12713,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>PENALTY</td>
 <td>A specific penalty rate that may be applied.  A penalty rate increases the interest payable</td>
 <td>Description of the penalty rate that is applicable</td>
-</tr>
-<tr>
-<td>BUNDLE_DISCOUNT</td>
-<td>A discount rate obtained by originating a bundle instead of a standalone product</td>
-<td>The name of the bundle</td>
 </tr>
 <tr>
 <td>FLOATING</td>
@@ -12489,14 +12730,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>NA</td>
 </tr>
 <tr>
-<td>VARIABLE</td>
-<td>A variable base rate for the product</td>
+<td>PURCHASE</td>
+<td>Specific rate applied to purchases from the account</td>
 <td>NA</td>
 </tr>
 <tr>
-<td>COMPARISON</td>
-<td>A comparison rate for the product</td>
-<td>Description of the comparison algorithm applied (eg. AAPR)</td>
+<td>BUNDLE_DISCOUNT_FIXED</td>
+<td>A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product</td>
+<td>The name of the bundle</td>
+</tr>
+<tr>
+<td>BUNDLE_DISCOUNT_VARIABLE</td>
+<td>A discount rate off the variable rate obtained by originating a bundle instead of a standalone product</td>
+<td>The name of the bundle</td>
 </tr>
 </tbody></table>
 
@@ -12515,7 +12761,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>CARD_ACCESS</td>
 <td>A card is available for the product to access funds</td>
-<td>NA</td>
+<td>Text describing list of card types that this product can be linked to</td>
 </tr>
 <tr>
 <td>ADDITIONAL_CARDS</td>
@@ -12607,6 +12853,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The product can be attached to an automatic budgeting and bill payment service</td>
 <td>Optional name of the service</td>
 </tr>
+<tr>
+<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+<td>Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available</td>
+<td>Description of the complementary offering</td>
+</tr>
+<tr>
+<td>BONUS_REWARDS</td>
+<td>Bonus loyalty rewards points are available</td>
+<td>Number of points available</td>
+</tr>
+<tr>
+<td>NOTIFICATIONS</td>
+<td>Advanced notifications are available for the product</td>
+<td>Description of the notification capability</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type</td>
+<td>NA</td>
+</tr>
 </tbody></table>
 
 <p><a id="accountfeetypedoc"></a>
@@ -12625,6 +12891,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>PERIODIC</td>
 <td>A periodic fee such as a monthly account servicing fee</td>
 <td>The period of charge.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+</tr>
+<tr>
+<td>TRANSACTION</td>
+<td>A fee associated with any transaction (incorporates WITHDRAWAL, DEPOSIT, PAYMENT and PURCHASE)</td>
+<td>NA</td>
 </tr>
 <tr>
 <td>WITHDRAWAL</td>
@@ -12715,6 +12986,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>BUSINESS</td>
+<td>A business or other non-person legal entity</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>PENSION_RECIPIENT</td>
 <td>A recipient of a government pension may receive the discount</td>
 <td>Optional. Should contain a description of which pensions qualify</td>
@@ -12728,6 +13004,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>MAX_AGE</td>
 <td>Only customers younger than a maximum age receive the discount</td>
 <td>The maximum age in years</td>
+</tr>
+<tr>
+<td>MIN_INCOME</td>
+<td>The customer must have an income greater than a specified threshold to obtain the discount</td>
+<td>Minimum income in AmountString format</td>
+</tr>
+<tr>
+<td>MIN_TURNOVER</td>
+<td>Only a business with greater than a minimum turnover is eligible</td>
+<td>Minimum turnover in AmountString format</td>
 </tr>
 <tr>
 <td>STAFF</td>
@@ -12748,6 +13034,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>RESIDENCY_STATUS</td>
 <td>An eligibility constraint based on residency status applies</td>
 <td>A description of the status required</td>
+</tr>
+<tr>
+<td>NATURAL_PERSON</td>
+<td>The customer must be a natural person rather than another legal entity</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>INTRODUCTORY</td>
+<td>The discount is only available during an introductory period</td>
+<td>The period of time for the introductory discount.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>OTHER</td>
@@ -12848,6 +13144,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>NA</td>
 </tr>
 <tr>
+<td>PURCHASE</td>
+<td>Specific rate applied to purchases from the account</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>BUNDLE_DISCOUNT_FIXED</td>
 <td>A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product</td>
 <td>The name of the bundle</td>
@@ -12856,16 +13157,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>BUNDLE_DISCOUNT_VARIABLE</td>
 <td>A discount rate off the variable rate obtained by originating a bundle instead of a standalone product</td>
 <td>The name of the bundle</td>
-</tr>
-<tr>
-<td>COMPARISON_FIXED</td>
-<td>The &#39;effective&#39; fixed rate that incorporates other fees or costs to better enable comparison when these vary</td>
-<td>Description of the comparison algorithm applied (eg. AAPR)</td>
-</tr>
-<tr>
-<td>COMPARISON_VARIABLE</td>
-<td>The &#39;effective&#39; variable rate that incorporates other fees or costs to better enable comparison when these vary</td>
-<td>Description of the comparison algorithm applied (eg. AAPR)</td>
 </tr>
 </tbody></table>
 <h1 id='known-issues'>Known Issues</h1>
@@ -12932,6 +13223,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>11/3/2019</td>
+<td>Product Reference v1</td>
+<td>Applied changes to prepare for v1 version of Product Reference end points and payloads</td>
+</tr>
 <tr>
 <td>22/2/2019</td>
 <td>Rate tier name</td>

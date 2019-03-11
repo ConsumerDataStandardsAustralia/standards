@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Description|Detail Of change|
 |-----------|-----------|----------------|
+|11/3/2019|Product Reference v1|Applied changes to prepare for v1 version of Product Reference end points and payloads|
 |22/2/2019|Rate tier name|Addition of a name field for rate tiers|
 |21/2/2019|Rate tiering|Added rate tiering and additional rate types based on community feedback|
 |19/2/2019|Fees and Discounts|Updated product and account fees, discounts and elibilities based on community feedback|

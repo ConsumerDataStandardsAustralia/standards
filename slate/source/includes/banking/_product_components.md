@@ -7,7 +7,7 @@ Description of the usage of the featureType field as it applies to products.
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
-|CARD_ACCESS|A card is available for the product to access funds|NA|
+|CARD_ACCESS|A card is available for the product to access funds|Text describing list of card types that this product can be linked to|
 |ADDITIONAL_CARDS|Additional cards can be requested|The maximum number of additional cards.  If no maximum then should be set to null|
 |UNLIMITED_TXNS|Unlimited free transactions available|NA|
 |FREE_TXNS|A set number of free transactions available per month|The number of free transactions|
@@ -26,6 +26,10 @@ Description of the usage of the featureType field as it applies to products.
 |NPP_ENABLED|An account of this product type can be used to receive funds as a result of a BSB/Number based NPP payment|NA|
 |DONATE_INTEREST|Indicates that interest generated from the product can be automatically donated to a charity or community group|NA|
 |BILL_PAYMENT|The product can be attached to an automatic budgeting and bill payment service|Optional name of the service|
+|COMPLEMENTARY_PRODUCT_DISCOUNTS|Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available|Description of the complementary offering|
+|BONUS_REWARDS|Bonus loyalty rewards points are available|Number of points available|
+|NOTIFICATIONS|Advanced notifications are available for the product|Description of the notification capability|
+|OTHER|Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type|NA|
 
 
 
@@ -60,6 +64,7 @@ Description of the usage of the eligibilityType field as it applies to products.
 |STUDENT|Only students may apply for the product|NA|
 |EMPLOYMENT_STATUS|An eligibility constraint based on employment status applies|A description of the status required|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
+|NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
 |OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|Value relevant to the criteria|
 
 
@@ -72,6 +77,7 @@ Description of the usage of the feeType field as it applies to products.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |PERIODIC|A periodic fee such as a monthly account servicing fee|The period of charge.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|TRANSACTION|A fee associated with any transaction (incorporates WITHDRAWAL, DEPOSIT, PAYMENT and PURCHASE)|NA|
 |WITHDRAWAL|A fee associated with making a withdrawal|NA|
 |DEPOSIT|A fee associated with making a deposit|NA|
 |PAYMENT|A fee associated with making a payment|NA|
@@ -104,13 +110,18 @@ Description of the usage of the discountEligibilityType field as it applies to p
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
+|BUSINESS|A business or other non-person legal entity|NA|
 |PENSION_RECIPIENT|A recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
 |MIN_AGE|Only customers older than a minimum age receive the discount|The minimum age in years|
 |MAX_AGE|Only customers younger than a maximum age receive the discount|The maximum age in years
+|MIN_INCOME|The customer must have an income greater than a specified threshold to obtain the discount|Minimum income in AmountString format|
+|MIN_TURNOVER|Only a business with greater than a minimum turnover is eligible|Minimum turnover in AmountString format|
 |STAFF|Only a staff member of the provider may receive the discount|NA|
 |STUDENT|Only students may receive the discount|Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?|
 |EMPLOYMENT_STATUS|An eligibility constraint based on employment status applies|A description of the status required|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
+|NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
+|INTRODUCTORY|The discount is only available during an introductory period|The period of time for the introductory discount.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 
 
@@ -139,15 +150,17 @@ Description of the usage of the lendingRateType field as it applies to products.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |FIXED|Fixed rate for a period of time|The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|VARIABLE|A variable base rate for the product|NA|
 |INTRODUCTORY|An introductory discount that will expire after a set period|The period of time for the introductory rate.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |DISCOUNT|A specific discount rate that may be applied.  A discount rate reduces the interest payable|Description of the discount rate that is applicable|
 |PENALTY|A specific penalty rate that may be applied.  A penalty rate increases the interest payable|Description of the penalty rate that is applicable|
-|BUNDLE_DISCOUNT|A discount rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
 |FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
 |MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
 |CASH_ADVANCE|Specific rate applied to case advances from the account|NA|
-|VARIABLE|A variable base rate for the product|NA|
-|COMPARISON|A comparison rate for the product|Description of the comparison algorithm applied (eg. AAPR)|
+|PURCHASE|Specific rate applied to purchases from the account|NA|
+|BUNDLE_DISCOUNT_FIXED|A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
+|BUNDLE_DISCOUNT_VARIABLE|A discount rate off the variable rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
+
 
 
 
@@ -158,7 +171,7 @@ Description of the usage of the featureType field as it applies to accounts.
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
-|CARD_ACCESS|A card is available for the product to access funds|NA|
+|CARD_ACCESS|A card is available for the product to access funds|Text describing list of card types that this product can be linked to|
 |ADDITIONAL_CARDS|Additional cards can be requested|The maximum number of additional cards.  If no maximum then should be set to null|
 |UNLIMITED_TXNS|Unlimited free transactions available|NA|
 |FREE_TXNS|A set number of free transactions available per month|The number of free transactions|
@@ -177,6 +190,10 @@ Description of the usage of the featureType field as it applies to accounts.
 |NPP_ENABLED|An account of this product type can be used to receive funds as a result of a BSB/Number based NPP payment|NA|
 |DONATE_INTEREST|Indicates that interest generated from the product can be automatically donated to a charity or community group|NA|
 |BILL_PAYMENT|The product can be attached to an automatic budgeting and bill payment service|Optional name of the service|
+|COMPLEMENTARY_PRODUCT_DISCOUNTS|Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available|Description of the complementary offering|
+|BONUS_REWARDS|Bonus loyalty rewards points are available|Number of points available|
+|NOTIFICATIONS|Advanced notifications are available for the product|Description of the notification capability|
+|OTHER|Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type|NA|
 
 
 
@@ -188,6 +205,7 @@ Description of the usage of the feeType field as it applies to accounts.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |PERIODIC|A periodic fee such as a monthly account servicing fee|The period of charge.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|TRANSACTION|A fee associated with any transaction (incorporates WITHDRAWAL, DEPOSIT, PAYMENT and PURCHASE)|NA|
 |WITHDRAWAL|A fee associated with making a withdrawal|NA|
 |DEPOSIT|A fee associated with making a deposit|NA|
 |PAYMENT|A fee associated with making a payment|NA|
@@ -221,13 +239,18 @@ Description of the usage of the discountEligibilityType field as it applies to a
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
+|BUSINESS|A business or other non-person legal entity|NA|
 |PENSION_RECIPIENT|A recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
 |MIN_AGE|Only customers older than a minimum age receive the discount|The minimum age in years|
-|MAX_AGE|Only customers younger than a maximum age receive the discount|The maximum age in years
+|MAX_AGE|Only customers younger than a maximum age receive the discount|The maximum age in years|
+|MIN_INCOME|The customer must have an income greater than a specified threshold to obtain the discount|Minimum income in AmountString format|
+|MIN_TURNOVER|Only a business with greater than a minimum turnover is eligible|Minimum turnover in AmountString format|
 |STAFF|Only a staff member of the provider may receive the discount|NA|
 |STUDENT|Only students may receive the discount|Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?|
 |EMPLOYMENT_STATUS|An eligibility constraint based on employment status applies|A description of the status required|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
+|NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
+|INTRODUCTORY|The discount is only available during an introductory period|The period of time for the introductory discount.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 
 
@@ -263,7 +286,6 @@ Description of the usage of the lendingRateType field as it applies to accounts.
 |FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
 |MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
 |CASH_ADVANCE|Specific rate applied to case advances from the account|NA|
+|PURCHASE|Specific rate applied to purchases from the account|NA|
 |BUNDLE_DISCOUNT_FIXED|A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
 |BUNDLE_DISCOUNT_VARIABLE|A discount rate off the variable rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
-|COMPARISON_FIXED|The 'effective' fixed rate that incorporates other fees or costs to better enable comparison when these vary|Description of the comparison algorithm applied (eg. AAPR)|
-|COMPARISON_VARIABLE|The 'effective' variable rate that incorporates other fees or costs to better enable comparison when these vary|Description of the comparison algorithm applied (eg. AAPR)|
