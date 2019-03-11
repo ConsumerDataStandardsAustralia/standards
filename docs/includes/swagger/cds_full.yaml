@@ -768,6 +768,7 @@ definitions:
       - featureType
     x-conditional:
       - additionalValue
+      - additionalInfo
     properties:
       featureType:
         type: string
@@ -792,9 +793,20 @@ definitions:
           - NPP_ENABLED
           - DONATE_INTEREST
           - BILL_PAYMENT
+          - COMPLEMENTARY_PRODUCT_DISCOUNTS
+          - BONUS_REWARDS
+          - NOTIFICATIONS
+          - OTHER
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType
+      additionalInfo:
+        type: string
+        description: Display text providing more information on the feature. Mandatory if the feature type is set to OTHER
+      additionalInfoUri:
+        type: string
+        description: Link to a web page with more information on this feature
+        format: URIString
   BankingProductConstraint:
     type: object
     required:
@@ -835,6 +847,7 @@ definitions:
           - STUDENT
           - EMPLOYMENT_STATUS
           - RESIDENCY_STATUS
+          - NATURAL_PERSON
           - OTHER
       additionalValue:
         type: string
@@ -866,6 +879,7 @@ definitions:
         description: The type of fee
         enum:
           - PERIODIC
+          - TRANSACTION
           - WITHDRAWAL
           - DEPOSIT
           - PAYMENT
@@ -875,15 +889,15 @@ definitions:
           - EXIT
       amount:
         type: string
-        description: 'The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
         format: AmountString
       balanceRate:
         type: string
-        description: 'A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
         format: RateString
       transactionRate:
         type: string
-        description: 'A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
         format: RateString
       accruedRate:
         type: string
@@ -921,6 +935,7 @@ definitions:
       - balanceRate
       - transactionRate
       - accruedRate
+      - feeRate
       - additionalValue
     properties:
       description:
@@ -937,19 +952,23 @@ definitions:
           - ELIGIBILITY_ONLY
       amount:
         type: string
-        description: 'Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory'
         format: AmountString
       balanceRate:
         type: string
-        description: 'A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
+        description: 'A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
         format: RateString
       transactionRate:
         type: string
-        description: 'A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory'
         format: RateString
       accruedRate:
         type: string
-        description: 'A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
+        description: 'A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
+        format: RateString
+      feeRate:
+        type: string
+        description: 'A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
         format: RateString
       additionalValue:
         type: string
@@ -976,13 +995,18 @@ definitions:
         type: string
         description: The type of the specific eligibility constraint for a discount
         enum:
+          - BUSINESS
           - PENSION_RECIPIENT
           - MIN_AGE
           - MAX_AGE
+          - MIN_INCOME
+          - MIN_TURNOVER
           - STAFF
           - STUDENT
           - EMPLOYMENT_STATUS
           - RESIDENCY_STATUS
+          - NATURAL_PERSON
+          - INTRODUCTORY
           - OTHER
       additionalValue:
         type: string
@@ -1011,6 +1035,8 @@ definitions:
           - BUNDLE_BONUS
           - VARIABLE
           - INTRODUCTORY
+          - FLOATING
+          - MARKET_LINKED
       rate:
         type: string
         description: The rate to be applied
@@ -1021,8 +1047,11 @@ definitions:
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-      tier:
-        $ref: '#/definitions/BankingProductRateTier'
+      tiers:
+        type: array
+        description: Rate tiers applicable for this rate
+        items:
+          $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
@@ -1053,13 +1082,16 @@ definitions:
           - FLOATING
           - MARKET_LINKED
           - CASH_ADVANCE
+          - PURCHASE
           - BUNDLE_DISCOUNT_FIXED
           - BUNDLE_DISCOUNT_VARIABLE
-          - COMPARISON_FIXED
-          - COMPARISON_VARIABLE
       rate:
         type: string
         description: The rate to be applied
+        format: RateString
+      comparisonRate:
+        type: string
+        description: A comparison rate equivalent for this rate
         format: RateString
       calculationFrequency:
         type: string
@@ -1067,14 +1099,17 @@ definitions:
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-      paymentStructureType:
+      interestPaymentDue:
         type: string
         description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
         enum:
           - IN_ARREARS
           - IN_ADVANCE
-      tier:
-        $ref: '#/definitions/BankingProductRateTier'
+      tiers:
+        type: array
+        description: Rate tiers applicable for this rate
+        items:
+          $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
         description: Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType
@@ -1423,6 +1458,7 @@ definitions:
       - featureType
     x-conditional:
       - additionalValue
+      - additionalInfo
     properties:
       featureType:
         type: string
@@ -1447,9 +1483,24 @@ definitions:
           - NPP_ENABLED
           - DONATE_INTEREST
           - BILL_PAYMENT
+          - COMPLEMENTARY_PRODUCT_DISCOUNTS
+          - BONUS_REWARDS
+          - NOTIFICATIONS
+          - OTHER
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType
+      additionalInfo:
+        type: string
+        description: Display text providing more information on the feature. Mandatory if the feature type is set to OTHER
+      additionalInfoUri:
+        type: string
+        description: Link to a web page with more information on this feature
+        format: URIString
+      isActivated:
+        type: boolean
+        description: True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent
+        default: 'true'
   BankingAccountFee:
     type: object
     required:
@@ -1470,6 +1521,7 @@ definitions:
         description: The type of fee
         enum:
           - PERIODIC
+          - TRANSACTION
           - WITHDRAWAL
           - DEPOSIT
           - PAYMENT
@@ -1479,15 +1531,15 @@ definitions:
           - EXIT
       amount:
         type: string
-        description: 'The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
         format: AmountString
       balanceRate:
         type: string
-        description: 'A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
         format: RateString
       transactionRate:
         type: string
-        description: 'A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
+        description: 'A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
         format: RateString
       accruedRate:
         type: string
@@ -1580,13 +1632,18 @@ definitions:
         type: string
         description: The type of the specific eligibility constraint for a discount
         enum:
+          - BUSINESS
           - PENSION_RECIPIENT
           - MIN_AGE
           - MAX_AGE
+          - MIN_INCOME
+          - MIN_TURNOVER
           - STAFF
           - STUDENT
           - EMPLOYMENT_STATUS
           - RESIDENCY_STATUS
+          - NATURAL_PERSON
+          - INTRODUCTORY
           - OTHER
       additionalValue:
         type: string
@@ -1615,6 +1672,8 @@ definitions:
           - BUNDLE_BONUS
           - VARIABLE
           - INTRODUCTORY
+          - FLOATING
+          - MARKET_LINKED
       rate:
         type: string
         description: The rate to be applied
@@ -1655,10 +1714,9 @@ definitions:
           - FLOATING
           - MARKET_LINKED
           - CASH_ADVANCE
+          - PURCHASE
           - BUNDLE_DISCOUNT_FIXED
           - BUNDLE_DISCOUNT_VARIABLE
-          - COMPARISON_FIXED
-          - COMPARISON_VARIABLE
       rate:
         type: string
         description: The rate to be applied
@@ -1669,7 +1727,7 @@ definitions:
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-      paymentStructureType:
+      interestPaymentDue:
         type: string
         description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
         enum:

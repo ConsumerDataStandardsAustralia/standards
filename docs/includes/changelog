@@ -9,6 +9,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>11/3/2019</td>
+<td>Product Reference v1</td>
+<td>Applied changes to prepare for v1 version of Product Reference end points and payloads</td>
+</tr>
+<tr>
 <td>22/2/2019</td>
 <td>Rate tier name</td>
 <td>Addition of a name field for rate tiers</td>
