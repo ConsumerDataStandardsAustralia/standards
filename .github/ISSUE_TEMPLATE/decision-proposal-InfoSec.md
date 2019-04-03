@@ -1,9 +1,9 @@
 ---
-name: Decision Proposal
+name: Decision Proposal - InfoSec Stream
 about: Create a decision proposal entry.  Only to be used by the API Stream Lead or
   delegate
 title: Decision Proposal <Number> - <Title>
-labels: API Decision Proposal, Proposal Pending
+labels: InfoSec Decision Proposal, Proposal Pending
 assignees: JamesMBligh
 
 ---
