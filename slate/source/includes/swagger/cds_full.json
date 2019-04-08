@@ -3,7 +3,7 @@
 	"info": {
 		"title": "Consumer Data Standards",
 		"description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-		"version": "1",
+		"version": "0.3.0",
 		"license": {
 			"name": "MIT Licence",
 			"url": "https://opensource.org/licenses/MIT"
@@ -583,7 +583,7 @@
 				"parameters": [{
 						"name": "effective",
 						"in": "query",
-						"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'",
+						"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
 						"required": false,
 						"type": "string",
 						"enum": [
@@ -1056,6 +1056,10 @@
 					"type": "string",
 					"description": "Description of the bundle"
 				},
+			  	"additionalInfo": {
+					"type": "string",
+					"description": "Display text providing more information on the bundle"
+			  	},
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on the bundle criteria and benefits",
@@ -1139,6 +1143,7 @@
 					"description": "The type of constraint described.  See the next section for an overview of valid values and their meaning",
 					"enum": [
 						"MIN_BALANCE",
+					  	"MAX_BALANCE",
 						"OPENING_BALANCE",
 						"MAX_LIMIT",
 						"MIN_LIMIT"
@@ -1147,7 +1152,16 @@
 				"additionalValue": {
 					"type": "string",
 					"description": "Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType"
-				}
+				},
+			  "additionalInfo": {
+				"type": "string",
+				"description": "Display text providing more information the constraint"
+			  },
+			  "additionalInfoUri": {
+				"type": "string",
+				"description": "Link to a web page with more information on the constraint",
+				"format": "URIString"
+			  }
 			}
 		},
 		"BankingProductEligibility": {
@@ -1197,11 +1211,11 @@
 			"type": "object",
 			"required": [
 				"name",
-				"feeType"
+				"feeType",
+			  	"amount"
 			],
 			"x-conditional": [
 				"additionalValue",
-				"amount",
 				"balanceRate",
 				"transactionRate",
 				"accruedRate"
@@ -1248,8 +1262,7 @@
 				},
 				"accrualFrequency": {
 					"type": "string",
-					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-					"format": "CurrencyString"
+					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
 				},
 				"currency": {
 					"type": "string",
@@ -1281,10 +1294,10 @@
 			"type": "object",
 			"required": [
 				"description",
-				"discountType"
+				"discountType",
+			  	"amount"
 			],
 			"x-conditional": [
-				"amount",
 				"balanceRate",
 				"transactionRate",
 				"accruedRate",
@@ -1309,7 +1322,7 @@
 				},
 				"amount": {
 					"type": "string",
-					"description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+					"description": "Value of the discount",
 					"format": "AmountString"
 				},
 				"balanceRate": {
@@ -1319,7 +1332,7 @@
 				},
 				"transactionRate": {
 					"type": "string",
-					"description": "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+					"description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
 					"format": "RateString"
 				},
 				"accruedRate": {
@@ -1336,12 +1349,6 @@
 					"type": "string",
 					"description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType"
 				},
-				"eligibility": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/BankingProductDiscountEligibility"
-					}
-				},
 				"additionalInfo": {
 					"type": "string",
 					"description": "Display text providing more information on the discount"
@@ -1350,8 +1357,14 @@
 					"type": "string",
 					"description": "Link to a web page with more information on this discount",
 					"format": "URIString"
+				},
+				"eligibility": {
+				  "type": "array",
+				  "items": {
+					"$ref": "#/definitions/BankingProductDiscountEligibility"
+				  }
 				}
-			}
+			  }
 		},
 		"BankingProductDiscountEligibility": {
 			"type": "object",
@@ -1445,11 +1458,11 @@
 				},
 				"additionalInfo": {
 					"type": "string",
-					"description": "Display text providing more information on the fee"
+					"description": "Display text providing more information on the rate"
 				},
 				"additionalInfoUri": {
 					"type": "string",
-					"description": "Link to a web page with more information on this fee",
+					"description": "Link to a web page with more information on this rate",
 					"format": "URIString"
 				}
 			}
@@ -1516,15 +1529,15 @@
 				},
 				"additionalValue": {
 					"type": "string",
-					"description": "Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType"
+					"description": "Generic field containing additional\ninformation relevant to the\nlendingRateType specified. Whether\nmandatory or not is dependent on the\nvalue of lendingRateType"
 				},
 				"additionalInfo": {
 					"type": "string",
-					"description": "Display text providing more information on the fee."
+					"description": "Display text providing more information on the rate."
 				},
 				"additionalInfoUri": {
 					"type": "string",
-					"description": "Link to a web page with more information  on this fee",
+					"description": "Link to a web page with more information on this rate",
 					"format": "URIString"
 				}
 			}
@@ -1570,7 +1583,7 @@
 					]
 				},
 				"applicabilityConditions": {
-					"type": "array",
+					"type": "object",
 					"description": "Other conditions required to be met for this rate to apply",
 					"items": {
 						"$ref": "#/definitions/BankingProductRateCondition"
@@ -1617,7 +1630,7 @@
 							]
 						},
 						"applicabilityConditions": {
-							"type": "array",
+							"type": "object",
 							"description": "Other conditions required to be met for this rate to apply",
 							"items": {
 								"$ref": "#/definitions/BankingProductRateCondition"
@@ -1633,11 +1646,11 @@
 			"properties": {
 				"additionalInfo": {
 					"type": "string",
-					"description": "Display text providing more information on the rate condition"
+					"description": "Display text providing more information on the condition"
 				},
 				"additionalInfoUri": {
 					"type": "string",
-					"description": "Link to a web page with more information  on this rate condition",
+					"description": "Link to a web page with more information on this condition",
 					"format": "URIString"
 				}
 			}
