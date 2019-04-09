@@ -57,24 +57,16 @@ Obtain a list of accounts
 |is-owned|OWNED|
 |is-owned|NOT_OWNED|
 |is-owned|ALL|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
+|product-category|TRAVEL_CARDS|
+|product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
+|product-category|CRED_AND_CHRG_CARDS|
 |product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
+|product-category|MARGIN_LOANS|
+|product-category|LEASES|
 |product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -391,24 +383,16 @@ Obtain balances for multiple, filtered accounts
 |is-owned|OWNED|
 |is-owned|NOT_OWNED|
 |is-owned|ALL|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
+|product-category|TRAVEL_CARDS|
+|product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
+|product-category|CRED_AND_CHRG_CARDS|
 |product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
+|product-category|MARGIN_LOANS|
+|product-category|LEASES|
 |product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -879,24 +863,16 @@ Obtain transactions for multiple, filtered accounts
 |is-owned|OWNED|
 |is-owned|NOT_OWNED|
 |is-owned|ALL|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
+|product-category|TRAVEL_CARDS|
+|product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
+|product-category|CRED_AND_CHRG_CARDS|
 |product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
+|product-category|MARGIN_LOANS|
+|product-category|LEASES|
 |product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -1213,24 +1189,16 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |is-owned|OWNED|
 |is-owned|NOT_OWNED|
 |is-owned|ALL|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
+|product-category|TRAVEL_CARDS|
+|product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
+|product-category|CRED_AND_CHRG_CARDS|
 |product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
+|product-category|MARGIN_LOANS|
+|product-category|LEASES|
 |product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -1643,6 +1611,7 @@ In the product detail payload there are a number of arrays articulating generic 
 - Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
 - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
 - An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.
+- Depending on the type of data being represented there may be additional specific fields.
 
 #### URIs To More Information
 
@@ -1651,22 +1620,22 @@ As the complexities and nuances of a financial product can not easily be fully e
 These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
 
 #### Linkage To Accounts
-From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
+From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.
 
-For this reason productCategory is a common field between accounts and products but there is not common linkage field specific to a product that appears within the account payloads.
+For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.
 
-Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the full sets of options are not identical between the two entities.
+Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.
 
 #### Dates
-It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained.
+It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.
 
-In addition the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
 <h3 id="get-products-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|effective|query|string|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'|
+|effective|query|string|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
 |updated-since|query|string(DateTimeString)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
 |brand|query|string|optional|Filter results based on a specific brand|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
@@ -1680,24 +1649,16 @@ In addition the concept of effective date and time has also been included. This 
 |effective|CURRENT|
 |effective|FUTURE|
 |effective|ALL|
-|product-category|PERS_AT_CALL_DEPOSITS|
-|product-category|BUS_AT_CALL_DEPOSITS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
+|product-category|TRAVEL_CARDS|
+|product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|PERS_CRED_AND_CHRG_CARDS|
-|product-category|BUS_CRED_AND_CHRG_CARDS|
+|product-category|CRED_AND_CHRG_CARDS|
 |product-category|PERS_LOANS|
-|product-category|PERS_LEASING|
-|product-category|BUS_LEASING|
+|product-category|MARGIN_LOANS|
+|product-category|LEASES|
 |product-category|TRADE_FINANCE|
-|product-category|PERS_OVERDRAFT|
-|product-category|BUS_OVERDRAFT|
-|product-category|BUS_LOANS|
-|product-category|FOREIGN_CURR_AT_CALL_DEPOSITS|
-|product-category|FOREIGN_CURR_TERM_DEPOSITS|
-|product-category|FOREIGN_CURR_LOAN|
-|product-category|FOREIGN_CURRRENCT_OVERDRAFT|
-|product-category|TRAVEL_CARD|
 
 > Example responses
 
@@ -1823,6 +1784,7 @@ Obtain detailed information on a single product offered openly to the market
       {
         "name": "string",
         "description": "string",
+        "additionalInfo": "string",
         "additionalInfoUri": "string",
         "productIds": [
           "string"
@@ -1840,7 +1802,9 @@ Obtain detailed information on a single product offered openly to the market
     "constraints": [
       {
         "constraintType": "MIN_BALANCE",
-        "additionalValue": "string"
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
       }
     ],
     "eligibility": [
@@ -1874,6 +1838,8 @@ Obtain detailed information on a single product offered openly to the market
             "accruedRate": "string",
             "feeRate": "string",
             "additionalValue": "string",
+            "additionalInfo": "string",
+            "additionalInfoUri": "string",
             "eligibility": [
               {
                 "discountEligibilityType": "BUSINESS",
@@ -1881,9 +1847,7 @@ Obtain detailed information on a single product offered openly to the market
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
+            ]
           }
         ]
       }
@@ -1901,24 +1865,20 @@ Obtain detailed information on a single product offered openly to the market
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": [
-              {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
             "subTier": {
               "name": "string",
               "unitOfMeasure": "DOLLAR",
               "minimumValue": 0,
               "maximumValue": 0,
               "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": [
-                {
-                  "additionalInfo": "string",
-                  "additionalInfoUri": "string"
-                }
-              ]
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
             }
           }
         ],
@@ -1942,24 +1902,20 @@ Obtain detailed information on a single product offered openly to the market
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": [
-              {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
             "subTier": {
               "name": "string",
               "unitOfMeasure": "DOLLAR",
               "minimumValue": 0,
               "maximumValue": 0,
               "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": [
-                {
-                  "additionalInfo": "string",
-                  "additionalInfoUri": "string"
-                }
-              ]
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
             }
           }
         ],
@@ -2336,7 +2292,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
-|» products|[[BankingProduct](#schemabankingproduct)]|mandatory|none|none|
+|» products|[[BankingProduct](#schemabankingproduct)]|mandatory|none|The list of products returned.  If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
@@ -2383,7 +2339,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |brandName|string|optional|none|An optional display name of the brand|
 |applicationUri|string(URIString)|optional|none|A link to the an application web page where this product can be applied for.|
 |isTailored|boolean|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
-|additionalInformation|object|optional|none|none|
+|additionalInformation|object|optional|none|Object that contains links to additional information on specific topics|
 |» overviewUri|string(URIString)|optional|none|General overview of the product|
 |» termsUri|string(URIString)|optional|none|Terms and conditions for the product|
 |» eligibilityUri|string(URIString)|optional|none|Eligibility rules and criteria for the product|
@@ -2419,6 +2375,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "name": "string",
         "description": "string",
+        "additionalInfo": "string",
         "additionalInfoUri": "string",
         "productIds": [
           "string"
@@ -2436,7 +2393,9 @@ To perform this operation, you must be authenticated and authorised with the fol
     "constraints": [
       {
         "constraintType": "MIN_BALANCE",
-        "additionalValue": "string"
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
       }
     ],
     "eligibility": [
@@ -2470,6 +2429,8 @@ To perform this operation, you must be authenticated and authorised with the fol
             "accruedRate": "string",
             "feeRate": "string",
             "additionalValue": "string",
+            "additionalInfo": "string",
+            "additionalInfoUri": "string",
             "eligibility": [
               {
                 "discountEligibilityType": "BUSINESS",
@@ -2477,9 +2438,7 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
+            ]
           }
         ]
       }
@@ -2497,24 +2456,20 @@ To perform this operation, you must be authenticated and authorised with the fol
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": [
-              {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
             "subTier": {
               "name": "string",
               "unitOfMeasure": "DOLLAR",
               "minimumValue": 0,
               "maximumValue": 0,
               "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": [
-                {
-                  "additionalInfo": "string",
-                  "additionalInfoUri": "string"
-                }
-              ]
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
             }
           }
         ],
@@ -2538,24 +2493,20 @@ To perform this operation, you must be authenticated and authorised with the fol
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": [
-              {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
             "subTier": {
               "name": "string",
               "unitOfMeasure": "DOLLAR",
               "minimumValue": 0,
               "maximumValue": 0,
               "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": [
-                {
-                  "additionalInfo": "string",
-                  "additionalInfoUri": "string"
-                }
-              ]
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
             }
           }
         ],
@@ -2609,6 +2560,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "name": "string",
       "description": "string",
+      "additionalInfo": "string",
       "additionalInfoUri": "string",
       "productIds": [
         "string"
@@ -2626,7 +2578,9 @@ To perform this operation, you must be authenticated and authorised with the fol
   "constraints": [
     {
       "constraintType": "MIN_BALANCE",
-      "additionalValue": "string"
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
     }
   ],
   "eligibility": [
@@ -2660,6 +2614,8 @@ To perform this operation, you must be authenticated and authorised with the fol
           "accruedRate": "string",
           "feeRate": "string",
           "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string",
           "eligibility": [
             {
               "discountEligibilityType": "BUSINESS",
@@ -2667,9 +2623,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             }
-          ],
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
+          ]
         }
       ]
     }
@@ -2687,24 +2641,20 @@ To perform this operation, you must be authenticated and authorised with the fol
           "minimumValue": 0,
           "maximumValue": 0,
           "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ],
+          "applicabilityConditions": {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          },
           "subTier": {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": [
-              {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ]
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
           }
         }
       ],
@@ -2728,24 +2678,20 @@ To perform this operation, you must be authenticated and authorised with the fol
           "minimumValue": 0,
           "maximumValue": 0,
           "rateApplicationMethod": "WHOLE_BALANCE",
-          "applicabilityConditions": [
-            {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ],
+          "applicabilityConditions": {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          },
           "subTier": {
             "name": "string",
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": [
-              {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ]
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
           }
         }
       ],
@@ -2771,13 +2717,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» bundles|[[BankingProductBundle](#schemabankingproductbundle)]|optional|none|none|
-|» features|[[BankingProductFeature](#schemabankingproductfeature)]|optional|none|none|
-|» constraints|[[BankingProductConstraint](#schemabankingproductconstraint)]|optional|none|none|
-|» eligibility|[[BankingProductEligibility](#schemabankingproducteligibility)]|optional|none|none|
-|» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|none|
-|» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|none|
-|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|none|
+|» bundles|[[BankingProductBundle](#schemabankingproductbundle)]|optional|none|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
+|» features|[[BankingProductFeature](#schemabankingproductfeature)]|optional|none|Array of features available for the product|
+|» constraints|[[BankingProductConstraint](#schemabankingproductconstraint)]|optional|none|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
+|» eligibility|[[BankingProductEligibility](#schemabankingproducteligibility)]|optional|none|Eligibility criteria for the product|
+|» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|Fees applicable for the product|
+|» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|Interest rates available for deposits|
+|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|Interest rates charged against lending balances|
 
 <h2 id="tocSbankingproductbundle">BankingProductBundle</h2>
 
@@ -2787,6 +2733,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "name": "string",
   "description": "string",
+  "additionalInfo": "string",
   "additionalInfoUri": "string",
   "productIds": [
     "string"
@@ -2801,6 +2748,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the bundle|
 |description|string|mandatory|none|Description of the bundle|
+|additionalInfo|string|optional|none|Display text providing more information on the bundle|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
 |productIds|[string]|mandatory|none|Array of product IDs for products included in the bundle|
 
@@ -2862,7 +2810,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "constraintType": "MIN_BALANCE",
-  "additionalValue": "string"
+  "additionalValue": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
 }
 
 ```
@@ -2873,12 +2823,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |constraintType|string|mandatory|none|The type of constraint described.  See the next section for an overview of valid values and their meaning|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType|
+|additionalInfo|string|optional|none|Display text providing more information the constraint|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the constraint|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
 |constraintType|MIN_BALANCE|
+|constraintType|MAX_BALANCE|
 |constraintType|OPENING_BALANCE|
 |constraintType|MAX_LIMIT|
 |constraintType|MIN_LIMIT|
@@ -2950,6 +2903,8 @@ To perform this operation, you must be authenticated and authorised with the fol
       "accruedRate": "string",
       "feeRate": "string",
       "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string",
       "eligibility": [
         {
           "discountEligibilityType": "BUSINESS",
@@ -2957,9 +2912,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
-      ],
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
+      ]
     }
   ]
 }
@@ -2972,16 +2925,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|amount|string(AmountString)|mandatory|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|accrualFrequency|string|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
-|discounts|[[BankingProductDiscount](#schemabankingproductdiscount)]|optional|none|none|
+|discounts|[[BankingProductDiscount](#schemabankingproductdiscount)]|optional|none|An optional list of discounts to this fee that may be available|
 
 #### Enumerated Values
 
@@ -3011,6 +2964,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "accruedRate": "string",
   "feeRate": "string",
   "additionalValue": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string",
   "eligibility": [
     {
       "discountEligibilityType": "BUSINESS",
@@ -3018,9 +2973,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "additionalInfo": "string",
       "additionalInfoUri": "string"
     }
-  ],
-  "additionalInfo": "string",
-  "additionalInfoUri": "string"
+  ]
 }
 
 ```
@@ -3031,15 +2984,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+|amount|string(AmountString)|mandatory|none|Value of the discount|
 |balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |feeRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
-|eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|none|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
 |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
+|eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|Eligibility constraints that apply to this discount|
 
 #### Enumerated Values
 
@@ -3109,24 +3062,20 @@ To perform this operation, you must be authenticated and authorised with the fol
       "minimumValue": 0,
       "maximumValue": 0,
       "rateApplicationMethod": "WHOLE_BALANCE",
-      "applicabilityConditions": [
-        {
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
+      "applicabilityConditions": {
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      },
       "subTier": {
         "name": "string",
         "unitOfMeasure": "DOLLAR",
         "minimumValue": 0,
         "maximumValue": 0,
         "rateApplicationMethod": "WHOLE_BALANCE",
-        "applicabilityConditions": [
-          {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ]
+        "applicabilityConditions": {
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
       }
     }
   ],
@@ -3147,8 +3096,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
-|additionalInfo|string|optional|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+|additionalInfo|string|optional|none|Display text providing more information on the rate|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this rate|
 
 #### Enumerated Values
 
@@ -3181,24 +3130,20 @@ To perform this operation, you must be authenticated and authorised with the fol
       "minimumValue": 0,
       "maximumValue": 0,
       "rateApplicationMethod": "WHOLE_BALANCE",
-      "applicabilityConditions": [
-        {
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
+      "applicabilityConditions": {
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      },
       "subTier": {
         "name": "string",
         "unitOfMeasure": "DOLLAR",
         "minimumValue": 0,
         "maximumValue": 0,
         "rateApplicationMethod": "WHOLE_BALANCE",
-        "applicabilityConditions": [
-          {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ]
+        "applicabilityConditions": {
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
       }
     }
   ],
@@ -3220,9 +3165,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
-|additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
-|additionalInfo|string|optional|none|Display text providing more information on the fee.|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
+|additionalInfo|string|optional|none|Display text providing more information on the rate.|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this rate|
 
 #### Enumerated Values
 
@@ -3253,24 +3198,20 @@ To perform this operation, you must be authenticated and authorised with the fol
   "minimumValue": 0,
   "maximumValue": 0,
   "rateApplicationMethod": "WHOLE_BALANCE",
-  "applicabilityConditions": [
-    {
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
-    }
-  ],
+  "applicabilityConditions": {
+    "additionalInfo": "string",
+    "additionalInfoUri": "string"
+  },
   "subTier": {
     "name": "string",
     "unitOfMeasure": "DOLLAR",
     "minimumValue": 0,
     "maximumValue": 0,
     "rateApplicationMethod": "WHOLE_BALANCE",
-    "applicabilityConditions": [
-      {
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ]
+    "applicabilityConditions": {
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
   }
 }
 
@@ -3287,14 +3228,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
 |maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
 |rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
-|applicabilityConditions|[[BankingProductRateCondition](#schemabankingproductratecondition)]|optional|none|Other conditions required to be met for this rate to apply|
+|applicabilityConditions|[BankingProductRateCondition](#schemabankingproductratecondition)|optional|none|Defines a condition for the applicability of a tiered rate|
 |subTier|object|optional|none|Defines the sub-tier criteria and conditions for which a rate applies|
 |» name|string|mandatory|none|A display name for the tier|
 |» unitOfMeasure|string|mandatory|none|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)|
 |» minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
 |» maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
 |» rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
-|» applicabilityConditions|[[BankingProductRateCondition](#schemabankingproductratecondition)]|optional|none|Other conditions required to be met for this rate to apply|
+|» applicabilityConditions|[BankingProductRateCondition](#schemabankingproductratecondition)|optional|none|Defines a condition for the applicability of a tiered rate|
 
 #### Enumerated Values
 
@@ -3331,8 +3272,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|additionalInfo|string|optional|none|Display text providing more information on the rate condition|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this rate condition|
+|additionalInfo|string|optional|none|Display text providing more information on the condition|
+|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this condition|
 
 <h2 id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
 
@@ -4148,8 +4089,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |depositRateType|BUNDLE_BONUS|
 |depositRateType|VARIABLE|
 |depositRateType|INTRODUCTORY|
-|depositRateType|FLOATING|
-|depositRateType|MARKET_LINKED|
 
 <h2 id="tocSbankingaccountlendingrate">BankingAccountLendingRate</h2>
 
@@ -5963,9 +5902,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |self|string(URIString)|mandatory|none|Fully qualified link to this API call|
 |first|string(URIString)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|string(URIString)|conditional|none|URI to the first previous page of this set. Mandatory if this response is not the first page|
-|next|string(URIString)|conditional|none|URI to the first next page of this set. Mandatory if this response is not the last page|
-|last|string(URIString)|conditional|none|URI to the first last page of this set. Mandatory if this response is not the last page|
+|prev|string(URIString)|conditional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
+|next|string(URIString)|conditional|none|URI to the next page of this set. Mandatory if this response is not the last page|
+|last|string(URIString)|conditional|none|URI to the last page of this set. Mandatory if this response is not the last page|
 
 <h2 id="tocSmetapaginated">MetaPaginated</h2>
 
