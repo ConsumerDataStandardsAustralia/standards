@@ -659,7 +659,7 @@
         "rate" : {
           "type" : "string",
           "description" : "The rate to be applied",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         }
       },
@@ -732,7 +732,7 @@
         "accruedRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
@@ -752,13 +752,13 @@
         "amount" : {
           "type" : "string",
           "description" : "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "description" : {
@@ -777,7 +777,7 @@
         "transactionRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         }
       },
@@ -848,7 +848,7 @@
         "accruedRate" : {
           "type" : "string",
           "description" : "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
@@ -868,13 +868,13 @@
         "amount" : {
           "type" : "string",
           "description" : "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
           "description" : "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "currency" : {
@@ -899,7 +899,7 @@
         "transactionRate" : {
           "type" : "string",
           "description" : "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         }
       },
@@ -940,7 +940,7 @@
         "rate" : {
           "type" : "string",
           "description" : "The rate to be applied",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         }
       },
@@ -1024,7 +1024,7 @@
         "minPaymentAmount" : {
           "type" : "string",
           "description" : "The minimum payment amount due for the next card payment",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "paymentCurrency" : {
@@ -1036,7 +1036,7 @@
         "paymentDueAmount" : {
           "type" : "string",
           "description" : "The amount due for the next card payment",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "paymentDueDate" : {
@@ -1073,7 +1073,7 @@
         "lastDebitAmount" : {
           "type" : "string",
           "description" : "The amount of the last debit executed under this authorisation",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "lastDebitDateTime" : {
@@ -1273,7 +1273,7 @@
         "maxRedraw" : {
           "type" : "string",
           "description" : "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "maxRedrawCurrency" : {
@@ -1285,7 +1285,7 @@
         "minInstalmentAmount" : {
           "type" : "string",
           "description" : "Minimum amount of next instalment",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "minInstalmentCurrency" : {
@@ -1297,7 +1297,7 @@
         "minRedraw" : {
           "type" : "string",
           "description" : "Minimum redraw amount",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "minRedrawCurrency" : {
@@ -1326,7 +1326,7 @@
         "originalLoanAmount" : {
           "type" : "string",
           "description" : "Optional original loan value",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "originalLoanCurrency" : {
@@ -1583,7 +1583,7 @@
         "rate" : {
           "type" : "string",
           "description" : "The rate to be applied",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "tiers" : {
@@ -1661,7 +1661,7 @@
         "accruedRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
@@ -1681,13 +1681,13 @@
         "amount" : {
           "type" : "string",
           "description" : "Value of the discount",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "description" : {
@@ -1707,13 +1707,13 @@
         "feeRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "transactionRate" : {
           "type" : "string",
           "description" : "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         }
       },
@@ -1802,7 +1802,7 @@
         "accruedRate" : {
           "type" : "string",
           "description" : "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
@@ -1822,13 +1822,13 @@
         "amount" : {
           "type" : "string",
           "description" : "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
           "description" : "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "currency" : {
@@ -1854,7 +1854,7 @@
         "transactionRate" : {
           "type" : "string",
           "description" : "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         }
       },
@@ -1889,7 +1889,7 @@
         "comparisonRate" : {
           "type" : "string",
           "description" : "A comparison rate equivalent for this rate",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "interestPaymentDue" : {
@@ -1901,7 +1901,7 @@
         "rate" : {
           "type" : "string",
           "description" : "The rate to be applied",
-          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){1,16}",
           "x-cds-type" : "RateString"
         },
         "tiers" : {
@@ -2002,7 +2002,7 @@
         "maturityAmount" : {
           "type" : "string",
           "description" : "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "maturityCurrency" : {
@@ -2033,7 +2033,7 @@
         "amount" : {
           "type" : "string",
           "description" : "The value of the transaction. Negative values mean money was outgoing from the account",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "apcaNumber" : {
@@ -2152,7 +2152,7 @@
         "amount" : {
           "type" : "string",
           "description" : "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking",
-          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "pattern" : "^\\-?(\\d+){1,16}\\.(\\d+){2,16}",
           "x-cds-type" : "AmountString"
         },
         "currency" : {
