@@ -609,24 +609,16 @@ parameters:
     required: false
     type: string
     enum:
-      - PERS_AT_CALL_DEPOSITS
-      - BUS_AT_CALL_DEPOSITS
+      - TRANS_AND_SAVINGS_ACCOUNTS
       - TERM_DEPOSITS
+      - TRAVEL_CARDS
+      - REGULATED_TRUST_ACCOUNTS
       - RESIDENTIAL_MORTGAGES
-      - PERS_CRED_AND_CHRG_CARDS
-      - BUS_CRED_AND_CHRG_CARDS
+      - CRED_AND_CHRG_CARDS
       - PERS_LOANS
-      - PERS_LEASING
-      - BUS_LEASING
+      - MARGIN_LOANS
+      - LEASES
       - TRADE_FINANCE
-      - PERS_OVERDRAFT
-      - BUS_OVERDRAFT
-      - BUS_LOANS
-      - FOREIGN_CURR_AT_CALL_DEPOSITS
-      - FOREIGN_CURR_TERM_DEPOSITS
-      - FOREIGN_CURR_LOAN
-      - FOREIGN_CURRRENCT_OVERDRAFT
-      - TRAVEL_CARD
   ParamAccountIsOwned:
     name: is-owned
     in: query
@@ -1558,7 +1550,7 @@ definitions:
         type: boolean
         description: >-
           Flag indicating that the customer associated with the authorisation is
-          an owner of the account.  Does not indicate sole ownership, however. 
+          an owner of the account.  Does not indicate sole ownership, however.
           If no present then 'true' is assumed
         default: 'true'
       productCategory:
@@ -2796,7 +2788,7 @@ definitions:
       lastUpdateTime:
         type: string
         description: >-
-          The date and time that this record was last updated by the customer. 
+          The date and time that this record was last updated by the customer.
           If no update has occurred then this date should reflect the initial
           creation date for the data
         format: DateTimeString
