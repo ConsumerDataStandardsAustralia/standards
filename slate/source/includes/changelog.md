@@ -2,29 +2,30 @@
 
 The following table lists the changes made to these standards in reverse date order (most recent change is at the top).
 
-|Change Date|Description|Detail Of change|
-|-----------|-----------|----------------|
-|11/3/2019|Product Reference v1|Applied changes to prepare for v1 version of Product Reference end points and payloads|
-|22/2/2019|Rate tier name|Addition of a name field for rate tiers|
-|21/2/2019|Rate tiering|Added rate tiering and additional rate types based on community feedback|
-|19/2/2019|Fees and Discounts|Updated product and account fees, discounts and elibilities based on community feedback|
-|19/2/2019|Doc Sync|Synchronised the API documentation with the swagger files|
-|11/2/2019|Consistency Fixes|Fixes to end points for consistency across the standard.  Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul>|
-|4/2/2019|Object Model Names|Updated the swagger json and yaml files to make the object model names consistent|
-|21/12/2018|Transaction payloads|Removed incorrect inclusion of accountId, displayName and nickname for transaction response payloads|
-|20/12/2018|Version 0.20|Version updated formally to version 0.20 for Christmas Draft|
-|20/12/2018|Updated documentation|Documentation has been automatically generated from the swagger for consistency|
-|20/12/2018|Known issues|Added a section identifying known issues with the standards that are under review|
-|20/12/2018|Cursor based pagination|Added commentary in pagination section on the potential use of cursors|
-|20/12/2018|Minor amendments to response codes|Additional wording to support caching and inserted a cross reference to the error payload section|
-|20/12/2018|Minor amendments to extensibility|Minor wording changes for clarity and included reference to addition of new query parameters|
-|20/12/2018|Unauthenticated end points|Modified URI structure commentary to allow for a different provider path for unauthenticated end points|
-|20/12/2018|Festive spirit|Critical update - added a Santa hat to the logo|
-|20/12/2018|FAPI Headers|Added FAPI specific headers arising from the InfoSec work|
-|19/12/2018|PAFAddress|Added detail for the PAFAddress model based on the Australia Post PAF file format definition|
-|19/12/2018|RateString common type|Changed the RateString type to represent rates such that 100% is represented by the value 1.0|
-|19/12/2018|URIString common type|Corrected the name of the URIString common type|
-|19/12/2018|Updated swagger files|Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in [published feedback summary](https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850) except addition of PAFAddress</li><li>Added all minor amendments raised in [published feedback summary](https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850)</li><li>Modifications according to responses in technical feedback section documented in [published feedback summary](https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850)</li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul>|
-|19/12/2018|Masking rules|Added specificity to the masking guidance for the masked string primitives|
-|18/12/2018|Updated swagger files|Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul>|
-|18/12/2018|Addition of change log|This change log was added to the standards documentation|
+|Change Date|Version|Description|Detail Of change|
+|-----------|-------|-----------|----------------|
+|9/4/2019|0.3.0|Product Reference v1 final|Synchronised standards documentation and swagger with final Decision 054 - Product Reference v1
+|11/3/2019|0.2.0|Product Reference v1 draft|Applied changes to prepare for v1 version of Product Reference end points and payloads|
+|22/2/2019|0.2.0|Rate tier name|Addition of a name field for rate tiers|
+|21/2/2019|0.2.0|Rate tiering|Added rate tiering and additional rate types based on community feedback|
+|19/2/2019|0.2.0|Fees and Discounts|Updated product and account fees, discounts and elibilities based on community feedback|
+|19/2/2019|0.2.0|Doc Sync|Synchronised the API documentation with the swagger files|
+|11/2/2019|0.2.0|Consistency Fixes|Fixes to end points for consistency across the standard.  Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul>|
+|4/2/2019|0.2.0|Object Model Names|Updated the swagger json and yaml files to make the object model names consistent|
+|21/12/2018|0.2.0|Transaction payloads|Removed incorrect inclusion of accountId, displayName and nickname for transaction response payloads|
+|20/12/2018|0.2.0|Version 0.20|Version updated formally to version 0.20 for Christmas Draft|
+|20/12/2018|0.1.0|Updated documentation|Documentation has been automatically generated from the swagger for consistency|
+|20/12/2018|0.1.0|Known issues|Added a section identifying known issues with the standards that are under review|
+|20/12/2018|0.1.0|Cursor based pagination|Added commentary in pagination section on the potential use of cursors|
+|20/12/2018|0.1.0|Minor amendments to response codes|Additional wording to support caching and inserted a cross reference to the error payload section|
+|20/12/2018|0.1.0|Minor amendments to extensibility|Minor wording changes for clarity and included reference to addition of new query parameters|
+|20/12/2018|0.1.0|Unauthenticated end points|Modified URI structure commentary to allow for a different provider path for unauthenticated end points|
+|20/12/2018|0.1.0|Festive spirit|Critical update - added a Santa hat to the logo|
+|20/12/2018|0.1.0|FAPI Headers|Added FAPI specific headers arising from the InfoSec work|
+|19/12/2018|0.1.0|PAFAddress|Added detail for the PAFAddress model based on the Australia Post PAF file format definition|
+|19/12/2018|0.1.0|RateString common type|Changed the RateString type to represent rates such that 100% is represented by the value 1.0|
+|19/12/2018|0.1.0|URIString common type|Corrected the name of the URIString common type|
+|19/12/2018|0.1.0|Updated swagger files|Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in [published feedback summary](https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850) except addition of PAFAddress</li><li>Added all minor amendments raised in [published feedback summary](https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850)</li><li>Modifications according to responses in technical feedback section documented in [published feedback summary](https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850)</li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul>|
+|19/12/2018|0.1.0|Masking rules|Added specificity to the masking guidance for the masked string primitives|
+|18/12/2018|0.1.0|Updated swagger files|Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul>|
+|18/12/2018|0.1.0|Addition of change log|This change log was added to the standards documentation|

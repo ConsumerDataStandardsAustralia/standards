@@ -3,7 +3,7 @@
 	"info": {
 		"title": "Consumer Data Standards",
 		"description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-		"version": "1",
+		"version": "0.3.0",
 		"license": {
 			"name": "MIT Licence",
 			"url": "https://opensource.org/licenses/MIT"
@@ -573,7 +573,7 @@
 		"/banking/products": {
 			"get": {
 				"summary": "Get Products",
-				"description": "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered according to updated-since\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their on channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason productCategory is a common field between accounts and products but there is not common linkage field specific to a product that appears within the account payloads.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the full sets of options are not identical between the two entities.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained.\n\nIn addition the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.",
+				"description": "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered according to updated-since\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their on channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.",
 				"operationId": "listProducts",
 				"x-scopes": [],
 				"tags": [
@@ -583,7 +583,7 @@
 				"parameters": [{
 						"name": "effective",
 						"in": "query",
-						"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'",
+						"description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
 						"required": false,
 						"type": "string",
 						"enum": [
@@ -728,24 +728,16 @@
 			"required": false,
 			"type": "string",
 			"enum": [
-				"PERS_AT_CALL_DEPOSITS",
-				"BUS_AT_CALL_DEPOSITS",
-				"TERM_DEPOSITS",
-				"RESIDENTIAL_MORTGAGES",
-				"PERS_CRED_AND_CHRG_CARDS",
-				"BUS_CRED_AND_CHRG_CARDS",
-				"PERS_LOANS",
-				"PERS_LEASING",
-				"BUS_LEASING",
-				"TRADE_FINANCE",
-				"PERS_OVERDRAFT",
-				"BUS_OVERDRAFT",
-				"BUS_LOANS",
-				"FOREIGN_CURR_AT_CALL_DEPOSITS",
-				"FOREIGN_CURR_TERM_DEPOSITS",
-				"FOREIGN_CURR_LOAN",
-				"FOREIGN_CURRRENCT_OVERDRAFT",
-				"TRAVEL_CARD"
+			  "TRANS_AND_SAVINGS_ACCOUNTS",
+			  "TERM_DEPOSITS",
+			  "TRAVEL_CARDS",
+			  "REGULATED_TRUST_ACCOUNTS",
+			  "RESIDENTIAL_MORTGAGES",
+			  "CRED_AND_CHRG_CARDS",
+			  "PERS_LOANS",
+			  "MARGIN_LOANS",
+			  "LEASES",
+			  "TRADE_FINANCE"
 			]
 		},
 		"ParamAccountIsOwned": {
@@ -861,6 +853,7 @@
 					],
 					"properties": {
 						"products": {
+							"description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProduct"
@@ -937,6 +930,7 @@
 					"description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable"
 				},
 				"additionalInformation": {
+					"description": "Object that contains links to additional information on specific topics",
 					"type": "object",
 					"properties": {
 						"overviewUri": {
@@ -995,42 +989,49 @@
 					"type": "object",
 					"properties": {
 						"bundles": {
+							"description": "An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductBundle"
 							}
 						},
 						"features": {
+							"description": "Array of features available for the product",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductFeature"
 							}
 						},
 						"constraints": {
+							"description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductConstraint"
 							}
 						},
 						"eligibility": {
+							"description": "Eligibility criteria for the product",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductEligibility"
 							}
 						},
 						"fees": {
+							"description": "Fees applicable for the product",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductFee"
 							}
 						},
 						"depositRates": {
+							"description": "Interest rates available for deposits",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductDepositRate"
 							}
 						},
 						"lendingRates": {
+							"description": "Interest rates charged against lending balances",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/BankingProductLendingRate"
@@ -1056,6 +1057,10 @@
 					"type": "string",
 					"description": "Description of the bundle"
 				},
+			  	"additionalInfo": {
+					"type": "string",
+					"description": "Display text providing more information on the bundle"
+			  	},
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on the bundle criteria and benefits",
@@ -1139,6 +1144,7 @@
 					"description": "The type of constraint described.  See the next section for an overview of valid values and their meaning",
 					"enum": [
 						"MIN_BALANCE",
+					  "MAX_BALANCE",
 						"OPENING_BALANCE",
 						"MAX_LIMIT",
 						"MIN_LIMIT"
@@ -1147,7 +1153,16 @@
 				"additionalValue": {
 					"type": "string",
 					"description": "Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType"
-				}
+				},
+			  "additionalInfo": {
+				"type": "string",
+				"description": "Display text providing more information the constraint"
+			  },
+			  "additionalInfoUri": {
+				"type": "string",
+				"description": "Link to a web page with more information on the constraint",
+				"format": "URIString"
+			  }
 			}
 		},
 		"BankingProductEligibility": {
@@ -1197,11 +1212,11 @@
 			"type": "object",
 			"required": [
 				"name",
-				"feeType"
+				"feeType",
+			  	"amount"
 			],
 			"x-conditional": [
 				"additionalValue",
-				"amount",
 				"balanceRate",
 				"transactionRate",
 				"accruedRate"
@@ -1248,8 +1263,7 @@
 				},
 				"accrualFrequency": {
 					"type": "string",
-					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-					"format": "CurrencyString"
+					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
 				},
 				"currency": {
 					"type": "string",
@@ -1270,6 +1284,7 @@
 					"format": "URIString"
 				},
 				"discounts": {
+					"description": "An optional list of discounts to this fee that may be available",
 					"type": "array",
 					"items": {
 						"$ref": "#/definitions/BankingProductDiscount"
@@ -1281,10 +1296,10 @@
 			"type": "object",
 			"required": [
 				"description",
-				"discountType"
+				"discountType",
+			  	"amount"
 			],
 			"x-conditional": [
-				"amount",
 				"balanceRate",
 				"transactionRate",
 				"accruedRate",
@@ -1309,7 +1324,7 @@
 				},
 				"amount": {
 					"type": "string",
-					"description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+					"description": "Value of the discount",
 					"format": "AmountString"
 				},
 				"balanceRate": {
@@ -1319,7 +1334,7 @@
 				},
 				"transactionRate": {
 					"type": "string",
-					"description": "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+					"description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
 					"format": "RateString"
 				},
 				"accruedRate": {
@@ -1336,12 +1351,6 @@
 					"type": "string",
 					"description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType"
 				},
-				"eligibility": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/BankingProductDiscountEligibility"
-					}
-				},
 				"additionalInfo": {
 					"type": "string",
 					"description": "Display text providing more information on the discount"
@@ -1350,8 +1359,15 @@
 					"type": "string",
 					"description": "Link to a web page with more information on this discount",
 					"format": "URIString"
+				},
+				"eligibility": {
+					"description": "Eligibility constraints that apply to this discount",
+				  "type": "array",
+				  "items": {
+					"$ref": "#/definitions/BankingProductDiscountEligibility"
+				  }
 				}
-			}
+			  }
 		},
 		"BankingProductDiscountEligibility": {
 			"type": "object",
@@ -1445,11 +1461,11 @@
 				},
 				"additionalInfo": {
 					"type": "string",
-					"description": "Display text providing more information on the fee"
+					"description": "Display text providing more information on the rate"
 				},
 				"additionalInfoUri": {
 					"type": "string",
-					"description": "Link to a web page with more information on this fee",
+					"description": "Link to a web page with more information on this rate",
 					"format": "URIString"
 				}
 			}
@@ -1516,15 +1532,15 @@
 				},
 				"additionalValue": {
 					"type": "string",
-					"description": "Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType"
+					"description": "Generic field containing additional\ninformation relevant to the\nlendingRateType specified. Whether\nmandatory or not is dependent on the\nvalue of lendingRateType"
 				},
 				"additionalInfo": {
 					"type": "string",
-					"description": "Display text providing more information on the fee."
+					"description": "Display text providing more information on the rate."
 				},
 				"additionalInfoUri": {
 					"type": "string",
-					"description": "Link to a web page with more information  on this fee",
+					"description": "Link to a web page with more information on this rate",
 					"format": "URIString"
 				}
 			}
@@ -1570,11 +1586,7 @@
 					]
 				},
 				"applicabilityConditions": {
-					"type": "array",
-					"description": "Other conditions required to be met for this rate to apply",
-					"items": {
-						"$ref": "#/definitions/BankingProductRateCondition"
-					}
+					"$ref": "#/definitions/BankingProductRateCondition"
 				},
 				"subTier": {
 					"type": "object",
@@ -1617,11 +1629,7 @@
 							]
 						},
 						"applicabilityConditions": {
-							"type": "array",
-							"description": "Other conditions required to be met for this rate to apply",
-							"items": {
-								"$ref": "#/definitions/BankingProductRateCondition"
-							}
+							"$ref": "#/definitions/BankingProductRateCondition"
 						}
 					}
 				}
@@ -1633,11 +1641,11 @@
 			"properties": {
 				"additionalInfo": {
 					"type": "string",
-					"description": "Display text providing more information on the rate condition"
+					"description": "Display text providing more information on the condition"
 				},
 				"additionalInfoUri": {
 					"type": "string",
-					"description": "Link to a web page with more information  on this rate condition",
+					"description": "Link to a web page with more information on this condition",
 					"format": "URIString"
 				}
 			}
@@ -2253,9 +2261,7 @@
 						"BONUS",
 						"BUNDLE_BONUS",
 						"VARIABLE",
-						"INTRODUCTORY",
-						"FLOATING",
-						"MARKET_LINKED"
+						"INTRODUCTORY"
 					]
 				},
 				"rate": {
@@ -3666,17 +3672,17 @@
 				},
 				"prev": {
 					"type": "string",
-					"description": "URI to the first previous page of this set. Mandatory if this response is not the first page",
+					"description": "URI to the previous page of this set. Mandatory if this response is not the first page",
 					"format": "URIString"
 				},
 				"next": {
 					"type": "string",
-					"description": "URI to the first next page of this set. Mandatory if this response is not the last page",
+					"description": "URI to the next page of this set. Mandatory if this response is not the last page",
 					"format": "URIString"
 				},
 				"last": {
 					"type": "string",
-					"description": "URI to the first last page of this set. Mandatory if this response is not the last page",
+					"description": "URI to the last page of this set. Mandatory if this response is not the last page",
 					"format": "URIString"
 				}
 			}

@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Consumer Data Standards
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: '1'
+  version: 0.3.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'
@@ -376,6 +376,7 @@ paths:
         - Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
         - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
         - An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.
+        - Depending on the type of data being represented there may be additional specific fields.
 
         #### URIs To More Information
 
@@ -384,16 +385,16 @@ paths:
         These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
 
         #### Linkage To Accounts
-        From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
+        From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.
 
-        For this reason productCategory is a common field between accounts and products but there is not common linkage field specific to a product that appears within the account payloads.
+        For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.
 
-        Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the full sets of options are not identical between the two entities.
+        Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.
 
         #### Dates
-        It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained.
+        It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.
 
-        In addition the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+        In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
       operationId: listProducts
       x-scopes: []
       tags:
@@ -402,7 +403,7 @@ paths:
       parameters:
         - name: effective
           in: query
-          description: Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields.  If absent defaults to 'CURRENT'
+          description: 'Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to ''CURRENT'''
           required: false
           type: string
           enum:
@@ -505,24 +506,16 @@ parameters:
     required: false
     type: string
     enum:
-      - PERS_AT_CALL_DEPOSITS
-      - BUS_AT_CALL_DEPOSITS
+      - TRANS_AND_SAVINGS_ACCOUNTS
       - TERM_DEPOSITS
+      - TRAVEL_CARDS
+      - REGULATED_TRUST_ACCOUNTS
       - RESIDENTIAL_MORTGAGES
-      - PERS_CRED_AND_CHRG_CARDS
-      - BUS_CRED_AND_CHRG_CARDS
+      - CRED_AND_CHRG_CARDS
       - PERS_LOANS
-      - PERS_LEASING
-      - BUS_LEASING
+      - MARGIN_LOANS
+      - LEASES
       - TRADE_FINANCE
-      - PERS_OVERDRAFT
-      - BUS_OVERDRAFT
-      - BUS_LOANS
-      - FOREIGN_CURR_AT_CALL_DEPOSITS
-      - FOREIGN_CURR_TERM_DEPOSITS
-      - FOREIGN_CURR_LOAN
-      - FOREIGN_CURRRENCT_OVERDRAFT
-      - TRAVEL_CARD
   ParamAccountIsOwned:
     name: is-owned
     in: query
@@ -615,6 +608,7 @@ definitions:
           - products
         properties:
           products:
+            description: The list of products returned.  If the filter results in an empty set then this array may have no records
             type: array
             items:
               $ref: '#/definitions/BankingProduct'
@@ -671,6 +665,7 @@ definitions:
         type: boolean
         description: Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable
       additionalInformation:
+        description: Object that contains links to additional information on specific topics
         type: object
         properties:
           overviewUri:
@@ -712,30 +707,37 @@ definitions:
       - type: object
         properties:
           bundles:
+            description: An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also
             type: array
             items:
               $ref: '#/definitions/BankingProductBundle'
           features:
+            description: Array of features available for the product
             type: array
             items:
               $ref: '#/definitions/BankingProductFeature'
           constraints:
+            description: Constraints on the application for or operation of the product such as minimum balances or limit thresholds
             type: array
             items:
               $ref: '#/definitions/BankingProductConstraint'
           eligibility:
+            description: Eligibility criteria for the product
             type: array
             items:
               $ref: '#/definitions/BankingProductEligibility'
           fees:
+            description: Fees applicable for the product
             type: array
             items:
               $ref: '#/definitions/BankingProductFee'
           depositRates:
+            description: Interest rates available for deposits
             type: array
             items:
               $ref: '#/definitions/BankingProductDepositRate'
           lendingRates:
+            description: Interest rates charged against lending balances
             type: array
             items:
               $ref: '#/definitions/BankingProductLendingRate'
@@ -752,6 +754,9 @@ definitions:
       description:
         type: string
         description: Description of the bundle
+      additionalInfo:
+        type: string
+        description: Display text providing more information on the bundle
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on the bundle criteria and benefits
@@ -819,12 +824,20 @@ definitions:
         description: The type of constraint described.  See the next section for an overview of valid values and their meaning
         enum:
           - MIN_BALANCE
+          - MAX_BALANCE
           - OPENING_BALANCE
           - MAX_LIMIT
           - MIN_LIMIT
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType
+      additionalInfo:
+        type: string
+        description: Display text providing more information the constraint
+      additionalInfoUri:
+        type: string
+        description: Link to a web page with more information on the constraint
+        format: URIString
   BankingProductEligibility:
     type: object
     required:
@@ -864,9 +877,9 @@ definitions:
     required:
       - name
       - feeType
+      - amount
     x-conditional:
       - additionalValue
-      - amount
       - balanceRate
       - transactionRate
       - accruedRate
@@ -906,7 +919,6 @@ definitions:
       accrualFrequency:
         type: string
         description: 'The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        format: CurrencyString
       currency:
         type: string
         description: The currency the fee will be charged in. Assumes AUD if absent
@@ -922,6 +934,7 @@ definitions:
         description: Link to a web page with more information on this fee
         format: URIString
       discounts:
+        description: An optional list of discounts to this fee that may be available
         type: array
         items:
           $ref: '#/definitions/BankingProductDiscount'
@@ -930,8 +943,8 @@ definitions:
     required:
       - description
       - discountType
-    x-conditional:
       - amount
+    x-conditional:
       - balanceRate
       - transactionRate
       - accruedRate
@@ -952,7 +965,7 @@ definitions:
           - ELIGIBILITY_ONLY
       amount:
         type: string
-        description: 'Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory'
+        description: Value of the discount
         format: AmountString
       balanceRate:
         type: string
@@ -960,7 +973,7 @@ definitions:
         format: RateString
       transactionRate:
         type: string
-        description: 'A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory'
+        description: 'A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory'
         format: RateString
       accruedRate:
         type: string
@@ -973,10 +986,6 @@ definitions:
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType
-      eligibility:
-        type: array
-        items:
-          $ref: '#/definitions/BankingProductDiscountEligibility'
       additionalInfo:
         type: string
         description: Display text providing more information on the discount
@@ -984,6 +993,11 @@ definitions:
         type: string
         description: Link to a web page with more information on this discount
         format: URIString
+      eligibility:
+        description: Eligibility constraints that apply to this discount
+        type: array
+        items:
+          $ref: '#/definitions/BankingProductDiscountEligibility'
   BankingProductDiscountEligibility:
     type: object
     required:
@@ -1057,10 +1071,10 @@ definitions:
         description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
       additionalInfo:
         type: string
-        description: Display text providing more information on the fee
+        description: Display text providing more information on the rate
       additionalInfoUri:
         type: string
-        description: Link to a web page with more information on this fee
+        description: Link to a web page with more information on this rate
         format: URIString
   BankingProductLendingRate:
     type: object
@@ -1112,13 +1126,18 @@ definitions:
           $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
-        description: Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType
+        description: |-
+          Generic field containing additional
+          information relevant to the
+          lendingRateType specified. Whether
+          mandatory or not is dependent on the
+          value of lendingRateType
       additionalInfo:
         type: string
-        description: Display text providing more information on the fee.
+        description: Display text providing more information on the rate.
       additionalInfoUri:
         type: string
-        description: Link to a web page with more information  on this fee
+        description: Link to a web page with more information on this rate
         format: URIString
   BankingProductRateTier:
     type: object
@@ -1153,10 +1172,7 @@ definitions:
           - WHOLE_BALANCE
           - PER_TIER
       applicabilityConditions:
-        type: array
-        description: Other conditions required to be met for this rate to apply
-        items:
-          $ref: '#/definitions/BankingProductRateCondition'
+        $ref: '#/definitions/BankingProductRateCondition'
       subTier:
         type: object
         description: Defines the sub-tier criteria and conditions for which a rate applies
@@ -1190,20 +1206,17 @@ definitions:
               - WHOLE_BALANCE
               - PER_TIER
           applicabilityConditions:
-            type: array
-            description: Other conditions required to be met for this rate to apply
-            items:
-              $ref: '#/definitions/BankingProductRateCondition'
+            $ref: '#/definitions/BankingProductRateCondition'
   BankingProductRateCondition:
     type: object
     description: Defines a condition for the applicability of a tiered rate
     properties:
       additionalInfo:
         type: string
-        description: Display text providing more information on the rate condition
+        description: Display text providing more information on the condition
       additionalInfoUri:
         type: string
-        description: Link to a web page with more information  on this rate condition
+        description: Link to a web page with more information on this condition
         format: URIString
   ResponseBankingAccountList:
     type: object
@@ -1672,8 +1685,6 @@ definitions:
           - BUNDLE_BONUS
           - VARIABLE
           - INTRODUCTORY
-          - FLOATING
-          - MARKET_LINKED
       rate:
         type: string
         description: The rate to be applied
@@ -2686,15 +2697,15 @@ definitions:
         format: URIString
       prev:
         type: string
-        description: URI to the first previous page of this set. Mandatory if this response is not the first page
+        description: URI to the previous page of this set. Mandatory if this response is not the first page
         format: URIString
       next:
         type: string
-        description: URI to the first next page of this set. Mandatory if this response is not the last page
+        description: URI to the next page of this set. Mandatory if this response is not the last page
         format: URIString
       last:
         type: string
-        description: URI to the first last page of this set. Mandatory if this response is not the last page
+        description: URI to the last page of this set. Mandatory if this response is not the last page
         format: URIString
   MetaPaginated:
     type: object
