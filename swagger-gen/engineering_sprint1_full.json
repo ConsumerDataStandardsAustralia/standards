@@ -606,7 +606,9 @@
         },
         "maskedNumber" : {
           "type" : "string",
-          "description" : "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked"
+          "description" : "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked",
+          "pattern" : "(xxx\\-xxx xxxxx|(xxxx ){3})?\\d\\d\\d\\d",
+          "x-cds-type" : "MaskedAccountString"
         },
         "nickname" : {
           "type" : "string",
@@ -656,7 +658,9 @@
         },
         "rate" : {
           "type" : "string",
-          "description" : "The rate to be applied"
+          "description" : "The rate to be applied",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         }
       },
       "x-conditional" : [ "additionalValue" ]
@@ -727,7 +731,9 @@
       "properties" : {
         "accruedRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee"
+          "description" : "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
           "type" : "string",
@@ -745,11 +751,15 @@
         },
         "amount" : {
           "type" : "string",
-          "description" : "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee"
+          "description" : "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "description" : {
           "type" : "string",
@@ -766,7 +776,9 @@
         },
         "transactionRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         }
       },
       "x-conditional" : [ "accruedRate", "additionalValue", "amount", "balanceRate", "transactionRate" ]
@@ -829,11 +841,15 @@
       "properties" : {
         "accrualFrequency" : {
           "type" : "string",
-          "description" : "The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+          "description" : "The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "accruedRate" : {
           "type" : "string",
-          "description" : "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
           "type" : "string",
@@ -851,15 +867,21 @@
         },
         "amount" : {
           "type" : "string",
-          "description" : "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
-          "description" : "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "currency" : {
           "type" : "string",
-          "description" : "The currency the fee will be charged in. Assumes AUD if absent"
+          "description" : "The currency the fee will be charged in. Assumes AUD if absent",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "discounts" : {
           "type" : "array",
@@ -876,7 +898,9 @@
         },
         "transactionRate" : {
           "type" : "string",
-          "description" : "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         }
       },
       "x-conditional" : [ "accruedRate", "additionalValue", "amount", "balanceRate", "transactionRate" ]
@@ -915,7 +939,9 @@
         },
         "rate" : {
           "type" : "string",
-          "description" : "The rate to be applied"
+          "description" : "The rate to be applied",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         }
       },
       "x-conditional" : [ "additionalValue" ]
@@ -997,15 +1023,21 @@
       "properties" : {
         "minPaymentAmount" : {
           "type" : "string",
-          "description" : "The minimum payment amount due for the next card payment"
+          "description" : "The minimum payment amount due for the next card payment",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "paymentCurrency" : {
           "type" : "string",
-          "description" : "If absent assumes AUD"
+          "description" : "If absent assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "paymentDueAmount" : {
           "type" : "string",
-          "description" : "The amount due for the next card payment"
+          "description" : "The amount due for the next card payment",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "paymentDueDate" : {
           "type" : "string",
@@ -1040,7 +1072,9 @@
         },
         "lastDebitAmount" : {
           "type" : "string",
-          "description" : "The amount of the last debit executed under this authorisation"
+          "description" : "The amount of the last debit executed under this authorisation",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "lastDebitDateTime" : {
           "type" : "string",
@@ -1093,7 +1127,9 @@
       "properties" : {
         "cardNumber" : {
           "type" : "string",
-          "description" : "Name of the account to pay to"
+          "description" : "Name of the account to pay to",
+          "pattern" : "(x{4} ){3} \\d{4}",
+          "x-cds-type" : "MaskedPANString"
         }
       }
     },
@@ -1236,27 +1272,39 @@
         },
         "maxRedraw" : {
           "type" : "string",
-          "description" : "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account"
+          "description" : "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "maxRedrawCurrency" : {
           "type" : "string",
-          "description" : "If absent assumes AUD"
+          "description" : "If absent assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "minInstalmentAmount" : {
           "type" : "string",
-          "description" : "Minimum amount of next instalment"
+          "description" : "Minimum amount of next instalment",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "minInstalmentCurrency" : {
           "type" : "string",
-          "description" : "If absent assumes AUD"
+          "description" : "If absent assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "minRedraw" : {
           "type" : "string",
-          "description" : "Minimum redraw amount"
+          "description" : "Minimum redraw amount",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "minRedrawCurrency" : {
           "type" : "string",
-          "description" : "If absent assumes AUD"
+          "description" : "If absent assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "nextInstalmentDate" : {
           "type" : "string",
@@ -1277,11 +1325,15 @@
         },
         "originalLoanAmount" : {
           "type" : "string",
-          "description" : "Optional original loan value"
+          "description" : "Optional original loan value",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "originalLoanCurrency" : {
           "type" : "string",
-          "description" : "If absent assumes AUD"
+          "description" : "If absent assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "originalStartDate" : {
           "type" : "string",
@@ -1530,7 +1582,9 @@
         },
         "rate" : {
           "type" : "string",
-          "description" : "The rate to be applied"
+          "description" : "The rate to be applied",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "tiers" : {
           "type" : "array",
@@ -1606,7 +1660,9 @@
       "properties" : {
         "accruedRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee"
+          "description" : "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
           "type" : "string",
@@ -1624,11 +1680,15 @@
         },
         "amount" : {
           "type" : "string",
-          "description" : "Value of the discount"
+          "description" : "Value of the discount",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee"
+          "description" : "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "description" : {
           "type" : "string",
@@ -1646,11 +1706,15 @@
         },
         "feeRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee"
+          "description" : "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "transactionRate" : {
           "type" : "string",
-          "description" : "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory"
+          "description" : "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         }
       },
       "x-conditional" : [ "accruedRate", "additionalValue", "balanceRate", "feeRate", "transactionRate" ]
@@ -1737,7 +1801,9 @@
         },
         "accruedRate" : {
           "type" : "string",
-          "description" : "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "additionalInfo" : {
           "type" : "string",
@@ -1755,15 +1821,21 @@
         },
         "amount" : {
           "type" : "string",
-          "description" : "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
           "type" : "string",
-          "description" : "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "currency" : {
           "type" : "string",
-          "description" : "The currency the fee will be charged in. Assumes AUD if absent"
+          "description" : "The currency the fee will be charged in. Assumes AUD if absent",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "discounts" : {
           "type" : "array",
@@ -1781,7 +1853,9 @@
         },
         "transactionRate" : {
           "type" : "string",
-          "description" : "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory"
+          "description" : "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         }
       },
       "x-conditional" : [ "accruedRate", "additionalValue", "balanceRate", "transactionRate" ]
@@ -1814,7 +1888,9 @@
         },
         "comparisonRate" : {
           "type" : "string",
-          "description" : "A comparison rate equivalent for this rate"
+          "description" : "A comparison rate equivalent for this rate",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "interestPaymentDue" : {
           "$ref" : "#/definitions/InterestPaymentDue"
@@ -1824,7 +1900,9 @@
         },
         "rate" : {
           "type" : "string",
-          "description" : "The rate to be applied"
+          "description" : "The rate to be applied",
+          "pattern" : "^(-?\\\\d{1,14}){1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "RateString"
         },
         "tiers" : {
           "type" : "array",
@@ -1923,11 +2001,15 @@
         },
         "maturityAmount" : {
           "type" : "string",
-          "description" : "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated"
+          "description" : "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "maturityCurrency" : {
           "type" : "string",
-          "description" : "If absent assumes AUD"
+          "description" : "If absent assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "maturityDate" : {
           "type" : "string",
@@ -1950,7 +2032,9 @@
         },
         "amount" : {
           "type" : "string",
-          "description" : "The value of the transaction. Negative values mean money was outgoing from the account"
+          "description" : "The value of the transaction. Negative values mean money was outgoing from the account",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "apcaNumber" : {
           "type" : "string",
@@ -1970,7 +2054,9 @@
         },
         "currency" : {
           "type" : "string",
-          "description" : "The currency for the transaction amount. AUD assumed if not present"
+          "description" : "The currency for the transaction amount. AUD assumed if not present",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         },
         "description" : {
           "type" : "string",
@@ -2065,11 +2151,15 @@
       "properties" : {
         "amount" : {
           "type" : "string",
-          "description" : "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking"
+          "description" : "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking",
+          "pattern" : "^-?\\\\d{1}(\\\\.\\\\d{1,4}){0,1}$",
+          "x-cds-type" : "AmountString"
         },
         "currency" : {
           "type" : "string",
-          "description" : "If not present assumes AUD"
+          "description" : "If not present assumes AUD",
+          "pattern" : "^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BIF|BMD|BND|BOB|BOV|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHE|CHF|CHW|CLF|CLP|CNY|COP|COU|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRU|MUR|MVR|MWK|MXN|MXV|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|USN|UYI|UYU|UYW|UZS|VES|VND|VUV|WST|XAF|XAG|XAU|XBA|XBB|XBC|XBD|XCD|XDR|XOF|XPD|XPF|XPT|XSU|XTS|XUA|XXX|YER|ZAR|ZMW|ZWL)$",
+          "x-cds-type" : "CurrencyString"
         }
       }
     },
