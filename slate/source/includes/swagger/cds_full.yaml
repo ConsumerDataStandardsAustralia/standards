@@ -4,7 +4,7 @@ info:
   description: >-
     API sets created by the Australian Consumer Data Standards to meet the needs
     of the Consumer Data Right
-  version: 0.3.0
+  version: 0.4.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'
@@ -247,7 +247,7 @@ paths:
       description: Obtain direct debit authorisations for a specific account
       operationId: listDirectDebits
       x-scopes:
-        - bank_detailed_accounts
+        - bank_regular_payments
       tags:
         - Banking APIs
         - Direct Debits
@@ -274,7 +274,7 @@ paths:
       description: 'Obtain direct debit authorisations for multiple, filtered accounts'
       operationId: listDirectDebitsBulk
       x-scopes:
-        - bank_detailed_accounts
+        - bank_regular_payments
       tags:
         - Banking APIs
         - Direct Debits
@@ -294,14 +294,14 @@ paths:
       description: Obtain direct debit authorisations for a specified list of accounts
       operationId: listDirectDebitsSpecificAccounts
       x-scopes:
-        - bank_detailed_accounts
+        - bank_regular_payments
       tags:
         - Banking APIs
         - Direct Debits
       parameters:
         - name: accountIds
           in: body
-          description: The list of account IDs to obtain information for
+          description: Array of specific accountIds to obtain authorisations for
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
@@ -426,6 +426,9 @@ paths:
         link to externally hosted information specifically relevant to that
         feature of the product.
 
+        - Depending on the type of data being represented there may be
+        additional specific fields.
+
 
         #### URIs To More Information
 
@@ -448,37 +451,41 @@ paths:
         #### Linkage To Accounts
 
         From the moment that a customer applies for a product and an account is
-        created the account and the product that spawned it will diverge. Rates
+        created the account and the product that spawned it will diverge.  Rates
         and features of the product may change and a discount may be negotiated
         for the account.
 
 
-        For this reason productCategory is a common field between accounts and
-        products but there is not common linkage field specific to a product
-        that appears within the account payloads.
+        For this reason, while productCategory is a common field between
+        accounts and products, there is no specific ID that can be used to link
+        an account to a product within the regime.
 
 
         Similarly, many of the fields and objects in the product payload will
-        appear in the account detail payload but the full sets of options are
-        not identical between the two entities.
+        appear in the account detail payload but the structures and semantics
+        are not identical as one refers to a product that can potentially be
+        originated and one refers to an account that actual has been
+        instantiated and created along with the associated decisions inherent in
+        that process.
 
 
         #### Dates
 
         It is expected that data consumers needing this data will call
         relatively frequently to ensure the data they have is representative of
-        the current offering from a bank. To minimise the volume and frequency
+        the current offering from a bank.  To minimise the volume and frequency
         of these calls the ability to set a lastUpdated field with the date and
-        time of the last update to this product is included. A call for a list
+        time of the last update to this product is included.  A call for a list
         of products can then be filtered to only return products that have been
-        updated since the last time that data was obtained.
+        updated since the last time that data was obtained using the
+        updated-since query parameter.
 
 
-        In addition the concept of effective date and time has also been
-        included. This allows for a product to be marked for obsolescence, or
+        In addition, the concept of effective date and time has also been
+        included.  This allows for a product to be marked for obsolescence, or
         introduction, from a certain time without the need for an update to show
-        that a product has been changed. The inclusion of these dates also
-        removes the need to represent deleted products in the payload. Products
+        that a product has been changed.  The inclusion of these dates also
+        removes the need to represent deleted products in the payload.  Products
         that are no long offered can be marked not effective for a few weeks
         before they are then removed from the product set as an option entirely.
       operationId: listProducts
@@ -709,7 +716,7 @@ definitions:
             type: array
             items:
               type: string
-              description: A valid account ID previously obtained from another end point
+              description: Array of specific accountIds to obtain authorisations for
               format: ASCIIString
       meta:
         $ref: '#/definitions/Meta'
@@ -726,6 +733,9 @@ definitions:
           - products
         properties:
           products:
+            description: >-
+              The list of products returned.  If the filter results in an empty
+              set then this array may have no records
             type: array
             items:
               $ref: '#/definitions/BankingProduct'
@@ -803,6 +813,9 @@ definitions:
           degree of tailoring this flag indicates that tailoring is expected and
           thus that the provision of specific fees and rates is not applicable
       additionalInformation:
+        description: >-
+          Object that contains links to additional information on specific
+          topics
         type: object
         properties:
           overviewUri:
@@ -846,30 +859,44 @@ definitions:
       - type: object
         properties:
           bundles:
+            description: >-
+              An array of bundles that this product participates in.  Each
+              bundle is described by free form information but also by a list of
+              product IDs of the other products that are included in the
+              bundle.  It is assumed that the current product is included in the
+              bundle also
             type: array
             items:
               $ref: '#/definitions/BankingProductBundle'
           features:
+            description: Array of features available for the product
             type: array
             items:
               $ref: '#/definitions/BankingProductFeature'
           constraints:
+            description: >-
+              Constraints on the application for or operation of the product
+              such as minimum balances or limit thresholds
             type: array
             items:
               $ref: '#/definitions/BankingProductConstraint'
           eligibility:
+            description: Eligibility criteria for the product
             type: array
             items:
               $ref: '#/definitions/BankingProductEligibility'
           fees:
+            description: Fees applicable for the product
             type: array
             items:
               $ref: '#/definitions/BankingProductFee'
           depositRates:
+            description: Interest rates available for deposits
             type: array
             items:
               $ref: '#/definitions/BankingProductDepositRate'
           lendingRates:
+            description: Interest rates charged against lending balances
             type: array
             items:
               $ref: '#/definitions/BankingProductLendingRate'
@@ -1101,6 +1128,7 @@ definitions:
         description: Link to a web page with more information on this fee
         format: URIString
       discounts:
+        description: An optional list of discounts to this fee that may be available
         type: array
         items:
           $ref: '#/definitions/BankingProductDiscount'
@@ -1187,6 +1215,7 @@ definitions:
         description: Link to a web page with more information on this discount
         format: URIString
       eligibility:
+        description: Eligibility constraints that apply to this discount
         type: array
         items:
           $ref: '#/definitions/BankingProductDiscountEligibility'
@@ -1415,10 +1444,7 @@ definitions:
           - WHOLE_BALANCE
           - PER_TIER
       applicabilityConditions:
-        type: object
-        description: Other conditions required to be met for this rate to apply
-        items:
-          $ref: '#/definitions/BankingProductRateCondition'
+        $ref: '#/definitions/BankingProductRateCondition'
       subTier:
         type: object
         description: Defines the sub-tier criteria and conditions for which a rate applies
@@ -1470,10 +1496,7 @@ definitions:
               - WHOLE_BALANCE
               - PER_TIER
           applicabilityConditions:
-            type: object
-            description: Other conditions required to be met for this rate to apply
-            items:
-              $ref: '#/definitions/BankingProductRateCondition'
+            $ref: '#/definitions/BankingProductRateCondition'
   BankingProductRateCondition:
     type: object
     description: Defines a condition for the applicability of a tiered rate
@@ -2045,8 +2068,6 @@ definitions:
           - BUNDLE_BONUS
           - VARIABLE
           - INTRODUCTORY
-          - FLOATING
-          - MARKET_LINKED
       rate:
         type: string
         description: The rate to be applied
@@ -2680,6 +2701,7 @@ definitions:
     type: object
     required:
       - accountId
+      - authorisedEntity
     properties:
       accountId:
         type: string
@@ -2700,12 +2722,13 @@ definitions:
   BankingAuthorisedEntity:
     type: object
     required:
-      - name
       - financialInstitution
     properties:
-      name:
+      description:
         type: string
-        description: Name of the authorised entity
+        description: >-
+          Description of the authorised entity derived from previously executed
+          direct debits
       financialInstitution:
         type: string
         description: >-
@@ -3224,20 +3247,20 @@ definitions:
       prev:
         type: string
         description: >-
-          URI to the first previous page of this set. Mandatory if this response
-          is not the first page
+          URI to the previous page of this set. Mandatory if this response is
+          not the first page
         format: URIString
       next:
         type: string
         description: >-
-          URI to the first next page of this set. Mandatory if this response is
-          not the last page
+          URI to the next page of this set. Mandatory if this response is not
+          the last page
         format: URIString
       last:
         type: string
         description: >-
-          URI to the first last page of this set. Mandatory if this response is
-          not the last page
+          URI to the last page of this set. Mandatory if this response is not
+          the last page
         format: URIString
   MetaPaginated:
     type: object
@@ -3269,13 +3292,15 @@ definitions:
           properties:
             code:
               type: string
-              description: The code of the error
+              description: >-
+                Must be one of the following: 0001 – Account not able to be
+                found
             title:
               type: string
-              description: A displayable title of the error type
+              description: 'Must be one of the following: Invalid account'
             detail:
               type: string
-              description: Detail of the error
+              description: ID of the account not found
             meta:
               type: object
               description: Optional additional data for specific error types
