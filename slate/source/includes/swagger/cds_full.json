@@ -139,7 +139,7 @@
 				"tags": [
 					"Banking APIs",
 					"Accounts"
-				ab],
+				],
 				"parameters": [{
 						"name": "accountIds",
 						"in": "body",
