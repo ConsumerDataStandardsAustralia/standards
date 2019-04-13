@@ -139,7 +139,7 @@
 				"tags": [
 					"Banking APIs",
 					"Accounts"
-				],
+				ab],
 				"parameters": [{
 						"name": "accountIds",
 						"in": "body",
@@ -3079,7 +3079,7 @@
 				},
 				"acn": {
 					"type": "string",
-					"description": "Australian Business Number for the authorised entity"
+					"description": "Australian Company Number for the authorised entity"
 				},
 				"arbn": {
 					"type": "string",
