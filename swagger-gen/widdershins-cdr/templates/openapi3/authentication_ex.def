@@ -1,0 +1,4 @@
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">{{= data.utils.getExAuthenticationStr(data) }}</a>
+</aside>
