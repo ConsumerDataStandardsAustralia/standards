@@ -41,9 +41,9 @@ Obtain a list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
 |page|query|integer|optional|Page of results to request (standard pagination)|
 |page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -51,12 +51,6 @@ Obtain a list of accounts
 
 |Parameter|Value|
 |---|---|
-|open-status|OPEN|
-|open-status|CLOSED|
-|open-status|ALL|
-|is-owned|OWNED|
-|is-owned|NOT_OWNED|
-|is-owned|ALL|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
 |product-category|TRAVEL_CARDS|
@@ -67,6 +61,9 @@ Obtain a list of accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|open-status|OPEN|
+|open-status|CLOSED|
+|open-status|ALL|
 
 > Example responses
 
@@ -367,9 +364,9 @@ Obtain balances for multiple, filtered accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
 |page|query|integer|optional|Page of results to request (standard pagination)|
 |page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -377,12 +374,6 @@ Obtain balances for multiple, filtered accounts
 
 |Parameter|Value|
 |---|---|
-|open-status|OPEN|
-|open-status|CLOSED|
-|open-status|ALL|
-|is-owned|OWNED|
-|is-owned|NOT_OWNED|
-|is-owned|ALL|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
 |product-category|TRAVEL_CARDS|
@@ -393,6 +384,9 @@ Obtain balances for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|open-status|OPEN|
+|open-status|CLOSED|
+|open-status|ALL|
 
 > Example responses
 
@@ -749,8 +743,8 @@ Obtain detailed information on a transaction for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|mandatory|The account id token that is used to uniquely represent the account|
-|transactionId|path|string(ASCIIString)|mandatory|The unique identifier for the specific transaction for which details are being requested|
+|accountId|path|string(ASCIIString)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
+|transactionId|path|string(ASCIIString)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
 
 > Example responses
 
@@ -782,7 +776,7 @@ Obtain detailed information on a transaction for a specific account
       "payee": "string",
       "extensionUType": "extendedDescription",
       "extendedDescription": "string",
-      "serviceId": "X2P1.01"
+      "service": "X2P1.01"
     }
   },
   "links": {
@@ -842,11 +836,11 @@ Obtain transactions for multiple, filtered accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|newest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+|oldest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
 |min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
 |max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
@@ -857,12 +851,6 @@ Obtain transactions for multiple, filtered accounts
 
 |Parameter|Value|
 |---|---|
-|open-status|OPEN|
-|open-status|CLOSED|
-|open-status|ALL|
-|is-owned|OWNED|
-|is-owned|NOT_OWNED|
-|is-owned|ALL|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
 |product-category|TRAVEL_CARDS|
@@ -873,6 +861,9 @@ Obtain transactions for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|open-status|OPEN|
+|open-status|CLOSED|
+|open-status|ALL|
 
 > Example responses
 
@@ -983,8 +974,8 @@ Obtain transactions for a specified list of transactions.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|newest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+|oldest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
 |min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
 |max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
@@ -1177,8 +1168,9 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|is-owned|query|string|optional|Filters accounts based on whether they are owned by the authorised customer|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
 |page|query|integer|optional|Page of results to request (standard pagination)|
 |page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -1186,9 +1178,6 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Parameter|Value|
 |---|---|
-|is-owned|OWNED|
-|is-owned|NOT_OWNED|
-|is-owned|ALL|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |product-category|TERM_DEPOSITS|
 |product-category|TRAVEL_CARDS|
@@ -1199,6 +1188,9 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|open-status|OPEN|
+|open-status|CLOSED|
+|open-status|ALL|
 
 > Example responses
 
@@ -4225,16 +4217,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
-|transactionId|string(ASCIIString)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
+|accountId|string(ASCIIString)|mandatory|none|ID of the account for which transactions are provided|
+|transactionId|string(ASCIIString)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
 |isDetailAvailable|boolean|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
-|status|string|mandatory|none|Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
+|status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
 |description|string|mandatory|none|The transaction description as applied by the financial institution|
-|postingDateTime|string(DateTimeString)|conditional|none|The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement|
+|postingDateTime|string(DateTimeString)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
 |valueDateTime|string(DateTimeString)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
 |executionDateTime|string(DateTimeString)|optional|none|The time the transaction was executed by the originating customer, if available|
-|amount|string(AmountString)|optional|none|The value of the transaction. Negative values mean money was outgoing from the account|
+|amount|string(AmountString)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
 |currency|string(CurrencyString)|optional|none|The currency for the transaction amount. AUD assumed if not present|
 |reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
 |merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
@@ -4254,6 +4246,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |type|TRANSFER_OUTGOING|
 |type|TRANSFER_INCOMING|
 |type|PAYMENT|
+|type|DIRECT_DEBIT|
 |type|OTHER|
 |status|PENDING|
 |status|POSTED|
@@ -4288,7 +4281,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "payee": "string",
       "extensionUType": "extendedDescription",
       "extendedDescription": "string",
-      "serviceId": "X2P1.01"
+      "service": "X2P1.01"
     }
   },
   "links": {
@@ -4336,7 +4329,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "payee": "string",
     "extensionUType": "extendedDescription",
     "extendedDescription": "string",
-    "serviceId": "X2P1.01"
+    "service": "X2P1.01"
   }
 }
 
@@ -4356,18 +4349,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
 |» extendedData|object|mandatory|none|none|
-|»» payer|string|conditional|none|Name or description of the originating payer.  Mandatory for inbound payment|
-|»» payee|string|conditional|none|Name or description of the target payee. Mandatory for an outbound payment|
+|»» payer|string|conditional|none|Label of the originating payer. Mandatory for inbound payment|
+|»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment|
 |»» extensionUType|string|optional|none|Optional extended data provided specific to transaction originated via NPP|
 |»» extendedDescription|string|conditional|none|An extended string description. Only present if specified by the extensionUType field|
-|»» serviceId|string|optional|none|Identifier of the applicable NPP payment service|
+|»» service|string|mandatory|none|Identifier of the applicable overlay service. Valid values are: X2P1.01|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
 |extensionUType|extendedDescription|
-|serviceId|X2P1.01|
+|service|X2P1.01|
 
 <h2 id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h2>
 

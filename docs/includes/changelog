@@ -11,6 +11,12 @@
 </thead><tbody>
 <tr>
 <td>16/4/2019</td>
+<td>0.5.0</td>
+<td>Transaction v1 draft</td>
+<td>Applied changes to prepare for v1 version of Transaction end points and payloads documentation</td>
+</tr>
+<tr>
+<td>16/4/2019</td>
 <td>0.4.0</td>
 <td>Direct Debit Auth v1 draft</td>
 <td>Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation</td>

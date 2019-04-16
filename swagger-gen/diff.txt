@@ -1,0 +1,40 @@
+44d43
+< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+46a46
+> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+53a54,56
+> |open-status|OPEN|
+> |open-status|CLOSED|
+> |open-status|ALL|
+64,66d66
+< |open-status|OPEN|
+< |open-status|CLOSED|
+< |open-status|ALL|
+367d366
+< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+369a369
+> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+376a377,379
+> |open-status|OPEN|
+> |open-status|CLOSED|
+> |open-status|ALL|
+387,389d389
+< |open-status|OPEN|
+< |open-status|CLOSED|
+< |open-status|ALL|
+840,841d839
+< |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+< |is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+864,866d861
+< |open-status|OPEN|
+< |open-status|CLOSED|
+< |open-status|ALL|
+1171,1172d1165
+< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+< |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
+1173a1167
+> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+1191,1193d1184
+< |open-status|OPEN|
+< |open-status|CLOSED|
+< |open-status|ALL|
