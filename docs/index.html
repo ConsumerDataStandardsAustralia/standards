@@ -3200,7 +3200,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"authorisedEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3244,7 +3244,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank_regular_payments</a>
 </aside>
 <h2 id='get-bulk-direct-debits'>Get Bulk Direct Debits</h2>
 <p><a id="opIdlistDirectDebitsBulk"></a></p>
@@ -3388,7 +3388,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"authorisedEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3432,7 +3432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank_regular_payments</a>
 </aside>
 <h2 id='get-direct-debits-for-specific-accounts'>Get Direct Debits For Specific Accounts</h2>
 <p><a id="opIdlistDirectDebitsSpecificAccounts"></a></p>
@@ -3508,7 +3508,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>body</td>
 <td><a href="#schemarequestaccountids">RequestAccountIds</a></td>
 <td>mandatory</td>
-<td>The list of account IDs to obtain information for</td>
+<td>Array of specific accountIds to obtain authorisations for</td>
 </tr>
 </tbody></table>
 
@@ -3523,7 +3523,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"authorisedEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3573,7 +3573,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank_regular_payments</a>
 </aside>
 <h2 id='get-payees'>Get Payees</h2>
 <p><a id="opIdlistPayees"></a></p>
@@ -10099,7 +10099,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"authorisedEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10169,7 +10169,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorisedEntity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10199,7 +10199,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>authorisedEntity</td>
 <td><a href="#schemabankingauthorisedentity">BankingAuthorisedEntity</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10223,7 +10223,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemabankingauthorisedentity"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"financialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"abn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10241,11 +10241,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td>description</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
-<td>Name of the authorised entity</td>
+<td>Description of the authorised entity derived from previously executed direct debits</td>
 </tr>
 <tr>
 <td>financialInstitution</td>
@@ -10266,7 +10266,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Australian Business Number for the authorised entity</td>
+<td>Australian Company Number for the authorised entity</td>
 </tr>
 <tr>
 <td>arbn</td>
@@ -11902,21 +11902,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The code of the error</td>
+<td>Must be one of the following: 0001 – Account not able to be found</td>
 </tr>
 <tr>
 <td>» title</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>A displayable title of the error type</td>
+<td>Must be one of the following: Invalid account</td>
 </tr>
 <tr>
 <td>» detail</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Detail of the error</td>
+<td>ID of the account not found</td>
 </tr>
 <tr>
 <td>» meta</td>
@@ -13068,6 +13068,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>16/4/2019</td>
+<td>0.4.0</td>
+<td>Direct Debit Auth v1 draft</td>
+<td>Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation</td>
+</tr>
 <tr>
 <td>9/4/2019</td>
 <td>0.3.0</td>
