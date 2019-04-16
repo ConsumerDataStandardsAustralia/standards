@@ -96,7 +96,7 @@ Obtain direct debit authorisations for a specific accounnt list of accounts.
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+openId ( Scopes: bank_regular_payments )
 </aside>
 
 ## Get Bulk Direct Debits
@@ -198,7 +198,7 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+openId ( Scopes: bank_regular_payments )
 </aside>
 
 ## Get Direct Debits For Specific Accounts
@@ -335,7 +335,7 @@ Status Code **422**
 
 <aside class="notice">
 To perform this operation, you must be authenticated by means of one of the following methods:
-openId ( Scopes: bank_detailed_accounts )
+openId ( Scopes: bank_regular_payments )
 </aside>
 
 <a id="schemaaccountdirectdebitsresponse"></a>
