@@ -593,7 +593,7 @@ Payloads
 
 <p>Note that security standards are only partially represented in these standards as they are under development by the Information Security Working Group.  More detail can found at the <a href="https://consumerdatastandardsaustralia.github.io/infosec">Information Security Profile</a> working draft.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.4.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.5.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1602,6 +1602,13 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 </tr>
 </thead><tbody>
 <tr>
+<td>product-category</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
@@ -1611,16 +1618,9 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>string</td>
+<td>boolean</td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -1644,30 +1644,6 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>open-status</td>
-<td>OPEN</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>ALL</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>NOT_OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>ALL</td>
-</tr>
 <tr>
 <td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
@@ -1707,6 +1683,18 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>OPEN</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>ALL</td>
 </tr>
 </tbody></table>
 
@@ -2041,6 +2029,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>product-category</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
@@ -2050,16 +2045,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>string</td>
+<td>boolean</td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -2083,30 +2071,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>open-status</td>
-<td>OPEN</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>ALL</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>NOT_OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>ALL</td>
-</tr>
 <tr>
 <td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
@@ -2146,6 +2110,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>OPEN</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>ALL</td>
 </tr>
 </tbody></table>
 
@@ -2619,14 +2595,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td>string(ASCIIString)</td>
 <td>mandatory</td>
-<td>The account id token that is used to uniquely represent the account</td>
+<td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>path</td>
 <td>string(ASCIIString)</td>
 <td>mandatory</td>
-<td>The unique identifier for the specific transaction for which details are being requested</td>
+<td>ID of the transaction obtained from a previous call to one of the other transaction end points</td>
 </tr>
 </tbody></table>
 
@@ -2660,7 +2636,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
+      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2733,6 +2709,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>product-category</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>query</td>
 <td>string</td>
@@ -2742,30 +2725,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>string</td>
+<td>boolean</td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
-<td>product-category</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
-</tr>
-<tr>
-<td>start-time</td>
+<td>newest-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
+<td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
-<td>end-time</td>
+<td>oldest-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
+<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
@@ -2811,30 +2787,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>open-status</td>
-<td>OPEN</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>ALL</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>NOT_OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>ALL</td>
-</tr>
-<tr>
 <td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
@@ -2873,6 +2825,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>OPEN</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>ALL</td>
 </tr>
 </tbody></table>
 
@@ -2997,18 +2961,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>start-time</td>
+<td>newest-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
+<td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
-<td>end-time</td>
+<td>oldest-time</td>
 <td>query</td>
 <td>string(DateTimeString)</td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
+<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
@@ -3288,18 +3252,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>is-owned</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer</td>
-</tr>
-<tr>
 <td>product-category</td>
 <td>query</td>
 <td>string</td>
 <td>optional</td>
 <td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
+</tr>
+<tr>
+<td>is-owned</td>
+<td>query</td>
+<td>boolean</td>
+<td>optional</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -3323,18 +3294,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>is-owned</td>
-<td>OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>NOT_OWNED</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>ALL</td>
-</tr>
 <tr>
 <td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
@@ -3374,6 +3333,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>OPEN</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td>open-status</td>
+<td>ALL</td>
 </tr>
 </tbody></table>
 
@@ -8626,14 +8597,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string(ASCIIString)</td>
 <td>mandatory</td>
 <td>none</td>
-<td>A unique ID of the account adhering to the standards for ID permanence</td>
+<td>ID of the account for which transactions are provided</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>string(ASCIIString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type</td>
+<td>A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type</td>
 </tr>
 <tr>
 <td>isDetailAvailable</td>
@@ -8654,7 +8625,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction</td>
+<td>Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction</td>
 </tr>
 <tr>
 <td>description</td>
@@ -8668,7 +8639,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string(DateTimeString)</td>
 <td>conditional</td>
 <td>none</td>
-<td>The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement</td>
+<td>The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement</td>
 </tr>
 <tr>
 <td>valueDateTime</td>
@@ -8687,7 +8658,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>amount</td>
 <td>string(AmountString)</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The value of the transaction. Negative values mean money was outgoing from the account</td>
 </tr>
@@ -8781,6 +8752,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>type</td>
+<td>DIRECT_DEBIT</td>
+</tr>
+<tr>
+<td>type</td>
 <td>OTHER</td>
 </tr>
 <tr>
@@ -8821,7 +8796,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
+      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8890,7 +8865,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
+    </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -8945,14 +8920,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Name or description of the originating payer.  Mandatory for inbound payment</td>
+<td>Label of the originating payer. Mandatory for inbound payment</td>
 </tr>
 <tr>
 <td>»» payee</td>
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Name or description of the target payee. Mandatory for an outbound payment</td>
+<td>Label of the target PayID.  Mandatory for an outbound payment</td>
 </tr>
 <tr>
 <td>»» extensionUType</td>
@@ -8969,11 +8944,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An extended string description. Only present if specified by the extensionUType field</td>
 </tr>
 <tr>
-<td>»» serviceId</td>
+<td>»» service</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
-<td>Identifier of the applicable NPP payment service</td>
+<td>Identifier of the applicable overlay service. Valid values are: X2P1.01</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-27'>Enumerated Values</h4>
@@ -8988,7 +8963,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>extendedDescription</td>
 </tr>
 <tr>
-<td>serviceId</td>
+<td>service</td>
 <td>X2P1.01</td>
 </tr>
 </tbody></table>
@@ -13068,6 +13043,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>16/4/2019</td>
+<td>0.5.0</td>
+<td>Transaction v1 draft</td>
+<td>Applied changes to prepare for v1 version of Transaction end points and payloads documentation</td>
+</tr>
 <tr>
 <td>16/4/2019</td>
 <td>0.4.0</td>

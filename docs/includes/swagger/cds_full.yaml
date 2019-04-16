@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Consumer Data Standards
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.4.0
+  version: 0.5.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'
@@ -26,9 +26,9 @@ paths:
         - Banking APIs
         - Accounts
       parameters:
+        - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamAccountOpenStatus'
         - $ref: '#/parameters/ParamAccountIsOwned'
-        - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
       responses:
@@ -71,9 +71,9 @@ paths:
         - Banking APIs
         - Accounts
       parameters:
+        - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamAccountOpenStatus'
         - $ref: '#/parameters/ParamAccountIsOwned'
-        - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
       responses:
@@ -153,13 +153,13 @@ paths:
       parameters:
         - name: accountId
           in: path
-          description: The account id token that is used to uniquely represent the account
+          description: ID of the account to get transactions for.  Must have previously been returned by one of the account list end points
           required: true
           type: string
           format: ASCIIString
         - name: transactionId
           in: path
-          description: The unique identifier for the specific transaction for which details are being requested
+          description: ID of the transaction obtained from a previous call to one of the other transaction end points
           required: true
           type: string
           format: ASCIIString
@@ -180,11 +180,11 @@ paths:
         - Banking APIs
         - Accounts
       parameters:
+        - $ref: '#/parameters/ParamProductCategory'
         - $ref: '#/parameters/ParamAccountOpenStatus'
         - $ref: '#/parameters/ParamAccountIsOwned'
-        - $ref: '#/parameters/ParamProductCategory'
-        - $ref: '#/parameters/ParamStartTime'
-        - $ref: '#/parameters/ParamEndTime'
+        - $ref: '#/parameters/ParamTransactionNewestTime'
+        - $ref: '#/parameters/ParamTransactionOldestTime'
         - $ref: '#/parameters/ParamTransactionMinAmount'
         - $ref: '#/parameters/ParamTransactionMaxAmount'
         - $ref: '#/parameters/ParamTransactionText'
@@ -206,8 +206,8 @@ paths:
         - Banking APIs
         - Accounts
       parameters:
-        - $ref: '#/parameters/ParamStartTime'
-        - $ref: '#/parameters/ParamEndTime'
+        - $ref: '#/parameters/ParamTransactionNewestTime'
+        - $ref: '#/parameters/ParamTransactionOldestTime'
         - $ref: '#/parameters/ParamTransactionMinAmount'
         - $ref: '#/parameters/ParamTransactionMaxAmount'
         - $ref: '#/parameters/ParamTransactionText'
@@ -265,8 +265,9 @@ paths:
         - Banking APIs
         - Direct Debits
       parameters:
-        - $ref: '#/parameters/ParamAccountIsOwned'
         - $ref: '#/parameters/ParamProductCategory'
+        - $ref: '#/parameters/ParamAccountOpenStatus'
+        - $ref: '#/parameters/ParamAccountIsOwned'
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
       responses:
@@ -519,14 +520,9 @@ parameters:
   ParamAccountIsOwned:
     name: is-owned
     in: query
-    description: Filters accounts based on whether they are owned by the authorised customer
+    description: Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts
     required: false
-    type: string
-    enum:
-      - OWNED
-      - NOT_OWNED
-      - ALL
-    default: ALL
+    type: boolean
   ParamPage:
     name: page
     in: query
@@ -552,6 +548,20 @@ parameters:
     name: end-time
     in: query
     description: Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type
+    required: false
+    type: string
+    format: DateTimeString
+  ParamTransactionNewestTime:
+    name: newest-time
+    in: query
+    description: Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type
+    required: false
+    type: string
+    format: DateTimeString
+  ParamTransactionOldestTime:
+    name: oldest-time
+    in: query
+    description: Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type
     required: false
     type: string
     format: DateTimeString
@@ -1782,6 +1792,7 @@ definitions:
       - type
       - status
       - description
+      - amount
       - reference
     x-conditional:
       - transactionId
@@ -1789,11 +1800,11 @@ definitions:
     properties:
       accountId:
         type: string
-        description: A unique ID of the account adhering to the standards for ID permanence
+        description: ID of the account for which transactions are provided
         format: ASCIIString
       transactionId:
         type: string
-        description: A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type
+        description: A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type
         format: ASCIIString
       isDetailAvailable:
         type: boolean
@@ -1808,10 +1819,11 @@ definitions:
           - TRANSFER_OUTGOING
           - TRANSFER_INCOMING
           - PAYMENT
+          - DIRECT_DEBIT
           - OTHER
       status:
         type: string
-        description: Status of the transaction whether pending or posted.  Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction
+        description: Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction
         enum:
           - PENDING
           - POSTED
@@ -1820,7 +1832,7 @@ definitions:
         description: The transaction description as applied by the financial institution
       postingDateTime:
         type: string
-        description: The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement
+        description: The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement
         format: DateTimeString
       valueDateTime:
         type: string
@@ -1890,10 +1902,10 @@ definitions:
             properties:
               payer:
                 type: string
-                description: Name or description of the originating payer.  Mandatory for inbound payment
+                description: Label of the originating payer. Mandatory for inbound payment
               payee:
                 type: string
-                description: Name or description of the target payee. Mandatory for an outbound payment
+                description: Label of the target PayID.  Mandatory for an outbound payment
               extensionUType:
                 type: string
                 description: Optional extended data provided specific to transaction originated via NPP
@@ -1902,9 +1914,9 @@ definitions:
               extendedDescription:
                 type: string
                 description: An extended string description. Only present if specified by the extensionUType field
-              serviceId:
+              service:
                 type: string
-                description: Identifier of the applicable NPP payment service
+                description: 'Identifier of the applicable overlay service. Valid values are: X2P1.01'
                 enum:
                   - X2P1.01
   ResponseBankingAccountsBalanceList:

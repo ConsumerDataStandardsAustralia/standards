@@ -33,14 +33,15 @@
 					"Banking APIs",
 					"Accounts"
 				],
-				"parameters": [{
+				"parameters": [
+					{
+						"$ref": "#/parameters/ParamProductCategory"
+					},
+					{
 						"$ref": "#/parameters/ParamAccountOpenStatus"
 					},
 					{
 						"$ref": "#/parameters/ParamAccountIsOwned"
-					},
-					{
-						"$ref": "#/parameters/ParamProductCategory"
 					},
 					{
 						"$ref": "#/parameters/ParamPage"
@@ -103,14 +104,15 @@
 					"Banking APIs",
 					"Accounts"
 				],
-				"parameters": [{
+				"parameters": [
+					{
+						"$ref": "#/parameters/ParamProductCategory"
+					},
+					{
 						"$ref": "#/parameters/ParamAccountOpenStatus"
 					},
 					{
 						"$ref": "#/parameters/ParamAccountIsOwned"
-					},
-					{
-						"$ref": "#/parameters/ParamProductCategory"
 					},
 					{
 						"$ref": "#/parameters/ParamPage"
@@ -282,6 +284,12 @@
 						"$ref": "#/parameters/ParamProductCategory"
 					},
 					{
+						"$ref": "#/parameters/ParamAccountOpenStatus"
+					},
+					{
+						"$ref": "#/parameters/ParamAccountIsOwned"
+					},
+					{
 						"$ref": "#/parameters/ParamTransactionNewestTime"
 					},
 					{
@@ -422,11 +430,15 @@
 					"Banking APIs",
 					"Direct Debits"
 				],
-				"parameters": [{
-						"$ref": "#/parameters/ParamAccountIsOwned"
-					},
+				"parameters": [
 					{
 						"$ref": "#/parameters/ParamProductCategory"
+					},
+					{
+						"$ref": "#/parameters/ParamAccountOpenStatus"
+					},
+					{
+						"$ref": "#/parameters/ParamAccountIsOwned"
 					},
 					{
 						"$ref": "#/parameters/ParamPage"
@@ -737,15 +749,9 @@
 		"ParamAccountIsOwned": {
 			"name": "is-owned",
 			"in": "query",
-			"description": "Filters accounts based on whether they are owned by the authorised customer",
+			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts",
 			"required": false,
-			"type": "string",
-			"enum": [
-				"OWNED",
-				"NOT_OWNED",
-				"ALL"
-			],
-			"default": "ALL"
+			"type": "boolean"
 		},
 		"ParamPage": {
 			"name": "page",

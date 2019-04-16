@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|16/4/2019|0.5.0|Transaction v1 draft|Applied changes to prepare for v1 version of Transaction end points and payloads documentation
 |16/4/2019|0.4.0|Direct Debit Auth v1 draft|Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation
 |9/4/2019|0.3.0|Product Reference v1 final|Synchronised standards documentation and swagger with final Decision 054 - Product Reference v1
 |11/3/2019|0.2.0|Product Reference v1 draft|Applied changes to prepare for v1 version of Product Reference end points and payloads|
