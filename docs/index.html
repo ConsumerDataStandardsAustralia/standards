@@ -593,7 +593,7 @@ Payloads
 
 <p>Note that security standards are only partially represented in these standards as they are under development by the Information Security Working Group.  More detail can found at the <a href="https://consumerdatastandardsaustralia.github.io/infosec">Information Security Profile</a> working draft.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.3.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.4.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1522,6 +1522,11 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <td><strong>Bank Payee Data</strong></td>
 <td>bank_payees</td>
 <td>This scope allows access to payee information stored by the customer.<br/><br/>Includes payee information such as billers, international beneficiaries and domestic payees.</td>
+</tr>
+<tr>
+<td><strong>Bank Regular Payments</strong></td>
+<td>bank_regular_payments</td>
+<td>The scope would allow the third party to access regular payments.  Includes Direct Debits and Scheduled Payments.<br/><br/>Includes basic data plus phone, email and address information.</td>
 </tr>
 <tr>
 <td><strong>Basic Customer Data</strong></td>
@@ -12203,6 +12208,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>MIN_BALANCE</td>
 <td>A minimum balance is required for the product</td>
 <td>The minimum balance in AmountString format</td>
+</tr>
+<tr>
+<td>MAX_BALANCE</td>
+<td>A maximum balance is required for the product</td>
+<td>The maximum balance in AmountString format</td>
 </tr>
 <tr>
 <td>OPENING_BALANCE</td>
