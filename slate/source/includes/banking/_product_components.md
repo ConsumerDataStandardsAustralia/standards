@@ -41,6 +41,7 @@ Description of the usage of the constraintType field as it applies to products.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |MIN_BALANCE|A minimum balance is required for the product|The minimum balance in AmountString format|
+|MAX_BALANCE|A maximum balance is required for the product|The maximum balance in AmountString format|
 |OPENING_BALANCE|An opening balance is required for the product|The minimum opening balance in AmountString format|
 |MAX_LIMIT|A maximum credit limit exists|The maximum limit in AmountString format|
 |MIN_LIMIT|A minimum credit limit exists|The minimum limit in AmountString format|

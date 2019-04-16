@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Consumer Data Standards
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.3.0
+  version: 0.4.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'
@@ -235,7 +235,7 @@ paths:
       description: Obtain direct debit authorisations for a specific account
       operationId: listDirectDebits
       x-scopes:
-        - bank_detailed_accounts
+        - bank_regular_payments
       tags:
         - Banking APIs
         - Direct Debits
@@ -260,7 +260,7 @@ paths:
       description: 'Obtain direct debit authorisations for multiple, filtered accounts'
       operationId: listDirectDebitsBulk
       x-scopes:
-        - bank_detailed_accounts
+        - bank_regular_payments
       tags:
         - Banking APIs
         - Direct Debits
@@ -280,14 +280,14 @@ paths:
       description: Obtain direct debit authorisations for a specified list of accounts
       operationId: listDirectDebitsSpecificAccounts
       x-scopes:
-        - bank_detailed_accounts
+        - bank_regular_payments
       tags:
         - Banking APIs
         - Direct Debits
       parameters:
         - name: accountIds
           in: body
-          description: The list of account IDs to obtain information for
+          description: Array of specific accountIds to obtain authorisations for
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
@@ -591,7 +591,7 @@ definitions:
             type: array
             items:
               type: string
-              description: A valid account ID previously obtained from another end point
+              description: Array of specific accountIds to obtain authorisations for
               format: ASCIIString
       meta:
         $ref: '#/definitions/Meta'
@@ -2238,6 +2238,7 @@ definitions:
     type: object
     required:
       - accountId
+      - authorisedEntity
     properties:
       accountId:
         type: string
@@ -2256,12 +2257,11 @@ definitions:
   BankingAuthorisedEntity:
     type: object
     required:
-      - name
       - financialInstitution
     properties:
-      name:
+      description:
         type: string
-        description: Name of the authorised entity
+        description: Description of the authorised entity derived from previously executed direct debits
       financialInstitution:
         type: string
         description: Name of the financial institution through which the direct debit will be executed
@@ -2270,7 +2270,7 @@ definitions:
         description: Australian Business Number for the authorised entity
       acn:
         type: string
-        description: Australian Business Number for the authorised entity
+        description: Australian Company Number for the authorised entity
       arbn:
         type: string
         description: Australian Registered Body Number for the authorised entity
@@ -2737,13 +2737,13 @@ definitions:
           properties:
             code:
               type: string
-              description: The code of the error
+              description: 'Must be one of the following: 0001 – Account not able to be found'
             title:
               type: string
-              description: A displayable title of the error type
+              description: 'Must be one of the following: Invalid account'
             detail:
               type: string
-              description: Detail of the error
+              description: ID of the account not found
             meta:
               type: object
               description: Optional additional data for specific error types

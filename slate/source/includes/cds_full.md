@@ -1102,7 +1102,7 @@ Obtain direct debit authorisations for a specific account
       {
         "accountId": "string",
         "authorisedEntity": {
-          "name": "string",
+          "description": "string",
           "financialInstitution": "string",
           "abn": "string",
           "acn": "string",
@@ -1135,7 +1135,7 @@ Obtain direct debit authorisations for a specific account
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank_regular_payments</a>
 </aside>
 
 ## Get Bulk Direct Debits
@@ -1211,7 +1211,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
       {
         "accountId": "string",
         "authorisedEntity": {
-          "name": "string",
+          "description": "string",
           "financialInstitution": "string",
           "abn": "string",
           "acn": "string",
@@ -1244,7 +1244,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank_regular_payments</a>
 </aside>
 
 ## Get Direct Debits For Specific Accounts
@@ -1303,7 +1303,7 @@ Obtain direct debit authorisations for a specified list of accounts
 |---|---|---|---|---|
 |page|query|integer|optional|Page of results to request (standard pagination)|
 |page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
-|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
+|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
 
@@ -1316,7 +1316,7 @@ Obtain direct debit authorisations for a specified list of accounts
       {
         "accountId": "string",
         "authorisedEntity": {
-          "name": "string",
+          "description": "string",
           "financialInstitution": "string",
           "abn": "string",
           "acn": "string",
@@ -1350,7 +1350,7 @@ Obtain direct debit authorisations for a specified list of accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank_regular_payments</a>
 </aside>
 
 ## Get Payees
@@ -4986,7 +4986,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       {
         "accountId": "string",
         "authorisedEntity": {
-          "name": "string",
+          "description": "string",
           "financialInstitution": "string",
           "abn": "string",
           "acn": "string",
@@ -5029,7 +5029,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "accountId": "string",
   "authorisedEntity": {
-    "name": "string",
+    "description": "string",
     "financialInstitution": "string",
     "abn": "string",
     "acn": "string",
@@ -5046,7 +5046,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence.|
-|authorisedEntity|[BankingAuthorisedEntity](#schemabankingauthorisedentity)|optional|none|none|
+|authorisedEntity|[BankingAuthorisedEntity](#schemabankingauthorisedentity)|mandatory|none|none|
 |lastDebitDateTime|string(DateTimeString)|optional|none|The date and time of the last debit executed under this authorisation|
 |lastDebitAmount|string(AmountString)|optional|none|The amount of the last debit executed under this authorisation|
 
@@ -5056,7 +5056,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "name": "string",
+  "description": "string",
   "financialInstitution": "string",
   "abn": "string",
   "acn": "string",
@@ -5069,10 +5069,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|mandatory|none|Name of the authorised entity|
+|description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|
 |financialInstitution|string|mandatory|none|Name of the financial institution through which the direct debit will be executed|
 |abn|string|optional|none|Australian Business Number for the authorised entity|
-|acn|string|optional|none|Australian Business Number for the authorised entity|
+|acn|string|optional|none|Australian Company Number for the authorised entity|
 |arbn|string|optional|none|Australian Registered Body Number for the authorised entity|
 
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
@@ -5948,9 +5948,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |errors|[object]|mandatory|none|none|
-|» code|string|mandatory|none|The code of the error|
-|» title|string|mandatory|none|A displayable title of the error type|
-|» detail|string|mandatory|none|Detail of the error|
+|» code|string|mandatory|none|Must be one of the following: 0001 – Account not able to be found|
+|» title|string|mandatory|none|Must be one of the following: Invalid account|
+|» detail|string|mandatory|none|ID of the account not found|
 |» meta|object|optional|none|Optional additional data for specific error types|
 
 <h2 id="tocSbankingenumproductcategory">BankingEnumProductCategory</h2>

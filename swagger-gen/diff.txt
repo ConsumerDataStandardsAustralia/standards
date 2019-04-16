@@ -1,3 +1,60 @@
-4091a4092,4093
-> |depositRateType|FLOATING|
-> |depositRateType|MARKET_LINKED|
+1105c1105
+<           "description": "string",
+---
+>           "name": "string",
+1138c1138
+< <a href="#authorisation-scopes">bank_regular_payments</a>
+---
+> <a href="#authorisation-scopes">bank_detailed_accounts</a>
+1214c1214
+<           "description": "string",
+---
+>           "name": "string",
+1247c1247
+< <a href="#authorisation-scopes">bank_regular_payments</a>
+---
+> <a href="#authorisation-scopes">bank_detailed_accounts</a>
+1306c1306
+< |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
+---
+> |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
+1319c1319
+<           "description": "string",
+---
+>           "name": "string",
+1353c1353
+< <a href="#authorisation-scopes">bank_regular_payments</a>
+---
+> <a href="#authorisation-scopes">bank_detailed_accounts</a>
+4989c4989
+<           "description": "string",
+---
+>           "name": "string",
+5032c5032
+<     "description": "string",
+---
+>     "name": "string",
+5049c5049
+< |authorisedEntity|[BankingAuthorisedEntity](#schemabankingauthorisedentity)|mandatory|none|none|
+---
+> |authorisedEntity|[BankingAuthorisedEntity](#schemabankingauthorisedentity)|optional|none|none|
+5059c5059
+<   "description": "string",
+---
+>   "name": "string",
+5072c5072
+< |description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|
+---
+> |name|string|mandatory|none|Name of the authorised entity|
+5075c5075
+< |acn|string|optional|none|Australian Company Number for the authorised entity|
+---
+> |acn|string|optional|none|Australian Business Number for the authorised entity|
+5951,5953c5951,5953
+< |» code|string|mandatory|none|Must be one of the following: 0001 – Account not able to be found|
+< |» title|string|mandatory|none|Must be one of the following: Invalid account|
+< |» detail|string|mandatory|none|ID of the account not found|
+---
+> |» code|string|mandatory|none|The code of the error|
+> |» title|string|mandatory|none|A displayable title of the error type|
+> |» detail|string|mandatory|none|Detail of the error|
