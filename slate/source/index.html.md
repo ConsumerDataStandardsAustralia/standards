@@ -17,9 +17,6 @@ includes:
   - intro
   - standards
   - security
-#  - banking
-#  - common
-#  - shared
   - cds_full
   - banking/product_categories
   - banking/product_components

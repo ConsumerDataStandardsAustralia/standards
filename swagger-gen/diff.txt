@@ -1,40 +1,20 @@
-44d43
-< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-46a46
-> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-53a54,56
-> |open-status|OPEN|
-> |open-status|CLOSED|
-> |open-status|ALL|
-64,66d66
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
-367d366
-< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-369a369
-> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-376a377,379
-> |open-status|OPEN|
-> |open-status|CLOSED|
-> |open-status|ALL|
-387,389d389
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
-840,841d839
-< |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-< |is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-864,866d861
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
-1171,1172d1165
-< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-< |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-1173a1167
-> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-1191,1193d1184
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
+5461,5464c5461,5464
+< |shortName|string|optional|none|Short name used for communication, if  different to the business name|
+< |abn|string|optional|none|Australian Business Number for the organisation|
+< |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
+< |arbn|string|optional|none|Australian Registered Body Number for the organisation, if applicable and known|
+---
+> |shortName|string|conditional|none|Short name used for communication, if  different to the business name|
+> |abn|string|conditional|none|Australian Business Number for the organisation|
+> |acn|string|conditional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
+> |arbn|string|conditional|none|Australian Registered Body Number for the organisation, if applicable and known|
+5466c5466
+< |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
+---
+> |industryCode|string|conditional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
+5468,5469c5468,5469
+< |registeredCountry|string|optional|none|Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent|
+< |establishmentDate|string(DateString)|optional|none|The date the organisation described was established|
+---
+> |registeredCountry|string|conditional|none|Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent|
+> |establishmentDate|string(DateString)|conditional|none|The date the organisation described was established|

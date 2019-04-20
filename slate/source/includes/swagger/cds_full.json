@@ -829,8 +829,7 @@
 		"RequestAccountIds": {
 			"type": "object",
 			"required": [
-				"data",
-				"meta"
+				"data"
 			],
 			"properties": {
 				"data": {
@@ -982,8 +981,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -1756,8 +1754,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -2516,8 +2513,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -2726,8 +2722,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -3109,18 +3104,17 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
-			],
-			"x-conditional": [
-				"person",
-				"organisation"
+				"links"
 			],
 			"properties": {
 				"data": {
 					"type": "object",
 					"required": [
 						"customerUType"
+					],
+					"x-conditional": [
+						"person",
+						"organisation"
 					],
 					"properties": {
 						"customerUType": {
@@ -3151,18 +3145,17 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
-			],
-			"x-conditional": [
-				"person",
-				"organisation"
+				"links"
 			],
 			"properties": {
 				"data": {
 					"type": "object",
 					"required": [
 						"customerUType"
+					],
+					"x-conditional": [
+						"person",
+						"organisation"
 					],
 					"properties": {
 						"customerUType": {
@@ -3281,17 +3274,6 @@
 				"businessName",
 				"organisationType"
 			],
-			"x-conditional": [
-				"agentFirstName",
-				"shortName",
-				"abn",
-				"acn",
-				"arbn",
-				"asACNCRegistered",
-				"industryCode",
-				"registeredCountry",
-				"establishmentDate"
-			],
 			"properties": {
 				"lastUpdateTime": {
 					"type": "string",
@@ -3311,8 +3293,11 @@
 					"description": "The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to “Unspecified” if the role is not known"
 				},
 				"businessName": {
-					"type": "string",
-					"description": "Known alternate names of the organisation. Array is mandatory but may be empty"
+					"type": "array",
+					"description": "Known alternate names of the organisation. Array is mandatory but may be empty",
+					"items": {
+						"type": "string"
+					}
 				},
 				"legalName": {
 					"type": "string",
@@ -3389,12 +3374,12 @@
 		"CommonPhoneNumber": {
 			"type": "object",
 			"required": [
-				"isPreferred",
 				"purpose",
 				"number",
 				"fullNumber"
 			],
 			"x-conditional": [
+				"isPreferred",
 				"areaCode"
 			],
 			"properties": {

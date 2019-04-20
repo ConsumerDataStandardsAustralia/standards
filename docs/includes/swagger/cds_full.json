@@ -3,7 +3,7 @@
 	"info": {
 		"title": "Consumer Data Standards",
 		"description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-		"version": "0.5.0",
+		"version": "0.6.0",
 		"license": {
 			"name": "MIT Licence",
 			"url": "https://opensource.org/licenses/MIT"
@@ -691,7 +691,7 @@
 		"/common/customer/detail": {
 			"get": {
 				"summary": "Get Customer Detail",
-				"description": "Obtain detailed information on the authorised customer within the current session.",
+				"description": "Obtain detailed information on the customer that has authorised the current session",
 				"operationId": "getCustomerDetail",
 				"x-scopes": [
 					"common_detailed_customer"
@@ -829,8 +829,7 @@
 		"RequestAccountIds": {
 			"type": "object",
 			"required": [
-				"data",
-				"meta"
+				"data"
 			],
 			"properties": {
 				"data": {
@@ -982,8 +981,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -1756,8 +1754,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -2516,8 +2513,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -2726,8 +2722,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -3109,18 +3104,17 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
-			],
-			"x-conditional": [
-				"person",
-				"organisation"
+				"links"
 			],
 			"properties": {
 				"data": {
 					"type": "object",
 					"required": [
 						"customerUType"
+					],
+					"x-conditional": [
+						"person",
+						"organisation"
 					],
 					"properties": {
 						"customerUType": {
@@ -3151,18 +3145,17 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
-			],
-			"x-conditional": [
-				"person",
-				"organisation"
+				"links"
 			],
 			"properties": {
 				"data": {
 					"type": "object",
 					"required": [
 						"customerUType"
+					],
+					"x-conditional": [
+						"person",
+						"organisation"
 					],
 					"properties": {
 						"customerUType": {
@@ -3192,14 +3185,17 @@
 		"CommonPerson": {
 			"type": "object",
 			"required": [
-				"lastUpdateTime",
+				"lastUpdated",
 				"lastName",
 				"middleNames"
 			],
+			"x-conditional": [
+				"firstname"
+			],
 			"properties": {
-				"lastUpdateTime": {
+				"lastUpdated": {
 					"type": "string",
-					"description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
+					"description": "The date and time that any data in this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
 					"format": "DateTimeString"
 				},
 				"firstName": {
@@ -3245,21 +3241,21 @@
 					"properties": {
 						"phoneNumbers": {
 							"type": "array",
-							"description": "At least one record is required",
+							"description": "Array is mandatory but may be empty",
 							"items": {
 								"$ref": "#/definitions/CommonPhoneNumber"
 							}
 						},
 						"emailAddresses": {
 							"type": "array",
-							"description": "May be empty",
+							"description": "Array is mandatory but may be empty",
 							"items": {
 								"$ref": "#/definitions/CommonEmailAddress"
 							}
 						},
 						"physicalAddresses": {
 							"type": "array",
-							"description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+							"description": "An array of addresses. There must be at least one record. One, and only one, record may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL.  If zero then the REGISTERED address is to be used for mail.",
 							"items": {
 								"$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
 							}
@@ -3271,9 +3267,10 @@
 		"CommonOrganisation": {
 			"type": "object",
 			"required": [
-				"lastUpdateTime",
+				"lastUpdate",
 				"agentLastName",
 				"agentRole",
+				"legalName",
 				"businessName",
 				"organisationType"
 			],
@@ -3285,7 +3282,7 @@
 				},
 				"agentFirstName": {
 					"type": "string",
-					"description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
+					"description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the agentLastName field"
 				},
 				"agentLastName": {
 					"type": "string",
@@ -3293,11 +3290,14 @@
 				},
 				"agentRole": {
 					"type": "string",
-					"description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known"
+					"description": "The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to “Unspecified” if the role is not known"
 				},
 				"businessName": {
-					"type": "string",
-					"description": "Name of the organisation"
+					"type": "array",
+					"description": "Known alternate names of the organisation. Array is mandatory but may be empty",
+					"items": {
+						"type": "string"
+					}
 				},
 				"legalName": {
 					"type": "string",
@@ -3314,6 +3314,10 @@
 				"acn": {
 					"type": "string",
 					"description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
+				},
+				"arbn": {
+					"type": "string",
+					"description": "Australian Registered Body Number for the organisation, if applicable and known"
 				},
 				"isACNCRegistered": {
 					"type": "boolean",
@@ -3381,11 +3385,11 @@
 			"properties": {
 				"isPreferred": {
 					"type": "boolean",
-					"description": "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present"
+					"description": "Required to be true for one and only one entry to indicate the preferred phone number"
 				},
 				"purpose": {
 					"type": "string",
-					"description": "The purpose of the number as specified by the customer",
+					"description": "The purpose of the number as specified by the customer.  Note that the INTERNATIONAL number indicates a number that is applicable for contacting the customer if they are overseas",
 					"enum": [
 						"MOBILE",
 						"HOME",
@@ -3401,7 +3405,7 @@
 				},
 				"areaCode": {
 					"type": "string",
-					"description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
+					"description": "Required for non-mobile phone numbers.  If this field is present and refers to an Australian area code then the leading ‘0’ should not be included"
 				},
 				"number": {
 					"type": "string",
@@ -3427,7 +3431,7 @@
 			"properties": {
 				"isPreferred": {
 					"type": "boolean",
-					"description": "Required for one and only one email record in the collection. Denotes the default email address"
+					"description": "Required for one and only one entry to indicate the preferred email address"
 				},
 				"purpose": {
 					"type": "string",
