@@ -79,7 +79,7 @@
 					"description": "A tokenised identifier for the account which is unique but not shareable",
 					"required": true,
 					"type": "string",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				}],
 				"responses": {
 					"200": {
@@ -193,7 +193,7 @@
 						"description": "ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.",
 						"required": true,
 						"type": "string",
-						"format": "ASCIIString"
+						"x-cdr-type": "ASCIIString"
 					},
 					{
 						"$ref": "#/parameters/ParamStartTime"
@@ -246,7 +246,7 @@
 						"description": "ID of the account to get transactions for.  Must have previously been returned by one of the account list end points",
 						"required": true,
 						"type": "string",
-						"format": "ASCIIString"
+						"x-cdr-type": "ASCIIString"
 					},
 					{
 						"name": "transactionId",
@@ -254,7 +254,7 @@
 						"description": "ID of the transaction obtained from a previous call to one of the other transaction end points",
 						"required": true,
 						"type": "string",
-						"format": "ASCIIString"
+						"x-cdr-type": "ASCIIString"
 					}
 				],
 				"responses": {
@@ -398,7 +398,7 @@
 						"description": "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.",
 						"required": true,
 						"type": "string",
-						"format": "ASCIIString"
+						"x-cdr-type": "ASCIIString"
 					},
 					{
 						"$ref": "#/parameters/ParamPage"
@@ -563,7 +563,7 @@
 					"description": "The ID used to locate the details of a particular payee",
 					"required": true,
 					"type": "string",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				}],
 				"responses": {
 					"200": {
@@ -605,7 +605,7 @@
 						"description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products",
 						"required": false,
 						"type": "string",
-						"format": "DateTimeString"
+						"x-cdr-type": "DateTimeString"
 					},
 					{
 						"name": "brand",
@@ -651,7 +651,7 @@
 					"description": "ID of the specific product requested",
 					"required": true,
 					"type": "string",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				}],
 				"responses": {
 					"200": {
@@ -775,7 +775,7 @@
 			"description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type",
 			"required": false,
 			"type": "string",
-			"format": "DateTimeString"
+			"x-cdr-type": "DateTimeString"
 		},
 		"ParamEndTime": {
 			"name": "end-time",
@@ -783,7 +783,7 @@
 			"description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
 			"required": false,
 			"type": "string",
-			"format": "DateTimeString"
+			"x-cdr-type": "DateTimeString"
 		},
 		"ParamTransactionNewestTime": {
 			"name": "newest-time",
@@ -791,7 +791,7 @@
 			"description": "Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type",
 			"required": false,
 			"type": "string",
-			"format": "DateTimeString"
+			"x-cdr-type": "DateTimeString"
 		},
 		"ParamTransactionOldestTime": {
 			"name": "oldest-time",
@@ -799,7 +799,7 @@
 			"description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type",
 			"required": false,
 			"type": "string",
-			"format": "DateTimeString"
+			"x-cdr-type": "DateTimeString"
 		},
 		"ParamTransactionMinAmount": {
 			"name": "min-amount",
@@ -807,7 +807,7 @@
 			"description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
 			"required": false,
 			"type": "string",
-			"format": "AmountString"
+			"x-cdr-type": "AmountString"
 		},
 		"ParamTransactionMaxAmount": {
 			"name": "max-amount",
@@ -815,7 +815,7 @@
 			"description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
 			"required": false,
 			"type": "string",
-			"format": "AmountString"
+			"x-cdr-type": "AmountString"
 		},
 		"ParamTransactionText": {
 			"name": "text",
@@ -844,7 +844,7 @@
 							"items": {
 								"type": "string",
 								"description": "Array of specific accountIds to obtain authorisations for",
-								"format": "ASCIIString"
+								"x-cdr-type": "ASCIIString"
 							}
 						}
 					}
@@ -900,22 +900,22 @@
 				"productId": {
 					"type": "string",
 					"description": "A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"effectiveFrom": {
 					"type": "string",
 					"description": "The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"effectiveTo": {
 					"type": "string",
 					"description": "The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"lastUpdated": {
 					"type": "string",
 					"description": "The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"productCategory": {
 					"$ref": "#/definitions/BankingEnumProductCategory"
@@ -939,7 +939,7 @@
 				"applicationUri": {
 					"type": "string",
 					"description": "A link to the an application web page where this product can be applied for.",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"isTailored": {
 					"type": "boolean",
@@ -952,27 +952,27 @@
 						"overviewUri": {
 							"type": "string",
 							"description": "General overview of the product",
-							"format": "URIString"
+							"x-cdr-type": "URIString"
 						},
 						"termsUri": {
 							"type": "string",
 							"description": "Terms and conditions for the product",
-							"format": "URIString"
+							"x-cdr-type": "URIString"
 						},
 						"eligibilityUri": {
 							"type": "string",
 							"description": "Eligibility rules and criteria for the product",
-							"format": "URIString"
+							"x-cdr-type": "URIString"
 						},
 						"feesAndPricingUri": {
 							"type": "string",
 							"description": "Description of fees, pricing, discounts, exemptions and bonuses for the product",
-							"format": "URIString"
+							"x-cdr-type": "URIString"
 						},
 						"bundleUri": {
 							"type": "string",
 							"description": "Description of a bundle that this product can be part of",
-							"format": "URIString"
+							"x-cdr-type": "URIString"
 						}
 					}
 				}
@@ -1080,14 +1080,14 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on the bundle criteria and benefits",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"productIds": {
 					"type": "array",
 					"description": "Array of product IDs for products included in the bundle",
 					"items": {
 						"type": "string",
-						"format": "ASCIIString"
+						"x-cdr-type": "ASCIIString"
 					}
 				}
 			}
@@ -1142,7 +1142,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this feature",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -1177,7 +1177,7 @@
 			  "additionalInfoUri": {
 				"type": "string",
 				"description": "Link to a web page with more information on the constraint",
-				"format": "URIString"
+				"x-cdr-type": "URIString"
 			  }
 			}
 		},
@@ -1220,7 +1220,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this eligibility criteria",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -1260,22 +1260,22 @@
 				"amount": {
 					"type": "string",
 					"description": "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"balanceRate": {
 					"type": "string",
 					"description": "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"transactionRate": {
 					"type": "string",
 					"description": "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"accruedRate": {
 					"type": "string",
 					"description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"accrualFrequency": {
 					"type": "string",
@@ -1284,7 +1284,7 @@
 				"currency": {
 					"type": "string",
 					"description": "The currency the fee will be charged in. Assumes AUD if absent",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"additionalValue": {
 					"type": "string",
@@ -1297,7 +1297,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this fee",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"discounts": {
 					"description": "An optional list of discounts to this fee that may be available",
@@ -1341,27 +1341,27 @@
 				"amount": {
 					"type": "string",
 					"description": "Value of the discount",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"balanceRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"transactionRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"accruedRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"feeRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"additionalValue": {
 					"type": "string",
@@ -1374,7 +1374,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this discount",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"eligibility": {
 					"description": "Eligibility constraints that apply to this discount",
@@ -1424,7 +1424,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this eligibility constraint",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -1454,7 +1454,7 @@
 				"rate": {
 					"type": "string",
 					"description": "The rate to be applied",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"calculationFrequency": {
 					"type": "string",
@@ -1482,7 +1482,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this rate",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -1516,12 +1516,12 @@
 				"rate": {
 					"type": "string",
 					"description": "The rate to be applied",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"comparisonRate": {
 					"type": "string",
 					"description": "A comparison rate equivalent for this rate",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"calculationFrequency": {
 					"type": "string",
@@ -1557,7 +1557,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this rate",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -1662,7 +1662,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this condition",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -1714,7 +1714,7 @@
 				"accountId": {
 					"type": "string",
 					"description": "A unique ID of the account adhering to the standards for ID permanence",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"displayName": {
 					"type": "string",
@@ -1727,7 +1727,7 @@
 				"maskedNumber": {
 					"type": "string",
 					"description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked",
-					"format": "MaskedAccountString"
+					"x-cdr-type": "MaskedAccountString"
 				},
 				"openStatus": {
 					"type": "string",
@@ -1858,22 +1858,22 @@
 				"lodgementDate": {
 					"type": "string",
 					"description": "The lodgement date of the original deposit",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				},
 				"maturityDate": {
 					"type": "string",
 					"description": "Maturity date for the term deposit",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				},
 				"maturityAmount": {
 					"type": "string",
 					"description": "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"maturityCurrency": {
 					"type": "string",
 					"description": "If absent assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"maturityInstructions": {
 					"type": "string",
@@ -1896,22 +1896,22 @@
 				"minPaymentAmount": {
 					"type": "string",
 					"description": "The minimum payment amount due for the next card payment",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"paymentDueAmount": {
 					"type": "string",
 					"description": "The amount due for the next card payment",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"paymentCurrency": {
 					"type": "string",
 					"description": "If absent assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"paymentDueDate": {
 					"type": "string",
 					"description": "Date that the next payment for the card is due",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				}
 			}
 		},
@@ -1921,57 +1921,57 @@
 				"originalStartDate": {
 					"type": "string",
 					"description": "Optional original start date for the loan",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				},
 				"originalLoanAmount": {
 					"type": "string",
 					"description": "Optional original loan value",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"originalLoanCurrency": {
 					"type": "string",
 					"description": "If absent assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"loanEndDate": {
 					"type": "string",
 					"description": "Date that the loan is due to be repaid in full",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				},
 				"nextInstalmentDate": {
 					"type": "string",
 					"description": "Next date that an instalment is required",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				},
 				"minInstalmentAmount": {
 					"type": "string",
 					"description": "Minimum amount of next instalment",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"minInstalmentCurrency": {
 					"type": "string",
 					"description": "If absent assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"maxRedraw": {
 					"type": "string",
 					"description": "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"maxRedrawCurrency": {
 					"type": "string",
 					"description": "If absent assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"minRedraw": {
 					"type": "string",
 					"description": "Minimum redraw amount",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"minRedrawCurrency": {
 					"type": "string",
 					"description": "If absent assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"offsetAccountEnabled": {
 					"type": "boolean",
@@ -1982,7 +1982,7 @@
 					"description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
 					"items": {
 						"type": "string",
-						"format": "ASCIIString"
+						"x-cdr-type": "ASCIIString"
 					}
 				},
 				"repaymentFrequency": {
@@ -2053,7 +2053,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this feature",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"isActivated": {
 					"type": "boolean",
@@ -2098,32 +2098,32 @@
 				"amount": {
 					"type": "string",
 					"description": "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"balanceRate": {
 					"type": "string",
 					"description": "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"transactionRate": {
 					"type": "string",
 					"description": "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"accruedRate": {
 					"type": "string",
 					"description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"accrualFrequency": {
 					"type": "string",
 					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"currency": {
 					"type": "string",
 					"description": "The currency the fee will be charged in. Assumes AUD if absent",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"additionalValue": {
 					"type": "string",
@@ -2136,7 +2136,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this fee",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"discounts": {
 					"type": "array",
@@ -2178,22 +2178,22 @@
 				"amount": {
 					"type": "string",
 					"description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"balanceRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"transactionRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"accruedRate": {
 					"type": "string",
 					"description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"additionalValue": {
 					"type": "string",
@@ -2212,7 +2212,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this discount",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -2255,7 +2255,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this eligibility constraint",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -2283,7 +2283,7 @@
 				"rate": {
 					"type": "string",
 					"description": "The rate to be applied",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"calculationFrequency": {
 					"type": "string",
@@ -2304,7 +2304,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on this fee",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -2338,7 +2338,7 @@
 				"rate": {
 					"type": "string",
 					"description": "The rate to be applied",
-					"format": "RateString"
+					"x-cdr-type": "RateString"
 				},
 				"calculationFrequency": {
 					"type": "string",
@@ -2367,7 +2367,7 @@
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information  on this fee",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -2420,12 +2420,12 @@
 				"accountId": {
 					"type": "string",
 					"description": "ID of the account for which transactions are provided",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"transactionId": {
 					"type": "string",
 					"description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"isDetailAvailable": {
 					"type": "boolean",
@@ -2460,27 +2460,27 @@
 				"postingDateTime": {
 					"type": "string",
 					"description": "The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"valueDateTime": {
 					"type": "string",
 					"description": "Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"executionDateTime": {
 					"type": "string",
 					"description": "The time the transaction was executed by the originating customer, if available",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"amount": {
 					"type": "string",
 					"description": "The value of the transaction. Negative values mean money was outgoing from the account",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"currency": {
 					"type": "string",
 					"description": "The currency for the transaction amount. AUD assumed if not present",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				},
 				"reference": {
 					"type": "string",
@@ -2629,7 +2629,7 @@
 				"accountId": {
 					"type": "string",
 					"description": "A unique ID of the account adhering to the standards for ID permanence",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"balanceUType": {
 					"type": "string",
@@ -2752,7 +2752,7 @@
 				"payeeId": {
 					"type": "string",
 					"description": "ID of the payee adhering to the rules of ID permanence",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"nickname": {
 					"type": "string",
@@ -2774,7 +2774,7 @@
 				"creationDate": {
 					"type": "string",
 					"description": "The date the payee was created by the customer",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				}
 			}
 		},
@@ -2877,7 +2877,7 @@
 				"cardNumber": {
 					"type": "string",
 					"description": "Name of the account to pay to",
-					"format": "MaskedPANString"
+					"x-cdr-type": "MaskedPANString"
 				}
 			}
 		},
@@ -3060,7 +3060,7 @@
 				"accountId": {
 					"type": "string",
 					"description": "A unique ID of the account adhering to the standards for ID permanence.",
-					"format": "ASCIIString"
+					"x-cdr-type": "ASCIIString"
 				},
 				"authorisedEntity": {
 					"$ref": "#/definitions/BankingAuthorisedEntity"
@@ -3068,12 +3068,12 @@
 				"lastDebitDateTime": {
 					"type": "string",
 					"description": "The date and time of the last debit executed under this authorisation",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"lastDebitAmount": {
 					"type": "string",
 					"description": "The amount of the last debit executed under this authorisation",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				}
 			}
 		},
@@ -3200,7 +3200,7 @@
 				"lastUpdateTime": {
 					"type": "string",
 					"description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"firstName": {
 					"type": "string",
@@ -3281,7 +3281,7 @@
 				"lastUpdateTime": {
 					"type": "string",
 					"description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
-					"format": "DateTimeString"
+					"x-cdr-type": "DateTimeString"
 				},
 				"agentFirstName": {
 					"type": "string",
@@ -3342,7 +3342,7 @@
 				"establishmentDate": {
 					"type": "string",
 					"description": "The date the organisation described was established",
-					"format": "DateString"
+					"x-cdr-type": "DateString"
 				}
 			}
 		},
@@ -3641,12 +3641,12 @@
 				"amount": {
 					"type": "string",
 					"description": "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking",
-					"format": "AmountString"
+					"x-cdr-type": "AmountString"
 				},
 				"currency": {
 					"type": "string",
 					"description": "If not present assumes AUD",
-					"format": "CurrencyString"
+					"x-cdr-type": "CurrencyString"
 				}
 			}
 		},
@@ -3659,7 +3659,7 @@
 				"self": {
 					"type": "string",
 					"description": "Fully qualified link to this API call",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -3681,27 +3681,27 @@
 				"self": {
 					"type": "string",
 					"description": "Fully qualified link to this API call",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"first": {
 					"type": "string",
 					"description": "URI to the first page of this set. Mandatory if this response is not the first page",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"prev": {
 					"type": "string",
 					"description": "URI to the previous page of this set. Mandatory if this response is not the first page",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"next": {
 					"type": "string",
 					"description": "URI to the next page of this set. Mandatory if this response is not the last page",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				},
 				"last": {
 					"type": "string",
 					"description": "URI to the last page of this set. Mandatory if this response is not the last page",
-					"format": "URIString"
+					"x-cdr-type": "URIString"
 				}
 			}
 		},
@@ -3715,12 +3715,12 @@
 				"totalRecords": {
 					"type": "integer",
 					"description": "The total number of records in the full set",
-					"format": "NaturalNumber"
+					"x-cdr-type": "NaturalNumber"
 				},
 				"totalPages": {
 					"type": "integer",
 					"description": "The total number of pages in the full set",
-					"format": "NaturalNumber"
+					"x-cdr-type": "NaturalNumber"
 				}
 			}
 		},

@@ -1,40 +1,352 @@
-44d43
-< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-46a46
-> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-53a54,56
-> |open-status|OPEN|
-> |open-status|CLOSED|
-> |open-status|ALL|
-64,66d66
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
-367d366
-< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-369a369
-> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-376a377,379
-> |open-status|OPEN|
-> |open-status|CLOSED|
-> |open-status|ALL|
-387,389d389
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
-840,841d839
-< |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-< |is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-864,866d861
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
-1171,1172d1165
-< |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-< |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-1173a1167
-> |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-1191,1193d1184
-< |open-status|OPEN|
-< |open-status|CLOSED|
-< |open-status|ALL|
+152c152
+< |accountId|path|string|mandatory|A tokenised identifier for the account which is unique but not shareable|
+---
+> |accountId|path|string(ASCIIString)|mandatory|A tokenised identifier for the account which is unique but not shareable|
+643,647c643,647
+< |accountId|path|string|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
+< |start-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+< |end-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+< |min-amount|query|string|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+< |max-amount|query|string|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+---
+> |accountId|path|string(ASCIIString)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
+> |start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+> |end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+> |min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+> |max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+746,747c746,747
+< |accountId|path|string|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
+< |transactionId|path|string|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
+---
+> |accountId|path|string(ASCIIString)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
+> |transactionId|path|string(ASCIIString)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
+842,845c842,845
+< |newest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+< |oldest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+< |min-amount|query|string|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+< |max-amount|query|string|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+---
+> |newest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+> |oldest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+> |min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+> |max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+977,980c977,980
+< |newest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+< |oldest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+< |min-amount|query|string|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+< |max-amount|query|string|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+---
+> |newest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+> |oldest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+> |min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+> |max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+1081c1081
+< |accountId|path|string|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
+---
+> |accountId|path|string(ASCIIString)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
+1481c1481
+< |payeeId|path|string|mandatory|The ID used to locate the details of a particular payee|
+---
+> |payeeId|path|string(ASCIIString)|mandatory|The ID used to locate the details of a particular payee|
+1631c1631
+< |updated-since|query|string|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
+---
+> |updated-since|query|string(DateTimeString)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
+1748c1748
+< |productId|path|string|mandatory|ID of the specific product requested|
+---
+> |productId|path|string(ASCIIString)|mandatory|ID of the specific product requested|
+2323,2326c2323,2326
+< |productId|[ASCIIString](#common-field-types)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+< |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
+< |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
+< |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
+---
+> |productId|string(ASCIIString)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+> |effectiveFrom|string(DateTimeString)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
+> |effectiveTo|string(DateTimeString)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
+> |lastUpdated|string(DateTimeString)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
+2332c2332
+< |applicationUri|[URIString](#common-field-types)|optional|none|A link to the an application web page where this product can be applied for.|
+---
+> |applicationUri|string(URIString)|optional|none|A link to the an application web page where this product can be applied for.|
+2335,2339c2335,2339
+< |» overviewUri|[URIString](#common-field-types)|optional|none|General overview of the product|
+< |» termsUri|[URIString](#common-field-types)|optional|none|Terms and conditions for the product|
+< |» eligibilityUri|[URIString](#common-field-types)|optional|none|Eligibility rules and criteria for the product|
+< |» feesAndPricingUri|[URIString](#common-field-types)|optional|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
+< |» bundleUri|[URIString](#common-field-types)|optional|none|Description of a bundle that this product can be part of|
+---
+> |» overviewUri|string(URIString)|optional|none|General overview of the product|
+> |» termsUri|string(URIString)|optional|none|Terms and conditions for the product|
+> |» eligibilityUri|string(URIString)|optional|none|Eligibility rules and criteria for the product|
+> |» feesAndPricingUri|string(URIString)|optional|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
+> |» bundleUri|string(URIString)|optional|none|Description of a bundle that this product can be part of|
+2744c2744
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
+2768c2768
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this feature|
+2819c2819
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on the constraint|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the constraint|
+2852c2852
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility criteria|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility criteria|
+2920,2923c2920,2923
+< |amount|[AmountString](#common-field-types)|mandatory|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+---
+> |amount|string(AmountString)|mandatory|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+2925c2925
+< |currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+---
+> |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+2928c2928
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+2979,2983c2979,2983
+< |amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+< |balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+< |transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+< |accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+< |feeRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+---
+> |amount|string(AmountString)|mandatory|none|Value of the discount|
+> |balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+> |transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+> |accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+> |feeRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+2986c2986
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
+3020c3020
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility constraint|
+3086c3086
+< |rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+---
+> |rate|string(RateString)|mandatory|none|The rate to be applied|
+3092c3092
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this rate|
+3154,3155c3154,3155
+< |rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+< |comparisonRate|[RateString](#common-field-types)|optional|none|A comparison rate equivalent for this rate|
+---
+> |rate|string(RateString)|mandatory|none|The rate to be applied|
+> |comparisonRate|string(RateString)|optional|none|A comparison rate equivalent for this rate|
+3162c3162
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this rate|
+3268c3268
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this condition|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this condition|
+3336c3336
+< |accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+---
+> |accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+3339c3339
+< |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
+---
+> |maskedNumber|string(MaskedAccountString)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
+3735,3738c3735,3738
+< |lodgementDate|[DateString](#common-field-types)|mandatory|none|The lodgement date of the original deposit|
+< |maturityDate|[DateString](#common-field-types)|mandatory|none|Maturity date for the term deposit|
+< |maturityAmount|[AmountString](#common-field-types)|optional|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
+< |maturityCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+---
+> |lodgementDate|string(DateString)|mandatory|none|The lodgement date of the original deposit|
+> |maturityDate|string(DateString)|mandatory|none|Maturity date for the term deposit|
+> |maturityAmount|string(AmountString)|optional|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
+> |maturityCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+3766,3769c3766,3769
+< |minPaymentAmount|[AmountString](#common-field-types)|mandatory|none|The minimum payment amount due for the next card payment|
+< |paymentDueAmount|[AmountString](#common-field-types)|mandatory|none|The amount due for the next card payment|
+< |paymentCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+< |paymentDueDate|[DateString](#common-field-types)|mandatory|none|Date that the next payment for the card is due|
+---
+> |minPaymentAmount|string(AmountString)|mandatory|none|The minimum payment amount due for the next card payment|
+> |paymentDueAmount|string(AmountString)|mandatory|none|The amount due for the next card payment|
+> |paymentCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+> |paymentDueDate|string(DateString)|mandatory|none|Date that the next payment for the card is due|
+3803,3813c3803,3813
+< |originalStartDate|[DateString](#common-field-types)|optional|none|Optional original start date for the loan|
+< |originalLoanAmount|[AmountString](#common-field-types)|optional|none|Optional original loan value|
+< |originalLoanCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+< |loanEndDate|[DateString](#common-field-types)|optional|none|Date that the loan is due to be repaid in full|
+< |nextInstalmentDate|[DateString](#common-field-types)|optional|none|Next date that an instalment is required|
+< |minInstalmentAmount|[AmountString](#common-field-types)|optional|none|Minimum amount of next instalment|
+< |minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+< |maxRedraw|[AmountString](#common-field-types)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
+< |maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+< |minRedraw|[AmountString](#common-field-types)|optional|none|Minimum redraw amount|
+< |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+---
+> |originalStartDate|string(DateString)|optional|none|Optional original start date for the loan|
+> |originalLoanAmount|string(AmountString)|optional|none|Optional original loan value|
+> |originalLoanCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+> |loanEndDate|string(DateString)|optional|none|Date that the loan is due to be repaid in full|
+> |nextInstalmentDate|string(DateString)|optional|none|Next date that an instalment is required|
+> |minInstalmentAmount|string(AmountString)|optional|none|Minimum amount of next instalment|
+> |minInstalmentCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+> |maxRedraw|string(AmountString)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
+> |maxRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+> |minRedraw|string(AmountString)|optional|none|Minimum redraw amount|
+> |minRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+3849c3849
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this feature|
+3928,3933c3928,3933
+< |amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |accrualFrequency|[CurrencyString](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+< |currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+---
+> |amount|string(AmountString)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+> |currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+3936c3936
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+3986,3989c3986,3989
+< |amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+< |transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+< |accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+---
+> |amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+> |transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+> |accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+3993c3993
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
+4026c4026
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility constraint|
+4068c4068
+< |rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+---
+> |rate|string(RateString)|mandatory|none|The rate to be applied|
+4073c4073
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+4108c4108
+< |rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+---
+> |rate|string(RateString)|mandatory|none|The rate to be applied|
+4114c4114
+< |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information  on this fee|
+---
+> |additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
+4220,4221c4220,4221
+< |accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
+< |transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
+---
+> |accountId|string(ASCIIString)|mandatory|none|ID of the account for which transactions are provided|
+> |transactionId|string(ASCIIString)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
+4226,4230c4226,4230
+< |postingDateTime|[DateTimeString](#common-field-types)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
+< |valueDateTime|[DateTimeString](#common-field-types)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
+< |executionDateTime|[DateTimeString](#common-field-types)|optional|none|The time the transaction was executed by the originating customer, if available|
+< |amount|[AmountString](#common-field-types)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
+< |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the transaction amount. AUD assumed if not present|
+---
+> |postingDateTime|string(DateTimeString)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
+> |valueDateTime|string(DateTimeString)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
+> |executionDateTime|string(DateTimeString)|optional|none|The time the transaction was executed by the originating customer, if available|
+> |amount|string(AmountString)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
+> |currency|string(CurrencyString)|optional|none|The currency for the transaction amount. AUD assumed if not present|
+4487c4487
+< |accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+---
+> |accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+4693c4693
+< |payeeId|[ASCIIString](#common-field-types)|mandatory|none|ID of the payee adhering to the rules of ID permanence|
+---
+> |payeeId|string(ASCIIString)|mandatory|none|ID of the payee adhering to the rules of ID permanence|
+4697c4697
+< |creationDate|[DateString](#common-field-types)|optional|none|The date the payee was created by the customer|
+---
+> |creationDate|string(DateString)|optional|none|The date the payee was created by the customer|
+4868c4868
+< |cardNumber|[MaskedPANString](#common-field-types)|mandatory|none|Name of the account to pay to|
+---
+> |cardNumber|string(MaskedPANString)|mandatory|none|Name of the account to pay to|
+5041c5041
+< |accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence.|
+---
+> |accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence.|
+5043,5044c5043,5044
+< |lastDebitDateTime|[DateTimeString](#common-field-types)|optional|none|The date and time of the last debit executed under this authorisation|
+< |lastDebitAmount|[AmountString](#common-field-types)|optional|none|The amount of the last debit executed under this authorisation|
+---
+> |lastDebitDateTime|string(DateTimeString)|optional|none|The date and time of the last debit executed under this authorisation|
+> |lastDebitAmount|string(AmountString)|optional|none|The amount of the last debit executed under this authorisation|
+5312c5312
+< |lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+---
+> |lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+5440c5440
+< |lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+---
+> |lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+5453c5453
+< |establishmentDate|[DateString](#common-field-types)|optional|none|The date the organisation described was established|
+---
+> |establishmentDate|string(DateString)|optional|none|The date the organisation described was established|
+5844,5845c5844,5845
+< |amount|[AmountString](#common-field-types)|mandatory|none|The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking|
+< |currency|[CurrencyString](#common-field-types)|optional|none|If not present assumes AUD|
+---
+> |amount|string(AmountString)|mandatory|none|The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking|
+> |currency|string(CurrencyString)|optional|none|If not present assumes AUD|
+5862c5862
+< |self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
+---
+> |self|string(URIString)|mandatory|none|Fully qualified link to this API call|
+5896,5900c5896,5900
+< |self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
+< |first|[URIString](#common-field-types)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
+< |prev|[URIString](#common-field-types)|conditional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
+< |next|[URIString](#common-field-types)|conditional|none|URI to the next page of this set. Mandatory if this response is not the last page|
+< |last|[URIString](#common-field-types)|conditional|none|URI to the last page of this set. Mandatory if this response is not the last page|
+---
+> |self|string(URIString)|mandatory|none|Fully qualified link to this API call|
+> |first|string(URIString)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
+> |prev|string(URIString)|conditional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
+> |next|string(URIString)|conditional|none|URI to the next page of this set. Mandatory if this response is not the last page|
+> |last|string(URIString)|conditional|none|URI to the last page of this set. Mandatory if this response is not the last page|
+5918,5919c5918,5919
+< |totalRecords|[NaturalNumber](#common-field-types)|mandatory|none|The total number of records in the full set|
+< |totalPages|[NaturalNumber](#common-field-types)|mandatory|none|The total number of pages in the full set|
+---
+> |totalRecords|integer(NaturalNumber)|mandatory|none|The total number of records in the full set|
+> |totalPages|integer(NaturalNumber)|mandatory|none|The total number of pages in the full set|
