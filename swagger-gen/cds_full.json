@@ -1283,7 +1283,8 @@
 				},
 				"accrualFrequency": {
 					"type": "string",
-					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"currency": {
 					"type": "string",
@@ -1462,11 +1463,13 @@
 				},
 				"calculationFrequency": {
 					"type": "string",
-					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"applicationFrequency": {
 					"type": "string",
-					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"tiers": {
 					"type": "array",
@@ -1529,11 +1532,13 @@
 				},
 				"calculationFrequency": {
 					"type": "string",
-					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"applicationFrequency": {
 					"type": "string",
-					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"interestPaymentDue": {
 					"type": "string",
@@ -1993,7 +1998,8 @@
 				},
 				"repaymentFrequency": {
 					"type": "string",
-					"description": "The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"repaymentType": {
 					"type": "string",
@@ -2294,11 +2300,13 @@
 				},
 				"calculationFrequency": {
 					"type": "string",
-					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"applicationFrequency": {
 					"type": "string",
-					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"additionalValue": {
 					"type": "string",
@@ -2349,11 +2357,13 @@
 				},
 				"calculationFrequency": {
 					"type": "string",
-					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"applicationFrequency": {
 					"type": "string",
-					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)"
+					"description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+					"x-cdr-type": "ExternalRef"
 				},
 				"interestPaymentDue": {
 					"type": "string",
@@ -2959,7 +2969,8 @@
 						},
 						"country": {
 							"type": "string",
-							"description": "Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code"
+							"description": "Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
+							"x-cdr-type": "ExternalRef"
 						},
 						"message": {
 							"type": "string",
@@ -2976,7 +2987,8 @@
 					"properties": {
 						"country": {
 							"type": "string",
-							"description": "Country of the recipient institution. A valid ISO 3166 Alpha-3 country code"
+							"description": "Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
+							"x-cdr-type": "ExternalRef"
 						},
 						"accountNumber": {
 							"type": "string",
@@ -3001,7 +3013,8 @@
 						},
 						"beneficiaryBankBIC": {
 							"type": "string",
-							"description": "Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)"
+							"description": "Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)",
+							"x-cdr-type": "ExternalRef"
 						},
 						"fedWireNumber": {
 							"type": "string",
@@ -3021,7 +3034,8 @@
 						},
 						"legalEntityIdentifier": {
 							"type": "string",
-							"description": "The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)"
+							"description": "The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)",
+							"x-cdr-type": "ExternalRef"
 						}
 					}
 				}
@@ -3346,7 +3360,8 @@
 				},
 				"registeredCountry": {
 					"type": "string",
-					"description": "Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent"
+					"description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+					"x-cdr-type": "ExternalRef"
 				},
 				"establishmentDate": {
 					"type": "string",
@@ -3423,7 +3438,8 @@
 				},
 				"fullNumber": {
 					"type": "string",
-					"description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966"
+					"description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)",
+					"x-cdr-type": "ExternalRef"
 				}
 			}
 		},
@@ -3452,7 +3468,8 @@
 				},
 				"address": {
 					"type": "string",
-					"description": "A correctly formatted email address, as defined by the addr_spec format in RFC_5322"
+					"description": "A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)",
+					"x-cdr-type": "ExternalRef"
 				}
 			}
 		},
@@ -3544,11 +3561,12 @@
 				},
 				"state": {
 					"type": "string",
-					"description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard"
+					"description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [ISO 3166:AU standard](https://www.iso.org/obp/ui/#iso:code:3166:AU)"
 				},
 				"country": {
 					"type": "string",
-					"description": "A valid ISO 3166 Alpha-3 country code"
+					"description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
+					"x-cdr-type": "ExternalRef"
 				}
 			}
 		},

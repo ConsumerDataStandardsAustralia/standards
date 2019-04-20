@@ -1276,6 +1276,11 @@ the same name.</p>
 <td>A valid URI</td>
 <td>&quot;http://www.google.com&quot;</td>
 </tr>
+<tr>
+<td>ExternalRef</td>
+<td>The format is defined by an external reference such as ISO standard or an RFC</td>
+<td>Swift bank codes using <a href="https://www.iso.org/standard/60390.html">ISO 9362</a></td>
+</tr>
 </tbody></table>
 
 <h2 id='pagination'>Pagination</h2>
@@ -5823,7 +5828,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>accrualFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -6223,14 +6228,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -6373,14 +6378,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -7617,7 +7622,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>repaymentFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The expected or required repayment frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -8272,14 +8277,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -8375,14 +8380,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>calculationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
@@ -9967,10 +9972,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» country</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code</td>
+<td>Country where the beneficiary resides. A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code</td>
 </tr>
 <tr>
 <td>» message</td>
@@ -9988,10 +9993,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» country</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Country of the recipient institution. A valid ISO 3166 Alpha-3 country code</td>
+<td>Country of the recipient institution. A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code</td>
 </tr>
 <tr>
 <td>» accountNumber</td>
@@ -10023,7 +10028,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» beneficiaryBankBIC</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Swift bank code.  Aligns with standard <a href="https://www.iso.org/standard/60390.html">ISO 9362</a></td>
@@ -10058,7 +10063,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» legalEntityIdentifier</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The legal entity identifier (LEI) for the beneficiary.  Aligns with <a href="https://www.iso.org/standard/59771.html">ISO 17442</a></td>
@@ -10891,10 +10896,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>registeredCountry</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent</td>
+<td>Enumeration with values from <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country codes.  Assumed to be AUS if absent</td>
 </tr>
 <tr>
 <td>establishmentDate</td>
@@ -11110,10 +11115,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>fullNumber</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966</td>
+<td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-36'>Enumerated Values</h4>
@@ -11184,10 +11189,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>address</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>A correctly formatted email address, as defined by the addr_spec format in RFC_5322</td>
+<td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-37'>Enumerated Values</h4>
@@ -11490,14 +11495,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard</td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://www.iso.org/obp/ui/#iso:code:3166:AU">ISO 3166:AU standard</a></td>
 </tr>
 <tr>
 <td>country</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>A valid ISO 3166 Alpha-3 country code</td>
+<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code</td>
 </tr>
 </tbody></table>
 
