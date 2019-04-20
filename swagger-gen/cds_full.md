@@ -43,9 +43,9 @@ Obtain a list of accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -149,7 +149,7 @@ Obtain detailed information on a single account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|A tokenised identifier for the account which is unique but not shareable|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
 
 > Example responses
 
@@ -366,9 +366,9 @@ Obtain balances for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -515,8 +515,8 @@ Obtain balances for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
@@ -640,14 +640,14 @@ Some general notes that apply to all end points that retrieve transactions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
-|start-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
-|min-amount|query|string|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
+|start-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+|end-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 > Example responses
 
@@ -743,8 +743,8 @@ Obtain detailed information on a transaction for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
-|transactionId|path|string|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
+|transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
 
 > Example responses
 
@@ -838,14 +838,14 @@ Obtain transactions for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|newest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|oldest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|min-amount|query|string|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -974,13 +974,13 @@ Obtain transactions for a specified list of transactions.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|oldest-time|query|string|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|min-amount|query|string|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
@@ -1078,9 +1078,9 @@ Obtain direct debit authorisations for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 > Example responses
 
@@ -1170,9 +1170,9 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1293,8 +1293,8 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1385,8 +1385,8 @@ Obtain a list of pre-registered payees
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1478,7 +1478,7 @@ Obtain detailed information on a single payee
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|payeeId|path|string|mandatory|The ID used to locate the details of a particular payee|
+|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
 
 > Example responses
 
@@ -1628,11 +1628,11 @@ In addition, the concept of effective date and time has also been included.  Thi
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |effective|query|string|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
-|updated-since|query|string|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
 |brand|query|string|optional|Filter results based on a specific brand|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1745,7 +1745,7 @@ Obtain detailed information on a single product offered openly to the market
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|productId|path|string|mandatory|ID of the specific product requested|
+|productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
 
 > Example responses
 
@@ -2330,7 +2330,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
 |brandName|string|optional|none|An optional display name of the brand|
 |applicationUri|[URIString](#common-field-types)|optional|none|A link to the an application web page where this product can be applied for.|
-|isTailored|boolean|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
+|isTailored|[Boolean](#common-field-types)|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
 |additionalInformation|object|optional|none|Object that contains links to additional information on specific topics|
 |» overviewUri|[URIString](#common-field-types)|optional|none|General overview of the product|
 |» termsUri|[URIString](#common-field-types)|optional|none|Terms and conditions for the product|
@@ -3338,7 +3338,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |nickname|string|optional|none|A customer supplied nick name for the account|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
 |openStatus|string|optional|none|Open or closed status for the account.  If not present then OPEN is assumed|
-|isOwned|boolean|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
+|isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
 |productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
 |productName|string|mandatory|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
 
@@ -3811,7 +3811,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |minRedraw|[AmountString](#common-field-types)|optional|none|Minimum redraw amount|
 |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
-|offsetAccountEnabled|boolean|optional|none|Set to true if one or more offset accounts are configured for this loan account|
+|offsetAccountEnabled|[Boolean](#common-field-types)|optional|none|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
 |repaymentFrequency|string|optional|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |repaymentType|string|optional|none|The reason for taking out the loan. The purpose generally affects the rate offered due to different risk profiles|
@@ -3847,7 +3847,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
 |additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
-|isActivated|boolean|optional|none|True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent|
+|isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent|
 
 #### Enumerated Values
 
@@ -4219,7 +4219,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
 |transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
-|isDetailAvailable|boolean|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
+|isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
 |status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
 |description|string|mandatory|none|The transaction description as applied by the financial institution|
@@ -5446,7 +5446,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |shortName|string|optional|none|Short name used for communication, if  different to the business name|
 |abn|string|optional|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
-|isACNCRegistered|boolean|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
+|isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
 |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
 |organisationType|string|mandatory|none|Legal organisation type|
 |registeredCountry|string|optional|none|Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent|
@@ -5561,7 +5561,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+|isPreferred|[Boolean](#common-field-types)|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
 |purpose|string|mandatory|none|The purpose of the number as specified by the customer|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
 |areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
@@ -5597,7 +5597,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
 |address|string|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in RFC_5322|
 
@@ -5805,20 +5805,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |dpid|string|optional|none|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|thoroughfareNumber1|integer|optional|none|Thoroughfare number for a property (first number in a property ranged address)|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|none|Thoroughfare number for a property (first number in a property ranged address)|
 |thoroughfareNumber1Suffix|string|optional|none|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|thoroughfareNumber2|integer|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
 |thoroughfareNumber2Suffix|string|optional|none|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
 |flatUnitNumber|string|optional|none|Unit number (including suffix, if applicable)|
 |floorLevelNumber|string|optional|none|Floor or level number (including alpha characters)|
-|lotNumber|integer|optional|none|Allotment number for the address|
+|lotNumber|[PositiveInteger](#common-field-types)|optional|none|Allotment number for the address|
 |buildingName1|string|optional|none|Building/Property name 1|
 |buildingName2|string|optional|none|Building/Property name 2|
 |streetName|string|optional|none|The name of the street|
 |streetType|string|optional|none|The street type. Valid enumeration defined by Australia Post PAF code file|
 |streetSuffix|string|optional|none|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
 |postalDeliveryType|string|optional|none|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|integer|optional|none|Postal delivery number if the address is a postal delivery type|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|none|Postal delivery number if the address is a postal delivery type|
 |postalDeliveryNumberPrefix|string|optional|none|Postal delivery number prefix related to the postal delivery number|
 |postalDeliveryNumberSuffix|string|optional|none|Postal delivery number suffix related to the postal delivery number|
 |localityName|string|mandatory|none|Full name of locality|

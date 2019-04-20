@@ -751,7 +751,8 @@
 			"in": "query",
 			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts",
 			"required": false,
-			"type": "boolean"
+			"type": "boolean",
+			"x-cdr-type": "Boolean"
 		},
 		"ParamPage": {
 			"name": "page",
@@ -759,6 +760,7 @@
 			"description": "Page of results to request (standard pagination)",
 			"required": false,
 			"type": "integer",
+			"x-cdr-type": "PositiveInteger",
 			"default": "1"
 		},
 		"ParamPageSize": {
@@ -767,6 +769,7 @@
 			"description": "Page size to request. Default is 25 (standard pagination)",
 			"required": false,
 			"type": "integer",
+			"x-cdr-type": "PositiveInteger",
 			"default": "25"
 		},
 		"ParamStartTime": {
@@ -943,7 +946,8 @@
 				},
 				"isTailored": {
 					"type": "boolean",
-					"description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable"
+					"description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable",
+					"x-cdr-type": "Boolean"
 				},
 				"additionalInformation": {
 					"description": "Object that contains links to additional information on specific topics",
@@ -1741,6 +1745,7 @@
 				"isOwned": {
 					"type": "boolean",
 					"description": "Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed",
+					"x-cdr-type": "Boolean",
 					"default": "true"
 				},
 				"productCategory": {
@@ -1975,7 +1980,8 @@
 				},
 				"offsetAccountEnabled": {
 					"type": "boolean",
-					"description": "Set to true if one or more offset accounts are configured for this loan account"
+					"description": "Set to true if one or more offset accounts are configured for this loan account",
+					"x-cdr-type": "Boolean"
 				},
 				"offsetAccountIds": {
 					"type": "array",
@@ -2058,6 +2064,7 @@
 				"isActivated": {
 					"type": "boolean",
 					"description": "True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent",
+					"x-cdr-type": "Boolean",
 					"default": "true"
 				}
 			}
@@ -2429,7 +2436,8 @@
 				},
 				"isDetailAvailable": {
 					"type": "boolean",
-					"description": "True if extended information is available using the transaction detail end point. False if extended data is not available"
+					"description": "True if extended information is available using the transaction detail end point. False if extended data is not available",
+					"x-cdr-type": "Boolean"
 				},
 				"type": {
 					"type": "string",
@@ -3317,7 +3325,8 @@
 				},
 				"isACNCRegistered": {
 					"type": "boolean",
-					"description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed."
+					"description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+					"x-cdr-type": "Boolean"
 				},
 				"industryCode": {
 					"type": "string",
@@ -3381,7 +3390,8 @@
 			"properties": {
 				"isPreferred": {
 					"type": "boolean",
-					"description": "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present"
+					"description": "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present",
+					"x-cdr-type": "Boolean"
 				},
 				"purpose": {
 					"type": "string",
@@ -3427,7 +3437,8 @@
 			"properties": {
 				"isPreferred": {
 					"type": "boolean",
-					"description": "Required for one and only one email record in the collection. Denotes the default email address"
+					"description": "Required for one and only one email record in the collection. Denotes the default email address",
+					"x-cdr-type": "Boolean"
 				},
 				"purpose": {
 					"type": "string",
@@ -3556,7 +3567,8 @@
 				},
 				"thoroughfareNumber1": {
 					"type": "integer",
-					"description": "Thoroughfare number for a property (first number in a property ranged address)"
+					"description": "Thoroughfare number for a property (first number in a property ranged address)",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"thoroughfareNumber1Suffix": {
 					"type": "string",
@@ -3564,7 +3576,8 @@
 				},
 				"thoroughfareNumber2": {
 					"type": "integer",
-					"description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)"
+					"description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"thoroughfareNumber2Suffix": {
 					"type": "string",
@@ -3580,7 +3593,8 @@
 				},
 				"lotNumber": {
 					"type": "integer",
-					"description": "Allotment number for the address"
+					"description": "Allotment number for the address",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"buildingName1": {
 					"type": "string",
@@ -3608,7 +3622,8 @@
 				},
 				"postalDeliveryNumber": {
 					"type": "integer",
-					"description": "Postal delivery number if the address is a postal delivery type"
+					"description": "Postal delivery number if the address is a postal delivery type",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"postalDeliveryNumberPrefix": {
 					"type": "string",
