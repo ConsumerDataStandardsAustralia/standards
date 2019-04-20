@@ -236,7 +236,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>A tokenised identifier for the account which is unique but not shareable</td>
 </tr>
@@ -868,35 +868,35 @@ Some general notes that apply to all end points that retrieve transactions:</p>
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
 <tr>
 <td>start-time</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>end-time</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
-<td>string(AmountString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
-<td>string(AmountString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
@@ -1032,14 +1032,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>ID of the transaction obtained from a previous call to one of the other transaction end points</td>
 </tr>
@@ -1171,28 +1171,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>newest-time</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>oldest-time</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
-<td>string(AmountString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
-<td>string(AmountString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
@@ -1402,28 +1402,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>newest-time</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>oldest-time</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
-<td>string(AmountString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
-<td>string(AmountString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
@@ -1572,7 +1572,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
@@ -2169,7 +2169,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>payeeId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>The ID used to locate the details of a particular payee</td>
 </tr>
@@ -2339,7 +2339,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>updated-since</td>
 <td>query</td>
-<td>string(DateTimeString)</td>
+<td>string</td>
 <td>optional</td>
 <td>Only include products that have been updated after the specified date and time. If absent defaults to include all products</td>
 </tr>
@@ -2541,7 +2541,7 @@ This operation does not require authentication
 <tr>
 <td>productId</td>
 <td>path</td>
-<td>string(ASCIIString)</td>
+<td>string</td>
 <td>mandatory</td>
 <td>ID of the specific product requested</td>
 </tr>
@@ -3191,28 +3191,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>productId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.</td>
 </tr>
 <tr>
 <td>effectiveFrom</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate</td>
 </tr>
 <tr>
 <td>effectiveTo</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products</td>
 </tr>
 <tr>
 <td>lastUpdated</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)</td>
@@ -3254,7 +3254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>applicationUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>A link to the an application web page where this product can be applied for.</td>
@@ -3275,35 +3275,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» overviewUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>General overview of the product</td>
 </tr>
 <tr>
 <td>» termsUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Terms and conditions for the product</td>
 </tr>
 <tr>
 <td>» eligibilityUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Eligibility rules and criteria for the product</td>
 </tr>
 <tr>
 <td>» feesAndPricingUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Description of fees, pricing, discounts, exemptions and bonuses for the product</td>
 </tr>
 <tr>
 <td>» bundleUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Description of a bundle that this product can be part of</td>
@@ -3821,7 +3821,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on the bundle criteria and benefits</td>
@@ -3878,7 +3878,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this feature</td>
@@ -4028,7 +4028,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on the constraint</td>
@@ -4106,7 +4106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this eligibility criteria</td>
@@ -4234,28 +4234,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>amount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>transactionRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
@@ -4269,7 +4269,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>currency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The currency the fee will be charged in. Assumes AUD if absent</td>
@@ -4290,7 +4290,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
@@ -4398,35 +4398,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>amount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Value of the discount</td>
 </tr>
 <tr>
 <td>balanceRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
 </tr>
 <tr>
 <td>transactionRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
 </tr>
 <tr>
 <td>feeRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
@@ -4447,7 +4447,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this discount</td>
@@ -4532,7 +4532,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this eligibility constraint</td>
@@ -4655,7 +4655,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>rate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
@@ -4697,7 +4697,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this rate</td>
@@ -4798,14 +4798,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>rate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
 </tr>
 <tr>
 <td>comparisonRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>A comparison rate equivalent for this rate</td>
@@ -4854,7 +4854,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this rate</td>
@@ -5137,7 +5137,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this condition</td>
@@ -5241,7 +5241,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>accountId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
@@ -5262,7 +5262,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>maskedNumber</td>
-<td>string(MaskedAccountString)</td>
+<td><a href="#common-field-types">MaskedAccountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked</td>
@@ -5828,28 +5828,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>lodgementDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The lodgement date of the original deposit</td>
 </tr>
 <tr>
 <td>maturityDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Maturity date for the term deposit</td>
 </tr>
 <tr>
 <td>maturityAmount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated</td>
 </tr>
 <tr>
 <td>maturityCurrency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
@@ -5901,28 +5901,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>minPaymentAmount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The minimum payment amount due for the next card payment</td>
 </tr>
 <tr>
 <td>paymentDueAmount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The amount due for the next card payment</td>
 </tr>
 <tr>
 <td>paymentCurrency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>paymentDueDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Date that the next payment for the card is due</td>
@@ -5965,77 +5965,77 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>originalStartDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Optional original start date for the loan</td>
 </tr>
 <tr>
 <td>originalLoanAmount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Optional original loan value</td>
 </tr>
 <tr>
 <td>originalLoanCurrency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>loanEndDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Date that the loan is due to be repaid in full</td>
 </tr>
 <tr>
 <td>nextInstalmentDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Next date that an instalment is required</td>
 </tr>
 <tr>
 <td>minInstalmentAmount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Minimum amount of next instalment</td>
 </tr>
 <tr>
 <td>minInstalmentCurrency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>maxRedraw</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account</td>
 </tr>
 <tr>
 <td>maxRedrawCurrency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
 </tr>
 <tr>
 <td>minRedraw</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Minimum redraw amount</td>
 </tr>
 <tr>
 <td>minRedrawCurrency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If absent assumes AUD</td>
@@ -6137,7 +6137,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this feature</td>
@@ -6315,42 +6315,42 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>amount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>transactionRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>accrualFrequency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
 <td>currency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The currency the fee will be charged in. Assumes AUD if absent</td>
@@ -6371,7 +6371,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
@@ -6478,28 +6478,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>amount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>balanceRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
 </tr>
 <tr>
 <td>transactionRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>
 <tr>
 <td>accruedRate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
@@ -6527,7 +6527,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this discount</td>
@@ -6605,7 +6605,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this eligibility constraint</td>
@@ -6704,7 +6704,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>rate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
@@ -6739,7 +6739,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information on this fee</td>
@@ -6807,7 +6807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>rate</td>
-<td>string(RateString)</td>
+<td><a href="#common-field-types">RateString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The rate to be applied</td>
@@ -6849,7 +6849,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>additionalInfoUri</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Link to a web page with more information  on this fee</td>
@@ -7033,14 +7033,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>accountId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>ID of the account for which transactions are provided</td>
 </tr>
 <tr>
 <td>transactionId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type</td>
@@ -7075,35 +7075,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>postingDateTime</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement</td>
 </tr>
 <tr>
 <td>valueDateTime</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry</td>
 </tr>
 <tr>
 <td>executionDateTime</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The time the transaction was executed by the originating customer, if available</td>
 </tr>
 <tr>
 <td>amount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The value of the transaction. Negative values mean money was outgoing from the account</td>
 </tr>
 <tr>
 <td>currency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The currency for the transaction amount. AUD assumed if not present</td>
@@ -7560,7 +7560,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>accountId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
@@ -7901,7 +7901,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>payeeId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>ID of the payee adhering to the rules of ID permanence</td>
@@ -7929,7 +7929,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>creationDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The date the payee was created by the customer</td>
@@ -8240,7 +8240,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>cardNumber</td>
-<td>string(MaskedPANString)</td>
+<td><a href="#common-field-types">MaskedPANString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Name of the account to pay to</td>
@@ -8605,7 +8605,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>accountId</td>
-<td>string(ASCIIString)</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence.</td>
@@ -8619,14 +8619,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>lastDebitDateTime</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The date and time of the last debit executed under this authorisation</td>
 </tr>
 <tr>
 <td>lastDebitAmount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The amount of the last debit executed under this authorisation</td>
@@ -9032,7 +9032,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>lastUpdateTime</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data</td>
@@ -9246,7 +9246,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>lastUpdateTime</td>
-<td>string(DateTimeString)</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data</td>
@@ -9337,7 +9337,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>establishmentDate</td>
-<td>string(DateString)</td>
+<td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>The date the organisation described was established</td>
@@ -10140,14 +10140,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>amount</td>
-<td>string(AmountString)</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking</td>
 </tr>
 <tr>
 <td>currency</td>
-<td>string(CurrencyString)</td>
+<td><a href="#common-field-types">CurrencyString</a></td>
 <td>optional</td>
 <td>none</td>
 <td>If not present assumes AUD</td>
@@ -10173,7 +10173,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>self</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Fully qualified link to this API call</td>
@@ -10211,35 +10211,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>self</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Fully qualified link to this API call</td>
 </tr>
 <tr>
 <td>first</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>URI to the first page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>prev</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>next</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>URI to the next page of this set. Mandatory if this response is not the last page</td>
 </tr>
 <tr>
 <td>last</td>
-<td>string(URIString)</td>
+<td><a href="#common-field-types">URIString</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>URI to the last page of this set. Mandatory if this response is not the last page</td>
@@ -10266,14 +10266,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>totalRecords</td>
-<td>integer(NaturalNumber)</td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The total number of records in the full set</td>
 </tr>
 <tr>
 <td>totalPages</td>
-<td>integer(NaturalNumber)</td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The total number of pages in the full set</td>
