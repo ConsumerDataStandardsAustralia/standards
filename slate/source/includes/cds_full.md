@@ -1980,7 +1980,7 @@ Obtain basic information on the customer that has authorised the current session
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -1995,11 +1995,14 @@ Obtain basic information on the customer that has authorised the current session
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
-      "businessName": "string",
+      "businessName": [
+        "string"
+      ],
       "legalName": "string",
       "shortName": "string",
       "abn": "string",
       "acn": "string",
+      "arbn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
       "organisationType": "SOLE_TRADER",
@@ -2058,7 +2061,7 @@ $.ajax({
 
 `GET /common/customer/detail`
 
-Obtain detailed information on the authorised customer within the current session.
+Obtain detailed information on the customer that has authorised the current session
 
 > Example responses
 
@@ -2069,7 +2072,7 @@ Obtain detailed information on the authorised customer within the current sessio
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -2140,11 +2143,14 @@ Obtain detailed information on the authorised customer within the current sessio
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
-      "businessName": "string",
+      "businessName": [
+        "string"
+      ],
       "legalName": "string",
       "shortName": "string",
       "abn": "string",
       "acn": "string",
+      "arbn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
       "organisationType": "SOLE_TRADER",
@@ -2232,7 +2238,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» accountIds|[string]|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
@@ -2522,7 +2528,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingProductDetail](#schemabankingproductdetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingproductdetail">BankingProductDetail</h2>
 
@@ -3519,7 +3525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingAccountDetail](#schemabankingaccountdetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
@@ -4298,7 +4304,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingTransactionDetail](#schemabankingtransactiondetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
 
@@ -4669,7 +4675,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingPayeeDetail](#schemabankingpayeedetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingpayee">BankingPayee</h2>
 
@@ -5077,7 +5083,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -5092,11 +5098,14 @@ To perform this operation, you must be authenticated and authorised with the fol
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
-      "businessName": "string",
+      "businessName": [
+        "string"
+      ],
       "legalName": "string",
       "shortName": "string",
       "abn": "string",
       "acn": "string",
+      "arbn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
       "organisationType": "SOLE_TRADER",
@@ -5118,10 +5127,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPerson](#schemacommonperson)|optional|none|none|
-|» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
+|» person|[CommonPerson](#schemacommonperson)|conditional|none|none|
+|» organisation|[CommonOrganisation](#schemacommonorganisation)|conditional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5139,7 +5148,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -5210,11 +5219,14 @@ To perform this operation, you must be authenticated and authorised with the fol
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
-      "businessName": "string",
+      "businessName": [
+        "string"
+      ],
       "legalName": "string",
       "shortName": "string",
       "abn": "string",
       "acn": "string",
+      "arbn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
       "organisationType": "SOLE_TRADER",
@@ -5274,10 +5286,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPersonDetail](#schemacommonpersondetail)|optional|none|none|
-|» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|optional|none|none|
+|» person|[CommonPersonDetail](#schemacommonpersondetail)|conditional|none|none|
+|» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|conditional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5292,7 +5304,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "firstName": "string",
   "lastName": "string",
   "middleNames": [
@@ -5309,7 +5321,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdated|string(DateTimeString)|mandatory|none|The date and time that any data in this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
 |lastName|string|mandatory|none|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
@@ -5323,7 +5335,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "firstName": "string",
   "lastName": "string",
   "middleNames": [
@@ -5405,9 +5417,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|At least one record is required|
-|» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|Array is mandatory but may be empty|
+|» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|Array is mandatory but may be empty|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|An array of addresses. There must be at least one record. One, and only one, record may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL.  If zero then the REGISTERED address is to be used for mail.|
 
 <h2 id="tocScommonorganisation">CommonOrganisation</h2>
 
@@ -5419,11 +5431,14 @@ To perform this operation, you must be authenticated and authorised with the fol
   "agentFirstName": "string",
   "agentLastName": "string",
   "agentRole": "string",
-  "businessName": "string",
+  "businessName": [
+    "string"
+  ],
   "legalName": "string",
   "shortName": "string",
   "abn": "string",
   "acn": "string",
+  "arbn": "string",
   "isACNCRegistered": true,
   "industryCode": "string",
   "organisationType": "SOLE_TRADER",
@@ -5437,15 +5452,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
-|agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
+|lastUpdateTime|string(DateTimeString)|optional|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the agentLastName field|
 |agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
-|agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
-|businessName|string|mandatory|none|Name of the organisation|
-|legalName|string|optional|none|Legal name, if different to the business name|
+|agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to “Unspecified” if the role is not known|
+|businessName|[string]|mandatory|none|Known alternate names of the organisation. Array is mandatory but may be empty|
+|legalName|string|mandatory|none|Legal name, if different to the business name|
 |shortName|string|optional|none|Short name used for communication, if  different to the business name|
 |abn|string|optional|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
+|arbn|string|optional|none|Australian Registered Body Number for the organisation, if applicable and known|
 |isACNCRegistered|boolean|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
 |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
 |organisationType|string|mandatory|none|Legal organisation type|
@@ -5473,11 +5489,14 @@ To perform this operation, you must be authenticated and authorised with the fol
   "agentFirstName": "string",
   "agentLastName": "string",
   "agentRole": "string",
-  "businessName": "string",
+  "businessName": [
+    "string"
+  ],
   "legalName": "string",
   "shortName": "string",
   "abn": "string",
   "acn": "string",
+  "arbn": "string",
   "isACNCRegistered": true,
   "industryCode": "string",
   "organisationType": "SOLE_TRADER",
@@ -5561,10 +5580,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
-|purpose|string|mandatory|none|The purpose of the number as specified by the customer|
+|isPreferred|boolean|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number|
+|purpose|string|mandatory|none|The purpose of the number as specified by the customer.  Note that the INTERNATIONAL number indicates a number that is applicable for contacting the customer if they are overseas|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
-|areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
+|areaCode|string|conditional|none|Required for non-mobile phone numbers.  If this field is present and refers to an Australian area code then the leading ‘0’ should not be included|
 |number|string|mandatory|none|The actual phone number, with leading zeros as appropriate|
 |extension|string|optional|none|An extension number (if applicable)|
 |fullNumber|string|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966|
@@ -5597,7 +5616,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|boolean|mandatory|none|Required for one and only one entry to indicate the preferred email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
 |address|string|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in RFC_5322|
 
