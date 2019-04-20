@@ -3,7 +3,7 @@
 	"info": {
 		"title": "Consumer Data Standards",
 		"description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-		"version": "0.6.0",
+		"version": "0.5.0",
 		"license": {
 			"name": "MIT Licence",
 			"url": "https://opensource.org/licenses/MIT"
@@ -691,7 +691,7 @@
 		"/common/customer/detail": {
 			"get": {
 				"summary": "Get Customer Detail",
-				"description": "Obtain detailed information on the customer that has authorised the current session",
+				"description": "Obtain detailed information on the authorised customer within the current session.",
 				"operationId": "getCustomerDetail",
 				"x-scopes": [
 					"common_detailed_customer"
@@ -751,7 +751,8 @@
 			"in": "query",
 			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts",
 			"required": false,
-			"type": "boolean"
+			"type": "boolean",
+			"x-cdr-type": "Boolean"
 		},
 		"ParamPage": {
 			"name": "page",
@@ -759,6 +760,7 @@
 			"description": "Page of results to request (standard pagination)",
 			"required": false,
 			"type": "integer",
+			"x-cdr-type": "PositiveInteger",
 			"default": "1"
 		},
 		"ParamPageSize": {
@@ -767,6 +769,7 @@
 			"description": "Page size to request. Default is 25 (standard pagination)",
 			"required": false,
 			"type": "integer",
+			"x-cdr-type": "PositiveInteger",
 			"default": "25"
 		},
 		"ParamStartTime": {
@@ -829,7 +832,8 @@
 		"RequestAccountIds": {
 			"type": "object",
 			"required": [
-				"data"
+				"data",
+				"meta"
 			],
 			"properties": {
 				"data": {
@@ -942,7 +946,8 @@
 				},
 				"isTailored": {
 					"type": "boolean",
-					"description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable"
+					"description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable",
+					"x-cdr-type": "Boolean"
 				},
 				"additionalInformation": {
 					"description": "Object that contains links to additional information on specific topics",
@@ -981,7 +986,8 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links"
+				"links",
+				"meta"
 			],
 			"properties": {
 				"data": {
@@ -1739,6 +1745,7 @@
 				"isOwned": {
 					"type": "boolean",
 					"description": "Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed",
+					"x-cdr-type": "Boolean",
 					"default": "true"
 				},
 				"productCategory": {
@@ -1754,7 +1761,8 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links"
+				"links",
+				"meta"
 			],
 			"properties": {
 				"data": {
@@ -1972,7 +1980,8 @@
 				},
 				"offsetAccountEnabled": {
 					"type": "boolean",
-					"description": "Set to true if one or more offset accounts are configured for this loan account"
+					"description": "Set to true if one or more offset accounts are configured for this loan account",
+					"x-cdr-type": "Boolean"
 				},
 				"offsetAccountIds": {
 					"type": "array",
@@ -2055,6 +2064,7 @@
 				"isActivated": {
 					"type": "boolean",
 					"description": "True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent",
+					"x-cdr-type": "Boolean",
 					"default": "true"
 				}
 			}
@@ -2426,7 +2436,8 @@
 				},
 				"isDetailAvailable": {
 					"type": "boolean",
-					"description": "True if extended information is available using the transaction detail end point. False if extended data is not available"
+					"description": "True if extended information is available using the transaction detail end point. False if extended data is not available",
+					"x-cdr-type": "Boolean"
 				},
 				"type": {
 					"type": "string",
@@ -2513,7 +2524,8 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links"
+				"links",
+				"meta"
 			],
 			"properties": {
 				"data": {
@@ -2722,7 +2734,8 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links"
+				"links",
+				"meta"
 			],
 			"properties": {
 				"data": {
@@ -3104,17 +3117,18 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links"
+				"links",
+				"meta"
+			],
+			"x-conditional": [
+				"person",
+				"organisation"
 			],
 			"properties": {
 				"data": {
 					"type": "object",
 					"required": [
 						"customerUType"
-					],
-					"x-conditional": [
-						"person",
-						"organisation"
 					],
 					"properties": {
 						"customerUType": {
@@ -3145,17 +3159,18 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links"
+				"links",
+				"meta"
+			],
+			"x-conditional": [
+				"person",
+				"organisation"
 			],
 			"properties": {
 				"data": {
 					"type": "object",
 					"required": [
 						"customerUType"
-					],
-					"x-conditional": [
-						"person",
-						"organisation"
 					],
 					"properties": {
 						"customerUType": {
@@ -3185,15 +3200,12 @@
 		"CommonPerson": {
 			"type": "object",
 			"required": [
-				"lastUpdated",
+				"lastUpdateTime",
 				"lastName",
 				"middleNames"
 			],
-			"x-conditional": [
-				"firstname"
-			],
 			"properties": {
-				"lastUpdated": {
+				"lastUpdateTime": {
 					"type": "string",
 					"description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
 					"x-cdr-type": "DateTimeString"
@@ -3241,21 +3253,21 @@
 					"properties": {
 						"phoneNumbers": {
 							"type": "array",
-							"description": "Array is mandatory but may be empty",
+							"description": "At least one record is required",
 							"items": {
 								"$ref": "#/definitions/CommonPhoneNumber"
 							}
 						},
 						"emailAddresses": {
 							"type": "array",
-							"description": "Array is mandatory but may be empty",
+							"description": "May be empty",
 							"items": {
 								"$ref": "#/definitions/CommonEmailAddress"
 							}
 						},
 						"physicalAddresses": {
 							"type": "array",
-							"description": "An array of addresses. There must be at least one record. One, and only one, record may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL.  If zero then the REGISTERED address is to be used for mail.",
+							"description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
 							"items": {
 								"$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
 							}
@@ -3267,10 +3279,9 @@
 		"CommonOrganisation": {
 			"type": "object",
 			"required": [
-				"lastUpdate",
+				"lastUpdateTime",
 				"agentLastName",
 				"agentRole",
-				"legalName",
 				"businessName",
 				"organisationType"
 			],
@@ -3282,7 +3293,7 @@
 				},
 				"agentFirstName": {
 					"type": "string",
-					"description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the agentLastName field"
+					"description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
 				},
 				"agentLastName": {
 					"type": "string",
@@ -3290,14 +3301,11 @@
 				},
 				"agentRole": {
 					"type": "string",
-					"description": "The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to “Unspecified” if the role is not known"
+					"description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known"
 				},
 				"businessName": {
-					"type": "array",
-					"description": "Known alternate names of the organisation. Array is mandatory but may be empty",
-					"items": {
-						"type": "string"
-					}
+					"type": "string",
+					"description": "Name of the organisation"
 				},
 				"legalName": {
 					"type": "string",
@@ -3315,13 +3323,10 @@
 					"type": "string",
 					"description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
 				},
-				"arbn": {
-					"type": "string",
-					"description": "Australian Registered Body Number for the organisation, if applicable and known"
-				},
 				"isACNCRegistered": {
 					"type": "boolean",
-					"description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed."
+					"description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+					"x-cdr-type": "Boolean"
 				},
 				"industryCode": {
 					"type": "string",
@@ -3385,11 +3390,12 @@
 			"properties": {
 				"isPreferred": {
 					"type": "boolean",
-					"description": "Required to be true for one and only one entry to indicate the preferred phone number"
+					"description": "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present",
+					"x-cdr-type": "Boolean"
 				},
 				"purpose": {
 					"type": "string",
-					"description": "The purpose of the number as specified by the customer.  Note that the INTERNATIONAL number indicates a number that is applicable for contacting the customer if they are overseas",
+					"description": "The purpose of the number as specified by the customer",
 					"enum": [
 						"MOBILE",
 						"HOME",
@@ -3405,7 +3411,7 @@
 				},
 				"areaCode": {
 					"type": "string",
-					"description": "Required for non-mobile phone numbers.  If this field is present and refers to an Australian area code then the leading ‘0’ should not be included"
+					"description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
 				},
 				"number": {
 					"type": "string",
@@ -3431,7 +3437,8 @@
 			"properties": {
 				"isPreferred": {
 					"type": "boolean",
-					"description": "Required for one and only one entry to indicate the preferred email address"
+					"description": "Required for one and only one email record in the collection. Denotes the default email address",
+					"x-cdr-type": "Boolean"
 				},
 				"purpose": {
 					"type": "string",
@@ -3560,7 +3567,8 @@
 				},
 				"thoroughfareNumber1": {
 					"type": "integer",
-					"description": "Thoroughfare number for a property (first number in a property ranged address)"
+					"description": "Thoroughfare number for a property (first number in a property ranged address)",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"thoroughfareNumber1Suffix": {
 					"type": "string",
@@ -3568,7 +3576,8 @@
 				},
 				"thoroughfareNumber2": {
 					"type": "integer",
-					"description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)"
+					"description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"thoroughfareNumber2Suffix": {
 					"type": "string",
@@ -3584,7 +3593,8 @@
 				},
 				"lotNumber": {
 					"type": "integer",
-					"description": "Allotment number for the address"
+					"description": "Allotment number for the address",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"buildingName1": {
 					"type": "string",
@@ -3612,7 +3622,8 @@
 				},
 				"postalDeliveryNumber": {
 					"type": "integer",
-					"description": "Postal delivery number if the address is a postal delivery type"
+					"description": "Postal delivery number if the address is a postal delivery type",
+					"x-cdr-type": "PositiveInteger"
 				},
 				"postalDeliveryNumberPrefix": {
 					"type": "string",

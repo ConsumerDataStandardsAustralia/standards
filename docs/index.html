@@ -593,7 +593,7 @@ Payloads
 
 <p>Note that security standards are only partially represented in these standards as they are under development by the Information Security Working Group.  More detail can found at the <a href="https://consumerdatastandardsaustralia.github.io/infosec">Information Security Profile</a> working draft.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.5.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.6.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1618,21 +1618,21 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -1797,7 +1797,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>A tokenised identifier for the account which is unique but not shareable</td>
 </tr>
@@ -2045,21 +2045,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -2266,14 +2266,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -2429,35 +2429,35 @@ Some general notes that apply to all end points that retrieve transactions:</p>
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
 <tr>
 <td>start-time</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>end-time</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
@@ -2471,14 +2471,14 @@ Some general notes that apply to all end points that retrieve transactions:</p>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -2593,14 +2593,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points</td>
 </tr>
 <tr>
 <td>transactionId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the transaction obtained from a previous call to one of the other transaction end points</td>
 </tr>
@@ -2725,35 +2725,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>newest-time</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>oldest-time</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
@@ -2767,14 +2767,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -2963,28 +2963,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>newest-time</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>oldest-time</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
 </tr>
 <tr>
 <td>max-amount</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">AmountString</a></td>
 <td>optional</td>
 <td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
 </tr>
@@ -2998,14 +2998,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -3133,21 +3133,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>accountId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -3268,21 +3268,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>is-owned</td>
 <td>query</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -3463,14 +3463,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -3597,14 +3597,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -3730,7 +3730,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>payeeId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>The ID used to locate the details of a particular payee</td>
 </tr>
@@ -3900,7 +3900,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>updated-since</td>
 <td>query</td>
-<td>string</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
 <td>Only include products that have been updated after the specified date and time. If absent defaults to include all products</td>
 </tr>
@@ -3921,14 +3921,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>page</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page of results to request (standard pagination)</td>
 </tr>
 <tr>
 <td>page-size</td>
 <td>query</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
@@ -4102,7 +4102,7 @@ This operation does not require authentication
 <tr>
 <td>productId</td>
 <td>path</td>
-<td>string</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the specific product requested</td>
 </tr>
@@ -4822,7 +4822,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>isTailored</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable</td>
@@ -6837,7 +6837,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>isOwned</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then &#39;true&#39; is assumed</td>
@@ -7603,7 +7603,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>offsetAccountEnabled</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Set to true if one or more offset accounts are configured for this loan account</td>
@@ -7705,7 +7705,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>isActivated</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
 <td>True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent</td>
@@ -8608,7 +8608,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>isDetailAvailable</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>True if extended information is available using the transaction detail end point. False if extended data is not available</td>
@@ -10870,7 +10870,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>isACNCRegistered</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
 <td>True if registered with the ACNC.  False if not. Absent or null if not confirmed.</td>
@@ -11068,7 +11068,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>isPreferred</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be &#39;false&#39; if not present</td>
@@ -11170,7 +11170,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>isPreferred</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Required for one and only one email record in the collection. Denotes the default email address</td>
@@ -11548,7 +11548,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>thoroughfareNumber1</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Thoroughfare number for a property (first number in a property ranged address)</td>
@@ -11562,7 +11562,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>thoroughfareNumber2</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
@@ -11590,7 +11590,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>lotNumber</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Allotment number for the address</td>
@@ -11639,7 +11639,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>postalDeliveryNumber</td>
-<td>integer</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Postal delivery number if the address is a postal delivery type</td>
@@ -13043,6 +13043,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>20/4/2019</td>
+<td>0.6.0</td>
+<td>Customer v1 draft</td>
+<td>Applied changes to prepare for v1 version of Customer end points and payloads documentation</td>
+</tr>
 <tr>
 <td>16/4/2019</td>
 <td>0.5.0</td>
