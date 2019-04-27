@@ -10,10 +10,16 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>20/4/2019</td>
+<td>27/4/2019</td>
+<td>0.7.0</td>
+<td>April Feedback</td>
+<td>Incorporated feedback from v1 draft decisions and feedback cycle 5</td>
+</tr>
+<tr>
+<td>23/4/2019</td>
 <td>0.6.0</td>
-<td>Customer v1 draft</td>
-<td>Applied changes to prepare for v1 version of Customer end points and payloads documentation</td>
+<td>Payees &amp; Customer v1 draft</td>
+<td>Applied changes to prepare for v1 version of Payees &amp; Customer end points and payloads documentation</td>
 </tr>
 <tr>
 <td>16/4/2019</td>

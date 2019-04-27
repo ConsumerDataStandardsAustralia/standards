@@ -593,7 +593,7 @@ Payloads
 
 <p>Note that security standards are only partially represented in these standards as they are under development by the Information Security Working Group.  More detail can found at the <a href="https://consumerdatastandardsaustralia.github.io/infosec">Information Security Profile</a> working draft.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.6.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.7.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -661,14 +661,31 @@ Payloads
 
 <p>The standards have adopted a two level versioning strategy.  The high level standards (including principles, URI structure, payload naming conventions, etc) be versioned and each API end point will have an additional version specific to that end point.</p>
 
-<h3 id='standard-versioning'>Standard Versioning</h3>
+<h3 id='documentation-versioning'>Documentation Versioning</h3>
+
+<blockquote>
+<p>Sample versioning of the standards documentation is as follows:
+<code>1.12.2 - meaning major version 1, minor version 12 and bugfix version 2</code></p>
+</blockquote>
+
+<p>The standards documentation will be versioned using three version parts <code>&lt;major&gt;.&lt;minor&gt;.&lt;bug fix&gt;</code>.  This version will be used to describe updates in the <a href="#change-log">Change Log</a>.</p>
+
+<p>Each of the three components will be independently incrementing integers and are described as follows:</p>
+
+<ul>
+<li><strong>major</strong>: Major version of the standards.  Reserved for increment only when a set of changes are applied that are large enough to make co-existence in the same implementation environment with previous versions becomes untenable.  This would include major changes to the information security profile, major changes to the high level standards or a change in basic protocols.</li>
+<li><strong>minor</strong>: Significant changes to the standards.  This would include changes that require approval by the Chair of the Data Standards Body such as new end points and new versions of existing end points.</li>
+<li><strong>bug fix</strong>: Minor documentation changes that clarify or correct the standards but do not meaningly alter the standards.</li>
+</ul>
+
+<h3 id='uri-versioning'>URI Versioning</h3>
 
 <blockquote>
 <p>The base URI structure containing the version for this standard is:<br>
-<code>http://&lt;provider path&gt;/cds-au/v1/&lt;resource&gt;</code></p>
+<code>http://&lt;provider path&gt;/cds-au/v&lt;major version&gt;/&lt;resource&gt;</code></p>
 </blockquote>
 
-<p>The high level standard will be versioned and this version will be in embedded in the <a href="#uri-structure">URI Structure</a> for the APIs.  This documentation relates specifically to <strong>version 1</strong> of the high level standards.</p>
+<p>The high level standard will be versioned as described above.  The major component of this version will be embedded in the <a href="#uri-structure">URI Structure</a> for the APIs.  This allows for a data holder to support multiple major versions of the standards in production even if the significant breaking changes occur between major versions.</p>
 
 <h3 id='end-point-versioning'>End Point Versioning</h3>
 
@@ -691,7 +708,7 @@ Payloads
 <ul>
 <li><strong>Provider Path</strong>: The provider path is a base path set by the data provider. It can be any URI desired by the provider. While all authenticated end points must be accessible under the same provider path the data provider may stipulate a different provider path for unauthenticated end points.</li>
 <li><strong>“cds-au”</strong>: This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base provider path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
-<li><strong>Version</strong>: The version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the version as a positive integer (e.g. v1, v12 or v76).</li>
+<li><strong>Version</strong>: The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the major version of the standards as a positive integer (e.g. v1, v12 or v76).</li>
 <li><strong>Industry</strong>: A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.</li>
 <li><strong>Resource</strong>: The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li>
 </ul>
@@ -759,7 +776,7 @@ Payloads
 <code>Accept = application/json</code><br>
 <code>x-v = 5</code><br>
 <code>x-min-v = 3</code><br>
-<code>x-Correlation-Id = 27639FAB67CC</code></p>
+<code>x-fapi-interaction-id = 6ba7b814-9dad-11d1-80b4-00c04fd430c8</code></p>
 </blockquote>
 
 <table><thead>
@@ -975,7 +992,7 @@ Payloads
 <tr>
 <td>The server was unable to respond in a timely manner</td>
 <td>504 Gateway Timeout</td>
-<td>Returned if a timeout has occurred but a resend of the original request is viable (otherwise us 500 instead)</td>
+<td>Returned if a timeout has occurred but a resend of the original request is viable (otherwise use 500 instead)</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -1152,12 +1169,12 @@ the same name.</p>
 <pre class="highlight plaintext"><code>“data”: {
     [
         {
-            “shapeType”: “circle”,
+            “shapeUType”: “circle”,
             “circle”: {
             }
         },
         {
-            “shapeType”: “square”,
+            “shapeUType”: “square”,
             “square”: {
             }
         }
@@ -1625,7 +1642,7 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -1713,6 +1730,7 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1816,6 +1834,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2052,7 +2071,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -2732,7 +2751,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>newest-time</td>
@@ -3275,7 +3294,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -3597,7 +3616,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL</td>
+<td>Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL</td>
 </tr>
 <tr>
 <td>page</td>
@@ -3689,7 +3708,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank_payees</a>
 </aside>
 <h2 id='get-payee-detail'>Get Payee Detail</h2>
 <p><a id="opIdgetPayeeDetail"></a></p>
@@ -3737,7 +3756,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>The ID used to locate the details of a particular payee</td>
+<td>The ID of the payee requested.  This would have been previously obtained from a call to the payee list API</td>
 </tr>
 </tbody></table>
 
@@ -4351,7 +4370,7 @@ This operation does not require authentication
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"middleNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4362,7 +4381,7 @@ This operation does not require authentication
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4445,7 +4464,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"middleNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4512,7 +4531,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4634,7 +4653,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -4788,7 +4807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>name</td>
@@ -5965,7 +5984,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>none</td>
 <td>Value of the discount</td>
 </tr>
@@ -6718,6 +6737,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6786,6 +6806,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemabankingaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6811,6 +6832,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
+</tr>
+<tr>
+<td>creationDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Date that the account was created (if known)</td>
 </tr>
 <tr>
 <td>displayName</td>
@@ -6852,7 +6880,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>productName</td>
@@ -6885,6 +6913,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7066,7 +7095,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -7077,6 +7106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemabankingaccountdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8602,7 +8632,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>ID of the account for which transactions are provided</td>
+<td>ID of the account for which transactions are provided, adhering to the standards for ID permanence</td>
 </tr>
 <tr>
 <td>transactionId</td>
@@ -8679,7 +8709,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The reference for the transaction provided by the originating institution.  Empty string if no data provided</td>
+<td>The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided</td>
 </tr>
 <tr>
 <td>merchantName</td>
@@ -8837,7 +8867,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9438,7 +9468,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9620,7 +9650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Type of object included that describes the payee in detail</td>
+<td>Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international</td>
 </tr>
 <tr>
 <td>» domestic</td>
@@ -9700,7 +9730,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP</td>
+<td>Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP</td>
 </tr>
 <tr>
 <td>account</td>
@@ -9835,7 +9865,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>name</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The name assigned to the PayID by the owner of the PayID</td>
 </tr>
@@ -9851,7 +9881,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The type of the PayID</td>
+<td>The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-32'>Enumerated Values</h4>
@@ -9908,7 +9938,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>crn</td>
 <td>string</td>
-<td>conditional</td>
+<td>optional</td>
 <td>none</td>
 <td>BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
 </tr>
@@ -9973,7 +10003,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>» country</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>Country where the beneficiary resides. A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code</td>
 </tr>
@@ -9982,7 +10012,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Response message for the payment</td>
+<td>Default message to add to a payment using this payee</td>
 </tr>
 <tr>
 <td>bankDetails</td>
@@ -10223,7 +10253,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>description</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Description of the authorised entity derived from previously executed direct debits</td>
 </tr>
@@ -10264,7 +10294,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"middleNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10275,7 +10305,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10345,7 +10375,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10374,7 +10404,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"middleNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10441,7 +10471,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agentRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10549,7 +10579,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10575,7 +10605,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemacommonperson"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"middleNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10597,7 +10627,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>lastUpdateTime</td>
+<td>lastUpdated</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
 <td>none</td>
@@ -10651,7 +10681,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemacommonpersondetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"middleNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10784,7 +10814,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemacommonorganisation"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10811,7 +10841,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>lastUpdateTime</td>
+<td>lastUpdated</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
 <td>none</td>
@@ -10862,7 +10892,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>abn</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Australian Business Number for the organisation</td>
 </tr>
@@ -10946,7 +10976,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="schemacommonorganisationdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11095,9 +11125,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>areaCode</td>
 <td>string</td>
-<td>conditional</td>
+<td>optional</td>
 <td>none</td>
-<td>Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.</td>
+<td>If field is present and refers to Australian code - the leading 0 should be omitted.</td>
 </tr>
 <tr>
 <td>number</td>
@@ -11176,7 +11206,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>isPreferred</td>
 <td><a href="#common-field-types">Boolean</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>none</td>
 <td>Required for one and only one email record in the collection. Denotes the default email address</td>
 </tr>
@@ -11913,7 +11943,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="w">
 
 </span></code></pre>
-<p><em>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</em></p>
+<p><em>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</em></p>
 <h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
@@ -11929,7 +11959,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-40'>Enumerated Values</h4>
@@ -11970,6 +12000,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td><em>anonymous</em></td>
 <td>MARGIN_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OVERDRAFT</td>
 </tr>
 <tr>
 <td><em>anonymous</em></td>
@@ -12107,7 +12145,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>BALANCE_TRANSFERS</td>
-<td>Balance transfers can be made from the account (eg. for credit cards)</td>
+<td>Balance transfers can be made to the account (eg. for credit cards)</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -12499,6 +12537,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An introductory bonus that will expire after a set period</td>
 <td>The period of time for the introductory rate.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
+<tr>
+<td>FLOATING</td>
+<td>A floating rate is relatively fixed but still adjusts under specific circumstances</td>
+<td>Details of the float parameters</td>
+</tr>
+<tr>
+<td>MARKET_LINKED</td>
+<td>A rate that is linked to a specific market, commodity or asset class</td>
+<td>Details of the market linkage</td>
+</tr>
 </tbody></table>
 
 <p><a id="productlendingratetypedoc"></a>
@@ -12550,7 +12598,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>CASH_ADVANCE</td>
-<td>Specific rate applied to case advances from the account</td>
+<td>Specific rate applied to cash advances from the account</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -12964,7 +13012,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>CASH_ADVANCE</td>
-<td>Specific rate applied to case advances from the account</td>
+<td>Specific rate applied to cash advances from the account</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -13049,10 +13097,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
-<td>20/4/2019</td>
+<td>27/4/2019</td>
+<td>0.7.0</td>
+<td>April Feedback</td>
+<td>Incorporated feedback from v1 draft decisions and feedback cycle 5</td>
+</tr>
+<tr>
+<td>23/4/2019</td>
 <td>0.6.0</td>
-<td>Customer v1 draft</td>
-<td>Applied changes to prepare for v1 version of Customer end points and payloads documentation</td>
+<td>Payees &amp; Customer v1 draft</td>
+<td>Applied changes to prepare for v1 version of Payees &amp; Customer end points and payloads documentation</td>
 </tr>
 <tr>
 <td>16/4/2019</td>

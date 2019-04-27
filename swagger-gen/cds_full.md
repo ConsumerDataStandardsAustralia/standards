@@ -43,7 +43,7 @@ Obtain a list of accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -75,6 +75,7 @@ Obtain a list of accounts
     "accounts": [
       {
         "accountId": "string",
+        "creationDate": "string",
         "displayName": "string",
         "nickname": "string",
         "maskedNumber": "string",
@@ -159,6 +160,7 @@ Obtain detailed information on a single account
 {
   "data": {
     "accountId": "string",
+    "creationDate": "string",
     "displayName": "string",
     "nickname": "string",
     "maskedNumber": "string",
@@ -366,7 +368,7 @@ Obtain balances for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -838,7 +840,7 @@ Obtain transactions for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
 |oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
 |min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
@@ -1170,7 +1172,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -1384,7 +1386,7 @@ Obtain a list of pre-registered payees
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
+|type|query|string|optional|Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -1436,7 +1438,7 @@ Obtain a list of pre-registered payees
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank_payees</a>
 </aside>
 
 ## Get Payee Detail
@@ -1478,7 +1480,7 @@ Obtain detailed information on a single payee
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
+|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID of the payee requested.  This would have been previously obtained from a call to the payee list API|
 
 > Example responses
 
@@ -1980,7 +1982,7 @@ Obtain basic information on the customer that has authorised the current session
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -1991,7 +1993,7 @@ Obtain basic information on the customer that has authorised the current session
       "occupationCode": "string"
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -2069,7 +2071,7 @@ Obtain detailed information on the authorised customer within the current sessio
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -2136,7 +2138,7 @@ Obtain detailed information on the authorised customer within the current sessio
       ]
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -2232,7 +2234,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» accountIds|[string]|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
@@ -2324,7 +2326,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs.  See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
@@ -2976,7 +2978,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+|amount|[AmountString](#common-field-types)|conditional|none|Value of the discount|
 |balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
@@ -3277,6 +3279,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "accounts": [
       {
         "accountId": "string",
+        "creationDate": "string",
         "displayName": "string",
         "nickname": "string",
         "maskedNumber": "string",
@@ -3318,6 +3321,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
+  "creationDate": "string",
   "displayName": "string",
   "nickname": "string",
   "maskedNumber": "string",
@@ -3334,12 +3338,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|creationDate|[DateString](#common-field-types)|optional|none|Date that the account was created (if known)|
 |displayName|string|mandatory|none|The display name of the account. If a customer provided nickname is available that value should be returned|
 |nickname|string|optional|none|A customer supplied nick name for the account|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
 |openStatus|string|optional|none|Open or closed status for the account.  If not present then OPEN is assumed|
 |isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs.  See [here](#product-categories) for more details|
 |productName|string|mandatory|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
 
 #### Enumerated Values
@@ -3357,6 +3362,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "data": {
     "accountId": "string",
+    "creationDate": "string",
     "displayName": "string",
     "nickname": "string",
     "maskedNumber": "string",
@@ -3519,7 +3525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingAccountDetail](#schemabankingaccountdetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
@@ -3528,6 +3534,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
+  "creationDate": "string",
   "displayName": "string",
   "nickname": "string",
   "maskedNumber": "string",
@@ -4217,7 +4224,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
+|accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided, adhering to the standards for ID permanence|
 |transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
@@ -4228,7 +4235,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |executionDateTime|[DateTimeString](#common-field-types)|optional|none|The time the transaction was executed by the originating customer, if available|
 |amount|[AmountString](#common-field-types)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the transaction amount. AUD assumed if not present|
-|reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
+|reference|string|mandatory|none|The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided|
 |merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
 |merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
 |billerCode|string|optional|none|BPay Biller Code for the transaction (if available)|
@@ -4298,7 +4305,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingTransactionDetail](#schemabankingtransactiondetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
 
@@ -4669,7 +4676,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingPayeeDetail](#schemabankingpayeedetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingpayee">BankingPayee</h2>
 
@@ -4775,7 +4782,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
+|» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international|
 |» domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
 |» biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
 |» international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
@@ -4816,7 +4823,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|payeeAccountUType|string|mandatory|none|Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP|
+|payeeAccountUType|string|mandatory|none|Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP|
 |account|[BankingDomesticPayeeAccount](#schemabankingdomesticpayeeaccount)|conditional|none|none|
 |card|[BankingDomesticPayeeCard](#schemabankingdomesticpayeecard)|conditional|none|none|
 |payId|[BankingDomesticPayeePayId](#schemabankingdomesticpayeepayid)|conditional|none|none|
@@ -4884,9 +4891,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|optional|none|The name assigned to the PayID by the owner of the PayID|
+|name|string|mandatory|none|The name assigned to the PayID by the owner of the PayID|
 |identifier|string|mandatory|none|The identifier of the PayID (dependent on type)|
-|type|string|mandatory|none|The type of the PayID|
+|type|string|mandatory|none|The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change|
 
 #### Enumerated Values
 
@@ -4915,7 +4922,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |billerCode|string|mandatory|none|BPay Biller Code of the Biller|
-|crn|string|conditional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+|crn|string|optional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
 |billerName|string|mandatory|none|Name of the Biller|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
@@ -4953,8 +4960,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |beneficiaryDetails|object|mandatory|none|none|
 |» name|string|optional|none|Name of the beneficiary|
-|» country|[ExternalRef](#common-field-types)|mandatory|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-|» message|string|optional|none|Response message for the payment|
+|» country|[ExternalRef](#common-field-types)|optional|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
+|» message|string|optional|none|Default message to add to a payment using this payee|
 |bankDetails|object|mandatory|none|none|
 |» country|[ExternalRef](#common-field-types)|mandatory|none|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
 |» accountNumber|string|mandatory|none|Account Targeted for payment|
@@ -5062,7 +5069,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|
+|description|string|mandatory|none|Description of the authorised entity derived from previously executed direct debits|
 |financialInstitution|string|mandatory|none|Name of the financial institution through which the direct debit will be executed|
 |abn|string|optional|none|Australian Business Number for the authorised entity|
 |acn|string|optional|none|Australian Company Number for the authorised entity|
@@ -5077,7 +5084,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -5088,7 +5095,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "occupationCode": "string"
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -5121,7 +5128,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» person|[CommonPerson](#schemacommonperson)|optional|none|none|
 |» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5139,7 +5146,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -5206,7 +5213,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       ]
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -5277,7 +5284,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» person|[CommonPersonDetail](#schemacommonpersondetail)|optional|none|none|
 |» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5292,7 +5299,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "firstName": "string",
   "lastName": "string",
   "middleNames": [
@@ -5309,7 +5316,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
 |firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
 |lastName|string|mandatory|none|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
@@ -5323,7 +5330,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "firstName": "string",
   "lastName": "string",
   "middleNames": [
@@ -5415,7 +5422,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "agentFirstName": "string",
   "agentLastName": "string",
   "agentRole": "string",
@@ -5437,14 +5444,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
 |agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
 |agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
 |businessName|string|mandatory|none|Name of the organisation|
 |legalName|string|optional|none|Legal name, if different to the business name|
 |shortName|string|optional|none|Short name used for communication, if  different to the business name|
-|abn|string|optional|none|Australian Business Number for the organisation|
+|abn|string|mandatory|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
 |isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
 |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
@@ -5469,7 +5476,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "agentFirstName": "string",
   "agentLastName": "string",
   "agentRole": "string",
@@ -5564,7 +5571,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |isPreferred|[Boolean](#common-field-types)|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
 |purpose|string|mandatory|none|The purpose of the number as specified by the customer|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
-|areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
+|areaCode|string|optional|none|If field is present and refers to Australian code - the leading 0 should be omitted.|
 |number|string|mandatory|none|The actual phone number, with leading zeros as appropriate|
 |extension|string|optional|none|An extension number (if applicable)|
 |fullNumber|[ExternalRef](#common-field-types)|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)|
@@ -5597,7 +5604,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|[Boolean](#common-field-types)|conditional|none|Required for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
 |address|[ExternalRef](#common-field-types)|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
 
@@ -5955,13 +5962,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details*
+*The category to which a product or account belongs.  See [here](#product-categories) for more details*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|*anonymous*|string|optional|none|The category to which a product or account belongs.  See [here](#product-categories) for more details|
 
 #### Enumerated Values
 
@@ -5975,6 +5982,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |*anonymous*|CRED_AND_CHRG_CARDS|
 |*anonymous*|PERS_LOANS|
 |*anonymous*|MARGIN_LOANS|
+|*anonymous*|BUSINESS_LOANS|
+|*anonymous*|OVERDRAFT|
 |*anonymous*|LEASES|
 |*anonymous*|TRADE_FINANCE|
 

@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|27/4/2019|0.7.0|April Feedback|Incorporated feedback from v1 draft decisions and feedback cycle 5
 |23/4/2019|0.6.0|Payees & Customer v1 draft|Applied changes to prepare for v1 version of Payees & Customer end points and payloads documentation
 |16/4/2019|0.5.0|Transaction v1 draft|Applied changes to prepare for v1 version of Transaction end points and payloads documentation
 |16/4/2019|0.4.0|Direct Debit Auth v1 draft|Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation

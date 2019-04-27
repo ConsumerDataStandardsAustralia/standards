@@ -388,8 +388,8 @@ function schemaToArray(schema,offset,options,data) {
           block.rows.push(entry);
         }
 
-        if (typeof schema['x-cdr-type'] === 'string') {
-          entry.cdrType = '[' + schema['x-cdr-type'] +'](#common-field-types)';
+        if (typeof schema['x-cds-type'] === 'string') {
+          entry.cdrType = '[' + schema['x-cds-type'] +'](#common-field-types)';
         }
     });
     return container;
