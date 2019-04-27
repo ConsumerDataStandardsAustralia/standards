@@ -661,14 +661,31 @@ Payloads
 
 <p>The standards have adopted a two level versioning strategy.  The high level standards (including principles, URI structure, payload naming conventions, etc) be versioned and each API end point will have an additional version specific to that end point.</p>
 
-<h3 id='standard-versioning'>Standard Versioning</h3>
+<h3 id='documentation-versioning'>Documentation Versioning</h3>
+
+<blockquote>
+<p>Sample versioning of the standards documentation is as follows:
+<code>1.12.2 - meaning major version 1, minor version 12 and bugfix version 2</code></p>
+</blockquote>
+
+<p>The standards documentation will be versioned using three version parts <code>&lt;major&gt;.&lt;minor&gt;.&lt;bug fix&gt;</code>.  This version will be used to describe updates in the <a href="#change-log">Change Log</a>.</p>
+
+<p>Each of the three components will be independently incrementing integers and are described as follows:</p>
+
+<ul>
+<li><strong>major</strong>: Major version of the standards.  Reserved for increment only when a set of changes are applied that are large enough to make co-existence in the same implementation environment with previous versions becomes untenable.  This would include major changes to the information security profile, major changes to the high level standards or a change in basic protocols.</li>
+<li><strong>minor</strong>: Significant changes to the standards.  This would include changes that require approval by the Chair of the Data Standards Body such as new end points and new versions of existing end points.</li>
+<li><strong>bug fix</strong>: Minor documentation changes that clarify or correct the standards but do not meaningly alter the standards.</li>
+</ul>
+
+<h3 id='uri-versioning'>URI Versioning</h3>
 
 <blockquote>
 <p>The base URI structure containing the version for this standard is:<br>
-<code>http://&lt;provider path&gt;/cds-au/v1/&lt;resource&gt;</code></p>
+<code>http://&lt;provider path&gt;/cds-au/v&lt;major version&gt;/&lt;resource&gt;</code></p>
 </blockquote>
 
-<p>The high level standard will be versioned and this version will be in embedded in the <a href="#uri-structure">URI Structure</a> for the APIs.  This documentation relates specifically to <strong>version 1</strong> of the high level standards.</p>
+<p>The high level standard will be versioned as described above.  The major component of this version will be embedded in the <a href="#uri-structure">URI Structure</a> for the APIs.  This allows for a data holder to support multiple major versions of the standards in production even if the significant breaking changes occur between major versions.</p>
 
 <h3 id='end-point-versioning'>End Point Versioning</h3>
 
@@ -691,7 +708,7 @@ Payloads
 <ul>
 <li><strong>Provider Path</strong>: The provider path is a base path set by the data provider. It can be any URI desired by the provider. While all authenticated end points must be accessible under the same provider path the data provider may stipulate a different provider path for unauthenticated end points.</li>
 <li><strong>“cds-au”</strong>: This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base provider path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
-<li><strong>Version</strong>: The version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the version as a positive integer (e.g. v1, v12 or v76).</li>
+<li><strong>Version</strong>: The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by a the major version of the standards as a positive integer (e.g. v1, v12 or v76).</li>
 <li><strong>Industry</strong>: A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.</li>
 <li><strong>Resource</strong>: The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li>
 </ul>
@@ -1625,7 +1642,7 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -2052,7 +2069,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -2732,7 +2749,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>newest-time</td>
@@ -3275,7 +3292,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts</td>
+<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
 </tr>
 <tr>
 <td>page</td>
@@ -5965,7 +5982,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>none</td>
 <td>Value of the discount</td>
 </tr>
@@ -8602,7 +8619,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>ID of the account for which transactions are provided</td>
+<td>ID of the account for which transactions are provided, adhering to the standards for ID permanence</td>
 </tr>
 <tr>
 <td>transactionId</td>
@@ -8679,7 +8696,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The reference for the transaction provided by the originating institution.  Empty string if no data provided</td>
+<td>The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided</td>
 </tr>
 <tr>
 <td>merchantName</td>
@@ -10223,7 +10240,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>description</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Description of the authorised entity derived from previously executed direct debits</td>
 </tr>

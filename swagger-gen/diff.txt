@@ -1,106 +1,32 @@
-1387c1387
-< |type|query|string|optional|Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL|
+46c46
+< |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 ---
-> |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
-1439c1439
-< <a href="#authorisation-scopes">bank_payees</a>
+> |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+369c369
+< |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 ---
-> <a href="#authorisation-scopes">bank_basic_accounts</a>
-1481c1481
-< |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID of the payee requested.  This would have been previously obtained from a call to the payee list API|
+> |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+841c841
+< |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 ---
-> |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
-1983c1983
-<       "lastUpdated": "string",
+> |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+1173c1173
+< |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 ---
->       "lastUpdateTime": "string",
-1994c1994
-<       "lastUpdated": "string",
+> |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+2979c2979
+< |amount|[AmountString](#common-field-types)|conditional|none|Value of the discount|
 ---
->       "lastUpdateTime": "string",
-2072c2072
-<       "lastUpdated": "string",
+> |amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+4220c4220
+< |accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided, adhering to the standards for ID permanence|
 ---
->       "lastUpdateTime": "string",
-2139c2139
-<       "lastUpdated": "string",
+> |accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
+4231c4231
+< |reference|string|mandatory|none|The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided|
 ---
->       "lastUpdateTime": "string",
-4778c4778
-< |» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international|
+> |reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
+5065c5065
+< |description|string|mandatory|none|Description of the authorised entity derived from previously executed direct debits|
 ---
-> |» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
-4819c4819
-< |payeeAccountUType|string|mandatory|none|Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP|
----
-> |payeeAccountUType|string|mandatory|none|Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP|
-4887c4887
-< |name|string|mandatory|none|The name assigned to the PayID by the owner of the PayID|
----
-> |name|string|optional|none|The name assigned to the PayID by the owner of the PayID|
-4889c4889
-< |type|string|mandatory|none|The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change|
----
-> |type|string|mandatory|none|The type of the PayID|
-4918c4918
-< |crn|string|optional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
----
-> |crn|string|conditional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
-4956,4957c4956,4957
-< |» country|[ExternalRef](#common-field-types)|optional|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-< |» message|string|optional|none|Default message to add to a payment using this payee|
----
-> |» country|[ExternalRef](#common-field-types)|mandatory|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-> |» message|string|optional|none|Response message for the payment|
-5080c5080
-<       "lastUpdated": "string",
----
->       "lastUpdateTime": "string",
-5091c5091
-<       "lastUpdated": "string",
----
->       "lastUpdateTime": "string",
-5142c5142
-<       "lastUpdated": "string",
----
->       "lastUpdateTime": "string",
-5209c5209
-<       "lastUpdated": "string",
----
->       "lastUpdateTime": "string",
-5295c5295
-<   "lastUpdated": "string",
----
->   "lastUpdateTime": "string",
-5312c5312
-< |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
----
-> |lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
-5326c5326
-<   "lastUpdated": "string",
----
->   "lastUpdateTime": "string",
-5418c5418
-<   "lastUpdated": "string",
----
->   "lastUpdateTime": "string",
-5440c5440
-< |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
----
-> |lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
-5447c5447
-< |abn|string|mandatory|none|Australian Business Number for the organisation|
----
-> |abn|string|optional|none|Australian Business Number for the organisation|
-5472c5472
-<   "lastUpdated": "string",
----
->   "lastUpdateTime": "string",
-5567c5567
-< |areaCode|string|optional|none|If field is present and refers to Australian code - the leading 0 should be omitted.|
----
-> |areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
-5600c5600
-< |isPreferred|[Boolean](#common-field-types)|conditional|none|Required for one and only one email record in the collection. Denotes the default email address|
----
-> |isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+> |description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|

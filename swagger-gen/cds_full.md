@@ -43,7 +43,7 @@ Obtain a list of accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -366,7 +366,7 @@ Obtain balances for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -838,7 +838,7 @@ Obtain transactions for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
 |oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
 |min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
@@ -1170,7 +1170,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -2976,7 +2976,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+|amount|[AmountString](#common-field-types)|conditional|none|Value of the discount|
 |balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
@@ -4217,7 +4217,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
+|accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided, adhering to the standards for ID permanence|
 |transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
@@ -4228,7 +4228,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |executionDateTime|[DateTimeString](#common-field-types)|optional|none|The time the transaction was executed by the originating customer, if available|
 |amount|[AmountString](#common-field-types)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the transaction amount. AUD assumed if not present|
-|reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
+|reference|string|mandatory|none|The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided|
 |merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
 |merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
 |billerCode|string|optional|none|BPay Biller Code for the transaction (if available)|
@@ -5062,7 +5062,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|
+|description|string|mandatory|none|Description of the authorised entity derived from previously executed direct debits|
 |financialInstitution|string|mandatory|none|Name of the financial institution through which the direct debit will be executed|
 |abn|string|optional|none|Australian Business Number for the authorised entity|
 |acn|string|optional|none|Australian Company Number for the authorised entity|

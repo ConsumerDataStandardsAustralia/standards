@@ -33,8 +33,7 @@
 					"Banking APIs",
 					"Accounts"
 				],
-				"parameters": [
-					{
+				"parameters": [{
 						"$ref": "#/parameters/ParamProductCategory"
 					},
 					{
@@ -104,8 +103,7 @@
 					"Banking APIs",
 					"Accounts"
 				],
-				"parameters": [
-					{
+				"parameters": [{
 						"$ref": "#/parameters/ParamProductCategory"
 					},
 					{
@@ -430,8 +428,7 @@
 					"Banking APIs",
 					"Direct Debits"
 				],
-				"parameters": [
-					{
+				"parameters": [{
 						"$ref": "#/parameters/ParamProductCategory"
 					},
 					{
@@ -734,22 +731,22 @@
 			"required": false,
 			"type": "string",
 			"enum": [
-			  "TRANS_AND_SAVINGS_ACCOUNTS",
-			  "TERM_DEPOSITS",
-			  "TRAVEL_CARDS",
-			  "REGULATED_TRUST_ACCOUNTS",
-			  "RESIDENTIAL_MORTGAGES",
-			  "CRED_AND_CHRG_CARDS",
-			  "PERS_LOANS",
-			  "MARGIN_LOANS",
-			  "LEASES",
-			  "TRADE_FINANCE"
+				"TRANS_AND_SAVINGS_ACCOUNTS",
+				"TERM_DEPOSITS",
+				"TRAVEL_CARDS",
+				"REGULATED_TRUST_ACCOUNTS",
+				"RESIDENTIAL_MORTGAGES",
+				"CRED_AND_CHRG_CARDS",
+				"PERS_LOANS",
+				"MARGIN_LOANS",
+				"LEASES",
+				"TRADE_FINANCE"
 			]
 		},
 		"ParamAccountIsOwned": {
 			"name": "is-owned",
 			"in": "query",
-			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts",
+			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts",
 			"required": false,
 			"type": "boolean",
 			"x-cds-type": "Boolean"
@@ -1077,10 +1074,10 @@
 					"type": "string",
 					"description": "Description of the bundle"
 				},
-			  	"additionalInfo": {
+				"additionalInfo": {
 					"type": "string",
 					"description": "Display text providing more information on the bundle"
-			  	},
+				},
 				"additionalInfoUri": {
 					"type": "string",
 					"description": "Link to a web page with more information on the bundle criteria and benefits",
@@ -1164,7 +1161,7 @@
 					"description": "The type of constraint described.  See the next section for an overview of valid values and their meaning",
 					"enum": [
 						"MIN_BALANCE",
-					  "MAX_BALANCE",
+						"MAX_BALANCE",
 						"OPENING_BALANCE",
 						"MAX_LIMIT",
 						"MIN_LIMIT"
@@ -1174,15 +1171,15 @@
 					"type": "string",
 					"description": "Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType"
 				},
-			  "additionalInfo": {
-				"type": "string",
-				"description": "Display text providing more information the constraint"
-			  },
-			  "additionalInfoUri": {
-				"type": "string",
-				"description": "Link to a web page with more information on the constraint",
-				"x-cds-type": "URIString"
-			  }
+				"additionalInfo": {
+					"type": "string",
+					"description": "Display text providing more information the constraint"
+				},
+				"additionalInfoUri": {
+					"type": "string",
+					"description": "Link to a web page with more information on the constraint",
+					"x-cds-type": "URIString"
+				}
 			}
 		},
 		"BankingProductEligibility": {
@@ -1233,7 +1230,7 @@
 			"required": [
 				"name",
 				"feeType",
-			  	"amount"
+				"amount"
 			],
 			"x-conditional": [
 				"additionalValue",
@@ -1317,10 +1314,10 @@
 			"type": "object",
 			"required": [
 				"description",
-				"discountType",
-			  	"amount"
+				"discountType"
 			],
 			"x-conditional": [
+				"amount",
 				"balanceRate",
 				"transactionRate",
 				"accruedRate",
@@ -1383,12 +1380,12 @@
 				},
 				"eligibility": {
 					"description": "Eligibility constraints that apply to this discount",
-				  "type": "array",
-				  "items": {
-					"$ref": "#/definitions/BankingProductDiscountEligibility"
-				  }
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BankingProductDiscountEligibility"
+					}
 				}
-			  }
+			}
 		},
 		"BankingProductDiscountEligibility": {
 			"type": "object",
@@ -2436,7 +2433,7 @@
 			"properties": {
 				"accountId": {
 					"type": "string",
-					"description": "ID of the account for which transactions are provided",
+					"description": "ID of the account for which transactions are provided, adhering to the standards for ID permanence",
 					"x-cds-type": "ASCIIString"
 				},
 				"transactionId": {
@@ -2502,7 +2499,7 @@
 				},
 				"reference": {
 					"type": "string",
-					"description": "The reference for the transaction provided by the originating institution.  Empty string if no data provided"
+					"description": "The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided"
 				},
 				"merchantName": {
 					"type": "string",
@@ -3097,6 +3094,7 @@
 		"BankingAuthorisedEntity": {
 			"type": "object",
 			"required": [
+				"description",
 				"financialInstitution"
 			],
 			"properties": {
@@ -3795,16 +3793,16 @@
 			"type": "string",
 			"description": "The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details",
 			"enum": [
-        "TRANS_AND_SAVINGS_ACCOUNTS",
-        "TERM_DEPOSITS",
-        "TRAVEL_CARDS",
-        "REGULATED_TRUST_ACCOUNTS",
-        "RESIDENTIAL_MORTGAGES",
-        "CRED_AND_CHRG_CARDS",
-        "PERS_LOANS",
-        "MARGIN_LOANS",
-        "LEASES",
-        "TRADE_FINANCE"
+				"TRANS_AND_SAVINGS_ACCOUNTS",
+				"TERM_DEPOSITS",
+				"TRAVEL_CARDS",
+				"REGULATED_TRUST_ACCOUNTS",
+				"RESIDENTIAL_MORTGAGES",
+				"CRED_AND_CHRG_CARDS",
+				"PERS_LOANS",
+				"MARGIN_LOANS",
+				"LEASES",
+				"TRADE_FINANCE"
 			]
 		}
 	}
