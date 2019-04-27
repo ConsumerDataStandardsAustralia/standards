@@ -17,7 +17,7 @@ Description of the usage of the featureType field as it applies to products.
 |OVERDRAFT|An overdraft can be applied for|NA|
 |REDRAW|Redraw of repaid principal above minimum required is available|NA|
 |INSURANCE|Insurance is provided as an additional feature of the product|Text description of the type of insurance (e.g. Travel Insurance)|
-|BALANCE_TRANSFERS|Balance transfers can be made from the account (eg. for credit cards)|NA|
+|BALANCE_TRANSFERS|Balance transfers can be made to the account (eg. for credit cards)|NA|
 |INTEREST_FREE|Interest free period for purchases|Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |INTEREST_FREE_TRANSFERS|Interest free period for balance transfers|Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |DIGITAL_WALLET|A Digital wallet can be attached to the product|The name or brand of the wallet|
@@ -140,6 +140,8 @@ Description of the usage of the depositRateType field as it applies to products.
 |BUNDLE_BONUS|A bonus rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
 |VARIABLE|A variable base rate for the product|NA|
 |INTRODUCTORY|An introductory bonus that will expire after a set period|The period of time for the introductory rate.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
+|MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
 
 
 
@@ -157,7 +159,7 @@ Description of the usage of the lendingRateType field as it applies to products.
 |PENALTY|A specific penalty rate that may be applied.  A penalty rate increases the interest payable|Description of the penalty rate that is applicable|
 |FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
 |MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
-|CASH_ADVANCE|Specific rate applied to case advances from the account|NA|
+|CASH_ADVANCE|Specific rate applied to cash advances from the account|NA|
 |PURCHASE|Specific rate applied to purchases from the account|NA|
 |BUNDLE_DISCOUNT_FIXED|A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
 |BUNDLE_DISCOUNT_VARIABLE|A discount rate off the variable rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
@@ -286,7 +288,7 @@ Description of the usage of the lendingRateType field as it applies to accounts.
 |PENALTY|A specific penalty rate that may be applied.  A penalty rate increases the interest payable|Description of the penalty rate that is applicable|
 |FLOATING|A floating rate is relatively fixed but still adjusts under specific circumstances|Details of the float parameters|
 |MARKET_LINKED|A rate that is linked to a specific market, commodity or asset class|Details of the market linkage|
-|CASH_ADVANCE|Specific rate applied to case advances from the account|NA|
+|CASH_ADVANCE|Specific rate applied to cash advances from the account|NA|
 |PURCHASE|Specific rate applied to purchases from the account|NA|
 |BUNDLE_DISCOUNT_FIXED|A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product|The name of the bundle|
 |BUNDLE_DISCOUNT_VARIABLE|A discount rate off the variable rate obtained by originating a bundle instead of a standalone product|The name of the bundle|

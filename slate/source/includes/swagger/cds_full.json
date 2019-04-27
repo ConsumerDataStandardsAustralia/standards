@@ -829,8 +829,7 @@
 		"RequestAccountIds": {
 			"type": "object",
 			"required": [
-				"data",
-				"meta"
+				"data"
 			],
 			"properties": {
 				"data": {
@@ -1722,6 +1721,11 @@
 					"description": "A unique ID of the account adhering to the standards for ID permanence",
 					"x-cds-type": "ASCIIString"
 				},
+				"creationDate": {
+					"type": "string",
+					"description": "Date that the account was created (if known)",
+					"x-cds-type": "DateString"
+				},
 				"displayName": {
 					"type": "string",
 					"description": "The display name of the account. If a customer provided nickname is available that value should be returned"
@@ -1763,8 +1767,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -2531,8 +2534,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -2741,8 +2743,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"properties": {
 				"data": {
@@ -3124,8 +3125,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"x-conditional": [
 				"person",
@@ -3166,8 +3166,7 @@
 			"type": "object",
 			"required": [
 				"data",
-				"links",
-				"meta"
+				"links"
 			],
 			"x-conditional": [
 				"person",
@@ -3791,7 +3790,7 @@
 		},
 		"BankingEnumProductCategory": {
 			"type": "string",
-			"description": "The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details",
+			"description": "The category to which a product or account belongs.  See [here](#product-categories) for more details",
 			"enum": [
 				"TRANS_AND_SAVINGS_ACCOUNTS",
 				"TERM_DEPOSITS",
@@ -3801,6 +3800,8 @@
 				"CRED_AND_CHRG_CARDS",
 				"PERS_LOANS",
 				"MARGIN_LOANS",
+				"BUSINESS_LOANS",
+				"OVERDRAFT",
 				"LEASES",
 				"TRADE_FINANCE"
 			]
