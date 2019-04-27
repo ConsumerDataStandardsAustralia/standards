@@ -2932,9 +2932,6 @@
 				"billerCode",
 				"billerName"
 			],
-			"x-conditional": [
-				"crn"
-			],
 			"properties": {
 				"billerCode": {
 					"type": "string",
@@ -2971,7 +2968,7 @@
 						},
 						"message": {
 							"type": "string",
-							"description": "Response message for the payment"
+							"description": "Default message to add to a payment using this payee"
 						}
 					}
 				},
