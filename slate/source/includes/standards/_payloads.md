@@ -158,12 +158,12 @@ A Boolean value of false is not considered to be equivalent to `null`. Optional 
 “data”: {
 	[
 		{
-			“shapeType”: “circle”,
+			“shapeUType”: “circle”,
 			“circle”: {
 			}
 		},
 		{
-			“shapeType”: “square”,
+			“shapeUType”: “square”,
 			“square”: {
 			}
 		}

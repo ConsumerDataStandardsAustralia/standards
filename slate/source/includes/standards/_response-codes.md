@@ -18,4 +18,4 @@ The request was well formed but was unable to be processed due to business logic
 The operation was refused as too many requests have been made within a certain timeframe. | 429 Too Many Requests | Throttling is a NFR. The data provider should include a Retry-After header in the response indicating how long the data consumer must wait before retrying the operation. | Yes | Yes | Yes
 Something went wrong on the API gateway or micro-service | 500 Internal Server Error | The operation failed. | Yes | Yes | Yes
 Service is currently unavailable | 503 Service Unavailable | | Yes | Yes | Yes
-The server was unable to respond in a timely manner | 504 Gateway Timeout | Returned if a timeout has occurred but a resend of the original request is viable (otherwise us 500 instead) | Yes | Yes | Yes
+The server was unable to respond in a timely manner | 504 Gateway Timeout | Returned if a timeout has occurred but a resend of the original request is viable (otherwise use 500 instead) | Yes | Yes | Yes
