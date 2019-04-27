@@ -2436,7 +2436,7 @@
 			"properties": {
 				"accountId": {
 					"type": "string",
-					"description": "ID of the account for which transactions are provided",
+					"description": "ID of the account for which transactions are provided, adhering to the standards for ID permanence",
 					"x-cds-type": "ASCIIString"
 				},
 				"transactionId": {
@@ -2502,7 +2502,7 @@
 				},
 				"reference": {
 					"type": "string",
-					"description": "The reference for the transaction provided by the originating institution.  Empty string if no data provided"
+					"description": "The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided"
 				},
 				"merchantName": {
 					"type": "string",
@@ -3097,6 +3097,7 @@
 		"BankingAuthorisedEntity": {
 			"type": "object",
 			"required": [
+				"description",
 				"financialInstitution"
 			],
 			"properties": {
