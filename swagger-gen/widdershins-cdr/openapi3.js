@@ -240,8 +240,8 @@ function getParameters(data) {
         }
         templateVars[stupidity(param.name)] = param.exampleValues.object;
 
-        if (typeof param['x-cdr-type'] === 'string') {
-          param.cdrType = '[' + param['x-cdr-type'] +'](#common-field-types)';
+        if (typeof param['x-cds-type'] === 'string') {
+          param.cdrType = '[' + param['x-cds-type'] +'](#common-field-types)';
         }
     }
 
