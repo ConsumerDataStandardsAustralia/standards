@@ -776,7 +776,7 @@ Payloads
 <code>Accept = application/json</code><br>
 <code>x-v = 5</code><br>
 <code>x-min-v = 3</code><br>
-<code>x-Correlation-Id = 27639FAB67CC</code></p>
+<code>x-fapi-interaction-id = 6ba7b814-9dad-11d1-80b4-00c04fd430c8</code></p>
 </blockquote>
 
 <table><thead>
@@ -992,7 +992,7 @@ Payloads
 <tr>
 <td>The server was unable to respond in a timely manner</td>
 <td>504 Gateway Timeout</td>
-<td>Returned if a timeout has occurred but a resend of the original request is viable (otherwise us 500 instead)</td>
+<td>Returned if a timeout has occurred but a resend of the original request is viable (otherwise use 500 instead)</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -1169,12 +1169,12 @@ the same name.</p>
 <pre class="highlight plaintext"><code>“data”: {
     [
         {
-            “shapeType”: “circle”,
+            “shapeUType”: “circle”,
             “circle”: {
             }
         },
         {
-            “shapeType”: “square”,
+            “shapeUType”: “square”,
             “square”: {
             }
         }
@@ -1730,6 +1730,7 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1833,6 +1834,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4651,7 +4653,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -4805,7 +4807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>name</td>
@@ -6735,6 +6737,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6803,6 +6806,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemabankingaccount"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6828,6 +6832,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>mandatory</td>
 <td>none</td>
 <td>A unique ID of the account adhering to the standards for ID permanence</td>
+</tr>
+<tr>
+<td>creationDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Date that the account was created (if known)</td>
 </tr>
 <tr>
 <td>displayName</td>
@@ -6869,7 +6880,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>productName</td>
@@ -6902,6 +6913,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7083,7 +7095,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -7094,6 +7106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemabankingaccountdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8854,7 +8867,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9455,7 +9468,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10362,7 +10375,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10566,7 +10579,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11930,7 +11943,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="w">
 
 </span></code></pre>
-<p><em>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</em></p>
+<p><em>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</em></p>
 <h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
@@ -11946,7 +11959,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs.  See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-40'>Enumerated Values</h4>
@@ -11987,6 +12000,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td><em>anonymous</em></td>
 <td>MARGIN_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OVERDRAFT</td>
 </tr>
 <tr>
 <td><em>anonymous</em></td>
@@ -12124,7 +12145,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>BALANCE_TRANSFERS</td>
-<td>Balance transfers can be made from the account (eg. for credit cards)</td>
+<td>Balance transfers can be made to the account (eg. for credit cards)</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -12516,6 +12537,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An introductory bonus that will expire after a set period</td>
 <td>The period of time for the introductory rate.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
+<tr>
+<td>FLOATING</td>
+<td>A floating rate is relatively fixed but still adjusts under specific circumstances</td>
+<td>Details of the float parameters</td>
+</tr>
+<tr>
+<td>MARKET_LINKED</td>
+<td>A rate that is linked to a specific market, commodity or asset class</td>
+<td>Details of the market linkage</td>
+</tr>
 </tbody></table>
 
 <p><a id="productlendingratetypedoc"></a>
@@ -12567,7 +12598,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>CASH_ADVANCE</td>
-<td>Specific rate applied to case advances from the account</td>
+<td>Specific rate applied to cash advances from the account</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -12981,7 +13012,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>CASH_ADVANCE</td>
-<td>Specific rate applied to case advances from the account</td>
+<td>Specific rate applied to cash advances from the account</td>
 <td>NA</td>
 </tr>
 <tr>

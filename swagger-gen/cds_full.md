@@ -75,6 +75,7 @@ Obtain a list of accounts
     "accounts": [
       {
         "accountId": "string",
+        "creationDate": "string",
         "displayName": "string",
         "nickname": "string",
         "maskedNumber": "string",
@@ -159,6 +160,7 @@ Obtain detailed information on a single account
 {
   "data": {
     "accountId": "string",
+    "creationDate": "string",
     "displayName": "string",
     "nickname": "string",
     "maskedNumber": "string",
@@ -2232,7 +2234,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» accountIds|[string]|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
@@ -2324,7 +2326,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs.  See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
@@ -3277,6 +3279,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "accounts": [
       {
         "accountId": "string",
+        "creationDate": "string",
         "displayName": "string",
         "nickname": "string",
         "maskedNumber": "string",
@@ -3318,6 +3321,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
+  "creationDate": "string",
   "displayName": "string",
   "nickname": "string",
   "maskedNumber": "string",
@@ -3334,12 +3338,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|creationDate|[DateString](#common-field-types)|optional|none|Date that the account was created (if known)|
 |displayName|string|mandatory|none|The display name of the account. If a customer provided nickname is available that value should be returned|
 |nickname|string|optional|none|A customer supplied nick name for the account|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
 |openStatus|string|optional|none|Open or closed status for the account.  If not present then OPEN is assumed|
 |isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs.  See [here](#product-categories) for more details|
 |productName|string|mandatory|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
 
 #### Enumerated Values
@@ -3357,6 +3362,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "data": {
     "accountId": "string",
+    "creationDate": "string",
     "displayName": "string",
     "nickname": "string",
     "maskedNumber": "string",
@@ -3519,7 +3525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingAccountDetail](#schemabankingaccountdetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
@@ -3528,6 +3534,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
+  "creationDate": "string",
   "displayName": "string",
   "nickname": "string",
   "maskedNumber": "string",
@@ -4298,7 +4305,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingTransactionDetail](#schemabankingtransactiondetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
 
@@ -4669,7 +4676,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|[BankingPayeeDetail](#schemabankingpayeedetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingpayee">BankingPayee</h2>
 
@@ -5121,7 +5128,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» person|[CommonPerson](#schemacommonperson)|optional|none|none|
 |» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5277,7 +5284,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» person|[CommonPersonDetail](#schemacommonpersondetail)|optional|none|none|
 |» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -5955,13 +5962,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details*
+*The category to which a product or account belongs.  See [here](#product-categories) for more details*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|*anonymous*|string|optional|none|The category to which a product or account belongs.  See [here](#product-categories) for more details|
 
 #### Enumerated Values
 
@@ -5975,6 +5982,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |*anonymous*|CRED_AND_CHRG_CARDS|
 |*anonymous*|PERS_LOANS|
 |*anonymous*|MARGIN_LOANS|
+|*anonymous*|BUSINESS_LOANS|
+|*anonymous*|OVERDRAFT|
 |*anonymous*|LEASES|
 |*anonymous*|TRADE_FINANCE|
 

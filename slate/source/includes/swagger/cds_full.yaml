@@ -593,7 +593,6 @@ definitions:
     type: object
     required:
       - data
-      - meta
     properties:
       data:
         type: object
@@ -1274,6 +1273,10 @@ definitions:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
         x-cds-type: ASCIIString
+      creationDate:
+        type: string
+        description: Date that the account was created (if known)
+        x-cds-type: DateString
       displayName:
         type: string
         description: The display name of the account. If a customer provided nickname is available that value should be returned
@@ -1306,7 +1309,6 @@ definitions:
     required:
       - data
       - links
-      - meta
     properties:
       data:
         $ref: '#/definitions/BankingAccountDetail'
@@ -1894,7 +1896,6 @@ definitions:
     required:
       - data
       - links
-      - meta
     properties:
       data:
         $ref: '#/definitions/BankingTransactionDetail'
@@ -2037,7 +2038,6 @@ definitions:
     required:
       - data
       - links
-      - meta
     properties:
       data:
         $ref: '#/definitions/BankingPayeeDetail'
@@ -2311,7 +2311,6 @@ definitions:
     required:
       - data
       - links
-      - meta
     x-conditional:
       - person
       - organisation
@@ -2340,7 +2339,6 @@ definitions:
     required:
       - data
       - links
-      - meta
     x-conditional:
       - person
       - organisation
@@ -2793,7 +2791,7 @@ definitions:
               description: Optional additional data for specific error types
   BankingEnumProductCategory:
     type: string
-    description: 'The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details'
+    description: 'The category to which a product or account belongs.  See [here](#product-categories) for more details'
     enum:
       - TRANS_AND_SAVINGS_ACCOUNTS
       - TERM_DEPOSITS
@@ -2803,5 +2801,7 @@ definitions:
       - CRED_AND_CHRG_CARDS
       - PERS_LOANS
       - MARGIN_LOANS
+      - BUSINESS_LOANS
+      - OVERDRAFT
       - LEASES
       - TRADE_FINANCE
