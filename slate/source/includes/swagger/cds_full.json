@@ -3,7 +3,7 @@
 	"info": {
 		"title": "Consumer Data Standards",
 		"description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-		"version": "0.5.0",
+		"version": "0.6.0",
 		"license": {
 			"name": "MIT Licence",
 			"url": "https://opensource.org/licenses/MIT"
@@ -507,7 +507,7 @@
 				"description": "Obtain a list of pre-registered payees",
 				"operationId": "listPayees",
 				"x-scopes": [
-					"bank_basic_accounts"
+					"bank_payees"
 				],
 				"tags": [
 					"Banking APIs",
@@ -516,7 +516,7 @@
 				"parameters": [{
 						"name": "type",
 						"in": "query",
-						"description": "Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL",
+						"description": "Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL",
 						"required": false,
 						"type": "string",
 						"enum": [
@@ -560,7 +560,7 @@
 				"parameters": [{
 					"name": "payeeId",
 					"in": "path",
-					"description": "The ID used to locate the details of a particular payee",
+					"description": "The ID of the payee requested.  This would have been previously obtained from a call to the payee list API",
 					"required": true,
 					"type": "string",
 					"x-cds-type": "ASCIIString"
@@ -2813,7 +2813,7 @@
 					"properties": {
 						"payeeUType": {
 							"type": "string",
-							"description": "Type of object included that describes the payee in detail",
+							"description": "Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international",
 							"enum": [
 								"domestic",
 								"biller",
@@ -2846,7 +2846,7 @@
 			"properties": {
 				"payeeAccountUType": {
 					"type": "string",
-					"description": "Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP",
+					"description": "Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP",
 					"enum": [
 						"account",
 						"card",
@@ -2902,6 +2902,7 @@
 		"BankingDomesticPayeePayId": {
 			"type": "object",
 			"required": [
+				"name",
 				"identifier",
 				"type"
 			],
@@ -2916,7 +2917,7 @@
 				},
 				"type": {
 					"type": "string",
-					"description": "The type of the PayID",
+					"description": "The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change",
 					"enum": [
 						"EMAIL",
 						"MOBILE",
