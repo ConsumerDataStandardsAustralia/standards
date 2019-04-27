@@ -749,7 +749,7 @@
 		"ParamAccountIsOwned": {
 			"name": "is-owned",
 			"in": "query",
-			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts",
+			"description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts",
 			"required": false,
 			"type": "boolean",
 			"x-cds-type": "Boolean"
@@ -1317,10 +1317,10 @@
 			"type": "object",
 			"required": [
 				"description",
-				"discountType",
-			  	"amount"
+				"discountType"
 			],
 			"x-conditional": [
+				"amount",
 				"balanceRate",
 				"transactionRate",
 				"accruedRate",
@@ -1388,7 +1388,7 @@
 					"$ref": "#/definitions/BankingProductDiscountEligibility"
 				  }
 				}
-			  }
+		  }
 		},
 		"BankingProductDiscountEligibility": {
 			"type": "object",
