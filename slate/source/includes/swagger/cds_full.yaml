@@ -57,7 +57,7 @@ paths:
             shareable
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -134,7 +134,7 @@ paths:
             been returned by one of the account list end points.
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
         - $ref: '#/parameters/ParamStartTime'
         - $ref: '#/parameters/ParamEndTime'
         - $ref: '#/parameters/ParamTransactionMinAmount'
@@ -166,7 +166,7 @@ paths:
             been returned by one of the account list end points
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
         - name: transactionId
           in: path
           description: >-
@@ -174,7 +174,7 @@ paths:
             other transaction end points
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -261,7 +261,7 @@ paths:
             previously been returned by one of the account list end points.
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
       responses:
@@ -372,7 +372,7 @@ paths:
             obtained from a call to the payee list API
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -519,7 +519,7 @@ paths:
             date and time. If absent defaults to include all products
           required: false
           type: string
-          format: DateTimeString
+          x-cdr-type: DateTimeString
         - name: brand
           in: query
           description: Filter results based on a specific brand
@@ -551,7 +551,7 @@ paths:
           description: ID of the specific product requested
           required: true
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -639,12 +639,14 @@ parameters:
       for all accounts
     required: false
     type: boolean
+    x-cdr-type: Boolean
   ParamPage:
     name: page
     in: query
     description: Page of results to request (standard pagination)
     required: false
     type: integer
+    x-cdr-type: PositiveInteger
     default: '1'
   ParamPageSize:
     name: page-size
@@ -652,6 +654,7 @@ parameters:
     description: Page size to request. Default is 25 (standard pagination)
     required: false
     type: integer
+    x-cdr-type: PositiveInteger
     default: '25'
   ParamStartTime:
     name: start-time
@@ -662,7 +665,7 @@ parameters:
       Format is aligned to DateTimeString common type
     required: false
     type: string
-    format: DateTimeString
+    x-cdr-type: DateTimeString
   ParamEndTime:
     name: end-time
     in: query
@@ -672,7 +675,7 @@ parameters:
       100 days. Format is aligned to DateTimeString common type
     required: false
     type: string
-    format: DateTimeString
+    x-cdr-type: DateTimeString
   ParamTransactionNewestTime:
     name: newest-time
     in: query
@@ -682,7 +685,7 @@ parameters:
       aligned to DateTimeString common type
     required: false
     type: string
-    format: DateTimeString
+    x-cdr-type: DateTimeString
   ParamTransactionOldestTime:
     name: oldest-time
     in: query
@@ -692,7 +695,7 @@ parameters:
       90 days.  Format is aligned to DateTimeString common type
     required: false
     type: string
-    format: DateTimeString
+    x-cdr-type: DateTimeString
   ParamTransactionMinAmount:
     name: min-amount
     in: query
@@ -701,7 +704,7 @@ parameters:
       than this amount
     required: false
     type: string
-    format: AmountString
+    x-cdr-type: AmountString
   ParamTransactionMaxAmount:
     name: max-amount
     in: query
@@ -710,7 +713,7 @@ parameters:
       to than this amount
     required: false
     type: string
-    format: AmountString
+    x-cdr-type: AmountString
   ParamTransactionText:
     name: text
     in: query
@@ -737,7 +740,7 @@ definitions:
             items:
               type: string
               description: Array of specific accountIds to obtain authorisations for
-              format: ASCIIString
+              x-cdr-type: ASCIIString
       meta:
         $ref: '#/definitions/Meta'
   ResponseBankingProductList:
@@ -841,15 +844,15 @@ definitions:
           overviewUri:
             type: string
             description: General overview of the product
-            format: URIString
+            x-cdr-type: URIString
           termsUri:
             type: string
             description: Terms and conditions for the product
-            format: URIString
+            x-cdr-type: URIString
           eligibilityUri:
             type: string
             description: Eligibility rules and criteria for the product
-            format: URIString
+            x-cdr-type: URIString
           feesAndPricingUri:
             type: string
             description: >-
@@ -859,7 +862,7 @@ definitions:
           bundleUri:
             type: string
             description: Description of a bundle that this product can be part of
-            format: URIString
+            x-cdr-type: URIString
   ResponseBankingProductById:
     type: object
     required:
@@ -947,7 +950,7 @@ definitions:
         description: Array of product IDs for products included in the bundle
         items:
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
   BankingProductFeature:
     type: object
     required:
@@ -997,7 +1000,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this feature
-        format: URIString
+        x-cdr-type: URIString
   BankingProductConstraint:
     type: object
     required:
@@ -1028,7 +1031,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on the constraint
-        format: URIString
+        x-cdr-type: URIString
   BankingProductEligibility:
     type: object
     required:
@@ -1069,7 +1072,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility criteria
-        format: URIString
+        x-cdr-type: URIString
   BankingProductFee:
     type: object
     required:
@@ -1133,7 +1136,7 @@ definitions:
       currency:
         type: string
         description: The currency the fee will be charged in. Assumes AUD if absent
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       additionalValue:
         type: string
         description: >-
@@ -1146,7 +1149,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this fee
-        format: URIString
+        x-cdr-type: URIString
       discounts:
         description: An optional list of discounts to this fee that may be available
         type: array
@@ -1182,7 +1185,7 @@ definitions:
       amount:
         type: string
         description: Value of the discount
-        format: AmountString
+        x-cdr-type: AmountString
       balanceRate:
         type: string
         description: >-
@@ -1233,7 +1236,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this discount
-        format: URIString
+        x-cdr-type: URIString
       eligibility:
         description: Eligibility constraints that apply to this discount
         type: array
@@ -1302,7 +1305,7 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        format: RateString
+        x-cdr-type: RateString
       calculationFrequency:
         type: string
         description: >-
@@ -1336,7 +1339,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this rate
-        format: URIString
+        x-cdr-type: URIString
   BankingProductLendingRate:
     type: object
     required:
@@ -1365,11 +1368,11 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        format: RateString
+        x-cdr-type: RateString
       comparisonRate:
         type: string
         description: A comparison rate equivalent for this rate
-        format: RateString
+        x-cdr-type: RateString
       calculationFrequency:
         type: string
         description: >-
@@ -1414,7 +1417,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this rate
-        format: URIString
+        x-cdr-type: URIString
   BankingProductRateTier:
     type: object
     description: Defines the criteria and conditions for which a rate applies
@@ -1527,7 +1530,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this condition
-        format: URIString
+        x-cdr-type: URIString
   ResponseBankingAccountList:
     type: object
     required:
@@ -1564,7 +1567,7 @@ definitions:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
-        format: ASCIIString
+        x-cdr-type: ASCIIString
       displayName:
         type: string
         description: >-
@@ -1686,11 +1689,11 @@ definitions:
       lodgementDate:
         type: string
         description: The lodgement date of the original deposit
-        format: DateString
+        x-cdr-type: DateString
       maturityDate:
         type: string
         description: Maturity date for the term deposit
-        format: DateString
+        x-cdr-type: DateString
       maturityAmount:
         type: string
         description: >-
@@ -1700,7 +1703,7 @@ definitions:
       maturityCurrency:
         type: string
         description: If absent assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       maturityInstructions:
         type: string
         description: Current instructions on action to be taken at maturity
@@ -1717,50 +1720,50 @@ definitions:
       minPaymentAmount:
         type: string
         description: The minimum payment amount due for the next card payment
-        format: AmountString
+        x-cdr-type: AmountString
       paymentDueAmount:
         type: string
         description: The amount due for the next card payment
-        format: AmountString
+        x-cdr-type: AmountString
       paymentCurrency:
         type: string
         description: If absent assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       paymentDueDate:
         type: string
         description: Date that the next payment for the card is due
-        format: DateString
+        x-cdr-type: DateString
   BankingLoanAccount:
     type: object
     properties:
       originalStartDate:
         type: string
         description: Optional original start date for the loan
-        format: DateString
+        x-cdr-type: DateString
       originalLoanAmount:
         type: string
         description: Optional original loan value
-        format: AmountString
+        x-cdr-type: AmountString
       originalLoanCurrency:
         type: string
         description: If absent assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       loanEndDate:
         type: string
         description: Date that the loan is due to be repaid in full
-        format: DateString
+        x-cdr-type: DateString
       nextInstalmentDate:
         type: string
         description: Next date that an instalment is required
-        format: DateString
+        x-cdr-type: DateString
       minInstalmentAmount:
         type: string
         description: Minimum amount of next instalment
-        format: AmountString
+        x-cdr-type: AmountString
       minInstalmentCurrency:
         type: string
         description: If absent assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       maxRedraw:
         type: string
         description: >-
@@ -1770,15 +1773,15 @@ definitions:
       maxRedrawCurrency:
         type: string
         description: If absent assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       minRedraw:
         type: string
         description: Minimum redraw amount
-        format: AmountString
+        x-cdr-type: AmountString
       minRedrawCurrency:
         type: string
         description: If absent assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       offsetAccountEnabled:
         type: boolean
         description: >-
@@ -1795,7 +1798,7 @@ definitions:
           exists but details can not be accessed under the current authorisation
         items:
           type: string
-          format: ASCIIString
+          x-cdr-type: ASCIIString
       repaymentFrequency:
         type: string
         description: >-
@@ -1863,7 +1866,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this feature
-        format: URIString
+        x-cdr-type: URIString
       isActivated:
         type: boolean
         description: >-
@@ -1934,7 +1937,7 @@ definitions:
       currency:
         type: string
         description: The currency the fee will be charged in. Assumes AUD if absent
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       additionalValue:
         type: string
         description: >-
@@ -1947,7 +1950,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this fee
-        format: URIString
+        x-cdr-type: URIString
       discounts:
         type: array
         items:
@@ -2029,7 +2032,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this discount
-        format: URIString
+        x-cdr-type: URIString
   BankingAccountDiscountEligibility:
     type: object
     required:
@@ -2091,7 +2094,7 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        format: RateString
+        x-cdr-type: RateString
       calculationFrequency:
         type: string
         description: >-
@@ -2120,7 +2123,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this fee
-        format: URIString
+        x-cdr-type: URIString
   BankingAccountLendingRate:
     type: object
     required:
@@ -2149,7 +2152,7 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        format: RateString
+        x-cdr-type: RateString
       calculationFrequency:
         type: string
         description: >-
@@ -2188,7 +2191,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information  on this fee
-        format: URIString
+        x-cdr-type: URIString
   ResponseBankingTransactionList:
     type: object
     required:
@@ -2226,7 +2229,7 @@ definitions:
       accountId:
         type: string
         description: ID of the account for which transactions are provided
-        format: ASCIIString
+        x-cdr-type: ASCIIString
       transactionId:
         type: string
         description: >-
@@ -2293,7 +2296,7 @@ definitions:
       currency:
         type: string
         description: The currency for the transaction amount. AUD assumed if not present
-        format: CurrencyString
+        x-cdr-type: CurrencyString
       reference:
         type: string
         description: >-
@@ -2406,7 +2409,7 @@ definitions:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
-        format: ASCIIString
+        x-cdr-type: ASCIIString
       balanceUType:
         type: string
         description: The type of balance object provided for the account
@@ -2491,7 +2494,7 @@ definitions:
       payeeId:
         type: string
         description: ID of the payee adhering to the rules of ID permanence
-        format: ASCIIString
+        x-cdr-type: ASCIIString
       nickname:
         type: string
         description: The short display name of the payee as provided by the customer
@@ -2511,7 +2514,7 @@ definitions:
       creationDate:
         type: string
         description: The date the payee was created by the customer
-        format: DateString
+        x-cdr-type: DateString
   BankingPayeeDetail:
     allOf:
       - $ref: '#/definitions/BankingPayee'
@@ -2741,11 +2744,11 @@ definitions:
       lastDebitDateTime:
         type: string
         description: The date and time of the last debit executed under this authorisation
-        format: DateTimeString
+        x-cdr-type: DateTimeString
       lastDebitAmount:
         type: string
         description: The amount of the last debit executed under this authorisation
-        format: AmountString
+        x-cdr-type: AmountString
   BankingAuthorisedEntity:
     type: object
     required:
@@ -2975,7 +2978,7 @@ definitions:
       establishmentDate:
         type: string
         description: The date the organisation described was established
-        format: DateString
+        x-cdr-type: DateString
   CommonOrganisationDetail:
     allOf:
       - $ref: '#/definitions/CommonOrganisation'
@@ -3134,7 +3137,8 @@ definitions:
           then must be one of the values defined by the ISO 3166:AU standard
       country:
         type: string
-        description: A valid ISO 3166 Alpha-3 country code
+        description: 'A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code'
+        x-cdr-type: ExternalRef
   CommonPAFAddress:
     type: object
     description: >-
@@ -3180,6 +3184,7 @@ definitions:
       lotNumber:
         type: integer
         description: Allotment number for the address
+        x-cdr-type: PositiveInteger
       buildingName1:
         type: string
         description: Building/Property name 1
@@ -3207,6 +3212,7 @@ definitions:
       postalDeliveryNumber:
         type: integer
         description: Postal delivery number if the address is a postal delivery type
+        x-cdr-type: PositiveInteger
       postalDeliveryNumberPrefix:
         type: string
         description: Postal delivery number prefix related to the postal delivery number
@@ -3239,7 +3245,7 @@ definitions:
       currency:
         type: string
         description: If not present assumes AUD
-        format: CurrencyString
+        x-cdr-type: CurrencyString
   Links:
     type: object
     required:
@@ -3248,7 +3254,7 @@ definitions:
       self:
         type: string
         description: Fully qualified link to this API call
-        format: URIString
+        x-cdr-type: URIString
   Meta:
     type: object
   LinksPaginated:
@@ -3264,7 +3270,7 @@ definitions:
       self:
         type: string
         description: Fully qualified link to this API call
-        format: URIString
+        x-cdr-type: URIString
       first:
         type: string
         description: >-
@@ -3298,11 +3304,11 @@ definitions:
       totalRecords:
         type: integer
         description: The total number of records in the full set
-        format: NaturalNumber
+        x-cdr-type: NaturalNumber
       totalPages:
         type: integer
         description: The total number of pages in the full set
-        format: NaturalNumber
+        x-cdr-type: NaturalNumber
   ResponseErrorList:
     type: object
     required:

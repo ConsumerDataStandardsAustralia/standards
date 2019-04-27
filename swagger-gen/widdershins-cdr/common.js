@@ -373,19 +373,23 @@ function schemaToArray(schema,offset,options,data) {
         }
 
         if (typeof entry.type === 'undefined') {
-            entry.type = inferType(schema);
-            entry.safeType = entry.type;
+          entry.type = inferType(schema);
+          entry.safeType = entry.type;
         }
 
         if (typeof entry.name === 'string' && entry.name.startsWith('x-widdershins-')) {
-            entry.name = ''; // reset
+          entry.name = ''; // reset
         }
         if ((skipDepth >= 0) && (entry.depth >= skipDepth)) entry.name = ''; // reset
         if (entry.depth < skipDepth) skipDepth = -1;
         entry.displayName = (data.translations.indent.repeat(entry.depth)+' '+entry.name).trim();
 
         if ((!state.top || entry.type !== 'object') && (entry.name)) {
-            block.rows.push(entry);
+          block.rows.push(entry);
+        }
+
+        if (typeof schema['x-cdr-type'] === 'string') {
+          entry.cdrType = '[' + schema['x-cdr-type'] +'](#common-field-types)';
         }
     });
     return container;
