@@ -1384,7 +1384,7 @@ Obtain a list of pre-registered payees
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
+|type|query|string|optional|Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -1436,7 +1436,7 @@ Obtain a list of pre-registered payees
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank_payees</a>
 </aside>
 
 ## Get Payee Detail
@@ -1478,7 +1478,7 @@ Obtain detailed information on a single payee
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
+|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID of the payee requested.  This would have been previously obtained from a call to the payee list API|
 
 > Example responses
 
@@ -1980,7 +1980,7 @@ Obtain basic information on the customer that has authorised the current session
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -1991,7 +1991,7 @@ Obtain basic information on the customer that has authorised the current session
       "occupationCode": "string"
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -2069,7 +2069,7 @@ Obtain detailed information on the authorised customer within the current sessio
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -2136,7 +2136,7 @@ Obtain detailed information on the authorised customer within the current sessio
       ]
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -4775,7 +4775,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
+|» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international|
 |» domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
 |» biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
 |» international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
@@ -4816,7 +4816,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|payeeAccountUType|string|mandatory|none|Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP|
+|payeeAccountUType|string|mandatory|none|Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP|
 |account|[BankingDomesticPayeeAccount](#schemabankingdomesticpayeeaccount)|conditional|none|none|
 |card|[BankingDomesticPayeeCard](#schemabankingdomesticpayeecard)|conditional|none|none|
 |payId|[BankingDomesticPayeePayId](#schemabankingdomesticpayeepayid)|conditional|none|none|
@@ -4884,9 +4884,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|optional|none|The name assigned to the PayID by the owner of the PayID|
+|name|string|mandatory|none|The name assigned to the PayID by the owner of the PayID|
 |identifier|string|mandatory|none|The identifier of the PayID (dependent on type)|
-|type|string|mandatory|none|The type of the PayID|
+|type|string|mandatory|none|The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change|
 
 #### Enumerated Values
 
@@ -4915,7 +4915,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |billerCode|string|mandatory|none|BPay Biller Code of the Biller|
-|crn|string|conditional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+|crn|string|optional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
 |billerName|string|mandatory|none|Name of the Biller|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
@@ -4953,8 +4953,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |beneficiaryDetails|object|mandatory|none|none|
 |» name|string|optional|none|Name of the beneficiary|
-|» country|[ExternalRef](#common-field-types)|mandatory|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
-|» message|string|optional|none|Response message for the payment|
+|» country|[ExternalRef](#common-field-types)|optional|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
+|» message|string|optional|none|Default message to add to a payment using this payee|
 |bankDetails|object|mandatory|none|none|
 |» country|[ExternalRef](#common-field-types)|mandatory|none|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
 |» accountNumber|string|mandatory|none|Account Targeted for payment|
@@ -5077,7 +5077,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -5088,7 +5088,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "occupationCode": "string"
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -5139,7 +5139,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "data": {
     "customerUType": "person",
     "person": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "firstName": "string",
       "lastName": "string",
       "middleNames": [
@@ -5206,7 +5206,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       ]
     },
     "organisation": {
-      "lastUpdateTime": "string",
+      "lastUpdated": "string",
       "agentFirstName": "string",
       "agentLastName": "string",
       "agentRole": "string",
@@ -5292,7 +5292,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "firstName": "string",
   "lastName": "string",
   "middleNames": [
@@ -5309,7 +5309,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
 |firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
 |lastName|string|mandatory|none|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
@@ -5323,7 +5323,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "firstName": "string",
   "lastName": "string",
   "middleNames": [
@@ -5415,7 +5415,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "agentFirstName": "string",
   "agentLastName": "string",
   "agentRole": "string",
@@ -5437,14 +5437,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
 |agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
 |agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
 |businessName|string|mandatory|none|Name of the organisation|
 |legalName|string|optional|none|Legal name, if different to the business name|
 |shortName|string|optional|none|Short name used for communication, if  different to the business name|
-|abn|string|optional|none|Australian Business Number for the organisation|
+|abn|string|mandatory|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
 |isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
 |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
@@ -5469,7 +5469,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "lastUpdateTime": "string",
+  "lastUpdated": "string",
   "agentFirstName": "string",
   "agentLastName": "string",
   "agentRole": "string",
@@ -5564,7 +5564,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |isPreferred|[Boolean](#common-field-types)|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
 |purpose|string|mandatory|none|The purpose of the number as specified by the customer|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
-|areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
+|areaCode|string|optional|none|If field is present and refers to Australian code - the leading 0 should be omitted.|
 |number|string|mandatory|none|The actual phone number, with leading zeros as appropriate|
 |extension|string|optional|none|An extension number (if applicable)|
 |fullNumber|[ExternalRef](#common-field-types)|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)|
@@ -5597,7 +5597,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|[Boolean](#common-field-types)|conditional|none|Required for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
 |address|[ExternalRef](#common-field-types)|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
 

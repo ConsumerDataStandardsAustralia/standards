@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Consumer Data Standards
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.5.0
+  version: 0.6.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'
@@ -53,7 +53,7 @@ paths:
           description: A tokenised identifier for the account which is unique but not shareable
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -126,7 +126,7 @@ paths:
           description: ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
         - $ref: '#/parameters/ParamStartTime'
         - $ref: '#/parameters/ParamEndTime'
         - $ref: '#/parameters/ParamTransactionMinAmount'
@@ -156,13 +156,13 @@ paths:
           description: ID of the account to get transactions for.  Must have previously been returned by one of the account list end points
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
         - name: transactionId
           in: path
           description: ID of the transaction obtained from a previous call to one of the other transaction end points
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -245,7 +245,7 @@ paths:
           description: ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
         - $ref: '#/parameters/ParamPage'
         - $ref: '#/parameters/ParamPageSize'
       responses:
@@ -310,14 +310,14 @@ paths:
       description: Obtain a list of pre-registered payees
       operationId: listPayees
       x-scopes:
-        - bank_basic_accounts
+        - bank_payees
       tags:
         - Banking APIs
         - Payees
       parameters:
         - name: type
           in: query
-          description: 'Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL'
+          description: Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL
           required: false
           type: string
           enum:
@@ -347,10 +347,10 @@ paths:
       parameters:
         - name: payeeId
           in: path
-          description: The ID used to locate the details of a particular payee
+          description: The ID of the payee requested.  This would have been previously obtained from a call to the payee list API
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -417,7 +417,7 @@ paths:
           description: Only include products that have been updated after the specified date and time. If absent defaults to include all products
           required: false
           type: string
-          x-cdr-type: DateTimeString
+          x-cds-type: DateTimeString
         - name: brand
           in: query
           description: Filter results based on a specific brand
@@ -447,7 +447,7 @@ paths:
           description: ID of the specific product requested
           required: true
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
       responses:
         '200':
           description: Success
@@ -523,14 +523,14 @@ parameters:
     description: Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts
     required: false
     type: boolean
-    x-cdr-type: Boolean
+    x-cds-type: Boolean
   ParamPage:
     name: page
     in: query
     description: Page of results to request (standard pagination)
     required: false
     type: integer
-    x-cdr-type: PositiveInteger
+    x-cds-type: PositiveInteger
     default: '1'
   ParamPageSize:
     name: page-size
@@ -538,7 +538,7 @@ parameters:
     description: Page size to request. Default is 25 (standard pagination)
     required: false
     type: integer
-    x-cdr-type: PositiveInteger
+    x-cds-type: PositiveInteger
     default: '25'
   ParamStartTime:
     name: start-time
@@ -546,42 +546,42 @@ parameters:
     description: Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type
     required: false
     type: string
-    x-cdr-type: DateTimeString
+    x-cds-type: DateTimeString
   ParamEndTime:
     name: end-time
     in: query
     description: Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type
     required: false
     type: string
-    x-cdr-type: DateTimeString
+    x-cds-type: DateTimeString
   ParamTransactionNewestTime:
     name: newest-time
     in: query
     description: Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type
     required: false
     type: string
-    x-cdr-type: DateTimeString
+    x-cds-type: DateTimeString
   ParamTransactionOldestTime:
     name: oldest-time
     in: query
     description: Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type
     required: false
     type: string
-    x-cdr-type: DateTimeString
+    x-cds-type: DateTimeString
   ParamTransactionMinAmount:
     name: min-amount
     in: query
     description: Filter transactions to only transactions with amounts higher or equal to than this amount
     required: false
     type: string
-    x-cdr-type: AmountString
+    x-cds-type: AmountString
   ParamTransactionMaxAmount:
     name: max-amount
     in: query
     description: Filter transactions to only transactions with amounts less than or equal to than this amount
     required: false
     type: string
-    x-cdr-type: AmountString
+    x-cds-type: AmountString
   ParamTransactionText:
     name: text
     in: query
@@ -605,7 +605,7 @@ definitions:
             items:
               type: string
               description: Array of specific accountIds to obtain authorisations for
-              x-cdr-type: ASCIIString
+              x-cds-type: ASCIIString
       meta:
         $ref: '#/definitions/Meta'
   ResponseBankingProductList:
@@ -643,19 +643,19 @@ definitions:
       productId:
         type: string
         description: A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       effectiveFrom:
         type: string
         description: The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       effectiveTo:
         type: string
         description: The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       lastUpdated:
         type: string
         description: The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       productCategory:
         $ref: '#/definitions/BankingEnumProductCategory'
       name:
@@ -673,11 +673,11 @@ definitions:
       applicationUri:
         type: string
         description: A link to the an application web page where this product can be applied for.
-        x-cdr-type: URIString
+        x-cds-type: URIString
       isTailored:
         type: boolean
         description: Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
       additionalInformation:
         description: Object that contains links to additional information on specific topics
         type: object
@@ -685,23 +685,23 @@ definitions:
           overviewUri:
             type: string
             description: General overview of the product
-            x-cdr-type: URIString
+            x-cds-type: URIString
           termsUri:
             type: string
             description: Terms and conditions for the product
-            x-cdr-type: URIString
+            x-cds-type: URIString
           eligibilityUri:
             type: string
             description: Eligibility rules and criteria for the product
-            x-cdr-type: URIString
+            x-cds-type: URIString
           feesAndPricingUri:
             type: string
             description: 'Description of fees, pricing, discounts, exemptions and bonuses for the product'
-            x-cdr-type: URIString
+            x-cds-type: URIString
           bundleUri:
             type: string
             description: Description of a bundle that this product can be part of
-            x-cdr-type: URIString
+            x-cds-type: URIString
   ResponseBankingProductById:
     type: object
     required:
@@ -774,13 +774,13 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on the bundle criteria and benefits
-        x-cdr-type: URIString
+        x-cds-type: URIString
       productIds:
         type: array
         description: Array of product IDs for products included in the bundle
         items:
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
   BankingProductFeature:
     type: object
     required:
@@ -825,7 +825,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this feature
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingProductConstraint:
     type: object
     required:
@@ -851,7 +851,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on the constraint
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingProductEligibility:
     type: object
     required:
@@ -885,7 +885,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility criteria
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingProductFee:
     type: object
     required:
@@ -917,27 +917,27 @@ definitions:
       amount:
         type: string
         description: 'The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       balanceRate:
         type: string
         description: 'A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       transactionRate:
         type: string
         description: 'A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       accruedRate:
         type: string
         description: 'A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       accrualFrequency:
         type: string
         description: 'The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       currency:
         type: string
         description: The currency the fee will be charged in. Assumes AUD if absent
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType
@@ -947,7 +947,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this fee
-        x-cdr-type: URIString
+        x-cds-type: URIString
       discounts:
         description: An optional list of discounts to this fee that may be available
         type: array
@@ -981,23 +981,23 @@ definitions:
       amount:
         type: string
         description: Value of the discount
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       balanceRate:
         type: string
         description: 'A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       transactionRate:
         type: string
         description: 'A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       accruedRate:
         type: string
         description: 'A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       feeRate:
         type: string
         description: 'A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType
@@ -1007,7 +1007,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this discount
-        x-cdr-type: URIString
+        x-cds-type: URIString
       eligibility:
         description: Eligibility constraints that apply to this discount
         type: array
@@ -1046,7 +1046,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility constraint
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingProductDepositRate:
     type: object
     required:
@@ -1069,15 +1069,15 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        x-cdr-type: RateString
+        x-cds-type: RateString
       calculationFrequency:
         type: string
         description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       tiers:
         type: array
         description: Rate tiers applicable for this rate
@@ -1092,7 +1092,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this rate
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingProductLendingRate:
     type: object
     required:
@@ -1119,19 +1119,19 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        x-cdr-type: RateString
+        x-cds-type: RateString
       comparisonRate:
         type: string
         description: A comparison rate equivalent for this rate
-        x-cdr-type: RateString
+        x-cds-type: RateString
       calculationFrequency:
         type: string
         description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       interestPaymentDue:
         type: string
         description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
@@ -1157,7 +1157,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this rate
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingProductRateTier:
     type: object
     description: Defines the criteria and conditions for which a rate applies
@@ -1236,7 +1236,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this condition
-        x-cdr-type: URIString
+        x-cds-type: URIString
   ResponseBankingAccountList:
     type: object
     required:
@@ -1273,7 +1273,7 @@ definitions:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       displayName:
         type: string
         description: The display name of the account. If a customer provided nickname is available that value should be returned
@@ -1283,7 +1283,7 @@ definitions:
       maskedNumber:
         type: string
         description: 'A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked'
-        x-cdr-type: MaskedAccountString
+        x-cds-type: MaskedAccountString
       openStatus:
         type: string
         description: Open or closed status for the account.  If not present then OPEN is assumed
@@ -1294,7 +1294,7 @@ definitions:
       isOwned:
         type: boolean
         description: 'Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then ''true'' is assumed'
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
         default: 'true'
       productCategory:
         $ref: '#/definitions/BankingEnumProductCategory'
@@ -1375,19 +1375,19 @@ definitions:
       lodgementDate:
         type: string
         description: The lodgement date of the original deposit
-        x-cdr-type: DateString
+        x-cds-type: DateString
       maturityDate:
         type: string
         description: Maturity date for the term deposit
-        x-cdr-type: DateString
+        x-cds-type: DateString
       maturityAmount:
         type: string
         description: Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       maturityCurrency:
         type: string
         description: If absent assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       maturityInstructions:
         type: string
         description: Current instructions on action to be taken at maturity
@@ -1404,80 +1404,80 @@ definitions:
       minPaymentAmount:
         type: string
         description: The minimum payment amount due for the next card payment
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       paymentDueAmount:
         type: string
         description: The amount due for the next card payment
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       paymentCurrency:
         type: string
         description: If absent assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       paymentDueDate:
         type: string
         description: Date that the next payment for the card is due
-        x-cdr-type: DateString
+        x-cds-type: DateString
   BankingLoanAccount:
     type: object
     properties:
       originalStartDate:
         type: string
         description: Optional original start date for the loan
-        x-cdr-type: DateString
+        x-cds-type: DateString
       originalLoanAmount:
         type: string
         description: Optional original loan value
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       originalLoanCurrency:
         type: string
         description: If absent assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       loanEndDate:
         type: string
         description: Date that the loan is due to be repaid in full
-        x-cdr-type: DateString
+        x-cds-type: DateString
       nextInstalmentDate:
         type: string
         description: Next date that an instalment is required
-        x-cdr-type: DateString
+        x-cds-type: DateString
       minInstalmentAmount:
         type: string
         description: Minimum amount of next instalment
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       minInstalmentCurrency:
         type: string
         description: If absent assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       maxRedraw:
         type: string
         description: Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       maxRedrawCurrency:
         type: string
         description: If absent assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       minRedraw:
         type: string
         description: Minimum redraw amount
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       minRedrawCurrency:
         type: string
         description: If absent assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       offsetAccountEnabled:
         type: boolean
         description: Set to true if one or more offset accounts are configured for this loan account
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
       offsetAccountIds:
         type: array
         description: The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation
         items:
           type: string
-          x-cdr-type: ASCIIString
+          x-cds-type: ASCIIString
       repaymentFrequency:
         type: string
         description: 'The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       repaymentType:
         type: string
         description: The reason for taking out the loan. The purpose generally affects the rate offered due to different risk profiles
@@ -1531,11 +1531,11 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this feature
-        x-cdr-type: URIString
+        x-cds-type: URIString
       isActivated:
         type: boolean
         description: True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
         default: 'true'
   BankingAccountFee:
     type: object
@@ -1568,27 +1568,27 @@ definitions:
       amount:
         type: string
         description: 'The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       balanceRate:
         type: string
         description: 'A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       transactionRate:
         type: string
         description: 'A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       accruedRate:
         type: string
         description: 'A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       accrualFrequency:
         type: string
         description: 'The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       currency:
         type: string
         description: The currency the fee will be charged in. Assumes AUD if absent
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType
@@ -1598,7 +1598,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this fee
-        x-cdr-type: URIString
+        x-cds-type: URIString
       discounts:
         type: array
         items:
@@ -1630,19 +1630,19 @@ definitions:
       amount:
         type: string
         description: 'Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       balanceRate:
         type: string
         description: 'A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       transactionRate:
         type: string
         description: 'A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       accruedRate:
         type: string
         description: 'A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee'
-        x-cdr-type: RateString
+        x-cds-type: RateString
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType
@@ -1656,7 +1656,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this discount
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingAccountDiscountEligibility:
     type: object
     required:
@@ -1690,7 +1690,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility constraint
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingAccountDepositRate:
     type: object
     required:
@@ -1711,15 +1711,15 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        x-cdr-type: RateString
+        x-cds-type: RateString
       calculationFrequency:
         type: string
         description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
@@ -1729,7 +1729,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this fee
-        x-cdr-type: URIString
+        x-cds-type: URIString
   BankingAccountLendingRate:
     type: object
     required:
@@ -1756,15 +1756,15 @@ definitions:
       rate:
         type: string
         description: The rate to be applied
-        x-cdr-type: RateString
+        x-cds-type: RateString
       calculationFrequency:
         type: string
         description: 'The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is ''applied'' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       applicationFrequency:
         type: string
         description: 'The period after which the calculated amount(s) (see calculationFrequency) are ''applied'' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       interestPaymentDue:
         type: string
         description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
@@ -1780,7 +1780,7 @@ definitions:
       additionalInfoUri:
         type: string
         description: Link to a web page with more information  on this fee
-        x-cdr-type: URIString
+        x-cds-type: URIString
   ResponseBankingTransactionList:
     type: object
     required:
@@ -1818,15 +1818,15 @@ definitions:
       accountId:
         type: string
         description: ID of the account for which transactions are provided
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       transactionId:
         type: string
         description: A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       isDetailAvailable:
         type: boolean
         description: True if extended information is available using the transaction detail end point. False if extended data is not available
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
       type:
         type: string
         description: The type of the transaction
@@ -1851,23 +1851,23 @@ definitions:
       postingDateTime:
         type: string
         description: The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       valueDateTime:
         type: string
         description: 'Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry'
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       executionDateTime:
         type: string
         description: 'The time the transaction was executed by the originating customer, if available'
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       amount:
         type: string
         description: The value of the transaction. Negative values mean money was outgoing from the account
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       currency:
         type: string
         description: The currency for the transaction amount. AUD assumed if not present
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
       reference:
         type: string
         description: The reference for the transaction provided by the originating institution.  Empty string if no data provided
@@ -1970,7 +1970,7 @@ definitions:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       balanceUType:
         type: string
         description: The type of balance object provided for the account
@@ -2055,7 +2055,7 @@ definitions:
       payeeId:
         type: string
         description: ID of the payee adhering to the rules of ID permanence
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       nickname:
         type: string
         description: The short display name of the payee as provided by the customer
@@ -2072,7 +2072,7 @@ definitions:
       creationDate:
         type: string
         description: The date the payee was created by the customer
-        x-cdr-type: DateString
+        x-cds-type: DateString
   BankingPayeeDetail:
     allOf:
       - $ref: '#/definitions/BankingPayee'
@@ -2086,7 +2086,7 @@ definitions:
         properties:
           payeeUType:
             type: string
-            description: Type of object included that describes the payee in detail
+            description: 'Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international'
             enum:
               - domestic
               - biller
@@ -2108,7 +2108,7 @@ definitions:
     properties:
       payeeAccountUType:
         type: string
-        description: 'Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP'
+        description: 'Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP'
         enum:
           - account
           - card
@@ -2143,10 +2143,11 @@ definitions:
       cardNumber:
         type: string
         description: Name of the account to pay to
-        x-cdr-type: MaskedPANString
+        x-cds-type: MaskedPANString
   BankingDomesticPayeePayId:
     type: object
     required:
+      - name
       - identifier
       - type
     properties:
@@ -2158,7 +2159,7 @@ definitions:
         description: The identifier of the PayID (dependent on type)
       type:
         type: string
-        description: The type of the PayID
+        description: 'The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change'
         enum:
           - EMAIL
           - MOBILE
@@ -2169,8 +2170,6 @@ definitions:
     required:
       - billerCode
       - billerName
-    x-conditional:
-      - crn
     properties:
       billerCode:
         type: string
@@ -2189,8 +2188,6 @@ definitions:
     properties:
       beneficiaryDetails:
         type: object
-        required:
-          - country
         properties:
           name:
             type: string
@@ -2198,10 +2195,10 @@ definitions:
           country:
             type: string
             description: 'Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code'
-            x-cdr-type: ExternalRef
+            x-cds-type: ExternalRef
           message:
             type: string
-            description: Response message for the payment
+            description: Default message to add to a payment using this payee
       bankDetails:
         type: object
         required:
@@ -2211,7 +2208,7 @@ definitions:
           country:
             type: string
             description: 'Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code'
-            x-cdr-type: ExternalRef
+            x-cds-type: ExternalRef
           accountNumber:
             type: string
             description: Account Targeted for payment
@@ -2230,7 +2227,7 @@ definitions:
           beneficiaryBankBIC:
             type: string
             description: 'Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)'
-            x-cdr-type: ExternalRef
+            x-cds-type: ExternalRef
           fedWireNumber:
             type: string
             description: Number for Fedwire payment (Federal Reserve Wire Network)
@@ -2246,7 +2243,7 @@ definitions:
           legalEntityIdentifier:
             type: string
             description: 'The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)'
-            x-cdr-type: ExternalRef
+            x-cds-type: ExternalRef
   ResponseBankingDirectDebitAuthorisationList:
     type: object
     required:
@@ -2277,17 +2274,17 @@ definitions:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence.
-        x-cdr-type: ASCIIString
+        x-cds-type: ASCIIString
       authorisedEntity:
         $ref: '#/definitions/BankingAuthorisedEntity'
       lastDebitDateTime:
         type: string
         description: The date and time of the last debit executed under this authorisation
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       lastDebitAmount:
         type: string
         description: The amount of the last debit executed under this authorisation
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
   BankingAuthorisedEntity:
     type: object
     required:
@@ -2369,14 +2366,14 @@ definitions:
   CommonPerson:
     type: object
     required:
-      - lastUpdateTime
+      - lastUpdated
       - lastName
       - middleNames
     properties:
-      lastUpdateTime:
+      lastUpdated:
         type: string
         description: The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       firstName:
         type: string
         description: For people with single names this field need not be present.  The single name should be in the lastName field
@@ -2424,16 +2421,17 @@ definitions:
   CommonOrganisation:
     type: object
     required:
-      - lastUpdateTime
+      - lastUpdated
       - agentLastName
       - agentRole
       - businessName
       - organisationType
+      - abn
     properties:
-      lastUpdateTime:
+      lastUpdated:
         type: string
         description: The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data
-        x-cdr-type: DateTimeString
+        x-cds-type: DateTimeString
       agentFirstName:
         type: string
         description: The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field
@@ -2461,7 +2459,7 @@ definitions:
       isACNCRegistered:
         type: boolean
         description: True if registered with the ACNC.  False if not. Absent or null if not confirmed.
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
       industryCode:
         type: string
         description: '[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.'
@@ -2478,11 +2476,11 @@ definitions:
       registeredCountry:
         type: string
         description: 'Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
       establishmentDate:
         type: string
         description: The date the organisation described was established
-        x-cdr-type: DateString
+        x-cds-type: DateString
   CommonOrganisationDetail:
     allOf:
       - $ref: '#/definitions/CommonOrganisation'
@@ -2503,12 +2501,11 @@ definitions:
       - fullNumber
     x-conditional:
       - isPreferred
-      - areaCode
     properties:
       isPreferred:
         type: boolean
         description: Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
       purpose:
         type: string
         description: The purpose of the number as specified by the customer
@@ -2524,7 +2521,7 @@ definitions:
         description: 'If absent, assumed to be Australia (+61). The + should be included'
       areaCode:
         type: string
-        description: 'Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.'
+        description: If field is present and refers to Australian code - the leading 0 should be omitted.
       number:
         type: string
         description: 'The actual phone number, with leading zeros as appropriate'
@@ -2534,18 +2531,19 @@ definitions:
       fullNumber:
         type: string
         description: 'Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
   CommonEmailAddress:
     type: object
     required:
-      - isPreferred
       - purpose
       - address
+    x-conditional:
+      - isPreferred
     properties:
       isPreferred:
         type: boolean
         description: Required for one and only one email record in the collection. Denotes the default email address
-        x-cdr-type: Boolean
+        x-cds-type: Boolean
       purpose:
         type: string
         description: 'The purpose for the email, as specified by the customer (Enumeration)'
@@ -2557,7 +2555,7 @@ definitions:
       address:
         type: string
         description: 'A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
   CommonPhysicalAddressWithPurpose:
     allOf:
       - type: object
@@ -2625,7 +2623,7 @@ definitions:
       country:
         type: string
         description: 'A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code'
-        x-cdr-type: ExternalRef
+        x-cds-type: ExternalRef
   CommonPAFAddress:
     type: object
     description: 'Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)'
@@ -2640,14 +2638,14 @@ definitions:
       thoroughfareNumber1:
         type: integer
         description: Thoroughfare number for a property (first number in a property ranged address)
-        x-cdr-type: PositiveInteger
+        x-cds-type: PositiveInteger
       thoroughfareNumber1Suffix:
         type: string
         description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated
       thoroughfareNumber2:
         type: integer
         description: Second thoroughfare number (only used if the property has a ranged address eg 23-25)
-        x-cdr-type: PositiveInteger
+        x-cds-type: PositiveInteger
       thoroughfareNumber2Suffix:
         type: string
         description: Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated
@@ -2660,7 +2658,7 @@ definitions:
       lotNumber:
         type: integer
         description: Allotment number for the address
-        x-cdr-type: PositiveInteger
+        x-cds-type: PositiveInteger
       buildingName1:
         type: string
         description: Building/Property name 1
@@ -2682,7 +2680,7 @@ definitions:
       postalDeliveryNumber:
         type: integer
         description: Postal delivery number if the address is a postal delivery type
-        x-cdr-type: PositiveInteger
+        x-cds-type: PositiveInteger
       postalDeliveryNumberPrefix:
         type: string
         description: Postal delivery number prefix related to the postal delivery number
@@ -2706,11 +2704,11 @@ definitions:
       amount:
         type: string
         description: The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking
-        x-cdr-type: AmountString
+        x-cds-type: AmountString
       currency:
         type: string
         description: If not present assumes AUD
-        x-cdr-type: CurrencyString
+        x-cds-type: CurrencyString
   Links:
     type: object
     required:
@@ -2719,7 +2717,7 @@ definitions:
       self:
         type: string
         description: Fully qualified link to this API call
-        x-cdr-type: URIString
+        x-cds-type: URIString
   Meta:
     type: object
   LinksPaginated:
@@ -2735,23 +2733,23 @@ definitions:
       self:
         type: string
         description: Fully qualified link to this API call
-        x-cdr-type: URIString
+        x-cds-type: URIString
       first:
         type: string
         description: URI to the first page of this set. Mandatory if this response is not the first page
-        x-cdr-type: URIString
+        x-cds-type: URIString
       prev:
         type: string
         description: URI to the previous page of this set. Mandatory if this response is not the first page
-        x-cdr-type: URIString
+        x-cds-type: URIString
       next:
         type: string
         description: URI to the next page of this set. Mandatory if this response is not the last page
-        x-cdr-type: URIString
+        x-cds-type: URIString
       last:
         type: string
         description: URI to the last page of this set. Mandatory if this response is not the last page
-        x-cdr-type: URIString
+        x-cds-type: URIString
   MetaPaginated:
     type: object
     required:
@@ -2761,11 +2759,11 @@ definitions:
       totalRecords:
         type: integer
         description: The total number of records in the full set
-        x-cdr-type: NaturalNumber
+        x-cds-type: NaturalNumber
       totalPages:
         type: integer
         description: The total number of pages in the full set
-        x-cdr-type: NaturalNumber
+        x-cds-type: NaturalNumber
   ResponseErrorList:
     type: object
     required:
