@@ -4,7 +4,7 @@ info:
   description: >-
     API sets created by the Australian Consumer Data Standards to meet the needs
     of the Consumer Data Right
-  version: 0.7.0
+  version: 0.8.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'

@@ -3,7 +3,7 @@
   "info": {
 	"title": "Consumer Data Standards",
 	"description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"license": {
 	  "name": "MIT Licence",
 	  "url": "https://opensource.org/licenses/MIT"
@@ -780,7 +780,7 @@
 	"ParamAccountIsOwned": {
 	  "name": "is-owned",
 	  "in": "query",
-	  "description": "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts",
+	  "description": "Filters accounts based on whether they are owned by the authorised customer",
 	  "required": false,
 	  "type": "boolean",
 	  "x-cdr-type": "Boolean"
