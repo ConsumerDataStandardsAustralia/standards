@@ -1,9 +1,9 @@
 {
   "data": {
 	"productId": "51645",
-	"effectiveFrom": "2018-01-12T15:43:00.121Z",
-	"effectiveTo": "2019-04-12T15:43:00.121Z",
-	"lastUpdated": "2018-12-12T15:43:00.121Z",
+	"effectiveFrom": "2018-04-12",
+	"effectiveTo": "2019-04-12",
+	"lastUpdated": "2018-12-12",
 	"productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
 	"name": "Every Day Account",
 	"description": "This account gives you the highest interest rates for an at-call savings account",
