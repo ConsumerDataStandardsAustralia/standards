@@ -4,7 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
-|3/4/2019|0.8.0|April Incorporated Accounts and Balances
+|3/4/2019|0.8.0|Accounts and Balances v1 final|Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation
 |27/4/2019|0.7.0|April Feedback|Incorporated feedback from v1 draft decisions and feedback cycle 5
 |23/4/2019|0.6.0|Payees & Customer v1 draft|Applied changes to prepare for v1 version of Payees & Customer end points and payloads documentation
 |16/4/2019|0.5.0|Transaction v1 draft|Applied changes to prepare for v1 version of Transaction end points and payloads documentation
