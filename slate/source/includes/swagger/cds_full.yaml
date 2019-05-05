@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Consumer Data Standards
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.6.0
+  version: 0.8.0
   license:
     name: MIT Licence
     url: 'https://opensource.org/licenses/MIT'
@@ -36,29 +36,6 @@ paths:
           description: Success
           schema:
             $ref: '#/definitions/ResponseBankingAccountList'
-      x-version: '1'
-  '/banking/accounts/{accountId}':
-    get:
-      summary: Get Account Detail
-      description: Obtain detailed information on a single account
-      operationId: getAccountDetail
-      x-scopes:
-        - bank_detailed_accounts
-      tags:
-        - Banking APIs
-        - Accounts
-      parameters:
-        - name: accountId
-          in: path
-          description: A tokenised identifier for the account which is unique but not shareable
-          required: true
-          type: string
-          x-cds-type: ASCIIString
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/ResponseBankingAccountById'
       x-version: '1'
   /banking/accounts/balances:
     get:
@@ -94,7 +71,7 @@ paths:
       parameters:
         - name: accountIds
           in: body
-          description: The list of account IDs to obtain information for
+          description: The list of account IDs to obtain balances for
           required: true
           schema:
             $ref: '#/definitions/RequestAccountIds'
@@ -109,6 +86,52 @@ paths:
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
             $ref: '#/definitions/ResponseErrorList'
+      x-version: '1'
+  '/banking/accounts/{accountId}/balance':
+    get:
+      summary: Get Account Balance
+      description: Obtain the balance for a single specified account
+      operationId: listBalance
+      x-scopes:
+        - bank_basic_accounts
+      tags:
+        - Banking APIs
+        - Accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: ID of the specific account requested
+          required: true
+          type: string
+          x-cds-type: ASCIIString
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseBankingAccountsBalanceById'
+      x-version: '1'
+  '/banking/accounts/{accountId}':
+    get:
+      summary: Get Account Detail
+      description: Obtain detailed information on a single account
+      operationId: getAccountDetail
+      x-scopes:
+        - bank_detailed_accounts
+      tags:
+        - Banking APIs
+        - Accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: A tokenised identifier for the account which is unique but not shareable
+          required: true
+          type: string
+          x-cds-type: ASCIIString
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseBankingAccountById'
       x-version: '1'
   '/banking/accounts/{accountId}/transactions':
     get:
@@ -310,14 +333,14 @@ paths:
       description: Obtain a list of pre-registered payees
       operationId: listPayees
       x-scopes:
-        - bank_payees
+        - bank_basic_accounts
       tags:
         - Banking APIs
         - Payees
       parameters:
         - name: type
           in: query
-          description: Filter on payee type.  Values align to the type field with the addition of the value ALL.  If absent the assumed value is ALL
+          description: 'Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL'
           required: false
           type: string
           enum:
@@ -347,7 +370,7 @@ paths:
       parameters:
         - name: payeeId
           in: path
-          description: The ID of the payee requested.  This would have been previously obtained from a call to the payee list API
+          description: The ID used to locate the details of a particular payee
           required: true
           type: string
           x-cds-type: ASCIIString
@@ -593,6 +616,7 @@ definitions:
     type: object
     required:
       - data
+      - meta
     properties:
       data:
         type: object
@@ -957,8 +981,8 @@ definitions:
     required:
       - description
       - discountType
-    x-conditional:
       - amount
+    x-conditional:
       - balanceRate
       - transactionRate
       - accruedRate
@@ -1236,6 +1260,19 @@ definitions:
         type: string
         description: Link to a web page with more information on this condition
         x-cds-type: URIString
+  ResponseBankingAccount:
+    type: object
+    required:
+      - data
+      - links
+      - meta
+    properties:
+      data:
+        $ref: '#/definitions/BankingAccount'
+      links:
+        $ref: '#/definitions/LinksPaginated'
+      meta:
+        $ref: '#/definitions/MetaPaginated'
   ResponseBankingAccountList:
     type: object
     required:
@@ -1250,6 +1287,28 @@ definitions:
         properties:
           accounts:
             type: array
+            description: The list of accounts returned. If the filter results in an empty set then this array may have no records
+            items:
+              $ref: '#/definitions/BankingAccount'
+      links:
+        $ref: '#/definitions/LinksPaginated'
+      meta:
+        $ref: '#/definitions/MetaPaginated'
+  ResponseBankingAccountBalancesList:
+    type: object
+    required:
+      - data
+      - links
+      - meta
+    properties:
+      data:
+        type: object
+        required:
+          - balances
+        properties:
+          accounts:
+            type: array
+            description: The list of balances returned
             items:
               $ref: '#/definitions/BankingAccount'
       links:
@@ -1264,10 +1323,6 @@ definitions:
       - maskedNumber
       - productCategory
       - productName
-    x-conditional:
-      - deposit
-      - lending
-      - purses
     properties:
       accountId:
         type: string
@@ -1279,36 +1334,37 @@ definitions:
         x-cds-type: DateString
       displayName:
         type: string
-        description: The display name of the account. If a customer provided nickname is available that value should be returned
+        description: The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.
       nickname:
         type: string
         description: A customer supplied nick name for the account
-      maskedNumber:
-        type: string
-        description: 'A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked'
-        x-cds-type: MaskedAccountString
       openStatus:
         type: string
-        description: Open or closed status for the account.  If not present then OPEN is assumed
+        description: Open or closed status for the account. If not present then OPEN is assumed
         enum:
           - OPEN
           - CLOSED
         default: OPEN
       isOwned:
         type: boolean
-        description: 'Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then ''true'' is assumed'
+        description: 'Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then ''true'' is assumed'
         x-cds-type: Boolean
         default: 'true'
+      maskedNumber:
+        type: string
+        description: 'A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number'
+        x-cds-type: MaskedAccountString
       productCategory:
         $ref: '#/definitions/BankingEnumProductCategory'
       productName:
         type: string
-        description: A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display
+        description: The unique identifier of the account as defined by the account provider (akin to model number for the account)
   ResponseBankingAccountById:
     type: object
     required:
       - data
       - links
+      - meta
     properties:
       data:
         $ref: '#/definitions/BankingAccountDetail'
@@ -1320,8 +1376,6 @@ definitions:
     allOf:
       - $ref: '#/definitions/BankingAccount'
       - type: object
-        required:
-          - addressUType
         x-conditional:
           - termDeposit
           - creditCard
@@ -1329,10 +1383,10 @@ definitions:
         properties:
           bsb:
             type: string
-            description: The unmasked BSB for the account.  Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces
+            description: The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces
           accountNumber:
             type: string
-            description: The unmasked account number for the account.  Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces
+            description: The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces
           bundleName:
             type: string
             description: Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer
@@ -1349,24 +1403,47 @@ definitions:
             $ref: '#/definitions/BankingCreditCardAccount'
           loan:
             $ref: '#/definitions/BankingLoanAccount'
-          features:
-            type: array
-            items:
-              $ref: '#/definitions/BankingAccountFeature'
-          fees:
-            type: array
-            items:
-              $ref: '#/definitions/BankingAccountFee'
+          depositRate:
+            type: string
+            description: current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call
+            x-cds-type: RateString
+          lendingRate:
+            type: string
+            description: The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call
+            x-cds-type: RateString
           depositRates:
+            description: Fully described deposit rates for this account based on the equivalent structure in Product Reference
             type: array
             items:
-              $ref: '#/definitions/BankingAccountDepositRate'
+              $ref: '#/definitions/BankingProductDepositRate'
           lendingRates:
+            description: Fully described deposit rates for this account based on the equivalent structure in Product Reference
             type: array
             items:
-              $ref: '#/definitions/BankingAccountLendingRate'
-          address:
-            $ref: '#/definitions/CommonPhysicalAddress'
+              $ref: '#/definitions/BankingProductLendingRate'
+          features:
+            description: Array of features of the account based on the equivalent structure in Product Reference with the following additional field
+            type: array
+            items:
+              allOf:
+                - $ref: '#/definitions/BankingProductFeature'
+                - type: object
+                  properties:
+                    isActivated:
+                      type: boolean
+                      description: True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)
+                      x-cds-type: Boolean
+                      default: 'true'
+          fees:
+            description: Fees and charges applicable to the account based on the equivalent structure in Product Reference
+            type: array
+            items:
+              $ref: '#/definitions/BankingProductFee'
+          addresses:
+            description: The addresses for the account to be used for correspondence
+            type: array
+            items:
+              $ref: '#/definitions/CommonPhysicalAddress'
   BankingTermDepositAccount:
     type: object
     required:
@@ -1421,6 +1498,11 @@ definitions:
         x-cds-type: DateString
   BankingLoanAccount:
     type: object
+    required:
+      - loanEndDate
+      - nextInstalmentDate
+      - minInstalmentAmount
+      - repaymentFrequency
     properties:
       originalStartDate:
         type: string
@@ -1476,19 +1558,17 @@ definitions:
         items:
           type: string
           x-cds-type: ASCIIString
-      repaymentFrequency:
-        type: string
-        description: 'The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
-        x-cds-type: ExternalRef
       repaymentType:
-        type: string
-        description: The reason for taking out the loan. The purpose generally affects the rate offered due to different risk profiles
-      loanPurpose:
         type: string
         description: Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST
         enum:
           - INTEREST_ONLY
           - PRINCIPAL_AND_INTEREST
+        default: PRINCIPAL_AND_INTEREST
+      repaymentFrequency:
+        type: string
+        description: 'The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)'
+        x-cds-type: ExternalRef
   BankingAccountFeature:
     type: object
     required:
@@ -1819,7 +1899,7 @@ definitions:
     properties:
       accountId:
         type: string
-        description: 'ID of the account for which transactions are provided, adhering to the standards for ID permanence'
+        description: ID of the account for which transactions are provided
         x-cds-type: ASCIIString
       transactionId:
         type: string
@@ -1872,7 +1952,7 @@ definitions:
         x-cds-type: CurrencyString
       reference:
         type: string
-        description: The raw lodgement reference for the transaction provided by the originating institution.  Empty string if no data provided
+        description: The reference for the transaction provided by the originating institution.  Empty string if no data provided
       merchantName:
         type: string
         description: Name of the merchant for an outgoing payment to a merchant
@@ -1896,6 +1976,7 @@ definitions:
     required:
       - data
       - links
+      - meta
     properties:
       data:
         $ref: '#/definitions/BankingTransactionDetail'
@@ -1951,6 +2032,7 @@ definitions:
           - balances
         properties:
           balances:
+            description: The list of balances returned
             type: array
             items:
               $ref: '#/definitions/BankingBalance'
@@ -1958,60 +2040,66 @@ definitions:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
+  ResponseBankingAccountsBalanceById:
+    type: object
+    required:
+      - data
+      - inks
+    properties:
+      data:
+        type: object
+        $ref: '#/definitions/BankingBalance'
+      links:
+        $ref: '#/definitions/LinksPaginated'
   BankingBalance:
     type: object
     required:
       - accountId
-      - balanceUType
-    x-conditional:
-      - deposit
-      - lending
-      - purses
+      - currentBalance
+      - availableBalance
     properties:
       accountId:
         type: string
         description: A unique ID of the account adhering to the standards for ID permanence
         x-cds-type: ASCIIString
-      balanceUType:
+      currentBalance:
         type: string
-        description: The type of balance object provided for the account
-        enum:
-          - deposit
-          - lending
-          - purses
-      deposit:
-        $ref: '#/definitions/BankingDepositBalance'
-      lending:
-        $ref: '#/definitions/BankingLendingBalance'
+        description: The balance of the account at this time. Should align to the balance available via other channels such as Internet Banking. Assumed to be negative if the customer has money owing
+        x-cds-type: AmountString
+      availableBalance:
+        type: string
+        description: Balance representing the amount of funds available for transfer. Assumed to be zero or positive
+        x-cds-type: AmountString
+      creditLimit:
+        type: string
+        description: Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent
+        x-cds-type: AmountString
+      amortisedLimit:
+        type: string
+        description: Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent
+        x-cds-type: AmountString
+      currency:
+        type: string
+        description: The currency for the balance amounts. If absent assumed to be AUD
+        x-cds-type: CurrencyString
       purses:
+        description: Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards
         type: array
         items:
-          $ref: '#/definitions/CommonCurrencyAmount'
-  BankingDepositBalance:
+          $ref: '#/definitions/BankingBalancePurse'
+  BankingBalancePurse:
     type: object
     required:
-      - currentBalance
-      - availableBalance
+      - amount
     properties:
-      currentBalance:
-        $ref: '#/definitions/CommonCurrencyAmount'
-      availableBalance:
-        $ref: '#/definitions/CommonCurrencyAmount'
-  BankingLendingBalance:
-    type: object
-    required:
-      - accountBalance
-      - availableBalance
-      - creditLimit
-    properties:
-      accountBalance:
-        $ref: '#/definitions/CommonCurrencyAmount'
-      availableBalance:
-        $ref: '#/definitions/CommonCurrencyAmount'
-      creditLimit:
-        $ref: '#/definitions/CommonCurrencyAmount'
-      amortisedLimit:
-        $ref: '#/definitions/CommonCurrencyAmount'
+      amount:
+        type: string
+        description: The balance available for this additional currency purse
+        x-cds-type: AmountString
+      currency:
+        type: string
+        description: The currency for the purse
+        x-cds-type: CurrencyString
   ResponseBankingPayeeList:
     type: object
     required:
@@ -2038,6 +2126,7 @@ definitions:
     required:
       - data
       - links
+      - meta
     properties:
       data:
         $ref: '#/definitions/BankingPayeeDetail'
@@ -2086,7 +2175,7 @@ definitions:
         properties:
           payeeUType:
             type: string
-            description: 'Type of object included that describes the payee in detail.  Valid values are: domestic, biller, international'
+            description: Type of object included that describes the payee in detail
             enum:
               - domestic
               - biller
@@ -2108,7 +2197,7 @@ definitions:
     properties:
       payeeAccountUType:
         type: string
-        description: 'Type of account object included.  Valid values are: account - A standard Australian account defined by BSB/Account Number, card - A credit or charge card to pay to (note that PANs are masked), payId - A PayID recognised by NPP'
+        description: 'Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP'
         enum:
           - account
           - card
@@ -2147,7 +2236,6 @@ definitions:
   BankingDomesticPayeePayId:
     type: object
     required:
-      - name
       - identifier
       - type
     properties:
@@ -2159,7 +2247,7 @@ definitions:
         description: The identifier of the PayID (dependent on type)
       type:
         type: string
-        description: 'The type of the PayID.  Valid values are: EMAIL, MOBILE, ORG_NUMBER, ORG_NAME Note: the types of PayID are likely to expand over time so this enum is will be subject to change'
+        description: The type of the PayID
         enum:
           - EMAIL
           - MOBILE
@@ -2170,6 +2258,8 @@ definitions:
     required:
       - billerCode
       - billerName
+    x-conditional:
+      - crn
     properties:
       billerCode:
         type: string
@@ -2188,6 +2278,8 @@ definitions:
     properties:
       beneficiaryDetails:
         type: object
+        required:
+          - country
         properties:
           name:
             type: string
@@ -2198,7 +2290,7 @@ definitions:
             x-cds-type: ExternalRef
           message:
             type: string
-            description: Default message to add to a payment using this payee
+            description: Response message for the payment
       bankDetails:
         type: object
         required:
@@ -2288,7 +2380,6 @@ definitions:
   BankingAuthorisedEntity:
     type: object
     required:
-      - description
       - financialInstitution
     properties:
       description:
@@ -2311,6 +2402,7 @@ definitions:
     required:
       - data
       - links
+      - meta
     x-conditional:
       - person
       - organisation
@@ -2339,6 +2431,7 @@ definitions:
     required:
       - data
       - links
+      - meta
     x-conditional:
       - person
       - organisation
@@ -2365,11 +2458,11 @@ definitions:
   CommonPerson:
     type: object
     required:
-      - lastUpdated
+      - lastUpdateTime
       - lastName
       - middleNames
     properties:
-      lastUpdated:
+      lastUpdateTime:
         type: string
         description: The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data
         x-cds-type: DateTimeString
@@ -2420,14 +2513,13 @@ definitions:
   CommonOrganisation:
     type: object
     required:
-      - lastUpdated
+      - lastUpdateTime
       - agentLastName
       - agentRole
       - businessName
       - organisationType
-      - abn
     properties:
-      lastUpdated:
+      lastUpdateTime:
         type: string
         description: The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data
         x-cds-type: DateTimeString
@@ -2500,6 +2592,7 @@ definitions:
       - fullNumber
     x-conditional:
       - isPreferred
+      - areaCode
     properties:
       isPreferred:
         type: boolean
@@ -2520,7 +2613,7 @@ definitions:
         description: 'If absent, assumed to be Australia (+61). The + should be included'
       areaCode:
         type: string
-        description: If field is present and refers to Australian code - the leading 0 should be omitted.
+        description: 'Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.'
       number:
         type: string
         description: 'The actual phone number, with leading zeros as appropriate'
@@ -2534,10 +2627,9 @@ definitions:
   CommonEmailAddress:
     type: object
     required:
+      - isPreferred
       - purpose
       - address
-    x-conditional:
-      - isPreferred
     properties:
       isPreferred:
         type: boolean
@@ -2695,19 +2787,6 @@ definitions:
       state:
         type: string
         description: State in which the address belongs. Valid enumeration defined by Australia Post PAF code file
-  CommonCurrencyAmount:
-    type: object
-    required:
-      - amount
-    properties:
-      amount:
-        type: string
-        description: The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking
-        x-cds-type: AmountString
-      currency:
-        type: string
-        description: If not present assumes AUD
-        x-cds-type: CurrencyString
   Links:
     type: object
     required:
@@ -2791,7 +2870,7 @@ definitions:
               description: Optional additional data for specific error types
   BankingEnumProductCategory:
     type: string
-    description: 'The category to which a product or account belongs.  See [here](#product-categories) for more details'
+    description: 'The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details'
     enum:
       - TRANS_AND_SAVINGS_ACCOUNTS
       - TERM_DEPOSITS
@@ -2801,7 +2880,5 @@ definitions:
       - CRED_AND_CHRG_CARDS
       - PERS_LOANS
       - MARGIN_LOANS
-      - BUSINESS_LOANS
-      - OVERDRAFT
       - LEASES
       - TRADE_FINANCE

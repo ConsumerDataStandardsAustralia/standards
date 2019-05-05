@@ -1,0 +1,48 @@
+588,589c588
+<         "additionalInfoUri": "string",
+<         "isActivated": "true"
+---
+>         "additionalInfoUri": "string"
+591a591
+>     "isActivated": "true",
+3660,3661c3660
+<         "additionalInfoUri": "string",
+<         "isActivated": "true"
+---
+>         "additionalInfoUri": "string"
+3663a3663
+>     "isActivated": "true",
+3885,3886c3885
+<       "additionalInfoUri": "string",
+<       "isActivated": "true"
+---
+>       "additionalInfoUri": "string"
+3888a3888
+>   "isActivated": "true",
+3991,4011c3991,3994
+< |» features|[allOf]|optional|none|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
+< 
+< *allOf*
+< 
+< |Name|Type|Required|Restrictions|Description|
+< |---|---|---|---|---|
+< |»» *anonymous*|[BankingProductFeature](#schemabankingproductfeature)|optional|none|none|
+< 
+< *and*
+< 
+< |Name|Type|Required|Restrictions|Description|
+< |---|---|---|---|---|
+< |»» *anonymous*|object|optional|none|none|
+< |»»» isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
+< 
+< *continued*
+< 
+< |Name|Type|Required|Restrictions|Description|
+< |---|---|---|---|---|
+< |»» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
+< |»» addresses|[[CommonPhysicalAddress](#schemacommonphysicaladdress)]|optional|none|The addresses for the account to be used for correspondence|
+---
+> |» features|[[BankingProductFeature](#schemabankingproductfeature)]|optional|none|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
+> |» isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
+> |» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
+> |» addresses|[[CommonPhysicalAddress](#schemacommonphysicaladdress)]|optional|none|The addresses for the account to be used for correspondence|
