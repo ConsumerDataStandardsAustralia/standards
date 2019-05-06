@@ -1,4 +1,4 @@
-## Authorisation Scopes
+# Authorisation Scopes
 
 The following authorisation scopes have been defined for the standards.  Each API end point will specify which scopes are required to access the data available via that end point.
 
@@ -12,13 +12,3 @@ Scope Name | Scope ID |Description
 **Basic Customer Data** | common_basic_customer | The scope would allow the third party to access personally identifiable information about the customer.  For retail customers this would be information about the customer themselves.  For business customers it would imply the name of specific user but also information about the business.<br/><br/>Includes name and occupation for individuals or name, business numbers and industry code for organisations
 **Detailed Customer Data** | common_detailed_customer | The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.
 **Public** | NA | Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.
-
-## OIDC Scopes & Claims
-
-In addition to the Consumer Data Standards specific scopes above the following standard scopes and claims described by OpenID Connect core will be supported:
-
-- openid scope
-- profile scope
-    - name claim
-    - family_name claim
-    - given_name claim
