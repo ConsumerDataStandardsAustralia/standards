@@ -1276,7 +1276,7 @@ the same name.</p>
 </tr>
 <tr>
 <td>RateString</td>
-<td>A string representing an interest rate.  A rate of 100% would be represented by the value 1.0<br/>- A positive number (or zero)<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
+<td>A string representing an interest rate.  A rate of 100% would be represented by the value 1.0 and a rate of -100% by -1.0<br/>- A number constrained to the range [-1.0, 1.0]<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
 <td>“82”<br/>“0.05”<br/>“12.3456789”<br/>“99.123456789123”</td>
 </tr>
 <tr>
@@ -12989,10 +12989,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </thead><tbody>
 <tr>
+<td>6/4/2019</td>
+<td>0.8.1</td>
+<td>Negative Rates</td>
+<td>Modified RateString to allow for negative rates and not just positive or zero rates</td>
+</tr>
+<tr>
 <td>3/4/2019</td>
 <td>0.8.0</td>
-<td>April Incorporated Accounts and Balances</td>
-<td></td>
+<td>Accounts and Balances v1 final</td>
+<td>Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation</td>
 </tr>
 <tr>
 <td>27/4/2019</td>
