@@ -124,6 +124,14 @@
 <td>TRADE_FINANCE</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>OPEN</td>
 </tr>
@@ -316,6 +324,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -1374,6 +1390,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>TRADE_FINANCE</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>OPEN</td>
 </tr>
@@ -1880,6 +1904,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -2538,6 +2570,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
 </tr>
 </tbody></table>
 
@@ -3330,7 +3370,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>name</td>
@@ -5536,7 +5576,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>productName</td>
@@ -10668,7 +10708,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="w">
 
 </span></code></pre>
-<p><em>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</em></p>
+<p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
 <h3 id='properties-70'>Properties</h3>
 <table><thead>
 <tr>
@@ -10684,7 +10724,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-39'>Enumerated Values</h4>
@@ -10733,5 +10773,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td><em>anonymous</em></td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>BUSINESS_LOANS</td>
 </tr>
 </tbody></table>

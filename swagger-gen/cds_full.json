@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "0.8.0",
+    "version": "0.8.2",
     "license": {
       "name": "MIT Licence",
       "url": "https://opensource.org/licenses/MIT"
@@ -791,7 +791,9 @@
         "PERS_LOANS",
         "MARGIN_LOANS",
         "LEASES",
-        "TRADE_FINANCE"
+        "TRADE_FINANCE",
+        "OVERDRAFTS",
+        "BUSINESS_LOANS"	
       ]
     },
     "ParamAccountIsOwned": {
@@ -3922,7 +3924,7 @@
     },
     "BankingEnumProductCategory": {
       "type": "string",
-      "description": "The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details",
+      "description": "The category to which a product or account belongs. See [here](#product-categories) for more details",
       "enum": [
         "TRANS_AND_SAVINGS_ACCOUNTS",
         "TERM_DEPOSITS",
@@ -3933,7 +3935,9 @@
         "PERS_LOANS",
         "MARGIN_LOANS",
         "LEASES",
-        "TRADE_FINANCE"
+        "TRADE_FINANCE",
+        "OVERDRAFTS",
+        "BUSINESS_LOANS"
       ]
     }
   }

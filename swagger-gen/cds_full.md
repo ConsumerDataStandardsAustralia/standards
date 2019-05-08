@@ -61,6 +61,8 @@ Obtain a list of accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -170,6 +172,8 @@ Obtain balances for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -950,6 +954,8 @@ Obtain transactions for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -1277,6 +1283,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -1740,6 +1748,8 @@ In addition, the concept of effective date and time has also been included.  Thi
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 
 > Example responses
 
@@ -2413,7 +2423,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
@@ -3516,7 +3526,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |openStatus|string|optional|none|Open or closed status for the account. If not present then OPEN is assumed|
 |isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |productName|string|mandatory|none|The unique identifier of the account as defined by the account provider (akin to model number for the account)|
 
 #### Enumerated Values
@@ -6182,13 +6192,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details*
+*The category to which a product or account belongs. See [here](#product-categories) for more details*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|*anonymous*|string|optional|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 
 #### Enumerated Values
 
@@ -6204,4 +6214,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |*anonymous*|MARGIN_LOANS|
 |*anonymous*|LEASES|
 |*anonymous*|TRADE_FINANCE|
+|*anonymous*|OVERDRAFTS|
+|*anonymous*|BUSINESS_LOANS|
 

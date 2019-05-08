@@ -599,7 +599,7 @@ Payloads
 
 <p>Note that security standards are only partially represented in these standards as they are under development by the Information Security Working Group.  More detail can found at the <a href="https://consumerdatastandardsaustralia.github.io/infosec">Information Security Profile</a> working draft.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.8.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.8.2</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1713,6 +1713,14 @@ Please refer to the latest version of the <a href="https://consumerdatastandards
 <td>TRADE_FINANCE</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>OPEN</td>
 </tr>
@@ -1905,6 +1913,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -2963,6 +2979,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>TRADE_FINANCE</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
+</tr>
+<tr>
 <td>open-status</td>
 <td>OPEN</td>
 </tr>
@@ -3469,6 +3493,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -4127,6 +4159,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>product-category</td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
 </tr>
 </tbody></table>
 
@@ -4919,7 +4959,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>name</td>
@@ -7125,7 +7165,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 <tr>
 <td>productName</td>
@@ -12257,7 +12297,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight json tab-json"><code><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="w">
 
 </span></code></pre>
-<p><em>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</em></p>
+<p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
 <h3 id='properties-70'>Properties</h3>
 <table><thead>
 <tr>
@@ -12273,7 +12313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>The list of available product categories for categorising products and accounts.  See <a href="#product-categories">here</a> for more details</td>
+<td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-39'>Enumerated Values</h4>
@@ -12322,6 +12362,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td><em>anonymous</em></td>
 <td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>BUSINESS_LOANS</td>
 </tr>
 </tbody></table>
 <h2 id='product-categories'>Product Categories</h2>
@@ -12384,6 +12432,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>TRADE FINANCE</td>
 <td>This grouping of products includes specialised lending products specifically designed to facilitate domestic &amp; international trade. This includes the issuance of letters of credit, factoring, export credit.</td>
+</tr>
+<tr>
+<td>OVERDRAFTS</td>
+<td>This grouping of products includes all types of lending which allows for the loan amount to be withdrawn, repaid, and redrawn again in any manner and any number of times, until the arrangement expires. These loans may be secured or unsecured, and generally don’t have set / minimum repayment requirements.</td>
+</tr>
+<tr>
+<td>BUSINESS_LOANS</td>
+<td>This grouping of products incorporates all types of lending for business purpose</td>
+</tr>
+<tr>
+<td>that is not a trade finance facility, lease, overdraft, residential mortgage, credit card or margin lending. It includes traditional term loans, bank guarantees and commercial bills. This category would incorporate both secured and unsecured business purpose lending including all business purpose equipment finance that is not covered by a lease.</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='product-amp-account-components'>Product &amp; Account Components</h2>
@@ -12988,6 +13048,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>7/5/2019</td>
+<td>0.8.2</td>
+<td>Minor fixes for product category enum.</td>
+<td></td>
+</tr>
 <tr>
 <td>6/4/2019</td>
 <td>0.8.1</td>

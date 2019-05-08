@@ -791,7 +791,9 @@
         "PERS_LOANS",
         "MARGIN_LOANS",
         "LEASES",
-        "TRADE_FINANCE"
+        "TRADE_FINANCE",
+        "OVERDRAFTS",
+        "BUSINESS_LOANS"	
       ]
     },
     "ParamAccountIsOwned": {
