@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|12/5/2019|0.8.3|Optionality Update|Clarified the meaning of a field declaration of optional
 |7/5/2019|0.8.2|Minor fixes|Minor fixes for product category enum
 |6/4/2019|0.8.1|Negative Rates|Modified RateString to allow for negative rates and not just positive or zero rates
 |3/4/2019|0.8.0|Accounts and Balances v1 final|Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation
