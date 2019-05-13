@@ -10,6 +10,30 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>12/5/2019</td>
+<td>0.8.3</td>
+<td>Optionality Update</td>
+<td>Clarified the meaning of a field declaration of optional</td>
+</tr>
+<tr>
+<td>7/5/2019</td>
+<td>0.8.2</td>
+<td>Minor fixes</td>
+<td>Minor fixes for product category enum</td>
+</tr>
+<tr>
+<td>6/4/2019</td>
+<td>0.8.1</td>
+<td>Negative Rates</td>
+<td>Modified RateString to allow for negative rates and not just positive or zero rates</td>
+</tr>
+<tr>
+<td>3/4/2019</td>
+<td>0.8.0</td>
+<td>Accounts and Balances v1 final</td>
+<td>Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation</td>
+</tr>
+<tr>
 <td>27/4/2019</td>
 <td>0.7.0</td>
 <td>April Feedback</td>
