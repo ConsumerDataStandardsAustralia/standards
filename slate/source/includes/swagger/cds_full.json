@@ -3404,7 +3404,7 @@
 		"data": {
 		  "type": "object",
 		  "required": [
-			"directDebitAuthorisations"
+			"scheduledPayments"
 		  ],
 		  "properties": {
 			"scheduledPayments": {
@@ -3432,45 +3432,61 @@
 		"payeeReference",
 		"status",
 		"from",
-		"to"
+		"to",
+    "amount",
+    "recurrence"
 	  ],
 	  "properties": {
-		"scheduledPaymentId": {
-		  "type": "string",
-		  "description": "A unique ID of the scheduled payment adhering to the standards for ID permanence",
-		  "x-cds-type": "ASCIIString"
-		},
-		"nickname": {
-		  "type": "string",
-		  "description": "The short display name of the payee as provided by the customer"
-		},
-		"payerReference": {
-		  "type": "string",
-		  "description": "The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided"
-		},
-		"payeeReference": {
-		  "type": "string",
-		  "description": "The reference for the transaction that will be provided by the originating institution. Empty string if no data provided"
-		},
-		"status": {
-		  "type": "string",
-		  "description": "Indicates whether the schedule is currently active",
-		  "enum": [
-			"ACTIVE",
-			"INACTIVE"
-		  ]
-		},
-		"from": {
-		  "$ref": "#/definitions/BankingScheduledPaymentFrom"
-		},
-		"to": {
-		  "$ref": "#/definitions/BankingScheduledPaymentTo"
-		}
+  		"scheduledPaymentId": {
+  		  "type": "string",
+  		  "description": "A unique ID of the scheduled payment adhering to the standards for ID permanence",
+  		  "x-cds-type": "ASCIIString"
+  		},
+  		"nickname": {
+  		  "type": "string",
+  		  "description": "The short display name of the payee as provided by the customer"
+  		},
+  		"payerReference": {
+  		  "type": "string",
+  		  "description": "The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided"
+  		},
+  		"payeeReference": {
+  		  "type": "string",
+  		  "description": "The reference for the transaction that will be provided by the originating institution. Empty string if no data provided"
+  		},
+  		"status": {
+  		  "type": "string",
+  		  "description": "Indicates whether the schedule is currently active",
+  		  "enum": [
+  			"ACTIVE",
+  			"INACTIVE"
+  		  ]
+  		},
+  		"from": {
+  		  "$ref": "#/definitions/BankingScheduledPaymentFrom"
+  		},
+  		"to": {
+  		  "$ref": "#/definitions/BankingScheduledPaymentTo"
+  		},
+      "amount": {
+        "type": "string",
+        "description": "The amount of the next payment",
+        "x-cds-type": "AmountString"
+      },
+      "currency": {
+        "type": "string",
+        "description": "The currency for the payment. AUD assumed if not present",
+        "x-cds-type": "CurrencyString"
+      },
+        "recurrence": {
+        "description": "Object containing the detail of the schedule for the payment",
+        "$ref": "#/definitions/BankingScheduledPaymentRecurrence"
+        }
 	  }
 	},
-	"BankingScheduledPaymentFrom": {
+	"BankingScheduledPaymentTo": {
 	  "type": "object",
-	  "description": "Object containing details of the source of the payment.  Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object",
+	  "description": "Object containing details of the destination of the payment",
 	  "required": [
 		"toUType"
 	  ],
@@ -3482,61 +3498,44 @@
 		"international"
 	  ],
 	  "properties": {
-		"toUType": {
-		  "type": "string",
-		  "description": "ID of the account that is the source of funds for the payment",
-		  "enum": [
-			"accountId",
-			"payeeId",
-			"domestic",
-			"biller",
-			"international",
-			"amount"
-		  ]
-		},
-		"properties": {
+  		"toUType": {
+  		  "type": "string",
+  		  "description": "ID of the account that is the source of funds for the payment",
+  		  "enum": [
+  			"accountId",
+  			"payeeId",
+  			"domestic",
+  			"biller",
+  			"international"
+  		  ]
+  		},
 		  "accountId": {
-			"type": "string",
-			"description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
-			"x-cds-type": "ASCIIString"
+  			"type": "string",
+  			"description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
+  			"x-cds-type": "ASCIIString"
 		  },
 		  "payeeId": {
-			"type": "string",
-			"description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
-			"x-cds-type": "ASCIIString"
+  			"type": "string",
+  			"description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
+  			"x-cds-type": "ASCIIString"
 		  },
 		  "domestic": {
-			"description": "Present if toUType is set to domestic. Indicates a domestic account",
-			"$ref": "#/definitions/BankingDomesticPayee"
+  			"description": "Present if toUType is set to domestic. Indicates a domestic account",
+  			"$ref": "#/definitions/BankingDomesticPayee"
 		  },
 		  "biller": {
-			"description": "Present if toUType is set to biller. Indicates a BPAY biller",
-			"$ref": "#/definitions/BankingBillerPayee"
+  			"description": "Present if toUType is set to biller. Indicates a BPAY biller",
+  			"$ref": "#/definitions/BankingBillerPayee"
 		  },
 		  "international": {
-			"description": "Present if toUType is set to international. Indicates an international beneficiary",
-			"$ref": "#/definitions/BankingInternationalPayee"
-		  },
-		  "amount": {
-			"type": "string",
-			"description": "The amount of the next payment",
-			"x-cds-type": "AmountString"
-		  },
-		  "currency": {
-			"type": "string",
-			"description": "The currency for the payment. AUD assumed if not present",
-			"x-cds-type": "CurrencyString"
-		  },
-		  "recurrence": {
-			"description": "Object containing the detail of the schedule for the payment",
-			"$ref": "#/definitions/BankingScheduledPaymentRecurrence"
+  			"description": "Present if toUType is set to international. Indicates an international beneficiary",
+  			"$ref": "#/definitions/BankingInternationalPayee"
 		  }
-		}
 	  }
 	},
-	"BankingScheduledPaymentTo": {
+	"BankingScheduledPaymentFrom": {
 	  "type": "object",
-	  "description": "Object containing details of the destination of the payment",
+	  "description": "Object containing details of the source of the payment.  Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object",
 	  "required": [
 		"accountId"
 	  ],
@@ -3561,27 +3560,27 @@
 		"intervalSchedule"
 	  ],
 	  "properties": {
-		"nextPaymentDate": {
-		  "type": "string",
-		  "description": "The date of the next payment under the recurrence schedule",
-		  "x-cds-type": "DateString"
-		},
-		"recurrenceUType": {
-		  "type": "string",
-		  "description": "The type of recurrence used to define the schedule",
-		  "enum": [
-			"onceOff",
-			"intervalSchedule"
-		  ]
-		},
-		"onceOff": {
-		  "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff",
-		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
-		},
-		"intervalSchedule": {
-		  "description": "Indicates that the schedule of payments is defined by a series of intervals.  Mandatory if recurrenceUType is set to intervalSchedule",
-		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
-		}
+  		"nextPaymentDate": {
+  		  "type": "string",
+  		  "description": "The date of the next payment under the recurrence schedule",
+  		  "x-cds-type": "DateString"
+  		},
+  		"recurrenceUType": {
+  		  "type": "string",
+  		  "description": "The type of recurrence used to define the schedule",
+  		  "enum": [
+  			"onceOff",
+  			"intervalSchedule"
+  		  ]
+  		},
+  		"onceOff": {
+  		  "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff",
+  		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
+  		},
+  		"intervalSchedule": {
+  		  "description": "Indicates that the schedule of payments is defined by a series of intervals.  Mandatory if recurrenceUType is set to intervalSchedule",
+  		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
+  		}
 	  }
 	},
 	"BankingScheduledPaymentRecurrenceOnceOff": {
