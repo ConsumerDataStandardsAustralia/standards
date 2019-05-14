@@ -3542,7 +3542,7 @@
 	  "properties": {
 		"accountId": {
 		  "type": "string",
-		  "description": "The type of object provided that specifies the destination of the funds for the payment",
+		  "description": "ID of the account that is the source of funds for the payment",
 		  "x-cds-type": "ASCIIString"
 		}
 	  }
@@ -3602,32 +3602,30 @@
 		"intervals"
 	  ],
 	  "properties": {
-		"finalPaymentDate": {
-		  "type": "string",
-		  "description": "The date on which the last payment in the scheduled payment schedule will be made. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value",
-		  "x-cds-type": "DateString"
-		},
-		"paymentsRemaining": {
-		  "type": "string",
-		  "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value",
-		  "x-cds-type": "PositiveInteger"
-		},
-		"nonBusinessDayTreatment": {
-		  "type": "string",
-		  "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON",
-		  "enum": [
-			"AFTER",
-			"BEFORE",
-			"ON",
-			"ONLY"
-		  ]
-		},
-		"properties": {
-		  "intervals": {
-			"description": "An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry",
-			"$ref": "#/definitions/BankingScheduledPaymentInterval"
-		  }
-		}
+  		"finalPaymentDate": {
+  		  "type": "string",
+  		  "description": "The date on which the last payment in the scheduled payment schedule will be made. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value",
+  		  "x-cds-type": "DateString"
+  		},
+  		"paymentsRemaining": {
+  		  "type": "string",
+  		  "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value",
+  		  "x-cds-type": "PositiveInteger"
+  		},
+  		"nonBusinessDayTreatment": {
+  		  "type": "string",
+  		  "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON",
+  		  "enum": [
+  			"AFTER",
+  			"BEFORE",
+  			"ON",
+  			"ONLY"
+  		  ]
+  		},
+  	  "intervals": {
+  			"description": "An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry",
+  			"$ref": "#/definitions/BankingScheduledPaymentInterval"
+  		}
 	  }
 	},
 	"BankingScheduledPaymentInterval": {
@@ -3636,16 +3634,16 @@
 		"firstInterval"
 	  ],
 	  "properties": {
-		"firstInterval": {
-		  "type": "string",
-		  "description": "An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). Durations with components less than a day in length ignored.  This duration defines the period between payments starting with nextPaymentDate",
-		  "x-cds-type": "ExternalRef"
-		},
-		"dayInInterval": {
-		  "type": "string",
-		  "description": "Uses an interval to define the ordinal day within the interval defined by firstInterval on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations]. Durations with components less than a day in length ignored",
-		  "x-cds-type": "ExternalRef"
-		}
+  		"firstInterval": {
+  		  "type": "string",
+  		  "description": "An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). Durations with components less than a day in length ignored.  This duration defines the period between payments starting with nextPaymentDate",
+  		  "x-cds-type": "ExternalRef"
+  		},
+  		"dayInInterval": {
+  		  "type": "string",
+  		  "description": "Uses an interval to define the ordinal day within the interval defined by firstInterval on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations]. Durations with components less than a day in length ignored",
+  		  "x-cds-type": "ExternalRef"
+  		}
 	  }
 	},
 	"ResponseCommonCustomer": {
