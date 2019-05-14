@@ -553,7 +553,7 @@
 		],
 		"tags": [
 		  "Banking APIs",
-		  "Accounts"
+		  "Scheduled Payments"
 		],
 		"parameters": [
 		  {
@@ -592,7 +592,7 @@
 		],
 		"tags": [
 		  "Banking APIs",
-		  "Accounts"
+		  "Scheduled Payments"
 		],
 		"parameters": [
 		  {
@@ -630,7 +630,7 @@
 		],
 		"tags": [
 		  "Banking APIs",
-		  "Accounts"
+		  "Scheduled Payments"
 		],
 		"parameters": [
 		  {
