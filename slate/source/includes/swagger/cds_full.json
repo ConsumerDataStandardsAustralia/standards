@@ -545,9 +545,9 @@
 	},
 	"/banking/accounts/{accountId}/payments/scheduled": {
 	  "get": {
-		"summary": "Get Scheduled Payments",
+		"summary": "Get Scheduled Payments for Account",
 		"description": "Obtain scheduled payments for a specific account",
-		"operationId": "getScheduledPayments",
+		"operationId": "listScheduledPayments",
 		"x-scopes": [
 		  "bank_regular_payments"
 		],
