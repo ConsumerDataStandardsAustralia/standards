@@ -4,6 +4,13 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|13/5/2019|0.8.4|InfoSec Update|Imported the InfoSec content without update for recent proposals 
+|12/5/2019|0.8.3|Optionality Update|Clarified the meaning of a field declaration of optional
+|7/5/2019|0.8.2|Minor fixes|Minor fixes for product category enum
+|6/4/2019|0.8.1|Negative Rates|Modified RateString to allow for negative rates and not just positive or zero rates
+|3/4/2019|0.8.0|Accounts and Balances v1 final|Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation
+|27/4/2019|0.7.0|April Feedback|Incorporated feedback from v1 draft decisions and feedback cycle 5
+|23/4/2019|0.6.0|Payees & Customer v1 draft|Applied changes to prepare for v1 version of Payees & Customer end points and payloads documentation
 |16/4/2019|0.5.0|Transaction v1 draft|Applied changes to prepare for v1 version of Transaction end points and payloads documentation
 |16/4/2019|0.4.0|Direct Debit Auth v1 draft|Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation
 |9/4/2019|0.3.0|Product Reference v1 final|Synchronised standards documentation and swagger with final Decision 054 - Product Reference v1

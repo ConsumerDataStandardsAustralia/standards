@@ -43,9 +43,9 @@ Obtain a list of accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -61,6 +61,8 @@ Obtain a list of accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -75,11 +77,12 @@ Obtain a list of accounts
     "accounts": [
       {
         "accountId": "string",
+        "creationDate": "string",
         "displayName": "string",
         "nickname": "string",
-        "maskedNumber": "string",
         "openStatus": "OPEN",
         "isOwned": "true",
+        "maskedNumber": "string",
         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "productName": "string"
       }
@@ -108,221 +111,6 @@ Obtain a list of accounts
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_basic_accounts</a>
-</aside>
-
-## Get Account Detail
-
-<a id="opIdgetAccountDetail"></a>
-
-> Code samples
-
-```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
-Host: data.provider.com.au
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json'
-
-};
-
-$.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /banking/accounts/{accountId}`
-
-Obtain detailed information on a single account
-
-<h3 id="get-account-detail-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|accountId|path|string(ASCIIString)|mandatory|A tokenised identifier for the account which is unique but not shareable|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "accountId": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "maskedNumber": "string",
-    "openStatus": "OPEN",
-    "isOwned": "true",
-    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
-    "productName": "string",
-    "bsb": "string",
-    "accountNumber": "string",
-    "bundleName": "string",
-    "specificAccountUType": "termDeposit",
-    "termDeposit": {
-      "lodgementDate": "string",
-      "maturityDate": "string",
-      "maturityAmount": "string",
-      "maturityCurrency": "string",
-      "maturityInstructions": "ROLLED_OVER"
-    },
-    "creditCard": {
-      "minPaymentAmount": "string",
-      "paymentDueAmount": "string",
-      "paymentCurrency": "string",
-      "paymentDueDate": "string"
-    },
-    "loan": {
-      "originalStartDate": "string",
-      "originalLoanAmount": "string",
-      "originalLoanCurrency": "string",
-      "loanEndDate": "string",
-      "nextInstalmentDate": "string",
-      "minInstalmentAmount": "string",
-      "minInstalmentCurrency": "string",
-      "maxRedraw": "string",
-      "maxRedrawCurrency": "string",
-      "minRedraw": "string",
-      "minRedrawCurrency": "string",
-      "offsetAccountEnabled": true,
-      "offsetAccountIds": [
-        "string"
-      ],
-      "repaymentFrequency": "string",
-      "repaymentType": "string",
-      "loanPurpose": "INTEREST_ONLY"
-    },
-    "features": [
-      {
-        "featureType": "CARD_ACCESS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "isActivated": "true"
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "PERIODIC",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
-        "currency": "string",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "discounts": [
-          {
-            "description": "string",
-            "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "additionalValue": "string",
-            "eligibility": [
-              {
-                "discountEligibilityType": "BUSINESS",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ]
-      }
-    ],
-    "depositRates": [
-      {
-        "depositRateType": "FIXED",
-        "rate": "string",
-        "calculationFrequency": "string",
-        "applicationFrequency": "string",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "lendingRates": [
-      {
-        "lendingRateType": "FIXED",
-        "rate": "string",
-        "calculationFrequency": "string",
-        "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ARREARS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "address": {
-      "addressUType": "simple",
-      "simple": {
-        "mailingName": "string",
-        "addressLine1": "string",
-        "addressLine2": "string",
-        "addressLine3": "string",
-        "postcode": "string",
-        "city": "string",
-        "state": "string",
-        "country": "string"
-      },
-      "paf": {
-        "dpid": "string",
-        "thoroughfareNumber1": 0,
-        "thoroughfareNumber1Suffix": "string",
-        "thoroughfareNumber2": 0,
-        "thoroughfareNumber2Suffix": "string",
-        "flatUnitNumber": "string",
-        "floorLevelNumber": "string",
-        "lotNumber": 0,
-        "buildingName1": "string",
-        "buildingName2": "string",
-        "streetName": "string",
-        "streetType": "string",
-        "streetSuffix": "string",
-        "postalDeliveryType": "string",
-        "postalDeliveryNumber": 0,
-        "postalDeliveryNumberPrefix": "string",
-        "postalDeliveryNumberSuffix": "string",
-        "localityName": "string",
-        "postcode": "string",
-        "state": "string"
-      }
-    }
-  },
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
-```
-
-<h3 id="get-account-detail-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountById](#schemaresponsebankingaccountbyid)|
-
-<aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 
 ## Get Bulk Balances
@@ -366,9 +154,9 @@ Obtain balances for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -384,6 +172,8 @@ Obtain balances for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -398,35 +188,11 @@ Obtain balances for multiple, filtered accounts
     "balances": [
       {
         "accountId": "string",
-        "balanceUType": "deposit",
-        "deposit": {
-          "currentBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "availableBalance": {
-            "amount": "string",
-            "currency": "string"
-          }
-        },
-        "lending": {
-          "accountBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "availableBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "creditLimit": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "amortisedLimit": {
-            "amount": "string",
-            "currency": "string"
-          }
-        },
+        "currentBalance": "string",
+        "availableBalance": "string",
+        "creditLimit": "string",
+        "amortisedLimit": "string",
+        "currency": "string",
         "purses": [
           {
             "amount": "string",
@@ -515,9 +281,9 @@ Obtain balances for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
-|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
 
@@ -529,35 +295,11 @@ Obtain balances for a specified list of accounts
     "balances": [
       {
         "accountId": "string",
-        "balanceUType": "deposit",
-        "deposit": {
-          "currentBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "availableBalance": {
-            "amount": "string",
-            "currency": "string"
-          }
-        },
-        "lending": {
-          "accountBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "availableBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "creditLimit": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "amortisedLimit": {
-            "amount": "string",
-            "currency": "string"
-          }
-        },
+        "currentBalance": "string",
+        "availableBalance": "string",
+        "creditLimit": "string",
+        "amortisedLimit": "string",
+        "currency": "string",
         "purses": [
           {
             "amount": "string",
@@ -591,6 +333,357 @@ Obtain balances for a specified list of accounts
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_basic_accounts</a>
+</aside>
+
+## Get Account Balance
+
+<a id="opIdlistBalance"></a>
+
+> Code samples
+
+```http
+GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
+Host: data.provider.com.au
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json'
+
+};
+
+$.ajax({
+  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /banking/accounts/{accountId}/balance`
+
+Obtain the balance for a single specified account
+
+<h3 id="get-account-balance-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "accountId": "string",
+    "currentBalance": "string",
+    "availableBalance": "string",
+    "creditLimit": "string",
+    "amortisedLimit": "string",
+    "currency": "string",
+    "purses": [
+      {
+        "amount": "string",
+        "currency": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  }
+}
+```
+
+<h3 id="get-account-balance-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceById](#schemaresponsebankingaccountsbalancebyid)|
+
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_basic_accounts</a>
+</aside>
+
+## Get Account Detail
+
+<a id="opIdgetAccountDetail"></a>
+
+> Code samples
+
+```http
+GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
+Host: data.provider.com.au
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json'
+
+};
+
+$.ajax({
+  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /banking/accounts/{accountId}`
+
+Obtain detailed information on a single account
+
+<h3 id="get-account-detail-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "accountId": "string",
+    "creationDate": "string",
+    "displayName": "string",
+    "nickname": "string",
+    "openStatus": "OPEN",
+    "isOwned": "true",
+    "maskedNumber": "string",
+    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+    "productName": "string",
+    "bsb": "string",
+    "accountNumber": "string",
+    "bundleName": "string",
+    "specificAccountUType": "termDeposit",
+    "termDeposit": {
+      "lodgementDate": "string",
+      "maturityDate": "string",
+      "maturityAmount": "string",
+      "maturityCurrency": "string",
+      "maturityInstructions": "ROLLED_OVER"
+    },
+    "creditCard": {
+      "minPaymentAmount": "string",
+      "paymentDueAmount": "string",
+      "paymentCurrency": "string",
+      "paymentDueDate": "string"
+    },
+    "loan": {
+      "originalStartDate": "string",
+      "originalLoanAmount": "string",
+      "originalLoanCurrency": "string",
+      "loanEndDate": "string",
+      "nextInstalmentDate": "string",
+      "minInstalmentAmount": "string",
+      "minInstalmentCurrency": "string",
+      "maxRedraw": "string",
+      "maxRedrawCurrency": "string",
+      "minRedraw": "string",
+      "minRedrawCurrency": "string",
+      "offsetAccountEnabled": true,
+      "offsetAccountIds": [
+        "string"
+      ],
+      "repaymentType": "PRINCIPAL_AND_INTEREST",
+      "repaymentFrequency": "string"
+    },
+    "depositRate": "string",
+    "lendingRate": "string",
+    "depositRates": [
+      {
+        "depositRateType": "FIXED",
+        "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "tiers": [
+          {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            }
+          }
+        ],
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "lendingRates": [
+      {
+        "lendingRateType": "FIXED",
+        "rate": "string",
+        "comparisonRate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "interestPaymentDue": "IN_ARREARS",
+        "tiers": [
+          {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            }
+          }
+        ],
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "features": [
+      {
+        "featureType": "CARD_ACCESS",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "isActivated": "true"
+      }
+    ],
+    "fees": [
+      {
+        "name": "string",
+        "feeType": "PERIODIC",
+        "amount": "string",
+        "balanceRate": "string",
+        "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
+        "currency": "string",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "discounts": [
+          {
+            "description": "string",
+            "discountType": "BALANCE",
+            "amount": "string",
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "feeRate": "string",
+            "additionalValue": "string",
+            "additionalInfo": "string",
+            "additionalInfoUri": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "BUSINESS",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "addresses": [
+      {
+        "addressUType": "simple",
+        "simple": {
+          "mailingName": "string",
+          "addressLine1": "string",
+          "addressLine2": "string",
+          "addressLine3": "string",
+          "postcode": "string",
+          "city": "string",
+          "state": "string",
+          "country": "string"
+        },
+        "paf": {
+          "dpid": "string",
+          "thoroughfareNumber1": 0,
+          "thoroughfareNumber1Suffix": "string",
+          "thoroughfareNumber2": 0,
+          "thoroughfareNumber2Suffix": "string",
+          "flatUnitNumber": "string",
+          "floorLevelNumber": "string",
+          "lotNumber": 0,
+          "buildingName1": "string",
+          "buildingName2": "string",
+          "streetName": "string",
+          "streetType": "string",
+          "streetSuffix": "string",
+          "postalDeliveryType": "string",
+          "postalDeliveryNumber": 0,
+          "postalDeliveryNumberPrefix": "string",
+          "postalDeliveryNumberSuffix": "string",
+          "localityName": "string",
+          "postcode": "string",
+          "state": "string"
+        }
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+```
+
+<h3 id="get-account-detail-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountById](#schemaresponsebankingaccountbyid)|
+
+<aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">bank_detailed_accounts</a>
 </aside>
 
 ## Get Transactions For Account
@@ -640,14 +733,14 @@ Some general notes that apply to all end points that retrieve transactions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
-|start-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
-|min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
+|start-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
+|end-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 > Example responses
 
@@ -743,8 +836,8 @@ Obtain detailed information on a transaction for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
-|transactionId|path|string(ASCIIString)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
+|transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
 
 > Example responses
 
@@ -838,14 +931,14 @@ Obtain transactions for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|newest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|oldest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -861,6 +954,8 @@ Obtain transactions for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -974,13 +1069,13 @@ Obtain transactions for a specified list of transactions.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|oldest-time|query|string(DateTimeString)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|min-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|string(AmountString)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
+|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
@@ -1078,9 +1173,9 @@ Obtain direct debit authorisations for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string(ASCIIString)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 > Example responses
 
@@ -1170,9 +1265,9 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |---|---|---|---|---|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|boolean|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts false for unowned accounts and absent for all accounts|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1188,6 +1283,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -1293,8 +1390,8 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1385,8 +1482,8 @@ Obtain a list of pre-registered payees
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1478,7 +1575,7 @@ Obtain detailed information on a single payee
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|payeeId|path|string(ASCIIString)|mandatory|The ID used to locate the details of a particular payee|
+|payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
 
 > Example responses
 
@@ -1628,11 +1725,11 @@ In addition, the concept of effective date and time has also been included.  Thi
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |effective|query|string|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
-|updated-since|query|string(DateTimeString)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products|
 |brand|query|string|optional|Filter results based on a specific brand|
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|page|query|integer|optional|Page of results to request (standard pagination)|
-|page-size|query|integer|optional|Page size to request. Default is 25 (standard pagination)|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
 #### Enumerated Values
 
@@ -1651,6 +1748,8 @@ In addition, the concept of effective date and time has also been included.  Thi
 |product-category|MARGIN_LOANS|
 |product-category|LEASES|
 |product-category|TRADE_FINANCE|
+|product-category|OVERDRAFTS|
+|product-category|BUSINESS_LOANS|
 
 > Example responses
 
@@ -1745,7 +1844,7 @@ Obtain detailed information on a single product offered openly to the market
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|productId|path|string(ASCIIString)|mandatory|ID of the specific product requested|
+|productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
 
 > Example responses
 
@@ -2320,23 +2419,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|productId|string(ASCIIString)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
-|effectiveFrom|string(DateTimeString)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
-|effectiveTo|string(DateTimeString)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
-|lastUpdated|string(DateTimeString)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|productId|[ASCIIString](#common-field-types)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+|effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
+|effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
 |brandName|string|optional|none|An optional display name of the brand|
-|applicationUri|string(URIString)|optional|none|A link to the an application web page where this product can be applied for.|
-|isTailored|boolean|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
+|applicationUri|[URIString](#common-field-types)|optional|none|A link to the an application web page where this product can be applied for.|
+|isTailored|[Boolean](#common-field-types)|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
 |additionalInformation|object|optional|none|Object that contains links to additional information on specific topics|
-|» overviewUri|string(URIString)|optional|none|General overview of the product|
-|» termsUri|string(URIString)|optional|none|Terms and conditions for the product|
-|» eligibilityUri|string(URIString)|optional|none|Eligibility rules and criteria for the product|
-|» feesAndPricingUri|string(URIString)|optional|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
-|» bundleUri|string(URIString)|optional|none|Description of a bundle that this product can be part of|
+|» overviewUri|[URIString](#common-field-types)|optional|none|General overview of the product|
+|» termsUri|[URIString](#common-field-types)|optional|none|Terms and conditions for the product|
+|» eligibilityUri|[URIString](#common-field-types)|optional|none|Eligibility rules and criteria for the product|
+|» feesAndPricingUri|[URIString](#common-field-types)|optional|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
+|» bundleUri|[URIString](#common-field-types)|optional|none|Description of a bundle that this product can be part of|
 
 <h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
@@ -2741,7 +2840,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |name|string|mandatory|none|Name of the bundle|
 |description|string|mandatory|none|Description of the bundle|
 |additionalInfo|string|optional|none|Display text providing more information on the bundle|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
 |productIds|[string]|mandatory|none|Array of product IDs for products included in the bundle|
 
 <h2 id="tocSbankingproductfeature">BankingProductFeature</h2>
@@ -2765,7 +2864,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|string|mandatory|none|The type of feature described|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
 |additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this feature|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
 
 #### Enumerated Values
 
@@ -2816,7 +2915,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |constraintType|string|mandatory|none|The type of constraint described.  See the next section for an overview of valid values and their meaning|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType|
 |additionalInfo|string|optional|none|Display text providing more information the constraint|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on the constraint|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on the constraint|
 
 #### Enumerated Values
 
@@ -2849,7 +2948,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |eligibilityType|string|mandatory|none|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType|
 |additionalInfo|string|conditional|none|Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility criteria|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility criteria|
 
 #### Enumerated Values
 
@@ -2917,15 +3016,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|mandatory|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accrualFrequency|string|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+|amount|[AmountString](#common-field-types)|mandatory|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accrualFrequency|[ExternalRef](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
 |discounts|[[BankingProductDiscount](#schemabankingproductdiscount)]|optional|none|An optional list of discounts to this fee that may be available|
 
 #### Enumerated Values
@@ -2976,14 +3075,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|mandatory|none|Value of the discount|
-|balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
-|accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|feeRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+|balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+|accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|feeRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
 |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|Eligibility constraints that apply to this discount|
 
 #### Enumerated Values
@@ -3017,7 +3116,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType|
 |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility constraint|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
 
 #### Enumerated Values
 
@@ -3083,13 +3182,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|mandatory|none|The rate to be applied|
-|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the rate|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this rate|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate|
 
 #### Enumerated Values
 
@@ -3151,15 +3250,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|mandatory|none|The rate to be applied|
-|comparisonRate|string(RateString)|optional|none|A comparison rate equivalent for this rate|
-|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+|comparisonRate|[RateString](#common-field-types)|optional|none|A comparison rate equivalent for this rate|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the rate.|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this rate|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate|
 
 #### Enumerated Values
 
@@ -3265,7 +3364,47 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |additionalInfo|string|optional|none|Display text providing more information on the condition|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this condition|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this condition|
+
+<h2 id="tocSresponsebankingaccount">ResponseBankingAccount</h2>
+
+<a id="schemaresponsebankingaccount"></a>
+
+```json
+{
+  "data": {
+    "accountId": "string",
+    "creationDate": "string",
+    "displayName": "string",
+    "nickname": "string",
+    "openStatus": "OPEN",
+    "isOwned": "true",
+    "maskedNumber": "string",
+    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+    "productName": "string"
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[BankingAccount](#schemabankingaccount)|mandatory|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
 <h2 id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
 
@@ -3277,11 +3416,12 @@ To perform this operation, you must be authenticated and authorised with the fol
     "accounts": [
       {
         "accountId": "string",
+        "creationDate": "string",
         "displayName": "string",
         "nickname": "string",
-        "maskedNumber": "string",
         "openStatus": "OPEN",
         "isOwned": "true",
+        "maskedNumber": "string",
         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "productName": "string"
       }
@@ -3307,7 +3447,52 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
-|» accounts|[[BankingAccount](#schemabankingaccount)]|mandatory|none|none|
+|» accounts|[[BankingAccount](#schemabankingaccount)]|mandatory|none|The list of accounts returned. If the filter results in an empty set then this array may have no records|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
+
+<h2 id="tocSresponsebankingaccountbalanceslist">ResponseBankingAccountBalancesList</h2>
+
+<a id="schemaresponsebankingaccountbalanceslist"></a>
+
+```json
+{
+  "data": {
+    "accounts": [
+      {
+        "accountId": "string",
+        "creationDate": "string",
+        "displayName": "string",
+        "nickname": "string",
+        "openStatus": "OPEN",
+        "isOwned": "true",
+        "maskedNumber": "string",
+        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+        "productName": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|mandatory|none|none|
+|» accounts|[[BankingAccount](#schemabankingaccount)]|optional|none|The list of balances returned|
 |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
@@ -3318,11 +3503,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
+  "creationDate": "string",
   "displayName": "string",
   "nickname": "string",
-  "maskedNumber": "string",
   "openStatus": "OPEN",
   "isOwned": "true",
+  "maskedNumber": "string",
   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "productName": "string"
 }
@@ -3333,14 +3519,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
-|displayName|string|mandatory|none|The display name of the account. If a customer provided nickname is available that value should be returned|
+|accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|creationDate|[DateString](#common-field-types)|optional|none|Date that the account was created (if known)|
+|displayName|string|mandatory|none|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.|
 |nickname|string|optional|none|A customer supplied nick name for the account|
-|maskedNumber|string(MaskedAccountString)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked|
-|openStatus|string|optional|none|Open or closed status for the account.  If not present then OPEN is assumed|
-|isOwned|boolean|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account.  Does not indicate sole ownership, however.  If no present then 'true' is assumed|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
-|productName|string|mandatory|none|A unique name or identifier for the account class for this account as defined by the account provider.  Not expected to be used for display|
+|openStatus|string|optional|none|Open or closed status for the account. If not present then OPEN is assumed|
+|isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
+|maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
+|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|productName|string|mandatory|none|The unique identifier of the account as defined by the account provider (akin to model number for the account)|
 
 #### Enumerated Values
 
@@ -3357,11 +3544,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "data": {
     "accountId": "string",
+    "creationDate": "string",
     "displayName": "string",
     "nickname": "string",
-    "maskedNumber": "string",
     "openStatus": "OPEN",
     "isOwned": "true",
+    "maskedNumber": "string",
     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "productName": "string",
     "bsb": "string",
@@ -3397,10 +3585,83 @@ To perform this operation, you must be authenticated and authorised with the fol
       "offsetAccountIds": [
         "string"
       ],
-      "repaymentFrequency": "string",
-      "repaymentType": "string",
-      "loanPurpose": "INTEREST_ONLY"
+      "repaymentType": "PRINCIPAL_AND_INTEREST",
+      "repaymentFrequency": "string"
     },
+    "depositRate": "string",
+    "lendingRate": "string",
+    "depositRates": [
+      {
+        "depositRateType": "FIXED",
+        "rate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "tiers": [
+          {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            }
+          }
+        ],
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "lendingRates": [
+      {
+        "lendingRateType": "FIXED",
+        "rate": "string",
+        "comparisonRate": "string",
+        "calculationFrequency": "string",
+        "applicationFrequency": "string",
+        "interestPaymentDue": "IN_ARREARS",
+        "tiers": [
+          {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            },
+            "subTier": {
+              "name": "string",
+              "unitOfMeasure": "DOLLAR",
+              "minimumValue": 0,
+              "maximumValue": 0,
+              "rateApplicationMethod": "WHOLE_BALANCE",
+              "applicabilityConditions": {
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            }
+          }
+        ],
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
     "features": [
       {
         "featureType": "CARD_ACCESS",
@@ -3431,7 +3692,10 @@ To perform this operation, you must be authenticated and authorised with the fol
             "balanceRate": "string",
             "transactionRate": "string",
             "accruedRate": "string",
+            "feeRate": "string",
             "additionalValue": "string",
+            "additionalInfo": "string",
+            "additionalInfoUri": "string",
             "eligibility": [
               {
                 "discountEligibilityType": "BUSINESS",
@@ -3439,71 +3703,48 @@ To perform this operation, you must be authenticated and authorised with the fol
                 "additionalInfo": "string",
                 "additionalInfoUri": "string"
               }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
+            ]
           }
         ]
       }
     ],
-    "depositRates": [
+    "addresses": [
       {
-        "depositRateType": "FIXED",
-        "rate": "string",
-        "calculationFrequency": "string",
-        "applicationFrequency": "string",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
+        "addressUType": "simple",
+        "simple": {
+          "mailingName": "string",
+          "addressLine1": "string",
+          "addressLine2": "string",
+          "addressLine3": "string",
+          "postcode": "string",
+          "city": "string",
+          "state": "string",
+          "country": "string"
+        },
+        "paf": {
+          "dpid": "string",
+          "thoroughfareNumber1": 0,
+          "thoroughfareNumber1Suffix": "string",
+          "thoroughfareNumber2": 0,
+          "thoroughfareNumber2Suffix": "string",
+          "flatUnitNumber": "string",
+          "floorLevelNumber": "string",
+          "lotNumber": 0,
+          "buildingName1": "string",
+          "buildingName2": "string",
+          "streetName": "string",
+          "streetType": "string",
+          "streetSuffix": "string",
+          "postalDeliveryType": "string",
+          "postalDeliveryNumber": 0,
+          "postalDeliveryNumberPrefix": "string",
+          "postalDeliveryNumberSuffix": "string",
+          "localityName": "string",
+          "postcode": "string",
+          "state": "string"
+        }
       }
-    ],
-    "lendingRates": [
-      {
-        "lendingRateType": "FIXED",
-        "rate": "string",
-        "calculationFrequency": "string",
-        "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ARREARS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "address": {
-      "addressUType": "simple",
-      "simple": {
-        "mailingName": "string",
-        "addressLine1": "string",
-        "addressLine2": "string",
-        "addressLine3": "string",
-        "postcode": "string",
-        "city": "string",
-        "state": "string",
-        "country": "string"
-      },
-      "paf": {
-        "dpid": "string",
-        "thoroughfareNumber1": 0,
-        "thoroughfareNumber1Suffix": "string",
-        "thoroughfareNumber2": 0,
-        "thoroughfareNumber2Suffix": "string",
-        "flatUnitNumber": "string",
-        "floorLevelNumber": "string",
-        "lotNumber": 0,
-        "buildingName1": "string",
-        "buildingName2": "string",
-        "streetName": "string",
-        "streetType": "string",
-        "streetSuffix": "string",
-        "postalDeliveryType": "string",
-        "postalDeliveryNumber": 0,
-        "postalDeliveryNumberPrefix": "string",
-        "postalDeliveryNumberSuffix": "string",
-        "localityName": "string",
-        "postcode": "string",
-        "state": "string"
-      }
-    }
+    ]
   },
   "links": {
     "self": "string"
@@ -3528,11 +3769,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
+  "creationDate": "string",
   "displayName": "string",
   "nickname": "string",
-  "maskedNumber": "string",
   "openStatus": "OPEN",
   "isOwned": "true",
+  "maskedNumber": "string",
   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "productName": "string",
   "bsb": "string",
@@ -3568,10 +3810,83 @@ To perform this operation, you must be authenticated and authorised with the fol
     "offsetAccountIds": [
       "string"
     ],
-    "repaymentFrequency": "string",
-    "repaymentType": "string",
-    "loanPurpose": "INTEREST_ONLY"
+    "repaymentType": "PRINCIPAL_AND_INTEREST",
+    "repaymentFrequency": "string"
   },
+  "depositRate": "string",
+  "lendingRate": "string",
+  "depositRates": [
+    {
+      "depositRateType": "FIXED",
+      "rate": "string",
+      "calculationFrequency": "string",
+      "applicationFrequency": "string",
+      "tiers": [
+        {
+          "name": "string",
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          },
+          "subTier": {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          }
+        }
+      ],
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "lendingRates": [
+    {
+      "lendingRateType": "FIXED",
+      "rate": "string",
+      "comparisonRate": "string",
+      "calculationFrequency": "string",
+      "applicationFrequency": "string",
+      "interestPaymentDue": "IN_ARREARS",
+      "tiers": [
+        {
+          "name": "string",
+          "unitOfMeasure": "DOLLAR",
+          "minimumValue": 0,
+          "maximumValue": 0,
+          "rateApplicationMethod": "WHOLE_BALANCE",
+          "applicabilityConditions": {
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          },
+          "subTier": {
+            "name": "string",
+            "unitOfMeasure": "DOLLAR",
+            "minimumValue": 0,
+            "maximumValue": 0,
+            "rateApplicationMethod": "WHOLE_BALANCE",
+            "applicabilityConditions": {
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          }
+        }
+      ],
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
   "features": [
     {
       "featureType": "CARD_ACCESS",
@@ -3602,7 +3917,10 @@ To perform this operation, you must be authenticated and authorised with the fol
           "balanceRate": "string",
           "transactionRate": "string",
           "accruedRate": "string",
+          "feeRate": "string",
           "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string",
           "eligibility": [
             {
               "discountEligibilityType": "BUSINESS",
@@ -3610,71 +3928,48 @@ To perform this operation, you must be authenticated and authorised with the fol
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             }
-          ],
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
+          ]
         }
       ]
     }
   ],
-  "depositRates": [
+  "addresses": [
     {
-      "depositRateType": "FIXED",
-      "rate": "string",
-      "calculationFrequency": "string",
-      "applicationFrequency": "string",
-      "additionalValue": "string",
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
+      "addressUType": "simple",
+      "simple": {
+        "mailingName": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "addressLine3": "string",
+        "postcode": "string",
+        "city": "string",
+        "state": "string",
+        "country": "string"
+      },
+      "paf": {
+        "dpid": "string",
+        "thoroughfareNumber1": 0,
+        "thoroughfareNumber1Suffix": "string",
+        "thoroughfareNumber2": 0,
+        "thoroughfareNumber2Suffix": "string",
+        "flatUnitNumber": "string",
+        "floorLevelNumber": "string",
+        "lotNumber": 0,
+        "buildingName1": "string",
+        "buildingName2": "string",
+        "streetName": "string",
+        "streetType": "string",
+        "streetSuffix": "string",
+        "postalDeliveryType": "string",
+        "postalDeliveryNumber": 0,
+        "postalDeliveryNumberPrefix": "string",
+        "postalDeliveryNumberSuffix": "string",
+        "localityName": "string",
+        "postcode": "string",
+        "state": "string"
+      }
     }
-  ],
-  "lendingRates": [
-    {
-      "lendingRateType": "FIXED",
-      "rate": "string",
-      "calculationFrequency": "string",
-      "applicationFrequency": "string",
-      "interestPaymentDue": "IN_ARREARS",
-      "additionalValue": "string",
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
-    }
-  ],
-  "address": {
-    "addressUType": "simple",
-    "simple": {
-      "mailingName": "string",
-      "addressLine1": "string",
-      "addressLine2": "string",
-      "addressLine3": "string",
-      "postcode": "string",
-      "city": "string",
-      "state": "string",
-      "country": "string"
-    },
-    "paf": {
-      "dpid": "string",
-      "thoroughfareNumber1": 0,
-      "thoroughfareNumber1Suffix": "string",
-      "thoroughfareNumber2": 0,
-      "thoroughfareNumber2Suffix": "string",
-      "flatUnitNumber": "string",
-      "floorLevelNumber": "string",
-      "lotNumber": 0,
-      "buildingName1": "string",
-      "buildingName2": "string",
-      "streetName": "string",
-      "streetType": "string",
-      "streetSuffix": "string",
-      "postalDeliveryType": "string",
-      "postalDeliveryNumber": 0,
-      "postalDeliveryNumberPrefix": "string",
-      "postalDeliveryNumberSuffix": "string",
-      "localityName": "string",
-      "postcode": "string",
-      "state": "string"
-    }
-  }
+  ]
 }
 
 ```
@@ -3692,18 +3987,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» bsb|string|optional|none|The unmasked BSB for the account.  Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» accountNumber|string|optional|none|The unmasked account number for the account.  Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
+|» bsb|string|optional|none|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
+|» accountNumber|string|optional|none|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» bundleName|string|optional|none|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
 |» specificAccountUType|string|optional|none|The type of structure to present account specific fields.|
 |» termDeposit|[BankingTermDepositAccount](#schemabankingtermdepositaccount)|conditional|none|none|
 |» creditCard|[BankingCreditCardAccount](#schemabankingcreditcardaccount)|conditional|none|none|
 |» loan|[BankingLoanAccount](#schemabankingloanaccount)|conditional|none|none|
-|» features|[[BankingAccountFeature](#schemabankingaccountfeature)]|optional|none|none|
-|» fees|[[BankingAccountFee](#schemabankingaccountfee)]|optional|none|none|
-|» depositRates|[[BankingAccountDepositRate](#schemabankingaccountdepositrate)]|optional|none|none|
-|» lendingRates|[[BankingAccountLendingRate](#schemabankingaccountlendingrate)]|optional|none|none|
-|» address|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
+|» depositRate|[RateString](#common-field-types)|optional|none|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
+|» lendingRate|[RateString](#common-field-types)|optional|none|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
+|» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» features|[allOf]|optional|none|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
+
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|[BankingProductFeature](#schemabankingproductfeature)|optional|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» *anonymous*|object|optional|none|none|
+|»»» isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
+
+*continued*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
+|»» addresses|[[CommonPhysicalAddress](#schemacommonphysicaladdress)]|optional|none|The addresses for the account to be used for correspondence|
 
 #### Enumerated Values
 
@@ -3732,10 +4047,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lodgementDate|string(DateString)|mandatory|none|The lodgement date of the original deposit|
-|maturityDate|string(DateString)|mandatory|none|Maturity date for the term deposit|
-|maturityAmount|string(AmountString)|optional|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
-|maturityCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
+|lodgementDate|[DateString](#common-field-types)|mandatory|none|The lodgement date of the original deposit|
+|maturityDate|[DateString](#common-field-types)|mandatory|none|Maturity date for the term deposit|
+|maturityAmount|[AmountString](#common-field-types)|optional|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
+|maturityCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |maturityInstructions|string|mandatory|none|Current instructions on action to be taken at maturity|
 
 #### Enumerated Values
@@ -3763,10 +4078,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|minPaymentAmount|string(AmountString)|mandatory|none|The minimum payment amount due for the next card payment|
-|paymentDueAmount|string(AmountString)|mandatory|none|The amount due for the next card payment|
-|paymentCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
-|paymentDueDate|string(DateString)|mandatory|none|Date that the next payment for the card is due|
+|minPaymentAmount|[AmountString](#common-field-types)|mandatory|none|The minimum payment amount due for the next card payment|
+|paymentDueAmount|[AmountString](#common-field-types)|mandatory|none|The amount due for the next card payment|
+|paymentCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+|paymentDueDate|[DateString](#common-field-types)|mandatory|none|Date that the next payment for the card is due|
 
 <h2 id="tocSbankingloanaccount">BankingLoanAccount</h2>
 
@@ -3789,9 +4104,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   "offsetAccountIds": [
     "string"
   ],
-  "repaymentFrequency": "string",
-  "repaymentType": "string",
-  "loanPurpose": "INTEREST_ONLY"
+  "repaymentType": "PRINCIPAL_AND_INTEREST",
+  "repaymentFrequency": "string"
 }
 
 ```
@@ -3800,29 +4114,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|originalStartDate|string(DateString)|optional|none|Optional original start date for the loan|
-|originalLoanAmount|string(AmountString)|optional|none|Optional original loan value|
-|originalLoanCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
-|loanEndDate|string(DateString)|optional|none|Date that the loan is due to be repaid in full|
-|nextInstalmentDate|string(DateString)|optional|none|Next date that an instalment is required|
-|minInstalmentAmount|string(AmountString)|optional|none|Minimum amount of next instalment|
-|minInstalmentCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
-|maxRedraw|string(AmountString)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
-|maxRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
-|minRedraw|string(AmountString)|optional|none|Minimum redraw amount|
-|minRedrawCurrency|string(CurrencyString)|optional|none|If absent assumes AUD|
-|offsetAccountEnabled|boolean|optional|none|Set to true if one or more offset accounts are configured for this loan account|
+|originalStartDate|[DateString](#common-field-types)|optional|none|Optional original start date for the loan|
+|originalLoanAmount|[AmountString](#common-field-types)|optional|none|Optional original loan value|
+|originalLoanCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+|loanEndDate|[DateString](#common-field-types)|mandatory|none|Date that the loan is due to be repaid in full|
+|nextInstalmentDate|[DateString](#common-field-types)|mandatory|none|Next date that an instalment is required|
+|minInstalmentAmount|[AmountString](#common-field-types)|mandatory|none|Minimum amount of next instalment|
+|minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+|maxRedraw|[AmountString](#common-field-types)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
+|maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+|minRedraw|[AmountString](#common-field-types)|optional|none|Minimum redraw amount|
+|minRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
+|offsetAccountEnabled|[Boolean](#common-field-types)|optional|none|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
-|repaymentFrequency|string|optional|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|repaymentType|string|optional|none|The reason for taking out the loan. The purpose generally affects the rate offered due to different risk profiles|
-|loanPurpose|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
+|repaymentType|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
+|repaymentFrequency|[ExternalRef](#common-field-types)|mandatory|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|loanPurpose|INTEREST_ONLY|
-|loanPurpose|PRINCIPAL_AND_INTEREST|
+|repaymentType|INTEREST_ONLY|
+|repaymentType|PRINCIPAL_AND_INTEREST|
 
 <h2 id="tocSbankingaccountfeature">BankingAccountFeature</h2>
 
@@ -3846,8 +4159,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|string|mandatory|none|The type of feature described|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
 |additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this feature|
-|isActivated|boolean|optional|none|True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
+|isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent|
 
 #### Enumerated Values
 
@@ -3925,15 +4238,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|string(AmountString)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|transactionRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|string(RateString)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accrualFrequency|string(CurrencyString)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|currency|string(CurrencyString)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
+|amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accrualFrequency|[CurrencyString](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
 |discounts|[[BankingAccountDiscount](#schemabankingaccountdiscount)]|optional|none|none|
 
 #### Enumerated Values
@@ -3983,14 +4296,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|string(AmountString)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|transactionRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|string(RateString)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
+|transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
 |eligibility|[[BankingAccountDiscountEligibility](#schemabankingaccountdiscounteligibility)]|optional|none|none|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this discount|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
 
 #### Enumerated Values
 
@@ -4023,7 +4336,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType|
 |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this eligibility constraint|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
 
 #### Enumerated Values
 
@@ -4065,12 +4378,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|mandatory|none|The rate to be applied|
-|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information on this fee|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
 
 #### Enumerated Values
 
@@ -4105,13 +4418,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
-|rate|string(RateString)|mandatory|none|The rate to be applied|
-|calculationFrequency|string|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|string|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
 |additionalInfo|string|optional|none|Display text providing more information on the fee.|
-|additionalInfoUri|string(URIString)|optional|none|Link to a web page with more information  on this fee|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information  on this fee|
 
 #### Enumerated Values
 
@@ -4217,17 +4530,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|mandatory|none|ID of the account for which transactions are provided|
-|transactionId|string(ASCIIString)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
-|isDetailAvailable|boolean|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
+|accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
+|transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
+|isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
 |status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
 |description|string|mandatory|none|The transaction description as applied by the financial institution|
-|postingDateTime|string(DateTimeString)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
-|valueDateTime|string(DateTimeString)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
-|executionDateTime|string(DateTimeString)|optional|none|The time the transaction was executed by the originating customer, if available|
-|amount|string(AmountString)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
-|currency|string(CurrencyString)|optional|none|The currency for the transaction amount. AUD assumed if not present|
+|postingDateTime|[DateTimeString](#common-field-types)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
+|valueDateTime|[DateTimeString](#common-field-types)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
+|executionDateTime|[DateTimeString](#common-field-types)|optional|none|The time the transaction was executed by the originating customer, if available|
+|amount|[AmountString](#common-field-types)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
+|currency|[CurrencyString](#common-field-types)|optional|none|The currency for the transaction amount. AUD assumed if not present|
 |reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
 |merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
 |merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
@@ -4372,35 +4685,11 @@ To perform this operation, you must be authenticated and authorised with the fol
     "balances": [
       {
         "accountId": "string",
-        "balanceUType": "deposit",
-        "deposit": {
-          "currentBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "availableBalance": {
-            "amount": "string",
-            "currency": "string"
-          }
-        },
-        "lending": {
-          "accountBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "availableBalance": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "creditLimit": {
-            "amount": "string",
-            "currency": "string"
-          },
-          "amortisedLimit": {
-            "amount": "string",
-            "currency": "string"
-          }
-        },
+        "currentBalance": "string",
+        "availableBalance": "string",
+        "creditLimit": "string",
+        "amortisedLimit": "string",
+        "currency": "string",
         "purses": [
           {
             "amount": "string",
@@ -4430,9 +4719,47 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
-|» balances|[[BankingBalance](#schemabankingbalance)]|mandatory|none|none|
+|» balances|[[BankingBalance](#schemabankingbalance)]|mandatory|none|The list of balances returned|
 |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
+
+<h2 id="tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h2>
+
+<a id="schemaresponsebankingaccountsbalancebyid"></a>
+
+```json
+{
+  "data": {
+    "accountId": "string",
+    "currentBalance": "string",
+    "availableBalance": "string",
+    "creditLimit": "string",
+    "amortisedLimit": "string",
+    "currency": "string",
+    "purses": [
+      {
+        "amount": "string",
+        "currency": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[BankingBalance](#schemabankingbalance)|mandatory|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|optional|none|none|
 
 <h2 id="tocSbankingbalance">BankingBalance</h2>
 
@@ -4441,35 +4768,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "accountId": "string",
-  "balanceUType": "deposit",
-  "deposit": {
-    "currentBalance": {
-      "amount": "string",
-      "currency": "string"
-    },
-    "availableBalance": {
-      "amount": "string",
-      "currency": "string"
-    }
-  },
-  "lending": {
-    "accountBalance": {
-      "amount": "string",
-      "currency": "string"
-    },
-    "availableBalance": {
-      "amount": "string",
-      "currency": "string"
-    },
-    "creditLimit": {
-      "amount": "string",
-      "currency": "string"
-    },
-    "amortisedLimit": {
-      "amount": "string",
-      "currency": "string"
-    }
-  },
+  "currentBalance": "string",
+  "availableBalance": "string",
+  "creditLimit": "string",
+  "amortisedLimit": "string",
+  "currency": "string",
   "purses": [
     {
       "amount": "string",
@@ -4484,34 +4787,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
-|balanceUType|string|mandatory|none|The type of balance object provided for the account|
-|deposit|[BankingDepositBalance](#schemabankingdepositbalance)|conditional|none|none|
-|lending|[BankingLendingBalance](#schemabankinglendingbalance)|conditional|none|none|
-|purses|[[CommonCurrencyAmount](#schemacommoncurrencyamount)]|conditional|none|none|
+|accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence|
+|currentBalance|[AmountString](#common-field-types)|mandatory|none|The balance of the account at this time. Should align to the balance available via other channels such as Internet Banking. Assumed to be negative if the customer has money owing|
+|availableBalance|[AmountString](#common-field-types)|mandatory|none|Balance representing the amount of funds available for transfer. Assumed to be zero or positive|
+|creditLimit|[AmountString](#common-field-types)|optional|none|Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent|
+|amortisedLimit|[AmountString](#common-field-types)|optional|none|Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent|
+|currency|[CurrencyString](#common-field-types)|optional|none|The currency for the balance amounts. If absent assumed to be AUD|
+|purses|[[BankingBalancePurse](#schemabankingbalancepurse)]|optional|none|Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards|
 
-#### Enumerated Values
+<h2 id="tocSbankingbalancepurse">BankingBalancePurse</h2>
 
-|Property|Value|
-|---|---|
-|balanceUType|deposit|
-|balanceUType|lending|
-|balanceUType|purses|
-
-<h2 id="tocSbankingdepositbalance">BankingDepositBalance</h2>
-
-<a id="schemabankingdepositbalance"></a>
+<a id="schemabankingbalancepurse"></a>
 
 ```json
 {
-  "currentBalance": {
-    "amount": "string",
-    "currency": "string"
-  },
-  "availableBalance": {
-    "amount": "string",
-    "currency": "string"
-  }
+  "amount": "string",
+  "currency": "string"
 }
 
 ```
@@ -4520,43 +4811,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|currentBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
-|availableBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
-
-<h2 id="tocSbankinglendingbalance">BankingLendingBalance</h2>
-
-<a id="schemabankinglendingbalance"></a>
-
-```json
-{
-  "accountBalance": {
-    "amount": "string",
-    "currency": "string"
-  },
-  "availableBalance": {
-    "amount": "string",
-    "currency": "string"
-  },
-  "creditLimit": {
-    "amount": "string",
-    "currency": "string"
-  },
-  "amortisedLimit": {
-    "amount": "string",
-    "currency": "string"
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|accountBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
-|availableBalance|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
-|creditLimit|[CommonCurrencyAmount](#schemacommoncurrencyamount)|mandatory|none|none|
-|amortisedLimit|[CommonCurrencyAmount](#schemacommoncurrencyamount)|optional|none|none|
+|amount|[AmountString](#common-field-types)|mandatory|none|The balance available for this additional currency purse|
+|currency|[CurrencyString](#common-field-types)|optional|none|The currency for the purse|
 
 <h2 id="tocSresponsebankingpayeelist">ResponseBankingPayeeList</h2>
 
@@ -4690,11 +4946,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|payeeId|string(ASCIIString)|mandatory|none|ID of the payee adhering to the rules of ID permanence|
+|payeeId|[ASCIIString](#common-field-types)|mandatory|none|ID of the payee adhering to the rules of ID permanence|
 |nickname|string|mandatory|none|The short display name of the payee as provided by the customer|
 |description|string|optional|none|A description of the payee provided by the customer|
 |type|string|mandatory|none|The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY|
-|creationDate|string(DateString)|optional|none|The date the payee was created by the customer|
+|creationDate|[DateString](#common-field-types)|optional|none|The date the payee was created by the customer|
 
 #### Enumerated Values
 
@@ -4865,7 +5121,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|cardNumber|string(MaskedPANString)|mandatory|none|Name of the account to pay to|
+|cardNumber|[MaskedPANString](#common-field-types)|mandatory|none|Name of the account to pay to|
 
 <h2 id="tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h2>
 
@@ -4953,20 +5209,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |beneficiaryDetails|object|mandatory|none|none|
 |» name|string|optional|none|Name of the beneficiary|
-|» country|string|mandatory|none|Country where the beneficiary resides. A valid ISO 3166 Alpha-3 country code|
+|» country|[ExternalRef](#common-field-types)|mandatory|none|Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
 |» message|string|optional|none|Response message for the payment|
 |bankDetails|object|mandatory|none|none|
-|» country|string|mandatory|none|Country of the recipient institution. A valid ISO 3166 Alpha-3 country code|
+|» country|[ExternalRef](#common-field-types)|mandatory|none|Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
 |» accountNumber|string|mandatory|none|Account Targeted for payment|
 |» bankAddress|object|optional|none|none|
 |»» name|string|mandatory|none|Name of the recipient Bank|
 |»» address|string|mandatory|none|Address of the recipient Bank|
-|» beneficiaryBankBIC|string|optional|none|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
+|» beneficiaryBankBIC|[ExternalRef](#common-field-types)|optional|none|Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)|
 |» fedWireNumber|string|optional|none|Number for Fedwire payment (Federal Reserve Wire Network)|
 |» sortCode|string|optional|none|Sort code used for account identification in some jurisdictions|
 |» chipNumber|string|optional|none|Number for the Clearing House Interbank Payments System|
 |» routingNumber|string|optional|none|International bank routing number|
-|» legalEntityIdentifier|string|optional|none|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
+|» legalEntityIdentifier|[ExternalRef](#common-field-types)|optional|none|The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)|
 
 <h2 id="tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h2>
 
@@ -5038,10 +5294,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountId|string(ASCIIString)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence.|
+|accountId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the account adhering to the standards for ID permanence.|
 |authorisedEntity|[BankingAuthorisedEntity](#schemabankingauthorisedentity)|mandatory|none|none|
-|lastDebitDateTime|string(DateTimeString)|optional|none|The date and time of the last debit executed under this authorisation|
-|lastDebitAmount|string(AmountString)|optional|none|The amount of the last debit executed under this authorisation|
+|lastDebitDateTime|[DateTimeString](#common-field-types)|optional|none|The date and time of the last debit executed under this authorisation|
+|lastDebitAmount|[AmountString](#common-field-types)|optional|none|The amount of the last debit executed under this authorisation|
 
 <h2 id="tocSbankingauthorisedentity">BankingAuthorisedEntity</h2>
 
@@ -5309,7 +5565,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
 |firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
 |lastName|string|mandatory|none|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
@@ -5437,7 +5693,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|string(DateTimeString)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
 |agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
 |agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
@@ -5446,11 +5702,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |shortName|string|optional|none|Short name used for communication, if  different to the business name|
 |abn|string|optional|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
-|isACNCRegistered|boolean|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
+|isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
 |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
 |organisationType|string|mandatory|none|Legal organisation type|
-|registeredCountry|string|optional|none|Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent|
-|establishmentDate|string(DateString)|optional|none|The date the organisation described was established|
+|registeredCountry|[ExternalRef](#common-field-types)|optional|none|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
+|establishmentDate|[DateString](#common-field-types)|optional|none|The date the organisation described was established|
 
 #### Enumerated Values
 
@@ -5561,13 +5817,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+|isPreferred|[Boolean](#common-field-types)|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
 |purpose|string|mandatory|none|The purpose of the number as specified by the customer|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
 |areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
 |number|string|mandatory|none|The actual phone number, with leading zeros as appropriate|
 |extension|string|optional|none|An extension number (if applicable)|
-|fullNumber|string|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966|
+|fullNumber|[ExternalRef](#common-field-types)|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)|
 
 #### Enumerated Values
 
@@ -5597,9 +5853,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|boolean|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
-|address|string|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in RFC_5322|
+|address|[ExternalRef](#common-field-types)|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
 
 #### Enumerated Values
 
@@ -5765,8 +6021,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |addressLine3|string|optional|none|Third line of the standard address object|
 |postcode|string|conditional|none|Mandatory for Australian addresses|
 |city|string|mandatory|none|Name of the city or locality|
-|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard|
-|country|string|optional|none|A valid ISO 3166 Alpha-3 country code|
+|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [ISO 3166:AU standard](https://www.iso.org/obp/ui/#iso:code:3166:AU)|
+|country|[ExternalRef](#common-field-types)|optional|none|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
 
 <h2 id="tocScommonpafaddress">CommonPAFAddress</h2>
 
@@ -5805,44 +6061,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |dpid|string|optional|none|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|thoroughfareNumber1|integer|optional|none|Thoroughfare number for a property (first number in a property ranged address)|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|none|Thoroughfare number for a property (first number in a property ranged address)|
 |thoroughfareNumber1Suffix|string|optional|none|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|thoroughfareNumber2|integer|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
 |thoroughfareNumber2Suffix|string|optional|none|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
 |flatUnitNumber|string|optional|none|Unit number (including suffix, if applicable)|
 |floorLevelNumber|string|optional|none|Floor or level number (including alpha characters)|
-|lotNumber|integer|optional|none|Allotment number for the address|
+|lotNumber|[PositiveInteger](#common-field-types)|optional|none|Allotment number for the address|
 |buildingName1|string|optional|none|Building/Property name 1|
 |buildingName2|string|optional|none|Building/Property name 2|
 |streetName|string|optional|none|The name of the street|
 |streetType|string|optional|none|The street type. Valid enumeration defined by Australia Post PAF code file|
 |streetSuffix|string|optional|none|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
 |postalDeliveryType|string|optional|none|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|integer|optional|none|Postal delivery number if the address is a postal delivery type|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|none|Postal delivery number if the address is a postal delivery type|
 |postalDeliveryNumberPrefix|string|optional|none|Postal delivery number prefix related to the postal delivery number|
 |postalDeliveryNumberSuffix|string|optional|none|Postal delivery number suffix related to the postal delivery number|
 |localityName|string|mandatory|none|Full name of locality|
 |postcode|string|mandatory|none|Postcode for the locality|
 |state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file|
-
-<h2 id="tocScommoncurrencyamount">CommonCurrencyAmount</h2>
-
-<a id="schemacommoncurrencyamount"></a>
-
-```json
-{
-  "amount": "string",
-  "currency": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|amount|string(AmountString)|mandatory|none|The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking|
-|currency|string(CurrencyString)|optional|none|If not present assumes AUD|
 
 <h2 id="tocSlinks">Links</h2>
 
@@ -5859,7 +6096,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|string(URIString)|mandatory|none|Fully qualified link to this API call|
+|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
 
 <h2 id="tocSmeta">Meta</h2>
 
@@ -5893,11 +6130,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|string(URIString)|mandatory|none|Fully qualified link to this API call|
-|first|string(URIString)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|string(URIString)|conditional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
-|next|string(URIString)|conditional|none|URI to the next page of this set. Mandatory if this response is not the last page|
-|last|string(URIString)|conditional|none|URI to the last page of this set. Mandatory if this response is not the last page|
+|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
+|first|[URIString](#common-field-types)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
+|prev|[URIString](#common-field-types)|conditional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
+|next|[URIString](#common-field-types)|conditional|none|URI to the next page of this set. Mandatory if this response is not the last page|
+|last|[URIString](#common-field-types)|conditional|none|URI to the last page of this set. Mandatory if this response is not the last page|
 
 <h2 id="tocSmetapaginated">MetaPaginated</h2>
 
@@ -5915,8 +6152,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|totalRecords|integer(NaturalNumber)|mandatory|none|The total number of records in the full set|
-|totalPages|integer(NaturalNumber)|mandatory|none|The total number of pages in the full set|
+|totalRecords|[NaturalNumber](#common-field-types)|mandatory|none|The total number of records in the full set|
+|totalPages|[NaturalNumber](#common-field-types)|mandatory|none|The total number of pages in the full set|
 
 <h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 
@@ -5955,13 +6192,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details*
+*The category to which a product or account belongs. See [here](#product-categories) for more details*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|optional|none|The list of available product categories for categorising products and accounts.  See [here](#product-categories) for more details|
+|*anonymous*|string|optional|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 
 #### Enumerated Values
 
@@ -5977,4 +6214,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |*anonymous*|MARGIN_LOANS|
 |*anonymous*|LEASES|
 |*anonymous*|TRADE_FINANCE|
+|*anonymous*|OVERDRAFTS|
+|*anonymous*|BUSINESS_LOANS|
 
