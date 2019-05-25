@@ -82,13 +82,6 @@ RUN bundle install
 # Build standards static output
 RUN bundle exec middleman build --clean
 
-# Strip out things ruby build pulled in
-RUN set -ex \ 
-    && apt-get purge -y --auto-remove $BUILDDEPS \
-        && cd / \
-        && rm -r /usr/src/ruby
-
-
 # Transfer files over (delete first)
 RUN rm -fr /usr/share/nginx/html
 
