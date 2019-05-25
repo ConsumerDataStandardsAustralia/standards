@@ -73,6 +73,9 @@ COPY slate /opt/standards
 # Now get into baseline directory
 WORKDIR /opt/standards
 
+# Upgrade bundler
+RUN gem install bundler
+
 # Figure out requirements
 RUN bundle install
 
