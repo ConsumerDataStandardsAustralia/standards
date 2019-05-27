@@ -17,9 +17,9 @@ includes:
   - standards
   - security
   - cds_full
-  - cds_admin
   - banking/product_categories
   - banking/product_components
+  - admin  
   - scopes
   - known-issues
   - changelog
