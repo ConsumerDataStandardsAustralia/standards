@@ -2,8 +2,8 @@
 
 ## Overview
 
-This information security profile will be built upon the foundations of the
-[Financial-grade API Read Write Profile](https://openid.net/specs/openid-financial-api-part-2.html) **[FAPI-RW]**, the [Financial-grade API Client Initiated Backchannel Authentication Profile](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**, and other standards relating to
+This information security profile builds upon the foundations of the Financial-grade API Read Write Profile
+[Financial-grade API Read Write Profile](https://openid.net/specs/openid-financial-api-part-2.html) **[FAPI-RW]** and other standards relating to
 [Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
@@ -30,7 +30,7 @@ For information on the specific normative references that underpin this profile 
 -   **IP:** Identity Proofing
 -   **LoA:** Level of Assurance
 -   **LoAs:** Levels of Assurance
--   **MTLS:** Mutual Transport Layer Security
+-   **MTLS:** Mutually Authenticated Transport Layer Security
 -   **OIDC:** Open ID Connect
 -   **PI:** Personal Information
 -   **PKI:** Public Key Infrastructure
@@ -69,7 +69,7 @@ A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](http
 
 ### Registry
 <aside class="warning">
-The role and the functionality of the Registry is subject to change.
+NOTE: This section is reflective of the positioning of the Registry in the CDR Rules Exposure Draft
 </aside>
 
 The Registry is a central point of discovery for both Data Holders and Data
@@ -79,15 +79,12 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 - **Management of Certificates**: The Registry will facilitate the issuing, management and revocation of digital certificates.
 - **Discoverability and Search**: The Registry will expose APIs and GUIs (Web applications) in order to support metadata queries across Registry entities.
 
-A full description of the Registry is beyond the scope of this document.
-
 ## Authentication Flows
-This profile supports the authentication flows specified by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.  These are:
+This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) [OIDC] as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
 
--  The Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
-	- This MUST be supported by Data Holders.
-- The Client Initiated Backchannel Authentication flow outlined under the [FAPI CIBA profile](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**.
-    -  This MAY be supported by Data Holders.
+Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
+
+No other flows are currently supported.
 
 <a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
@@ -101,17 +98,23 @@ Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-
 
 The `request_uri` parameter SHALL NOT be supported.
 
-<a id="ciba-flow"></a>
-### Client-Initiated Backchannel Authentication (CIBA)
-Client Initiated Backchannel Authentication (CIBA) enables a Data Recipient (Client) to
-initiate the authentication of an end-user at a Data Holder (OpenID Provider) by means of decoupled or out-band
-mechanisms **[FAPI-CIBA]**.
+<aside class="warning">
+NOTE: This process of customer authentication and the customer experience of the subsequent process to obtain customer consent has been the subject of significant consultation and feedback.  To date, a consensus position has not been achieved to the satisfaction of the Data Standards Body.
 
-Authorisation server rules for **[FAPI-CIBA]** are covered under [section 5.2.2 of the FAPI CIBA profile](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default#markdown-header-522-authorization-server).
+As a result of this lack of consensus this decision does not contain additional specificity around the requirements for the authentication flow.  Additional specificity will be added to the profile once a position on the authentication flow has been reached.
 
-Login hints MUST not reveal Personal Information (PI) about the consumer or end-user.
+The following specific options for the authentication flow have been identified:
+<ol>
+<li>Standard Redirect Flow: Username and password are captured in a redirected web page and consent is then obtained in the redirected web page.</li>
+<li>Redirect With OTP Flow: Username is captured in a redirected page.  The Data Holder then provides a one-time password via another channel, which is then captured in the redirected page to authenticate the customer.  Consent is then obtained in that same web page.</li>
+<li> Redirect With Known Channel: Username is captured in a redirected page.  Customer then proceeds to a known digital channel, authenticates and provides consent.</li>
+<li>Client Initiated Backchannel Authentication: A decoupled and asynchronous authentication flow that is defined by FAPI.</li>
+<li>CDR Specific Decoupled: A decoupled flow proposed by a community member where a one-time identifier is obtained from a known digital channel and then provided to the data recipient with consent being completed afterwards in an experience provided by the Data Holder.</li>
+</ol>
 
-Client rules for **[FAPI-CIBA]** are outlined under [section 5.2.3 of the FAPI CIBA profile](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default#markdown-header-523-confidential-client).
+Previously, a decision to pursue Redirect With Known Channel had been made by the Data Standards Body and a proposal for how this was to be implemented had been provided for consultation.  This proposal is not included in this decision.  CX testing of the flows described above is ongoing.
+</aside>
+
 
 <a id="client-authentication"></a>
 ## Client Authentication
