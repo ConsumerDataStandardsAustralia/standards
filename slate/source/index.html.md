@@ -24,6 +24,7 @@ includes:
   - scopes
   - known-issues
   - changelog
+  - archives
 
 search: true
 ---
