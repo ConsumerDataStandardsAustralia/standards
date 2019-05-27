@@ -12,13 +12,13 @@
   "host": "data.provider.com.au",
   "basePath": "/cds-au/v1",
   "schemes": [
-	"https"
+    "https"
   ],
   "consumes": [
-	"application/json"
+    "application/json"
   ],
   "produces": [
-	"application/json"
+    "application/json"
   ],
   "paths": {
   	"/admin/registry/metadata": {
@@ -26,13 +26,10 @@
     		"summary": "ACCC Meta Data Update",
     		"description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
     		"operationId": "metadataUpdate",
-        "x-scopes": [
-          "cdr_admin"
+        "tags": [
+          "Admin",
+          "Registry"
         ],
-    		"tags": [
-    		  "Admin",
-    		  "Registry"
-    		],
     		"parameters": [
         {
     			"in": "body",
@@ -42,8 +39,8 @@
     			  "$ref": "#/definitions/RequestMetaDataUpdate"
     			}
     		}
-    		],
-    		"responses": {
+        ],
+        "responses": {
     		  "200": {
             "description": "Success"
     		  },
@@ -124,6 +121,7 @@
         "data": {
           "type": "object",
           "required": [
+            "requestTime",
             "links"
           ],
           "x-conditional": [
@@ -139,6 +137,11 @@
             "recipientCount"
           ],
           "properties": {
+            "requestTime" : {
+              "type": "string",
+              "description": "The date and time that the metrics in this payload were requested.",
+              "x-cds-type": "DateTimeString"
+            },
             "availability": {
               "$ref": "#/definitions/AvailabilityMetrics"
             },
@@ -154,8 +157,11 @@
             "sessionCount": {
               "$ref": "#/definitions/SessionCountMetrics"
             },
-            "tps": {
-              "$ref": "#/definitions/TPSMetrics"
+            "averageTps": {
+              "$ref": "#/definitions/AverageTPSMetrics"
+            },
+            "peakTps": {
+              "$ref": "#/definitions/PeakTPSMetrics"
             },
             "errors": {
               "$ref": "#/definitions/ErrorMetrics"
@@ -165,11 +171,11 @@
             },
             "customerCount": {
               "type": "integer",
-              "description": "Number of customers with active authorisations"
+              "description": "Number of customers with active authorisations at the time of the call"
             },
             "recipientCount": {
               "type": "integer",
-              "description": "Number of data recipients with active authorisations"
+              "description": "Number of data recipients with active authorisations at the time of the call"
             },
             "links": {
               "$ref": "#/definitions/Links"
@@ -184,17 +190,17 @@
     "AvailabilityMetrics": {
       "type": "object",
       "description": "Percentage availability of the CDR platform over time",
-      "required": [
+      "x-conditional": [
         "currentMonth",
         "previousMonths"
       ],
       "properties": {
         "currentMonth": {
           "type": "number",
-          "description": "Percentage availability of the CDR platform so far for the current calendar month"
+          "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%."
         },
         "previousMonths": {
-          "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on.  A maximum of twelve entries is required if available.",
+          "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.",
           "type": "array",
           "items": {
             "type": "number"
@@ -205,23 +211,10 @@
     "PerformanceMetrics": {
       "type": "object",
       "description": "Percentage of calls within the performance thresholds",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ],
-      "properties": {
-        "currentDay": {
-          "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%.",
-          "type": "number"
-        },
-        "previousDays": {
-          "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%",
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
+      "allOf": [ {
+          "$ref": "#/definitions/DayNumberMetricsType"
         }
-      }
+      ]
     },
     "InvocationMetrics": {
       "description": "Number of API calls in each performance tier over time",
@@ -237,14 +230,14 @@
         "unauthenticated": {
           "description": "API call counts for the unauthenticated tier",
           "allOf": [ {
-              "$ref": "#/definitions/DayIntegerMetricsType"
+              "$ref": "#/definitions/DayNumberMetricsType"
             }
           ]
         },
         "highPriority": {
           "description": "API call counts for the high priority tier",
           "allOf": [ {
-              "$ref": "#/definitions/DayIntegerMetricsType"
+              "$ref": "#/definitions/DayNumberMetricsType"
             }
           ]
 
@@ -252,21 +245,21 @@
         "lowPriority": {
           "description": "API call counts for the low priority tier",
           "allOf": [ {
-              "$ref": "#/definitions/DayIntegerMetricsType"
+              "$ref": "#/definitions/DayNumberMetricsType"
             }
           ]
         },
         "unattended": {
           "description": "API call counts for the unattended tier",
           "allOf": [ {
-              "$ref": "#/definitions/DayIntegerMetricsType"
+              "$ref": "#/definitions/DayNumberMetricsType"
             }
           ]
         },
         "largePayload": {
           "description": "API call counts for the large payload tier",
           "allOf": [ {
-              "$ref": "#/definitions/DayIntegerMetricsType"
+              "$ref": "#/definitions/DayNumberMetricsType"
             }
           ]
         }
@@ -321,62 +314,46 @@
       }
     },
     "SessionCountMetrics": {
-      "description": "Session counts over time",
-      "allOf": [ {
-          "$ref": "#/definitions/DayIntegerMetricsType"
-        }
-      ]
-    },
-    "TPSMetrics": {
-      "description": "Transactions per second over time",
-      "x-conditional": [
-        "current",
-        "currentDay",
-        "previousDays"
-      ],
+      "description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
       "allOf": [ {
           "$ref": "#/definitions/DayNumberMetricsType"
         }
-      ],
-      "properties": {
-        "current": {
-          "type": "number",
-          "description": "TPS at the time of the call"
+      ]
+    },
+    "AverageTPSMetrics": {
+      "description": "Transactions per second over time",
+      "allOf": [ {
+          "$ref": "#/definitions/DayNumberMetricsType"
         }
-      }
+      ]
+    },
+    "PeakTPSMetrics": {
+      "description": "Maximum record transactions per second over time",
+      "allOf": [ {
+          "$ref": "#/definitions/DayNumberMetricsType"
+        }
+      ]
     },
     "ErrorMetrics": {
       "description": "Number of calls resulting in error due to server execution over time",
       "allOf": [ {
-          "$ref": "#/definitions/DayIntegerMetricsType"
+          "$ref": "#/definitions/DayNumberMetricsType"
         }
       ]
     },
     "RejectionMetrics": {
       "description": "Number of calls rejected due to traffic thresholds over time",
       "allOf": [ {
-          "$ref": "#/definitions/DayIntegerMetricsType"
+          "$ref": "#/definitions/DayNumberMetricsType"
         }
       ]
     },
-    "DayIntegerMetricsType": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "integer",
-          "x-cds-type": "PositiveInteger"
-        },
-        "previousDays": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "x-cds-type": "PositiveInteger"
-          }
-        }
-      }
-    },
     "DayNumberMetricsType": {
       "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ],
       "properties": {
         "currentDay": {
           "type": "number"
