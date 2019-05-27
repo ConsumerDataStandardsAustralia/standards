@@ -3476,7 +3476,7 @@
 	},
   "BankingScheduledPaymentSet": {
     "type": "object",
-	  "description": "he set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
+	  "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
 	  "required": [
       "to"
 	  ],
@@ -3501,7 +3501,7 @@
       "currency": {
         "type": "string",
         "description": "The currency for the payment. AUD assumed if not present",
-        "x-cds-type": "AmountString"
+        "x-cds-type": "CurrencyString"
       }
     }
   },
@@ -3514,7 +3514,7 @@
 	  "x-conditional": [
   		"accountId",
   		"payeeId",
-  		"domstic",
+  		"domestic",
   		"biller",
   		"international"
 	  ],
@@ -3537,20 +3537,17 @@
 		  },
 		  "payeeId": {
   			"type": "string",
-  			"description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
-  			"x-cds-type": "ASCIIString"
+  			"description": "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
+        "x-cds-type": "ASCIIString"
 		  },
 		  "domestic": {
-  			"description": "Present if toUType is set to domestic. Indicates a domestic account",
-  			"$ref": "#/definitions/BankingDomesticPayee"
+        "$ref": "#/definitions/BankingDomesticPayee"
 		  },
 		  "biller": {
-  			"description": "Present if toUType is set to biller. Indicates a BPAY biller",
-  			"$ref": "#/definitions/BankingBillerPayee"
+        "$ref": "#/definitions/BankingBillerPayee"
 		  },
 		  "international": {
-  			"description": "Present if toUType is set to international. Indicates an international beneficiary",
-  			"$ref": "#/definitions/BankingInternationalPayee"
+		     "$ref": "#/definitions/BankingInternationalPayee"
 		  }
 	  }
 	},
@@ -3598,25 +3595,22 @@
   		  ]
   		},
   		"onceOff": {
-  		  "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff",
   		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
   		},
   		"intervalSchedule": {
-  		  "description": "Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule",
   		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
   		},
       "lastWeekDay": {
-        "description": "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay",
   		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceLastWeekday"
       },
       "eventBased": {
-        "description": "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased",
-  		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
+  		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceEventBased"
       }
 	  }
 	},
 	"BankingScheduledPaymentRecurrenceOnceOff": {
 	  "type": "object",
+  	"description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff",
 	  "required": [
       "paymentDate"
 	  ],
@@ -3630,6 +3624,7 @@
 	},
 	"BankingScheduledPaymentRecurrenceIntervalSchedule": {
 	  "type": "object",
+  	"description": "Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule",
 	  "required": [
 		    "intervals"
 	  ],
@@ -3640,7 +3635,7 @@
   		  "x-cds-type": "DateString"
   		},
   		"paymentsRemaining": {
-  		  "type": "string",
+  		  "type": "integer",
   		  "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely",
   		  "x-cds-type": "PositiveInteger"
   		},
@@ -3660,14 +3655,16 @@
   	  "intervals": {
         "type": "array",
   			"description": "An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry",
-  			"$ref": "#/definitions/BankingScheduledPaymentInterval"
+        "items": {
+          "$ref": "#/definitions/BankingScheduledPaymentInterval"
+        }
   		}
 	  }
 	},
 	"BankingScheduledPaymentInterval": {
 	  "type": "object",
 	  "required": [
-      "firstInterval"
+      "interval"
 	  ],
 	  "properties": {
   		"interval": {
@@ -3684,6 +3681,7 @@
 	},
   "BankingScheduledPaymentRecurrenceLastWeekday": {
 	  "type": "object",
+    "description": "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay",
 	  "required": [
       "interval",
       "lastWeekDay"
@@ -3704,7 +3702,7 @@
   		  "description": "The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate",
   		  "x-cds-type": "ExternalRef"
   		},
-      "lastWeek": {
+      "lastWeekDay": {
   		  "type": "integer",
   		  "description": "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.",
   		  "x-cds-type": "PositiveInteger"
@@ -3713,11 +3711,12 @@
 	},
   "BankingScheduledPaymentRecurrenceEventBased": {
 	  "type": "object",
+    "description": "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased",
 	  "required": [
       "description"
 	  ],
 	  "properties": {
-  		"paymentDate": {
+  		"description": {
   		  "type": "string",
   		  "description": "Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer"
   		}
