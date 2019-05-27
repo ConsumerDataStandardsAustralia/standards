@@ -1475,13 +1475,13 @@ $.ajax({
 
 `GET /banking/accounts/{accountId}/payments/scheduled`
 
-Obtain scheduled payments for a specific account
+Obtain scheduled, outgoing payments for a specific account
 
 <h3 id="get-scheduled-payments-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points.  The account specified is the source account for the payment|
+|accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 
@@ -1502,55 +1502,58 @@ Obtain scheduled payments for a specific account
         "from": {
           "accountId": "string"
         },
-        "to": {
-          "toUType": "accountId",
-          "accountId": "string",
-          "payeeId": "string",
-          "domestic": {
-            "payeeAccountUType": "account",
-            "account": {
-              "accountName": "string",
-              "bsb": "string",
-              "accountNumber": "string"
-            },
-            "card": {
-              "cardNumber": "string"
-            },
-            "payId": {
-              "name": "string",
-              "identifier": "string",
-              "type": "EMAIL"
-            }
-          },
-          "biller": {
-            "billerCode": "string",
-            "crn": "string",
-            "billerName": "string"
-          },
-          "international": {
-            "beneficiaryDetails": {
-              "name": "string",
-              "country": "string",
-              "message": "string"
-            },
-            "bankDetails": {
-              "country": "string",
-              "accountNumber": "string",
-              "bankAddress": {
-                "name": "string",
-                "address": "string"
+        "paymentSet": {
+          "to": {
+            "toUType": "accountId",
+            "accountId": "string",
+            "payeeId": "string",
+            "domestic": {
+              "payeeAccountUType": "account",
+              "account": {
+                "accountName": "string",
+                "bsb": "string",
+                "accountNumber": "string"
               },
-              "beneficiaryBankBIC": "string",
-              "fedWireNumber": "string",
-              "sortCode": "string",
-              "chipNumber": "string",
-              "routingNumber": "string",
-              "legalEntityIdentifier": "string"
+              "card": {
+                "cardNumber": "string"
+              },
+              "payId": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL"
+              }
+            },
+            "biller": {
+              "billerCode": "string",
+              "crn": "string",
+              "billerName": "string"
+            },
+            "international": {
+              "beneficiaryDetails": {
+                "name": "string",
+                "country": "string",
+                "message": "string"
+              },
+              "bankDetails": {
+                "country": "string",
+                "accountNumber": "string",
+                "bankAddress": {
+                  "name": "string",
+                  "address": "string"
+                },
+                "beneficiaryBankBIC": "string",
+                "fedWireNumber": "string",
+                "sortCode": "string",
+                "chipNumber": "string",
+                "routingNumber": "string",
+                "legalEntityIdentifier": "string"
+              }
             }
-          }
+          },
+          "isAmountCalculated": true,
+          "amount": "string",
+          "currency": "string"
         },
-        "amount": "string",
-        "currency": "string",
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -1559,12 +1562,25 @@ Obtain scheduled payments for a specific account
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": "string",
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": {
-              "firstInterval": "string",
-              "dayInInterval": "string"
-            }
+            "paymentsRemaining": 0,
+            "nonBusinessDayTreatment": [
+              "ON"
+            ],
+            "intervals": [
+              {
+                "interval": "string",
+                "dayInInterval": "string"
+              }
+            ]
+          },
+          "lastWeekDay": {
+            "finalPaymentDate": "string",
+            "paymentsRemaining": 0,
+            "interval": "string",
+            "lastWeekDay": 0
+          },
+          "eventBased": {
+            "description": "string"
           }
         }
       }
@@ -1602,7 +1618,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled HTTP/1.1
+GET https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
 
@@ -1615,7 +1631,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled',
+  url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
   method: 'get',
 
   headers: headers,
@@ -1626,7 +1642,7 @@ $.ajax({
 
 ```
 
-`GET /banking/accounts/payments/scheduled`
+`GET /banking/payments/scheduled`
 
 Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments
 
@@ -1677,55 +1693,58 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
         "from": {
           "accountId": "string"
         },
-        "to": {
-          "toUType": "accountId",
-          "accountId": "string",
-          "payeeId": "string",
-          "domestic": {
-            "payeeAccountUType": "account",
-            "account": {
-              "accountName": "string",
-              "bsb": "string",
-              "accountNumber": "string"
-            },
-            "card": {
-              "cardNumber": "string"
-            },
-            "payId": {
-              "name": "string",
-              "identifier": "string",
-              "type": "EMAIL"
-            }
-          },
-          "biller": {
-            "billerCode": "string",
-            "crn": "string",
-            "billerName": "string"
-          },
-          "international": {
-            "beneficiaryDetails": {
-              "name": "string",
-              "country": "string",
-              "message": "string"
-            },
-            "bankDetails": {
-              "country": "string",
-              "accountNumber": "string",
-              "bankAddress": {
-                "name": "string",
-                "address": "string"
+        "paymentSet": {
+          "to": {
+            "toUType": "accountId",
+            "accountId": "string",
+            "payeeId": "string",
+            "domestic": {
+              "payeeAccountUType": "account",
+              "account": {
+                "accountName": "string",
+                "bsb": "string",
+                "accountNumber": "string"
               },
-              "beneficiaryBankBIC": "string",
-              "fedWireNumber": "string",
-              "sortCode": "string",
-              "chipNumber": "string",
-              "routingNumber": "string",
-              "legalEntityIdentifier": "string"
+              "card": {
+                "cardNumber": "string"
+              },
+              "payId": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL"
+              }
+            },
+            "biller": {
+              "billerCode": "string",
+              "crn": "string",
+              "billerName": "string"
+            },
+            "international": {
+              "beneficiaryDetails": {
+                "name": "string",
+                "country": "string",
+                "message": "string"
+              },
+              "bankDetails": {
+                "country": "string",
+                "accountNumber": "string",
+                "bankAddress": {
+                  "name": "string",
+                  "address": "string"
+                },
+                "beneficiaryBankBIC": "string",
+                "fedWireNumber": "string",
+                "sortCode": "string",
+                "chipNumber": "string",
+                "routingNumber": "string",
+                "legalEntityIdentifier": "string"
+              }
             }
-          }
+          },
+          "isAmountCalculated": true,
+          "amount": "string",
+          "currency": "string"
         },
-        "amount": "string",
-        "currency": "string",
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -1734,12 +1753,25 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": "string",
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": {
-              "firstInterval": "string",
-              "dayInInterval": "string"
-            }
+            "paymentsRemaining": 0,
+            "nonBusinessDayTreatment": [
+              "ON"
+            ],
+            "intervals": [
+              {
+                "interval": "string",
+                "dayInInterval": "string"
+              }
+            ]
+          },
+          "lastWeekDay": {
+            "finalPaymentDate": "string",
+            "paymentsRemaining": 0,
+            "interval": "string",
+            "lastWeekDay": 0
+          },
+          "eventBased": {
+            "description": "string"
           }
         }
       }
@@ -1777,7 +1809,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled HTTP/1.1
+POST https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
 Host: data.provider.com.au
 Content-Type: application/json
 Accept: application/json
@@ -1792,7 +1824,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled',
+  url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
   method: 'post',
 
   headers: headers,
@@ -1803,7 +1835,7 @@ $.ajax({
 
 ```
 
-`POST /banking/accounts/payments/scheduled`
+`POST /banking/payments/scheduled`
 
 Obtain scheduled payments for a specified list of accounts
 
@@ -1845,55 +1877,58 @@ Obtain scheduled payments for a specified list of accounts
         "from": {
           "accountId": "string"
         },
-        "to": {
-          "toUType": "accountId",
-          "accountId": "string",
-          "payeeId": "string",
-          "domestic": {
-            "payeeAccountUType": "account",
-            "account": {
-              "accountName": "string",
-              "bsb": "string",
-              "accountNumber": "string"
-            },
-            "card": {
-              "cardNumber": "string"
-            },
-            "payId": {
-              "name": "string",
-              "identifier": "string",
-              "type": "EMAIL"
-            }
-          },
-          "biller": {
-            "billerCode": "string",
-            "crn": "string",
-            "billerName": "string"
-          },
-          "international": {
-            "beneficiaryDetails": {
-              "name": "string",
-              "country": "string",
-              "message": "string"
-            },
-            "bankDetails": {
-              "country": "string",
-              "accountNumber": "string",
-              "bankAddress": {
-                "name": "string",
-                "address": "string"
+        "paymentSet": {
+          "to": {
+            "toUType": "accountId",
+            "accountId": "string",
+            "payeeId": "string",
+            "domestic": {
+              "payeeAccountUType": "account",
+              "account": {
+                "accountName": "string",
+                "bsb": "string",
+                "accountNumber": "string"
               },
-              "beneficiaryBankBIC": "string",
-              "fedWireNumber": "string",
-              "sortCode": "string",
-              "chipNumber": "string",
-              "routingNumber": "string",
-              "legalEntityIdentifier": "string"
+              "card": {
+                "cardNumber": "string"
+              },
+              "payId": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL"
+              }
+            },
+            "biller": {
+              "billerCode": "string",
+              "crn": "string",
+              "billerName": "string"
+            },
+            "international": {
+              "beneficiaryDetails": {
+                "name": "string",
+                "country": "string",
+                "message": "string"
+              },
+              "bankDetails": {
+                "country": "string",
+                "accountNumber": "string",
+                "bankAddress": {
+                  "name": "string",
+                  "address": "string"
+                },
+                "beneficiaryBankBIC": "string",
+                "fedWireNumber": "string",
+                "sortCode": "string",
+                "chipNumber": "string",
+                "routingNumber": "string",
+                "legalEntityIdentifier": "string"
+              }
             }
-          }
+          },
+          "isAmountCalculated": true,
+          "amount": "string",
+          "currency": "string"
         },
-        "amount": "string",
-        "currency": "string",
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -1902,12 +1937,25 @@ Obtain scheduled payments for a specified list of accounts
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": "string",
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": {
-              "firstInterval": "string",
-              "dayInInterval": "string"
-            }
+            "paymentsRemaining": 0,
+            "nonBusinessDayTreatment": [
+              "ON"
+            ],
+            "intervals": [
+              {
+                "interval": "string",
+                "dayInInterval": "string"
+              }
+            ]
+          },
+          "lastWeekDay": {
+            "finalPaymentDate": "string",
+            "paymentsRemaining": 0,
+            "interval": "string",
+            "lastWeekDay": 0
+          },
+          "eventBased": {
+            "description": "string"
           }
         }
       }
@@ -5838,55 +5886,58 @@ To perform this operation, you must be authenticated and authorised with the fol
         "from": {
           "accountId": "string"
         },
-        "to": {
-          "toUType": "accountId",
-          "accountId": "string",
-          "payeeId": "string",
-          "domestic": {
-            "payeeAccountUType": "account",
-            "account": {
-              "accountName": "string",
-              "bsb": "string",
-              "accountNumber": "string"
-            },
-            "card": {
-              "cardNumber": "string"
-            },
-            "payId": {
-              "name": "string",
-              "identifier": "string",
-              "type": "EMAIL"
-            }
-          },
-          "biller": {
-            "billerCode": "string",
-            "crn": "string",
-            "billerName": "string"
-          },
-          "international": {
-            "beneficiaryDetails": {
-              "name": "string",
-              "country": "string",
-              "message": "string"
-            },
-            "bankDetails": {
-              "country": "string",
-              "accountNumber": "string",
-              "bankAddress": {
-                "name": "string",
-                "address": "string"
+        "paymentSet": {
+          "to": {
+            "toUType": "accountId",
+            "accountId": "string",
+            "payeeId": "string",
+            "domestic": {
+              "payeeAccountUType": "account",
+              "account": {
+                "accountName": "string",
+                "bsb": "string",
+                "accountNumber": "string"
               },
-              "beneficiaryBankBIC": "string",
-              "fedWireNumber": "string",
-              "sortCode": "string",
-              "chipNumber": "string",
-              "routingNumber": "string",
-              "legalEntityIdentifier": "string"
+              "card": {
+                "cardNumber": "string"
+              },
+              "payId": {
+                "name": "string",
+                "identifier": "string",
+                "type": "EMAIL"
+              }
+            },
+            "biller": {
+              "billerCode": "string",
+              "crn": "string",
+              "billerName": "string"
+            },
+            "international": {
+              "beneficiaryDetails": {
+                "name": "string",
+                "country": "string",
+                "message": "string"
+              },
+              "bankDetails": {
+                "country": "string",
+                "accountNumber": "string",
+                "bankAddress": {
+                  "name": "string",
+                  "address": "string"
+                },
+                "beneficiaryBankBIC": "string",
+                "fedWireNumber": "string",
+                "sortCode": "string",
+                "chipNumber": "string",
+                "routingNumber": "string",
+                "legalEntityIdentifier": "string"
+              }
             }
-          }
+          },
+          "isAmountCalculated": true,
+          "amount": "string",
+          "currency": "string"
         },
-        "amount": "string",
-        "currency": "string",
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -5895,12 +5946,25 @@ To perform this operation, you must be authenticated and authorised with the fol
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": "string",
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": {
-              "firstInterval": "string",
-              "dayInInterval": "string"
-            }
+            "paymentsRemaining": 0,
+            "nonBusinessDayTreatment": [
+              "ON"
+            ],
+            "intervals": [
+              {
+                "interval": "string",
+                "dayInInterval": "string"
+              }
+            ]
+          },
+          "lastWeekDay": {
+            "finalPaymentDate": "string",
+            "paymentsRemaining": 0,
+            "interval": "string",
+            "lastWeekDay": 0
+          },
+          "eventBased": {
+            "description": "string"
           }
         }
       }
@@ -5944,6 +6008,118 @@ To perform this operation, you must be authenticated and authorised with the fol
   "from": {
     "accountId": "string"
   },
+  "paymentSet": {
+    "to": {
+      "toUType": "accountId",
+      "accountId": "string",
+      "payeeId": "string",
+      "domestic": {
+        "payeeAccountUType": "account",
+        "account": {
+          "accountName": "string",
+          "bsb": "string",
+          "accountNumber": "string"
+        },
+        "card": {
+          "cardNumber": "string"
+        },
+        "payId": {
+          "name": "string",
+          "identifier": "string",
+          "type": "EMAIL"
+        }
+      },
+      "biller": {
+        "billerCode": "string",
+        "crn": "string",
+        "billerName": "string"
+      },
+      "international": {
+        "beneficiaryDetails": {
+          "name": "string",
+          "country": "string",
+          "message": "string"
+        },
+        "bankDetails": {
+          "country": "string",
+          "accountNumber": "string",
+          "bankAddress": {
+            "name": "string",
+            "address": "string"
+          },
+          "beneficiaryBankBIC": "string",
+          "fedWireNumber": "string",
+          "sortCode": "string",
+          "chipNumber": "string",
+          "routingNumber": "string",
+          "legalEntityIdentifier": "string"
+        }
+      }
+    },
+    "isAmountCalculated": true,
+    "amount": "string",
+    "currency": "string"
+  },
+  "recurrence": {
+    "nextPaymentDate": "string",
+    "recurrenceUType": "onceOff",
+    "onceOff": {
+      "paymentDate": "string"
+    },
+    "intervalSchedule": {
+      "finalPaymentDate": "string",
+      "paymentsRemaining": 0,
+      "nonBusinessDayTreatment": [
+        "ON"
+      ],
+      "intervals": [
+        {
+          "interval": "string",
+          "dayInInterval": "string"
+        }
+      ]
+    },
+    "lastWeekDay": {
+      "finalPaymentDate": "string",
+      "paymentsRemaining": 0,
+      "interval": "string",
+      "lastWeekDay": 0
+    },
+    "eventBased": {
+      "description": "string"
+    }
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|scheduledPaymentId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the scheduled payment adhering to the standards for ID permanence|
+|nickname|string|optional|none|The short display name of the payee as provided by the customer|
+|payerReference|string|mandatory|none|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided|
+|payeeReference|string|mandatory|none|The reference for the transaction that will be provided by the originating institution. Empty string if no data provided|
+|status|string|mandatory|none|Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.|
+|from|[BankingScheduledPaymentFrom](#schemabankingscheduledpaymentfrom)|mandatory|none|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object|
+|paymentSet|[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)|mandatory|none|The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry|
+|recurrence|[BankingScheduledPaymentRecurrence](#schemabankingscheduledpaymentrecurrence)|mandatory|none|Object containing the detail of the schedule for the payment|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|status|ACTIVE|
+|status|SKIP|
+|status|INACTIVE|
+
+<h2 id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h2>
+
+<a id="schemabankingscheduledpaymentset"></a>
+
+```json
+{
   "to": {
     "toUType": "accountId",
     "accountId": "string",
@@ -5991,49 +6167,23 @@ To perform this operation, you must be authenticated and authorised with the fol
       }
     }
   },
+  "isAmountCalculated": true,
   "amount": "string",
-  "currency": "string",
-  "recurrence": {
-    "nextPaymentDate": "string",
-    "recurrenceUType": "onceOff",
-    "onceOff": {
-      "paymentDate": "string"
-    },
-    "intervalSchedule": {
-      "finalPaymentDate": "string",
-      "paymentsRemaining": "string",
-      "nonBusinessDayTreatment": "AFTER",
-      "intervals": {
-        "firstInterval": "string",
-        "dayInInterval": "string"
-      }
-    }
-  }
+  "currency": "string"
 }
 
 ```
+
+*The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|scheduledPaymentId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the scheduled payment adhering to the standards for ID permanence|
-|nickname|string|optional|none|The short display name of the payee as provided by the customer|
-|payerReference|string|mandatory|none|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided|
-|payeeReference|string|mandatory|none|The reference for the transaction that will be provided by the originating institution. Empty string if no data provided|
-|status|string|mandatory|none|Indicates whether the schedule is currently active|
-|from|[BankingScheduledPaymentFrom](#schemabankingscheduledpaymentfrom)|mandatory|none|Object containing details of the source of the payment.  Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object|
-|to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment|
-|amount|[AmountString](#common-field-types)|mandatory|none|The amount of the next payment|
+|to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of|
+|isAmountCalculated|[Boolean](#common-field-types)|optional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
+|amount|[AmountString](#common-field-types)|conditional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the payment. AUD assumed if not present|
-|recurrence|[BankingScheduledPaymentRecurrence](#schemabankingscheduledpaymentrecurrence)|mandatory|none|Object containing the detail of the schedule for the payment|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|ACTIVE|
-|status|INACTIVE|
 
 <h2 id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h2>
 
@@ -6090,18 +6240,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Object containing details of the destination of the payment*
+*Object containing details of the destination of the payment. Used to specify a variety of*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|toUType|string|mandatory|none|ID of the account that is the source of funds for the payment|
+|toUType|string|mandatory|none|The type of object provided that specifies the destination of the funds for the payment.|
 |accountId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
-|payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
-|domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|optional|none|Present if toUType is set to domestic. Indicates a domestic account|
-|biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|Present if toUType is set to biller. Indicates a BPAY biller|
-|international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|Present if toUType is set to international. Indicates an international beneficiary|
+|payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
+|domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
+|biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
+|international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
 
 #### Enumerated Values
 
@@ -6124,7 +6274,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Object containing details of the source of the payment.  Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object*
+*Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object*
 
 ### Properties
 
@@ -6145,12 +6295,25 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "intervalSchedule": {
     "finalPaymentDate": "string",
-    "paymentsRemaining": "string",
-    "nonBusinessDayTreatment": "AFTER",
-    "intervals": {
-      "firstInterval": "string",
-      "dayInInterval": "string"
-    }
+    "paymentsRemaining": 0,
+    "nonBusinessDayTreatment": [
+      "ON"
+    ],
+    "intervals": [
+      {
+        "interval": "string",
+        "dayInInterval": "string"
+      }
+    ]
+  },
+  "lastWeekDay": {
+    "finalPaymentDate": "string",
+    "paymentsRemaining": 0,
+    "interval": "string",
+    "lastWeekDay": 0
+  },
+  "eventBased": {
+    "description": "string"
   }
 }
 
@@ -6162,10 +6325,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|nextPaymentDate|[DateString](#common-field-types)|mandatory|none|The date of the next payment under the recurrence schedule|
+|nextPaymentDate|[DateString](#common-field-types)|optional|none|The date of the next payment under the recurrence schedule|
 |recurrenceUType|string|mandatory|none|The type of recurrence used to define the schedule|
 |onceOff|[BankingScheduledPaymentRecurrenceOnceOff](#schemabankingscheduledpaymentrecurrenceonceoff)|conditional|none|Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff|
-|intervalSchedule|[BankingScheduledPaymentRecurrenceIntervalSchedule](#schemabankingscheduledpaymentrecurrenceintervalschedule)|conditional|none|Indicates that the schedule of payments is defined by a series of intervals.  Mandatory if recurrenceUType is set to intervalSchedule|
+|intervalSchedule|[BankingScheduledPaymentRecurrenceIntervalSchedule](#schemabankingscheduledpaymentrecurrenceintervalschedule)|conditional|none|Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule|
+|lastWeekDay|[BankingScheduledPaymentRecurrenceLastWeekday](#schemabankingscheduledpaymentrecurrencelastweekday)|conditional|none|Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay|
+|eventBased|[BankingScheduledPaymentRecurrenceEventBased](#schemabankingscheduledpaymentrecurrenceeventbased)|conditional|none|Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased|
 
 #### Enumerated Values
 
@@ -6173,6 +6338,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|
 |recurrenceUType|onceOff|
 |recurrenceUType|intervalSchedule|
+|recurrenceUType|lastWeekDay|
+|recurrenceUType|eventBased|
 
 <h2 id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h2>
 
@@ -6184,6 +6351,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 
 ```
+
+*Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff*
 
 ### Properties
 
@@ -6198,24 +6367,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```json
 {
   "finalPaymentDate": "string",
-  "paymentsRemaining": "string",
-  "nonBusinessDayTreatment": "AFTER",
-  "intervals": {
-    "firstInterval": "string",
-    "dayInInterval": "string"
-  }
+  "paymentsRemaining": 0,
+  "nonBusinessDayTreatment": [
+    "ON"
+  ],
+  "intervals": [
+    {
+      "interval": "string",
+      "dayInInterval": "string"
+    }
+  ]
 }
 
 ```
+
+*Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule*
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|finalPaymentDate|[DateString](#common-field-types)|optional|none|The date on which the last payment in the scheduled payment schedule will be made. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value|
-|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value|
+|finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
+|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely|
 |nonBusinessDayTreatment|string|optional|none|Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON|
-|intervals|[BankingScheduledPaymentInterval](#schemabankingscheduledpaymentinterval)|mandatory|none|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
+|intervals|[[BankingScheduledPaymentInterval](#schemabankingscheduledpaymentinterval)]|mandatory|none|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
 
 #### Enumerated Values
 
@@ -6232,7 +6407,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {
-  "firstInterval": "string",
+  "interval": "string",
   "dayInInterval": "string"
 }
 
@@ -6242,8 +6417,52 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|firstInterval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). Durations with components less than a day in length ignored.  This duration defines the period between payments starting with nextPaymentDate|
-|dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by firstInterval on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations]. Durations with components less than a day in length ignored|
+|interval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+|dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.|
+
+<h2 id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h2>
+
+<a id="schemabankingscheduledpaymentrecurrencelastweekday"></a>
+
+```json
+{
+  "finalPaymentDate": "string",
+  "paymentsRemaining": 0,
+  "interval": "string",
+  "lastWeekDay": 0
+}
+
+```
+
+*Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
+|paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
+|interval|[ExternalRef](#common-field-types)|mandatory|none|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+|lastWeekDay|[PositiveInteger](#common-field-types)|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.|
+
+<h2 id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h2>
+
+<a id="schemabankingscheduledpaymentrecurrenceeventbased"></a>
+
+```json
+{
+  "description": "string"
+}
+
+```
+
+*Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|description|string|mandatory|none|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
 
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 

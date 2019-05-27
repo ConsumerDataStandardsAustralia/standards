@@ -17,7 +17,7 @@ INPUT_SWAGGER=cds_full.json
 
 # generate yamlS
 echo "*** Generating swagger-yaml"
-java -jar $SWAGGER_CODEGEN/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l swagger-yaml -o $SWAGGER_CODEGEN_OUTPUT
+java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l swagger-yaml -o $SWAGGER_CODEGEN_OUTPUT
 
 # move it to slate dir
 echo "*** Moving to slate dir " $CDS_SLATE_SWAGGER_DIR

@@ -546,7 +546,7 @@
 	"/banking/accounts/{accountId}/payments/scheduled": {
 	  "get": {
 		"summary": "Get Scheduled Payments for Account",
-		"description": "Obtain scheduled payments for a specific account",
+		"description": "Obtain scheduled, outgoing payments for a specific account",
 		"operationId": "listScheduledPayments",
 		"x-scopes": [
 		  "bank_regular_payments"
@@ -559,16 +559,16 @@
 		  {
 			"name": "accountId",
 			"in": "path",
-			"description": "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points.  The account specified is the source account for the payment",
+			"description": "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment",
 			"required": true,
 			"type": "string",
 			"x-cds-type": "ASCIIString"
 		  },
 		  {
-			"$ref": "#/parameters/ParamPage"
+        "$ref": "#/parameters/ParamPage"
 		  },
 		  {
-			"$ref": "#/parameters/ParamPageSize"
+        "$ref": "#/parameters/ParamPageSize"
 		  }
 		],
 		"responses": {
@@ -582,7 +582,7 @@
 		"x-version": "1"
 	  }
 	},
-	"/banking/accounts/payments/scheduled": {
+	"/banking/payments/scheduled": {
 	  "get": {
 		"summary": "Get Scheduled Payments Bulk",
 		"description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments",
@@ -3396,45 +3396,44 @@
 	"ResponseBankingScheduledPaymentsList" : {
 	  "type": "object",
 	  "required": [
-		"data",
-		"links",
-		"meta"
+      "data",
+      "links",
+      "meta"
 	  ],
 	  "properties": {
-		"data": {
-		  "type": "object",
-		  "required": [
-			"scheduledPayments"
-		  ],
-		  "properties": {
-			"scheduledPayments": {
-			  "type": "array",
-			  "description": "The list of scheduled payments to return",
-			  "items": {
-				"$ref": "#/definitions/BankingScheduledPayment"
-			  }
-			}
-		  }
-		},
-		"links": {
-		  "$ref": "#/definitions/LinksPaginated"
-		},
-		"meta": {
-		  "$ref": "#/definitions/MetaPaginated"
-		}
+      "data": {
+        "type": "object",
+        "required": [
+          "scheduledPayments"
+        ],
+		    "properties": {
+          "scheduledPayments": {
+            "type": "array",
+            "description": "The list of scheduled payments to return",
+            "items": {
+              "$ref": "#/definitions/BankingScheduledPayment"
+            }
+          }
+        }
+      },
+  		"links": {
+  		  "$ref": "#/definitions/LinksPaginated"
+  		},
+  		"meta": {
+  		  "$ref": "#/definitions/MetaPaginated"
+  		}
 	  }
 	},
 	"BankingScheduledPayment": {
 	  "type": "object",
 	  "required": [
-		"scheduledPaymentId",
-		"payerReference",
-		"payeeReference",
-		"status",
-		"from",
-		"to",
-    "amount",
-    "recurrence"
+  		"scheduledPaymentId",
+  		"payerReference",
+  		"payeeReference",
+  		"status",
+  		"from",
+  		"paymentSet",
+      "recurrence"
 	  ],
 	  "properties": {
   		"scheduledPaymentId": {
@@ -3456,57 +3455,79 @@
   		},
   		"status": {
   		  "type": "string",
-  		  "description": "Indicates whether the schedule is currently active",
+  		  "description": "Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.",
   		  "enum": [
-  			"ACTIVE",
-  			"INACTIVE"
+    			"ACTIVE",
+          "SKIP",
+    			"INACTIVE"
   		  ]
   		},
   		"from": {
   		  "$ref": "#/definitions/BankingScheduledPaymentFrom"
   		},
-  		"to": {
-  		  "$ref": "#/definitions/BankingScheduledPaymentTo"
+      "paymentSet": {
+  		  "$ref": "#/definitions/BankingScheduledPaymentSet"
   		},
+      "recurrence": {
+        "description": "Object containing the detail of the schedule for the payment",
+        "$ref": "#/definitions/BankingScheduledPaymentRecurrence"
+      }
+	  }
+	},
+  "BankingScheduledPaymentSet": {
+    "type": "object",
+	  "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
+	  "required": [
+      "to"
+	  ],
+	  "x-conditional": [
+      "amount"
+	  ],
+    "properties": {
+      "to": {
+        "description": "Object containing details of the destination of the payment. Used to specify a variety of",
+        "$ref":"#/definitions/BankingScheduledPaymentTo"
+      },
+      "isAmountCalculated": {
+        "type": "boolean",
+        "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
+        "x-cds-type": "Boolean"
+      },
       "amount": {
         "type": "string",
-        "description": "The amount of the next payment",
+        "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
         "x-cds-type": "AmountString"
       },
       "currency": {
         "type": "string",
         "description": "The currency for the payment. AUD assumed if not present",
         "x-cds-type": "CurrencyString"
-      },
-        "recurrence": {
-        "description": "Object containing the detail of the schedule for the payment",
-        "$ref": "#/definitions/BankingScheduledPaymentRecurrence"
-        }
-	  }
-	},
+      }
+    }
+  },
 	"BankingScheduledPaymentTo": {
 	  "type": "object",
-	  "description": "Object containing details of the destination of the payment",
+	  "description": "Object containing details of the destination of the payment. Used to specify a variety of",
 	  "required": [
-		"toUType"
+      "toUType"
 	  ],
 	  "x-conditional": [
-		"accountId",
-		"payeeId",
-		"domstic",
-		"biller",
-		"international"
+  		"accountId",
+  		"payeeId",
+  		"domestic",
+  		"biller",
+  		"international"
 	  ],
 	  "properties": {
   		"toUType": {
   		  "type": "string",
-  		  "description": "ID of the account that is the source of funds for the payment",
+  		  "description": "The type of object provided that specifies the destination of the funds for the payment.",
   		  "enum": [
-  			"accountId",
-  			"payeeId",
-  			"domestic",
-  			"biller",
-  			"international"
+    			"accountId",
+    			"payeeId",
+    			"domestic",
+    			"biller",
+    			"international"
   		  ]
   		},
 		  "accountId": {
@@ -3516,48 +3537,46 @@
 		  },
 		  "payeeId": {
   			"type": "string",
-  			"description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
-  			"x-cds-type": "ASCIIString"
+  			"description": "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
+        "x-cds-type": "ASCIIString"
 		  },
 		  "domestic": {
-  			"description": "Present if toUType is set to domestic. Indicates a domestic account",
-  			"$ref": "#/definitions/BankingDomesticPayee"
+        "$ref": "#/definitions/BankingDomesticPayee"
 		  },
 		  "biller": {
-  			"description": "Present if toUType is set to biller. Indicates a BPAY biller",
-  			"$ref": "#/definitions/BankingBillerPayee"
+        "$ref": "#/definitions/BankingBillerPayee"
 		  },
 		  "international": {
-  			"description": "Present if toUType is set to international. Indicates an international beneficiary",
-  			"$ref": "#/definitions/BankingInternationalPayee"
+		     "$ref": "#/definitions/BankingInternationalPayee"
 		  }
 	  }
 	},
 	"BankingScheduledPaymentFrom": {
 	  "type": "object",
-	  "description": "Object containing details of the source of the payment.  Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object",
+	  "description": "Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object",
 	  "required": [
-		"accountId"
+      "accountId"
 	  ],
 	  "properties": {
-		"accountId": {
-		  "type": "string",
-		  "description": "ID of the account that is the source of funds for the payment",
-		  "x-cds-type": "ASCIIString"
-		}
+  		"accountId": {
+  		  "type": "string",
+  		  "description": "ID of the account that is the source of funds for the payment",
+  		  "x-cds-type": "ASCIIString"
+  		}
 	  }
 	},
 	"BankingScheduledPaymentRecurrence": {
 	  "type": "object",
 	  "description": "Object containing the detail of the schedule for the payment",
 	  "required": [
-		"nextPaymentDate",
-		"recurrenceUType",
-		"intervals"
+  		"recurrenceUType",
+  		"intervals"
 	  ],
 	  "x-conditional": [
-		"onceOff",
-		"intervalSchedule"
+  		"onceOff",
+  		"intervalSchedule",
+      "lastWeekDay",
+  		"eventBased"
 	  ],
 	  "properties": {
   		"nextPaymentDate": {
@@ -3569,80 +3588,137 @@
   		  "type": "string",
   		  "description": "The type of recurrence used to define the schedule",
   		  "enum": [
-  			"onceOff",
-  			"intervalSchedule"
+    			"onceOff",
+    			"intervalSchedule",
+          "lastWeekDay",
+          "eventBased"
   		  ]
   		},
   		"onceOff": {
-  		  "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff",
   		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
   		},
   		"intervalSchedule": {
-  		  "description": "Indicates that the schedule of payments is defined by a series of intervals.  Mandatory if recurrenceUType is set to intervalSchedule",
   		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
-  		}
+  		},
+      "lastWeekDay": {
+  		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceLastWeekday"
+      },
+      "eventBased": {
+  		  "$ref": "#/definitions/BankingScheduledPaymentRecurrenceEventBased"
+      }
 	  }
 	},
 	"BankingScheduledPaymentRecurrenceOnceOff": {
 	  "type": "object",
+  	"description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff",
 	  "required": [
-		"paymentDate"
+      "paymentDate"
 	  ],
 	  "properties": {
-		"paymentDate": {
-		  "type": "string",
-		  "description": "The scheduled date for the once off payment",
-		  "x-cds-type": "DateString"
-		}
+  		"paymentDate": {
+  		  "type": "string",
+  		  "description": "The scheduled date for the once off payment",
+  		  "x-cds-type": "DateString"
+  		}
 	  }
 	},
 	"BankingScheduledPaymentRecurrenceIntervalSchedule": {
 	  "type": "object",
+  	"description": "Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule",
 	  "required": [
-		"intervals"
+		    "intervals"
 	  ],
 	  "properties": {
   		"finalPaymentDate": {
   		  "type": "string",
-  		  "description": "The date on which the last payment in the scheduled payment schedule will be made. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value",
+  		  "description": "The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
   		  "x-cds-type": "DateString"
   		},
   		"paymentsRemaining": {
-  		  "type": "string",
-  		  "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value",
+  		  "type": "integer",
+  		  "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely",
   		  "x-cds-type": "PositiveInteger"
   		},
   		"nonBusinessDayTreatment": {
   		  "type": "string",
   		  "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON",
   		  "enum": [
-  			"AFTER",
-  			"BEFORE",
-  			"ON",
-  			"ONLY"
-  		  ]
+          "AFTER",
+          "BEFORE",
+          "ON",
+          "ONLY"
+  		  ],
+        "default": [
+          "ON"
+        ]
   		},
   	  "intervals": {
+        "type": "array",
   			"description": "An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry",
-  			"$ref": "#/definitions/BankingScheduledPaymentInterval"
+        "items": {
+          "$ref": "#/definitions/BankingScheduledPaymentInterval"
+        }
   		}
 	  }
 	},
 	"BankingScheduledPaymentInterval": {
 	  "type": "object",
 	  "required": [
-		"firstInterval"
+      "interval"
 	  ],
 	  "properties": {
-  		"firstInterval": {
+  		"interval": {
   		  "type": "string",
-  		  "description": "An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). Durations with components less than a day in length ignored.  This duration defines the period between payments starting with nextPaymentDate",
+  		  "description": "An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate",
   		  "x-cds-type": "ExternalRef"
   		},
   		"dayInInterval": {
   		  "type": "string",
-  		  "description": "Uses an interval to define the ordinal day within the interval defined by firstInterval on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations]. Durations with components less than a day in length ignored",
+  		  "description": "Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.",
   		  "x-cds-type": "ExternalRef"
+  		}
+	  }
+	},
+  "BankingScheduledPaymentRecurrenceLastWeekday": {
+	  "type": "object",
+    "description": "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay",
+	  "required": [
+      "interval",
+      "lastWeekDay"
+	  ],
+	  "properties": {
+  		"finalPaymentDate": {
+  		  "type": "string",
+  		  "description": "The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
+  		  "x-cds-type": "DateString"
+  		},
+      "paymentsRemaining": {
+  		  "type": "integer",
+  		  "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
+  		  "x-cds-type": "PositiveInteger"
+  		},
+      "interval": {
+  		  "type": "string",
+  		  "description": "The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate",
+  		  "x-cds-type": "ExternalRef"
+  		},
+      "lastWeekDay": {
+  		  "type": "integer",
+  		  "description": "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.",
+  		  "x-cds-type": "PositiveInteger"
+  		}
+	  }
+	},
+  "BankingScheduledPaymentRecurrenceEventBased": {
+	  "type": "object",
+    "description": "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased",
+	  "required": [
+      "description"
+	  ],
+	  "properties": {
+  		"description": {
+  		  "type": "string",
+  		  "description": "Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer"
   		}
 	  }
 	},

@@ -1,0 +1,414 @@
+1478c1478
+< Obtain scheduled, outgoing payments for a specific account
+---
+> Obtain scheduled payments for a specific account
+1505d1504
+<         "paymentSet": {
+1553d1551
+<           "isAmountCalculated": true,
+1555,1556c1553
+<           "currency": "string"
+<         },
+---
+>         "currency": "string",
+1565,1571c1562,1565
+<             "paymentsRemaining": 0,
+<             "nonBusinessDayTreatment": [
+<               "ON"
+<             ],
+<             "intervals": [
+<               {
+<                 "interval": "string",
+---
+>             "paymentsRemaining": "string",
+>             "nonBusinessDayTreatment": "AFTER",
+>             "intervals": {
+>               "firstInterval": "string",
+1574,1583d1567
+<             ]
+<           },
+<           "lastWeekDay": {
+<             "finalPaymentDate": "string",
+<             "paymentsRemaining": 0,
+<             "interval": "string",
+<             "lastWeekDay": 0
+<           },
+<           "eventBased": {
+<             "description": "string"
+1621c1605
+< GET https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled HTTP/1.1
+1634c1618
+<   url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled',
+1645c1629
+< `GET /banking/payments/scheduled`
+---
+> `GET /banking/accounts/payments/scheduled`
+1696d1679
+<         "paymentSet": {
+1744d1726
+<           "isAmountCalculated": true,
+1746,1747c1728
+<           "currency": "string"
+<         },
+---
+>         "currency": "string",
+1756,1762c1737,1740
+<             "paymentsRemaining": 0,
+<             "nonBusinessDayTreatment": [
+<               "ON"
+<             ],
+<             "intervals": [
+<               {
+<                 "interval": "string",
+---
+>             "paymentsRemaining": "string",
+>             "nonBusinessDayTreatment": "AFTER",
+>             "intervals": {
+>               "firstInterval": "string",
+1765,1774d1742
+<             ]
+<           },
+<           "lastWeekDay": {
+<             "finalPaymentDate": "string",
+<             "paymentsRemaining": 0,
+<             "interval": "string",
+<             "lastWeekDay": 0
+<           },
+<           "eventBased": {
+<             "description": "string"
+1812c1780
+< POST https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+---
+> POST https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled HTTP/1.1
+1827c1795
+<   url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/payments/scheduled',
+1838c1806
+< `POST /banking/payments/scheduled`
+---
+> `POST /banking/accounts/payments/scheduled`
+1880d1847
+<         "paymentSet": {
+1928d1894
+<           "isAmountCalculated": true,
+1930,1931c1896
+<           "currency": "string"
+<         },
+---
+>         "currency": "string",
+1940,1946c1905,1908
+<             "paymentsRemaining": 0,
+<             "nonBusinessDayTreatment": [
+<               "ON"
+<             ],
+<             "intervals": [
+<               {
+<                 "interval": "string",
+---
+>             "paymentsRemaining": "string",
+>             "nonBusinessDayTreatment": "AFTER",
+>             "intervals": {
+>               "firstInterval": "string",
+1949,1958d1910
+<             ]
+<           },
+<           "lastWeekDay": {
+<             "finalPaymentDate": "string",
+<             "paymentsRemaining": 0,
+<             "interval": "string",
+<             "lastWeekDay": 0
+<           },
+<           "eventBased": {
+<             "description": "string"
+5889d5840
+<         "paymentSet": {
+5937d5887
+<           "isAmountCalculated": true,
+5939,5940c5889
+<           "currency": "string"
+<         },
+---
+>         "currency": "string",
+5949,5955c5898,5901
+<             "paymentsRemaining": 0,
+<             "nonBusinessDayTreatment": [
+<               "ON"
+<             ],
+<             "intervals": [
+<               {
+<                 "interval": "string",
+---
+>             "paymentsRemaining": "string",
+>             "nonBusinessDayTreatment": "AFTER",
+>             "intervals": {
+>               "firstInterval": "string",
+5958,5967d5903
+<             ]
+<           },
+<           "lastWeekDay": {
+<             "finalPaymentDate": "string",
+<             "paymentsRemaining": 0,
+<             "interval": "string",
+<             "lastWeekDay": 0
+<           },
+<           "eventBased": {
+<             "description": "string"
+6011d5946
+<   "paymentSet": {
+6059d5993
+<     "isAmountCalculated": true,
+6061,6062c5995
+<     "currency": "string"
+<   },
+---
+>   "currency": "string",
+6071,6077c6004,6007
+<       "paymentsRemaining": 0,
+<       "nonBusinessDayTreatment": [
+<         "ON"
+<       ],
+<       "intervals": [
+<         {
+<           "interval": "string",
+---
+>       "paymentsRemaining": "string",
+>       "nonBusinessDayTreatment": "AFTER",
+>       "intervals": {
+>         "firstInterval": "string",
+6080,6089d6009
+<       ]
+<     },
+<     "lastWeekDay": {
+<       "finalPaymentDate": "string",
+<       "paymentsRemaining": 0,
+<       "interval": "string",
+<       "lastWeekDay": 0
+<     },
+<     "eventBased": {
+<       "description": "string"
+6104c6024
+< |status|string|mandatory|none|Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.|
+---
+> |status|string|mandatory|none|Indicates whether the schedule is currently active|
+6106c6026,6028
+< |paymentSet|[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)|mandatory|none|The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry|
+---
+> |to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment|
+> |amount|[AmountString](#common-field-types)|mandatory|none|The amount of the next payment|
+> |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the payment. AUD assumed if not present|
+6114d6035
+< |status|SKIP|
+6117,6187d6037
+< <h2 id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h2>
+< 
+< <a id="schemabankingscheduledpaymentset"></a>
+< 
+< ```json
+< {
+<   "to": {
+<     "toUType": "accountId",
+<     "accountId": "string",
+<     "payeeId": "string",
+<     "domestic": {
+<       "payeeAccountUType": "account",
+<       "account": {
+<         "accountName": "string",
+<         "bsb": "string",
+<         "accountNumber": "string"
+<       },
+<       "card": {
+<         "cardNumber": "string"
+<       },
+<       "payId": {
+<         "name": "string",
+<         "identifier": "string",
+<         "type": "EMAIL"
+<       }
+<     },
+<     "biller": {
+<       "billerCode": "string",
+<       "crn": "string",
+<       "billerName": "string"
+<     },
+<     "international": {
+<       "beneficiaryDetails": {
+<         "name": "string",
+<         "country": "string",
+<         "message": "string"
+<       },
+<       "bankDetails": {
+<         "country": "string",
+<         "accountNumber": "string",
+<         "bankAddress": {
+<           "name": "string",
+<           "address": "string"
+<         },
+<         "beneficiaryBankBIC": "string",
+<         "fedWireNumber": "string",
+<         "sortCode": "string",
+<         "chipNumber": "string",
+<         "routingNumber": "string",
+<         "legalEntityIdentifier": "string"
+<       }
+<     }
+<   },
+<   "isAmountCalculated": true,
+<   "amount": "string",
+<   "currency": "string"
+< }
+< 
+< ```
+< 
+< *The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry*
+< 
+< ### Properties
+< 
+< |Name|Type|Required|Restrictions|Description|
+< |---|---|---|---|---|
+< |to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of|
+< |isAmountCalculated|[Boolean](#common-field-types)|optional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
+< |amount|[AmountString](#common-field-types)|conditional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
+< |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the payment. AUD assumed if not present|
+< 
+6243c6093
+< *Object containing details of the destination of the payment. Used to specify a variety of*
+---
+> *Object containing details of the destination of the payment*
+6249c6099
+< |toUType|string|mandatory|none|The type of object provided that specifies the destination of the funds for the payment.|
+---
+> |toUType|string|mandatory|none|ID of the account that is the source of funds for the payment|
+6251,6254c6101,6104
+< |payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
+< |domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
+< |biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
+< |international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
+---
+> |payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
+> |domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|optional|none|Present if toUType is set to domestic. Indicates a domestic account|
+> |biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|Present if toUType is set to biller. Indicates a BPAY biller|
+> |international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|Present if toUType is set to international. Indicates an international beneficiary|
+6298,6304c6148,6151
+<     "paymentsRemaining": 0,
+<     "nonBusinessDayTreatment": [
+<       "ON"
+<     ],
+<     "intervals": [
+<       {
+<         "interval": "string",
+---
+>     "paymentsRemaining": "string",
+>     "nonBusinessDayTreatment": "AFTER",
+>     "intervals": {
+>       "firstInterval": "string",
+6307,6316d6153
+<     ]
+<   },
+<   "lastWeekDay": {
+<     "finalPaymentDate": "string",
+<     "paymentsRemaining": 0,
+<     "interval": "string",
+<     "lastWeekDay": 0
+<   },
+<   "eventBased": {
+<     "description": "string"
+6328c6165
+< |nextPaymentDate|[DateString](#common-field-types)|optional|none|The date of the next payment under the recurrence schedule|
+---
+> |nextPaymentDate|[DateString](#common-field-types)|mandatory|none|The date of the next payment under the recurrence schedule|
+6332,6333d6168
+< |lastWeekDay|[BankingScheduledPaymentRecurrenceLastWeekday](#schemabankingscheduledpaymentrecurrencelastweekday)|conditional|none|Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay|
+< |eventBased|[BankingScheduledPaymentRecurrenceEventBased](#schemabankingscheduledpaymentrecurrenceeventbased)|conditional|none|Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased|
+6341,6342d6175
+< |recurrenceUType|lastWeekDay|
+< |recurrenceUType|eventBased|
+6355,6356d6187
+< *Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff*
+< 
+6370,6376c6201,6204
+<   "paymentsRemaining": 0,
+<   "nonBusinessDayTreatment": [
+<     "ON"
+<   ],
+<   "intervals": [
+<     {
+<       "interval": "string",
+---
+>   "paymentsRemaining": "string",
+>   "nonBusinessDayTreatment": "AFTER",
+>   "intervals": {
+>     "firstInterval": "string",
+6379d6206
+<   ]
+6384,6385d6210
+< *Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule*
+< 
+6390,6391c6215,6216
+< |finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
+< |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely|
+---
+> |finalPaymentDate|[DateString](#common-field-types)|optional|none|The date on which the last payment in the scheduled payment schedule will be made. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value|
+> |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value|
+6393c6218
+< |intervals|[[BankingScheduledPaymentInterval](#schemabankingscheduledpaymentinterval)]|mandatory|none|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
+---
+> |intervals|[BankingScheduledPaymentInterval](#schemabankingscheduledpaymentinterval)|mandatory|none|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
+6410c6235
+<   "interval": "string",
+---
+>   "firstInterval": "string",
+6420,6465c6245,6246
+< |interval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+< |dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.|
+< 
+< <h2 id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h2>
+< 
+< <a id="schemabankingscheduledpaymentrecurrencelastweekday"></a>
+< 
+< ```json
+< {
+<   "finalPaymentDate": "string",
+<   "paymentsRemaining": 0,
+<   "interval": "string",
+<   "lastWeekDay": 0
+< }
+< 
+< ```
+< 
+< *Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay*
+< 
+< ### Properties
+< 
+< |Name|Type|Required|Restrictions|Description|
+< |---|---|---|---|---|
+< |finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
+< |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
+< |interval|[ExternalRef](#common-field-types)|mandatory|none|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+< |lastWeekDay|[PositiveInteger](#common-field-types)|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.|
+< 
+< <h2 id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h2>
+< 
+< <a id="schemabankingscheduledpaymentrecurrenceeventbased"></a>
+< 
+< ```json
+< {
+<   "description": "string"
+< }
+< 
+< ```
+< 
+< *Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased*
+< 
+< ### Properties
+< 
+< |Name|Type|Required|Restrictions|Description|
+< |---|---|---|---|---|
+< |description|string|mandatory|none|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
+---
+> |firstInterval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). Durations with components less than a day in length ignored.  This duration defines the period between payments starting with nextPaymentDate|
+> |dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by firstInterval on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations]. Durations with components less than a day in length ignored|
