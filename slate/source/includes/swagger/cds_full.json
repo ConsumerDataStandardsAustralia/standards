@@ -3830,11 +3830,13 @@
 	  "properties": {
       "data": {
         "type": "object",
-        "required": "outages",
+        "required": [
+          "outages"
+        ],
 		    "properties": {
           "outages": {
+            "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
             "type": "array",
-            "desciption": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
             "items": {
               "$ref": "#/definitions/DiscoveryOutage"
             }
