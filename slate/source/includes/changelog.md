@@ -4,7 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
-28/5/2019|0.9.1|Modified BankingProductRateTier.maximumValue to optional|Rebuild of docs
+|28/5/2019|0.9.1|Modified BankingProductRateTier.maximumValue to optional|Rebuild of docs
 |28/5/2019|0.9.0|Incorporated Scheduled Payments Decision proposal 51|Swagger updates and Documentation changes
 |13/5/2019|0.8.4|InfoSec Update|Imported the InfoSec content without update for recent proposals
 |12/5/2019|0.8.3|Optionality Update|Clarified the meaning of a field declaration of optional
