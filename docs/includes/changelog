@@ -11,6 +11,12 @@
 </thead><tbody>
 <tr>
 <td>28/5/2019</td>
+<td>0.9.1</td>
+<td>Modified BankingProductRateTier.maximumValue to optional</td>
+<td>Rebuild of docs</td>
+</tr>
+<tr>
+<td>28/5/2019</td>
 <td>0.9.0</td>
 <td>Incorporated Scheduled Payments Decision proposal 51</td>
 <td>Swagger updates and Documentation changes</td>
