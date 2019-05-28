@@ -58,10 +58,9 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
-|x-version|Unknown|none|None|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+Only the ACCC should be able to perform this operation.
 </aside>
 
 ## Get Metrics
@@ -243,10 +242,9 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsList](#schemaresponsemetricslist)|
-|x-version|Unknown|none|None|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+Only the ACCC should be able to perform this operation.
 </aside>
 
 ## Admin Schemas
@@ -738,4 +736,3 @@ This operation does not require authentication
 ### Properties
 
 *None*
-
