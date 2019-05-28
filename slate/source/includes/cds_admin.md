@@ -1,7 +1,8 @@
 
-<h1 id="consumer-data-standards-administration-end-points-admin">Admin</h1>
 
-## ACCC Meta Data Update
+<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+
+## Metadata Update
 
 <a id="opIdmetadataUpdate"></a>
 
@@ -47,13 +48,13 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 }
 ```
 
-<h3 id="accc-meta-data-update-parameters">Parameters</h3>
+<h3 id="metadata-update-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|[RequestMetaDataUpdate](#schemarequestmetadataupdate)|mandatory|none|
 
-<h3 id="accc-meta-data-update-responses">Responses</h3>
+<h3 id="metadata-update-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -64,7 +65,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 This operation does not require authentication
 </aside>
 
-## Obtain operational statistics on the CDR implementation
+## Get Metrics
 
 <a id="opIdgetMetrics"></a>
 
@@ -99,7 +100,7 @@ $.ajax({
 
 This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
-<h3 id="obtain-operational-statistics-on-the-cdr-implementation-parameters">Parameters</h3>
+<h3 id="get-metrics-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -238,7 +239,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 }
 ```
 
-<h3 id="obtain-operational-statistics-on-the-cdr-implementation-responses">Responses</h3>
+<h3 id="get-metrics-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -465,7 +466,10 @@ This operation does not require authentication
 
 ### Properties
 
-*None*
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|currentDay|number|conditional|none|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%|
+|previousDays|[number]|conditional|none|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%|
 
 <h2 id="tocSinvocationmetrics">InvocationMetrics</h2>
 
@@ -513,11 +517,21 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|unauthenticated|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|API call counts for the unauthenticated tier|
-|highPriority|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|API call counts for the high priority tier|
-|lowPriority|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|API call counts for the low priority tier|
-|unattended|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|API call counts for the unattended tier|
-|largePayload|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|API call counts for the large payload tier|
+|unauthenticated|object|conditional|none|API call counts for the unauthenticated tier|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|highPriority|object|conditional|none|API call counts for the high priority tier|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|lowPriority|object|conditional|none|API call counts for the low priority tier|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|unattended|object|conditional|none|API call counts for the unattended tier|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|largePayload|object|conditional|none|API call counts for the large payload tier|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h2 id="tocSaverageresponsemetrics">AverageResponseMetrics</h2>
 
@@ -565,11 +579,21 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|unauthenticated|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|Average response time for the unauthenticated tier|
-|highPriority|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|Average response time for the high priority tier|
-|lowPriority|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|Average response time for the low priority tier|
-|unattended|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|Average response time for the unattended tier|
-|largePayload|[DayNumberMetricsType](#schemadaynumbermetricstype)|conditional|none|Average response time for the large payload tier|
+|unauthenticated|object|conditional|none|Average response time for the unauthenticated tier|
+|» currentDay|number|conditional|none|Average response time for current day|
+|» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|highPriority|object|conditional|none|Average response time for the high priority tier|
+|» currentDay|number|conditional|none|Average response time for current day|
+|» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|lowPriority|object|conditional|none|Average response time for the low priority tier|
+|» currentDay|number|conditional|none|Average response time for current day|
+|» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|unattended|object|conditional|none|Average response time for the unattended tier|
+|» currentDay|number|conditional|none|Average response time for current day|
+|» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|largePayload|object|conditional|none|Average response time for the large payload tier|
+|» currentDay|number|conditional|none|Average response time for current day|
+|» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
 <h2 id="tocSsessioncountmetrics">SessionCountMetrics</h2>
 
@@ -589,7 +613,10 @@ This operation does not require authentication
 
 ### Properties
 
-*None*
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|currentDay|number|conditional|none|Session count for current day|
+|previousDays|[number]|conditional|none|Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h2 id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
 
@@ -609,7 +636,10 @@ This operation does not require authentication
 
 ### Properties
 
-*None*
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|currentDay|number|conditional|none|Average TPS for current day|
+|previousDays|[number]|conditional|none|Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h2 id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
 
@@ -629,7 +659,10 @@ This operation does not require authentication
 
 ### Properties
 
-*None*
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|currentDay|number|conditional|none|Peak TPS for current day|
+|previousDays|[number]|conditional|none|Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h2 id="tocSerrormetrics">ErrorMetrics</h2>
 
@@ -649,7 +682,10 @@ This operation does not require authentication
 
 ### Properties
 
-*None*
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|currentDay|number|conditional|none|Number of errors for current day|
+|previousDays|[number]|conditional|none|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
 <h2 id="tocSrejectionmetrics">RejectionMetrics</h2>
 
@@ -669,28 +705,10 @@ This operation does not require authentication
 
 ### Properties
 
-*None*
-
-<h2 id="tocSdaynumbermetricstype">DayNumberMetricsType</h2>
-
-<a id="schemadaynumbermetricstype"></a>
-
-```json
-{
-  "currentDay": 0,
-  "previousDays": [
-    0
-  ]
-}
-
-```
-
-### Properties
-
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|currentDay|number|conditional|none|none|
-|previousDays|[number]|conditional|none|none|
+|currentDay|number|conditional|none|Number of calls rejected for current day|
+|previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
 <h2 id="tocSlinks">Links</h2>
 
@@ -719,3 +737,6 @@ This operation does not require authentication
 ```
 
 ### Properties
+
+*None*
+
