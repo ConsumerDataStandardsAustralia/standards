@@ -636,10 +636,7 @@
               </ul>
           </li>
           <li>
-            <a href="#admin-api-39-s" class="toc-h1 toc-link" data-title="Admin API's">Admin API's</a>
-          </li>
-          <li>
-            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
+            <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -647,11 +644,9 @@
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
-              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#admin-schemas" class="toc-h2 toc-link" data-title="Admin Schemas">Admin Schemas</a>
+                  </li>
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
@@ -15824,16 +15819,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The name of the bundle</td>
 </tr>
 </tbody></table>
-<h1 id='admin-api-39-s'>Admin API&#39;s</h1>
+<h1 id='admin-apis'>Admin APIs</h1>
 <p>This provides an overview of CDS Administration Endpoints. Please note this API is intended for Data Holders only.</p>
 
-<p><br></p>
-
-<p><a href='./includes/swagger/cds_admin.json'>Admin Swagger (JSON)</a></p>
-
-<p><br></p>
-
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+<p><br>
+<table>
+<tr><td><a href='./includes/swagger/cds_admin.json'>Admin Swagger (JSON)</a></td></tr>
+<tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
+</table></p>
 
 <h2 id='metadata-update'>Metadata Update</h2>
 
@@ -15977,7 +15970,7 @@ This operation does not require authentication
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>The period of metrics to be requested. Values can be CURRENT (meaning immediate metrics), CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL</td>
+<td>The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
 </tr>
 </tbody></table>
 
@@ -16160,7 +16153,7 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-<h1 id='schemas'>Schemas</h1>
+<h2 id='admin-schemas'>Admin Schemas</h2>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -16401,14 +16394,14 @@ This operation does not require authentication
 <tr>
 <td>» averageTps</td>
 <td><a href="#schemaaveragetpsmetrics">AverageTPSMetrics</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Transactions per second over time</td>
 </tr>
 <tr>
 <td>» peakTps</td>
 <td><a href="#schemapeaktpsmetrics">PeakTPSMetrics</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Maximum record transactions per second over time</td>
 </tr>

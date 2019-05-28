@@ -1,6 +1,5 @@
 
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 
 ## Metadata Update
 
@@ -104,7 +103,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning immediate metrics), CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL|
+|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
 
 #### Enumerated Values
 
@@ -250,7 +249,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 This operation does not require authentication
 </aside>
 
-# Schemas
+## Admin Schemas
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -416,8 +415,8 @@ This operation does not require authentication
 |» invocations|[InvocationMetrics](#schemainvocationmetrics)|conditional|none|Number of API calls in each performance tier over time|
 |» averageResponse|[AverageResponseMetrics](#schemaaverageresponsemetrics)|conditional|none|Average response time in seconds, at millisecond resolution, within each performance tier|
 |» sessionCount|[SessionCountMetrics](#schemasessioncountmetrics)|conditional|none|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
-|» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|optional|none|Transactions per second over time|
-|» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|optional|none|Maximum record transactions per second over time|
+|» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|conditional|none|Transactions per second over time|
+|» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|conditional|none|Maximum record transactions per second over time|
 |» errors|[ErrorMetrics](#schemaerrormetrics)|conditional|none|Number of calls resulting in error due to server execution over time|
 |» rejections|[RejectionMetrics](#schemarejectionmetrics)|conditional|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|conditional|none|Number of customers with active authorisations at the time of the call|
