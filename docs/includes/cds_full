@@ -3878,6 +3878,149 @@ To perform this operation, you must be authenticated and authorised with the fol
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common_detailed_customer</a>
 </aside>
+<h2 id='get-status'>Get Status</h2>
+<p><a id="opIdgetStatus"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/discovery/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.provider.com.au/cds-au/v1/discovery/status'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre>
+<p><code>GET /discovery/status</code></p>
+
+<p>Obtain a health check status for the implementation</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"detectionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expectedResolutionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-status-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Success</td>
+<td><a href="#schemaresponsediscoverystatus">ResponseDiscoveryStatus</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id='get-outages'>Get Outages</h2>
+<p><a id="opIdgetOutages"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/discovery/outages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.provider.com.au/cds-au/v1/discovery/outages'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre>
+<p><code>GET /discovery/outages</code></p>
+
+<p>Obtain a list of scheduled outages for the implementation</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-outages-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Success</td>
+<td><a href="#schemaresponsediscoveryoutages">ResponseDiscoveryOutages</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
 <h1 id='schemas'>Schemas</h1>
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
 
@@ -10722,6 +10865,225 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
+<h2 id="tocSresponsediscoverystatus">ResponseDiscoveryStatus</h2>
+
+<p><a id="schemaresponsediscoverystatus"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"detectionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expectedResolutionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-64'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)</td>
+</tr>
+<tr>
+<td>» explanation</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK</td>
+</tr>
+<tr>
+<td>» detectionTime</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE</td>
+</tr>
+<tr>
+<td>» expectedResolutionTime</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.</td>
+</tr>
+<tr>
+<td>» updateTime</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The date and time that this status was last updated by the Data Holder.</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemalinks">Links</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>status</td>
+<td>PARTIAL_FAILURE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SCHEDULED_OUTAGE</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSresponsediscoveryoutages">ResponseDiscoveryOutages</h2>
+
+<p><a id="schemaresponsediscoveryoutages"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-65'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» outages</td>
+<td>[<a href="#schemadiscoveryoutage">DiscoveryOutage</a>]</td>
+<td>mandatory</td>
+<td>none</td>
+<td>List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemalinks">Links</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSdiscoveryoutage">DiscoveryOutage</h2>
+
+<p><a id="schemadiscoveryoutage"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-66'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>outageTime</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>Date and time that the outage is scheduled to begin</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>number</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Planned duration of the outage in minutes</td>
+</tr>
+<tr>
+<td>isPartial</td>
+<td>boolean</td>
+<td>optional</td>
+<td>none</td>
+<td>Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage</td>
+</tr>
+<tr>
+<td>explanation</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Provides an explanation of the current outage that can be displayed to an end customer</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 
 <p><a id="schemaresponsecommoncustomer"></a></p>
@@ -10762,7 +11124,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-64'>Properties</h3>
+</span></code></pre><h3 id='properties-67'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10815,7 +11177,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10966,7 +11328,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-65'>Properties</h3>
+</span></code></pre><h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11019,7 +11381,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11051,7 +11413,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-66'>Properties</h3>
+</span></code></pre><h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11183,7 +11545,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-67'>Properties</h3>
+</span></code></pre><h3 id='properties-70'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -11265,7 +11627,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-68'>Properties</h3>
+</span></code></pre><h3 id='properties-71'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11374,7 +11736,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<h4 id='enumerated-values-40'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11465,7 +11827,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-69'>Properties</h3>
+</span></code></pre><h3 id='properties-72'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -11526,7 +11888,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"fullNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-70'>Properties</h3>
+</span></code></pre><h3 id='properties-73'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11586,7 +11948,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-40'>Enumerated Values</h4>
+<h4 id='enumerated-values-41'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11628,7 +11990,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-71'>Properties</h3>
+</span></code></pre><h3 id='properties-74'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11660,7 +12022,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-41'>Enumerated Values</h4>
+<h4 id='enumerated-values-42'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11725,7 +12087,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-72'>Properties</h3>
+</span></code></pre><h3 id='properties-75'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -11772,7 +12134,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-42'>Enumerated Values</h4>
+<h4 id='enumerated-values-43'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11840,7 +12202,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-73'>Properties</h3>
+</span></code></pre><h3 id='properties-76'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11872,7 +12234,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-43'>Enumerated Values</h4>
+<h4 id='enumerated-values-44'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11903,7 +12265,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-74'>Properties</h3>
+</span></code></pre><h3 id='properties-77'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11999,7 +12361,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></em></p>
-<h3 id='properties-75'>Properties</h3>
+<h3 id='properties-78'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12158,7 +12520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-76'>Properties</h3>
+</span></code></pre><h3 id='properties-79'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12182,7 +12544,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemameta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-77'>Properties</h3>
+</span></code></pre><h3 id='properties-80'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocSlinkspaginated">LinksPaginated</h2>
@@ -12196,7 +12558,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-78'>Properties</h3>
+</span></code></pre><h3 id='properties-81'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12251,7 +12613,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-79'>Properties</h3>
+</span></code></pre><h3 id='properties-82'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12291,7 +12653,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-80'>Properties</h3>
+</span></code></pre><h3 id='properties-83'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12345,7 +12707,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 </span></code></pre>
 <p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
-<h3 id='properties-81'>Properties</h3>
+<h3 id='properties-84'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12363,7 +12725,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-44'>Enumerated Values</h4>
+<h4 id='enumerated-values-45'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
