@@ -277,10 +277,13 @@
                     <a href="#oidc-client-types" class="toc-h2 toc-link" data-title="OIDC Client Types">OIDC Client Types</a>
                   </li>
                   <li>
-                    <a href="#tokens" class="toc-h2 toc-link" data-title="Tokens">Tokens</a>
+                    <a href="#consent" class="toc-h2 toc-link" data-title="Consent">Consent</a>
                   </li>
                   <li>
                     <a href="#scopes-and-claims" class="toc-h2 toc-link" data-title="Scopes and Claims">Scopes and Claims</a>
+                  </li>
+                  <li>
+                    <a href="#tokens" class="toc-h2 toc-link" data-title="Tokens">Tokens</a>
                   </li>
                   <li>
                     <a href="#identifiers-and-subject-types" class="toc-h2 toc-link" data-title="Identifiers and Subject Types">Identifiers and Subject Types</a>
@@ -295,10 +298,13 @@
                     <a href="#request-object" class="toc-h2 toc-link" data-title="Request Object">Request Object</a>
                   </li>
                   <li>
+                    <a href="#requesting-sharing-duration" class="toc-h2 toc-link" data-title="Requesting Sharing Duration">Requesting Sharing Duration</a>
+                  </li>
+                  <li>
                     <a href="#endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
                   </li>
                   <li>
-                    <a href="#consent" class="toc-h2 toc-link" data-title="Consent">Consent</a>
+                    <a href="#reauthorisation-mechanism" class="toc-h2 toc-link" data-title="Reauthorisation mechanism">Reauthorisation mechanism</a>
                   </li>
                   <li>
                     <a href="#normative-references" class="toc-h2 toc-link" data-title="Normative References">Normative References</a>
@@ -1624,8 +1630,8 @@ standards</li>
 
 <p>An optional header <code>x-&lt;PID&gt;-v</code> will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on the use of this header.</p>
 <h1 id='security-profile'>Security Profile</h1><h2 id='overview'>Overview</h2>
-<p>This information security profile will be built upon the foundations of the
-<a href="https://openid.net/specs/openid-financial-api-part-2.html">Financial-grade API Read Write Profile</a> <strong>[FAPI-RW]</strong>, the <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">Financial-grade API Client Initiated Backchannel Authentication Profile</a> <strong>[FAPI-CIBA]</strong>, and other standards relating to
+<p>This information security profile builds upon the foundations of the Financial-grade API Read Write Profile
+<a href="https://openid.net/specs/openid-financial-api-part-2.html">Financial-grade API Read Write Profile</a> <strong>[FAPI-RW]</strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong>[OIDC]</strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
@@ -1652,7 +1658,7 @@ standards</li>
 <li>  <strong>IP:</strong> Identity Proofing</li>
 <li>  <strong>LoA:</strong> Level of Assurance</li>
 <li>  <strong>LoAs:</strong> Levels of Assurance</li>
-<li>  <strong>MTLS:</strong> Mutual Transport Layer Security</li>
+<li>  <strong>MTLS:</strong> Mutually Authenticated Transport Layer Security</li>
 <li>  <strong>OIDC:</strong> Open ID Connect</li>
 <li>  <strong>PI:</strong> Personal Information</li>
 <li>  <strong>PKI:</strong> Public Key Infrastructure</li>
@@ -1699,7 +1705,7 @@ Data Holder to access consumer resources (APIs). A Data Recipient MUST capture c
 <p>A Data Recipient assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">Relying Party (Client)</a>.</p>
 <h3 id='registry'>Registry</h3>
 <aside class="warning">
-The role and the functionality of the Registry is subject to change.
+NOTE: This section is reflective of the positioning of the Registry in the CDR Rules Exposure Draft
 </aside>
 
 <p>The Registry is a central point of discovery for both Data Holders and Data
@@ -1710,23 +1716,12 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <li><strong>Management of Certificates</strong>: The Registry will facilitate the issuing, management and revocation of digital certificates.</li>
 <li><strong>Discoverability and Search</strong>: The Registry will expose APIs and GUIs (Web applications) in order to support metadata queries across Registry entities.</li>
 </ul>
-
-<p>A full description of the Registry is beyond the scope of this document.</p>
 <h2 id='authentication-flows'>Authentication Flows</h2>
-<p>This profile supports the authentication flows specified by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.  These are:</p>
+<p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong>[OIDC]</strong> as constrained further by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.</p>
 
-<ul>
-<li> The Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong>[OIDC]</strong>.
+<p>Specifically the Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong>[OIDC]</strong>.</p>
 
-<ul>
-<li>This MUST be supported by Data Holders.</li>
-</ul></li>
-<li>The Client Initiated Backchannel Authentication flow outlined under the <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">FAPI CIBA profile</a> <strong>[FAPI-CIBA]</strong>.
-
-<ul>
-<li> This MAY be supported by Data Holders.</li>
-</ul></li>
-</ul>
+<p>No other flows are currently supported.</p>
 
 <p><a id="hybrid-flow"></a></p>
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
@@ -1740,23 +1735,32 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 
 <p>The <code>request_uri</code> parameter SHALL NOT be supported.</p>
 
-<p><a id="ciba-flow"></a></p>
-<h3 id='client-initiated-backchannel-authentication-ciba'>Client-Initiated Backchannel Authentication (CIBA)</h3>
-<p>Client Initiated Backchannel Authentication (CIBA) enables a Data Recipient (Client) to
-initiate the authentication of an end-user at a Data Holder (OpenID Provider) by means of decoupled or out-band
-mechanisms <strong>[FAPI-CIBA]</strong>.</p>
+<aside class="warning">
+NOTE: This process of customer authentication and the customer experience of the subsequent process to obtain customer consent has been the subject of significant consultation and feedback.  To date, a consensus position has not been achieved to the satisfaction of the Data Standards Body.
 
-<p>Authorisation server rules for <strong>[FAPI-CIBA]</strong> are covered under <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default#markdown-header-522-authorization-server">section 5.2.2 of the FAPI CIBA profile</a>.</p>
+As a result of this lack of consensus this decision does not contain additional specificity around the requirements for the authentication flow.  Additional specificity will be added to the profile once a position on the authentication flow has been reached.
 
-<p>Login hints MUST not reveal Personal Information (PI) about the consumer or end-user.</p>
+The following specific options for the authentication flow have been identified:
+<ol>
+<li>Standard Redirect Flow: Username and password are captured in a redirected web page and consent is then obtained in the redirected web page.</li>
+<li>Redirect With OTP Flow: Username is captured in a redirected page.  The Data Holder then provides a one-time password via another channel, which is then captured in the redirected page to authenticate the customer.  Consent is then obtained in that same web page.</li>
+<li> Redirect With Known Channel: Username is captured in a redirected page.  Customer then proceeds to a known digital channel, authenticates and provides consent.</li>
+<li>Client Initiated Backchannel Authentication: A decoupled and asynchronous authentication flow that is defined by FAPI.</li>
+<li>CDR Specific Decoupled: A decoupled flow proposed by a community member where a one-time identifier is obtained from a known digital channel and then provided to the data recipient with consent being completed afterwards in an experience provided by the Data Holder.</li>
+</ol>
 
-<p>Client rules for <strong>[FAPI-CIBA]</strong> are outlined under <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default#markdown-header-523-confidential-client">section 5.2.3 of the FAPI CIBA profile</a>.</p>
+Previously, a decision to pursue Redirect With Known Channel had been made by the Data Standards Body and a proposal for how this was to be implemented had been provided for consultation.  This proposal is not included in this decision.  CX testing of the flows described above is ongoing.
+</aside>
 
 <p><a id="client-authentication"></a></p>
 <h2 id='client-authentication'>Client Authentication</h2>
-<p>Data Holder&#39;s MUST support the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
+<p>Data Holders MUST support the authentication of Data Recipients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
 
-<p>The PKI Mutual TLS OAuth Client Authentication Method SHALL not be supported.  However as specified under <a href="#mutual-tls">section 11.2</a>, all back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, MTLS as part of the TLS handshake.</p>
+<p>Data Holders MUST support the authentication of the CDR Register using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
+
+<p>Data Recipients MUST support the authentication of Data Holders using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
+
+<p>While MTLS is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
 <h3 id='private_key_jwt'>private_key_jwt</h3>
 <blockquote>
 <p>Non-Normative Example</p>
@@ -1786,7 +1790,11 @@ grant_type=authorization_code&amp;
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 </code></pre>
-<p>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation. The <strong>[JWT]</strong> represents an assertion that MUST include the following claims:</p>
+<p>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation.</p>
+
+<p>Client public keys MUST only be obtained from the CDR Registry.</p>
+
+<p>The <strong>[JWT]</strong> represents an assertion that MUST include the following claims:</p>
 
 <ul>
 <li><code>iss</code>: The client ID of the bearer.</li>
@@ -1813,6 +1821,81 @@ grant_type=authorization_code&amp;
 </ul>
 <h2 id='oidc-client-types'>OIDC Client Types</h2>
 <p>Only Confidential Clients SHALL be supported under this profile. Therefore, Public clients SHALL NOT be supported.</p>
+
+<p>In reference to the client types referenced in <a href="https://tools.ietf.org/html/rfc6749#section-2.1">section 2.1</a> of <strong>[OAUTH2]</strong>:</p>
+
+<ul>
+<li>Confidential Clients MUST be supported under this profile.</li>
+<li>Public clients MUST NOT be supported.</li>
+</ul>
+
+<p><a id="consent"></a></p>
+<h2 id='consent'>Consent</h2>
+<p>Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under <strong>[OIDC]</strong>.</p>
+
+<aside class="warning">
+NOTE: Previously the CDR Information Security profile indicated that a separate API, a Consent API, for establishing complex consent prior to authorisation being initiated would be included.
+<br/><br/>
+Additional clarification and insight obtained from various sources that steer the standards has indicated the reasons for requiring a Consent API, such as the need to support fine-grained permissions or consent mutability, are no longer needed for the initial implementation of the CDR regime.  As a result, support for a Consent API is not included in this decision.
+<br/><br/>
+It is possible that such a mechanism will be needed in the future, or maybe needed to support Data Holder specific extensions.  If this is the case then a Consent API would need to be considered for inclusion in this profile.
+<br/><br/>
+It should be noted that, in considering this issue, it is a salient point that there is no current international standard for a Consent API.  A number of candidate draft standards are being proposed to various organisations but these are still in progress.  The draft candidate to the OpenID Foundation’s Financial API (FAPI) Working Group can be found at:
+<br/>
+<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_Lodging_Intent.md">https://bitbucket.org/openid/fapi/src/master/Financial_API_Lodging_Intent.md</a>
+<br/>
+It should be noted that this is a candidate for a pattern and does not include specifics for payloads or interfaces.  These would have to be defined specifically for the CDR regime.
+<br/><br/>
+During consultation various community members indicated the preference for inclusion of the Consent ID for the initial implementation.  This being considered by the Data Standards Body and will be the subject of further consultation.  To help focus consultation the following options for a Consent API have been identified.
+<br/><br/>
+<strong>Option 1: Defer inclusion of a Consent API until a requirement exists</strong><br/>
+In this option the inclusion of a Consent API will be deferred until a later date when a specific requirement is introduced that requires such a pattern to be adopted.  Until this time the profile would be managed to ensure that the inclusion of the Consent API would be a non-breaking change and therefore able to be easily accommodated.
+<br/><br/>
+<strong>Option 2: Include a Consent API as an optional mechanism</strong><br/>
+In this option the specifics of a CDR Consent API would be defined but would be defined as optional.  No mandated CDR requirements would be dependent on the Consent API to function.  The operation of the Consent API in the context of the CDR would, however, be clearly defined and if a Data Holder wished to include the pattern to support extension functionality (such as payment initiation) this could be accommodated.
+<br/><br/>
+<strong>Option 3: Include a Consent API as a mandatory mechanism</strong><br/>
+Equivalent to option 2 except that the implementation of the Consent API would be mandatory.  The initial definition of the Consent API payload would, however, be minimalistic until a specific need is identified that would result in fields being added to the payload.
+</aside>
+<h2 id='scopes-and-claims'>Scopes and Claims</h2><h3 id='oidc-scopes'>OIDC Scopes</h3>
+<p>In addition to CDR data scopes the following scopes MUST be supported:</p>
+
+<ul>
+<li><code>openid</code>: As described as <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">section 3.1.2.1</a> of <strong>[OIDC]</strong>, this scope MUST be present on each authentication request.</li>
+<li><code>profile</code>: Data Holders MUST support the <code>profile</code> scope as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> of <strong>[OIDC]</strong>.  This scope MAY be present on an authentication request.</li>
+</ul>
+<h3 id='claims'>Claims</h3>
+<p>The following <a href="https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims">normal</a> <strong>[OIDC]</strong> claims MUST be supported. This list includes, but is not limited to, <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard claims</a> :</p>
+
+<ul>
+<li><code>sub</code>: <a href="#identifiers">Pairwise Pseudonymous Identifier (PPID)</a> for the End-User at the Data Holder.</li>
+<li><code>acr</code>: Authentication Context Class Reference.  MUST contain a valid <a href="#ordinal-loa">ordinal LoA value</a>.</li>
+<li><code>auth_time</code>: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>auth_time</code>.</li>
+<li><code>name</code>: End-User&#39;s full name in displayable form including all name parts.</li>
+<li><code>given_name</code>: Given name(s) or first name(s) of the End-User.</li>
+<li><code>family_name</code>: Surname(s) or last name(s) of the End-User.</li>
+<li><code>updated_at</code>: Time the End-User&#39;s information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>updated_at</code> time.</li>
+</ul>
+
+<p>The following <strong>[VOT]</strong> claims MAY be supported:</p>
+
+<ul>
+<li> <code>vot</code>: MUST contain a valid <a href="#vector-loas">VoT value</a>.</li>
+<li> <code>vtm</code>: The <strong>[VOT]</strong> trustmark URI.</li>
+</ul>
+
+<p>The following additional claims MUST be supported:</p>
+
+<ul>
+<li><code>refresh_token_expires_at</code>: indicates the date-time at which the most recently provided refresh token will expire. Its value MUST be a number containing a NumericDate value, as specified in section 2 of <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2">section 2</a> <strong>[JWT]</strong>.  If no refresh token has been provided then a zero value should be returned.</li>
+<li><code>sharing_expires_at</code>: indicates the date-time at which the current sharing arrangement will expire. Its value MUST be a number containing a NumericDate value, as specified in <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2">section 2</a> of <strong>[JWT]</strong>.  If consent is not complete or a <code>sharing_duration</code> was not requested in the authorisation request object then a zero value should be returned.</li>
+</ul>
+
+<aside class="warning">
+NOTE: During consultation it was proposed that sharing and refresh token expiry would be obtained via additional fields on the token and introspection end points via a Sharing ID to be provided by the Data Holder.  In response to feedback this position has been modified.  The Sharing ID concept has now been eliminated and the expiration of sharing is now being accessed via an additional claim as described above.
+<br/><br/>
+This is approach is aligned to the use of the `http://openbanking.org.uk/refresh_token_expires_at` claim specified in the Read/Write Data Specification for the UK Open Banking standards.
+</aside>
 <h2 id='tokens'>Tokens</h2><h3 id='id-token'>ID Token</h3>
 <blockquote>
 <p>Non-Normative Example - acr</p>
@@ -1872,74 +1955,52 @@ Endpoint and Token Endpoint.</p>
 
 <p>The <code>s_hash</code> value MUST be generated according to <a href="https://openid.net/specs/openid-financial-api-part-2.html#introduction">section 5.1</a> of <strong>[FAPI-RW]</strong>.</p>
 <h3 id='access-token'>Access Token</h3>
-<p>Access Tokens MUST be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong>[OAUTH2]</strong>. An
-Access Token MUST expire <code>n</code> minutes after it is issued by the Data Holder where <code>n</code> is determined by <strong>[CDR]</strong> rules.</p>
+<p>Access Tokens MUST be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong>[OAUTH2]</strong>.</p>
+
+<p>An Access Token MUST expire <strong>10 minutes</strong> after the Data Holder issues it.</p>
 
 <p>The process for refreshing an Access Token is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken">section 12.1</a> of <strong>[OIDC]</strong>.</p>
 <h3 id='refresh-token'>Refresh Token</h3>
-<p>Refresh Tokens MUST be supported by Data Holders.  The usage of Refresh Tokens is specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshTokens">section 12</a> of <strong>[OIDC]</strong>.
-A Refresh Token MUST expire <code>n</code> days after it is issued where <code>n</code> is determined by <strong>[CDR]</strong> rules.</p>
-<h2 id='scopes-and-claims'>Scopes and Claims</h2>
-<p>Industry-specific scopes (for example, <code>bank_account</code>) will not be referenced in
-this profile.</p>
-<h3 id='oidc-scopes'>OIDC Scopes</h3>
-<p>The following scopes MUST be supported:</p>
+<p>Refresh Tokens MUST be supported by Data Holders.</p>
+
+<p>The usage of Refresh Tokens is specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshTokens">section 12</a> of <strong>[OIDC]</strong>.</p>
+
+<p>The expiration time for a Refresh Token MUST be set by the Data Holder.</p>
+
+<p>Refresh Token expiration MAY be any length of time greater than 28 days but MUST NOT exceed the end of the duration of sharing consented to by the Consumer.</p>
+
+<p>Data Holders MAY cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token MUST NOT expire before the expiration of the sharing consented by the Customer.</p>
+
+<p>The revocation or expiration of the currently active refresh token should be understood to effectively revoke or expire the sharing arrangement as a whole.</p>
+<h3 id='token-expiry'>Token Expiry</h3>
+<p>The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient.</p>
+
+<p>In order to achieve this:</p>
 
 <ul>
-<li><code>openid</code>: As described as <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">section 3.1.2.1</a> of <strong>[OIDC]</strong>, this scope MUST be present on each authentication request.</li>
-<li><code>profile</code>: Data Holders MUST support the <code>profile</code> scope as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> of <strong>[OIDC]</strong>.  This scope MAY be present on an authentication request.
-
-<ul>
-<li>name claim</li>
-<li>family_name claim</li>
-<li>given_name claim</li>
-</ul></li>
-</ul>
-<h3 id='claims'>Claims</h3>
-<p>The following <a href="https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims">normal</a> <strong>[OIDC]</strong> claims MUST be supported. This list includes, but is not limited to, <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard claims</a> :</p>
-
-<ul>
-<li><code>sub</code>: <a href="#identifiers">Pairwise Pseudonymous Identifier (PPID)</a> for the End-User at the Data Holder.</li>
-<li><code>acr</code>: Authentication Context Class Reference.  MUST contain a valid <a href="#ordinal-loa">ordinal LoA value</a>.</li>
-<li><code>auth_time</code>: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>auth_time</code>.</li>
-<li><code>name</code>: End-User&#39;s full name in displayable form including all name parts.</li>
-<li><code>given_name</code>: Given name(s) or first name(s) of the End-User.</li>
-<li><code>family_name</code>: Surname(s) or last name(s) of the End-User.</li>
-<li><code>updated_at</code>: Time the End-User&#39;s information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>updated_at</code> time.</li>
+<li>The Data Holder MUST indicate the lifetime in seconds of the access token in the <code>expires_in</code> field of the JSON object returned by the token end-point (see <a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">section 4.2.2</a> of <strong>[OAUTH2]</strong>).</li>
+<li>The Data Holder MUST indicate the expiration time of the refresh token using the <code>refresh_token_expires_at</code> claim.</li>
 </ul>
 
-<p>The following <strong>[VOT]</strong> claims MAY be supported:</p>
-
-<ul>
-<li> <code>vot</code>: MUST contain a valid <a href="#vector-loas">VoT value</a>.</li>
-<li> <code>vtm</code>: The <strong>[VOT]</strong> trustmark URI.</li>
-</ul>
+<aside class="warning">
+NOTE: During consultation it was proposed that sharing and refresh token expiry would be obtained via additional fields on the token and introspection end points via a Sharing ID to be provided by the Data Holder.  In response to feedback this position has been modified.  The Sharing ID concept has now been eliminated and the expiration of a refresh token is now being accessed via an additional claim as described above.
+<br/><br/>
+This is approach is aligned to the use of the `http://openbanking.org.uk/refresh_token_expires_at` claim specified in the Read/Write Data Specification for the UK Open Banking standards.
+</aside>
 
 <p><a id="identifiers"></a></p>
 <h2 id='identifiers-and-subject-types'>Identifiers and Subject Types</h2>
-<p>The identifier for an authenticated end-user (subject) MUST be passed in the <code>sub</code> claim of an <a href="https://openid.net/specs/openid-cocnnect-core-1_0.html#IDToken">ID Token</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse">UserInfo response</a> as defined by <strong>[OIDC]</strong>. The
-Data Holder MUST generate the <code>sub</code> value as a Pairwise Pseudonymous Identifier (PPID)
+<p>The identifier for an authenticated end-user (subject) MUST be passed in the <code>sub</code> claim of an <a href="https://openid.net/specs/openid-cocnnect-core-1_0.html#IDToken">ID Token</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse">UserInfo response</a> as defined by <strong>[OIDC]</strong>.</p>
+
+<p>The Data Holder MUST generate the <code>sub</code> value as a Pairwise Pseudonymous Identifier (PPID)
 as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>. Furthermore, the identifier SHOULD also be unique relative to the scenario in which the end-user has authenticated. For example, the identifier generated for the same person when they are using a business account SHOULD be different to the identifier that is generated when that same individual is authorising as an individual.</p>
 
-<p>It is RECOMMENDED that the <code>sub</code> value is generated as a universally unique
+<p>It is RECOMMENDED that the <code>sub</code> value is generated as a version 4 universally unique
 Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 
 <p><a id="levels-of-assurance-loas"></a></p>
 <h2 id='levels-of-assurance-loas'>Levels of Assurance (LoAs)</h2>
-<p>Levels Of Assurance (LoAs), returned after a successful authentication, MAY be represented in 2 different forms:</p>
-
-<ul>
-<li><a href="#ordinal-loa">Single Ordinal</a>: A single LoA value is represented.
-
-<ul>
-<li>Data Holder&#39;s MUST support this mechanism.</li>
-</ul></li>
-<li><a href="#vector-loas">Vector</a>: One or more LoAs, represented by a vector value, are represented.
-
-<ul>
-<li>Data Holder&#39;s MAY support this mechanism.</li>
-</ul></li>
-</ul>
+<p>Levels Of Assurance (LoAs), returned after a successful authentication MUST be represented in Single Ordinal form where a single LoA value is represented.</p>
 
 <p><a id="ordinal-loa"></a></p>
 <h3 id='single-ordinal'>Single Ordinal</h3>
@@ -1958,41 +2019,39 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 </ul></li>
 </ul>
 
-<p><em>READ</em> operations SHALL only be allowed where <strong>at least</strong> an LoA of 2 has been achieved.</p>
+<p><em>READ</em> operations SHALL only be allowed where <strong>at least</strong> an LoA of 2 has been achieved during the establishment of consent.</p>
 
-<p><em>WRITE</em> operations SHALL only be allowed where <strong>at least</strong> an LoA of 3 has been achieved.</p>
-
-<p><a id="vector-loas"></a></p>
-<h3 id='vector'>Vector</h3><h3 id='overview-2'>Overview</h3>
-<p>This profile incorporates support for <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">Vectors of Trust</a> <strong>[VOT]</strong>. A Vector, in this context, allows for the representation of multiple orthogonal components dimensions that may, but are not limited to, carry information relating to:</p>
+<p><em>WRITE</em> operations SHALL only be allowed where:</p>
 
 <ul>
-<li>Identity Proofing</li>
-<li>Primary Credential Usage</li>
-<li>Primary Credential Management</li>
-<li>Assertion/Federation Presentation</li>
+<li><strong>At least</strong> an LoA of 3 has been achieved during the establishment of consent, or</li>
+<li><strong>At least</strong> an LoA of 2 has been achieved during the establishment of consent and a subsequent challenge/response has resulted in an LoA of 3 being achieved within the lifespan of the current Access Token.</li>
 </ul>
+<h2 id='transaction-security'>Transaction Security</h2><h3 id='use-of-tls'>Use of TLS</h3>
+<p>All HTTP calls MUST be made using HTTPS incorporating TLS &gt;= 1.2.</p>
 
-<p>It is anticipated that due to their characteristics, which include composability, extensibility, and expressiveness, VoTs will be become the relevant standard for assurance representation at Identity Providers. Furthermore, as the <strong>[CDR]</strong> matures and incorporates requirements for Identity Proofing, Credential Management, and Assertion Presentation, these independent LoAs will be progressively added to the VoT <strong>[CDR]</strong> ecosystem. However, the dynamic capabilities of <strong>[VOT]</strong> will ensure that their addition does not break existing <strong>[CDR]</strong> implementations.</p>
-
-<p><a id="vot-values"></a></p>
-<h3 id='vot-values'>VoT Values</h3>
-<p>The following VoT values SHALL be supported to represent authentication assurance levels when employing <strong>[VOT]</strong>.  These are carried in the <code>vot</code> claim of an ID Token:</p>
+<p><a id="mutual-tls"></a></p>
+<h3 id='use-of-mtls'>Use of MTLS</h3>
+<p>All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, MTLS as part of the TLS handshake:</p>
 
 <ul>
-<li><p><code>CL1</code>: This is Credential Level CL1 <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">defined</a> by the <strong>[TDIF]</strong> Authentication Credential Requirements specification.</p></li>
-<li><p><code>CL2</code>: This is Credential Level CL2 <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">defined</a> by the <strong>[TDIF]</strong> Authentication Credential Requirements specification.</p></li>
+<li>The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.</li>
+<li>The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.</li>
 </ul>
 
-<p><em>READ</em> operations SHALL only be allowed where <strong>at least</strong> a <code>CL1</code> has been provided.</p>
-
-<p><em>WRITE</em> operations SHALL only be allowed where <strong>at least</strong> a <code>CL2</code> has been provided.</p>
-
-<aside class="information">
-The Trustmark URI is yet to be defined.
+<p>End points for transferring CDR Data that are classified as not requiring authentication do not require the use of MTLS.</p>
+<h3 id='holder-of-key-mechanism'>Holder of Key Mechanism</h3>
+<aside class="warning">
+NOTE: As a clarification to questions raised during consultation this section asserts that resource requests must be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.
 </aside>
-<h2 id='transaction-security'>Transaction Security</h2><h3 id='ciphers'>Ciphers</h3>
-<p>All HTTP calls MUST be made using HTTPS incorporating TLS &gt;= 1.2. Only the following cipher suites SHALL be permitted in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations">section 8.5</a> of <strong>[FAPI-RW]</strong>:</p>
+
+<p>MTLS MUST be supported as a Holder of Key (HoK) Mechanism.</p>
+
+<p>OAUTB SHALL NOT be supported due to a lack industry support.</p>
+
+<p>MTLS HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess">section 3</a> of <strong>[MTLS]</strong>.</p>
+<h3 id='ciphers'>Ciphers</h3>
+<p>Only the following cipher suites SHALL be permitted in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations">section 8.5</a> of <strong>[FAPI-RW]</strong>:</p>
 
 <ul>
 <li>  TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</li>
@@ -2000,25 +2059,6 @@ The Trustmark URI is yet to be defined.
 <li>  TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</li>
 <li>  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</li>
 </ul>
-
-<p><a id="mutual-tls"></a></p>
-<h3 id='mutual-tls'>Mutual TLS</h3>
-<aside class="information">
-Additional content will be added to this section when the Registry requirements are established. For example, verification/revocation of transport certificates.
-</aside>
-
-<p>All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, MTLS as part of the TLS handshake:</p>
-
-<ul>
-<li>The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.</li>
-<li>The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.</li>
-</ul>
-<h3 id='holder-of-key-mechanism'>Holder of Key Mechanism</h3>
-<p>MTLS MUST be supported as a Holder of Key (HoK) Mechanism.</p>
-
-<p>OAUTB SHALL NOT be supported due to a lack industry support.</p>
-
-<p>MTLS HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess">section 3</a> of <strong>[MTLS]</strong>.</p>
 
 <p><a id="request-object"></a></p>
 <h2 id='request-object'>Request Object</h2>
@@ -2062,110 +2102,37 @@ Additional content will be added to this section when the Registry requirements 
   }
 }
 </code></pre>
-<p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong>[FAPI-RW]</strong> <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <strong>[FAPI-CIBA]</strong> <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default#markdown-header-522-authorization-server">section 5.2.2</a>, the <code>request</code> parameter MUST be present on requests to both the <strong>[OIDC]</strong> Hybrid Authorisation Endpoint and <strong>[FAPI-CIBA]</strong> Backchannel Authorisation Endpoint. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
+<p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong>[FAPI-RW]</strong> <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter MUST be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation Endpoint. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
 
 <p>Request Objects MUST be signed by Data Recipients as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
-
-<p>Data Recipients MUST include a <code>cdr_consent_id</code> value in the Request Object.  A high-level overview of consent is provided in the <a href="#consent">section 14</a> of this artifact.</p>
-
-<p>Data Holder Authorisation Servers MUST treat a Request Object that does not contain a <code>cdr_consent_id</code> as an essential claim as invalid.</p>
 
 <p>Request Object references SHALL NOT be supported.</p>
 
 <p>The <code>iss</code> claim SHALL NOT be supported as it duplicates the role of the <code>client_id</code> claim.</p>
-<h3 id='data-holder-authorisation-server-vot'>Data Holder Authorisation Server VoT</h3>
-<blockquote>
-<p>Non-Normative Example - vtr</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Decoded Request Object JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "123"
-}
-{
-  "aud": "https://www.recipient.com.au",
-  "response_type": "code id_token",
-  "client_id": "12345",
-  "redirect_uri": "https://www.recipient.com.au/coolstuff",
-  "scope": "openid",
-  "state": "af0ifjsldkj",
-  "nonce": "n-0S6_WzA2Mj",
-  "vtr":" "CL2 CL1",
-  "claims": {
-    "id_token": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      }
-    },
-    "userinfo": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
-      "given_name": null,
-      "family_name": null
-    }
-  }
-}
-</code></pre>
-<p>If a Data Holder supports Vectors of Trust <strong>[VOT]</strong>, they MUST accept Request objects which MAY contain:</p>
+<h2 id='requesting-sharing-duration'>Requesting Sharing Duration</h2>
+<p>To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.</p>
+
+<p>To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named <code>sharing_duration</code>.  The <code>sharing_duration</code> claim MUST be handled as follows:</p>
 
 <ul>
-<li>A <code>vtr</code> value.
-
-<ul>
-<li>Allowed Values are specified in the <a href="#vot-values">VoT values section</a> of this artifact.</li>
-<li>This value MUST contain a space-separated string that specifies the <code>vot</code> values that the Authorization Server is being requested to use for processing this Authentication Request, with the values appearing in order of preference. The VoT satisfied by the authentication performed is returned as the <code>vot</code> Claim Value.</li>
-<li>The <code>vot</code> Claim is requested as a Voluntary Claim by this parameter.</li>
-<li>The <code>vtr</code> takes precedence over <code>acr_values</code></li>
-</ul></li>
-<li>A <code>vot</code> essential claim.
-
-<ul>
-<li>This is the VoT equivalent of an <code>acr</code> essential claim.</li>
-<li>If the <code>vot</code> Claim is requested as an Essential Claim for the ID Token with a values parameter requesting specific VoT values, the Data Holder Authorization Server MUST return a <code>vot</code> Claim Value that matches one of the requested values. The Data Holder Authorization Server MAY ask the End-User to re-authenticate with additional factors to meet this requirement. If this requirement cannot be met, then the Data Holder Authorization Server MUST treat that outcome as a failed authentication.</li>
-</ul></li>
+<li>The value of the <code>sharing_duration</code> parameter will contain the requested duration for sharing, in seconds.</li>
+<li>If the <code>sharing_duration</code> value exceeds one year then a duration of one year will be assumed.</li>
+<li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
+<li>If the <code>sharing_duration</code> value is negative then the authorisation should fail.</li>
 </ul>
-<h3 id='data-recipient-client-using-vot'>Data Recipient Client using VoT</h3>
-<blockquote>
-<p>Non-Normative Example - vot as an Essential Claim</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Decoded Request Object JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "123"
-}
-{
-  "aud": "https://www.recipient.com.au",
-  "response_type": "code id_token",
-  "client_id": "12345",
-  "redirect_uri": "https://www.recipient.com.au/coolstuff",
-  "scope": "openid",
-  "state": "af0ifjsldkj",
-  "nonce": "n-0S6_WzA2Mj",
-  "claims": {
-    "id_token": {
-      "vot": {
-        "essential": true,
-        "values": ["CL2"]
-      },
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      }
-    }
-  }
-}
-</code></pre>
-<p>For <em>WRITE</em> operations, a Data Recipient:</p>
 
-<ul>
-<li>SHALL, where a Data Holder supports <strong>[VOT]</strong>, request user authentication with a Credential Level of 2 (<code>CL2</code>) or greater by requesting the <code>vot</code> claim as an essential claim.</li>
-</ul>
-<h2 id='endpoints'>Endpoints</h2><h3 id='openid-provider-configuration-endpoint'>OpenID Provider Configuration Endpoint</h3>
+<p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
+
+<aside class="warning">
+NOTE: During consultation it was proposed that sharing and refresh token expiry would be obtained via additional fields on the token and introspection end points via a Sharing ID to be provided by the Data Holder.  In response to feedback this position has been modified.  The Sharing ID concept has now been eliminated and the expiration of sharing is now being accessed via an additional claim as described above.
+<br/><br/>
+This is approach is aligned to the use of the `http://openbanking.org.uk/refresh_token_expires_at` claim specified in the Read/Write Data Specification for the UK Open Banking standards.
+</aside>
+<h2 id='endpoints'>Endpoints</h2>
+<aside class="warning">
+NOTE: This section does not yet include any end points that will be defined by the design of the CDR Registry.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
+</aside>
+<h3 id='openid-provider-configuration-endpoint'>OpenID Provider Configuration Endpoint</h3>
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
@@ -2204,10 +2171,6 @@ Content-Type: application/json
   "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub"]
 }
 </code></pre>
-<aside class="warning">
-OpenID Provider Configuration is directly impacted by the emerging requirements of the Registry and thus subject to change.
-</aside>
-
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2245,7 +2208,6 @@ OpenID Provider Configuration is directly impacted by the emerging requirements 
 <li><code>introspection_endpoint</code>: URL of the Introspection Endpoint.</li>
 <li><code>revocation_endpoint</code>: URL of the Revocation Endpoint.</li>
 <li><code>userinfo_endpoint</code>: URL of the UserInfo Endpoint.</li>
-<li><code>jwks_uri</code>: URL of the JWKS Endpoint.</li>
 <li><code>scopes_supported</code>:  This list of supported scopes.</li>
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
@@ -2255,13 +2217,6 @@ OpenID Provider Configuration is directly impacted by the emerging requirements 
 
 <ul>
 <li><code>vot_values_supported</code>:  The list of supported component values.</li>
-</ul>
-
-<p>Data Holders that support <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">CIBA</a> <strong>[FAPI-CIBA]</strong> MUST include:</p>
-
-<ul>
-<li><code>backchannel_authentication_endpoint</code>: The CIBA Authorisation Endpoint.</li>
-<li><code>backchannel_authentication_request_signing_alg_values_supported</code>: JSON array containing a list of the JWS signing algorithms (alg values) supported by the OP for signed authentication requests. Only <code>ES256</code> and <code>PS256</code> SHALL be supported.</li>
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
@@ -2343,42 +2298,6 @@ Host: www.holder.com.au
 </tbody></table>
 
 <p>The requirements for the Authorisation Endpoint are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong>[OIDC]</strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">5.2.2</a> of <strong>[FAPI-RW]</strong>.  This endpoint is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
-
-<p>Only a <code>response_type</code> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#Authentication">section 3</a> of <strong>[OIDC]</strong>) of <code>code id_token</code> SHALL be allowed.</p>
-
-<p>The <code>request_uri</code> parameter SHALL NOT be supported.</p>
-
-<p>A description of requirements relating to the <code>request</code> parameter can be found in the <a href="#request-object">section 12</a>.</p>
-<h3 id='backchannel-authorisation-endpoint'>Backchannel Authorisation Endpoint</h3>
-<table><thead>
-<tr>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Hosted By</td>
-<td>Data Holder</td>
-</tr>
-<tr>
-<td>Transport Security</td>
-<td>MTLS</td>
-</tr>
-<tr>
-<td>Client Authentication Required</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Bearer Token Required</td>
-<td>No</td>
-</tr>
-</tbody></table>
-
-<p>The requirements for the Backchannel Authorisation Endpoint are specified in the <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default#markdown-header-523-confidential-client">Client Initiated Backchannel Authentication Profile</a> <strong>[FAPI-CIBA]</strong>.  This endpoint is invoked as part of the <a href="#ciba-flow">Client-Initiated Backchannel Authentication flow</a>.</p>
-
-<p>Data Holder&#39;s that feature <strong>[FAPI-CIBA]</strong> MUST support the <code>poll</code> mode and MAY support the <code>ping</code> mode.  The <code>push</code> mode SHALL not be supported.</p>
-
-<p>A description of requirements relating to the <code>request</code> parameter can be found in the <a href="#request-object">section 12</a>.</p>
 <h3 id='token-endpoint'>Token Endpoint</h3>
 <table><thead>
 <tr>
@@ -2404,7 +2323,7 @@ Host: www.holder.com.au
 </tr>
 </tbody></table>
 
-<p>The requirements for the Token Endpoint are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfo">section 5.3</a> of <strong>[OIDC]</strong>.</p>
+<p>The requirements for the Token Endpoint are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint">section 3.3.3</a> of <strong>[OIDC]</strong>.</p>
 
 <p>To obtain an Access Token, an ID Token, and a Refresh Token, the Data Recipient sends a Token Request to the Token Endpoint.</p>
 
@@ -2418,7 +2337,7 @@ Host: www.holder.com.au
 </thead><tbody>
 <tr>
 <td>Hosted By</td>
-<td>Data Holder</td>
+<td>Data Holder &amp; Data Recipient</td>
 </tr>
 <tr>
 <td>Transport Security</td>
@@ -2434,64 +2353,9 @@ Host: www.holder.com.au
 </tr>
 </tbody></table>
 
-<p>The requirements for the UserInfo Endpoint are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint">section 3.3.3</a> of <strong>[OIDC]</strong>.</p>
+<p>The requirements for the UserInfo Endpoint are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfo">section 5.3</a> of <strong>[OIDC]</strong>.</p>
 
 <p>Data Holders MUST support a UserInfo Endpoint.</p>
-<h3 id='jwks-endpoint'>JWKS Endpoint</h3>
-<blockquote>
-<p>Non-Normative Example</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "keys": [
-    {
-      "kty":"EC",
-      "crv":"P-256",
-      "x":"MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
-      "y":"4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
-      "use":"enc",
-      "kid":"1"
-    }
-  ]
-}
-</code></pre>
-<aside class="warning">
-The implementation of the JWKS Endpoint is directly impacted by the emerging requirements of the Registry and thus subject to change.
-</aside>
-
-<aside class="warning">
-Private keys MUST NOT be published at this endpoint.
-</aside>
-
-<table><thead>
-<tr>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Hosted By</td>
-<td>Registry</td>
-</tr>
-<tr>
-<td>Transport Security</td>
-<td>TLS</td>
-</tr>
-<tr>
-<td>Client Authentication Required</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Bearer Token Required</td>
-<td>No</td>
-</tr>
-</tbody></table>
-
-<p>The JWKS Endpoint returns a <strong>[JSON]</strong> document containing a JSON Web Key Set described in <a href="https://tools.ietf.org/html/rfc7517#section-5">section 5</a> of <strong>[JWK]</strong>.  The JWK format is described in <a href="https://tools.ietf.org/html/rfc7517#section-4">section 4</a> of <strong>[JWK]</strong>.  In addition to the mandatory fields specified in <strong>[JWK]</strong>, each JWK MUST include, at a minimum, the following fields:</p>
-
-<ul>
-<li><code>kid</code>: This is used to match a specific key within a JWKS and thus must be unique within the set.</li>
-<li><code>use</code>: This is used to identify the intended use of the public key.  Supported values are <code>sig</code> and <code>enc</code>.</li>
-</ul>
 <h3 id='introspection-endpoint'>Introspection Endpoint</h3>
 <table><thead>
 <tr>
@@ -2555,138 +2419,47 @@ Private keys MUST NOT be published at this endpoint.
 </tr>
 </tbody></table>
 
-<p>Data Holders MUST implement a Token Revocation Endpoint as described in <a href="https://tools.ietf.org/html/rfc7009#section-2">section 2</a> of <strong>[RFC7009]</strong>. The Revocation Endpoint serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required. Notifying the Data Holder authorisation server that the token is no longer needed allows the server to clean up data associated with that token and the underlying authorization grant.</p>
+<p>Data Holders and Data Recipients MUST implement a Token Revocation Endpoint as described in <a href="https://tools.ietf.org/html/rfc7009#section-2">section 2</a> of <strong>[RFC7009]</strong>.</p>
+<h4 id='requirements-for-data-holder-implementations'>Requirements for Data Holder implementations</h4>
+<p>The Revocation Endpoint serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required to allow for token clean up.  It also provides a mechanism for a Data Recipient to notify the Data Holder of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules.  This revocation will have been actioned by the Customer via the Data Recipient’s consent dashboard as described in the ACCC CDR Rules.</p>
 
 <p>Revocation of Refresh Tokens and Access Tokens MUST be supported.</p>
-<h3 id='client-registration-endpoint'>Client Registration Endpoint</h3>
-<blockquote>
-<p>Non-Normative Example</p>
-</blockquote>
-<pre class="highlight plaintext"><code>## Request
 
-POST /clients HTTP/1.1
-Content-Type: application/jwt
-Accept: application/json
-Host: www.holder.com.au
+<p>If consent is withdrawn by a Customer in writing or by using the Data Holder’s dashboard the Data Holder MUST use the Data Recipient’s implementation of the revocation endpoint with the current Refresh Token to notify the Data Recipient.</p>
+<h4 id='requirements-for-data-recipient-implementations'>Requirements for Data Recipient implementations</h4>
+<p>The Revocation Endpoint, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.</p>
 
-eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMzQ1In0.ey ...
+<p>Revocation of Access Tokens MUST be not be supported.</p>
 
-## Decoded request JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "12345"
-}
-{
-  "iss": "https://www.recipient.com.au",
-  "iat": 1516239022,
-  "exp": 1516239322,
-  "aud": "https://www.holder.com.au",
-  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31",
-  "redirect_uris": ["https://www.recipient.com.au/coolstuff"],
-  "token_endpoint_auth_method": "private_key_jwt",
-  "grant_types": ["authorization_code","client_credentials"],
-  "response_types": "code",
-  "software_statement": "encodedsignedjwt",
-  "id_token_signed_response_alg":"PS256",
-  "request_object_signing_alg":"PS256"
-}
+<p>Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation</p>
 
-## Response
+<p>If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST use the Data Holder’s implementation of the revocation endpoint with the current Refresh Token to notify the Data Holder.</p>
+<h2 id='reauthorisation-mechanism'>Reauthorisation mechanism</h2>
+<p>When an authorisation has expired due to the expiration of the time requested using the <code>sharing_duration</code> claim in the request object then authorisation needs to be re-established using the full authorisation process.</p>
 
-HTTP/1.1 201 OK
-Content-Type: application/json
-{
-  "client_id": "12345",
-  "client_name": "Awesome Recipient Software",
-  "redirect_uris": ["https://www.recipient.com.au/coolstuff"],
-  "token_endpoint_auth_method": "private_key_jwt",
-  "grant_types": ["authorization_code","client_credentials"],
-  "response_types": "code",
-  "id_token_signed_response_alg":"PS256",
-  "request_object_signing_alg":"PS256"
-}
-</code></pre>
 <aside class="warning">
-Dynamic Client Registration functionality is directly impacted by the emerging requirements of the Registry and thus subject to change.
+NOTE: The specification of a simplified flow for reauthorisation is intended and consultation has begin on this topic.  Currently the Data Standards Body believes that more consultation on this topic is required to ensure the standards represent the best position for the regime.  Once a single approach is decided upon the text for this section will be replaced with the new position.
+<br/><br/>
+To simplify further consultation the following two options have been identified as the focus for further feedback.  The Data Standards Body does not have a specific recommendation or preference regarding these two options.
+<br/><br/>
+**Option 1: Client Initiated Backchannel Authentication**<br/>
+FAPI defines a protocol for an asynchronous and de-coupled mechanism for a Data Recipient to request authentication from a Data Holder known as Client Initiated Backchannel Authentication (CIBA).  The specification for CIBA can be found at:<br/>
+<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default</a>
+<br/><br/>
+This mechanism could be used to initiate a reauthorisation of an existing consent that has been established for an extended duration.
+<br/><br/>
+Previous consultation elicited feedback that this mechanism is quite complex and the implementation costs for Data Recipients and Data Holders are unwarranted for the relatively simple use case of reauthorisation.  Alternate feedback supported this option due to the fact that it is an established standard.
+<br/><br/>
+**Option 2: CDR Specific Mechanism**<br/>
+An alternative option is to define a CDR specific mechanism for reauthorisation.  The specifics of such a mechanism are to be determined but, as an example, it could consist of the following:<br/>
+<ul>
+  <li>an end point to be implemented by Data Holders that would be called by Data Recipients to initiate reauthorisation</li>
+  <li>determination that reauthorisation has occurred would be obtained by a Data Recipient by requesting an id_token with the sharing_expires_at claim</li>
+  <li>specifics of how the Data Recipient and Data Holder interact with the Customer to obtain consent for reauthorisation would be defined by the CDR CX Guidelines</li>
+</ul>
+
+This mechanism would be specific to the CDR regime and would not be supported by an external standard.  Implementation of this mechanism would, however, be relatively simple.
 </aside>
-
-<table><thead>
-<tr>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Hosted By</td>
-<td>Data Holder</td>
-</tr>
-<tr>
-<td>Transport Security</td>
-<td>MTLS</td>
-</tr>
-<tr>
-<td>Client Authentication Required</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Bearer Token Required</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h4 id='request'>Request</h4>
-<p>To register as a new Client at a Data Holder&#39;s Authorisation Server, a Data Recipient MUST <code>POST</code> its Client metadata to the Data Holder&#39;s Registration Endpoint in the form of an (encoded) signed <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32">JWT</a> <strong>[JWT]</strong>.  This process is specified in <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Registration</a> <strong>[OIDC-CR]</strong>. The registering <strong>[JWT]</strong> is signed by the private key of the Client and MUST include a <a href="https://tools.ietf.org/html/rfc7591#page-14">software statement</a>.  The software statement is an encoded <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32">JWT</a> <strong>[JWT]</strong> signed by the CDR Certificate Authority private key and thus supports non-repudiation.  The content of and mechanism for retrieving and generating a software statement is beyond the scope of this profile.</p>
-
-<p>The registering <strong>[JWT]</strong> MUST include, at a minimum, the following fields:</p>
-
-<ul>
-<li><code>iss</code>: The Data Recipient identifier specified at the Registry.</li>
-<li><code>iat</code>: A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
-<li><code>exp</code>: A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
-<li><code>aud</code>: The Data Holder identifier specified at the Registry.</li>
-<li><code>jti</code>: A unique identifier generated by the Data Recipient.</li>
-<li><code>redirect_uris</code>: An Array of Redirection URI values.</li>
-<li><code>software_statement</code>: This is an encoded JWT which includes several claims that describe the Data Recipient application and the Data Recipient organisation.</li>
-<li><code>id_token_signed_response_alg</code>: Token Endpoint preferred signing algorithm.</li>
-<li><code>request_object_signing_alg</code>:  Request Object signing algorithm.</li>
-<li><code>token_endpoint_auth_method</code>: The chosen Client authentication mechanism.</li>
-</ul>
-
-<p>If the Data Holder supports <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">FAPI-CIBA</a> <strong>[FAPI-CIBA]</strong> and the Client wishes to utilise this feature, the registration MUST include the following fields:</p>
-
-<ul>
-<li><code>backchannel_token_delivery_mode</code>:  This MUST be set to a value of <code>ping</code> or <code>poll</code>.  <code>push</code> mode SHALL NOT be supported.</li>
-<li><code>backchannel_authentication_request_signing_alg</code>: MUST be set to <code>ES256</code> or <code>PS256</code>.</li>
-</ul>
-
-<p>If the Client supports a delivery mode of <code>ping</code>, the registration MUST include the following fields:</p>
-
-<ul>
-<li><code>backchannel_client_notification_endpoint</code>: This is the endpoint to which the OP will post a notification after a successful or failed end-user authentication.</li>
-</ul>
-
-<p>This request MUST be made with MTLS as specified in <a href="#mutual-tls">section 11.2</a>.</p>
-
-<p>Data Holders MUST ensure that the <code>CN</code> (Common Name) in the Client certificate <code>subject</code> field matches the <code>software_id</code> claim present in the software statement.
-Data Holders MUST verify that the embedded software statement has been signed by the CDR Certificate Authority.</p>
-<h4 id='response'>Response</h4>
-<p>The Data Holder MUST respond in accordance with <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Registration</a> <strong>[OIDC-CR]</strong> sections 3.2 and 3.3.</p>
-
-<p><a id="consent"></a></p>
-<h2 id='consent'>Consent</h2>
-<aside class="warning">
-How querying, communication, and revocation of consent will be supported technically are a current key area of focus. An approach to consent will be published in January 2019, for the purposes of delivering version 1 of the standards.
-</aside>
-
-<p>Prior to initiating an authentication request to a Data Holder&#39;s Authorisation Server, a Data Recipient MUST have captured indicative Consumer Consent and passed this to the Data Holder.  A Consent occurrence is assigned a unique <code>cdr_consent_id</code> and is referenced by the Data Holder as part of an authorisation process with a Consumer.  This process binds the Consent to the authorisation.  In order to support this functionality, a Data Holder MUST implement and host an API to support the creation of a Consent, the querying of a Consent, and the deletion of a Consent. In this instance the Data Recipient is to be considered the Resource Owner of the Consent occurrence.</p>
-
-<p>The specifics of the Consent API and processing of Consent are beyond the scope of this document.</p>
-
-<p>A Data Holder Token Endpoint MUST:</p>
-
-<ul>
-<li>Support the <code>grant type</code> of <code>client_credentials</code> strictly for the purpose of passing an Access Token to a Data Recipient which can be then used to invoke the Consent API.</li>
-</ul>
 <h2 id='normative-references'>Normative References</h2>
 <table><thead>
 <tr>
@@ -2694,14 +2467,6 @@ How querying, communication, and revocation of consent will be supported technic
 <th><strong>Description</strong></th>
 </tr>
 </thead><tbody>
-<tr>
-<td><a id="CIBA"></a><strong>[CIBA]</strong></td>
-<td>OpenID Connect Client Initiated Backchannel Authentication Flow - Core 1.0 draft-01: <a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html</a></td>
-</tr>
-<tr>
-<td><a id="FAPI-CIBA"></a><strong>[FAPI-CIBA]</strong></td>
-<td>Financial Services – Financial API: Client Initiated Backchannel Authentication Profile 1.0: <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default</a></td>
-</tr>
 <tr>
 <td><a id="FAPI-R"></a><strong>[FAPI-R]</strong></td>
 <td>Financial-grade API - Part 1: Read Only API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-1.html">https://openid.net/specs/openid-financial-api-part-1.html</a></td>
