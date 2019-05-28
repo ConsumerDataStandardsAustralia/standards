@@ -11,9 +11,15 @@
 </thead><tbody>
 <tr>
 <td>29/5/2019</td>
-<td>0.9.2</td>
+<td>0.9.3</td>
 <td>Updates for DP19 Discoverabilityu</td>
 <td>Swagger updates and rebuild of docs</td>
+</tr>
+<tr>
+<td>28/5/2019</td>
+<td>0.9.2</td>
+<td>Admin End Points</td>
+<td>Added separate swagger/yaml as well as documentation for admin end points</td>
 </tr>
 <tr>
 <td>28/5/2019</td>
