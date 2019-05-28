@@ -2,10 +2,10 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.9.1
+  version: 0.9.2
   title: Consumer Data Standards
   license:
-    name: MIT Licence
+    name: MIT License
     url: https://opensource.org/licenses/MIT
 host: data.provider.com.au
 basePath: /cds-au/v1
@@ -998,6 +998,36 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomerDetail'
       x-scopes:
       - common_detailed_customer
+      x-version: "1"
+  /discovery/status:
+    get:
+      tags:
+      - Common APIs
+      - Discovery
+      summary: Get Status
+      description: Obtain a health check status for the implementation
+      operationId: getStatus
+      parameters: []
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseDiscoveryStatus'
+      x-version: "1"
+  /discovery/outages:
+    get:
+      tags:
+      - Common APIs
+      - Discovery
+      summary: Get Outages
+      description: Obtain a list of scheduled outages for the implementation
+      operationId: getOutages
+      parameters: []
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseDiscoveryOutages'
       x-version: "1"
 definitions:
   RequestAccountIds:
@@ -2816,6 +2846,52 @@ definitions:
         type: string
         description: Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer
     description: Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased
+  ResponseDiscoveryStatus:
+    type: object
+    required:
+    - data
+    - links
+    - meta
+    properties:
+      data:
+        $ref: '#/definitions/ResponseDiscoveryStatus_data'
+      links:
+        $ref: '#/definitions/Links'
+      meta:
+        $ref: '#/definitions/Meta'
+  ResponseDiscoveryOutages:
+    type: object
+    required:
+    - data
+    - links
+    - meta
+    properties:
+      data:
+        $ref: '#/definitions/ResponseDiscoveryOutages_data'
+      links:
+        $ref: '#/definitions/Links'
+      meta:
+        $ref: '#/definitions/Meta'
+  DiscoveryOutage:
+    type: object
+    required:
+    - duration
+    - explanation
+    - outageTime
+    properties:
+      outageTime:
+        type: string
+        description: Date and time that the outage is scheduled to begin
+        x-cds-type: DateTimeString
+      duration:
+        type: number
+        description: Planned duration of the outage in minutes
+      isPartial:
+        type: boolean
+        description: Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage
+      explanation:
+        type: string
+        description: Provides an explanation of the current outage that can be displayed to an end customer
   ResponseCommonCustomer:
     type: object
     required:
@@ -3477,6 +3553,43 @@ definitions:
         description: The list of scheduled payments to return
         items:
           $ref: '#/definitions/BankingScheduledPayment'
+  ResponseDiscoveryStatus_data:
+    required:
+    - status
+    - updateTime
+    properties:
+      status:
+        type: string
+        description: Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)
+        enum:
+        - OK
+        - PARTIAL_FAILURE
+        - UNAVAILABLE
+        - SCHEDULED_OUTAGE
+      explanation:
+        type: string
+        description: Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK
+      detectionTime:
+        type: string
+        description: The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE
+        x-cds-type: DateTimeString
+      expectedResolutionTime:
+        type: string
+        description: The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.
+        x-cds-type: DateTimeString
+      updateTime:
+        type: string
+        description: The date and time that this status was last updated by the Data Holder.
+        x-cds-type: DateTimeString
+  ResponseDiscoveryOutages_data:
+    required:
+    - outages
+    properties:
+      outages:
+        type: array
+        description: List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled
+        items:
+          $ref: '#/definitions/DiscoveryOutage'
   ResponseCommonCustomer_data:
     required:
     - customerUType

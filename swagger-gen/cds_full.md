@@ -2852,6 +2852,139 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">common_detailed_customer</a>
 </aside>
 
+## Get Status
+
+<a id="opIdgetStatus"></a>
+
+> Code samples
+
+```http
+GET https://data.provider.com.au/cds-au/v1/discovery/status HTTP/1.1
+Host: data.provider.com.au
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json'
+
+};
+
+$.ajax({
+  url: 'https://data.provider.com.au/cds-au/v1/discovery/status',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /discovery/status`
+
+Obtain a health check status for the implementation
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "status": "OK",
+    "explanation": "string",
+    "detectionTime": "string",
+    "expectedResolutionTime": "string",
+    "updateTime": "string"
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+```
+
+<h3 id="get-status-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryStatus](#schemaresponsediscoverystatus)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## Get Outages
+
+<a id="opIdgetOutages"></a>
+
+> Code samples
+
+```http
+GET https://data.provider.com.au/cds-au/v1/discovery/outages HTTP/1.1
+Host: data.provider.com.au
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json'
+
+};
+
+$.ajax({
+  url: 'https://data.provider.com.au/cds-au/v1/discovery/outages',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /discovery/outages`
+
+Obtain a list of scheduled outages for the implementation
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "outages": [
+      {
+        "outageTime": "string",
+        "duration": 0,
+        "isPartial": true,
+        "explanation": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+```
+
+<h3 id="get-outages-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutages](#schemaresponsediscoveryoutages)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 # Schemas
 
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
@@ -6463,6 +6596,105 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
+
+<h2 id="tocSresponsediscoverystatus">ResponseDiscoveryStatus</h2>
+
+<a id="schemaresponsediscoverystatus"></a>
+
+```json
+{
+  "data": {
+    "status": "OK",
+    "explanation": "string",
+    "detectionTime": "string",
+    "expectedResolutionTime": "string",
+    "updateTime": "string"
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|mandatory|none|none|
+|» status|string|mandatory|none|Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)|
+|» explanation|string|conditional|none|Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK|
+|» detectionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE|
+|» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
+|» updateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this status was last updated by the Data Holder.|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|status|OK|
+|status|PARTIAL_FAILURE|
+|status|UNAVAILABLE|
+|status|SCHEDULED_OUTAGE|
+
+<h2 id="tocSresponsediscoveryoutages">ResponseDiscoveryOutages</h2>
+
+<a id="schemaresponsediscoveryoutages"></a>
+
+```json
+{
+  "data": {
+    "outages": [
+      {
+        "outageTime": "string",
+        "duration": 0,
+        "isPartial": true,
+        "explanation": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|mandatory|none|none|
+|» outages|[[DiscoveryOutage](#schemadiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
+
+<h2 id="tocSdiscoveryoutage">DiscoveryOutage</h2>
+
+<a id="schemadiscoveryoutage"></a>
+
+```json
+{
+  "outageTime": "string",
+  "duration": 0,
+  "isPartial": true,
+  "explanation": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|outageTime|[DateTimeString](#common-field-types)|mandatory|none|Date and time that the outage is scheduled to begin|
+|duration|number|mandatory|none|Planned duration of the outage in minutes|
+|isPartial|boolean|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+|explanation|string|mandatory|none|Provides an explanation of the current outage that can be displayed to an end customer|
 
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 
