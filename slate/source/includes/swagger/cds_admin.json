@@ -23,14 +23,14 @@
   "paths": {
   	"/admin/registry/metadata": {
   	  "post": {
-    		"summary": "Metadata Update",
-    		"description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
-    		"operationId": "metadataUpdate",
+		"summary": "Metadata Update",
+		"description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
+		"operationId": "metadataUpdate",
         "tags": [
           "Admin APIs",
           "Registry"
         ],
-    		"parameters": [
+		"parameters": [
         {
     			"in": "body",
           "name": "action",
@@ -41,23 +41,23 @@
     		}
         ],
         "responses": {
-    		  "200": {
-            "description": "Success"
-    		  },
-    		  "x-version": "1"
-    		}
+		  "200": {
+			  "description": "Success"
+		  },
+		  "x-version": "1"
+		}
   	  }
     },
     "/admin/metrics": {
   	  "get": {
-    		"summary": "Get Metrics",
-    		"description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
-    		"operationId": "getMetrics",
-    		"tags": [
-    		  "Admin APIs",
+		"summary": "Get Metrics",
+		"description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
+		"operationId": "getMetrics",
+		"tags": [
+		  "Admin APIs",
     		  "Metrics"
     		],
-    		"parameters": [
+		"parameters": [
         {
           "name": "period",
           "in": "query",
@@ -70,17 +70,17 @@
             "ALL"
           ],
           "default": "ALL"
-    		}
-    		],
-    		"responses": {
-    		  "200": {
-            "description": "Success",
+    	}
+    	],
+    	"responses": {
+    	  "200": {
+			"description": "Success",
             "schema": {
               "$ref": "#/definitions/ResponseMetricsList"
             }
-    		  },
-    		  "x-version": "1"
-    		}
+		  },
+		  "x-version": "1"
+		}
   	  }
   	}
   },
