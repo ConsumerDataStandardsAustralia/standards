@@ -443,20 +443,14 @@ Only the following cipher suites SHALL be permitted in accordance with [section 
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
     "id_token": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "acr": {
         "essential": true,
         "values": ["urn:cds.au:cdr:3"]
       }
     },
     "userinfo": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     }
@@ -517,12 +511,8 @@ Content-Type: application/json
   "introspection_endpoint": "https://www.dh.com.au/introspect",
   "revocation_endpoint": "https://www.dh.com.au/revoke",
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
-  "jwks_uri": "https://www.dh.com.au/jwks",
   "registration_endpoint": "https://www.dh.com.au/register",
-  "backchannel_authentication_endpoint": "https://www.dh.com.au/bc-authorise",
-  "backchannel_token_delivery_modes_supported": ["poll", "ping"],
-  "backchannel_authentication_request_signing_alg_values_supported": ["ES256", "PS256"],
-  "scopes_supported": ["openid", "profile"],
+  "scopes_supported": ["openid", "profile", "..."],
   "response_types_supported": ["code id_token"],
   "response_modes_supported": ["fragment"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
@@ -533,7 +523,7 @@ Content-Type: application/json
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "mutual_tls_sender_constrained_access_tokens": "true",
-  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub"]
+  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 ```
 
@@ -600,18 +590,12 @@ Host: www.holder.com.au
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
     "userinfo": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     },
     "id_token": {
-       "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "acr": {
         "values": ["urn:cds.au:cdr:3"]
       }
