@@ -13,16 +13,29 @@ SWAGGER_CODEGEN_OUTPUT=cds_swagger_gen
 CDS_SLATE_SWAGGER_DIR=../slate/source/includes/swagger
 
 #Input Swagger file
-INPUT_SWAGGER=cds_full.json
+INPUT_SWAGGER="$1"
+
+echo "*** Checking if Swagger is valid: " $1
+CHECK=$(curl -X "POST" "http://online.swagger.io/validator/debug" --silent -d @$1)
+if [[ $CHECK != "{}" ]]; then
+echo -e "\n*** Sorry this is an invalid Swagger:\n$CHECK\n"
+exit 1
+fi
 
 # generate yamlS
 echo "*** Generating swagger-yaml"
 java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l swagger-yaml -o $SWAGGER_CODEGEN_OUTPUT
 
+
+FILENAME=`basename "${1}" .json`
+OUTFILE="${FILENAME}.yaml"
+# tell the user what is happening
+echo "Changing Extension \"$FILENAME\" --> \"$OUTFILE\" ."
+
 # move it to slate dir
 echo "*** Moving to slate dir " $CDS_SLATE_SWAGGER_DIR
-mv $SWAGGER_CODEGEN_OUTPUT/swagger.yaml $CDS_SLATE_SWAGGER_DIR/cds_full.yaml
-ls -la $CDS_SLATE_SWAGGER_DIR/cds_full.yaml
+mv $SWAGGER_CODEGEN_OUTPUT/swagger.yaml $CDS_SLATE_SWAGGER_DIR/$OUTFILE
+ls -la $CDS_SLATE_SWAGGER_DIR/$OUTFILE
 
 # cleanup output
 echo "*** Removing temporary swagger gen output dir" $SWAGGER_CODEGEN_OUTPUT

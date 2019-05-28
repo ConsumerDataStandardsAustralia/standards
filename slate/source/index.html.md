@@ -21,6 +21,7 @@ includes:
   - cds_full
   - banking/product_categories
   - banking/product_components
+  - admin  
   - scopes
   - known-issues
   - changelog
