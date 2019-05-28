@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.8.2
+  version: 0.9.0
   title: Consumer Data Standards
   license:
     name: MIT Licence
@@ -625,6 +625,148 @@ paths:
           description: Success
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
+        422:
+          description: The request was well formed but was unable to be processed due to business logic specific to the request
+          schema:
+            $ref: '#/definitions/ResponseErrorList'
+      x-scopes:
+      - bank_regular_payments
+      x-version: "1"
+  /banking/accounts/{accountId}/payments/scheduled:
+    get:
+      tags:
+      - Banking APIs
+      - Scheduled Payments
+      summary: Get Scheduled Payments for Account
+      description: Obtain scheduled, outgoing payments for a specific account
+      operationId: listScheduledPayments
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment
+        required: true
+        type: string
+        x-cds-type: ASCIIString
+      - name: page
+        in: query
+        description: Page of results to request (standard pagination)
+        required: false
+        type: integer
+        default: 1
+        x-cds-type: PositiveInteger
+      - name: page-size
+        in: query
+        description: Page size to request. Default is 25 (standard pagination)
+        required: false
+        type: integer
+        default: 25
+        x-cds-type: PositiveInteger
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
+      x-scopes:
+      - bank_regular_payments
+      x-version: "1"
+  /banking/payments/scheduled:
+    get:
+      tags:
+      - Banking APIs
+      - Scheduled Payments
+      summary: Get Scheduled Payments Bulk
+      description: Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments
+      operationId: listScheduledPaymentsBulk
+      parameters:
+      - name: product-category
+        in: query
+        description: Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.
+        required: false
+        type: string
+        enum:
+        - TRANS_AND_SAVINGS_ACCOUNTS
+        - TERM_DEPOSITS
+        - TRAVEL_CARDS
+        - REGULATED_TRUST_ACCOUNTS
+        - RESIDENTIAL_MORTGAGES
+        - CRED_AND_CHRG_CARDS
+        - PERS_LOANS
+        - MARGIN_LOANS
+        - LEASES
+        - TRADE_FINANCE
+        - OVERDRAFTS
+        - BUSINESS_LOANS
+      - name: open-status
+        in: query
+        description: Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed
+        required: false
+        type: string
+        default: ALL
+        enum:
+        - OPEN
+        - CLOSED
+        - ALL
+      - name: is-owned
+        in: query
+        description: Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts
+        required: false
+        type: boolean
+        x-cds-type: Boolean
+      - name: page
+        in: query
+        description: Page of results to request (standard pagination)
+        required: false
+        type: integer
+        default: 1
+        x-cds-type: PositiveInteger
+      - name: page-size
+        in: query
+        description: Page size to request. Default is 25 (standard pagination)
+        required: false
+        type: integer
+        default: 25
+        x-cds-type: PositiveInteger
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
+      x-scopes:
+      - bank_regular_payments
+      x-version: "1"
+    post:
+      tags:
+      - Banking APIs
+      - Scheduled Payments
+      summary: Get Scheduled Payments For Specific Accounts
+      description: Obtain scheduled payments for a specified list of accounts
+      operationId: listScheduledPaymentsSpecificAccounts
+      parameters:
+      - in: body
+        name: accountIds
+        description: Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAccountIds'
+      - name: page
+        in: query
+        description: Page of results to request (standard pagination)
+        required: false
+        type: integer
+        default: 1
+        x-cds-type: PositiveInteger
+      - name: page-size
+        in: query
+        description: Page size to request. Default is 25 (standard pagination)
+        required: false
+        type: integer
+        default: 25
+        x-cds-type: PositiveInteger
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
         422:
           description: The request was well formed but was unable to be processed due to business logic specific to the request
           schema:
@@ -2442,6 +2584,239 @@ definitions:
       arbn:
         type: string
         description: Australian Registered Body Number for the authorised entity
+  ResponseBankingScheduledPaymentsList:
+    type: object
+    required:
+    - data
+    - links
+    - meta
+    properties:
+      data:
+        $ref: '#/definitions/ResponseBankingScheduledPaymentsList_data'
+      links:
+        $ref: '#/definitions/LinksPaginated'
+      meta:
+        $ref: '#/definitions/MetaPaginated'
+  BankingScheduledPayment:
+    type: object
+    required:
+    - from
+    - payeeReference
+    - payerReference
+    - paymentSet
+    - recurrence
+    - scheduledPaymentId
+    - status
+    properties:
+      scheduledPaymentId:
+        type: string
+        description: A unique ID of the scheduled payment adhering to the standards for ID permanence
+        x-cds-type: ASCIIString
+      nickname:
+        type: string
+        description: The short display name of the payee as provided by the customer
+      payerReference:
+        type: string
+        description: The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided
+      payeeReference:
+        type: string
+        description: The reference for the transaction that will be provided by the originating institution. Empty string if no data provided
+      status:
+        type: string
+        description: Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.
+        enum:
+        - ACTIVE
+        - SKIP
+        - INACTIVE
+      from:
+        $ref: '#/definitions/BankingScheduledPaymentFrom'
+      paymentSet:
+        $ref: '#/definitions/BankingScheduledPaymentSet'
+      recurrence:
+        description: Object containing the detail of the schedule for the payment
+        $ref: '#/definitions/BankingScheduledPaymentRecurrence'
+  BankingScheduledPaymentSet:
+    type: object
+    required:
+    - to
+    properties:
+      to:
+        description: Object containing details of the destination of the payment. Used to specify a variety of
+        $ref: '#/definitions/BankingScheduledPaymentTo'
+      isAmountCalculated:
+        type: boolean
+        description: Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed
+        x-cds-type: Boolean
+      amount:
+        type: string
+        description: Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed
+        x-cds-type: AmountString
+      currency:
+        type: string
+        description: The currency for the payment. AUD assumed if not present
+        x-cds-type: CurrencyString
+    description: The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry
+    x-conditional:
+    - amount
+  BankingScheduledPaymentTo:
+    type: object
+    required:
+    - toUType
+    properties:
+      toUType:
+        type: string
+        description: The type of object provided that specifies the destination of the funds for the payment.
+        enum:
+        - accountId
+        - payeeId
+        - domestic
+        - biller
+        - international
+      accountId:
+        type: string
+        description: Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent
+        x-cds-type: ASCIIString
+      payeeId:
+        type: string
+        description: Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead
+        x-cds-type: ASCIIString
+      domestic:
+        $ref: '#/definitions/BankingDomesticPayee'
+      biller:
+        $ref: '#/definitions/BankingBillerPayee'
+      international:
+        $ref: '#/definitions/BankingInternationalPayee'
+    description: Object containing details of the destination of the payment. Used to specify a variety of
+    x-conditional:
+    - accountId
+    - payeeId
+    - domestic
+    - biller
+    - international
+  BankingScheduledPaymentFrom:
+    type: object
+    required:
+    - accountId
+    properties:
+      accountId:
+        type: string
+        description: ID of the account that is the source of funds for the payment
+        x-cds-type: ASCIIString
+    description: Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object
+  BankingScheduledPaymentRecurrence:
+    type: object
+    required:
+    - recurrenceUType
+    properties:
+      nextPaymentDate:
+        type: string
+        description: The date of the next payment under the recurrence schedule
+        x-cds-type: DateString
+      recurrenceUType:
+        type: string
+        description: The type of recurrence used to define the schedule
+        enum:
+        - onceOff
+        - intervalSchedule
+        - lastWeekDay
+        - eventBased
+      onceOff:
+        $ref: '#/definitions/BankingScheduledPaymentRecurrenceOnceOff'
+      intervalSchedule:
+        $ref: '#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule'
+      lastWeekDay:
+        $ref: '#/definitions/BankingScheduledPaymentRecurrenceLastWeekday'
+      eventBased:
+        $ref: '#/definitions/BankingScheduledPaymentRecurrenceEventBased'
+    description: Object containing the detail of the schedule for the payment
+    x-conditional:
+    - onceOff
+    - intervalSchedule
+    - lastWeekDay
+    - eventBased
+  BankingScheduledPaymentRecurrenceOnceOff:
+    type: object
+    required:
+    - paymentDate
+    properties:
+      paymentDate:
+        type: string
+        description: The scheduled date for the once off payment
+        x-cds-type: DateString
+    description: Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff
+  BankingScheduledPaymentRecurrenceIntervalSchedule:
+    type: object
+    required:
+    - intervals
+    properties:
+      finalPaymentDate:
+        type: string
+        description: The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
+        x-cds-type: DateString
+      paymentsRemaining:
+        type: integer
+        description: Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely
+        x-cds-type: PositiveInteger
+      nonBusinessDayTreatment:
+        type: string
+        description: Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON
+        default: ""
+        enum:
+        - AFTER
+        - BEFORE
+        - ON
+        - ONLY
+      intervals:
+        type: array
+        description: An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry
+        items:
+          $ref: '#/definitions/BankingScheduledPaymentInterval'
+    description: Indicates that the schedule of payments is defined by a series of intervals. Mandatory if recurrenceUType is set to intervalSchedule
+  BankingScheduledPaymentInterval:
+    type: object
+    required:
+    - interval
+    properties:
+      interval:
+        type: string
+        description: An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate
+        x-cds-type: ExternalRef
+      dayInInterval:
+        type: string
+        description: Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.
+        x-cds-type: ExternalRef
+  BankingScheduledPaymentRecurrenceLastWeekday:
+    type: object
+    required:
+    - interval
+    - lastWeekDay
+    properties:
+      finalPaymentDate:
+        type: string
+        description: The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
+        x-cds-type: DateString
+      paymentsRemaining:
+        type: integer
+        description: Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
+        x-cds-type: PositiveInteger
+      interval:
+        type: string
+        description: The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate
+        x-cds-type: ExternalRef
+      lastWeekDay:
+        type: integer
+        description: The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.
+        x-cds-type: PositiveInteger
+    description: Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay
+  BankingScheduledPaymentRecurrenceEventBased:
+    type: object
+    required:
+    - description
+    properties:
+      description:
+        type: string
+        description: Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer
+    description: Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased
   ResponseCommonCustomer:
     type: object
     required:
@@ -3094,6 +3469,15 @@ definitions:
         description: The list of authorisations returned
         items:
           $ref: '#/definitions/BankingDirectDebit'
+  ResponseBankingScheduledPaymentsList_data:
+    required:
+    - scheduledPayments
+    properties:
+      scheduledPayments:
+        type: array
+        description: The list of scheduled payments to return
+        items:
+          $ref: '#/definitions/BankingScheduledPayment'
   ResponseCommonCustomer_data:
     required:
     - customerUType
