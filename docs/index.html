@@ -670,7 +670,7 @@
 
 <p>Note that security standards are only partially represented in these standards as they are under development by the Information Security Working Group.  More detail can found at the <a href="https://consumerdatastandardsaustralia.github.io/infosec">Information Security Profile</a> working draft.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.9.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.9.1</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -8573,9 +8573,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>maximumValue</td>
 <td>number</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
-<td>The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)</td>
+<td>The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier&#39;s range has no upper bound.</td>
 </tr>
 <tr>
 <td>rateApplicationMethod</td>
@@ -15882,6 +15882,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>28/5/2019</td>
+<td>0.9.1</td>
+<td>Modified BankingProductRateTier.maximumValue to optional</td>
+<td>Rebuild of docs</td>
+</tr>
 <tr>
 <td>28/5/2019</td>
 <td>0.9.0</td>
