@@ -1,4 +1,0 @@
-6672c6672
-< |» outages|[[DiscoveryOutage](#schemadiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
----
-> |» outages|[[DiscoveryOutage](#schemadiscoveryoutage)]|optional|none|none|
