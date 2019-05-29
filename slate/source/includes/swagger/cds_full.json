@@ -2938,7 +2938,7 @@
 	  "type": "object",
 	  "required": [
 		"data",
-		"inks"
+		"links"
 	  ],
 	  "properties": {
 		"data": {
