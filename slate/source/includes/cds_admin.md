@@ -1,6 +1,5 @@
 
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 
 ## Metadata Update
 
@@ -248,7 +247,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 This operation does not require authentication
 </aside>
 
-# Schemas
+## Admin Schemas
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
