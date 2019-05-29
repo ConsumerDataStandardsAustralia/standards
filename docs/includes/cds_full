@@ -997,18 +997,18 @@ Some general notes that apply to all end points that retrieve transactions:</p>
 <td>ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.</td>
 </tr>
 <tr>
-<td>start-time</td>
+<td>oldest-time</td>
 <td>query</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type</td>
+<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
-<td>end-time</td>
+<td>newest-time</td>
 <td>query</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type</td>
+<td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
 </tr>
 <tr>
 <td>min-amount</td>
@@ -5228,7 +5228,7 @@ This operation does not require authentication
 <tr>
 <td>amount</td>
 <td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>none</td>
 <td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
 </tr>

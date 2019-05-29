@@ -233,10 +233,10 @@
 			"x-cds-type": "ASCIIString"
 		  },
 		  {
-			"$ref": "#/parameters/ParamStartTime"
+			"$ref": "#/parameters/ParamTransactionOldestTime"
 		  },
 		  {
-			"$ref": "#/parameters/ParamEndTime"
+			"$ref": "#/parameters/ParamTransactionNewestTime"
 		  },
 		  {
 			"$ref": "#/parameters/ParamTransactionMinAmount"
@@ -987,22 +987,6 @@
 	  "x-cds-type": "PositiveInteger",
 	  "default": "25"
 	},
-	"ParamStartTime": {
-	  "name": "start-time",
-	  "in": "query",
-	  "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type",
-	  "required": false,
-	  "type": "string",
-	  "x-cds-type": "DateTimeString"
-	},
-	"ParamEndTime": {
-	  "name": "end-time",
-	  "in": "query",
-	  "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
-	  "required": false,
-	  "type": "string",
-	  "x-cds-type": "DateTimeString"
-	},
 	"ParamTransactionNewestTime": {
 	  "name": "newest-time",
 	  "in": "query",
@@ -1448,11 +1432,11 @@
 	  "type": "object",
 	  "required": [
 		"name",
-		"feeType",
-		"amount"
+		"feeType"
 	  ],
 	  "x-conditional": [
 		"additionalValue",
+    "amount",
 		"balanceRate",
 		"transactionRate",
 		"accruedRate"
