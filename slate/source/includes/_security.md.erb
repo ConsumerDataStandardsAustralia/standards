@@ -63,7 +63,7 @@ A Data Holder assumes the role of an **[OIDC]** [OpenID Provider](https://openid
 A Data Recipient (DR) is system entity that is authorised by a
 Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
 
-A Data Recipient MUST be accredited in order to participate in the CDR Federation.  Accreditation rules for Data Recipients are beyond the scope of this artifact.
+A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.
 
 A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
@@ -77,7 +77,7 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 
 - **Management of Identities and Access**: The Registry will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.
 - **Management of Certificates**: The Registry will facilitate the issuing, management and revocation of digital certificates.
-- **Discoverability and Search**: The Registry will expose APIs and GUIs (Web applications) in order to support metadata queries across Registry entities.
+- **Discoverability and Search**: The Registry will expose APIs and Web Interfaces in order to support metadata queries across Registry entities.
 
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
@@ -124,7 +124,7 @@ Data Holders MUST support the authentication of the CDR Register using the `priv
 
 Data Recipients MUST support the authentication of Data Holders using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
 
-While MTLS is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
+While **MTLS** is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
 
 ### private\_key\_jwt
 
@@ -393,12 +393,12 @@ All HTTP calls MUST be made using HTTPS incorporating TLS >= 1.2.
 <a id="mutual-tls"></a>
 ### Use of MTLS
 
-All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, MTLS as part of the TLS handshake:
+All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, **MTLS** as part of the TLS handshake:
 
 - The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.
 - The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.
 
-End points for transferring CDR Data that are classified as not requiring authentication do not require the use of MTLS.
+End points for transferring CDR Data that are classified as not requiring authentication do not require the use of **MTLS**.
 
 
 ### Holder of Key Mechanism
@@ -406,11 +406,11 @@ End points for transferring CDR Data that are classified as not requiring authen
 NOTE: As a clarification to questions raised during consultation this section asserts that resource requests must be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.
 </aside>
 
-MTLS MUST be supported as a Holder of Key (HoK) Mechanism.
+**MTLS** MUST be supported as a Holder of Key (HoK) Mechanism.
 
 OAUTB SHALL NOT be supported due to a lack industry support.
 
-MTLS HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess) of **[MTLS]**.
+**MTLS** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess) of **[MTLS]**.
 
 ### Ciphers
 Only the following cipher suites SHALL be permitted in accordance with [section 8.5](https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations) of **[FAPI-RW]**:
@@ -694,13 +694,13 @@ If consent is withdrawn by a Customer in writing or by using the Data Recipientâ
 When an authorisation has expired due to the expiration of the time requested using the `sharing_duration` claim in the request object then authorisation needs to be re-established using the full authorisation process.
 
 <aside class="warning">
-NOTE: The specification of a simplified flow for reauthorisation is intended and consultation has begin on this topic.  Currently the Data Standards Body believes that more consultation on this topic is required to ensure the standards represent the best position for the regime.  Once a single approach is decided upon the text for this section will be replaced with the new position.
+NOTE: The specification of a simplified flow for reauthorisation is intended and consultation has begun on this topic.  Currently the Data Standards Body believes that more consultation on this topic is required to ensure the standards represent the best position for the regime.  Once a single approach is decided upon the text for this section will be replaced with the new position.
 <br/><br/>
 To simplify further consultation the following two options have been identified as the focus for further feedback.  The Data Standards Body does not have a specific recommendation or preference regarding these two options.
 <br/><br/>
 **Option 1: Client Initiated Backchannel Authentication**<br/>
 FAPI defines a protocol for an asynchronous and de-coupled mechanism for a Data Recipient to request authentication from a Data Holder known as Client Initiated Backchannel Authentication (CIBA).  The specification for CIBA can be found at:<br/>
-<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default</a>
+[FAPI-CIBA](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**
 <br/><br/>
 This mechanism could be used to initiate a reauthorisation of an existing consent that has been established for an extended duration.
 <br/><br/>
