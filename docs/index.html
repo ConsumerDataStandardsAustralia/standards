@@ -1631,7 +1631,7 @@ Recipient, and issues an authorisation for that Data Recipient to access the con
 <p>A Data Recipient (DR) is system entity that is authorised by a
 Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.</p>
 
-<p>A Data Recipient MUST be accredited in order to participate in the CDR Federation.  Accreditation rules for Data Recipients are beyond the scope of this artifact.</p>
+<p>A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.</p>
 
 <p>A Data Recipient assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">Relying Party (Client)</a>.</p>
 <h3 id='registry'>Registry</h3>
@@ -1645,7 +1645,7 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <ul>
 <li><strong>Management of Identities and Access</strong>: The Registry will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.</li>
 <li><strong>Management of Certificates</strong>: The Registry will facilitate the issuing, management and revocation of digital certificates.</li>
-<li><strong>Discoverability and Search</strong>: The Registry will expose APIs and GUIs (Web applications) in order to support metadata queries across Registry entities.</li>
+<li><strong>Discoverability and Search</strong>: The Registry will expose APIs and Web Interfaces in order to support metadata queries across Registry entities.</li>
 </ul>
 <h2 id='authentication-flows'>Authentication Flows</h2>
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong>[OIDC]</strong> as constrained further by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.</p>
@@ -1691,7 +1691,7 @@ Previously, a decision to pursue Redirect With Known Channel had been made by th
 
 <p>Data Recipients MUST support the authentication of Data Holders using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
 
-<p>While MTLS is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
+<p>While <strong>[MTLS]</strong> is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
 <h3 id='private_key_jwt'>private_key_jwt</h3>
 <blockquote>
 <p>Non-Normative Example</p>
@@ -1963,24 +1963,24 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 
 <p><a id="mutual-tls"></a></p>
 <h3 id='use-of-mtls'>Use of MTLS</h3>
-<p>All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, MTLS as part of the TLS handshake:</p>
+<p>All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, <strong>[MTLS]</strong> as part of the TLS handshake:</p>
 
 <ul>
 <li>The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.</li>
 <li>The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.</li>
 </ul>
 
-<p>End points for transferring CDR Data that are classified as not requiring authentication do not require the use of MTLS.</p>
+<p>End points for transferring CDR Data that are classified as not requiring authentication do not require the use of <strong>[MTLS]</strong>.</p>
 <h3 id='holder-of-key-mechanism'>Holder of Key Mechanism</h3>
 <aside class="warning">
 NOTE: As a clarification to questions raised during consultation this section asserts that resource requests must be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.
 </aside>
 
-<p>MTLS MUST be supported as a Holder of Key (HoK) Mechanism.</p>
+<p><strong>[MTLS]</strong> MUST be supported as a Holder of Key (HoK) Mechanism.</p>
 
 <p>OAUTB SHALL NOT be supported due to a lack industry support.</p>
 
-<p>MTLS HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess">section 3</a> of <strong>[MTLS]</strong>.</p>
+<p><strong>[MTLS]</strong> HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess">section 3</a> of <strong>[MTLS]</strong>.</p>
 <h3 id='ciphers'>Ciphers</h3>
 <p>Only the following cipher suites SHALL be permitted in accordance with <a href="https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations">section 8.5</a> of <strong>[FAPI-RW]</strong>:</p>
 
@@ -2013,20 +2013,14 @@ NOTE: As a clarification to questions raised during consultation this section as
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
     "id_token": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "acr": {
         "essential": true,
         "values": ["urn:cds.au:cdr:3"]
       }
     },
     "userinfo": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     }
@@ -2083,12 +2077,8 @@ Content-Type: application/json
   "introspection_endpoint": "https://www.dh.com.au/introspect",
   "revocation_endpoint": "https://www.dh.com.au/revoke",
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
-  "jwks_uri": "https://www.dh.com.au/jwks",
   "registration_endpoint": "https://www.dh.com.au/register",
-  "backchannel_authentication_endpoint": "https://www.dh.com.au/bc-authorise",
-  "backchannel_token_delivery_modes_supported": ["poll", "ping"],
-  "backchannel_authentication_request_signing_alg_values_supported": ["ES256", "PS256"],
-  "scopes_supported": ["openid", "profile"],
+  "scopes_supported": ["openid", "profile", "..."],
   "response_types_supported": ["code id_token"],
   "response_modes_supported": ["fragment"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
@@ -2099,7 +2089,7 @@ Content-Type: application/json
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "mutual_tls_sender_constrained_access_tokens": "true",
-  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub"]
+  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 </code></pre>
 <table><thead>
@@ -2184,18 +2174,12 @@ Host: www.holder.com.au
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
     "userinfo": {
-      "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     },
     "id_token": {
-       "cdr_consent_id":  {
-        "value": "adceecd3-3437-4369-909e-1ac82abdc288",
-        "essential": true
-      },
+      "sharing_duration": "7776000",
       "acr": {
         "values": ["urn:cds.au:cdr:3"]
       }
@@ -2369,19 +2353,19 @@ Host: www.holder.com.au
 <p>When an authorisation has expired due to the expiration of the time requested using the <code>sharing_duration</code> claim in the request object then authorisation needs to be re-established using the full authorisation process.</p>
 
 <aside class="warning">
-NOTE: The specification of a simplified flow for reauthorisation is intended and consultation has begin on this topic.  Currently the Data Standards Body believes that more consultation on this topic is required to ensure the standards represent the best position for the regime.  Once a single approach is decided upon the text for this section will be replaced with the new position.
+NOTE: The specification of a simplified flow for reauthorisation is intended and consultation has begun on this topic.  Currently the Data Standards Body believes that more consultation on this topic is required to ensure the standards represent the best position for the regime.  Once a single approach is decided upon the text for this section will be replaced with the new position.
 <br/><br/>
 To simplify further consultation the following two options have been identified as the focus for further feedback.  The Data Standards Body does not have a specific recommendation or preference regarding these two options.
 <br/><br/>
-**Option 1: Client Initiated Backchannel Authentication**<br/>
+<strong>Option 1: Client Initiated Backchannel Authentication</strong><br/>
 FAPI defines a protocol for an asynchronous and de-coupled mechanism for a Data Recipient to request authentication from a Data Holder known as Client Initiated Backchannel Authentication (CIBA).  The specification for CIBA can be found at:<br/>
-<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default</a>
+<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default"> <b>[FAPI-CIBA]</b> </a> https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default
 <br/><br/>
 This mechanism could be used to initiate a reauthorisation of an existing consent that has been established for an extended duration.
 <br/><br/>
 Previous consultation elicited feedback that this mechanism is quite complex and the implementation costs for Data Recipients and Data Holders are unwarranted for the relatively simple use case of reauthorisation.  Alternate feedback supported this option due to the fact that it is an established standard.
 <br/><br/>
-**Option 2: CDR Specific Mechanism**<br/>
+<strong>Option 2: CDR Specific Mechanism</strong><br/>
 An alternative option is to define a CDR specific mechanism for reauthorisation.  The specifics of such a mechanism are to be determined but, as an example, it could consist of the following:<br/>
 <ul>
   <li>an end point to be implemented by Data Holders that would be called by Data Recipients to initiate reauthorisation</li>
