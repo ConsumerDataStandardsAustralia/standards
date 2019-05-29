@@ -1859,40 +1859,6 @@
 		}
 	  }
 	},
-	"BankingProductRateCondition": {
-	  "type": "object",
-	  "description": "Defines a condition for the applicability of a tiered rate",
-	  "properties": {
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the condition"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this condition",
-		  "x-cds-type": "URIString"
-		}
-	  }
-	},
-	"ResponseBankingAccount": {
-	  "type": "object",
-	  "required": [
-		"data",
-		"links",
-		"meta"
-	  ],
-	  "properties": {
-		"data": {
-		  "$ref": "#/definitions/BankingAccount"
-		},
-		"links": {
-		  "$ref": "#/definitions/LinksPaginated"
-		},
-		"meta": {
-		  "$ref": "#/definitions/MetaPaginated"
-		}
-	  }
-	},
 	"ResponseBankingAccountList": {
 	  "type": "object",
 	  "required": [
@@ -1924,34 +1890,18 @@
 		}
 	  }
 	},
-	"ResponseBankingAccountBalancesList": {
+	"BankingProductRateCondition": {
 	  "type": "object",
-	  "required": [
-		"data",
-		"links",
-		"meta"
-	  ],
+	  "description": "Defines a condition for the applicability of a tiered rate",
 	  "properties": {
-		"data": {
-		  "type": "object",
-		  "required": [
-			"balances"
-		  ],
-		  "properties": {
-			"accounts": {
-			  "type": "array",
-			  "description": "The list of balances returned",
-			  "items": {
-				"$ref": "#/definitions/BankingAccount"
-			  }
-			}
-		  }
+		"additionalInfo": {
+		  "type": "string",
+		  "description": "Display text providing more information on the condition"
 		},
-		"links": {
-		  "$ref": "#/definitions/LinksPaginated"
-		},
-		"meta": {
-		  "$ref": "#/definitions/MetaPaginated"
+		"additionalInfoUri": {
+		  "type": "string",
+		  "description": "Link to a web page with more information on this condition",
+		  "x-cds-type": "URIString"
 		}
 	  }
 	},
@@ -2299,379 +2249,6 @@
 		}
 	  }
 	},
-	"BankingAccountFeature": {
-	  "type": "object",
-	  "required": [
-		"featureType"
-	  ],
-	  "x-conditional": [
-		"additionalValue",
-		"additionalInfo"
-	  ],
-	  "properties": {
-		"featureType": {
-		  "type": "string",
-		  "description": "The type of feature described",
-		  "enum": [
-			"CARD_ACCESS",
-			"ADDITIONAL_CARDS",
-			"UNLIMITED_TXNS",
-			"FREE_TXNS",
-			"FREE_TXNS_ALLOWANCE",
-			"LOYALTY_PROGRAM",
-			"OFFSET",
-			"OVERDRAFT",
-			"REDRAW",
-			"INSURANCE",
-			"BALANCE_TRANSFERS",
-			"INTEREST_FREE",
-			"INTEREST_FREE_TRANSFERS",
-			"DIGITAL_WALLET",
-			"DIGITAL_BANKING",
-			"NPP_PAYID",
-			"NPP_ENABLED",
-			"DONATE_INTEREST",
-			"BILL_PAYMENT",
-			"COMPLEMENTARY_PRODUCT_DISCOUNTS",
-			"BONUS_REWARDS",
-			"NOTIFICATIONS",
-			"OTHER"
-		  ]
-		},
-		"additionalValue": {
-		  "type": "string",
-		  "description": "Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType"
-		},
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the feature. Mandatory if the feature type is set to OTHER"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this feature",
-		  "x-cds-type": "URIString"
-		},
-		"isActivated": {
-		  "type": "boolean",
-		  "description": "True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent",
-		  "x-cds-type": "Boolean",
-		  "default": "true"
-		}
-	  }
-	},
-	"BankingAccountFee": {
-	  "type": "object",
-	  "required": [
-		"name",
-		"feeType"
-	  ],
-	  "x-conditional": [
-		"additionalValue",
-		"amount",
-		"balanceRate",
-		"transactionRate",
-		"accruedRate"
-	  ],
-	  "properties": {
-		"name": {
-		  "type": "string",
-		  "description": "Name of the fee"
-		},
-		"feeType": {
-		  "type": "string",
-		  "description": "The type of fee",
-		  "enum": [
-			"PERIODIC",
-			"TRANSACTION",
-			"WITHDRAWAL",
-			"DEPOSIT",
-			"PAYMENT",
-			"PURCHASE",
-			"EVENT",
-			"UPFRONT",
-			"EXIT"
-		  ]
-		},
-		"amount": {
-		  "type": "string",
-		  "description": "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-		  "x-cds-type": "AmountString"
-		},
-		"balanceRate": {
-		  "type": "string",
-		  "description": "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-		  "x-cds-type": "RateString"
-		},
-		"transactionRate": {
-		  "type": "string",
-		  "description": "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-		  "x-cds-type": "RateString"
-		},
-		"accruedRate": {
-		  "type": "string",
-		  "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-		  "x-cds-type": "RateString"
-		},
-		"accrualFrequency": {
-		  "type": "string",
-		  "description": "The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-		  "x-cds-type": "CurrencyString"
-		},
-		"currency": {
-		  "type": "string",
-		  "description": "The currency the fee will be charged in. Assumes AUD if absent",
-		  "x-cds-type": "CurrencyString"
-		},
-		"additionalValue": {
-		  "type": "string",
-		  "description": "Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType"
-		},
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the fee"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this fee",
-		  "x-cds-type": "URIString"
-		},
-		"discounts": {
-		  "type": "array",
-		  "items": {
-			"$ref": "#/definitions/BankingAccountDiscount"
-		  }
-		}
-	  }
-	},
-	"BankingAccountDiscount": {
-	  "type": "object",
-	  "required": [
-		"description",
-		"discountType"
-	  ],
-	  "x-conditional": [
-		"amount",
-		"balanceRate",
-		"transactionRate",
-		"accruedRate",
-		"additionalValue"
-	  ],
-	  "properties": {
-		"description": {
-		  "type": "string",
-		  "description": "Description of the discount"
-		},
-		"discountType": {
-		  "type": "string",
-		  "description": "The type of discount. See the next section for an overview of valid values and their meaning",
-		  "enum": [
-			"BALANCE",
-			"DEPOSITS",
-			"PAYMENTS",
-			"FEE_CAP",
-			"ELIGIBILITY_ONLY"
-		  ]
-		},
-		"amount": {
-		  "type": "string",
-		  "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-		  "x-cds-type": "AmountString"
-		},
-		"balanceRate": {
-		  "type": "string",
-		  "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-		  "x-cds-type": "RateString"
-		},
-		"transactionRate": {
-		  "type": "string",
-		  "description": "A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
-		  "x-cds-type": "RateString"
-		},
-		"accruedRate": {
-		  "type": "string",
-		  "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-		  "x-cds-type": "RateString"
-		},
-		"additionalValue": {
-		  "type": "string",
-		  "description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType"
-		},
-		"eligibility": {
-		  "type": "array",
-		  "items": {
-			"$ref": "#/definitions/BankingAccountDiscountEligibility"
-		  }
-		},
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the discount"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this discount",
-		  "x-cds-type": "URIString"
-		}
-	  }
-	},
-	"BankingAccountDiscountEligibility": {
-	  "type": "object",
-	  "required": [
-		"discountEligibilityType"
-	  ],
-	  "x-conditional": [
-		"additionalValue"
-	  ],
-	  "properties": {
-		"discountEligibilityType": {
-		  "type": "string",
-		  "description": "The type of the specific eligibility constraint for a discount",
-		  "enum": [
-			"BUSINESS",
-			"PENSION_RECIPIENT",
-			"MIN_AGE",
-			"MAX_AGE",
-			"MIN_INCOME",
-			"MIN_TURNOVER",
-			"STAFF",
-			"STUDENT",
-			"EMPLOYMENT_STATUS",
-			"RESIDENCY_STATUS",
-			"NATURAL_PERSON",
-			"INTRODUCTORY",
-			"OTHER"
-		  ]
-		},
-		"additionalValue": {
-		  "type": "string",
-		  "description": "Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType"
-		},
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on this eligibility constraint"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this eligibility constraint",
-		  "x-cds-type": "URIString"
-		}
-	  }
-	},
-	"BankingAccountDepositRate": {
-	  "type": "object",
-	  "required": [
-		"depositRateType",
-		"rate"
-	  ],
-	  "x-conditional": [
-		"additionalValue"
-	  ],
-	  "properties": {
-		"depositRateType": {
-		  "type": "string",
-		  "description": "The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning",
-		  "enum": [
-			"FIXED",
-			"BONUS",
-			"BUNDLE_BONUS",
-			"VARIABLE",
-			"INTRODUCTORY"
-		  ]
-		},
-		"rate": {
-		  "type": "string",
-		  "description": "The rate to be applied",
-		  "x-cds-type": "RateString"
-		},
-		"calculationFrequency": {
-		  "type": "string",
-		  "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-		  "x-cds-type": "ExternalRef"
-		},
-		"applicationFrequency": {
-		  "type": "string",
-		  "description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-		  "x-cds-type": "ExternalRef"
-		},
-		"additionalValue": {
-		  "type": "string",
-		  "description": "Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType"
-		},
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the fee"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this fee",
-		  "x-cds-type": "URIString"
-		}
-	  }
-	},
-	"BankingAccountLendingRate": {
-	  "type": "object",
-	  "required": [
-		"lendingRateType",
-		"rate"
-	  ],
-	  "x-conditional": [
-		"additionalValue"
-	  ],
-	  "properties": {
-		"lendingRateType": {
-		  "type": "string",
-		  "description": "The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning",
-		  "enum": [
-			"FIXED",
-			"VARIABLE",
-			"INTRODUCTORY",
-			"DISCOUNT",
-			"PENALTY",
-			"FLOATING",
-			"MARKET_LINKED",
-			"CASH_ADVANCE",
-			"PURCHASE",
-			"BUNDLE_DISCOUNT_FIXED",
-			"BUNDLE_DISCOUNT_VARIABLE"
-		  ]
-		},
-		"rate": {
-		  "type": "string",
-		  "description": "The rate to be applied",
-		  "x-cds-type": "RateString"
-		},
-		"calculationFrequency": {
-		  "type": "string",
-		  "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-		  "x-cds-type": "ExternalRef"
-		},
-		"applicationFrequency": {
-		  "type": "string",
-		  "description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
-		  "x-cds-type": "ExternalRef"
-		},
-		"interestPaymentDue": {
-		  "type": "string",
-		  "description": "When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered",
-		  "enum": [
-			"IN_ARREARS",
-			"IN_ADVANCE"
-		  ]
-		},
-		"additionalValue": {
-		  "type": "string",
-		  "description": "Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType"
-		},
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the fee."
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information  on this fee",
-		  "x-cds-type": "URIString"
-		}
-	  }
-	},
 	"ResponseBankingTransactionList": {
 	  "type": "object",
 	  "required": [
@@ -2922,11 +2499,10 @@
 	  "type": "object",
 	  "required": [
 		"data",
-		"inks"
+		"links"
 	  ],
 	  "properties": {
 		"data": {
-		  "type": "object",
 		  "$ref": "#/definitions/BankingBalance"
 		},
 		"links": {
@@ -3494,7 +3070,6 @@
   		  "$ref": "#/definitions/BankingScheduledPaymentSet"
   		},
       "recurrence": {
-        "description": "Object containing the detail of the schedule for the payment",
         "$ref": "#/definitions/BankingScheduledPaymentRecurrence"
       }
 	  }
@@ -3510,7 +3085,6 @@
 	  ],
     "properties": {
       "to": {
-        "description": "Object containing details of the destination of the payment. Used to specify a variety of",
         "$ref":"#/definitions/BankingScheduledPaymentTo"
       },
       "isAmountCalculated": {
