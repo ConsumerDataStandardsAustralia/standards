@@ -21,10 +21,10 @@ If the query parameters are not provided the following defaults will be assumed:
 In addition to the data requested a provider MUST provide the following additional information in the response payload:
 
 * <a name="pagination_links"></a>In the links object the following fields are to be provided:
-    * **first** - A URI to request the first page. This field MUST be present.
-    * **last** -  A URI to request the last page. This field MUST be present unless there is only one page in the set.
-    * **prev** - A URI to the previous page. This field MUST be present unless the current page is the first page.
-    * **next** - A URI to the next page. This field MUST be present unless the current page is the final page.
+    * **first** - A URI to request the first page. Mandatory if this response is not the first page.
+    * **last** -  A URI to request the last page. Mandatory if this response is not the last page.
+    * **prev** - A URI to the previous page. Mandatory if this response is not the first page.
+    * **next** - A URI to the next page. Mandatory if this response is not the last page.
 * In the `meta` object the following fields are to be provided:
     * **totalRecords** - The total number of records in the set. This field MUST be present.
     * **totalPages** - The total number of pages in the set. This field MUST be present.

@@ -1,0 +1,4 @@
+3697c3697
+< |amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+---
+> |amount|[AmountString](#common-field-types)|optional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|

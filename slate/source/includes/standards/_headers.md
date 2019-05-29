@@ -18,8 +18,7 @@ Header Field | Description
 **x-v** | Version of the API end point requested by the client. Must be set to a positive integer.<br/>If the version(s) requested is not supported then the provider should respond with a `406 Not Acceptable`.
 **x-min-v** |  Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between `x-min-v` and `x-v`.<br/>If all versions requested are not supported then the provider should respond with a `406 Not Acceptable`.
 **x-&lt;PID&gt;-v** | A provider specific version of extension fields. Should not be used in conjunction with `x-min-v`.
-**x-fapi-financial-id** | The unique id of the data provider to which the request is issued.  The unique id will be issued by the CDR Directory managed by ACCC.  If the value does not match the expected value the data provider must reject the request with a 403 (Not Authorized) status code.
-**x-fapi-customer-last-logged-time** | The time when the customer last logged in to the data recipient
+**x-fapi-auth-date** | The time when the customer last logged in to the data recipient
 **x-fapi-customer-ip-address** | The customer's original IP address if the customer is currently logged in to the data recipient.  The presence of this header indicates that the API is being called in a customer present context
 **x-fapi-interaction-id** | An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id.  If provided, the data provider must "play back" this value in the x-fapi-interaction-id response header.
 

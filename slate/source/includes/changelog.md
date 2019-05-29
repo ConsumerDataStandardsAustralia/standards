@@ -4,7 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
-|29/5/2019|0.9.3|Updates for DP19 Discoverability|Swagger updates and rebuild of docs
+|29/5/2019|0.9.3|Final updates for May Draft|Addition of Discoverability, InfoSec Profile and minor corrections
 |28/5/2019|0.9.2|Admin End Points|Added separate swagger/yaml as well as documentation for admin end points
 |28/5/2019|0.9.1|Modified BankingProductRateTier.maximumValue to optional|Rebuild of docs
 |28/5/2019|0.9.0|Incorporated Scheduled Payments Decision proposal 51|Swagger updates and Documentation changes
