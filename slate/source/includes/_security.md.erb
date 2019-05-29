@@ -124,7 +124,7 @@ Data Holders MUST support the authentication of the CDR Register using the `priv
 
 Data Recipients MUST support the authentication of Data Holders using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
 
-While **MTLS** is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
+While **[MTLS]** is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
 
 ### private\_key\_jwt
 
@@ -393,12 +393,12 @@ All HTTP calls MUST be made using HTTPS incorporating TLS >= 1.2.
 <a id="mutual-tls"></a>
 ### Use of MTLS
 
-All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, **MTLS** as part of the TLS handshake:
+All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, **[MTLS]* as part of the TLS handshake:
 
 - The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.
 - The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.
 
-End points for transferring CDR Data that are classified as not requiring authentication do not require the use of **MTLS**.
+End points for transferring CDR Data that are classified as not requiring authentication do not require the use of **[MTLS]*.
 
 
 ### Holder of Key Mechanism
@@ -406,11 +406,11 @@ End points for transferring CDR Data that are classified as not requiring authen
 NOTE: As a clarification to questions raised during consultation this section asserts that resource requests must be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.
 </aside>
 
-**MTLS** MUST be supported as a Holder of Key (HoK) Mechanism.
+**[MTLS]** MUST be supported as a Holder of Key (HoK) Mechanism.
 
 OAUTB SHALL NOT be supported due to a lack industry support.
 
-**MTLS** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess) of **[MTLS]**.
+**[MTLS]** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess) of **[MTLS]**.
 
 ### Ciphers
 Only the following cipher suites SHALL be permitted in accordance with [section 8.5](https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations) of **[FAPI-RW]**:
@@ -698,7 +698,7 @@ NOTE: The specification of a simplified flow for reauthorisation is intended and
 <br/><br/>
 To simplify further consultation the following two options have been identified as the focus for further feedback.  The Data Standards Body does not have a specific recommendation or preference regarding these two options.
 <br/><br/>
-**Option 1: Client Initiated Backchannel Authentication**<br/>
+<strong>Option 1: Client Initiated Backchannel Authentication</strong><br/>
 FAPI defines a protocol for an asynchronous and de-coupled mechanism for a Data Recipient to request authentication from a Data Holder known as Client Initiated Backchannel Authentication (CIBA).  The specification for CIBA can be found at:<br/>
 [FAPI-CIBA](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**
 <br/><br/>
@@ -706,7 +706,7 @@ This mechanism could be used to initiate a reauthorisation of an existing consen
 <br/><br/>
 Previous consultation elicited feedback that this mechanism is quite complex and the implementation costs for Data Recipients and Data Holders are unwarranted for the relatively simple use case of reauthorisation.  Alternate feedback supported this option due to the fact that it is an established standard.
 <br/><br/>
-**Option 2: CDR Specific Mechanism**<br/>
+<strong>Option 2: CDR Specific Mechanism</strong><br/>
 An alternative option is to define a CDR specific mechanism for reauthorisation.  The specifics of such a mechanism are to be determined but, as an example, it could consist of the following:<br/>
 <ul>
   <li>an end point to be implemented by Data Holders that would be called by Data Recipients to initiate reauthorisation</li>
