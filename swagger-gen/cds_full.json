@@ -1859,6 +1859,21 @@
 		}
 	  }
 	},
+	"BankingProductRateCondition": {
+	  "type": "object",
+	  "description": "Defines a condition for the applicability of a tiered rate",
+	  "properties": {
+		"additionalInfo": {
+		  "type": "string",
+		  "description": "Display text providing more information on the condition"
+		},
+		"additionalInfoUri": {
+		  "type": "string",
+		  "description": "Link to a web page with more information on this condition",
+		  "x-cds-type": "URIString"
+		}
+	  }
+	},
 	"ResponseBankingAccountList": {
 	  "type": "object",
 	  "required": [
@@ -1887,21 +1902,6 @@
 		},
 		"meta": {
 		  "$ref": "#/definitions/MetaPaginated"
-		}
-	  }
-	},
-	"BankingProductRateCondition": {
-	  "type": "object",
-	  "description": "Defines a condition for the applicability of a tiered rate",
-	  "properties": {
-		"additionalInfo": {
-		  "type": "string",
-		  "description": "Display text providing more information on the condition"
-		},
-		"additionalInfoUri": {
-		  "type": "string",
-		  "description": "Link to a web page with more information on this condition",
-		  "x-cds-type": "URIString"
 		}
 	  }
 	},
@@ -2496,13 +2496,13 @@
 	  }
 	},
 	"ResponseBankingAccountsBalanceById": {
-	  "type": "object",
 	  "required": [
 		"data",
 		"links"
 	  ],
 	  "properties": {
 		"data": {
+		  "type": "object",
 		  "$ref": "#/definitions/BankingBalance"
 		},
 		"links": {

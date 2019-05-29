@@ -1,4 +1,3 @@
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 <h2 id='metadata-update'>Metadata Update</h2>
 <p><a id="opIdmetadataUpdate"></a></p>
 
@@ -298,7 +297,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h1 id='schemas'>Schemas</h1>
+<h2 id='admin-schemas'>Admin Schemas</h2>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>
