@@ -4712,7 +4712,7 @@ This operation does not require authentication
 |originalLoanCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |loanEndDate|[DateString](#common-field-types)|mandatory|none|Date that the loan is due to be repaid in full|
 |nextInstalmentDate|[DateString](#common-field-types)|mandatory|none|Next date that an instalment is required|
-|minInstalmentAmount|[AmountString](#common-field-types)|mandatory|none|Minimum amount of next instalment|
+|minInstalmentAmount|[AmountString](#common-field-types)|optional|none|Minimum amount of next instalment|
 |minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |maxRedraw|[AmountString](#common-field-types)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
 |maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
@@ -6641,7 +6641,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|At least one record is required|
+|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
 |» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 

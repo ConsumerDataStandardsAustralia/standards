@@ -1805,7 +1805,6 @@ definitions:
     type: object
     required:
     - loanEndDate
-    - minInstalmentAmount
     - nextInstalmentDate
     - repaymentFrequency
     properties:
@@ -2644,7 +2643,7 @@ definitions:
       properties:
         phoneNumbers:
           type: array
-          description: At least one record is required
+  			  description: Array is mandatory but may be empty if no phone numbers are held
           items:
             $ref: '#/definitions/CommonPhoneNumber'
         emailAddresses:

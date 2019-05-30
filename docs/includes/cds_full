@@ -7184,7 +7184,7 @@ This operation does not require authentication
 <tr>
 <td>minInstalmentAmount</td>
 <td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>Minimum amount of next instalment</td>
 </tr>
@@ -10633,7 +10633,7 @@ This operation does not require authentication
 <td>[<a href="#schemacommonphonenumber">CommonPhoneNumber</a>]</td>
 <td>mandatory</td>
 <td>none</td>
-<td>At least one record is required</td>
+<td>Array is mandatory but may be empty if no phone numbers are held</td>
 </tr>
 <tr>
 <td>» emailAddresses</td>

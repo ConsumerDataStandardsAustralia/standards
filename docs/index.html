@@ -634,6 +634,9 @@
           </li>
           <li>
             <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
+          </li>
+          <li>
+            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -641,9 +644,11 @@
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
-                  <li>
-                    <a href="#admin-schemas" class="toc-h2 toc-link" data-title="Admin Schemas">Admin Schemas</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
@@ -1274,11 +1279,15 @@ the same name.</p>
 
 <p>Mandatory fields MUST be present and have a non-null value in a request or response payload for the payload to be considered valid.</p>
 
-<p>Optional fields MAY be present but this is not guaranteed. It is also valid for these fields to be present but have a null value.  Note that optional fields indicate that data may sometimes not be held by a Data Holder and this is an expected scenario.  It does not indicate that the field may be optionally implemented by a Data Holder.  If a Data Holder holds the data represented by an optional field in digital form then the Data Holder MUST supply that data in the response. </p>
+<p>Optional fields MAY be present but this is not guaranteed. It is also valid for these fields to be present but have a null value.  Note that optional fields indicate that data may sometimes not be held by a Data Holder and this is an expected scenario.   </p>
 
 <p>Conditional fields MUST have an associated conditional statement. If the conditional statement is true in a specific request or response the field is considered mandatory. If the conditional statement is false then the field is considered optional.</p>
 
-<p>Note that</p>
+<aside class="notice">
+Note that for optional fields are not considered optionally implementable by a Data Holder.
+
+For instance, if a Data Holder holds data in digital form for a Customer that is represented in a payload then it is expected that this data will be shared when authorised by the Customer.  For payloads unrelated to Customers, such as product reference data, there is more discretion for the Data Holder but other drivers, such as complementary regulation or the requirement to align to other channels, should be taken into consideration.
+</aside>
 <h4 id='empty-null-fields'>Empty/Null Fields</h4>
 <p>An empty field (ie. a field that is not present in a payload) will be considered equivalent with a field that is present with a <code>null</code> value.</p>
 
@@ -9713,7 +9722,7 @@ This operation does not require authentication
 <tr>
 <td>minInstalmentAmount</td>
 <td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>Minimum amount of next instalment</td>
 </tr>
@@ -13162,7 +13171,7 @@ This operation does not require authentication
 <td>[<a href="#schemacommonphonenumber">CommonPhoneNumber</a>]</td>
 <td>mandatory</td>
 <td>none</td>
-<td>At least one record is required</td>
+<td>Array is mandatory but may be empty if no phone numbers are held</td>
 </tr>
 <tr>
 <td>» emailAddresses</td>
@@ -14970,6 +14979,8 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
 
+<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -15283,7 +15294,7 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-<h2 id='admin-schemas'>Admin Schemas</h2>
+<h1 id='schemas'>Schemas</h1>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 

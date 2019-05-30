@@ -1,6 +1,5 @@
 
 
-
 ## Metadata Update
 
 <a id="opIdmetadataUpdate"></a>
@@ -59,8 +58,8 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation may only be call by the CDR Registry
 </aside>
 
 ## Get Metrics
@@ -243,8 +242,8 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsList](#schemaresponsemetricslist)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation may only be call by the CDR Registry
 </aside>
 
 ## Admin Schemas
@@ -736,4 +735,3 @@ This operation does not require authentication
 ### Properties
 
 *None*
-
