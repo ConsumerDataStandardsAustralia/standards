@@ -297,7 +297,7 @@ This operation may only be call by the CDR Registry
 <aside class="notice">
 This operation may only be call by the CDR Registry
 </aside>
-<h2 id='admin-schemas'>Admin Schemas</h2>
+
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>

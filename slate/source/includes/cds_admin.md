@@ -246,8 +246,6 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 This operation may only be call by the CDR Registry
 </aside>
 
-## Admin Schemas
-
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <a id="schemarequestmetadataupdate"></a>
