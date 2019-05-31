@@ -719,10 +719,11 @@ $.ajax({
 
 `GET /banking/accounts/{accountId}/transactions`
 
-Obtain transactions for a specific account
+Obtain transactions for a specific account.
+
 Some general notes that apply to all end points that retrieve transactions:
 
-- Where multiple transactions are returned transactions should be ordered according to effective date in descending order
+- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
 - As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
 		- Posted date/time if available, then
 		- Execution date/time if available, then
@@ -3106,7 +3107,7 @@ This operation does not require authentication
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
 |brandName|string|optional|none|An optional display name of the brand|
-|applicationUri|[URIString](#common-field-types)|optional|none|A link to the an application web page where this product can be applied for.|
+|applicationUri|[URIString](#common-field-types)|optional|none|A link to an application web page where this product can be applied for.|
 |isTailored|[Boolean](#common-field-types)|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
 |additionalInformation|object|optional|none|Object that contains links to additional information on specific topics|
 |» overviewUri|[URIString](#common-field-types)|optional|none|General overview of the product|
@@ -4820,7 +4821,7 @@ This operation does not require authentication
 |transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
-|status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
+|status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction|
 |description|string|mandatory|none|The transaction description as applied by the financial institution|
 |postingDateTime|[DateTimeString](#common-field-types)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
 |valueDateTime|[DateTimeString](#common-field-types)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
@@ -5921,7 +5922,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of|
+|to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of payment destination types|
 |isAmountCalculated|[Boolean](#common-field-types)|optional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
 |amount|[AmountString](#common-field-types)|conditional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the payment. AUD assumed if not present|
@@ -5981,7 +5982,7 @@ This operation does not require authentication
 
 ```
 
-*Object containing details of the destination of the payment. Used to specify a variety of*
+*Object containing details of the destination of the payment. Used to specify a variety of payment destination types*
 
 ### Properties
 
@@ -7196,4 +7197,3 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-
