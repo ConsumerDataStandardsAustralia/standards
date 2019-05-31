@@ -966,11 +966,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/transactions</code></p>
 
-<p>Obtain transactions for a specific account
-Some general notes that apply to all end points that retrieve transactions:</p>
+<p>Obtain transactions for a specific account.</p>
+
+<p>Some general notes that apply to all end points that retrieve transactions:</p>
 
 <ul>
-<li>Where multiple transactions are returned transactions should be ordered according to effective date in descending order</li>
+<li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order</li>
 <li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
     - Posted date/time if available, then
     - Execution date/time if available, then
@@ -4250,7 +4251,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
 <td>none</td>
-<td>A link to the an application web page where this product can be applied for.</td>
+<td>A link to an application web page where this product can be applied for.</td>
 </tr>
 <tr>
 <td>isTailored</td>
@@ -7417,7 +7418,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction</td>
+<td>Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction</td>
 </tr>
 <tr>
 <td>description</td>
@@ -9383,7 +9384,7 @@ This operation does not require authentication
 <td><a href="#schemabankingscheduledpaymentto">BankingScheduledPaymentTo</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Object containing details of the destination of the payment. Used to specify a variety of</td>
+<td>Object containing details of the destination of the payment. Used to specify a variety of payment destination types</td>
 </tr>
 <tr>
 <td>isAmountCalculated</td>
@@ -9460,7 +9461,7 @@ This operation does not require authentication
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><em>Object containing details of the destination of the payment. Used to specify a variety of</em></p>
+<p><em>Object containing details of the destination of the payment. Used to specify a variety of payment destination types</em></p>
 <h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
