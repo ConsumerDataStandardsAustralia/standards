@@ -83,7 +83,7 @@ Note that:
 
 ###Additional Query Parameters
 
-When adding support for a new query parameter to an existing end point that a data consumer is expected to supply the new parameter should be prefixed by the string `<PID>-` to avoid potential collision with extension by another data provider.
+When adding support for a new query parameter to an existing end point that a data consumer is expected to supply, the new parameter should be prefixed by the string `<PID>-` to avoid potential collision with extension by another data provider.
 
 ###Extension Versioning
 
