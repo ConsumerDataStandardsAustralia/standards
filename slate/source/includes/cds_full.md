@@ -719,10 +719,11 @@ $.ajax({
 
 `GET /banking/accounts/{accountId}/transactions`
 
-Obtain transactions for a specific account
+Obtain transactions for a specific account.
+
 Some general notes that apply to all end points that retrieve transactions:
 
-- Where multiple transactions are returned transactions should be ordered according to effective date in descending order
+- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
 - As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
 		- Posted date/time if available, then
 		- Execution date/time if available, then
@@ -734,8 +735,8 @@ Some general notes that apply to all end points that retrieve transactions:
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.|
-|start-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to current time. Format is aligned to DateTimeString common type|
-|end-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
 |min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
 |max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
@@ -2852,6 +2853,139 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">common_detailed_customer</a>
 </aside>
 
+## Get Status
+
+<a id="opIdgetStatus"></a>
+
+> Code samples
+
+```http
+GET https://data.provider.com.au/cds-au/v1/discovery/status HTTP/1.1
+Host: data.provider.com.au
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json'
+
+};
+
+$.ajax({
+  url: 'https://data.provider.com.au/cds-au/v1/discovery/status',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /discovery/status`
+
+Obtain a health check status for the implementation
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "status": "OK",
+    "explanation": "string",
+    "detectionTime": "string",
+    "expectedResolutionTime": "string",
+    "updateTime": "string"
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+```
+
+<h3 id="get-status-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryStatus](#schemaresponsediscoverystatus)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## Get Outages
+
+<a id="opIdgetOutages"></a>
+
+> Code samples
+
+```http
+GET https://data.provider.com.au/cds-au/v1/discovery/outages HTTP/1.1
+Host: data.provider.com.au
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json'
+
+};
+
+$.ajax({
+  url: 'https://data.provider.com.au/cds-au/v1/discovery/outages',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /discovery/outages`
+
+Obtain a list of scheduled outages for the implementation
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "outages": [
+      {
+        "outageTime": "string",
+        "duration": 0,
+        "isPartial": true,
+        "explanation": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+```
+
+<h3 id="get-outages-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutages](#schemaresponsediscoveryoutages)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 # Schemas
 
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
@@ -2973,7 +3107,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
 |brandName|string|optional|none|An optional display name of the brand|
-|applicationUri|[URIString](#common-field-types)|optional|none|A link to the an application web page where this product can be applied for.|
+|applicationUri|[URIString](#common-field-types)|optional|none|A link to an application web page where this product can be applied for.|
 |isTailored|[Boolean](#common-field-types)|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
 |additionalInformation|object|optional|none|Object that contains links to additional information on specific topics|
 |» overviewUri|[URIString](#common-field-types)|optional|none|General overview of the product|
@@ -3561,7 +3695,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|[AmountString](#common-field-types)|mandatory|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
@@ -3862,7 +3996,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |name|string|mandatory|none|A display name for the tier|
 |unitOfMeasure|string|mandatory|none|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)|
 |minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
-|maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
+|maximumValue|number|optional|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
 |rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
 |applicabilityConditions|[BankingProductRateCondition](#schemabankingproductratecondition)|optional|none|Defines a condition for the applicability of a tiered rate|
 |subTier|object|optional|none|Defines the sub-tier criteria and conditions for which a rate applies|
@@ -3911,46 +4045,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalInfo|string|optional|none|Display text providing more information on the condition|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this condition|
 
-<h2 id="tocSresponsebankingaccount">ResponseBankingAccount</h2>
-
-<a id="schemaresponsebankingaccount"></a>
-
-```json
-{
-  "data": {
-    "accountId": "string",
-    "creationDate": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "openStatus": "OPEN",
-    "isOwned": "true",
-    "maskedNumber": "string",
-    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
-    "productName": "string"
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|[BankingAccount](#schemabankingaccount)|mandatory|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
-
 <h2 id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
 
 <a id="schemaresponsebankingaccountlist"></a>
@@ -3993,51 +4087,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» accounts|[[BankingAccount](#schemabankingaccount)]|mandatory|none|The list of accounts returned. If the filter results in an empty set then this array may have no records|
-|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
-
-<h2 id="tocSresponsebankingaccountbalanceslist">ResponseBankingAccountBalancesList</h2>
-
-<a id="schemaresponsebankingaccountbalanceslist"></a>
-
-```json
-{
-  "data": {
-    "accounts": [
-      {
-        "accountId": "string",
-        "creationDate": "string",
-        "displayName": "string",
-        "nickname": "string",
-        "openStatus": "OPEN",
-        "isOwned": "true",
-        "maskedNumber": "string",
-        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
-        "productName": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|object|mandatory|none|none|
-|» accounts|[[BankingAccount](#schemabankingaccount)]|optional|none|The list of balances returned|
 |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
@@ -4664,7 +4713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |originalLoanCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |loanEndDate|[DateString](#common-field-types)|mandatory|none|Date that the loan is due to be repaid in full|
 |nextInstalmentDate|[DateString](#common-field-types)|mandatory|none|Next date that an instalment is required|
-|minInstalmentAmount|[AmountString](#common-field-types)|mandatory|none|Minimum amount of next instalment|
+|minInstalmentAmount|[AmountString](#common-field-types)|optional|none|Minimum amount of next instalment|
 |minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |maxRedraw|[AmountString](#common-field-types)|optional|none|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
 |maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
@@ -4681,313 +4730,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|
 |repaymentType|INTEREST_ONLY|
 |repaymentType|PRINCIPAL_AND_INTEREST|
-
-<h2 id="tocSbankingaccountfeature">BankingAccountFeature</h2>
-
-<a id="schemabankingaccountfeature"></a>
-
-```json
-{
-  "featureType": "CARD_ACCESS",
-  "additionalValue": "string",
-  "additionalInfo": "string",
-  "additionalInfoUri": "string",
-  "isActivated": "true"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|featureType|string|mandatory|none|The type of feature described|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
-|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
-|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
-|isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation.  Defaults to true if absent|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|featureType|CARD_ACCESS|
-|featureType|ADDITIONAL_CARDS|
-|featureType|UNLIMITED_TXNS|
-|featureType|FREE_TXNS|
-|featureType|FREE_TXNS_ALLOWANCE|
-|featureType|LOYALTY_PROGRAM|
-|featureType|OFFSET|
-|featureType|OVERDRAFT|
-|featureType|REDRAW|
-|featureType|INSURANCE|
-|featureType|BALANCE_TRANSFERS|
-|featureType|INTEREST_FREE|
-|featureType|INTEREST_FREE_TRANSFERS|
-|featureType|DIGITAL_WALLET|
-|featureType|DIGITAL_BANKING|
-|featureType|NPP_PAYID|
-|featureType|NPP_ENABLED|
-|featureType|DONATE_INTEREST|
-|featureType|BILL_PAYMENT|
-|featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
-|featureType|BONUS_REWARDS|
-|featureType|NOTIFICATIONS|
-|featureType|OTHER|
-
-<h2 id="tocSbankingaccountfee">BankingAccountFee</h2>
-
-<a id="schemabankingaccountfee"></a>
-
-```json
-{
-  "name": "string",
-  "feeType": "PERIODIC",
-  "amount": "string",
-  "balanceRate": "string",
-  "transactionRate": "string",
-  "accruedRate": "string",
-  "accrualFrequency": "string",
-  "currency": "string",
-  "additionalValue": "string",
-  "additionalInfo": "string",
-  "additionalInfoUri": "string",
-  "discounts": [
-    {
-      "description": "string",
-      "discountType": "BALANCE",
-      "amount": "string",
-      "balanceRate": "string",
-      "transactionRate": "string",
-      "accruedRate": "string",
-      "additionalValue": "string",
-      "eligibility": [
-        {
-          "discountEligibilityType": "BUSINESS",
-          "additionalValue": "string",
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
-    }
-  ]
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|name|string|mandatory|none|Name of the fee|
-|feeType|string|mandatory|none|The type of fee|
-|amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accrualFrequency|[CurrencyString](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
-|additionalInfo|string|optional|none|Display text providing more information on the fee|
-|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
-|discounts|[[BankingAccountDiscount](#schemabankingaccountdiscount)]|optional|none|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|feeType|PERIODIC|
-|feeType|TRANSACTION|
-|feeType|WITHDRAWAL|
-|feeType|DEPOSIT|
-|feeType|PAYMENT|
-|feeType|PURCHASE|
-|feeType|EVENT|
-|feeType|UPFRONT|
-|feeType|EXIT|
-
-<h2 id="tocSbankingaccountdiscount">BankingAccountDiscount</h2>
-
-<a id="schemabankingaccountdiscount"></a>
-
-```json
-{
-  "description": "string",
-  "discountType": "BALANCE",
-  "amount": "string",
-  "balanceRate": "string",
-  "transactionRate": "string",
-  "accruedRate": "string",
-  "additionalValue": "string",
-  "eligibility": [
-    {
-      "discountEligibilityType": "BUSINESS",
-      "additionalValue": "string",
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
-    }
-  ],
-  "additionalInfo": "string",
-  "additionalInfoUri": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|description|string|mandatory|none|Description of the discount|
-|discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of atransaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate and accruedRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
-|eligibility|[[BankingAccountDiscountEligibility](#schemabankingaccountdiscounteligibility)]|optional|none|none|
-|additionalInfo|string|optional|none|Display text providing more information on the discount|
-|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|discountType|BALANCE|
-|discountType|DEPOSITS|
-|discountType|PAYMENTS|
-|discountType|FEE_CAP|
-|discountType|ELIGIBILITY_ONLY|
-
-<h2 id="tocSbankingaccountdiscounteligibility">BankingAccountDiscountEligibility</h2>
-
-<a id="schemabankingaccountdiscounteligibility"></a>
-
-```json
-{
-  "discountEligibilityType": "BUSINESS",
-  "additionalValue": "string",
-  "additionalInfo": "string",
-  "additionalInfoUri": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType|
-|additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
-|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|discountEligibilityType|BUSINESS|
-|discountEligibilityType|PENSION_RECIPIENT|
-|discountEligibilityType|MIN_AGE|
-|discountEligibilityType|MAX_AGE|
-|discountEligibilityType|MIN_INCOME|
-|discountEligibilityType|MIN_TURNOVER|
-|discountEligibilityType|STAFF|
-|discountEligibilityType|STUDENT|
-|discountEligibilityType|EMPLOYMENT_STATUS|
-|discountEligibilityType|RESIDENCY_STATUS|
-|discountEligibilityType|NATURAL_PERSON|
-|discountEligibilityType|INTRODUCTORY|
-|discountEligibilityType|OTHER|
-
-<h2 id="tocSbankingaccountdepositrate">BankingAccountDepositRate</h2>
-
-<a id="schemabankingaccountdepositrate"></a>
-
-```json
-{
-  "depositRateType": "FIXED",
-  "rate": "string",
-  "calculationFrequency": "string",
-  "applicationFrequency": "string",
-  "additionalValue": "string",
-  "additionalInfo": "string",
-  "additionalInfoUri": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
-|rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
-|additionalInfo|string|optional|none|Display text providing more information on the fee|
-|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|depositRateType|FIXED|
-|depositRateType|BONUS|
-|depositRateType|BUNDLE_BONUS|
-|depositRateType|VARIABLE|
-|depositRateType|INTRODUCTORY|
-
-<h2 id="tocSbankingaccountlendingrate">BankingAccountLendingRate</h2>
-
-<a id="schemabankingaccountlendingrate"></a>
-
-```json
-{
-  "lendingRateType": "FIXED",
-  "rate": "string",
-  "calculationFrequency": "string",
-  "applicationFrequency": "string",
-  "interestPaymentDue": "IN_ARREARS",
-  "additionalValue": "string",
-  "additionalInfo": "string",
-  "additionalInfoUri": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
-|rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
-|additionalValue|string|conditional|none|Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
-|additionalInfo|string|optional|none|Display text providing more information on the fee.|
-|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information  on this fee|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|lendingRateType|FIXED|
-|lendingRateType|VARIABLE|
-|lendingRateType|INTRODUCTORY|
-|lendingRateType|DISCOUNT|
-|lendingRateType|PENALTY|
-|lendingRateType|FLOATING|
-|lendingRateType|MARKET_LINKED|
-|lendingRateType|CASH_ADVANCE|
-|lendingRateType|PURCHASE|
-|lendingRateType|BUNDLE_DISCOUNT_FIXED|
-|lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
-|interestPaymentDue|IN_ARREARS|
-|interestPaymentDue|IN_ADVANCE|
 
 <h2 id="tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h2>
 
@@ -5079,7 +4821,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
-|status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to gaurantee the ability to correlate a pending transaction with an associated posted transaction|
+|status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction|
 |description|string|mandatory|none|The transaction description as applied by the financial institution|
 |postingDateTime|[DateTimeString](#common-field-types)|conditional|none|The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement|
 |valueDateTime|[DateTimeString](#common-field-types)|optional|none|Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry|
@@ -5304,7 +5046,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|[BankingBalance](#schemabankingbalance)|mandatory|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|optional|none|none|
+|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 
 <h2 id="tocSbankingbalance">BankingBalance</h2>
 
@@ -6180,7 +5922,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of|
+|to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of payment destination types|
 |isAmountCalculated|[Boolean](#common-field-types)|optional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
 |amount|[AmountString](#common-field-types)|conditional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the payment. AUD assumed if not present|
@@ -6240,7 +5982,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```
 
-*Object containing details of the destination of the payment. Used to specify a variety of*
+*Object containing details of the destination of the payment. Used to specify a variety of payment destination types*
 
 ### Properties
 
@@ -6463,6 +6205,105 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
+
+<h2 id="tocSresponsediscoverystatus">ResponseDiscoveryStatus</h2>
+
+<a id="schemaresponsediscoverystatus"></a>
+
+```json
+{
+  "data": {
+    "status": "OK",
+    "explanation": "string",
+    "detectionTime": "string",
+    "expectedResolutionTime": "string",
+    "updateTime": "string"
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|mandatory|none|none|
+|» status|string|mandatory|none|Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)|
+|» explanation|string|conditional|none|Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK|
+|» detectionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE|
+|» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
+|» updateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this status was last updated by the Data Holder.|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|status|OK|
+|status|PARTIAL_FAILURE|
+|status|UNAVAILABLE|
+|status|SCHEDULED_OUTAGE|
+
+<h2 id="tocSresponsediscoveryoutages">ResponseDiscoveryOutages</h2>
+
+<a id="schemaresponsediscoveryoutages"></a>
+
+```json
+{
+  "data": {
+    "outages": [
+      {
+        "outageTime": "string",
+        "duration": 0,
+        "isPartial": true,
+        "explanation": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|object|mandatory|none|none|
+|» outages|[[DiscoveryOutage](#schemadiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|mandatory|none|none|
+
+<h2 id="tocSdiscoveryoutage">DiscoveryOutage</h2>
+
+<a id="schemadiscoveryoutage"></a>
+
+```json
+{
+  "outageTime": "string",
+  "duration": 0,
+  "isPartial": true,
+  "explanation": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|outageTime|[DateTimeString](#common-field-types)|mandatory|none|Date and time that the outage is scheduled to begin|
+|duration|number|mandatory|none|Planned duration of the outage in minutes|
+|isPartial|boolean|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+|explanation|string|mandatory|none|Provides an explanation of the current outage that can be displayed to an end customer|
 
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 
@@ -6801,7 +6642,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|optional|none|none|
-|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|At least one record is required|
+|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
 |» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
@@ -7356,4 +7197,3 @@ To perform this operation, you must be authenticated and authorised with the fol
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-

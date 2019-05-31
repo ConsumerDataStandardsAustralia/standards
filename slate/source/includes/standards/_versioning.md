@@ -1,6 +1,6 @@
 ## Versioning
 
-The standards have adopted a two level versioning strategy.  The high level standards (including principles, URI structure, payload naming conventions, etc) be versioned and each API end point will have an additional version specific to that end point.
+The standards have adopted a two level versioning strategy.  The high level standards (including principles, Uniform Resource Identifier structure, payload naming conventions, etc) be versioned and each API end point will have an additional version specific to that end point.
 
 ###Documentation Versioning
 
@@ -11,12 +11,12 @@ The standards documentation will be versioned using three version parts `<major>
 
 Each of the three components will be independently incrementing integers and are described as follows:
 
-* **major**: Major version of the standards.  Reserved for increment only when a set of changes are applied that are large enough to make co-existence in the same implementation environment with previous versions becomes untenable.  This would include major changes to the information security profile, major changes to the high level standards or a change in basic protocols.
+* **major**: Major version of the standards.  Reserved for increment only when a set of changes are applied that are large enough to make co-existence in the same implementation environment with previous versions untenable.  This would include major changes to the information security profile, major changes to the high level standards or a change in basic protocols.
 * **minor**: Significant changes to the standards.  This would include changes that require approval by the Chair of the Data Standards Body such as new end points and new versions of existing end points.
-* **bug fix**: Minor documentation changes that clarify or correct the standards but do not meaningly alter the standards.
+* **bug fix**: Minor documentation changes that clarify or correct the standards but do not meaningfully alter the standards.
 
 
-###URI Versioning
+###Uniform Resource Identifier (URI) Versioning
 
 > The base URI structure containing the version for this standard is:  
 `http://<provider path>/cds-au/v<major version>/<resource>`

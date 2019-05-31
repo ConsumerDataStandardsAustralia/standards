@@ -39,7 +39,7 @@ The API definitions should consider and incorporate performance implications dur
 The API definitions across the full suite of APIs should be consistent with each other as much as possible.  Where possible common data structures and patterns should be defined and reused.
 
 ####Principle 11: APIs are version controlled and backwards compatible
-As the API definitions evolve care will be taken to ensure the operation of existing clients are protected when breaking changes occur.  Breaking changes will be protected by a well defined version control model and by a policy of whereby previous versions are maintained for a period of time to allow for backwards compatibility.
+As the API definitions evolve care will be taken to ensure the operation of existing clients are protected when breaking changes occur.  Breaking changes will be protected by a well-defined version control model and by a policy of maintaining previous versions for a period of time to allow for backwards compatibility.
 
 ####Principle 12: APIs are extensible
-The API definitions and standards should be built for extensibility.  This extensibility should accommodate future APIs categories and industry sectors but it should also allow for extension by data providers to create unique, value add offerings to the ecosystem.
+The API definitions and standards should be built for extensibility.  This extensibility should accommodate future API categories and industry sectors but it should also allow for extension by data providers to create unique, value add offerings to the ecosystem.

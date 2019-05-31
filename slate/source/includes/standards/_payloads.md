@@ -138,11 +138,15 @@ Each field defined for the payloads of an end point MUST have an assigned status
 
 Mandatory fields MUST be present and have a non-null value in a request or response payload for the payload to be considered valid.
 
-Optional fields MAY be present but this is not guaranteed. It is also valid for these fields to be present but have a null value.  Note that optional fields indicate that data may sometimes not be held by a Data Holder and this is an expected scenario.  It does not indicate that the field may be optionally implemented by a Data Holder.  If a Data Holder holds the data represented by an optional field in digital form then the Data Holder MUST supply that data in the response. 
+Optional fields MAY be present but this is not guaranteed. It is also valid for these fields to be present but have a null value.  Note that optional fields indicate that data may sometimes not be held by a Data Holder and this is an expected scenario.   
 
 Conditional fields MUST have an associated conditional statement. If the conditional statement is true in a specific request or response the field is considered mandatory. If the conditional statement is false then the field is considered optional.
 
-Note that
+<aside class="notice">
+Note that for optional fields are not considered optionally implementable by a Data Holder.
+
+For instance, if a Data Holder holds data in digital form for a Customer that is represented in a payload then it is expected that this data will be shared when authorised by the Customer.  For payloads unrelated to Customers, such as product reference data, there is more discretion for the Data Holder but other drivers, such as complementary regulation or the requirement to align to other channels, should be taken into consideration.
+</aside>
 
 #### Empty/Null Fields
 
