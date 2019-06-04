@@ -3,14 +3,17 @@ Product Reference Samples
 Deposit Products:
 
 deposit1 -
-Description: Basic (Everyday) Savings Account Product
 ProductId: 51645
+Description: Basic (Everyday) Savings Account Product
 
-deposit2 -
-Description: Tiered product (TBC)
+term_deposit1 -
+ProductId: 52645
+Description: Tiered Term Deposit Product
 
-Lending Products:
+credit_card1 -
+ProductId: 53645
+Description:  Credit card rewards product
 
-lending1:
-Description: Personal Loan (TBC)
+productList.jurisdictions -
 
+Description: Returns a list of products
