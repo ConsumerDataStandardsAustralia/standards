@@ -14,6 +14,6 @@ credit_card1 -
 ProductId: 53645
 Description:  Credit card rewards product
 
-productList.jurisdictions -
-
+productList Description -
+ProductIds: 51645 52645 53645
 Description: Returns a list of products

@@ -1,9 +1,9 @@
 ---
 title: Consumer Data Standards
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - javascript
+#language_tabs: # must be one of https://git.io/vQNgJ
+#  - shell
+#  - javascript
 
 toc_footers:
   - <a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a>
