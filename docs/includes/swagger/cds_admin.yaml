@@ -19,7 +19,7 @@ paths:
   /admin/registry/metadata:
     post:
       tags:
-      - Admin APIs
+      - Admin
       - Registry
       summary: Metadata Update
       description: Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained
@@ -37,7 +37,7 @@ paths:
   /admin/metrics:
     get:
       tags:
-      - Admin APIs
+      - Admin
       - Metrics
       summary: Get Metrics
       description: This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.

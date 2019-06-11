@@ -202,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,10 +211,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -622,7 +618,7 @@
                     <a href="#tocSresponseerrorlist" class="toc-h2 toc-link" data-title="ResponseErrorList">ResponseErrorList</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingenumproductcategory" class="toc-h2 toc-link" data-title="BankingEnumProductCategory">BankingEnumProductCategory</a>
+                    <a href="#tocSbankingproductcategory" class="toc-h2 toc-link" data-title="BankingProductCategory">BankingProductCategory</a>
                   </li>
                   <li>
                     <a href="#product-categories" class="toc-h2 toc-link" data-title="Product Categories">Product Categories</a>
@@ -640,6 +636,9 @@
                   </li>
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
+                  </li>
+                  <li>
+                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
                   </li>
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
@@ -4795,9 +4794,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"ON"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5077,9 +5074,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"ON"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5291,9 +5286,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"ON"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5674,7 +5667,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <li>Depending on the type of data being represented there may be additional specific fields.</li>
 </ul>
 <h4 id='uris-to-more-information'>URIs To More Information</h4>
-<p>As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their on channels.</p>
+<p>As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their online channels.</p>
 
 <p>These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.</p>
 <h4 id='linkage-to-accounts'>Linkage To Accounts</h4>
@@ -6740,7 +6733,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>productCategory</td>
-<td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
+<td><a href="#schemabankingproductcategory">BankingProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
@@ -8813,7 +8806,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>productCategory</td>
-<td><a href="#schemabankingenumproductcategory">BankingEnumProductCategory</a></td>
+<td><a href="#schemabankingproductcategory">BankingProductCategory</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
@@ -11579,9 +11572,7 @@ This operation does not require authentication
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="s2">"ON"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11728,9 +11719,7 @@ This operation does not require authentication
     </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"ON"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12111,9 +12100,7 @@ This operation does not require authentication
   </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"ON"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12246,9 +12233,7 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"ON"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14272,9 +14257,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingenumproductcategory">BankingEnumProductCategory</h2>
+<h2 id="tocSbankingproductcategory">BankingProductCategory</h2>
 
-<p><a id="schemabankingenumproductcategory"></a></p>
+<p><a id="schemabankingproductcategory"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="w">
 
 </span></code></pre>
@@ -15052,8 +15037,8 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Registry
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 <h2 id='get-metrics'>Get Metrics</h2>
@@ -15278,9 +15263,11 @@ This operation may only be call by the CDR Registry
 </tr>
 </tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Registry
+<aside class="success">
+This operation does not require authentication
 </aside>
+
+<h2 id='schemas'>Schemas</h2>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -16596,10 +16583,6 @@ This operation may only be call by the CDR Registry
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>

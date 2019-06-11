@@ -1564,9 +1564,7 @@ Obtain scheduled, outgoing payments for a specific account
           "intervalSchedule": {
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
-            "nonBusinessDayTreatment": [
-              "ON"
-            ],
+            "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
                 "interval": "string",
@@ -1755,9 +1753,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
           "intervalSchedule": {
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
-            "nonBusinessDayTreatment": [
-              "ON"
-            ],
+            "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
                 "interval": "string",
@@ -1939,9 +1935,7 @@ Obtain scheduled payments for a specified list of accounts
           "intervalSchedule": {
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
-            "nonBusinessDayTreatment": [
-              "ON"
-            ],
+            "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
                 "interval": "string",
@@ -2250,7 +2244,7 @@ In the product detail payload there are a number of arrays articulating generic 
 
 #### URIs To More Information
 
-As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their on channels.
+As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their online channels.
 
 These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
 
@@ -3102,7 +3096,7 @@ This operation does not require authentication
 |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|productCategory|[BankingProductCategory](#schemabankingproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
 |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
@@ -4120,7 +4114,7 @@ This operation does not require authentication
 |openStatus|string|optional|none|Open or closed status for the account. If not present then OPEN is assumed|
 |isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
-|productCategory|[BankingEnumProductCategory](#schemabankingenumproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|productCategory|[BankingProductCategory](#schemabankingproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |productName|string|mandatory|none|The unique identifier of the account as defined by the account provider (akin to model number for the account)|
 
 #### Enumerated Values
@@ -5689,9 +5683,7 @@ This operation does not require authentication
           "intervalSchedule": {
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
-            "nonBusinessDayTreatment": [
-              "ON"
-            ],
+            "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
                 "interval": "string",
@@ -5811,9 +5803,7 @@ This operation does not require authentication
     "intervalSchedule": {
       "finalPaymentDate": "string",
       "paymentsRemaining": 0,
-      "nonBusinessDayTreatment": [
-        "ON"
-      ],
+      "nonBusinessDayTreatment": "ON",
       "intervals": [
         {
           "interval": "string",
@@ -6038,9 +6028,7 @@ This operation does not require authentication
   "intervalSchedule": {
     "finalPaymentDate": "string",
     "paymentsRemaining": 0,
-    "nonBusinessDayTreatment": [
-      "ON"
-    ],
+    "nonBusinessDayTreatment": "ON",
     "intervals": [
       {
         "interval": "string",
@@ -6110,9 +6098,7 @@ This operation does not require authentication
 {
   "finalPaymentDate": "string",
   "paymentsRemaining": 0,
-  "nonBusinessDayTreatment": [
-    "ON"
-  ],
+  "nonBusinessDayTreatment": "ON",
   "intervals": [
     {
       "interval": "string",
@@ -7164,9 +7150,9 @@ This operation does not require authentication
 |» detail|string|mandatory|none|ID of the account not found|
 |» meta|object|optional|none|Optional additional data for specific error types|
 
-<h2 id="tocSbankingenumproductcategory">BankingEnumProductCategory</h2>
+<h2 id="tocSbankingproductcategory">BankingProductCategory</h2>
 
-<a id="schemabankingenumproductcategory"></a>
+<a id="schemabankingproductcategory"></a>
 
 ```json
 "TRANS_AND_SAVINGS_ACCOUNTS"
@@ -7197,3 +7183,4 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
+

@@ -76,8 +76,8 @@
 </tr>
 </tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Registry
+<aside class="success">
+This operation does not require authentication
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -294,10 +294,10 @@ This operation may only be call by the CDR Registry
 </tr>
 </tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Registry
+<aside class="success">
+This operation does not require authentication
 </aside>
-
+<h2 id='schemas'>Schemas</h2>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>
