@@ -2,8 +2,12 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 0.9.3
+  version: 0.9.4
   title: Consumer Data Standards
+  contact:
+    name: Consumer Data Standards
+    url: https://consumerdatastandards.org.au/
+    email: cdr-data61@csiro.au
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -73,9 +77,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingAccountList'
       x-scopes:
@@ -138,9 +156,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
-          description: resource listing the financial balances for the account
+          description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceList'
       x-scopes:
@@ -174,9 +206,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceList'
         422:
@@ -201,9 +247,23 @@ paths:
         required: true
         type: string
         x-cds-type: ASCIIString
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceById'
       x-scopes:
@@ -224,9 +284,23 @@ paths:
         required: true
         type: string
         x-cds-type: ASCIIString
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingAccountById'
       x-scopes:
@@ -290,9 +364,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingTransactionList'
       x-scopes:
@@ -319,9 +407,23 @@ paths:
         required: true
         type: string
         x-cds-type: ASCIIString
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingTransactionById'
       x-scopes:
@@ -413,9 +515,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingTransactionList'
       x-scopes:
@@ -478,9 +594,23 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/RequestAccountIds'
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingTransactionList'
         422:
@@ -519,9 +649,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
       x-scopes:
@@ -584,9 +728,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
       x-scopes:
@@ -620,9 +778,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
         422:
@@ -661,9 +833,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
       x-scopes:
@@ -726,9 +912,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
       x-scopes:
@@ -762,9 +962,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
         422:
@@ -808,9 +1022,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingPayeeList'
       x-scopes:
@@ -831,9 +1059,23 @@ paths:
         required: true
         type: string
         x-cds-type: ASCIIString
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingPayeeById'
       x-scopes:
@@ -859,7 +1101,7 @@ paths:
 
         - Each element in an array has the same structure so that clients can reliably interpret the payloads
         - Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
-        - Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
+        - Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
         - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
         - An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.
         - Depending on the type of data being represented there may be additional specific fields.
@@ -936,9 +1178,23 @@ paths:
         type: integer
         default: 25
         x-cds-type: PositiveInteger
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductList'
       x-version: "1"
@@ -957,9 +1213,23 @@ paths:
         required: true
         type: string
         x-cds-type: ASCIIString
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductById'
       x-version: "1"
@@ -971,10 +1241,24 @@ paths:
       summary: Get Customer
       description: Obtain basic information on the customer that has authorised the current session
       operationId: getCustomer
-      parameters: []
+      parameters:
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseCommonCustomer'
       x-scopes:
@@ -988,10 +1272,24 @@ paths:
       summary: Get Customer Detail
       description: Obtain detailed information on the authorised customer within the current session.
       operationId: getCustomerDetail
-      parameters: []
+      parameters:
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseCommonCustomerDetail'
       x-scopes:
@@ -1005,10 +1303,24 @@ paths:
       summary: Get Status
       description: Obtain a health check status for the implementation
       operationId: getStatus
-      parameters: []
+      parameters:
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseDiscoveryStatus'
       x-version: "1"
@@ -1020,10 +1332,24 @@ paths:
       summary: Get Outages
       description: Obtain a list of scheduled outages for the implementation
       operationId: getOutages
-      parameters: []
+      parameters:
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+        required: false
+        type: string
       responses:
         200:
           description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](##response-headers) of the API end point that the provider has responded with.
           schema:
             $ref: '#/definitions/ResponseDiscoveryOutages'
       x-version: "1"
@@ -1215,10 +1541,10 @@ definitions:
         - OTHER
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType
+        description: Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)
       additionalInfo:
         type: string
-        description: Display text providing more information on the feature. Mandatory if the feature type is set to OTHER
+        description: Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this feature
@@ -1242,7 +1568,7 @@ definitions:
         - MIN_LIMIT
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType
+        description: Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)
       additionalInfo:
         type: string
         description: Display text providing more information the constraint
@@ -1275,10 +1601,10 @@ definitions:
         - OTHER
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType
+        description: Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified.  Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)
       additionalInfo:
         type: string
-        description: Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER
+        description: Display text providing more information on the eligibility criteria. Mandatory if the [eligibilityType](#tocSproducteligibilitytypedoc) field is set to OTHER
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility criteria
@@ -1334,7 +1660,7 @@ definitions:
         x-cds-type: CurrencyString
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType
+        description: Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)
       additionalInfo:
         type: string
         description: Display text providing more information on the fee
@@ -1394,7 +1720,7 @@ definitions:
         x-cds-type: RateString
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType
+        description: Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
       additionalInfo:
         type: string
         description: Display text providing more information on the discount
@@ -1437,7 +1763,7 @@ definitions:
         - OTHER
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType
+        description: Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
       additionalInfo:
         type: string
         description: Display text providing more information on this eligibility constraint
@@ -1483,7 +1809,7 @@ definitions:
           $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
-        description: Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType
+        description: Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)
       additionalInfo:
         type: string
         description: Display text providing more information on the rate
@@ -1543,12 +1869,7 @@ definitions:
           $ref: '#/definitions/BankingProductRateTier'
       additionalValue:
         type: string
-        description: |-
-          Generic field containing additional
-          information relevant to the
-          lendingRateType specified. Whether
-          mandatory or not is dependent on the
-          value of lendingRateType
+        description: Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)
       additionalInfo:
         type: string
         description: Display text providing more information on the rate.
@@ -3306,6 +3627,18 @@ definitions:
         description: Optional additional data for specific error types
         properties: {}
 parameters:
+  RequestHeader_x-v:
+    name: x-v
+    in: header
+    description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)
+    required: true
+    type: string
+  RequestHeader_x-min-v:
+    name: x-min-v
+    in: header
+    description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.
+    required: false
+    type: string
   ParamAccountOpenStatus:
     name: open-status
     in: query

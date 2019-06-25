@@ -8,9 +8,13 @@
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -74,6 +78,20 @@
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -159,7 +177,7 @@
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -196,6 +214,24 @@
 <td><a href="#schemaresponsebankingaccountlist">ResponseBankingAccountList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -210,9 +246,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -276,6 +316,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -397,8 +451,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>resource listing the financial balances for the account</td>
+<td>Success</td>
 <td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-2'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -416,10 +488,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -474,6 +550,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -544,6 +634,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-3'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -558,9 +666,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -596,6 +708,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the specific account requested</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -645,6 +771,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-4'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -659,9 +803,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -698,6 +846,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>mandatory</td>
 <td>A tokenised identifier for the account which is unique but not shareable</td>
 </tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -712,7 +874,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -832,7 +994,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -933,6 +1095,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingaccountbyid">ResponseBankingAccountById</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-5'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -947,9 +1127,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1046,6 +1230,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1108,6 +1306,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-6'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1122,9 +1338,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1167,6 +1387,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the transaction obtained from a previous call to one of the other transaction end points</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -1226,6 +1460,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingtransactionbyid">ResponseBankingTransactionById</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-7'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1240,9 +1492,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1341,6 +1597,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-3'>Enumerated Values</h4>
@@ -1472,6 +1742,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-8'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1487,10 +1775,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1582,6 +1874,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Page size to request. Default is 25 (standard pagination)</td>
 </tr>
 <tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
+<tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemarequestaccountids">RequestAccountIds</a></td>
@@ -1656,6 +1962,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-9'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1670,9 +1994,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1722,6 +2050,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -1777,6 +2119,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-10'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1791,9 +2151,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1857,6 +2221,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -1980,6 +2358,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-11'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1995,10 +2391,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2053,6 +2453,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -2121,6 +2535,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-12'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2135,9 +2567,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2187,6 +2623,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -2319,6 +2769,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-13'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2333,9 +2801,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2399,6 +2871,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
@@ -2599,6 +3085,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-14'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2614,10 +3118,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2672,6 +3180,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -2817,6 +3339,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-15'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2831,9 +3371,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/payees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2883,6 +3427,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-6'>Enumerated Values</h4>
@@ -2957,6 +3515,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingpayeelist">ResponseBankingPayeeList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-16'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2971,9 +3547,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/payees/{payeeId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3009,6 +3589,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>The ID used to locate the details of a particular payee</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -3091,6 +3685,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingpayeebyid">ResponseBankingPayeeById</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-17'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -3105,9 +3717,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/products</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3135,7 +3751,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <ul>
 <li>Each element in an array has the same structure so that clients can reliably interpret the payloads</li>
 <li>Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.</li>
-<li>Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.</li>
+<li>Each element has a field name <a href="#productfeaturetypedoc">additionalValue</a>.  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.</li>
 <li>An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.</li>
 <li>An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.</li>
 <li>Depending on the type of data being represented there may be additional specific fields.</li>
@@ -3207,6 +3823,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-7'>Enumerated Values</h4>
@@ -3338,6 +3968,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-18'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="success">
 This operation does not require authentication
@@ -3351,9 +3999,13 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/banking/products/{productId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3389,6 +4041,20 @@ This operation does not require authentication
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
 <td>ID of the specific product requested</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -3585,6 +4251,24 @@ This operation does not require authentication
 <td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-19'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="success">
 This operation does not require authentication
@@ -3600,9 +4284,13 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/common/customer</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3620,6 +4308,33 @@ This operation does not require authentication
 <p><code>GET /common/customer</code></p>
 
 <p>Obtain basic information on the customer that has authorised the current session</p>
+
+<h3 id="get-customer-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -3680,6 +4395,24 @@ This operation does not require authentication
 <td><a href="#schemaresponsecommoncustomer">ResponseCommonCustomer</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-20'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -3694,9 +4427,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/common/customer/detail</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3714,6 +4451,33 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /common/customer/detail</code></p>
 
 <p>Obtain detailed information on the authorised customer within the current session.</p>
+
+<h3 id="get-customer-detail-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -3868,6 +4632,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsecommoncustomerdetail">ResponseCommonCustomerDetail</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-21'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -3882,9 +4664,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/discovery/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3902,6 +4688,33 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /discovery/status</code></p>
 
 <p>Obtain a health check status for the implementation</p>
+
+<h3 id="get-status-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -3939,6 +4752,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsediscoverystatus">ResponseDiscoveryStatus</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-22'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
 <aside class="success">
 This operation does not require authentication
@@ -3952,9 +4783,13 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/discovery/outages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3972,6 +4807,33 @@ This operation does not require authentication
 <p><code>GET /discovery/outages</code></p>
 
 <p>Obtain a list of scheduled outages for the implementation</p>
+
+<h3 id="get-outages-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example responses</p>
@@ -4010,6 +4872,24 @@ This operation does not require authentication
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
 <td><a href="#schemaresponsediscoveryoutages">ResponseDiscoveryOutages</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-23'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -4855,14 +5735,14 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductfeaturetypedoc">featureType</a> specified. Whether mandatory or not is dependent on the value of the <a href="#tocSproductfeaturetypedoc">featureType.</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Display text providing more information on the feature. Mandatory if the feature type is set to OTHER</td>
+<td>Display text providing more information on the feature. Mandatory if the <a href="#tocSproductfeaturetypedoc">feature type</a> is set to OTHER</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -5005,7 +5885,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductconstrainttypedoc">constraintType</a> specified.  Whether mandatory or not is dependent on the value of <a href="#tocSproductconstrainttypedoc">constraintType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -5083,14 +5963,14 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproducteligibilitytypedoc">eligibilityType</a> specified.  Whether mandatory or not is dependent on the value of <a href="#tocSproducteligibilitytypedoc">eligibilityType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER</td>
+<td>Display text providing more information on the eligibility criteria. Mandatory if the <a href="#tocSproducteligibilitytypedoc">eligibilityType</a> field is set to OTHER</td>
 </tr>
 <tr>
 <td>additionalInfoUri</td>
@@ -5267,7 +6147,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductfeetypedoc">feeType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductfeetypedoc">feeType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -5424,7 +6304,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounttypedoc">discountType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounttypedoc">discountType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -5509,7 +6389,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -5674,7 +6554,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdepositratetypedoc">depositRateType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdepositratetypedoc">depositRateType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -5831,7 +6711,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductlendingratetypedoc">lendingRateType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductlendingratetypedoc">lendingRateType</a></td>
 </tr>
 <tr>
 <td>additionalInfo</td>
@@ -6144,7 +7024,7 @@ This operation does not require authentication
         </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6213,7 +7093,7 @@ This operation does not require authentication
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6320,7 +7200,7 @@ This operation does not require authentication
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6440,7 +7320,7 @@ This operation does not require authentication
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6566,7 +7446,7 @@ This operation does not require authentication
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6686,7 +7566,7 @@ This operation does not require authentication
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+      </span><span class="s2">"isActivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">

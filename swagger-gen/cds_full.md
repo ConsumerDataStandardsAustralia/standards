@@ -12,12 +12,16 @@
 GET https://data.provider.com.au/cds-au/v1/banking/accounts HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -46,6 +50,8 @@ Obtain a list of accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -81,7 +87,7 @@ Obtain a list of accounts
         "displayName": "string",
         "nickname": "string",
         "openStatus": "OPEN",
-        "isOwned": "true",
+        "isOwned": true,
         "maskedNumber": "string",
         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "productName": "string"
@@ -108,6 +114,12 @@ Obtain a list of accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountList](#schemaresponsebankingaccountlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_basic_accounts</a>
@@ -123,12 +135,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -157,6 +173,8 @@ Obtain balances for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -220,7 +238,13 @@ Obtain balances for multiple, filtered accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|resource listing the financial balances for the account|[ResponseBankingAccountsBalanceList](#schemaresponsebankingaccountsbalancelist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemaresponsebankingaccountsbalancelist)|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -238,13 +262,17 @@ POST https://data.provider.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
 Host: data.provider.com.au
 Content-Type: application/json
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -283,6 +311,8 @@ Obtain balances for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
@@ -330,6 +360,12 @@ Obtain balances for a specified list of accounts
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemaresponsebankingaccountsbalancelist)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_basic_accounts</a>
@@ -345,12 +381,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -375,6 +415,8 @@ Obtain the balance for a single specified account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -412,6 +454,12 @@ Obtain the balance for a single specified account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceById](#schemaresponsebankingaccountsbalancebyid)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_basic_accounts</a>
@@ -427,12 +475,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -457,6 +509,8 @@ Obtain detailed information on a single account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -470,7 +524,7 @@ Obtain detailed information on a single account
     "displayName": "string",
     "nickname": "string",
     "openStatus": "OPEN",
-    "isOwned": "true",
+    "isOwned": true,
     "maskedNumber": "string",
     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "productName": "string",
@@ -590,7 +644,7 @@ Obtain detailed information on a single account
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
-        "isActivated": "true"
+        "isActivated": true
       }
     ],
     "fees": [
@@ -681,6 +735,12 @@ Obtain detailed information on a single account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountById](#schemaresponsebankingaccountbyid)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_detailed_accounts</a>
@@ -696,12 +756,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -742,6 +806,8 @@ Some general notes that apply to all end points that retrieve transactions:
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -793,6 +859,12 @@ Some general notes that apply to all end points that retrieve transactions:
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_transactions</a>
@@ -808,12 +880,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -839,6 +915,8 @@ Obtain detailed information on a transaction for a specific account
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
 |transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -886,6 +964,12 @@ Obtain detailed information on a transaction for a specific account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionById](#schemaresponsebankingtransactionbyid)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_transactions</a>
@@ -901,12 +985,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -940,6 +1028,8 @@ Obtain transactions for multiple, filtered accounts
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1011,6 +1101,12 @@ Obtain transactions for multiple, filtered accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_transactions</a>
@@ -1027,13 +1123,17 @@ POST https://data.provider.com.au/cds-au/v1/banking/accounts/transactions HTTP/1
 Host: data.provider.com.au
 Content-Type: application/json
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1077,6 +1177,8 @@ Obtain transactions for a specified list of transactions.
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
@@ -1130,6 +1232,12 @@ Obtain transactions for a specified list of transactions.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_transactions</a>
@@ -1145,12 +1253,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1177,6 +1289,8 @@ Obtain direct debit authorisations for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -1220,6 +1334,12 @@ Obtain direct debit authorisations for a specific account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_regular_payments</a>
@@ -1235,12 +1355,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1269,6 +1393,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1332,6 +1458,12 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_regular_payments</a>
@@ -1348,13 +1480,17 @@ POST https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/
 Host: data.provider.com.au
 Content-Type: application/json
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1393,6 +1529,8 @@ Obtain direct debit authorisations for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1438,6 +1576,12 @@ Obtain direct debit authorisations for a specified list of accounts
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_regular_payments</a>
@@ -1453,12 +1597,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1485,6 +1633,8 @@ Obtain scheduled, outgoing payments for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -1605,6 +1755,12 @@ Obtain scheduled, outgoing payments for a specific account
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsList](#schemaresponsebankingscheduledpaymentslist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_regular_payments</a>
@@ -1620,12 +1776,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1654,6 +1814,8 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1794,6 +1956,12 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsList](#schemaresponsebankingscheduledpaymentslist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_regular_payments</a>
@@ -1810,13 +1978,17 @@ POST https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
 Host: data.provider.com.au
 Content-Type: application/json
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -1855,6 +2027,8 @@ Obtain scheduled payments for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
 > Example responses
@@ -1977,6 +2151,12 @@ Obtain scheduled payments for a specified list of accounts
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsList](#schemaresponsebankingscheduledpaymentslist)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_regular_payments</a>
@@ -1992,12 +2172,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/payees HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2024,6 +2208,8 @@ Obtain a list of pre-registered payees
 |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2071,6 +2257,12 @@ Obtain a list of pre-registered payees
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeList](#schemaresponsebankingpayeelist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_basic_accounts</a>
@@ -2086,12 +2278,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2116,6 +2312,8 @@ Obtain detailed information on a single payee
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2186,6 +2384,12 @@ Obtain detailed information on a single payee
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeById](#schemaresponsebankingpayeebyid)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank_payees</a>
@@ -2201,12 +2405,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/banking/products HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2237,7 +2445,7 @@ In the product detail payload there are a number of arrays articulating generic 
 
 - Each element in an array has the same structure so that clients can reliably interpret the payloads
 - Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
-- Each element has a field name additionalValue. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
+- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.
 - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
 - An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.
 - Depending on the type of data being represented there may be additional specific fields.
@@ -2270,6 +2478,8 @@ In addition, the concept of effective date and time has also been included.  Thi
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2341,6 +2551,12 @@ In addition, the concept of effective date and time has also been included.  Thi
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductList](#schemaresponsebankingproductlist)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="success">
 This operation does not require authentication
 </aside>
@@ -2355,12 +2571,16 @@ This operation does not require authentication
 GET https://data.provider.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2385,6 +2605,8 @@ Obtain detailed information on a single product offered openly to the market
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2569,6 +2791,12 @@ Obtain detailed information on a single product offered openly to the market
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductById](#schemaresponsebankingproductbyid)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="success">
 This operation does not require authentication
 </aside>
@@ -2585,12 +2813,16 @@ This operation does not require authentication
 GET https://data.provider.com.au/cds-au/v1/common/customer HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2609,6 +2841,13 @@ $.ajax({
 `GET /common/customer`
 
 Obtain basic information on the customer that has authorised the current session
+
+<h3 id="get-customer-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2659,6 +2898,12 @@ Obtain basic information on the customer that has authorised the current session
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemaresponsecommoncustomer)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common_basic_customer</a>
@@ -2674,12 +2919,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/common/customer/detail HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2698,6 +2947,13 @@ $.ajax({
 `GET /common/customer/detail`
 
 Obtain detailed information on the authorised customer within the current session.
+
+<h3 id="get-customer-detail-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2842,6 +3098,12 @@ Obtain detailed information on the authorised customer within the current sessio
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetail](#schemaresponsecommoncustomerdetail)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common_detailed_customer</a>
@@ -2857,12 +3119,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 GET https://data.provider.com.au/cds-au/v1/discovery/status HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2881,6 +3147,13 @@ $.ajax({
 `GET /discovery/status`
 
 Obtain a health check status for the implementation
+
+<h3 id="get-status-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2908,6 +3181,12 @@ Obtain a health check status for the implementation
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryStatus](#schemaresponsediscoverystatus)|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+
 <aside class="success">
 This operation does not require authentication
 </aside>
@@ -2922,12 +3201,16 @@ This operation does not require authentication
 GET https://data.provider.com.au/cds-au/v1/discovery/outages HTTP/1.1
 Host: data.provider.com.au
 Accept: application/json
+x-v: string
+x-min-v: string
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string'
 
 };
 
@@ -2946,6 +3229,13 @@ $.ajax({
 `GET /discovery/outages`
 
 Obtain a list of scheduled outages for the implementation
+
+<h3 id="get-outages-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2975,6 +3265,12 @@ Obtain a list of scheduled outages for the implementation
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutages](#schemaresponsediscoveryoutages)|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -3535,8 +3831,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |featureType|string|mandatory|none|The type of feature described|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType|
-|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the feature type is set to OTHER|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)|
+|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this feature|
 
 #### Enumerated Values
@@ -3586,7 +3882,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |constraintType|string|mandatory|none|The type of constraint described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information the constraint|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on the constraint|
 
@@ -3619,8 +3915,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |eligibilityType|string|mandatory|none|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType|
-|additionalInfo|string|conditional|none|Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified.  Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)|
+|additionalInfo|string|conditional|none|Display text providing more information on the eligibility criteria. Mandatory if the [eligibilityType](#tocSproducteligibilitytypedoc) field is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility criteria|
 
 #### Enumerated Values
@@ -3695,7 +3991,7 @@ This operation does not require authentication
 |accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accrualFrequency|[ExternalRef](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this fee|
 |discounts|[[BankingProductDiscount](#schemabankingproductdiscount)]|optional|none|An optional list of discounts to this fee that may be available|
@@ -3753,7 +4049,7 @@ This operation does not require authentication
 |transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |feeRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
 |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|Eligibility constraints that apply to this discount|
@@ -3787,7 +4083,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the discountEligibilityType specified. Whether mandatory or not is dependent on the value of discountEligibilityType|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
 
@@ -3859,7 +4155,7 @@ This operation does not require authentication
 |calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the rate|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate|
 
@@ -3929,7 +4225,7 @@ This operation does not require authentication
 |applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the rate.|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate|
 
@@ -4053,7 +4349,7 @@ This operation does not require authentication
         "displayName": "string",
         "nickname": "string",
         "openStatus": "OPEN",
-        "isOwned": "true",
+        "isOwned": true,
         "maskedNumber": "string",
         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
         "productName": "string"
@@ -4095,7 +4391,7 @@ This operation does not require authentication
   "displayName": "string",
   "nickname": "string",
   "openStatus": "OPEN",
-  "isOwned": "true",
+  "isOwned": true,
   "maskedNumber": "string",
   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "productName": "string"
@@ -4136,7 +4432,7 @@ This operation does not require authentication
     "displayName": "string",
     "nickname": "string",
     "openStatus": "OPEN",
-    "isOwned": "true",
+    "isOwned": true,
     "maskedNumber": "string",
     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
     "productName": "string",
@@ -4256,7 +4552,7 @@ This operation does not require authentication
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
-        "isActivated": "true"
+        "isActivated": true
       }
     ],
     "fees": [
@@ -4361,7 +4657,7 @@ This operation does not require authentication
   "displayName": "string",
   "nickname": "string",
   "openStatus": "OPEN",
-  "isOwned": "true",
+  "isOwned": true,
   "maskedNumber": "string",
   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
   "productName": "string",
@@ -4481,7 +4777,7 @@ This operation does not require authentication
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string",
-      "isActivated": "true"
+      "isActivated": true
     }
   ],
   "fees": [
