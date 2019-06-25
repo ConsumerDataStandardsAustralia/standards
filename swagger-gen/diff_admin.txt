@@ -1,45 +1,6 @@
 3d2
 < <h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
-16,18d14
-< x-v: string
-< x-min-v: string
-< 
-23,25c19
-<   'Content-Type':'application/json',
-<   'x-v':'string',
-<   'x-min-v':'string'
----
->   'Content-Type':'application/json'
-60,61d53
-< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
-70,75d61
-< ### Response Headers
-< 
-< |Status|Header|Type|Format|Description|
-< |---|---|---|---|---|
-< |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
-< 
-90,91d75
-< x-v: string
-< x-min-v: string
-97,99c81
-<   'Accept':'application/json',
-<   'x-v':'string',
-<   'x-min-v':'string'
----
->   'Accept':'application/json'
-124,125d105
-< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
-266,271d245
-< ### Response Headers
-< 
-< |Status|Header|Type|Format|Description|
-< |---|---|---|---|---|
-< |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
-< 
-276c250
+276c275
 < # Schemas
 ---
 > ## Schemas
