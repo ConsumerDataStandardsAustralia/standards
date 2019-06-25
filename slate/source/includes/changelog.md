@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|25/6/2019|0.9.4|Documentation and error fixes from may draft|Added versioning headers
 |29/5/2019|0.9.3|Final updates for May Draft|Addition of Discoverability, InfoSec Profile and minor corrections
 |28/5/2019|0.9.2|Admin End Points|Added separate swagger/yaml as well as documentation for admin end points
 |28/5/2019|0.9.1|Modified BankingProductRateTier.maximumValue to optional|Rebuild of docs

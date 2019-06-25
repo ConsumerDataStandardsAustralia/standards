@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
-set -o errexit #abort if any command fails
+#set -o errexit #abort if any command fails
 
 #Requires minumum JDK 7 or 8 on $PATH
 #https://github.com/swagger-api/swagger-codegen/blob/master/README.md
 
+# OAS Codegen
+# wget http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.4/openapi-generator-cli-3.3.4.jar -O openapi-generator-cli.jar
+
 #location of swagger codegen install
 SWAGGER_CODEGEN=$HOME/swagger-codegen
+#Location of openapi codegen install
+OAS_CODEGEN=$HOME/openapi-codegen
 
 #location of generated output
-SWAGGER_CODEGEN_OUTPUT=cds_swagger_gen
+SWAGGER_CODEGEN_OUTPUT=/tmp/cds_swagger_gen
 
 #TODO Command line parse
 # format <filename> <cli_output_format> <ext> <output-dir>
@@ -17,22 +22,32 @@ OUTPUT_FORMAT="$2"
 OUTPUT_EXT="$3"
 OUTPUT_DIR="$4"
 
+echo "*** PATH: " $PATH
 echo "*** Input Swagger: " $INPUT_SWAGGER
 echo "*** Output Format: " $OUTPUT_FORMAT
 echo "*** Output Extension" $OUTPUT_EXT
 echo "*** Output Dir:" $OUTPUT_DIR
 
 echo "*** Checking if Swagger is valid: " $1
-CHECK=$(curl -X "POST" "http://online.swagger.io/validator/debug" --silent -d @$1)
-if [[ $CHECK != "{}" ]]; then
-echo -e "\n*** Validator check returned invalid Swagger:\n$CHECK\n"
+VALID_SWAGGER=$(curl -X "POST" "http://online.swagger.io/validator/debug" --silent -d @$1)
+#echo "*** Swagger Validator Returned: " $VALID_SWAGGER
+if [[ $VALID_SWAGGER == "" ]]; then
+echo -e "\n*** No Response, check internet http://online.swagger.io/ \n$VALID_SWAGGER\n"
+exit 1
+fi
+if [[ $VALID_SWAGGER != "{}" ]]; then
+echo -e "\n*** Validator check returned invalid Swagger:\n$VALID_SWAGGER\n"
 exit 1
 fi
 
-echo "*** Validator check: " $CHECK
+echo "*** Swagger Validator check: " $VALID_SWAGGER
 
 #codegen validator
 #java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar validate -i $INPUT_SWAGGER
+
+echo "*** Checking OAS Validator ***"
+VALID_OAS=$(java -jar $OAS_CODEGEN/openapi-generator-cli.jar validate -i $INPUT_SWAGGER)
+echo "*** OAS Validator: " $VALID_OAS
 
 # generate
 echo "*** Generating $OUTPUT_FORMAT"

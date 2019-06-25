@@ -2,7 +2,7 @@
   "data": {
     "products": [
       {
-        "productId": "51645",
+        "productId": "54348ff1-e5bf-4c37-9708-5af29d296e19",
         "effectiveFrom": "2018-01-12T15:43:00.121Z",
         "lastUpdated": "2019-05-27T23:53:07Z",
         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
@@ -21,27 +21,7 @@
         }
       },
       {
-        "productId": "52645",
-        "effectiveFrom": "2018-01-12T15:43:00.121Z",
-        "effectiveTo": "2019-04-12T15:43:00.121Z",
-        "lastUpdated": "2018-12-12T15:43:00.121Z",
-        "productCategory": "TERM_DEPOSITS",
-        "name": "Every Day Account",
-        "description": "An Acme Term Deposit lets allows you save money faster.",
-        "brand": "Acme",
-        "brandName": "Acme Bank Australia",
-        "applicationUri": "https://acmebank.com/products/eda/apply",
-        "isTailored": false,
-        "additionalInformation": {
-          "overviewUri": "https://acmebank.com/products/eda/",
-          "termsUri": "https://acmebank.com/products/eda/#terms",
-          "eligibilityUri": "https://acmebank.com/products/eda/#eligibility",
-          "feesAndPricingUri": "https://acmebank.com/products/eda/#fees",
-          "bundleUri": "https://acmebank.com/products/"
-        }
-      },
-      {
-        "productId": "53645",
+        "productId": "6398803d-c792-4ff3-9fff-e095ec8c5b8a",
         "effectiveFrom": "2018-01-12T15:43:00.121Z",
         "effectiveTo": "2019-04-12T15:43:00.121Z",
         "lastUpdated": "2018-12-12T15:43:00.121Z",
