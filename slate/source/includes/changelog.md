@@ -4,7 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
-|25/6/2019|0.9.4|Documentation and error fixes from may draft|Added versioning headers
+|27/6/2019|0.9.4|Documentation and error fixes from May draft|<ul><li>Added missing versioning headers x-v/ x-min-v</li><li>Removed Banking API's tag </li><li>Fixed nonBusinessDayTreatment enum default is an array</li><li>Removal of empty x-scope in product reference</li><li>BankingScheduledPaymentRecurrence removed required intervals field</li><li>Added Swagger Contact object</li><li>BankingScheduledPaymentRecurrence removed required intervals field</li><li>Minor updates to static documentation typos/ broken links</li><li>Added cross links to additionalValue descriptions for Product Reference enums</li><li>Minor updates to product reference samples</li></ul>
 |29/5/2019|0.9.3|Final updates for May Draft|Addition of Discoverability, InfoSec Profile and minor corrections
 |28/5/2019|0.9.2|Admin End Points|Added separate swagger/yaml as well as documentation for admin end points
 |28/5/2019|0.9.1|Modified BankingProductRateTier.maximumValue to optional|Rebuild of docs
