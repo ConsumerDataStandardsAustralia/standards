@@ -1,0 +1,17 @@
+{
+  "verbose": true,
+  "tagGroups": [
+    {
+      "title": "Banking APIs",
+      "tags": ["Banking"]
+    },
+    {
+      "title": "Common APIs",
+      "tags": ["Common"]
+    },
+    {
+      "title": "Admin APIs",
+      "tags": ["Admin"]
+    }
+  ]
+}

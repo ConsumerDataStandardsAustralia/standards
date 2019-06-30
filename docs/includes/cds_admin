@@ -8,8 +8,13 @@
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span>
+<span class="err">x-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+</span><span class="err">x-min-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+
+</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -50,6 +55,20 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
+</tr>
+<tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemarequestmetadataupdate">RequestMetaDataUpdate</a></td>
@@ -75,9 +94,27 @@
 <td>None</td>
 </tr>
 </tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Registry
+<aside class="success">
+This operation does not require authentication
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -88,9 +125,13 @@ This operation may only be call by the CDR Registry
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.provider.com.au/cds-au/v1/admin/metrics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.provider.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -126,6 +167,20 @@ This operation may only be call by the CDR Registry
 <td>string</td>
 <td>optional</td>
 <td>The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -293,11 +348,29 @@ This operation may only be call by the CDR Registry
 <td><a href="#schemaresponsemetricslist">ResponseMetricsList</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-2'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="##response-headers">version</a> of the API end point that the provider has responded with.</td>
+</tr>
+</tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Registry
+<aside class="success">
+This operation does not require authentication
 </aside>
-
+<h2 id='schemas'>Schemas</h2>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>

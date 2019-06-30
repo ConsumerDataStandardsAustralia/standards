@@ -1,4 +1,0 @@
-6644c6644
-< |» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
----
-> |» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|At least one record is required|

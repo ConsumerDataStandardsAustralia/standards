@@ -3,7 +3,12 @@
   "info": {
     "title": "Consumer Data Standards Administration End Points",
     "description": "Data Holder Consumer Data Standards Administration End Points",
-    "version": "0.1.0",
+    "version": "0.1.1",
+    "contact": {
+      "name": "Consumer Data Standards Administration End Points",
+      "url": "https://consumerdatastandards.org.au/",
+      "email": "cdr-data61@csiro.au"
+    },
     "license": {
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
@@ -27,8 +32,8 @@
         "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
         "operationId": "metadataUpdate",
         "tags": [
-          "Admin APIs",
-          "Registry"
+          "Admin",
+          "Register"
         ],
         "parameters": [
           {
@@ -38,11 +43,23 @@
             "schema": {
               "$ref": "#/definitions/RequestMetaDataUpdate"
             }
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-min-v"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+              }
+            }
           }
         },
         "x-version": "1"
@@ -54,7 +71,7 @@
         "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
         "operationId": "getMetrics",
         "tags": [
-          "Admin APIs",
+          "Admin",
           "Metrics"
         ],
         "parameters": [
@@ -70,11 +87,23 @@
               "ALL"
             ],
             "default": "ALL"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-min-v"
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+              }
+            },
             "schema": {
               "$ref": "#/definitions/ResponseMetricsList"
             }
@@ -82,6 +111,21 @@
         },
         "x-version": "1"
       }
+    }
+  },
+  "parameters": {
+    "RequestHeader_x-v": {
+      "name": "x-v",
+      "description": "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)",
+      "in": "header",
+      "type": "string",
+      "required": true
+    },
+    "RequestHeader_x-min-v": {
+      "name": "x-min-v",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.",
+      "in": "header",
+      "type": "string"
     }
   },
   "definitions": {

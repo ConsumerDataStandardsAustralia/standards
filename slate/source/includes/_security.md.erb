@@ -47,9 +47,8 @@ multiple system entities which will assume one or more of the following roles:
     -   Multiple Data Holders will be supported.
 -   **Data Recipient**:
     -   Multiple Data Recipients will be supported.
-- 	**Registry**:
-    -   It is envisaged that only one registry will be supported and will be
-        maintained by the Australian Competition and Consumer Commission (ACCC).
+- 	**Register**:
+    -   A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC).
 
 ### Data Holder
 The Data Holder (DH) is a system entity that authenticates a consumer
@@ -66,17 +65,17 @@ A Data Recipient MUST be accredited in order to participate in the CDR Federatio
 
 A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
-### Registry
+### Register
 <aside class="warning">
-NOTE: This section is reflective of the positioning of the Registry in the CDR Rules Exposure Draft
+NOTE: This section is reflective of the positioning of the Register in the CDR Rules Exposure Draft
 </aside>
 
-The Registry is a central point of discovery for both Data Holders and Data
-Recipients. Data Holders and Data Recipients must be created as entities in the Registry in order for them to participate as members of the CDR Federation.  The functionality of the Registry will include but will not be limited to:
+The Register is a central point of discovery for both Data Holders and Data
+Recipients. Data Holders and Data Recipients must be created as entities in the Register in order for them to participate as members of the CDR Federation.  The functionality of the Register will include but will not be limited to:
 
-- **Management of Identities and Access**: The Registry will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.
-- **Management of Certificates**: The Registry will facilitate the issuing, management and revocation of digital certificates.
-- **Discoverability and Search**: The Registry will expose APIs and Web Interfaces in order to support metadata queries across Registry entities.
+- **Management of Identities and Access**: The Register will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.
+- **Management of Certificates**: The Register will facilitate the issuing, management and revocation of digital certificates.
+- **Discoverability and Search**: The Register will expose APIs and Web Interfaces in order to support metadata queries across Register entities.
 
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
@@ -159,7 +158,7 @@ grant_type=authorization_code&
 
 The `private_key_jwt` authentication method is enabled through the delivery of an encoded **[JWT]** signed using the Data Recipient's private key and thus facilitates non-repudiation.
 
-Client public keys MUST only be obtained from the CDR Registry.
+Client public keys MUST only be obtained from the CDR Register.
 
 The **[JWT]** represents an assertion that MUST include the following claims:
 
@@ -240,7 +239,7 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 
 The following **[VOT]** claims MAY be supported:
 
--  `vot`: MUST contain a valid [VoT value](#vector-loas).
+-  `vot`: MUST contain a valid [VoT value](#ordinal-loa).
 -  `vtm`: The **[VOT]** trustmark URI.
 
 The following additional claims MUST be supported:
@@ -486,7 +485,7 @@ This is approach is aligned to the use of the `http://openbanking.org.uk/refresh
 
 ## End Points
 <aside class="warning">
-NOTE: This section does not yet include any end points that will be defined by the design of the CDR Registry.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
+NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
 </aside>
 
 ### OpenID Provider Configuration End Point

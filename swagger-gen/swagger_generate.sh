@@ -1,44 +1,73 @@
 #!/usr/bin/env bash
+#set -o errexit #abort if any command fails
 
 #Requires minumum JDK 7 or 8 on $PATH
 #https://github.com/swagger-api/swagger-codegen/blob/master/README.md
 
+# OAS Codegen
+# wget http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.4/openapi-generator-cli-3.3.4.jar -O openapi-generator-cli.jar
+
 #location of swagger codegen install
 SWAGGER_CODEGEN=$HOME/swagger-codegen
+#Location of openapi codegen install
+OAS_CODEGEN=$HOME/openapi-codegen
 
 #location of generated output
-SWAGGER_CODEGEN_OUTPUT=cds_swagger_gen
+SWAGGER_CODEGEN_OUTPUT=/tmp/cds_swagger_gen
 
-#location of slate destination
-CDS_SLATE_SWAGGER_DIR=../slate/source/includes/swagger
-
-#Input Swagger file
+#TODO Command line parse
+# format <filename> <cli_output_format> <ext> <output-dir>
 INPUT_SWAGGER="$1"
+OUTPUT_FORMAT="$2"
+OUTPUT_EXT="$3"
+OUTPUT_DIR="$4"
+
+echo "*** PATH: " $PATH
+echo "*** Input Swagger: " $INPUT_SWAGGER
+echo "*** Output Format: " $OUTPUT_FORMAT
+echo "*** Output Extension" $OUTPUT_EXT
+echo "*** Output Dir:" $OUTPUT_DIR
 
 echo "*** Checking if Swagger is valid: " $1
-CHECK=$(curl -X "POST" "http://online.swagger.io/validator/debug" --silent -d @$1)
-if [[ $CHECK != "{}" ]]; then
-echo -e "\n*** Sorry this is an invalid Swagger:\n$CHECK\n"
+VALID_SWAGGER=$(curl -X "POST" "http://online.swagger.io/validator/debug" --silent -d @$1)
+#echo "*** Swagger Validator Returned: " $VALID_SWAGGER
+if [[ $VALID_SWAGGER == "" ]]; then
+echo -e "\n*** No Response, check internet http://online.swagger.io/ \n$VALID_SWAGGER\n"
+exit 1
+fi
+if [[ $VALID_SWAGGER != "{}" ]]; then
+echo -e "\n*** Validator check returned invalid Swagger:\n$VALID_SWAGGER\n"
 exit 1
 fi
 
-# generate yamlS
-echo "*** Generating swagger-yaml"
-java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l swagger-yaml -o $SWAGGER_CODEGEN_OUTPUT
+echo "*** Swagger Validator check: " $VALID_SWAGGER
 
+#codegen validator
+#java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar validate -i $INPUT_SWAGGER
 
-FILENAME=`basename "${1}" .json`
-OUTFILE="${FILENAME}.yaml"
-# tell the user what is happening
-echo "Changing Extension \"$FILENAME\" --> \"$OUTFILE\" ."
+echo "*** Checking OAS Validator ***"
+VALID_OAS=$(java -jar $OAS_CODEGEN/openapi-generator-cli.jar validate -i $INPUT_SWAGGER)
+echo "*** OAS Validator: " $VALID_OAS
 
-# move it to slate dir
-echo "*** Moving to slate dir " $CDS_SLATE_SWAGGER_DIR
-mv $SWAGGER_CODEGEN_OUTPUT/swagger.yaml $CDS_SLATE_SWAGGER_DIR/$OUTFILE
-ls -la $CDS_SLATE_SWAGGER_DIR/$OUTFILE
+# generate
+echo "*** Generating $OUTPUT_FORMAT"
+java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar generate -i $INPUT_SWAGGER -l $OUTPUT_FORMAT -o $SWAGGER_CODEGEN_OUTPUT
+
+echo `cat $SWAGGER_CODEGEN_OUTPUT/README.md`
+
+FILENAME=`basename $INPUT_SWAGGER .json`
+OUTFILE="${FILENAME}.$OUTPUT_EXT"
+#echo "Changing Extension \"$FILENAME\" --> \"$OUTFILE\" ."
+
+# move it to output dir
+echo "*** Moving to output dir " $OUTPUT_DIR
+cp $SWAGGER_CODEGEN_OUTPUT/swagger.$OUTPUT_EXT $OUTPUT_DIR/$OUTFILE
+echo "*** Outfile: $OUTPUT_DIR/$OUTFILE "
+#ls -la $OUTPUT_DIR/$OUTFILE
 
 # cleanup output
 echo "*** Removing temporary swagger gen output dir" $SWAGGER_CODEGEN_OUTPUT
 rm -Rf $SWAGGER_CODEGEN_OUTPUT
+
 
 echo "*** Complete ***"
