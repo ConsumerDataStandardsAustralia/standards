@@ -96,23 +96,20 @@ Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-
 
 The `request_uri` parameter SHALL NOT be supported.
 
-<aside class="warning">
-NOTE: This process of customer authentication and the customer experience of the subsequent process to obtain customer consent has been the subject of significant consultation and feedback.  To date, a consensus position has not been achieved to the satisfaction of the Data Standards Body.
+In addition, the following statements are applicable for this flow:
 
-As a result of this lack of consensus this decision does not contain additional specificity around the requirements for the authentication flow.  Additional specificity will be added to the profile once a position on the authentication flow has been reached.
-
-The following specific options for the authentication flow have been identified:
-<ol>
-<li>Standard Redirect Flow: Username and password are captured in a redirected web page and consent is then obtained in the redirected web page.</li>
-<li>Redirect With OTP Flow: Username is captured in a redirected page.  The Data Holder then provides a one-time password via another channel, which is then captured in the redirected page to authenticate the customer.  Consent is then obtained in that same web page.</li>
-<li> Redirect With Known Channel: Username is captured in a redirected page.  Customer then proceeds to a known digital channel, authenticates and provides consent.</li>
-<li>Client Initiated Backchannel Authentication: A decoupled and asynchronous authentication flow that is defined by FAPI.</li>
-<li>CDR Specific Decoupled: A decoupled flow proposed by a community member where a one-time identifier is obtained from a known digital channel and then provided to the data recipient with consent being completed afterwards in an experience provided by the Data Holder.</li>
-</ol>
-
-Previously, a decision to pursue Redirect With Known Channel had been made by the Data Standards Body and a proposal for how this was to be implemented had been provided for consultation.  This proposal is not included in this decision.  CX testing of the flows described above is ongoing.
-</aside>
-
+- Data Holders MUST request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page
+- Data Holders MUST NOT request that the customer enter an existing password in the redirected page
+- Data Holders MUST provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page
+- The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authorisation process
+- Data Holders SHOULD implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism
+- The provided OTP MUST be used only for authentication for CDR based sharing and MUST NOT be usable for the authorisation of other transactions or actions
+- The provided OTP MUST be invalidated after a period of time at the discretion of the Data Holder.  This expiry period SHOULD facilitate enough time for the customer to reasonably complete the authorisation process
+- The provided OTP MUST be numeric digits and be between 4 and 6 digits in length
+- The algorithm for the creation of the OTP is at the discretion of the Data Holder but SHOULD incorporate a level of pseudorandomness appropriate for the use case
+- Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page
+- Data holders MUST clearly refer to the OTP as a “one-time password” in consumer-facing interactions and material
+- Data holders MUST state in consumer-facing interactions and material that ADRs will never ask consumers for their banking password to access CDR data
 
 <a id="client-authentication"></a>
 ## Client Authentication
@@ -193,30 +190,7 @@ In reference to the client types referenced in [section 2.1] (https://tools.ietf
 ## Consent
 Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under **[OIDC]**.
 
-<aside class="warning">
-NOTE: Previously the CDR Information Security profile indicated that a separate API, a Consent API, for establishing complex consent prior to authorisation being initiated would be included.
-<br/><br/>
-Additional clarification and insight obtained from various sources that steer the standards has indicated the reasons for requiring a Consent API, such as the need to support fine-grained permissions or consent mutability, are no longer needed for the initial implementation of the CDR regime.  As a result, support for a Consent API is not included in this decision.
-<br/><br/>
-It is possible that such a mechanism will be needed in the future, or maybe needed to support Data Holder specific extensions.  If this is the case then a Consent API would need to be considered for inclusion in this profile.
-<br/><br/>
-It should be noted that, in considering this issue, it is a salient point that there is no current international standard for a Consent API.  A number of candidate draft standards are being proposed to various organisations but these are still in progress.  The draft candidate to the OpenID Foundation’s Financial API (FAPI) Working Group can be found at:
-<br/>
-<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_Lodging_Intent.md">https://bitbucket.org/openid/fapi/src/master/Financial_API_Lodging_Intent.md</a>
-<br/>
-It should be noted that this is a candidate for a pattern and does not include specifics for payloads or interfaces.  These would have to be defined specifically for the CDR regime.
-<br/><br/>
-During consultation various community members indicated the preference for inclusion of the Consent ID for the initial implementation.  This is being considered by the Data Standards Body and will be the subject of further consultation.  To help focus consultation, the following options for a Consent API have been identified.
-<br/><br/>
-<strong>Option 1: Defer inclusion of a Consent API until a requirement exists</strong><br/>
-In this option the inclusion of a Consent API will be deferred until a later date when a specific requirement is introduced that requires such a pattern to be adopted.  Until this time the profile would be managed to ensure that the inclusion of the Consent API would be a non-breaking change and therefore able to be easily accommodated.
-<br/><br/>
-<strong>Option 2: Include a Consent API as an optional mechanism</strong><br/>
-In this option the specifics of a CDR Consent API would be defined but would be defined as optional.  No mandated CDR requirements would be dependent on the Consent API to function.  The operation of the Consent API in the context of the CDR would, however, be clearly defined and if a Data Holder wished to include the pattern to support extension functionality (such as payment initiation) this could be accommodated.
-<br/><br/>
-<strong>Option 3: Include a Consent API as a mandatory mechanism</strong><br/>
-Equivalent to option 2 except that the implementation of the Consent API would be mandatory.  The initial definition of the Consent API payload would, however, be minimalistic until a specific need is identified that would result in fields being added to the payload.
-</aside>
+Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
 ## Scopes and Claims
 
@@ -246,12 +220,6 @@ The following additional claims MUST be supported:
 
 - `refresh_token_expires_at`: indicates the date-time at which the most recently provided refresh token will expire. Its value MUST be a number containing a NumericDate value, as specified in section 2 of [section 2](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2) **[JWT]**.  If no refresh token has been provided then a zero value should be returned.
 - `sharing_expires_at`: indicates the date-time at which the current sharing arrangement will expire. Its value MUST be a number containing a NumericDate value, as specified in [section 2](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2) of **[JWT]**.  If consent is not complete or a `sharing_duration` was not requested in the authorisation request object then a zero value should be returned.
-
-<aside class="warning">
-NOTE: During consultation it was proposed that sharing and refresh token expiry would be obtained via additional fields on the token and introspection end points via a Sharing ID to be provided by the Data Holder.  In response to feedback this position has been modified.  The Sharing ID concept has now been eliminated and the expiration of sharing is now being accessed via an additional claim as described above.
-<br/><br/>
-This is approach is aligned to the use of the `http://openbanking.org.uk/refresh_token_expires_at` claim specified in the Read/Write Data Specification for the UK Open Banking standards.
-</aside>
 
 ## Tokens
 
@@ -342,12 +310,6 @@ In order to achieve this:
 - The Data Holder MUST indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[OAUTH2]**).
 - The Data Holder MUST indicate the expiration time of the refresh token using the `refresh_token_expires_at` claim.
 
-<aside class="warning">
-NOTE: During consultation it was proposed that sharing and refresh token expiry would be obtained via additional fields on the token and introspection end points via a Sharing ID to be provided by the Data Holder.  In response to feedback this position has been modified.  The Sharing ID concept has now been eliminated and the expiration of a refresh token is now being accessed via an additional claim as described above.
-<br/><br/>
-This is approach is aligned to the use of the `http://openbanking.org.uk/refresh_token_expires_at` claim specified in the Read/Write Data Specification for the UK Open Banking standards.
-</aside>
-
 
 <a id="identifiers"></a>
 ## Identifiers and Subject Types
@@ -400,11 +362,10 @@ End points for transferring CDR Data that are classified as not requiring authen
 
 
 ### Holder of Key Mechanism
-<aside class="warning">
-NOTE: As a clarification to questions raised during consultation this section asserts that resource requests must be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.
-</aside>
 
 **[MTLS]** MUST be supported as a Holder of Key (HoK) Mechanism.
+
+Note that, by implication, resource requests MUST be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.
 
 OAUTB SHALL NOT be supported due to a lack industry support.
 
@@ -476,12 +437,6 @@ To accomplish this, the Data Holder MUST support an additional claim in the auth
 
 The Data Recipient is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
 
-
-<aside class="warning">
-NOTE: During consultation it was proposed that sharing and refresh token expiry would be obtained via additional fields on the token and introspection end points via a Sharing ID to be provided by the Data Holder.  In response to feedback this position has been modified.  The Sharing ID concept has now been eliminated and the expiration of sharing is now being accessed via an additional claim as described above.
-<br/><br/>
-This is approach is aligned to the use of the `http://openbanking.org.uk/refresh_token_expires_at` claim specified in the Read/Write Data Specification for the UK Open Banking standards.
-</aside>
 
 ## End Points
 <aside class="warning">
@@ -690,30 +645,6 @@ If consent is withdrawn by a Customer in writing or by using the Data Recipient�
 
 ## Reauthorisation mechanism
 When an authorisation has expired due to the expiration of the time requested using the `sharing_duration` claim in the request object then authorisation needs to be re-established using the full authorisation process.
-
-<aside class="warning">
-NOTE: The specification of a simplified flow for reauthorisation is intended and consultation has begun on this topic.  Currently the Data Standards Body believes that more consultation on this topic is required to ensure the standards represent the best position for the regime.  Once a single approach is decided upon the text for this section will be replaced with the new position.
-<br/><br/>
-To simplify further consultation the following two options have been identified as the focus for further feedback.  The Data Standards Body does not have a specific recommendation or preference regarding these two options.
-<br/><br/>
-<strong>Option 1: Client Initiated Backchannel Authentication</strong><br/>
-FAPI defines a protocol for an asynchronous and de-coupled mechanism for a Data Recipient to request authentication from a Data Holder known as Client Initiated Backchannel Authentication (CIBA).  The specification for CIBA can be found at:<br/>
-<a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default"> <b>[FAPI-CIBA]</b> </a> https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default
-<br/><br/>
-This mechanism could be used to initiate a reauthorisation of an existing consent that has been established for an extended duration.
-<br/><br/>
-Previous consultation elicited feedback that this mechanism is quite complex and the implementation costs for Data Recipients and Data Holders are unwarranted for the relatively simple use case of reauthorisation.  Alternate feedback supported this option due to the fact that it is an established standard.
-<br/><br/>
-<strong>Option 2: CDR Specific Mechanism</strong><br/>
-An alternative option is to define a CDR specific mechanism for reauthorisation.  The specifics of such a mechanism are to be determined but, as an example, it could consist of the following:<br/>
-<ul>
-  <li>an end point to be implemented by Data Holders that would be called by Data Recipients to initiate reauthorisation</li>
-  <li>determination that reauthorisation has occurred would be obtained by a Data Recipient by requesting an id_token with the sharing_expires_at claim</li>
-  <li>specifics of how the Data Recipient and Data Holder interact with the Customer to obtain consent for reauthorisation would be defined by the CDR CX Guidelines</li>
-</ul>
-
-This mechanism would be specific to the CDR regime and would not be supported by an external standard.  Implementation of this mechanism would, however, be relatively simple.
-</aside>
 
 
 ## Normative References
