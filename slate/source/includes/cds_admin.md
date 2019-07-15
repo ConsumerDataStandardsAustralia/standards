@@ -8,7 +8,7 @@
 > Code samples
 
 ```http
-POST https://data.provider.com.au/cds-au/v1/admin/registry/metadata HTTP/1.1
+POST https://data.holder.com.au/cds-au/v1/admin/registry/metadata HTTP/1.1
 Host: data.provider.com.au
 Content-Type: application/json
 
@@ -761,4 +761,3 @@ This operation does not require authentication
 ### Properties
 
 *None*
-

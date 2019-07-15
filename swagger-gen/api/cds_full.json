@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.org.au/",
@@ -14,7 +14,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "data.provider.com.au",
+  "host": "data.holder.com.au",
   "basePath": "/cds-au/v1",
   "schemes": [
     "https"
@@ -67,7 +67,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -119,7 +119,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -169,7 +169,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -220,7 +220,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -265,7 +265,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -279,7 +279,7 @@
     "/banking/accounts/{accountId}/transactions": {
       "get": {
         "summary": "Get Transactions For Account",
-        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data provider using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
+        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
         "operationId": "getTransactions",
         "x-scopes": [
           "bank_transactions"
@@ -331,7 +331,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -384,7 +384,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -451,7 +451,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -516,7 +516,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -573,7 +573,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -625,7 +625,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -675,7 +675,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -732,7 +732,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -784,7 +784,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -834,7 +834,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -897,7 +897,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -942,7 +942,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -956,7 +956,7 @@
     "/banking/products": {
       "get": {
         "summary": "Get Products",
-        "description": "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered according to updated-since\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.",
+        "description": "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered according to updated-since\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.",
         "operationId": "listProducts",
         "tags": [
           "Banking",
@@ -1013,7 +1013,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1055,7 +1055,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1092,7 +1092,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1129,7 +1129,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1163,7 +1163,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1197,11 +1197,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseDiscoveryOutages"
+              "$ref": "#/definitions/ResponseDiscoveryOutagesList"
             }
           }
         },
@@ -1212,14 +1212,14 @@
   "parameters": {
     "RequestHeader_x-v": {
       "name": "x-v",
-      "description": "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)",
+      "description": "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
       "in": "header",
       "type": "string",
       "required": true
     },
     "RequestHeader_x-min-v": {
       "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
       "in": "header",
       "type": "string"
     },
@@ -1397,7 +1397,7 @@
       "properties": {
         "productId": {
           "type": "string",
-          "description": "A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+          "description": "A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
           "x-cds-type": "ASCIIString"
         },
         "effectiveFrom": {
@@ -1428,7 +1428,7 @@
         },
         "brand": {
           "type": "string",
-          "description": "A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required"
+          "description": "A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required"
         },
         "brandName": {
           "type": "string",
@@ -1711,11 +1711,11 @@
         },
         "additionalValue": {
           "type": "string",
-          "description": "Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified.  Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)"
+          "description": "Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)"
         },
         "additionalInfo": {
           "type": "string",
-          "description": "Display text providing more information on the eligibility criteria. Mandatory if the [eligibilityType](#tocSproducteligibilitytypedoc) field is set to OTHER"
+          "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER"
         },
         "additionalInfoUri": {
           "type": "string",
@@ -1813,15 +1813,15 @@
       "type": "object",
       "required": [
         "description",
-        "discountType",
-        "amount"
+        "discountType"
       ],
       "x-conditional": [
         "balanceRate",
         "transactionRate",
         "accruedRate",
         "feeRate",
-        "additionalValue"
+        "additionalValue",
+        "amount"
       ],
       "properties": {
         "description": {
@@ -1841,7 +1841,7 @@
         },
         "amount": {
           "type": "string",
-          "description": "Value of the discount",
+          "description": "Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
           "x-cds-type": "AmountString"
         },
         "balanceRate": {
@@ -2254,7 +2254,7 @@
         },
         "productName": {
           "type": "string",
-          "description": "The unique identifier of the account as defined by the account provider (akin to model number for the account)"
+          "description": "The unique identifier of the account as defined by the account holder (akin to model number for the account)"
         }
       }
     },
@@ -2658,7 +2658,7 @@
         },
         "reference": {
           "type": "string",
-          "description": "The reference for the transaction provided by the originating institution.  Empty string if no data provided"
+          "description": "The reference for the transaction provided by the originating institution. Empty string if no data provided"
         },
         "merchantName": {
           "type": "string",
@@ -2733,7 +2733,7 @@
                 },
                 "payee": {
                   "type": "string",
-                  "description": "Label of the target PayID.  Mandatory for an outbound payment"
+                  "description": "Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)"
                 },
                 "extensionUType": {
                   "type": "string",
@@ -2800,7 +2800,10 @@
           "$ref": "#/definitions/BankingBalance"
         },
         "links": {
-          "$ref": "#/definitions/LinksPaginated"
+          "$ref": "#/definitions/Links"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
         }
       }
     },
@@ -3080,9 +3083,11 @@
           "description": "The type of the PayID",
           "enum": [
             "EMAIL",
-            "MOBILE",
-            "ORG_NUMBER",
-            "ORG_NAME"
+            "PHONE",
+            "ABN",
+            "ACN",
+            "ARSN",
+            "ARBN"
           ]
         }
       }
@@ -3361,7 +3366,10 @@
           "$ref": "#/definitions/BankingScheduledPaymentFrom"
         },
         "paymentSet": {
-          "$ref": "#/definitions/BankingScheduledPaymentSet"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingScheduledPaymentSet"
+          }
         },
         "recurrence": {
           "$ref": "#/definitions/BankingScheduledPaymentRecurrence"
@@ -3369,7 +3377,6 @@
       }
     },
     "BankingScheduledPaymentSet": {
-      "type": "object",
       "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
       "required": [
         "to"
@@ -3564,7 +3571,7 @@
         },
         "dayInInterval": {
           "type": "string",
-          "description": "Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.",
+          "description": "Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Monday.",
           "x-cds-type": "ExternalRef"
         }
       }
@@ -3669,7 +3676,7 @@
         }
       }
     },
-    "ResponseDiscoveryOutages": {
+    "ResponseDiscoveryOutagesList": {
       "type": "object",
       "required": [
         "data",
@@ -3814,7 +3821,6 @@
     "CommonPerson": {
       "type": "object",
       "required": [
-        "lastUpdateTime",
         "lastName",
         "middleNames"
       ],
@@ -3894,7 +3900,6 @@
     "CommonOrganisation": {
       "type": "object",
       "required": [
-        "lastUpdateTime",
         "agentLastName",
         "agentRole",
         "businessName",
@@ -4001,7 +4006,6 @@
         "fullNumber"
       ],
       "x-conditional": [
-        "isPreferred",
         "areaCode"
       ],
       "properties": {
@@ -4048,7 +4052,6 @@
     "CommonEmailAddress": {
       "type": "object",
       "required": [
-        "isPreferred",
         "purpose",
         "address"
       ],
@@ -4078,6 +4081,9 @@
     "CommonPhysicalAddressWithPurpose": {
       "allOf": [
         {
+          "$ref": "#/definitions/CommonPhysicalAddress"
+        },
+        {
           "type": "object",
           "required": [
             "purpose"
@@ -4095,9 +4101,6 @@
               ]
             }
           }
-        },
-        {
-          "$ref": "#/definitions/CommonPhysicalAddress"
         }
       ]
     },
@@ -4204,9 +4207,17 @@
           "type": "string",
           "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
         },
+        "flatUnitType": {
+          "type": "string",
+          "description": "Type of flat or unit for the address"
+        },
         "flatUnitNumber": {
           "type": "string",
           "description": "Unit number (including suffix, if applicable)"
+        },
+        "floorLevelType": {
+          "type": "string",
+          "description": "Type of floor or level for the address"
         },
         "floorLevelNumber": {
           "type": "string",
