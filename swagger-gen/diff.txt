@@ -1,0 +1,730 @@
+12,13c12,13
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts HTTP/1.1
+> Host: data.provider.com.au
+29c29
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts',
+53,54c53,54
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+121c121
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+135,136c135,136
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+> Host: data.provider.com.au
+152c152
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/balances',
+176,177c176,177
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+247c247
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+261,262c261,262
+< POST https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+< Host: data.holder.com.au
+---
+> POST https://data.provider.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+> Host: data.provider.com.au
+280c280
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/balances',
+314,315c314,315
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+367c367
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+381,382c381,382
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
+> Host: data.provider.com.au
+398c398
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
+418,419c418,419
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+442,444c442,447
+<     "self": "string"
+<   },
+<   "meta": {}
+---
+>     "self": "string",
+>     "first": "string",
+>     "prev": "string",
+>     "next": "string",
+>     "last": "string"
+>   }
+458c461
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+472,473c475,476
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
+> Host: data.provider.com.au
+489c492
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}',
+509,510c512,513
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+703d705
+<           "flatUnitType": "string",
+705d706
+<           "floorLevelType": "string",
+741c742
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+755,756c756,757
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
+> Host: data.provider.com.au
+772c773
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
+790c791
+< - As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:
+---
+> - As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
+793c794
+< 		- A reasonable date/time nominated by the data holder using internal data structures
+---
+> 		- A reasonable date/time nominated by the data provider using internal data structures
+808,809c809,810
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+865c866
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+879,880c880,881
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
+> Host: data.provider.com.au
+896c897
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
+917,918c918,919
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+970c971
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+984,985c985,986
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
+> Host: data.provider.com.au
+1001c1002
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/transactions',
+1030,1031c1031,1032
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1107c1108
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1121,1122c1122,1123
+< POST https://data.holder.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
+< Host: data.holder.com.au
+---
+> POST https://data.provider.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
+> Host: data.provider.com.au
+1140c1141
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/transactions',
+1179,1180c1180,1181
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1238c1239
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1252,1253c1253,1254
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
+> Host: data.provider.com.au
+1269c1270
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
+1291,1292c1292,1293
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1340c1341
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1354,1355c1355,1356
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+> Host: data.provider.com.au
+1371c1372
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits',
+1395,1396c1396,1397
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1464c1465
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1478,1479c1479,1480
+< POST https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+< Host: data.holder.com.au
+---
+> POST https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+> Host: data.provider.com.au
+1497c1498
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits',
+1531,1532c1532,1533
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1582c1583
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1596,1597c1597,1598
+< GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
+> Host: data.provider.com.au
+1613c1614
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
+1635,1636c1636,1637
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1655,1656c1656
+<         "paymentSet": [
+<           {
+---
+>         "paymentSet": {
+1707,1708c1707
+<           }
+<         ],
+---
+>         },
+1763c1762
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1777,1778c1776,1777
+< GET https://data.holder.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+> Host: data.provider.com.au
+1794c1793
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
+1818,1819c1817,1818
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+1858,1859c1857
+<         "paymentSet": [
+<           {
+---
+>         "paymentSet": {
+1910,1911c1908
+<           }
+<         ],
+---
+>         },
+1966c1963
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+1980,1981c1977,1978
+< POST https://data.holder.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+< Host: data.holder.com.au
+---
+> POST https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+> Host: data.provider.com.au
+1999c1996
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
+2033,2034c2030,2031
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+2054,2055c2051
+<         "paymentSet": [
+<           {
+---
+>         "paymentSet": {
+2106,2107c2102
+<           }
+<         ],
+---
+>         },
+2163c2158
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+2177,2178c2172,2173
+< GET https://data.holder.com.au/cds-au/v1/banking/payees HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/payees HTTP/1.1
+> Host: data.provider.com.au
+2194c2189
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/payees',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/payees',
+2216,2217c2211,2212
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+2269c2264
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+2283,2284c2278,2279
+< GET https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
+> Host: data.provider.com.au
+2300c2295
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/payees/{payeeId}',
+2320,2321c2315,2316
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+2396c2391
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+2410,2411c2405,2406
+< GET https://data.holder.com.au/cds-au/v1/banking/products HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/products HTTP/1.1
+> Host: data.provider.com.au
+2427c2422
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/products',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/products',
+2460c2455
+< As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.
+---
+> As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their online channels.
+2486,2487c2481,2482
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+2563c2558
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+2576,2577c2571,2572
+< GET https://data.holder.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
+> Host: data.provider.com.au
+2593c2588
+<   url: 'https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/banking/products/{productId}',
+2613,2614c2608,2609
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+2803c2798
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+2818,2819c2813,2814
+< GET https://data.holder.com.au/cds-au/v1/common/customer HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/common/customer HTTP/1.1
+> Host: data.provider.com.au
+2835c2830
+<   url: 'https://data.holder.com.au/cds-au/v1/common/customer',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/common/customer',
+2854,2855c2849,2850
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+2910c2905
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+2924,2925c2919,2920
+< GET https://data.holder.com.au/cds-au/v1/common/customer/detail HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/common/customer/detail HTTP/1.1
+> Host: data.provider.com.au
+2941c2936
+<   url: 'https://data.holder.com.au/cds-au/v1/common/customer/detail',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/common/customer/detail',
+2960,2961c2955,2956
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+3000a2996
+>           "purpose": "REGISTERED",
+3018d3013
+<             "flatUnitType": "string",
+3020d3014
+<             "floorLevelType": "string",
+3035,3036c3029
+<           },
+<           "purpose": "REGISTERED"
+---
+>           }
+3056a3050
+>           "purpose": "REGISTERED",
+3074d3067
+<             "flatUnitType": "string",
+3076d3068
+<             "floorLevelType": "string",
+3091,3092c3083
+<           },
+<           "purpose": "REGISTERED"
+---
+>           }
+3114c3105
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+3128,3129c3119,3120
+< GET https://data.holder.com.au/cds-au/v1/discovery/status HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/discovery/status HTTP/1.1
+> Host: data.provider.com.au
+3145c3136
+<   url: 'https://data.holder.com.au/cds-au/v1/discovery/status',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/discovery/status',
+3164,3165c3155,3156
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+3197c3188
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+3210,3211c3201,3202
+< GET https://data.holder.com.au/cds-au/v1/discovery/outages HTTP/1.1
+< Host: data.holder.com.au
+---
+> GET https://data.provider.com.au/cds-au/v1/discovery/outages HTTP/1.1
+> Host: data.provider.com.au
+3227c3218
+<   url: 'https://data.holder.com.au/cds-au/v1/discovery/outages',
+---
+>   url: 'https://data.provider.com.au/cds-au/v1/discovery/outages',
+3246,3247c3237,3238
+< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+---
+> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
+> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+3276c3267
+< |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutagesList](#schemaresponsediscoveryoutageslist)|
+---
+> |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutages](#schemaresponsediscoveryoutages)|
+3282c3273
+< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+---
+> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+3400c3391
+< |productId|[ASCIIString](#common-field-types)|mandatory|none|A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+---
+> |productId|[ASCIIString](#common-field-types)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+3407c3398
+< |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required|
+---
+> |brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
+3928c3919
+< |additionalInfo|string|conditional|none|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER|
+---
+> |additionalInfo|string|conditional|none|Display text providing more information on the eligibility criteria. Mandatory if the [eligibilityType](#tocSproducteligibilitytypedoc) field is set to OTHER|
+4056c4047
+< |amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+---
+> |amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+4423c4414
+< |productName|string|mandatory|none|The unique identifier of the account as defined by the account holder (akin to model number for the account)|
+---
+> |productName|string|mandatory|none|The unique identifier of the account as defined by the account provider (akin to model number for the account)|
+4623d4613
+<           "flatUnitType": "string",
+4625d4614
+<           "floorLevelType": "string",
+4850d4838
+<         "flatUnitType": "string",
+4852d4839
+<         "floorLevelType": "string",
+5256c5243
+< |»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
+---
+> |»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment|
+5337,5339c5324,5329
+<     "self": "string"
+<   },
+<   "meta": {}
+---
+>     "self": "string",
+>     "first": "string",
+>     "prev": "string",
+>     "next": "string",
+>     "last": "string"
+>   }
+5349,5350c5339
+< |links|[Links](#schemalinks)|mandatory|none|none|
+< |meta|[Meta](#schemameta)|optional|none|none|
+---
+> |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+5740,5744c5729,5731
+< |type|PHONE|
+< |type|ABN|
+< |type|ACN|
+< |type|ARSN|
+< |type|ARBN|
+---
+> |type|MOBILE|
+> |type|ORG_NUMBER|
+> |type|ORG_NAME|
+5934,5935c5921
+<         "paymentSet": [
+<           {
+---
+>         "paymentSet": {
+5986,5987c5972
+<           }
+<         ],
+---
+>         },
+6056,6057c6041
+<   "paymentSet": [
+<     {
+---
+>   "paymentSet": {
+6108,6109c6092
+<     }
+<   ],
+---
+>   },
+6151c6134
+< |paymentSet|[[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)]|mandatory|none|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]|
+---
+> |paymentSet|[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)|mandatory|none|The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry|
+6462c6445
+< |dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
+---
+> |dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.|
+6551c6534
+< <h2 id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h2>
+---
+> <h2 id="tocSresponsediscoveryoutages">ResponseDiscoveryOutages</h2>
+6553c6536
+< <a id="schemaresponsediscoveryoutageslist"></a>
+---
+> <a id="schemaresponsediscoveryoutages"></a>
+6706a6690
+>           "purpose": "REGISTERED",
+6724d6707
+<             "flatUnitType": "string",
+6726d6708
+<             "floorLevelType": "string",
+6741,6742c6723
+<           },
+<           "purpose": "REGISTERED"
+---
+>           }
+6762a6744
+>           "purpose": "REGISTERED",
+6780d6761
+<             "flatUnitType": "string",
+6782d6762
+<             "floorLevelType": "string",
+6797,6798c6777
+<           },
+<           "purpose": "REGISTERED"
+---
+>           }
+6852c6831
+< |lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+---
+> |lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+6894a6874
+>       "purpose": "REGISTERED",
+6912d6891
+<         "flatUnitType": "string",
+6914d6892
+<         "floorLevelType": "string",
+6929,6930c6907
+<       },
+<       "purpose": "REGISTERED"
+---
+>       }
+6982c6959
+< |lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+---
+> |lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+7029a7007
+>       "purpose": "REGISTERED",
+7047d7024
+<         "flatUnitType": "string",
+7049d7025
+<         "floorLevelType": "string",
+7064,7065c7040
+<       },
+<       "purpose": "REGISTERED"
+---
+>       }
+7108c7083
+< |isPreferred|[Boolean](#common-field-types)|optional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+---
+> |isPreferred|[Boolean](#common-field-types)|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+7144c7119
+< |isPreferred|[Boolean](#common-field-types)|optional|none|Required for one and only one email record in the collection. Denotes the default email address|
+---
+> |isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+7162a7138
+>   "purpose": "REGISTERED",
+7180d7155
+<     "flatUnitType": "string",
+7182d7156
+<     "floorLevelType": "string",
+7197,7198c7171
+<   },
+<   "purpose": "REGISTERED"
+---
+>   }
+7209c7182,7183
+< |*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
+---
+> |*anonymous*|object|optional|none|none|
+> |» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
+7215,7216c7189
+< |*anonymous*|object|optional|none|none|
+< |» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
+---
+> |*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
+7251d7223
+<     "flatUnitType": "string",
+7253d7224
+<     "floorLevelType": "string",
+7330d7300
+<   "flatUnitType": "string",
+7332d7301
+<   "floorLevelType": "string",
+7362d7330
+< |flatUnitType|string|optional|none|Type of flat or unit for the address|
+7364d7331
+< |floorLevelType|string|optional|none|Type of floor or level for the address|

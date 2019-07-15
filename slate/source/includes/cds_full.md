@@ -9,8 +9,8 @@
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -26,7 +26,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts',
   method: 'get',
 
   headers: headers,
@@ -50,8 +50,8 @@ Obtain a list of accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -118,7 +118,7 @@ Obtain a list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -132,8 +132,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -149,7 +149,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/balances',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
   method: 'get',
 
   headers: headers,
@@ -173,8 +173,8 @@ Obtain balances for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -244,7 +244,7 @@ Obtain balances for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -258,8 +258,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.provider.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: data.provider.com.au
+POST https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+Host: data.holder.com.au
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -277,7 +277,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/balances',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
   method: 'post',
 
   headers: headers,
@@ -311,8 +311,8 @@ Obtain balances for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
@@ -364,7 +364,7 @@ Obtain balances for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -378,8 +378,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -395,7 +395,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
   method: 'get',
 
   headers: headers,
@@ -415,8 +415,8 @@ Obtain the balance for a single specified account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -439,12 +439,9 @@ Obtain the balance for a single specified account
     ]
   },
   "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  }
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -458,7 +455,7 @@ Obtain the balance for a single specified account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -472,8 +469,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -489,7 +486,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
   method: 'get',
 
   headers: headers,
@@ -509,8 +506,8 @@ Obtain detailed information on a single account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -703,7 +700,9 @@ Obtain detailed information on a single account
           "thoroughfareNumber1Suffix": "string",
           "thoroughfareNumber2": 0,
           "thoroughfareNumber2Suffix": "string",
+          "flatUnitType": "string",
           "flatUnitNumber": "string",
+          "floorLevelType": "string",
           "floorLevelNumber": "string",
           "lotNumber": 0,
           "buildingName1": "string",
@@ -739,7 +738,7 @@ Obtain detailed information on a single account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -753,8 +752,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -770,7 +769,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
   method: 'get',
 
   headers: headers,
@@ -788,10 +787,10 @@ Obtain transactions for a specific account.
 Some general notes that apply to all end points that retrieve transactions:
 
 - Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
-- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the provider will use the “effective” date/time which will be defined as:
+- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:
 		- Posted date/time if available, then
 		- Execution date/time if available, then
-		- A reasonable date/time nominated by the data provider using internal data structures
+		- A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
 
 <h3 id="get-transactions-for-account-parameters">Parameters</h3>
@@ -806,8 +805,8 @@ Some general notes that apply to all end points that retrieve transactions:
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -863,7 +862,7 @@ Some general notes that apply to all end points that retrieve transactions:
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -877,8 +876,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -894,7 +893,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
   method: 'get',
 
   headers: headers,
@@ -915,8 +914,8 @@ Obtain detailed information on a transaction for a specific account
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
 |transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -968,7 +967,7 @@ Obtain detailed information on a transaction for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -982,8 +981,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -999,7 +998,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/transactions',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions',
   method: 'get',
 
   headers: headers,
@@ -1028,8 +1027,8 @@ Obtain transactions for multiple, filtered accounts
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1105,7 +1104,7 @@ Obtain transactions for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1119,8 +1118,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.provider.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
-Host: data.provider.com.au
+POST https://data.holder.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
+Host: data.holder.com.au
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1138,7 +1137,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/transactions',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions',
   method: 'post',
 
   headers: headers,
@@ -1177,8 +1176,8 @@ Obtain transactions for a specified list of transactions.
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
 
 > Example responses
@@ -1236,7 +1235,7 @@ Obtain transactions for a specified list of transactions.
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1250,8 +1249,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1267,7 +1266,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
   method: 'get',
 
   headers: headers,
@@ -1289,8 +1288,8 @@ Obtain direct debit authorisations for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -1338,7 +1337,7 @@ Obtain direct debit authorisations for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1352,8 +1351,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1369,7 +1368,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
   method: 'get',
 
   headers: headers,
@@ -1393,8 +1392,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1462,7 +1461,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1476,8 +1475,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
-Host: data.provider.com.au
+POST https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+Host: data.holder.com.au
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1495,7 +1494,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/direct-debits',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
   method: 'post',
 
   headers: headers,
@@ -1529,8 +1528,8 @@ Obtain direct debit authorisations for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1580,7 +1579,7 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1594,8 +1593,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1611,7 +1610,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
   method: 'get',
 
   headers: headers,
@@ -1633,8 +1632,8 @@ Obtain scheduled, outgoing payments for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -1653,58 +1652,60 @@ Obtain scheduled, outgoing payments for a specific account
         "from": {
           "accountId": "string"
         },
-        "paymentSet": {
-          "to": {
-            "toUType": "accountId",
-            "accountId": "string",
-            "payeeId": "string",
-            "domestic": {
-              "payeeAccountUType": "account",
-              "account": {
-                "accountName": "string",
-                "bsb": "string",
-                "accountNumber": "string"
-              },
-              "card": {
-                "cardNumber": "string"
-              },
-              "payId": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL"
-              }
-            },
-            "biller": {
-              "billerCode": "string",
-              "crn": "string",
-              "billerName": "string"
-            },
-            "international": {
-              "beneficiaryDetails": {
-                "name": "string",
-                "country": "string",
-                "message": "string"
-              },
-              "bankDetails": {
-                "country": "string",
-                "accountNumber": "string",
-                "bankAddress": {
-                  "name": "string",
-                  "address": "string"
+        "paymentSet": [
+          {
+            "to": {
+              "toUType": "accountId",
+              "accountId": "string",
+              "payeeId": "string",
+              "domestic": {
+                "payeeAccountUType": "account",
+                "account": {
+                  "accountName": "string",
+                  "bsb": "string",
+                  "accountNumber": "string"
                 },
-                "beneficiaryBankBIC": "string",
-                "fedWireNumber": "string",
-                "sortCode": "string",
-                "chipNumber": "string",
-                "routingNumber": "string",
-                "legalEntityIdentifier": "string"
+                "card": {
+                  "cardNumber": "string"
+                },
+                "payId": {
+                  "name": "string",
+                  "identifier": "string",
+                  "type": "EMAIL"
+                }
+              },
+              "biller": {
+                "billerCode": "string",
+                "crn": "string",
+                "billerName": "string"
+              },
+              "international": {
+                "beneficiaryDetails": {
+                  "name": "string",
+                  "country": "string",
+                  "message": "string"
+                },
+                "bankDetails": {
+                  "country": "string",
+                  "accountNumber": "string",
+                  "bankAddress": {
+                    "name": "string",
+                    "address": "string"
+                  },
+                  "beneficiaryBankBIC": "string",
+                  "fedWireNumber": "string",
+                  "sortCode": "string",
+                  "chipNumber": "string",
+                  "routingNumber": "string",
+                  "legalEntityIdentifier": "string"
+                }
               }
-            }
-          },
-          "isAmountCalculated": true,
-          "amount": "string",
-          "currency": "string"
-        },
+            },
+            "isAmountCalculated": true,
+            "amount": "string",
+            "currency": "string"
+          }
+        ],
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -1759,7 +1760,7 @@ Obtain scheduled, outgoing payments for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1773,8 +1774,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1790,7 +1791,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
   method: 'get',
 
   headers: headers,
@@ -1814,8 +1815,8 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1854,58 +1855,60 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
         "from": {
           "accountId": "string"
         },
-        "paymentSet": {
-          "to": {
-            "toUType": "accountId",
-            "accountId": "string",
-            "payeeId": "string",
-            "domestic": {
-              "payeeAccountUType": "account",
-              "account": {
-                "accountName": "string",
-                "bsb": "string",
-                "accountNumber": "string"
-              },
-              "card": {
-                "cardNumber": "string"
-              },
-              "payId": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL"
-              }
-            },
-            "biller": {
-              "billerCode": "string",
-              "crn": "string",
-              "billerName": "string"
-            },
-            "international": {
-              "beneficiaryDetails": {
-                "name": "string",
-                "country": "string",
-                "message": "string"
-              },
-              "bankDetails": {
-                "country": "string",
-                "accountNumber": "string",
-                "bankAddress": {
-                  "name": "string",
-                  "address": "string"
+        "paymentSet": [
+          {
+            "to": {
+              "toUType": "accountId",
+              "accountId": "string",
+              "payeeId": "string",
+              "domestic": {
+                "payeeAccountUType": "account",
+                "account": {
+                  "accountName": "string",
+                  "bsb": "string",
+                  "accountNumber": "string"
                 },
-                "beneficiaryBankBIC": "string",
-                "fedWireNumber": "string",
-                "sortCode": "string",
-                "chipNumber": "string",
-                "routingNumber": "string",
-                "legalEntityIdentifier": "string"
+                "card": {
+                  "cardNumber": "string"
+                },
+                "payId": {
+                  "name": "string",
+                  "identifier": "string",
+                  "type": "EMAIL"
+                }
+              },
+              "biller": {
+                "billerCode": "string",
+                "crn": "string",
+                "billerName": "string"
+              },
+              "international": {
+                "beneficiaryDetails": {
+                  "name": "string",
+                  "country": "string",
+                  "message": "string"
+                },
+                "bankDetails": {
+                  "country": "string",
+                  "accountNumber": "string",
+                  "bankAddress": {
+                    "name": "string",
+                    "address": "string"
+                  },
+                  "beneficiaryBankBIC": "string",
+                  "fedWireNumber": "string",
+                  "sortCode": "string",
+                  "chipNumber": "string",
+                  "routingNumber": "string",
+                  "legalEntityIdentifier": "string"
+                }
               }
-            }
-          },
-          "isAmountCalculated": true,
-          "amount": "string",
-          "currency": "string"
-        },
+            },
+            "isAmountCalculated": true,
+            "amount": "string",
+            "currency": "string"
+          }
+        ],
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -1960,7 +1963,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1974,8 +1977,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.provider.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
-Host: data.provider.com.au
+POST https://data.holder.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
+Host: data.holder.com.au
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1993,7 +1996,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/payments/scheduled',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
   method: 'post',
 
   headers: headers,
@@ -2027,8 +2030,8 @@ Obtain scheduled payments for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
 > Example responses
@@ -2048,58 +2051,60 @@ Obtain scheduled payments for a specified list of accounts
         "from": {
           "accountId": "string"
         },
-        "paymentSet": {
-          "to": {
-            "toUType": "accountId",
-            "accountId": "string",
-            "payeeId": "string",
-            "domestic": {
-              "payeeAccountUType": "account",
-              "account": {
-                "accountName": "string",
-                "bsb": "string",
-                "accountNumber": "string"
-              },
-              "card": {
-                "cardNumber": "string"
-              },
-              "payId": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL"
-              }
-            },
-            "biller": {
-              "billerCode": "string",
-              "crn": "string",
-              "billerName": "string"
-            },
-            "international": {
-              "beneficiaryDetails": {
-                "name": "string",
-                "country": "string",
-                "message": "string"
-              },
-              "bankDetails": {
-                "country": "string",
-                "accountNumber": "string",
-                "bankAddress": {
-                  "name": "string",
-                  "address": "string"
+        "paymentSet": [
+          {
+            "to": {
+              "toUType": "accountId",
+              "accountId": "string",
+              "payeeId": "string",
+              "domestic": {
+                "payeeAccountUType": "account",
+                "account": {
+                  "accountName": "string",
+                  "bsb": "string",
+                  "accountNumber": "string"
                 },
-                "beneficiaryBankBIC": "string",
-                "fedWireNumber": "string",
-                "sortCode": "string",
-                "chipNumber": "string",
-                "routingNumber": "string",
-                "legalEntityIdentifier": "string"
+                "card": {
+                  "cardNumber": "string"
+                },
+                "payId": {
+                  "name": "string",
+                  "identifier": "string",
+                  "type": "EMAIL"
+                }
+              },
+              "biller": {
+                "billerCode": "string",
+                "crn": "string",
+                "billerName": "string"
+              },
+              "international": {
+                "beneficiaryDetails": {
+                  "name": "string",
+                  "country": "string",
+                  "message": "string"
+                },
+                "bankDetails": {
+                  "country": "string",
+                  "accountNumber": "string",
+                  "bankAddress": {
+                    "name": "string",
+                    "address": "string"
+                  },
+                  "beneficiaryBankBIC": "string",
+                  "fedWireNumber": "string",
+                  "sortCode": "string",
+                  "chipNumber": "string",
+                  "routingNumber": "string",
+                  "legalEntityIdentifier": "string"
+                }
               }
-            }
-          },
-          "isAmountCalculated": true,
-          "amount": "string",
-          "currency": "string"
-        },
+            },
+            "isAmountCalculated": true,
+            "amount": "string",
+            "currency": "string"
+          }
+        ],
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -2155,7 +2160,7 @@ Obtain scheduled payments for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2169,8 +2174,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/payees HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/payees HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2186,7 +2191,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/payees',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/payees',
   method: 'get',
 
   headers: headers,
@@ -2208,8 +2213,8 @@ Obtain a list of pre-registered payees
 |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2261,7 +2266,7 @@ Obtain a list of pre-registered payees
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2275,8 +2280,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2292,7 +2297,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/payees/{payeeId}',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}',
   method: 'get',
 
   headers: headers,
@@ -2312,8 +2317,8 @@ Obtain detailed information on a single payee
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2388,7 +2393,7 @@ Obtain detailed information on a single payee
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2402,8 +2407,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/products HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/products HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2419,7 +2424,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/products',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/products',
   method: 'get',
 
   headers: headers,
@@ -2452,7 +2457,7 @@ In the product detail payload there are a number of arrays articulating generic 
 
 #### URIs To More Information
 
-As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product provider to describe the product more fully using a web page hosted on their online channels.
+As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.
 
 These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
 
@@ -2478,8 +2483,8 @@ In addition, the concept of effective date and time has also been included.  Thi
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2555,7 +2560,7 @@ In addition, the concept of effective date and time has also been included.  Thi
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2568,8 +2573,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2585,7 +2590,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/banking/products/{productId}',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
   method: 'get',
 
   headers: headers,
@@ -2605,8 +2610,8 @@ Obtain detailed information on a single product offered openly to the market
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2795,7 +2800,7 @@ Obtain detailed information on a single product offered openly to the market
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2810,8 +2815,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/common/customer HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/common/customer HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2827,7 +2832,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/common/customer',
+  url: 'https://data.holder.com.au/cds-au/v1/common/customer',
   method: 'get',
 
   headers: headers,
@@ -2846,8 +2851,8 @@ Obtain basic information on the customer that has authorised the current session
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2902,7 +2907,7 @@ Obtain basic information on the customer that has authorised the current session
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2916,8 +2921,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/common/customer/detail HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/common/customer/detail HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2933,7 +2938,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/common/customer/detail',
+  url: 'https://data.holder.com.au/cds-au/v1/common/customer/detail',
   method: 'get',
 
   headers: headers,
@@ -2952,8 +2957,8 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2993,7 +2998,6 @@ Obtain detailed information on the authorised customer within the current sessio
       ],
       "physicalAddresses": [
         {
-          "purpose": "REGISTERED",
           "addressUType": "simple",
           "simple": {
             "mailingName": "string",
@@ -3011,7 +3015,9 @@ Obtain detailed information on the authorised customer within the current sessio
             "thoroughfareNumber1Suffix": "string",
             "thoroughfareNumber2": 0,
             "thoroughfareNumber2Suffix": "string",
+            "flatUnitType": "string",
             "flatUnitNumber": "string",
+            "floorLevelType": "string",
             "floorLevelNumber": "string",
             "lotNumber": 0,
             "buildingName1": "string",
@@ -3026,7 +3032,8 @@ Obtain detailed information on the authorised customer within the current sessio
             "localityName": "string",
             "postcode": "string",
             "state": "string"
-          }
+          },
+          "purpose": "REGISTERED"
         }
       ]
     },
@@ -3047,7 +3054,6 @@ Obtain detailed information on the authorised customer within the current sessio
       "establishmentDate": "string",
       "physicalAddresses": [
         {
-          "purpose": "REGISTERED",
           "addressUType": "simple",
           "simple": {
             "mailingName": "string",
@@ -3065,7 +3071,9 @@ Obtain detailed information on the authorised customer within the current sessio
             "thoroughfareNumber1Suffix": "string",
             "thoroughfareNumber2": 0,
             "thoroughfareNumber2Suffix": "string",
+            "flatUnitType": "string",
             "flatUnitNumber": "string",
+            "floorLevelType": "string",
             "floorLevelNumber": "string",
             "lotNumber": 0,
             "buildingName1": "string",
@@ -3080,7 +3088,8 @@ Obtain detailed information on the authorised customer within the current sessio
             "localityName": "string",
             "postcode": "string",
             "state": "string"
-          }
+          },
+          "purpose": "REGISTERED"
         }
       ]
     }
@@ -3102,7 +3111,7 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -3116,8 +3125,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/discovery/status HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/discovery/status HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3133,7 +3142,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/discovery/status',
+  url: 'https://data.holder.com.au/cds-au/v1/discovery/status',
   method: 'get',
 
   headers: headers,
@@ -3152,8 +3161,8 @@ Obtain a health check status for the implementation
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -3185,7 +3194,7 @@ Obtain a health check status for the implementation
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -3198,8 +3207,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/discovery/outages HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/discovery/outages HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3215,7 +3224,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/discovery/outages',
+  url: 'https://data.holder.com.au/cds-au/v1/discovery/outages',
   method: 'get',
 
   headers: headers,
@@ -3234,8 +3243,8 @@ Obtain a list of scheduled outages for the implementation
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -3264,13 +3273,13 @@ Obtain a list of scheduled outages for the implementation
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutages](#schemaresponsediscoveryoutages)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutagesList](#schemaresponsediscoveryoutageslist)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -3388,14 +3397,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|productId|[ASCIIString](#common-field-types)|mandatory|none|A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+|productId|[ASCIIString](#common-field-types)|mandatory|none|A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
 |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
 |productCategory|[BankingProductCategory](#schemabankingproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 |name|string|mandatory|none|The display name of the product|
 |description|string|mandatory|none|A description of the product|
-|brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required|
+|brand|string|mandatory|none|A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required|
 |brandName|string|optional|none|An optional display name of the brand|
 |applicationUri|[URIString](#common-field-types)|optional|none|A link to an application web page where this product can be applied for.|
 |isTailored|[Boolean](#common-field-types)|mandatory|none|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
@@ -3915,8 +3924,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |eligibilityType|string|mandatory|none|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified.  Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)|
-|additionalInfo|string|conditional|none|Display text providing more information on the eligibility criteria. Mandatory if the [eligibilityType](#tocSproducteligibilitytypedoc) field is set to OTHER|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)|
+|additionalInfo|string|conditional|none|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility criteria|
 
 #### Enumerated Values
@@ -4044,7 +4053,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the discount|
 |discountType|string|mandatory|none|The type of discount. See the next section for an overview of valid values and their meaning|
-|amount|[AmountString](#common-field-types)|mandatory|none|Value of the discount|
+|amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |balanceRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |transactionRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |accruedRate|[RateString](#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
@@ -4411,7 +4420,7 @@ This operation does not require authentication
 |isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
 |productCategory|[BankingProductCategory](#schemabankingproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
-|productName|string|mandatory|none|The unique identifier of the account as defined by the account provider (akin to model number for the account)|
+|productName|string|mandatory|none|The unique identifier of the account as defined by the account holder (akin to model number for the account)|
 
 #### Enumerated Values
 
@@ -4611,7 +4620,9 @@ This operation does not require authentication
           "thoroughfareNumber1Suffix": "string",
           "thoroughfareNumber2": 0,
           "thoroughfareNumber2Suffix": "string",
+          "flatUnitType": "string",
           "flatUnitNumber": "string",
+          "floorLevelType": "string",
           "floorLevelNumber": "string",
           "lotNumber": 0,
           "buildingName1": "string",
@@ -4836,7 +4847,9 @@ This operation does not require authentication
         "thoroughfareNumber1Suffix": "string",
         "thoroughfareNumber2": 0,
         "thoroughfareNumber2Suffix": "string",
+        "flatUnitType": "string",
         "flatUnitNumber": "string",
+        "floorLevelType": "string",
         "floorLevelNumber": "string",
         "lotNumber": 0,
         "buildingName1": "string",
@@ -5118,7 +5131,7 @@ This operation does not require authentication
 |executionDateTime|[DateTimeString](#common-field-types)|optional|none|The time the transaction was executed by the originating customer, if available|
 |amount|[AmountString](#common-field-types)|mandatory|none|The value of the transaction. Negative values mean money was outgoing from the account|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the transaction amount. AUD assumed if not present|
-|reference|string|mandatory|none|The reference for the transaction provided by the originating institution.  Empty string if no data provided|
+|reference|string|mandatory|none|The reference for the transaction provided by the originating institution. Empty string if no data provided|
 |merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
 |merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
 |billerCode|string|optional|none|BPay Biller Code for the transaction (if available)|
@@ -5240,7 +5253,7 @@ This operation does not require authentication
 |*anonymous*|object|optional|none|none|
 |» extendedData|object|mandatory|none|none|
 |»» payer|string|conditional|none|Label of the originating payer. Mandatory for inbound payment|
-|»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment|
+|»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
 |»» extensionUType|string|optional|none|Optional extended data provided specific to transaction originated via NPP|
 |»» extendedDescription|string|conditional|none|An extended string description. Only present if specified by the extensionUType field|
 |»» service|string|mandatory|none|Identifier of the applicable overlay service. Valid values are: X2P1.01|
@@ -5321,12 +5334,9 @@ This operation does not require authentication
     ]
   },
   "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  }
+    "self": "string"
+  },
+  "meta": {}
 }
 
 ```
@@ -5336,7 +5346,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|[BankingBalance](#schemabankingbalance)|mandatory|none|none|
-|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingbalance">BankingBalance</h2>
 
@@ -5726,9 +5737,11 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |type|EMAIL|
-|type|MOBILE|
-|type|ORG_NUMBER|
-|type|ORG_NAME|
+|type|PHONE|
+|type|ABN|
+|type|ACN|
+|type|ARSN|
+|type|ARBN|
 
 <h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
@@ -5918,58 +5931,60 @@ This operation does not require authentication
         "from": {
           "accountId": "string"
         },
-        "paymentSet": {
-          "to": {
-            "toUType": "accountId",
-            "accountId": "string",
-            "payeeId": "string",
-            "domestic": {
-              "payeeAccountUType": "account",
-              "account": {
-                "accountName": "string",
-                "bsb": "string",
-                "accountNumber": "string"
-              },
-              "card": {
-                "cardNumber": "string"
-              },
-              "payId": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL"
-              }
-            },
-            "biller": {
-              "billerCode": "string",
-              "crn": "string",
-              "billerName": "string"
-            },
-            "international": {
-              "beneficiaryDetails": {
-                "name": "string",
-                "country": "string",
-                "message": "string"
-              },
-              "bankDetails": {
-                "country": "string",
-                "accountNumber": "string",
-                "bankAddress": {
-                  "name": "string",
-                  "address": "string"
+        "paymentSet": [
+          {
+            "to": {
+              "toUType": "accountId",
+              "accountId": "string",
+              "payeeId": "string",
+              "domestic": {
+                "payeeAccountUType": "account",
+                "account": {
+                  "accountName": "string",
+                  "bsb": "string",
+                  "accountNumber": "string"
                 },
-                "beneficiaryBankBIC": "string",
-                "fedWireNumber": "string",
-                "sortCode": "string",
-                "chipNumber": "string",
-                "routingNumber": "string",
-                "legalEntityIdentifier": "string"
+                "card": {
+                  "cardNumber": "string"
+                },
+                "payId": {
+                  "name": "string",
+                  "identifier": "string",
+                  "type": "EMAIL"
+                }
+              },
+              "biller": {
+                "billerCode": "string",
+                "crn": "string",
+                "billerName": "string"
+              },
+              "international": {
+                "beneficiaryDetails": {
+                  "name": "string",
+                  "country": "string",
+                  "message": "string"
+                },
+                "bankDetails": {
+                  "country": "string",
+                  "accountNumber": "string",
+                  "bankAddress": {
+                    "name": "string",
+                    "address": "string"
+                  },
+                  "beneficiaryBankBIC": "string",
+                  "fedWireNumber": "string",
+                  "sortCode": "string",
+                  "chipNumber": "string",
+                  "routingNumber": "string",
+                  "legalEntityIdentifier": "string"
+                }
               }
-            }
-          },
-          "isAmountCalculated": true,
-          "amount": "string",
-          "currency": "string"
-        },
+            },
+            "isAmountCalculated": true,
+            "amount": "string",
+            "currency": "string"
+          }
+        ],
         "recurrence": {
           "nextPaymentDate": "string",
           "recurrenceUType": "onceOff",
@@ -6038,58 +6053,60 @@ This operation does not require authentication
   "from": {
     "accountId": "string"
   },
-  "paymentSet": {
-    "to": {
-      "toUType": "accountId",
-      "accountId": "string",
-      "payeeId": "string",
-      "domestic": {
-        "payeeAccountUType": "account",
-        "account": {
-          "accountName": "string",
-          "bsb": "string",
-          "accountNumber": "string"
-        },
-        "card": {
-          "cardNumber": "string"
-        },
-        "payId": {
-          "name": "string",
-          "identifier": "string",
-          "type": "EMAIL"
-        }
-      },
-      "biller": {
-        "billerCode": "string",
-        "crn": "string",
-        "billerName": "string"
-      },
-      "international": {
-        "beneficiaryDetails": {
-          "name": "string",
-          "country": "string",
-          "message": "string"
-        },
-        "bankDetails": {
-          "country": "string",
-          "accountNumber": "string",
-          "bankAddress": {
-            "name": "string",
-            "address": "string"
+  "paymentSet": [
+    {
+      "to": {
+        "toUType": "accountId",
+        "accountId": "string",
+        "payeeId": "string",
+        "domestic": {
+          "payeeAccountUType": "account",
+          "account": {
+            "accountName": "string",
+            "bsb": "string",
+            "accountNumber": "string"
           },
-          "beneficiaryBankBIC": "string",
-          "fedWireNumber": "string",
-          "sortCode": "string",
-          "chipNumber": "string",
-          "routingNumber": "string",
-          "legalEntityIdentifier": "string"
+          "card": {
+            "cardNumber": "string"
+          },
+          "payId": {
+            "name": "string",
+            "identifier": "string",
+            "type": "EMAIL"
+          }
+        },
+        "biller": {
+          "billerCode": "string",
+          "crn": "string",
+          "billerName": "string"
+        },
+        "international": {
+          "beneficiaryDetails": {
+            "name": "string",
+            "country": "string",
+            "message": "string"
+          },
+          "bankDetails": {
+            "country": "string",
+            "accountNumber": "string",
+            "bankAddress": {
+              "name": "string",
+              "address": "string"
+            },
+            "beneficiaryBankBIC": "string",
+            "fedWireNumber": "string",
+            "sortCode": "string",
+            "chipNumber": "string",
+            "routingNumber": "string",
+            "legalEntityIdentifier": "string"
+          }
         }
-      }
-    },
-    "isAmountCalculated": true,
-    "amount": "string",
-    "currency": "string"
-  },
+      },
+      "isAmountCalculated": true,
+      "amount": "string",
+      "currency": "string"
+    }
+  ],
   "recurrence": {
     "nextPaymentDate": "string",
     "recurrenceUType": "onceOff",
@@ -6131,7 +6148,7 @@ This operation does not require authentication
 |payeeReference|string|mandatory|none|The reference for the transaction that will be provided by the originating institution. Empty string if no data provided|
 |status|string|mandatory|none|Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.|
 |from|[BankingScheduledPaymentFrom](#schemabankingscheduledpaymentfrom)|mandatory|none|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object|
-|paymentSet|[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)|mandatory|none|The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry|
+|paymentSet|[[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)]|mandatory|none|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]|
 |recurrence|[BankingScheduledPaymentRecurrence](#schemabankingscheduledpaymentrecurrence)|mandatory|none|Object containing the detail of the schedule for the payment|
 
 #### Enumerated Values
@@ -6442,7 +6459,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |interval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
-|dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Sunday.|
+|dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
 
 <h2 id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h2>
 
@@ -6531,9 +6548,9 @@ This operation does not require authentication
 |status|UNAVAILABLE|
 |status|SCHEDULED_OUTAGE|
 
-<h2 id="tocSresponsediscoveryoutages">ResponseDiscoveryOutages</h2>
+<h2 id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h2>
 
-<a id="schemaresponsediscoveryoutages"></a>
+<a id="schemaresponsediscoveryoutageslist"></a>
 
 ```json
 {
@@ -6687,7 +6704,6 @@ This operation does not require authentication
       ],
       "physicalAddresses": [
         {
-          "purpose": "REGISTERED",
           "addressUType": "simple",
           "simple": {
             "mailingName": "string",
@@ -6705,7 +6721,9 @@ This operation does not require authentication
             "thoroughfareNumber1Suffix": "string",
             "thoroughfareNumber2": 0,
             "thoroughfareNumber2Suffix": "string",
+            "flatUnitType": "string",
             "flatUnitNumber": "string",
+            "floorLevelType": "string",
             "floorLevelNumber": "string",
             "lotNumber": 0,
             "buildingName1": "string",
@@ -6720,7 +6738,8 @@ This operation does not require authentication
             "localityName": "string",
             "postcode": "string",
             "state": "string"
-          }
+          },
+          "purpose": "REGISTERED"
         }
       ]
     },
@@ -6741,7 +6760,6 @@ This operation does not require authentication
       "establishmentDate": "string",
       "physicalAddresses": [
         {
-          "purpose": "REGISTERED",
           "addressUType": "simple",
           "simple": {
             "mailingName": "string",
@@ -6759,7 +6777,9 @@ This operation does not require authentication
             "thoroughfareNumber1Suffix": "string",
             "thoroughfareNumber2": 0,
             "thoroughfareNumber2Suffix": "string",
+            "flatUnitType": "string",
             "flatUnitNumber": "string",
+            "floorLevelType": "string",
             "floorLevelNumber": "string",
             "lotNumber": 0,
             "buildingName1": "string",
@@ -6774,7 +6794,8 @@ This operation does not require authentication
             "localityName": "string",
             "postcode": "string",
             "state": "string"
-          }
+          },
+          "purpose": "REGISTERED"
         }
       ]
     }
@@ -6828,7 +6849,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
 |firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
 |lastName|string|mandatory|none|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
@@ -6871,7 +6892,6 @@ This operation does not require authentication
   ],
   "physicalAddresses": [
     {
-      "purpose": "REGISTERED",
       "addressUType": "simple",
       "simple": {
         "mailingName": "string",
@@ -6889,7 +6909,9 @@ This operation does not require authentication
         "thoroughfareNumber1Suffix": "string",
         "thoroughfareNumber2": 0,
         "thoroughfareNumber2Suffix": "string",
+        "flatUnitType": "string",
         "flatUnitNumber": "string",
+        "floorLevelType": "string",
         "floorLevelNumber": "string",
         "lotNumber": 0,
         "buildingName1": "string",
@@ -6904,7 +6926,8 @@ This operation does not require authentication
         "localityName": "string",
         "postcode": "string",
         "state": "string"
-      }
+      },
+      "purpose": "REGISTERED"
     }
   ]
 }
@@ -6956,7 +6979,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
 |agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
 |agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
@@ -7004,7 +7027,6 @@ This operation does not require authentication
   "establishmentDate": "string",
   "physicalAddresses": [
     {
-      "purpose": "REGISTERED",
       "addressUType": "simple",
       "simple": {
         "mailingName": "string",
@@ -7022,7 +7044,9 @@ This operation does not require authentication
         "thoroughfareNumber1Suffix": "string",
         "thoroughfareNumber2": 0,
         "thoroughfareNumber2Suffix": "string",
+        "flatUnitType": "string",
         "flatUnitNumber": "string",
+        "floorLevelType": "string",
         "floorLevelNumber": "string",
         "lotNumber": 0,
         "buildingName1": "string",
@@ -7037,7 +7061,8 @@ This operation does not require authentication
         "localityName": "string",
         "postcode": "string",
         "state": "string"
-      }
+      },
+      "purpose": "REGISTERED"
     }
   ]
 }
@@ -7080,7 +7105,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|conditional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+|isPreferred|[Boolean](#common-field-types)|optional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
 |purpose|string|mandatory|none|The purpose of the number as specified by the customer|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
 |areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
@@ -7116,7 +7141,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|mandatory|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|[Boolean](#common-field-types)|optional|none|Required for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
 |address|[ExternalRef](#common-field-types)|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
 
@@ -7135,7 +7160,6 @@ This operation does not require authentication
 
 ```json
 {
-  "purpose": "REGISTERED",
   "addressUType": "simple",
   "simple": {
     "mailingName": "string",
@@ -7153,7 +7177,9 @@ This operation does not require authentication
     "thoroughfareNumber1Suffix": "string",
     "thoroughfareNumber2": 0,
     "thoroughfareNumber2Suffix": "string",
+    "flatUnitType": "string",
     "flatUnitNumber": "string",
+    "floorLevelType": "string",
     "floorLevelNumber": "string",
     "lotNumber": 0,
     "buildingName1": "string",
@@ -7168,7 +7194,8 @@ This operation does not require authentication
     "localityName": "string",
     "postcode": "string",
     "state": "string"
-  }
+  },
+  "purpose": "REGISTERED"
 }
 
 ```
@@ -7179,14 +7206,14 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
-|» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
+|*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
+|*anonymous*|object|optional|none|none|
+|» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
 
 #### Enumerated Values
 
@@ -7221,7 +7248,9 @@ This operation does not require authentication
     "thoroughfareNumber1Suffix": "string",
     "thoroughfareNumber2": 0,
     "thoroughfareNumber2Suffix": "string",
+    "flatUnitType": "string",
     "flatUnitNumber": "string",
+    "floorLevelType": "string",
     "floorLevelNumber": "string",
     "lotNumber": 0,
     "buildingName1": "string",
@@ -7298,7 +7327,9 @@ This operation does not require authentication
   "thoroughfareNumber1Suffix": "string",
   "thoroughfareNumber2": 0,
   "thoroughfareNumber2Suffix": "string",
+  "flatUnitType": "string",
   "flatUnitNumber": "string",
+  "floorLevelType": "string",
   "floorLevelNumber": "string",
   "lotNumber": 0,
   "buildingName1": "string",
@@ -7328,7 +7359,9 @@ This operation does not require authentication
 |thoroughfareNumber1Suffix|string|optional|none|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
 |thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
 |thoroughfareNumber2Suffix|string|optional|none|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|flatUnitType|string|optional|none|Type of flat or unit for the address|
 |flatUnitNumber|string|optional|none|Unit number (including suffix, if applicable)|
+|floorLevelType|string|optional|none|Type of floor or level for the address|
 |floorLevelNumber|string|optional|none|Floor or level number (including alpha characters)|
 |lotNumber|[PositiveInteger](#common-field-types)|optional|none|Allotment number for the address|
 |buildingName1|string|optional|none|Building/Property name 1|

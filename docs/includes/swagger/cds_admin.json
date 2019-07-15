@@ -1,8 +1,8 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Data Holder Consumer Data Standards Administration End Points",
-    "version" : "0.1.1",
+    "description" : "Data Holder/ Reciever Consumer Data Standards Administration End Points",
+    "version" : "0.1.2",
     "title" : "Consumer Data Standards Administration End Points",
     "contact" : {
       "name" : "Consumer Data Standards Administration End Points",
@@ -14,7 +14,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     }
   },
-  "host" : "data.provider.com.au",
+  "host" : "data.holder.com.au",
   "basePath" : "/cds-au/v1",
   "schemes" : [ "https" ],
   "consumes" : [ "application/json" ],
@@ -36,13 +36,13 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
           "required" : false,
           "type" : "string"
         } ],
@@ -52,7 +52,7 @@
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             }
           }
@@ -73,17 +73,17 @@
           "required" : false,
           "type" : "string",
           "default" : "ALL",
-          "enum" : [ "CURRENT", "CURRENT_DAY", "HISTORIC", "ALL" ]
+          "enum" : [ "CURRENT_DAY", "HISTORIC", "ALL" ]
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
           "required" : false,
           "type" : "string"
         } ],
@@ -93,7 +93,7 @@
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the provider has responded with."
+                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema" : {
@@ -533,14 +533,14 @@
     "RequestHeader_x-v" : {
       "name" : "x-v",
       "in" : "header",
-      "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)",
+      "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
       "required" : true,
       "type" : "string"
     },
     "RequestHeader_x-min-v" : {
       "name" : "x-min-v",
       "in" : "header",
-      "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.",
+      "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
       "required" : false,
       "type" : "string"
     }

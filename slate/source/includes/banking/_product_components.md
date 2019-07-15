@@ -66,7 +66,7 @@ Description of the usage of the eligibilityType field as it applies to products.
 |EMPLOYMENT_STATUS|An eligibility constraint based on employment status applies|A description of the status required|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
 |NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
-|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|Value relevant to the criteria|
+|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 
 
 
