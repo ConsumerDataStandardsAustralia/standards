@@ -9,7 +9,7 @@
 
 ```http
 POST https://data.holder.com.au/cds-au/v1/admin/registry/metadata HTTP/1.1
-Host: data.provider.com.au
+Host: data.holder.com.au
 Content-Type: application/json
 
 x-v: string
@@ -26,7 +26,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/admin/registry/metadata',
+  url: 'https://data.holder.com.au/cds-au/v1/admin/registry/metadata',
   method: 'post',
 
   headers: headers,
@@ -56,8 +56,8 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestMetaDataUpdate](#schemarequestmetadataupdate)|mandatory|none|
 
 <h3 id="metadata-update-responses">Responses</h3>
@@ -70,7 +70,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -83,8 +83,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.provider.com.au/cds-au/v1/admin/metrics HTTP/1.1
-Host: data.provider.com.au
+GET https://data.holder.com.au/cds-au/v1/admin/metrics HTTP/1.1
+Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -100,7 +100,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://data.provider.com.au/cds-au/v1/admin/metrics',
+  url: 'https://data.holder.com.au/cds-au/v1/admin/metrics',
   method: 'get',
 
   headers: headers,
@@ -120,14 +120,13 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |period|query|string|optional|The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
 |Parameter|Value|
 |---|---|
-|period|CURRENT|
 |period|CURRENT_DAY|
 |period|HISTORIC|
 |period|ALL|
@@ -266,7 +265,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
+|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -761,3 +760,4 @@ This operation does not require authentication
 ### Properties
 
 *None*
+
