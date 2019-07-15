@@ -5134,9 +5134,9 @@ This operation does not require authentication
 |reference|string|mandatory|none|The reference for the transaction provided by the originating institution. Empty string if no data provided|
 |merchantName|string|optional|none|Name of the merchant for an outgoing payment to a merchant|
 |merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
-|billerCode|string|optional|none|BPay Biller Code for the transaction (if available)|
-|billerName|string|optional|none|Name of the BPay biller for the transaction (if available)|
-|crn|string|optional|none|BPay CRN for the transaction (if available)|
+|billerCode|string|optional|none|BPAY Biller Code for the transaction (if available)|
+|billerName|string|optional|none|Name of the BPAY biller for the transaction (if available)|
+|crn|string|optional|none|BPAY CRN for the transaction (if available)|
 |apcaNumber|string|optional|none|6 Digit APCA number for the initiating institution|
 
 #### Enumerated Values
@@ -5760,8 +5760,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|billerCode|string|mandatory|none|BPay Biller Code of the Biller|
-|crn|string|conditional|none|BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+|billerCode|string|mandatory|none|BPAY Biller Code of the Biller|
+|crn|string|conditional|none|BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
 |billerName|string|mandatory|none|Name of the Biller|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
@@ -7512,4 +7512,3 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-
