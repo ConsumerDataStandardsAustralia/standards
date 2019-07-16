@@ -1,48 +1,26 @@
 3d2
 < <h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
-13c12
-< Host: data.holder.com.au
+250,251c249
+<     "recipientCount": 0
+<   },
 ---
-> Host: data.provider.com.au
-30c29
-<   url: 'https://data.holder.com.au/cds-au/v1/admin/registry/metadata',
----
->   url: 'https://data.provider.com.au/cds-au/v1/admin/registry/metadata',
-60,61c59,60
-< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
----
-> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
-74c73
-< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
----
-> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
-87,88c86,87
-< GET https://data.holder.com.au/cds-au/v1/admin/metrics HTTP/1.1
-< Host: data.holder.com.au
----
-> GET https://data.provider.com.au/cds-au/v1/admin/metrics HTTP/1.1
-> Host: data.provider.com.au
-104c103
-<   url: 'https://data.holder.com.au/cds-au/v1/admin/metrics',
----
->   url: 'https://data.provider.com.au/cds-au/v1/admin/metrics',
-124,125c123,124
-< |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-< |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
----
-> |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the provider should respond with a 406 Not Acceptable. See [here](##request-headers)|
-> |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the provider should respond with a 406 Not Acceptable.|
-130a130
-> |period|CURRENT|
-269c269
-< |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
----
-> |200|x-v|string||The [version](##response-headers) of the API end point that the provider has responded with.|
-275c275
+>     "recipientCount": 0,
+256a255
+> }
+275c274
 < # Schemas
 ---
 > ## Schemas
-764d763
-< 
+420,421c419
+<     "recipientCount": 0
+<   },
+---
+>     "recipientCount": 0,
+426a425
+> }
+447,448c446,447
+< |links|[Links](#schemalinks)|optional|none|none|
+< |meta|[Meta](#schemameta)|optional|none|none|
+---
+> |» links|[Links](#schemalinks)|mandatory|none|none|
+> |» meta|[Meta](#schemameta)|optional|none|none|

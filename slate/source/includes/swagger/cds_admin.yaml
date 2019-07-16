@@ -108,6 +108,10 @@ definitions:
     properties:
       data:
         $ref: '#/definitions/ResponseMetricsList_data'
+      links:
+        $ref: '#/definitions/Links'
+      meta:
+        $ref: '#/definitions/Meta'
   AvailabilityMetrics:
     type: object
     properties:
@@ -271,7 +275,6 @@ definitions:
         - REFRESH
   ResponseMetricsList_data:
     required:
-    - links
     - requestTime
     properties:
       requestTime:
@@ -302,10 +305,6 @@ definitions:
       recipientCount:
         type: integer
         description: Number of data recipients with active authorisations at the time of the call
-      links:
-        $ref: '#/definitions/Links'
-      meta:
-        $ref: '#/definitions/Meta'
   InvocationMetrics_unauthenticated:
     properties:
       currentDay:
