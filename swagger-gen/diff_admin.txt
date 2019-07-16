@@ -1,0 +1,29 @@
+<<<<<<< HEAD
+=======
+3d2
+< <h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+250,251c249
+<     "recipientCount": 0
+<   },
+---
+>     "recipientCount": 0,
+256a255
+> }
+275c274
+< # Schemas
+---
+> ## Schemas
+420,421c419
+<     "recipientCount": 0
+<   },
+---
+>     "recipientCount": 0,
+426a425
+> }
+447,448c446,447
+< |links|[Links](#schemalinks)|optional|none|none|
+< |meta|[Meta](#schemameta)|optional|none|none|
+---
+> |» links|[Links](#schemalinks)|mandatory|none|none|
+> |» meta|[Meta](#schemameta)|optional|none|none|
+>>>>>>> b5769e0a7ec109a4317e45e5227da073434ef086

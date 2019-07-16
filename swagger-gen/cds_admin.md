@@ -247,12 +247,12 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
       ]
     },
     "customerCount": 0,
-    "recipientCount": 0,
-    "links": {
-      "self": "string"
-    },
-    "meta": {}
-  }
+    "recipientCount": 0
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -417,12 +417,12 @@ This operation does not require authentication
       ]
     },
     "customerCount": 0,
-    "recipientCount": 0,
-    "links": {
-      "self": "string"
-    },
-    "meta": {}
-  }
+    "recipientCount": 0
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 
 ```
@@ -444,8 +444,8 @@ This operation does not require authentication
 |» rejections|[RejectionMetrics](#schemarejectionmetrics)|conditional|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|conditional|none|Number of customers with active authorisations at the time of the call|
 |» recipientCount|integer|conditional|none|Number of data recipients with active authorisations at the time of the call|
-|» links|[Links](#schemalinks)|mandatory|none|none|
-|» meta|[Meta](#schemameta)|optional|none|none|
+|links|[Links](#schemalinks)|optional|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
 

@@ -122,6 +122,12 @@
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseMetricsList_data"
+        },
+        "links" : {
+          "$ref" : "#/definitions/Links"
+        },
+        "meta" : {
+          "$ref" : "#/definitions/Meta"
         }
       }
     },
@@ -316,7 +322,7 @@
       }
     },
     "ResponseMetricsList_data" : {
-      "required" : [ "links", "requestTime" ],
+      "required" : [ "requestTime" ],
       "properties" : {
         "requestTime" : {
           "type" : "string",
@@ -357,12 +363,6 @@
         "recipientCount" : {
           "type" : "integer",
           "description" : "Number of data recipients with active authorisations at the time of the call"
-        },
-        "links" : {
-          "$ref" : "#/definitions/Links"
-        },
-        "meta" : {
-          "$ref" : "#/definitions/Meta"
         }
       }
     },
