@@ -220,14 +220,14 @@
             "recipientCount": {
               "type": "integer",
               "description": "Number of data recipients with active authorisations at the time of the call"
-            },
-            "links": {
-              "$ref": "#/definitions/Links"
-            },
-            "meta": {
-              "$ref": "#/definitions/Meta"
             }
           }
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
         }
       }
     },
