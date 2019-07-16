@@ -92,7 +92,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_basic_accounts" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ]
       }
     },
     "/banking/accounts/balances" : {
@@ -167,7 +167,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_basic_accounts" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ]
       },
       "post" : {
         "tags" : [ "Banking", "Accounts" ],
@@ -232,7 +232,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_basic_accounts" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ]
       }
     },
     "/banking/accounts/direct-debits" : {
@@ -307,7 +307,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_regular_payments" ]
+        "x-scopes" : [ "bank:regular_payments:read" ]
       },
       "post" : {
         "tags" : [ "Banking", "Direct Debits" ],
@@ -372,7 +372,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_regular_payments" ]
+        "x-scopes" : [ "bank:regular_payments:read" ]
       }
     },
     "/banking/accounts/{accountId}" : {
@@ -416,7 +416,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_detailed_accounts" ]
+        "x-scopes" : [ "bank:accounts.detail:read" ]
       }
     },
     "/banking/accounts/{accountId}/balance" : {
@@ -460,7 +460,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_basic_accounts" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ]
       }
     },
     "/banking/accounts/{accountId}/direct-debits" : {
@@ -520,7 +520,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_regular_payments" ]
+        "x-scopes" : [ "bank:regular_payments:read" ]
       }
     },
     "/banking/accounts/{accountId}/payments/scheduled" : {
@@ -580,7 +580,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_regular_payments" ]
+        "x-scopes" : [ "bank:regular_payments:read" ]
       }
     },
     "/banking/accounts/{accountId}/transactions" : {
@@ -674,7 +674,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_transactions" ]
+        "x-scopes" : [ "bank:transactions:read" ]
       }
     },
     "/banking/accounts/{accountId}/transactions/{transactionId}" : {
@@ -725,7 +725,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_transactions" ]
+        "x-scopes" : [ "bank:transactions:read" ]
       }
     },
     "/banking/payees" : {
@@ -786,7 +786,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_basic_accounts" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ]
       }
     },
     "/banking/payees/{payeeId}" : {
@@ -830,7 +830,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_payees" ]
+        "x-scopes" : [ "bank:payees:read" ]
       }
     },
     "/banking/payments/scheduled" : {
@@ -905,7 +905,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_regular_payments" ]
+        "x-scopes" : [ "bank:regular_payments:read" ]
       },
       "post" : {
         "tags" : [ "Banking", "Scheduled Payments" ],
@@ -970,7 +970,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "bank_regular_payments" ]
+        "x-scopes" : [ "bank:regular_payments:read" ]
       }
     },
     "/banking/products" : {
@@ -1130,7 +1130,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "common_basic_customer" ]
+        "x-scopes" : [ "common:customer.basic:read" ]
       }
     },
     "/common/customer/detail" : {
@@ -1167,7 +1167,7 @@
           }
         },
         "x-version" : "1",
-        "x-scopes" : [ "common_detailed_customer" ]
+        "x-scopes" : [ "common:customer.detail:read" ]
       }
     },
     "/discovery/outages" : {

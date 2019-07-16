@@ -901,39 +901,53 @@
 <tr>
 <th>Header Field</th>
 <th>Description</th>
+<th>Mandatory?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><strong>Content-Type</strong></td>
 <td>Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to <code>application/json</code>.</td>
+<td>Mandatory</td>
 </tr>
 <tr>
 <td><strong>Accept</strong></td>
 <td>Standard HTTP Header. Specify the Content-Type that is required from the Server.<br/>If specified, must be set to <code>application/json</code> unless otherwise specified in the resource end point standard.<br/>If set to an unacceptable value the provider must respond with a 406 Not Acceptable. If not specified, default is <code>application/json</code>.</td>
+<td>Optional</td>
 </tr>
 <tr>
 <td><strong>x-v</strong></td>
 <td>Version of the API end point requested by the client. Must be set to a positive integer.<br/>If the version(s) requested is not supported then the provider should respond with a <code>406 Not Acceptable</code>.</td>
+<td>Mandatory</td>
 </tr>
 <tr>
 <td><strong>x-min-v</strong></td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <code>x-min-v</code> and <code>x-v</code>.<br/>If all versions requested are not supported then the provider should respond with a <code>406 Not Acceptable</code>.</td>
+<td>Optional</td>
 </tr>
 <tr>
 <td><strong>x-&lt;PID&gt;-v</strong></td>
 <td>A provider specific version of extension fields. Should not be used in conjunction with <code>x-min-v</code>.</td>
+<td>Optional</td>
 </tr>
 <tr>
 <td><strong>x-fapi-auth-date</strong></td>
-<td>The time when the customer last logged in to the data recipient</td>
+<td>The time when the customer last logged in to the data recipient.  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls.</td>
+<td>Conditional</td>
 </tr>
 <tr>
 <td><strong>x-fapi-customer-ip-address</strong></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient.  The presence of this header indicates that the API is being called in a customer present context</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient.  The presence of this header indicates that the API is being called in a customer present context.  Not required for unattended or unauthenticated calls.</td>
+<td>Conditional</td>
+</tr>
+<tr>
+<td><strong>x-cds-User-Agent</strong></td>
+<td>The customer&#39;s original User Agent header if the customer is currently logged in to the data recipient.  Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>Conditional</td>
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id.  If provided, the data provider must &quot;play back&quot; this value in the x-fapi-interaction-id response header.</td>
+<td>Mandatory</td>
 </tr>
 </tbody></table>
 
@@ -1037,7 +1051,7 @@
 <tr>
 <td>Token has incorrect scope or a security policy was violated.</td>
 <td>403 Forbidden</td>
-<td>The operation was refused access. Re-authenticating is unlikely to remediate the situation.</td>
+<td>The operation was refused access. Re-authenticating is unlikely to remediate the situation. It is expected that this error will result in an <a href="#error_payload">error payload</a></td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -1709,6 +1723,7 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li>Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page</li>
 <li>Data holders MUST clearly refer to the OTP as a “one-time password” in consumer-facing interactions and material</li>
 <li>Data holders MUST state in consumer-facing interactions and material that ADRs will never ask consumers for their banking password to access CDR data</li>
+<li>Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.</li>
 </ul>
 
 <p><a id="client-authentication"></a></p>
@@ -2685,7 +2700,7 @@ Host: www.holder.com.au
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-bulk-balances'>Get Bulk Balances</h2>
 <p><a id="opIdlistBalancesBulk"></a></p>
@@ -2926,7 +2941,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-balances-for-specific-accounts'>Get Balances For Specific Accounts</h2>
 <p><a id="opIdlistBalancesSpecificAccounts"></a></p>
@@ -3105,7 +3120,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-account-balance'>Get Account Balance</h2>
 <p><a id="opIdlistBalance"></a></p>
@@ -3239,7 +3254,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-account-detail'>Get Account Detail</h2>
 <p><a id="opIdgetAccountDetail"></a></p>
@@ -3565,7 +3580,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.detail:read</a>
 </aside>
 <h2 id='get-transactions-for-account'>Get Transactions For Account</h2>
 <p><a id="opIdgetTransactions"></a></p>
@@ -3776,7 +3791,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
+<a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 <h2 id='get-transaction-detail'>Get Transaction Detail</h2>
 <p><a id="opIdgetTransactionDetail"></a></p>
@@ -3934,7 +3949,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
+<a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 <h2 id='get-direct-debits-for-account'>Get Direct Debits For Account</h2>
 <p><a id="opIdlistDirectDebits"></a></p>
@@ -4091,7 +4106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 <h2 id='get-bulk-direct-debits'>Get Bulk Direct Debits</h2>
 <p><a id="opIdlistDirectDebitsBulk"></a></p>
@@ -4330,7 +4345,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 <h2 id='get-direct-debits-for-specific-accounts'>Get Direct Debits For Specific Accounts</h2>
 <p><a id="opIdlistDirectDebitsSpecificAccounts"></a></p>
@@ -4507,7 +4522,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 <h2 id='get-scheduled-payments-for-account'>Get Scheduled Payments for Account</h2>
 <p><a id="opIdlistScheduledPayments"></a></p>
@@ -4743,7 +4758,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 <h2 id='get-scheduled-payments-bulk'>Get Scheduled Payments Bulk</h2>
 <p><a id="opIdlistScheduledPaymentsBulk"></a></p>
@@ -5061,7 +5076,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 <h2 id='get-scheduled-payments-for-specific-accounts'>Get Scheduled Payments For Specific Accounts</h2>
 <p><a id="opIdlistScheduledPaymentsSpecificAccounts"></a></p>
@@ -5317,7 +5332,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 <h2 id='get-payees'>Get Payees</h2>
 <p><a id="opIdlistPayees"></a></p>
@@ -5493,7 +5508,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-payee-detail'>Get Payee Detail</h2>
 <p><a id="opIdgetPayeeDetail"></a></p>
@@ -5663,7 +5678,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_payees</a>
+<a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
 <h2 id='get-products'>Get Products</h2>
 <p><a id="opIdlistProducts"></a></p>
@@ -6373,7 +6388,7 @@ This operation does not require authentication
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">common_basic_customer</a>
+<a href="#authorisation-scopes">common:customer.basic:read</a>
 </aside>
 <h2 id='get-customer-detail'>Get Customer Detail</h2>
 <p><a id="opIdgetCustomerDetail"></a></p>
@@ -6614,7 +6629,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">common_detailed_customer</a>
+<a href="#authorisation-scopes">common:customer.detail:read</a>
 </aside>
 <h2 id='get-status'>Get Status</h2>
 <p><a id="opIdgetStatus"></a></p>
@@ -16672,37 +16687,37 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><strong>Basic Bank Account Data</strong></td>
-<td>bank_basic_accounts</td>
+<td>bank:accounts.basic:read</td>
 <td>This scope would allow for the third party to access basic information of the customer’s accounts.<br/><br/>Includes simple account information including balance.<br/>Does not include account identifiers, product information or transaction data.</td>
 </tr>
 <tr>
 <td><strong>Detailed Bank Account Data</strong></td>
-<td>bank_detailed_accounts</td>
+<td>bank:accounts.detail:read</td>
 <td>This scope would allow for the third party to access detailed information of the customer’s accounts. This scope is effectively additional authorisation to the Basic Bank Account Data scope. Granting this authorisation only makes sense if the Bank Account Data scope is also authorised.<br/><br/>Includes basic account information plus account identifiers and product information.<br/>Does not include transaction data.</td>
 </tr>
 <tr>
 <td><strong>Bank Transaction Data</strong></td>
-<td>bank_transactions</td>
+<td>bank:transactions:read</td>
 <td>This scope would allow the third party to access transaction data for accounts.  This scope is effectively additional authorisation to the Basic Bank Account Data scope.  Granting this authorisation only makes sense if the Basic Bank Account Data scope is also authorised.<br/><br/>Includes all account transaction data.</td>
 </tr>
 <tr>
 <td><strong>Bank Payee Data</strong></td>
-<td>bank_payees</td>
+<td>bank:payees:read</td>
 <td>This scope allows access to payee information stored by the customer.<br/><br/>Includes payee information such as billers, international beneficiaries and domestic payees.</td>
 </tr>
 <tr>
 <td><strong>Bank Regular Payments</strong></td>
-<td>bank_regular_payments</td>
+<td>bank:regular_payments:read</td>
 <td>The scope would allow the third party to access regular payments.  Includes Direct Debits and Scheduled Payments.</td>
 </tr>
 <tr>
 <td><strong>Basic Customer Data</strong></td>
-<td>common_basic_customer</td>
+<td>common:customer.basic:read</td>
 <td>The scope would allow the third party to access personally identifiable information about the customer.  For retail customers this would be information about the customer themselves.  For business customers it would imply the name of specific user but also information about the business.<br/><br/>Includes name and occupation for individuals or name, business numbers and industry code for organisations</td>
 </tr>
 <tr>
 <td><strong>Detailed Customer Data</strong></td>
-<td>common_detailed_customer</td>
+<td>common:customer.detail:read</td>
 <td>The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.</td>
 </tr>
 <tr>

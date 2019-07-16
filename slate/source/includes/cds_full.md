@@ -122,7 +122,7 @@ Obtain a list of accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Bulk Balances
@@ -248,7 +248,7 @@ Obtain balances for multiple, filtered accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Balances For Specific Accounts
@@ -368,7 +368,7 @@ Obtain balances for a specified list of accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Account Balance
@@ -459,7 +459,7 @@ Obtain the balance for a single specified account
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Account Detail
@@ -742,7 +742,7 @@ Obtain detailed information on a single account
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.detail:read</a>
 </aside>
 
 ## Get Transactions For Account
@@ -866,7 +866,7 @@ Some general notes that apply to all end points that retrieve transactions:
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
+<a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 
 ## Get Transaction Detail
@@ -975,7 +975,7 @@ Obtain detailed information on a transaction for a specific account
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
+<a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 
 ## Get Direct Debits For Account
@@ -1077,7 +1077,7 @@ Obtain direct debit authorisations for a specific account
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Bulk Direct Debits
@@ -1201,7 +1201,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Direct Debits For Specific Accounts
@@ -1319,7 +1319,7 @@ Obtain direct debit authorisations for a specified list of accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Scheduled Payments for Account
@@ -1500,7 +1500,7 @@ Obtain scheduled, outgoing payments for a specific account
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Scheduled Payments Bulk
@@ -1703,7 +1703,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Scheduled Payments For Specific Accounts
@@ -1900,7 +1900,7 @@ Obtain scheduled payments for a specified list of accounts
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Payees
@@ -2006,7 +2006,7 @@ Obtain a list of pre-registered payees
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Payee Detail
@@ -2133,7 +2133,7 @@ Obtain detailed information on a single payee
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_payees</a>
+<a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
 
 ## Get Products
@@ -2647,7 +2647,7 @@ Obtain basic information on the customer that has authorised the current session
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">common_basic_customer</a>
+<a href="#authorisation-scopes">common:customer.basic:read</a>
 </aside>
 
 ## Get Customer Detail
@@ -2851,7 +2851,7 @@ Obtain detailed information on the authorised customer within the current sessio
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">common_detailed_customer</a>
+<a href="#authorisation-scopes">common:customer.detail:read</a>
 </aside>
 
 ## Get Status
@@ -7257,4 +7257,3 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-

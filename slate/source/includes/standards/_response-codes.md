@@ -10,7 +10,7 @@ Delete operation completed successfully | 204 No Content | | No | No | Yes
 The response is not modified since last call | 304 Not Modified | May be returned if standard caching headers such as ETag or If-modified-since are utilised | Yes | Yes | No
 Request has malformed, missing or non-compliant JSON body or URL parameters | 400 Bad Request | The requested operation will not be carried out. | Yes | Yes | Yes
 Authorization header missing or invalid token | 401 Unauthorized | The operation was refused access. Re-authenticating may result in an appropriate token that may be used. | Yes | Yes | Yes
-Token has incorrect scope or a security policy was violated. | 403 Forbidden | The operation was refused access. Re-authenticating is unlikely to remediate the situation. | Yes | Yes | Yes
+Token has incorrect scope or a security policy was violated. | 403 Forbidden | The operation was refused access. Re-authenticating is unlikely to remediate the situation. It is expected that this error will result in an [error payload](#error_payload) | Yes | Yes | Yes
 The consumer tried to access the resource with a method that is not supported. | 405 Method Not Allowed |  | Yes | Yes | Yes
 The request contained an Accept header other than permitted media types, a character set other than UTF-8 or a version that was not supported | 406 Not Acceptable |  | Yes | Yes | Yes
 The operation was refused because the payload is in a format not supported by this method on the target resource. | 415 Unsupported Media Type |  | Yes | No | No
