@@ -20,6 +20,50 @@
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "paths" : {
+    "/admin/metrics" : {
+      "get" : {
+        "tags" : [ "Admin", "Metrics" ],
+        "summary" : "Get Metrics",
+        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
+        "operationId" : "getMetrics",
+        "parameters" : [ {
+          "name" : "period",
+          "in" : "query",
+          "description" : "The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+          "required" : false,
+          "type" : "string",
+          "default" : "ALL",
+          "enum" : [ "CURRENT_DAY", "HISTORIC", "ALL" ]
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseMetricsList"
+            },
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+              }
+            }
+          }
+        },
+        "x-version" : "1"
+      }
+    },
     "/admin/registry/metadata" : {
       "post" : {
         "tags" : [ "Admin", "Register" ],
@@ -59,56 +103,11 @@
         },
         "x-version" : "1"
       }
-    },
-    "/admin/metrics" : {
-      "get" : {
-        "tags" : [ "Admin", "Metrics" ],
-        "summary" : "Get Metrics",
-        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
-        "operationId" : "getMetrics",
-        "parameters" : [ {
-          "name" : "period",
-          "in" : "query",
-          "description" : "The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
-          "required" : false,
-          "type" : "string",
-          "default" : "ALL",
-          "enum" : [ "CURRENT_DAY", "HISTORIC", "ALL" ]
-        }, {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-min-v",
-          "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            },
-            "schema" : {
-              "$ref" : "#/definitions/ResponseMetricsList"
-            }
-          }
-        },
-        "x-version" : "1"
-      }
     }
   },
   "definitions" : {
     "RequestMetaDataUpdate" : {
       "type" : "object",
-      "required" : [ "data" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/RequestMetaDataUpdate_data"
@@ -120,7 +119,6 @@
     },
     "ResponseMetricsList" : {
       "type" : "object",
-      "required" : [ "data" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseMetricsList_data"

@@ -335,12 +335,6 @@
                     <a href="#get-transaction-detail" class="toc-h2 toc-link" data-title="Get Transaction Detail">Get Transaction Detail</a>
                   </li>
                   <li>
-                    <a href="#get-transactions-for-multiple-accounts" class="toc-h2 toc-link" data-title="Get Transactions For Multiple Accounts">Get Transactions For Multiple Accounts</a>
-                  </li>
-                  <li>
-                    <a href="#get-transactions-for-specific-accounts" class="toc-h2 toc-link" data-title="Get Transactions For Specific Accounts">Get Transactions For Specific Accounts</a>
-                  </li>
-                  <li>
                     <a href="#get-direct-debits-for-account" class="toc-h2 toc-link" data-title="Get Direct Debits For Account">Get Direct Debits For Account</a>
                   </li>
                   <li>
@@ -630,6 +624,9 @@
           </li>
           <li>
             <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
+          </li>
+          <li>
+            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -637,9 +634,11 @@
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
-                  <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
@@ -1191,7 +1190,7 @@
 <li>If the response is unsuccessful (not 200 OK) the root object:
 
 <ul>
-<li>MUST contain an <code>errors</code> object</li>
+<li>MAY contain an <code>errors</code> object (as per the specific end point definition)</li>
 </ul></li>
 </ul>
 
@@ -1917,7 +1916,7 @@ End Point and Token End Point.</p>
 <h3 id='access-token'>Access Token</h3>
 <p>Access Tokens MUST be used as specified in <a href="https://tools.ietf.org/html/rfc6749#section-10.3">section 10.3</a> of <strong>[OAUTH2]</strong>.</p>
 
-<p>An Access Token MUST expire <strong>10 minutes</strong> after the Data Holder issues it.</p>
+<p>An Access Token MUST expire between <strong>2 minutes</strong> to <strong>10 minutes</strong> after the Data Holder issues it (at the discretion of the Data Holder).</p>
 
 <p>The process for refreshing an Access Token is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken">section 12.1</a> of <strong>[OIDC]</strong>.</p>
 <h3 id='refresh-token'>Refresh Token</h3>
@@ -2373,7 +2372,7 @@ Host: www.holder.com.au
 <h4 id='requirements-for-data-recipient-implementations'>Requirements for Data Recipient implementations</h4>
 <p>The Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.</p>
 
-<p>Revocation of Access Tokens MUST be supported.</p>
+<p>Revocation of Access Tokens MUST not be supported.</p>
 
 <p>Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation</p>
 
@@ -3731,7 +3730,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string</td>
+<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied</td>
 </tr>
 <tr>
 <td>page</td>
@@ -3949,8 +3948,12 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x2p101Payload"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x2p101Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3978,508 +3981,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 <h3 id='response-headers-7'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-v</td>
-<td>string</td>
-<td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
-</aside>
-<h2 id='get-transactions-for-multiple-accounts'>Get Transactions For Multiple Accounts</h2>
-<p><a id="opIdlistTransactionsBulk"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
-<span class="p">};</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions'</span><span class="p">,</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
-  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-
-</code></pre>
-<p><code>GET /banking/accounts/transactions</code></p>
-
-<p>Obtain transactions for multiple, filtered accounts</p>
-
-<h3 id="get-transactions-for-multiple-accounts-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>product-category</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed</td>
-</tr>
-<tr>
-<td>is-owned</td>
-<td>query</td>
-<td><a href="#common-field-types">Boolean</a></td>
-<td>optional</td>
-<td>Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts</td>
-</tr>
-<tr>
-<td>newest-time</td>
-<td>query</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
-</tr>
-<tr>
-<td>oldest-time</td>
-<td>query</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
-</tr>
-<tr>
-<td>min-amount</td>
-<td>query</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
-</tr>
-<tr>
-<td>max-amount</td>
-<td>query</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
-</tr>
-<tr>
-<td>text</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string</td>
-</tr>
-<tr>
-<td>page</td>
-<td>query</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Page of results to request (standard pagination)</td>
-</tr>
-<tr>
-<td>page-size</td>
-<td>query</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Page size to request. Default is 25 (standard pagination)</td>
-</tr>
-<tr>
-<td>x-v</td>
-<td>header</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
-</tr>
-<tr>
-<td>x-min-v</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>product-category</td>
-<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>TERM_DEPOSITS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>TRAVEL_CARDS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>REGULATED_TRUST_ACCOUNTS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>RESIDENTIAL_MORTGAGES</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>CRED_AND_CHRG_CARDS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>PERS_LOANS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>MARGIN_LOANS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>LEASES</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>TRADE_FINANCE</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>OVERDRAFTS</td>
-</tr>
-<tr>
-<td>product-category</td>
-<td>BUSINESS_LOANS</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>OPEN</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>CLOSED</td>
-</tr>
-<tr>
-<td>open-status</td>
-<td>ALL</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isDetailAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEE"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"postingDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"merchantCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="get-transactions-for-multiple-accounts-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
-<td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
-</tr>
-</tbody></table>
-<h3 id='response-headers-8'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-v</td>
-<td>string</td>
-<td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
-</aside>
-<h2 id='get-transactions-for-specific-accounts'>Get Transactions For Specific Accounts</h2>
-<p><a id="opIdlistTransactionsSpecificAccounts"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
-<span class="p">};</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions'</span><span class="p">,</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
-  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-
-</code></pre>
-<p><code>POST /banking/accounts/transactions</code></p>
-
-<p>Obtain transactions for a specified list of transactions.</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"accountIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="get-transactions-for-specific-accounts-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>newest-time</td>
-<td>query</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type</td>
-</tr>
-<tr>
-<td>oldest-time</td>
-<td>query</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type</td>
-</tr>
-<tr>
-<td>min-amount</td>
-<td>query</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>Filter transactions to only transactions with amounts higher or equal to than this amount</td>
-</tr>
-<tr>
-<td>max-amount</td>
-<td>query</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>Filter transactions to only transactions with amounts less than or equal to than this amount</td>
-</tr>
-<tr>
-<td>text</td>
-<td>query</td>
-<td>string</td>
-<td>optional</td>
-<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string</td>
-</tr>
-<tr>
-<td>page</td>
-<td>query</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Page of results to request (standard pagination)</td>
-</tr>
-<tr>
-<td>page-size</td>
-<td>query</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
-<td>Page size to request. Default is 25 (standard pagination)</td>
-</tr>
-<tr>
-<td>x-v</td>
-<td>header</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
-</tr>
-<tr>
-<td>x-min-v</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td><a href="#schemarequestaccountids">RequestAccountIds</a></td>
-<td>mandatory</td>
-<td>The list of account IDs to obtain information for</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isDetailAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEE"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"postingDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"merchantCategoryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="get-transactions-for-specific-accounts-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
-<td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
-</tr>
-<tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
-</tr>
-</tbody></table>
-<h3 id='response-headers-9'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4636,7 +4137,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-10'>Response Headers</h3>
+<h3 id='response-headers-8'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4754,7 +4255,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4875,7 +4376,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-11'>Response Headers</h3>
+<h3 id='response-headers-9'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5052,7 +4553,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-12'>Response Headers</h3>
+<h3 id='response-headers-10'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5288,7 +4789,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-13'>Response Headers</h3>
+<h3 id='response-headers-11'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5406,7 +4907,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5606,7 +5107,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-14'>Response Headers</h3>
+<h3 id='response-headers-12'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5862,7 +5363,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-15'>Response Headers</h3>
+<h3 id='response-headers-13'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -5966,7 +5467,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6038,7 +5539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingpayeelist">ResponseBankingPayeeList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-16'>Response Headers</h3>
+<h3 id='response-headers-14'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6208,7 +5709,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingpayeebyid">ResponseBankingPayeeById</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-17'>Response Headers</h3>
+<h3 id='response-headers-15'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6362,7 +5863,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6491,7 +5992,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-18'>Response Headers</h3>
+<h3 id='response-headers-16'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6774,7 +6275,7 @@ This operation does not require authentication
 <td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-19'>Response Headers</h3>
+<h3 id='response-headers-17'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6918,7 +6419,7 @@ This operation does not require authentication
 <td><a href="#schemaresponsecommoncustomer">ResponseCommonCustomer</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-20'>Response Headers</h3>
+<h3 id='response-headers-18'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7159,7 +6660,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsecommoncustomerdetail">ResponseCommonCustomerDetail</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-21'>Response Headers</h3>
+<h3 id='response-headers-19'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7279,7 +6780,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsediscoverystatus">ResponseDiscoveryStatus</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-22'>Response Headers</h3>
+<h3 id='response-headers-20'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7401,7 +6902,7 @@ This operation does not require authentication
 <td><a href="#schemaresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-23'>Response Headers</h3>
+<h3 id='response-headers-21'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8224,9 +7725,9 @@ This operation does not require authentication
 <tr>
 <td>productIds</td>
 <td>[string]</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
-<td>Array of product IDs for products included in the bundle</td>
+<td>Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points</td>
 </tr>
 </tbody></table>
 
@@ -8279,7 +7780,7 @@ This operation does not require authentication
 <td>Link to a web page with more information on this feature</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8429,7 +7930,7 @@ This operation does not require authentication
 <td>Link to a web page with more information on the constraint</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8507,7 +8008,7 @@ This operation does not require authentication
 <td>Link to a web page with more information on this eligibility criteria</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8698,7 +8199,7 @@ This operation does not require authentication
 <td>An optional list of discounts to this fee that may be available</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8855,7 +8356,7 @@ This operation does not require authentication
 <td>Eligibility constraints that apply to this discount</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8933,7 +8434,7 @@ This operation does not require authentication
 <td>Link to a web page with more information on this eligibility constraint</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9098,7 +8599,7 @@ This operation does not require authentication
 <td>Link to a web page with more information on this rate</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9255,7 +8756,7 @@ This operation does not require authentication
 <td>Link to a web page with more information on this rate</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9446,7 +8947,7 @@ This operation does not require authentication
 <td>Defines a condition for the applicability of a tiered rate</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9700,7 +9201,7 @@ This operation does not require authentication
 <td>The unique identifier of the account as defined by the account holder (akin to model number for the account)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-17'>Enumerated Values</h4>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10374,7 +9875,7 @@ This operation does not require authentication
 <td>The addresses for the account to be used for correspondence</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10452,7 +9953,7 @@ This operation does not require authentication
 <td>Current instructions on action to be taken at maturity</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10658,7 +10159,7 @@ This operation does not require authentication
 <td>The expected or required repayment frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10893,21 +10394,21 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>BPay Biller Code for the transaction (if available)</td>
+<td>BPAY Biller Code for the transaction (if available)</td>
 </tr>
 <tr>
 <td>billerName</td>
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Name of the BPay biller for the transaction (if available)</td>
+<td>Name of the BPAY biller for the transaction (if available)</td>
 </tr>
 <tr>
 <td>crn</td>
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>BPay CRN for the transaction (if available)</td>
+<td>BPAY CRN for the transaction (if available)</td>
 </tr>
 <tr>
 <td>apcaNumber</td>
@@ -10917,7 +10418,7 @@ This operation does not require authentication
 <td>6 Digit APCA number for the initiating institution</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10992,8 +10493,12 @@ This operation does not require authentication
     </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x2p101Payload"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x2p101Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -11061,8 +10566,12 @@ This operation does not require authentication
   </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extendedDescription"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x2p101Payload"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"x2p101Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -11135,11 +10644,32 @@ This operation does not require authentication
 <td>Optional extended data provided specific to transaction originated via NPP</td>
 </tr>
 <tr>
-<td>»» extendedDescription</td>
+<td>»» x2p101Payload</td>
+<td>object</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»»» extendedDescription</td>
 <td>string</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>An extended string description. Only present if specified by the extensionUType field</td>
+</tr>
+<tr>
+<td>»»» endToEndId</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>An end to end ID for the payment created at initiation</td>
+</tr>
+<tr>
+<td>»»» purposeCode</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service</td>
 </tr>
 <tr>
 <td>»» service</td>
@@ -11149,7 +10679,7 @@ This operation does not require authentication
 <td>Identifier of the applicable overlay service. Valid values are: X2P1.01</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11158,7 +10688,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>extensionUType</td>
-<td>extendedDescription</td>
+<td>x2p101Payload</td>
 </tr>
 <tr>
 <td>service</td>
@@ -11629,7 +11159,7 @@ This operation does not require authentication
 <td>The date the payee was created by the customer</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11772,7 +11302,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11852,7 +11382,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11982,7 +11512,7 @@ This operation does not require authentication
 <td>The type of the PayID</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11995,7 +11525,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>PHONE</td>
+<td>TELEPHONE</td>
 </tr>
 <tr>
 <td>type</td>
@@ -12003,15 +11533,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>ACN</td>
-</tr>
-<tr>
-<td>type</td>
-<td>ARSN</td>
-</tr>
-<tr>
-<td>type</td>
-<td>ARBN</td>
+<td>ORG_IDENTIFIER</td>
 </tr>
 </tbody></table>
 
@@ -12039,14 +11561,14 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>BPay Biller Code of the Biller</td>
+<td>BPAY Biller Code of the Biller</td>
 </tr>
 <tr>
 <td>crn</td>
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
+<td>BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
 </tr>
 <tr>
 <td>billerName</td>
@@ -12707,7 +12229,7 @@ This operation does not require authentication
 <td>Object containing the detail of the schedule for the payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12932,7 +12454,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13075,7 +12597,7 @@ This operation does not require authentication
 <td>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13184,7 +12706,7 @@ This operation does not require authentication
 <td>An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13407,7 +12929,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13635,7 +13157,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13843,7 +13365,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14200,7 +13722,7 @@ This operation does not require authentication
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14414,7 +13936,7 @@ This operation does not require authentication
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14488,7 +14010,7 @@ This operation does not require authentication
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14602,7 +14124,7 @@ This operation does not require authentication
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14704,7 +14226,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15211,7 +14733,7 @@ This operation does not require authentication
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15883,6 +15405,8 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
 
+<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -16269,7 +15793,7 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-<h2 id='schemas'>Schemas</h2>
+<h1 id='schemas'>Schemas</h1>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 

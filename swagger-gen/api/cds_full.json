@@ -2600,12 +2600,27 @@
                   "type": "string",
                   "description": "Optional extended data provided specific to transaction originated via NPP",
                   "enum": [
-                    "extendedDescription"
+                    "x2p101Payload"
                   ]
                 },
-                "extendedDescription": {
-                  "type": "string",
-                  "description": "An extended string description. Only present if specified by the extensionUType field"
+                "x2p101Payload": {
+                  "required": [
+                    "extendedDescription"
+                  ],
+                  "properties": {
+                    "extendedDescription": {
+                      "type": "string",
+                      "description": "An extended string description. Only present if specified by the extensionUType field"
+                    },
+                    "endToEndId": {
+                      "type": "string",
+                      "description": "An end to end ID for the payment created at initiation"
+                    },
+                    "purposeCode": {
+                      "type": "string",
+                      "description": "Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service"
+                    },
+                  }
                 },
                 "service": {
                   "type": "string",

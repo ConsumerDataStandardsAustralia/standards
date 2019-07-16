@@ -802,7 +802,7 @@ Some general notes that apply to all end points that retrieve transactions:
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
 |min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
 |max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
@@ -945,8 +945,12 @@ Obtain detailed information on a transaction for a specific account
     "extendedData": {
       "payer": "string",
       "payee": "string",
-      "extensionUType": "extendedDescription",
-      "extendedDescription": "string",
+      "extensionUType": "x2p101Payload",
+      "x2p101Payload": {
+        "extendedDescription": "string",
+        "endToEndId": "string",
+        "purposeCode": "string"
+      },
       "service": "X2P1.01"
     }
   },
@@ -962,274 +966,6 @@ Obtain detailed information on a transaction for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionById](#schemaresponsebankingtransactionbyid)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
-
-<aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
-</aside>
-
-## Get Transactions For Multiple Accounts
-
-<a id="opIdlistTransactionsBulk"></a>
-
-> Code samples
-
-```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
-Host: data.holder.com.au
-Accept: application/json
-x-v: string
-x-min-v: string
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string'
-
-};
-
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`GET /banking/accounts/transactions`
-
-Obtain transactions for multiple, filtered accounts
-
-<h3 id="get-transactions-for-multiple-accounts-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|string|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TERM_DEPOSITS|
-|product-category|TRAVEL_CARDS|
-|product-category|REGULATED_TRUST_ACCOUNTS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|MARGIN_LOANS|
-|product-category|LEASES|
-|product-category|TRADE_FINANCE|
-|product-category|OVERDRAFTS|
-|product-category|BUSINESS_LOANS|
-|open-status|OPEN|
-|open-status|CLOSED|
-|open-status|ALL|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "transactions": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "FEE",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "string",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="get-transactions-for-multiple-accounts-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
-
-<aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
-</aside>
-
-## Get Transactions For Specific Accounts
-
-<a id="opIdlistTransactionsSpecificAccounts"></a>
-
-> Code samples
-
-```http
-POST https://data.holder.com.au/cds-au/v1/banking/accounts/transactions HTTP/1.1
-Host: data.holder.com.au
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string'
-
-};
-
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/transactions',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`POST /banking/accounts/transactions`
-
-Obtain transactions for a specified list of transactions.
-
-> Body parameter
-
-```json
-{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}
-```
-
-<h3 id="get-transactions-for-specific-accounts-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days.  Format is aligned to DateTimeString common type|
-|min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
-|max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
-|body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain information for|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "transactions": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "FEE",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "string",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="get-transactions-for-specific-accounts-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemaresponsebankingtransactionlist)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
 
 ### Response Headers
 
@@ -3819,7 +3555,7 @@ This operation does not require authentication
 |description|string|mandatory|none|Description of the bundle|
 |additionalInfo|string|optional|none|Display text providing more information on the bundle|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on the bundle criteria and benefits|
-|productIds|[string]|mandatory|none|Array of product IDs for products included in the bundle|
+|productIds|[string]|optional|none|Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points|
 
 <h2 id="tocSbankingproductfeature">BankingProductFeature</h2>
 
@@ -5182,8 +4918,12 @@ This operation does not require authentication
     "extendedData": {
       "payer": "string",
       "payee": "string",
-      "extensionUType": "extendedDescription",
-      "extendedDescription": "string",
+      "extensionUType": "x2p101Payload",
+      "x2p101Payload": {
+        "extendedDescription": "string",
+        "endToEndId": "string",
+        "purposeCode": "string"
+      },
       "service": "X2P1.01"
     }
   },
@@ -5230,8 +4970,12 @@ This operation does not require authentication
   "extendedData": {
     "payer": "string",
     "payee": "string",
-    "extensionUType": "extendedDescription",
-    "extendedDescription": "string",
+    "extensionUType": "x2p101Payload",
+    "x2p101Payload": {
+      "extendedDescription": "string",
+      "endToEndId": "string",
+      "purposeCode": "string"
+    },
     "service": "X2P1.01"
   }
 }
@@ -5255,14 +4999,17 @@ This operation does not require authentication
 |»» payer|string|conditional|none|Label of the originating payer. Mandatory for inbound payment|
 |»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
 |»» extensionUType|string|optional|none|Optional extended data provided specific to transaction originated via NPP|
-|»» extendedDescription|string|conditional|none|An extended string description. Only present if specified by the extensionUType field|
+|»» x2p101Payload|object|optional|none|none|
+|»»» extendedDescription|string|mandatory|none|An extended string description. Only present if specified by the extensionUType field|
+|»»» endToEndId|string|optional|none|An end to end ID for the payment created at initiation|
+|»»» purposeCode|string|optional|none|Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service|
 |»» service|string|mandatory|none|Identifier of the applicable overlay service. Valid values are: X2P1.01|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|extensionUType|extendedDescription|
+|extensionUType|x2p101Payload|
 |service|X2P1.01|
 
 <h2 id="tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h2>
@@ -5737,11 +5484,9 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |type|EMAIL|
-|type|PHONE|
+|type|TELEPHONE|
 |type|ABN|
-|type|ACN|
-|type|ARSN|
-|type|ARBN|
+|type|ORG_IDENTIFIER|
 
 <h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
@@ -7512,3 +7257,4 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
+
