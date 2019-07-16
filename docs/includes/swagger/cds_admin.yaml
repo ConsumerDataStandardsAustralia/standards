@@ -308,7 +308,6 @@ definitions:
         - "REFRESH"
   ResponseMetricsList_data:
     required:
-    - "links"
     - "requestTime"
     properties:
       requestTime:
@@ -338,13 +337,8 @@ definitions:
         description: "Number of customers with active authorisations at the time of\
           \ the call"
       recipientCount:
-        type: "integer"
-        description: "Number of data recipients with active authorisations at the\
-          \ time of the call"
-      links:
-        $ref: "#/definitions/Links"
-      meta:
-        $ref: "#/definitions/Meta"
+        type: integer
+        description: Number of data recipients with active authorisations at the time of the call
   InvocationMetrics_unauthenticated:
     properties:
       currentDay:
