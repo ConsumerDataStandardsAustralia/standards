@@ -395,144 +395,6 @@
         "x-version": "1"
       }
     },
-    "/banking/accounts/transactions": {
-      "get": {
-        "summary": "Get Transactions For Multiple Accounts",
-        "description": "Obtain transactions for multiple, filtered accounts",
-        "operationId": "listTransactionsBulk",
-        "x-scopes": [
-          "bank_transactions"
-        ],
-        "tags": [
-          "Banking",
-          "Accounts"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/ParamProductCategory"
-          },
-          {
-            "$ref": "#/parameters/ParamAccountOpenStatus"
-          },
-          {
-            "$ref": "#/parameters/ParamAccountIsOwned"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionNewestTime"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionOldestTime"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionMinAmount"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionMaxAmount"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionText"
-          },
-          {
-            "$ref": "#/parameters/ParamPage"
-          },
-          {
-            "$ref": "#/parameters/ParamPageSize"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-v"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-min-v"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/ResponseBankingTransactionList"
-            }
-          }
-        },
-        "x-version": "1"
-      },
-      "post": {
-        "summary": "Get Transactions For Specific Accounts",
-        "description": "Obtain transactions for a specified list of transactions.",
-        "operationId": "listTransactionsSpecificAccounts",
-        "x-scopes": [
-          "bank_transactions"
-        ],
-        "tags": [
-          "Banking",
-          "Accounts"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/ParamTransactionNewestTime"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionOldestTime"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionMinAmount"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionMaxAmount"
-          },
-          {
-            "$ref": "#/parameters/ParamTransactionText"
-          },
-          {
-            "$ref": "#/parameters/ParamPage"
-          },
-          {
-            "$ref": "#/parameters/ParamPageSize"
-          },
-          {
-            "name": "accountIds",
-            "in": "body",
-            "description": "The list of account IDs to obtain information for",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/RequestAccountIds"
-            }
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-v"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-min-v"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
-                "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/ResponseBankingTransactionList"
-            }
-          },
-          "422": {
-            "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
-            }
-          }
-        },
-        "x-version": "1"
-      }
-    },
     "/banking/accounts/{accountId}/direct-debits": {
       "get": {
         "summary": "Get Direct Debits For Account",
@@ -1318,7 +1180,7 @@
     "ParamTransactionText": {
       "name": "text",
       "in": "query",
-      "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string",
+      "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied",
       "required": false,
       "type": "string"
     }
@@ -1561,8 +1423,7 @@
       "type": "object",
       "required": [
         "name",
-        "description",
-        "productIds"
+        "description"
       ],
       "properties": {
         "name": {
@@ -1584,7 +1445,7 @@
         },
         "productIds": {
           "type": "array",
-          "description": "Array of product IDs for products included in the bundle",
+          "description": "Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points",
           "items": {
             "type": "string",
             "x-cds-type": "ASCIIString"
@@ -2670,15 +2531,15 @@
         },
         "billerCode": {
           "type": "string",
-          "description": "BPay Biller Code for the transaction (if available)"
+          "description": "BPAY Biller Code for the transaction (if available)"
         },
         "billerName": {
           "type": "string",
-          "description": "Name of the BPay biller for the transaction (if available)"
+          "description": "Name of the BPAY biller for the transaction (if available)"
         },
         "crn": {
           "type": "string",
-          "description": "BPay CRN for the transaction (if available)"
+          "description": "BPAY CRN for the transaction (if available)"
         },
         "apcaNumber": {
           "type": "string",
@@ -2739,12 +2600,27 @@
                   "type": "string",
                   "description": "Optional extended data provided specific to transaction originated via NPP",
                   "enum": [
-                    "extendedDescription"
+                    "x2p101Payload"
                   ]
                 },
-                "extendedDescription": {
-                  "type": "string",
-                  "description": "An extended string description. Only present if specified by the extensionUType field"
+                "x2p101Payload": {
+                  "required": [
+                    "extendedDescription"
+                  ],
+                  "properties": {
+                    "extendedDescription": {
+                      "type": "string",
+                      "description": "An extended string description. Only present if specified by the extensionUType field"
+                    },
+                    "endToEndId": {
+                      "type": "string",
+                      "description": "An end to end ID for the payment created at initiation"
+                    },
+                    "purposeCode": {
+                      "type": "string",
+                      "description": "Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service"
+                    },
+                  }
                 },
                 "service": {
                   "type": "string",
@@ -3083,11 +2959,9 @@
           "description": "The type of the PayID",
           "enum": [
             "EMAIL",
-            "PHONE",
+            "TELEPHONE",
             "ABN",
-            "ACN",
-            "ARSN",
-            "ARBN"
+            "ORG_IDENTIFIER"
           ]
         }
       }
@@ -3104,11 +2978,11 @@
       "properties": {
         "billerCode": {
           "type": "string",
-          "description": "BPay Biller Code of the Biller"
+          "description": "BPAY Biller Code of the Biller"
         },
         "crn": {
           "type": "string",
-          "description": "BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
+          "description": "BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
         },
         "billerName": {
           "type": "string",

@@ -70,7 +70,7 @@ The contents of the root object are as follows:
     * MUST contain a `links` object
     * MAY contain a `meta` object if REQUIRED by the definition of the specific end point
 * If the response is unsuccessful (not 200 OK) the root object:
-    * MUST contain an `errors` object
+    * MAY contain an `errors` object (as per the specific end point definition)
 
 The definition of the contents for the `data` object and `meta` object will be defined separately for each end point.
 
