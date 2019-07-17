@@ -32,7 +32,7 @@
         "description": "Obtain a list of accounts",
         "operationId": "listAccounts",
         "x-scopes": [
-          "bank_basic_accounts"
+          "bank:accounts.basic:read"
         ],
         "tags": [
           "Banking",
@@ -84,7 +84,7 @@
         "description": "Obtain balances for multiple, filtered accounts",
         "operationId": "listBalancesBulk",
         "x-scopes": [
-          "bank_basic_accounts"
+          "bank:accounts.basic:read"
         ],
         "tags": [
           "Banking",
@@ -134,7 +134,7 @@
         "description": "Obtain balances for a specified list of accounts",
         "operationId": "listBalancesSpecificAccounts",
         "x-scopes": [
-          "bank_basic_accounts"
+          "bank:accounts.basic:read"
         ],
         "tags": [
           "Banking",
@@ -192,7 +192,7 @@
         "description": "Obtain the balance for a single specified account",
         "operationId": "listBalance",
         "x-scopes": [
-          "bank_basic_accounts"
+          "bank:accounts.basic:read"
         ],
         "tags": [
           "Banking",
@@ -237,7 +237,7 @@
         "description": "Obtain detailed information on a single account",
         "operationId": "getAccountDetail",
         "x-scopes": [
-          "bank_detailed_accounts"
+          "bank:accounts.detail:read"
         ],
         "tags": [
           "Banking",
@@ -282,7 +282,7 @@
         "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
         "operationId": "getTransactions",
         "x-scopes": [
-          "bank_transactions"
+          "bank:transactions:read"
         ],
         "tags": [
           "Banking",
@@ -348,7 +348,7 @@
         "description": "Obtain detailed information on a transaction for a specific account",
         "operationId": "getTransactionDetail",
         "x-scopes": [
-          "bank_transactions"
+          "bank:transactions:read"
         ],
         "tags": [
           "Banking",
@@ -401,7 +401,7 @@
         "description": "Obtain direct debit authorisations for a specific account",
         "operationId": "listDirectDebits",
         "x-scopes": [
-          "bank_regular_payments"
+          "bank:regular_payments:read"
         ],
         "tags": [
           "Banking",
@@ -452,7 +452,7 @@
         "description": "Obtain direct debit authorisations for multiple, filtered accounts",
         "operationId": "listDirectDebitsBulk",
         "x-scopes": [
-          "bank_regular_payments"
+          "bank:regular_payments:read"
         ],
         "tags": [
           "Banking",
@@ -502,7 +502,7 @@
         "description": "Obtain direct debit authorisations for a specified list of accounts",
         "operationId": "listDirectDebitsSpecificAccounts",
         "x-scopes": [
-          "bank_regular_payments"
+          "bank:regular_payments:read"
         ],
         "tags": [
           "Banking",
@@ -560,7 +560,7 @@
         "description": "Obtain scheduled, outgoing payments for a specific account",
         "operationId": "listScheduledPayments",
         "x-scopes": [
-          "bank_regular_payments"
+          "bank:regular_payments:read"
         ],
         "tags": [
           "Banking",
@@ -611,7 +611,7 @@
         "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments",
         "operationId": "listScheduledPaymentsBulk",
         "x-scopes": [
-          "bank_regular_payments"
+          "bank:regular_payments:read"
         ],
         "tags": [
           "Banking",
@@ -661,7 +661,7 @@
         "description": "Obtain scheduled payments for a specified list of accounts",
         "operationId": "listScheduledPaymentsSpecificAccounts",
         "x-scopes": [
-          "bank_regular_payments"
+          "bank:regular_payments:read"
         ],
         "tags": [
           "Banking",
@@ -719,7 +719,7 @@
         "description": "Obtain a list of pre-registered payees",
         "operationId": "listPayees",
         "x-scopes": [
-          "bank_basic_accounts"
+          "bank:acounts.basic:read"
         ],
         "tags": [
           "Banking",
@@ -776,7 +776,7 @@
         "description": "Obtain detailed information on a single payee",
         "operationId": "getPayeeDetail",
         "x-scopes": [
-          "bank_payees"
+          "bank:payees:read"
         ],
         "tags": [
           "Banking",
@@ -934,7 +934,7 @@
         "description": "Obtain basic information on the customer that has authorised the current session",
         "operationId": "getCustomer",
         "x-scopes": [
-          "common_basic_customer"
+          "common:customer.basic:read"
         ],
         "tags": [
           "Common",
@@ -971,7 +971,7 @@
         "description": "Obtain detailed information on the authorised customer within the current session.",
         "operationId": "getCustomerDetail",
         "x-scopes": [
-          "common_detailed_customer"
+          "common:customer.detail:read"
         ],
         "tags": [
           "Common",
