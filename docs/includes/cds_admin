@@ -1,4 +1,3 @@
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 <h2 id='metadata-update'>Metadata Update</h2>
 <p><a id="opIdmetadataUpdate"></a></p>
 
@@ -113,6 +112,10 @@
 <td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+This operation may only be call by the CDR Register
+</aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
 
@@ -359,6 +362,10 @@
 <td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+This operation may only be call by the CDR Register
+</aside>
 <h1 id='schemas'>Schemas</h1>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 

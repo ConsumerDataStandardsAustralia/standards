@@ -624,9 +624,6 @@
           </li>
           <li>
             <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
-          </li>
-          <li>
-            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -15353,8 +15350,6 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
-
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -15476,6 +15471,10 @@ This operation does not require authentication
 <td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+This operation may only be call by the CDR Register
+</aside>
 
 <h2 id='get-metrics'>Get Metrics</h2>
 
@@ -15732,6 +15731,10 @@ This operation does not require authentication
 <td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+This operation may only be call by the CDR Register
+</aside>
 
 <h1 id='schemas'>Schemas</h1>
 
