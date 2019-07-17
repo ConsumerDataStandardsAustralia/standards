@@ -1,6 +1,5 @@
 
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 
 ## Metadata Update
 
@@ -266,7 +265,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
 
-# Schemas
+## Schemas
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -438,7 +437,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |» rejections|[RejectionMetrics](#schemarejectionmetrics)|conditional|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|conditional|none|Number of customers with active authorisations at the time of the call|
 |» recipientCount|integer|conditional|none|Number of data recipients with active authorisations at the time of the call|
-|links|[Links](#schemalinks)|optional|none|none|
+|links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
@@ -755,3 +754,4 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 ### Properties
 
 *None*
+

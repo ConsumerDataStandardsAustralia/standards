@@ -1,17 +1,13 @@
 ---
 swagger: "2.0"
 info:
-  description: Data Holder/ Reciever Consumer Data Standards Administration End Points
-  version: 0.1.2
+  description: Data Holder Consumer Data Standards Administration End Points
+  version: 0.1.0
   title: Consumer Data Standards Administration End Points
-  contact:
-    name: Consumer Data Standards Administration End Points
-    url: https://consumerdatastandards.org.au/
-    email: cdr-data61@csiro.au
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
-host: data.holder.com.au
+host: data.provider.com.au
 basePath: /cds-au/v1
 schemes:
 - https
@@ -23,8 +19,8 @@ paths:
   /admin/registry/metadata:
     post:
       tags:
-      - Admin
-      - Register
+      - Admin APIs
+      - Registry
       summary: Metadata Update
       description: Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained
       operationId: metadataUpdate
@@ -34,28 +30,14 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/RequestMetaDataUpdate'
-      - name: x-v
-        in: header
-        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)
-        required: true
-        type: string
-      - name: x-min-v
-        in: header
-        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.
-        required: false
-        type: string
       responses:
         200:
           description: Success
-          headers:
-            x-v:
-              type: string
-              description: The [version](##response-headers) of the API end point that the holder has responded with.
       x-version: "1"
   /admin/metrics:
     get:
       tags:
-      - Admin
+      - Admin APIs
       - Metrics
       summary: Get Metrics
       description: This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
@@ -68,26 +50,13 @@ paths:
         type: string
         default: ALL
         enum:
+        - CURRENT
         - CURRENT_DAY
         - HISTORIC
         - ALL
-      - name: x-v
-        in: header
-        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)
-        required: true
-        type: string
-      - name: x-min-v
-        in: header
-        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.
-        required: false
-        type: string
       responses:
         200:
           description: Success
-          headers:
-            x-v:
-              type: string
-              description: The [version](##response-headers) of the API end point that the holder has responded with.
           schema:
             $ref: '#/definitions/ResponseMetricsList'
       x-version: "1"
@@ -105,14 +74,9 @@ definitions:
     type: object
     required:
     - data
-    - links
     properties:
       data:
         $ref: '#/definitions/ResponseMetricsList_data'
-      links:
-        $ref: '#/definitions/Links'
-      meta:
-        $ref: '#/definitions/Meta'
   AvailabilityMetrics:
     type: object
     properties:
@@ -276,6 +240,7 @@ definitions:
         - REFRESH
   ResponseMetricsList_data:
     required:
+    - links
     - requestTime
     properties:
       requestTime:
@@ -306,6 +271,10 @@ definitions:
       recipientCount:
         type: integer
         description: Number of data recipients with active authorisations at the time of the call
+      links:
+        $ref: '#/definitions/Links'
+      meta:
+        $ref: '#/definitions/Meta'
   InvocationMetrics_unauthenticated:
     properties:
       currentDay:
@@ -416,16 +385,3 @@ definitions:
         items:
           type: number
     description: Average response time for the large payload tier
-parameters:
-  RequestHeader_x-v:
-    name: x-v
-    in: header
-    description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)
-    required: true
-    type: string
-  RequestHeader_x-min-v:
-    name: x-min-v
-    in: header
-    description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.
-    required: false
-    type: string
