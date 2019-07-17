@@ -1,7 +1,5 @@
 
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
-
 ## Metadata Update
 
 <a id="opIdmetadataUpdate"></a>
@@ -73,8 +71,8 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |---|---|---|---|---|
 |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation may only be call by the CDR Register
 </aside>
 
 ## Get Metrics
@@ -268,8 +266,8 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |---|---|---|---|---|
 |200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation may only be call by the CDR Register
 </aside>
 
 # Schemas
@@ -761,4 +759,3 @@ This operation does not require authentication
 ### Properties
 
 *None*
-
