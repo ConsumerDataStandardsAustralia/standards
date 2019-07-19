@@ -67,7 +67,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -119,7 +119,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -169,7 +169,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -220,7 +220,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -265,7 +265,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -331,7 +331,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -384,7 +384,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -435,7 +435,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -487,7 +487,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -537,7 +537,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -594,7 +594,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -646,7 +646,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -696,7 +696,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -759,7 +759,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -804,7 +804,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -875,7 +875,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -917,7 +917,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -954,7 +954,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -991,7 +991,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1025,7 +1025,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1059,7 +1059,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
               }
             },
             "schema": {
@@ -1074,14 +1074,14 @@
   "parameters": {
     "RequestHeader_x-v": {
       "name": "x-v",
-      "description": "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)",
+      "description": "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
       "in": "header",
       "type": "string",
       "required": true
     },
     "RequestHeader_x-min-v": {
       "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
       "in": "header",
       "type": "string"
     },

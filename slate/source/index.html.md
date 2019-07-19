@@ -21,6 +21,7 @@ includes:
   - banking/product_components
   - admin  
   - scopes
+  - nfrs
   - known-issues
   - changelog
   - archives
