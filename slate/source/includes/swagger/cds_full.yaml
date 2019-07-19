@@ -87,15 +87,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -178,15 +178,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -235,15 +235,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -331,15 +331,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -388,15 +388,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -438,15 +438,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -482,15 +482,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -541,15 +541,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -601,15 +601,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -712,15 +712,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -764,15 +764,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -829,15 +829,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -873,15 +873,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -965,15 +965,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1023,15 +1023,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1184,15 +1184,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1227,15 +1227,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1264,15 +1264,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1303,15 +1303,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1341,15 +1341,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -1377,15 +1377,15 @@ paths:
         in: "header"
         description: "Version of the API end point requested by the client. Must be\
           \ set to a positive integer. If the version(s) requested is not supported\
-          \ then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+          \ then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
         required: true
         type: "string"
       - name: "x-min-v"
         in: "header"
         description: "Minimum version of the API end point requested by the client.\
           \ Must be set to a positive integer if provided. The holder should respond\
-          \ with the highest supported version between [x-min-v](##request-headers)\
-          \ and [x-v](##request-headers). If all versions requested are not supported\
+          \ with the highest supported version between [x-min-v](#request-headers)\
+          \ and [x-v](#request-headers). If all versions requested are not supported\
           \ then the holder should respond with a 406 Not Acceptable."
         required: false
         type: "string"
@@ -3972,7 +3972,7 @@ parameters:
     in: "header"
     description: "Version of the API end point requested by the client. Must be set\
       \ to a positive integer. If the version(s) requested is not supported then the\
-      \ holder should respond with a 406 Not Acceptable. See [here](##request-headers)"
+      \ holder should respond with a 406 Not Acceptable. See [here](#request-headers)"
     required: true
     type: "string"
   RequestHeader_x-min-v:
@@ -3980,7 +3980,7 @@ parameters:
     in: "header"
     description: "Minimum version of the API end point requested by the client. Must\
       \ be set to a positive integer if provided. The holder should respond with the\
-      \ highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers).\
+      \ highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).\
       \ If all versions requested are not supported then the holder should respond\
       \ with a 406 Not Acceptable."
     required: false

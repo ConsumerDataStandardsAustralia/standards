@@ -50,8 +50,8 @@ Obtain a list of accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -118,7 +118,7 @@ Obtain a list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -173,8 +173,8 @@ Obtain balances for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -244,7 +244,7 @@ Obtain balances for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -311,8 +311,8 @@ Obtain balances for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
@@ -364,7 +364,7 @@ Obtain balances for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -415,8 +415,8 @@ Obtain the balance for a single specified account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -455,7 +455,7 @@ Obtain the balance for a single specified account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -506,8 +506,8 @@ Obtain detailed information on a single account
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -738,7 +738,7 @@ Obtain detailed information on a single account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -805,8 +805,8 @@ Some general notes that apply to all end points that retrieve transactions:
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -862,7 +862,7 @@ Some general notes that apply to all end points that retrieve transactions:
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -914,8 +914,8 @@ Obtain detailed information on a transaction for a specific account
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
 |transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -971,7 +971,7 @@ Obtain detailed information on a transaction for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1024,8 +1024,8 @@ Obtain direct debit authorisations for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -1073,7 +1073,7 @@ Obtain direct debit authorisations for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1128,8 +1128,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1197,7 +1197,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1264,8 +1264,8 @@ Obtain direct debit authorisations for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1315,7 +1315,7 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1368,8 +1368,8 @@ Obtain scheduled, outgoing payments for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -1496,7 +1496,7 @@ Obtain scheduled, outgoing payments for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1551,8 +1551,8 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -1699,7 +1699,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1766,8 +1766,8 @@ Obtain scheduled payments for a specified list of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
 > Example responses
@@ -1896,7 +1896,7 @@ Obtain scheduled payments for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1949,8 +1949,8 @@ Obtain a list of pre-registered payees
 |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2002,7 +2002,7 @@ Obtain a list of pre-registered payees
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2053,8 +2053,8 @@ Obtain detailed information on a single payee
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2129,7 +2129,7 @@ Obtain detailed information on a single payee
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2219,8 +2219,8 @@ In addition, the concept of effective date and time has also been included.  Thi
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2296,7 +2296,7 @@ In addition, the concept of effective date and time has also been included.  Thi
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2346,8 +2346,8 @@ Obtain detailed information on a single product offered openly to the market
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2536,7 +2536,7 @@ Obtain detailed information on a single product offered openly to the market
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2587,8 +2587,8 @@ Obtain basic information on the customer that has authorised the current session
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2643,7 +2643,7 @@ Obtain basic information on the customer that has authorised the current session
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2693,8 +2693,8 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2847,7 +2847,7 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2897,8 +2897,8 @@ Obtain a health check status for the implementation
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2930,7 +2930,7 @@ Obtain a health check status for the implementation
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2979,8 +2979,8 @@ Obtain a list of scheduled outages for the implementation
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -3015,7 +3015,7 @@ Obtain a list of scheduled outages for the implementation
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
