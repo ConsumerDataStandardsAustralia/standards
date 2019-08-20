@@ -1,7 +1,7 @@
 # Non-functional Requirements
 
 <aside class="notice">
-This section of the standards are not yet considered binding.<br/></br>It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are made binding.
+The standard relating to NFRs will commence on a date specified by the Data Standards Chair. It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are appropriate prior to this standard commencing and becoming a binding data standard under the Consumer Data Rules.
 </aside>
 
 The non-functional requirements (NFRs) for the Consumer Data Right regime cover a number of considerations:
@@ -107,7 +107,7 @@ Data recipients will be limited by the traffic thresholds documented in the prev
 - Unattended calls should be managed to avoid short term bursts of traffic
 
 ## Reporting Requirements
-The mechanism for reporting will be via administration end points that are yet to be defined.
+The mechanism for reporting will be via the CDR [Administration Endpoints](#admin-apis).
 
 The following information is to be reported:
 

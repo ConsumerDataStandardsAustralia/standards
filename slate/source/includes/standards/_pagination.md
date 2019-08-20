@@ -27,7 +27,7 @@ In addition to the data requested a provider MUST provide the following addition
     * **next** - A URI to the next page. Mandatory if this response is not the last page.
 * In the `meta` object the following fields are to be provided:
     * **totalRecords** - The total number of records in the set. This field MUST be present.
-    * **totalPages** - The total number of pages in the set. This field MUST be present.
+    * **totalPages** - The total number of pages in the set. This field MUST be present. If **totalRecords** is 0 **totalPages** MUST be 0.
 
 For each of these fields the page size specified in the request should be assumed when calculating
 values.
