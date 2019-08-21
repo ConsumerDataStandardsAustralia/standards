@@ -552,7 +552,7 @@
                     <a href="#tocSbankingscheduledpaymentrecurrenceeventbased" class="toc-h2 toc-link" data-title="BankingScheduledPaymentRecurrenceEventBased">BankingScheduledPaymentRecurrenceEventBased</a>
                   </li>
                   <li>
-                    <a href="#tocScommondiscoverystatus" class="toc-h2 toc-link" data-title="CommonDiscoveryStatus">CommonDiscoveryStatus</a>
+                    <a href="#tocSresponsediscoverystatus" class="toc-h2 toc-link" data-title="ResponseDiscoveryStatus">ResponseDiscoveryStatus</a>
                   </li>
                   <li>
                     <a href="#tocSresponsediscoveryoutageslist" class="toc-h2 toc-link" data-title="ResponseDiscoveryOutagesList">ResponseDiscoveryOutagesList</a>
@@ -741,9 +741,9 @@
 
 <p>CSIRO’s Data61 has been appointed as the technical advisor and provider of operational support to the interim data standards body. These standards have been prepared by the Consumer Data Standards team at Data61.  The work of the team is  overseen by Mr. Andrew Stevens as interim Chair, with industry and consumer advice provided by an Advisory Committee. Data61’s Consumer Data Standards team works closely with the Australian Competition and Consumer Commission (ACCC) as lead regulator of the Consumer Data Right, supported by the Office of the Australian Information Commissioner (OAIC).</p>
 
-<p>These standards will be binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
+<p>These standards are considered binding subject to the passing of the Consumer Data Right legislation and in accordance with the rules of the Consumer Data Right regime published by the ACCC.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 0.9.6</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.9.5</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -948,12 +948,12 @@
 </tr>
 <tr>
 <td><strong>x-v</strong></td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <code>x-min-v</code> and <code>x-v</code>. If the value of <code>x-min-v</code> is equal to or higher than the value of <code>x-v</code> then the <code>x-min-v</code> header should be treated as absent. <br/>If all versions requested are not supported then the provider should respond with a <code>406 Not Acceptable</code>.</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer.<br/>If the version(s) requested is not supported then the provider should respond with a <code>406 Not Acceptable</code>.</td>
 <td>Mandatory</td>
 </tr>
 <tr>
 <td><strong>x-min-v</strong></td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <code>x-min-v</code> and <code>x-v</code>. If the value of <code>x-min-v</code> is equal to or higher than the value of <code>x-v</code> then the <code>x-min-v</code> header should be treated as absent. <br/>If all versions requested are not supported then the provider should respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The provider should respond with the highest supported version between <code>x-min-v</code> and <code>x-v</code>.<br/>If all versions requested are not supported then the provider should respond with a <code>406 Not Acceptable</code>.</td>
 <td>Optional</td>
 </tr>
 <tr>
@@ -962,24 +962,24 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td><strong>x-fapi-interaction-id</strong></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must &quot;play back&quot; this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction</td>
-<td>Mandatory (in Response Header)</td>
-</tr>
-<tr>
 <td><strong>x-fapi-auth-date</strong></td>
 <td>The time when the customer last logged in to the data recipient.  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 <tr>
 <td><strong>x-fapi-customer-ip-address</strong></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient.  The presence of this header indicates that the API is being called in a customer present context.  Not required for unattended or unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 <tr>
 <td><strong>x-cds-User-Agent</strong></td>
-<td>The customer&#39;s original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original User Agent header if the customer is currently logged in to the data recipient.  Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 <td>Conditional</td>
+</tr>
+<tr>
+<td><strong>x-fapi-interaction-id</strong></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id.  If provided, the data provider must &quot;play back&quot; this value in the x-fapi-interaction-id response header.</td>
+<td>Mandatory</td>
 </tr>
 </tbody></table>
 
@@ -1500,7 +1500,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <ul>
 <li><strong>totalRecords</strong> - The total number of records in the set. This field MUST be present.</li>
-<li><strong>totalPages</strong> - The total number of pages in the set. This field MUST be present. If <strong>totalRecords</strong> is 0 <strong>totalPages</strong> MUST be 0.</li>
+<li><strong>totalPages</strong> - The total number of pages in the set. This field MUST be present.</li>
 </ul></li>
 </ul>
 
@@ -2439,6 +2439,10 @@ Host: www.holder.com.au
 <td>OpenID Connect Discovery 1.0 incorporating errata set 1: <a href="http://openid.net/specs/openid-connect-discovery-1_0.html">http://openid.net/specs/openid-connect-discovery-1_0.html</a></td>
 </tr>
 <tr>
+<td><a id="OIDC-CR"></a><strong>[OIDC-CR]</strong></td>
+<td>OpenID Connect Dynamic Client Registration 1.0 incorporating errata set 1: <a href="https://openid.net/specs/openid-connect-registration-1_0.html">https://openid.net/specs/openid-connect-registration-1_0.html</a></td>
+</tr>
+<tr>
 <td><a id="TDIF"></a><strong>[TDIF]</strong></td>
 <td>Digital Transformation Agency - Trusted Digital Identity Framework <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework</a></td>
 </tr>
@@ -2503,19 +2507,11 @@ Host: www.holder.com.au
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2585,7 +2581,7 @@ Host: www.holder.com.au
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -2593,34 +2589,6 @@ Host: www.holder.com.au
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -2760,13 +2728,6 @@ Host: www.holder.com.au
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -2784,19 +2745,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2866,7 +2819,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -2874,34 +2827,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -3044,13 +2969,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -3069,20 +2987,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3143,7 +3053,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -3151,34 +3061,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -3266,13 +3148,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -3290,19 +3165,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3344,7 +3211,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -3352,34 +3219,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -3443,13 +3282,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -3467,19 +3299,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3521,7 +3345,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -3529,34 +3353,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -3743,7 +3539,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3755,7 +3551,7 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3812,13 +3608,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -3836,19 +3625,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3950,7 +3731,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -3958,34 +3739,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4066,13 +3819,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -4090,19 +3836,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4151,7 +3889,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -4159,34 +3897,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4267,13 +3977,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -4291,19 +3994,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4359,7 +4054,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -4367,34 +4062,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4467,13 +4134,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -4491,19 +4151,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4573,7 +4225,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -4581,34 +4233,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-3'>Enumerated Values</h4>
@@ -4749,13 +4373,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -4774,20 +4391,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4848,7 +4457,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -4856,34 +4465,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -4969,13 +4550,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -4993,19 +4567,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5061,7 +4627,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -5069,34 +4635,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -5248,13 +4786,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -5272,19 +4803,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5354,7 +4877,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -5362,34 +4885,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -5609,13 +5104,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -5634,20 +5122,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5708,7 +5188,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -5716,34 +5196,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -5908,13 +5360,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -5932,19 +5377,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6000,7 +5437,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -6008,34 +5445,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
@@ -6127,18 +5536,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-payee-detail'>Get Payee Detail</h2>
 <p><a id="opIdgetPayeeDetail"></a></p>
@@ -6151,19 +5553,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6205,7 +5599,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -6213,34 +5607,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -6339,13 +5705,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
-</tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -6474,7 +5833,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -6692,7 +6051,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -6931,19 +6290,11 @@ This operation does not require authentication
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6978,7 +6329,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -6986,34 +6337,6 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7110,19 +6433,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -7157,7 +6472,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -7165,34 +6480,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>x-fapi-interaction-id</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
-<tr>
-<td>x-fapi-auth-date</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7243,7 +6530,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7255,7 +6542,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7299,7 +6586,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7311,7 +6598,7 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7370,13 +6657,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>The <a href="#response-headers">version</a> of the API end point that the holder has responded with.</td>
 </tr>
-<tr>
-<td>200</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -7433,7 +6713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -7477,7 +6757,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacommondiscoverystatus">CommonDiscoveryStatus</a></td>
+<td><a href="#schemaresponsediscoverystatus">ResponseDiscoveryStatus</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-20'>Response Headers</h3>
@@ -7552,7 +6832,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="#request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -7573,7 +6853,7 @@ This operation does not require authentication
     </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -7664,7 +6944,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8107,7 +7387,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10099,7 +9379,7 @@ This operation does not require authentication
           </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10111,7 +9391,7 @@ This operation does not require authentication
           </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10161,7 +9441,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10347,7 +9627,7 @@ This operation does not require authentication
         </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10359,7 +9639,7 @@ This operation does not require authentication
         </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10842,7 +10122,7 @@ This operation does not require authentication
 <td>[string]</td>
 <td>optional</td>
 <td>none</td>
-<td>The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation</td>
+<td>The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation</td>
 </tr>
 <tr>
 <td>repaymentType</td>
@@ -11235,7 +10515,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11796,7 +11076,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12588,9 +11868,9 @@ This operation does not require authentication
 <tr>
 <td>financialInstitution</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
-<td>Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme</td>
+<td>Name of the financial institution through which the direct debit will be executed</td>
 </tr>
 <tr>
 <td>abn</td>
@@ -13513,7 +12793,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.</td>
+<td>The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.</td>
 </tr>
 </tbody></table>
 
@@ -13545,9 +12825,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocScommondiscoverystatus">CommonDiscoveryStatus</h2>
+<h2 id="tocSresponsediscoverystatus">ResponseDiscoveryStatus</h2>
 
-<p><a id="schemacommondiscoverystatus"></a></p>
+<p><a id="schemaresponsediscoverystatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
@@ -13624,7 +12904,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -13662,7 +12942,7 @@ This operation does not require authentication
     </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -13708,7 +12988,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -13719,7 +12999,7 @@ This operation does not require authentication
 <p><a id="schemadiscoveryoutage"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -13743,10 +13023,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>duration</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
+<td>number</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Planned duration of the outage. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>Planned duration of the outage in minutes</td>
 </tr>
 <tr>
 <td>isPartial</td>
@@ -13852,7 +13132,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -13919,7 +13199,7 @@ This operation does not require authentication
             </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13931,7 +13211,7 @@ This operation does not require authentication
             </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13975,7 +13255,7 @@ This operation does not require authentication
             </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13987,7 +13267,7 @@ This operation does not require authentication
             </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14060,7 +13340,7 @@ This operation does not require authentication
 <tr>
 <td>meta</td>
 <td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -14200,7 +13480,7 @@ This operation does not require authentication
         </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14212,7 +13492,7 @@ This operation does not require authentication
         </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14484,7 +13764,7 @@ This operation does not require authentication
         </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14496,7 +13776,7 @@ This operation does not require authentication
         </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14591,7 +13871,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
-<td>May be true for one and only one entry to indicate the preferred phone number. Assumed to be &#39;false&#39; if not present</td>
+<td>Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be &#39;false&#39; if not present</td>
 </tr>
 <tr>
 <td>purpose</td>
@@ -14693,7 +13973,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
-<td>May be true for one and only one email record in the collection. Denotes the default email address</td>
+<td>Required for one and only one email record in the collection. Denotes the default email address</td>
 </tr>
 <tr>
 <td>purpose</td>
@@ -14748,7 +14028,7 @@ This operation does not require authentication
     </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14760,7 +14040,7 @@ This operation does not require authentication
     </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14866,7 +14146,7 @@ This operation does not require authentication
     </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14878,7 +14158,7 @@ This operation does not require authentication
     </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14954,7 +14234,7 @@ This operation does not require authentication
   </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-69'>Properties</h3>
@@ -15014,14 +14294,14 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format.</td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://www.iso.org/obp/ui/#iso:code:3166:AU">ISO 3166:AU standard</a></td>
 </tr>
 <tr>
 <td>country</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
+<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code</td>
 </tr>
 </tbody></table>
 
@@ -15038,7 +14318,7 @@ This operation does not require authentication
   </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15130,7 +14410,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>lotNumber</td>
-<td>string</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Allotment number for the address</td>
@@ -15217,7 +14497,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a></td>
+<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 </tbody></table>
 
@@ -15243,7 +14523,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Fully qualified link that generated the current response document</td>
+<td>Fully qualified link to this API call</td>
 </tr>
 </tbody></table>
 
@@ -15281,7 +14561,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Fully qualified link that generated the current response document</td>
+<td>Fully qualified link to this API call</td>
 </tr>
 <tr>
 <td>first</td>
@@ -15336,14 +14616,14 @@ This operation does not require authentication
 <td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
+<td>The total number of records in the full set</td>
 </tr>
 <tr>
 <td>totalPages</td>
 <td><a href="#common-field-types">NaturalNumber</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
+<td>The total number of pages in the full set</td>
 </tr>
 </tbody></table>
 
@@ -16113,7 +15393,7 @@ This operation does not require authentication
 <p>Code samples</p>
 </blockquote>
 
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/register/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/registry/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -16128,7 +15408,7 @@ This operation does not require authentication
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/admin/register/metadata'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/admin/registry/metadata'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -16139,7 +15419,7 @@ This operation does not require authentication
 
 </code></pre>
 
-<p><code>POST /admin/register/metadata</code></p>
+<p><code>POST /admin/registry/metadata</code></p>
 
 <p>Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained</p>
 
@@ -16171,7 +15451,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -16227,8 +15507,8 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation may only be call by the CDR Register
 </aside>
 
 <h2 id='get-metrics'>Get Metrics</h2>
@@ -16291,7 +15571,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -16487,8 +15767,8 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation may only be call by the CDR Register
 </aside>
 
 <h2 id='schemas'>Schemas</h2>
@@ -17486,7 +16766,7 @@ This operation does not require authentication
 </tbody></table>
 <h1 id='non-functional-requirements'>Non-functional Requirements</h1>
 <aside class="notice">
-The standard relating to NFRs will commence on a date specified by the Data Standards Chair. It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are appropriate prior to this standard commencing and becoming a binding data standard under the Consumer Data Rules.
+This section of the standards are not yet considered binding.<br/></br>It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are made binding.
 </aside>
 
 <p>The non-functional requirements (NFRs) for the Consumer Data Right regime cover a number of considerations:</p>
@@ -17628,7 +16908,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <li>Unattended calls should be managed to avoid short term bursts of traffic</li>
 </ul>
 <h2 id='reporting-requirements'>Reporting Requirements</h2>
-<p>The mechanism for reporting will be via the CDR <a href="#admin-apis">Administration Endpoints</a>.</p>
+<p>The mechanism for reporting will be via administration end points that are yet to be defined.</p>
 
 <p>The following information is to be reported:</p>
 
@@ -17980,11 +17260,6 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <td><a href='./archive/standards-0.9.3/docs/'>29/5/2019</a></td>
 <td>0.9.3</td>
 <td><a href='./archive/standards-0.9.3/docs/'>May 2019 Working Draft</a></td>
-</tr>
-<tr>
-<td><a href='./archive/standards-0.9.5/docs/'>29/5/2019</a></td>
-<td>0.9.5</td>
-<td><a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a></td>
 </tr>
 </tbody></table>
 

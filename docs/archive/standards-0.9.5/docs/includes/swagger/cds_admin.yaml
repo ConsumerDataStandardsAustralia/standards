@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Data Holder/ Reciever Consumer Data Standards Administration End Points
-  version: 0.2.0
+  version: 0.1.2
   title: Consumer Data Standards Administration End Points
   contact:
     name: Consumer Data Standards Administration End Points
@@ -20,7 +20,7 @@ consumes:
 produces:
 - application/json
 paths:
-  /admin/register/metadata:
+  /admin/registry/metadata:
     post:
       tags:
       - Admin
@@ -36,7 +36,7 @@ paths:
           $ref: '#/definitions/RequestMetaDataUpdate'
       - name: x-v
         in: header
-        description: Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)
         required: true
         type: string
       - name: x-min-v
@@ -73,7 +73,7 @@ paths:
         - ALL
       - name: x-v
         in: header
-        description: Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)
         required: true
         type: string
       - name: x-min-v
@@ -420,7 +420,7 @@ parameters:
   RequestHeader_x-v:
     name: x-v
     in: header
-    description: Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+    description: Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)
     required: true
     type: string
   RequestHeader_x-min-v:

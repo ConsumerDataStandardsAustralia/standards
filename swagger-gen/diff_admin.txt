@@ -1,14 +1,6 @@
-76,78d75
-< <aside class="success">
-< This operation does not require authentication
-< </aside>
-271,273d267
-< <aside class="success">
-< This operation does not require authentication
-< </aside>
-447c441
-< |links|[Links](#schemalinks)|mandatory|none|none|
+3d2
+< <h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+275c274
+< # Schemas
 ---
-> |links|[Links](#schemalinks)|optional|none|none|
-764d757
-< 
+> ## Schemas
