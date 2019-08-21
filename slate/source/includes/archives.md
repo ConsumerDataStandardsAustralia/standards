@@ -8,3 +8,4 @@ The following table lists archived versions of the Consumer Data Standards.  The
 |<a href='./archive/standards-0.20/docs/'>18/12/2018</a>|0.2.0|<a href='./archive/standards-0.20/docs/'>Christmas 2018 Working Draft - Standards</a>|
 |<a href='./archive/infosec-0.1/docs/'>18/12/2018</a>|0.1.0|<a href='./archive/infosec-0.1/docs/'>Christmas 2018 Working Draft - InfoSec Profile</a>|
 |<a href='./archive/standards-0.9.3/docs/'>29/5/2019</a>|0.9.3|<a href='./archive/standards-0.9.3/docs/'>May 2019 Working Draft</a>|
+|<a href='./archive/standards-0.9.5/docs/'>29/5/2019</a>|0.9.5|<a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a>|
