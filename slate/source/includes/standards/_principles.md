@@ -27,7 +27,7 @@ The API standards will adhere to RESTful API concepts where possible and sensibl
 The underlying implementation of the APIs should not be constrained or driven by the API definitions and standards.  Conversely, the underlying implementation choices should not be visible or derivable to the client applications using the APIs.
 
 ####Principle 7: APIs are simple
-As complexity will increase implementation costs for both providers and clients as well as reduce the utility of the APIs, API definitions should seek to be as simple as possible but no simpler.
+As complexity will increase implementation costs for both holders and clients as well as reduce the utility of the APIs, API definitions should seek to be as simple as possible but no simpler.
 
 ####Principle 8: APIs are rich in capability
 As the APIs are defined care should be taken to ensure that the data payloads defined represent rich data sets that can be used in many scenarios, including scenarios not necessarily front of mind during the design process.
@@ -42,4 +42,4 @@ The API definitions across the full suite of APIs should be consistent with each
 As the API definitions evolve care will be taken to ensure the operation of existing clients are protected when breaking changes occur.  Breaking changes will be protected by a well-defined version control model and by a policy of maintaining previous versions for a period of time to allow for backwards compatibility.
 
 ####Principle 12: APIs are extensible
-The API definitions and standards should be built for extensibility.  This extensibility should accommodate future API categories and industry sectors but it should also allow for extension by data providers to create unique, value add offerings to the ecosystem.
+The API definitions and standards should be built for extensibility. This extensibility should accommodate future API categories and industry sectors but it should also allow for extension by data holders to create unique, value add offerings to the ecosystem.

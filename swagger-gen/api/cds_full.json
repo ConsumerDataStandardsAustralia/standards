@@ -79,11 +79,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -147,11 +147,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -213,11 +213,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -280,11 +280,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -341,11 +341,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -359,7 +359,7 @@
     "/banking/accounts/{accountId}/transactions": {
       "get": {
         "summary": "Get Transactions For Account",
-        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
+        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
         "operationId": "getTransactions",
         "x-scopes": [
           "bank:transactions:read"
@@ -423,11 +423,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -492,11 +492,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -559,11 +559,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -627,11 +627,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -693,11 +693,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -766,11 +766,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -834,11 +834,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -900,11 +900,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -979,11 +979,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -1040,11 +1040,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -1115,7 +1115,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -1157,7 +1157,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -1206,7 +1206,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -1255,11 +1255,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data provider must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -1293,7 +1293,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -1327,7 +1327,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -1342,20 +1342,20 @@
   "parameters": {
     "RequestHeader_x-v": {
       "name": "x-v",
-      "description": "Version of the API end point requested by the client. Must be set to a positive integer. The provider should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the provider should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+      "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
       "in": "header",
       "type": "string",
       "required": true
     },
     "RequestHeader_x-min-v": {
       "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
       "in": "header",
       "type": "string"
     },
     "RequestHeader_x-fapi-interaction-id": {
       "name": "x-fapi-interaction-id",
-      "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data provider must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+      "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
       "in": "header",
       "type": "string"
     },
@@ -1550,7 +1550,7 @@
       "properties": {
         "productId": {
           "type": "string",
-          "description": "A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+          "description": "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
           "x-cds-type": "ASCIIString"
         },
         "effectiveFrom": {

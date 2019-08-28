@@ -18,7 +18,7 @@ If the query parameters are not provided the following defaults will be assumed:
 
 ### Response Fields
 
-In addition to the data requested a provider MUST provide the following additional information in the response payload:
+In addition to the data requested a holder MUST provide the following additional information in the response payload:
 
 * <a name="pagination_links"></a>In the links object the following fields are to be provided:
     * **first** - A URI to request the first page. Mandatory if this response is not the first page.
@@ -34,12 +34,12 @@ values.
 
 ### Additional Pagination Rules
 
-* Providers are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.
+* Holders are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.
 * A maximum page size of `1000` records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then a HTTP status of `422 Unprocessable Entity` SHOULD be returned.
 
 ### Cursor Support
 
-For performance reasons data providers may wish to support other pagination patterns such as cursors or continuation tokens.  While the standard does not explicitly support these additional mechanisms it is considered allowable to implement these patterns and expose them via the [pagination links](#pagination_links).
+For performance reasons data holders may wish to support other pagination patterns such as cursors or continuation tokens.  While the standard does not explicitly support these additional mechanisms it is considered allowable to implement these patterns and expose them via the [pagination links](#pagination_links).
 
 In this scenario the URIs included in the links for other pages may not be compliant with the standard and may, instead, include other query parameters that support another pagination pattern. It is expected that all other pagination requirements such as link fields and meta fields will still be supported if other patterns are implemented.
 
