@@ -963,8 +963,8 @@
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction</td>
-<td>Mandatory (in Response Header)</td>
+<td>An optional <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction</td>
+<td>Optional</td>
 </tr>
 <tr>
 <td><strong>x-fapi-auth-date</strong></td>
@@ -1529,12 +1529,11 @@ values.</p>
 <ul>
 <li>An ID for a resource should only be specified in the API standard if an end point exists to
 obtain detail for that resource or to change the state of the resource.</li>
-<li>If an ID is specified in the standards for a resource then it is mandatory and MUST be
-supplied, by the data holder, in accordance with the standards.</li>
+<li>If an ID is specified in the standards for a resource then it is mandatory and MUST be supplied, by the data holder, in accordance with the standards.</li>
 <li>If an ID is specified the ID value MUST be entirely arbitrary and have no inherent meaning. For instance, an ID should not be a combination of other fields or a string that can be parsed to extract meaningful information.</li>
 <li>IDs SHOULD be unique but that uniqueness may be within a clearly bounded context. For example, a beneficiary ID may be unique but only in the context of a specific account. The bounds of uniqueness should be clearly described in the standards definition for the end point.</li>
-<li>IDs MUST be immutable across sessions but MUST NOT be transferable across data consumers. For example, data consumer A obtaining an account ID would get a different result from data consumer B obtaining the ID for the same account even if the same customer authorised the access. Under this constraint IDs cannot be usefully transferred between client organisations or data holders.</li>
-<li>IDs MUST NOT be transferable between different customers for the same data consumer. For example, a data consumer should obtain a different ID for a joint account if the ID was obtained independently using authorisations from both customers.</li>
+<li>IDs MUST be immutable across sessions and consents but MUST NOT be transferable across data recipients. For example, data recipient A obtaining an account ID would get a different result from data recipient B obtaining the ID for the same account even if the same customer authorised the access. Under this constraint IDs cannot be usefully transferred between client organisations or data holders.</li>
+<li>IDs MUST NOT be transferable between different customers for the same data recipient. For example, a data recipient should obtain a different ID for a joint account if the ID was obtained independently using authorisations from both customers.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
 
@@ -1694,20 +1693,28 @@ multiple system entities which will assume one or more of the following roles:</
 <ul>
 <li>  A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC).</li>
 </ul></li>
+<li>  <strong>Customer</strong>:
+
+<ul>
+<li>  The authorising customer that is authenticated by a Data Holder.</li>
+</ul></li>
 </ul>
 <h3 id='data-holder'>Data Holder</h3>
-<p>The Data Holder (DH) is a system entity that authenticates a consumer
+<p>The Data Holder (DH) is a system entity that authenticates a Customer
 (resource owner or user), as part of an authorisation process initiated by a Data
-Recipient, and issues an authorisation for that Data Recipient to access the consumer&#39;s data via published APIs.</p>
+Recipient, and issues an authorisation for that Data Recipient to access the Customer&#39;s data via published APIs.</p>
 
 <p>A Data Holder assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">OpenID Provider</a>.</p>
+
+<p>For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.</p>
 <h3 id='data-recipient'>Data Recipient</h3>
-<p>A Data Recipient (DR) is a system entity that is authorised by a
-Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.</p>
+<p>A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.</p>
 
 <p>A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.</p>
 
 <p>A Data Recipient assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">Relying Party (Client)</a>.</p>
+
+<p>For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.</p>
 <h3 id='register'>Register</h3>
 <aside class="warning">
 NOTE: This section is reflective of the positioning of the Register in the CDR Rules Exposure Draft
@@ -1721,6 +1728,8 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <li><strong>Management of Certificates</strong>: The Register will facilitate the issuing, management and revocation of digital certificates.</li>
 <li><strong>Discoverability and Search</strong>: The Register will expose APIs and Web Interfaces in order to support metadata queries across Register entities.</li>
 </ul>
+<h3 id='customer'>Customer</h3>
+<p>For the purposes of this standard a single person or individual may be represented as multiple Customers according to the practice of the Data Holder according to their existing digital channels.</p>
 <h2 id='authentication-flows'>Authentication Flows</h2>
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong>[OIDC]</strong> as constrained further by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.</p>
 
@@ -1840,6 +1849,8 @@ grant_type=authorization_code&amp;
 <p>Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under <strong>[OIDC]</strong>.</p>
 
 <p>Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.</p>
+
+<p>A data holder MUST support only one extant consent arrangement (being an arrangement between a single Customer, a single Data Recipient and a single Data Holder) at a time.  If a second consent is authorised then the tokens associated with the previous consent MUST be revoked.</p>
 <h2 id='scopes-and-claims'>Scopes and Claims</h2><h3 id='oidc-scopes'>OIDC Scopes</h3>
 <p>In addition to CDR data scopes the following scopes MUST be supported:</p>
 
@@ -16228,7 +16239,7 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be call by the CDR Register
 </aside>
 
 <h2 id='get-metrics'>Get Metrics</h2>
@@ -16266,7 +16277,7 @@ This operation does not require authentication
 
 <p><code>GET /admin/metrics</code></p>
 
-<p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
+<p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.<br/><br/>Note that for all applicable requests currentDay is defined as the current day beginning at midnight AEST.</p>
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -16488,7 +16499,7 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be call by the CDR Register
 </aside>
 
 <h2 id='schemas'>Schemas</h2>
@@ -17711,6 +17722,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td>4/9/2019</td>
+<td>0.9.6</td>
+<td>Defect fix release addressing documentation issues and other clarifications as identified via GitHub feedback</td>
+<td></td>
+</tr>
+<tr>
 <td>15/7/2019</td>
 <td>0.9.5</td>
 <td>Incorporated May 2019 Feedback</td>
@@ -17982,7 +17999,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <td><a href='./archive/standards-0.9.3/docs/'>May 2019 Working Draft</a></td>
 </tr>
 <tr>
-<td><a href='./archive/standards-0.9.5/docs/'>29/5/2019</a></td>
+<td><a href='./archive/standards-0.9.5/docs/'>15/7/2019</a></td>
 <td>0.9.5</td>
 <td><a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a></td>
 </tr>

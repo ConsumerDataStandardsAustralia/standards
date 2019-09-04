@@ -114,7 +114,7 @@
 </tbody></table>
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be call by the CDR Register
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -148,7 +148,7 @@ This operation does not require authentication
 </code></pre>
 <p><code>GET /admin/metrics</code></p>
 
-<p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
+<p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.<br/><br/>Note that for all applicable requests currentDay is defined as the current day beginning at midnight AEST.</p>
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -364,7 +364,7 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be call by the CDR Register
 </aside>
 <h2 id='schemas'>Schemas</h2>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
