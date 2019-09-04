@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#set -o errexit #abort if any command fails
+set -o errexit #abort if any command fails
 
 #Requires minumum JDK 7 or 8 on $PATH
 #https://github.com/swagger-api/swagger-codegen/blob/master/README.md
@@ -28,19 +28,10 @@ echo "*** Output Format: " $OUTPUT_FORMAT
 echo "*** Output Extension" $OUTPUT_EXT
 echo "*** Output Dir:" $OUTPUT_DIR
 
-echo "*** Checking if Swagger is valid: " $1
-VALID_SWAGGER=$(curl -X "POST" "http://online.swagger.io/validator/debug" --silent -d @$1)
-#echo "*** Swagger Validator Returned: " $VALID_SWAGGER
-if [[ $VALID_SWAGGER == "" ]]; then
-echo -e "\n*** No Response, check internet http://online.swagger.io/ \n$VALID_SWAGGER\n"
-exit 1
-fi
-if [[ $VALID_SWAGGER != "{}" ]]; then
-echo -e "\n*** Validator check returned invalid Swagger:\n$VALID_SWAGGER\n"
-exit 1
-fi
-
-echo "*** Swagger Validator check: " $VALID_SWAGGER
+#codegen validator
+echo "*** Checking Swagger Validator ***"
+VALID_SWAGGER=$(java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar validate -i $INPUT_SWAGGER )
+echo "*** Swagger Validator: " $VALID_SWAGGER
 
 #codegen validator
 #java -jar $SWAGGER_CODEGEN/swagger-codegen-cli.jar validate -i $INPUT_SWAGGER

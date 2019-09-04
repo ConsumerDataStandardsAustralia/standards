@@ -6,4 +6,4 @@ The Consumer Data Right is intended to be applied sector by sector across the wh
 
 CSIRO’s Data61 has been appointed as the technical advisor and provider of operational support to the interim data standards body. These standards have been prepared by the Consumer Data Standards team at Data61.  The work of the team is  overseen by Mr. Andrew Stevens as interim Chair, with industry and consumer advice provided by an Advisory Committee. Data61’s Consumer Data Standards team works closely with the Australian Competition and Consumer Commission (ACCC) as lead regulator of the Consumer Data Right, supported by the Office of the Australian Information Commissioner (OAIC).
 
-These standards are considered binding subject to the passing of the Consumer Data Right legislation and in accordance with the rules of the Consumer Data Right regime published by the ACCC.
+These standards will be binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.

@@ -4,7 +4,7 @@
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/registry/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/register/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -19,7 +19,7 @@
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/admin/registry/metadata'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/admin/register/metadata'</span><span class="p">,</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
@@ -29,7 +29,7 @@
 <span class="p">})</span>
 
 </code></pre>
-<p><code>POST /admin/registry/metadata</code></p>
+<p><code>POST /admin/register/metadata</code></p>
 
 <p>Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained</p>
 
@@ -59,14 +59,14 @@
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -109,12 +109,12 @@
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
+<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Register
+<aside class="success">
+This operation does not require authentication
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -173,14 +173,14 @@ This operation may only be call by the CDR Register
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See <a href="##request-headers">here</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -359,12 +359,12 @@ This operation may only be call by the CDR Register
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the holder has responded with.</td>
+<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-This operation may only be call by the CDR Register
+<aside class="success">
+This operation does not require authentication
 </aside>
 <h2 id='schemas'>Schemas</h2>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
@@ -399,7 +399,7 @@ This operation may only be call by the CDR Register
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The action to take for the meta data. At the moment the only option is REFRESH which requires the holder to call the ACCC to refresh meta data as soon as practicable</td>
+<td>The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable</td>
 </tr>
 <tr>
 <td>meta</td>

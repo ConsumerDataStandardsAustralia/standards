@@ -10,11 +10,3 @@ services:
 
 script:
   - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" .
-  - sonar-scanner
-
-addons:
-  sonarcloud:
-    organization: "consumerdatastandardsaustralia"
-    token:
-      secure: "$SONARCLOUD_LOGIN"
-

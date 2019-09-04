@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "0.9.5",
+    "version" : "0.9.6",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -67,32 +67,60 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingAccountList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingAccountList"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:accounts.basic:read" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ],
+        "x-version" : "1"
       }
     },
     "/banking/accounts/balances" : {
@@ -142,32 +170,60 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingAccountsBalanceList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingAccountsBalanceList"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:accounts.basic:read" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ],
+        "x-version" : "1"
       },
       "post" : {
         "tags" : [ "Banking", "Accounts" ],
@@ -201,27 +257,55 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+              }
+            },
             "schema" : {
               "$ref" : "#/definitions/ResponseBankingAccountsBalanceList"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
             }
           },
           "422" : {
@@ -231,192 +315,8 @@
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:accounts.basic:read" ]
-      }
-    },
-    "/banking/accounts/direct-debits" : {
-      "get" : {
-        "tags" : [ "Banking", "Direct Debits" ],
-        "summary" : "Get Bulk Direct Debits",
-        "description" : "Obtain direct debit authorisations for multiple, filtered accounts",
-        "operationId" : "listDirectDebitsBulk",
-        "parameters" : [ {
-          "name" : "product-category",
-          "in" : "query",
-          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
-          "required" : false,
-          "type" : "string",
-          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
-        }, {
-          "name" : "open-status",
-          "in" : "query",
-          "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
-          "required" : false,
-          "type" : "string",
-          "default" : "ALL",
-          "enum" : [ "OPEN", "CLOSED", "ALL" ]
-        }, {
-          "name" : "is-owned",
-          "in" : "query",
-          "description" : "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts",
-          "required" : false,
-          "type" : "boolean",
-          "x-cds-type" : "Boolean"
-        }, {
-          "name" : "page",
-          "in" : "query",
-          "description" : "Page of results to request (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 1,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "page-size",
-          "in" : "query",
-          "description" : "Page size to request. Default is 25 (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 25,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-min-v",
-          "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            }
-          }
-        },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:regular_payments:read" ]
-      },
-      "post" : {
-        "tags" : [ "Banking", "Direct Debits" ],
-        "summary" : "Get Direct Debits For Specific Accounts",
-        "description" : "Obtain direct debit authorisations for a specified list of accounts",
-        "operationId" : "listDirectDebitsSpecificAccounts",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "accountIds",
-          "description" : "Array of specific accountIds to obtain authorisations for",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/RequestAccountIds"
-          }
-        }, {
-          "name" : "page",
-          "in" : "query",
-          "description" : "Page of results to request (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 1,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "page-size",
-          "in" : "query",
-          "description" : "Page size to request. Default is 25 (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 25,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-min-v",
-          "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            }
-          },
-          "422" : {
-            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseErrorList"
-            }
-          }
-        },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:regular_payments:read" ]
-      }
-    },
-    "/banking/accounts/{accountId}" : {
-      "get" : {
-        "tags" : [ "Banking", "Accounts" ],
-        "summary" : "Get Account Detail",
-        "description" : "Obtain detailed information on a single account",
-        "operationId" : "getAccountDetail",
-        "parameters" : [ {
-          "name" : "accountId",
-          "in" : "path",
-          "description" : "A tokenised identifier for the account which is unique but not shareable",
-          "required" : true,
-          "type" : "string",
-          "x-cds-type" : "ASCIIString"
-        }, {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-min-v",
-          "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingAccountById"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            }
-          }
-        },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:accounts.detail:read" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ],
+        "x-version" : "1"
       }
     },
     "/banking/accounts/{accountId}/balance" : {
@@ -435,159 +335,139 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+              }
+            },
             "schema" : {
               "$ref" : "#/definitions/ResponseBankingAccountsBalanceById"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:accounts.basic:read" ]
+        "x-scopes" : [ "bank:accounts.basic:read" ],
+        "x-version" : "1"
       }
     },
-    "/banking/accounts/{accountId}/direct-debits" : {
+    "/banking/accounts/{accountId}" : {
       "get" : {
-        "tags" : [ "Banking", "Direct Debits" ],
-        "summary" : "Get Direct Debits For Account",
-        "description" : "Obtain direct debit authorisations for a specific account",
-        "operationId" : "listDirectDebits",
+        "tags" : [ "Banking", "Accounts" ],
+        "summary" : "Get Account Detail",
+        "description" : "Obtain detailed information on a single account",
+        "operationId" : "getAccountDetail",
         "parameters" : [ {
           "name" : "accountId",
           "in" : "path",
-          "description" : "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.",
+          "description" : "A tokenised identifier for the account which is unique but not shareable",
           "required" : true,
           "type" : "string",
           "x-cds-type" : "ASCIIString"
         }, {
-          "name" : "page",
-          "in" : "query",
-          "description" : "Page of results to request (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 1,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "page-size",
-          "in" : "query",
-          "description" : "Page size to request. Default is 25 (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 25,
-          "x-cds-type" : "PositiveInteger"
-        }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            }
-          }
-        },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:regular_payments:read" ]
-      }
-    },
-    "/banking/accounts/{accountId}/payments/scheduled" : {
-      "get" : {
-        "tags" : [ "Banking", "Scheduled Payments" ],
-        "summary" : "Get Scheduled Payments for Account",
-        "description" : "Obtain scheduled, outgoing payments for a specific account",
-        "operationId" : "listScheduledPayments",
-        "parameters" : [ {
-          "name" : "accountId",
-          "in" : "path",
-          "description" : "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment",
-          "required" : true,
-          "type" : "string",
-          "x-cds-type" : "ASCIIString"
-        }, {
-          "name" : "page",
-          "in" : "query",
-          "description" : "Page of results to request (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 1,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "page-size",
-          "in" : "query",
-          "description" : "Page size to request. Default is 25 (standard pagination)",
-          "required" : false,
-          "type" : "integer",
-          "default" : 25,
-          "x-cds-type" : "PositiveInteger"
-        }, {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-min-v",
-          "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList"
-            },
-            "headers" : {
-              "x-v" : {
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingAccountById"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:regular_payments:read" ]
+        "x-scopes" : [ "bank:accounts.detail:read" ],
+        "x-version" : "1"
       }
     },
     "/banking/accounts/{accountId}/transactions" : {
       "get" : {
         "tags" : [ "Banking", "Accounts" ],
         "summary" : "Get Transactions For Account",
-        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
+        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
         "operationId" : "getTransactions",
         "parameters" : [ {
           "name" : "accountId",
@@ -649,32 +529,60 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingTransactionList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingTransactionList"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:transactions:read" ]
+        "x-scopes" : [ "bank:transactions:read" ],
+        "x-version" : "1"
       }
     },
     "/banking/accounts/{accountId}/transactions/{transactionId}" : {
@@ -700,48 +608,75 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingTransactionById"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingTransactionById"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:transactions:read" ]
+        "x-scopes" : [ "bank:transactions:read" ],
+        "x-version" : "1"
       }
     },
-    "/banking/payees" : {
+    "/banking/accounts/{accountId}/direct-debits" : {
       "get" : {
-        "tags" : [ "Banking", "Payees" ],
-        "summary" : "Get Payees",
-        "description" : "Obtain a list of pre-registered payees",
-        "operationId" : "listPayees",
+        "tags" : [ "Banking", "Direct Debits" ],
+        "summary" : "Get Direct Debits For Account",
+        "description" : "Obtain direct debit authorisations for a specific account",
+        "operationId" : "listDirectDebits",
         "parameters" : [ {
-          "name" : "type",
-          "in" : "query",
-          "description" : "Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL",
-          "required" : false,
+          "name" : "accountId",
+          "in" : "path",
+          "description" : "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.",
+          "required" : true,
           "type" : "string",
-          "default" : "ALL",
-          "enum" : [ "DOMESTIC", "INTERNATIONAL", "BILLER", "ALL" ]
+          "x-cds-type" : "ASCIIString"
         }, {
           "name" : "page",
           "in" : "query",
@@ -761,76 +696,344 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingPayeeList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:accounts.basic:read" ]
+        "x-scopes" : [ "bank:regular_payments:read" ],
+        "x-version" : "1"
       }
     },
-    "/banking/payees/{payeeId}" : {
+    "/banking/accounts/direct-debits" : {
       "get" : {
-        "tags" : [ "Banking", "Payees" ],
-        "summary" : "Get Payee Detail",
-        "description" : "Obtain detailed information on a single payee",
-        "operationId" : "getPayeeDetail",
+        "tags" : [ "Banking", "Direct Debits" ],
+        "summary" : "Get Bulk Direct Debits",
+        "description" : "Obtain direct debit authorisations for multiple, filtered accounts",
+        "operationId" : "listDirectDebitsBulk",
         "parameters" : [ {
-          "name" : "payeeId",
+          "name" : "product-category",
+          "in" : "query",
+          "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+        }, {
+          "name" : "open-status",
+          "in" : "query",
+          "description" : "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+          "required" : false,
+          "type" : "string",
+          "default" : "ALL",
+          "enum" : [ "OPEN", "CLOSED", "ALL" ]
+        }, {
+          "name" : "is-owned",
+          "in" : "query",
+          "description" : "Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts",
+          "required" : false,
+          "type" : "boolean",
+          "x-cds-type" : "Boolean"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page of results to request (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "page-size",
+          "in" : "query",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 25,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList"
+            }
+          }
+        },
+        "x-scopes" : [ "bank:regular_payments:read" ],
+        "x-version" : "1"
+      },
+      "post" : {
+        "tags" : [ "Banking", "Direct Debits" ],
+        "summary" : "Get Direct Debits For Specific Accounts",
+        "description" : "Obtain direct debit authorisations for a specified list of accounts",
+        "operationId" : "listDirectDebitsSpecificAccounts",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "accountIds",
+          "description" : "Array of specific accountIds to obtain authorisations for",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/RequestAccountIds"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page of results to request (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "page-size",
+          "in" : "query",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 25,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList"
+            }
+          },
+          "422" : {
+            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseErrorList"
+            }
+          }
+        },
+        "x-scopes" : [ "bank:regular_payments:read" ],
+        "x-version" : "1"
+      }
+    },
+    "/banking/accounts/{accountId}/payments/scheduled" : {
+      "get" : {
+        "tags" : [ "Banking", "Scheduled Payments" ],
+        "summary" : "Get Scheduled Payments for Account",
+        "description" : "Obtain scheduled, outgoing payments for a specific account",
+        "operationId" : "listScheduledPayments",
+        "parameters" : [ {
+          "name" : "accountId",
           "in" : "path",
-          "description" : "The ID used to locate the details of a particular payee",
+          "description" : "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment",
           "required" : true,
           "type" : "string",
           "x-cds-type" : "ASCIIString"
         }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page of results to request (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "page-size",
+          "in" : "query",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 25,
+          "x-cds-type" : "PositiveInteger"
+        }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingPayeeById"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:payees:read" ]
+        "x-scopes" : [ "bank:regular_payments:read" ],
+        "x-version" : "1"
       }
     },
     "/banking/payments/scheduled" : {
@@ -880,32 +1083,60 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:regular_payments:read" ]
+        "x-scopes" : [ "bank:regular_payments:read" ],
+        "x-version" : "1"
       },
       "post" : {
         "tags" : [ "Banking", "Scheduled Payments" ],
@@ -939,27 +1170,55 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList"
             }
           },
           "422" : {
@@ -969,8 +1228,169 @@
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "bank:regular_payments:read" ]
+        "x-scopes" : [ "bank:regular_payments:read" ],
+        "x-version" : "1"
+      }
+    },
+    "/banking/payees" : {
+      "get" : {
+        "tags" : [ "Banking", "Payees" ],
+        "summary" : "Get Payees",
+        "description" : "Obtain a list of pre-registered payees",
+        "operationId" : "listPayees",
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL",
+          "required" : false,
+          "type" : "string",
+          "default" : "ALL",
+          "enum" : [ "DOMESTIC", "INTERNATIONAL", "BILLER", "ALL" ]
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page of results to request (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "page-size",
+          "in" : "query",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
+          "required" : false,
+          "type" : "integer",
+          "default" : 25,
+          "x-cds-type" : "PositiveInteger"
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingPayeeList"
+            }
+          }
+        },
+        "x-scopes" : [ "bank:payees:read" ],
+        "x-version" : "1"
+      }
+    },
+    "/banking/payees/{payeeId}" : {
+      "get" : {
+        "tags" : [ "Banking", "Payees" ],
+        "summary" : "Get Payee Detail",
+        "description" : "Obtain detailed information on a single payee",
+        "operationId" : "getPayeeDetail",
+        "parameters" : [ {
+          "name" : "payeeId",
+          "in" : "path",
+          "description" : "The ID used to locate the details of a particular payee",
+          "required" : true,
+          "type" : "string",
+          "x-cds-type" : "ASCIIString"
+        }, {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingPayeeById"
+            }
+          }
+        },
+        "x-scopes" : [ "bank:payees:read" ],
+        "x-version" : "1"
       }
     },
     "/banking/products" : {
@@ -1026,27 +1446,27 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingProductList"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingProductList"
             }
           }
         },
@@ -1069,27 +1489,27 @@
         }, {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseBankingProductById"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseBankingProductById"
             }
           }
         },
@@ -1105,32 +1525,56 @@
         "parameters" : [ {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseCommonCustomer"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseCommonCustomer"
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "common:customer.basic:read" ]
+        "x-scopes" : [ "common:customer.basic:read" ],
+        "x-version" : "1"
       }
     },
     "/common/customer/detail" : {
@@ -1142,67 +1586,59 @@
         "parameters" : [ {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-interaction-id",
+          "in" : "header",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-auth-date",
+          "in" : "header",
+          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-fapi-customer-ip-address",
+          "in" : "header",
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "x-cds-User-Agent",
+          "in" : "header",
+          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id" : {
+                "type" : "string",
+                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+              }
+            },
             "schema" : {
               "$ref" : "#/definitions/ResponseCommonCustomerDetail"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
             }
           }
         },
-        "x-version" : "1",
-        "x-scopes" : [ "common:customer.detail:read" ]
-      }
-    },
-    "/discovery/outages" : {
-      "get" : {
-        "tags" : [ "Common", "Discovery" ],
-        "summary" : "Get Outages",
-        "description" : "Obtain a list of scheduled outages for the implementation",
-        "operationId" : "getOutages",
-        "parameters" : [ {
-          "name" : "x-v",
-          "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "x-min-v",
-          "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseDiscoveryOutagesList"
-            },
-            "headers" : {
-              "x-v" : {
-                "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
-              }
-            }
-          }
-        },
+        "x-scopes" : [ "common:customer.detail:read" ],
         "x-version" : "1"
       }
     },
@@ -1215,27 +1651,63 @@
         "parameters" : [ {
           "name" : "x-v",
           "in" : "header",
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "x-min-v",
           "in" : "header",
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
             "description" : "Success",
-            "schema" : {
-              "$ref" : "#/definitions/ResponseDiscoveryStatus"
-            },
             "headers" : {
               "x-v" : {
                 "type" : "string",
-                "description" : "The [version](##response-headers) of the API end point that the holder has responded with."
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/CommonDiscoveryStatus"
+            }
+          }
+        },
+        "x-version" : "1"
+      }
+    },
+    "/discovery/outages" : {
+      "get" : {
+        "tags" : [ "Common", "Discovery" ],
+        "summary" : "Get Outages",
+        "description" : "Obtain a list of scheduled outages for the implementation",
+        "operationId" : "getOutages",
+        "parameters" : [ {
+          "name" : "x-v",
+          "in" : "header",
+          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "x-min-v",
+          "in" : "header",
+          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "headers" : {
+              "x-v" : {
+                "type" : "string",
+                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with."
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ResponseDiscoveryOutagesList"
             }
           }
         },
@@ -1246,7 +1718,7 @@
   "definitions" : {
     "RequestAccountIds" : {
       "type" : "object",
-      "required" : [ "meta" ],
+      "required" : [ "data" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/RequestAccountIds_data"
@@ -1258,7 +1730,7 @@
     },
     "ResponseBankingProductList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingProductList_data"
@@ -1277,7 +1749,7 @@
       "properties" : {
         "productId" : {
           "type" : "string",
-          "description" : "A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+          "description" : "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
           "x-cds-type" : "ASCIIString"
         },
         "effectiveFrom" : {
@@ -1331,7 +1803,7 @@
     },
     "ResponseBankingProductById" : {
       "type" : "object",
-      "required" : [ "data", "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/BankingProductDetail"
@@ -1816,7 +2288,7 @@
     },
     "ResponseBankingAccountList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingAccountList_data"
@@ -1879,7 +2351,7 @@
     },
     "ResponseBankingAccountById" : {
       "type" : "object",
-      "required" : [ "data", "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/BankingAccountDetail"
@@ -1950,7 +2422,23 @@
           },
           "features" : {
             "type" : "array",
-            "description" : "Array of features of the account based on the equivalent structure in Product Reference with the following additional field"
+            "description" : "Array of features of the account based on the equivalent structure in Product Reference with the following additional field",
+            "items" : {
+              "type" : "object",
+              "allOf" : [ {
+                "$ref" : "#/definitions/BankingProductFeature"
+              }, {
+                "type" : "object",
+                "properties" : {
+                  "isActivated" : {
+                    "type" : "boolean",
+                    "description" : "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
+                    "default" : true,
+                    "x-cds-type" : "Boolean"
+                  }
+                }
+              } ]
+            }
           },
           "fees" : {
             "type" : "array",
@@ -2093,7 +2581,7 @@
         },
         "offsetAccountIds" : {
           "type" : "array",
-          "description" : "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
+          "description" : "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
           "items" : {
             "type" : "string",
             "x-cds-type" : "ASCIIString"
@@ -2114,7 +2602,7 @@
     },
     "ResponseBankingTransactionList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingTransactionList_data"
@@ -2218,7 +2706,7 @@
     },
     "ResponseBankingTransactionById" : {
       "type" : "object",
-      "required" : [ "data", "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/BankingTransactionDetail"
@@ -2239,40 +2727,14 @@
         "required" : [ "extendedData" ],
         "properties" : {
           "extendedData" : {
-            "type" : "object",
-            "properties" : {
-              "payer" : {
-                "type" : "string",
-                "description" : "Label of the originating payer. Mandatory for inbound payment"
-              },
-              "payee" : {
-                "type" : "string",
-                "description" : "Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)"
-              },
-              "extensionUType" : {
-                "type" : "string",
-                "description" : "Optional extended data provided specific to transaction originated via NPP",
-                "enum" : [ "extendedDescription" ]
-              },
-              "extendedDescription" : {
-                "type" : "string",
-                "description" : "An extended string description. Only present if specified by the extensionUType field"
-              },
-              "service" : {
-                "type" : "string",
-                "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
-                "enum" : [ "X2P1.01" ]
-              }
-            },
-            "required" : [ "service" ],
-            "x-conditional" : [ "payer", "payee", "extendedDescription" ]
+            "$ref" : "#/definitions/BankingTransactionDetail_extendedData"
           }
         }
       } ]
     },
     "ResponseBankingAccountsBalanceList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingAccountsBalanceList_data"
@@ -2360,7 +2822,7 @@
     },
     "ResponseBankingPayeeList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingPayeeList_data"
@@ -2375,7 +2837,7 @@
     },
     "ResponseBankingPayeeById" : {
       "type" : "object",
-      "required" : [ "data", "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/BankingPayeeDetail"
@@ -2532,6 +2994,7 @@
     },
     "BankingInternationalPayee" : {
       "type" : "object",
+      "required" : [ "bankDetails", "beneficiaryDetails" ],
       "properties" : {
         "beneficiaryDetails" : {
           "$ref" : "#/definitions/BankingInternationalPayee_beneficiaryDetails"
@@ -2543,7 +3006,7 @@
     },
     "ResponseBankingDirectDebitAuthorisationList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingDirectDebitAuthorisationList_data"
@@ -2582,7 +3045,6 @@
     },
     "BankingAuthorisedEntity" : {
       "type" : "object",
-      "required" : [ "financialInstitution" ],
       "properties" : {
         "description" : {
           "type" : "string",
@@ -2590,7 +3052,7 @@
         },
         "financialInstitution" : {
           "type" : "string",
-          "description" : "Name of the financial institution through which the direct debit will be executed"
+          "description" : "Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme"
         },
         "abn" : {
           "type" : "string",
@@ -2608,7 +3070,7 @@
     },
     "ResponseBankingScheduledPaymentsList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links", "meta" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseBankingScheduledPaymentsList_data"
@@ -2839,7 +3301,7 @@
         },
         "lastWeekDay" : {
           "type" : "integer",
-          "description" : "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.",
+          "description" : "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.",
           "x-cds-type" : "PositiveInteger"
         }
       },
@@ -2856,12 +3318,12 @@
       },
       "description" : "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased"
     },
-    "ResponseDiscoveryStatus" : {
+    "CommonDiscoveryStatus" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
-          "$ref" : "#/definitions/ResponseDiscoveryStatus_data"
+          "$ref" : "#/definitions/CommonDiscoveryStatus_data"
         },
         "links" : {
           "$ref" : "#/definitions/Links"
@@ -2873,7 +3335,7 @@
     },
     "ResponseDiscoveryOutagesList" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseDiscoveryOutagesList_data"
@@ -2896,8 +3358,9 @@
           "x-cds-type" : "DateTimeString"
         },
         "duration" : {
-          "type" : "number",
-          "description" : "Planned duration of the outage in minutes"
+          "type" : "string",
+          "description" : "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+          "x-cds-type" : "ExternalRef"
         },
         "isPartial" : {
           "type" : "boolean",
@@ -2911,7 +3374,7 @@
     },
     "ResponseCommonCustomer" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseCommonCustomer_data"
@@ -2927,7 +3390,7 @@
     },
     "ResponseCommonCustomerDetail" : {
       "type" : "object",
-      "required" : [ "links", "meta" ],
+      "required" : [ "data", "links" ],
       "properties" : {
         "data" : {
           "$ref" : "#/definitions/ResponseCommonCustomerDetail_data"
@@ -3100,7 +3563,7 @@
       "properties" : {
         "isPreferred" : {
           "type" : "boolean",
-          "description" : "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present",
+          "description" : "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
           "x-cds-type" : "Boolean"
         },
         "purpose" : {
@@ -3138,7 +3601,7 @@
       "properties" : {
         "isPreferred" : {
           "type" : "boolean",
-          "description" : "Required for one and only one email record in the collection. Denotes the default email address",
+          "description" : "May be true for one and only one email record in the collection. Denotes the default email address",
           "x-cds-type" : "Boolean"
         },
         "purpose" : {
@@ -3216,11 +3679,12 @@
         },
         "state" : {
           "type" : "string",
-          "description" : "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [ISO 3166:AU standard](https://www.iso.org/obp/ui/#iso:code:3166:AU)"
+          "description" : "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format."
         },
         "country" : {
           "type" : "string",
-          "description" : "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
+          "description" : "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+          "default" : "AUS",
           "x-cds-type" : "ExternalRef"
         }
       },
@@ -3269,9 +3733,8 @@
           "description" : "Floor or level number (including alpha characters)"
         },
         "lotNumber" : {
-          "type" : "integer",
-          "description" : "Allotment number for the address",
-          "x-cds-type" : "PositiveInteger"
+          "type" : "string",
+          "description" : "Allotment number for the address"
         },
         "buildingName1" : {
           "type" : "string",
@@ -3320,7 +3783,7 @@
         },
         "state" : {
           "type" : "string",
-          "description" : "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file"
+          "description" : "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)"
         }
       },
       "description" : "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)"
@@ -3331,7 +3794,7 @@
       "properties" : {
         "self" : {
           "type" : "string",
-          "description" : "Fully qualified link to this API call",
+          "description" : "Fully qualified link that generated the current response document",
           "x-cds-type" : "URIString"
         }
       }
@@ -3345,7 +3808,7 @@
       "properties" : {
         "self" : {
           "type" : "string",
-          "description" : "Fully qualified link to this API call",
+          "description" : "Fully qualified link that generated the current response document",
           "x-cds-type" : "URIString"
         },
         "first" : {
@@ -3377,12 +3840,12 @@
       "properties" : {
         "totalRecords" : {
           "type" : "integer",
-          "description" : "The total number of records in the full set",
+          "description" : "The total number of records in the full set. See [pagination](#pagination).",
           "x-cds-type" : "NaturalNumber"
         },
         "totalPages" : {
           "type" : "integer",
-          "description" : "The total number of pages in the full set",
+          "description" : "The total number of pages in the full set. See [pagination](#pagination).",
           "x-cds-type" : "NaturalNumber"
         }
       }
@@ -3513,6 +3976,49 @@
         }
       }
     },
+    "BankingTransactionDetail_extendedData_x2p101Payload" : {
+      "required" : [ "extendedDescription" ],
+      "properties" : {
+        "extendedDescription" : {
+          "type" : "string",
+          "description" : "An extended string description. Only present if specified by the extensionUType field"
+        },
+        "endToEndId" : {
+          "type" : "string",
+          "description" : "An end to end ID for the payment created at initiation"
+        },
+        "purposeCode" : {
+          "type" : "string",
+          "description" : "Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service"
+        }
+      }
+    },
+    "BankingTransactionDetail_extendedData" : {
+      "required" : [ "service" ],
+      "properties" : {
+        "payer" : {
+          "type" : "string",
+          "description" : "Label of the originating payer. Mandatory for inbound payment"
+        },
+        "payee" : {
+          "type" : "string",
+          "description" : "Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)"
+        },
+        "extensionUType" : {
+          "type" : "string",
+          "description" : "Optional extended data provided specific to transaction originated via NPP",
+          "enum" : [ "x2p101Payload" ]
+        },
+        "x2p101Payload" : {
+          "$ref" : "#/definitions/BankingTransactionDetail_extendedData_x2p101Payload"
+        },
+        "service" : {
+          "type" : "string",
+          "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
+          "enum" : [ "X2P1.01" ]
+        }
+      }
+    },
     "ResponseBankingAccountsBalanceList_data" : {
       "required" : [ "balances" ],
       "properties" : {
@@ -3635,7 +4141,7 @@
         }
       }
     },
-    "ResponseDiscoveryStatus_data" : {
+    "CommonDiscoveryStatus_data" : {
       "required" : [ "status", "updateTime" ],
       "properties" : {
         "status" : {
@@ -3735,14 +4241,42 @@
     "RequestHeader_x-v" : {
       "name" : "x-v",
       "in" : "header",
-      "description" : "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+      "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
       "required" : true,
       "type" : "string"
     },
     "RequestHeader_x-min-v" : {
       "name" : "x-min-v",
       "in" : "header",
-      "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+      "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+      "required" : false,
+      "type" : "string"
+    },
+    "RequestHeader_x-fapi-interaction-id" : {
+      "name" : "x-fapi-interaction-id",
+      "in" : "header",
+      "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+      "required" : false,
+      "type" : "string"
+    },
+    "RequestHeader_x-fapi-auth-date" : {
+      "name" : "x-fapi-auth-date",
+      "in" : "header",
+      "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+      "required" : false,
+      "type" : "string"
+    },
+    "RequestHeader_x-fapi-customer-ip-address" : {
+      "name" : "x-fapi-customer-ip-address",
+      "in" : "header",
+      "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+      "required" : false,
+      "type" : "string"
+    },
+    "RequestHeader_x-cds-User-Agent" : {
+      "name" : "x-cds-User-Agent",
+      "in" : "header",
+      "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
       "required" : false,
       "type" : "string"
     },
