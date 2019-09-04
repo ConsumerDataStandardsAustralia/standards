@@ -49,21 +49,26 @@ multiple system entities which will assume one or more of the following roles:
     -   Multiple Data Recipients will be supported.
 - 	**Register**:
     -   A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC).
+- 	**Customer**:
+    -   The authorising customer that is authenticated by a Data Holder.
 
 ### Data Holder
-The Data Holder (DH) is a system entity that authenticates a consumer
+The Data Holder (DH) is a system entity that authenticates a Customer
 (resource owner or user), as part of an authorisation process initiated by a Data
-Recipient, and issues an authorisation for that Data Recipient to access the consumer's data via published APIs.
+Recipient, and issues an authorisation for that Data Recipient to access the Customer's data via published APIs.
 
 A Data Holder assumes the role of an **[OIDC]** [OpenID Provider](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
+For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
+
 ### Data Recipient
-A Data Recipient (DR) is a system entity that is authorised by a
-Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
+A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
 
 A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.
 
 A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
+
+For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.
 
 ### Register
 <aside class="warning">
@@ -76,6 +81,11 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 - **Management of Identities and Access**: The Register will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.
 - **Management of Certificates**: The Register will facilitate the issuing, management and revocation of digital certificates.
 - **Discoverability and Search**: The Register will expose APIs and Web Interfaces in order to support metadata queries across Register entities.
+
+### Customer
+
+For the purposes of this standard a single person or individual may be represented as multiple Customers according to the practice of the Data Holder according to their existing digital channels.
+
 
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
@@ -192,6 +202,8 @@ In reference to the client types referenced in [section 2.1] (https://tools.ietf
 Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under **[OIDC]**.
 
 Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.
+
+A data holder MUST support only one extant consent arrangement (being an arrangement between a single Customer, a single Data Recipient and a single Data Holder) at a time.  If a second consent is authorised then the tokens associated with the previous consent MUST be revoked.
 
 ## Scopes and Claims
 

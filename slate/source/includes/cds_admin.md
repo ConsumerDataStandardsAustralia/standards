@@ -113,7 +113,7 @@ $.ajax({
 
 `GET /admin/metrics`
 
-This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
+This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.<br/><br/>Note that for all applicable requests currentDay is defined as the current day beginning at midnight AEST.
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -760,4 +760,3 @@ This operation does not require authentication
 ### Properties
 
 *None*
-
