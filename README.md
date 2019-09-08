@@ -1,8 +1,8 @@
 # Consumer Data Right Standards
 
-This repository contains the binding API Standards and Information Security that have been created in response to the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation and the subsequent regulatory rules.  The purpose of the Consumer Data Right regime is to give Australians greater control over their data and is intended to apply sector by sector across the whole Australian economy.
+This repository contains the binding API Standards and Information Security profile created in response to the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation and the subsequent regulatory rules.  The purpose of the Consumer Data Right regime is to give Australians greater control over their data and is intended to apply sector by sector across the whole Australian economy.
 
-These standards are maintained by the Data Standards Body (DSB) with final decisions on standards being taken by the Data Standards Chair.  The Data Standards Body consists of a team formed within Data61. The work of standards development is conducted in close consultation with the Australian Competition and Consumer Commission (ACCC) as lead regulator of the Consumer Data Right, supported by the Office of the Australian Information Commissioner (OAIC).
+These standards are maintained by the Data Standards Body (DSB) with final decisions on standards being taken by the Data Standards Chair.  The Data Standards Body is currently ((https://www.data61.csiro.au/en/Who-we-are/Our-programs/Consumer-Data-Standards "CSIRO's Data61"). The work of standards development is conducted in close consultation with the (https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0 "Australian Competition and Consumer Commission (ACCC)") as lead regulator of the Consumer Data Right, supported by the (https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/ "Office of the Australian Information Commissioner (OAIC)").
 
 ## Additional Information
 
