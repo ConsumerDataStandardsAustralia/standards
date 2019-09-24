@@ -52,6 +52,11 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="metadata-update-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -73,7 +78,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
-This operation may only be call by the CDR Register
+This operation may only be called by the CDR Register
 </aside>
 
 ## Get Metrics
@@ -113,13 +118,18 @@ $.ajax({
 
 `GET /admin/metrics`
 
-This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.<br/><br/>Note that for all applicable requests currentDay is defined as the current day beginning at midnight AEST.
+This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
+
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
+|period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
@@ -127,7 +137,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 |Parameter|Value|
 |---|---|
-|period|CURRENT_DAY|
+|period|CURRENT|
 |period|HISTORIC|
 |period|ALL|
 
@@ -268,7 +278,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
-This operation may only be call by the CDR Register
+This operation may only be called by the CDR Register
 </aside>
 
 ## Schemas
@@ -760,3 +770,4 @@ This operation may only be call by the CDR Register
 ### Properties
 
 *None*
+
