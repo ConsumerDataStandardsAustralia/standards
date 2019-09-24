@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Data Holder/ Reciever Consumer Data Standards Administration End Points",
-    "version" : "0.3.0",
+    "version" : "0.2.0",
     "title" : "Consumer Data Standards Administration End Points",
     "contact" : {
       "name" : "Consumer Data Standards Administration End Points",
@@ -64,16 +64,16 @@
       "get" : {
         "tags" : [ "Admin", "Metrics" ],
         "summary" : "Get Metrics",
-        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
+        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.<br/><br/>Note that for all applicable requests currentDay is defined as the current day beginning at midnight AEST.",
         "operationId" : "getMetrics",
         "parameters" : [ {
           "name" : "period",
           "in" : "query",
-          "description" : "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+          "description" : "The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
           "required" : false,
           "type" : "string",
           "default" : "ALL",
-          "enum" : [ "CURRENT", "HISTORIC", "ALL" ]
+          "enum" : [ "CURRENT_DAY", "HISTORIC", "ALL" ]
         }, {
           "name" : "x-v",
           "in" : "header",
