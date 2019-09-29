@@ -9,7 +9,7 @@ toc_footers:
   - <a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a>
   - <a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a>
   - <a href='https://cdr-register.github.io/'>CDR Register</a>
-  - <a href='./includes/cx/CX-Guidelines-v1.0.0.pdf'>CX Guidelines</a>
+  - <a href='./pdfs/CX-Guidelines-v1.0.0.pdf'>CX Guidelines</a>
   - <a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a>
   - <a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a>
 
