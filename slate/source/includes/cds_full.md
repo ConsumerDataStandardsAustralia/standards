@@ -18,6 +18,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -29,7 +30,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -49,6 +51,11 @@ $.ajax({
 
 Obtain a list of accounts
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -63,7 +70,8 @@ Obtain a list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -154,6 +162,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -165,7 +174,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -185,6 +195,11 @@ $.ajax({
 
 Obtain balances for multiple, filtered accounts
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-bulk-balances-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -199,7 +214,8 @@ Obtain balances for multiple, filtered accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -294,6 +310,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -306,7 +323,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -339,6 +357,11 @@ Obtain balances for a specified list of accounts
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-balances-for-specific-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -350,7 +373,8 @@ Obtain balances for a specified list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
@@ -404,6 +428,7 @@ Obtain balances for a specified list of accounts
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -426,6 +451,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -437,7 +463,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -457,6 +484,11 @@ $.ajax({
 
 Obtain the balance for a single specified account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-account-balance-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -467,7 +499,8 @@ Obtain the balance for a single specified account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -530,6 +563,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -541,7 +575,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -561,6 +596,11 @@ $.ajax({
 
 Obtain detailed information on a single account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-account-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -571,7 +611,8 @@ Obtain detailed information on a single account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -826,6 +867,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -837,7 +879,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -866,6 +909,11 @@ Some general notes that apply to all end points that retrieve transactions:
 		- A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-transactions-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -883,7 +931,8 @@ Some general notes that apply to all end points that retrieve transactions:
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -963,6 +1012,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -974,7 +1024,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -994,6 +1045,11 @@ $.ajax({
 
 Obtain detailed information on a transaction for a specific account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-transaction-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1005,7 +1061,8 @@ Obtain detailed information on a transaction for a specific account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1085,6 +1142,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1096,7 +1154,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1116,6 +1175,11 @@ $.ajax({
 
 Obtain direct debit authorisations for a specific account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-direct-debits-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1128,7 +1192,8 @@ Obtain direct debit authorisations for a specific account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1200,6 +1265,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1211,7 +1277,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1231,6 +1298,11 @@ $.ajax({
 
 Obtain direct debit authorisations for multiple, filtered accounts
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-bulk-direct-debits-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1245,7 +1317,8 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -1338,6 +1411,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1350,7 +1424,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1383,6 +1458,11 @@ Obtain direct debit authorisations for a specified list of accounts
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-direct-debits-for-specific-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1394,7 +1474,8 @@ Obtain direct debit authorisations for a specified list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1446,6 +1527,7 @@ Obtain direct debit authorisations for a specified list of accounts
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
+|422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -1468,6 +1550,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1479,7 +1562,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1499,6 +1583,11 @@ $.ajax({
 
 Obtain scheduled, outgoing payments for a specific account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-scheduled-payments-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1511,7 +1600,8 @@ Obtain scheduled, outgoing payments for a specific account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1662,6 +1752,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1673,7 +1764,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1693,6 +1785,11 @@ $.ajax({
 
 Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-scheduled-payments-bulk-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1707,7 +1804,8 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -1879,6 +1977,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1891,7 +1990,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1924,6 +2024,11 @@ Obtain scheduled payments for a specified list of accounts
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-scheduled-payments-for-specific-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1935,7 +2040,8 @@ Obtain scheduled payments for a specified list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
 > Example responses
@@ -2066,6 +2172,7 @@ Obtain scheduled payments for a specified list of accounts
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
+|422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -2088,6 +2195,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2099,7 +2207,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2119,6 +2228,11 @@ $.ajax({
 
 Obtain a list of pre-registered payees
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-payees-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -2131,7 +2245,8 @@ Obtain a list of pre-registered payees
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -2207,6 +2322,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2218,7 +2334,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2238,6 +2355,11 @@ $.ajax({
 
 Obtain detailed information on a single payee
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-payee-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -2248,7 +2370,8 @@ Obtain detailed information on a single payee
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2404,6 +2527,11 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-products-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -2535,6 +2663,11 @@ $.ajax({
 `GET /banking/products/{productId}`
 
 Obtain detailed information on a single product offered openly to the market
+
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
 
 <h3 id="get-product-detail-parameters">Parameters</h3>
 
@@ -2755,6 +2888,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2766,7 +2900,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2786,6 +2921,11 @@ $.ajax({
 
 Obtain basic information on the customer that has authorised the current session
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-customer-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -2795,7 +2935,8 @@ Obtain basic information on the customer that has authorised the current session
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2873,6 +3014,7 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2884,7 +3026,8 @@ var headers = {
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
-  'x-cds-User-Agent':'string'
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2904,6 +3047,11 @@ $.ajax({
 
 Obtain detailed information on the authorised customer within the current session.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-customer-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -2913,7 +3061,8 @@ Obtain detailed information on the authorised customer within the current sessio
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|string|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3113,6 +3262,11 @@ $.ajax({
 
 Obtain a health check status for the implementation
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-status-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -3194,6 +3348,11 @@ $.ajax({
 `GET /discovery/outages`
 
 Obtain a list of scheduled outages for the implementation
+
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
 
 <h3 id="get-outages-parameters">Parameters</h3>
 
@@ -7278,7 +7437,7 @@ This operation does not require authentication
 |addressLine3|string|optional|none|Third line of the standard address object|
 |postcode|string|conditional|none|Mandatory for Australian addresses|
 |city|string|mandatory|none|Name of the city or locality|
-|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format.|
+|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 |country|[ExternalRef](#common-field-types)|optional|none|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
 <h2 id="tocScommonpafaddress">CommonPAFAddress</h2>
@@ -7340,7 +7499,7 @@ This operation does not require authentication
 |postalDeliveryNumberSuffix|string|optional|none|Postal delivery number suffix related to the postal delivery number|
 |localityName|string|mandatory|none|Full name of locality|
 |postcode|string|mandatory|none|Postcode for the locality|
-|state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
+|state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
 <h2 id="tocSlinks">Links</h2>
 

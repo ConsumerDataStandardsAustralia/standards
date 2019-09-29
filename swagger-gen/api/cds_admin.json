@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards Administration End Points",
     "description": "Data Holder/ Reciever Consumer Data Standards Administration End Points",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "contact": {
       "name": "Consumer Data Standards Administration End Points",
       "url": "https://consumerdatastandards.org.au/",
@@ -79,9 +79,9 @@
             "name": "period",
             "in": "query",
             "type": "string",
-            "description": "The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
+            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.",
             "enum": [
-              "CURRENT_DAY",
+              "CURRENT",
               "HISTORIC",
               "ALL"
             ],

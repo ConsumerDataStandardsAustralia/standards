@@ -13,6 +13,7 @@
 {{ data.utils.mergePathParameters(data); }}
 {{ data.utils.getParameters(data); }}
 
+
 {{? data.options.codeSamples || data.operation["x-code-samples"] }}
 > Code samples
 
@@ -34,6 +35,11 @@
 
 {{= data.utils.getBodyParameterExamples(data) }}
 {{?}}
+
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**{{= data.operation["x-version"]}}**
 
 {{? data.parameters && data.parameters.length }}
 {{#def.parameters}}
