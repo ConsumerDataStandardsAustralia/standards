@@ -180,6 +180,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <p>In the event of the following extreme circumstances data holders will be able to obtain relief from non-functional requirements:</p>
 
 <ul>
-<li>Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack.</li>
-<li>A significant increase in traffic from a poorly designed or misbehaving data recipient.</li>
+<li>Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
+<li>A significant increase in traffic from a poorly designed or misbehaving data recipient (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
+<li>If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error <code>403 Forbidden</code> being returned).</li>
 </ul>

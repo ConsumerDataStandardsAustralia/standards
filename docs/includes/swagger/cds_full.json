@@ -97,7 +97,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -207,7 +207,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -301,7 +301,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -392,7 +392,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -471,7 +471,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -548,7 +548,7 @@
         }, {
           "name" : "text",
           "in" : "query",
-          "description" : "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied",
+          "description" : "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)",
           "required" : false,
           "type" : "string"
         }, {
@@ -600,7 +600,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -686,7 +686,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -781,7 +781,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -891,7 +891,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -985,7 +985,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1092,7 +1092,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1202,7 +1202,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1296,7 +1296,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1404,7 +1404,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1483,7 +1483,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1678,7 +1678,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1746,7 +1746,7 @@
         }, {
           "name" : "x-cds-User-Agent",
           "in" : "header",
-          "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -4413,7 +4413,7 @@
     "RequestHeader_x-cds-User-Agent" : {
       "name" : "x-cds-User-Agent",
       "in" : "header",
-      "description" : "The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.",
+      "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "required" : false,
       "type" : "string",
       "x-cds-type" : "Base64"
@@ -4503,7 +4503,7 @@
     "ParamTransactionText" : {
       "name" : "text",
       "in" : "query",
-      "description" : "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied",
+      "description" : "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)",
       "required" : false,
       "type" : "string"
     }
