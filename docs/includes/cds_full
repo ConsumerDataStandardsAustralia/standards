@@ -141,7 +141,7 @@
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -443,14 +443,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -741,7 +734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -970,7 +963,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -1168,7 +1161,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -1562,7 +1555,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied</td>
+<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)</td>
 </tr>
 <tr>
 <td>page</td>
@@ -1618,7 +1611,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -1840,7 +1833,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -2069,7 +2062,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -2304,7 +2297,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -2600,7 +2593,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -2841,7 +2834,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -3155,7 +3148,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -3530,7 +3523,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -3850,7 +3843,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -4076,7 +4069,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -4894,7 +4887,7 @@ This operation does not require authentication
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>
@@ -5094,7 +5087,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-subject</td>

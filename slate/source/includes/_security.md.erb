@@ -118,22 +118,49 @@ In addition, the following statements are applicable for this flow:
 - The provided OTP MUST be numeric digits and be between 4 and 6 digits in length
 - The algorithm for the creation of the OTP is at the discretion of the Data Holder but SHOULD incorporate a level of pseudorandomness appropriate for the use case
 - Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page
-- Data holders MUST clearly refer to the OTP as a “one-time password” in consumer-facing interactions and material
-- Data holders MUST state in consumer-facing interactions and material that ADRs will never ask consumers for their banking password to access CDR data
 - Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.
+
+Note that additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
 <a id="client-authentication"></a>
 ## Client Authentication
+
+This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.
+
+Note that, while **[MTLS]** is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
+
+### CDR Register calling Data Holders and Data Recipients
+
+Data Holders and Data Recipients MUST support the authentication of the CDR Register using a signed JWT according to the following requirements:
+
+*	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
+    * `iss` - REQUIRED. Issuer. This MUST contain the static CDR Register id of ‘cdr-register’.
+    * `sub` - REQUIRED. Subject. This MUST contain the static CDR Register id of ‘cdr-register’.
+    * `aud` - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the intended audience. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.
+    * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
+    * `exp` - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.
+    * `iat` - OPTIONAL. Time at which the JWT was issued.
+*	Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]
+*	The JWT should be accepted from the client using the "Authorization Request Header Field" mechanism as described in [section 2.1 of RFC6750](https://tools.ietf.org/html/rfc6750)
+
+### Data Holders calling Data Recipients
+
+Data Recipients MUST support the authentication of Data Holders using a signed JWT according to the following requirements:
+
+*	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
+    *	`iss` - REQUIRED. Issuer. This MUST contain the id of the Data Holder obtained from the CDR Register.
+    *	`sub` - REQUIRED. Subject. This MUST contain the id of the Data Holder obtained from the CDR Register.
+    *	`aud` - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the Data Recipient as the intended audience. The Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.
+    *	`jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
+    *	`exp` - RE	QUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.
+    *	`iat` - OPTIONAL. Time at which the JWT was issued.
+*	Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]
+*	The JWT should be accepted from the client using the "Authorization Request Header Field" mechanism as described in [section 2.1 of RFC6750](https://tools.ietf.org/html/rfc6750)
+
+
+### Data Recipients calling Data Holders
+
 Data Holders MUST support the authentication of Data Recipients using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-
-Data Holders MUST support the authentication of the CDR Register using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-
-Data Recipients MUST support the authentication of Data Holders using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-
-While **[MTLS]** is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
-
-### private\_key\_jwt
-
 
 > Non-Normative Example
 
@@ -195,6 +222,14 @@ In reference to the client types referenced in [section 2.1] (https://tools.ietf
 
 - Confidential Clients MUST be supported under this profile.
 - Public clients MUST NOT be supported.
+
+### JSON Web Key Sets
+
+Data Holder public keys MUST only be obtained from the standard OIDC end point used for that purpose.
+
+Data Recipient public keys MUST only be obtained from the URI registered with the CDR Register.
+
+CDR Register public keys MUST only be obtained from the end point exposed for that purpose.
 
 
 <a id="consent"></a>
@@ -444,6 +479,8 @@ To accomplish this, the Data Holder MUST support an additional claim in the auth
 - If the `sharing_duration` value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.
 - If the `sharing_duration` value is negative then the authorisation should fail.
 
+Note that the period of `one year` in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).
+
 The Data Recipient is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
 
 
@@ -474,6 +511,7 @@ Content-Type: application/json
   "revocation_endpoint": "https://www.dh.com.au/revoke",
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
   "registration_endpoint": "https://www.dh.com.au/register",
+  "jwks_uri": "https://www.dh.com.au/jwks",
   "scopes_supported": ["openid", "profile", "..."],
   "response_types_supported": ["code id_token"],
   "response_modes_supported": ["fragment"],
@@ -492,7 +530,7 @@ Content-Type: application/json
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
-|  Transport Security |  TLS |
+|  Transport Security |  MTLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
@@ -511,6 +549,7 @@ At a minimum, the Data Holder metadata MUST include:
 - `scopes_supported`:  This list of supported scopes.
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
+- `jwks_uri`: The JSON Web Key Set for the data holder.
 
 Data Holders that support [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** MUST include:
 
@@ -551,13 +590,12 @@ Host: www.holder.com.au
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
+    "sharing_duration": "7776000",
     "userinfo": {
-      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     },
     "id_token": {
-      "sharing_duration": "7776000",
       "acr": {
         "values": ["urn:cds.au:cdr:3"]
       }
@@ -577,7 +615,19 @@ Host: www.holder.com.au
 The requirements for the Authorisation End Point are specified in [section 3.3.2](https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint) of **[OIDC]** and further specified under section [5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) of **[FAPI-RW]**.  This end point is invoked as part of the [Hybrid Authentication flow](#hybrid-flow).
 
 
-### Token End Point
+### JSON Web Key Set End Point
+| Description | Value   |
+|---|---|
+| Hosted By  | Data Holder  |
+|  Transport Security |  MTLS |
+| Client Authentication Required| No|
+| Bearer Token Required| No|
+
+The requirements for the JWKS End Point are specified in various sections of **[OIDC]**.
+
+This end point is used by the Data Holder to provide the public keys they will use when required.
+
+Data Holders MUST support a Token End Point.### Token End Point
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
