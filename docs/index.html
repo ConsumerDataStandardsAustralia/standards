@@ -727,7 +727,8 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./includes/cx/CX-Guidelines-v1.0.0.pdf'>CX Guidelines</a></li>
+            <li><a href='./pdfs/CX-Standards-v1.0.0.pdf'>CX Standards</a></li>
+            <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Guidelines</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
         </ul>
@@ -1766,7 +1767,7 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li>Data Holders MUST request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page</li>
 <li>Data Holders MUST NOT request that the customer enter an existing password in the redirected page</li>
 <li>Data Holders MUST provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page</li>
-<li>The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authorisation process</li>
+<li>The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authentication process</li>
 <li>Data Holders SHOULD implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism</li>
 <li>The provided OTP MUST be used only for authentication for CDR based sharing and MUST NOT be usable for the authorisation of other transactions or actions</li>
 <li>The provided OTP MUST be invalidated after a period of time at the discretion of the Data Holder.  This expiry period SHOULD facilitate enough time for the customer to reasonably complete the authorisation process</li>
@@ -1776,7 +1777,16 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li>Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.</li>
 </ul>
 
-<p>Note that additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
+<p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction is considered to include, but is not limited to:</p>
+
+<ul>
+<li>the addition of any requirements beyond normal data holder practices for verification code delivery</li>
+<li>providing or requesting additional information beyond normal data holder practices for verification code delivery</li>
+<li>offering additional or alternative services</li>
+<li>reference or inclusion of other documents</li>
+</ul>
+
+<p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
 
 <p><a id="client-authentication"></a></p>
 <h2 id='client-authentication'>Client Authentication</h2>
@@ -2561,9 +2571,11 @@ Host: www.holder.com.au
 </tr>
 </tbody></table>
 <h1 id='consumer-experience'>Consumer Experience</h1>
-<p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:</p>
+<p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
+<a href='./pdfs/CX-Standards-v1.0.0.pdf'>CX Standards</a></p>
 
-<p><a href='./pdfs/CX-Guidelines-v1.0.0.pdf'>CX Guidelines</a></p>
+<p>Additional CX guidelines and commentary can be found at:<br/>
+<a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
 <h1 id="consumer-data-standards-banking-apis">Banking APIs</h1>
 <h2 id='get-accounts'>Get Accounts</h2>
 <p><a id="opIdlistAccounts"></a></p>
