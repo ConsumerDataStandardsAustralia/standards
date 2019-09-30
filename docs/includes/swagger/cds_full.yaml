@@ -3091,11 +3091,11 @@ definitions:
       nonBusinessDayTreatment:
         type: string
         description: Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON
-        default: ON
+        default: "ON"
         enum:
         - AFTER
         - BEFORE
-        - ON
+        - "ON"
         - ONLY
       intervals:
         type: array
