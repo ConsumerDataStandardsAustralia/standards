@@ -1,7 +1,7 @@
 # Non-functional Requirements
 
 <aside class="notice">
-This section of the standards are not yet considered binding.<br/></br>It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are made binding.
+The standard relating to NFRs will commence on a date specified by the Data Standards Chair. It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are appropriate prior to this standard commencing and becoming a binding data standard under the Consumer Data Rules.
 </aside>
 
 The non-functional requirements (NFRs) for the Consumer Data Right regime cover a number of considerations:
@@ -107,7 +107,7 @@ Data recipients will be limited by the traffic thresholds documented in the prev
 - Unattended calls should be managed to avoid short term bursts of traffic
 
 ## Reporting Requirements
-The mechanism for reporting will be via administration end points that are yet to be defined.
+The mechanism for reporting will be via the CDR [Administration Endpoints](#admin-apis).
 
 The following information is to be reported:
 
@@ -146,5 +146,6 @@ A data holder is required to be able to demonstrate that reasonable steps to mai
 ## Exemptions To Protect Service
 In the event of the following extreme circumstances data holders will be able to obtain relief from non-functional requirements:
 
-- Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack.
-- A significant increase in traffic from a poorly designed or misbehaving data recipient.
+- Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack (this should result in http error `429 Too Many Requests` being returned).
+- A significant increase in traffic from a poorly designed or misbehaving data recipient (this should result in http error `429 Too Many Requests` being returned).
+- If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error `403 Forbidden` being returned).

@@ -4,6 +4,8 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|30/9/2019|1.0.0|Baseline version 1|This release is the baseline release for the standards that are intended for implementation February 2020 and contains minor updates as well as changes to align to the locked down CDR Rules and the updated CDR Register design
+|4/9/2019|0.9.6|Defect fix release|This release addresses a series of documentation issues and other clarifications as identified via GitHub feedback
 |15/7/2019|0.9.5|Incorporated May 2019 Feedback|This version incorporates the decisions arising from the consultation feedback obtained on the May 2019 draft of the standards (v0.9.3)
 |27/6/2019|0.9.4|Documentation and error fixes from May draft|<ul><li>Added missing versioning headers x-v/ x-min-v</li><li>Removed Banking API's tag </li><li>Fixed nonBusinessDayTreatment enum default is an array</li><li>Removal of empty x-scope in product reference</li><li>BankingScheduledPaymentRecurrence removed required intervals field</li><li>Added Swagger Contact object</li><li>BankingScheduledPaymentRecurrence removed required intervals field</li><li>Minor updates to static documentation typos/ broken links</li><li>Added cross links to additionalValue descriptions for Product Reference enums</li><li>Minor updates to product reference samples</li></ul>
 |29/5/2019|0.9.3|Final updates for May Draft|Addition of Discoverability, InfoSec Profile and minor corrections

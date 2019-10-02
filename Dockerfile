@@ -1,9 +1,9 @@
 FROM nginx
 
 ENV RUBY_MAJOR 2.6
-ENV RUBY_VERSION 2.6.2
-ENV RUBY_DOWNLOAD_SHA256 91fcde77eea8e6206d775a48ac58450afe4883af1a42e5b358320beb33a445fa
-ENV BUILDDEPS bison dpkg-dev libgdbm-dev wget ruby autoconf automake bzip2 dpkg-dev file g++ gcc imagemagick libbz2-dev libc6-dev libcurl4-openssl-dev libdb-dev libevent-dev libffi-dev libgdbm-dev libgeoip-dev libglib2.0-dev libjpeg-dev libkrb5-dev liblzma-dev libmagickcore-dev libmagickwand-dev libncurses5-dev libncursesw5-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libtool libwebp-dev libxml2-dev libxslt-dev libyaml-dev make patch unzip xz-utils zlib1g-dev
+ENV RUBY_VERSION 2.6.3
+ENV RUBY_DOWNLOAD_SHA256 11a83f85c03d3f0fc9b8a9b6cad1b2674f26c5aaa43ba858d4b0fcc2b54171e1
+ENV BUILDDEPS bison dpkg-dev libgdbm-dev wget autoconf automake bzip2 dpkg-dev file g++ gcc imagemagick libbz2-dev libc6-dev libcurl4-openssl-dev libdb-dev libevent-dev libffi-dev libgdbm-dev libgeoip-dev libglib2.0-dev libjpeg-dev libkrb5-dev liblzma-dev libmagickcore-dev libmagickwand-dev libncurses5-dev libncursesw5-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libtool libwebp-dev libxml2-dev libxslt-dev libyaml-dev make nodejs patch unzip xz-utils zlib1g-dev ca-certificates apt-utils
 
 
 #########
@@ -50,7 +50,7 @@ RUN set -ex \
 	&& make -j "$(nproc)" \
 	&& make install \
         && ruby --version && gem --version && bundle --version
-	
+
 # install things globally, for great justice
 # and don't create ".bundle" in all our apps
 ENV GEM_HOME /usr/local/bundle
@@ -67,11 +67,11 @@ RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
 # Now we do standards specific build
 ##############
 
-# Transfer the sphinx over
-COPY slate /opt/standards
-
 # Now get into baseline directory
 WORKDIR /opt/standards
+
+# Transfer the sphinx over
+COPY slate /opt/standards
 
 # Upgrade bundler
 RUN gem install bundler
@@ -79,13 +79,30 @@ RUN gem install bundler
 # Figure out requirements
 RUN bundle install
 
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+RUN apt-get update
+# Workaround for install bug
+RUN mkdir -p /usr/share/man/man1
+RUN apt-get install -y --no-install-recommends default-jre-headless npm
+
+RUN mkdir ~/swagger-codegen ~/openapi-codegen
+RUN wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.7/swagger-codegen-cli-2.4.7.jar -O ~/swagger-codegen/swagger-codegen-cli.jar
+RUN wget http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.4/openapi-generator-cli-3.3.4.jar -O ~/openapi-codegen/openapi-generator-cli.jar
+
+COPY swagger-gen/ swagger-gen/
+COPY slate/ slate/
+COPY docs/ docs/
+COPY build.sh /opt/standards
+
+RUN npm install --prefix ./swagger-gen/widdershins-cdr
+
+RUN ./build.sh
+
 # Build standards static output
-RUN bundle exec middleman build --clean
+# RUN bundle exec middleman build --clean
 
 # Transfer files over (delete first)
 RUN rm -fr /usr/share/nginx/html
 
 # Now copy
-RUN cp -R ../docs /usr/share/nginx/html
-
-
+RUN cp -R docs/ /usr/share/nginx/html

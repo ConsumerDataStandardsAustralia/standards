@@ -49,21 +49,26 @@ multiple system entities which will assume one or more of the following roles:
     -   Multiple Data Recipients will be supported.
 - 	**Register**:
     -   A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC).
+- 	**Customer**:
+    -   The authorising customer that is authenticated by a Data Holder.
 
 ### Data Holder
-The Data Holder (DH) is a system entity that authenticates a consumer
+The Data Holder (DH) is a system entity that authenticates a Customer
 (resource owner or user), as part of an authorisation process initiated by a Data
-Recipient, and issues an authorisation for that Data Recipient to access the consumer's data via published APIs.
+Recipient, and issues an authorisation for that Data Recipient to access the Customer's data via published APIs.
 
 A Data Holder assumes the role of an **[OIDC]** [OpenID Provider](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
+For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
+
 ### Data Recipient
-A Data Recipient (DR) is a system entity that is authorised by a
-Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
+A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
 
 A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.
 
 A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
+
+For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.
 
 ### Register
 <aside class="warning">
@@ -76,6 +81,11 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 - **Management of Identities and Access**: The Register will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.
 - **Management of Certificates**: The Register will facilitate the issuing, management and revocation of digital certificates.
 - **Discoverability and Search**: The Register will expose APIs and Web Interfaces in order to support metadata queries across Register entities.
+
+### Customer
+
+For the purposes of this standard a single person or individual may be represented as multiple Customers according to the practice of the Data Holder according to their existing digital channels.
+
 
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
@@ -101,29 +111,63 @@ In addition, the following statements are applicable for this flow:
 - Data Holders MUST request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page
 - Data Holders MUST NOT request that the customer enter an existing password in the redirected page
 - Data Holders MUST provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page
-- The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authorisation process
+- The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authentication process
 - Data Holders SHOULD implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism
 - The provided OTP MUST be used only for authentication for CDR based sharing and MUST NOT be usable for the authorisation of other transactions or actions
 - The provided OTP MUST be invalidated after a period of time at the discretion of the Data Holder.  This expiry period SHOULD facilitate enough time for the customer to reasonably complete the authorisation process
 - The provided OTP MUST be numeric digits and be between 4 and 6 digits in length
 - The algorithm for the creation of the OTP is at the discretion of the Data Holder but SHOULD incorporate a level of pseudorandomness appropriate for the use case
 - Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page
-- Data holders MUST clearly refer to the OTP as a “one-time password” in consumer-facing interactions and material
-- Data holders MUST state in consumer-facing interactions and material that ADRs will never ask consumers for their banking password to access CDR data
 - Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.
+
+In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:
+
+- the addition of any requirements beyond normal data holder practices for verification code delivery
+- providing or requesting additional information beyond normal data holder practices for verification code delivery
+- offering additional or alternative services
+- reference or inclusion of other documents
+
+Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
 <a id="client-authentication"></a>
 ## Client Authentication
+
+This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.
+
+Note that, while **[MTLS]** is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
+
+### CDR Register calling Data Holders and Data Recipients
+
+Data Holders and Data Recipients MUST support the authentication of the CDR Register using a signed JWT according to the following requirements:
+
+*	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
+    * `iss` - REQUIRED. Issuer. This MUST contain the static CDR Register id of ‘cdr-register’.
+    * `sub` - REQUIRED. Subject. This MUST contain the static CDR Register id of ‘cdr-register’.
+    * `aud` - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the intended audience. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.
+    * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
+    * `exp` - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.
+    * `iat` - OPTIONAL. Time at which the JWT was issued.
+*	Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]
+*	The JWT should be accepted from the client using the "Authorization Request Header Field" mechanism as described in [section 2.1 of RFC6750](https://tools.ietf.org/html/rfc6750)
+
+### Data Holders calling Data Recipients
+
+Data Recipients MUST support the authentication of Data Holders using a signed JWT according to the following requirements:
+
+*	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
+    *	`iss` - REQUIRED. Issuer. This MUST contain the id of the Data Holder obtained from the CDR Register.
+    *	`sub` - REQUIRED. Subject. This MUST contain the id of the Data Holder obtained from the CDR Register.
+    *	`aud` - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the Data Recipient as the intended audience. The Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.
+    *	`jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
+    *	`exp` - RE	QUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.
+    *	`iat` - OPTIONAL. Time at which the JWT was issued.
+*	Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]
+*	The JWT should be accepted from the client using the "Authorization Request Header Field" mechanism as described in [section 2.1 of RFC6750](https://tools.ietf.org/html/rfc6750)
+
+
+### Data Recipients calling Data Holders
+
 Data Holders MUST support the authentication of Data Recipients using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-
-Data Holders MUST support the authentication of the CDR Register using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-
-Data Recipients MUST support the authentication of Data Holders using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-
-While **[MTLS]** is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
-
-### private\_key\_jwt
-
 
 > Non-Normative Example
 
@@ -186,12 +230,22 @@ In reference to the client types referenced in [section 2.1] (https://tools.ietf
 - Confidential Clients MUST be supported under this profile.
 - Public clients MUST NOT be supported.
 
+### JSON Web Key Sets
+
+Data Holder public keys MUST only be obtained from the standard OIDC end point used for that purpose.
+
+Data Recipient public keys MUST only be obtained from the URI registered with the CDR Register.
+
+CDR Register public keys MUST only be obtained from the end point exposed for that purpose.
+
 
 <a id="consent"></a>
 ## Consent
 Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under **[OIDC]**.
 
 Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.
+
+A data holder MUST support only one extant consent arrangement (being an arrangement between a single Customer, a single Data Recipient and a single Data Holder) at a time.  If a second consent is authorised then the tokens associated with the previous consent MUST be revoked.
 
 ## Scopes and Claims
 
@@ -316,8 +370,7 @@ In order to achieve this:
 ## Identifiers and Subject Types
 The identifier for an authenticated end-user (subject) MUST be passed in the `sub` claim of an [ID Token](https://openid.net/specs/openid-cocnnect-core-1_0.html#IDToken) and [UserInfo response](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) as defined by **[OIDC]**.
 
-The Data Holder MUST generate the `sub` value as a Pairwise Pseudonymous Identifier (PPID)
-as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**. Furthermore, the identifier SHOULD also be unique relative to the scenario in which the end-user has authenticated. For example, the identifier generated for the same person when they are using a business account SHOULD be different to the identifier that is generated when that same individual is authorising as an individual.
+The Data Holder MUST generate the `sub` value as a Pairwise Pseudonymous Identifier (PPID) as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**. Furthermore, the identifier MUST be unique per customer as per the definition of customer in the CDR Federation section of this profile.
 
 It is RECOMMENDED that the `sub` value is generated as a version 4 Universally Unique
 Identifier (UUID) **[RFC4122]**.
@@ -402,15 +455,14 @@ Only the following cipher suites SHALL be permitted in accordance with [section 
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
+    "sharing_duration": "7776000",
     "id_token": {
-      "sharing_duration": "7776000",
       "acr": {
         "essential": true,
         "values": ["urn:cds.au:cdr:3"]
       }
     },
     "userinfo": {
-      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     }
@@ -424,8 +476,6 @@ Request Objects MUST be signed by Data Recipients as specified in [section 8.6](
 
 Request Object references SHALL NOT be supported.
 
-The `iss` claim SHALL NOT be supported as it duplicates the role of the `client_id` claim.
-
 ## Requesting Sharing Duration
 To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.
 
@@ -435,6 +485,8 @@ To accomplish this, the Data Holder MUST support an additional claim in the auth
 - If the `sharing_duration` value exceeds one year then a duration of one year will be assumed.
 - If the `sharing_duration` value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.
 - If the `sharing_duration` value is negative then the authorisation should fail.
+
+Note that the period of `one year` in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).
 
 The Data Recipient is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
 
@@ -466,6 +518,7 @@ Content-Type: application/json
   "revocation_endpoint": "https://www.dh.com.au/revoke",
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
   "registration_endpoint": "https://www.dh.com.au/register",
+  "jwks_uri": "https://www.dh.com.au/jwks",
   "scopes_supported": ["openid", "profile", "..."],
   "response_types_supported": ["code id_token"],
   "response_modes_supported": ["fragment"],
@@ -484,7 +537,7 @@ Content-Type: application/json
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
-|  Transport Security |  TLS |
+|  Transport Security |  MTLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
@@ -492,7 +545,7 @@ Data Holders MUST make their OpenID Provider Metadata available via a configurat
 
 Where a Data Holder is supporting [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** or [FAPI-CIBA](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**, the published OpenID Provider metadata SHALL reflect that support.
 
-At a minimum, the Data Provider metadata MUST include:
+At a minimum, the Data Holder metadata MUST include:
 
 - `issuer`: URL that the Data Holder asserts as its Issuer Identifier.
 - `authorization_endpoint`: URL of the Authorization End Point.
@@ -503,6 +556,7 @@ At a minimum, the Data Provider metadata MUST include:
 - `scopes_supported`:  This list of supported scopes.
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
+- `jwks_uri`: The JSON Web Key Set for the data holder.
 
 Data Holders that support [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** MUST include:
 
@@ -543,13 +597,12 @@ Host: www.holder.com.au
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
+    "sharing_duration": "7776000",
     "userinfo": {
-      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     },
     "id_token": {
-      "sharing_duration": "7776000",
       "acr": {
         "values": ["urn:cds.au:cdr:3"]
       }
@@ -569,7 +622,19 @@ Host: www.holder.com.au
 The requirements for the Authorisation End Point are specified in [section 3.3.2](https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint) of **[OIDC]** and further specified under section [5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) of **[FAPI-RW]**.  This end point is invoked as part of the [Hybrid Authentication flow](#hybrid-flow).
 
 
-### Token End Point
+### JSON Web Key Set End Point
+| Description | Value   |
+|---|---|
+| Hosted By  | Data Holder  |
+|  Transport Security |  MTLS |
+| Client Authentication Required| No|
+| Bearer Token Required| No|
+
+The requirements for the JWKS End Point are specified in various sections of **[OIDC]**.
+
+This end point is used by the Data Holder to provide the public keys they will use when required.
+
+Data Holders MUST support a Token End Point.### Token End Point
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
@@ -644,9 +709,6 @@ Revocation of Refresh Tokens MUST be supported and will be used to notify the Da
 
 If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST use the Data Holder’s implementation of the revocation end point with the current Refresh Token to notify the Data Holder.
 
-## Reauthorisation mechanism
-When an authorisation has expired due to the expiration of the time requested using the `sharing_duration` claim in the request object then authorisation needs to be re-established using the full authorisation process.
-
 
 ## Normative References
 
@@ -664,7 +726,6 @@ When an authorisation has expired due to the expiration of the time requested us
 | <a id="OAUTH2"></a>**[OAUTH2]**   | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                                                    |
 | <a id="OIDC"></a>**[OIDC]**     | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                        |
 | <a id="OIDD"></a>**[OIDD]**     | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                              |
-| <a id="OIDC-CR"></a>**[OIDC-CR]**  | OpenID Connect Dynamic Client Registration 1.0 incorporating errata set 1: <https://openid.net/specs/openid-connect-registration-1_0.html> |
 | <a id="TDIF"></a>**[TDIF]** | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework>
 | <a id="RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>   |
 | <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>|

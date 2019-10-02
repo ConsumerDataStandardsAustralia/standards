@@ -10,6 +10,18 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>30/9/2019</td>
+<td>1.0.0</td>
+<td>Baseline version 1</td>
+<td>This release is the baseline release for the standards that are intended for implementation February 2020 and contains minor updates as well as changes to align to the locked down CDR Rules and the updated CDR Register design</td>
+</tr>
+<tr>
+<td>4/9/2019</td>
+<td>0.9.6</td>
+<td>Defect fix release</td>
+<td>This release addresses a series of documentation issues and other clarifications as identified via GitHub feedback</td>
+</tr>
+<tr>
 <td>15/7/2019</td>
 <td>0.9.5</td>
 <td>Incorporated May 2019 Feedback</td>

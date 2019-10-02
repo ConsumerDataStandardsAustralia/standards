@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "0.9.5",
+    "version": "1.0.0",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.org.au/",
@@ -59,6 +59,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -67,7 +82,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -111,6 +130,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -119,7 +153,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -161,6 +199,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -169,7 +222,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -178,6 +235,12 @@
           },
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "headers": {
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+              }
+            },
             "schema": {
               "$ref": "#/definitions/ResponseErrorList"
             }
@@ -212,6 +275,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -220,7 +298,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -257,6 +339,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -265,7 +362,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -279,7 +380,7 @@
     "/banking/accounts/{accountId}/transactions": {
       "get": {
         "summary": "Get Transactions For Account",
-        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
+        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account",
         "operationId": "getTransactions",
         "x-scopes": [
           "bank:transactions:read"
@@ -323,6 +424,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -331,7 +447,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -376,6 +496,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -384,7 +519,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -427,6 +566,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -435,7 +589,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -479,6 +637,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -487,7 +660,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -529,6 +706,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -537,7 +729,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -546,6 +742,12 @@
           },
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "headers": {
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+              }
+            },
             "schema": {
               "$ref": "#/definitions/ResponseErrorList"
             }
@@ -586,6 +788,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -594,7 +811,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -638,6 +859,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -646,7 +882,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -688,6 +928,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -696,7 +951,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -705,6 +964,12 @@
           },
           "422": {
             "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "headers": {
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+              }
+            },
             "schema": {
               "$ref": "#/definitions/ResponseErrorList"
             }
@@ -719,7 +984,7 @@
         "description": "Obtain a list of pre-registered payees",
         "operationId": "listPayees",
         "x-scopes": [
-          "bank:acounts.basic:read"
+          "bank:payees:read"
         ],
         "tags": [
           "Banking",
@@ -751,6 +1016,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -759,7 +1039,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -796,6 +1080,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -804,7 +1103,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -875,7 +1178,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -917,7 +1220,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -946,6 +1249,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -954,7 +1272,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -983,6 +1301,21 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-min-v"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-interaction-id"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-auth-date"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -991,7 +1324,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
               }
             },
             "schema": {
@@ -1025,11 +1362,11 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseDiscoveryStatus"
+              "$ref": "#/definitions/CommonDiscoveryStatus"
             }
           }
         },
@@ -1059,7 +1396,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](#response-headers) of the API end point that the holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
@@ -1074,14 +1411,45 @@
   "parameters": {
     "RequestHeader_x-v": {
       "name": "x-v",
-      "description": "Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](#request-headers)",
+      "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
       "in": "header",
       "type": "string",
       "required": true
     },
     "RequestHeader_x-min-v": {
       "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+      "in": "header",
+      "type": "string"
+    },
+    "RequestHeader_x-fapi-interaction-id": {
+      "name": "x-fapi-interaction-id",
+      "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+      "in": "header",
+      "type": "string"
+    },
+    "RequestHeader_x-fapi-auth-date": {
+      "name": "x-fapi-auth-date",
+      "description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+      "in": "header",
+      "type": "string"
+    },
+    "RequestHeader_x-fapi-customer-ip-address": {
+      "name": "x-fapi-customer-ip-address",
+      "description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+      "in": "header",
+      "type": "string"
+    },
+    "RequestHeader_x-cds-User-Agent": {
+      "name": "x-cds-User-Agent",
+      "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+      "in": "header",
+      "type": "string",
+      "x-cds-type": "Base64"
+    },
+    "RequestHeader_x-cds-subject": {
+      "name": "x-cds-subject",
+      "description": "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
       "in": "header",
       "type": "string"
     },
@@ -1180,7 +1548,7 @@
     "ParamTransactionText": {
       "name": "text",
       "in": "query",
-      "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied",
+      "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)",
       "required": false,
       "type": "string"
     }
@@ -1189,8 +1557,7 @@
     "RequestAccountIds": {
       "type": "object",
       "required": [
-        "data",
-        "meta"
+        "data"
       ],
       "properties": {
         "data": {
@@ -1259,7 +1626,7 @@
       "properties": {
         "productId": {
           "type": "string",
-          "description": "A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+          "description": "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
           "x-cds-type": "ASCIIString"
         },
         "effectiveFrom": {
@@ -1343,8 +1710,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "properties": {
         "data": {
@@ -2123,8 +2489,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "properties": {
         "data": {
@@ -2383,7 +2748,7 @@
         },
         "offsetAccountIds": {
           "type": "array",
-          "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
+          "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
           "items": {
             "type": "string",
             "x-cds-type": "ASCIIString"
@@ -2551,8 +2916,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "properties": {
         "data": {
@@ -2619,7 +2983,7 @@
                     "purposeCode": {
                       "type": "string",
                       "description": "Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service"
-                    },
+                    }
                   }
                 },
                 "service": {
@@ -2783,8 +3147,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "properties": {
         "data": {
@@ -3141,9 +3504,6 @@
     },
     "BankingAuthorisedEntity": {
       "type": "object",
-      "required": [
-        "financialInstitution"
-      ],
       "properties": {
         "description": {
           "type": "string",
@@ -3151,7 +3511,7 @@
         },
         "financialInstitution": {
           "type": "string",
-          "description": "Name of the financial institution through which the direct debit will be executed"
+          "description": "Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme"
         },
         "abn": {
           "type": "string",
@@ -3475,7 +3835,7 @@
         },
         "lastWeekDay": {
           "type": "integer",
-          "description": "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.",
+          "description": "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.",
           "x-cds-type": "PositiveInteger"
         }
       }
@@ -3493,12 +3853,11 @@
         }
       }
     },
-    "ResponseDiscoveryStatus": {
+    "CommonDiscoveryStatus": {
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "properties": {
         "data": {
@@ -3554,8 +3913,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "properties": {
         "data": {
@@ -3595,8 +3953,9 @@
           "x-cds-type": "DateTimeString"
         },
         "duration": {
-          "type": "number",
-          "description": "Planned duration of the outage in minutes"
+          "type": "string",
+          "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)",
+          "x-cds-type": "ExternalRef"
         },
         "isPartial": {
           "type": "boolean",
@@ -3612,8 +3971,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "x-conditional": [
         "person",
@@ -3654,8 +4012,7 @@
       "type": "object",
       "required": [
         "data",
-        "links",
-        "meta"
+        "links"
       ],
       "x-conditional": [
         "person",
@@ -3885,7 +4242,7 @@
       "properties": {
         "isPreferred": {
           "type": "boolean",
-          "description": "Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present",
+          "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
           "x-cds-type": "Boolean"
         },
         "purpose": {
@@ -3932,7 +4289,7 @@
       "properties": {
         "isPreferred": {
           "type": "boolean",
-          "description": "Required for one and only one email record in the collection. Denotes the default email address",
+          "description": "May be true for one and only one email record in the collection. Denotes the default email address",
           "x-cds-type": "Boolean"
         },
         "purpose": {
@@ -4041,12 +4398,13 @@
         },
         "state": {
           "type": "string",
-          "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [ISO 3166:AU standard](https://www.iso.org/obp/ui/#iso:code:3166:AU)"
+          "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
         },
         "country": {
           "type": "string",
-          "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
-          "x-cds-type": "ExternalRef"
+          "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+          "x-cds-type": "ExternalRef",
+          "default": "AUS"
         }
       }
     },
@@ -4098,9 +4456,8 @@
           "description": "Floor or level number (including alpha characters)"
         },
         "lotNumber": {
-          "type": "integer",
-          "description": "Allotment number for the address",
-          "x-cds-type": "PositiveInteger"
+          "type": "string",
+          "description": "Allotment number for the address"
         },
         "buildingName1": {
           "type": "string",
@@ -4149,7 +4506,7 @@
         },
         "state": {
           "type": "string",
-          "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file"
+          "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
         }
       }
     },
@@ -4161,7 +4518,7 @@
       "properties": {
         "self": {
           "type": "string",
-          "description": "Fully qualified link to this API call",
+          "description": "Fully qualified link that generated the current response document",
           "x-cds-type": "URIString"
         }
       }
@@ -4183,7 +4540,7 @@
       "properties": {
         "self": {
           "type": "string",
-          "description": "Fully qualified link to this API call",
+          "description": "Fully qualified link that generated the current response document",
           "x-cds-type": "URIString"
         },
         "first": {
@@ -4217,12 +4574,12 @@
       "properties": {
         "totalRecords": {
           "type": "integer",
-          "description": "The total number of records in the full set",
+          "description": "The total number of records in the full set. See [pagination](#pagination).",
           "x-cds-type": "NaturalNumber"
         },
         "totalPages": {
           "type": "integer",
-          "description": "The total number of pages in the full set",
+          "description": "The total number of pages in the full set. See [pagination](#pagination).",
           "x-cds-type": "NaturalNumber"
         }
       }

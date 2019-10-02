@@ -14,6 +14,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -21,7 +26,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -41,6 +51,11 @@ $.ajax({
 
 Obtain a list of accounts
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -50,8 +65,13 @@ Obtain a list of accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -118,11 +138,12 @@ Obtain a list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Bulk Balances
@@ -137,6 +158,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -144,7 +170,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -164,6 +195,11 @@ $.ajax({
 
 Obtain balances for multiple, filtered accounts
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-bulk-balances-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -173,8 +209,13 @@ Obtain balances for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -244,11 +285,12 @@ Obtain balances for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Balances For Specific Accounts
@@ -264,6 +306,11 @@ Content-Type: application/json
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -272,7 +319,12 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -305,14 +357,24 @@ Obtain balances for a specified list of accounts
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-balances-for-specific-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
 > Example responses
@@ -364,11 +426,13 @@ Obtain balances for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Account Balance
@@ -383,6 +447,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -390,7 +459,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -410,13 +484,23 @@ $.ajax({
 
 Obtain the balance for a single specified account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-account-balance-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -455,11 +539,12 @@ Obtain the balance for a single specified account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 
 ## Get Account Detail
@@ -474,6 +559,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -481,7 +571,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -501,13 +596,23 @@ $.ajax({
 
 Obtain detailed information on a single account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-account-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -692,7 +797,7 @@ Obtain detailed information on a single account
           "postcode": "string",
           "city": "string",
           "state": "string",
-          "country": "string"
+          "country": "AUS"
         },
         "paf": {
           "dpid": "string",
@@ -704,7 +809,7 @@ Obtain detailed information on a single account
           "flatUnitNumber": "string",
           "floorLevelType": "string",
           "floorLevelNumber": "string",
-          "lotNumber": 0,
+          "lotNumber": "string",
           "buildingName1": "string",
           "buildingName2": "string",
           "streetName": "string",
@@ -738,11 +843,12 @@ Obtain detailed information on a single account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_detailed_accounts</a>
+<a href="#authorisation-scopes">bank:accounts.detail:read</a>
 </aside>
 
 ## Get Transactions For Account
@@ -757,6 +863,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -764,7 +875,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -787,11 +903,16 @@ Obtain transactions for a specific account.
 Some general notes that apply to all end points that retrieve transactions:
 
 - Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
-- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the holder will use the “effective” date/time which will be defined as:
+- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:
 		- Posted date/time if available, then
 		- Execution date/time if available, then
 		- A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
+
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
 
 <h3 id="get-transactions-for-account-parameters">Parameters</h3>
 
@@ -805,8 +926,13 @@ Some general notes that apply to all end points that retrieve transactions:
 |text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -862,11 +988,12 @@ Some general notes that apply to all end points that retrieve transactions:
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
+<a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 
 ## Get Transaction Detail
@@ -881,6 +1008,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -888,7 +1020,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -908,14 +1045,24 @@ $.ajax({
 
 Obtain detailed information on a transaction for a specific account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-transaction-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for.  Must have previously been returned by one of the account list end points|
 |transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction end points|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -971,11 +1118,12 @@ Obtain detailed information on a transaction for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_transactions</a>
+<a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
 
 ## Get Direct Debits For Account
@@ -990,6 +1138,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -997,7 +1150,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1017,6 +1175,11 @@ $.ajax({
 
 Obtain direct debit authorisations for a specific account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-direct-debits-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1024,8 +1187,13 @@ Obtain direct debit authorisations for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1073,11 +1241,12 @@ Obtain direct debit authorisations for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Bulk Direct Debits
@@ -1092,6 +1261,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1099,7 +1273,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1119,6 +1298,11 @@ $.ajax({
 
 Obtain direct debit authorisations for multiple, filtered accounts
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-bulk-direct-debits-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1128,8 +1312,13 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -1197,11 +1386,12 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Direct Debits For Specific Accounts
@@ -1217,6 +1407,11 @@ Content-Type: application/json
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1225,7 +1420,12 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1258,14 +1458,24 @@ Obtain direct debit authorisations for a specified list of accounts
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-direct-debits-for-specific-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
 > Example responses
@@ -1315,11 +1525,13 @@ Obtain direct debit authorisations for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
+|422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Scheduled Payments for Account
@@ -1334,6 +1546,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1341,7 +1558,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1361,6 +1583,11 @@ $.ajax({
 
 Obtain scheduled, outgoing payments for a specific account
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-scheduled-payments-for-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1368,8 +1595,13 @@ Obtain scheduled, outgoing payments for a specific account
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list end points. The account specified is the source account for the payment|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1496,11 +1728,12 @@ Obtain scheduled, outgoing payments for a specific account
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Scheduled Payments Bulk
@@ -1515,6 +1748,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1522,7 +1760,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1542,6 +1785,11 @@ $.ajax({
 
 Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-scheduled-payments-bulk-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1551,8 +1799,13 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer.  True for owned accounts, false for unowned accounts and absent for all accounts|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -1699,11 +1952,12 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Scheduled Payments For Specific Accounts
@@ -1719,6 +1973,11 @@ Content-Type: application/json
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1727,7 +1986,12 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1760,14 +2024,24 @@ Obtain scheduled payments for a specified list of accounts
 }
 ```
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-scheduled-payments-for-specific-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
 > Example responses
@@ -1896,11 +2170,13 @@ Obtain scheduled payments for a specified list of accounts
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
+|422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_regular_payments</a>
+<a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
 
 ## Get Payees
@@ -1915,6 +2191,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -1922,7 +2203,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -1942,6 +2228,11 @@ $.ajax({
 
 Obtain a list of pre-registered payees
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-payees-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -1949,8 +2240,13 @@ Obtain a list of pre-registered payees
 |type|query|string|optional|Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
 
@@ -2002,11 +2298,12 @@ Obtain a list of pre-registered payees
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_basic_accounts</a>
+<a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
 
 ## Get Payee Detail
@@ -2021,6 +2318,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2028,7 +2330,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2048,13 +2355,23 @@ $.ajax({
 
 Obtain detailed information on a single payee
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-payee-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2129,11 +2446,12 @@ Obtain detailed information on a single payee
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank_payees</a>
+<a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
 
 ## Get Products
@@ -2209,6 +2527,11 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-products-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -2219,8 +2542,8 @@ In addition, the concept of effective date and time has also been included.  Thi
 |product-category|query|string|optional|Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -2296,7 +2619,7 @@ In addition, the concept of effective date and time has also been included.  Thi
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2341,13 +2664,18 @@ $.ajax({
 
 Obtain detailed information on a single product offered openly to the market
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-product-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2536,7 +2864,7 @@ Obtain detailed information on a single product offered openly to the market
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2556,6 +2884,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2563,7 +2896,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2583,12 +2921,22 @@ $.ajax({
 
 Obtain basic information on the customer that has authorised the current session
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-customer-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2643,11 +2991,11 @@ Obtain basic information on the customer that has authorised the current session
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">common_basic_customer</a>
+<a href="#authorisation-scopes">common:customer.basic:read</a>
 </aside>
 
 ## Get Customer Detail
@@ -2662,6 +3010,11 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
+x-fapi-interaction-id: string
+x-fapi-auth-date: string
+x-fapi-customer-ip-address: string
+x-cds-User-Agent: string
+x-cds-subject: string
 
 ```
 
@@ -2669,7 +3022,12 @@ x-min-v: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string'
+  'x-min-v':'string',
+  'x-fapi-interaction-id':'string',
+  'x-fapi-auth-date':'string',
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-User-Agent':'string',
+  'x-cds-subject':'string'
 
 };
 
@@ -2689,12 +3047,22 @@ $.ajax({
 
 Obtain detailed information on the authorised customer within the current session.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-customer-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
+|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2743,7 +3111,7 @@ Obtain detailed information on the authorised customer within the current sessio
             "postcode": "string",
             "city": "string",
             "state": "string",
-            "country": "string"
+            "country": "AUS"
           },
           "paf": {
             "dpid": "string",
@@ -2755,7 +3123,7 @@ Obtain detailed information on the authorised customer within the current sessio
             "flatUnitNumber": "string",
             "floorLevelType": "string",
             "floorLevelNumber": "string",
-            "lotNumber": 0,
+            "lotNumber": "string",
             "buildingName1": "string",
             "buildingName2": "string",
             "streetName": "string",
@@ -2799,7 +3167,7 @@ Obtain detailed information on the authorised customer within the current sessio
             "postcode": "string",
             "city": "string",
             "state": "string",
-            "country": "string"
+            "country": "AUS"
           },
           "paf": {
             "dpid": "string",
@@ -2811,7 +3179,7 @@ Obtain detailed information on the authorised customer within the current sessio
             "flatUnitNumber": "string",
             "floorLevelType": "string",
             "floorLevelNumber": "string",
-            "lotNumber": 0,
+            "lotNumber": "string",
             "buildingName1": "string",
             "buildingName2": "string",
             "streetName": "string",
@@ -2847,11 +3215,12 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">common_detailed_customer</a>
+<a href="#authorisation-scopes">common:customer.detail:read</a>
 </aside>
 
 ## Get Status
@@ -2893,12 +3262,17 @@ $.ajax({
 
 Obtain a health check status for the implementation
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-status-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2924,13 +3298,13 @@ Obtain a health check status for the implementation
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryStatus](#schemaresponsediscoverystatus)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[CommonDiscoveryStatus](#schemacommondiscoverystatus)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -2975,12 +3349,17 @@ $.ajax({
 
 Obtain a list of scheduled outages for the implementation
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**1**
+
 <h3 id="get-outages-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. If the version(s) requested is not supported then the holder should respond with a 406 Not Acceptable. See [here](##request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -2992,7 +3371,7 @@ Obtain a list of scheduled outages for the implementation
     "outages": [
       {
         "outageTime": "string",
-        "duration": 0,
+        "duration": "string",
         "isPartial": true,
         "explanation": "string"
       }
@@ -3015,7 +3394,7 @@ Obtain a list of scheduled outages for the implementation
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
 This operation does not require authentication
@@ -3045,7 +3424,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» accountIds|[string]|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
@@ -3133,7 +3512,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|productId|[ASCIIString](#common-field-types)|mandatory|none|A holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+|productId|[ASCIIString](#common-field-types)|mandatory|none|A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
 |effectiveFrom|[DateTimeString](#common-field-types)|optional|none|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
 |effectiveTo|[DateTimeString](#common-field-types)|optional|none|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
@@ -3335,7 +3714,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|[BankingProductDetail](#schemabankingproductdetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingproductdetail">BankingProductDetail</h2>
 
@@ -4348,7 +4727,7 @@ This operation does not require authentication
           "postcode": "string",
           "city": "string",
           "state": "string",
-          "country": "string"
+          "country": "AUS"
         },
         "paf": {
           "dpid": "string",
@@ -4360,7 +4739,7 @@ This operation does not require authentication
           "flatUnitNumber": "string",
           "floorLevelType": "string",
           "floorLevelNumber": "string",
-          "lotNumber": 0,
+          "lotNumber": "string",
           "buildingName1": "string",
           "buildingName2": "string",
           "streetName": "string",
@@ -4391,7 +4770,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|[BankingAccountDetail](#schemabankingaccountdetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
@@ -4575,7 +4954,7 @@ This operation does not require authentication
         "postcode": "string",
         "city": "string",
         "state": "string",
-        "country": "string"
+        "country": "AUS"
       },
       "paf": {
         "dpid": "string",
@@ -4587,7 +4966,7 @@ This operation does not require authentication
         "flatUnitNumber": "string",
         "floorLevelType": "string",
         "floorLevelNumber": "string",
-        "lotNumber": 0,
+        "lotNumber": "string",
         "buildingName1": "string",
         "buildingName2": "string",
         "streetName": "string",
@@ -4759,7 +5138,7 @@ This operation does not require authentication
 |minRedraw|[AmountString](#common-field-types)|optional|none|Minimum redraw amount|
 |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional|none|Set to true if one or more offset accounts are configured for this loan account|
-|offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
+|offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
 |repaymentType|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
 |repaymentFrequency|[ExternalRef](#common-field-types)|mandatory|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 
@@ -4941,7 +5320,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|[BankingTransactionDetail](#schemabankingtransactiondetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingtransactiondetail">BankingTransactionDetail</h2>
 
@@ -5260,7 +5639,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|[BankingPayeeDetail](#schemabankingpayeedetail)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSbankingpayee">BankingPayee</h2>
 
@@ -5654,7 +6033,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|
-|financialInstitution|string|mandatory|none|Name of the financial institution through which the direct debit will be executed|
+|financialInstitution|string|optional|none|Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme|
 |abn|string|optional|none|Australian Business Number for the authorised entity|
 |acn|string|optional|none|Australian Company Number for the authorised entity|
 |arbn|string|optional|none|Australian Registered Body Number for the authorised entity|
@@ -6229,7 +6608,7 @@ This operation does not require authentication
 |finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |interval|[ExternalRef](#common-field-types)|mandatory|none|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
-|lastWeekDay|[PositiveInteger](#common-field-types)|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Sunday.|
+|lastWeekDay|[PositiveInteger](#common-field-types)|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.|
 
 <h2 id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h2>
 
@@ -6250,9 +6629,9 @@ This operation does not require authentication
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
 
-<h2 id="tocSresponsediscoverystatus">ResponseDiscoveryStatus</h2>
+<h2 id="tocScommondiscoverystatus">CommonDiscoveryStatus</h2>
 
-<a id="schemaresponsediscoverystatus"></a>
+<a id="schemacommondiscoverystatus"></a>
 
 ```json
 {
@@ -6282,7 +6661,7 @@ This operation does not require authentication
 |» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
 |» updateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this status was last updated by the Data Holder.|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -6303,7 +6682,7 @@ This operation does not require authentication
     "outages": [
       {
         "outageTime": "string",
-        "duration": 0,
+        "duration": "string",
         "isPartial": true,
         "explanation": "string"
       }
@@ -6324,7 +6703,7 @@ This operation does not require authentication
 |data|object|mandatory|none|none|
 |» outages|[[DiscoveryOutage](#schemadiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 <h2 id="tocSdiscoveryoutage">DiscoveryOutage</h2>
 
@@ -6333,7 +6712,7 @@ This operation does not require authentication
 ```json
 {
   "outageTime": "string",
-  "duration": 0,
+  "duration": "string",
   "isPartial": true,
   "explanation": "string"
 }
@@ -6345,7 +6724,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |outageTime|[DateTimeString](#common-field-types)|mandatory|none|Date and time that the outage is scheduled to begin|
-|duration|number|mandatory|none|Planned duration of the outage in minutes|
+|duration|[ExternalRef](#common-field-types)|mandatory|none|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |isPartial|boolean|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
 |explanation|string|mandatory|none|Provides an explanation of the current outage that can be displayed to an end customer|
 
@@ -6402,7 +6781,7 @@ This operation does not require authentication
 |» person|[CommonPerson](#schemacommonperson)|optional|none|none|
 |» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -6458,7 +6837,7 @@ This operation does not require authentication
             "postcode": "string",
             "city": "string",
             "state": "string",
-            "country": "string"
+            "country": "AUS"
           },
           "paf": {
             "dpid": "string",
@@ -6470,7 +6849,7 @@ This operation does not require authentication
             "flatUnitNumber": "string",
             "floorLevelType": "string",
             "floorLevelNumber": "string",
-            "lotNumber": 0,
+            "lotNumber": "string",
             "buildingName1": "string",
             "buildingName2": "string",
             "streetName": "string",
@@ -6514,7 +6893,7 @@ This operation does not require authentication
             "postcode": "string",
             "city": "string",
             "state": "string",
-            "country": "string"
+            "country": "AUS"
           },
           "paf": {
             "dpid": "string",
@@ -6526,7 +6905,7 @@ This operation does not require authentication
             "flatUnitNumber": "string",
             "floorLevelType": "string",
             "floorLevelNumber": "string",
-            "lotNumber": 0,
+            "lotNumber": "string",
             "buildingName1": "string",
             "buildingName2": "string",
             "streetName": "string",
@@ -6562,7 +6941,7 @@ This operation does not require authentication
 |» person|[CommonPersonDetail](#schemacommonpersondetail)|optional|none|none|
 |» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|mandatory|none|none|
+|meta|[Meta](#schemameta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -6646,7 +7025,7 @@ This operation does not require authentication
         "postcode": "string",
         "city": "string",
         "state": "string",
-        "country": "string"
+        "country": "AUS"
       },
       "paf": {
         "dpid": "string",
@@ -6658,7 +7037,7 @@ This operation does not require authentication
         "flatUnitNumber": "string",
         "floorLevelType": "string",
         "floorLevelNumber": "string",
-        "lotNumber": 0,
+        "lotNumber": "string",
         "buildingName1": "string",
         "buildingName2": "string",
         "streetName": "string",
@@ -6781,7 +7160,7 @@ This operation does not require authentication
         "postcode": "string",
         "city": "string",
         "state": "string",
-        "country": "string"
+        "country": "AUS"
       },
       "paf": {
         "dpid": "string",
@@ -6793,7 +7172,7 @@ This operation does not require authentication
         "flatUnitNumber": "string",
         "floorLevelType": "string",
         "floorLevelNumber": "string",
-        "lotNumber": 0,
+        "lotNumber": "string",
         "buildingName1": "string",
         "buildingName2": "string",
         "streetName": "string",
@@ -6850,7 +7229,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|optional|none|Required to be true for one and only one entry to indicate the preferred phone number.  Assumed to be 'false' if not present|
+|isPreferred|[Boolean](#common-field-types)|optional|none|May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present|
 |purpose|string|mandatory|none|The purpose of the number as specified by the customer|
 |countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
 |areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
@@ -6886,7 +7265,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|optional|none|Required for one and only one email record in the collection. Denotes the default email address|
+|isPreferred|[Boolean](#common-field-types)|optional|none|May be true for one and only one email record in the collection. Denotes the default email address|
 |purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
 |address|[ExternalRef](#common-field-types)|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
 
@@ -6914,7 +7293,7 @@ This operation does not require authentication
     "postcode": "string",
     "city": "string",
     "state": "string",
-    "country": "string"
+    "country": "AUS"
   },
   "paf": {
     "dpid": "string",
@@ -6926,7 +7305,7 @@ This operation does not require authentication
     "flatUnitNumber": "string",
     "floorLevelType": "string",
     "floorLevelNumber": "string",
-    "lotNumber": 0,
+    "lotNumber": "string",
     "buildingName1": "string",
     "buildingName2": "string",
     "streetName": "string",
@@ -6985,7 +7364,7 @@ This operation does not require authentication
     "postcode": "string",
     "city": "string",
     "state": "string",
-    "country": "string"
+    "country": "AUS"
   },
   "paf": {
     "dpid": "string",
@@ -6997,7 +7376,7 @@ This operation does not require authentication
     "flatUnitNumber": "string",
     "floorLevelType": "string",
     "floorLevelNumber": "string",
-    "lotNumber": 0,
+    "lotNumber": "string",
     "buildingName1": "string",
     "buildingName2": "string",
     "streetName": "string",
@@ -7043,7 +7422,7 @@ This operation does not require authentication
   "postcode": "string",
   "city": "string",
   "state": "string",
-  "country": "string"
+  "country": "AUS"
 }
 
 ```
@@ -7058,8 +7437,8 @@ This operation does not require authentication
 |addressLine3|string|optional|none|Third line of the standard address object|
 |postcode|string|conditional|none|Mandatory for Australian addresses|
 |city|string|mandatory|none|Name of the city or locality|
-|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [ISO 3166:AU standard](https://www.iso.org/obp/ui/#iso:code:3166:AU)|
-|country|[ExternalRef](#common-field-types)|optional|none|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code|
+|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|country|[ExternalRef](#common-field-types)|optional|none|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
 <h2 id="tocScommonpafaddress">CommonPAFAddress</h2>
 
@@ -7076,7 +7455,7 @@ This operation does not require authentication
   "flatUnitNumber": "string",
   "floorLevelType": "string",
   "floorLevelNumber": "string",
-  "lotNumber": 0,
+  "lotNumber": "string",
   "buildingName1": "string",
   "buildingName2": "string",
   "streetName": "string",
@@ -7108,7 +7487,7 @@ This operation does not require authentication
 |flatUnitNumber|string|optional|none|Unit number (including suffix, if applicable)|
 |floorLevelType|string|optional|none|Type of floor or level for the address|
 |floorLevelNumber|string|optional|none|Floor or level number (including alpha characters)|
-|lotNumber|[PositiveInteger](#common-field-types)|optional|none|Allotment number for the address|
+|lotNumber|string|optional|none|Allotment number for the address|
 |buildingName1|string|optional|none|Building/Property name 1|
 |buildingName2|string|optional|none|Building/Property name 2|
 |streetName|string|optional|none|The name of the street|
@@ -7120,7 +7499,7 @@ This operation does not require authentication
 |postalDeliveryNumberSuffix|string|optional|none|Postal delivery number suffix related to the postal delivery number|
 |localityName|string|mandatory|none|Full name of locality|
 |postcode|string|mandatory|none|Postcode for the locality|
-|state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file|
+|state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
 <h2 id="tocSlinks">Links</h2>
 
@@ -7137,7 +7516,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
+|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link that generated the current response document|
 
 <h2 id="tocSmeta">Meta</h2>
 
@@ -7171,7 +7550,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
+|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link that generated the current response document|
 |first|[URIString](#common-field-types)|conditional|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |prev|[URIString](#common-field-types)|conditional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |next|[URIString](#common-field-types)|conditional|none|URI to the next page of this set. Mandatory if this response is not the last page|
@@ -7193,8 +7572,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|totalRecords|[NaturalNumber](#common-field-types)|mandatory|none|The total number of records in the full set|
-|totalPages|[NaturalNumber](#common-field-types)|mandatory|none|The total number of pages in the full set|
+|totalRecords|[NaturalNumber](#common-field-types)|mandatory|none|The total number of records in the full set. See [pagination](#pagination).|
+|totalPages|[NaturalNumber](#common-field-types)|mandatory|none|The total number of pages in the full set. See [pagination](#pagination).|
 
 <h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
 

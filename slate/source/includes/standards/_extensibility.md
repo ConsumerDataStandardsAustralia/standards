@@ -26,7 +26,7 @@ standards
 
 Data holders seeking to extend the standards MUST nominate a prefix to identify all extensions.  Extended fields and end points and would use this prefix consistently. This prefix would be, by preference, the ASX symbol for the holder. Care should be taken not to use a prefix already adopted by another holder in the regime.
 
-In these standards, where a holder Identifier would be included, the term `<PID>` will be used.
+In these standards, where a holder Identifier would be included, the term `<HID>` will be used.
 
 ###New API Categories
 
@@ -36,7 +36,7 @@ For instance, the standard URI base path is structured as:
 `<holder path> / cds-au / <version> / <industry> / <resource>`
 
 For the extension API categories for a specific holder they would be structured as:  
-`<holder path> / cds-au / <version> / <PID> / <resource>`
+`<holder path> / cds-au / <version> / <HID> / <resource>`
 
 The end points defined under this structure, including the payloads of these end points do not need to be prefixed in any way. The fact that they are underneath the holder section implies that they are additional to the standard.
 
@@ -54,7 +54,7 @@ For example, assume an existing balance end point is defined as follows:
 `<base path>/accounts/{account ID}/transactions`
 
 and the holder wishes to add an end point that summarises balance movement for a specific time period then they may define the end point as:  
-`<base path>/account/{account ID}/<PID>-balance-movement`
+`<base path>/account/{account ID}/<HID>-balance-movement`
 
 
 Note that:
@@ -67,7 +67,7 @@ Note that:
 
 ###Additional Fields In An Existing Response Payload
 
-When adding a new field in an existing payload the field can be added to the JSON by prefixing the string `<PID>-`.
+When adding a new field in an existing payload the field can be added to the JSON by prefixing the string `<HID>-`.
 
 If an object is being added as an extension only the highest level object name needs to be prefixed. Any fields inside the extended object can be named normally.
 
@@ -78,15 +78,15 @@ Note that:
 * A mandatory field MUST NOT be made optional as the result of an extension.
 * Request payloads can also be extended but the resulting end point should still execute successfully if the extension field is not present (by implication, extension fields in request payloads MUST be optional).
 * New query parameters MAY be added along the same lines as a new field in a request payload (i.e. prefixed, non-mandatory and no side effects if not present).
-* New headers MAY be added along the same lines as a new field in a request payload with the exception that the new header should be prefixed `x-<PID>-`.
+* New headers MAY be added along the same lines as a new field in a request payload with the exception that the new header should be prefixed `x-<HID>-`.
 * New fields MUST comply with the naming conventions and data type standards used.
 
 ###Additional Query Parameters
 
-When adding support for a new query parameter to an existing end point that a data consumer is expected to supply, the new parameter should be prefixed by the string `<PID>-` to avoid potential collision with extension by another data holder.
+When adding support for a new query parameter to an existing end point that a data consumer is expected to supply, the new parameter should be prefixed by the string `<HID>-` to avoid potential collision with extension by another data holder.
 
 ###Extension Versioning
 
 As described previously in the [versioning section](#versioning) the standard provides for multiple versions of each API end point.  This implies the need for extensions to also be versioned.
 
-An optional header `x-<PID>-v` will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on [HTTP Headers](#http-headers) for more information on the use of this header.
+An optional header `x-<HID>-v` will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on [HTTP Headers](#http-headers) for more information on the use of this header.
