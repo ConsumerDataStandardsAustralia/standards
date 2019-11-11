@@ -216,7 +216,7 @@ The following claims MAY be included:
 
 When invoking a protected end point, the aforementioned assertion MUST be sent with the `POST` method and MUST include the following parameters:
 
--  `grant_type`: This parameter MUST only be included when invoking the Token End point and MUST be set to `authorisation_code` or `client_credentials`.
+-  `grant_type`: This parameter MUST only be included when invoking the Token End point and MUST be set to `authorisation_code` or `client_credentials`.  The value `refresh_token` is also valid when refreshing an access token.
 -  `code`: This parameter MUST only be included when invoking the Token End point after utilising the [Hybrid Authentication flow](#hybrid-flow).  This is the value of the code parameter returned in the authorisation response.
 -  `client_id`: The ID of the calling Client.
 -  `client_assertion_type`: This MUST be set to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.

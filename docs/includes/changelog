@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>12/11/2019</td>
+<td>1.0.1</td>
+<td>Patch update</td>
+<td>Minor defect changes and clarifications.<br/>See <a href="releasenotes.1.0.1.html">release notes</a> for detail</td>
+</tr>
+<tr>
 <td>30/9/2019</td>
 <td>1.0.0</td>
 <td>Baseline version 1</td>

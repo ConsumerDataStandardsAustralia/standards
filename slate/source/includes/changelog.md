@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|12/11/2019|1.0.1|Patch update|Minor defect changes and clarifications.<br/>See [release notes](releasenotes.1.0.1.html) for detail
 |30/9/2019|1.0.0|Baseline version 1|This release is the baseline release for the standards that are intended for implementation February 2020 and contains minor updates as well as changes to align to the locked down CDR Rules and the updated CDR Register design
 |4/9/2019|0.9.6|Defect fix release|This release addresses a series of documentation issues and other clarifications as identified via GitHub feedback
 |15/7/2019|0.9.5|Incorporated May 2019 Feedback|This version incorporates the decisions arising from the consultation feedback obtained on the May 2019 draft of the standards (v0.9.3)
