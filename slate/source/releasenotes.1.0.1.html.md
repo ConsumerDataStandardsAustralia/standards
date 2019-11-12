@@ -26,4 +26,4 @@ No Change
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
-|`Account balance` permission added to basic scope|<ul style="margin:0"><li>The `Account balance` permission has been moved from `Account numbers, balanced and features` data cluster to the `Account name and type` data cluster.</li><li>The order of permissions in `Account balance and details` data cluster has been adjusted slightly, moving the `Account balance` permission further up the list.</li><ul>|[CX Section](index.html#consumer-experience)
+|`Account balance` permission added to basic scope|The `Account balance` permission has been moved from `Account numbers, balanced and features` data cluster to the `Account name and type` data cluster.|[CX Section](index.html#consumer-experience)
