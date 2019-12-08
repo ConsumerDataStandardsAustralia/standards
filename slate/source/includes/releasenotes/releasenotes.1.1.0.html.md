@@ -1,5 +1,5 @@
 ---
-title: Consumer Data Standards - v1.0.1 Release Notes
+title: Consumer Data Standards - v1.1.0 Release Notes
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 
@@ -9,23 +9,21 @@ toc_footers:
 search: false
 ---
 
-# V1.0.1 Release Notes
+# V1.1.0 Release Notes
 Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-|`grant_type` Clarification|Expansion of description of the `grant_type` parameter to allow for the `refresh_token` value for the OIDC token end point|[Client Authentication Section](./index.html#client-authentication)
+|`x-fapi-interaction-id` description clarification|A clarification of the description recommended by the CDR Engineering team|[HTTP Headers Section](../../index.html#http-headers)
 
 ## API End Points
 |Change|Description|Link|
 |------|-----------|----|
-|`grant_type` Clarification|Expansion of description of the `grant_type` parameter to allow for the `refresh_token` value for the OIDC token end point|[Client Authentication Section](./index.html#client-authentication)
 
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-|`grant_type` Clarification|Expansion of description of the `grant_type` parameter to allow for the `refresh_token` value for the OIDC token end point|[Client Authentication Section](./index.html#client-authentication)
 
 ## Consumer Experience
 No Change

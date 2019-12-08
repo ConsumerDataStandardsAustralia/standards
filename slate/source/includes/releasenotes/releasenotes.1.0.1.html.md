@@ -21,9 +21,9 @@ No Change
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-|`grant_type` Clarification|Expansion of description of the `grant_type` parameter to allow for the `refresh_token` value for the OIDC token end point|[Client Authentication Section](./index.html#client-authentication)
+|`grant_type` Clarification|Expansion of description of the `grant_type` parameter to allow for the `refresh_token` value for the OIDC token end point|[Client Authentication Section](../../index.html#client-authentication)
 
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
-|`Account balance` permission added to basic scope|The `Account balance` permission has been moved from `Account numbers, balanced and features` data cluster to the `Account name and type` data cluster.|[CX Section](index.html#consumer-experience)
+|`Account balance` permission added to basic scope|The `Account balance` permission has been moved from `Account numbers, balanced and features` data cluster to the `Account name and type` data cluster.|[CX Section](../../index.html#consumer-experience)

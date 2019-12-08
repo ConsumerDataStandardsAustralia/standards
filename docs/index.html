@@ -727,7 +727,7 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Guidelines</a></li>
+            <li><a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Guidelines</a></li>
             <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Standards Site</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
@@ -965,7 +965,7 @@
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
-<td>An optional <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction</td>
+<td>An optional [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the <code>x-fapi-interaction-id</code> response header.</td>
 <td>Optional</td>
 </tr>
 <tr>
@@ -1016,7 +1016,7 @@
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. The data holder must set the response header <code>x-fapi-interaction-id</code> to the value received from the corresponding request header or to a new [RFC4122] UUID value if the request header was not provided.</td>
 <td>Mandatory</td>
 </tr>
 </tbody></table>
@@ -2572,7 +2572,7 @@ Host: www.holder.com.au
 </tbody></table>
 <h1 id='consumer-experience'>Consumer Experience</h1>
 <p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
-<a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Standards</a></p>
+<a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Standards</a></p>
 
 <p>Additional CX guidelines and commentary can be found at:<br/>
 <a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
