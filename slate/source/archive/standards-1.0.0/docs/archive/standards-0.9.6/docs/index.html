@@ -300,15 +300,15 @@
                     <a href="#end-points" class="toc-h2 toc-link" data-title="End Points">End Points</a>
                   </li>
                   <li>
+                    <a href="#reauthorisation-mechanism" class="toc-h2 toc-link" data-title="Reauthorisation mechanism">Reauthorisation mechanism</a>
+                  </li>
+                  <li>
                     <a href="#normative-references" class="toc-h2 toc-link" data-title="Normative References">Normative References</a>
                   </li>
                   <li>
                     <a href="#informative-references" class="toc-h2 toc-link" data-title="Informative References">Informative References</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#consumer-experience" class="toc-h1 toc-link" data-title="Consumer Experience">Consumer Experience</a>
           </li>
           <li>
             <a href="#consumer-data-standards-banking-apis" class="toc-h1 toc-link" data-title="Banking APIs">Banking APIs</a>
@@ -727,8 +727,6 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Guidelines</a></li>
-            <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Standards Site</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
         </ul>
@@ -739,13 +737,13 @@
         <h1 id='introduction'>Introduction</h1>
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
 
-<p>The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
+<p>The Consumer Data Right is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
 
-<p>CSIRO’s Data61 has been appointed as the Data Standards Body (DSB) for the CDR regime. These standards have been prepared by the DSB.  The work of the team is  overseen by the Data Standards Chair, Mr. Andrew Stevens, with industry and consumer advice provided by an Advisory Committee. The work of standards development is conducted in close consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission (ACCC)</a> as lead regulator of the Consumer Data Right, supported by the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner (OAIC)</a>.</p>
+<p>CSIRO’s Data61 has been appointed as the technical advisor and provider of operational support to the interim data standards body. These standards have been prepared by the Consumer Data Standards team at Data61.  The work of the team is  overseen by Mr. Andrew Stevens as interim Chair, with industry and consumer advice provided by an Advisory Committee. Data61’s Consumer Data Standards team works closely with the Australian Competition and Consumer Commission (ACCC) as lead regulator of the Consumer Data Right, supported by the Office of the Australian Information Commissioner (OAIC).</p>
 
-<p>These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
+<p>These standards will be binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.1.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 0.9.6</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -980,12 +978,7 @@
 </tr>
 <tr>
 <td><strong>x-cds-User-Agent</strong></td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-<td>Conditional</td>
-</tr>
-<tr>
-<td><strong>x-cds-subject</strong></td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 </tbody></table>
@@ -1417,11 +1410,6 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 <td>0.1<br/>-100.09<br/>10<br/>90.09</td>
 </tr>
 <tr>
-<td>Base64</td>
-<td>Base64 encoded string as per RFC 4648</td>
-<td>Q29uc3VtZXIgRGF0YSBSaWdodA==</td>
-</tr>
-<tr>
 <td>DateTimeString</td>
 <td>Combined Date and Time string as per RFC- 3339 (labelled date-time in the RFC)</td>
 <td>“2007-05-01T15:43:00.12345Z”<br/>“2012-12-25T15:43:00-08:00”<br/>“1997-01-12T15:43:00.121Z”</td>
@@ -1767,69 +1755,28 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li>Data Holders MUST request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page</li>
 <li>Data Holders MUST NOT request that the customer enter an existing password in the redirected page</li>
 <li>Data Holders MUST provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page</li>
-<li>The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authentication process</li>
+<li>The delivery mechanism for the OTP is at the discretion of the Data Holder but MUST align to existing and preferred channels for the customer and MUST NOT introduce unwarranted friction into the authorisation process</li>
 <li>Data Holders SHOULD implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism</li>
 <li>The provided OTP MUST be used only for authentication for CDR based sharing and MUST NOT be usable for the authorisation of other transactions or actions</li>
 <li>The provided OTP MUST be invalidated after a period of time at the discretion of the Data Holder.  This expiry period SHOULD facilitate enough time for the customer to reasonably complete the authorisation process</li>
 <li>The provided OTP MUST be numeric digits and be between 4 and 6 digits in length</li>
 <li>The algorithm for the creation of the OTP is at the discretion of the Data Holder but SHOULD incorporate a level of pseudorandomness appropriate for the use case</li>
 <li>Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page</li>
+<li>Data holders MUST clearly refer to the OTP as a “one-time password” in consumer-facing interactions and material</li>
+<li>Data holders MUST state in consumer-facing interactions and material that ADRs will never ask consumers for their banking password to access CDR data</li>
 <li>Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.</li>
 </ul>
 
-<p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:</p>
-
-<ul>
-<li>the addition of any requirements beyond normal data holder practices for verification code delivery</li>
-<li>providing or requesting additional information beyond normal data holder practices for verification code delivery</li>
-<li>offering additional or alternative services</li>
-<li>reference or inclusion of other documents</li>
-</ul>
-
-<p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
-
 <p><a id="client-authentication"></a></p>
 <h2 id='client-authentication'>Client Authentication</h2>
-<p>This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.</p>
-
-<p>Note that, while <strong>[MTLS]</strong> is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
-<h3 id='cdr-register-calling-data-holders-and-data-recipients'>CDR Register calling Data Holders and Data Recipients</h3>
-<p>Data Holders and Data Recipients MUST support the authentication of the CDR Register using a signed JWT according to the following requirements:</p>
-
-<ul>
-<li>  The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
-
-<ul>
-<li><code>iss</code> - REQUIRED. Issuer. This MUST contain the static CDR Register id of ‘cdr-register’.</li>
-<li><code>sub</code> - REQUIRED. Subject. This MUST contain the static CDR Register id of ‘cdr-register’.</li>
-<li><code>aud</code> - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the intended audience. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.</li>
-<li><code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
-<li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.</li>
-<li><code>iat</code> - OPTIONAL. Time at which the JWT was issued.</li>
-</ul></li>
-<li>  Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]</li>
-<li>  The JWT should be accepted from the client using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750">section 2.1 of RFC6750</a></li>
-</ul>
-<h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
-<p>Data Recipients MUST support the authentication of Data Holders using a signed JWT according to the following requirements:</p>
-
-<ul>
-<li>  The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
-
-<ul>
-<li>  <code>iss</code> - REQUIRED. Issuer. This MUST contain the id of the Data Holder obtained from the CDR Register.</li>
-<li>  <code>sub</code> - REQUIRED. Subject. This MUST contain the id of the Data Holder obtained from the CDR Register.</li>
-<li>  <code>aud</code> - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the Data Recipient as the intended audience. The Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.</li>
-<li>  <code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
-<li>  <code>exp</code> - RE  QUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.</li>
-<li>  <code>iat</code> - OPTIONAL. Time at which the JWT was issued.</li>
-</ul></li>
-<li>  Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]</li>
-<li>  The JWT should be accepted from the client using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750">section 2.1 of RFC6750</a></li>
-</ul>
-<h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
 <p>Data Holders MUST support the authentication of Data Recipients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
 
+<p>Data Holders MUST support the authentication of the CDR Register using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
+
+<p>Data Recipients MUST support the authentication of Data Holders using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
+
+<p>While <strong>[MTLS]</strong> is utilised for transaction security and as a Holder of Key mechanism the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
+<h3 id='private_key_jwt'>private_key_jwt</h3>
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
@@ -1881,7 +1828,7 @@ grant_type=authorization_code&amp;
 <p>When invoking a protected end point, the aforementioned assertion MUST be sent with the <code>POST</code> method and MUST include the following parameters:</p>
 
 <ul>
-<li> <code>grant_type</code>: This parameter MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>.  The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
+<li> <code>grant_type</code>: This parameter MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>.</li>
 <li> <code>code</code>: This parameter MUST only be included when invoking the Token End point after utilising the <a href="#hybrid-flow">Hybrid Authentication flow</a>.  This is the value of the code parameter returned in the authorisation response.</li>
 <li> <code>client_id</code>: The ID of the calling Client.</li>
 <li> <code>client_assertion_type</code>: This MUST be set to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
@@ -1896,12 +1843,6 @@ grant_type=authorization_code&amp;
 <li>Confidential Clients MUST be supported under this profile.</li>
 <li>Public clients MUST NOT be supported.</li>
 </ul>
-<h3 id='json-web-key-sets'>JSON Web Key Sets</h3>
-<p>Data Holder public keys MUST only be obtained from the standard OIDC end point used for that purpose.</p>
-
-<p>Data Recipient public keys MUST only be obtained from the URI registered with the CDR Register.</p>
-
-<p>CDR Register public keys MUST only be obtained from the end point exposed for that purpose.</p>
 
 <p><a id="consent"></a></p>
 <h2 id='consent'>Consent</h2>
@@ -2033,7 +1974,8 @@ End Point and Token End Point.</p>
 <h2 id='identifiers-and-subject-types'>Identifiers and Subject Types</h2>
 <p>The identifier for an authenticated end-user (subject) MUST be passed in the <code>sub</code> claim of an <a href="https://openid.net/specs/openid-cocnnect-core-1_0.html#IDToken">ID Token</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse">UserInfo response</a> as defined by <strong>[OIDC]</strong>.</p>
 
-<p>The Data Holder MUST generate the <code>sub</code> value as a Pairwise Pseudonymous Identifier (PPID) as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>. Furthermore, the identifier MUST be unique per customer as per the definition of customer in the CDR Federation section of this profile.</p>
+<p>The Data Holder MUST generate the <code>sub</code> value as a Pairwise Pseudonymous Identifier (PPID)
+as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>. Furthermore, the identifier SHOULD also be unique relative to the scenario in which the end-user has authenticated. For example, the identifier generated for the same person when they are using a business account SHOULD be different to the identifier that is generated when that same individual is authorising as an individual.</p>
 
 <p>It is RECOMMENDED that the <code>sub</code> value is generated as a version 4 Universally Unique
 Identifier (UUID) <strong>[RFC4122]</strong>.</p>
@@ -2119,14 +2061,15 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
-    "sharing_duration": "7776000",
     "id_token": {
+      "sharing_duration": "7776000",
       "acr": {
         "essential": true,
         "values": ["urn:cds.au:cdr:3"]
       }
     },
     "userinfo": {
+      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     }
@@ -2138,6 +2081,8 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <p>Request Objects MUST be signed by Data Recipients as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
 <p>Request Object references SHALL NOT be supported.</p>
+
+<p>The <code>iss</code> claim SHALL NOT be supported as it duplicates the role of the <code>client_id</code> claim.</p>
 <h2 id='requesting-sharing-duration'>Requesting Sharing Duration</h2>
 <p>To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.</p>
 
@@ -2149,8 +2094,6 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
 <li>If the <code>sharing_duration</code> value is negative then the authorisation should fail.</li>
 </ul>
-
-<p>Note that the period of <code>one year</code> in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).</p>
 
 <p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
 <h2 id='end-points'>End Points</h2>
@@ -2178,7 +2121,6 @@ Content-Type: application/json
   "revocation_endpoint": "https://www.dh.com.au/revoke",
   "userinfo_endpoint": "https://www.dh.com.au/userinfo",
   "registration_endpoint": "https://www.dh.com.au/register",
-  "jwks_uri": "https://www.dh.com.au/jwks",
   "scopes_supported": ["openid", "profile", "..."],
   "response_types_supported": ["code id_token"],
   "response_modes_supported": ["fragment"],
@@ -2205,7 +2147,7 @@ Content-Type: application/json
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS</td>
+<td>TLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
@@ -2233,7 +2175,6 @@ Content-Type: application/json
 <li><code>scopes_supported</code>:  This list of supported scopes.</li>
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
-<li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
 </ul>
 
 <p>Data Holders that support <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">Vectors of Trust</a> <strong>[VOT]</strong> MUST include:</p>
@@ -2275,12 +2216,13 @@ Host: www.holder.com.au
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
-    "sharing_duration": "7776000",
     "userinfo": {
+      "sharing_duration": "7776000",
       "given_name": null,
       "family_name": null
     },
     "id_token": {
+      "sharing_duration": "7776000",
       "acr": {
         "values": ["urn:cds.au:cdr:3"]
       }
@@ -2314,7 +2256,7 @@ Host: www.holder.com.au
 </tbody></table>
 
 <p>The requirements for the Authorisation End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong>[OIDC]</strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">5.2.2</a> of <strong>[FAPI-RW]</strong>.  This end point is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
-<h3 id='json-web-key-set-end-point'>JSON Web Key Set End Point</h3>
+<h3 id='token-end-point'>Token End Point</h3>
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2331,25 +2273,13 @@ Host: www.holder.com.au
 </tr>
 <tr>
 <td>Client Authentication Required</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Bearer Token Required</td>
 <td>No</td>
 </tr>
 </tbody></table>
-
-<p>The requirements for the JWKS End Point are specified in various sections of <strong>[OIDC]</strong>.</p>
-
-<p>This end point is used by the Data Holder to provide the public keys they will use when required.</p>
-
-<p>Data Holders MUST support a Token End Point.### Token End Point
-| Description | Value   |
-|---|---|
-| Hosted By  | Data Holder  |
-|  Transport Security |  MTLS |
-| Client Authentication Required| Yes|
-| Bearer Token Required| No|</p>
 
 <p>The requirements for the Token End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint">section 3.3.3</a> of <strong>[OIDC]</strong>.</p>
 
@@ -2462,6 +2392,8 @@ Host: www.holder.com.au
 <p>Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation</p>
 
 <p>If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST use the Data Holder’s implementation of the revocation end point with the current Refresh Token to notify the Data Holder.</p>
+<h2 id='reauthorisation-mechanism'>Reauthorisation mechanism</h2>
+<p>When an authorisation has expired due to the expiration of the time requested using the <code>sharing_duration</code> claim in the request object then authorisation needs to be re-established using the full authorisation process.</p>
 <h2 id='normative-references'>Normative References</h2>
 <table><thead>
 <tr>
@@ -2570,12 +2502,6 @@ Host: www.holder.com.au
 <td>X.1254 - Entity authentication assurance framework: <a href="https://www.itu.int/rec/T-REC-X1254-201209-I/en">https://www.itu.int/rec/T-REC-X1254-201209-I/en</a></td>
 </tr>
 </tbody></table>
-<h1 id='consumer-experience'>Consumer Experience</h1>
-<p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
-<a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Standards</a></p>
-
-<p>Additional CX guidelines and commentary can be found at:<br/>
-<a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
 <h1 id="consumer-data-standards-banking-apis">Banking APIs</h1>
 <h2 id='get-accounts'>Get Accounts</h2>
 <p><a id="opIdlistAccounts"></a></p>
@@ -2592,7 +2518,6 @@ Host: www.holder.com.au
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -2601,8 +2526,7 @@ Host: www.holder.com.au
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2620,18 +2544,6 @@ Host: www.holder.com.au
 <p><code>GET /banking/accounts</code></p>
 
 <p>Obtain a list of accounts</p>
-<h3 id='endpoint-version'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-accounts-parameters">Parameters</h3>
 
@@ -2717,16 +2629,9 @@ Host: www.holder.com.au
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -2894,7 +2799,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -2903,8 +2807,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2922,18 +2825,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/balances</code></p>
 
 <p>Obtain balances for multiple, filtered accounts</p>
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-bulk-balances-parameters">Parameters</h3>
 
@@ -3019,9 +2910,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
+<td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -3193,7 +3084,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -3203,8 +3093,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3234,19 +3123,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-3'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
-
+</span></code></pre>
 <h3 id="get-balances-for-specific-accounts-parameters">Parameters</h3>
 
 <table><thead>
@@ -3310,16 +3187,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -3414,13 +3284,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
-<tr>
-<td>422</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -3442,7 +3305,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -3451,8 +3313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3470,18 +3331,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/{accountId}/balance</code></p>
 
 <p>Obtain the balance for a single specified account</p>
-<h3 id='endpoint-version-4'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-account-balance-parameters">Parameters</h3>
 
@@ -3539,16 +3388,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -3640,7 +3482,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -3649,8 +3490,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3668,18 +3508,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/{accountId}</code></p>
 
 <p>Obtain detailed information on a single account</p>
-<h3 id='endpoint-version-5'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-account-detail-parameters">Parameters</h3>
 
@@ -3737,16 +3565,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4030,7 +3851,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4039,8 +3859,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4069,18 +3888,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     - A reasonable date/time nominated by the data holder using internal data structures</li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
 </ul>
-<h3 id='endpoint-version-6'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-transactions-for-account-parameters">Parameters</h3>
 
@@ -4133,7 +3940,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)</td>
+<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied</td>
 </tr>
 <tr>
 <td>page</td>
@@ -4187,16 +3994,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4305,7 +4105,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4314,8 +4113,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4333,18 +4131,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/{accountId}/transactions/{transactionId}</code></p>
 
 <p>Obtain detailed information on a transaction for a specific account</p>
-<h3 id='endpoint-version-7'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-transaction-detail-parameters">Parameters</h3>
 
@@ -4409,16 +4195,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4527,7 +4306,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4536,8 +4314,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4555,18 +4332,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/{accountId}/direct-debits</code></p>
 
 <p>Obtain direct debit authorisations for a specific account</p>
-<h3 id='endpoint-version-8'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-direct-debits-for-account-parameters">Parameters</h3>
 
@@ -4638,16 +4403,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4748,7 +4506,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4757,8 +4514,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4776,18 +4532,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/direct-debits</code></p>
 
 <p>Obtain direct debit authorisations for multiple, filtered accounts</p>
-<h3 id='endpoint-version-9'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-bulk-direct-debits-parameters">Parameters</h3>
 
@@ -4873,16 +4617,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-3'>Enumerated Values</h4>
@@ -5052,7 +4789,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5062,8 +4798,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5093,19 +4828,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-10'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
-
+</span></code></pre>
 <h3 id="get-direct-debits-for-specific-accounts-parameters">Parameters</h3>
 
 <table><thead>
@@ -5169,16 +4892,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -5271,13 +4987,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
 </tr>
-<tr>
-<td>422</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -5299,7 +5008,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5308,8 +5016,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5327,18 +5034,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/accounts/{accountId}/payments/scheduled</code></p>
 
 <p>Obtain scheduled, outgoing payments for a specific account</p>
-<h3 id='endpoint-version-11'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-scheduled-payments-for-account-parameters">Parameters</h3>
 
@@ -5410,16 +5105,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -5599,7 +5287,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5608,8 +5295,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5627,18 +5313,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/payments/scheduled</code></p>
 
 <p>Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments</p>
-<h3 id='endpoint-version-12'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-scheduled-payments-bulk-parameters">Parameters</h3>
 
@@ -5724,16 +5398,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -5982,7 +5649,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5992,8 +5658,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6023,19 +5688,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version-13'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
-
+</span></code></pre>
 <h3 id="get-scheduled-payments-for-specific-accounts-parameters">Parameters</h3>
 
 <table><thead>
@@ -6099,16 +5752,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -6280,13 +5926,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td></td>
 <td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
 </tr>
-<tr>
-<td>422</td>
-<td>x-fapi-interaction-id</td>
-<td>string</td>
-<td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -6308,7 +5947,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -6317,8 +5955,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6336,18 +5973,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/payees</code></p>
 
 <p>Obtain a list of pre-registered payees</p>
-<h3 id='endpoint-version-14'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-payees-parameters">Parameters</h3>
 
@@ -6419,16 +6044,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
@@ -6548,7 +6166,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -6557,8 +6174,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6576,18 +6192,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /banking/payees/{payeeId}</code></p>
 
 <p>Obtain detailed information on a single payee</p>
-<h3 id='endpoint-version-15'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-payee-detail-parameters">Parameters</h3>
 
@@ -6645,16 +6249,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -6829,18 +6426,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.</p>
 
 <p>In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
-<h3 id='endpoint-version-16'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-products-parameters">Parameters</h3>
 
@@ -7094,18 +6679,6 @@ This operation does not require authentication
 <p><code>GET /banking/products/{productId}</code></p>
 
 <p>Obtain detailed information on a single product offered openly to the market</p>
-<h3 id='endpoint-version-17'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-product-detail-parameters">Parameters</h3>
 
@@ -7373,7 +6946,6 @@ This operation does not require authentication
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -7382,8 +6954,7 @@ This operation does not require authentication
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -7401,18 +6972,6 @@ This operation does not require authentication
 <p><code>GET /common/customer</code></p>
 
 <p>Obtain basic information on the customer that has authorised the current session</p>
-<h3 id='endpoint-version-18'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-customer-parameters">Parameters</h3>
 
@@ -7463,16 +7022,9 @@ This operation does not require authentication
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7573,7 +7125,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -7582,8 +7133,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -7601,18 +7151,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /common/customer/detail</code></p>
 
 <p>Obtain detailed information on the authorised customer within the current session.</p>
-<h3 id='endpoint-version-19'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-customer-detail-parameters">Parameters</h3>
 
@@ -7663,16 +7201,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>x-cds-User-Agent</td>
 <td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7896,18 +7427,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>GET /discovery/status</code></p>
 
 <p>Obtain a health check status for the implementation</p>
-<h3 id='endpoint-version-20'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-status-parameters">Parameters</h3>
 
@@ -8027,18 +7546,6 @@ This operation does not require authentication
 <p><code>GET /discovery/outages</code></p>
 
 <p>Obtain a list of scheduled outages for the implementation</p>
-<h3 id='endpoint-version-21'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
 
 <h3 id="get-outages-parameters">Parameters</h3>
 
@@ -15518,7 +15025,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format.</td>
 </tr>
 <tr>
 <td>country</td>
@@ -15721,7 +15228,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
+<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a></td>
 </tr>
 </tbody></table>
 
@@ -16657,18 +16164,7 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
+</span></code></pre>
 
 <h3 id="metadata-update-parameters">Parameters</h3>
 
@@ -16721,7 +16217,9 @@ This operation does not require authentication
 <td>None</td>
 </tr>
 </tbody></table>
+
 <h3 id='response-headers'>Response Headers</h3>
+
 <table><thead>
 <tr>
 <th>Status</th>
@@ -16741,14 +16239,17 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation may only be call by the CDR Register
 </aside>
+
 <h2 id='get-metrics'>Get Metrics</h2>
+
 <p><a id="opIdgetMetrics"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
+
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/metrics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -16776,21 +16277,7 @@ This operation may only be called by the CDR Register
 
 <p><code>GET /admin/metrics</code></p>
 
-<p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
-
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
-
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
+<p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.<br/><br/>Note that for all applicable requests currentDay is defined as the current day beginning at midnight AEST.</p>
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -16808,7 +16295,7 @@ This operation may only be called by the CDR Register
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
+<td>The period of metrics to be requested. Values can be CURRENT_DAY (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -16836,7 +16323,7 @@ This operation may only be called by the CDR Register
 </thead><tbody>
 <tr>
 <td>period</td>
-<td>CURRENT</td>
+<td>CURRENT_DAY</td>
 </tr>
 <tr>
 <td>period</td>
@@ -17012,7 +16499,7 @@ This operation may only be called by the CDR Register
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation may only be call by the CDR Register
 </aside>
 
 <h2 id='schemas'>Schemas</h2>
@@ -18190,9 +17677,8 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <p>In the event of the following extreme circumstances data holders will be able to obtain relief from non-functional requirements:</p>
 
 <ul>
-<li>Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
-<li>A significant increase in traffic from a poorly designed or misbehaving data recipient (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
-<li>If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error <code>403 Forbidden</code> being returned).</li>
+<li>Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack.</li>
+<li>A significant increase in traffic from a poorly designed or misbehaving data recipient.</li>
 </ul>
 <h1 id='known-issues'>Known Issues</h1>
 <p>There are certain aspects of the standards that are actively under review.  These known issues are articulated in the following table.</p>
@@ -18235,24 +17721,6 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>9/12/2019</td>
-<td>1.1.0</td>
-<td>Banking Maintenance Iteration 1 Changes</td>
-<td>Changes arising from iteration 1 of the banking maintenance cadence.<br/>See <a href="includes/releasenotes/releasenotes.1.1.0.html">release notes</a> for detail</td>
-</tr>
-<tr>
-<td>12/11/2019</td>
-<td>1.0.1</td>
-<td>Patch update</td>
-<td>Minor defect changes and clarifications.<br/>See <a href="includes/releasenotes/releasenotes.1.0.1.html">release notes</a> for detail</td>
-</tr>
-<tr>
-<td>30/9/2019</td>
-<td>1.0.0</td>
-<td>Baseline version 1</td>
-<td>This release is the baseline release for the standards that are intended for implementation February 2020 and contains minor updates as well as changes to align to the locked down CDR Rules and the updated CDR Register design</td>
-</tr>
 <tr>
 <td>4/9/2019</td>
 <td>0.9.6</td>
@@ -18534,11 +18002,6 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <td><a href='./archive/standards-0.9.5/docs/'>15/7/2019</a></td>
 <td>0.9.5</td>
 <td><a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a></td>
-</tr>
-<tr>
-<td><a href='./archive/standards-0.9.6/docs/'>4/9/2019</a></td>
-<td>0.9.6</td>
-<td><a href='./archive/standards-0.9.6/docs/'>September fixes update</a></td>
 </tr>
 </tbody></table>
 
