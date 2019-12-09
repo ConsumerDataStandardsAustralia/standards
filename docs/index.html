@@ -940,8 +940,8 @@
 </thead><tbody>
 <tr>
 <td><strong>Content-Type</strong></td>
-<td>Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to <code>application/json</code>.</td>
-<td>Mandatory</td>
+<td>Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to <code>application/json</code>. Mandatory for PUT and POST calls.</td>
+<td>Conditional</td>
 </tr>
 <tr>
 <td><strong>Accept</strong></td>
@@ -2426,75 +2426,93 @@ Host: www.holder.com.au
 <tr>
 <th><strong>Reference</strong></th>
 <th><strong>Description</strong></th>
+<th><strong>Version</strong></th>
 </tr>
 </thead><tbody>
 <tr>
 <td><a id="FAPI-R"></a><strong>[FAPI-R]</strong></td>
 <td>Financial-grade API - Part 1: Read Only API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-1.html">https://openid.net/specs/openid-financial-api-part-1.html</a></td>
+<td>Draft-06</td>
 </tr>
 <tr>
 <td><a id="FAPI-RW"></a><strong>[FAPI-RW]</strong></td>
 <td>Financial-grade API - Part 2: Read and Write API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-2.html">https://openid.net/specs/openid-financial-api-part-2.html</a></td>
+<td>Draft-06</td>
 </tr>
 <tr>
 <td><a id="JSON"></a><strong>[JSON]</strong></td>
-<td>The JavaScript Object Notation (JSON) Data Interchange Format: <a href="https://tools.ietf.org/html/rfc7159">https://tools.ietf.org/html/rfc7159</a></td>
+<td>The JavaScript Object Notation (JSON) Data Interchange Format: <a href="https://tools.ietf.org/html/rfc8259">https://tools.ietf.org/html/rfc8259</a></td>
+<td>RFC8259</td>
 </tr>
 <tr>
 <td><a id="JWA"></a><strong>[JWA]</strong></td>
 <td>JSON Web Algorithms (JWA): <a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40">https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40</a></td>
+<td>Jan 2015</td>
 </tr>
 <tr>
 <td><a id="JWK"></a><strong>[JWK]</strong></td>
 <td>JSON Web Key (JWK): <a href="https://tools.ietf.org/html/rfc7517">https://tools.ietf.org/html/rfc7517</a></td>
+<td>RFC7517</td>
 </tr>
 <tr>
 <td><a id="JWT"></a><strong>[JWT]</strong></td>
 <td>JSON Web Token (JWT): <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32">https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32</a></td>
+<td>Dec 2014</td>
 </tr>
 <tr>
 <td><a id="JWS"></a><strong>[JWS]</strong></td>
 <td>JSON Web Signature (JWS): <a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-signature">http://tools.ietf.org/html/draft-ietf-jose-json-web-signature</a></td>
+<td>Jan 2015</td>
 </tr>
 <tr>
 <td><a id="JWE"></a><strong>[JWE]</strong></td>
 <td>JSON Web Encryption (JWE): <a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption">http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption</a></td>
+<td>Jan 2015</td>
 </tr>
 <tr>
 <td><a id="MTLS"></a><strong>[MTLS]</strong></td>
 <td>OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html">https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html</a></td>
+<td>Jan 2018</td>
 </tr>
 <tr>
 <td><a id="OAUTH2"></a><strong>[OAUTH2]</strong></td>
 <td>The OAuth 2.0 Authorization Framework: <a href="https://tools.ietf.org/html/rfc6749">https://tools.ietf.org/html/rfc6749</a></td>
+<td>RFC6749</td>
 </tr>
 <tr>
 <td><a id="OIDC"></a><strong>[OIDC]</strong></td>
 <td>OpenID Connect Core 1.0 incorporating errata set 1: <a href="http://openid.net/specs/openid-connect-core-1_0.html">http://openid.net/specs/openid-connect-core-1_0.html</a></td>
+<td>Nov 2014</td>
 </tr>
 <tr>
 <td><a id="OIDD"></a><strong>[OIDD]</strong></td>
 <td>OpenID Connect Discovery 1.0 incorporating errata set 1: <a href="http://openid.net/specs/openid-connect-discovery-1_0.html">http://openid.net/specs/openid-connect-discovery-1_0.html</a></td>
+<td>Nov 2014</td>
 </tr>
 <tr>
 <td><a id="TDIF"></a><strong>[TDIF]</strong></td>
 <td>Digital Transformation Agency - Trusted Digital Identity Framework <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework</a></td>
+<td>April 2019</td>
 </tr>
 <tr>
 <td><a id="RFC2119"></a><strong>[RFC2119]</strong></td>
 <td>Key words for use in RFCs to Indicate Requirement Levels <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></td>
+<td>RFC2119</td>
 </tr>
 <tr>
 <td><a id="RFC7009"></a><strong>[RFC7009]</strong></td>
 <td>OAuth 2.0 Token Revocation: <a href="https://tools.ietf.org/html/rfc7009">https://tools.ietf.org/html/rfc7009</a></td>
+<td>RFC7009</td>
 </tr>
 <tr>
 <td><a id="RFC7523"></a><strong>[RFC7523]</strong></td>
 <td>JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <a href="https://tools.ietf.org/html/rfc7523">https://tools.ietf.org/html/rfc7523</a></td>
+<td>RFC7523</td>
 </tr>
 <tr>
 <td><a id="RFC7662"></a><strong>[RFC7662]</strong></td>
 <td>OAuth 2.0 Token Introspection: <a href="https://tools.ietf.org/html/rfc7662">https://tools.ietf.org/html/rfc7662</a></td>
+<td>RFC7662</td>
 </tr>
 </tbody></table>
 <h2 id='informative-references'>Informative References</h2>

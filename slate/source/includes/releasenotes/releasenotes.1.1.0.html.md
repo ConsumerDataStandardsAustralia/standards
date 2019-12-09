@@ -15,7 +15,7 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-|Removed references to Vectors Of Trust|This change was recommended via the maintenance iteration to remove ambiguity from the standards|[InfoSec End Points Section](../../index.html#end-points) & [Scopes and Claims Section](../../index.html#scopes-and-claims)
+|`Content-Type` header optionality|Clarified that the Content-Type header is only mandatory for PUT and POST calls|[HTTP Headers Section](../../index.html#http-headers)
 |`x-fapi-interaction-id` description clarification|A clarification of the description recommended by the CDR Engineering team|[HTTP Headers Section](../../index.html#http-headers)
 
 ## API End Points
@@ -25,6 +25,8 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+|Normative reference versions|Added specific dates or versions to the normative reference table to avoid ambiguity|[Normative References](../../index.html#normative-references)
+|Removed references to Vectors Of Trust|This change was recommended via the maintenance iteration to remove ambiguity from the standards|[InfoSec End Points Section](../../index.html#end-points) & [Scopes and Claims Section](../../index.html#scopes-and-claims)
 
 ## Consumer Experience
 No Change

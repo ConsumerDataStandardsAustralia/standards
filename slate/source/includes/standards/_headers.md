@@ -13,7 +13,7 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
-**Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to `application/json`. | Mandatory
+**Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to `application/json`. Mandatory for PUT and POST calls.| Conditional
 **Accept** | Standard HTTP Header. Specify the Content-Type that is required from the Server.<br/>If specified, must be set to `application/json` unless otherwise specified in the resource end point standard.<br/>If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, default is `application/json`. | Optional
 **x-v** | Version of the API end point requested by the client. Must be set to a positive integer. The holder should respond with the highest supported version between `x-min-v` and `x-v`. If the value of `x-min-v` is equal to or higher than the value of `x-v` then the `x-min-v` header should be treated as absent. <br/>If all versions requested are not supported then the holder should respond with a `406 Not Acceptable`. | Mandatory
 **x-min-v** | Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between `x-min-v` and `x-v`. If the value of `x-min-v` is equal to or higher than the value of `x-v` then the `x-min-v` header should be treated as absent. <br/>If all versions requested are not supported then the holder should respond with a `406 Not Acceptable`. | Optional
