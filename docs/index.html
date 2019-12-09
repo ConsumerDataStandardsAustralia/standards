@@ -1658,7 +1658,6 @@ standards</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
 <li>  <strong>CDR:</strong> Consumer Data Right</li>
 <li>  <strong>CDR-SP</strong>: Consumer Data Right Security Profile</li>
-<li>  <strong>CIBA</strong>: Client Initiated Backchannel Authentication</li>
 <li>  <strong>CL</strong>: Credential Level</li>
 <li>  <strong>DH:</strong> Data Holder</li>
 <li>  <strong>DR:</strong> Data Recipient</li>
@@ -1683,7 +1682,6 @@ standards</li>
 <li>  <strong>REST:</strong> Representational State Transfer</li>
 <li>  <strong>TDIF:</strong> Trusted Digital Identity Framework</li>
 <li>  <strong>TLS:</strong> Transport Layer Security</li>
-<li>  <strong>VoT:</strong> Vector of Trust</li>
 </ul>
 <h2 id='cdr-federation'>CDR Federation</h2>
 <p>The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
@@ -1930,13 +1928,6 @@ grant_type=authorization_code&amp;
 <li><code>updated_at</code>: Time the End-User&#39;s information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>updated_at</code> time.</li>
 </ul>
 
-<p>The following <strong>[VOT]</strong> claims MAY be supported:</p>
-
-<ul>
-<li> <code>vot</code>: MUST contain a valid <a href="#ordinal-loa">VoT value</a>.</li>
-<li> <code>vtm</code>: The <strong>[VOT]</strong> trustmark URI.</li>
-</ul>
-
 <p>The following additional claims MUST be supported:</p>
 
 <ul>
@@ -1959,21 +1950,6 @@ grant_type=authorization_code&amp;
   "acr": "urn:cds.au:cdr:3"
 }
 </code></pre>
-<blockquote>
-<p>Non-Normative Example - vot</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "iss": "https://www.holder.com.au",
-  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
-  "aud": "12345",
-  "nonce": "n-0S6_WzA2Mj",
-  "exp": 1311281970,
-  "iat": 1311280970,
-  "auth_time": 1311280969,
-  "vot": "CL2",
-  "vtm": "https://vector.com/trustmark".
-}
-</code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard.  In accordance with <strong>[FAPI-RW]</strong>, ID Tokens must be signed and encrypted when returned
 to a Data Recipient from both the Authorisation
 End Point and Token End Point.</p>
@@ -1989,14 +1965,6 @@ End Point and Token End Point.</p>
 <p>ID Tokens MUST be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
 <p>The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.</p>
-
-<p>An ID Token MUST not contain both a <code>vot</code> claim (see <a href="#vector-loas">Vectors of Trust</a>) and an <code>acr</code> claim .</p>
-
-<p>If the ID Token contains a <code>vot</code> claim, it MUST also contain a <code>vtm</code> claim:</p>
-
-<ul>
-<li><code>vtm</code>: The trustmark URI as specified in <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15#section-5">section 5</a> of <strong>[VOT]</strong> .</li>
-</ul>
 <h4 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h4>
 <p>The <code>c_hash</code> value MUST be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong>[OIDC]</strong>.</p>
 
@@ -2184,13 +2152,12 @@ Content-Type: application/json
   "response_modes_supported": ["fragment"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
-  "vot_values_supported": ["CL1","CL2"],
   "subject_types_supported": ["pairwise"],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "mutual_tls_sender_constrained_access_tokens": "true",
-  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 </code></pre>
 <table><thead>
@@ -2219,8 +2186,6 @@ Content-Type: application/json
 
 <p>Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in <a href="https://openid.net/specs/openid-connect-discovery-1_0.html">Section 3 and 4 of the OpenID Connect Discovery standards</a> <strong>[OIDD]</strong>.</p>
 
-<p>Where a Data Holder is supporting <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">Vectors of Trust</a> <strong>[VOT]</strong> or <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">FAPI-CIBA</a> <strong>[FAPI-CIBA]</strong>, the published OpenID Provider metadata SHALL reflect that support.</p>
-
 <p>At a minimum, the Data Holder metadata MUST include:</p>
 
 <ul>
@@ -2234,12 +2199,6 @@ Content-Type: application/json
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
-</ul>
-
-<p>Data Holders that support <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">Vectors of Trust</a> <strong>[VOT]</strong> MUST include:</p>
-
-<ul>
-<li><code>vot_values_supported</code>:  The list of supported component values.</li>
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
@@ -2536,10 +2495,6 @@ Host: www.holder.com.au
 <tr>
 <td><a id="RFC7662"></a><strong>[RFC7662]</strong></td>
 <td>OAuth 2.0 Token Introspection: <a href="https://tools.ietf.org/html/rfc7662">https://tools.ietf.org/html/rfc7662</a></td>
-</tr>
-<tr>
-<td><a id="VOT"></a><strong>[VOT]</strong></td>
-<td>Vectors of Trust, draft-richer-vectors-of-trust-15 <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">https://tools.ietf.org/html/draft-richer-vectors-of-trust-15</a></td>
 </tr>
 </tbody></table>
 <h2 id='informative-references'>Informative References</h2>

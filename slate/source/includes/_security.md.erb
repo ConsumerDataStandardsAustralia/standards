@@ -12,7 +12,6 @@ For information on the specific normative references that underpin this profile 
 -   **CA**: Certificate Authority
 -   **CDR:** Consumer Data Right
 -   **CDR-SP**: Consumer Data Right Security Profile
--   **CIBA**: Client Initiated Backchannel Authentication
 -   **CL**: Credential Level
 -   **DH:** Data Holder
 -   **DR:** Data Recipient
@@ -37,7 +36,6 @@ For information on the specific normative references that underpin this profile 
 -   **REST:** Representational State Transfer
 -   **TDIF:** Trusted Digital Identity Framework
 -   **TLS:** Transport Layer Security
--   **VoT:** Vector of Trust
 
 ## CDR Federation
 The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
@@ -266,11 +264,6 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 - `family_name`: Surname(s) or last name(s) of the End-User.
 - `updated_at`: Time the End-User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `updated_at` time.
 
-The following **[VOT]** claims MAY be supported:
-
--  `vot`: MUST contain a valid [VoT value](#ordinal-loa).
--  `vtm`: The **[VOT]** trustmark URI.
-
 The following additional claims MUST be supported:
 
 - `refresh_token_expires_at`: indicates the date-time at which the most recently provided refresh token will expire. Its value MUST be a number containing a NumericDate value, as specified in section 2 of [section 2](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2) **[JWT]**.  If no refresh token has been provided then a zero value should be returned.
@@ -296,22 +289,6 @@ The following additional claims MUST be supported:
 }
 ```
 
-> Non-Normative Example - vot
-
-```
-{
-  "iss": "https://www.holder.com.au",
-  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
-  "aud": "12345",
-  "nonce": "n-0S6_WzA2Mj",
-  "exp": 1311281970,
-  "iat": 1311280970,
-  "auth_time": 1311280969,
-  "vot": "CL2",
-  "vtm": "https://vector.com/trustmark".
-}
-```
-
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.  In accordance with **[FAPI-RW]**, ID Tokens must be signed and encrypted when returned
 to a Data Recipient from both the Authorisation
 End Point and Token End Point.
@@ -325,12 +302,6 @@ As described under [section 5.2.2](https://openid.net/specs/openid-financial-api
 ID Tokens MUST be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**.
 
 The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.
-
-An ID Token MUST not contain both a `vot` claim (see [Vectors of Trust](#vector-loas)) and an `acr` claim .
-
-If the ID Token contains a `vot` claim, it MUST also contain a `vtm` claim:
-
-- `vtm`: The trustmark URI as specified in [section 5](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15#section-5) of **[VOT]** .
 
 #### Hashing value for state and authorisation code
 The `c_hash` value MUST be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[OIDC]**.
@@ -524,13 +495,12 @@ Content-Type: application/json
   "response_modes_supported": ["fragment"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
-  "vot_values_supported": ["CL1","CL2"],
   "subject_types_supported": ["pairwise"],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "mutual_tls_sender_constrained_access_tokens": "true",
-  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 ```
 
@@ -542,8 +512,6 @@ Content-Type: application/json
 | Bearer Token Required| No|
 
 Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[OIDD]**.
-
-Where a Data Holder is supporting [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** or [FAPI-CIBA](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**, the published OpenID Provider metadata SHALL reflect that support.
 
 At a minimum, the Data Holder metadata MUST include:
 
@@ -557,10 +525,6 @@ At a minimum, the Data Holder metadata MUST include:
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
 - `jwks_uri`: The JSON Web Key Set for the data holder.
-
-Data Holders that support [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** MUST include:
-
-- `vot_values_supported`:  The list of supported component values.
 
 
 <a id="authorisation-endpoint"></a>
@@ -731,7 +695,6 @@ If consent is withdrawn by a Customer in writing or by using the Data Recipientâ
 | <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>|
 | <a id="RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523> |
 | <a id="RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662>|
-| <a id="VOT"></a>**[VOT]** | Vectors of Trust, draft-richer-vectors-of-trust-15 <https://tools.ietf.org/html/draft-richer-vectors-of-trust-15>
 
 ## Informative References
 
