@@ -3270,7 +3270,6 @@
     "BankingDomesticPayeeAccount": {
       "type": "object",
       "required": [
-        "accountName",
         "bsb",
         "accountNumber"
       ],
