@@ -1366,7 +1366,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/CommonDiscoveryStatus"
+              "$ref": "#/definitions/ResponseCommonDiscoveryStatus"
             }
           }
         },
@@ -3853,7 +3853,7 @@
         }
       }
     },
-    "CommonDiscoveryStatus": {
+    "ResponseCommonDiscoveryStatus": {
       "type": "object",
       "required": [
         "data",
