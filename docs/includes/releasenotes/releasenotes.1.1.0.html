@@ -263,8 +263,8 @@
 <td><a href="../../#http-headers">HTTP Headers Section</a></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>Modification of <code>x-cds-User-Agent</code> header</td>
+<td>The <code>x-cds-User-Agent</code> header has been renamed to <code>x-cds-client-headers</code> and clarified to exclude specific types of headers</td>
 <td><a href="../../#http-headers">HTTP Headers Section</a></td>
 </tr>
 </tbody></table>
@@ -284,7 +284,27 @@
 <tr>
 <td><code>accountName</code> optional for domestic payee</td>
 <td>For some Banks the account name field is not captured for domestic payees so this field has been made optional</td>
-<td><a href="../../##tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount Section</a></td>
+<td><a href="../../#tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount Section</a></td>
+</tr>
+<tr>
+<td>Aggregated transaction clarification</td>
+<td>The handling of the sharing of data related to aggregated transactionshas been added to the description of the transaction history end point</td>
+<td><a href="../../#get-transactions-for-account">BankingDomesticPayeeAccount Section</a></td>
+</tr>
+<tr>
+<td>Term deposit maturity instructions as array</td>
+<td>The termDeposit field in the account detail structure has been converted into an array</td>
+<td><a href="../../#tocSbankingaccountdetail">BankingAccountDetail Section</a></td>
+</tr>
+<tr>
+<td>International payees with domestic accounts clarification</td>
+<td>Description for how to represent international payees that are represented as a domestic account for payment purposes</td>
+<td><a href="../../#get-payee-detail">Get Payee Detail Section</a></td>
+</tr>
+<tr>
+<td>Corrected description for <code>amount</code> field</td>
+<td>The <code>amount</code> field in scheduled payments had an incorrect description text which has been fixed</td>
+<td><a href="../../#tocSbankingscheduledpaymentset">BankingScheduledPaymentSet Section</a></td>
 </tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>

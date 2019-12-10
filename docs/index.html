@@ -979,8 +979,8 @@
 <td>Conditional</td>
 </tr>
 <tr>
-<td><strong>x-cds-User-Agent</strong></td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td><strong>x-cds-client-headers</strong></td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul></td>
 <td>Conditional</td>
 </tr>
 </tbody></table>
