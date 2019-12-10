@@ -2538,7 +2538,10 @@
               ]
             },
             "termDeposit": {
-              "$ref": "#/definitions/BankingTermDepositAccount"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BankingTermDepositAccount"
+              }
             },
             "creditCard": {
               "$ref": "#/definitions/BankingCreditCardAccount"

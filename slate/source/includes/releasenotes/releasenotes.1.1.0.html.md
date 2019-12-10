@@ -26,6 +26,7 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 |Clarified description of `productName`|Clarified that the `productName` field in the account structure is set by the data holder not the account holder|[BankingAccount Section](../../index.html#schemabankingaccount)
 |`accountName` optional for domestic payee|For some Banks the account name field is not captured for domestic payees so this field has been made optional|[BankingDomesticPayeeAccount Section](../../index.html#tocSbankingdomesticpayeeaccount)
 |Aggregated transaction clarification|The handling of the sharing of data related to aggregated transactionshas been added to the description of the transaction history end point|[BankingDomesticPayeeAccount Section](../../index.html#get-transactions-for-account)
+|Term deposit maturity instructions as array|The termDeposit field in the account detail structure has been converted into an array|[BankingAccountDetail Section](../../index.html#tocSbankingaccountdetail)
 
 ## Information Security Profile
 |Change|Description|Link|
