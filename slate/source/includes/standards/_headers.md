@@ -22,7 +22,7 @@ Header Field | Description | Mandatory?
 **x-fapi-auth-date** | The time when the customer last logged in to the data recipient.  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls. | Conditional
 **x-fapi-customer-ip-address** | The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls. | Conditional
 **x-cds-User-Agent** | The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.| Conditional
-**x-cds-subject** | Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls. | Conditional
+
 ### Response headers
 Header Field | Description | Mandatory?
 -------------|-------------|-----------

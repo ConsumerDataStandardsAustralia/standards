@@ -17,6 +17,8 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 |------|-----------|----|
 |`Content-Type` header optionality|Clarified that the Content-Type header is only mandatory for PUT and POST calls|[HTTP Headers Section](../../index.html#http-headers)
 |`x-fapi-interaction-id` description clarification|A clarification of the description recommended by the CDR Engineering team|[HTTP Headers Section](../../index.html#http-headers)
+|`x-cds-subject` header removed| This header has been removed from the standards based on community consultation|[HTTP Headers Section](../../index.html#http-headers)
+|||[HTTP Headers Section](../../index.html#http-headers)
 
 ## API End Points
 |Change|Description|Link|
@@ -29,6 +31,7 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 |------|-----------|----|
 |Normative reference versions|Added specific dates or versions to the normative reference table to avoid ambiguity|[Normative References](../../index.html#normative-references)
 |Removed references to Vectors Of Trust|This change was recommended via the maintenance iteration to remove ambiguity from the standards|[InfoSec End Points Section](../../index.html#end-points) & [Scopes and Claims Section](../../index.html#scopes-and-claims)
+|Clarified id_token non-normative sample|Non-normative id_token has been modified to include the `refresh_token_expires_at` and `sharing_expires_at` claims|[Scopes and Claims Section](../../index.html#/#scopes-and-claims)
 
 ## Consumer Experience
 No Change
