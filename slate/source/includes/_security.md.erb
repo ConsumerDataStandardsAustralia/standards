@@ -12,7 +12,6 @@ For information on the specific normative references that underpin this profile 
 -   **CA**: Certificate Authority
 -   **CDR:** Consumer Data Right
 -   **CDR-SP**: Consumer Data Right Security Profile
--   **CIBA**: Client Initiated Backchannel Authentication
 -   **CL**: Credential Level
 -   **DH:** Data Holder
 -   **DR:** Data Recipient
@@ -37,7 +36,6 @@ For information on the specific normative references that underpin this profile 
 -   **REST:** Representational State Transfer
 -   **TDIF:** Trusted Digital Identity Framework
 -   **TLS:** Transport Layer Security
--   **VoT:** Vector of Trust
 
 ## CDR Federation
 The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
@@ -266,11 +264,6 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 - `family_name`: Surname(s) or last name(s) of the End-User.
 - `updated_at`: Time the End-User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `updated_at` time.
 
-The following **[VOT]** claims MAY be supported:
-
--  `vot`: MUST contain a valid [VoT value](#ordinal-loa).
--  `vtm`: The **[VOT]** trustmark URI.
-
 The following additional claims MUST be supported:
 
 - `refresh_token_expires_at`: indicates the date-time at which the most recently provided refresh token will expire. Its value MUST be a number containing a NumericDate value, as specified in section 2 of [section 2](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2) **[JWT]**.  If no refresh token has been provided then a zero value should be returned.
@@ -292,23 +285,9 @@ The following additional claims MUST be supported:
   "iat": 1311280970,
   "nbf": 1311280970,
   "auth_time": 1311280969,
-  "acr": "urn:cds.au:cdr:3"
-}
-```
-
-> Non-Normative Example - vot
-
-```
-{
-  "iss": "https://www.holder.com.au",
-  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
-  "aud": "12345",
-  "nonce": "n-0S6_WzA2Mj",
-  "exp": 1311281970,
-  "iat": 1311280970,
-  "auth_time": 1311280969,
-  "vot": "CL2",
-  "vtm": "https://vector.com/trustmark".
+  "acr": "urn:cds.au:cdr:3",
+  "refresh_token_expires_at": "1311281970",
+  "sharing_expires_at": "1311281970"
 }
 ```
 
@@ -325,12 +304,6 @@ As described under [section 5.2.2](https://openid.net/specs/openid-financial-api
 ID Tokens MUST be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**.
 
 The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.
-
-An ID Token MUST not contain both a `vot` claim (see [Vectors of Trust](#vector-loas)) and an `acr` claim .
-
-If the ID Token contains a `vot` claim, it MUST also contain a `vtm` claim:
-
-- `vtm`: The trustmark URI as specified in [section 5](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15#section-5) of **[VOT]** .
 
 #### Hashing value for state and authorisation code
 The `c_hash` value MUST be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[OIDC]**.
@@ -433,6 +406,16 @@ Only the following cipher suites SHALL be permitted in accordance with [section 
 -   TLS\_DHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 -   TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 
+
+## CORS
+Cross-origin resource sharing (CORS) must be enabled (ie. `Access-Control-Allow-Origin` set to "*") for the following end points:
+
+- Get Status
+- Get Outages
+- Get Products
+- Get Product Detail
+
+
 <a id="request-object"></a>
 ## Request Object
 
@@ -496,6 +479,10 @@ The Data Recipient is able to obtain the expiration of sharing via the `sharing_
 NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
 </aside>
 
+<aside class="notice">
+NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA
+</aside>
+
 ### OpenID Provider Configuration End Point
 
 > Non-Normative Example
@@ -524,26 +511,23 @@ Content-Type: application/json
   "response_modes_supported": ["fragment"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
-  "vot_values_supported": ["CL1","CL2"],
   "subject_types_supported": ["pairwise"],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "mutual_tls_sender_constrained_access_tokens": "true",
-  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 ```
 
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
-|  Transport Security |  MTLS |
+|  Transport Security |  TLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
 Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[OIDD]**.
-
-Where a Data Holder is supporting [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** or [FAPI-CIBA](https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default) **[FAPI-CIBA]**, the published OpenID Provider metadata SHALL reflect that support.
 
 At a minimum, the Data Holder metadata MUST include:
 
@@ -557,10 +541,6 @@ At a minimum, the Data Holder metadata MUST include:
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
 - `jwks_uri`: The JSON Web Key Set for the data holder.
-
-Data Holders that support [Vectors of Trust](https://tools.ietf.org/html/draft-richer-vectors-of-trust-15) **[VOT]** MUST include:
-
-- `vot_values_supported`:  The list of supported component values.
 
 
 <a id="authorisation-endpoint"></a>
@@ -626,7 +606,7 @@ The requirements for the Authorisation End Point are specified in [section 3.3.2
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
-|  Transport Security |  MTLS |
+|  Transport Security |  TLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
@@ -634,7 +614,10 @@ The requirements for the JWKS End Point are specified in various sections of **[
 
 This end point is used by the Data Holder to provide the public keys they will use when required.
 
-Data Holders MUST support a Token End Point.### Token End Point
+Data Holders MUST support a JWKS End Point.
+
+
+### Token End Point
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
@@ -687,7 +670,7 @@ An Introspection End Point Response SHALL only include the following fields:
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder & Data Recipient  |
-|  Transport Security |  MTLS |
+|  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
 | Client Authentication Required| Yes|
 | Bearer Token Required| No|
 
@@ -712,26 +695,25 @@ If consent is withdrawn by a Customer in writing or by using the Data Recipientâ
 
 ## Normative References
 
-| **Reference**  | **Description**  |
+| **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
-| <a id="FAPI-R"></a>**[FAPI-R]**   | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1.html>                                                         |
-| <a id="FAPI-RW"></a>**[FAPI-RW]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2.html>                                                    |
-| <a id="JSON"></a>**[JSON]**     | The JavaScript Object Notation (JSON) Data Interchange Format: <https://tools.ietf.org/html/rfc7159>                                                                              |
-| <a id="JWA"></a>**[JWA]**      | JSON Web Algorithms (JWA): <https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40>                                                                                   |
-| <a id="JWK"></a>**[JWK]**      | JSON Web Key (JWK): <https://tools.ietf.org/html/rfc7517>                                                                                                                 |
-| <a id="JWT"></a>**[JWT]**      | JSON Web Token (JWT): <https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32>                                                                                            |
-| <a id="JWS"></a>**[JWS]**      | JSON Web Signature (JWS): <http://tools.ietf.org/html/draft-ietf-jose-json-web-signature>                                                                                         |
-| <a id="JWE"></a>**[JWE]**      | JSON Web Encryption (JWE): <http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption>                                                                                       |
-| <a id="MTLS"></a>**[MTLS]**     | OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html>                                          |
-| <a id="OAUTH2"></a>**[OAUTH2]**   | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                                                    |
-| <a id="OIDC"></a>**[OIDC]**     | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                        |
-| <a id="OIDD"></a>**[OIDD]**     | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                              |
-| <a id="TDIF"></a>**[TDIF]** | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework>
-| <a id="RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>   |
-| <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>|
-| <a id="RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523> |
-| <a id="RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662>|
-| <a id="VOT"></a>**[VOT]** | Vectors of Trust, draft-richer-vectors-of-trust-15 <https://tools.ietf.org/html/draft-richer-vectors-of-trust-15>
+| <a id="FAPI-R"></a>**[FAPI-R]**   | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1.html>                                                      |Draft-06
+| <a id="FAPI-RW"></a>**[FAPI-RW]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2.html>                                                |Draft-06
+| <a id="JSON"></a>**[JSON]**     | The JavaScript Object Notation (JSON) Data Interchange Format: <https://tools.ietf.org/html/rfc8259>                                                                             |RFC8259
+| <a id="JWA"></a>**[JWA]**      | JSON Web Algorithms (JWA): <https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40>                                                                                   |Jan 2015
+| <a id="JWK"></a>**[JWK]**      | JSON Web Key (JWK): <https://tools.ietf.org/html/rfc7517>                                                                                                                         |RFC7517
+| <a id="JWT"></a>**[JWT]**      | JSON Web Token (JWT): <https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32>                                                                                            |Dec 2014
+| <a id="JWS"></a>**[JWS]**      | JSON Web Signature (JWS): <http://tools.ietf.org/html/draft-ietf-jose-json-web-signature>                                                                                         |Jan 2015
+| <a id="JWE"></a>**[JWE]**      | JSON Web Encryption (JWE): <http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption>                                                                                       |Jan 2015
+| <a id="MTLS"></a>**[MTLS]**     | OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html>                                        |Jan 2018
+| <a id="OAUTH2"></a>**[OAUTH2]**   | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                   |RFC6749
+| <a id="OIDC"></a>**[OIDC]**     | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                       |Nov 2014
+| <a id="OIDD"></a>**[OIDD]**     | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                             |Nov 2014
+| <a id="TDIF"></a>**[TDIF]** | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework>|April 2019
+| <a id="RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |RFC2119
+| <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |RFC7009
+| <a id="RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |RFC7523
+| <a id="RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662>                                                                                                          |RFC7662
 
 ## Informative References
 

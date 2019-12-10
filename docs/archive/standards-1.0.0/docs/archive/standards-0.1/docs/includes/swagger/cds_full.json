@@ -1,0 +1,3899 @@
+{
+  "swagger": "2.0",
+  "x-generation-date": "November 10, 2018 2:01 AM",
+  "x-workspaceId": "dpBSjv7JDN6DgRaYu",
+  "info": {
+    "title": "Consumer Data Standards",
+    "description": "API sets created by the Australian  Consumer Data Standards to meet the needs of the Consumer Data Right",
+    "version": "1",
+    "license": {
+      "name": "MIT Licence",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "data.provider.com.au",
+  "basePath": "/cds-au/v1",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/banking/accounts": {
+      "get": {
+        "summary": "Get Accounts",
+        "description": "Obtain a list of accounts",
+        "operationId": "G-BA",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "open-status",
+            "in": "query",
+            "description": "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+            "required": false,
+            "type": "string",
+            "default": "ALL"
+          },
+          {
+            "name": "product-category",
+            "in": "query",
+            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          },
+          {
+            "name": "start-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "min-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts higher or equal to than this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "max-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string",
+            "required": false,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Accounts"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/{accountId}": {
+      "get": {
+        "summary": "Get Account Detail",
+        "description": "Obtain detailed information on a single account",
+        "operationId": "G-BA-D",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "A tokenised identifier for the account which is unique but not shareable",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Account"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/balances": {
+      "get": {
+        "summary": "Get Bulk Balances",
+        "description": "Obtain balances for multiple, filtered accounts",
+        "operationId": "G-BAB",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "product-category",
+            "in": "query",
+            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "resource listing the financial balances for the account",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Accounts_Balances"
+            }
+          }
+        },
+        "x-version": "1"
+      },
+      "post": {
+        "summary": "Get Balances For Specific Accounts",
+        "description": "Obtain balances for a specified list of accounts",
+        "operationId": "P-BAB-Q",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "accountIds",
+            "in": "body",
+            "description": "The list of account IDs to obtain information for",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountIds_Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Accounts_Balances"
+            }
+          },
+          "422": {
+            "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "schema": {
+              "$ref": "#/definitions/422_Errors"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/{accountId}/transactions": {
+      "get": {
+        "summary": "Get Transactions For Account",
+        "description": "Obtain transactions for a specific account",
+        "operationId": "G-BA-D-T",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "ID of the account to get transactions for.  Must have previously been returned by one of the account list end points.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "start-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "min-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts higher or equal to this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "max-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Account_Transactions"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/{accountId}/transactions/{transactionId}": {
+      "get": {
+        "summary": "Get Transaction Detail",
+        "description": "Obtain detailed information on a transaction for a specific account",
+        "operationId": "G-BA-D-T-D",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "The account id token that is used to uniquely represent the account",
+            "required": true,
+            "type": "string",
+            "default": "1234567890"
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "description": "The unique identifier for the specific transaction for which details are being requested",
+            "required": true,
+            "type": "string",
+            "default": "987654321"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Transactions_Detail"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/transactions": {
+      "get": {
+        "summary": "Get Transactions For Account",
+        "description": "Obtain transactions for multiple, filtered accounts",
+        "operationId": "G-BAT",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "product-category",
+            "in": "query",
+            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "start-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "min-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts higher or equal to this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "max-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts less than or equal to this amount",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Bulk_Transactions"
+            }
+          }
+        },
+        "x-version": "1"
+      },
+      "post": {
+        "summary": "Get Transactions For Specific Accounts",
+        "description": "Obtain transactions for a specified list of transactions.",
+        "operationId": "P-BAT-Q",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "start-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to today. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "end-time",
+            "in": "query",
+            "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to start-time plus 100 days. Format is aligned to DateTimeString common type",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "min-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts higher or equal to this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "max-amount",
+            "in": "query",
+            "description": "Filter transactions to only transactions with amounts less than or equal to than this amount",
+            "required": false,
+            "type": "number",
+            "default": ""
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          },
+          {
+            "name": "accountIds",
+            "in": "body",
+            "description": "The list of account IDs to obtain information for",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountIds_Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Bulk_Transactions"
+            }
+          },
+          "422": {
+            "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "schema": {
+              "$ref": "#/definitions/422_Errors"
+            }
+          }        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/{accountId}/direct-debits": {
+      "get": {
+        "summary": "Get Direct Debits For Account",
+        "description": "Obtain direct debit authorisations for a specific account",
+        "operationId": "G-BAD-D",
+        "tags": [
+          "Direct Debits"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "ID of the account to get direct debit authorisations for.  Must have previously been returned by one of the account list end points.",
+            "required": true,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "string",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request.  Default is 25 (standard pagination)",
+            "required": false,
+            "type": "string",
+            "default": "25"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Direct-Debits"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/accounts/direct-debits": {
+      "get": {
+        "summary": "Get Bulk Direct Debits",
+        "description": "Obtain direct debit authorisations for multiple, filtered accounts",
+        "operationId": "G-BAD",
+        "tags": [
+          "Direct Debits"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request.  Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          },
+          {
+            "name": "product-category",
+            "in": "query",
+            "description": "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned",
+            "required": false,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Direct-Debits"
+            }
+          }
+        },
+        "x-version": "1"
+      },
+      "post": {
+        "summary": "Get Direct Debits For Specific Accounts",
+        "description": "Obtain direct debit authorisations for a specified list of accounts",
+        "operationId": "P-BAD-Q",
+        "tags": [
+          "Direct Debits"
+        ],
+        "parameters": [
+          {
+            "name": "accountIds",
+            "in": "body",
+            "description": "The list of account IDs to obtain information for",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountIds_Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Direct-Debits"
+            }
+          },
+          "422": {
+            "description": "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "schema": {
+              "$ref": "#/definitions/422_Errors"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/payees": {
+      "get": {
+        "summary": "Get Payees",
+        "description": "Obtain a list of pre-registered payees",
+        "operationId": "G-BPY",
+        "tags": [
+          "Payees"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter on the payee type field.  In addition to normal type field values, ALL can be specified to retrieve all payees.  If absent the assumed value is ALL",
+            "required": false,
+            "type": "string",
+            "default": "ALL"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Payees"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/payees/{payeeId}": {
+      "get": {
+        "summary": "Get Payee Detail",
+        "description": "Obtain detailed information on a single payee",
+        "operationId": "G-BPY-D",
+        "tags": [
+          "Payees"
+        ],
+        "parameters": [
+          {
+            "name": "payeeId",
+            "in": "path",
+            "description": "The ID used to locate the details of a particular payee",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Payee_Details"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/products": {
+      "get": {
+        "summary": "Get Products",
+        "description": "Obtain a list of products that are currently openly offered to the market",
+        "operationId": "G-BP",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "product-category",
+            "in": "query",
+            "description": "Used to filter results on the productCategory field. Any one of the valid values for this field can be supplied. If absent then all products returned",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "effective",
+            "in": "query",
+            "description": "If true then only include products that are effective right now and exclude products that may be available at a future time. If false only include products effective in the future. If absent defaults to include all products",
+            "required": false,
+            "type": "boolean",
+            "default": ""
+          },
+          {
+            "name": "updated-since",
+            "in": "query",
+            "description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "description": "Filter results based on a specific brand",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to request (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "1"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page size to request. Default is 25 (standard pagination)",
+            "required": false,
+            "type": "integer",
+            "default": "25"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Products"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/banking/products/{productId}": {
+      "get": {
+        "summary": "Get Product Detail",
+        "description": "Obtain detailed information on a single product offered openly to the market",
+        "operationId": "G-BP-D",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "ID of the specific product requested",
+            "required": true,
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Banking_Product"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/common/customer": {
+      "get": {
+        "summary": "Get Customer",
+        "description": "Obtain basic information on the customer that has authorised the current session",
+        "operationId": "G-CC",
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Common_Customer"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    },
+    "/common/customer/detail": {
+      "get": {
+        "summary": "Get Customer Detail",
+        "description": "Obtain detailed information on the authorised customer within the current session.",
+        "operationId": "G-CCD",
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/200_GET_Common_Customer_Detailed"
+            }
+          }
+        },
+        "x-version": "1"
+      }
+    }
+  },
+  "definitions": {
+    "AccountIds_Request": {
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "accountIds"
+          ],
+          "properties": {
+            "accountIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "A valid account ID previously obtained from another end point"
+              }
+            }
+          }
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "200_GET_Banking_Products": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "products"
+          ],
+          "properties": {
+            "products": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "Product_Object": {
+      "type": "object",
+      "required": [
+        "productId",
+        "lastUpdated",
+        "productCategory",
+        "name",
+        "description",
+        "brand",
+        "isNegotiable"
+      ],
+      "properties": {
+        "productId": {
+          "type": "string",
+          "description": "A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "effectiveFrom": {
+          "type": "string",
+          "description": "The date and time from which this product is effective (ie. is available for origination)",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "effectiveTo": {
+          "type": "string",
+          "description": "The date and time at which this product will be retired and will no longer be offered",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "productCategory": {
+          "type": "string",
+          "description": "The category of the accounts generated from this product",
+          "default": "",
+          "enum": [
+            "PERS_AT_CALL_DEPOSITS",
+            "BUS_AT_CALL_DEPOSITS",
+            "TERM_DEPOSITS",
+            "RESIDENTIAL_MORTGAGES",
+            "PERS_CRED_AND_CHRG_CARDS",
+            "BUS_CRED_AND_CHRG_CARDS",
+            "PERS_LOANS",
+            "PERS_LEASING",
+            "BUS_LEASING",
+            "TRADE_FINANCE",
+            "PERS_OVERDRAFT",
+            "BUS_OVERDRAFT",
+            "BUS_LOANS",
+            "FOREIGN_CURR_AT_CALL_DEPOSITS",
+            "FOREIGN_CURR_TERM_DEPOSITS",
+            "FOREIGN_CURR_LOAN",
+            "FOREIGN_CURRRENCT_OVERDRAFT",
+            "TRAVEL_CARD"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the product",
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the product",
+          "default": ""
+        },
+        "brand": {
+          "type": "string",
+          "description": "A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required",
+          "default": ""
+        },
+        "brandName": {
+          "type": "string",
+          "description": "An optional display name of the brand",
+          "default": ""
+        },
+        "applicationUri": {
+          "type": "string",
+          "description": "A link to the an application web page where this product can be applied for.",
+          "default": ""
+        },
+        "isNegotiable": {
+          "type": "boolean",
+          "description": "Indicates whether the product is specifically designed so that fees and prices are negotiated depending on context. While all products are open to a degree of negotiation this flag indicates that negotiation is expected and thus that the provision of specific fees and rates is not applicable",
+          "default": ""
+        },
+        "additionalInformation": {
+          "type": "object",
+          "properties": {
+            "overviewUri": {
+              "type": "string",
+              "description": "General overview of the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "termsUri": {
+              "type": "string",
+              "description": "Terms and conditions for the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "eligibilityUri": {
+              "type": "string",
+              "description": "Eligibility rules and criteria for the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "feesAndPricingUri": {
+              "type": "string",
+              "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "bundleUri": {
+              "type": "string",
+              "description": "Description of a bundle that this product can be part of",
+              "default": "",
+              "format": "URIString"
+            }
+          }
+        }
+      }
+    },
+    "200_GET_Banking_Product": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/ProductDetail_Object"
+        },
+        "links": {
+          "$ref": "#/definitions/Links_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "ProductDetail_Object": {
+      "type": "object",
+      "required": [
+        "productId",
+        "lastUpdated",
+        "productCategory",
+        "name",
+        "description",
+        "brand",
+        "isNegotiable"
+      ],
+      "properties": {
+        "productId": {
+          "type": "string",
+          "description": "A provider specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "effectiveFrom": {
+          "type": "string",
+          "description": "The date and time from which this product is effective (ie. is available for origination)",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "effectiveTo": {
+          "type": "string",
+          "description": "The date and time at which this product will be retired and will no longer be offered",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "productCategory": {
+          "type": "string",
+          "description": "The category of the accounts generated from this product",
+          "default": "",
+          "enum": [
+            "PERS_AT_CALL_DEPOSITS",
+            "BUS_AT_CALL_DEPOSITS",
+            "TERM_DEPOSITS",
+            "RESIDENTIAL_MORTGAGES",
+            "PERS_CRED_AND_CHRG_CARDS",
+            "BUS_CRED_AND_CHRG_CARDS",
+            "PERS_LOANS",
+            "PERS_LEASING",
+            "BUS_LEASING",
+            "TRADE_FINANCE",
+            "PERS_OVERDRAFT",
+            "BUS_OVERDRAFT",
+            "BUS_LOANS",
+            "FOREIGN_CURR_AT_CALL_DEPOSITS",
+            "FOREIGN_CURR_TERM_DEPOSITS",
+            "FOREIGN_CURR_LOAN",
+            "FOREIGN_CURRRENCT_OVERDRAFT",
+            "TRAVEL_CARD"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the product",
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the product",
+          "default": ""
+        },
+        "brand": {
+          "type": "string",
+          "description": "A label of the brand for the product. Able to be used for filtering. For data providers with single brands this value is still required",
+          "default": ""
+        },
+        "brandName": {
+          "type": "string",
+          "description": "An optional display name of the brand",
+          "default": ""
+        },
+        "applicationUri": {
+          "type": "string",
+          "description": "A link to the an application web page where this product can be applied for.",
+          "default": ""
+        },
+        "isNegotiable": {
+          "type": "boolean",
+          "description": "Indicates whether the product is specifically designed so that fees and prices are negotiated depending on context. While all products are open to a degree of negotiation this flag indicates that negotiation is expected and thus that the provision of specific fees and rates is not applicable",
+          "default": ""
+        },
+        "additionalInformation": {
+          "type": "object",
+          "properties": {
+            "overviewUri": {
+              "type": "string",
+              "description": "General overview of the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "termsUri": {
+              "type": "string",
+              "description": "Terms and conditions for the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "eligibilityUri": {
+              "type": "string",
+              "description": "Eligibility rules and criteria for the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "feesAndPricingUri": {
+              "type": "string",
+              "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product",
+              "default": "",
+              "format": "URIString"
+            },
+            "bundleUri": {
+              "type": "string",
+              "description": "Description of a bundle that this product can be part of",
+              "default": "",
+              "format": "URIString"
+            }
+          }
+        },
+        "bundles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductBundles_Object"
+          }
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductFeatures_Object"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductConstraints_Object"
+          }
+        },
+        "eligibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductEligibility_Object"
+          }
+        },
+        "fees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductFees_Object"
+          }
+        },
+        "depositRates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductDepositRates_Object"
+          }
+        },
+        "lendingRates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductLendingRates_Object"
+          }
+        }
+      }
+    },
+    "ProductBundles_Object": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "productIds"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the bundle",
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the bundle",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on the bundle criteria and benefits",
+          "default": "",
+          "format": "URIString"
+        },
+        "productIds": {
+          "type":"array",
+          "description": "Array of product IDs for products included in the bundle",
+          "items": {
+            "type":"string",
+          }
+        }
+      }
+    },
+    "ProductFeatures_Object": {
+      "type": "object",
+      "required": [
+        "featureType"
+      ],
+      "properties": {
+        "featureType": {
+          "type": "string",
+          "description": "The type of feature described",
+          "default": "",
+          "enum": [
+            "CARD_ACCESS",
+            "ADDITIONAL_CARDS",
+            "UNLIMITED_TXNS",
+            "FREE_TXNS",
+            "FREE_TXNS_ALLOWANCE",
+            "LOYALTY_PROGRAM",
+            "OFFSET",
+            "OVERDRAFT",
+            "REDRAW",
+            "INSURANCE",
+            "BALANCE_TRANSFERS",
+            "INTEREST_FREE",
+            "INTEREST_FREE_TRANSFERS",
+            "DIGITAL_WALLET",
+            "DIGITAL_BANKING",
+            "NPP_PAYID",
+            "NPP_ENABLED",
+            "DONATE_INTEREST",
+            "BILL_PAYMENT"
+          ]
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType",
+          "default": ""
+        }
+      }
+    },
+    "ProductConstraints_Object": {
+      "type": "object",
+      "required": [
+        "constraintType"
+      ],
+      "properties": {
+        "constraintType": {
+          "type": "string",
+          "description": "The type of constraint described.  See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "MIN_BALANCE",
+            "OPENING_BALANCE",
+            "MAX_LIMIT",
+            "MIN_LIMIT"
+          ]
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the constraintType specified.  Whether mandatory or not is dependent on the value of constraintType",
+          "default": ""
+        }
+      }
+    },
+    "ProductEligibility_Object": {
+      "type": "object",
+      "required": [
+        "eligibilityType"
+      ],
+      "properties": {
+        "eligibilityType": {
+          "type": "string",
+          "description": "The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "BUSINESS",
+            "PENSION_RECIPIENT",
+            "MIN_AGE",
+            "MAX_AGE",
+            "MIN_INCOME",
+            "MIN_TURNOVER",
+            "STAFF",
+            "STUDENT",
+            "EMPLOYMENT_STATUS",
+            "RESIDENCY_STATUS",
+            "OTHER"
+          ]
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the eligibilityType specified.  Whether mandatory or not is dependent on the value of eligibilityType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the eligibility criteria. Mandatory if the eligibilityType field is set to OTHER",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this eligibility criteria",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "ProductFees_Object": {
+      "type": "object",
+      "required": [
+        "name",
+        "feeType"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the fee",
+          "default": ""
+        },
+        "feeType": {
+          "type": "string",
+          "description": "The type of fee",
+          "default": "",
+          "enum": [
+            "PERIODIC",
+            "TRANSACTION",
+            "ESTABLISHMENT",
+            "EXIT",
+            "OVERDRAW",
+            "MIN_BALANCE",
+            "REDRAW",
+            "CHEQUE_CASH",
+            "CHEQUE_STOP",
+            "CHEQUE_BOOK",
+            "CARD_REPLACE",
+            "PAPER_STATEMENT",
+            "OTHER_EVENT"          ]
+        },
+        "amount": {
+          "type": "string",
+          "description": "The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "default": "",
+          "format": "AmountString"
+        },
+        "balanceRate": {
+          "type": "string",
+          "description": "A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "default": "",
+          "format": "RateString"
+        },
+        "transactionRate": {
+          "type": "string",
+          "description": "A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "default": "",
+          "format": "RateString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency the fee will be charged in. Assumes AUD if absent",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the fee",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this fee",
+          "default": "",
+          "format": "URIString"
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductDiscounts_Object"
+          }
+        }
+      }
+    },
+    "ProductDiscounts_Object": {
+      "type": "object",
+      "required": [
+        "description",
+        "discountType",
+        "amount"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the discount",
+          "default": ""
+        },
+        "discountType": {
+          "type": "string",
+          "description": "The type of discount. See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "BALANCE",
+            "DEPOSITS",
+            "PAYMENTS",
+            "BUNDLE"
+          ]
+        },
+        "amount": {
+          "type": "string",
+          "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself",
+          "default": "",
+          "format": "AmountString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType",
+          "default": ""
+        }
+      }
+    },
+    "ProductDepositRates_Object": {
+      "type": "object",
+      "required": [
+        "depositRateType",
+        "rate"
+      ],
+      "properties": {
+        "depositRateType": {
+          "type": "string",
+          "description": "The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "FIXED",
+            "BONUS",
+            "BUNDLE_BONUS",
+            "VARIABLE",
+            "INTRODUCTORY"
+          ]
+        },
+        "rate": {
+          "type": "string",
+          "description": "The rate to be applied",
+          "default": "",
+          "format": "RateString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the fee",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this fee",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "ProductLendingRates_Object": {
+      "type": "object",
+      "required": [
+        "lendingRateType",
+        "rate"
+      ],
+      "properties": {
+        "lendingRateType": {
+          "type": "string",
+          "description": "The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "FIXED",
+            "INTRODUCTORY",
+            "DISCOUNT",
+            "PENALTY",
+            "BUNDLE_DISCOUNT",
+            "FLOATING",
+            "MARKET_LINKED",
+            "CASH_ADVANCE",
+            "VARIABLE",
+            "COMPARISON"
+          ]
+        },
+        "rate": {
+          "type": "string",
+          "description": "The rate to be applied",
+          "default": "",
+          "format": "RateString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the fee.",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information  on this fee",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "200_GET_Banking_Accounts": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "accounts"
+          ],
+          "properties": {
+            "accounts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Account_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "Account_Object": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "displayName",
+        "maskedNumber",
+        "productCategory",
+        "providerType",
+        "balance$type"
+      ],
+      "properties": {
+        "accountid": {
+          "type": "string",
+          "description": "A unique ID of the account adhering to the standards for ID permanence",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the account. If a customer provided nickname is available that value should be returned",
+          "default": ""
+        },
+        "nickname": {
+          "type": "string",
+          "description": "A customer supplied nick name for the account",
+          "default": ""
+        },
+        "maskedNumber": {
+          "type": "string",
+          "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked",
+          "default": "",
+          "format": "MaskedAccountString"
+        },
+        "productCategory": {
+          "type": "string",
+          "description": "The category of the product or account",
+          "default": "",
+          "enum": [
+            "PERS_AT_CALL_DEPOSITS",
+            "BUS_AT_CALL_DEPOSITS",
+            "TERM_DEPOSITS",
+            "RESIDENTIAL_MORTGAGES",
+            "PERS_CRED_AND_CHRG_CARDS",
+            "BUS_CRED_AND_CHRG_CARDS",
+            "PERS_LOANS",
+            "PERS_LEASING",
+            "BUS_LEASING",
+            "TRADE_FINANCE",
+            "PERS_OVERDRAFT",
+            "BUS_OVERDRAFT",
+            "BUS_LOANS",
+            "FOREIGN_CURR_AT_CALL_DEPOSITS",
+            "FOREIGN_CURR_TERM_DEPOSITS",
+            "FOREIGN_CURR_LOAN",
+            "FOREIGN_CURRRENCT_OVERDRAFT",
+            "TRAVEL_CARD"
+          ]
+        },
+        "providerType": {
+          "type": "string",
+          "description": "The unique type as defined by the account provider",
+          "default": ""
+        },
+        "balance$type": {
+          "type": "string",
+          "description": "The type of balance object provided for the account. Must be one of: debit Debit Balance Type (see above) Conditional credit Credit Balance Type (see above) Conditional Multi Currency Purses Type (see above) Conditional purses debit credit purses",
+          "default": "",
+          "enum": [
+            "deposits",
+            "lending",
+            "purses"
+          ]
+        },
+        "deposits": {
+          "$ref": "#/definitions/DepositsBalance_Object"
+        },
+        "lending": {
+          "$ref": "#/definitions/LendingBalance_Object"
+        },
+        "purses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CurrencyAmount_Object"
+          }
+        }
+      }
+    },
+    "200_GET_Banking_Account": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/AccountDetail_Object"
+        },
+        "links": {
+          "$ref": "#/definitions/Links_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "AccountDetail_Object": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "displayName",
+        "maskedNumber",
+        "productCategory",
+        "providerType",
+        "balance$type",
+        "address$type"
+      ],
+      "properties": {
+        "accountid": {
+          "type": "string",
+          "description": "A unique ID of the account adhering to the standards for ID permanence",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the account. If a customer provided nickname is available that value should be returned",
+          "default": ""
+        },
+        "nickname": {
+          "type": "string",
+          "description": "A customer supplied nick name for the account",
+          "default": ""
+        },
+        "maskedNumber": {
+          "type": "string",
+          "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number this should be formatted with each digit masked and the last three digits unmasked",
+          "default": "",
+          "format": "MaskedAccountString"
+        },
+        "productCategory": {
+          "type": "string",
+          "description": "The category of the product or account",
+          "default": "",
+          "enum": [
+            "PERS_AT_CALL_DEPOSITS",
+            "BUS_AT_CALL_DEPOSITS",
+            "TERM_DEPOSITS",
+            "RESIDENTIAL_MORTGAGES",
+            "PERS_CRED_AND_CHRG_CARDS",
+            "BUS_CRED_AND_CHRG_CARDS",
+            "PERS_LOANS",
+            "PERS_LEASING",
+            "BUS_LEASING",
+            "TRADE_FINANCE",
+            "PERS_OVERDRAFT",
+            "BUS_OVERDRAFT",
+            "BUS_LOANS",
+            "FOREIGN_CURR_AT_CALL_DEPOSITS",
+            "FOREIGN_CURR_TERM_DEPOSITS",
+            "FOREIGN_CURR_LOAN",
+            "FOREIGN_CURRRENCT_OVERDRAFT",
+            "TRAVEL_CARD"
+          ]
+        },
+        "providerType": {
+          "type": "string",
+          "description": "The unique type as defined by the account provider",
+          "default": ""
+        },
+        "balance$type": {
+          "type": "string",
+          "description": "The type of balance object provided for the account. Must be one of: debit Debit Balance Type (see above) Conditional credit Credit Balance Type (see above) Conditional Multi Currency Purses Type (see above) Conditional purses debit credit purses",
+          "default": "",
+          "enum": [
+            "deposits",
+            "lending",
+            "purses"
+          ]
+        },
+        "deposits": {
+          "$ref": "#/definitions/DepositsBalance_Object"
+        },
+        "lending": {
+          "$ref": "#/definitions/LendingBalance_Object"
+        },
+        "purses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CurrencyAmount_Object"
+          }
+        },
+        "bundleName": {
+          "type": "string",
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer",
+          "default": ""
+        },
+        "specificAccount$type": {
+          "type": "string",
+          "description": "The type of structure to present account specific fields.",
+          "default": "",
+          "enum": [
+            "termDeposit",
+            "creditCard",
+            "loan"
+          ]
+        },
+        "termDeposit": {
+          "$ref": "#/definitions/TermDepositAccount_Object"
+        },
+        "creditCard": {
+          "$ref": "#/definitions/CreditCardAccount_Object"
+        },
+        "loan": {
+          "$ref": "#/definitions/LoanAccount_Object"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountFeatures_Object"
+          }
+        },
+        "fees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountFees_Object"
+          }
+        },
+        "depositRates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountDepositRates_Object"
+          }
+        },
+        "lendingRates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountLendingRates_Object"
+          }
+        },
+        "address": {
+          "type": "object",
+          "required": [
+            "address$type"
+          ],
+          "properties": {
+            "address$type": {
+              "type": "string",
+              "description": "The type of address object present",
+              "default": "",
+              "enum": [
+                "simple",
+                "paf"
+              ]
+            },
+            "simple": {
+              "$ref": "#/definitions/SimpleAddress_Object"
+            },
+            "paf": {
+              "$ref": "#/definitions/PAFAddress_Object"
+            }
+          }
+        }
+      }
+    },
+    "TermDepositAccount_Object": {
+      "type": "object",
+      "required": [
+        "lodgementDate",
+        "maturityDate",
+        "maturityInstructions"
+      ],
+      "properties": {
+        "lodgementDate": {
+          "type": "string",
+          "description": "The lodgement date of the original deposit",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "maturityDate": {
+          "type": "string",
+          "description": "Maturity date for the term deposit",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "maturityAmount": {
+          "type": "string",
+          "description": "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
+          "default": "",
+          "format": "AmountString"
+        },
+        "maturityCurrency": {
+          "type": "string",
+          "description": "If absent assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "maturityInstructions": {
+          "type": "string",
+          "description": "Current instructions on action to be taken at maturity",
+          "default": "",
+          "enum": [
+            "ROLLED_OVER",
+            "PAID_OUT_AT_MATURITY"
+          ]
+        }
+      }
+    },
+    "CreditCardAccount_Object": {
+      "type": "object",
+      "required": [
+        "minPaymentAmount",
+        "paymentDueAmount",
+        "paymentDueDate"
+      ],
+      "properties": {
+        "minPaymentAmount": {
+          "type": "string",
+          "description": "The minimum payment amount due for the next card payment",
+          "default": "",
+          "format": "AmountString"
+        },
+        "paymentDueAmount": {
+          "type": "string",
+          "description": "The amount due for the next card payment",
+          "default": "",
+          "format": "AmountString"
+        },
+        "paymentCurrency": {
+          "type": "string",
+          "description": "If absent assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "paymentDueDate": {
+          "type": "string",
+          "description": "Date that the next payment for the card is due",
+          "default": "",
+          "format": "DateTimeString"
+        }
+      }
+    },
+    "LoanAccount_Object": {
+      "type": "object",
+      "required": [
+        "loanEndDate",
+        "nextInstalmentDate",
+        "minInstalmentAmount",
+        "repaymentFrequency"
+      ],
+      "properties": {
+        "originalStartDate": {
+          "type": "string",
+          "description": "Optional original start date for the loan",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "originalLoanAmount": {
+          "type": "string",
+          "description": "Optional original loan value",
+          "default": "",
+          "format": "AmountString"
+        },
+        "originalLoanCurrency": {
+          "type": "string",
+          "description": "If absent assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "loanEndDate": {
+          "type": "string",
+          "description": "Date that the loan is due to be repaid in full",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "nextInstalmentDate": {
+          "type": "string",
+          "description": "Next date that an instalment is required",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "minInstalmentAmount": {
+          "type": "string",
+          "description": "Minimum amount of next instalment",
+          "default": "",
+          "format": "AmountString"
+        },
+        "minInstalmentCurrency": {
+          "type": "string",
+          "description": "If absent assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "maxRedraw": {
+          "type": "string",
+          "description": "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account",
+          "default": "",
+          "format": "AmountString"
+        },
+        "maxRedrawCurrency": {
+          "type": "string",
+          "description": "If absent assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "minRedraw": {
+          "type": "string",
+          "description": "Minimum redraw amount",
+          "default": ""
+        },
+        "minRedrawCurrency": {
+          "type": "string",
+          "description": "If absent assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "offsetAccountEnabled": {
+          "type": "boolean",
+          "description": "Set to true if one or more offset accounts are configured for this loan account",
+          "default": ""
+        },
+        "offsetAccountIds": {
+          "type": "array",
+          "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accesses under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
+          "items": {
+            "type": "string"
+          }
+        },
+        "repaymentType": {
+          "type": "string",
+          "description": "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST",
+          "default": ""
+        },
+        "repaymentFrequency": {
+          "type": "string",
+          "description": "The expected or required repayment frequency. Formatted according to ISO 8601 Durations",
+          "default": "",
+          "enum": [
+            "INTEREST_ONLY",
+            "PRINCIPAL_AND_INTEREST"
+          ]
+        }
+      }
+    },
+    "AccountFeatures_Object": {
+      "type": "object",
+      "required": [
+        "featureType"
+      ],
+      "properties": {
+        "featureType": {
+          "type": "string",
+          "description": "The type of feature described",
+          "default": "",
+          "enum": [
+            "CARD_ACCESS",
+            "ADDITIONAL_CARDS",
+            "UNLIMITED_TXNS",
+            "FREE_TXNS",
+            "FREE_TXNS_ALLOWANCE",
+            "LOYALTY_PROGRAM",
+            "OFFSET",
+            "OVERDRAFT",
+            "REDRAW",
+            "INSURANCE",
+            "BALANCE_TRANSFERS",
+            "INTEREST_FREE",
+            "INTEREST_FREE_TRANSFERS",
+            "DIGITAL_WALLET",
+            "DIGITAL_BANKING",
+            "NPP_PAYID",
+            "NPP_ENABLED",
+            "DONATE_INTEREST",
+            "BILL_PAYMENT"
+          ]
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the featureType specified. Whether mandatory or not is dependent on the value of featureType",
+          "default": ""
+        }
+      }
+    },
+    "AccountFees_Object": {
+      "type": "object",
+      "required": [
+        "name",
+        "feeType"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the fee",
+          "default": ""
+        },
+        "feeType": {
+          "type": "string",
+          "description": "The type of fee",
+          "default": "",
+          "enum": [
+            "PERIODIC",
+            "TRANSACTION",
+            "EXIT",
+            "OVERDRAW",
+            "MIN_BALANCE",
+            "REDRAW",
+            "CHEQUE_CASH",
+            "CHEQUE_STOP",
+            "CHEQUE_BOOK",
+            "CARD_REPLACE",
+            "PAPER_STATEMENT",
+            "OTHER_EVENT"          ]
+        },
+        "amount": {
+          "type": "string",
+          "description": "The amount charged for the fee. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "default": "",
+          "format": "AmountString"
+        },
+        "balanceRate": {
+          "type": "string",
+          "description": "A fee rate calculated based on a proportion of the balance. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "default": "",
+          "format": "RateString"
+        },
+        "transactionRate": {
+          "type": "string",
+          "description": "A fee rate calculated based on a proportion of a transaction. Assumed to be in AUD. One of amount, balanceRate and transactionRate is mandatory",
+          "default": "",
+          "format": "RateString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency the fee will be charged in. Assumes AUD if absent",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the feeType specified. Whether mandatory or not is dependent on the value of feeType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the fee",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this fee",
+          "default": "",
+          "format": "URIString"
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountDiscounts_Object"
+          }
+        }
+      }
+    },
+    "AccountDiscounts_Object": {
+      "type": "object",
+      "required": [
+        "description",
+        "discountType",
+        "amount"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the discount",
+          "default": ""
+        },
+        "discountType": {
+          "type": "string",
+          "description": "The type of discount. See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "BALANCE",
+            "DEPOSITS",
+            "PAYMENTS",
+            "BUNDLE"
+          ]
+        },
+        "amount": {
+          "type": "string",
+          "description": "Value of the discount. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself",
+          "default": "",
+          "format": "AmountString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the discountType specified. Whether mandatory or not is dependent on the value of discountType",
+          "default": ""
+        }
+      }
+    },
+    "AccountDepositRates_Object": {
+      "type": "object",
+      "required": [
+        "depositRateType",
+        "rate"
+      ],
+      "properties": {
+        "depositRateType": {
+          "type": "string",
+          "description": "The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "FIXED",
+            "BONUS",
+            "BUNDLE_BONUS",
+            "VARIABLE",
+            "INTRODUCTORY"
+          ]
+        },
+        "rate": {
+          "type": "string",
+          "description": "The rate to be applied",
+          "default": "",
+          "format": "RateString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Generic field containing additional information relevant to the depositRateType specified. Whether mandatory or not is dependent on the value of depositRateType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the fee",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this fee",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "AccountLendingRates_Object": {
+      "type": "object",
+      "required": [
+        "lendingRateType",
+        "rate"
+      ],
+      "properties": {
+        "lendingRateType": {
+          "type": "string",
+          "description": "The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning",
+          "default": "",
+          "enum": [
+            "FIXED",
+            "INTRODUCTORY",
+            "DISCOUNT",
+            "PENALTY",
+            "BUNDLE_DISCOUNT",
+            "FLOATING",
+            "MARKET_LINKED",
+            "CASH_ADVANCE",
+            "VARIABLE",
+            "COMPARISON"
+          ]
+        },
+        "rate": {
+          "type": "string",
+          "description": "The rate to be applied",
+          "default": "",
+          "format": "RateString"
+        },
+        "additionalValue": {
+          "type": "string",
+          "description": "Information relevant to the lendingRateType specified.  Whether mandatory or not is dependent on the Generic field containing additional information relevant to the lendingRateType specified. Whether mandatory or not is dependent on the value of lendingRateType",
+          "default": ""
+        },
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the fee.",
+          "default": ""
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information  on this fee",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "200_GET_Banking_Account_Transactions": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "accountId",
+            "displayName",
+            "transactions"
+          ],
+          "properties": {
+            "accountId": {
+              "type": "string",
+              "description": "ID of the account for which transactions are provided",
+              "default": "",
+              "format": "ASCIIString"
+            },
+            "displayName": {
+              "type": "string",
+              "description": "The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.",
+              "default": ""
+            },
+            "nickname": {
+              "type": "string",
+              "description": "A customer supplied nick name for the account",
+              "default": ""
+            },
+            "transactions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Transaction_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "Transaction_Object": {
+      "type": "object",
+      "required": [
+        "isDetailAvailable",
+        "status",
+        "description",
+        "reference"
+      ],
+      "properties": {
+        "transactionid": {
+          "type": "string",
+          "description": "A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "isDetailAvailable": {
+          "type": "boolean",
+          "description": "True if extended information is available using the transaction detail end point. False if extended data is not available",
+          "default": ""
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the transaction",
+          "default": "",
+          "enum": [
+            "PENDING",
+            "POSTED"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "The transaction description as applied by the financial institution",
+          "default": ""
+        },
+        "postDateTime": {
+          "type": "string",
+          "description": "The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "executionDateTime": {
+          "type": "string",
+          "description": "The time the transaction was executed by the originating customer, if available",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "amount": {
+          "type": "string",
+          "description": "The value of the transaction. Negative values mean money was outgoing",
+          "default": "",
+          "format": "AmountString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency for the transaction amount. AUD assumed if not present",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "reference": {
+          "type": "string",
+          "description": "The reference for the transaction provided by the originating institution",
+          "default": ""
+        }
+      }
+    },
+    "200_GET_Banking_Transactions_Detail": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "accountId",
+            "displayName",
+            "transaction"
+          ],
+          "properties": {
+            "accountId": {
+              "type": "string",
+              "description": "ID of the account for which transactions are provided",
+              "default": "",
+              "format": "ASCIIString"
+            },
+            "displayName": {
+              "type": "string",
+              "description": "The display name of the account as defined by the bank.  This should not incorporate account numbers or PANs.  If it does the values should be masked according to the rules of the MaskedAccountString common type.",
+              "default": ""
+            },
+            "nickname": {
+              "type": "string",
+              "description": "A customer supplied nick name for the account",
+              "default": ""
+            },
+            "transaction": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransactionDetail_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Links_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "TransactionDetail_Object": {
+      "type": "object",
+      "required": [
+        "status",
+        "description",
+        "reference"
+      ],
+      "properties": {
+        "transactionid": {
+          "type": "string",
+          "description": "A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the transaction",
+          "default": "",
+          "enum": [
+            "PENDING",
+            "POSTED"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "The transaction description as applied by the financial institution",
+          "default": ""
+        },
+        "postDateTime": {
+          "type": "string",
+          "description": "The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "executionDateTime": {
+          "type": "string",
+          "description": "The time the transaction was executed by the originating customer, if available",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "amount": {
+          "type": "string",
+          "description": "The value of the transaction. Negative values mean money was outgoing",
+          "default": "",
+          "format": "AmountString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency for the transaction amount. AUD assumed if not present",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "reference": {
+          "type": "string",
+          "description": "The reference for the transaction provided by the originating institution",
+          "default": ""
+        },
+        "extendedData": {
+          "$ref": "#/definitions/TransactionExtendedData_Object"
+        }
+      }
+    },
+    "TransactionExtendedData_Object": {
+      "type": "object",
+      "required": [
+        "service"
+      ],
+      "properties": {
+        "payer": {
+          "type": "string",
+          "description": "Label of the originating payer.  Mandatory for inbound payment",
+          "default": ""
+        },
+        "payee": {
+          "type": "string",
+          "description": "Label of the target PayID. Mandatory for an outbound payment",
+          "default": ""
+        },
+        "extension$type": {
+          "type": "string",
+          "description": "Optional extended data provided specific to transaction originated via NPP",
+          "default": "",
+          "enum": ["extendedDescription"]
+        },
+        "extendedDescription": {
+          "type": "string",
+          "description": "An extended string description. Only present if specified by the extensionType field",
+          "default": ""
+        },
+        "service": {
+          "type": "string",
+          "description": "Identifier of the applicable overlay service",
+          "default": "",
+          "enum": ["X2P1.01"]
+        }
+      }
+    },
+    "200_GET_Banking_Bulk_Transactions": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "transactions"
+          ],
+          "properties": {
+            "transactions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BulkTransaction_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "BulkTransaction_Object": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "isDetailAvailable",
+        "status",
+        "description",
+        "reference"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "A unique ID of the account adhering to the standards for ID permanence",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "transactionid": {
+          "type": "string",
+          "description": "A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "isDetailAvailable": {
+          "type": "boolean",
+          "description": "True if extended information is available using the transaction detail end point. False if extended data is not available",
+          "default": ""
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the transaction",
+          "default": "",
+          "enum": [
+            "PENDING",
+            "POSTED"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "The transaction description as applied by the financial institution",
+          "default": ""
+        },
+        "postDateTime": {
+          "type": "string",
+          "description": "The time the transaction was posted. This field is mandatory if the transaction has status POSTED. This is the time that appears on a standard statement",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "executionDateTime": {
+          "type": "string",
+          "description": "The time the transaction was executed by the originating customer, if available",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "amount": {
+          "type": "string",
+          "description": "The value of the transaction. Negative values mean money was outgoing",
+          "default": "",
+          "format": "AmountString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The currency for the transaction amount. AUD assumed if not present",
+          "default": "",
+          "format": "CurrencyString"
+        },
+        "reference": {
+          "type": "string",
+          "description": "The reference for the transaction provided by the originating institution",
+          "default": ""
+        }
+      }
+    },
+    "200_GET_Banking_Accounts_Balances": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "balances"
+          ],
+          "properties": {
+            "balances": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Balance_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "Balance_Object": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "balance$type"
+      ],
+      "properties": {
+        "accountid": {
+          "type": "string",
+          "description": "A unique ID of the account adhering to the standards for ID permanence",
+          "default": ""
+        },
+        "balance$type": {
+          "type": "string",
+          "description": "The type of balance object provided for the account",
+          "default": "",
+          "enum": [
+            "debit",
+            "lending",
+            "purses"
+          ]
+        },
+        "deposits": {
+          "$ref": "#/definitions/DepositsBalance_Object"
+        },
+        "lending": {
+          "$ref": "#/definitions/LendingBalance_Object"
+        },
+        "purses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CurrencyAmount_Object"
+          }
+        }
+      }
+    },
+    "DepositsBalance_Object": {
+      "type": "object",
+      "required": [
+        "currentBalance",
+        "availableBalance"
+      ],
+      "properties": {
+        "currentBalance": {
+          "$ref": "#/definitions/CurrencyAmount_Object"
+        },
+        "availableBalance": {
+          "$ref": "#/definitions/CurrencyAmount_Object"
+        }
+      }
+    },
+    "LendingBalance_Object": {
+      "type": "object",
+      "required": [
+        "accountBalance",
+        "availableBalance",
+        "creditLimit"
+      ],
+      "properties": {
+        "accountBalance": {
+          "$ref": "#/definitions/CurrencyAmount_Object"
+        },
+        "availableBalance": {
+          "$ref": "#/definitions/CurrencyAmount_Object"
+        },
+        "creditLimit": {
+          "$ref": "#/definitions/CurrencyAmount_Object"
+        },
+        "amortisedLimit": {
+          "$ref": "#/definitions/CurrencyAmount_Object"
+        }
+      }
+    },
+    "CurrencyAmount_Object": {
+      "type": "object",
+      "required": [
+        "amount"
+      ],
+      "properties": {
+        "amount": {
+          "type": "string",
+          "description": "The current balance of the account at this time. Should align to the current balance available via other channels such as ATM balance enquiry or Internet Banking",
+          "default": "",
+          "format": "AmountString"
+        },
+        "currency": {
+          "type": "string",
+          "description": "If not present assumes AUD",
+          "default": "",
+          "format": "CurrencyString"
+        }
+      }
+    },
+    "200_GET_Banking_Payees": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "payees"
+          ],
+          "properties": {
+            "payees": {
+              "type": "array",
+              "description": "The list of payees returned",
+              "items": {
+                "$ref": "#/definitions/Payee_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "200_GET_Banking_Payee_Details": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/PayeeDetail_Object"
+        },
+        "links": {
+          "$ref": "#/definitions/Links_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "Payee_Object": {
+      "type": "object",
+      "required": [
+        "payeeId",
+        "nickname",
+        "type"
+      ],
+      "properties": {
+        "payeeId": {
+          "type": "string",
+          "description": "ID of the payee adhering to the rules of ID permanence",
+          "default": ""
+        },
+        "nickname": {
+          "type": "string",
+          "description": "The short display name of the payee as provided by the customer",
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the payee provided by the customer",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
+          "default": "",
+          "enum": [
+            "DOMESTIC",
+            "INTERNATIONAL",
+            "BILLER"
+          ]
+        }
+      }
+    },
+    "PayeeDetail_Object": {
+      "type": "object",
+      "required": [
+        "payeeId",
+        "nickname",
+        "type",
+        "payee$type"
+      ],
+      "properties": {
+        "payeeId": {
+          "type": "string",
+          "description": "ID of the payee adhering to the rules of ID permanence",
+          "default": ""
+        },
+        "nickname": {
+          "type": "string",
+          "description": "The short display name of the payee as provided by the customer",
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the payee provided by the customer",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
+          "default": "",
+          "enum": [
+            "DOMESTIC",
+            "INTERNATIONAL",
+            "BILLER"
+          ]
+        },
+        "payee$type": {
+          "type": "string",
+          "description": "Type of object included that describes the payee in detail",
+          "default": "",
+          "enum": [
+            "domestic",
+            "biller",
+            "international"
+          ]
+        },
+        "domestic": {
+          "$ref": "#/definitions/DomesticPayee_Object"
+        },
+        "biller": {
+          "$ref": "#/definitions/BillerPayee_Object"
+        },
+        "international": {
+          "$ref": "#/definitions/InternationalPayee_Object"
+        }
+      }
+    },
+    "DomesticPayee_Object": {
+      "type": "object",
+      "required": [
+        "payeeAccount$type"
+      ],
+      "properties": {
+        "payeeAccount$type": {
+          "type": "string",
+          "description": "Type of account object included. Valid values are: { payeeAccount$type - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP",
+          "default": "",
+          "enum": [
+            "account",
+            "card",
+            "payid"
+          ]
+        },
+        "account": {
+          "$ref": "#/definitions/DomesticPayeeAccount_Object"
+        },
+        "card": {
+          "$ref": "#/definitions/DomesticPayeeCard_Object"
+        },
+        "payId": {
+          "$ref": "#/definitions/DomesticPayeePayId_Object"
+        }
+      }
+    },
+    "DomesticPayeeAccount_Object": {
+      "type": "object",
+      "required": [
+        "accountName",
+        "bsb",
+        "accountNumber"
+      ],
+      "properties": {
+        "accountName": {
+          "type": "string",
+          "description": "Name of the account to pay to",
+          "default": ""
+        },
+        "bsb": {
+          "type": "string",
+          "description": "BSB of the account to pay to",
+          "default": ""
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "Number of the account to pay to",
+          "default": ""
+        }
+      }
+    },
+    "DomesticPayeeCard_Object": {
+      "type": "object",
+      "required": [
+        "cardNumber"
+      ],
+      "properties": {
+        "cardNumber": {
+          "type": "string",
+          "description": "Name of the account to pay to",
+          "default": "",
+          "format": "MaskedPANString"
+        }
+      }
+    },
+    "DomesticPayeePayId_Object": {
+      "type": "object",
+      "required": [
+        "name",
+        "identifier",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name assigned to the PayID by the owner of the PayID",
+          "default": ""
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The identifier of the PayID (dependent on type)",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the PayID",
+          "default": "",
+          "enum": [
+            "EMAIL",
+            "MOBILE",
+            "ORG_NUMBER",
+            "ORG_NAME"
+          ]
+        }
+      }
+    },
+    "BillerPayee_Object": {
+      "type": "object",
+      "required": [
+        "billerCode",
+        "billerName"
+      ],
+      "properties": {
+        "billerCode": {
+          "type": "string",
+          "description": "BPay Biller Code of the Biller",
+          "default": ""
+        },
+        "crn": {
+          "type": "string",
+          "description": "BPay CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type",
+          "default": ""
+        },
+        "billerName": {
+          "type": "string",
+          "description": "Name of the Biller",
+          "default": ""
+        }
+      }
+    },
+    "InternationalPayee_Object": {
+      "type": "object",
+      "required": [
+        "beneficiaryDetails",
+        "bankDetails"
+      ],
+      "properties": {
+        "beneficiaryDetails": {
+          "type": "object",
+          "required": [
+            "country"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the beneficiary",
+              "default": ""
+            },
+            "country": {
+              "type": "string",
+              "description": "Country where the beneficiary resides",
+              "default": ""
+            },
+            "message": {
+              "type": "string",
+              "description": "Response message for the payment",
+              "default": ""
+            }
+          }
+        },
+        "bankDetails": {
+          "type": "object",
+          "required": [
+            "country",
+            "accountNumber"
+          ],
+          "properties": {
+            "country": {
+              "type": "string",
+              "description": "Country of the recipient institution",
+              "default": ""
+            },
+            "accountNumber": {
+              "type": "string",
+              "description": "Account Targeted for payment",
+              "default": ""
+            },
+            "bankAddress": {
+              "type": "object",
+              "required": [
+                "name",
+                "address"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the recipient Bank",
+                  "default": ""
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Address of the recipient Bank",
+                  "default": ""
+                }
+              }
+            },
+            "beneficiaryBankBIC": {
+              "type": "string",
+              "description": "Swift bank code",
+              "default": ""
+            },
+            "fedWireNumber": {
+              "type": "string",
+              "description": "Number for Fedwire payment (Federal Reserve Wire Network)",
+              "default": ""
+            },
+            "sortCode": {
+              "type": "string",
+              "description": "Sort code used for account identification in some jurisdictions",
+              "default": ""
+            },
+            "chipNumber": {
+              "type": "string",
+              "description": "Number for the Clearing House Interbank Payments System",
+              "default": ""
+            },
+            "routingNumber": {
+              "type": "string",
+              "description": "International bank routing number",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
+    "200_GET_Banking_Direct-Debits": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "directDebitAuthorisations"
+          ],
+          "properties": {
+            "directDebitAuthorisations": {
+              "type": "array",
+              "description": "The list of authorisations returned",
+              "items": {
+                "$ref": "#/definitions/DirectDebits_Object"
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated_Object"
+        }
+      }
+    },
+    "DirectDebits_Object": {
+      "type": "object",
+      "required": [
+        "accountId"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "A unique ID of the account adhering to the standards for ID permanence.",
+          "default": "",
+          "format": "ASCIIString"
+        },
+        "authorisedEntity": {
+          "$ref": "#/definitions/AuthorisedEntity_Object"
+        },
+        "lastDebitDateTime": {
+          "type": "string",
+          "description": "The date and time of the last debit executed under this authorisation",
+          "default": "",
+          "format": "DateTimeString"
+        },
+        "lastDebitAmount": {
+          "type": "string",
+          "description": "The amount of the last debit executed under this authorisation",
+          "default": "",
+          "format": "AmountString"
+        }
+      }
+    },
+    "AuthorisedEntity_Object": {
+      "type": "object",
+      "required": [
+        "name",
+        "financialInstitution"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the authorised entity",
+          "default": ""
+        },
+        "financialInstitution": {
+          "type": "string",
+          "description": "Name of the financial institution through which the direct debit will be executed",
+          "default": ""
+        },
+        "abn": {
+          "type": "string",
+          "description": "Australian Business Number for the authorised entity",
+          "default": ""
+        },
+        "acn": {
+          "type": "string",
+          "description": "Australian Business Number for the authorised entity",
+          "default": ""
+        }
+      }
+    },
+    "200_GET_Common_Customer": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "customer$type"
+          ],
+          "properties": {
+            "customer$type": {
+              "type": "string",
+              "description": "The type of customer object that is present",
+              "default": "",
+              "enum": [
+                "person",
+                "organisation"
+              ]
+            },
+            "person": {
+              "$ref": "#/definitions/Person_Object"
+            },
+            "organisation": {
+              "$ref": "#/definitions/Organisation_Object"
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Links_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "200_GET_Common_Customer_Detailed": {
+      "type": "object",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "customer$type"
+          ],
+          "properties": {
+            "customer$type": {
+              "type": "string",
+              "description": "The type of customer object that is present",
+              "default": "",
+              "enum": [
+                "person",
+                "organisation"
+              ]
+            },
+            "person": {
+              "$ref": "#/definitions/PersonDetail_Object"
+            },
+            "organisation": {
+              "$ref": "#/definitions/OrganisationDetail_Object"
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Links_Object"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta_Object"
+        }
+      }
+    },
+    "Person_Object": {
+      "type": "object",
+      "required": [
+        "lastUpdateTime",
+        "lastName",
+        "middleNames"
+      ],
+      "properties": {
+        "lastUpdateTime": {
+          "type": "string",
+          "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
+          "format": "DateTimeString",
+          "default": "",
+        },
+        "firstName": {
+          "type": "string",
+          "description": "For people with single names this field need not be present.  The single name should be in the lastName field",
+          "default": "",
+        },
+        "lastName": {
+          "type": "string",
+          "description": "For people with single names the single name should be in this field",
+          "default": ""
+        },
+        "middleNames": {
+          "type": "array",
+          "description": "Field is mandatory but array may be empty",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prefix": {
+          "type": "string",
+          "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+          "default": ""
+        },
+        "suffix": {
+          "type": "string",
+          "description": "Used for a trailing suffix to the name (e.g. Jr)",
+          "default": ""
+        },
+        "occupationCode": {
+          "type": "string",
+          "description": "Occupation code as defined by the ANZSCO  v1.2 Standard Classification of Occupations",
+          "default": ""
+        }
+      }
+    },
+    "PersonDetail_Object": {
+      "type": "object",
+      "required": [
+        "lastUpdateTime",
+        "lastName",
+        "middleNames",
+        "phoneNumbers",
+        "emailAddresses",
+        "physicalAddresses"
+      ],
+      "properties": {
+        "lastUpdateTime": {
+          "type": "string",
+          "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
+          "format": "DateTimeString",
+          "default": "",
+        },
+        "firstName": {
+          "type": "string",
+          "description": "For people with single names this field need not be present.  The single name should be in the lastName field",
+          "default": "",
+        },
+        "lastName": {
+          "type": "string",
+          "description": "For people with single names the single name should be in this field",
+          "default": ""
+        },
+        "middleNames": {
+          "type": "array",
+          "description": "Field is mandatory but array may be empty",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prefix": {
+          "type": "string",
+          "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+          "default": ""
+        },
+        "suffix": {
+          "type": "string",
+          "description": "Used for a trailing suffix to the name (e.g. Jr)",
+          "default": ""
+        },
+        "occupationCode": {
+          "type": "string",
+          "description": "Occupation code as defined by the ANZSCO  v1.2 Standard Classification of Occupations",
+          "default": ""
+        },
+        "phoneNumbers": {
+          "type": "array",
+          "description": "At least one record is required",
+          "items": {
+            "$ref": "#/definitions/PhoneNumber"
+          }
+        },
+        "emailAddresses": {
+          "type": "array",
+          "description": "May be empty",
+          "items": {
+            "$ref": "#/definitions/EmailAddress"
+          }
+        },
+        "physicalAddresses": {
+          "type": "array",
+          "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+          "items": {
+            "$ref": "#/definitions/PhysicalAddress_Object"
+          }
+        }
+      }
+    },
+    "Organisation_Object": {
+      "type": "object",
+      "required": [
+        "lastUpdateTime",
+        "agentLastName",
+        "agentRole",
+        "businessName",
+        "organisationType"
+      ],
+      "properties": {
+        "lastUpdateTime": {
+          "type": "string",
+          "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+          "format": "DateTimeString",
+          "default": "",
+        },
+        "agentFirstName": {
+          "type": "string",
+          "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field",
+          "default": ""
+        },
+        "agentLastName": {
+          "type": "string",
+          "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field",
+          "default": ""
+        },
+        "agentRole": {
+          "type": "string",
+          "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known",
+          "default": ""
+        },
+        "businessName": {
+          "type": "string",
+          "description": "Name of the organisation",
+          "default": ""
+        },
+        "legalName": {
+          "type": "string",
+          "description": "Legal name, if different to the business name",
+          "default": ""
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short name used for communication, if  different to the business name",
+          "default": ""
+        },
+        "abn": {
+          "type": "string",
+          "description": "Australian Business Number for the organisation",
+          "default": ""
+        },
+        "acn": {
+          "type": "string",
+          "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type",
+          "default": ""
+        },
+        "isACNCRegistered": {
+          "type": "boolean",
+          "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+          "default": ""
+        },
+        "industryCode": {
+          "type": "string",
+          "description": "ANZSIC (2006) code for the organisation.",
+          "default": ""
+        },
+        "organisationType": {
+          "type": "string",
+          "description": "Legal organisation type",
+          "default": "",
+          "enum": [
+            "SOLE_TRADER",
+            "COMPANY",
+            "PARTNERSHIP",
+            "TRUST",
+            "GOVERNMENT_ENTITY",
+            "OTHER"
+          ]
+        },
+        "registeredCountry": {
+          "type": "string",
+          "description": "Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent",
+          "default": ""
+        },
+        "establishmentDate": {
+          "type": "string",
+          "description": "The date the organisation described was established",
+          "format": "DateTimeString",
+          "default": ""
+        }
+      }
+    },
+    "OrganisationDetail_Object": {
+      "type": "object",
+      "required": [
+        "lastUpdateTime",
+        "agentLastName",
+        "agentRole",
+        "businessName",
+        "organisationType",
+        "physicalAddress"
+      ],
+      "properties": {
+        "lastUpdateTime": {
+          "type": "string",
+          "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+          "format": "DateTimeString",
+          "default": "",
+        },
+        "agentFirstName": {
+          "type": "string",
+          "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field",
+          "default": ""
+        },
+        "agentLastName": {
+          "type": "string",
+          "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field",
+          "default": ""
+        },
+        "agentRole": {
+          "type": "string",
+          "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known",
+          "default": ""
+        },
+        "businessName": {
+          "type": "string",
+          "description": "Name of the organisation",
+          "default": ""
+        },
+        "legalName": {
+          "type": "string",
+          "description": "Legal name, if different to the business name",
+          "default": ""
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short name used for communication, if  different to the business name",
+          "default": ""
+        },
+        "abn": {
+          "type": "string",
+          "description": "Australian Business Number for the organisation",
+          "default": ""
+        },
+        "acn": {
+          "type": "string",
+          "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type",
+          "default": ""
+        },
+        "isACNCRegistered": {
+          "type": "boolean",
+          "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+          "default": ""
+        },
+        "industryCode": {
+          "type": "string",
+          "description": "ANZSIC (2006) code for the organisation.",
+          "default": ""
+        },
+        "organisationType": {
+          "type": "string",
+          "description": "Legal organisation type",
+          "default": "",
+          "enum": [
+            "SOLE_TRADER",
+            "COMPANY",
+            "PARTNERSHIP",
+            "TRUST",
+            "GOVERNMENT_ENTITY",
+            "OTHER"
+          ]
+        },
+        "registeredCountry": {
+          "type": "string",
+          "description": "Enumeration with values from ISO 3166 Alpha-3 country codes.  Assumed to be AUS if absent",
+          "default": ""
+        },
+        "establishmentDate": {
+          "type": "string",
+          "description": "The date the organisation described was established",
+          "format": "DateTimeString",
+          "default": ""
+        },
+        "physicalAddress": {
+          "type": "array",
+          "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+          "items": {
+            "$ref": "#/definitions/PhysicalAddress_Object"
+          }
+        }
+      }
+    },
+    "PhoneNumber": {
+      "type": "object",
+      "required": [
+        "isPreferred",
+        "purpose",
+        "number",
+        "fullNumber"
+      ],
+      "properties": {
+        "isPreferred": {
+          "type": "boolean",
+          "description": "Required to be true for one and only one entry to indicate the preferred phone number",
+          "default": ""
+        },
+        "purpose": {
+          "type": "string",
+          "description": "The purpose of the number as specified by the customer",
+          "default": "",
+          "enum": [
+            "MOBILE",
+            "HOME",
+            "WORK",
+            "OTHER",
+            "INTERNATIONAL",
+            "UNSPECIFIED"
+          ]
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "If absent, assumed to be Australia (+61). The + should be included",
+          "default": ""
+        },
+        "areaCode": {
+          "type": "string",
+          "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.",
+          "default": ""
+        },
+        "number": {
+          "type": "string",
+          "description": "The actual phone number, with leading zeros as appropriate",
+          "default": ""
+        },
+        "extension": {
+          "type": "string",
+          "description": "An extension number (if applicable)",
+          "default": ""
+        },
+        "fullNumber": {
+          "type": "string",
+          "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of RFC 3966",
+          "default": ""
+        }
+      }
+    },
+    "EmailAddress": {
+      "type": "object",
+      "required": [
+        "isPreferred",
+        "purpose",
+        "address"
+      ],
+      "properties": {
+        "isPreferred": {
+          "type": "boolean",
+          "description": "Required for one and only one email record in the collection. Denotes the default email address",
+          "default": ""
+        },
+        "purpose": {
+          "type": "string",
+          "description": "The purpose for the email, as specified by the customer (Enumeration)",
+          "default": "",
+          "enum": [
+            "WORK",
+            "HOME",
+            "OTHER",
+            "UNSPECIFIED"
+          ]
+        },
+        "address": {
+          "type": "string",
+          "description": "A correctly formatted email address, as defined by the addr_spec format in RFC_5322",
+          "default": ""
+        }
+      }
+    },
+    "PhysicalAddress_Object": {
+      "type": "object",
+      "required": [
+        "purpose",
+        "address$type"
+      ],
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "description": "Enumeration of values indicating the purpose of the physical address",
+          "default": "",
+          "enum": [
+            "REGISTERED",
+            "MAIL",
+            "PHYSICAL",
+            "WORK",
+            "OTHER"
+          ]
+        },
+        "address$type": {
+          "type": "string",
+          "description": "The type of address object present",
+          "default": "",
+          "enum": [
+            "simple",
+            "paf"
+          ]
+        },
+        "simple": {
+          "$ref": "#/definitions/SimpleAddress_Object"
+        },
+        "paf": {
+          "$ref": "#/definitions/PAFAddress_Object"
+        }
+      }
+    },
+    "SimpleAddress_Object": {
+      "type": "object",
+      "required": [
+        "addressLine1",
+        "city",
+        "state"
+      ],
+      "properties": {
+        "mailingName": {
+          "type": "string",
+          "description": "Name of the individual or business formatted for inclusion in an address used for physical mail",
+          "default": ""
+        },
+        "addressLine1": {
+          "type": "string",
+          "description": "First line of the standard address object",
+          "default": ""
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Second line of the standard address object",
+          "default": ""
+        },
+        "addressLine3": {
+          "type": "string",
+          "description": "Third line of the standard address object",
+          "default": ""
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Mandatory for Australian addresses",
+          "default": ""
+        },
+        "city": {
+          "type": "string",
+          "description": "Name of the city or locality",
+          "default": ""
+        },
+        "state": {
+          "type": "string",
+          "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the ISO 3166:AU standard",
+          "default": ""
+        },
+        "country": {
+          "type": "string",
+          "description": "A valid ISO 3166 Alpha-3 country code",
+          "default": ""
+        },
+      }
+    },
+    "PAFAddress_Object": {
+      "type": "object"
+    },
+    "Links_Object": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "description": "Fully qualified link to this API call",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "Meta_Object": {
+      "type": "object"
+    },
+    "LinksPaginated_Object": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "description": "Fully qualified link to this API call",
+          "default": "",
+          "format": "URIString"
+        },
+        "first": {
+          "type": "string",
+          "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+          "default": "",
+          "format": "URIString"
+        },
+        "prev": {
+          "type": "string",
+          "description": "URI to the first previous page of this set. Mandatory if this response is not the first page",
+          "default": "",
+          "format": "URIString"
+        },
+        "next": {
+          "type": "string",
+          "description": "URI to the first next page of this set. Mandatory if this response is not the last page",
+          "default": "",
+          "format": "URIString"
+        },
+        "last": {
+          "type": "string",
+          "description": "URI to the first last page of this set. Mandatory if this response is not the last page",
+          "default": "",
+          "format": "URIString"
+        }
+      }
+    },
+    "MetaPaginated_Object": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer",
+          "description": "The total number of records in the full set",
+          "default": "",
+          "format": "NaturalNumber"
+        },
+        "totalPages": {
+          "type": "integer",
+          "description": "The total number of pages in the full set",
+          "default": "",
+          "format": "NaturalNumber"
+        }
+      }
+    },
+    "422_Errors": {
+      "type": "object",
+      "required": [
+        "errors"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items" : {
+            "type": "object",
+            "required": [
+              "code",
+              "title",
+              "detail"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "The code of the error",
+                "default": ""
+              },
+              "title": {
+                "type": "string",
+                "description": "A displayable title of the error type",
+                "default": ""
+              },
+              "detail": {
+                "type": "string",
+                "description": "Detail of the error",
+                "default": ""
+              },
+              "meta": {
+                "type": "object",
+                "description": "Optional additional data for specific error types",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
