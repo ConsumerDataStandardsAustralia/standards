@@ -479,6 +479,10 @@ The Data Recipient is able to obtain the expiration of sharing via the `sharing_
 NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
 </aside>
 
+<aside class="notice">
+NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA
+</aside>
+
 ### OpenID Provider Configuration End Point
 
 > Non-Normative Example
@@ -519,7 +523,7 @@ Content-Type: application/json
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
-|  Transport Security |  MTLS |
+|  Transport Security |  TLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
@@ -602,7 +606,7 @@ The requirements for the Authorisation End Point are specified in [section 3.3.2
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
-|  Transport Security |  MTLS |
+|  Transport Security |  TLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
@@ -610,7 +614,10 @@ The requirements for the JWKS End Point are specified in various sections of **[
 
 This end point is used by the Data Holder to provide the public keys they will use when required.
 
-Data Holders MUST support a Token End Point.### Token End Point
+Data Holders MUST support a JWKS End Point.
+
+
+### Token End Point
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |
@@ -663,7 +670,7 @@ An Introspection End Point Response SHALL only include the following fields:
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder & Data Recipient  |
-|  Transport Security |  MTLS |
+|  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
 | Client Authentication Required| Yes|
 | Bearer Token Required| No|
 

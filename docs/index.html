@@ -2134,6 +2134,10 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <aside class="warning">
 NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
 </aside>
+
+<aside class="notice">
+NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA
+</aside>
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 <blockquote>
 <p>Non-Normative Example</p>
@@ -2181,7 +2185,7 @@ Content-Type: application/json
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS</td>
+<td>TLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
@@ -2295,7 +2299,7 @@ Host: www.holder.com.au
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS</td>
+<td>TLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
@@ -2311,13 +2315,31 @@ Host: www.holder.com.au
 
 <p>This end point is used by the Data Holder to provide the public keys they will use when required.</p>
 
-<p>Data Holders MUST support a Token End Point.### Token End Point
-| Description | Value   |
-|---|---|
-| Hosted By  | Data Holder  |
-|  Transport Security |  MTLS |
-| Client Authentication Required| Yes|
-| Bearer Token Required| No|</p>
+<p>Data Holders MUST support a JWKS End Point.</p>
+<h3 id='token-end-point'>Token End Point</h3>
+<table><thead>
+<tr>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Hosted By</td>
+<td>Data Holder</td>
+</tr>
+<tr>
+<td>Transport Security</td>
+<td>MTLS</td>
+</tr>
+<tr>
+<td>Client Authentication Required</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Bearer Token Required</td>
+<td>No</td>
+</tr>
+</tbody></table>
 
 <p>The requirements for the Token End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint">section 3.3.3</a> of <strong>[OIDC]</strong>.</p>
 
@@ -2403,7 +2425,7 @@ Host: www.holder.com.au
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS</td>
+<td>MTLS for Data Holders, TLS for Data Recipients</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>

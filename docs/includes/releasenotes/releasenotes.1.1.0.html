@@ -311,6 +311,16 @@
 <td>The <code>amount</code> field in scheduled payments had an incorrect description text which has been fixed</td>
 <td><a href="../../#tocSbankingscheduledpaymentset">BankingScheduledPaymentSet Section</a></td>
 </tr>
+<tr>
+<td>Updates to scheduled payments</td>
+<td>Series of amendments to the scheduled payments structure for lastWeekDay</td>
+<td><a href="../../#tocSbankingscheduledpaymentrecurrencelastweekday">LastWeekday Section</a></td>
+</tr>
+<tr>
+<td>Clarification of ISO 8601 usage</td>
+<td>Clarification that the recurrence syntax in ISO 8601 will not be used</td>
+<td>Various</td>
+</tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
@@ -339,6 +349,11 @@
 <td>Added CORS support for public end points</td>
 <td>Added a CORS section allowing for CORS to be enabled for Get Status, Get Outages, Get Products and Get Product Detail end points</td>
 <td><a href="../../#cors">CORS Section</a></td>
+</tr>
+<tr>
+<td>Removal of MTLS for specific end points</td>
+<td>Removal of the MTLS requirements for<br/><ul><li>The revocation end point hosted by Data Recipients</li><li>The metadata update end point hosted by Data Recipients</li><li>The JWKS end point hosted by Data Recipients</li><li>The JWKS end point hosted by Data Holders</li><li>The OIDC discovery end point hosted by Data Holders</li></ul></td>
+<td><a href="../../#end-points">InfoSec End Points Section</a></td>
 </tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>
