@@ -3631,7 +3631,7 @@
         },
         "amount": {
           "type": "string",
-          "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
+          "description": "The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present",
           "x-cds-type": "AmountString"
         },
         "currency": {
