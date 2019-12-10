@@ -983,11 +983,6 @@
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
-<tr>
-<td><strong>x-cds-subject</strong></td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
-<td>Conditional</td>
-</tr>
 </tbody></table>
 
 <h3 id='response-headers'>Response headers</h3>
@@ -1947,7 +1942,9 @@ grant_type=authorization_code&amp;
   "iat": 1311280970,
   "nbf": 1311280970,
   "auth_time": 1311280969,
-  "acr": "urn:cds.au:cdr:3"
+  "acr": "urn:cds.au:cdr:3",
+  "refresh_token_expires_at": "1311281970",
+  "sharing_expires_at": "1311281970"
 }
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard.  In accordance with <strong>[FAPI-RW]</strong>, ID Tokens must be signed and encrypted when returned
