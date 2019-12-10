@@ -27,6 +27,7 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 |`accountName` optional for domestic payee|For some Banks the account name field is not captured for domestic payees so this field has been made optional|[BankingDomesticPayeeAccount Section](../../index.html#tocSbankingdomesticpayeeaccount)
 |Aggregated transaction clarification|The handling of the sharing of data related to aggregated transactionshas been added to the description of the transaction history end point|[BankingDomesticPayeeAccount Section](../../index.html#get-transactions-for-account)
 |Term deposit maturity instructions as array|The termDeposit field in the account detail structure has been converted into an array|[BankingAccountDetail Section](../../index.html#tocSbankingaccountdetail)
+|International payees with domestic accounts clarification| Description for how to represent international payees that are represented as a domestic account for payment purposes|[Get Payee Detail Section](../../index.html#get-payee-detail)
 
 ## Information Security Profile
 |Change|Description|Link|

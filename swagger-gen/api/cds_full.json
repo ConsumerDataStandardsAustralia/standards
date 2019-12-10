@@ -1057,7 +1057,7 @@
     "/banking/payees/{payeeId}": {
       "get": {
         "summary": "Get Payee Detail",
-        "description": "Obtain detailed information on a single payee",
+        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient",
         "operationId": "getPayeeDetail",
         "x-scopes": [
           "bank:payees:read"
