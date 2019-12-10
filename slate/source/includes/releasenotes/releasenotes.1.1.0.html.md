@@ -21,6 +21,8 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 ## API End Points
 |Change|Description|Link|
 |------|-----------|----|
+|Clarified description of `productName`|Clarified that the `productName` field in the account structure is set by the data holder not the account holder|[BankingAccount Section](../../index.html#schemabankingaccount)
+|`accountName` optional for domestic payee|For some Banks the account name field is not captured for domestic payees so this field has been made optional|[BankingDomesticPayeeAccount Section](../../index.html##tocSbankingdomesticpayeeaccount)
 
 ## Information Security Profile
 |Change|Description|Link|
