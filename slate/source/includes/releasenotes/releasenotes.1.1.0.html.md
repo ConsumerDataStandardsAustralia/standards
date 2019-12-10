@@ -19,6 +19,7 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 |`x-fapi-interaction-id` description clarification|A clarification of the description recommended by the CDR Engineering team|[HTTP Headers Section](../../index.html#http-headers)
 |`x-cds-subject` header removed| This header has been removed from the standards based on community consultation|[HTTP Headers Section](../../index.html#http-headers)
 |Modification of `x-cds-User-Agent` header|The `x-cds-User-Agent` header has been renamed to `x-cds-client-headers` and clarified to exclude specific types of headers|[HTTP Headers Section](../../index.html#http-headers)
+|Bug fix for rate type| In a previous decision the limitation of the rate type to plus or minus 100% was agreed to be removed.  This has not been fixed|[Common Field Types Section](../../index.html#common-field-types)
 
 ## API End Points
 |Change|Description|Link|
