@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 1.0.1
+  version: 1.1.0
   title: Consumer Data Standards
   contact:
     name: Consumer Data Standards
@@ -122,7 +122,7 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
             x-fapi-interaction-id:
               type: string
-              description: An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.
+              description: An optional [[RFC4122](https://tools.ietf.org/html/rfc4122)] UUID used as a correlation id. If provided, the data holder must "play back" this value in the `x-fapi-interaction-id` response header.
           schema:
             $ref: '#/definitions/ResponseBankingAccountList'
       x-scopes:
@@ -330,7 +330,7 @@ paths:
       - Accounts
       summary: Get Account Balance
       description: Obtain the balance for a single specified account
-      operationId: listBalance
+      operationId: getBalance
       parameters:
       - name: accountId
         in: path
@@ -461,7 +461,7 @@ paths:
       - Banking
       - Accounts
       summary: Get Transactions For Account
-      description: "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account"
+      description: "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared"
       operationId: getTransactions
       parameters:
       - name: accountId
@@ -1277,7 +1277,10 @@ paths:
       - Banking
       - Payees
       summary: Get Payee Detail
-      description: Obtain detailed information on a single payee
+      description: |-
+        Obtain detailed information on a single payee.
+
+        Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient
       operationId: getPayeeDetail
       parameters:
       - name: payeeId
@@ -1379,6 +1382,10 @@ paths:
         It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.
 
         In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+
+        NOTE: This version must be implemented by **July 2020**
+
+        Obsolete versions: [v1](includes/obsolete/get-products-v1.html)
       operationId: listProducts
       parameters:
       - name: effective
@@ -1453,14 +1460,19 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductList'
-      x-version: "1"
+      x-version: "2"
   /banking/products/{productId}:
     get:
       tags:
       - Banking
       - Products
       summary: Get Product Detail
-      description: Obtain detailed information on a single product offered openly to the market
+      description: |-
+        Obtain detailed information on a single product offered openly to the market.
+
+        NOTE: This version must be implemented by **July 2020**
+
+        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
       operationId: getProductDetail
       parameters:
       - name: productId
@@ -1488,7 +1500,7 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductById'
-      x-version: "1"
+      x-version: "2"
   /common/customer:
     get:
       tags:
@@ -1633,7 +1645,7 @@ paths:
               type: string
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
-            $ref: '#/definitions/CommonDiscoveryStatus'
+            $ref: '#/definitions/ResponseCommonDiscoveryStatus'
       x-version: "1"
   /discovery/outages:
     get:
@@ -1687,7 +1699,7 @@ definitions:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  BankingProduct:
+  BankingProductV2:
     type: object
     required:
     - brand
@@ -1737,7 +1749,12 @@ definitions:
         description: Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable
         x-cds-type: Boolean
       additionalInformation:
-        $ref: '#/definitions/BankingProduct_additionalInformation'
+        $ref: '#/definitions/BankingProductV2_additionalInformation'
+      cardArt:
+        type: array
+        description: An array of card art images
+        items:
+          $ref: '#/definitions/BankingProductV2_cardArt'
   ResponseBankingProductById:
     type: object
     required:
@@ -1752,7 +1769,7 @@ definitions:
         $ref: '#/definitions/Meta'
   BankingProductDetail:
     allOf:
-    - $ref: '#/definitions/BankingProduct'
+    - $ref: '#/definitions/BankingProductV2'
     - type: object
       properties:
         bundles:
@@ -1960,7 +1977,7 @@ definitions:
         x-cds-type: RateString
       accrualFrequency:
         type: string
-        description: The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
       currency:
         type: string
@@ -2104,11 +2121,11 @@ definitions:
         x-cds-type: RateString
       calculationFrequency:
         type: string
-        description: The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
       applicationFrequency:
         type: string
-        description: The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
       tiers:
         type: array
@@ -2158,11 +2175,11 @@ definitions:
         x-cds-type: RateString
       calculationFrequency:
         type: string
-        description: The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
       applicationFrequency:
         type: string
-        description: The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
       interestPaymentDue:
         type: string
@@ -2289,7 +2306,7 @@ definitions:
         $ref: '#/definitions/BankingProductCategory'
       productName:
         type: string
-        description: The unique identifier of the account as defined by the account holder (akin to model number for the account)
+        description: The unique identifier of the account as defined by the data holder (akin to model number for the account)
   ResponseBankingAccountById:
     type: object
     required:
@@ -2324,7 +2341,9 @@ definitions:
           - creditCard
           - loan
         termDeposit:
-          $ref: '#/definitions/BankingTermDepositAccount'
+          type: array
+          items:
+            $ref: '#/definitions/BankingTermDepositAccount'
         creditCard:
           $ref: '#/definitions/BankingCreditCardAccount'
         loan:
@@ -2497,7 +2516,7 @@ definitions:
         - PRINCIPAL_AND_INTEREST
       repaymentFrequency:
         type: string
-        description: The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
   ResponseBankingTransactionList:
     type: object
@@ -2796,7 +2815,6 @@ definitions:
   BankingDomesticPayeeAccount:
     type: object
     required:
-    - accountName
     - accountNumber
     - bsb
     properties:
@@ -2980,7 +2998,7 @@ definitions:
         x-cds-type: Boolean
       amount:
         type: string
-        description: Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed
+        description: The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present
         x-cds-type: AmountString
       currency:
         type: string
@@ -3091,11 +3109,11 @@ definitions:
       nonBusinessDayTreatment:
         type: string
         description: Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON
-        default: "ON"
+        default: ON
         enum:
         - AFTER
         - BEFORE
-        - "ON"
+        - ON
         - ONLY
       intervals:
         type: array
@@ -3110,11 +3128,11 @@ definitions:
     properties:
       interval:
         type: string
-        description: An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate
+        description: An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)  (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate
         x-cds-type: ExternalRef
       dayInInterval:
         type: string
-        description: Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Monday.
+        description: Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.
         x-cds-type: ExternalRef
   BankingScheduledPaymentRecurrenceLastWeekday:
     type: object
@@ -3132,12 +3150,28 @@ definitions:
         x-cds-type: PositiveInteger
       interval:
         type: string
-        description: The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate
+        description: The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate
         x-cds-type: ExternalRef
       lastWeekDay:
-        type: integer
-        description: The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.
-        x-cds-type: PositiveInteger
+        type: string
+        description: The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.
+        enum:
+        - MON
+        - TUE
+        - WED
+        - THU
+        - FRI
+        - SAT
+        - SUN
+      nonBusinessDayTreatment:
+        type: string
+        description: Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON
+        default: ON
+        enum:
+        - AFTER
+        - BEFORE
+        - ON
+        - ONLY
     description: Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay
   BankingScheduledPaymentRecurrenceEventBased:
     type: object
@@ -3148,14 +3182,14 @@ definitions:
         type: string
         description: Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer
     description: Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased
-  CommonDiscoveryStatus:
+  ResponseCommonDiscoveryStatus:
     type: object
     required:
     - data
     - links
     properties:
       data:
-        $ref: '#/definitions/CommonDiscoveryStatus_data'
+        $ref: '#/definitions/ResponseCommonDiscoveryStatus_data'
       links:
         $ref: '#/definitions/Links'
       meta:
@@ -3185,7 +3219,7 @@ definitions:
         x-cds-type: DateTimeString
       duration:
         type: string
-        description: Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        description: Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
         x-cds-type: ExternalRef
       isPartial:
         type: boolean
@@ -3297,7 +3331,7 @@ definitions:
         description: The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field
       agentRole:
         type: string
-        description: The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known
+        description: The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known
       businessName:
         type: string
         description: Name of the organisation
@@ -3306,7 +3340,7 @@ definitions:
         description: Legal name, if different to the business name
       shortName:
         type: string
-        description: Short name used for communication, if  different to the business name
+        description: Short name used for communication, if different to the business name
       abn:
         type: string
         description: Australian Business Number for the organisation
@@ -3655,8 +3689,8 @@ definitions:
         type: array
         description: The list of products returned.  If the filter results in an empty set then this array may have no records
         items:
-          $ref: '#/definitions/BankingProduct'
-  BankingProduct_additionalInformation:
+          $ref: '#/definitions/BankingProductV2'
+  BankingProductV2_additionalInformation:
     properties:
       overviewUri:
         type: string
@@ -3679,6 +3713,17 @@ definitions:
         description: Description of a bundle that this product can be part of
         x-cds-type: URIString
     description: Object that contains links to additional information on specific topics
+  BankingProductV2_cardArt:
+    required:
+    - imageUri
+    properties:
+      title:
+        type: string
+        description: Display label for the specific image
+      imageUri:
+        type: string
+        description: Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels
+        x-cds-type: URIString
   BankingProductRateTier_subTier:
     required:
     - maximumValue
@@ -3859,7 +3904,7 @@ definitions:
         description: The list of scheduled payments to return
         items:
           $ref: '#/definitions/BankingScheduledPayment'
-  CommonDiscoveryStatus_data:
+  ResponseCommonDiscoveryStatus_data:
     required:
     - status
     - updateTime

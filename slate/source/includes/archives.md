@@ -10,3 +10,4 @@ The following table lists archived versions of the Consumer Data Standards.  The
 |<a href='./archive/standards-0.9.3/docs/'>29/5/2019</a>|0.9.3|<a href='./archive/standards-0.9.3/docs/'>May 2019 Working Draft</a>|
 |<a href='./archive/standards-0.9.5/docs/'>15/7/2019</a>|0.9.5|<a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a>|
 |<a href='./archive/standards-0.9.6/docs/'>4/9/2019</a>|0.9.6|<a href='./archive/standards-0.9.6/docs/'>September fixes update</a>|
+|<a href='./archive/standards-1.0.0/docs/'>30/9/2019</a>|1.0.0|<a href='./archive/standards-1.0.0/docs/'>September 1.0.0 Release</a>|

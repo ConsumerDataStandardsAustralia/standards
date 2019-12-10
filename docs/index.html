@@ -396,7 +396,7 @@
                     <a href="#tocSresponsebankingproductlist" class="toc-h2 toc-link" data-title="ResponseBankingProductList">ResponseBankingProductList</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingproduct" class="toc-h2 toc-link" data-title="BankingProduct">BankingProduct</a>
+                    <a href="#tocSbankingproductv2" class="toc-h2 toc-link" data-title="BankingProductV2">BankingProductV2</a>
                   </li>
                   <li>
                     <a href="#tocSresponsebankingproductbyid" class="toc-h2 toc-link" data-title="ResponseBankingProductById">ResponseBankingProductById</a>
@@ -555,7 +555,7 @@
                     <a href="#tocSbankingscheduledpaymentrecurrenceeventbased" class="toc-h2 toc-link" data-title="BankingScheduledPaymentRecurrenceEventBased">BankingScheduledPaymentRecurrenceEventBased</a>
                   </li>
                   <li>
-                    <a href="#tocScommondiscoverystatus" class="toc-h2 toc-link" data-title="CommonDiscoveryStatus">CommonDiscoveryStatus</a>
+                    <a href="#tocSresponsecommondiscoverystatus" class="toc-h2 toc-link" data-title="ResponseCommonDiscoveryStatus">ResponseCommonDiscoveryStatus</a>
                   </li>
                   <li>
                     <a href="#tocSresponsediscoveryoutageslist" class="toc-h2 toc-link" data-title="ResponseDiscoveryOutagesList">ResponseDiscoveryOutagesList</a>
@@ -2875,7 +2875,7 @@ Host: www.holder.com.au
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An optional [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the <code>x-fapi-interaction-id</code> response header.</td>
 </tr>
 </tbody></table>
 
@@ -3026,6 +3026,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+</tr>
+<tr>
+<td>x-cds-subject</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -3432,7 +3439,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
 <h2 id='get-account-balance'>Get Account Balance</h2>
-<p><a id="opIdlistBalance"></a></p>
+<p><a id="opIdgetBalance"></a></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -3774,13 +3781,15 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"termDeposit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"creditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"minPaymentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"paymentDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4072,6 +4081,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     - Execution date/time if available, then
     - A reasonable date/time nominated by the data holder using internal data structures</li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
+<li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared</li>
 </ul>
 <h3 id='endpoint-version-6'>Endpoint Version</h3>
 <table><thead>
@@ -5519,7 +5529,8 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5901,7 +5912,8 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6215,7 +6227,8 @@ To perform this operation, you must be authenticated and authorised with the fol
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6579,7 +6592,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </code></pre>
 <p><code>GET /banking/payees/{payeeId}</code></p>
 
-<p>Obtain detailed information on a single payee</p>
+<p>Obtain detailed information on a single payee.</p>
+
+<p>Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient</p>
 <h3 id='endpoint-version-15'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -6833,6 +6848,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.</p>
 
 <p>In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
+
+<p>NOTE: This version must be implemented by <strong>July 2020</strong></p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-products-v1.html">v1</a></p>
 <h3 id='endpoint-version-16'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -6842,7 +6861,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -7009,7 +7028,13 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -7097,7 +7122,11 @@ This operation does not require authentication
 </code></pre>
 <p><code>GET /banking/products/{productId}</code></p>
 
-<p>Obtain detailed information on a single product offered openly to the market</p>
+<p>Obtain detailed information on a single product offered openly to the market.</p>
+
+<p>NOTE: This version must be implemented by <strong>July 2020</strong></p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -7107,7 +7136,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -7170,6 +7199,12 @@ This operation does not require authentication
       </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7973,7 +8008,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemacommondiscoverystatus">CommonDiscoveryStatus</a></td>
+<td><a href="#schemaresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-20'>Response Headers</h3>
@@ -8202,7 +8237,13 @@ This operation does not require authentication
           </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -8238,7 +8279,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» products</td>
-<td>[<a href="#schemabankingproduct">BankingProduct</a>]</td>
+<td>[<a href="#schemabankingproductv2">BankingProductV2</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>The list of products returned.  If the filter results in an empty set then this array may have no records</td>
@@ -8259,9 +8300,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproduct">BankingProduct</h2>
+<h2 id="tocSbankingproductv2">BankingProductV2</h2>
 
-<p><a id="schemabankingproduct"></a></p>
+<p><a id="schemabankingproductv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8280,7 +8321,13 @@ This operation does not require authentication
     </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-3'>Properties</h3>
@@ -8412,6 +8459,27 @@ This operation does not require authentication
 <td>none</td>
 <td>Description of a bundle that this product can be part of</td>
 </tr>
+<tr>
+<td>cardArt</td>
+<td>[object]</td>
+<td>optional</td>
+<td>none</td>
+<td>An array of card art images</td>
+</tr>
+<tr>
+<td>» title</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display label for the specific image</td>
+</tr>
+<tr>
+<td>» imageUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
@@ -8437,6 +8505,12 @@ This operation does not require authentication
       </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8643,6 +8717,12 @@ This operation does not require authentication
     </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8803,7 +8883,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemabankingproduct">BankingProduct</a></td>
+<td><a href="#schemabankingproductv2">BankingProductV2</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
@@ -9369,7 +9449,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -9769,14 +9849,14 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>tiers</td>
@@ -9919,14 +9999,14 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>applicationFrequency</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>interestPaymentDue</td>
@@ -10406,7 +10486,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The unique identifier of the account as defined by the account holder (akin to model number for the account)</td>
+<td>The unique identifier of the account as defined by the data holder (akin to model number for the account)</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-16'>Enumerated Values</h4>
@@ -10444,13 +10524,15 @@ This operation does not require authentication
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"termDeposit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"creditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"minPaymentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"paymentDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10692,13 +10774,15 @@ This operation does not require authentication
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"termDeposit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"creditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"minPaymentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10954,7 +11038,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» termDeposit</td>
-<td><a href="#schemabankingtermdepositaccount">BankingTermDepositAccount</a></td>
+<td>[<a href="#schemabankingtermdepositaccount">BankingTermDepositAccount</a>]</td>
 <td>conditional</td>
 <td>none</td>
 <td>none</td>
@@ -11364,7 +11448,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The expected or required repayment frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The expected or required repayment frequency. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-19'>Enumerated Values</h4>
@@ -12633,7 +12717,7 @@ This operation does not require authentication
 <tr>
 <td>accountName</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>none</td>
 <td>Name of the account to pay to</td>
 </tr>
@@ -13213,7 +13297,8 @@ This operation does not require authentication
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -13362,7 +13447,8 @@ This operation does not require authentication
       </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -13545,7 +13631,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed</td>
+<td>The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -13743,7 +13829,8 @@ This operation does not require authentication
     </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -13962,14 +14049,14 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>An interval for the payment. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate</td>
+<td>An interval for the payment. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>  (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate</td>
 </tr>
 <tr>
 <td>dayInInterval</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>none</td>
-<td>Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> with components less than a day in length ignored. The first day of a week is considered to be Monday.</td>
+<td>Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.</td>
 </tr>
 </tbody></table>
 
@@ -13980,7 +14067,8 @@ This operation does not require authentication
   </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -14014,14 +14102,73 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>The interval for the payment. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate</td>
+<td>The interval for the payment. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate</td>
 </tr>
 <tr>
 <td>lastWeekDay</td>
-<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.</td>
+<td>The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.</td>
+</tr>
+<tr>
+<td>nonBusinessDayTreatment</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lastWeekDay</td>
+<td>MON</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>TUE</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>WED</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>THU</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>FRI</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>SAT</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>SUN</td>
+</tr>
+<tr>
+<td>nonBusinessDayTreatment</td>
+<td>AFTER</td>
+</tr>
+<tr>
+<td>nonBusinessDayTreatment</td>
+<td>BEFORE</td>
+</tr>
+<tr>
+<td>nonBusinessDayTreatment</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>nonBusinessDayTreatment</td>
+<td>ONLY</td>
 </tr>
 </tbody></table>
 
@@ -14053,9 +14200,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocScommondiscoverystatus">CommonDiscoveryStatus</h2>
+<h2 id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h2>
 
-<p><a id="schemacommondiscoverystatus"></a></p>
+<p><a id="schemaresponsecommondiscoverystatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
@@ -14137,7 +14284,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14254,7 +14401,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Planned duration of the outage. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>Planned duration of the outage. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>isPartial</td>
@@ -14365,7 +14512,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14573,7 +14720,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14857,7 +15004,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known</td>
+<td>The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known</td>
 </tr>
 <tr>
 <td>businessName</td>
@@ -14878,7 +15025,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Short name used for communication, if  different to the business name</td>
+<td>Short name used for communication, if different to the business name</td>
 </tr>
 <tr>
 <td>abn</td>
@@ -14930,7 +15077,7 @@ This operation does not require authentication
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15144,7 +15291,7 @@ This operation does not require authentication
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15218,7 +15365,7 @@ This operation does not require authentication
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15332,7 +15479,7 @@ This operation does not require authentication
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15434,7 +15581,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15941,7 +16088,7 @@ This operation does not require authentication
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -18543,6 +18690,11 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <td><a href='./archive/standards-0.9.6/docs/'>4/9/2019</a></td>
 <td>0.9.6</td>
 <td><a href='./archive/standards-0.9.6/docs/'>September fixes update</a></td>
+</tr>
+<tr>
+<td><a href='./archive/standards-1.0.0/docs/'>30/9/2019</a></td>
+<td>1.0.0</td>
+<td><a href='./archive/standards-1.0.0/docs/'>September 1.0.0 Release</a></td>
 </tr>
 </tbody></table>
 

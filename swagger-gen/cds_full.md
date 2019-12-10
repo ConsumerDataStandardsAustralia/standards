@@ -70,7 +70,7 @@ Obtain a list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
@@ -139,7 +139,7 @@ Obtain a list of accounts
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.|
+|200|x-fapi-interaction-id|string||An optional [[RFC4122](https://tools.ietf.org/html/rfc4122)] UUID used as a correlation id. If provided, the data holder must "play back" this value in the `x-fapi-interaction-id` response header.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -214,7 +214,7 @@ Obtain balances for multiple, filtered accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
@@ -373,7 +373,7 @@ Obtain balances for a specified list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|The list of account IDs to obtain balances for|
 
@@ -437,7 +437,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ## Get Account Balance
 
-<a id="opIdlistBalance"></a>
+<a id="opIdgetBalance"></a>
 
 > Code samples
 
@@ -499,7 +499,7 @@ Obtain the balance for a single specified account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -611,7 +611,7 @@ Obtain detailed information on a single account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -634,13 +634,15 @@ Obtain detailed information on a single account
     "accountNumber": "string",
     "bundleName": "string",
     "specificAccountUType": "termDeposit",
-    "termDeposit": {
-      "lodgementDate": "string",
-      "maturityDate": "string",
-      "maturityAmount": "string",
-      "maturityCurrency": "string",
-      "maturityInstructions": "ROLLED_OVER"
-    },
+    "termDeposit": [
+      {
+        "lodgementDate": "string",
+        "maturityDate": "string",
+        "maturityAmount": "string",
+        "maturityCurrency": "string",
+        "maturityInstructions": "ROLLED_OVER"
+      }
+    ],
     "creditCard": {
       "minPaymentAmount": "string",
       "paymentDueAmount": "string",
@@ -908,6 +910,7 @@ Some general notes that apply to all end points that retrieve transactions:
 		- Execution date/time if available, then
 		- A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
+- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared
 
 ###Endpoint Version
 |   |  |
@@ -923,7 +926,7 @@ Some general notes that apply to all end points that retrieve transactions:
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time.  If absent defaults to today.  Format is aligned to DateTimeString common type|
 |min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher or equal to than this amount|
 |max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to than this amount|
-|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named isQueryParamUnsupported should be included in the meta object and set to true (whether the text parameter is supplied or not)|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -931,7 +934,7 @@ Some general notes that apply to all end points that retrieve transactions:
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -1061,7 +1064,7 @@ Obtain detailed information on a transaction for a specific account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -1192,7 +1195,7 @@ Obtain direct debit authorisations for a specific account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -1317,7 +1320,7 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
@@ -1474,7 +1477,7 @@ Obtain direct debit authorisations for a specified list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for|
 
@@ -1600,7 +1603,7 @@ Obtain scheduled, outgoing payments for a specific account
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -1695,7 +1698,8 @@ Obtain scheduled, outgoing payments for a specific account
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
             "interval": "string",
-            "lastWeekDay": 0
+            "lastWeekDay": "MON",
+            "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
             "description": "string"
@@ -1804,7 +1808,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
@@ -1919,7 +1923,8 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
             "interval": "string",
-            "lastWeekDay": 0
+            "lastWeekDay": "MON",
+            "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
             "description": "string"
@@ -2040,7 +2045,7 @@ Obtain scheduled payments for a specified list of accounts
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIds](#schemarequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for.  The accounts specified are the source of funds for the payments returned|
 
@@ -2136,7 +2141,8 @@ Obtain scheduled payments for a specified list of accounts
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
             "interval": "string",
-            "lastWeekDay": 0
+            "lastWeekDay": "MON",
+            "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
             "description": "string"
@@ -2245,7 +2251,7 @@ Obtain a list of pre-registered payees
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 #### Enumerated Values
@@ -2353,7 +2359,9 @@ $.ajax({
 
 `GET /banking/payees/{payeeId}`
 
-Obtain detailed information on a single payee
+Obtain detailed information on a single payee.
+
+Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient
 
 ###Endpoint Version
 |   |  |
@@ -2370,7 +2378,7 @@ Obtain detailed information on a single payee
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -2527,10 +2535,14 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
+NOTE: This version must be implemented by **July 2020**
+
+Obsolete versions: [v1](includes/obsolete/get-products-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-products-parameters">Parameters</h3>
 
@@ -2591,7 +2603,13 @@ In addition, the concept of effective date and time has also been included.  Thi
           "eligibilityUri": "string",
           "feesAndPricingUri": "string",
           "bundleUri": "string"
-        }
+        },
+        "cardArt": [
+          {
+            "title": "string",
+            "imageUri": "string"
+          }
+        ]
       }
     ]
   },
@@ -2662,12 +2680,16 @@ $.ajax({
 
 `GET /banking/products/{productId}`
 
-Obtain detailed information on a single product offered openly to the market
+Obtain detailed information on a single product offered openly to the market.
+
+NOTE: This version must be implemented by **July 2020**
+
+Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-product-detail-parameters">Parameters</h3>
 
@@ -2702,6 +2724,12 @@ Obtain detailed information on a single product offered openly to the market
       "feesAndPricingUri": "string",
       "bundleUri": "string"
     },
+    "cardArt": [
+      {
+        "title": "string",
+        "imageUri": "string"
+      }
+    ],
     "bundles": [
       {
         "name": "string",
@@ -2935,7 +2963,7 @@ Obtain basic information on the customer that has authorised the current session
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -3061,7 +3089,7 @@ Obtain detailed information on the authorised customer within the current sessio
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customers original User Agent header if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls. Base64 encoded contents which may included additional parameters.|
+|x-cds-User-Agent|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |x-cds-subject|header|string|optional|Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
@@ -3298,7 +3326,7 @@ Obtain a health check status for the implementation
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[CommonDiscoveryStatus](#schemacommondiscoverystatus)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonDiscoveryStatus](#schemaresponsecommondiscoverystatus)|
 
 ### Response Headers
 
@@ -3452,7 +3480,13 @@ This operation does not require authentication
           "eligibilityUri": "string",
           "feesAndPricingUri": "string",
           "bundleUri": "string"
-        }
+        },
+        "cardArt": [
+          {
+            "title": "string",
+            "imageUri": "string"
+          }
+        ]
       }
     ]
   },
@@ -3476,13 +3510,13 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
-|» products|[[BankingProduct](#schemabankingproduct)]|mandatory|none|The list of products returned.  If the filter results in an empty set then this array may have no records|
+|» products|[[BankingProductV2](#schemabankingproductv2)]|mandatory|none|The list of products returned.  If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSbankingproduct">BankingProduct</h2>
+<h2 id="tocSbankingproductv2">BankingProductV2</h2>
 
-<a id="schemabankingproduct"></a>
+<a id="schemabankingproductv2"></a>
 
 ```json
 {
@@ -3503,7 +3537,13 @@ This operation does not require authentication
     "eligibilityUri": "string",
     "feesAndPricingUri": "string",
     "bundleUri": "string"
-  }
+  },
+  "cardArt": [
+    {
+      "title": "string",
+      "imageUri": "string"
+    }
+  ]
 }
 
 ```
@@ -3529,6 +3569,9 @@ This operation does not require authentication
 |» eligibilityUri|[URIString](#common-field-types)|optional|none|Eligibility rules and criteria for the product|
 |» feesAndPricingUri|[URIString](#common-field-types)|optional|none|Description of fees, pricing, discounts, exemptions and bonuses for the product|
 |» bundleUri|[URIString](#common-field-types)|optional|none|Description of a bundle that this product can be part of|
+|cardArt|[object]|optional|none|An array of card art images|
+|» title|string|optional|none|Display label for the specific image|
+|» imageUri|[URIString](#common-field-types)|mandatory|none|Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels|
 
 <h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
@@ -3555,6 +3598,12 @@ This operation does not require authentication
       "feesAndPricingUri": "string",
       "bundleUri": "string"
     },
+    "cardArt": [
+      {
+        "title": "string",
+        "imageUri": "string"
+      }
+    ],
     "bundles": [
       {
         "name": "string",
@@ -3740,6 +3789,12 @@ This operation does not require authentication
     "feesAndPricingUri": "string",
     "bundleUri": "string"
   },
+  "cardArt": [
+    {
+      "title": "string",
+      "imageUri": "string"
+    }
+  ],
   "bundles": [
     {
       "name": "string",
@@ -3894,7 +3949,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingProduct](#schemabankingproduct)|optional|none|none|
+|*anonymous*|[BankingProductV2](#schemabankingproductv2)|optional|none|none|
 
 *and*
 
@@ -4113,7 +4168,7 @@ This operation does not require authentication
 |balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accrualFrequency|[ExternalRef](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|accrualFrequency|[ExternalRef](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
@@ -4276,8 +4331,8 @@ This operation does not require authentication
 |---|---|---|---|---|
 |depositRateType|string|mandatory|none|The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning|
 |rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the rate|
@@ -4345,8 +4400,8 @@ This operation does not require authentication
 |lendingRateType|string|mandatory|none|The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning|
 |rate|[RateString](#common-field-types)|mandatory|none|The rate to be applied|
 |comparisonRate|[RateString](#common-field-types)|optional|none|A comparison rate equivalent for this rate|
-|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)|
@@ -4535,7 +4590,7 @@ This operation does not require authentication
 |isOwned|[Boolean](#common-field-types)|optional|none|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|none|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
 |productCategory|[BankingProductCategory](#schemabankingproductcategory)|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
-|productName|string|mandatory|none|The unique identifier of the account as defined by the account holder (akin to model number for the account)|
+|productName|string|mandatory|none|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
 
 #### Enumerated Values
 
@@ -4564,13 +4619,15 @@ This operation does not require authentication
     "accountNumber": "string",
     "bundleName": "string",
     "specificAccountUType": "termDeposit",
-    "termDeposit": {
-      "lodgementDate": "string",
-      "maturityDate": "string",
-      "maturityAmount": "string",
-      "maturityCurrency": "string",
-      "maturityInstructions": "ROLLED_OVER"
-    },
+    "termDeposit": [
+      {
+        "lodgementDate": "string",
+        "maturityDate": "string",
+        "maturityAmount": "string",
+        "maturityCurrency": "string",
+        "maturityInstructions": "ROLLED_OVER"
+      }
+    ],
     "creditCard": {
       "minPaymentAmount": "string",
       "paymentDueAmount": "string",
@@ -4791,13 +4848,15 @@ This operation does not require authentication
   "accountNumber": "string",
   "bundleName": "string",
   "specificAccountUType": "termDeposit",
-  "termDeposit": {
-    "lodgementDate": "string",
-    "maturityDate": "string",
-    "maturityAmount": "string",
-    "maturityCurrency": "string",
-    "maturityInstructions": "ROLLED_OVER"
-  },
+  "termDeposit": [
+    {
+      "lodgementDate": "string",
+      "maturityDate": "string",
+      "maturityAmount": "string",
+      "maturityCurrency": "string",
+      "maturityInstructions": "ROLLED_OVER"
+    }
+  ],
   "creditCard": {
     "minPaymentAmount": "string",
     "paymentDueAmount": "string",
@@ -5003,7 +5062,7 @@ This operation does not require authentication
 |» accountNumber|string|optional|none|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» bundleName|string|optional|none|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
 |» specificAccountUType|string|optional|none|The type of structure to present account specific fields.|
-|» termDeposit|[BankingTermDepositAccount](#schemabankingtermdepositaccount)|conditional|none|none|
+|» termDeposit|[[BankingTermDepositAccount](#schemabankingtermdepositaccount)]|conditional|none|none|
 |» creditCard|[BankingCreditCardAccount](#schemabankingcreditcardaccount)|conditional|none|none|
 |» loan|[BankingLoanAccount](#schemabankingloanaccount)|conditional|none|none|
 |» depositRate|[RateString](#common-field-types)|optional|none|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
@@ -5140,7 +5199,7 @@ This operation does not require authentication
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional|none|Set to true if one or more offset accounts are configured for this loan account|
 |offsetAccountIds|[string]|optional|none|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
 |repaymentType|string|optional|none|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
-|repaymentFrequency|[ExternalRef](#common-field-types)|mandatory|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|repaymentFrequency|[ExternalRef](#common-field-types)|mandatory|none|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 #### Enumerated Values
 
@@ -5816,7 +5875,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|accountName|string|mandatory|none|Name of the account to pay to|
+|accountName|string|optional|none|Name of the account to pay to|
 |bsb|string|mandatory|none|BSB of the account to pay to|
 |accountNumber|string|mandatory|none|Number of the account to pay to|
 
@@ -6130,7 +6189,8 @@ This operation does not require authentication
             "finalPaymentDate": "string",
             "paymentsRemaining": 0,
             "interval": "string",
-            "lastWeekDay": 0
+            "lastWeekDay": "MON",
+            "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
             "description": "string"
@@ -6252,7 +6312,8 @@ This operation does not require authentication
       "finalPaymentDate": "string",
       "paymentsRemaining": 0,
       "interval": "string",
-      "lastWeekDay": 0
+      "lastWeekDay": "MON",
+      "nonBusinessDayTreatment": "ON"
     },
     "eventBased": {
       "description": "string"
@@ -6351,7 +6412,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |to|[BankingScheduledPaymentTo](#schemabankingscheduledpaymentto)|mandatory|none|Object containing details of the destination of the payment. Used to specify a variety of payment destination types|
 |isAmountCalculated|[Boolean](#common-field-types)|optional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
-|amount|[AmountString](#common-field-types)|conditional|none|Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed|
+|amount|[AmountString](#common-field-types)|conditional|none|The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency for the payment. AUD assumed if not present|
 
 <h2 id="tocSbankingscheduledpaymentto">BankingScheduledPaymentTo</h2>
@@ -6477,7 +6538,8 @@ This operation does not require authentication
     "finalPaymentDate": "string",
     "paymentsRemaining": 0,
     "interval": "string",
-    "lastWeekDay": 0
+    "lastWeekDay": "MON",
+    "nonBusinessDayTreatment": "ON"
   },
   "eventBased": {
     "description": "string"
@@ -6582,8 +6644,8 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|interval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
-|dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
+|interval|[ExternalRef](#common-field-types)|mandatory|none|An interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)  (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+|dayInInterval|[ExternalRef](#common-field-types)|optional|none|Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.|
 
 <h2 id="tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h2>
 
@@ -6594,7 +6656,8 @@ This operation does not require authentication
   "finalPaymentDate": "string",
   "paymentsRemaining": 0,
   "interval": "string",
-  "lastWeekDay": 0
+  "lastWeekDay": "MON",
+  "nonBusinessDayTreatment": "ON"
 }
 
 ```
@@ -6607,8 +6670,25 @@ This operation does not require authentication
 |---|---|---|---|---|
 |finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
-|interval|[ExternalRef](#common-field-types)|mandatory|none|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
-|lastWeekDay|[PositiveInteger](#common-field-types)|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval. Value is constrained to 1 to 7 with 1 indicating Monday.|
+|interval|[ExternalRef](#common-field-types)|mandatory|none|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
+|lastWeekDay|string|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.|
+|nonBusinessDayTreatment|string|optional|none|Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|lastWeekDay|MON|
+|lastWeekDay|TUE|
+|lastWeekDay|WED|
+|lastWeekDay|THU|
+|lastWeekDay|FRI|
+|lastWeekDay|SAT|
+|lastWeekDay|SUN|
+|nonBusinessDayTreatment|AFTER|
+|nonBusinessDayTreatment|BEFORE|
+|nonBusinessDayTreatment|ON|
+|nonBusinessDayTreatment|ONLY|
 
 <h2 id="tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h2>
 
@@ -6629,9 +6709,9 @@ This operation does not require authentication
 |---|---|---|---|---|
 |description|string|mandatory|none|Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer|
 
-<h2 id="tocScommondiscoverystatus">CommonDiscoveryStatus</h2>
+<h2 id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h2>
 
-<a id="schemacommondiscoverystatus"></a>
+<a id="schemaresponsecommondiscoverystatus"></a>
 
 ```json
 {
@@ -6724,7 +6804,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |outageTime|[DateTimeString](#common-field-types)|mandatory|none|Date and time that the outage is scheduled to begin|
-|duration|[ExternalRef](#common-field-types)|mandatory|none|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|duration|[ExternalRef](#common-field-types)|mandatory|none|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |isPartial|boolean|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
 |explanation|string|mandatory|none|Provides an explanation of the current outage that can be displayed to an end customer|
 
@@ -7106,10 +7186,10 @@ This operation does not require authentication
 |lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
 |agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
-|agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known|
+|agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known|
 |businessName|string|mandatory|none|Name of the organisation|
 |legalName|string|optional|none|Legal name, if different to the business name|
-|shortName|string|optional|none|Short name used for communication, if  different to the business name|
+|shortName|string|optional|none|Short name used for communication, if different to the business name|
 |abn|string|optional|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
 |isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|

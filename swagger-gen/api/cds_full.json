@@ -4194,7 +4194,7 @@
         },
         "agentRole": {
           "type": "string",
-          "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display.  Default to “Unspecified” if the role is not known"
+          "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
         },
         "businessName": {
           "type": "string",
@@ -4206,7 +4206,7 @@
         },
         "shortName": {
           "type": "string",
-          "description": "Short name used for communication, if  different to the business name"
+          "description": "Short name used for communication, if different to the business name"
         },
         "abn": {
           "type": "string",
