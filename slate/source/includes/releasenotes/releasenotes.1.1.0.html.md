@@ -24,7 +24,7 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 ## API End Points
 |Change|Description|Link|
 |------|-----------|----|
-|Clarified description of `productName`|Clarified that the `productName` field in the account structure is set by the data holder not the account holder|[BankingAccount Section](../../index.html#schemabankingaccount)
+|Clarified description of `productName`|Clarified that the `productName` field in the account structure is set by the data holder not the account holder|[BankingAccount Section](../../index.html#tocSbankingaccount)
 |`accountName` optional for domestic payee|For some Banks the account name field is not captured for domestic payees so this field has been made optional|[BankingDomesticPayeeAccount Section](../../index.html#tocSbankingdomesticpayeeaccount)
 |Aggregated transaction clarification|The handling of the sharing of data related to aggregated transactionshas been added to the description of the transaction history end point|[BankingDomesticPayeeAccount Section](../../index.html#get-transactions-for-account)
 |Term deposit maturity instructions as array|The termDeposit field in the account detail structure has been converted into an array|[BankingAccountDetail Section](../../index.html#tocSbankingaccountdetail)
@@ -36,7 +36,8 @@ Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 |------|-----------|----|
 |Normative reference versions|Added specific dates or versions to the normative reference table to avoid ambiguity|[Normative References](../../index.html#normative-references)
 |Removed references to Vectors Of Trust|This change was recommended via the maintenance iteration to remove ambiguity from the standards|[InfoSec End Points Section](../../index.html#end-points) & [Scopes and Claims Section](../../index.html#scopes-and-claims)
-|Clarified id_token non-normative sample|Non-normative id_token has been modified to include the `refresh_token_expires_at` and `sharing_expires_at` claims|[Scopes and Claims Section](../../index.html#/#scopes-and-claims)
+|Clarified id_token non-normative sample|Non-normative id_token has been modified to include the `refresh_token_expires_at` and `sharing_expires_at` claims|[Scopes and Claims Section](../../index.html#scopes-and-claims)
+|Added CORS support for public end points| Added a CORS section allowing for CORS to be enabled for Get Status, Get Outages, Get Products and Get Product Detail end points|[CORS Section](../../index.html#cors)
 
 ## Consumer Experience
 No Change
