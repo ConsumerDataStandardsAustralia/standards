@@ -253,7 +253,7 @@
       "get": {
         "summary": "Get Account Balance",
         "description": "Obtain the balance for a single specified account",
-        "operationId": "listBalance",
+        "operationId": "getBalance",
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
