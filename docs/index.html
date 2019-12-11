@@ -291,9 +291,6 @@
                     <a href="#transaction-security" class="toc-h2 toc-link" data-title="Transaction Security">Transaction Security</a>
                   </li>
                   <li>
-                    <a href="#cors" class="toc-h2 toc-link" data-title="CORS">CORS</a>
-                  </li>
-                  <li>
                     <a href="#request-object" class="toc-h2 toc-link" data-title="Request Object">Request Object</a>
                   </li>
                   <li>
@@ -730,8 +727,8 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Guidelines</a></li>
-            <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Standards Site</a></li>
+            <li><a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Standards</a></li>
+            <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Guidelines</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
         </ul>
@@ -748,7 +745,7 @@
 
 <p>These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.1.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.0.1</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -943,8 +940,8 @@
 </thead><tbody>
 <tr>
 <td><strong>Content-Type</strong></td>
-<td>Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to <code>application/json</code>. Mandatory for PUT and POST calls.</td>
-<td>Conditional</td>
+<td>Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to <code>application/json</code>.</td>
+<td>Mandatory</td>
 </tr>
 <tr>
 <td><strong>Accept</strong></td>
@@ -968,7 +965,7 @@
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
-<td>An optional [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the <code>x-fapi-interaction-id</code> response header.</td>
+<td>An optional <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction</td>
 <td>Optional</td>
 </tr>
 <tr>
@@ -982,8 +979,13 @@
 <td>Conditional</td>
 </tr>
 <tr>
-<td><strong>x-cds-client-headers</strong></td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul></td>
+<td><strong>x-cds-User-Agent</strong></td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>Conditional</td>
+</tr>
+<tr>
+<td><strong>x-cds-subject</strong></td>
+<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 </tbody></table>
@@ -1014,7 +1016,7 @@
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
-<td>An [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. The data holder must set the response header <code>x-fapi-interaction-id</code> to the value received from the corresponding request header or to a new [RFC4122] UUID value if the request header was not provided.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
 <td>Mandatory</td>
 </tr>
 </tbody></table>
@@ -1441,8 +1443,8 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tr>
 <tr>
 <td>RateString</td>
-<td>A string representing an interest rate.  A rate of 100% would be represented by the value 1.0 and a rate of -100% by -1.0<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
-<td>“0.05”<br/>“-0.05”<br/>“12.3456789”<br/>“-99.123456789123”</td>
+<td>A string representing an interest rate.  A rate of 100% would be represented by the value 1.0 and a rate of -100% by -1.0<br/>- A number constrained to the range [-1.0, 1.0]<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Up to 16 digits following the decimal point<br/>- No formatting, eg thousand separating commas</td>
+<td>“82”<br/>“0.05”<br/>“12.3456789”<br/>“99.123456789123”</td>
 </tr>
 <tr>
 <td>AmountString</td>
@@ -1656,6 +1658,7 @@ standards</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
 <li>  <strong>CDR:</strong> Consumer Data Right</li>
 <li>  <strong>CDR-SP</strong>: Consumer Data Right Security Profile</li>
+<li>  <strong>CIBA</strong>: Client Initiated Backchannel Authentication</li>
 <li>  <strong>CL</strong>: Credential Level</li>
 <li>  <strong>DH:</strong> Data Holder</li>
 <li>  <strong>DR:</strong> Data Recipient</li>
@@ -1680,6 +1683,7 @@ standards</li>
 <li>  <strong>REST:</strong> Representational State Transfer</li>
 <li>  <strong>TDIF:</strong> Trusted Digital Identity Framework</li>
 <li>  <strong>TLS:</strong> Transport Layer Security</li>
+<li>  <strong>VoT:</strong> Vector of Trust</li>
 </ul>
 <h2 id='cdr-federation'>CDR Federation</h2>
 <p>The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
@@ -1926,6 +1930,13 @@ grant_type=authorization_code&amp;
 <li><code>updated_at</code>: Time the End-User&#39;s information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>updated_at</code> time.</li>
 </ul>
 
+<p>The following <strong>[VOT]</strong> claims MAY be supported:</p>
+
+<ul>
+<li> <code>vot</code>: MUST contain a valid <a href="#ordinal-loa">VoT value</a>.</li>
+<li> <code>vtm</code>: The <strong>[VOT]</strong> trustmark URI.</li>
+</ul>
+
 <p>The following additional claims MUST be supported:</p>
 
 <ul>
@@ -1945,9 +1956,22 @@ grant_type=authorization_code&amp;
   "iat": 1311280970,
   "nbf": 1311280970,
   "auth_time": 1311280969,
-  "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": "1311281970",
-  "sharing_expires_at": "1311281970"
+  "acr": "urn:cds.au:cdr:3"
+}
+</code></pre>
+<blockquote>
+<p>Non-Normative Example - vot</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "iss": "https://www.holder.com.au",
+  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
+  "aud": "12345",
+  "nonce": "n-0S6_WzA2Mj",
+  "exp": 1311281970,
+  "iat": 1311280970,
+  "auth_time": 1311280969,
+  "vot": "CL2",
+  "vtm": "https://vector.com/trustmark".
 }
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard.  In accordance with <strong>[FAPI-RW]</strong>, ID Tokens must be signed and encrypted when returned
@@ -1965,6 +1989,14 @@ End Point and Token End Point.</p>
 <p>ID Tokens MUST be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
 <p>The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.</p>
+
+<p>An ID Token MUST not contain both a <code>vot</code> claim (see <a href="#vector-loas">Vectors of Trust</a>) and an <code>acr</code> claim .</p>
+
+<p>If the ID Token contains a <code>vot</code> claim, it MUST also contain a <code>vtm</code> claim:</p>
+
+<ul>
+<li><code>vtm</code>: The trustmark URI as specified in <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15#section-5">section 5</a> of <strong>[VOT]</strong> .</li>
+</ul>
 <h4 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h4>
 <p>The <code>c_hash</code> value MUST be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong>[OIDC]</strong>.</p>
 
@@ -2065,15 +2097,6 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <li>  TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</li>
 <li>  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</li>
 </ul>
-<h2 id='cors'>CORS</h2>
-<p>Cross-origin resource sharing (CORS) must be enabled (ie. <code>Access-Control-Allow-Origin</code> set to &quot;*&quot;) for the following end points:</p>
-
-<ul>
-<li>Get Status</li>
-<li>Get Outages</li>
-<li>Get Products</li>
-<li>Get Product Detail</li>
-</ul>
 
 <p><a id="request-object"></a></p>
 <h2 id='request-object'>Request Object</h2>
@@ -2134,10 +2157,6 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <aside class="warning">
 NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
 </aside>
-
-<aside class="notice">
-NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA
-</aside>
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 <blockquote>
 <p>Non-Normative Example</p>
@@ -2165,12 +2184,13 @@ Content-Type: application/json
   "response_modes_supported": ["fragment"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
+  "vot_values_supported": ["CL1","CL2"],
   "subject_types_supported": ["pairwise"],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "mutual_tls_sender_constrained_access_tokens": "true",
-  "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
+  "claims_supported": ["name", "given_name", "family_name", "vot", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 </code></pre>
 <table><thead>
@@ -2185,7 +2205,7 @@ Content-Type: application/json
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>TLS</td>
+<td>MTLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
@@ -2198,6 +2218,8 @@ Content-Type: application/json
 </tbody></table>
 
 <p>Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in <a href="https://openid.net/specs/openid-connect-discovery-1_0.html">Section 3 and 4 of the OpenID Connect Discovery standards</a> <strong>[OIDD]</strong>.</p>
+
+<p>Where a Data Holder is supporting <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">Vectors of Trust</a> <strong>[VOT]</strong> or <a href="https://bitbucket.org/openid/fapi/src/master/Financial_API_WD_CIBA.md?fileviewer=file-view-default">FAPI-CIBA</a> <strong>[FAPI-CIBA]</strong>, the published OpenID Provider metadata SHALL reflect that support.</p>
 
 <p>At a minimum, the Data Holder metadata MUST include:</p>
 
@@ -2212,6 +2234,12 @@ Content-Type: application/json
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
+</ul>
+
+<p>Data Holders that support <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">Vectors of Trust</a> <strong>[VOT]</strong> MUST include:</p>
+
+<ul>
+<li><code>vot_values_supported</code>:  The list of supported component values.</li>
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
@@ -2299,7 +2327,7 @@ Host: www.holder.com.au
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>TLS</td>
+<td>MTLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
@@ -2315,31 +2343,13 @@ Host: www.holder.com.au
 
 <p>This end point is used by the Data Holder to provide the public keys they will use when required.</p>
 
-<p>Data Holders MUST support a JWKS End Point.</p>
-<h3 id='token-end-point'>Token End Point</h3>
-<table><thead>
-<tr>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Hosted By</td>
-<td>Data Holder</td>
-</tr>
-<tr>
-<td>Transport Security</td>
-<td>MTLS</td>
-</tr>
-<tr>
-<td>Client Authentication Required</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Bearer Token Required</td>
-<td>No</td>
-</tr>
-</tbody></table>
+<p>Data Holders MUST support a Token End Point.### Token End Point
+| Description | Value   |
+|---|---|
+| Hosted By  | Data Holder  |
+|  Transport Security |  MTLS |
+| Client Authentication Required| Yes|
+| Bearer Token Required| No|</p>
 
 <p>The requirements for the Token End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint">section 3.3.3</a> of <strong>[OIDC]</strong>.</p>
 
@@ -2425,7 +2435,7 @@ Host: www.holder.com.au
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS for Data Holders, TLS for Data Recipients</td>
+<td>MTLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
@@ -2457,93 +2467,79 @@ Host: www.holder.com.au
 <tr>
 <th><strong>Reference</strong></th>
 <th><strong>Description</strong></th>
-<th><strong>Version</strong></th>
 </tr>
 </thead><tbody>
 <tr>
 <td><a id="FAPI-R"></a><strong>[FAPI-R]</strong></td>
 <td>Financial-grade API - Part 1: Read Only API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-1.html">https://openid.net/specs/openid-financial-api-part-1.html</a></td>
-<td>Draft-06</td>
 </tr>
 <tr>
 <td><a id="FAPI-RW"></a><strong>[FAPI-RW]</strong></td>
 <td>Financial-grade API - Part 2: Read and Write API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-2.html">https://openid.net/specs/openid-financial-api-part-2.html</a></td>
-<td>Draft-06</td>
 </tr>
 <tr>
 <td><a id="JSON"></a><strong>[JSON]</strong></td>
-<td>The JavaScript Object Notation (JSON) Data Interchange Format: <a href="https://tools.ietf.org/html/rfc8259">https://tools.ietf.org/html/rfc8259</a></td>
-<td>RFC8259</td>
+<td>The JavaScript Object Notation (JSON) Data Interchange Format: <a href="https://tools.ietf.org/html/rfc7159">https://tools.ietf.org/html/rfc7159</a></td>
 </tr>
 <tr>
 <td><a id="JWA"></a><strong>[JWA]</strong></td>
 <td>JSON Web Algorithms (JWA): <a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40">https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40</a></td>
-<td>Jan 2015</td>
 </tr>
 <tr>
 <td><a id="JWK"></a><strong>[JWK]</strong></td>
 <td>JSON Web Key (JWK): <a href="https://tools.ietf.org/html/rfc7517">https://tools.ietf.org/html/rfc7517</a></td>
-<td>RFC7517</td>
 </tr>
 <tr>
 <td><a id="JWT"></a><strong>[JWT]</strong></td>
 <td>JSON Web Token (JWT): <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32">https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32</a></td>
-<td>Dec 2014</td>
 </tr>
 <tr>
 <td><a id="JWS"></a><strong>[JWS]</strong></td>
 <td>JSON Web Signature (JWS): <a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-signature">http://tools.ietf.org/html/draft-ietf-jose-json-web-signature</a></td>
-<td>Jan 2015</td>
 </tr>
 <tr>
 <td><a id="JWE"></a><strong>[JWE]</strong></td>
 <td>JSON Web Encryption (JWE): <a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption">http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption</a></td>
-<td>Jan 2015</td>
 </tr>
 <tr>
 <td><a id="MTLS"></a><strong>[MTLS]</strong></td>
 <td>OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html">https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html</a></td>
-<td>Jan 2018</td>
 </tr>
 <tr>
 <td><a id="OAUTH2"></a><strong>[OAUTH2]</strong></td>
 <td>The OAuth 2.0 Authorization Framework: <a href="https://tools.ietf.org/html/rfc6749">https://tools.ietf.org/html/rfc6749</a></td>
-<td>RFC6749</td>
 </tr>
 <tr>
 <td><a id="OIDC"></a><strong>[OIDC]</strong></td>
 <td>OpenID Connect Core 1.0 incorporating errata set 1: <a href="http://openid.net/specs/openid-connect-core-1_0.html">http://openid.net/specs/openid-connect-core-1_0.html</a></td>
-<td>Nov 2014</td>
 </tr>
 <tr>
 <td><a id="OIDD"></a><strong>[OIDD]</strong></td>
 <td>OpenID Connect Discovery 1.0 incorporating errata set 1: <a href="http://openid.net/specs/openid-connect-discovery-1_0.html">http://openid.net/specs/openid-connect-discovery-1_0.html</a></td>
-<td>Nov 2014</td>
 </tr>
 <tr>
 <td><a id="TDIF"></a><strong>[TDIF]</strong></td>
 <td>Digital Transformation Agency - Trusted Digital Identity Framework <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework</a></td>
-<td>April 2019</td>
 </tr>
 <tr>
 <td><a id="RFC2119"></a><strong>[RFC2119]</strong></td>
 <td>Key words for use in RFCs to Indicate Requirement Levels <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></td>
-<td>RFC2119</td>
 </tr>
 <tr>
 <td><a id="RFC7009"></a><strong>[RFC7009]</strong></td>
 <td>OAuth 2.0 Token Revocation: <a href="https://tools.ietf.org/html/rfc7009">https://tools.ietf.org/html/rfc7009</a></td>
-<td>RFC7009</td>
 </tr>
 <tr>
 <td><a id="RFC7523"></a><strong>[RFC7523]</strong></td>
 <td>JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <a href="https://tools.ietf.org/html/rfc7523">https://tools.ietf.org/html/rfc7523</a></td>
-<td>RFC7523</td>
 </tr>
 <tr>
 <td><a id="RFC7662"></a><strong>[RFC7662]</strong></td>
 <td>OAuth 2.0 Token Introspection: <a href="https://tools.ietf.org/html/rfc7662">https://tools.ietf.org/html/rfc7662</a></td>
-<td>RFC7662</td>
+</tr>
+<tr>
+<td><a id="VOT"></a><strong>[VOT]</strong></td>
+<td>Vectors of Trust, draft-richer-vectors-of-trust-15 <a href="https://tools.ietf.org/html/draft-richer-vectors-of-trust-15">https://tools.ietf.org/html/draft-richer-vectors-of-trust-15</a></td>
 </tr>
 </tbody></table>
 <h2 id='informative-references'>Informative References</h2>
@@ -2576,7 +2572,7 @@ Host: www.holder.com.au
 </tbody></table>
 <h1 id='consumer-experience'>Consumer Experience</h1>
 <p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
-<a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Standards</a></p>
+<a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Standards</a></p>
 
 <p>Additional CX guidelines and commentary can be found at:<br/>
 <a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
@@ -18240,16 +18236,10 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
-<td>10/12/2019</td>
-<td>1.1.0</td>
-<td>Banking Maintenance Iteration 1 Changes</td>
-<td>Changes arising from iteration 1 of the banking maintenance cadence.<br/>See <a href="includes/releasenotes/releasenotes.1.1.0.html">release notes</a> for detail</td>
-</tr>
-<tr>
 <td>12/11/2019</td>
 <td>1.0.1</td>
 <td>Patch update</td>
-<td>Minor defect changes and clarifications.<br/>See <a href="includes/releasenotes/releasenotes.1.0.1.html">release notes</a> for detail</td>
+<td>Minor defect changes and clarifications.<br/>See <a href="releasenotes.1.0.1.html">release notes</a> for detail</td>
 </tr>
 <tr>
 <td>30/9/2019</td>
