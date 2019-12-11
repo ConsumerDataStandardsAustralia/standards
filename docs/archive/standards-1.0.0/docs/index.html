@@ -727,7 +727,7 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Standards</a></li>
+            <li><a href='./pdfs/CX-Standards-v1.0.0.pdf'>CX Standards</a></li>
             <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Guidelines</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
@@ -745,7 +745,7 @@
 
 <p>These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.1.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.0.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1881,7 +1881,7 @@ grant_type=authorization_code&amp;
 <p>When invoking a protected end point, the aforementioned assertion MUST be sent with the <code>POST</code> method and MUST include the following parameters:</p>
 
 <ul>
-<li> <code>grant_type</code>: This parameter MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>.  The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
+<li> <code>grant_type</code>: This parameter MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>.</li>
 <li> <code>code</code>: This parameter MUST only be included when invoking the Token End point after utilising the <a href="#hybrid-flow">Hybrid Authentication flow</a>.  This is the value of the code parameter returned in the authorisation response.</li>
 <li> <code>client_id</code>: The ID of the calling Client.</li>
 <li> <code>client_assertion_type</code>: This MUST be set to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
@@ -2572,7 +2572,7 @@ Host: www.holder.com.au
 </tbody></table>
 <h1 id='consumer-experience'>Consumer Experience</h1>
 <p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
-<a href='./pdfs/CX-Standards-v1.0.1.pdf'>CX Standards</a></p>
+<a href='./pdfs/CX-Standards-v1.0.0.pdf'>CX Standards</a></p>
 
 <p>Additional CX guidelines and commentary can be found at:<br/>
 <a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
@@ -18235,12 +18235,6 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>12/11/2019</td>
-<td>1.0.1</td>
-<td>Patch update</td>
-<td>Minor defect changes and clarifications.<br/>See <a href="releasenotes.1.0.1.html">release notes</a> for detail</td>
-</tr>
 <tr>
 <td>30/9/2019</td>
 <td>1.0.0</td>
