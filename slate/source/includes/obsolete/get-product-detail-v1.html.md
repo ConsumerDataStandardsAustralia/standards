@@ -688,8 +688,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |featureType|string|mandatory|none|The type of feature described|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [featureType](../../index.html#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](../../index.html#tocSproductfeaturetypedoc)|
-|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the [feature type](../../index.html#tocSproductfeaturetypedoc) is set to OTHER|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)|
+|additionalInfo|string|conditional|none|Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this feature|
 
 #### Enumerated Values
@@ -739,7 +739,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |constraintType|string|mandatory|none|The type of constraint described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [constraintType](../../index.html#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](../../index.html#tocSproductconstrainttypedoc)|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information the constraint|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on the constraint|
 
@@ -772,8 +772,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |eligibilityType|string|mandatory|none|The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [eligibilityType](../../index.html#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](../../index.html#tocSproducteligibilitytypedoc)|
-|additionalInfo|string|conditional|none|Display text providing more information on the [eligibility](../../index.html#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)|
+|additionalInfo|string|conditional|none|Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this eligibility criteria|
 
 #### Enumerated Values
@@ -848,7 +848,7 @@ This operation does not require authentication
 |accruedRate|[RateString](../../index.html#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
 |accrualFrequency|[ExternalRef](../../index.html#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |currency|[CurrencyString](../../index.html#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [feeType](../../index.html#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](../../index.html#tocSproductfeetypedoc)|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the fee|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this fee|
 |discounts|[[BankingProductDiscount](#schemabankingproductdiscount)]|optional|none|An optional list of discounts to this fee that may be available|
@@ -906,7 +906,7 @@ This operation does not require authentication
 |transactionRate|[RateString](../../index.html#common-field-types)|conditional|none|A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
 |accruedRate|[RateString](../../index.html#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
 |feeRate|[RateString](../../index.html#common-field-types)|conditional|none|A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountType](../../index.html#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](../../index.html#tocSproductdiscounttypedoc)|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this discount|
 |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|Eligibility constraints that apply to this discount|
@@ -940,7 +940,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountEligibilityType](../../index.html#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](../../index.html#tocSproductdiscounteligibilitydoc)|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
 
@@ -1012,7 +1012,7 @@ This operation does not require authentication
 |calculationFrequency|[ExternalRef](../../index.html#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |applicationFrequency|[ExternalRef](../../index.html#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [depositRateType](../../index.html#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](../../index.html#tocSproductdepositratetypedoc)|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the rate|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this rate|
 
@@ -1082,7 +1082,7 @@ This operation does not require authentication
 |applicationFrequency|[ExternalRef](../../index.html#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
-|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [lendingRateType](../../index.html#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](../../index.html#tocSproductlendingratetypedoc)|
+|additionalValue|string|conditional|none|Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the rate.|
 |additionalInfoUri|[URIString](../../index.html#common-field-types)|optional|none|Link to a web page with more information on this rate|
 

@@ -216,6 +216,9 @@
             <a href="#v1-1-0-release-notes" class="toc-h1 toc-link" data-title="V1.1.0 Release Notes">V1.1.0 Release Notes</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#errata-for-v1-1-0" class="toc-h2 toc-link" data-title="Errata for v1.1.0">Errata for v1.1.0</a>
+                  </li>
+                  <li>
                     <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
                   </li>
                   <li>
@@ -239,6 +242,13 @@
       <div class="content">
         <h1 id='v1-1-0-release-notes'>V1.1.0 Release Notes</h1>
 <p>Release notes for version 1.1.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='errata-for-v1-1-0'>Errata for v1.1.0</h2>
+<p>Since v1.1.0 was published the following errors have been identified and will be corrected in the next version:</p>
+
+<ul>
+<li>The <code>x-cds-subject</code> header was intended to be removed but was accidentally left in the standards documentation.  The statements requiring <code>x-cds-subject</code> should be ignored.</li>
+<li>The statements regarding the use of TLS in the Information Security profile imply that the <code>authorize</code> end point should be protected with TLS using a certificate provided by the CDR CA.  As the <code>authorize</code> end point must be accessed by a public client this end point must use TLS but the data holder is free to use any.</li>
+</ul>
 <h2 id='high-level-standards'>High Level Standards</h2>
 <table><thead>
 <tr>

@@ -12,6 +12,13 @@ search: false
 # V1.1.0 Release Notes
 Release notes for version 1.1.0 of the [CDR Standards](../../index.html).
 
+## Errata for v1.1.0
+Since v1.1.0 was published the following errors have been identified and will be corrected in the next version:
+
+- The `x-cds-subject` header was intended to be removed but was accidentally left in the standards documentation.  The statements requiring `x-cds-subject` should be ignored.
+- The statements regarding the use of TLS in the Information Security profile imply that the `authorize` end point should be protected with TLS using a certificate provided by the CDR CA.  As the `authorize` end point must be accessed by a public client this end point must use TLS but the data holder is free to use any.
+
+
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
