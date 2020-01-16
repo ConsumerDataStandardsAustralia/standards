@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>20/1/2020</td>
+<td>1.1.1</td>
+<td>Maintenance updates</td>
+<td>Error Fixes<br/>See <a href="includes/releasenotes/releasenotes.1.1.1.html">release notes</a> for detail</td>
+</tr>
+<tr>
 <td>10/12/2019</td>
 <td>1.1.0</td>
 <td>Banking Maintenance Iteration 1 Changes</td>

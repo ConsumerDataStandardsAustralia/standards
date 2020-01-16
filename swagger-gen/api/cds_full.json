@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.org.au/",
@@ -70,10 +70,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -86,7 +83,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An optional [[RFC4122](https://tools.ietf.org/html/rfc4122)] UUID used as a correlation id. If provided, the data holder must \"play back\" this value in the `x-fapi-interaction-id` response header."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -141,10 +138,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -157,7 +151,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -210,10 +204,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -226,7 +217,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -238,7 +229,7 @@
             "headers": {
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -286,10 +277,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -302,7 +290,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -350,10 +338,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -366,7 +351,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -433,12 +418,6 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
           }
         ],
         "responses": {
@@ -451,7 +430,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -507,10 +486,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -523,7 +499,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -577,10 +553,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -593,7 +566,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -648,10 +621,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -664,7 +634,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -717,10 +687,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -733,7 +700,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -745,7 +712,7 @@
             "headers": {
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -799,10 +766,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -815,7 +779,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -870,10 +834,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -886,7 +847,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -939,10 +900,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -955,7 +913,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -967,7 +925,7 @@
             "headers": {
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -1027,10 +985,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -1043,7 +998,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -1091,10 +1046,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -1107,7 +1059,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -1260,10 +1212,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -1312,10 +1261,7 @@
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
           },
           {
-            "$ref": "#/parameters/RequestHeader_x-cds-User-Agent"
-          },
-          {
-            "$ref": "#/parameters/RequestHeader_x-cds-subject"
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -1328,7 +1274,7 @@
               },
               "x-fapi-interaction-id": {
                 "type": "string",
-                "description": "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -1424,7 +1370,7 @@
     },
     "RequestHeader_x-fapi-interaction-id": {
       "name": "x-fapi-interaction-id",
-      "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+      "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
       "in": "header",
       "type": "string"
     },
@@ -1440,18 +1386,12 @@
       "in": "header",
       "type": "string"
     },
-    "RequestHeader_x-cds-User-Agent": {
-      "name": "x-cds-User-Agent",
+    "RequestHeader_x-cds-client-headers": {
+      "name": "x-cds-client-headers",
       "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "in": "header",
       "type": "string",
       "x-cds-type": "Base64"
-    },
-    "RequestHeader_x-cds-subject": {
-      "name": "x-cds-subject",
-      "description": "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-      "in": "header",
-      "type": "string"
     },
     "ParamAccountOpenStatus": {
       "name": "open-status",
@@ -2329,7 +2269,7 @@
         },
         "unitOfMeasure": {
           "type": "string",
-          "description": "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)",
+          "description": "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
           "enum": [
             "DOLLAR",
             "PERCENT",
@@ -2372,7 +2312,7 @@
             },
             "unitOfMeasure": {
               "type": "string",
-              "description": "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)",
+              "description": "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
               "enum": [
                 "DOLLAR",
                 "PERCENT",
@@ -3273,7 +3213,7 @@
       "properties": {
         "payeeAccountUType": {
           "type": "string",
-          "description": "Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP",
+          "description": "Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP",
           "enum": [
             "account",
             "card",
@@ -3797,7 +3737,7 @@
         },
         "nonBusinessDayTreatment": {
           "type": "string",
-          "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON",
+          "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON. **AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date. **BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date. **ON** If a scheduled payment date is a non-business day the payment will be made on that day regardless. **ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
           "enum": [
             "AFTER",
             "BEFORE",
@@ -4128,7 +4068,7 @@
         },
         "occupationCode": {
           "type": "string",
-          "description": "Value is a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
+          "description": "Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
         }
       }
     },

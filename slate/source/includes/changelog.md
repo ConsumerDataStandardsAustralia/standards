@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|20/1/2020|1.1.1|Maintenance updates|Error Fixes<br/>See [release notes](includes/releasenotes/releasenotes.1.1.1.html) for detail
 |10/12/2019|1.1.0|Banking Maintenance Iteration 1 Changes|Changes arising from iteration 1 of the banking maintenance cadence.<br/>See [release notes](includes/releasenotes/releasenotes.1.1.0.html) for detail
 |12/11/2019|1.0.1|Patch update|Minor defect changes and clarifications.<br/>See [release notes](includes/releasenotes/releasenotes.1.0.1.html) for detail
 |30/9/2019|1.0.0|Baseline version 1|This release is the baseline release for the standards that are intended for implementation February 2020 and contains minor updates as well as changes to align to the locked down CDR Rules and the updated CDR Register design
