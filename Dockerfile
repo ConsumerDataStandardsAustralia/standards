@@ -86,8 +86,9 @@ RUN mkdir -p /usr/share/man/man1
 RUN apt-get install -y --no-install-recommends default-jre-headless npm
 
 RUN mkdir ~/swagger-codegen ~/openapi-codegen
-RUN wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.7/swagger-codegen-cli-2.4.7.jar -O ~/swagger-codegen/swagger-codegen-cli.jar
-RUN wget http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.4/openapi-generator-cli-3.3.4.jar -O ~/openapi-codegen/openapi-generator-cli.jar
+
+RUN wget --no-check-certificate https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.7/swagger-codegen-cli-2.4.7.jar -O ~/swagger-codegen/swagger-codegen-cli.jar
+RUN wget --no-check-certificate https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.4/openapi-generator-cli-3.3.4.jar -O ~/openapi-codegen/openapi-generator-cli.jar
 
 COPY swagger-gen/ swagger-gen/
 COPY slate/ slate/

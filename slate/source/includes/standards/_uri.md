@@ -31,12 +31,12 @@ Under this model, collections, individual members and collection sub-resources w
 
 []() | []()
 -|-
-`GET …\accounts` | Returns an array of accounts
-`GET …\accounts\{id}` | Returns the detail of a specific account
-`GET …\accounts\transactions` | Returns the transactions of multiple accounts
-`GET …\accounts\{id}\transactions` | Returns the transactions of a specific account
-`POST …\accounts` | Create a new account
-`POST …\accounts\search` | Returns an array of accounts based on a complex query
+`GET …/accounts` | Returns an array of accounts
+`GET …/accounts/{id}` | Returns the detail of a specific account
+`GET …/accounts/transactions` | Returns the transactions of multiple accounts
+`GET …/accounts/{id}/transactions` | Returns the transactions of a specific account
+`POST …/accounts` | Create a new account
+`POST …/accounts/search` | Returns an array of accounts based on a complex query
 
 The final example above represents a complex query accessed via a POST request.  In this situation the POST URI should be applied to a sub-resource of the collection.  A POST to a collection is reserved for the creation of a new collection member.
 

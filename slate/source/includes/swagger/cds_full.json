@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "1.1.0",
+    "version" : "1.1.1",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -79,7 +79,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -95,18 +95,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -118,7 +112,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An optional [[RFC4122](https://tools.ietf.org/html/rfc4122)] UUID used as a correlation id. If provided, the data holder must \"play back\" this value in the `x-fapi-interaction-id` response header."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -189,7 +183,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -205,18 +199,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -228,7 +216,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -283,7 +271,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -299,18 +287,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -322,7 +304,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -334,7 +316,7 @@
             "headers" : {
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -374,7 +356,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -390,18 +372,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -413,7 +389,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -453,7 +429,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -469,18 +445,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -492,7 +462,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -582,7 +552,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -597,19 +567,6 @@
           "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
-        }, {
-          "name" : "x-cds-User-Agent",
-          "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string",
-          "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -621,7 +578,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -668,7 +625,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -684,18 +641,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -707,7 +658,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -763,7 +714,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -779,18 +730,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -802,7 +747,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -873,7 +818,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -889,18 +834,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -912,7 +851,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -967,7 +906,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -983,18 +922,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1006,7 +939,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1018,7 +951,7 @@
             "headers" : {
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1074,7 +1007,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1090,18 +1023,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1113,7 +1040,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1184,7 +1111,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1200,18 +1127,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1223,7 +1144,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1278,7 +1199,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1294,18 +1215,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1317,7 +1232,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1329,7 +1244,7 @@
             "headers" : {
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1386,7 +1301,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1402,18 +1317,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1425,7 +1334,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1465,7 +1374,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1481,18 +1390,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1504,7 +1407,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -1660,7 +1563,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1676,18 +1579,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1728,7 +1625,7 @@
         }, {
           "name" : "x-fapi-interaction-id",
           "in" : "header",
-          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
           "required" : false,
           "type" : "string"
         }, {
@@ -1744,18 +1641,12 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "x-cds-User-Agent",
+          "name" : "x-cds-client-headers",
           "in" : "header",
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
-        }, {
-          "name" : "x-cds-subject",
-          "in" : "header",
-          "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -1767,7 +1658,7 @@
               },
               "x-fapi-interaction-id" : {
                 "type" : "string",
-                "description" : "An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction."
+                "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema" : {
@@ -2390,7 +2281,7 @@
         },
         "unitOfMeasure" : {
           "type" : "string",
-          "description" : "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)",
+          "description" : "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
           "enum" : [ "DOLLAR", "PERCENT", "MONTH", "DAY" ]
         },
         "minimumValue" : {
@@ -3057,7 +2948,7 @@
       "properties" : {
         "payeeAccountUType" : {
           "type" : "string",
-          "description" : "Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP",
+          "description" : "Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP",
           "enum" : [ "account", "card", "payId" ]
         },
         "account" : {
@@ -3397,7 +3288,7 @@
         },
         "nonBusinessDayTreatment" : {
           "type" : "string",
-          "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON",
+          "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
           "default" : "ON",
           "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
         },
@@ -3453,7 +3344,7 @@
         },
         "nonBusinessDayTreatment" : {
           "type" : "string",
-          "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON",
+          "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
           "default" : "ON",
           "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
         }
@@ -3591,7 +3482,7 @@
         },
         "occupationCode" : {
           "type" : "string",
-          "description" : "Value is a valid [ANZCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
+          "description" : "Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
         }
       }
     },
@@ -4098,7 +3989,7 @@
         },
         "unitOfMeasure" : {
           "type" : "string",
-          "description" : "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. 'DOLLAR', 'MONTH' (in the case of term deposit tiers), 'PERCENT' (in the case of loan-to-value ratio or LVR)",
+          "description" : "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
           "enum" : [ "DOLLAR", "PERCENT", "MONTH", "DAY" ]
         },
         "minimumValue" : {
@@ -4422,7 +4313,7 @@
     "RequestHeader_x-fapi-interaction-id" : {
       "name" : "x-fapi-interaction-id",
       "in" : "header",
-      "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+      "description" : "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
       "required" : false,
       "type" : "string"
     },
@@ -4440,20 +4331,13 @@
       "required" : false,
       "type" : "string"
     },
-    "RequestHeader_x-cds-User-Agent" : {
-      "name" : "x-cds-User-Agent",
+    "RequestHeader_x-cds-client-headers" : {
+      "name" : "x-cds-client-headers",
       "in" : "header",
       "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "required" : false,
       "type" : "string",
       "x-cds-type" : "Base64"
-    },
-    "RequestHeader_x-cds-subject" : {
-      "name" : "x-cds-subject",
-      "in" : "header",
-      "description" : "Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.",
-      "required" : false,
-      "type" : "string"
     },
     "ParamAccountOpenStatus" : {
       "name" : "open-status",

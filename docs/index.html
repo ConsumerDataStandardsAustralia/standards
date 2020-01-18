@@ -218,6 +218,11 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#future-dated-obligations" class="toc-h2 toc-link" data-title="Future Dated Obligations">Future Dated Obligations</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#standards" class="toc-h1 toc-link" data-title="Standards">Standards</a>
@@ -627,6 +632,9 @@
           </li>
           <li>
             <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
+          </li>
+          <li>
+            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -634,9 +642,11 @@
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
-                  <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
@@ -730,7 +740,7 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Guidelines</a></li>
+            <li><a href='./pdfs/CX-Standards-v1.1.1.pdf'>CX Guidelines</a></li>
             <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Standards Site</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
@@ -747,8 +757,46 @@
 <p>CSIRO’s Data61 has been appointed as the Data Standards Body (DSB) for the CDR regime. These standards have been prepared by the DSB.  The work of the team is  overseen by the Data Standards Chair, Mr. Andrew Stevens, with industry and consumer advice provided by an Advisory Committee. The work of standards development is conducted in close consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission (ACCC)</a> as lead regulator of the Consumer Data Right, supported by the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner (OAIC)</a>.</p>
 
 <p>These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
+<p>These standards are intended to be binding from the date that they are published.  The standards do include, however, specific statements indicating that a specific section of the standards will not be binding until a future date or may cease to be binding on some future date.</p>
+
+<p>The table below highlights these areas of the standards.</p>
+
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+<th>Applicable Date</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#non-functional-requirements">Non-functional Requirements</a></td>
+<td>The non-functional requirements for the CDR regime are documented but are not yet binding with no specific future binding date being set as yet</td>
+<td>Not yet specified</td>
+</tr>
+<tr>
+<td><a href="#get-products">Get Products V2</a></td>
+<td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
+<td>July 2020</td>
+</tr>
+<tr>
+<td><a href="#get-products">Get Products V1</a></td>
+<td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>August 29th 2020</td>
+</tr>
+<tr>
+<td><a href="#get-product-detail">Get Product Detail V2</a></td>
+<td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
+<td>July 2020</td>
+</tr>
+<tr>
+<td><a href="#get-product-detail">Get Product Detail V1</a></td>
+<td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>August 29th 2020</td>
+</tr>
+</tbody></table>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.1.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.1.1</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -890,27 +938,27 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>GET …\accounts</code></td>
+<td><code>GET …/accounts</code></td>
 <td>Returns an array of accounts</td>
 </tr>
 <tr>
-<td><code>GET …\accounts\{id}</code></td>
+<td><code>GET …/accounts/{id}</code></td>
 <td>Returns the detail of a specific account</td>
 </tr>
 <tr>
-<td><code>GET …\accounts\transactions</code></td>
+<td><code>GET …/accounts/transactions</code></td>
 <td>Returns the transactions of multiple accounts</td>
 </tr>
 <tr>
-<td><code>GET …\accounts\{id}\transactions</code></td>
+<td><code>GET …/accounts/{id}/transactions</code></td>
 <td>Returns the transactions of a specific account</td>
 </tr>
 <tr>
-<td><code>POST …\accounts</code></td>
+<td><code>POST …/accounts</code></td>
 <td>Create a new account</td>
 </tr>
 <tr>
-<td><code>POST …\accounts\search</code></td>
+<td><code>POST …/accounts/search</code></td>
 <td>Returns an array of accounts based on a complex query</td>
 </tr>
 </tbody></table>
@@ -927,11 +975,14 @@
 
 <blockquote>
 <p>A sample set of headers requesting version 3 to 5:<br>
-<code>Content-Type = application/json</code><br>
-<code>Accept = application/json</code><br>
-<code>x-v = 5</code><br>
-<code>x-min-v = 3</code><br>
-<code>x-fapi-interaction-id = 6ba7b814-9dad-11d1-80b4-00c04fd430c8</code></p>
+<code>Content-Type : application/json</code><br>
+<code>Accept : application/json</code><br>
+<code>x-v : 5</code><br>
+<code>x-min-v : 3</code><br>
+<code>x-fapi-interaction-id : 6ba7b814-9dad-11d1-80b4-00c04fd430c8</code><br>
+<code>x-fapi-auth_date : 2020-01-16 16:50:15.507399</code><br>
+<code>x-fapi-customer-ip-address : 2001:0db8:85a3:0000:0000:8a2e:0370:7334</code><br>
+<code>x-cds-client-headers : TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNzkuMC4zOTQ1Ljg4IFNhZmFyaS81MzcuMzY=</code>  </p>
 </blockquote>
 
 <table><thead>
@@ -1856,7 +1907,7 @@ grant_type=authorization_code&amp;
 </code></pre>
 <p>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation.</p>
 
-<p>Client public keys MUST only be obtained from the CDR Register.</p>
+<p>Client public keys are obtained from the <strong>[JWKS]</strong> endpoints.</p>
 
 <p>The <strong>[JWT]</strong> represents an assertion that MUST include the following claims:</p>
 
@@ -2051,7 +2102,7 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <h3 id='holder-of-key-mechanism'>Holder of Key Mechanism</h3>
 <p><strong>[MTLS]</strong> MUST be supported as a Holder of Key (HoK) Mechanism.</p>
 
-<p>Note that, by implication, resource requests MUST be validated to ensure the client certificate and access token match.  This is an equivalent position to section 6.2.1 of the UK Open Banking Information Security Profile.</p>
+<p>Note that, by implication, resource requests MUST be validated to ensure the client certificate and access token match.</p>
 
 <p>OAUTB SHALL NOT be supported due to a lack industry support.</p>
 
@@ -2096,7 +2147,7 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
-    "sharing_duration": "7776000",
+    "sharing_duration": 7776000,
     "id_token": {
       "acr": {
         "essential": true,
@@ -2121,6 +2172,7 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <p>To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named <code>sharing_duration</code>.  The <code>sharing_duration</code> claim MUST be handled as follows:</p>
 
 <ul>
+<li>The <code>sharing_duration</code> parameter is a number</li>
 <li>The value of the <code>sharing_duration</code> parameter will contain the requested duration for sharing, in seconds.</li>
 <li>If the <code>sharing_duration</code> value exceeds one year then a duration of one year will be assumed.</li>
 <li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
@@ -2136,7 +2188,7 @@ NOTE: This section does not yet include any end points that will be defined by t
 </aside>
 
 <aside class="notice">
-NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA
+NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA. As the `authorize` end point must be accessed by a public client this end point must use TLS but the data holder is free to use any certificate authority.
 </aside>
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 <blockquote>
@@ -2247,7 +2299,7 @@ Host: www.holder.com.au
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
-    "sharing_duration": "7776000",
+    "sharing_duration": 7776000,
     "userinfo": {
       "given_name": null,
       "family_name": null
@@ -2295,7 +2347,7 @@ Host: www.holder.com.au
 </thead><tbody>
 <tr>
 <td>Hosted By</td>
-<td>Data Holder</td>
+<td>Data Holder &amp; Data Recipient</td>
 </tr>
 <tr>
 <td>Transport Security</td>
@@ -2473,42 +2525,42 @@ Host: www.holder.com.au
 <tr>
 <td><a id="JSON"></a><strong>[JSON]</strong></td>
 <td>The JavaScript Object Notation (JSON) Data Interchange Format: <a href="https://tools.ietf.org/html/rfc8259">https://tools.ietf.org/html/rfc8259</a></td>
-<td>RFC8259</td>
+<td>Dec 2017</td>
 </tr>
 <tr>
 <td><a id="JWA"></a><strong>[JWA]</strong></td>
-<td>JSON Web Algorithms (JWA): <a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40">https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40</a></td>
-<td>Jan 2015</td>
+<td>JSON Web Algorithms (JWA): <a href="https://tools.ietf.org/html/rfc7518">https://tools.ietf.org/html/rfc7518</a></td>
+<td>May 2015</td>
 </tr>
 <tr>
 <td><a id="JWK"></a><strong>[JWK]</strong></td>
 <td>JSON Web Key (JWK): <a href="https://tools.ietf.org/html/rfc7517">https://tools.ietf.org/html/rfc7517</a></td>
-<td>RFC7517</td>
+<td>May 2015</td>
 </tr>
 <tr>
 <td><a id="JWT"></a><strong>[JWT]</strong></td>
-<td>JSON Web Token (JWT): <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32">https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32</a></td>
-<td>Dec 2014</td>
+<td>JSON Web Token (JWT): <a href="https://tools.ietf.org/html/rfc7519">https://tools.ietf.org/html/rfc7519</a></td>
+<td>May 2015</td>
 </tr>
 <tr>
 <td><a id="JWS"></a><strong>[JWS]</strong></td>
-<td>JSON Web Signature (JWS): <a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-signature">http://tools.ietf.org/html/draft-ietf-jose-json-web-signature</a></td>
-<td>Jan 2015</td>
+<td>JSON Web Signature (JWS): <a href="https://tools.ietf.org/html/rfc7797">https://tools.ietf.org/html/rfc7797</a></td>
+<td>Feb 2016</td>
 </tr>
 <tr>
 <td><a id="JWE"></a><strong>[JWE]</strong></td>
-<td>JSON Web Encryption (JWE): <a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption">http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption</a></td>
-<td>Jan 2015</td>
+<td>JSON Web Encryption (JWE): <a href="https://tools.ietf.org/html/rfc7516">https://tools.ietf.org/html/rfc7516</a></td>
+<td>May 2015</td>
 </tr>
 <tr>
 <td><a id="MTLS"></a><strong>[MTLS]</strong></td>
-<td>OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <a href="https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html">https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html</a></td>
-<td>Jan 2018</td>
+<td>OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <a href="https://tools.ietf.org/html/draft-ietf-oauth-mtls-17">https://tools.ietf.org/html/draft-ietf-oauth-mtls-17</a></td>
+<td>Aug 2019</td>
 </tr>
 <tr>
 <td><a id="OAUTH2"></a><strong>[OAUTH2]</strong></td>
 <td>The OAuth 2.0 Authorization Framework: <a href="https://tools.ietf.org/html/rfc6749">https://tools.ietf.org/html/rfc6749</a></td>
-<td>RFC6749</td>
+<td>Oct 2012</td>
 </tr>
 <tr>
 <td><a id="OIDC"></a><strong>[OIDC]</strong></td>
@@ -2523,27 +2575,27 @@ Host: www.holder.com.au
 <tr>
 <td><a id="TDIF"></a><strong>[TDIF]</strong></td>
 <td>Digital Transformation Agency - Trusted Digital Identity Framework <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework</a></td>
-<td>April 2019</td>
+<td>Apr 2019</td>
 </tr>
 <tr>
 <td><a id="RFC2119"></a><strong>[RFC2119]</strong></td>
 <td>Key words for use in RFCs to Indicate Requirement Levels <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></td>
-<td>RFC2119</td>
+<td>Mar 1997</td>
 </tr>
 <tr>
 <td><a id="RFC7009"></a><strong>[RFC7009]</strong></td>
 <td>OAuth 2.0 Token Revocation: <a href="https://tools.ietf.org/html/rfc7009">https://tools.ietf.org/html/rfc7009</a></td>
-<td>RFC7009</td>
+<td>Aug 2013</td>
 </tr>
 <tr>
 <td><a id="RFC7523"></a><strong>[RFC7523]</strong></td>
 <td>JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <a href="https://tools.ietf.org/html/rfc7523">https://tools.ietf.org/html/rfc7523</a></td>
-<td>RFC7523</td>
+<td>May 2015</td>
 </tr>
 <tr>
 <td><a id="RFC7662"></a><strong>[RFC7662]</strong></td>
 <td>OAuth 2.0 Token Introspection: <a href="https://tools.ietf.org/html/rfc7662">https://tools.ietf.org/html/rfc7662</a></td>
-<td>RFC7662</td>
+<td>Oct 2015</td>
 </tr>
 </tbody></table>
 <h2 id='informative-references'>Informative References</h2>
@@ -2576,7 +2628,7 @@ Host: www.holder.com.au
 </tbody></table>
 <h1 id='consumer-experience'>Consumer Experience</h1>
 <p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
-<a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Standards</a></p>
+<a href='./pdfs/CX-Standards-v1.1.1.pdf'>CX Standards</a></p>
 
 <p>Additional CX guidelines and commentary can be found at:<br/>
 <a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
@@ -2595,8 +2647,7 @@ Host: www.holder.com.au
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -2605,8 +2656,7 @@ Host: www.holder.com.au
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -2702,7 +2752,7 @@ Host: www.holder.com.au
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2719,18 +2769,11 @@ Host: www.holder.com.au
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -2875,7 +2918,7 @@ Host: www.holder.com.au
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An optional [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. If provided, the data holder must &quot;play back&quot; this value in the <code>x-fapi-interaction-id</code> response header.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -2897,8 +2940,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -2907,8 +2949,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3004,7 +3045,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3021,18 +3062,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -3180,7 +3214,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -3203,8 +3237,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -3214,8 +3247,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3302,7 +3334,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3319,18 +3351,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -3423,14 +3448,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -3452,8 +3477,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -3462,8 +3486,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3531,7 +3554,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3548,18 +3571,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -3628,7 +3644,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -3650,8 +3666,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -3660,8 +3675,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -3729,7 +3743,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3746,18 +3760,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4020,7 +4027,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -4042,8 +4049,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4051,9 +4056,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4182,7 +4185,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4197,20 +4200,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>optional</td>
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-User-Agent</td>
-<td>header</td>
-<td><a href="#common-field-types">Base64</a></td>
-<td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4296,7 +4285,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -4318,8 +4307,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4328,8 +4316,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4404,7 +4391,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4421,18 +4408,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4518,7 +4498,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -4540,8 +4520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4550,8 +4529,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4633,7 +4611,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4650,18 +4628,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4739,7 +4710,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -4761,8 +4732,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -4771,8 +4741,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -4868,7 +4837,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4885,18 +4854,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-3'>Enumerated Values</h4>
@@ -5042,7 +5004,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -5065,8 +5027,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5076,8 +5037,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5164,7 +5124,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -5181,18 +5141,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -5283,14 +5236,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -5312,8 +5265,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5322,8 +5274,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5405,7 +5356,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -5422,18 +5373,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -5591,7 +5535,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -5613,8 +5557,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -5623,8 +5566,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -5720,7 +5662,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -5737,18 +5679,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -5974,7 +5909,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -5997,8 +5932,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -6008,8 +5942,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6096,7 +6029,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -6113,18 +6046,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -6295,14 +6221,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -6324,8 +6250,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -6334,8 +6259,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6417,7 +6341,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -6434,18 +6358,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
@@ -6542,7 +6459,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -6564,8 +6481,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -6574,8 +6490,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -6645,7 +6560,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -6662,18 +6577,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -6778,7 +6686,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -7411,8 +7319,7 @@ This operation does not require authentication
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -7421,8 +7328,7 @@ This operation does not require authentication
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -7483,7 +7389,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -7500,18 +7406,11 @@ This operation does not require authentication
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7611,8 +7510,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-User-Agent</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-cds-subject</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
@@ -7621,8 +7519,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-User-Agent'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-cds-subject'</span><span class="p">:</span><span class="s1">'string'</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -7683,7 +7580,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -7700,18 +7597,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
-<td>x-cds-User-Agent</td>
+<td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
 <td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-cds-subject</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Subject identifier. Locally unique and never reassigned identifier within the Holder for the End-User. Mandatory for authenticated calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7894,7 +7784,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
-<td>An RFC4122 UID used as a correlation id. The data holder must set the response header x-fapi-interaction-id to the value received from the corresponding fapi client request header or to a new RFC4122 UUID value if the request header was not provided to track the interaction.</td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
@@ -8884,7 +8774,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingproductv2">BankingProductV2</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8904,7 +8794,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -10155,7 +10045,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. &#39;DOLLAR&#39;, &#39;MONTH&#39; (in the case of term deposit tiers), &#39;PERCENT&#39; (in the case of loan-to-value ratio or LVR)</td>
+<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
 </tr>
 <tr>
 <td>minimumValue</td>
@@ -10204,7 +10094,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. &#39;DOLLAR&#39;, &#39;MONTH&#39; (in the case of term deposit tiers), &#39;PERCENT&#39; (in the case of loan-to-value ratio or LVR)</td>
+<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
 </tr>
 <tr>
 <td>» minimumValue</td>
@@ -10984,7 +10874,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingaccount">BankingAccount</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11004,7 +10894,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11108,7 +10998,7 @@ This operation does not require authentication
 <tr>
 <td>»» <em>anonymous</em></td>
 <td><a href="#schemabankingproductfeature">BankingProductFeature</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11128,7 +11018,7 @@ This operation does not require authentication
 <tr>
 <td>»» <em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11883,7 +11773,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingtransaction">BankingTransaction</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -11903,7 +11793,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12541,7 +12431,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingpayee">BankingPayee</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12561,7 +12451,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12650,7 +12540,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Type of account object included. Valid values are: { payeeAccountUType - - account A standard Australian account defined by BSB/Account Number payId A PayID recognised by NPP</td>
+<td>Type of account object included. Valid values are: <strong>account</strong> A standard Australian account defined by BSB/Account Number. <strong>card</strong> A credit or charge card to pay to (note that PANs are masked). <strong>payId</strong> A PayID recognised by NPP</td>
 </tr>
 <tr>
 <td>account</td>
@@ -13991,7 +13881,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 <tr>
 <td>intervals</td>
@@ -14116,7 +14006,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-30'>Enumerated Values</h4>
@@ -14809,7 +14699,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZCO v1.2</a> Standard Occupation classification.</td>
+<td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZSCO v1.2</a> Standard Occupation classification.</td>
 </tr>
 </tbody></table>
 
@@ -14901,7 +14791,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemacommonperson">CommonPerson</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -14921,7 +14811,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -15185,7 +15075,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -15205,7 +15095,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -15447,7 +15337,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemacommonphysicaladdress">CommonPhysicalAddress</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -15467,7 +15357,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -16083,7 +15973,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
@@ -16760,6 +16650,8 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
 
+<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -16892,7 +16784,7 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation does not require authentication
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -17163,10 +17055,10 @@ This operation may only be called by the CDR Register
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation does not require authentication
 </aside>
 
-<h2 id='schemas'>Schemas</h2>
+<h1 id='schemas'>Schemas</h1>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -18232,12 +18124,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li></li>Health Check (to be included in Admin end points)</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
 <td><strong>1500ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul></td>
 </tr>
 <tr>
 <td>Unattended</td>
@@ -18346,35 +18238,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <li>If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error <code>403 Forbidden</code> being returned).</li>
 </ul>
 <h1 id='known-issues'>Known Issues</h1>
-<p>There are certain aspects of the standards that are actively under review.  These known issues are articulated in the following table.</p>
-
-<table><thead>
-<tr>
-<th>Issue</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Swagger limitations</td>
-<td>Due to the use of Swagger 2 and limitations in swagger related to representation of OIDC flows and explicit formats for common types consideration is being given how best to represent this information</td>
-</tr>
-<tr>
-<td>End point version</td>
-<td>End point versions are included in a swagger extension but are not appearing yet in the automatically generated documentation</td>
-</tr>
-<tr>
-<td>Example data</td>
-<td>Addition of example data for each field needs to be added to the swagger to improve the automatically generated sample json snippets</td>
-</tr>
-<tr>
-<td>Specific error codes</td>
-<td>Feedback has been provided that additional specific errors would be of value.  This is under consideration</td>
-</tr>
-<tr>
-<td>Additional link fields</td>
-<td>The inclusion of additional links to aid traversal of the end points has been suggested.  This is under consideration.</td>
-</tr>
-</tbody></table>
+<p>This version of the standards currently has no known issues</p>
 <h1 id='change-log'>Change Log</h1>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
@@ -18386,6 +18250,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>20/1/2020</td>
+<td>1.1.1</td>
+<td>Maintenance updates</td>
+<td>Error Fixes<br/>See <a href="includes/releasenotes/releasenotes.1.1.1.html">release notes</a> for detail</td>
+</tr>
 <tr>
 <td>10/12/2019</td>
 <td>1.1.0</td>
@@ -18662,29 +18532,9 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
-<td><a href='./archive/standards-0.1/docs/'>2/11/2018</a></td>
-<td>0.1.0</td>
-<td><a href='./archive/standards-0.1/docs/'>November 2018 Working Draft</a></td>
-</tr>
-<tr>
-<td><a href='./archive/standards-0.20/docs/'>18/12/2018</a></td>
-<td>0.2.0</td>
-<td><a href='./archive/standards-0.20/docs/'>Christmas 2018 Working Draft - Standards</a></td>
-</tr>
-<tr>
-<td><a href='./archive/infosec-0.1/docs/'>18/12/2018</a></td>
-<td>0.1.0</td>
-<td><a href='./archive/infosec-0.1/docs/'>Christmas 2018 Working Draft - InfoSec Profile</a></td>
-</tr>
-<tr>
-<td><a href='./archive/standards-0.9.3/docs/'>29/5/2019</a></td>
-<td>0.9.3</td>
-<td><a href='./archive/standards-0.9.3/docs/'>May 2019 Working Draft</a></td>
-</tr>
-<tr>
-<td><a href='./archive/standards-0.9.5/docs/'>15/7/2019</a></td>
-<td>0.9.5</td>
-<td><a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a></td>
+<td><a href='./archive/standards-1.0.0/docs/'>30/9/2019</a></td>
+<td>1.0.0</td>
+<td><a href='./archive/standards-1.0.0/docs/'>September 1.0.0 Release</a></td>
 </tr>
 <tr>
 <td><a href='./archive/standards-0.9.6/docs/'>4/9/2019</a></td>
@@ -18692,9 +18542,29 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <td><a href='./archive/standards-0.9.6/docs/'>September fixes update</a></td>
 </tr>
 <tr>
-<td><a href='./archive/standards-1.0.0/docs/'>30/9/2019</a></td>
-<td>1.0.0</td>
-<td><a href='./archive/standards-1.0.0/docs/'>September 1.0.0 Release</a></td>
+<td><a href='./archive/standards-0.9.5/docs/'>15/7/2019</a></td>
+<td>0.9.5</td>
+<td><a href='./archive/standards-0.9.5/docs/'>July 2019 Working Draft</a></td>
+</tr>
+<tr>
+<td><a href='./archive/standards-0.9.3/docs/'>29/5/2019</a></td>
+<td>0.9.3</td>
+<td><a href='./archive/standards-0.9.3/docs/'>May 2019 Working Draft</a></td>
+</tr>
+<tr>
+<td><a href='./archive/infosec-0.1/docs/'>18/12/2018</a></td>
+<td>0.1.0</td>
+<td><a href='./archive/infosec-0.1/docs/'>Christmas 2018 Working Draft - InfoSec Profile</a></td>
+</tr>
+<tr>
+<td><a href='./archive/standards-0.20/docs/'>18/12/2018</a></td>
+<td>0.2.0</td>
+<td><a href='./archive/standards-0.20/docs/'>Christmas 2018 Working Draft - Standards</a></td>
+</tr>
+<tr>
+<td><a href='./archive/standards-0.1/docs/'>2/11/2018</a></td>
+<td>0.1.0</td>
+<td><a href='./archive/standards-0.1/docs/'>November 2018 Working Draft</a></td>
 </tr>
 </tbody></table>
 

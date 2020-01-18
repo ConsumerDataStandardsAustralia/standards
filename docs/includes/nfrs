@@ -71,12 +71,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li></li>Health Check (to be included in Admin end points)</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
 <td><strong>1500ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul></td>
 </tr>
 <tr>
 <td>Unattended</td>

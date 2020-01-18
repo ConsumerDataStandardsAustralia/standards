@@ -59,8 +59,8 @@ The nominated threshold for each end point will be according to the following ta
 |Tier|Response Time|Applies To…|
 |----|-------------|-----------|
 |Unauthenticated|**1500ms**|All unauthenticated end points|
-|High Priority|**1000ms**|Customer Present calls to the following end points:<ul><li>InfoSec end points</li></li>Health Check (to be included in Admin end points)</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul>|
-|Low Priority|**1500ms**|Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li></ul>|
+|High Priority|**1000ms**|Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul>|
+|Low Priority|**1500ms**|Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul>|
 |Unattended|**4000ms**|Unattended calls to High Priority or Low Priority end points.</br>Additional Admin end points.|
 |Large Payload|**6000ms**|Any call to the following end points:<ul><li>Get Bulk Transactions</li><li>Get Transactions For Specific Accounts</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul>|
 
