@@ -368,6 +368,8 @@ function schemaToArray(schema,offset,options,data) {
           entry.required_text = 'mandatory';
         } else if (parent['x-conditional'] && Array.isArray(parent['x-conditional']) && parent['x-conditional'].indexOf(entry.name)>=0) {
           entry.required_text = 'conditional';
+        } else if (entry.name === '*'+data.translations.anonymous+'*') {
+          entry.required_text = 'mandatory';
         } else {
           entry.required_text = 'optional';
         }

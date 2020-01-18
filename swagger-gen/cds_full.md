@@ -3895,13 +3895,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingProductV2](#schemabankingproductv2)|optional|none|none|
+|*anonymous*|[BankingProductV2](#schemabankingproductv2)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» bundles|[[BankingProductBundle](#schemabankingproductbundle)]|optional|none|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
 |» features|[[BankingProductFeature](#schemabankingproductfeature)]|optional|none|Array of features available for the product|
 |» constraints|[[BankingProductConstraint](#schemabankingproductconstraint)]|optional|none|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
@@ -4997,13 +4997,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingAccount](#schemabankingaccount)|optional|none|none|
+|*anonymous*|[BankingAccount](#schemabankingaccount)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» bsb|string|optional|none|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» accountNumber|string|optional|none|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
 |» bundleName|string|optional|none|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
@@ -5021,13 +5021,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|»» *anonymous*|[BankingProductFeature](#schemabankingproductfeature)|optional|none|none|
+|»» *anonymous*|[BankingProductFeature](#schemabankingproductfeature)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|»» *anonymous*|object|optional|none|none|
+|»» *anonymous*|object|mandatory|none|none|
 |»»» isActivated|[Boolean](#common-field-types)|optional|none|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
 
 *continued*
@@ -5372,13 +5372,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingTransaction](#schemabankingtransaction)|optional|none|none|
+|*anonymous*|[BankingTransaction](#schemabankingtransaction)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» extendedData|object|mandatory|none|none|
 |»» payer|string|conditional|none|Label of the originating payer. Mandatory for inbound payment|
 |»» payee|string|conditional|none|Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)|
@@ -5743,13 +5743,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingPayee](#schemabankingpayee)|optional|none|none|
+|*anonymous*|[BankingPayee](#schemabankingpayee)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
 |» domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
 |» biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
@@ -6562,7 +6562,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |finalPaymentDate|[DateString](#common-field-types)|optional|none|The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely|
-|nonBusinessDayTreatment|string|optional|none|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON. **AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date. **BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date. **ON** If a scheduled payment date is a non-business day the payment will be made on that day regardless. **ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
+|nonBusinessDayTreatment|string|optional|none|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
 |intervals|[[BankingScheduledPaymentInterval](#schemabankingscheduledpaymentinterval)]|mandatory|none|An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry|
 
 #### Enumerated Values
@@ -6618,7 +6618,7 @@ This operation does not require authentication
 |paymentsRemaining|[PositiveInteger](#common-field-types)|optional|none|Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely|
 |interval|[ExternalRef](#common-field-types)|mandatory|none|The interval for the payment. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. This duration defines the period between payments starting with nextPaymentDate|
 |lastWeekDay|string|mandatory|none|The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.|
-|nonBusinessDayTreatment|string|optional|none|Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON|
+|nonBusinessDayTreatment|string|optional|none|Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored|
 
 #### Enumerated Values
 
@@ -7090,13 +7090,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonPerson](#schemacommonperson)|optional|none|none|
+|*anonymous*|[CommonPerson](#schemacommonperson)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
 |» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
@@ -7225,13 +7225,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
+|*anonymous*|[CommonOrganisation](#schemacommonorganisation)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
 <h2 id="tocScommonphonenumber">CommonPhoneNumber</h2>
@@ -7356,13 +7356,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|optional|none|none|
+|*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|object|optional|none|none|
+|*anonymous*|object|mandatory|none|none|
 |» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
 
 #### Enumerated Values
@@ -7644,7 +7644,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|string|optional|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|*anonymous*|string|mandatory|none|The category to which a product or account belongs. See [here](#product-categories) for more details|
 
 #### Enumerated Values
 

@@ -6140,7 +6140,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingproductv2">BankingProductV2</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -6160,7 +6160,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8240,7 +8240,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingaccount">BankingAccount</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8260,7 +8260,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8364,7 +8364,7 @@ This operation does not require authentication
 <tr>
 <td>»» <em>anonymous</em></td>
 <td><a href="#schemabankingproductfeature">BankingProductFeature</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -8384,7 +8384,7 @@ This operation does not require authentication
 <tr>
 <td>»» <em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9139,7 +9139,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingtransaction">BankingTransaction</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9159,7 +9159,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9797,7 +9797,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemabankingpayee">BankingPayee</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -9817,7 +9817,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12157,7 +12157,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemacommonperson">CommonPerson</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12177,7 +12177,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12441,7 +12441,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12461,7 +12461,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12703,7 +12703,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td><a href="#schemacommonphysicaladdress">CommonPhysicalAddress</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -12723,7 +12723,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -13339,7 +13339,7 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
