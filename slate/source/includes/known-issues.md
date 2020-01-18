@@ -1,7 +1,3 @@
 # Known Issues
 
-These known issues are articulated in the following table.
-
-|Issue|Description|
-|-----------|-----------|
-| Issue | Placeholder |
+This version of the standards currently has no known issues

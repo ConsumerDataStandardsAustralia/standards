@@ -464,6 +464,7 @@ To facilitate the specification of the duration for consent to share CDR data th
 
 To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named `sharing_duration`.  The `sharing_duration` claim MUST be handled as follows:
 
+- The `sharing_duration` parameter is a number
 - The value of the `sharing_duration` parameter will contain the requested duration for sharing, in seconds.
 - If the `sharing_duration` value exceeds one year then a duration of one year will be assumed.
 - If the `sharing_duration` value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.

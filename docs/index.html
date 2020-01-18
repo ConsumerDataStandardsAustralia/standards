@@ -218,6 +218,11 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#future-dated-obligations" class="toc-h2 toc-link" data-title="Future Dated Obligations">Future Dated Obligations</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#standards" class="toc-h1 toc-link" data-title="Standards">Standards</a>
@@ -735,7 +740,7 @@
             <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://cdr-register.github.io/'>CDR Register</a></li>
-            <li><a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Guidelines</a></li>
+            <li><a href='./pdfs/CX-Standards-v1.1.1.pdf'>CX Guidelines</a></li>
             <li><a href='https://consumerdatastandards.org.au/cx-standards/'>CX Standards Site</a></li>
             <li><a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a></li>
             <li><a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a></li>
@@ -752,6 +757,44 @@
 <p>CSIRO’s Data61 has been appointed as the Data Standards Body (DSB) for the CDR regime. These standards have been prepared by the DSB.  The work of the team is  overseen by the Data Standards Chair, Mr. Andrew Stevens, with industry and consumer advice provided by an Advisory Committee. The work of standards development is conducted in close consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission (ACCC)</a> as lead regulator of the Consumer Data Right, supported by the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner (OAIC)</a>.</p>
 
 <p>These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
+<p>These standards are intended to be binding from the date that they are published.  The standards do include, however, specific statements indicating that a specific section of the standards will not be binding until a future date or may cease to be binding on some future date.</p>
+
+<p>The table below highlights these areas of the standards.</p>
+
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+<th>Applicable Date</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#non-functional-requirements">Non-functional Requirements</a></td>
+<td>The non-functional requirements for the CDR regime are documented but are not yet binding with no specific future binding date being set as yet</td>
+<td>Not yet specified</td>
+</tr>
+<tr>
+<td><a href="#get-products">Get Products V2</a></td>
+<td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
+<td>July 2020</td>
+</tr>
+<tr>
+<td><a href="#get-products">Get Products V1</a></td>
+<td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>August 29th 2020</td>
+</tr>
+<tr>
+<td><a href="#get-product-detail">Get Product Detail V2</a></td>
+<td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
+<td>July 2020</td>
+</tr>
+<tr>
+<td><a href="#get-product-detail">Get Product Detail V1</a></td>
+<td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
+<td>August 29th 2020</td>
+</tr>
+</tbody></table>
 <h1 id='standards'>Standards</h1>
 <p>These standards represent <strong>version 1.1.1</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
@@ -2129,6 +2172,7 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <p>To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named <code>sharing_duration</code>.  The <code>sharing_duration</code> claim MUST be handled as follows:</p>
 
 <ul>
+<li>The <code>sharing_duration</code> parameter is a number</li>
 <li>The value of the <code>sharing_duration</code> parameter will contain the requested duration for sharing, in seconds.</li>
 <li>If the <code>sharing_duration</code> value exceeds one year then a duration of one year will be assumed.</li>
 <li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
@@ -2584,7 +2628,7 @@ Host: www.holder.com.au
 </tbody></table>
 <h1 id='consumer-experience'>Consumer Experience</h1>
 <p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders can be found at the following location:<br/>
-<a href='./pdfs/CX-Standards-v1.1.0.pdf'>CX Standards</a></p>
+<a href='./pdfs/CX-Standards-v1.1.1.pdf'>CX Standards</a></p>
 
 <p>Additional CX guidelines and commentary can be found at:<br/>
 <a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
@@ -18194,19 +18238,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <li>If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error <code>403 Forbidden</code> being returned).</li>
 </ul>
 <h1 id='known-issues'>Known Issues</h1>
-<p>These known issues are articulated in the following table.</p>
-
-<table><thead>
-<tr>
-<th>Issue</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Issue</td>
-<td>Placeholder</td>
-</tr>
-</tbody></table>
+<p>This version of the standards currently has no known issues</p>
 <h1 id='change-log'>Change Log</h1>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
