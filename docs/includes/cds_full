@@ -11247,7 +11247,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON. <strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date. <strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date. <strong>ON</strong> If a scheduled payment date is a non-business day the payment will be made on that day regardless. <strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 <tr>
 <td>intervals</td>
@@ -11372,7 +11372,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Enumerated field giving the treatment where a scheduled payment date is not a business day.  If absent assumed to be ON</td>
+<td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-30'>Enumerated Values</h4>
