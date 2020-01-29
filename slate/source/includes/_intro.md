@@ -6,11 +6,14 @@ The Consumer Data Right (CDR) is intended to be applied sector by sector across 
 
 CSIRO’s Data61 has been appointed as the Data Standards Body (DSB) for the CDR regime. These standards have been prepared by the DSB.  The work of the team is  overseen by the Data Standards Chair, Mr. Andrew Stevens, with industry and consumer advice provided by an Advisory Committee. The work of standards development is conducted in close consultation with the [Australian Competition and Consumer Commission (ACCC)](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0) as lead regulator of the Consumer Data Right, supported by the [Office of the Australian Information Commissioner (OAIC)](https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/).
 
-These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.
+The standards are required to be published. The obligations on CDR participants to apply the published standards commence on the commencement of the Consumer Data Right rules:
+
+- where the rules require compliance with the standards, non-compliance with the standards may constitute a breach of the rules.
+- where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.
 
 ## Future Dated Obligations
 
-These standards are intended to be binding from the date that they are published.  The standards do include, however, specific statements indicating that a specific section of the standards will not be binding until a future date or may cease to be binding on some future date.
+The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
 
 The table below highlights these areas of the standards.
 
@@ -21,3 +24,4 @@ The table below highlights these areas of the standards.
 |[Get Products V1](#get-products)|Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time|August 29th 2020|
 |[Get Product Detail V2](#get-product-detail)|Version 2 of this end point must be made available by affected data holders by the end of July 2020|July 2020|
 |[Get Product Detail V1](#get-product-detail)|Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time|August 29th 2020|
+|[Request Object Section](#request-object)|The target state concurrent consent solution is being phased in at a later date.  Further consultation will be conducted before the full target solution takes effect|November 2020|

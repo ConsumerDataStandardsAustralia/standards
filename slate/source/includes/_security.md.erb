@@ -243,8 +243,6 @@ Consent requirements will be communicated between the Data Recipient and Data Ho
 
 Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
-A data holder MUST support only one extant consent arrangement (being an arrangement between a single Customer, a single Data Recipient and a single Data Holder) at a time.  If a second consent is authorised then the tokens associated with the previous consent MUST be revoked.
-
 ## Scopes and Claims
 
 ### OIDC Scopes
@@ -459,7 +457,7 @@ Request Objects MUST be signed by Data Recipients as specified in [section 8.6](
 
 Request Object references SHALL NOT be supported.
 
-## Requesting Sharing Duration
+### Requesting Sharing Duration
 To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.
 
 To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named `sharing_duration`.  The `sharing_duration` claim MUST be handled as follows:
@@ -474,14 +472,20 @@ Note that the period of `one year` in the above statements should be interpreted
 
 The Data Recipient is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
 
+### Specifying An Existing Refresh Token
+To allow for an existing consent to be reliably revoked upon the establishment of a new consent intended as a replacement data holders MUST support an additional claim in the authorisation request object named `existing_refresh_token` that the data recipient may optionally include with the value set to the active refresh token for an existing consent.
+
+The `existing_refresh_token` claim MUST be handled as follows:
+
+- **Until November 2020** data holders are not required to take any action if `existing_refresh_token` is supplied but MUST NOT respond with an error.
+- **From November 2020** data holders MUST revoke a token provided in the `existing_refresh_token` claim in the request object once the new consent is successfully established and a new set of tokens has been provided to the data recipient.
+- **Until November 2020** data recipients MUST NOT implement scenarios that support concurrent consent.  Only single, extant consent scenarios should be implemented until this date.
+- **Until November 2020** data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the revocation end point.
+
 
 ## End Points
 <aside class="warning">
 NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
-</aside>
-
-<aside class="notice">
-NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA. As the `authorize` end point must be accessed by a public client this end point must use TLS but the data holder is free to use any certificate authority.
 </aside>
 
 ### OpenID Provider Configuration End Point
@@ -538,6 +542,7 @@ At a minimum, the Data Holder metadata MUST include:
 - `introspection_endpoint`: URL of the Introspection End Point.
 - `revocation_endpoint`: URL of the Revocation End Point.
 - `userinfo_endpoint`: URL of the UserInfo End Point.
+- `registration_endpoint`: URL of the Client Registration End Point.
 - `scopes_supported`:  This list of supported scopes.
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
