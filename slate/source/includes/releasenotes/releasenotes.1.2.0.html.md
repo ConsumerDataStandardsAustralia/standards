@@ -34,3 +34,14 @@ No Change
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
+|Defect: Data cluster language for basic scope|CX Standards: minor defect correction for location of ‘balances’.<br/>'Account name and type' now changed to 'Account name, type and balance'.<br/>'Account numbers, balances and features' now changed to 'Account numbers and features'.|[CX Standards](../../index.html#consumer-experience)<br/>Page 21: Data Standards Language|
+|Single/Concurrent consent guideline|CX Guidelines: example for ADRs to present withdrawal election prior to establishing a new consent.|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 64: Subsequent Consent|
+|Rule 4.23(b) example: historical data|CX Guidelines: showing how DHs may present static ‘1 Jan 2017’ reference in authorisation flow to reflect rule 4.23(b).<br/>CX Guidelines now also suggest other locations for this information that are not required in the rules or standards.|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 82: Authorise / Confirmation<br/>Page 96: ADR dashboard<br/>Page 108: DH Dashboard|
+|Rule 7.4 and 7.9 example: compliance with Privacy Safeguards 5 and 10|CX Guidelines: example for privacy safeguard requirement on dashboards. Rules regarding disclosure of datasets, references to ADRs and DHs, and date of initial and final disclosure.|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 96: ADR dashboard<br/>Page 108: DH dashboard|
+|CDR Branding|CX Guidelines: official CDR branding included in screens that refer to accreditation, with reference to ACCC-supplied assets.|[CX Guidelines](../../index.html#consumer-experience)<br/>Pages 10, 37, 39, 77, 110|
+|Accreditation check|CX Guidelines: statement regarding ACCC-provided URL for consumers to use to verify accreditation|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 39, 111|
+|Password copy|CX Guidelines: clarified example of copy regarding CDR participants never asking for consumer passwords. Presented in body copy and footer.|[CX Guidelines](../../index.html#consumer-experience)<br/>Pages 71 - 75|
+|CDR Rule 7.12(2)(b)|CX Guidelines: inclusion of rule in reference to outsourced providers.|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 58, 62|
+|Design patterns|CX Guidelines: guideline on encouraging consumers to be privacy conscious.|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 53, 95, 108|
+|Rules references|CX Guidelines: amended rules references.|[CX Guidelines](../../index.html#consumer-experience)<br/>Pages 40, 58, 98, 99, 107|
+|CDR Receipt: Rule 4.18|CX Guidelines: copy updated to clarify that ADRs may but are not required to provide a CDR receipt on the consumer dashboard.|[CX Guidelines](../../index.html#consumer-experience)<br/>Page 94|
