@@ -302,9 +302,6 @@
                     <a href="#request-object" class="toc-h2 toc-link" data-title="Request Object">Request Object</a>
                   </li>
                   <li>
-                    <a href="#requesting-sharing-duration" class="toc-h2 toc-link" data-title="Requesting Sharing Duration">Requesting Sharing Duration</a>
-                  </li>
-                  <li>
                     <a href="#end-points" class="toc-h2 toc-link" data-title="End Points">End Points</a>
                   </li>
                   <li>
@@ -751,9 +748,14 @@
 
 <p>CSIRO’s Data61 has been appointed as the Data Standards Body (DSB) for the CDR regime. These standards have been prepared by the DSB.  The work of the team is  overseen by the Data Standards Chair, Mr. Andrew Stevens, with industry and consumer advice provided by an Advisory Committee. The work of standards development is conducted in close consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission (ACCC)</a> as lead regulator of the Consumer Data Right, supported by the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner (OAIC)</a>.</p>
 
-<p>These standards are binding data standards for the purposes of s56FA and in accordance with the Consumer Data Right rules made by the ACCC. The making and commencement of the data standards and the CDR rules is subject to the Consumer Data Right legislation.</p>
+<p>The standards are required to be published. The obligations on CDR participants to apply the published standards commence on the commencement of the Consumer Data Right rules:</p>
+
+<ul>
+<li>where the rules require compliance with the standards, non-compliance with the standards may constitute a breach of the rules.</li>
+<li>where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.</li>
+</ul>
 <h2 id='future-dated-obligations'>Future Dated Obligations</h2>
-<p>These standards are intended to be binding from the date that they are published.  The standards do include, however, specific statements indicating that a specific section of the standards will not be binding until a future date or may cease to be binding on some future date.</p>
+<p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.</p>
 
 <p>The table below highlights these areas of the standards.</p>
 
@@ -789,9 +791,14 @@
 <td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
 <td>August 29th 2020</td>
 </tr>
+<tr>
+<td><a href="#request-object">Request Object Section</a></td>
+<td>The target state concurrent consent solution is being phased in at a later date.  Further consultation will be conducted before the full target solution takes effect</td>
+<td>November 2020</td>
+</tr>
 </tbody></table>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.2.0</strong> of the high level standards which will support the creation of version 1.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.2.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1467,17 +1474,17 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tr>
 <tr>
 <td>DateTimeString</td>
-<td>Combined Date and Time string as per RFC- 3339 (labelled date-time in the RFC)</td>
+<td>Combined Date and Time string as per RFC- 3339 (labelled date-time in the RFC). As specified in RFC-3339 times should be offset relative to UTC</td>
 <td>“2007-05-01T15:43:00.12345Z”<br/>“2012-12-25T15:43:00-08:00”<br/>“1997-01-12T15:43:00.121Z”</td>
 </tr>
 <tr>
 <td>DateString</td>
-<td>Date string as per RFC-3339 (labelled full-date in the RFC). UTC time should always be used</td>
+<td>Date string as per RFC-3339 (labelled full-date in the RFC)</td>
 <td>“2007-05-01”<br/>“2012-12-25”</td>
 </tr>
 <tr>
 <td>TimeString</td>
-<td>Time string as per RFC-3339 (labelled full-time in the RFC). UTC time should always be used</td>
+<td>Time string as per RFC-3339 (labelled full-time in the RFC). As specified in RFC-3339 times should be offset relative to UTC</td>
 <td>“15:43:00.12345Z”<br/>“15:43:00-12:00”</td>
 </tr>
 <tr>
@@ -1950,8 +1957,6 @@ grant_type=authorization_code&amp;
 <p>Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under <strong>[OIDC]</strong>.</p>
 
 <p>Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.</p>
-
-<p>A data holder MUST support only one extant consent arrangement (being an arrangement between a single Customer, a single Data Recipient and a single Data Holder) at a time.  If a second consent is authorised then the tokens associated with the previous consent MUST be revoked.</p>
 <h2 id='scopes-and-claims'>Scopes and Claims</h2><h3 id='oidc-scopes'>OIDC Scopes</h3>
 <p>In addition to CDR data scopes the following scopes MUST be supported:</p>
 
@@ -2161,7 +2166,7 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <p>Request Objects MUST be signed by Data Recipients as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
 <p>Request Object references SHALL NOT be supported.</p>
-<h2 id='requesting-sharing-duration'>Requesting Sharing Duration</h2>
+<h3 id='requesting-sharing-duration'>Requesting Sharing Duration</h3>
 <p>To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.</p>
 
 <p>To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named <code>sharing_duration</code>.  The <code>sharing_duration</code> claim MUST be handled as follows:</p>
@@ -2177,13 +2182,20 @@ Identifier (UUID) <strong>[RFC4122]</strong>.</p>
 <p>Note that the period of <code>one year</code> in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).</p>
 
 <p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
+<h3 id='specifying-an-existing-refresh-token'>Specifying An Existing Refresh Token</h3>
+<p>To allow for an existing consent to be reliably revoked upon the establishment of a new consent intended as a replacement data holders MUST support an additional claim in the authorisation request object named <code>existing_refresh_token</code> that the data recipient may optionally include with the value set to the active refresh token for an existing consent.</p>
+
+<p>The <code>existing_refresh_token</code> claim MUST be handled as follows:</p>
+
+<ul>
+<li><strong>Until November 2020</strong> data holders are not required to take any action if <code>existing_refresh_token</code> is supplied but MUST NOT respond with an error.</li>
+<li><strong>From November 2020</strong> data holders MUST revoke a token provided in the <code>existing_refresh_token</code> claim in the request object once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</li>
+<li><strong>Until November 2020</strong> data recipients MUST NOT implement scenarios that support concurrent consent.  Only single, extant consent scenarios should be implemented until this date.</li>
+<li><strong>Until November 2020</strong> data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the revocation end point.</li>
+</ul>
 <h2 id='end-points'>End Points</h2>
 <aside class="warning">
 NOTE: This section does not yet include any end points that will be defined by the design of the CDR Register.  This includes end points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery.
-</aside>
-
-<aside class="notice">
-NOTE: Where an end point in this section requires TLS only the certificate used is to be provisioned by the CDR CA. As the `authorize` end point must be accessed by a public client this end point must use TLS but the data holder is free to use any certificate authority.
 </aside>
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 <blockquote>
@@ -2255,6 +2267,7 @@ Content-Type: application/json
 <li><code>introspection_endpoint</code>: URL of the Introspection End Point.</li>
 <li><code>revocation_endpoint</code>: URL of the Revocation End Point.</li>
 <li><code>userinfo_endpoint</code>: URL of the UserInfo End Point.</li>
+<li><code>registration_endpoint</code>: URL of the Client Registration End Point.</li>
 <li><code>scopes_supported</code>:  This list of supported scopes.</li>
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
@@ -18247,6 +18260,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>31/1/2020</td>
+<td>1.2.0</td>
+<td>Phase 2 Baseline</td>
+<td>Baseline version for the Phase 2 implementation of the CDR regime<br/>See <a href="includes/releasenotes/releasenotes.1.2.0.html">release notes</a> for detail</td>
+</tr>
 <tr>
 <td>20/1/2020</td>
 <td>1.1.1</td>

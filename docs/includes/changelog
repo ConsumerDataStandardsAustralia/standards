@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>31/1/2020</td>
+<td>1.2.0</td>
+<td>Phase 2 Baseline</td>
+<td>Baseline version for the Phase 2 implementation of the CDR regime<br/>See <a href="includes/releasenotes/releasenotes.1.2.0.html">release notes</a> for detail</td>
+</tr>
+<tr>
 <td>20/1/2020</td>
 <td>1.1.1</td>
 <td>Maintenance updates</td>
