@@ -15,18 +15,27 @@ Release notes for version 1.3.0 of the [CDR Standards](../../index.html).
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-|xxxx|XXXXX|[Introduction](../../index.html#introduction)|
+|Updated Principles|Amendment to high level principles to include principles for CX and for cross-sector extension|[Principles](../../index.html#principles)|
+|Maintenance Link|A link to the standards maintenance GitHub repository has been added to the table of contents|General|
+|x-fapi-auth-date Clarification|Clarification that the FAPI Read profile defines the format for the `x-fapi-auth-date` header|[HTTP Headers](../../index.html#http-headers)|
 
 ## API End Points
 |Change|Description|Link|
 |------|-----------|----|
-|xxxx|XXXXX|[Introduction](../../index.html#introduction)|
+|x-cds-client-headers correction|The `x-cds-client-headers` header was missing from the Get Transactions For Account end point.  This has been rectified|[Get Transactions For Account](../../index.html#get-transactions-for-account)|
+|x-fapi-interaction-id correction|The `x-fapi-interaction-id` header was missing from the Get Customer end point.  This has been rectified|[Get Customer](../../index.html#get-customer)|
+|Product API v3|Introduction of v3 of the Product Reference end points to remove sub tiers, addition of more info and info URL fields, and addition of repayment type and loan purpose fields|[Get Products](../../index.html#get-products)|
+|APCA Field Description|Clarified the description of the APCA field for the apcaNumber field|[BankingTransaction](../../index.html#tocSbankingtransaction)|
+|MAX_LIMIT, MIN_LIMIT Descriptions|Clarification of descriptions for MAX_LIMIT and MIN_LIMIT enumeration values|[Product &amp; Account Components](../../index.html#product-amp-account-components)|
 
 
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-|xxxx|XXXXX|[Introduction](../../index.html#introduction)|
+|ID Token Encryption|Clarification of the non-normative examples for the OpenID Provider Configuration End Point regarding ID Token encryption algorithms|[InfoSec End Points](../../index.html#end-points)|
+|Request Object Sample|Clarifications of non-normative example for the Request Object|[Request Object](../../index.html#request-object)|
+|Client Authentication Sample|Addition of non-normative samples for the client authentication section|[Client Authentication](../../index.html#client-authentication)|
+|Concurrent Consent|Addition of changes arising from the concurrent consent consultation.  This resulted in a number of changes to the Information Security profile|General|
 
 ## Consumer Experience
 |Change|Description|Link|
