@@ -28,4 +28,4 @@ The table below highlights these areas of the standards.
 |[Get Products V1](#get-products)|Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time|August 29th 2020|
 |[Get Product Detail V2](#get-product-detail)|Version 2 of this end point must be made available by affected data holders by the end of July 2020|July 2020|
 |[Get Product Detail V1](#get-product-detail)|Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time|August 29th 2020|
-|[Request Object Section](#request-object)|The target state concurrent consent solution is being phased in at a later date.  Further consultation will be conducted before the full target solution takes effect|November 2020|
+|Concurrent Consent|The target state concurrent consent solution covers various components of the Information Security profile is being phased in with alignment to the November 2020 implementation milestone set by the ACCC.  If this milestone moves then this obligation will also move.|November 2020|
