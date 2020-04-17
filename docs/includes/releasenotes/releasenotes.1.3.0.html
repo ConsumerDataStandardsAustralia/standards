@@ -239,8 +239,6 @@
       <div class="content">
         <h1 id='v1-3-0-release-notes'>V1.3.0 Release Notes</h1>
 <p>Release notes for version 1.3.0 of the <a href="../../">CDR Standards</a>.</p>
-
-<p>This version of the standards is considered to be the binding baseline for the Phase 2 implementation of the Consumer Data Right regime currently targeted for July 2020.</p>
 <h2 id='high-level-standards'>High Level Standards</h2>
 <table><thead>
 <tr>
@@ -250,18 +248,25 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Binding Statement</td>
-<td>Modified the introduction section to include a statement of binding that is aligned to the legal framework for the CDR regime</td>
+<td>xxxx</td>
+<td>XXXXX</td>
 <td><a href="../../#introduction">Introduction</a></td>
-</tr>
-<tr>
-<td>Clarification of DateTimeString</td>
-<td>Change to the description of the DateTimeString type to clarify the baselining of time to UTC.  This is a clarification only and does not materially change the standards</td>
-<td><a href="../../#common-field-types">Common Types Section</a></td>
 </tr>
 </tbody></table>
 <h2 id='api-end-points'>API End Points</h2>
-<p>No Change</p>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>xxxx</td>
+<td>XXXXX</td>
+<td><a href="../../#introduction">Introduction</a></td>
+</tr>
+</tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
 <tr>
@@ -271,19 +276,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Concurrent Consent Decision</td>
-<td>Incorporated the changes articulated in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/85">Decision 85</a> regarding concurrent consent</td>
-<td><a href="../../#consent">Consent Section</a></td>
-</tr>
-<tr>
-<td>Client Registration Discovery</td>
-<td>Added the requirement that the client registration end point be included in the OIDC discovery response</td>
-<td><a href="../../#end-points">Security End Points Section</a></td>
-</tr>
-<tr>
-<td>Security TLS Certificate</td>
-<td>The constraint that security end points requiring TLS only must use a certificate obtained from the CDR CA has been removed</td>
-<td><a href="../../#end-points">Security End Points Section</a></td>
+<td>xxxx</td>
+<td>XXXXX</td>
+<td><a href="../../#introduction">Introduction</a></td>
 </tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>
@@ -295,59 +290,64 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Defect: Data cluster language for basic scope</td>
-<td>CX Standards: minor defect correction for location of ‘balances’.<br/>&#39;Account name and type&#39; now changed to &#39;Account name, type and balance&#39;.<br/>&#39;Account numbers, balances and features&#39; now changed to &#39;Account numbers and features&#39;.</td>
-<td><a href="../../#consumer-experience">CX Standards</a><br/>Page 21: Data Standards Language</td>
+<td>Optional example for <em>‘Transaction Details’</em> amended</td>
+<td>CX Standards defect. An optional example for <em>‘Transaction Details’</em> incorrectly referred to <em>‘BSB, account number’</em>. This optional example has been removed.</td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.14</td>
 </tr>
 <tr>
-<td>Single/Concurrent consent guideline</td>
-<td>CX Guidelines: example for ADRs to present withdrawal election prior to establishing a new consent.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 64: Subsequent Consent</td>
+<td>Use of ‘One Time Password’</td>
+<td>CX Standards clarification. Amended to clarify that the use of the term “One Time Password” may be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.16</td>
 </tr>
 <tr>
-<td>Rule 4.23(b) example: historical data</td>
-<td>CX Guidelines: showing how DHs may present static ‘1 Jan 2017’ reference in authorisation flow to reflect rule 4.23(b).<br/>CX Guidelines now also suggest other locations for this information that are not required in the rules or standards.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 82: Authorise / Confirmation<br/>Page 96: ADR dashboard<br/>Page 108: DH Dashboard</td>
+<td>Unavailable accounts in the authorisation flow</td>
+<td>CX Standards clarification. This clarification has been added to the standard as follows:<br/><br/><em>Data holders are not permitted to show unavailable joint accounts as joint accounts need to be elected via a joint account management service before they are permitted to appear in the authorisation flow (See CDR Rules: Schedule 3, 4.1(1); 4.2; 4.3(3); and CDR Rule 4.24)</em></td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.16</td>
 </tr>
 <tr>
-<td>Rule 7.4 and 7.9 example: compliance with Privacy Safeguards 5 and 10</td>
-<td>CX Guidelines: example for privacy safeguard requirement on dashboards. Rules regarding disclosure of datasets, references to ADRs and DHs, and date of initial and final disclosure.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 96: ADR dashboard<br/>Page 108: DH dashboard</td>
+<td>Profile selection step</td>
+<td>CX Standards, optional addition. To avoid DH non-compliance this guideline has been added as an optional part of an existing CX standard on account selection as follows:<br/><br/><em>Data holders MAY add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts.<br/><br/>The ‘profile selection’ step</em> <strong><em>SHOULD</em></strong> <em>only be considered if it is an existing customer experience, and</em> <strong><em>SHOULD</em></strong> <em>be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).</em><br/><br/>This item was previously a guideline but was uplifted to be an optional part of the standards as it is not permitted in the authorisation flow unless it is a rule or standard.</td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.16</td>
 </tr>
 <tr>
-<td>CDR Branding</td>
-<td>CX Guidelines: official CDR branding included in screens that refer to accreditation, with reference to ACCC-supplied assets.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Pages 10, 37, 39, 77, 110</td>
+<td>CX Principles</td>
+<td>The CX Guidelines and CX Standards artefacts now include the CX Principles and Outcome Principle 3.<br/>These principles guide standard/guideline development but are not standards themselves.</td>
+<td>General</td>
 </tr>
 <tr>
-<td>Accreditation check</td>
-<td>CX Guidelines: statement regarding ACCC-provided URL for consumers to use to verify accreditation</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 39, 111</td>
+<td>ABS hyperlink corrected</td>
+<td>Broken link replaced</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.24</td>
 </tr>
 <tr>
-<td>Password copy</td>
-<td>CX Guidelines: clarified example of copy regarding CDR participants never asking for consumer passwords. Presented in body copy and footer.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Pages 71 - 75</td>
+<td>Concurrent consent</td>
+<td>CX Guideline amended to avoid implying that concurrent consent will support re-authorisation.<br/>Guideline amended to clarify that consumer withdrawal must occur before/in the course of replacing an existing consent.</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.65<br/>(Added to key decisions table p.3)</td>
 </tr>
 <tr>
-<td>CDR Rule 7.12(2)(b)</td>
-<td>CX Guidelines: inclusion of rule in reference to outsourced providers.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 58, 62</td>
+<td>CDR Logo in authorisation flow</td>
+<td>CX Guideline has been removed pending the ACCC making this functionality available.</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.79</td>
 </tr>
 <tr>
-<td>Design patterns</td>
-<td>CX Guidelines: guideline on encouraging consumers to be privacy conscious.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 53, 95, 108</td>
+<td>Accreditation ID in authorisation flow</td>
+<td>CX Guideline has been removed pending the ACCC making this functionality available. ACCC is consulting on the sharing of the accreditation ID with DHs on <a href="https://github.com/cdr-register/register/issues/94">GitHub</a></td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.79</td>
 </tr>
 <tr>
-<td>Rules references</td>
-<td>CX Guidelines: amended rules references.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Pages 40, 58, 98, 99, 107</td>
+<td>Historical data</td>
+<td>Screen example changed to ‘may date back to 1st January 2017’ as DH won’t know this detail.</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.83</td>
 </tr>
 <tr>
-<td>CDR Receipt: Rule 4.18</td>
-<td>CX Guidelines: copy updated to clarify that ADRs may but are not required to provide a CDR receipt on the consumer dashboard.</td>
-<td><a href="../../#consumer-experience">CX Guidelines</a><br/>Page 94</td>
+<td>User-defined tags</td>
+<td>ADR guideline refers to ‘absence of information about the purpose or use case’. This has been removed as this only relates to DHs</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.93, 95</td>
+</tr>
+<tr>
+<td>Status of consent/sharing</td>
+<td>Guideline changed to clarify nuance of ‘status’ referring to both consent or data sharing</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.95, 108</td>
 </tr>
 </tbody></table>
 
