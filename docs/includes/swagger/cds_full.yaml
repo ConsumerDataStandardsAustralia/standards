@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 1.2.0
+  version: 1.3.0
   title: Consumer Data Standards
   contact:
     name: Consumer Data Standards
@@ -513,6 +513,12 @@ paths:
         description: The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.
         required: false
         type: string
+      - name: x-cds-client-headers
+        in: header
+        description: The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.
+        required: false
+        type: string
+        x-cds-type: Base64
       responses:
         200:
           description: Success
@@ -1302,9 +1308,9 @@ paths:
 
         In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-        NOTE: This version must be implemented by **July 2020**
+        NOTE: This version must be implemented by **February 2021**
 
-        Obsolete versions: [v1](includes/obsolete/get-products-v1.html)
+        Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)
       operationId: listProducts
       parameters:
       - name: effective
@@ -1379,7 +1385,7 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductList'
-      x-version: "2"
+      x-version: "3"
   /banking/products/{productId}:
     get:
       tags:
@@ -1389,9 +1395,9 @@ paths:
       description: |-
         Obtain detailed information on a single product offered openly to the market.
 
-        NOTE: This version must be implemented by **July 2020**
+        NOTE: This version must be implemented by **February 2021**
 
-        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
+        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
       operationId: getProductDetail
       parameters:
       - name: productId
@@ -1419,7 +1425,7 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductById'
-      x-version: "2"
+      x-version: "3"
   /common/customer:
     get:
       tags:
@@ -1467,6 +1473,9 @@ paths:
             x-v:
               type: string
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseCommonCustomer'
       x-scopes:
@@ -1608,7 +1617,7 @@ definitions:
         $ref: '#/definitions/LinksPaginated'
       meta:
         $ref: '#/definitions/MetaPaginated'
-  BankingProductV2:
+  BankingProductV3:
     type: object
     required:
     - brand
@@ -1658,12 +1667,12 @@ definitions:
         description: Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable
         x-cds-type: Boolean
       additionalInformation:
-        $ref: '#/definitions/BankingProductV2_additionalInformation'
+        $ref: '#/definitions/BankingProductV3_additionalInformation'
       cardArt:
         type: array
         description: An array of card art images
         items:
-          $ref: '#/definitions/BankingProductV2_cardArt'
+          $ref: '#/definitions/BankingProductV3_cardArt'
   ResponseBankingProductById:
     type: object
     required:
@@ -1671,14 +1680,14 @@ definitions:
     - links
     properties:
       data:
-        $ref: '#/definitions/BankingProductDetail'
+        $ref: '#/definitions/BankingProductDetailV2'
       links:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-  BankingProductDetail:
+  BankingProductDetailV2:
     allOf:
-    - $ref: '#/definitions/BankingProductV2'
+    - $ref: '#/definitions/BankingProductV3'
     - type: object
       properties:
         bundles:
@@ -2096,6 +2105,18 @@ definitions:
         enum:
         - IN_ARREARS
         - IN_ADVANCE
+      repaymentType:
+        type: string
+        description: Options in place for repayments. If absent, the lending rate is applicable to all repayment types
+        enum:
+        - INTEREST_ONLY
+        - PRINCIPAL_AND_INTEREST
+      loanPurpose:
+        type: string
+        description: The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes
+        enum:
+        - OWNER_OCCUPIED
+        - INVESTMENT
       tiers:
         type: array
         description: Rate tiers applicable for this rate
@@ -2145,8 +2166,13 @@ definitions:
         - PER_TIER
       applicabilityConditions:
         $ref: '#/definitions/BankingProductRateCondition'
-      subTier:
-        $ref: '#/definitions/BankingProductRateTier_subTier'
+      additionalInfo:
+        type: string
+        description: Display text providing more information on the rate tier.
+      additionalInfoUri:
+        type: string
+        description: Link to a web page with more information on this rate tier
+        x-cds-type: URIString
     description: Defines the criteria and conditions for which a rate applies
   BankingProductRateCondition:
     type: object
@@ -2524,7 +2550,7 @@ definitions:
         description: BPAY CRN for the transaction (if available)
       apcaNumber:
         type: string
-        description: 6 Digit APCA number for the initiating institution
+        description: 6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.
     x-conditional:
     - transactionId
     - postingDateTime
@@ -3598,8 +3624,8 @@ definitions:
         type: array
         description: The list of products returned.  If the filter results in an empty set then this array may have no records
         items:
-          $ref: '#/definitions/BankingProductV2'
-  BankingProductV2_additionalInformation:
+          $ref: '#/definitions/BankingProductV3'
+  BankingProductV3_additionalInformation:
     properties:
       overviewUri:
         type: string
@@ -3622,7 +3648,7 @@ definitions:
         description: Description of a bundle that this product can be part of
         x-cds-type: URIString
     description: Object that contains links to additional information on specific topics
-  BankingProductV2_cardArt:
+  BankingProductV3_cardArt:
     required:
     - imageUri
     properties:
@@ -3633,39 +3659,6 @@ definitions:
         type: string
         description: Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels
         x-cds-type: URIString
-  BankingProductRateTier_subTier:
-    required:
-    - maximumValue
-    - minimumValue
-    - name
-    - unitOfMeasure
-    properties:
-      name:
-        type: string
-        description: A display name for the tier
-      unitOfMeasure:
-        type: string
-        description: The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-        enum:
-        - DOLLAR
-        - PERCENT
-        - MONTH
-        - DAY
-      minimumValue:
-        type: number
-        description: The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-      maximumValue:
-        type: number
-        description: 'The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)'
-      rateApplicationMethod:
-        type: string
-        description: The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-        enum:
-        - WHOLE_BALANCE
-        - PER_TIER
-      applicabilityConditions:
-        $ref: '#/definitions/BankingProductRateCondition'
-    description: Defines the sub-tier criteria and conditions for which a rate applies
   ResponseBankingAccountList_data:
     required:
     - accounts

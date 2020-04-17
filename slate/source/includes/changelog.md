@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|17/4/2020|1.3.0|Minor Update Release|Incorporates maintenance iteration 2 changes along with a number other CX and technical changes<br/>See [release notes](includes/releasenotes/releasenotes.1.3.0.html) for detail
 |31/1/2020|1.2.0|Phase 2 Baseline|Baseline version for the Phase 2 implementation of the CDR regime<br/>See [release notes](includes/releasenotes/releasenotes.1.2.0.html) for detail
 |20/1/2020|1.1.1|Maintenance updates|Error Fixes<br/>See [release notes](includes/releasenotes/releasenotes.1.1.1.html) for detail
 |10/12/2019|1.1.0|Banking Maintenance Iteration 1 Changes|Changes arising from iteration 1 of the banking maintenance cadence.<br/>See [release notes](includes/releasenotes/releasenotes.1.1.0.html) for detail

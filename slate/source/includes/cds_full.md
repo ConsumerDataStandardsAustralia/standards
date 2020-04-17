@@ -672,17 +672,8 @@ Obtain detailed information on a single account
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -698,6 +689,8 @@ Obtain detailed information on a single account
         "calculationFrequency": "string",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ARREARS",
+        "repaymentType": "INTEREST_ONLY",
+        "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
           {
             "name": "string",
@@ -709,17 +702,8 @@ Obtain detailed information on a single account
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -853,6 +837,7 @@ x-min-v: string
 x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
+x-cds-client-headers: string
 
 ```
 
@@ -863,7 +848,8 @@ var headers = {
   'x-min-v':'string',
   'x-fapi-interaction-id':'string',
   'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string'
+  'x-fapi-customer-ip-address':'string',
+  'x-cds-client-headers':'string'
 
 };
 
@@ -915,6 +901,7 @@ Some general notes that apply to all end points that retrieve transactions:
 |x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2487,14 +2474,14 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-NOTE: This version must be implemented by **July 2020**
+NOTE: This version must be implemented by **February 2021**
 
-Obsolete versions: [v1](includes/obsolete/get-products-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-products-parameters">Parameters</h3>
 
@@ -2634,14 +2621,14 @@ $.ajax({
 
 Obtain detailed information on a single product offered openly to the market.
 
-NOTE: This version must be implemented by **July 2020**
+NOTE: This version must be implemented by **February 2021**
 
-Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-product-detail-parameters">Parameters</h3>
 
@@ -2771,17 +2758,8 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -2797,6 +2775,8 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
         "calculationFrequency": "string",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ARREARS",
+        "repaymentType": "INTEREST_ONLY",
+        "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
           {
             "name": "string",
@@ -2808,17 +2788,8 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -2969,6 +2940,7 @@ Obtain basic information on the customer that has authorised the current session
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
@@ -3456,13 +3428,13 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
-|» products|[[BankingProductV2](#schemabankingproductv2)]|mandatory|none|The list of products returned.  If the filter results in an empty set then this array may have no records|
+|» products|[[BankingProductV3](#schemabankingproductv3)]|mandatory|none|The list of products returned.  If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
 |meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
 
-<h2 id="tocSbankingproductv2">BankingProductV2</h2>
+<h2 id="tocSbankingproductv3">BankingProductV3</h2>
 
-<a id="schemabankingproductv2"></a>
+<a id="schemabankingproductv3"></a>
 
 ```json
 {
@@ -3639,17 +3611,8 @@ This operation does not require authentication
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -3665,6 +3628,8 @@ This operation does not require authentication
         "calculationFrequency": "string",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ARREARS",
+        "repaymentType": "INTEREST_ONLY",
+        "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
           {
             "name": "string",
@@ -3676,17 +3641,8 @@ This operation does not require authentication
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -3707,13 +3663,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|[BankingProductDetail](#schemabankingproductdetail)|mandatory|none|none|
+|data|[BankingProductDetailV2](#schemabankingproductdetailv2)|mandatory|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
-<h2 id="tocSbankingproductdetail">BankingProductDetail</h2>
+<h2 id="tocSbankingproductdetailv2">BankingProductDetailV2</h2>
 
-<a id="schemabankingproductdetail"></a>
+<a id="schemabankingproductdetailv2"></a>
 
 ```json
 {
@@ -3830,17 +3786,8 @@ This operation does not require authentication
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           },
-          "subTier": {
-            "name": "string",
-            "unitOfMeasure": "DOLLAR",
-            "minimumValue": 0,
-            "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          }
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
         }
       ],
       "additionalValue": "string",
@@ -3856,6 +3803,8 @@ This operation does not require authentication
       "calculationFrequency": "string",
       "applicationFrequency": "string",
       "interestPaymentDue": "IN_ARREARS",
+      "repaymentType": "INTEREST_ONLY",
+      "loanPurpose": "OWNER_OCCUPIED",
       "tiers": [
         {
           "name": "string",
@@ -3867,17 +3816,8 @@ This operation does not require authentication
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           },
-          "subTier": {
-            "name": "string",
-            "unitOfMeasure": "DOLLAR",
-            "minimumValue": 0,
-            "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          }
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
         }
       ],
       "additionalValue": "string",
@@ -3895,7 +3835,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingProductV2](#schemabankingproductv2)|mandatory|none|none|
+|*anonymous*|[BankingProductV3](#schemabankingproductv3)|mandatory|none|none|
 
 *and*
 
@@ -4251,17 +4191,8 @@ This operation does not require authentication
         "additionalInfo": "string",
         "additionalInfoUri": "string"
       },
-      "subTier": {
-        "name": "string",
-        "unitOfMeasure": "DOLLAR",
-        "minimumValue": 0,
-        "maximumValue": 0,
-        "rateApplicationMethod": "WHOLE_BALANCE",
-        "applicabilityConditions": {
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
-        }
-      }
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
     }
   ],
   "additionalValue": "string",
@@ -4308,6 +4239,8 @@ This operation does not require authentication
   "calculationFrequency": "string",
   "applicationFrequency": "string",
   "interestPaymentDue": "IN_ARREARS",
+  "repaymentType": "INTEREST_ONLY",
+  "loanPurpose": "OWNER_OCCUPIED",
   "tiers": [
     {
       "name": "string",
@@ -4319,17 +4252,8 @@ This operation does not require authentication
         "additionalInfo": "string",
         "additionalInfoUri": "string"
       },
-      "subTier": {
-        "name": "string",
-        "unitOfMeasure": "DOLLAR",
-        "minimumValue": 0,
-        "maximumValue": 0,
-        "rateApplicationMethod": "WHOLE_BALANCE",
-        "applicabilityConditions": {
-          "additionalInfo": "string",
-          "additionalInfoUri": "string"
-        }
-      }
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
     }
   ],
   "additionalValue": "string",
@@ -4349,6 +4273,8 @@ This operation does not require authentication
 |calculationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |applicationFrequency|[ExternalRef](#common-field-types)|optional|none|The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |interestPaymentDue|string|optional|none|When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered|
+|repaymentType|string|optional|none|Options in place for repayments. If absent, the lending rate is applicable to all repayment types|
+|loanPurpose|string|optional|none|The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes|
 |tiers|[[BankingProductRateTier](#schemabankingproductratetier)]|optional|none|Rate tiers applicable for this rate|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the rate.|
@@ -4371,6 +4297,10 @@ This operation does not require authentication
 |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
 |interestPaymentDue|IN_ARREARS|
 |interestPaymentDue|IN_ADVANCE|
+|repaymentType|INTEREST_ONLY|
+|repaymentType|PRINCIPAL_AND_INTEREST|
+|loanPurpose|OWNER_OCCUPIED|
+|loanPurpose|INVESTMENT|
 
 <h2 id="tocSbankingproductratetier">BankingProductRateTier</h2>
 
@@ -4387,17 +4317,8 @@ This operation does not require authentication
     "additionalInfo": "string",
     "additionalInfoUri": "string"
   },
-  "subTier": {
-    "name": "string",
-    "unitOfMeasure": "DOLLAR",
-    "minimumValue": 0,
-    "maximumValue": 0,
-    "rateApplicationMethod": "WHOLE_BALANCE",
-    "applicabilityConditions": {
-      "additionalInfo": "string",
-      "additionalInfoUri": "string"
-    }
-  }
+  "additionalInfo": "string",
+  "additionalInfoUri": "string"
 }
 
 ```
@@ -4414,24 +4335,13 @@ This operation does not require authentication
 |maximumValue|number|optional|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
 |rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
 |applicabilityConditions|[BankingProductRateCondition](#schemabankingproductratecondition)|optional|none|Defines a condition for the applicability of a tiered rate|
-|subTier|object|optional|none|Defines the sub-tier criteria and conditions for which a rate applies|
-|» name|string|mandatory|none|A display name for the tier|
-|» unitOfMeasure|string|mandatory|none|The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)|
-|» minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
-|» maximumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)|
-|» rateApplicationMethod|string|optional|none|The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')|
-|» applicabilityConditions|[BankingProductRateCondition](#schemabankingproductratecondition)|optional|none|Defines a condition for the applicability of a tiered rate|
+|additionalInfo|string|optional|none|Display text providing more information on the rate tier.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this rate tier|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|unitOfMeasure|DOLLAR|
-|unitOfMeasure|PERCENT|
-|unitOfMeasure|MONTH|
-|unitOfMeasure|DAY|
-|rateApplicationMethod|WHOLE_BALANCE|
-|rateApplicationMethod|PER_TIER|
 |unitOfMeasure|DOLLAR|
 |unitOfMeasure|PERCENT|
 |unitOfMeasure|MONTH|
@@ -4618,17 +4528,8 @@ This operation does not require authentication
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -4644,6 +4545,8 @@ This operation does not require authentication
         "calculationFrequency": "string",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ARREARS",
+        "repaymentType": "INTEREST_ONLY",
+        "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
           {
             "name": "string",
@@ -4655,17 +4558,8 @@ This operation does not require authentication
               "additionalInfo": "string",
               "additionalInfoUri": "string"
             },
-            "subTier": {
-              "name": "string",
-              "unitOfMeasure": "DOLLAR",
-              "minimumValue": 0,
-              "maximumValue": 0,
-              "rateApplicationMethod": "WHOLE_BALANCE",
-              "applicabilityConditions": {
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            }
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
           }
         ],
         "additionalValue": "string",
@@ -4847,17 +4741,8 @@ This operation does not require authentication
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           },
-          "subTier": {
-            "name": "string",
-            "unitOfMeasure": "DOLLAR",
-            "minimumValue": 0,
-            "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          }
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
         }
       ],
       "additionalValue": "string",
@@ -4873,6 +4758,8 @@ This operation does not require authentication
       "calculationFrequency": "string",
       "applicationFrequency": "string",
       "interestPaymentDue": "IN_ARREARS",
+      "repaymentType": "INTEREST_ONLY",
+      "loanPurpose": "OWNER_OCCUPIED",
       "tiers": [
         {
           "name": "string",
@@ -4884,17 +4771,8 @@ This operation does not require authentication
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           },
-          "subTier": {
-            "name": "string",
-            "unitOfMeasure": "DOLLAR",
-            "minimumValue": 0,
-            "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          }
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
         }
       ],
       "additionalValue": "string",
@@ -5257,7 +5135,7 @@ This operation does not require authentication
 |billerCode|string|optional|none|BPAY Biller Code for the transaction (if available)|
 |billerName|string|optional|none|Name of the BPAY biller for the transaction (if available)|
 |crn|string|optional|none|BPAY CRN for the transaction (if available)|
-|apcaNumber|string|optional|none|6 Digit APCA number for the initiating institution|
+|apcaNumber|string|optional|none|6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.|
 
 #### Enumerated Values
 
@@ -7662,4 +7540,3 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-

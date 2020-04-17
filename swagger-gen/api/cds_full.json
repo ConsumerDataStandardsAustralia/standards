@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.org.au/",
@@ -418,6 +418,9 @@
           },
           {
             "$ref": "#/parameters/RequestHeader_x-fapi-customer-ip-address"
+          },
+          {
+            "$ref": "#/parameters/RequestHeader_x-cds-client-headers"
           }
         ],
         "responses": {
@@ -1073,7 +1076,7 @@
     "/banking/products": {
       "get": {
         "summary": "Get Products",
-        "description": "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered according to updated-since\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nNOTE: This version must be implemented by **July 2020**\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html)",
+        "description": "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered according to updated-since\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nNOTE: This version must be implemented by **February 2021**\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)",
         "operationId": "listProducts",
         "tags": [
           "Banking",
@@ -1138,13 +1141,13 @@
             }
           }
         },
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/products/{productId}": {
       "get": {
         "summary": "Get Product Detail",
-        "description": "Obtain detailed information on a single product offered openly to the market.\n\nNOTE: This version must be implemented by **July 2020**\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)",
+        "description": "Obtain detailed information on a single product offered openly to the market.\n\nNOTE: This version must be implemented by **July 2020**\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
         "operationId": "getProductDetail",
         "tags": [
           "Banking",
@@ -1180,7 +1183,7 @@
             }
           }
         },
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/common/customer": {
@@ -1222,6 +1225,10 @@
               "x-v": {
                 "type": "string",
                 "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+              },
+              "x-fapi-interaction-id": {
+                "type": "string",
+                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
               }
             },
             "schema": {
@@ -1539,7 +1546,7 @@
               "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductV2"
+                "$ref": "#/definitions/BankingProductV3"
               }
             }
           }
@@ -1552,7 +1559,7 @@
         }
       }
     },
-    "BankingProductV2": {
+    "BankingProductV3": {
       "type": "object",
       "required": [
         "productId",
@@ -1675,7 +1682,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingProductDetail"
+          "$ref": "#/definitions/BankingProductDetailV2"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -1685,10 +1692,10 @@
         }
       }
     },
-    "BankingProductDetail": {
+    "BankingProductDetailV2": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingProductV2"
+          "$ref": "#/definitions/BankingProductV3"
         },
         {
           "type": "object",
@@ -2232,6 +2239,22 @@
             "IN_ADVANCE"
           ]
         },
+        "repaymentType": {
+          "type": "string",
+          "description": "Options in place for repayments. If absent, the lending rate is applicable to all repayment types",
+          "enum": [
+            "INTEREST_ONLY",
+            "PRINCIPAL_AND_INTEREST"
+          ]
+        },
+        "loanPurpose": {
+          "type": "string",
+          "description": "The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes",
+          "enum": [
+            "OWNER_OCCUPIED",
+            "INVESTMENT"
+          ]
+        },
         "tiers": {
           "type": "array",
           "description": "Rate tiers applicable for this rate",
@@ -2296,50 +2319,14 @@
         "applicabilityConditions": {
           "$ref": "#/definitions/BankingProductRateCondition"
         },
-        "subTier": {
-          "type": "object",
-          "description": "Defines the sub-tier criteria and conditions for which a rate applies",
-          "required": [
-            "name",
-            "unitOfMeasure",
-            "minimumValue",
-            "maximumValue"
-          ],
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "A display name for the tier"
-            },
-            "unitOfMeasure": {
-              "type": "string",
-              "description": "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
-              "enum": [
-                "DOLLAR",
-                "PERCENT",
-                "MONTH",
-                "DAY"
-              ]
-            },
-            "minimumValue": {
-              "type": "number",
-              "description": "The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value"
-            },
-            "maximumValue": {
-              "type": "number",
-              "description": "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)"
-            },
-            "rateApplicationMethod": {
-              "type": "string",
-              "description": "The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')",
-              "enum": [
-                "WHOLE_BALANCE",
-                "PER_TIER"
-              ]
-            },
-            "applicabilityConditions": {
-              "$ref": "#/definitions/BankingProductRateCondition"
-            }
-          }
+        "additionalInfo": {
+          "type": "string",
+          "description": "Display text providing more information on the rate tier."
+        },
+        "additionalInfoUri": {
+          "type": "string",
+          "description": "Link to a web page with more information on this rate tier",
+          "x-cds-type": "URIString"
         }
       }
     },
@@ -2872,7 +2859,7 @@
         },
         "apcaNumber": {
           "type": "string",
-          "description": "6 Digit APCA number for the initiating institution"
+          "description": "6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable."
         }
       }
     },
