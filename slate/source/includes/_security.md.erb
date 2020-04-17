@@ -136,6 +136,32 @@ Note that, while **[MTLS]** is utilised for transaction security and as a Holder
 
 ### CDR Register calling Data Holders and Data Recipients
 
+> Non-Normative Example - CDR Register calls the Data holder's Get Metrics end point with Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).
+
+```
+GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
+Host: admin.data.holder.com.au
+Accept: application/json
+x-v: string
+x-min-v: string
+Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+## Decoded Bearer token JWT
+{
+   "alg":"PS256",
+   "typ":"JWT",
+   "kid":"12456"
+}
+{
+   "iss":"cdr-register",
+   "sub":"cdr-register",
+   "aud":"https://admin.data.holder.com.au",
+   "iat":1516239022,
+   "exp":1516239322,
+   "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
+}
+```
+
 Data Holders and Data Recipients MUST support the authentication of the CDR Register using a signed JWT according to the following requirements:
 
 *	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
@@ -149,6 +175,32 @@ Data Holders and Data Recipients MUST support the authentication of the CDR Regi
 *	The JWT should be accepted from the client using the "Authorization Request Header Field" mechanism as described in [section 2.1 of RFC6750](https://tools.ietf.org/html/rfc6750)
 
 ### Data Holders calling Data Recipients
+
+> Non-Normative Example - Data Holder calls the Data Recipient's revocation end point (note that the “aud” claim is the fully qualified path to the revocation end point because the full path is also the Base URI).
+
+```
+POST https://data.recipient.com.au/revocation HTTP/1.1
+Host: data.recipient.com.au
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
+
+token=45ghiukldjahdnhzdauz&token_type_hint=refresh_token
+
+## Decoded Bearer token JWT
+{
+   "alg":"PS256",
+   "typ":"JWT",
+   "kid":"67890"
+}
+{
+   "iss":"dataholderbrand-123",
+   "sub":"dataholderbrand-123",
+   "aud":"https://data.recipient.com.au/revocation",
+   "iat":1516239022,
+   "exp":1516239322,
+   "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
+}
+```
 
 Data Recipients MUST support the authentication of Data Holders using a signed JWT according to the following requirements:
 
@@ -167,7 +219,7 @@ Data Recipients MUST support the authentication of Data Holders using a signed J
 
 Data Holders MUST support the authentication of Data Recipients using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
 
-> Non-Normative Example
+> Non-Normative Example - Data Recipient calls Data Holder's token end point.
 
 ```
 POST /token HTTP/1.1
