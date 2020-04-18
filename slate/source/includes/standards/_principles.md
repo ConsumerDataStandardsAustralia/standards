@@ -64,6 +64,7 @@ their background, situation, experience, or personal characteristics.
 
 ####CX Principle 3: The CDR is Comprehensible
 When interacting with the CDR, consumers are able to understand the following:
+
 * ***who*** their data is shared with;
 * ***what*** information is shared;
 * ***when*** sharing begins and ceases;

@@ -36,6 +36,7 @@ Release notes for version 1.3.0 of the [CDR Standards](../../index.html).
 |Request Object Sample|Clarifications of non-normative example for the Request Object|[Request Object](../../index.html#request-object)|
 |Client Authentication Sample|Addition of non-normative samples for the client authentication section|[Client Authentication](../../index.html#client-authentication)|
 |Concurrent Consent|Addition of changes arising from the concurrent consent consultation.  This resulted in a number of changes to the Information Security profile|General|
+|MTLS RFC|The reference to the MTLS normative reference has been updated from the draft to the final standard|[Normative References](../../index.html#/#normative-references)|
 
 ## Consumer Experience
 |Change|Description|Link|

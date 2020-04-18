@@ -30,6 +30,7 @@ For information on the specific normative references that underpin this profile 
 -   **LoAs:** Levels of Assurance
 -   **MTLS:** Mutually Authenticated Transport Layer Security
 -   **OIDC:** Open ID Connect
+-   **PAR:** Pushed Authorisation Requests
 -   **PI:** Personal Information
 -   **PKI:** Public Key Infrastructure
 -   **PPID:** Pairwise Pseudonymous Identifier
@@ -102,7 +103,7 @@ authorisation code flow detailed under **[OIDC]**.
 
 Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[OIDC]**) of `code id_token` SHALL be allowed.
 
-The `request_uri` parameter SHALL NOT be supported.
+The `request_uri` parameter is only supported if the Data Holder supports PAR.
 
 In addition, the following statements are applicable for this flow:
 
@@ -377,8 +378,6 @@ The expiration time for a Refresh Token MUST be set by the Data Holder.
 Refresh Token expiration MAY be any length of time greater than 28 days but MUST NOT exceed the end of the duration of sharing consented to by the Consumer.
 
 Data Holders MAY cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token MUST NOT expire before the expiration of the sharing consented by the Customer.
-
-The revocation or expiration of the currently active refresh token should be understood to effectively revoke or expire the sharing arrangement as a whole.
 
 ### Token Expiry
 The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient.
@@ -718,6 +717,7 @@ At a minimum, the Data Holder metadata MUST include:
 - `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens.
 
 **From November 2020**, the Data Holder metadata MUST include:
+
 - `cdr_arrangement_endpoint`: URL of the CDR Arrangement End Point for consent revocation.
 - `pushed_authorization_request_endpoint`: URL of the Pushed Authorisation End Point used to support **[PAR]**.
 
@@ -864,9 +864,9 @@ Revocation of Refresh Tokens and Access Tokens MUST be supported.
 
 > Non-Normative Example
 
-```
-## Request
+>Request
 
+```
 DELETE https://data.holder.com.au/arrangements/5a1bf696-ee03-408b-b315-97955415d1f0
 HTTP/1.1
 Host: data.holder.com.au
@@ -887,6 +887,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 **From November 2020**, Data Holders and Data Recipients MUST implement an arrangement management end point that can be used to revoke an existing sharing arranagement.
 
 This end point will be implemented according to the following:
+
 * Consent management MUST be managed through the new CDR Arrangement Management API. The CDR Arrangement Management API only supports DELETE for revocation of consent for the scope of concurrent consent.
 * Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Management API with a valid CDR Arrangement Identifier
 * Data Holders MUST publish their CDR Arrangement Management API using their OpenID Provider Metadata discovery endpoint
@@ -900,6 +901,7 @@ This end point will be implemented according to the following:
 * A call to this end point should be responded to with HTTP status code 422 if the client submitted an invalid identifier
 
 ### Race conditions and handling consent revocation with Data Recipients
+
 Because single-consent sharing arrangements will be established before concurrent consent
 future dated obligations, there is the chance that a consumer may revoke consent with a
 Data Holder before a Data Recipient has obtained a sharing ID. In this instance, a Data
@@ -930,11 +932,10 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 
 ```
 {
-  "iss": "https://www.holder.com.au",
+  "iss": "https://data.holder.com.au",
   "aud": "a7AfcPcsl2",
   "exp": 1311281970,
   “client_id”: s6BhdRkqt3,
-  “grant_management_mode”: create,
   “response_type”: ”code id_token”,
   “client_id”: 12345,
   “redirect_uri”: ”https://www.recipient.com.au%2Fcoolstuff”,
@@ -975,6 +976,7 @@ Data Recipients must send authorisation request objects by reference by calling 
 The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation endpoint to initiate an authorisation flow. In this way, the Data Recipient has staged their authorisation intent with the Data Holder and can then proceed via the backchannel.
 
 In addition:
+
 * Data Holders MUST support request objects sent by reference for Pushed Authorisation Requests
 * Request Object references SHALL NOT be supported in any mode of use other than Pushed Authorisation Requests (PAR). If a Data Holder does not support Pushed Authorisation Requests (PAR), it MUST NOT support Request Object references.
 * Data Holders MUST publish their support for PAR as per the specification using OAuth/OpenID Provider Metadata parameters in discovery responses
@@ -997,7 +999,7 @@ In addition:
 | <a id="JWT"></a>**[JWT]**          | JSON Web Token (JWT): <https://tools.ietf.org/html/rfc7519>                                                                                                                   |May 2015
 | <a id="JWS"></a>**[JWS]**          | JSON Web Signature (JWS): <https://tools.ietf.org/html/rfc7797>                                                                                                               |Feb 2016
 | <a id="JWE"></a>**[JWE]**          | JSON Web Encryption (JWE): <https://tools.ietf.org/html/rfc7516>                                                                                                              |May 2015
-| <a id="MTLS"></a>**[MTLS]**        | OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <https://tools.ietf.org/html/draft-ietf-oauth-mtls-17>                                        |Aug 2019
+| <a id="MTLS"></a>**[MTLS]**        | OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <https://tools.ietf.org/html/rfc8705>                                                         |Feb 2020
 | <a id="OAUTH2"></a>**[OAUTH2]**    | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                  |Oct 2012
 | <a id="OIDC"></a>**[OIDC]**        | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                    |Nov 2014
 | <a id="OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |Nov 2014
