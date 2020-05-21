@@ -24,6 +24,7 @@ Release notes for version 1.3.1 of the [CDR Standards](../../index.html).
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+|Markdown fix|Some of the markdown for the Arrangement end point was not formatted correctly.  This has been fixed.|[Security End Points](../../index.html#end-points)|
 
 ## Consumer Experience
 |Change|Description|Link|
