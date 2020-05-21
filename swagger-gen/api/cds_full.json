@@ -1666,7 +1666,7 @@
               },
               "imageUri": {
                 "type": "string",
-                "description": "Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels",
+                "description": "Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)",
                 "x-cds-type": "URIString"
               }
             }
@@ -1682,7 +1682,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingProductDetailV2"
+          "$ref": "#/definitions/BankingProductDetailV3"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -1692,7 +1692,7 @@
         }
       }
     },
-    "BankingProductDetailV2": {
+    "BankingProductDetailV3": {
       "allOf": [
         {
           "$ref": "#/definitions/BankingProductV3"
@@ -2166,7 +2166,7 @@
           "type": "array",
           "description": "Rate tiers applicable for this rate",
           "items": {
-            "$ref": "#/definitions/BankingProductRateTier"
+            "$ref": "#/definitions/BankingProductRateTierV3"
           }
         },
         "additionalValue": {
@@ -2259,7 +2259,7 @@
           "type": "array",
           "description": "Rate tiers applicable for this rate",
           "items": {
-            "$ref": "#/definitions/BankingProductRateTier"
+            "$ref": "#/definitions/BankingProductRateTierV3"
           }
         },
         "additionalValue": {
@@ -2277,7 +2277,7 @@
         }
       }
     },
-    "BankingProductRateTier": {
+    "BankingProductRateTierV3": {
       "type": "object",
       "description": "Defines the criteria and conditions for which a rate applies",
       "required": [

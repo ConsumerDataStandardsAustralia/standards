@@ -337,8 +337,8 @@ The following additional claims MUST be supported:
   "nbf": 1311280970,
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": "1311281970",
-  "sharing_expires_at": "1311281970"
+  "refresh_token_expires_at": 1311281970,
+  "sharing_expires_at": 1311281970
 }
 ```
 
@@ -444,8 +444,8 @@ client_id=s6BhdRkqt3
   "nbf": 1311280970,
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": "1311281970",
-  "sharing_expires_at": "1311281970",
+  "refresh_token_expires_at": 1311281970,
+  "sharing_expires_at": 1311281970,
   "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb"
 }
 ```
@@ -480,8 +480,8 @@ client_id=s6BhdRkqt3
   "nbf": 1311280970,
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": "1311281970",
-  "sharing_expires_at": "1311281970",
+  "refresh_token_expires_at": 1311281970,
+  "sharing_expires_at": 1311281970,
   "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb"
 }
 ```
@@ -686,7 +686,7 @@ Content-Type: application/json
   "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
-  "mutual_tls_sender_constrained_access_tokens": "true",
+  "tls_client_certificate_bound_access_tokens": "true",
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 ```
@@ -851,7 +851,7 @@ An Introspection End Point Response SHALL only include the following fields:
 | Hosted By  | Data Holder and Data Recipient (Data Recipient required until November 2020)  |
 |  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
 | Client Authentication Required| Yes|
-| Bearer Token Required| No|
+| Bearer Token Required| Yes|
 
 **Requirements for Data Holder implementations**
 
