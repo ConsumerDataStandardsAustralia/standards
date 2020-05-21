@@ -15,6 +15,7 @@ Release notes for version 1.3.1 of the [CDR Standards](../../index.html).
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+|Removal of aside comment|In the availability section there was a redundant comment indicating the notification method for outages is pending.  This has been removed|[Availability Requirements](../../index.html#availability-requirements)|
 
 ## API End Points
 |Change|Description|Link|
