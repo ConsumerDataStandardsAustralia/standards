@@ -817,7 +817,7 @@
 </tr>
 </tbody></table>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.3.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.3.1</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -2768,9 +2768,9 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 </tr>
 </tbody></table>
 
-<p><strong>HTTP Method:</strong> DELETE
-<strong>Data Holder Path:</strong> Defined using OIDC Discovery
-<strong>Data Recipient Path:</strong> <ResourceBaseURI>/arrangements/{cdr_arrangement_id}</p>
+<p><strong>HTTP Method:</strong> DELETE<br/>
+<strong>Data Holder Path:</strong> Defined using OIDC Discovery<br/>
+<strong>Data Recipient Path:</strong> <ResourceBaseURI>/arrangements/{cdr_arrangement_id}<br/></p>
 
 <p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement an arrangement management end point that can be used to revoke an existing sharing arranagement.</p>
 
@@ -7419,7 +7419,7 @@ This operation does not require authentication
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
 
-<p>NOTE: This version must be implemented by <strong>February 2021</strong></p>
+<p>NOTE: This version must be implemented by <strong>July 2020</strong></p>
 
 <p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a> <a href="includes/obsolete/get-product-detail-v2.html">v2</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
@@ -18353,7 +18353,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 
 <ul>
 <li>Commensurate in length and frequency to other primary digital channels offered by the data holder,</li>
-<li>Published to data recipients with at least one week lead time (notification method to be defined) for normal outages,</li>
+<li>Published to data recipients with at least one week lead time for normal outages,</li>
 <li>May occur without notification if the change is to resolve a critical service or security issue.</li>
 </ul>
 <h2 id='performance-requirements'>Performance Requirements</h2>
@@ -18508,6 +18508,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>22/5/2020</td>
+<td>1.3.1</td>
+<td>Maintenance updates</td>
+<td>Error Fixes<br/>See <a href="includes/releasenotes/releasenotes.1.3.1.html">release notes</a> for detail</td>
+</tr>
 <tr>
 <td>17/4/2020</td>
 <td>1.3.0</td>

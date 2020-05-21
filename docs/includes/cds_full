@@ -4391,7 +4391,7 @@ This operation does not require authentication
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
 
-<p>NOTE: This version must be implemented by <strong>February 2021</strong></p>
+<p>NOTE: This version must be implemented by <strong>July 2020</strong></p>
 
 <p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a> <a href="includes/obsolete/get-product-detail-v2.html">v2</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
