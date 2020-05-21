@@ -16,6 +16,7 @@ Release notes for version 1.3.1 of the [CDR Standards](../../index.html).
 |Change|Description|Link|
 |------|-----------|----|
 |Removal of aside comment|In the availability section there was a redundant comment indicating the notification method for outages is pending.  This has been removed|[Availability Requirements](../../index.html#availability-requirements)|
+|Error response clarification|The requirement that a 406 response must be provided if x-v and x-min-v are not present was written before the must/should language was used with specific meaning.  This is not clarified as a MUST (as was intended) rather than a SHOULD.  This change has also been applied where the version headers are documented for end points.|[HTTP Headers](../../index.html#http-headers)|
 
 ## API End Points
 |Change|Description|Link|
