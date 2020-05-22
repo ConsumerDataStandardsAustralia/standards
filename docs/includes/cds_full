@@ -104,14 +104,14 @@
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -397,14 +397,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -686,14 +686,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -788,8 +788,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
+<td>POST APIs that query specific accounts</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-3'>Response Headers</h3>
@@ -906,14 +906,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1095,14 +1095,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1523,14 +1523,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1736,14 +1736,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1956,14 +1956,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -2182,14 +2182,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -2469,14 +2469,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -2569,7 +2569,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
+<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
@@ -2701,14 +2701,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3007,14 +3007,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3374,14 +3374,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3554,7 +3554,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request</td>
+<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
 <td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
@@ -3686,14 +3686,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -3905,14 +3905,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -4190,14 +4190,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-6'>Enumerated Values</h4>
@@ -4430,14 +4430,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -4718,14 +4718,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -4916,14 +4916,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -5204,14 +5204,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -5335,14 +5335,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -5718,7 +5718,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels</td>
+<td>Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI <a href="https://tools.ietf.org/html/rfc2397">RFC 2397</a></td>
 </tr>
 </tbody></table>
 
@@ -5898,7 +5898,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemabankingproductdetailv2">BankingProductDetailV2</a></td>
+<td><a href="#schemabankingproductdetailv3">BankingProductDetailV3</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -5919,9 +5919,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductdetailv2">BankingProductDetailV2</h2>
+<h2 id="tocSbankingproductdetailv3">BankingProductDetailV3</h2>
 
-<p><a id="schemabankingproductdetailv2"></a></p>
+<p><a id="schemabankingproductdetailv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7059,7 +7059,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>tiers</td>
-<td>[<a href="#schemabankingproductratetier">BankingProductRateTier</a>]</td>
+<td>[<a href="#schemabankingproductratetierv3">BankingProductRateTierV3</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Rate tiers applicable for this rate</td>
@@ -7223,7 +7223,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>tiers</td>
-<td>[<a href="#schemabankingproductratetier">BankingProductRateTier</a>]</td>
+<td>[<a href="#schemabankingproductratetierv3">BankingProductRateTierV3</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Rate tiers applicable for this rate</td>
@@ -7327,9 +7327,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductratetier">BankingProductRateTier</h2>
+<h2 id="tocSbankingproductratetierv3">BankingProductRateTierV3</h2>
 
-<p><a id="schemabankingproductratetier"></a></p>
+<p><a id="schemabankingproductratetierv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">

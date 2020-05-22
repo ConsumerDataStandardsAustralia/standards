@@ -312,7 +312,7 @@
             }
           },
           "422" : {
-            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "type" : "string",
@@ -478,7 +478,7 @@
       "get" : {
         "tags" : [ "Banking", "Accounts" ],
         "summary" : "Get Transactions For Account",
-        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n\t\t- Posted date/time if available, then\n\t\t- Execution date/time if available, then\n\t\t- A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared",
+        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n  - Posted date/time if available, then\n  - Execution date/time if available, then\n  - A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared",
         "operationId" : "getTransactions",
         "parameters" : [ {
           "name" : "accountId",
@@ -954,7 +954,7 @@
             }
           },
           "422" : {
-            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "type" : "string",
@@ -1247,7 +1247,7 @@
             }
           },
           "422" : {
-            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request",
+            "description" : "The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "type" : "string",

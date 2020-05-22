@@ -411,7 +411,7 @@ Obtain balances for a specified list of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemaresponsebankingaccountsbalancelist)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context|[ResponseErrorList](#schemaresponseerrorlist)|
 
 ### Response Headers
 
@@ -873,9 +873,9 @@ Some general notes that apply to all end points that retrieve transactions:
 
 - Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
 - As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:
-		- Posted date/time if available, then
-		- Execution date/time if available, then
-		- A reasonable date/time nominated by the data holder using internal data structures
+  - Posted date/time if available, then
+  - Execution date/time if available, then
+  - A reasonable date/time nominated by the data holder using internal data structures
 - For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
 - For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared
 
@@ -1476,7 +1476,7 @@ Obtain direct debit authorisations for a specified list of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemaresponsebankingdirectdebitauthorisationlist)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context|[ResponseErrorList](#schemaresponseerrorlist)|
 
 ### Response Headers
 
@@ -2115,7 +2115,7 @@ Obtain scheduled payments for a specified list of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsList](#schemaresponsebankingscheduledpaymentslist)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request|[ResponseErrorList](#schemaresponseerrorlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context|[ResponseErrorList](#schemaresponseerrorlist)|
 
 ### Response Headers
 
@@ -7540,4 +7540,3 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-

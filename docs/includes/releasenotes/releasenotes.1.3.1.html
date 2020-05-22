@@ -252,6 +252,16 @@
 <td>In the availability section there was a redundant comment indicating the notification method for outages is pending.  This has been removed</td>
 <td><a href="../../#availability-requirements">Availability Requirements</a></td>
 </tr>
+<tr>
+<td>Error response clarification</td>
+<td>The requirement that a 406 response must be provided if x-v and x-min-v are not present was written before the must/should language was used with specific meaning.  This is not clarified as a MUST (as was intended) rather than a SHOULD.  This change has also been applied where the version headers are documented for end points.</td>
+<td><a href="../../#http-headers">HTTP Headers</a></td>
+</tr>
+<tr>
+<td>Example correction</td>
+<td>Corrected the non-normative example for the base URI to remove the resource component</td>
+<td><a href="../../#versioning">Versioning</a></td>
+</tr>
 </tbody></table>
 <h2 id='api-end-points'>API End Points</h2>
 <table><thead>
@@ -261,6 +271,31 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>imageUri clarification</td>
+<td>Add clarification to the imageUri field indicating that url-encoded data is valid for this field</td>
+<td><a href="../../#tocSbankingproductv3">BankingProductV3 Model</a></td>
+</tr>
+<tr>
+<td>MIN_LIMIT, MAX_LIMIT descriptions</td>
+<td>Align the language used to describe the MIN_LIMIT and MAX_LIMIT fields to remove inconsistency and ambiguity</td>
+<td><a href="../../#product-amp-account-components">Product &amp; Account Components</a></td>
+</tr>
+<tr>
+<td>Model versioning</td>
+<td>Versioning of schema models to accommodate v3 of the PRD end points</td>
+<td>Various</td>
+</tr>
+<tr>
+<td>PRD v2 obsolescence date</td>
+<td>Removed the obseloscence date for v2 PRD end points.  These were included erroneously</td>
+<td><a href="../obsolete/get-products-v2.html">Get Products v2</a>,<br/><a href="../../includes/obsolete/get-product-detail-v2.html-v2.html">Get Product Detail v2</a></td>
+</tr>
+<tr>
+<td>Invalid account ID</td>
+<td>Clarification that a 422 error in response to an invalid Account ID is required even if only one ID in a group is invalid</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
@@ -275,16 +310,29 @@
 <td>Some of the markdown for the Arrangement end point was not formatted correctly.  This has been fixed.</td>
 <td><a href="../../#end-points">Security End Points</a></td>
 </tr>
+<tr>
+<td>Revocation end point for ADRs</td>
+<td>The documentation covering the need for ADR&#39;s to host a revocation end point until November 2020 was inadvertently removed.  Revocation end point documentation has been modified to match the relevant decision proposals</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
+<tr>
+<td>Token example correction</td>
+<td>Change the non-normative example in the Tokens section to correctly use numeric date values instead of strings</td>
+<td><a href="../../#tokens">Token</a></td>
+</tr>
+<tr>
+<td>Client auth for security end points</td>
+<td>Clarify for the revocation and arrangement end points that client assertion is used to verify the identity of Data Recipients and bearer tokens are used to verify the identity of Data Holders</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
+<tr>
+<td>OIDC Discovery update</td>
+<td>Corrected the non-normative example for ODIC Discovery end point to correctly specify the <code>tls_client_certificate_bound_access_tokens</code> field</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>
-<table><thead>
-<tr>
-<th>Change</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead><tbody>
-</tbody></table>
+<p>No Change</p>
 
       </div>
       <div class="dark-box">

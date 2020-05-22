@@ -26,6 +26,7 @@ Release notes for version 1.3.1 of the [CDR Standards](../../index.html).
 |MIN_LIMIT, MAX_LIMIT descriptions|Align the language used to describe the MIN_LIMIT and MAX_LIMIT fields to remove inconsistency and ambiguity|[Product & Account Components](../../index.html#product-amp-account-components)|
 |Model versioning|Versioning of schema models to accommodate v3 of the PRD end points|Various|
 |PRD v2 obsolescence date|Removed the obseloscence date for v2 PRD end points.  These were included erroneously|[Get Products v2](../../includes/obsolete/get-products-v2.html),<br/>[Get Product Detail v2](../../includes/obsolete/get-product-detail-v2.html-v2.html)|
+|Invalid account ID|Clarification that a 422 error in response to an invalid Account ID is required even if only one ID in a group is invalid|POST APIs that query specific accounts|
 
 ## Information Security Profile
 |Change|Description|Link|
