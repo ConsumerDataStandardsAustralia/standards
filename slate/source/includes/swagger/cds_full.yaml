@@ -1384,7 +1384,7 @@ paths:
               type: string
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
-            $ref: '#/definitions/ResponseBankingProductList'
+            $ref: '#/definitions/ResponseBankingProductListV3'
       x-version: "3"
   /banking/products/{productId}:
     get:
@@ -1424,7 +1424,7 @@ paths:
               type: string
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
-            $ref: '#/definitions/ResponseBankingProductById'
+            $ref: '#/definitions/ResponseBankingProductByIdV3'
       x-version: "3"
   /common/customer:
     get:
@@ -1604,7 +1604,7 @@ definitions:
         $ref: '#/definitions/RequestAccountIds_data'
       meta:
         $ref: '#/definitions/Meta'
-  ResponseBankingProductList:
+  ResponseBankingProductListV3:
     type: object
     required:
     - data
@@ -1612,7 +1612,7 @@ definitions:
     - meta
     properties:
       data:
-        $ref: '#/definitions/ResponseBankingProductList_data'
+        $ref: '#/definitions/ResponseBankingProductListV3_data'
       links:
         $ref: '#/definitions/LinksPaginated'
       meta:
@@ -1673,7 +1673,7 @@ definitions:
         description: An array of card art images
         items:
           $ref: '#/definitions/BankingProductV3_cardArt'
-  ResponseBankingProductById:
+  ResponseBankingProductByIdV3:
     type: object
     required:
     - data
@@ -1719,12 +1719,12 @@ definitions:
           type: array
           description: Interest rates available for deposits
           items:
-            $ref: '#/definitions/BankingProductDepositRate'
+            $ref: '#/definitions/BankingProductDepositRateV3'
         lendingRates:
           type: array
           description: Interest rates charged against lending balances
           items:
-            $ref: '#/definitions/BankingProductLendingRate'
+            $ref: '#/definitions/BankingProductLendingRateV3'
   BankingProductBundle:
     type: object
     required:
@@ -2016,7 +2016,7 @@ definitions:
         x-cds-type: URIString
     x-conditional:
     - additionalValue
-  BankingProductDepositRate:
+  BankingProductDepositRateV3:
     type: object
     required:
     - depositRateType
@@ -2062,7 +2062,7 @@ definitions:
         x-cds-type: URIString
     x-conditional:
     - additionalValue
-  BankingProductLendingRate:
+  BankingProductLendingRateV3:
     type: object
     required:
     - lendingRateType
@@ -2295,12 +2295,12 @@ definitions:
           type: array
           description: Fully described deposit rates for this account based on the equivalent structure in Product Reference
           items:
-            $ref: '#/definitions/BankingProductDepositRate'
+            $ref: '#/definitions/BankingProductDepositRateV3'
         lendingRates:
           type: array
           description: Fully described deposit rates for this account based on the equivalent structure in Product Reference
           items:
-            $ref: '#/definitions/BankingProductLendingRate'
+            $ref: '#/definitions/BankingProductLendingRateV3'
         features:
           type: array
           description: Array of features of the account based on the equivalent structure in Product Reference with the following additional field
@@ -3616,7 +3616,7 @@ definitions:
           type: string
           description: Array of specific accountIds to obtain authorisations for
           x-cds-type: ASCIIString
-  ResponseBankingProductList_data:
+  ResponseBankingProductListV3_data:
     required:
     - products
     properties:

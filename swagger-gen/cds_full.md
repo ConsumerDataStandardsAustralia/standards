@@ -1,4 +1,4 @@
-
+ResponseBankingProductListV3
 
 <h1 id="consumer-data-standards-banking-apis">Banking APIs</h1>
 
@@ -2570,7 +2570,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductList](#schemaresponsebankingproductlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductListV3](#schemaresponsebankingproductlist)|
 
 ### Response Headers
 
@@ -2809,7 +2809,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductById](#schemaresponsebankingproductbyid)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductByIdV3](#schemaresponsebankingproductbyid)|
 
 ### Response Headers
 
@@ -3372,7 +3372,7 @@ This operation does not require authentication
 |» accountIds|[string]|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
-<h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
+<h2 id="tocSresponsebankingproductlist">ResponseBankingProductListV3</h2>
 
 <a id="schemaresponsebankingproductlist"></a>
 
@@ -3491,7 +3491,7 @@ This operation does not require authentication
 |» title|string|optional|none|Display label for the specific image|
 |» imageUri|[URIString](#common-field-types)|mandatory|none|Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)|
 
-<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
+<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductByIdV3</h2>
 
 <a id="schemaresponsebankingproductbyid"></a>
 
@@ -3847,8 +3847,8 @@ This operation does not require authentication
 |» constraints|[[BankingProductConstraint](#schemabankingproductconstraint)]|optional|none|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
 |» eligibility|[[BankingProductEligibility](#schemabankingproducteligibility)]|optional|none|Eligibility criteria for the product|
 |» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|Fees applicable for the product|
-|» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|Interest rates available for deposits|
-|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|Interest rates charged against lending balances|
+|» depositRates|[[BankingProductDepositRateV3](#schemabankingproductdepositrate)]|optional|none|Interest rates available for deposits|
+|» lendingRates|[[BankingProductLendingRateV3](#schemabankingproductlendingrate)]|optional|none|Interest rates charged against lending balances|
 
 <h2 id="tocSbankingproductbundle">BankingProductBundle</h2>
 
@@ -4170,7 +4170,7 @@ This operation does not require authentication
 |discountEligibilityType|INTRODUCTORY|
 |discountEligibilityType|OTHER|
 
-<h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
+<h2 id="tocSbankingproductdepositrate">BankingProductDepositRateV3</h2>
 
 <a id="schemabankingproductdepositrate"></a>
 
@@ -4227,7 +4227,7 @@ This operation does not require authentication
 |depositRateType|FLOATING|
 |depositRateType|MARKET_LINKED|
 
-<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
+<h2 id="tocSbankingproductlendingrate">BankingProductLendingRateV3</h2>
 
 <a id="schemabankingproductlendingrate"></a>
 
@@ -4891,8 +4891,8 @@ This operation does not require authentication
 |» loan|[BankingLoanAccount](#schemabankingloanaccount)|conditional|none|none|
 |» depositRate|[RateString](#common-field-types)|optional|none|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
 |» lendingRate|[RateString](#common-field-types)|optional|none|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
-|» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
-|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» depositRates|[[BankingProductDepositRateV3](#schemabankingproductdepositrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» lendingRates|[[BankingProductLendingRateV3](#schemabankingproductlendingrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
 |» features|[allOf]|optional|none|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
 
 *allOf*
@@ -7540,4 +7540,3 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|OVERDRAFTS|
 |*anonymous*|BUSINESS_LOANS|
-
