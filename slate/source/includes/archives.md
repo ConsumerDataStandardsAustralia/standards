@@ -4,6 +4,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='./archive/standards-1.3.0/docs/'>17/4/2020</a>|1.3.0|<a href='./archive/standards-1.3.0/docs/'>April 1.3.0 Release</a>|
 |<a href='./archive/standards-1.2.0/docs/'>31/1/2020</a>|1.2.0|<a href='./archive/standards-1.2.0/docs/'>January 1.2.0 Release</a>|
 |<a href='./archive/standards-1.0.0/docs/'>30/9/2019</a>|1.0.0|<a href='./archive/standards-1.0.0/docs/'>September 1.0.0 Release</a>|
 |<a href='./archive/standards-0.9.6/docs/'>4/9/2019</a>|0.9.6|<a href='./archive/standards-0.9.6/docs/'>September fixes update</a>|

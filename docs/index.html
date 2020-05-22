@@ -395,13 +395,13 @@
                     <a href="#tocSrequestaccountids" class="toc-h2 toc-link" data-title="RequestAccountIds">RequestAccountIds</a>
                   </li>
                   <li>
-                    <a href="#tocSresponsebankingproductlist" class="toc-h2 toc-link" data-title="ResponseBankingProductList">ResponseBankingProductList</a>
+                    <a href="#tocSresponsebankingproductlist" class="toc-h2 toc-link" data-title="ResponseBankingProductListV3">ResponseBankingProductListV3</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductv3" class="toc-h2 toc-link" data-title="BankingProductV3">BankingProductV3</a>
                   </li>
                   <li>
-                    <a href="#tocSresponsebankingproductbyid" class="toc-h2 toc-link" data-title="ResponseBankingProductById">ResponseBankingProductById</a>
+                    <a href="#tocSresponsebankingproductbyid" class="toc-h2 toc-link" data-title="ResponseBankingProductByIdV3">ResponseBankingProductByIdV3</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductdetailv3" class="toc-h2 toc-link" data-title="BankingProductDetailV3">BankingProductDetailV3</a>
@@ -428,10 +428,10 @@
                     <a href="#tocSbankingproductdiscounteligibility" class="toc-h2 toc-link" data-title="BankingProductDiscountEligibility">BankingProductDiscountEligibility</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingproductdepositrate" class="toc-h2 toc-link" data-title="BankingProductDepositRate">BankingProductDepositRate</a>
+                    <a href="#tocSbankingproductdepositrate" class="toc-h2 toc-link" data-title="BankingProductDepositRateV3">BankingProductDepositRateV3</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingproductlendingrate" class="toc-h2 toc-link" data-title="BankingProductLendingRate">BankingProductLendingRate</a>
+                    <a href="#tocSbankingproductlendingrate" class="toc-h2 toc-link" data-title="BankingProductLendingRateV3">BankingProductLendingRateV3</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductratetierv3" class="toc-h2 toc-link" data-title="BankingProductRateTierV3">BankingProductRateTierV3</a>
@@ -3831,7 +3831,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td>POST APIs that query specific accounts</td>
+<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-3'>Response Headers</h3>
@@ -4474,9 +4474,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <ul>
 <li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order</li>
 <li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:
-    - Posted date/time if available, then
-    - Execution date/time if available, then
-    - A reasonable date/time nominated by the data holder using internal data structures</li>
+
+<ul>
+<li>Posted date/time if available, then</li>
+<li>Execution date/time if available, then</li>
+<li>A reasonable date/time nominated by the data holder using internal data structures</li>
+</ul></li>
 <li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
 <li>For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared</li>
 </ul>
@@ -7374,7 +7377,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
+<td><a href="#schemaresponsebankingproductlist">ResponseBankingProductListV3</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-16'>Response Headers</h3>
@@ -7663,7 +7666,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
+<td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductByIdV3</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-17'>Response Headers</h3>
@@ -8495,7 +8498,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
+<h2 id="tocSresponsebankingproductlist">ResponseBankingProductListV3</h2>
 
 <p><a id="schemaresponsebankingproductlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8764,7 +8767,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
+<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductByIdV3</h2>
 
 <p><a id="schemaresponsebankingproductbyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9195,14 +9198,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» depositRates</td>
-<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRate</a>]</td>
+<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRateV3</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Interest rates available for deposits</td>
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRateV3</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Interest rates charged against lending balances</td>
@@ -10033,7 +10036,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
+<h2 id="tocSbankingproductdepositrate">BankingProductDepositRateV3</h2>
 
 <p><a id="schemabankingproductdepositrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10165,7 +10168,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
+<h2 id="tocSbankingproductlendingrate">BankingProductLendingRateV3</h2>
 
 <p><a id="schemabankingproductlendingrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -11237,14 +11240,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» depositRates</td>
-<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRate</a>]</td>
+<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRateV3</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRateV3</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
@@ -18821,6 +18824,11 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='./archive/standards-1.3.0/docs/'>17/4/2020</a></td>
+<td>1.3.0</td>
+<td><a href='./archive/standards-1.3.0/docs/'>April 1.3.0 Release</a></td>
+</tr>
 <tr>
 <td><a href='./archive/standards-1.2.0/docs/'>31/1/2020</a></td>
 <td>1.2.0</td>
