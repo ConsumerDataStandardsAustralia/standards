@@ -850,8 +850,8 @@ An Introspection End Point Response SHALL only include the following fields:
 |---|---|
 | Hosted By  | Data Holder and Data Recipient (Data Recipient required until November 2020)  |
 |  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
-| Client Authentication Required| Yes|
-| Bearer Token Required| Yes|
+| Client Authentication Required| Yes (for verifying Data Recipients)|
+| Bearer Token Required| Yes (for verifying Data Holders)|
 
 **Requirements for Data Holder implementations**
 
@@ -891,8 +891,8 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 |---|---|
 | Hosted By  | Data Holder & Data Recipient  |
 |  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
-| Client Authentication Required| Yes (for calling Data Recipients)|
-| Bearer Token Required| Yes (for calling Data Holders)|
+| Client Authentication Required| Yes (for verifying Data Recipients)|
+| Bearer Token Required| Yes (for verifying Data Holders)|
 
 **HTTP Method:** DELETE<br/>
 **Data Holder Path:** Defined using OIDC Discovery<br/>
