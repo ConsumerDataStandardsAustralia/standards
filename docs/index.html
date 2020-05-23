@@ -395,13 +395,13 @@
                     <a href="#tocSrequestaccountids" class="toc-h2 toc-link" data-title="RequestAccountIds">RequestAccountIds</a>
                   </li>
                   <li>
-                    <a href="#tocSresponsebankingproductlist" class="toc-h2 toc-link" data-title="ResponseBankingProductListV3">ResponseBankingProductListV3</a>
+                    <a href="#tocSresponsebankingproductlist" class="toc-h2 toc-link" data-title="ResponseBankingProductList">ResponseBankingProductList</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductv3" class="toc-h2 toc-link" data-title="BankingProductV3">BankingProductV3</a>
                   </li>
                   <li>
-                    <a href="#tocSresponsebankingproductbyid" class="toc-h2 toc-link" data-title="ResponseBankingProductByIdV3">ResponseBankingProductByIdV3</a>
+                    <a href="#tocSresponsebankingproductbyid" class="toc-h2 toc-link" data-title="ResponseBankingProductById">ResponseBankingProductById</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductdetailv3" class="toc-h2 toc-link" data-title="BankingProductDetailV3">BankingProductDetailV3</a>
@@ -428,10 +428,10 @@
                     <a href="#tocSbankingproductdiscounteligibility" class="toc-h2 toc-link" data-title="BankingProductDiscountEligibility">BankingProductDiscountEligibility</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingproductdepositrate" class="toc-h2 toc-link" data-title="BankingProductDepositRateV3">BankingProductDepositRateV3</a>
+                    <a href="#tocSbankingproductdepositrate" class="toc-h2 toc-link" data-title="BankingProductDepositRate">BankingProductDepositRate</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingproductlendingrate" class="toc-h2 toc-link" data-title="BankingProductLendingRateV3">BankingProductLendingRateV3</a>
+                    <a href="#tocSbankingproductlendingrate" class="toc-h2 toc-link" data-title="BankingProductLendingRate">BankingProductLendingRate</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductratetierv3" class="toc-h2 toc-link" data-title="BankingProductRateTierV3">BankingProductRateTierV3</a>
@@ -7377,7 +7377,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingproductlist">ResponseBankingProductListV3</a></td>
+<td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-16'>Response Headers</h3>
@@ -7666,7 +7666,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductByIdV3</a></td>
+<td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-17'>Response Headers</h3>
@@ -8498,7 +8498,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingproductlist">ResponseBankingProductListV3</h2>
+<h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
 <p><a id="schemaresponsebankingproductlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8767,7 +8767,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductByIdV3</h2>
+<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
 <p><a id="schemaresponsebankingproductbyid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -9198,14 +9198,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» depositRates</td>
-<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRateV3</a>]</td>
+<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRate</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Interest rates available for deposits</td>
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRateV3</a>]</td>
+<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Interest rates charged against lending balances</td>
@@ -10036,7 +10036,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductdepositrate">BankingProductDepositRateV3</h2>
+<h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
 
 <p><a id="schemabankingproductdepositrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -10168,7 +10168,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductlendingrate">BankingProductLendingRateV3</h2>
+<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
 
 <p><a id="schemabankingproductlendingrate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -11240,14 +11240,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» depositRates</td>
-<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRateV3</a>]</td>
+<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRate</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRateV3</a>]</td>
+<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
