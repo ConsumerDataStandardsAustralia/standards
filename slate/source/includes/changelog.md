@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|22/5/2020|1.3.1|Maintenance updates|Error Fixes<br/>See [release notes](includes/releasenotes/releasenotes.1.3.1.html) for detail
 |17/4/2020|1.3.0|Minor Update Release|Incorporates maintenance iteration 2 changes along with a number other CX and technical changes<br/>See [release notes](includes/releasenotes/releasenotes.1.3.0.html) for detail
 |31/1/2020|1.2.0|Phase 2 Baseline|Baseline version for the Phase 2 implementation of the CDR regime<br/>See [release notes](includes/releasenotes/releasenotes.1.2.0.html) for detail
 |20/1/2020|1.1.1|Maintenance updates|Error Fixes<br/>See [release notes](includes/releasenotes/releasenotes.1.1.1.html) for detail

@@ -14,8 +14,6 @@ search: false
 # Get Product Detail V2
 This page documents the obsolete version 2 of the Get Product Detail end point.
 
-This version is to be ceased to be called by data recipients by **August 29th 2020** and can be decommissioned by data holders as of that date.
-
 
 ## Get Product Detail
 

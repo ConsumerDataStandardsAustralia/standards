@@ -42,7 +42,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 
 <ul>
 <li>Commensurate in length and frequency to other primary digital channels offered by the data holder,</li>
-<li>Published to data recipients with at least one week lead time (notification method to be defined) for normal outages,</li>
+<li>Published to data recipients with at least one week lead time for normal outages,</li>
 <li>May occur without notification if the change is to resolve a critical service or security issue.</li>
 </ul>
 <h2 id='performance-requirements'>Performance Requirements</h2>

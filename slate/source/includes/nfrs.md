@@ -41,7 +41,7 @@ The availability requirement applies to both authenticated and unauthenticated e
 The availability requirement does not include planned outages.  Planned outages should be:
 
 - Commensurate in length and frequency to other primary digital channels offered by the data holder,
-- Published to data recipients with at least one week lead time (notification method to be defined) for normal outages,
+- Published to data recipients with at least one week lead time for normal outages,
 - May occur without notification if the change is to resolve a critical service or security issue.
 
 ## Performance Requirements

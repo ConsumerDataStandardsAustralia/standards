@@ -14,7 +14,6 @@ search: false
 # Get Products V2
 This page documents the obsolete version 2 of the Get Products end point.
 
-This version is to be ceased to be called by data recipients by **August 29th 2020** and can be decommissioned by data holders as of that date.
 
 ## Get Products
 

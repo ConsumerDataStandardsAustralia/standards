@@ -19,7 +19,7 @@ Each of the three components will be independently incrementing integers and are
 ###Uniform Resource Identifier (URI) Versioning
 
 > The base URI structure containing the version for this standard is:  
-`http://<holder path>/cds-au/v<major version>/<resource>`
+`http://<holder path>/cds-au/v<major version>`
 
 The high level standard will be versioned as described above.  The major component of this version will be embedded in the [URI Structure](#uri-structure) for the APIs.  This allows for a data holder to support multiple major versions of the standards in production even if the significant breaking changes occur between major versions.
 
