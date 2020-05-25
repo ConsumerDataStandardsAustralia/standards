@@ -5721,7 +5721,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI <a href="https://tools.ietf.org/html/rfc2397">RFC 2397</a></td>
+<td>URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI <a href="https://tools.ietf.org/html/rfc2397">RFC 2397</a></td>
 </tr>
 </tbody></table>
 

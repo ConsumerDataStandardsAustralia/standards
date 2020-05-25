@@ -3489,7 +3489,7 @@ This operation does not require authentication
 |» bundleUri|[URIString](#common-field-types)|optional|none|Description of a bundle that this product can be part of|
 |cardArt|[object]|optional|none|An array of card art images|
 |» title|string|optional|none|Display label for the specific image|
-|» imageUri|[URIString](#common-field-types)|mandatory|none|Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)|
+|» imageUri|[URIString](#common-field-types)|mandatory|none|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)|
 
 <h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
