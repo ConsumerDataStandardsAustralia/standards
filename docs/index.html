@@ -2450,7 +2450,7 @@ Content-Type: application/json
   "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
-  "tls_client_certificate_bound_access_tokens": "true",
+  "tls_client_certificate_bound_access_tokens": true,
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 </code></pre>
@@ -8763,7 +8763,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>Link to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI <a href="https://tools.ietf.org/html/rfc2397">RFC 2397</a></td>
+<td>URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI <a href="https://tools.ietf.org/html/rfc2397">RFC 2397</a></td>
 </tr>
 </tbody></table>
 
