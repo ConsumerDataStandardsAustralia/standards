@@ -9,7 +9,7 @@ This section of the standard outlines the request and response payload structure
 {
   “data”: {
     ...
-  }
+  },
   “meta”: {
     ...
   }
@@ -30,10 +30,10 @@ The definition of the contents for the `data` object and `meta` object will be d
 {
   “data”: {
     ...
-  }
+  },
   “links”: {
     “self”: “...”
-  }
+  },
   “meta”: {
     ...
   }

@@ -4090,7 +4090,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain a list of products that are currently openly offered to the market</p>
 
-<p>Note that the results returned by this end point are expected to be ordered according to updated-since</p>
+<p>Note that the results returned by this end point are expected to be ordered in descending order according to <code>lastUpdated</code>.</p>
 <h3 id='conventions'>Conventions</h3>
 <p>In the product reference payloads there are a number of recurring conventions that are explained here, in one place.</p>
 <h4 id='arrays-of-features'>Arrays Of Features</h4>

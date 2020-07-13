@@ -2440,7 +2440,7 @@ $.ajax({
 
 Obtain a list of products that are currently openly offered to the market
 
-Note that the results returned by this end point are expected to be ordered according to updated-since
+Note that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.
 
 ### Conventions
 In the product reference payloads there are a number of recurring conventions that are explained here, in one place.

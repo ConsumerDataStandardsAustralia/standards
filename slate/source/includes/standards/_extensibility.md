@@ -16,7 +16,7 @@ standards
 
 ###Holder Identifier
 
->For example, the prefixes for the four major Banks required to implement by 1st July 2019 would be:
+> For example, the prefixes for the four major Banks included in the first phases of implementation would be:
 <ul>
 <li>CBA – Commonwealth Bank</li>
 <li>WBC – Westpac Banking Corporation</li>

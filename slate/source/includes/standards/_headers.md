@@ -4,8 +4,8 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 
 ### Request Headers
 >A sample set of headers requesting version 3 to 5:  
-`Content-Type : application/json`  
-`Accept : application/json`  
+`Content-Type : application/json;charset=UTF-8`  
+`Accept : application/json;charset=UTF-8`  
 `x-v : 5`  
 `x-min-v : 3`  
 `x-fapi-interaction-id : 6ba7b814-9dad-11d1-80b4-00c04fd430c8`  
@@ -16,8 +16,8 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
-**Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to `application/json`. Mandatory for PUT and POST calls.| Conditional
-**Accept** | Standard HTTP Header. Specify the Content-Type that is required from the Server.<br/>If specified, must be set to `application/json` unless otherwise specified in the resource end point standard.<br/>If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, default is `application/json`. | Optional
+**Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. The requested media type must be `application/json;charset=UTF-8`. Mandatory for PUT and POST calls.| Conditional
+**Accept** | Standard HTTP Header. Specify the Content-Type and media type that is required from the Server.<br/>If specified, must be set to `application/json;charset=UTF-8` unless otherwise specified in the resource end point standard.<br/>If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, default is `application/json;charset=UTF-8`. | Optional
 **x-v** | Version of the API end point requested by the client. Must be set to a positive integer. The holder should respond with the highest supported version between `x-min-v` and `x-v`. If the value of `x-min-v` is equal to or higher than the value of `x-v` then the `x-min-v` header should be treated as absent. <br/>If all versions requested are not supported then the holder must respond with a `406 Not Acceptable`. | Mandatory
 **x-min-v** | Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between `x-min-v` and `x-v`. If the value of `x-min-v` is equal to or higher than the value of `x-v` then the `x-min-v` header should be treated as absent. <br/>If all versions requested are not supported then the holder must respond with a `406 Not Acceptable`. | Optional
 **x-&lt;HID&gt;-v** | A holder specific version of extension fields. Should not be used in conjunction with `x-min-v`. | Optional
