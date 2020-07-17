@@ -62,7 +62,7 @@ The nominated threshold for each end point will be according to the following ta
 |High Priority|**1000ms**|Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul>|
 |Low Priority|**1500ms**|Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul>|
 |Unattended|**4000ms**|Unattended calls to High Priority or Low Priority end points.</br>Additional Admin end points.|
-|Large Payload|**6000ms**|Any call to the following end points:<ul><li>Get Bulk Transactions</li><li>Get Transactions For Specific Accounts</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul>|
+|Large Payload|**6000ms**|Any call to the following end points:<ul><li>Get Transactions For Account</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul>|
 
 Note that calls initiated in excess of a traffic threshold (see next section) may be excluded from the performance requirement.
 

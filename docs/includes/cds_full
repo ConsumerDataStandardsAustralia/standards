@@ -6163,7 +6163,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>[<a href="#schemabankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Interest rates charged against lending balances</td>
@@ -6632,28 +6632,28 @@ This operation does not require authentication
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied.</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
 </tr>
 <tr>
 <td>accruedRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
 </tr>
 <tr>
 <td>accrualFrequency</td>
@@ -6740,6 +6740,10 @@ This operation does not require authentication
 <tr>
 <td>feeType</td>
 <td>EXIT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>VARIABLE</td>
 </tr>
 </tbody></table>
 
@@ -7126,9 +7130,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
+<h2 id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
 
-<p><a id="schemabankingproductlendingrate"></a></p>
+<p><a id="schemabankingproductlendingratev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8205,7 +8209,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>[<a href="#schemabankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>

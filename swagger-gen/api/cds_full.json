@@ -1746,7 +1746,7 @@
               "description": "Interest rates charged against lending balances",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductLendingRate"
+                "$ref": "#/definitions/BankingProductLendingRateV2"
               }
             }
           }
@@ -1949,27 +1949,28 @@
             "PURCHASE",
             "EVENT",
             "UPFRONT",
-            "EXIT"
+            "EXIT",
+            "VARIABLE"
           ]
         },
         "amount": {
           "type": "string",
-          "description": "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "description": "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied",
           "x-cds-type": "AmountString"
         },
         "balanceRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied.",
           "x-cds-type": "RateString"
         },
         "transactionRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied",
           "x-cds-type": "RateString"
         },
         "accruedRate": {
           "type": "string",
-          "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory",
+          "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied",
           "x-cds-type": "RateString"
         },
         "accrualFrequency": {
@@ -2184,7 +2185,7 @@
         }
       }
     },
-    "BankingProductLendingRate": {
+    "BankingProductLendingRateV2": {
       "type": "object",
       "required": [
         "lendingRateType",
@@ -2518,7 +2519,7 @@
               "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductLendingRate"
+                "$ref": "#/definitions/BankingProductLendingRateV2"
               }
             },
             "features": {

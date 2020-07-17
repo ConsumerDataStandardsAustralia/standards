@@ -247,6 +247,26 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Non-normative examples fix in extensibility section</td>
+<td>Updated example text</td>
+<td><a href="../../#extensibility">Extensibility</a></td>
+</tr>
+<tr>
+<td>Syntax error in non-normative example</td>
+<td>Added missing comma&#39;s</td>
+<td><a href="../../#payload-conventions">Payloads</a></td>
+</tr>
+<tr>
+<td>Content-Type header</td>
+<td>Added Content-Type header non-normative example</td>
+<td><a href="../../#/#http-headers">HTTP Headers</a></td>
+</tr>
+<tr>
+<td>Accept header</td>
+<td>Added Accept header non-normative example</td>
+<td><a href="../../#/#http-headers">HTTP Headers</a></td>
+</tr>
 </tbody></table>
 <h2 id='api-end-points'>API End Points</h2>
 <table><thead>
@@ -256,6 +276,36 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Add new fee type to support at-cost fees</td>
+<td>Update Product Fee Type enumeration <code>feeType</code> to include this additional enumerated value <code>VARIABLE</code></td>
+<td><a href="../../#tocSbankingproductfee">BankingProductFee</a></td>
+</tr>
+<tr>
+<td>Update to field descriptions in <code>BankingProductFee</code></td>
+<td>Descriptions updates to <code>amount</code>, <code>balanceRate</code>, <code>accruedRate</code> and  <code>transactionRate</code></td>
+<td><a href="../../#tocSbankingproductfee">BankingProductFee</a></td>
+</tr>
+<tr>
+<td>Fix description of sorting order for Get Products</td>
+<td>The documentation incorrectly referenced <code>updated-since</code> which is the filter attribute. Its been updated to <code>lastUpdated</code> which is a product attribute</td>
+<td><a href="../../#get-products">Get Products</a></td>
+</tr>
+<tr>
+<td>Missing schema markdown for getProducts &amp; getProductDetail V2</td>
+<td>Included missing schema markdown</td>
+<td><a href="https://consumerdatastandardsaustralia.github.io/standards/#get-product-detail">Get Product Detail V2</a></td>
+</tr>
+<tr>
+<td>Increment BankingProductLendingRate to V2</td>
+<td>BankingProductLendingRate was not versioned in its last update</td>
+<td><a href="/#tocSbankingproductlendingratev2">BankingProductLendingRateV2</a></td>
+</tr>
+<tr>
+<td>Content-Type header</td>
+<td>Add Content-Type header non-normative example</td>
+<td><a href="../../#/#http-headers">HTTP Headers</a></td>
+</tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
@@ -265,9 +315,66 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Fix broken TDIF links</td>
+<td>Updated to latest TDIF links</td>
+<td><a href="../../#levels-of-assurance-loas">Levels of Assurance</a></td>
+</tr>
+<tr>
+<td>Informative References</td>
+<td>Add RFC2713 to the Informative References section</td>
+<td><a href="../../#informative-references">Informative References</a></td>
+</tr>
+<tr>
+<td>Update OpenID Connect Metadata description</td>
+<td>Update to description for <code>id_token_encryption_alg_values_supported</code></td>
+<td><a href="../../#end-points">End Points</a></td>
+</tr>
+<tr>
+<td>Update the OpenID Connect Metadata non-normative example</td>
+<td>Updated values of <code>id_token_encryption_alg_values_supported</code></td>
+<td><a href="../../#end-points">End Points</a></td>
+</tr>
+<tr>
+<td>Corrected &quot;aud&quot; claim in client authentication to Data Holder</td>
+<td>Changed description to the Token Endpoint URL</td>
+<td><a href="../../#end-points">End Points</a></td>
+</tr>
+<tr>
+<td>Introspection Endpoint</td>
+<td>Updated Token Introspection documentation to include CDR Arrangement ID claim and non-normative example</td>
+<td><a href="../../#end-points">End Points</a></td>
+</tr>
+<tr>
+<td>Error in statement on CDR Arrangement ID</td>
+<td>CDR Arrangement ID statement incorrectly mentions the ID Token</td>
+<td><a href="../../#identifiers-and-subject-types">Identifiers and subject Types</a></td>
+</tr>
+<tr>
+<td>Update to PAR non-normative example</td>
+<td>Corrected client_id</td>
+<td><a href="../../#identifiers-and-subject-types">Identifiers and subject Types</a></td>
+</tr>
+<tr>
+<td>Add authorisation to PAR non-normative example</td>
+<td>Upated example to include authorisationn step</td>
+<td><a href="../../#identifiers-and-subject-types">Identifiers and subject Types</a></td>
+</tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>
-<p>No Change</p>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Permitting DHs to show unavailable joint accounts in authorisation flow</td>
+<td>v1.3.0 of the CX Standards reflected ACCC’s position that DHs were not permitted to show unavailable joint accounts in the authorisation flow. The ACCC have revised this position to allow DHs to show unavailable joint accounts in the authorisation flow. <br><br>This revised position is reflected in V1.4.0 as optional for November 2020. This change (1) removes the statement on data holders not being permitted to show unavailable joint accounts and (2) includes a clarification on how unavailable accounts are to be interpreted.</td>
+<td><a href="../../pdfs/CX-Standards-v1.3.0.pdf">CX Standards</a> p. 16<br><a href="/pdfs/CX-Guidelines-v1.4.0.pdf">CX Guidelines</a> p. 25, 78-80</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
