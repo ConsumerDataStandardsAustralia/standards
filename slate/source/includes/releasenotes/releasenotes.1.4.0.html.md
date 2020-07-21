@@ -34,7 +34,7 @@ Release notes for version 1.4.0 of the [CDR Standards](../../index.html).
 |Change|Description|Link|
 |------|-----------|----|
 |Fix broken TDIF links|Updated to latest TDIF links|[Levels of Assurance](../../#levels-of-assurance-loas)|
-|Informative References|Add RFC2713 to the Informative References section |[Informative References](../../#informative-references)|
+|Informative References|Add RFC7231 to the Informative References section |[Informative References](../../#informative-references)|
 |Update OpenID Connect Metadata description|Update to description for ``id_token_encryption_alg_values_supported``|[End Points](../../#end-points)|
 |Update the OpenID Connect Metadata non-normative example|Updated values of ``id_token_encryption_alg_values_supported``|[End Points](../../#end-points)|
 |Corrected "aud" claim in client authentication to Data Holder|Changed description to the Token Endpoint URL|[End Points](../../#end-points)|
