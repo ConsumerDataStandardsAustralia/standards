@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 1.3.1
+  version: 1.4.0
   title: Consumer Data Standards
   contact:
     name: Consumer Data Standards
@@ -1285,7 +1285,7 @@ paths:
       description: |-
         Obtain a list of products that are currently openly offered to the market
 
-        Note that the results returned by this end point are expected to be ordered according to updated-since
+        Note that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.
 
         ### Conventions
         In the product reference payloads there are a number of recurring conventions that are explained here, in one place.
@@ -1735,7 +1735,7 @@ definitions:
           type: array
           description: Interest rates charged against lending balances
           items:
-            $ref: '#/definitions/BankingProductLendingRate'
+            $ref: '#/definitions/BankingProductLendingRateV2'
   BankingProductBundle:
     type: object
     required:
@@ -1888,21 +1888,22 @@ definitions:
         - EVENT
         - UPFRONT
         - EXIT
+        - VARIABLE
       amount:
         type: string
-        description: The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory
+        description: The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied
         x-cds-type: AmountString
       balanceRate:
         type: string
-        description: A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory
+        description: A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied.
         x-cds-type: RateString
       transactionRate:
         type: string
-        description: A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory
+        description: A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied
         x-cds-type: RateString
       accruedRate:
         type: string
-        description: A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory
+        description: A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied
         x-cds-type: RateString
       accrualFrequency:
         type: string
@@ -2073,7 +2074,7 @@ definitions:
         x-cds-type: URIString
     x-conditional:
     - additionalValue
-  BankingProductLendingRate:
+  BankingProductLendingRateV2:
     type: object
     required:
     - lendingRateType
@@ -2311,7 +2312,7 @@ definitions:
           type: array
           description: Fully described deposit rates for this account based on the equivalent structure in Product Reference
           items:
-            $ref: '#/definitions/BankingProductLendingRate'
+            $ref: '#/definitions/BankingProductLendingRateV2'
         features:
           type: array
           description: Array of features of the account based on the equivalent structure in Product Reference with the following additional field

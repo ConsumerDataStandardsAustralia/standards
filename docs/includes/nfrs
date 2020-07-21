@@ -86,7 +86,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any call to the following end points:<ul><li>Get Bulk Transactions</li><li>Get Transactions For Specific Accounts</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
+<td>Any call to the following end points:<ul><li>Get Transactions For Account</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
 </tr>
 </tbody></table>
 

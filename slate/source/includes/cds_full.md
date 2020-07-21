@@ -2440,7 +2440,7 @@ $.ajax({
 
 Obtain a list of products that are currently openly offered to the market
 
-Note that the results returned by this end point are expected to be ordered according to updated-since
+Note that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.
 
 ### Conventions
 In the product reference payloads there are a number of recurring conventions that are explained here, in one place.
@@ -3848,7 +3848,7 @@ This operation does not require authentication
 |» eligibility|[[BankingProductEligibility](#schemabankingproducteligibility)]|optional|none|Eligibility criteria for the product|
 |» fees|[[BankingProductFee](#schemabankingproductfee)]|optional|none|Fees applicable for the product|
 |» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|Interest rates available for deposits|
-|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|Interest rates charged against lending balances|
+|» lendingRates|[[BankingProductLendingRateV2](#schemabankingproductlendingratev2)]|optional|none|Interest rates charged against lending balances|
 
 <h2 id="tocSbankingproductbundle">BankingProductBundle</h2>
 
@@ -4050,10 +4050,10 @@ This operation does not require authentication
 |---|---|---|---|---|
 |name|string|mandatory|none|Name of the fee|
 |feeType|string|mandatory|none|The type of fee|
-|amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
-|accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory|
+|amount|[AmountString](#common-field-types)|conditional|none|The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied|
+|balanceRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied.|
+|transactionRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied|
+|accruedRate|[RateString](#common-field-types)|conditional|none|A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied|
 |accrualFrequency|[ExternalRef](#common-field-types)|optional|none|The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |currency|[CurrencyString](#common-field-types)|optional|none|The currency the fee will be charged in. Assumes AUD if absent|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)|
@@ -4074,6 +4074,7 @@ This operation does not require authentication
 |feeType|EVENT|
 |feeType|UPFRONT|
 |feeType|EXIT|
+|feeType|VARIABLE|
 
 <h2 id="tocSbankingproductdiscount">BankingProductDiscount</h2>
 
@@ -4227,9 +4228,9 @@ This operation does not require authentication
 |depositRateType|FLOATING|
 |depositRateType|MARKET_LINKED|
 
-<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
+<h2 id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
 
-<a id="schemabankingproductlendingrate"></a>
+<a id="schemabankingproductlendingratev2"></a>
 
 ```json
 {
@@ -4892,7 +4893,7 @@ This operation does not require authentication
 |» depositRate|[RateString](#common-field-types)|optional|none|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
 |» lendingRate|[RateString](#common-field-types)|optional|none|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
 |» depositRates|[[BankingProductDepositRate](#schemabankingproductdepositrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
-|» lendingRates|[[BankingProductLendingRate](#schemabankingproductlendingrate)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
+|» lendingRates|[[BankingProductLendingRateV2](#schemabankingproductlendingratev2)]|optional|none|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
 |» features|[allOf]|optional|none|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
 
 *allOf*

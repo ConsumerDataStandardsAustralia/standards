@@ -305,9 +305,6 @@
                     <a href="#end-points" class="toc-h2 toc-link" data-title="End Points">End Points</a>
                   </li>
                   <li>
-                    <a href="#normative-references" class="toc-h2 toc-link" data-title="Normative References">Normative References</a>
-                  </li>
-                  <li>
                     <a href="#informative-references" class="toc-h2 toc-link" data-title="Informative References">Informative References</a>
                   </li>
               </ul>
@@ -431,7 +428,7 @@
                     <a href="#tocSbankingproductdepositrate" class="toc-h2 toc-link" data-title="BankingProductDepositRate">BankingProductDepositRate</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingproductlendingrate" class="toc-h2 toc-link" data-title="BankingProductLendingRate">BankingProductLendingRate</a>
+                    <a href="#tocSbankingproductlendingratev2" class="toc-h2 toc-link" data-title="BankingProductLendingRateV2">BankingProductLendingRateV2</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductratetierv3" class="toc-h2 toc-link" data-title="BankingProductRateTierV3">BankingProductRateTierV3</a>
@@ -817,7 +814,7 @@
 </tr>
 </tbody></table>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.3.1</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.4.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1046,14 +1043,29 @@ always align to current consumer preferences.</p>
 
 <blockquote>
 <p>A sample set of headers requesting version 3 to 5:<br>
-<code>Content-Type : application/json</code><br>
-<code>Accept : application/json</code><br>
+<BR>
+<code>Content-Type : application/json;charset=UTF-8</code><br>
+<code>Accept : application/json;charset=UTF-8</code><br>
 <code>x-v : 5</code><br>
 <code>x-min-v : 3</code><br>
 <code>x-fapi-interaction-id : 6ba7b814-9dad-11d1-80b4-00c04fd430c8</code><br>
 <code>x-fapi-auth_date : 2020-01-16 16:50:15.507399</code><br>
 <code>x-fapi-customer-ip-address : 2001:0db8:85a3:0000:0000:8a2e:0370:7334</code><br>
 <code>x-cds-client-headers : TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNzkuMC4zOTQ1Ljg4IFNhZmFyaS81MzcuMzY=</code>  </p>
+
+<p>A Data Holder must be able to process Content-Type headers in accordance with [RFC7231]. The following would be valid:<br>
+<BR>
+<code>Content-Type: application/json;charset=UTF-8</code><br>
+<code>Content-Type: application/json</code><br>
+<code>Content-Type: AppliCAtion/JSon;Charset=uTf-8</code>  </p>
+
+<p>A Data Holder must be able to process Accept headers in accordance with [RFC7231]. The following would be valid:<br>
+<BR>
+<code>Accept: */*</code><br>
+<code>Accept: application/json;charset=UTF-8</code><br>
+<code>Accept: application/json</code><br>
+<code>Accept-Encoding: charset=UTF-8</code><br>
+<code>Accept: AppliCAtion/JSon;Charset=uTf-8</code>  </p>
 </blockquote>
 
 <table><thead>
@@ -1065,12 +1077,12 @@ always align to current consumer preferences.</p>
 </thead><tbody>
 <tr>
 <td><strong>Content-Type</strong></td>
-<td>Standard HTTP Header. Represents the format of the payload provided in the request. Must be set to <code>application/json</code>. Mandatory for PUT and POST calls.</td>
+<td>Standard HTTP Header. Represents the format of the payload provided in the request. The media type must be set to <code>application/json</code>. Mandatory for PUT and POST calls.</td>
 <td>Conditional</td>
 </tr>
 <tr>
 <td><strong>Accept</strong></td>
-<td>Standard HTTP Header. Specify the Content-Type that is required from the Server.<br/>If specified, must be set to <code>application/json</code> unless otherwise specified in the resource end point standard.<br/>If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, default is <code>application/json</code>.</td>
+<td>If specified, the media type must be set to <code>application/json</code>, unless otherwise specified in the resource end point standard. \n\n If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, or a wildcard (<em>/</em>) is provided, the default media type is <code>application/json</code>.</td>
 <td>Optional</td>
 </tr>
 <tr>
@@ -1294,7 +1306,7 @@ always align to current consumer preferences.</p>
 <pre class="highlight plaintext"><code>{
   “data”: {
     ...
-  }
+  },
   “meta”: {
     ...
   }
@@ -1316,10 +1328,10 @@ always align to current consumer preferences.</p>
 <pre class="highlight plaintext"><code>{
   “data”: {
     ...
-  }
+  },
   “links”: {
     “self”: “...”
-  }
+  },
   “meta”: {
     ...
   }
@@ -1689,7 +1701,7 @@ standards</li>
 <h3 id='holder-identifier'>Holder Identifier</h3>
 
 <blockquote>
-<p>For example, the prefixes for the four major Banks required to implement by 1st July 2019 would be:
+<p>For example, the prefixes for the four major Banks included in the first phases of implementation would be:
 <ul>
 <li>CBA – Commonwealth Bank</li>
 <li>WBC – Westpac Banking Corporation</li>
@@ -1918,7 +1930,6 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 </blockquote>
 <pre class="highlight plaintext"><code>GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
 Host: admin.data.holder.com.au
-Accept: application/json
 x-v: string
 x-min-v: string
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
@@ -2036,7 +2047,7 @@ grant_type=authorization_code&amp;
 <ul>
 <li><code>iss</code>: The client ID of the bearer.</li>
 <li><code>sub</code>: The client ID of the bearer.</li>
-<li><code>aud</code>:  The URL of the end point being invoked.</li>
+<li><code>aud</code>: The Token Endpoint URL.</li>
 <li><code>exp</code>: A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
 <li><code>jti</code>: A unique identifier generated by the client for this authentication.</li>
 </ul>
@@ -2240,17 +2251,8 @@ client_id=s6BhdRkqt3
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-  "iss": "https://data.holder.com.au",
-  "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
-  "aud": "12345",
-  "nonce": "n-0S6_WzA2Mj",
+  "active": true,
   "exp": 1311281970,
-  "iat": 1311280970,
-  "nbf": 1311280970,
-  "auth_time": 1311280969,
-  "acr": "urn:cds.au:cdr:3",
-  "refresh_token_expires_at": 1311281970,
-  "sharing_expires_at": 1311281970,
   "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb"
 }
 </code></pre>
@@ -2258,7 +2260,7 @@ client_id=s6BhdRkqt3
 
 <ul>
 <li>The CDR Arrangement ID is a string representing a unique sharing arrangement between a data recipient and data holder for a given consumer</li>
-<li>The CDR Arrangement ID is represented as a claim &quot;cdr_arrangement_id&quot; in the ID Token</li>
+<li>The CDR Arrangement ID is represented as a claim &quot;cdr_arrangement_id&quot; returned in the Token endpoint and Token Introspection endpoint response JWTs</li>
 <li>The CDR Arrangement ID MUST be unique to a Data Holder</li>
 <li>The CDR Arrangement ID MUST be non-guessable and must not identify a consumer</li>
 <li>A CDR Arrangement ID MUST be bound to only one active consent at a time but may have no active consent</li>
@@ -2286,12 +2288,12 @@ client_id=s6BhdRkqt3
 <li><p>An LoA of 2 is represented by the URI: <code>urn:cds.au:cdr:2</code></p>
 
 <ul>
-<li>The authenticator used to attain this level MUST conform with the Credential Level <code>CL1</code> rules specified under the <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">Trusted Digital Identity Framework</a> <strong>[TDIF]</strong> Authentication Credential Requirements specification.</li>
+<li>The authenticator used to attain this level MUST conform with the Credential Level <code>CL1</code> rules specified under the <a href="https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework">Trusted Digital Identity Framework</a> <strong>[TDIF]</strong> Authentication Credential Requirements specification.</li>
 </ul></li>
 <li><p>An LoA of 3 is represented by the URI: <code>urn:cds.au:cdr:3</code></p>
 
 <ul>
-<li>The authenticators used to attain this level MUST conform with the Credential Level <code>CL2</code> rules specified under the <a href="https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework">Trusted Digital Identity Framework</a> <strong>[TDIF]</strong> Authentication Credential Requirements specification.</li>
+<li>The authenticators used to attain this level MUST conform with the Credential Level <code>CL2</code> rules specified under the <a href="https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework/framework-documents">Trusted Digital Identity Framework</a> <strong>[TDIF]</strong> Authentication Credential Requirements specification.</li>
 </ul></li>
 </ul>
 
@@ -2360,7 +2362,7 @@ client_id=s6BhdRkqt3
   "response_type": "code id_token",
   "client_id": "12345",
   "redirect_uri": "https://www.recipient.com.au/coolstuff",
-  "scope": "openid profile",
+  "scope": "openid profile common:customer.basic:read common:customer.detail:read",
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "exp": 1311281970,
@@ -2400,7 +2402,7 @@ client_id=s6BhdRkqt3
 <p>Note that the period of <code>one year</code> in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).</p>
 
 <p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
-<h3 id='specifying-an-existing-arrangement'>Specifying An existing arrangement</h3>
+<h3 id='specifying-an-existing-arrangement'>Specifying an existing arrangement</h3>
 <p>To allow for an existing consent to be reliably revoked upon the establishment of a new consent intended as a replacement data holders MUST support an additional claim in the authorisation request object named <code>cdr_arrangement_id</code> that the data recipient may optionally include with the value set to the arrangement ID for a previously established sharing arrangement.</p>
 
 <p>The <code>cdr_arrangement_id</code> claim MUST be handled as follows:</p>
@@ -2444,7 +2446,7 @@ Content-Type: application/json
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
   "subject_types_supported": ["pairwise"],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
-  "id_token_encryption_alg_values_supported": [ "RSA1_5", "RSA-OAEP",  "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
+  "id_token_encryption_alg_values_supported": [ "RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
   "id_token_encryption_enc_values_supported": [ "A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM" ],
   "cdr_arrangement_endpoint": "https://data.holder.com.au/arrangements",
   "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
@@ -2494,7 +2496,7 @@ Content-Type: application/json
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
-<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens.</li>
+<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong>FAPI-RW</strong> and <strong>OIDD</strong>.</li>
 <li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens.</li>
 </ul>
 
@@ -2513,13 +2515,10 @@ Content-Type: application/json
 <pre class="highlight plaintext"><code>## Request
 
 GET /authorise?
- response_type=code%20id_token
-   &amp;client_id=12345
-   &amp;redirect_uri=https%3A%2F%2Fwww.recipient.com.au%2Fcoolstuff
-   &amp;scope=openid%20profile
-   &amp;nonce=n-0S6_WzA2Mj
-   &amp;state=af0ifjsldkj HTTP/1.1
-   &amp;request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey ...
+   response_type=code%20id_token&amp;client_id=12345&amp;
+   scope=openid%20profile%20bank:accounts.basic:read%20bank:accounts.detail:read&amp;
+   request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey ...
+HTTP/1.1
 Host: www.holder.com.au
 
 ## Decoded request JWT
@@ -2530,11 +2529,12 @@ Host: www.holder.com.au
 }
 {
   "iss": "12345",
+  "exp": 1516239322,
   "aud": "https://www.recipient.com.au",
   "response_type": "code id_token",
   "client_id": "12345",
   "redirect_uri": "https://www.recipient.com.au/coolstuff",
-  "scope": "openid",
+  "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
   "claims": {
@@ -2545,6 +2545,7 @@ Host: www.holder.com.au
     },
     "id_token": {
       "acr": {
+        "essential": true,
         "values": ["urn:cds.au:cdr:3"]
       }
     }
@@ -2702,6 +2703,7 @@ Host: www.holder.com.au
 <li><code>active</code>: Boolean indicator of whether or not the presented token
   is currently active.</li>
 <li><code>exp</code>:  A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
+<li><code>cdr_arrangement_id</code>: A unique identifier of the CDR arrangement related to the authorisation.</li>
 </ul>
 <h3 id='revocation-end-point'>Revocation End Point</h3>
 <table><thead>
@@ -2786,12 +2788,12 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <strong>Data Holder Path:</strong> Defined using OIDC Discovery<br/>
 <strong>Data Recipient Path:</strong> <ResourceBaseURI>/arrangements/{cdr_arrangement_id}<br/></p>
 
-<p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement an arrangement management end point that can be used to revoke an existing sharing arranagement.</p>
+<p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement an arrangement management end point that can be used to revoke an existing sharing arrangement.</p>
 
 <p>This end point will be implemented according to the following:</p>
 
 <ul>
-<li>Consent management MUST be managed through the new CDR Arrangement Management API. The CDR Arrangement Management API only supports DELETE for revocation of consent for the scope of concurrent consent.</li>
+<li>Consent management MUST be managed through the new CDR Arrangement Management End PointCDR Arrangement Management API. The CDR Arrangement Management API only supports DELETE for revocation of consent for the scope of concurrent consent.</li>
 <li>Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Management API with a valid CDR Arrangement Identifier</li>
 <li>Data Holders MUST publish their CDR Arrangement Management API using their OpenID Provider Metadata discovery endpoint</li>
 <li>Data Recipients MUST expose their CDR Arrangement Management API under their Recipient Base URI published in their Software Statement Assertion</li>
@@ -2819,6 +2821,20 @@ absence of the revocation_endpoint in the Data Recipients software statement ass
 <blockquote>
 <p>Non-Normative Example</p>
 
+<p>Authorize</p>
+</blockquote>
+<pre class="highlight plaintext"><code>## This is used by the ADR in the subsequent authorisation request as follows
+## (note that until PAR is an RFC standard, the mandatory oAuth parameters as
+## per FAPI R/W for confidential clients must be replayed in the request URL):
+
+GET /authorise?client_id=s6BhdRkqt3&amp;
+   response_type=code%20id_token&amp;
+   scope=openid%20profile%20bank:accounts.basic:read%20bank:accounts.detail:read&amp;
+   request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+HTTP/1.1
+Host: data.holder.com.au
+</code></pre>
+<blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>POST /par HTTP/1.1
@@ -2836,7 +2852,7 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
   "exp": 1311281970,
   “client_id”: s6BhdRkqt3,
   “response_type”: ”code id_token”,
-  “client_id”: 12345,
+  “client_id”: "s6BhdRkqt3",
   “redirect_uri”: ”https://www.recipient.com.au%2Fcoolstuff”,
   “scope”: “openid profile bank:accounts.basic:read
             bank:accounts.detail:read”,
@@ -2903,7 +2919,7 @@ Cache-Control: no-cache, no-store
 <li>If the cdr_arrangement_id is not related to the consumer being authenticated it MUST be rejected</li>
 <li>If the cdr_arrangement_id is not related to the Data Holder it MUST be rejected</li>
 </ul>
-<h2 id='normative-references'>Normative References</h2>
+
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -3014,6 +3030,10 @@ Cache-Control: no-cache, no-store
 <td>Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <a href="https://tools.ietf.org/html/bcp195">https://tools.ietf.org/html/bcp195</a></td>
 </tr>
 <tr>
+<td><a id="RFC7231"></a><strong>[RFC7231]</strong></td>
+<td>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content: <a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a></td>
+</tr>
+<tr>
 <td><a id="CDR"></a><strong>[CDR]</strong></td>
 <td>Consumer Data Right: <a href="https://www.accc.gov.au/focus-areas/consumer-data-right">https://www.accc.gov.au/focus-areas/consumer-data-right</a></td>
 </tr>
@@ -3034,8 +3054,8 @@ Cache-Control: no-cache, no-store
 <p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders, are split into two documents.  This first defines mandatory standards and the second includes guidelines for facilitating the implementation of rules and standards that relate to the consumer experience:<br/></p>
 
 <ul>
-<li><a href='./pdfs/CX-Standards-v1.3.0.pdf'>CX Standards</a></li>
-<li><a href='./pdfs/CX-Guidelines-v1.3.0.pdf'>CX Guidelines</a></li>
+<li><a href='./pdfs/CX-Standards-v1.4.0.pdf'>CX Standards</a></li>
+<li><a href='./pdfs/CX-Guidelines-v1.4.0.pdf'>CX Guidelines</a></li>
 </ul>
 
 <p>Additional CX commentary can be found at:<br/>
@@ -7132,7 +7152,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain a list of products that are currently openly offered to the market</p>
 
-<p>Note that the results returned by this end point are expected to be ordered according to updated-since</p>
+<p>Note that the results returned by this end point are expected to be ordered in descending order according to <code>lastUpdated</code>.</p>
 <h3 id='conventions'>Conventions</h3>
 <p>In the product reference payloads there are a number of recurring conventions that are explained here, in one place.</p>
 <h4 id='arrays-of-features'>Arrays Of Features</h4>
@@ -9205,7 +9225,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>[<a href="#schemabankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Interest rates charged against lending balances</td>
@@ -9674,28 +9694,28 @@ This operation does not require authentication
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
 </tr>
 <tr>
 <td>balanceRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied.</td>
 </tr>
 <tr>
 <td>transactionRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
 </tr>
 <tr>
 <td>accruedRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the <em>feeType</em> &quot;VARIABLE&quot; is supplied</td>
 </tr>
 <tr>
 <td>accrualFrequency</td>
@@ -9782,6 +9802,10 @@ This operation does not require authentication
 <tr>
 <td>feeType</td>
 <td>EXIT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>VARIABLE</td>
 </tr>
 </tbody></table>
 
@@ -10168,9 +10192,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
+<h2 id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
 
-<p><a id="schemabankingproductlendingrate"></a></p>
+<p><a id="schemabankingproductlendingratev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11247,7 +11271,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» lendingRates</td>
-<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>[<a href="#schemabankingproductlendingratev2">BankingProductLendingRateV2</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>Fully described deposit rates for this account based on the equivalent structure in Product Reference</td>
@@ -16681,6 +16705,11 @@ This operation does not require authentication
 <td>A fee for closing the product</td>
 <td>NA</td>
 </tr>
+<tr>
+<td>VARIABLE</td>
+<td>An at-cost fee that is relevant to a customer&#39;s circumstances where the amount or rate may not be known until negotiated with the customer</td>
+<td>NA</td>
+</tr>
 </tbody></table>
 
 <p><a id="productdiscounttypedoc"></a>
@@ -18414,7 +18443,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any call to the following end points:<ul><li>Get Bulk Transactions</li><li>Get Transactions For Specific Accounts</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
+<td>Any call to the following end points:<ul><li>Get Transactions For Account</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
 </tr>
 </tbody></table>
 
@@ -18525,6 +18554,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>29/7/2020</td>
+<td>1.4.0</td>
+<td>Banking Maintenance Iteration 4 Release</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.4.0.html">release notes</a> for details</td>
+</tr>
 <tr>
 <td>22/5/2020</td>
 <td>1.3.1</td>
@@ -18824,6 +18859,11 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='./archive/standards-1.3.1/docs/'>22/5/2020</a></td>
+<td>1.3.1</td>
+<td><a href='./archive/standards-1.3.1/docs/'>May Banking Maintenance Iteration 3 Release</a></td>
+</tr>
 <tr>
 <td><a href='./archive/standards-1.3.0/docs/'>17/4/2020</a></td>
 <td>1.3.0</td>

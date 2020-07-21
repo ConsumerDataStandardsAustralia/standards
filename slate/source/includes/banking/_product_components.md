@@ -86,6 +86,7 @@ Description of the usage of the feeType field as it applies to products.
 |EVENT|A fee in relation to a particular event (e.g. NA ordering a new card, viewing a balance or stopping a cheque)|NA|
 |UPFRONT|A fee paid at the beginning of the product NA lifecycle, such as an establishment fee, loyalty program fee or application fee|NA|
 |EXIT|A fee for closing the product|NA|
+|VARIABLE|An at-cost fee that is relevant to a customer's circumstances where the amount or rate may not be known until negotiated with the customer|NA|
 
 
 
