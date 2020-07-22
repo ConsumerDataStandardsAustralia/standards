@@ -1,5 +1,5 @@
 <h1 id='consumer-experience'>Consumer Experience</h1>
-<p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of conformant implementatations by both Data Recipients and Data Holders, are split into two documents.  This first defines mandatory standards and the second includes guidelines for facilitating the implementation of rules and standards that relate to the consumer experience:<br/></p>
+<p>The Consumer Experience (CX) standards, containing requirements and guidelines for the creation of implementatations by both Data Recipients and Data Holders, are split into two documents.  This first defines mandatory standards and the second includes guidelines for facilitating the implementation of rules and standards that relate to the consumer experience:<br/></p>
 
 <ul>
 <li><a href='./pdfs/CX-Standards-v1.4.0.pdf'>CX Standards</a></li>
@@ -7,4 +7,4 @@
 </ul>
 
 <p>Additional CX commentary can be found at:<br/>
-<a href="https://consumerdatastandards.org.au/cx-standards/">CDR CX Stream Web Site</a>.</p>
+<a href="https://consumerdatastandards.gov.au/workinggroups/consumer-experience/">CDR CX Stream Web Site</a>.</p>
