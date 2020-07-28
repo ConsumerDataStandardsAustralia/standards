@@ -2621,7 +2621,7 @@ $.ajax({
 
 Obtain detailed information on a single product offered openly to the market.
 
-NOTE: This version must be implemented by **July 2020**
+NOTE: This version must be implemented by **February 2021**
 
 Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
 

@@ -1147,7 +1147,7 @@
     "/banking/products/{productId}": {
       "get": {
         "summary": "Get Product Detail",
-        "description": "Obtain detailed information on a single product offered openly to the market.\n\nNOTE: This version must be implemented by **July 2020**\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
+        "description": "Obtain detailed information on a single product offered openly to the market.\n\nNOTE: This version must be implemented by **February 2021**\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
         "operationId": "getProductDetail",
         "tags": [
           "Banking",

@@ -17,8 +17,8 @@ Release notes for version 1.4.0 of the [CDR Standards](../../index.html).
 |------|-----------|----|
 |Non-normative examples fix in extensibility section|Updated example text|[Extensibility](../../#extensibility)|
 |Syntax error in non-normative example|Added missing comma's|[Payloads](../../#payload-conventions)|
-|Content-Type header|Added Content-Type header non-normative example|[HTTP Headers](../../#/#http-headers)|
-|Accept header|Added Accept header non-normative example|[HTTP Headers](../../#/#http-headers)|
+|Content-Type header|Added Content-Type header non-normative example|[HTTP Headers](../../#http-headers)|
+|Accept header|Added Accept header non-normative example|[HTTP Headers](../../#http-headers)|
 
 ## API End Points
 |Change|Description|Link|
@@ -28,7 +28,8 @@ Release notes for version 1.4.0 of the [CDR Standards](../../index.html).
 |Fix description of sorting order for Get Products|The documentation incorrectly referenced ``updated-since`` which is the filter attribute. Its been updated to ``lastUpdated`` which is a product attribute| [Get Products](../../#get-products)|
 |Missing schema markdown for getProducts & getProductDetail V2|Included missing schema markdown|[Get Product Detail V2](https://consumerdatastandardsaustralia.github.io/standards/#get-product-detail)|
 |Increment BankingProductLendingRate to V2|BankingProductLendingRate was not versioned in its last update|[BankingProductLendingRateV2](/#tocSbankingproductlendingratev2)|
-|Content-Type header|Add Content-Type header non-normative example|[HTTP Headers](../../#/#http-headers)|
+|Incorrect Get Product Detail V3 implementation date|Updated to February 2021|[Get Product Detail](../../##get-product-detail)|
+|Fix description of sorting order for Get Products|The documentation incorrectly referenced ``updated-since`` which is the filter attribute. Its been updated to ``lastUpdated`` which is a product attribute| [Get Products](../../#get-products)|
 
 ## Information Security Profile
 |Change|Description|Link|
