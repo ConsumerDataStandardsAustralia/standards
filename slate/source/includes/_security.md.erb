@@ -461,9 +461,8 @@ Content-Type: application/x-www-form-urlencoded
 client_id=s6BhdRkqt3
 &client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
 &client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
-&grant_type=refresh_token
-&refresh_token=8xLOxBtZp8
-&scope=openid
+&token=tGzv3JOkF0XG5Qx2TlKWIA
+&token_type_hint=refresh_token
 ```
 
 > Response
@@ -933,17 +932,30 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 
 ```
 {
-  "iss": "https://data.holder.com.au",
-  "aud": "a7AfcPcsl2",
-  "exp": 1311281970,
-  “client_id”: s6BhdRkqt3,
-  “response_type”: ”code id_token”,
-  “client_id”: "s6BhdRkqt3",
-  “redirect_uri”: ”https://www.recipient.com.au%2Fcoolstuff”,
-  “scope”: “openid profile bank:accounts.basic:read
-            bank:accounts.detail:read”,
-  “nonce”: “n-0S6_WzA2Mj”,
-  “state”: “af0ifjsldkj”
+  "iss": "s6BhdRkqt3",
+  "exp": 1516239322,
+  "aud": "https://www.recipient.com.au",
+  "response_type": "code id_token",
+  "client_id": "s6BhdRkqt3",
+  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "scope": "openid profile bank:accounts.basic:read
+            bank:accounts.detail:read",
+  "nonce": "n-0S6_WzA2Mj",
+  "state": "af0ifjsldkj",
+  "claims": {
+    "sharing_duration": 7776000,
+    "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb",
+    "id_token": {
+      "acr": {
+        "essential": true,
+        "values": ["urn:cds.au:cdr:3"]
+      }
+    },
+    "userinfo": {
+      "given_name": null,
+      "family_name": null
+    }
+  }
 }
 ```
 
