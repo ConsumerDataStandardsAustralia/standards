@@ -2707,7 +2707,7 @@ Host: www.holder.com.au
 <li><code>exp</code>:  A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
 <li><code>cdr_arrangement_id</code>: A unique identifier of the CDR arrangement related to the authorisation.</li>
 </ul>
-<h3 id='revocation-end-point'>Revocation End Point</h3>
+<h3 id='token-revocation-end-point'>Token Revocation End Point</h3>
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2716,7 +2716,7 @@ Host: www.holder.com.au
 </thead><tbody>
 <tr>
 <td>Hosted By</td>
-<td>Data Holder and Data Recipient (Data Recipient required until November 2020)</td>
+<td>Data Holder and Data Recipient</td>
 </tr>
 <tr>
 <td>Transport Security</td>
@@ -2734,7 +2734,7 @@ Host: www.holder.com.au
 
 <p><strong>Requirements for Data Holder implementations</strong></p>
 
-<p>Data Holders and MUST implement a Token Revocation End Point as described in <a href="https://tools.ietf.org/html/rfc7009#section-2">section 2</a> of <strong>[RFC7009]</strong>.</p>
+<p>Data Holders MUST implement a Token Revocation End Point as described in <a href="https://tools.ietf.org/html/rfc7009#section-2">section 2</a> of <strong>[RFC7009]</strong>.</p>
 
 <p>The Revocation End Point serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required to allow for token clean up.</p>
 
@@ -2742,15 +2742,23 @@ Host: www.holder.com.au
 
 <p><strong>Requirements for Data Recipient implementations</strong></p>
 
-<p><em>The following obligations are required by Data Recipients until November 2020.</em></p>
-
-<p>The Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.</p>
+<p>The Token Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.</p>
 
 <p>Revocation of Access Tokens MUST not be supported.</p>
 
-<p>Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation</p>
+<p>Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation.</p>
 
-<p>If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST use the Data Holder’s implementation of the revocation end point with the current Refresh Token to notify the Data Holder.</p>
+<p>If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST revoke consent using Data Holder’s implementation.</p>
+
+<p><strong>Revoking consent</strong></p>
+
+<p>If the Data Holder does not support a CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder&#39;s Token Revocation End Point with the current Refresh Token to notify the Data Holder.</p>
+
+<p>If the Data Holder does support the CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Holder.</p>
+
+<p><strong>NOTE:</strong> Data Recipients MUST continue to support this Token Revocation End Point until February 2021.</p>
+
+<p><strong>NOTE:</strong> Data Holders MUST continue to support consent revocation via the oAuth Token Revocation end point until February 2021.</p>
 <h3 id='cdr-arrangement-management-end-point'>CDR Arrangement Management End Point</h3>
 <blockquote>
 <p>Non-Normative Example</p>
