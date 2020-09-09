@@ -2144,13 +2144,7 @@ grant_type=authorization_code&amp;
 to a Data Recipient from both the Authorisation
 End Point and Token End Point.</p>
 
-<p>As described under <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> of the <strong>[FAPI-RW]</strong> profile, ID Tokens MUST include the following claims (in addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard) as part of <a href="#hybrid">Hybrid Flow authentication</a>:</p>
-
-<ul>
-<li><code>nonce</code>: String value used to associate a Client session with an ID Token.</li>
-<li><code>s_hash</code>: Hash of the state value.</li>
-<li><code>c_hash</code>: Hash of the authorisation_code value.</li>
-</ul>
+<p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the [OIDC] standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the [OIDC] standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the [FAPI-RW] profile.</p>
 
 <p>ID Tokens MUST be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 

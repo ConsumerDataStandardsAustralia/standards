@@ -345,11 +345,7 @@ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-c
 to a Data Recipient from both the Authorisation
 End Point and Token End Point.
 
-As described under [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) of the **[FAPI-RW]** profile, ID Tokens MUST include the following claims (in addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard) as part of [Hybrid Flow authentication](#hybrid):
-
-- `nonce`: String value used to associate a Client session with an ID Token.
-- `s_hash`: Hash of the state value.
-- `c_hash`: Hash of the authorisation_code value.
+In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the [OIDC] standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (Authentication using the Hybrid Flow) of the [OIDC] standards and [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack) of the [FAPI-RW] profile.
 
 ID Tokens MUST be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**.
 
