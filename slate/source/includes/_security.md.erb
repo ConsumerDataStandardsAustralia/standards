@@ -1019,30 +1019,24 @@ Host: data.holder.com.au
 |---|---|
 | Hosted By  | Data Holder  |
 |  Transport Security |  MTLS |
-| Client Authentication Required| No |
+| Client Authentication Required| Yes |
 | Bearer Token Required| No |
 
 
-**From November 2020**, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[PAR]**.
+**From November 2020**, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to [PAR].
 
-Data Recipients must send authorisation request objects by reference by calling the Data Holder’s pushed authorisation request endpoint if:
+Data Recipients MAY send authorisation requests using [PAR] if supported by the Data Holder. Request objects which contain the ``cdr_arrangement_id`` claim MUST only be sent using [PAR]. If a Data Holder does not support [PAR], a Data Recipient SHOULD NOT provide the ``cdr_arrangement_id`` claim in the request object.
 
-* The request object is likely to be too large to be sent as a URI parameter
-* The request object contains a cdr_arrangement_id parameter
-
-The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation endpoint to initiate an authorisation flow. In this way, the Data Recipient has staged their authorisation intent with the Data Holder and can then proceed via the backchannel.
+The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.
 
 In addition:
 
-* Data Holders MUST support request objects sent by reference for Pushed Authorisation Requests
-* Request Object references SHALL NOT be supported in any mode of use other than Pushed Authorisation Requests (PAR). If a Data Holder does not support Pushed Authorisation Requests (PAR), it MUST NOT support Request Object references.
-* Data Holders MUST publish their support for PAR as per the specification using OAuth/OpenID Provider Metadata parameters in discovery responses
+* Request Object references SHALL NOT be supported in any mode of use other than [PAR]. If a Data Holder does not support [PAR], it MUST NOT support Request Object references.
 * The Request URI MUST expire between 10 seconds and 90 seconds
-* Data Recipients MAY provide an existing cdr_arrangement_id claim in an authorisation request object to establish a new consent under an existing arrangement
-* Data Holders MUST revoke existing refresh tokens and access tokens when a cdr_arrangement_id is provided in the authorisation request object but ONLY after successful authorisation
-* Data Recipients MUST observe data deletion and de-identification requirements for revoked consent after successful authorisation
-* If the cdr_arrangement_id is not related to the consumer being authenticated it MUST be rejected
-* If the cdr_arrangement_id is not related to the Data Holder it MUST be rejected
+* Data Recipients MAY provide an existing ``cdr_arrangement_id`` claim in an authorisation request object to establish a new consent under an existing arrangement
+* Data Holders MUST revoke existing refresh tokens and access tokens when a ``cdr_arrangement_id`` is provided in the Request Object but only after successful authorisation
+* If the ``cdr_arrangement_id`` is not related to the consumer being authenticated it MUST be rejected
+* If the ``cdr_arrangement_id`` is not recognised by to the Data Holder it MUST be rejected
 
 ## Normative References
 

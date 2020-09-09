@@ -2951,7 +2951,7 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td>Client Authentication Required</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Bearer Token Required</td>
@@ -2959,29 +2959,21 @@ Host: data.holder.com.au
 </tr>
 </tbody></table>
 
-<p><strong>From November 2020</strong>, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
+<p><strong>From November 2020</strong>, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to [PAR].</p>
 
-<p>Data Recipients must send authorisation request objects by reference by calling the Data Holder’s pushed authorisation request endpoint if:</p>
+<p>Data Recipients MAY send authorisation requests using [PAR] if supported by the Data Holder. Request objects which contain the <code>cdr_arrangement_id</code> claim MUST only be sent using [PAR]. If a Data Holder does not support [PAR], a Data Recipient SHOULD NOT provide the <code>cdr_arrangement_id</code> claim in the request object.</p>
 
-<ul>
-<li>The request object is likely to be too large to be sent as a URI parameter</li>
-<li>The request object contains a cdr_arrangement_id parameter</li>
-</ul>
-
-<p>The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation endpoint to initiate an authorisation flow. In this way, the Data Recipient has staged their authorisation intent with the Data Holder and can then proceed via the backchannel.</p>
+<p>The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
 
 <p>In addition:</p>
 
 <ul>
-<li>Data Holders MUST support request objects sent by reference for Pushed Authorisation Requests</li>
-<li>Request Object references SHALL NOT be supported in any mode of use other than Pushed Authorisation Requests (PAR). If a Data Holder does not support Pushed Authorisation Requests (PAR), it MUST NOT support Request Object references.</li>
-<li>Data Holders MUST publish their support for PAR as per the specification using OAuth/OpenID Provider Metadata parameters in discovery responses</li>
+<li>Request Object references SHALL NOT be supported in any mode of use other than [PAR]. If a Data Holder does not support [PAR], it MUST NOT support Request Object references.</li>
 <li>The Request URI MUST expire between 10 seconds and 90 seconds</li>
-<li>Data Recipients MAY provide an existing cdr_arrangement_id claim in an authorisation request object to establish a new consent under an existing arrangement</li>
-<li>Data Holders MUST revoke existing refresh tokens and access tokens when a cdr_arrangement_id is provided in the authorisation request object but ONLY after successful authorisation</li>
-<li>Data Recipients MUST observe data deletion and de-identification requirements for revoked consent after successful authorisation</li>
-<li>If the cdr_arrangement_id is not related to the consumer being authenticated it MUST be rejected</li>
-<li>If the cdr_arrangement_id is not related to the Data Holder it MUST be rejected</li>
+<li>Data Recipients MAY provide an existing <code>cdr_arrangement_id</code> claim in an authorisation request object to establish a new consent under an existing arrangement</li>
+<li>Data Holders MUST revoke existing refresh tokens and access tokens when a <code>cdr_arrangement_id</code> is provided in the Request Object but only after successful authorisation</li>
+<li>If the <code>cdr_arrangement_id</code> is not related to the consumer being authenticated it MUST be rejected</li>
+<li>If the <code>cdr_arrangement_id</code> is not recognised by to the Data Holder it MUST be rejected</li>
 </ul>
 <h2 id='normative-references'>Normative References</h2>
 <table><thead>
