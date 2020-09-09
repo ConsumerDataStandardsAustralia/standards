@@ -2765,10 +2765,15 @@ Host: www.holder.com.au
 
 <p>Request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>DELETE https://data.holder.com.au/arrangements/5a1bf696-ee03-408b-b315-97955415d1f0
+<pre class="highlight plaintext"><code>POST https://data.holder.com.au/arrangements/revoke
 HTTP/1.1
 Host: data.holder.com.au
-Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
+Content-Type: application/x-www-form-urlencoded
+
+  client_id=s6BhdRkqt3&amp;
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
+  cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 </code></pre>
 <table><thead>
 <tr>
@@ -2786,47 +2791,79 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 </tr>
 <tr>
 <td>Client Authentication Required</td>
-<td>Yes (for verifying Data Recipients)</td>
+<td>Yes (for Data Holders verifying Data Recipients)</td>
 </tr>
 <tr>
 <td>Bearer Token Required</td>
-<td>Yes (for verifying Data Holders)</td>
+<td>Yes (for Data Recipients verifying Data Holders)</td>
 </tr>
 </tbody></table>
 
-<p><strong>HTTP Method:</strong> DELETE<br/>
-<strong>Data Holder Path:</strong> Defined using OIDC Discovery<br/>
-<strong>Data Recipient Path:</strong> <ResourceBaseURI>/arrangements/{cdr_arrangement_id}<br/></p>
+<p><strong>HTTP Method:</strong> POSt<br/>
+<strong>HTTP Method:</strong> POST<br/>
+<strong>Data Holder Path:</strong> The <code>cdr_arrangement_revocation_endpoint</code> defined using OIDC Discovery<br/>
+<strong>Data Recipient Path:</strong> <RecipientBaseUri>/arrangements/revoke where <RecipientBaseUri> is registered with the CDR Register.<br/></p>
 
-<p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement an arrangement management end point that can be used to revoke an existing sharing arrangement.</p>
+<p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
+
+<p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body: <br/>
+<code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</p>
 
 <p>This end point will be implemented according to the following:</p>
 
 <ul>
-<li>Consent management MUST be managed through the new CDR Arrangement Management End PointCDR Arrangement Management API. The CDR Arrangement Management API only supports DELETE for revocation of consent for the scope of concurrent consent.</li>
-<li>Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Management API with a valid CDR Arrangement Identifier</li>
-<li>Data Holders MUST publish their CDR Arrangement Management API using their OpenID Provider Metadata discovery endpoint</li>
-<li>Data Recipients MUST expose their CDR Arrangement Management API under their Recipient Base URI published in their Software Statement Assertion</li>
-<li>If the CDR Arrangement Management API is called for revocation, it MUST delete associated refresh and/or access tokens</li>
-<li>For Data Holders, Data Recipients must be authenticated when they call this end point using a valid Access Token as specified in section 10.3 of <strong>[OAUTH2]</strong></li>
-<li>For Data Holders, if the cdr_arrangement_id is not related to the consumer identified by the Access Token provided it MUST be rejected</li>
-<li>For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the <a href="#client-authentication">Client Authentication</a> section.</li>
-<li>For Data Recipients, if the cdr_arrangement_id is not related to the Data Holder making the call it MUST be rejected</li>
-<li>A call to this end point should be responded to with HTTP status code 204 if the sharing arrangement has been revoked successfully</li>
-<li>A call to this end point should be responded to with HTTP status code 422 if the client submitted an invalid identifier</li>
+<li>Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID</li>
+<li>Data Holders MUST publish their CDR Arrangement Revocation End Point  using their OpenID Provider Metadata Discovery End Point</li>
+<li>Data Recipients MUST expose their CDR Arrangement Revocation End Point  under their Recipient Base URI published in their Software Statement Assertion</li>
+<li>Consent revocation MUST also revoke associated refresh and/or access tokens</li>
+<li>For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.</li>
+<li>If the <code>cdr_arrangement_id</code> is not related to the client making the call it MUST be rejected</li>
 </ul>
-<h3 id='race-conditions-and-handling-consent-revocation-with-data-recipients'>Race conditions and handling consent revocation with Data Recipients</h3>
-<p>Because single-consent sharing arrangements will be established before concurrent consent
-future dated obligations, there is the chance that a consumer may revoke consent with a
-Data Holder before a Data Recipient has obtained a sharing ID. In this instance, a Data
-Holder will call the Data Recipient’s CDR Arrangement Management API with a CDR Arrangement
-ID that is not recognised by the Data Recipient. The Data Recipient would return a HTTP error code 422
-which signifies to the Data Holder that the cdr_arrangement_id is not recognised.</p>
 
-<p>In this instance, a Data Holder must attempt to call the Data Recipient’s revocation endpoint to
-notify the Data Recipient that a sharing arrangement has ended. If the Data Recipient has chosen to
-no longer support a revocation endpoint, the absence of support will be inferred through the
-absence of the revocation_endpoint in the Data Recipients software statement assertion (SSA).</p>
+<p><strong>Response Codes</strong></p>
+
+<p>The following responses are in addition to error responses covered by normative references. Error scenarios is the following table MUST use the error structure defined in the <a href="#payload-conventions">Payload Conventions</a>.</p>
+
+<table><thead>
+<tr>
+<th>Response Code</th>
+<th>Situation</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204 No Content</td>
+<td>Success</td>
+<td>The sharing arrangement has been revoked successfully</td>
+</tr>
+<tr>
+<td>422 Unprocessable Entity</td>
+<td>Invalid Arrangement ID</td>
+<td>The client submitted an invalid arrangement identifier or the identifier could not be found</td>
+</tr>
+</tbody></table>
+
+<p><strong>Data Holders calling Data Recipients</strong></p>
+
+<p>Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.</p>
+
+<p>Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point .</p>
+
+<p>Data Recipients MUST continue to support their Token Revocation End Point until February 2021.</p>
+
+<p><strong>Updating Register Meta Data and Client Registration</strong></p>
+
+<p>When a Data Recipient supports the CDR Arrangement Revocation End Point, they MUST:
+1. Update their meta data with the CDR Register to include their <code>recipient_base_uri</code>.
+2. Update their client registration with each Data Holder.</p>
+
+<p>If the Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST instead revoke consent using the Data Recipient Token Revocation End Point.</p>
+
+<p><strong>Data Recipients calling Data Holders</strong></p>
+
+<p>Data Recipients may discover that a given Data Holder supports the CDR Arrangement Revocation End Point by the presence of the <code>cdr_arrangement_revocation_endpoint</code> in the Data Holder&#39;s OpenID Provider metadata.</p>
+
+<p>If a Data Recipient does not support the CDR Arrangement Revocation End Point, Data Holders must notify Data Recipients when consent is withdrawn by calling the Data Recipient Revocation End Point.</p>
 <h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3>
 <blockquote>
 <p>Non-Normative Example</p>
