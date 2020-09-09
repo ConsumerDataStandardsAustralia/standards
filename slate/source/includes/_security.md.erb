@@ -475,26 +475,26 @@ client_id=s6BhdRkqt3
 }
 ```
 
+The CDR Arrangement ID is a unique string representing a consent arrangement between a Data Recipient and Data Holder for a given consumer.
+
+The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile.
+
+The Data Holder MUST provide the CDR Arrangement ID as the claim ``cdr_arrangement_id`` in the Token End Point response and Token Introspection End Point response.
+
+A Data Holder MUST only return the ``cdr_arrangement_id`` in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipients have a reliable way to determine whether a given Data Holder supports concurrent consent.
+
 Statements related to the CDR Arrangement ID:
 
-* The CDR Arrangement ID is a string representing a unique sharing arrangement between a data recipient and data holder for a given consumer
-* The CDR Arrangement ID is represented as a claim "cdr_arrangement_id" returned in the Token endpoint and Token Introspection endpoint response JSON
 * The CDR Arrangement ID MUST be unique to a Data Holder
 * The CDR Arrangement ID MUST be non-guessable and must not identify a consumer
-* A CDR Arrangement ID MUST be bound to only one active consent at a time but may have no active consent
-* A CDR Arrangement ID can span multiple historical consents which are not active
 * A CDR Arrangement ID SHOULD be generated using an algorithm that reduces the chances of collision
 * A CDR Arrangement ID MUST be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)
-* A CDR Arrangement ID MUST be used to revoke consent
 
 #### Retrospectively obtaining a CDR Arrangement ID
 
-For consents The Data Holder must provide the CDR Arrangement ID as a claim in the Token endpoint response and Token Introspection endpoint response.
+For any existing consents, Data Holders must retrospectively generate a ``cdr_arrangement_id`` such that from November 2020, Data Recipients can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
 
-A Data Recipient can call either the Token or Token Introspection endpoints at any point post-consent to obtain the CDR Arrangement ID using a valid refresh token.
-
-The CDR Arrangement ID will be supplied in the response JSON as the claim `cdr_arrangement_id`.
-
+A Data Recipient can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.
 
 <a id="levels-of-assurance-loas"></a>
 ## Levels of Assurance (LoAs)
