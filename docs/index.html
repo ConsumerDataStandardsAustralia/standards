@@ -2404,16 +2404,17 @@ client_id=s6BhdRkqt3
 
 <p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
 <h3 id='specifying-an-existing-arrangement'>Specifying an existing arrangement</h3>
-<p>To allow for an existing consent to be reliably revoked upon the establishment of a new consent intended as a replacement data holders MUST support an additional claim in the authorisation request object named <code>cdr_arrangement_id</code> that the data recipient may optionally include with the value set to the arrangement ID for a previously established sharing arrangement.</p>
+<p>Provided a Data Holder supports PAR, they MUST also support the <code>cdr_arrangement_id</code> claim provided in the Request Object sent to the PAR End Point. The Data Recipient MAY provide the <code>cdr_arrangement_id</code> claim in the Request Object sent to the PAR End Point.</p>
 
 <p>The <code>cdr_arrangement_id</code> claim MUST be handled as follows:</p>
 
-<ul>
-<li><strong>Until November 2020</strong> data holders are not required to take any action if <code>cdr_arrangement_id</code> is supplied but MUST NOT respond with an error.</li>
-<li><strong>From November 2020</strong> data holders MUST revoke all existing tokens related to the arrangement identified by the <code>cdr_arrangement_id</code> claim in the request object once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</li>
-<li><strong>Until November 2020</strong> data recipients MUST NOT implement scenarios that support concurrent consent.  Only single, extant consent scenarios should be implemented until this date.</li>
-<li><strong>Until November 2020</strong> data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the revocation end point.</li>
-</ul>
+<p><strong>Until November 2020</strong> data holders are not required to take any action if <code>cdr_arrangement_id</code> is supplied but MUST NOT respond with an error.</p>
+
+<p><strong>Until November 2020</strong> data recipients MUST NOT implement scenarios that support concurrent consent. Only single, extant consent scenarios should be implemented until this date.</p>
+
+<p>If a data recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the data holder&#39;s PAR End Point, the data holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
+
+<p>For data recipients seeking to replace consent where the Data Holder does not support PAR, data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the appropriate revocation end point.</p>
 <h2 id='end-points'>End Points</h2>
 <aside class="warning">
 NOTE: This section does not include any end points that will be defined by the design of the <a href='https://cdr-register.github.io/'>CDR Register</a>. End points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery are documented in the <a href='https://cdr-register.github.io/'>CDR Register</a> technical documentation.
