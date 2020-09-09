@@ -815,6 +815,11 @@
 <td>The target state concurrent consent solution covers various components of the Information Security profile is being phased in with alignment to the November 2020 implementation milestone set by the ACCC.  If this milestone moves then this obligation will also move.</td>
 <td>November 2020</td>
 </tr>
+<tr>
+<td><a href="#token-revocation-end-point">Token Revocation End Point</a></td>
+<td>Data recipients may obsolete this end point from February 1st 2021.<br />Data holders may obsolete consent revocation via this end point from February 1st 2021, however they must still support oAuth token revocation. Data recipients must upgrade their implementations to use the Data Holder CDR Arrangement Revocation End Point by this time.</td>
+<td>February 1st 2021</td>
+</tr>
 </tbody></table>
 <h1 id='standards'>Standards</h1>
 <p>These standards represent <strong>version 1.4.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
@@ -2759,7 +2764,7 @@ Host: www.holder.com.au
 <p><strong>NOTE:</strong> Data Recipients MUST continue to support this Token Revocation End Point until February 2021.</p>
 
 <p><strong>NOTE:</strong> Data Holders MUST continue to support consent revocation via the oAuth Token Revocation end point until February 2021.</p>
-<h3 id='cdr-arrangement-management-end-point'>CDR Arrangement Management End Point</h3>
+<h3 id='cdr-arrangement-revocation-end-point'>CDR Arrangement Revocation End Point</h3>
 <blockquote>
 <p>Non-Normative Example</p>
 
@@ -2799,10 +2804,9 @@ Content-Type: application/x-www-form-urlencoded
 </tr>
 </tbody></table>
 
-<p><strong>HTTP Method:</strong> POSt<br/>
-<strong>HTTP Method:</strong> POST<br/>
+<p><strong>HTTP Method:</strong> POST<br/>
 <strong>Data Holder Path:</strong> The <code>cdr_arrangement_revocation_endpoint</code> defined using OIDC Discovery<br/>
-<strong>Data Recipient Path:</strong> <RecipientBaseUri>/arrangements/revoke where <RecipientBaseUri> is registered with the CDR Register.<br/></p>
+<strong>Data Recipient Path:</strong> <code>&lt;RecipientBaseUri&gt;/arrangements/revoke</code> where &lt;RecipientBaseUri&gt; is registered with the CDR Register.<br/></p>
 
 <p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
 
@@ -2847,7 +2851,7 @@ Content-Type: application/x-www-form-urlencoded
 
 <p>Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.</p>
 
-<p>Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point .</p>
+<p>Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.</p>
 
 <p>Data Recipients MUST continue to support their Token Revocation End Point until February 2021.</p>
 
