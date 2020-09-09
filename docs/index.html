@@ -2450,7 +2450,7 @@ Content-Type: application/json
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "id_token_encryption_alg_values_supported": [ "RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
   "id_token_encryption_enc_values_supported": [ "A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM" ],
-  "cdr_arrangement_endpoint": "https://data.holder.com.au/arrangements",
+  "cdr_arrangement_revocation_endpoint": "https://data.holder.com.au/arrangements/revoke",
   "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
@@ -2505,7 +2505,7 @@ Content-Type: application/json
 <p><strong>From November 2020</strong>, the Data Holder metadata MUST include:</p>
 
 <ul>
-<li><code>cdr_arrangement_endpoint</code>: URL of the CDR Arrangement End Point for consent revocation.</li>
+<li><code>cdr_arrangement_revocation_endpoint</code>: The URL of the CDR Arrangement Revocation End Point for consent revocation</li>
 <li><code>pushed_authorization_request_endpoint</code>: URL of the Pushed Authorisation End Point used to support <strong>[PAR]</strong>.</li>
 </ul>
 
