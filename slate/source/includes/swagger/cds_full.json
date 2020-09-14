@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "1.4.0",
+    "version" : "1.5.0",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -2388,8 +2388,8 @@
         "openStatus" : {
           "type" : "string",
           "description" : "Open or closed status for the account. If not present then OPEN is assumed",
-          "enum" : [ "OPEN", "CLOSED" ],
-          "default" : "OPEN"
+          "default" : "OPEN",
+          "enum" : [ "OPEN", "CLOSED" ]
         },
         "isOwned" : {
           "type" : "boolean",
@@ -2655,8 +2655,8 @@
         "repaymentType" : {
           "type" : "string",
           "description" : "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST",
-          "enum" : [ "INTEREST_ONLY", "PRINCIPAL_AND_INTEREST" ],
-          "default" : "PRINCIPAL_AND_INTEREST"
+          "default" : "PRINCIPAL_AND_INTEREST",
+          "enum" : [ "INTEREST_ONLY", "PRINCIPAL_AND_INTEREST" ]
         },
         "repaymentFrequency" : {
           "type" : "string",
@@ -3048,7 +3048,7 @@
         },
         "crn" : {
           "type" : "string",
-          "description" : "BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
+          "description" : "BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type"
         },
         "billerName" : {
           "type" : "string",
@@ -3316,8 +3316,8 @@
         "nonBusinessDayTreatment" : {
           "type" : "string",
           "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
-          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
-          "default" : "ON"
+          "default" : "ON",
+          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
         },
         "intervals" : {
           "type" : "array",
@@ -3372,8 +3372,8 @@
         "nonBusinessDayTreatment" : {
           "type" : "string",
           "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
-          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
-          "default" : "ON"
+          "default" : "ON",
+          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
         }
       },
       "description" : "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay"
@@ -3939,7 +3939,6 @@
       "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
     },
     "RequestAccountIds_data" : {
-      "type" : "object",
       "required" : [ "accountIds" ],
       "properties" : {
         "accountIds" : {
@@ -3953,7 +3952,6 @@
       }
     },
     "ResponseBankingProductList_data" : {
-      "type" : "object",
       "required" : [ "products" ],
       "properties" : {
         "products" : {
@@ -3966,7 +3964,6 @@
       }
     },
     "BankingProductV3_additionalInformation" : {
-      "type" : "object",
       "properties" : {
         "overviewUri" : {
           "type" : "string",
@@ -3997,7 +3994,6 @@
       "description" : "Object that contains links to additional information on specific topics"
     },
     "BankingProductV3_cardArt" : {
-      "type" : "object",
       "required" : [ "imageUri" ],
       "properties" : {
         "title" : {
@@ -4012,7 +4008,6 @@
       }
     },
     "ResponseBankingAccountList_data" : {
-      "type" : "object",
       "required" : [ "accounts" ],
       "properties" : {
         "accounts" : {
@@ -4025,7 +4020,6 @@
       }
     },
     "ResponseBankingTransactionList_data" : {
-      "type" : "object",
       "required" : [ "transactions" ],
       "properties" : {
         "transactions" : {
@@ -4037,7 +4031,6 @@
       }
     },
     "BankingTransactionDetail_extendedData_x2p101Payload" : {
-      "type" : "object",
       "required" : [ "extendedDescription" ],
       "properties" : {
         "extendedDescription" : {
@@ -4055,7 +4048,6 @@
       }
     },
     "BankingTransactionDetail_extendedData" : {
-      "type" : "object",
       "required" : [ "service" ],
       "properties" : {
         "payer" : {
@@ -4079,11 +4071,9 @@
           "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
           "enum" : [ "X2P1.01" ]
         }
-      },
-      "x-conditional" : [ "payer", "payee", "extendedDescription" ]
+      }
     },
     "ResponseBankingAccountsBalanceList_data" : {
-      "type" : "object",
       "required" : [ "balances" ],
       "properties" : {
         "balances" : {
@@ -4096,7 +4086,6 @@
       }
     },
     "ResponseBankingPayeeList_data" : {
-      "type" : "object",
       "required" : [ "payees" ],
       "properties" : {
         "payees" : {
@@ -4109,7 +4098,6 @@
       }
     },
     "BankingInternationalPayee_beneficiaryDetails" : {
-      "type" : "object",
       "required" : [ "country" ],
       "properties" : {
         "name" : {
@@ -4128,7 +4116,6 @@
       }
     },
     "BankingInternationalPayee_bankDetails_bankAddress" : {
-      "type" : "object",
       "required" : [ "address", "name" ],
       "properties" : {
         "name" : {
@@ -4142,7 +4129,6 @@
       }
     },
     "BankingInternationalPayee_bankDetails" : {
-      "type" : "object",
       "required" : [ "accountNumber", "country" ],
       "properties" : {
         "country" : {
@@ -4186,7 +4172,6 @@
       }
     },
     "ResponseBankingDirectDebitAuthorisationList_data" : {
-      "type" : "object",
       "required" : [ "directDebitAuthorisations" ],
       "properties" : {
         "directDebitAuthorisations" : {
@@ -4199,7 +4184,6 @@
       }
     },
     "ResponseBankingScheduledPaymentsList_data" : {
-      "type" : "object",
       "required" : [ "scheduledPayments" ],
       "properties" : {
         "scheduledPayments" : {
@@ -4212,7 +4196,6 @@
       }
     },
     "ResponseCommonDiscoveryStatus_data" : {
-      "type" : "object",
       "required" : [ "status", "updateTime" ],
       "properties" : {
         "status" : {
@@ -4239,11 +4222,9 @@
           "description" : "The date and time that this status was last updated by the Data Holder.",
           "x-cds-type" : "DateTimeString"
         }
-      },
-      "x-conditional" : [ "explanation" ]
+      }
     },
     "ResponseDiscoveryOutagesList_data" : {
-      "type" : "object",
       "required" : [ "outages" ],
       "properties" : {
         "outages" : {
@@ -4256,7 +4237,6 @@
       }
     },
     "ResponseCommonCustomer_data" : {
-      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4273,7 +4253,6 @@
       }
     },
     "ResponseCommonCustomerDetail_data" : {
-      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4290,7 +4269,6 @@
       }
     },
     "ResponseErrorList_errors" : {
-      "type" : "object",
       "required" : [ "code", "detail", "title" ],
       "properties" : {
         "code" : {
