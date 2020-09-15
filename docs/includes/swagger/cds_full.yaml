@@ -35,18 +35,18 @@ paths:
         required: false
         type: string
         enum:
-        - TRANS_AND_SAVINGS_ACCOUNTS
-        - TERM_DEPOSITS
-        - TRAVEL_CARDS
+        - BUSINESS_LOANS
+        - CRED_AND_CHRG_CARDS
+        - LEASES
+        - MARGIN_LOANS
+        - OVERDRAFTS
+        - PERS_LOANS
         - REGULATED_TRUST_ACCOUNTS
         - RESIDENTIAL_MORTGAGES
-        - CRED_AND_CHRG_CARDS
-        - PERS_LOANS
-        - MARGIN_LOANS
-        - LEASES
+        - TERM_DEPOSITS
         - TRADE_FINANCE
-        - OVERDRAFTS
-        - BUSINESS_LOANS
+        - TRAVEL_CARDS
+        - TRANS_AND_SAVINGS_ACCOUNTS
       - name: open-status
         in: query
         description: Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed
@@ -138,18 +138,18 @@ paths:
         required: false
         type: string
         enum:
-        - TRANS_AND_SAVINGS_ACCOUNTS
-        - TERM_DEPOSITS
-        - TRAVEL_CARDS
+        - BUSINESS_LOANS
+        - CRED_AND_CHRG_CARDS
+        - LEASES
+        - MARGIN_LOANS
+        - OVERDRAFTS
+        - PERS_LOANS
         - REGULATED_TRUST_ACCOUNTS
         - RESIDENTIAL_MORTGAGES
-        - CRED_AND_CHRG_CARDS
-        - PERS_LOANS
-        - MARGIN_LOANS
-        - LEASES
+        - TERM_DEPOSITS
         - TRADE_FINANCE
-        - OVERDRAFTS
-        - BUSINESS_LOANS
+        - TRAVEL_CARDS
+        - TRANS_AND_SAVINGS_ACCOUNTS
       - name: open-status
         in: query
         description: Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed
@@ -702,18 +702,18 @@ paths:
         required: false
         type: string
         enum:
-        - TRANS_AND_SAVINGS_ACCOUNTS
-        - TERM_DEPOSITS
-        - TRAVEL_CARDS
+        - BUSINESS_LOANS
+        - CRED_AND_CHRG_CARDS
+        - LEASES
+        - MARGIN_LOANS
+        - OVERDRAFTS
+        - PERS_LOANS
         - REGULATED_TRUST_ACCOUNTS
         - RESIDENTIAL_MORTGAGES
-        - CRED_AND_CHRG_CARDS
-        - PERS_LOANS
-        - MARGIN_LOANS
-        - LEASES
+        - TERM_DEPOSITS
         - TRADE_FINANCE
-        - OVERDRAFTS
-        - BUSINESS_LOANS
+        - TRAVEL_CARDS
+        - TRANS_AND_SAVINGS_ACCOUNTS
       - name: open-status
         in: query
         description: Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed
@@ -962,18 +962,18 @@ paths:
         required: false
         type: string
         enum:
-        - TRANS_AND_SAVINGS_ACCOUNTS
-        - TERM_DEPOSITS
-        - TRAVEL_CARDS
+        - BUSINESS_LOANS
+        - CRED_AND_CHRG_CARDS
+        - LEASES
+        - MARGIN_LOANS
+        - OVERDRAFTS
+        - PERS_LOANS
         - REGULATED_TRUST_ACCOUNTS
         - RESIDENTIAL_MORTGAGES
-        - CRED_AND_CHRG_CARDS
-        - PERS_LOANS
-        - MARGIN_LOANS
-        - LEASES
+        - TERM_DEPOSITS
         - TRADE_FINANCE
-        - OVERDRAFTS
-        - BUSINESS_LOANS
+        - TRAVEL_CARDS
+        - TRANS_AND_SAVINGS_ACCOUNTS
       - name: open-status
         in: query
         description: Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed
@@ -1148,9 +1148,9 @@ paths:
         type: string
         default: ALL
         enum:
+        - BILLER
         - DOMESTIC
         - INTERNATIONAL
-        - BILLER
         - ALL
       - name: page
         in: query
@@ -1351,18 +1351,18 @@ paths:
         required: false
         type: string
         enum:
-        - TRANS_AND_SAVINGS_ACCOUNTS
-        - TERM_DEPOSITS
-        - TRAVEL_CARDS
+        - BUSINESS_LOANS
+        - CRED_AND_CHRG_CARDS
+        - LEASES
+        - MARGIN_LOANS
+        - OVERDRAFTS
+        - PERS_LOANS
         - REGULATED_TRUST_ACCOUNTS
         - RESIDENTIAL_MORTGAGES
-        - CRED_AND_CHRG_CARDS
-        - PERS_LOANS
-        - MARGIN_LOANS
-        - LEASES
+        - TERM_DEPOSITS
         - TRADE_FINANCE
-        - OVERDRAFTS
-        - BUSINESS_LOANS
+        - TRAVEL_CARDS
+        - TRANS_AND_SAVINGS_ACCOUNTS
       - name: page
         in: query
         description: Page of results to request (standard pagination)
@@ -1491,7 +1491,7 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomer'
       x-scopes:
       - common:customer.basic:read
-      x-version: "1"
+      x-version: "2"
   /common/customer/detail:
     get:
       tags:
@@ -1546,7 +1546,7 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomerDetail'
       x-scopes:
       - common:customer.detail:read
-      x-version: "1"
+      x-version: "2"
   /discovery/status:
     get:
       tags:
@@ -1770,28 +1770,28 @@ definitions:
         type: string
         description: The type of feature described
         enum:
-        - CARD_ACCESS
         - ADDITIONAL_CARDS
-        - UNLIMITED_TXNS
+        - BALANCE_TRANSFERS
+        - BILL_PAYMENT
+        - BONUS_REWARDS
+        - CARD_ACCESS
+        - COMPLEMENTARY_PRODUCT_DISCOUNTS
+        - DIGITAL_BANKING
+        - DIGITAL_WALLET
+        - DONATE_INTEREST
         - FREE_TXNS
         - FREE_TXNS_ALLOWANCE
+        - INSURANCE
+        - INTEREST_FREE
+        - INTEREST_FREE_TRANSFERS
         - LOYALTY_PROGRAM
+        - NOTIFICATIONS
+        - NPP_ENABLED
+        - NPP_PAYID
         - OFFSET
         - OVERDRAFT
         - REDRAW
-        - INSURANCE
-        - BALANCE_TRANSFERS
-        - INTEREST_FREE
-        - INTEREST_FREE_TRANSFERS
-        - DIGITAL_WALLET
-        - DIGITAL_BANKING
-        - NPP_PAYID
-        - NPP_ENABLED
-        - DONATE_INTEREST
-        - BILL_PAYMENT
-        - COMPLEMENTARY_PRODUCT_DISCOUNTS
-        - BONUS_REWARDS
-        - NOTIFICATIONS
+        - UNLIMITED_TXNS
         - OTHER
       additionalValue:
         type: string
@@ -1816,10 +1816,10 @@ definitions:
         description: The type of constraint described.  See the next section for an overview of valid values and their meaning
         enum:
         - MIN_BALANCE
-        - MAX_BALANCE
-        - OPENING_BALANCE
-        - MAX_LIMIT
         - MIN_LIMIT
+        - MAX_BALANCE
+        - MAX_LIMIT
+        - OPENING_BALANCE
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)
@@ -1842,16 +1842,16 @@ definitions:
         description: The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning
         enum:
         - BUSINESS
-        - PENSION_RECIPIENT
-        - MIN_AGE
+        - EMPLOYMENT_STATUS
         - MAX_AGE
+        - MIN_AGE
         - MIN_INCOME
         - MIN_TURNOVER
+        - NATURAL_PERSON
+        - PENSION_RECIPIENT
+        - RESIDENCY_STATUS
         - STAFF
         - STUDENT
-        - EMPLOYMENT_STATUS
-        - RESIDENCY_STATUS
-        - NATURAL_PERSON
         - OTHER
       additionalValue:
         type: string
@@ -1879,16 +1879,16 @@ definitions:
         type: string
         description: The type of fee
         enum:
-        - PERIODIC
-        - TRANSACTION
-        - WITHDRAWAL
         - DEPOSIT
-        - PAYMENT
-        - PURCHASE
         - EVENT
-        - UPFRONT
         - EXIT
+        - PAYMENT
+        - PERIODIC
+        - PURCHASE
+        - TRANSACTION
+        - UPFRONT
         - VARIABLE
+        - WITHDRAWAL
       amount:
         type: string
         description: The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* "VARIABLE" is supplied
@@ -1949,12 +1949,12 @@ definitions:
         enum:
         - BALANCE
         - DEPOSITS
-        - PAYMENTS
-        - FEE_CAP
         - ELIGIBILITY_ONLY
+        - FEE_CAP
+        - PAYMENTS
       amount:
         type: string
-        description: Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+        description: Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
         x-cds-type: AmountString
       balanceRate:
         type: string
@@ -2004,29 +2004,30 @@ definitions:
         description: The type of the specific eligibility constraint for a discount
         enum:
         - BUSINESS
-        - PENSION_RECIPIENT
-        - MIN_AGE
+        - EMPLOYMENT_STATUS
+        - INTRODUCTORY
         - MAX_AGE
+        - MIN_AGE
         - MIN_INCOME
         - MIN_TURNOVER
+        - NATURAL_PERSON
+        - PENSION_RECIPIENT
+        - RESIDENCY_STATUS
         - STAFF
         - STUDENT
-        - EMPLOYMENT_STATUS
-        - RESIDENCY_STATUS
-        - NATURAL_PERSON
-        - INTRODUCTORY
         - OTHER
       additionalValue:
         type: string
         description: Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
       additionalInfo:
         type: string
-        description: Display text providing more information on this eligibility constraint
+        description: Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility constraint
         x-cds-type: URIString
     x-conditional:
+    - additionalInfo
     - additionalValue
   BankingProductDepositRate:
     type: object
@@ -2038,13 +2039,13 @@ definitions:
         type: string
         description: The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning
         enum:
-        - FIXED
         - BONUS
         - BUNDLE_BONUS
-        - VARIABLE
-        - INTRODUCTORY
+        - FIXED
         - FLOATING
+        - INTRODUCTORY
         - MARKET_LINKED
+        - VARIABLE
       rate:
         type: string
         description: The rate to be applied
@@ -2084,17 +2085,17 @@ definitions:
         type: string
         description: The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning
         enum:
-        - FIXED
-        - VARIABLE
-        - INTRODUCTORY
-        - DISCOUNT
-        - PENALTY
-        - FLOATING
-        - MARKET_LINKED
-        - CASH_ADVANCE
-        - PURCHASE
         - BUNDLE_DISCOUNT_FIXED
         - BUNDLE_DISCOUNT_VARIABLE
+        - CASH_ADVANCE
+        - DISCOUNT
+        - FLOATING
+        - INTRODUCTORY
+        - MARKET_LINKED
+        - PENALTY
+        - PURCHASE
+        - VARIABLE
+        - FIXED
       rate:
         type: string
         description: The rate to be applied
@@ -2115,8 +2116,8 @@ definitions:
         type: string
         description: When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered
         enum:
-        - IN_ARREARS
         - IN_ADVANCE
+        - IN_ARREARS
       repaymentType:
         type: string
         description: Options in place for repayments. If absent, the lending rate is applicable to all repayment types
@@ -2162,20 +2163,22 @@ definitions:
         enum:
         - DOLLAR
         - PERCENT
-        - MONTH
         - DAY
+        - MONTH
       minimumValue:
         type: number
         description: The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+        x-cds-type: Number
       maximumValue:
         type: number
         description: 'The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier''s range has no upper bound.'
+        x-cds-type: Number
       rateApplicationMethod:
         type: string
         description: The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
         enum:
-        - WHOLE_BALANCE
         - PER_TIER
+        - WHOLE_BALANCE
       applicabilityConditions:
         $ref: '#/definitions/BankingProductRateCondition'
       additionalInfo:
@@ -2366,10 +2369,11 @@ definitions:
         x-cds-type: CurrencyString
       maturityInstructions:
         type: string
-        description: Current instructions on action to be taken at maturity
+        description: Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments
         enum:
         - ROLLED_OVER
         - PAID_OUT_AT_MATURITY
+        - HOLD_ON_MATURITY
   BankingCreditCardAccount:
     type: object
     required:
@@ -2505,13 +2509,13 @@ definitions:
         type: string
         description: The type of the transaction
         enum:
+        - DIRECT_DEBIT
         - FEE
         - INTEREST_CHARGED
         - INTEREST_PAID
+        - PAYMENT
         - TRANSFER_OUTGOING
         - TRANSFER_INCOMING
-        - PAYMENT
-        - DIRECT_DEBIT
         - OTHER
       status:
         type: string
@@ -2706,9 +2710,9 @@ definitions:
         type: string
         description: The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY
         enum:
+        - BILLER
         - DOMESTIC
         - INTERNATIONAL
-        - BILLER
       creationDate:
         type: string
         description: The date the payee was created by the customer
@@ -2799,10 +2803,10 @@ definitions:
         type: string
         description: The type of the PayID
         enum:
-        - EMAIL
-        - TELEPHONE
         - ABN
+        - EMAIL
         - ORG_IDENTIFIER
+        - TELEPHONE
   BankingBillerPayeeV2:
     type: object
     required:
@@ -2931,8 +2935,8 @@ definitions:
         description: Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.
         enum:
         - ACTIVE
-        - SKIP
         - INACTIVE
+        - SKIP
       from:
         $ref: '#/definitions/BankingScheduledPaymentFrom'
       paymentSet:
@@ -3179,6 +3183,7 @@ definitions:
       isPartial:
         type: boolean
         description: Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage
+        x-cds-type: Boolean
       explanation:
         type: string
         description: Provides an explanation of the current outage that can be displayed to an end customer
@@ -3212,7 +3217,7 @@ definitions:
     x-conditional:
     - person
     - organisation
-  CommonPerson:
+  CommonPersonV2:
     type: object
     required:
     - lastName
@@ -3241,10 +3246,22 @@ definitions:
         description: Used for a trailing suffix to the name (e.g. Jr)
       occupationCode:
         type: string
-        description: Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.
+        description: Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.
+        x-cds-type: ExternalRef
+      occupationCodeVersion:
+        type: string
+        description: The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.
+        enum:
+        - ANZSCO_1220.0_2013_V1.3
+        - ANZSCO_1220.0_2013_V1.2
+        - ANZSCO_1220.0_2006_V1.1
+        - ANZSCO_1220.0_2006_V1.0
+    x-conditional:
+    - occupationCode
+    - occupationCodeVersion
   CommonPersonDetail:
     allOf:
-    - $ref: '#/definitions/CommonPerson'
+    - $ref: '#/definitions/CommonPersonV2'
     - type: object
       required:
       - emailAddresses
@@ -3266,7 +3283,7 @@ definitions:
           description: Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail
           items:
             $ref: '#/definitions/CommonPhysicalAddressWithPurpose'
-  CommonOrganisation:
+  CommonOrganisationV2:
     type: object
     required:
     - agentLastName
@@ -3308,16 +3325,23 @@ definitions:
         x-cds-type: Boolean
       industryCode:
         type: string
-        description: '[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.'
+        description: A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.
+        x-cds-type: ExternalRef
+      industryCodeVersion:
+        type: string
+        description: The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.
+        enum:
+        - ANZSIC_1292.0_2006_V2.0
+        - ANZSIC_1292.0_2006_V1.0
       organisationType:
         type: string
         description: Legal organisation type
         enum:
-        - SOLE_TRADER
         - COMPANY
-        - PARTNERSHIP
-        - TRUST
         - GOVERNMENT_ENTITY
+        - PARTNERSHIP
+        - SOLE_TRADER
+        - TRUST
         - OTHER
       registeredCountry:
         type: string
@@ -3327,9 +3351,12 @@ definitions:
         type: string
         description: The date the organisation described was established
         x-cds-type: DateString
+    x-conditional:
+    - industryCode
+    - industryCodeVersion
   CommonOrganisationDetail:
     allOf:
-    - $ref: '#/definitions/CommonOrganisation'
+    - $ref: '#/definitions/CommonOrganisationV2'
     - type: object
       required:
       - physicalAddresses
@@ -3356,9 +3383,9 @@ definitions:
         enum:
         - MOBILE
         - HOME
+        - INTERNATIONAL
         - WORK
         - OTHER
-        - INTERNATIONAL
         - UNSPECIFIED
       countryCode:
         type: string
@@ -3411,9 +3438,9 @@ definitions:
           type: string
           description: Enumeration of values indicating the purpose of the physical address
           enum:
-          - REGISTERED
           - MAIL
           - PHYSICAL
+          - REGISTERED
           - WORK
           - OTHER
   CommonPhysicalAddress:
@@ -3614,18 +3641,18 @@ definitions:
     type: string
     description: The category to which a product or account belongs. See [here](#product-categories) for more details
     enum:
-    - TRANS_AND_SAVINGS_ACCOUNTS
-    - TERM_DEPOSITS
-    - TRAVEL_CARDS
+    - BUSINESS_LOANS
+    - CRED_AND_CHRG_CARDS
+    - LEASES
+    - MARGIN_LOANS
+    - OVERDRAFTS
+    - PERS_LOANS
     - REGULATED_TRUST_ACCOUNTS
     - RESIDENTIAL_MORTGAGES
-    - CRED_AND_CHRG_CARDS
-    - PERS_LOANS
-    - MARGIN_LOANS
-    - LEASES
+    - TERM_DEPOSITS
     - TRADE_FINANCE
-    - OVERDRAFTS
-    - BUSINESS_LOANS
+    - TRAVEL_CARDS
+    - TRANS_AND_SAVINGS_ACCOUNTS
   RequestAccountIds_data:
     required:
     - accountIds
@@ -3837,8 +3864,8 @@ definitions:
         enum:
         - OK
         - PARTIAL_FAILURE
-        - UNAVAILABLE
         - SCHEDULED_OUTAGE
+        - UNAVAILABLE
       explanation:
         type: string
         description: Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK
@@ -3874,9 +3901,9 @@ definitions:
         - person
         - organisation
       person:
-        $ref: '#/definitions/CommonPerson'
+        $ref: '#/definitions/CommonPersonV2'
       organisation:
-        $ref: '#/definitions/CommonOrganisation'
+        $ref: '#/definitions/CommonOrganisationV2'
   ResponseCommonCustomerDetail_data:
     required:
     - customerUType
@@ -3966,18 +3993,18 @@ parameters:
     required: false
     type: string
     enum:
-    - TRANS_AND_SAVINGS_ACCOUNTS
-    - TERM_DEPOSITS
-    - TRAVEL_CARDS
+    - BUSINESS_LOANS
+    - CRED_AND_CHRG_CARDS
+    - LEASES
+    - MARGIN_LOANS
+    - OVERDRAFTS
+    - PERS_LOANS
     - REGULATED_TRUST_ACCOUNTS
     - RESIDENTIAL_MORTGAGES
-    - CRED_AND_CHRG_CARDS
-    - PERS_LOANS
-    - MARGIN_LOANS
-    - LEASES
+    - TERM_DEPOSITS
     - TRADE_FINANCE
-    - OVERDRAFTS
-    - BUSINESS_LOANS
+    - TRAVEL_CARDS
+    - TRANS_AND_SAVINGS_ACCOUNTS
   ParamAccountIsOwned:
     name: is-owned
     in: query

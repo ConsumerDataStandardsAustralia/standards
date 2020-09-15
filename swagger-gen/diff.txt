@@ -1,0 +1,838 @@
+77,82c77,79
+< |product-category|BUSINESS_LOANS|
+< |product-category|CRED_AND_CHRG_CARDS|
+< |product-category|LEASES|
+< |product-category|MARGIN_LOANS|
+< |product-category|OVERDRAFTS|
+< |product-category|PERS_LOANS|
+---
+> |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+> |product-category|TERM_DEPOSITS|
+> |product-category|TRAVEL_CARDS|
+85c82,85
+< |product-category|TERM_DEPOSITS|
+---
+> |product-category|CRED_AND_CHRG_CARDS|
+> |product-category|PERS_LOANS|
+> |product-category|MARGIN_LOANS|
+> |product-category|LEASES|
+87,88c87,88
+< |product-category|TRAVEL_CARDS|
+< |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+---
+> |product-category|OVERDRAFTS|
+> |product-category|BUSINESS_LOANS|
+109c109
+<         "productCategory": "BUSINESS_LOANS",
+---
+>         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+218,223c218,220
+< |product-category|BUSINESS_LOANS|
+< |product-category|CRED_AND_CHRG_CARDS|
+< |product-category|LEASES|
+< |product-category|MARGIN_LOANS|
+< |product-category|OVERDRAFTS|
+< |product-category|PERS_LOANS|
+---
+> |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+> |product-category|TERM_DEPOSITS|
+> |product-category|TRAVEL_CARDS|
+226c223,226
+< |product-category|TERM_DEPOSITS|
+---
+> |product-category|CRED_AND_CHRG_CARDS|
+> |product-category|PERS_LOANS|
+> |product-category|MARGIN_LOANS|
+> |product-category|LEASES|
+228,229c228,229
+< |product-category|TRAVEL_CARDS|
+< |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+---
+> |product-category|OVERDRAFTS|
+> |product-category|BUSINESS_LOANS|
+616c616
+<     "productCategory": "BUSINESS_LOANS",
+---
+>     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+660c660
+<         "depositRateType": "BONUS",
+---
+>         "depositRateType": "FIXED",
+670c670
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+686c686
+<         "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>         "lendingRateType": "FIXED",
+691c691
+<         "interestPaymentDue": "IN_ADVANCE",
+---
+>         "interestPaymentDue": "IN_ARREARS",
+700c700
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+716c716
+<         "featureType": "ADDITIONAL_CARDS",
+---
+>         "featureType": "CARD_ACCESS",
+726c726
+<         "feeType": "DEPOSIT",
+---
+>         "feeType": "PERIODIC",
+918c918
+<         "type": "DIRECT_DEBIT",
+---
+>         "type": "FEE",
+1043c1043
+<     "type": "DIRECT_DEBIT",
+---
+>     "type": "FEE",
+1287,1292c1287,1289
+< |product-category|BUSINESS_LOANS|
+< |product-category|CRED_AND_CHRG_CARDS|
+< |product-category|LEASES|
+< |product-category|MARGIN_LOANS|
+< |product-category|OVERDRAFTS|
+< |product-category|PERS_LOANS|
+---
+> |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+> |product-category|TERM_DEPOSITS|
+> |product-category|TRAVEL_CARDS|
+1295c1292,1295
+< |product-category|TERM_DEPOSITS|
+---
+> |product-category|CRED_AND_CHRG_CARDS|
+> |product-category|PERS_LOANS|
+> |product-category|MARGIN_LOANS|
+> |product-category|LEASES|
+1297,1298c1297,1298
+< |product-category|TRAVEL_CARDS|
+< |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+---
+> |product-category|OVERDRAFTS|
+> |product-category|BUSINESS_LOANS|
+1596c1596
+<                   "type": "ABN"
+---
+>                   "type": "EMAIL"
+1767,1772c1767,1769
+< |product-category|BUSINESS_LOANS|
+< |product-category|CRED_AND_CHRG_CARDS|
+< |product-category|LEASES|
+< |product-category|MARGIN_LOANS|
+< |product-category|OVERDRAFTS|
+< |product-category|PERS_LOANS|
+---
+> |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+> |product-category|TERM_DEPOSITS|
+> |product-category|TRAVEL_CARDS|
+1775c1772,1775
+< |product-category|TERM_DEPOSITS|
+---
+> |product-category|CRED_AND_CHRG_CARDS|
+> |product-category|PERS_LOANS|
+> |product-category|MARGIN_LOANS|
+> |product-category|LEASES|
+1777,1778c1777,1778
+< |product-category|TRAVEL_CARDS|
+< |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+---
+> |product-category|OVERDRAFTS|
+> |product-category|BUSINESS_LOANS|
+1819c1819
+<                   "type": "ABN"
+---
+>                   "type": "EMAIL"
+2035c2035
+<                   "type": "ABN"
+---
+>                   "type": "EMAIL"
+2206d2205
+< |type|BILLER|
+2208a2208
+> |type|BILLER|
+2223c2223
+<         "type": "BILLER",
+---
+>         "type": "DOMESTIC",
+2336c2336
+<     "type": "BILLER",
+---
+>     "type": "DOMESTIC",
+2352c2352
+<         "type": "ABN"
+---
+>         "type": "EMAIL"
+2510,2515c2510,2512
+< |product-category|BUSINESS_LOANS|
+< |product-category|CRED_AND_CHRG_CARDS|
+< |product-category|LEASES|
+< |product-category|MARGIN_LOANS|
+< |product-category|OVERDRAFTS|
+< |product-category|PERS_LOANS|
+---
+> |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+> |product-category|TERM_DEPOSITS|
+> |product-category|TRAVEL_CARDS|
+2518c2515,2518
+< |product-category|TERM_DEPOSITS|
+---
+> |product-category|CRED_AND_CHRG_CARDS|
+> |product-category|PERS_LOANS|
+> |product-category|MARGIN_LOANS|
+> |product-category|LEASES|
+2520,2521c2520,2521
+< |product-category|TRAVEL_CARDS|
+< |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+---
+> |product-category|OVERDRAFTS|
+> |product-category|BUSINESS_LOANS|
+2536c2536
+<         "productCategory": "BUSINESS_LOANS",
+---
+>         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+2656c2656
+<     "productCategory": "BUSINESS_LOANS",
+---
+>     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+2689c2689
+<         "featureType": "ADDITIONAL_CARDS",
+---
+>         "featureType": "CARD_ACCESS",
+2714c2714
+<         "feeType": "DEPOSIT",
+---
+>         "feeType": "PERIODIC",
+2750c2750
+<         "depositRateType": "BONUS",
+---
+>         "depositRateType": "FIXED",
+2760c2760
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+2776c2776
+<         "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>         "lendingRateType": "FIXED",
+2781c2781
+<         "interestPaymentDue": "IN_ADVANCE",
+---
+>         "interestPaymentDue": "IN_ARREARS",
+2790c2790
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+2880c2880
+< |Version|**2**
+---
+> |Version|**1**
+2910,2911c2910
+<       "occupationCode": "string",
+<       "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3"
+---
+>       "occupationCode": "string"
+2925,2926c2924
+<       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+<       "organisationType": "COMPANY",
+---
+>       "organisationType": "SOLE_TRADER",
+3006c3004
+< |Version|**2**
+---
+> |Version|**1**
+3037d3034
+<       "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3",
+3093c3090
+<           "purpose": "MAIL"
+---
+>           "purpose": "REGISTERED"
+3109,3110c3106
+<       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+<       "organisationType": "COMPANY",
+---
+>       "organisationType": "SOLE_TRADER",
+3150c3146
+<           "purpose": "MAIL"
+---
+>           "purpose": "REGISTERED"
+3396c3392
+<         "productCategory": "BUSINESS_LOANS",
+---
+>         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+3453c3449
+<   "productCategory": "BUSINESS_LOANS",
+---
+>   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+3513c3509
+<     "productCategory": "BUSINESS_LOANS",
+---
+>     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+3546c3542
+<         "featureType": "ADDITIONAL_CARDS",
+---
+>         "featureType": "CARD_ACCESS",
+3571c3567
+<         "feeType": "DEPOSIT",
+---
+>         "feeType": "PERIODIC",
+3607c3603
+<         "depositRateType": "BONUS",
+---
+>         "depositRateType": "FIXED",
+3617c3613
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+3633c3629
+<         "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>         "lendingRateType": "FIXED",
+3638c3634
+<         "interestPaymentDue": "IN_ADVANCE",
+---
+>         "interestPaymentDue": "IN_ARREARS",
+3647c3643
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+3688c3684
+<   "productCategory": "BUSINESS_LOANS",
+---
+>   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+3721c3717
+<       "featureType": "ADDITIONAL_CARDS",
+---
+>       "featureType": "CARD_ACCESS",
+3746c3742
+<       "feeType": "DEPOSIT",
+---
+>       "feeType": "PERIODIC",
+3782c3778
+<       "depositRateType": "BONUS",
+---
+>       "depositRateType": "FIXED",
+3792c3788
+<           "rateApplicationMethod": "PER_TIER",
+---
+>           "rateApplicationMethod": "WHOLE_BALANCE",
+3808c3804
+<       "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>       "lendingRateType": "FIXED",
+3813c3809
+<       "interestPaymentDue": "IN_ADVANCE",
+---
+>       "interestPaymentDue": "IN_ARREARS",
+3822c3818
+<           "rateApplicationMethod": "PER_TIER",
+---
+>           "rateApplicationMethod": "WHOLE_BALANCE",
+3894c3890
+<   "featureType": "ADDITIONAL_CARDS",
+---
+>   "featureType": "CARD_ACCESS",
+3915,3918d3910
+< |featureType|ADDITIONAL_CARDS|
+< |featureType|BALANCE_TRANSFERS|
+< |featureType|BILL_PAYMENT|
+< |featureType|BONUS_REWARDS|
+3920,3923c3912,3913
+< |featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
+< |featureType|DIGITAL_BANKING|
+< |featureType|DIGITAL_WALLET|
+< |featureType|DONATE_INTEREST|
+---
+> |featureType|ADDITIONAL_CARDS|
+> |featureType|UNLIMITED_TXNS|
+3926,3928d3915
+< |featureType|INSURANCE|
+< |featureType|INTEREST_FREE|
+< |featureType|INTEREST_FREE_TRANSFERS|
+3930,3932d3916
+< |featureType|NOTIFICATIONS|
+< |featureType|NPP_ENABLED|
+< |featureType|NPP_PAYID|
+3936c3920,3932
+< |featureType|UNLIMITED_TXNS|
+---
+> |featureType|INSURANCE|
+> |featureType|BALANCE_TRANSFERS|
+> |featureType|INTEREST_FREE|
+> |featureType|INTEREST_FREE_TRANSFERS|
+> |featureType|DIGITAL_WALLET|
+> |featureType|DIGITAL_BANKING|
+> |featureType|NPP_PAYID|
+> |featureType|NPP_ENABLED|
+> |featureType|DONATE_INTEREST|
+> |featureType|BILL_PAYMENT|
+> |featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
+> |featureType|BONUS_REWARDS|
+> |featureType|NOTIFICATIONS|
+3967d3962
+< |constraintType|MIN_LIMIT|
+3969d3963
+< |constraintType|MAX_LIMIT|
+3970a3965,3966
+> |constraintType|MAX_LIMIT|
+> |constraintType|MIN_LIMIT|
+4000,4001c3996
+< |eligibilityType|EMPLOYMENT_STATUS|
+< |eligibilityType|MAX_AGE|
+---
+> |eligibilityType|PENSION_RECIPIENT|
+4002a3998
+> |eligibilityType|MAX_AGE|
+4005,4007d4000
+< |eligibilityType|NATURAL_PERSON|
+< |eligibilityType|PENSION_RECIPIENT|
+< |eligibilityType|RESIDENCY_STATUS|
+4009a4003,4005
+> |eligibilityType|EMPLOYMENT_STATUS|
+> |eligibilityType|RESIDENCY_STATUS|
+> |eligibilityType|NATURAL_PERSON|
+4019c4015
+<   "feeType": "DEPOSIT",
+---
+>   "feeType": "PERIODIC",
+4075a4072,4074
+> |feeType|PERIODIC|
+> |feeType|TRANSACTION|
+> |feeType|WITHDRAWAL|
+4077,4078d4075
+< |feeType|EVENT|
+< |feeType|EXIT|
+4080d4076
+< |feeType|PERIODIC|
+4082c4078
+< |feeType|TRANSACTION|
+---
+> |feeType|EVENT|
+4083a4080
+> |feeType|EXIT|
+4085d4081
+< |feeType|WITHDRAWAL|
+4121c4117
+< |amount|[AmountString](#common-field-types)|conditional|none|Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.|
+---
+> |amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+4137,4138d4132
+< |discountType|ELIGIBILITY_ONLY|
+< |discountType|FEE_CAP|
+4139a4134,4135
+> |discountType|FEE_CAP|
+> |discountType|ELIGIBILITY_ONLY|
+4161c4157
+< |additionalInfo|string|conditional|none|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
+---
+> |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
+4169,4171c4165
+< |discountEligibilityType|EMPLOYMENT_STATUS|
+< |discountEligibilityType|INTRODUCTORY|
+< |discountEligibilityType|MAX_AGE|
+---
+> |discountEligibilityType|PENSION_RECIPIENT|
+4172a4167
+> |discountEligibilityType|MAX_AGE|
+4175,4177d4169
+< |discountEligibilityType|NATURAL_PERSON|
+< |discountEligibilityType|PENSION_RECIPIENT|
+< |discountEligibilityType|RESIDENCY_STATUS|
+4179a4172,4175
+> |discountEligibilityType|EMPLOYMENT_STATUS|
+> |discountEligibilityType|RESIDENCY_STATUS|
+> |discountEligibilityType|NATURAL_PERSON|
+> |discountEligibilityType|INTRODUCTORY|
+4188c4184
+<   "depositRateType": "BONUS",
+---
+>   "depositRateType": "FIXED",
+4198c4194
+<       "rateApplicationMethod": "PER_TIER",
+---
+>       "rateApplicationMethod": "WHOLE_BALANCE",
+4230a4227
+> |depositRateType|FIXED|
+4233,4234c4230
+< |depositRateType|FIXED|
+< |depositRateType|FLOATING|
+---
+> |depositRateType|VARIABLE|
+4235a4232
+> |depositRateType|FLOATING|
+4237d4233
+< |depositRateType|VARIABLE|
+4245c4241
+<   "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>   "lendingRateType": "FIXED",
+4250c4246
+<   "interestPaymentDue": "IN_ADVANCE",
+---
+>   "interestPaymentDue": "IN_ARREARS",
+4259c4255
+<       "rateApplicationMethod": "PER_TIER",
+---
+>       "rateApplicationMethod": "WHOLE_BALANCE",
+4296,4298c4292,4294
+< |lendingRateType|BUNDLE_DISCOUNT_FIXED|
+< |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
+< |lendingRateType|CASH_ADVANCE|
+---
+> |lendingRateType|FIXED|
+> |lendingRateType|VARIABLE|
+> |lendingRateType|INTRODUCTORY|
+4299a4296
+> |lendingRateType|PENALTY|
+4301d4297
+< |lendingRateType|INTRODUCTORY|
+4303c4299
+< |lendingRateType|PENALTY|
+---
+> |lendingRateType|CASH_ADVANCE|
+4305,4307c4301,4302
+< |lendingRateType|VARIABLE|
+< |lendingRateType|FIXED|
+< |interestPaymentDue|IN_ADVANCE|
+---
+> |lendingRateType|BUNDLE_DISCOUNT_FIXED|
+> |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
+4308a4304
+> |interestPaymentDue|IN_ADVANCE|
+4324c4320
+<   "rateApplicationMethod": "PER_TIER",
+---
+>   "rateApplicationMethod": "WHOLE_BALANCE",
+4343,4344c4339,4340
+< |minimumValue|[Number](#common-field-types)|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
+< |maximumValue|[Number](#common-field-types)|optional|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
+---
+> |minimumValue|number|mandatory|none|The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value|
+> |maximumValue|number|optional|none|The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
+4356d4351
+< |unitOfMeasure|DAY|
+4358c4353
+< |rateApplicationMethod|PER_TIER|
+---
+> |unitOfMeasure|DAY|
+4359a4355
+> |rateApplicationMethod|PER_TIER|
+4398c4394
+<         "productCategory": "BUSINESS_LOANS",
+---
+>         "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+4440c4436
+<   "productCategory": "BUSINESS_LOANS",
+---
+>   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+4481c4477
+<     "productCategory": "BUSINESS_LOANS",
+---
+>     "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+4525c4521
+<         "depositRateType": "BONUS",
+---
+>         "depositRateType": "FIXED",
+4535c4531
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+4551c4547
+<         "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>         "lendingRateType": "FIXED",
+4556c4552
+<         "interestPaymentDue": "IN_ADVANCE",
+---
+>         "interestPaymentDue": "IN_ARREARS",
+4565c4561
+<             "rateApplicationMethod": "PER_TIER",
+---
+>             "rateApplicationMethod": "WHOLE_BALANCE",
+4581c4577
+<         "featureType": "ADDITIONAL_CARDS",
+---
+>         "featureType": "CARD_ACCESS",
+4591c4587
+<         "feeType": "DEPOSIT",
+---
+>         "feeType": "PERIODIC",
+4694c4690
+<   "productCategory": "BUSINESS_LOANS",
+---
+>   "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+4738c4734
+<       "depositRateType": "BONUS",
+---
+>       "depositRateType": "FIXED",
+4748c4744
+<           "rateApplicationMethod": "PER_TIER",
+---
+>           "rateApplicationMethod": "WHOLE_BALANCE",
+4764c4760
+<       "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
+---
+>       "lendingRateType": "FIXED",
+4769c4765
+<       "interestPaymentDue": "IN_ADVANCE",
+---
+>       "interestPaymentDue": "IN_ARREARS",
+4778c4774
+<           "rateApplicationMethod": "PER_TIER",
+---
+>           "rateApplicationMethod": "WHOLE_BALANCE",
+4794c4790
+<       "featureType": "ADDITIONAL_CARDS",
+---
+>       "featureType": "CARD_ACCESS",
+4804c4800
+<       "feeType": "DEPOSIT",
+---
+>       "feeType": "PERIODIC",
+5057c5053
+<         "type": "DIRECT_DEBIT",
+---
+>         "type": "FEE",
+5108c5104
+<   "type": "DIRECT_DEBIT",
+---
+>   "type": "FEE",
+5154d5149
+< |type|DIRECT_DEBIT|
+5158d5152
+< |type|PAYMENT|
+5160a5155,5156
+> |type|PAYMENT|
+> |type|DIRECT_DEBIT|
+5175c5171
+<     "type": "DIRECT_DEBIT",
+---
+>     "type": "FEE",
+5227c5223
+<   "type": "DIRECT_DEBIT",
+---
+>   "type": "FEE",
+5436c5432
+<         "type": "BILLER",
+---
+>         "type": "DOMESTIC",
+5475c5471
+<     "type": "BILLER",
+---
+>     "type": "DOMESTIC",
+5491c5487
+<         "type": "ABN"
+---
+>         "type": "EMAIL"
+5547c5543
+<   "type": "BILLER",
+---
+>   "type": "DOMESTIC",
+5567d5562
+< |type|BILLER|
+5569a5565
+> |type|BILLER|
+5580c5576
+<   "type": "BILLER",
+---
+>   "type": "DOMESTIC",
+5596c5592
+<       "type": "ABN"
+---
+>       "type": "EMAIL"
+5674c5670
+<     "type": "ABN"
+---
+>     "type": "EMAIL"
+5743c5739
+<   "type": "ABN"
+---
+>   "type": "EMAIL"
+5760d5755
+< |type|ABN|
+5762d5756
+< |type|ORG_IDENTIFIER|
+5763a5758,5759
+> |type|ABN|
+> |type|ORG_IDENTIFIER|
+5982c5978
+<                   "type": "ABN"
+---
+>                   "type": "EMAIL"
+6106c6102
+<             "type": "ABN"
+---
+>             "type": "EMAIL"
+6192d6187
+< |status|INACTIVE|
+6193a6189
+> |status|INACTIVE|
+6218c6214
+<         "type": "ABN"
+---
+>         "type": "EMAIL"
+6289c6285
+<       "type": "ABN"
+---
+>       "type": "EMAIL"
+6602d6597
+< |status|SCHEDULED_OUTAGE|
+6603a6599
+> |status|SCHEDULED_OUTAGE|
+6658c6654
+< |isPartial|[Boolean](#common-field-types)|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+---
+> |isPartial|boolean|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+6678,6679c6674
+<       "occupationCode": "string",
+<       "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3"
+---
+>       "occupationCode": "string"
+6693,6694c6688
+<       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+<       "organisationType": "COMPANY",
+---
+>       "organisationType": "SOLE_TRADER",
+6713,6714c6707,6708
+< |» person|[CommonPersonV2](#schemacommonpersonv2)|optional|none|none|
+< |» organisation|[CommonOrganisationV2](#schemacommonorganisationv2)|optional|none|none|
+---
+> |» person|[CommonPerson](#schemacommonperson)|optional|none|none|
+> |» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
+6743d6736
+<       "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3",
+6799c6792
+<           "purpose": "MAIL"
+---
+>           "purpose": "REGISTERED"
+6815,6816c6808
+<       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+<       "organisationType": "COMPANY",
+---
+>       "organisationType": "SOLE_TRADER",
+6856c6848
+<           "purpose": "MAIL"
+---
+>           "purpose": "REGISTERED"
+6887c6879
+< <h2 id="tocScommonpersonv2">CommonPersonV2</h2>
+---
+> <h2 id="tocScommonperson">CommonPerson</h2>
+6889c6881
+< <a id="schemacommonpersonv2"></a>
+---
+> <a id="schemacommonperson"></a>
+6901,6902c6893
+<   "occupationCode": "string",
+<   "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3"
+---
+>   "occupationCode": "string"
+6917,6927c6908
+< |occupationCode|[ExternalRef](#common-field-types)|conditional|none|Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.|
+< |occupationCodeVersion|string|conditional|none|The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.|
+< 
+< #### Enumerated Values
+< 
+< |Property|Value|
+< |---|---|
+< |occupationCodeVersion|ANZSCO_1220.0_2013_V1.3|
+< |occupationCodeVersion|ANZSCO_1220.0_2013_V1.2|
+< |occupationCodeVersion|ANZSCO_1220.0_2006_V1.1|
+< |occupationCodeVersion|ANZSCO_1220.0_2006_V1.0|
+---
+> |occupationCode|string|optional|none|Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.|
+6944d6924
+<   "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3",
+7000c6980
+<       "purpose": "MAIL"
+---
+>       "purpose": "REGISTERED"
+7013c6993
+< |*anonymous*|[CommonPersonV2](#schemacommonpersonv2)|mandatory|none|none|
+---
+> |*anonymous*|[CommonPerson](#schemacommonperson)|mandatory|none|none|
+7024c7004
+< <h2 id="tocScommonorganisationv2">CommonOrganisationV2</h2>
+---
+> <h2 id="tocScommonorganisation">CommonOrganisation</h2>
+7026c7006
+< <a id="schemacommonorganisationv2"></a>
+---
+> <a id="schemacommonorganisation"></a>
+7041,7042c7021
+<   "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+<   "organisationType": "COMPANY",
+---
+>   "organisationType": "SOLE_TRADER",
+7063,7064c7042
+< |industryCode|[ExternalRef](#common-field-types)|conditional|none|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.|
+< |industryCodeVersion|string|conditional|none|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.|
+---
+> |industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
+7073,7074c7051
+< |industryCodeVersion|ANZSIC_1292.0_2006_V2.0|
+< |industryCodeVersion|ANZSIC_1292.0_2006_V1.0|
+---
+> |organisationType|SOLE_TRADER|
+7076d7052
+< |organisationType|GOVERNMENT_ENTITY|
+7078d7053
+< |organisationType|SOLE_TRADER|
+7079a7055
+> |organisationType|GOVERNMENT_ENTITY|
+7099,7100c7075
+<   "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+<   "organisationType": "COMPANY",
+---
+>   "organisationType": "SOLE_TRADER",
+7140c7115
+<       "purpose": "MAIL"
+---
+>       "purpose": "REGISTERED"
+7153c7128
+< |*anonymous*|[CommonOrganisationV2](#schemacommonorganisationv2)|mandatory|none|none|
+---
+> |*anonymous*|[CommonOrganisation](#schemacommonorganisation)|mandatory|none|none|
+7197d7171
+< |purpose|INTERNATIONAL|
+7199a7174
+> |purpose|INTERNATIONAL|
+7273c7248
+<   "purpose": "MAIL"
+---
+>   "purpose": "REGISTERED"
+7296a7272
+> |purpose|REGISTERED|
+7299d7274
+< |purpose|REGISTERED|
+7562c7537
+< "BUSINESS_LOANS"
+---
+> "TRANS_AND_SAVINGS_ACCOUNTS"
+7578,7583c7553,7555
+< |*anonymous*|BUSINESS_LOANS|
+< |*anonymous*|CRED_AND_CHRG_CARDS|
+< |*anonymous*|LEASES|
+< |*anonymous*|MARGIN_LOANS|
+< |*anonymous*|OVERDRAFTS|
+< |*anonymous*|PERS_LOANS|
+---
+> |*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
+> |*anonymous*|TERM_DEPOSITS|
+> |*anonymous*|TRAVEL_CARDS|
+7586c7558,7561
+< |*anonymous*|TERM_DEPOSITS|
+---
+> |*anonymous*|CRED_AND_CHRG_CARDS|
+> |*anonymous*|PERS_LOANS|
+> |*anonymous*|MARGIN_LOANS|
+> |*anonymous*|LEASES|
+7588,7589c7563,7564
+< |*anonymous*|TRAVEL_CARDS|
+< |*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
+---
+> |*anonymous*|OVERDRAFTS|
+> |*anonymous*|BUSINESS_LOANS|
