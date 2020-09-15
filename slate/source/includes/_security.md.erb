@@ -696,7 +696,7 @@ At a minimum, the Data Holder metadata MUST include:
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
 - `jwks_uri`: The JSON Web Key Set for the data holder.
-- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **FAPI-RW** and **OIDD**.
+- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[FAPI-RW]** and **[OIDD]**.
 - `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens.
 
 **From November 2020**, the Data Holder metadata MUST include:
@@ -820,12 +820,15 @@ Introspection of Refresh Tokens MUST be supported.
 
 Introspection of Access Tokens and ID Tokens MUST NOT be supported.
 
-An Introspection End Point Response SHALL only include the following fields:
+A Token Introspection End Point Response SHALL include, at least, the following fields:
 
 - `active`: Boolean indicator of whether or not the presented token
       is currently active.
 - `exp`:  A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
+- `scope`: A JSON string containing a space-separated list of scopes associated with this token.
 - `cdr_arrangement_id`: A unique identifier of the CDR arrangement related to the authorisation.
+
+A Token Introspection End Point Response MAY include claims defined in Section 2.2 of [RFC7662] but ``username`` SHALL NOT be allowed.
 
 ### Token Revocation End Point
 

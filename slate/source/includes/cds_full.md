@@ -1599,6 +1599,7 @@ Obtain scheduled, outgoing payments for a specific account
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
+                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -1821,6 +1822,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
+                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -2036,6 +2038,7 @@ Obtain scheduled payments for a specified list of accounts
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
+                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -2352,6 +2355,7 @@ Note that the payee sub-structure should be selected to represent the payment de
     "biller": {
       "billerCode": "string",
       "crn": "string",
+      "crnType": "FIXED_CRN",
       "billerName": "string"
     },
     "international": {
@@ -4947,7 +4951,7 @@ This operation does not require authentication
 |maturityDate|[DateString](#common-field-types)|mandatory|none|Maturity date for the term deposit|
 |maturityAmount|[AmountString](#common-field-types)|optional|none|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
 |maturityCurrency|[CurrencyString](#common-field-types)|optional|none|If absent assumes AUD|
-|maturityInstructions|string|mandatory|none|Current instructions on action to be taken at maturity|
+|maturityInstructions|string|mandatory|none|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments|
 
 #### Enumerated Values
 
@@ -4955,6 +4959,7 @@ This operation does not require authentication
 |---|---|
 |maturityInstructions|ROLLED_OVER|
 |maturityInstructions|PAID_OUT_AT_MATURITY|
+|maturityInstructions|HOLD_ON_MATURITY|
 
 <h2 id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
 
@@ -5485,6 +5490,7 @@ This operation does not require authentication
     "biller": {
       "billerCode": "string",
       "crn": "string",
+      "crnType": "FIXED_CRN",
       "billerName": "string"
     },
     "international": {
@@ -5545,7 +5551,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |payeeId|[ASCIIString](#common-field-types)|mandatory|none|ID of the payee adhering to the rules of ID permanence|
-|nickname|string|mandatory|none|The short display name of the payee as provided by the customer|
+|nickname|string|mandatory|none|The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels|
 |description|string|optional|none|A description of the payee provided by the customer|
 |type|string|mandatory|none|The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY|
 |creationDate|[DateString](#common-field-types)|optional|none|The date the payee was created by the customer|
@@ -5589,6 +5595,7 @@ This operation does not require authentication
   "biller": {
     "billerCode": "string",
     "crn": "string",
+    "crnType": "FIXED_CRN",
     "billerName": "string"
   },
   "international": {
@@ -5631,7 +5638,7 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|none|
 |» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
 |» domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
-|» biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
+|» biller|[BankingBillerPayeeV2](#schemabankingbillerpayeev2)|conditional|none|none|
 |» international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
 
 #### Enumerated Values
@@ -5751,14 +5758,15 @@ This operation does not require authentication
 |type|ABN|
 |type|ORG_IDENTIFIER|
 
-<h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
+<h2 id="tocSbankingbillerpayeev2">BankingBillerPayeeV2</h2>
 
-<a id="schemabankingbillerpayee"></a>
+<a id="schemabankingbillerpayeev2"></a>
 
 ```json
 {
   "billerCode": "string",
   "crn": "string",
+  "crnType": "FIXED_CRN",
   "billerName": "string"
 }
 
@@ -5770,7 +5778,16 @@ This operation does not require authentication
 |---|---|---|---|---|
 |billerCode|string|mandatory|none|BPAY Biller Code of the Biller|
 |crn|string|conditional|none|BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type|
+|crnType|string|mandatory|none|Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.|
 |billerName|string|mandatory|none|Name of the Biller|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|crnType|FIXED_CRN|
+|crnType|VARIABLE_CRN|
+|crnType|INTELLIGENT_CRN|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
 
@@ -5964,6 +5981,7 @@ This operation does not require authentication
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
+                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -6087,6 +6105,7 @@ This operation does not require authentication
         "biller": {
           "billerCode": "string",
           "crn": "string",
+          "crnType": "FIXED_CRN",
           "billerName": "string"
         },
         "international": {
@@ -6198,6 +6217,7 @@ This operation does not require authentication
     "biller": {
       "billerCode": "string",
       "crn": "string",
+      "crnType": "FIXED_CRN",
       "billerName": "string"
     },
     "international": {
@@ -6268,6 +6288,7 @@ This operation does not require authentication
   "biller": {
     "billerCode": "string",
     "crn": "string",
+    "crnType": "FIXED_CRN",
     "billerName": "string"
   },
   "international": {
@@ -6305,7 +6326,7 @@ This operation does not require authentication
 |accountId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
 |payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
 |domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
-|biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
+|biller|[BankingBillerPayeeV2](#schemabankingbillerpayeev2)|conditional|none|none|
 |international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
 
 #### Enumerated Values

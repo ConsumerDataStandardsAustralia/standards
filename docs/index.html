@@ -509,7 +509,7 @@
                     <a href="#tocSbankingdomesticpayeepayid" class="toc-h2 toc-link" data-title="BankingDomesticPayeePayId">BankingDomesticPayeePayId</a>
                   </li>
                   <li>
-                    <a href="#tocSbankingbillerpayee" class="toc-h2 toc-link" data-title="BankingBillerPayee">BankingBillerPayee</a>
+                    <a href="#tocSbankingbillerpayeev2" class="toc-h2 toc-link" data-title="BankingBillerPayeeV2">BankingBillerPayeeV2</a>
                   </li>
                   <li>
                     <a href="#tocSbankinginternationalpayee" class="toc-h2 toc-link" data-title="BankingInternationalPayee">BankingInternationalPayee</a>
@@ -2497,7 +2497,7 @@ Content-Type: application/json
 <li><code>claims_supported</code>:  The list of supported claims.</li>
 <li><code>acr_values_supported</code>:  The supported ACR values.</li>
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
-<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong>FAPI-RW</strong> and <strong>OIDD</strong>.</li>
+<li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong>[FAPI-RW]</strong> and <strong>[OIDD]</strong>.</li>
 <li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens.</li>
 </ul>
 
@@ -2698,14 +2698,17 @@ Host: www.holder.com.au
 
 <p>Introspection of Access Tokens and ID Tokens MUST NOT be supported.</p>
 
-<p>An Introspection End Point Response SHALL only include the following fields:</p>
+<p>A Token Introspection End Point Response SHALL include, at least, the following fields:</p>
 
 <ul>
 <li><code>active</code>: Boolean indicator of whether or not the presented token
   is currently active.</li>
 <li><code>exp</code>:  A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
+<li><code>scope</code>: A JSON string containing a space-separated list of scopes associated with this token.</li>
 <li><code>cdr_arrangement_id</code>: A unique identifier of the CDR arrangement related to the authorisation.</li>
 </ul>
+
+<p>A Token Introspection End Point Response MAY include claims defined in Section 2.2 of [RFC7662] but <code>username</code> SHALL NOT be allowed.</p>
 <h3 id='token-revocation-end-point'>Token Revocation End Point</h3>
 <table><thead>
 <tr>
@@ -5897,6 +5900,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6271,6 +6275,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6577,6 +6582,7 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7091,6 +7097,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12572,6 +12579,7 @@ This operation does not require authentication
     </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12668,7 +12676,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The short display name of the payee as provided by the customer</td>
+<td>The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels</td>
 </tr>
 <tr>
 <td>description</td>
@@ -12742,6 +12750,7 @@ This operation does not require authentication
   </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12822,7 +12831,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» biller</td>
-<td><a href="#schemabankingbillerpayee">BankingBillerPayee</a></td>
+<td><a href="#schemabankingbillerpayeev2">BankingBillerPayeeV2</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>none</td>
@@ -13070,12 +13079,13 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
+<h2 id="tocSbankingbillerpayeev2">BankingBillerPayeeV2</h2>
 
-<p><a id="schemabankingbillerpayee"></a></p>
+<p><a id="schemabankingbillerpayeev2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -13104,11 +13114,38 @@ This operation does not require authentication
 <td>BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type</td>
 </tr>
 <tr>
+<td>crnType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer&#39;s account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.</td>
+</tr>
+<tr>
 <td>billerName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
 <td>Name of the Biller</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>crnType</td>
+<td>FIXED_CRN</td>
+</tr>
+<tr>
+<td>crnType</td>
+<td>VARIABLE_CRN</td>
+</tr>
+<tr>
+<td>crnType</td>
+<td>INTELLIGENT_CRN</td>
 </tr>
 </tbody></table>
 
@@ -13488,6 +13525,7 @@ This operation does not require authentication
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13638,6 +13676,7 @@ This operation does not require authentication
         </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13764,7 +13803,7 @@ This operation does not require authentication
 <td>Object containing the detail of the schedule for the payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13812,6 +13851,7 @@ This operation does not require authentication
     </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13909,6 +13949,7 @@ This operation does not require authentication
   </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13976,7 +14017,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>biller</td>
-<td><a href="#schemabankingbillerpayee">BankingBillerPayee</a></td>
+<td><a href="#schemabankingbillerpayeev2">BankingBillerPayeeV2</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>none</td>
@@ -13989,7 +14030,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14133,7 +14174,7 @@ This operation does not require authentication
 <td>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14242,7 +14283,7 @@ This operation does not require authentication
 <td>An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14360,7 +14401,7 @@ This operation does not require authentication
 <td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14525,7 +14566,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14753,7 +14794,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14961,7 +15002,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15318,7 +15359,7 @@ This operation does not require authentication
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15532,7 +15573,7 @@ This operation does not require authentication
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15606,7 +15647,7 @@ This operation does not require authentication
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15720,7 +15761,7 @@ This operation does not require authentication
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15822,7 +15863,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16329,7 +16370,7 @@ This operation does not require authentication
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<h4 id='enumerated-values-40'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
