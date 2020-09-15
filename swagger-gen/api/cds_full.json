@@ -2088,6 +2088,7 @@
         "discountEligibilityType"
       ],
       "x-conditional": [
+        "additionalInfo",
         "additionalValue"
       ],
       "properties": {
@@ -2116,7 +2117,7 @@
         },
         "additionalInfo": {
           "type": "string",
-          "description": "Display text providing more information on this eligibility constraint"
+          "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
         },
         "additionalInfoUri": {
           "type": "string",

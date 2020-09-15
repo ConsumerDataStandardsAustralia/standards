@@ -1,4 +1,4 @@
-4117c4117
-< |amount|[AmountString](#common-field-types)|conditional|none|Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.|
+4157c4157
+< |additionalInfo|string|conditional|none|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 ---
-> |amount|[AmountString](#common-field-types)|conditional|none|Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory|
+> |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|

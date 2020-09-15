@@ -2168,7 +2168,7 @@
         },
         "additionalInfo" : {
           "type" : "string",
-          "description" : "Display text providing more information on this eligibility constraint"
+          "description" : "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
         },
         "additionalInfoUri" : {
           "type" : "string",
@@ -2176,7 +2176,7 @@
           "x-cds-type" : "URIString"
         }
       },
-      "x-conditional" : [ "additionalValue" ]
+      "x-conditional" : [ "additionalInfo", "additionalValue" ]
     },
     "BankingProductDepositRate" : {
       "type" : "object",

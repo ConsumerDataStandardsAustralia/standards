@@ -4154,7 +4154,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |discountEligibilityType|string|mandatory|none|The type of the specific eligibility constraint for a discount|
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
-|additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
+|additionalInfo|string|conditional|none|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this eligibility constraint|
 
 #### Enumerated Values

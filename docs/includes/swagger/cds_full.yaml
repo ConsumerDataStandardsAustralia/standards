@@ -2021,12 +2021,13 @@ definitions:
         description: Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
       additionalInfo:
         type: string
-        description: Display text providing more information on this eligibility constraint
+        description: Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
       additionalInfoUri:
         type: string
         description: Link to a web page with more information on this eligibility constraint
         x-cds-type: URIString
     x-conditional:
+    - additionalInfo
     - additionalValue
   BankingProductDepositRate:
     type: object
