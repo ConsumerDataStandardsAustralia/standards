@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Consumer Data Standards Administration End Points",
-    "description": "Data Holder/ Reciever Consumer Data Standards Administration End Points",
+    "description": "Data Holder Consumer Data Standards Administration End Points",
     "version": "1.2.0",
     "contact": {
       "name": "Consumer Data Standards Administration End Points",

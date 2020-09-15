@@ -1,7 +1,5 @@
 
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
-
 ## Metadata Update
 
 <a id="opIdmetadataUpdate"></a>
