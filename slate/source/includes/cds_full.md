@@ -4122,7 +4122,7 @@ This operation does not require authentication
 |additionalValue|string|conditional|none|Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)|
 |additionalInfo|string|optional|none|Display text providing more information on the discount|
 |additionalInfoUri|[URIString](#common-field-types)|optional|none|Link to a web page with more information on this discount|
-|eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|optional|none|Eligibility constraints that apply to this discount|
+|eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|conditional|none|Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.|
 
 #### Enumerated Values
 

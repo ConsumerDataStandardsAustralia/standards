@@ -272,9 +272,9 @@ definitions:
       action:
         type: string
         description: The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable
+        default: REFRESH
         enum:
         - REFRESH
-        default: REFRESH
   ResponseMetricsList_data:
     type: object
     required:

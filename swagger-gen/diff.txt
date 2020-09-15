@@ -1,4 +1,4 @@
-4157c4157
-< |additionalInfo|string|conditional|none|Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)|
+4125c4125
+< |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|conditional|none|Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.|
 ---
-> |additionalInfo|string|optional|none|Display text providing more information on this eligibility constraint|
+> |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|conditional|none|Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``|

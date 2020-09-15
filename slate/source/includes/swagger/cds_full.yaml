@@ -1984,16 +1984,17 @@ definitions:
         x-cds-type: URIString
       eligibility:
         type: array
-        description: Eligibility constraints that apply to this discount
+        description: Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
         items:
           $ref: '#/definitions/BankingProductDiscountEligibility'
     x-conditional:
-    - balanceRate
-    - transactionRate
     - accruedRate
-    - feeRate
     - additionalValue
     - amount
+    - balanceRate
+    - eligibility
+    - feeRate
+    - transactionRate
   BankingProductDiscountEligibility:
     type: object
     required:
@@ -2239,10 +2240,10 @@ definitions:
       openStatus:
         type: string
         description: Open or closed status for the account. If not present then OPEN is assumed
+        default: OPEN
         enum:
         - OPEN
         - CLOSED
-        default: OPEN
       isOwned:
         type: boolean
         description: Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed
@@ -2460,10 +2461,10 @@ definitions:
       repaymentType:
         type: string
         description: Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST
+        default: PRINCIPAL_AND_INTEREST
         enum:
         - INTEREST_ONLY
         - PRINCIPAL_AND_INTEREST
-        default: PRINCIPAL_AND_INTEREST
       repaymentFrequency:
         type: string
         description: The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
@@ -3059,12 +3060,12 @@ definitions:
       nonBusinessDayTreatment:
         type: string
         description: Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
+        default: "ON"
         enum:
         - AFTER
         - BEFORE
         - "ON"
         - ONLY
-        default: "ON"
       intervals:
         type: array
         description: An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry
@@ -3116,12 +3117,12 @@ definitions:
       nonBusinessDayTreatment:
         type: string
         description: Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
+        default: "ON"
         enum:
         - AFTER
         - BEFORE
         - "ON"
         - ONLY
-        default: "ON"
     description: Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay
   BankingScheduledPaymentRecurrenceEventBased:
     type: object

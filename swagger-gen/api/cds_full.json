@@ -2012,12 +2012,13 @@
         "discountType"
       ],
       "x-conditional": [
-        "balanceRate",
-        "transactionRate",
         "accruedRate",
-        "feeRate",
         "additionalValue",
-        "amount"
+        "amount",
+        "balanceRate",
+        "eligibility",
+        "feeRate",
+        "transactionRate"
       ],
       "properties": {
         "description": {
@@ -2074,7 +2075,7 @@
           "x-cds-type": "URIString"
         },
         "eligibility": {
-          "description": "Eligibility constraints that apply to this discount",
+          "description": "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/BankingProductDiscountEligibility"

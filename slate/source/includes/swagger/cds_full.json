@@ -2145,13 +2145,13 @@
         },
         "eligibility" : {
           "type" : "array",
-          "description" : "Eligibility constraints that apply to this discount",
+          "description" : "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
           "items" : {
             "$ref" : "#/definitions/BankingProductDiscountEligibility"
           }
         }
       },
-      "x-conditional" : [ "balanceRate", "transactionRate", "accruedRate", "feeRate", "additionalValue", "amount" ]
+      "x-conditional" : [ "accruedRate", "additionalValue", "amount", "balanceRate", "eligibility", "feeRate", "transactionRate" ]
     },
     "BankingProductDiscountEligibility" : {
       "type" : "object",
@@ -2390,8 +2390,8 @@
         "openStatus" : {
           "type" : "string",
           "description" : "Open or closed status for the account. If not present then OPEN is assumed",
-          "enum" : [ "OPEN", "CLOSED" ],
-          "default" : "OPEN"
+          "default" : "OPEN",
+          "enum" : [ "OPEN", "CLOSED" ]
         },
         "isOwned" : {
           "type" : "boolean",
@@ -2657,8 +2657,8 @@
         "repaymentType" : {
           "type" : "string",
           "description" : "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST",
-          "enum" : [ "INTEREST_ONLY", "PRINCIPAL_AND_INTEREST" ],
-          "default" : "PRINCIPAL_AND_INTEREST"
+          "default" : "PRINCIPAL_AND_INTEREST",
+          "enum" : [ "INTEREST_ONLY", "PRINCIPAL_AND_INTEREST" ]
         },
         "repaymentFrequency" : {
           "type" : "string",
@@ -3318,8 +3318,8 @@
         "nonBusinessDayTreatment" : {
           "type" : "string",
           "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
-          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
-          "default" : "ON"
+          "default" : "ON",
+          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
         },
         "intervals" : {
           "type" : "array",
@@ -3374,8 +3374,8 @@
         "nonBusinessDayTreatment" : {
           "type" : "string",
           "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
-          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
-          "default" : "ON"
+          "default" : "ON",
+          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
         }
       },
       "description" : "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay"
