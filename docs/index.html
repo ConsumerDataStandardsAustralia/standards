@@ -1510,6 +1510,63 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>A field of this type will always be specified with the suffix <code>UType</code> meaning Union Type.</p>
 
+<h3 id='array-conventions'>Array Conventions</h3>
+
+<blockquote>
+<p>Samples for providing array values:</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>## Many-values:
+"middleNames": ["Geoff", "John"],
+"errors": [
+    {
+      "code": "...",
+      "title": "...",
+      "detail": "..."
+    }, {
+      "code": "...",
+      "title": "...",
+      "detail": "..."
+    }
+]
+
+## Single-value:
+"middleNames": ["Geoff"],
+"errors": [
+    {
+      "code": "...",
+      "title": "...",
+      "detail": "..."
+    }
+]
+
+## Empty array:
+"middleNames": [ ],
+"errors": [ ]
+
+</code></pre>
+
+<p>Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads. </p>
+
+<h4 id='mandatory-fields'>Mandatory fields</h4>
+
+<p>In objects where an array field is defined as having 0..n values, the array field must be explicitly expressed as an array in the payload, even if it only contains one item or is empty.</p>
+
+<p>This means that single valued arrays are not permitted. This applies equally for object arrays. Where a field is defined as an array value, the response should be:
+* an array of objects,
+* an array of values, or 
+* an empty array (<code>[]</code>).</p>
+
+<p>An empty array is the representation for an array equivalent to an empty string.</p>
+
+<h4 id='optional-fields'>Optional fields</h4>
+
+<p>If the field is optional a <code>null</code> value or empty field response is accepted.</p>
+
+<h4 id='normative-references'>Normative references</h4>
+
+<p>The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.</p>
+
 <h2 id='common-field-types'>Common Field Types</h2>
 
 <p>The following table outlines the common data types for fields used in the standard.</p>
