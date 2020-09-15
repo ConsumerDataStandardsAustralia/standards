@@ -1,4 +1,0 @@
-4125c4125
-< |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|conditional|none|Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.|
----
-> |eligibility|[[BankingProductDiscountEligibility](#schemabankingproductdiscounteligibility)]|conditional|none|Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``|

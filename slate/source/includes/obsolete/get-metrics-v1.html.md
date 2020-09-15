@@ -1,85 +1,19 @@
+---
+title: Get Metrics v1
+#language_tabs: # must be one of https://git.io/vQNgJ
+#  - shell
+#  - javascript
 
+toc_footers:
+  - <a href='../../index.html'>Consumer Data Standards</a>
 
+search: false
+---
 
-## Metadata Update
+# Get Metrics V1
+This page documents the obsolete version 1 of the Get Metrics end point.
 
-<a id="opIdmetadataUpdate"></a>
-
-> Code samples
-
-```http
-POST https://data.holder.com.au/cds-au/v1/admin/register/metadata HTTP/1.1
-Host: data.holder.com.au
-Content-Type: application/json
-
-x-v: string
-x-min-v: string
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'x-v':'string',
-  'x-min-v':'string'
-
-};
-
-$.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/admin/register/metadata',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-`POST /admin/register/metadata`
-
-Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained
-
-> Body parameter
-
-```json
-{
-  "data": {
-    "action": "REFRESH"
-  },
-  "meta": {}
-}
-```
-
-###Endpoint Version
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="metadata-update-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
-|body|body|[RequestMetaDataUpdate](#schemarequestmetadataupdate)|mandatory|none|
-
-<h3 id="metadata-update-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
-
-<aside class="success">
-This operation may only be called by the CDR Register
-</aside>
+This version is to be ceased to be called by data recipients by **July 29th 2021** and can be decommissioned by data holders as of that date.
 
 ## Get Metrics
 
@@ -120,22 +54,18 @@ $.ajax({
 
 This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
-NOTE: This version must be implemented by **July 2021**
-
-Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
-
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**1**
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](../../#request-headers) and [x-v](../../request-headers). If the value of [x-min-v](../../request-headers) is equal to or higher than the value of [x-v](../../request-headers) then the [x-min-v](../../request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](../../#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v]#request-headers) and [x-v](../../#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -254,18 +184,10 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
       ]
     },
     "rejections": {
-      "authenticated": {
-        "currentDay": 0,
-        "previousDays": [
-          0
-        ]
-      },
-      "unauthenticated": {
-        "currentDay": 0,
-        "previousDays": [
-          0
-        ]
-      }
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
     },
     "customerCount": 0,
     "recipientCount": 0
@@ -281,7 +203,7 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV2](#schemaresponsemetricslistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsList](#schemaresponsemetricslist)|
 
 ### Response Headers
 
@@ -295,37 +217,9 @@ This operation may only be called by the CDR Register
 
 ## Schemas
 
-<h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
+<h2 id="tocSresponsemetricslist">ResponseMetricsList</h2>
 
-<a id="schemarequestmetadataupdate"></a>
-
-```json
-{
-  "data": {
-    "action": "REFRESH"
-  },
-  "meta": {}
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|object|mandatory|none|none|
-|» action|string|mandatory|none|The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable|
-|meta|[Meta](#schemameta)|optional|none|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|action|REFRESH|
-
-<h2 id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
-
-<a id="schemaresponsemetricslistv2"></a>
+<a id="schemaresponsemetricslist"></a>
 
 ```json
 {
@@ -432,18 +326,10 @@ This operation may only be called by the CDR Register
       ]
     },
     "rejections": {
-      "authenticated": {
-        "currentDay": 0,
-        "previousDays": [
-          0
-        ]
-      },
-      "unauthenticated": {
-        "currentDay": 0,
-        "previousDays": [
-          0
-        ]
-      }
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
     },
     "customerCount": 0,
     "recipientCount": 0
@@ -470,7 +356,7 @@ This operation may only be called by the CDR Register
 |» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|conditional|none|Transactions per second over time|
 |» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|conditional|none|Maximum record transactions per second over time|
 |» errors|[ErrorMetrics](#schemaerrormetrics)|conditional|none|Number of calls resulting in error due to server execution over time|
-|» rejections|[RejectionMetricsV2](#schemarejectionmetricsv2)|conditional|none|Number of calls rejected due to traffic thresholds over time|
+|» rejections|[RejectionMetrics](#schemarejectionmetrics)|conditional|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|conditional|none|Number of customers with active authorisations at the time of the call|
 |» recipientCount|integer|conditional|none|Number of data recipients with active authorisations at the time of the call|
 |links|[Links](#schemalinks)|mandatory|none|none|
@@ -738,68 +624,18 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Number of errors for current day|
 |previousDays|[number]|conditional|none|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
+<h2 id="tocSrejectionmetrics">RejectionMetrics</h2>
 
-<a id="schemarejectionmetricsv2"></a>
+<a id="schemarejectionmetrics"></a>
 
 ```json
 {
-  "authenticated": {
-    "currentDay": 0,
-    "previousDays": [
-      0
-    ]
-  },
-  "unauthenticated": {
-    "currentDay": 0,
-    "previousDays": [
-      0
-    ]
-  }
+  "currentDay": 0,
+  "previousDays": [
+    0
+  ]
 }
 
 ```
 
 *Number of calls rejected due to traffic thresholds over time*
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|authenticated|object|optional|none|Rejection counts for all authenticated end points|
-|» currentDay|number|optional|none|Number of calls rejected for current day|
-|» previousDays|[number]|optional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|unauthenticated|object|optional|none|Rejection counts for all uauthenticated end points|
-|» currentDay|number|optional|none|Number of calls rejected for current day|
-|» previousDays|[number]|optional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-
-<h2 id="tocSlinks">Links</h2>
-
-<a id="schemalinks"></a>
-
-```json
-{
-  "self": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
-
-<h2 id="tocSmeta">Meta</h2>
-
-<a id="schemameta"></a>
-
-```json
-{}
-
-```
-
-### Properties
-
-*None*
-

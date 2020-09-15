@@ -42,7 +42,7 @@ Release notes for version 1.4.0 of the [CDR Standards](../../index.html).
 |Introspection Endpoint|Updated Token Introspection documentation to include CDR Arrangement ID claim and non-normative example|[End Points](../../#end-points)|
 |Error in statement on CDR Arrangement ID|CDR Arrangement ID statement incorrectly mentions the ID Token|[Identifiers and subject Types](../../#identifiers-and-subject-types)|
 |Update to PAR non-normative example|Corrected client_id|[Identifiers and subject Types](../../#identifiers-and-subject-types)|
-|Add authorisation to PAR non-normative example|Upated example to include authorisationn step|[Identifiers and subject Types](../../#identifiers-and-subject-types)|
+|Add authorisation to PAR non-normative example|Updated example to include authorisation step|[Identifiers and subject Types](../../#identifiers-and-subject-types)|
 |Update to Token Introspection non-normative example|The request is incorrectly represented as a token request.|[Identifiers and subject Types](../../#identifiers-and-subject-types)|
 |Update PAR Request non-normative example|Request object should contain standard claims such as sharing_duration as well as the new cdr_arrangement_id|[End Points](../../#end-points)|
 
