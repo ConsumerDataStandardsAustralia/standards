@@ -837,7 +837,7 @@
 </tr>
 </tbody></table>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.4.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.5.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -13119,7 +13119,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
+<td>BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type</td>
 </tr>
 <tr>
 <td>billerName</td>
@@ -18547,12 +18547,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Unauthenticated</td>
 <td><strong>1500ms</strong></td>
-<td>All unauthenticated end points</td>
+<td>All unauthenticated end points not otherwise specified in a separate threshold</td>
 </tr>
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
@@ -18562,7 +18562,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Unattended</td>
 <td><strong>4000ms</strong></td>
-<td>Unattended calls to High Priority or Low Priority end points.</br>Additional Admin end points.</td>
+<td>Unattended calls to High Priority or Low Priority authenticated end points.</br>Additional Admin end points.</td>
 </tr>
 <tr>
 <td>Large Payload</td>
@@ -18666,48 +18666,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <li>If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error <code>403 Forbidden</code> being returned).</li>
 </ul>
 <h1 id='known-issues'>Known Issues</h1>
-<p>The following issue are an oversight in the 1.4.0 release and is included as errata. They will be corrected in the next release of the standards.</p>
-
-<table>
-<tr>
-<td> <b>Mandatory Claims for ID Token</b> </td>
-<td>
-The related change request is: <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/227">Urgent documentation change required content of ID Token</a> as agreed in the<a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/227#issuecomment-639285633"> outcomes of a workshop held on 5th June 2020</a>
-<br><br>
-This decision outlines a recommendation to align to normative standards.
-<br><br>
-The change will remove the following text in the <a href="https://consumerdatastandardsaustralia.github.io/standards/#tokens">Token</a> section of the standards:
-<br><br>
-As described under section 5.2.2 of the <b>FAPI-RW</b> profile, ID Tokens MUST include the following claims (in addition to the mandatory claims specified in section 2 of the <b>OIDC</b> standard) as part of Hybrid Flow authentication:
-  <ul><li> nonce: String value used to associate a Client session with an ID Token. </li>
-  <li> s_hash: Hash of the state value. </li>
-  <li> c_hash: Hash of the authorisation_code value. </li></ul>
-
-<br>
-And replaced with:
-<br><br>
-
- In addition to the mandatory claims specified in section 2 of the <b>OIDC</b> standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to section 3.3 (Authentication using the Hybrid Flow) of the <b>OIDC</b> standards and sections 5.2.2 and 8.4.3 of the <b>FAPI-RW</b> profile.
-</td>
-</tr>
-<tr>
-<td><b>Alignment with OIDC on auth_time</b></td>
-<td>
-The related change request is: <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/228">Urgent documentation change required content of ID Token</a> as agreed in the<a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/228#issuecomment-639285534"> outcomes of a workshop held on 5th June 2020</a>
-
-<br>
-That it must be returned in the ID Token when the normative standards require it
-that it should not be returned from the UserInfo endpoint. The change will remove the following text in the <a href="https://consumerdatastandardsaustralia.github.io/standards/#scopes-and-claims">Scopes and Claims</a> section of the standards:
-
-<br><br>
-auth_time: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC auth_time.
-<br><br>
-And replaced with:
-<br><br>
-auth_time: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC auth_time. It MUST be returned by the Data Holder in the ID Token when the Data Recipient has requested it as an essential claim according to section 2 of the <b>OIDC</b> standard. It SHOULD NOT be returned via the UserInfo endpoint.
-</td>
-</tr>
-</table>
+<p>This version of the standards currently has no known issues</p>
 <h1 id='change-log'>Change Log</h1>
 <p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
 
@@ -18719,6 +18678,12 @@ auth_time: Time when the End-User authentication occurred. Its value is a JSON n
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>16/9/2020</td>
+<td>1.5.0</td>
+<td>Second Banking Maintenance Iteration 4 Release</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.5.0.html">release notes</a> for details</td>
+</tr>
 <tr>
 <td>12/8/2020</td>
 <td>1.4.0</td>
@@ -19024,6 +18989,11 @@ auth_time: Time when the End-User authentication occurred. Its value is a JSON n
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='./archive/standards-1.4.0/docs/'>22/5/2020</a></td>
+<td>1.4.0</td>
+<td><a href='./archive/standards-1.4.0/docs/'>Banking Maintenance Iteration 4 Release</a></td>
+</tr>
 <tr>
 <td><a href='./archive/standards-1.3.1/docs/'>22/5/2020</a></td>
 <td>1.3.1</td>

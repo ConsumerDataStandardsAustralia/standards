@@ -5773,7 +5773,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |billerCode|string|mandatory|none|BPAY Biller Code of the Biller|
-|crn|string|conditional|none|BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+|crn|string|conditional|none|BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type|
 |billerName|string|mandatory|none|Name of the Biller|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
