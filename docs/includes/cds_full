@@ -6804,7 +6804,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">AmountString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
+<td>Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.</td>
 </tr>
 <tr>
 <td>balanceRate</td>

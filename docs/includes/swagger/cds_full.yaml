@@ -1954,7 +1954,7 @@ definitions:
         - PAYMENTS
       amount:
         type: string
-        description: Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+        description: Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
         x-cds-type: AmountString
       balanceRate:
         type: string
