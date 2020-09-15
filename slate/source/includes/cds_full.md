@@ -6634,7 +6634,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |outageTime|[DateTimeString](#common-field-types)|mandatory|none|Date and time that the outage is scheduled to begin|
 |duration|[ExternalRef](#common-field-types)|mandatory|none|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|isPartial|boolean|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+|isPartial|[Boolean](#common-field-types)|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
 |explanation|string|mandatory|none|Provides an explanation of the current outage that can be displayed to an end customer|
 
 <h2 id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>

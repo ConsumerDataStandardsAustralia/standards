@@ -11538,7 +11538,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>isPartial</td>
-<td>boolean</td>
+<td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
 <td>none</td>
 <td>Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage</td>
