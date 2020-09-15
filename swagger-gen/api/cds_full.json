@@ -1236,7 +1236,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/common/customer/detail": {
@@ -1289,7 +1289,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/discovery/status": {
@@ -3963,10 +3963,10 @@
               ]
             },
             "person": {
-              "$ref": "#/definitions/CommonPerson"
+              "$ref": "#/definitions/CommonPersonV2"
             },
             "organisation": {
-              "$ref": "#/definitions/CommonOrganisation"
+              "$ref": "#/definitions/CommonOrganisationV2"
             }
           }
         },
@@ -4019,7 +4019,7 @@
         }
       }
     },
-    "CommonPerson": {
+    "CommonPersonV2": {
       "type": "object",
       "required": [
         "lastName",
@@ -4054,16 +4054,26 @@
           "type": "string",
           "description": "Used for a trailing suffix to the name (e.g. Jr)"
         },
-        "occupationCode": {
+        "occupationCode" : {
           "type": "string",
-          "description": "Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
+          "description": "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null."
+        },
+        "occupationCodeVersion": {
+          "type": "string",
+          "description": "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.",
+          "enum": [
+            "ANZSCO_1220.0_2013_V1.3",
+            "ANZSCO_1220.0_2013_V1.2",
+            "ANZSCO_1220.0_2006_V1.1",
+            "ANZSCO_1220.0_2006_V1.0"
+          ]
         }
       }
     },
     "CommonPersonDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/CommonPerson"
+          "$ref": "#/definitions/CommonPersonV2"
         },
         {
           "type": "object",
@@ -4098,7 +4108,7 @@
         }
       ]
     },
-    "CommonOrganisation": {
+    "CommonOrganisationV2": {
       "type": "object",
       "required": [
         "agentLastName",
@@ -4149,9 +4159,17 @@
           "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
           "x-cds-type": "Boolean"
         },
-        "industryCode": {
-          "type": "string",
-          "description": "[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation."
+        "industryCode" : {
+          "type" : "string",
+          "description" : "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null."
+        },
+        "industryCodeVersion" : {
+          "type" : "string",
+          "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.",
+          "enum" : [
+            "ANZSIC_1292.0_2006_V2.0",
+            "ANZSIC_1292.0_2006_V1.0"
+          ]
         },
         "organisationType": {
           "type": "string",
@@ -4180,7 +4198,7 @@
     "CommonOrganisationDetail": {
       "allOf": [
         {
-          "$ref": "#/definitions/CommonOrganisation"
+          "$ref": "#/definitions/CommonOrganisationV2"
         },
         {
           "type": "object",

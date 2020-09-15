@@ -4701,7 +4701,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -4777,7 +4777,8 @@ This operation does not require authentication
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4791,6 +4792,7 @@ This operation does not require authentication
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -4899,7 +4901,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -4976,6 +4978,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -5047,6 +5050,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11563,7 +11567,8 @@ This operation does not require authentication
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11577,6 +11582,7 @@ This operation does not require authentication
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -11614,14 +11620,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» person</td>
-<td><a href="#schemacommonperson">CommonPerson</a></td>
+<td><a href="#schemacommonpersonv2">CommonPersonV2</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» organisation</td>
-<td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
+<td><a href="#schemacommonorganisationv2">CommonOrganisationV2</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
@@ -11674,6 +11680,7 @@ This operation does not require authentication
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -11745,6 +11752,7 @@ This operation does not require authentication
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11866,9 +11874,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocScommonperson">CommonPerson</h2>
+<h2 id="tocScommonpersonv2">CommonPersonV2</h2>
 
-<p><a id="schemacommonperson"></a></p>
+<p><a id="schemacommonpersonv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11878,7 +11886,8 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-61'>Properties</h3>
@@ -11938,7 +11947,38 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZSCO v1.2</a> Standard Occupation classification.</td>
+<td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> versions, then it must be set to null.</td>
+</tr>
+<tr>
+<td>occupationCodeVersion</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>The applicable <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> release version of the occupation code provided. Mandatory if an <code>occupationCode</code> is supplied.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>occupationCodeVersion</td>
+<td>ANZSCO_1220.0_2013_V1.3</td>
+</tr>
+<tr>
+<td>occupationCodeVersion</td>
+<td>ANZSCO_1220.0_2013_V1.2</td>
+</tr>
+<tr>
+<td>occupationCodeVersion</td>
+<td>ANZSCO_1220.0_2006_V1.1</td>
+</tr>
+<tr>
+<td>occupationCodeVersion</td>
+<td>ANZSCO_1220.0_2006_V1.0</td>
 </tr>
 </tbody></table>
 
@@ -11955,6 +11995,7 @@ This operation does not require authentication
   </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -12029,7 +12070,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacommonperson">CommonPerson</a></td>
+<td><a href="#schemacommonpersonv2">CommonPersonV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -12077,9 +12118,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocScommonorganisation">CommonOrganisation</h2>
+<h2 id="tocScommonorganisationv2">CommonOrganisationV2</h2>
 
-<p><a id="schemacommonorganisation"></a></p>
+<p><a id="schemacommonorganisationv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12092,6 +12133,7 @@ This operation does not require authentication
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -12182,7 +12224,14 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td><a href="http://www.abs.gov.au/anzsic">ANZSIC (2006)</a> code for the organisation.</td>
+<td>A valid <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> code for the organisation. If the industry code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> versions, then it must be set to null.</td>
+</tr>
+<tr>
+<td>industryCodeVersion</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>The applicable <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> release version of the industry code provided.</td>
 </tr>
 <tr>
 <td>organisationType</td>
@@ -12206,13 +12255,21 @@ This operation does not require authentication
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>industryCodeVersion</td>
+<td>ANZSIC_1292.0_2006_V2.0</td>
+</tr>
+<tr>
+<td>industryCodeVersion</td>
+<td>ANZSIC_1292.0_2006_V1.0</td>
+</tr>
 <tr>
 <td>organisationType</td>
 <td>SOLE_TRADER</td>
@@ -12254,6 +12311,7 @@ This operation does not require authentication
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12313,7 +12371,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
+<td><a href="#schemacommonorganisationv2">CommonOrganisationV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -12420,7 +12478,7 @@ This operation does not require authentication
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12494,7 +12552,7 @@ This operation does not require authentication
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12608,7 +12666,7 @@ This operation does not require authentication
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12710,7 +12768,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13217,7 +13275,7 @@ This operation does not require authentication
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<h4 id='enumerated-values-40'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>

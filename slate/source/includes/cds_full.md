@@ -2873,7 +2873,7 @@ Obtain basic information on the customer that has authorised the current session
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-customer-parameters">Parameters</h3>
 
@@ -2903,7 +2903,8 @@ Obtain basic information on the customer that has authorised the current session
       ],
       "prefix": "string",
       "suffix": "string",
-      "occupationCode": "string"
+      "occupationCode": "string",
+      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3"
     },
     "organisation": {
       "lastUpdateTime": "string",
@@ -2917,6 +2918,7 @@ Obtain basic information on the customer that has authorised the current session
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
       "organisationType": "SOLE_TRADER",
       "registeredCountry": "string",
       "establishmentDate": "string"
@@ -2997,7 +2999,7 @@ Obtain detailed information on the authorised customer within the current sessio
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-customer-detail-parameters">Parameters</h3>
 
@@ -3028,6 +3030,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "prefix": "string",
       "suffix": "string",
       "occupationCode": "string",
+      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3",
       "phoneNumbers": [
         {
           "isPreferred": true,
@@ -3099,6 +3102,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
       "organisationType": "SOLE_TRADER",
       "registeredCountry": "string",
       "establishmentDate": "string",
@@ -6650,7 +6654,8 @@ This operation does not require authentication
       ],
       "prefix": "string",
       "suffix": "string",
-      "occupationCode": "string"
+      "occupationCode": "string",
+      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3"
     },
     "organisation": {
       "lastUpdateTime": "string",
@@ -6664,6 +6669,7 @@ This operation does not require authentication
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
       "organisationType": "SOLE_TRADER",
       "registeredCountry": "string",
       "establishmentDate": "string"
@@ -6683,8 +6689,8 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPerson](#schemacommonperson)|optional|none|none|
-|» organisation|[CommonOrganisation](#schemacommonorganisation)|optional|none|none|
+|» person|[CommonPersonV2](#schemacommonpersonv2)|optional|none|none|
+|» organisation|[CommonOrganisationV2](#schemacommonorganisationv2)|optional|none|none|
 |links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
@@ -6713,6 +6719,7 @@ This operation does not require authentication
       "prefix": "string",
       "suffix": "string",
       "occupationCode": "string",
+      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3",
       "phoneNumbers": [
         {
           "isPreferred": true,
@@ -6784,6 +6791,7 @@ This operation does not require authentication
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
       "organisationType": "SOLE_TRADER",
       "registeredCountry": "string",
       "establishmentDate": "string",
@@ -6855,9 +6863,9 @@ This operation does not require authentication
 |customerUType|person|
 |customerUType|organisation|
 
-<h2 id="tocScommonperson">CommonPerson</h2>
+<h2 id="tocScommonpersonv2">CommonPersonV2</h2>
 
-<a id="schemacommonperson"></a>
+<a id="schemacommonpersonv2"></a>
 
 ```json
 {
@@ -6869,7 +6877,8 @@ This operation does not require authentication
   ],
   "prefix": "string",
   "suffix": "string",
-  "occupationCode": "string"
+  "occupationCode": "string",
+  "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3"
 }
 
 ```
@@ -6884,7 +6893,17 @@ This operation does not require authentication
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
 |prefix|string|optional|none|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |suffix|string|optional|none|Used for a trailing suffix to the name (e.g. Jr)|
-|occupationCode|string|optional|none|Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification.|
+|occupationCode|string|optional|none|Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.|
+|occupationCodeVersion|string|optional|none|The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|occupationCodeVersion|ANZSCO_1220.0_2013_V1.3|
+|occupationCodeVersion|ANZSCO_1220.0_2013_V1.2|
+|occupationCodeVersion|ANZSCO_1220.0_2006_V1.1|
+|occupationCodeVersion|ANZSCO_1220.0_2006_V1.0|
 
 <h2 id="tocScommonpersondetail">CommonPersonDetail</h2>
 
@@ -6901,6 +6920,7 @@ This operation does not require authentication
   "prefix": "string",
   "suffix": "string",
   "occupationCode": "string",
+  "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.3",
   "phoneNumbers": [
     {
       "isPreferred": true,
@@ -6969,7 +6989,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonPerson](#schemacommonperson)|mandatory|none|none|
+|*anonymous*|[CommonPersonV2](#schemacommonpersonv2)|mandatory|none|none|
 
 *and*
 
@@ -6980,9 +7000,9 @@ This operation does not require authentication
 |» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
 |» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
-<h2 id="tocScommonorganisation">CommonOrganisation</h2>
+<h2 id="tocScommonorganisationv2">CommonOrganisationV2</h2>
 
-<a id="schemacommonorganisation"></a>
+<a id="schemacommonorganisationv2"></a>
 
 ```json
 {
@@ -6997,6 +7017,7 @@ This operation does not require authentication
   "acn": "string",
   "isACNCRegistered": true,
   "industryCode": "string",
+  "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
   "organisationType": "SOLE_TRADER",
   "registeredCountry": "string",
   "establishmentDate": "string"
@@ -7018,7 +7039,8 @@ This operation does not require authentication
 |abn|string|optional|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
 |isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
-|industryCode|string|optional|none|[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation.|
+|industryCode|string|optional|none|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.|
+|industryCodeVersion|string|optional|none|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.|
 |organisationType|string|mandatory|none|Legal organisation type|
 |registeredCountry|[ExternalRef](#common-field-types)|optional|none|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
 |establishmentDate|[DateString](#common-field-types)|optional|none|The date the organisation described was established|
@@ -7027,6 +7049,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
+|industryCodeVersion|ANZSIC_1292.0_2006_V2.0|
+|industryCodeVersion|ANZSIC_1292.0_2006_V1.0|
 |organisationType|SOLE_TRADER|
 |organisationType|COMPANY|
 |organisationType|PARTNERSHIP|
@@ -7051,6 +7075,7 @@ This operation does not require authentication
   "acn": "string",
   "isACNCRegistered": true,
   "industryCode": "string",
+  "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
   "organisationType": "SOLE_TRADER",
   "registeredCountry": "string",
   "establishmentDate": "string",
@@ -7104,7 +7129,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonOrganisation](#schemacommonorganisation)|mandatory|none|none|
+|*anonymous*|[CommonOrganisationV2](#schemacommonorganisationv2)|mandatory|none|none|
 
 *and*
 
