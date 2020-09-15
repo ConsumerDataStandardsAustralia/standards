@@ -1,4 +1,6 @@
 
+
+
 ## Metadata Update
 
 <a id="opIdmetadataUpdate"></a>
@@ -76,7 +78,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be called by the CDR Register
 </aside>
 
 ## Get Metrics
@@ -276,10 +278,10 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 |200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be called by the CDR Register
 </aside>
 
-# Schemas
+## Schemas
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 

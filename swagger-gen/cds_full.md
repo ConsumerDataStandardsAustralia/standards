@@ -74,18 +74,18 @@ Obtain a list of accounts
 
 |Parameter|Value|
 |---|---|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TERM_DEPOSITS|
-|product-category|TRAVEL_CARDS|
+|product-category|BUSINESS_LOANS|
+|product-category|CRED_AND_CHRG_CARDS|
+|product-category|LEASES|
+|product-category|MARGIN_LOANS|
+|product-category|OVERDRAFTS|
+|product-category|PERS_LOANS|
 |product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|MARGIN_LOANS|
-|product-category|LEASES|
+|product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|OVERDRAFTS|
-|product-category|BUSINESS_LOANS|
+|product-category|TRAVEL_CARDS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -106,7 +106,7 @@ Obtain a list of accounts
         "openStatus": "OPEN",
         "isOwned": true,
         "maskedNumber": "string",
-        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+        "productCategory": "BUSINESS_LOANS",
         "productName": "string"
       }
     ]
@@ -215,18 +215,18 @@ Obtain balances for multiple, filtered accounts
 
 |Parameter|Value|
 |---|---|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TERM_DEPOSITS|
-|product-category|TRAVEL_CARDS|
+|product-category|BUSINESS_LOANS|
+|product-category|CRED_AND_CHRG_CARDS|
+|product-category|LEASES|
+|product-category|MARGIN_LOANS|
+|product-category|OVERDRAFTS|
+|product-category|PERS_LOANS|
 |product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|MARGIN_LOANS|
-|product-category|LEASES|
+|product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|OVERDRAFTS|
-|product-category|BUSINESS_LOANS|
+|product-category|TRAVEL_CARDS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -613,7 +613,7 @@ Obtain detailed information on a single account
     "openStatus": "OPEN",
     "isOwned": true,
     "maskedNumber": "string",
-    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+    "productCategory": "BUSINESS_LOANS",
     "productName": "string",
     "bsb": "string",
     "accountNumber": "string",
@@ -625,7 +625,7 @@ Obtain detailed information on a single account
         "maturityDate": "string",
         "maturityAmount": "string",
         "maturityCurrency": "string",
-        "maturityInstructions": "ROLLED_OVER"
+        "maturityInstructions": "PAID_OUT_AT_MATURITY"
       }
     ],
     "creditCard": {
@@ -657,7 +657,7 @@ Obtain detailed information on a single account
     "lendingRate": "string",
     "depositRates": [
       {
-        "depositRateType": "FIXED",
+        "depositRateType": "BONUS",
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
@@ -667,7 +667,7 @@ Obtain detailed information on a single account
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -683,12 +683,12 @@ Obtain detailed information on a single account
     ],
     "lendingRates": [
       {
-        "lendingRateType": "FIXED",
+        "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ARREARS",
+        "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
         "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
@@ -697,7 +697,7 @@ Obtain detailed information on a single account
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -713,7 +713,7 @@ Obtain detailed information on a single account
     ],
     "features": [
       {
-        "featureType": "CARD_ACCESS",
+        "featureType": "ADDITIONAL_CARDS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
@@ -723,7 +723,7 @@ Obtain detailed information on a single account
     "fees": [
       {
         "name": "string",
-        "feeType": "PERIODIC",
+        "feeType": "DEPOSIT",
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
@@ -915,7 +915,7 @@ Some general notes that apply to all end points that retrieve transactions:
         "accountId": "string",
         "transactionId": "string",
         "isDetailAvailable": true,
-        "type": "FEE",
+        "type": "DIRECT_DEBIT",
         "status": "PENDING",
         "description": "string",
         "postingDateTime": "string",
@@ -1040,7 +1040,7 @@ Obtain detailed information on a transaction for a specific account
     "accountId": "string",
     "transactionId": "string",
     "isDetailAvailable": true,
-    "type": "FEE",
+    "type": "DIRECT_DEBIT",
     "status": "PENDING",
     "description": "string",
     "postingDateTime": "string",
@@ -1284,18 +1284,18 @@ Obtain direct debit authorisations for multiple, filtered accounts
 
 |Parameter|Value|
 |---|---|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TERM_DEPOSITS|
-|product-category|TRAVEL_CARDS|
+|product-category|BUSINESS_LOANS|
+|product-category|CRED_AND_CHRG_CARDS|
+|product-category|LEASES|
+|product-category|MARGIN_LOANS|
+|product-category|OVERDRAFTS|
+|product-category|PERS_LOANS|
 |product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|MARGIN_LOANS|
-|product-category|LEASES|
+|product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|OVERDRAFTS|
-|product-category|BUSINESS_LOANS|
+|product-category|TRAVEL_CARDS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -1593,7 +1593,7 @@ Obtain scheduled, outgoing payments for a specific account
                 "payId": {
                   "name": "string",
                   "identifier": "string",
-                  "type": "EMAIL"
+                  "type": "ABN"
                 }
               },
               "biller": {
@@ -1763,18 +1763,18 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 
 |Parameter|Value|
 |---|---|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TERM_DEPOSITS|
-|product-category|TRAVEL_CARDS|
+|product-category|BUSINESS_LOANS|
+|product-category|CRED_AND_CHRG_CARDS|
+|product-category|LEASES|
+|product-category|MARGIN_LOANS|
+|product-category|OVERDRAFTS|
+|product-category|PERS_LOANS|
 |product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|MARGIN_LOANS|
-|product-category|LEASES|
+|product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|OVERDRAFTS|
-|product-category|BUSINESS_LOANS|
+|product-category|TRAVEL_CARDS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 |open-status|OPEN|
 |open-status|CLOSED|
 |open-status|ALL|
@@ -1815,7 +1815,7 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
                 "payId": {
                   "name": "string",
                   "identifier": "string",
-                  "type": "EMAIL"
+                  "type": "ABN"
                 }
               },
               "biller": {
@@ -2030,7 +2030,7 @@ Obtain scheduled payments for a specified list of accounts
                 "payId": {
                   "name": "string",
                   "identifier": "string",
-                  "type": "EMAIL"
+                  "type": "ABN"
                 }
               },
               "biller": {
@@ -2200,9 +2200,9 @@ Obtain a list of pre-registered payees
 
 |Parameter|Value|
 |---|---|
+|type|BILLER|
 |type|DOMESTIC|
 |type|INTERNATIONAL|
-|type|BILLER|
 |type|ALL|
 
 > Example responses
@@ -2217,7 +2217,7 @@ Obtain a list of pre-registered payees
         "payeeId": "string",
         "nickname": "string",
         "description": "string",
-        "type": "DOMESTIC",
+        "type": "BILLER",
         "creationDate": "string"
       }
     ]
@@ -2330,7 +2330,7 @@ Note that the payee sub-structure should be selected to represent the payment de
     "payeeId": "string",
     "nickname": "string",
     "description": "string",
-    "type": "DOMESTIC",
+    "type": "BILLER",
     "creationDate": "string",
     "payeeUType": "domestic",
     "domestic": {
@@ -2346,7 +2346,7 @@ Note that the payee sub-structure should be selected to represent the payment de
       "payId": {
         "name": "string",
         "identifier": "string",
-        "type": "EMAIL"
+        "type": "ABN"
       }
     },
     "biller": {
@@ -2503,18 +2503,18 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 |effective|CURRENT|
 |effective|FUTURE|
 |effective|ALL|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TERM_DEPOSITS|
-|product-category|TRAVEL_CARDS|
+|product-category|BUSINESS_LOANS|
+|product-category|CRED_AND_CHRG_CARDS|
+|product-category|LEASES|
+|product-category|MARGIN_LOANS|
+|product-category|OVERDRAFTS|
+|product-category|PERS_LOANS|
 |product-category|REGULATED_TRUST_ACCOUNTS|
 |product-category|RESIDENTIAL_MORTGAGES|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|PERS_LOANS|
-|product-category|MARGIN_LOANS|
-|product-category|LEASES|
+|product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|OVERDRAFTS|
-|product-category|BUSINESS_LOANS|
+|product-category|TRAVEL_CARDS|
+|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
 
 > Example responses
 
@@ -2529,7 +2529,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
         "effectiveFrom": "string",
         "effectiveTo": "string",
         "lastUpdated": "string",
-        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+        "productCategory": "BUSINESS_LOANS",
         "name": "string",
         "description": "string",
         "brand": "string",
@@ -2649,7 +2649,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
     "effectiveFrom": "string",
     "effectiveTo": "string",
     "lastUpdated": "string",
-    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+    "productCategory": "BUSINESS_LOANS",
     "name": "string",
     "description": "string",
     "brand": "string",
@@ -2682,7 +2682,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
     ],
     "features": [
       {
-        "featureType": "CARD_ACCESS",
+        "featureType": "ADDITIONAL_CARDS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2707,7 +2707,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
     "fees": [
       {
         "name": "string",
-        "feeType": "PERIODIC",
+        "feeType": "DEPOSIT",
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
@@ -2743,7 +2743,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
     ],
     "depositRates": [
       {
-        "depositRateType": "FIXED",
+        "depositRateType": "BONUS",
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
@@ -2753,7 +2753,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -2769,12 +2769,12 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
     ],
     "lendingRates": [
       {
-        "lendingRateType": "FIXED",
+        "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ARREARS",
+        "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
         "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
@@ -2783,7 +2783,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -2919,7 +2919,7 @@ Obtain basic information on the customer that has authorised the current session
       "isACNCRegistered": true,
       "industryCode": "string",
       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
-      "organisationType": "SOLE_TRADER",
+      "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string"
     }
@@ -3086,7 +3086,7 @@ Obtain detailed information on the authorised customer within the current sessio
             "postcode": "string",
             "state": "string"
           },
-          "purpose": "REGISTERED"
+          "purpose": "MAIL"
         }
       ]
     },
@@ -3103,7 +3103,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "isACNCRegistered": true,
       "industryCode": "string",
       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
-      "organisationType": "SOLE_TRADER",
+      "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string",
       "physicalAddresses": [
@@ -3143,7 +3143,7 @@ Obtain detailed information on the authorised customer within the current sessio
             "postcode": "string",
             "state": "string"
           },
-          "purpose": "REGISTERED"
+          "purpose": "MAIL"
         }
       ]
     }
@@ -3389,7 +3389,7 @@ This operation does not require authentication
         "effectiveFrom": "string",
         "effectiveTo": "string",
         "lastUpdated": "string",
-        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+        "productCategory": "BUSINESS_LOANS",
         "name": "string",
         "description": "string",
         "brand": "string",
@@ -3446,7 +3446,7 @@ This operation does not require authentication
   "effectiveFrom": "string",
   "effectiveTo": "string",
   "lastUpdated": "string",
-  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+  "productCategory": "BUSINESS_LOANS",
   "name": "string",
   "description": "string",
   "brand": "string",
@@ -3506,7 +3506,7 @@ This operation does not require authentication
     "effectiveFrom": "string",
     "effectiveTo": "string",
     "lastUpdated": "string",
-    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+    "productCategory": "BUSINESS_LOANS",
     "name": "string",
     "description": "string",
     "brand": "string",
@@ -3539,7 +3539,7 @@ This operation does not require authentication
     ],
     "features": [
       {
-        "featureType": "CARD_ACCESS",
+        "featureType": "ADDITIONAL_CARDS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -3564,7 +3564,7 @@ This operation does not require authentication
     "fees": [
       {
         "name": "string",
-        "feeType": "PERIODIC",
+        "feeType": "DEPOSIT",
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
@@ -3600,7 +3600,7 @@ This operation does not require authentication
     ],
     "depositRates": [
       {
-        "depositRateType": "FIXED",
+        "depositRateType": "BONUS",
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
@@ -3610,7 +3610,7 @@ This operation does not require authentication
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -3626,12 +3626,12 @@ This operation does not require authentication
     ],
     "lendingRates": [
       {
-        "lendingRateType": "FIXED",
+        "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ARREARS",
+        "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
         "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
@@ -3640,7 +3640,7 @@ This operation does not require authentication
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -3681,7 +3681,7 @@ This operation does not require authentication
   "effectiveFrom": "string",
   "effectiveTo": "string",
   "lastUpdated": "string",
-  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+  "productCategory": "BUSINESS_LOANS",
   "name": "string",
   "description": "string",
   "brand": "string",
@@ -3714,7 +3714,7 @@ This operation does not require authentication
   ],
   "features": [
     {
-      "featureType": "CARD_ACCESS",
+      "featureType": "ADDITIONAL_CARDS",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -3739,7 +3739,7 @@ This operation does not require authentication
   "fees": [
     {
       "name": "string",
-      "feeType": "PERIODIC",
+      "feeType": "DEPOSIT",
       "amount": "string",
       "balanceRate": "string",
       "transactionRate": "string",
@@ -3775,7 +3775,7 @@ This operation does not require authentication
   ],
   "depositRates": [
     {
-      "depositRateType": "FIXED",
+      "depositRateType": "BONUS",
       "rate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
@@ -3785,7 +3785,7 @@ This operation does not require authentication
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
           "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
+          "rateApplicationMethod": "PER_TIER",
           "applicabilityConditions": {
             "additionalInfo": "string",
             "additionalInfoUri": "string"
@@ -3801,12 +3801,12 @@ This operation does not require authentication
   ],
   "lendingRates": [
     {
-      "lendingRateType": "FIXED",
+      "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
       "rate": "string",
       "comparisonRate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
-      "interestPaymentDue": "IN_ARREARS",
+      "interestPaymentDue": "IN_ADVANCE",
       "repaymentType": "INTEREST_ONLY",
       "loanPurpose": "OWNER_OCCUPIED",
       "tiers": [
@@ -3815,7 +3815,7 @@ This operation does not require authentication
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
           "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
+          "rateApplicationMethod": "PER_TIER",
           "applicabilityConditions": {
             "additionalInfo": "string",
             "additionalInfoUri": "string"
@@ -3887,7 +3887,7 @@ This operation does not require authentication
 
 ```json
 {
-  "featureType": "CARD_ACCESS",
+  "featureType": "ADDITIONAL_CARDS",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3908,28 +3908,28 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|featureType|CARD_ACCESS|
 |featureType|ADDITIONAL_CARDS|
-|featureType|UNLIMITED_TXNS|
+|featureType|BALANCE_TRANSFERS|
+|featureType|BILL_PAYMENT|
+|featureType|BONUS_REWARDS|
+|featureType|CARD_ACCESS|
+|featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
+|featureType|DIGITAL_BANKING|
+|featureType|DIGITAL_WALLET|
+|featureType|DONATE_INTEREST|
 |featureType|FREE_TXNS|
 |featureType|FREE_TXNS_ALLOWANCE|
+|featureType|INSURANCE|
+|featureType|INTEREST_FREE|
+|featureType|INTEREST_FREE_TRANSFERS|
 |featureType|LOYALTY_PROGRAM|
+|featureType|NOTIFICATIONS|
+|featureType|NPP_ENABLED|
+|featureType|NPP_PAYID|
 |featureType|OFFSET|
 |featureType|OVERDRAFT|
 |featureType|REDRAW|
-|featureType|INSURANCE|
-|featureType|BALANCE_TRANSFERS|
-|featureType|INTEREST_FREE|
-|featureType|INTEREST_FREE_TRANSFERS|
-|featureType|DIGITAL_WALLET|
-|featureType|DIGITAL_BANKING|
-|featureType|NPP_PAYID|
-|featureType|NPP_ENABLED|
-|featureType|DONATE_INTEREST|
-|featureType|BILL_PAYMENT|
-|featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
-|featureType|BONUS_REWARDS|
-|featureType|NOTIFICATIONS|
+|featureType|UNLIMITED_TXNS|
 |featureType|OTHER|
 
 <h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
@@ -3960,10 +3960,10 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |constraintType|MIN_BALANCE|
-|constraintType|MAX_BALANCE|
-|constraintType|OPENING_BALANCE|
-|constraintType|MAX_LIMIT|
 |constraintType|MIN_LIMIT|
+|constraintType|MAX_BALANCE|
+|constraintType|MAX_LIMIT|
+|constraintType|OPENING_BALANCE|
 
 <h2 id="tocSbankingproducteligibility">BankingProductEligibility</h2>
 
@@ -3993,16 +3993,16 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |eligibilityType|BUSINESS|
-|eligibilityType|PENSION_RECIPIENT|
-|eligibilityType|MIN_AGE|
+|eligibilityType|EMPLOYMENT_STATUS|
 |eligibilityType|MAX_AGE|
+|eligibilityType|MIN_AGE|
 |eligibilityType|MIN_INCOME|
 |eligibilityType|MIN_TURNOVER|
+|eligibilityType|NATURAL_PERSON|
+|eligibilityType|PENSION_RECIPIENT|
+|eligibilityType|RESIDENCY_STATUS|
 |eligibilityType|STAFF|
 |eligibilityType|STUDENT|
-|eligibilityType|EMPLOYMENT_STATUS|
-|eligibilityType|RESIDENCY_STATUS|
-|eligibilityType|NATURAL_PERSON|
 |eligibilityType|OTHER|
 
 <h2 id="tocSbankingproductfee">BankingProductFee</h2>
@@ -4012,7 +4012,7 @@ This operation does not require authentication
 ```json
 {
   "name": "string",
-  "feeType": "PERIODIC",
+  "feeType": "DEPOSIT",
   "amount": "string",
   "balanceRate": "string",
   "transactionRate": "string",
@@ -4069,16 +4069,16 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|feeType|PERIODIC|
-|feeType|TRANSACTION|
-|feeType|WITHDRAWAL|
 |feeType|DEPOSIT|
-|feeType|PAYMENT|
-|feeType|PURCHASE|
 |feeType|EVENT|
-|feeType|UPFRONT|
 |feeType|EXIT|
+|feeType|PAYMENT|
+|feeType|PERIODIC|
+|feeType|PURCHASE|
+|feeType|TRANSACTION|
+|feeType|UPFRONT|
 |feeType|VARIABLE|
+|feeType|WITHDRAWAL|
 
 <h2 id="tocSbankingproductdiscount">BankingProductDiscount</h2>
 
@@ -4130,9 +4130,9 @@ This operation does not require authentication
 |---|---|
 |discountType|BALANCE|
 |discountType|DEPOSITS|
-|discountType|PAYMENTS|
-|discountType|FEE_CAP|
 |discountType|ELIGIBILITY_ONLY|
+|discountType|FEE_CAP|
+|discountType|PAYMENTS|
 
 <h2 id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h2>
 
@@ -4162,17 +4162,17 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |discountEligibilityType|BUSINESS|
-|discountEligibilityType|PENSION_RECIPIENT|
-|discountEligibilityType|MIN_AGE|
+|discountEligibilityType|EMPLOYMENT_STATUS|
+|discountEligibilityType|INTRODUCTORY|
 |discountEligibilityType|MAX_AGE|
+|discountEligibilityType|MIN_AGE|
 |discountEligibilityType|MIN_INCOME|
 |discountEligibilityType|MIN_TURNOVER|
+|discountEligibilityType|NATURAL_PERSON|
+|discountEligibilityType|PENSION_RECIPIENT|
+|discountEligibilityType|RESIDENCY_STATUS|
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
-|discountEligibilityType|EMPLOYMENT_STATUS|
-|discountEligibilityType|RESIDENCY_STATUS|
-|discountEligibilityType|NATURAL_PERSON|
-|discountEligibilityType|INTRODUCTORY|
 |discountEligibilityType|OTHER|
 
 <h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
@@ -4181,7 +4181,7 @@ This operation does not require authentication
 
 ```json
 {
-  "depositRateType": "FIXED",
+  "depositRateType": "BONUS",
   "rate": "string",
   "calculationFrequency": "string",
   "applicationFrequency": "string",
@@ -4191,7 +4191,7 @@ This operation does not require authentication
       "unitOfMeasure": "DOLLAR",
       "minimumValue": 0,
       "maximumValue": 0,
-      "rateApplicationMethod": "WHOLE_BALANCE",
+      "rateApplicationMethod": "PER_TIER",
       "applicabilityConditions": {
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -4224,13 +4224,13 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|depositRateType|FIXED|
 |depositRateType|BONUS|
 |depositRateType|BUNDLE_BONUS|
-|depositRateType|VARIABLE|
-|depositRateType|INTRODUCTORY|
+|depositRateType|FIXED|
 |depositRateType|FLOATING|
+|depositRateType|INTRODUCTORY|
 |depositRateType|MARKET_LINKED|
+|depositRateType|VARIABLE|
 
 <h2 id="tocSbankingproductlendingratev2">BankingProductLendingRateV2</h2>
 
@@ -4238,12 +4238,12 @@ This operation does not require authentication
 
 ```json
 {
-  "lendingRateType": "FIXED",
+  "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
   "rate": "string",
   "comparisonRate": "string",
   "calculationFrequency": "string",
   "applicationFrequency": "string",
-  "interestPaymentDue": "IN_ARREARS",
+  "interestPaymentDue": "IN_ADVANCE",
   "repaymentType": "INTEREST_ONLY",
   "loanPurpose": "OWNER_OCCUPIED",
   "tiers": [
@@ -4252,7 +4252,7 @@ This operation does not require authentication
       "unitOfMeasure": "DOLLAR",
       "minimumValue": 0,
       "maximumValue": 0,
-      "rateApplicationMethod": "WHOLE_BALANCE",
+      "rateApplicationMethod": "PER_TIER",
       "applicabilityConditions": {
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -4289,19 +4289,19 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|lendingRateType|FIXED|
-|lendingRateType|VARIABLE|
-|lendingRateType|INTRODUCTORY|
-|lendingRateType|DISCOUNT|
-|lendingRateType|PENALTY|
-|lendingRateType|FLOATING|
-|lendingRateType|MARKET_LINKED|
-|lendingRateType|CASH_ADVANCE|
-|lendingRateType|PURCHASE|
 |lendingRateType|BUNDLE_DISCOUNT_FIXED|
 |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
-|interestPaymentDue|IN_ARREARS|
+|lendingRateType|CASH_ADVANCE|
+|lendingRateType|DISCOUNT|
+|lendingRateType|FLOATING|
+|lendingRateType|INTRODUCTORY|
+|lendingRateType|MARKET_LINKED|
+|lendingRateType|PENALTY|
+|lendingRateType|PURCHASE|
+|lendingRateType|VARIABLE|
+|lendingRateType|FIXED|
 |interestPaymentDue|IN_ADVANCE|
+|interestPaymentDue|IN_ARREARS|
 |repaymentType|INTEREST_ONLY|
 |repaymentType|PRINCIPAL_AND_INTEREST|
 |loanPurpose|OWNER_OCCUPIED|
@@ -4317,7 +4317,7 @@ This operation does not require authentication
   "unitOfMeasure": "DOLLAR",
   "minimumValue": 0,
   "maximumValue": 0,
-  "rateApplicationMethod": "WHOLE_BALANCE",
+  "rateApplicationMethod": "PER_TIER",
   "applicabilityConditions": {
     "additionalInfo": "string",
     "additionalInfoUri": "string"
@@ -4349,10 +4349,10 @@ This operation does not require authentication
 |---|---|
 |unitOfMeasure|DOLLAR|
 |unitOfMeasure|PERCENT|
-|unitOfMeasure|MONTH|
 |unitOfMeasure|DAY|
-|rateApplicationMethod|WHOLE_BALANCE|
+|unitOfMeasure|MONTH|
 |rateApplicationMethod|PER_TIER|
+|rateApplicationMethod|WHOLE_BALANCE|
 
 <h2 id="tocSbankingproductratecondition">BankingProductRateCondition</h2>
 
@@ -4391,7 +4391,7 @@ This operation does not require authentication
         "openStatus": "OPEN",
         "isOwned": true,
         "maskedNumber": "string",
-        "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+        "productCategory": "BUSINESS_LOANS",
         "productName": "string"
       }
     ]
@@ -4433,7 +4433,7 @@ This operation does not require authentication
   "openStatus": "OPEN",
   "isOwned": true,
   "maskedNumber": "string",
-  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+  "productCategory": "BUSINESS_LOANS",
   "productName": "string"
 }
 
@@ -4474,7 +4474,7 @@ This operation does not require authentication
     "openStatus": "OPEN",
     "isOwned": true,
     "maskedNumber": "string",
-    "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+    "productCategory": "BUSINESS_LOANS",
     "productName": "string",
     "bsb": "string",
     "accountNumber": "string",
@@ -4486,7 +4486,7 @@ This operation does not require authentication
         "maturityDate": "string",
         "maturityAmount": "string",
         "maturityCurrency": "string",
-        "maturityInstructions": "ROLLED_OVER"
+        "maturityInstructions": "PAID_OUT_AT_MATURITY"
       }
     ],
     "creditCard": {
@@ -4518,7 +4518,7 @@ This operation does not require authentication
     "lendingRate": "string",
     "depositRates": [
       {
-        "depositRateType": "FIXED",
+        "depositRateType": "BONUS",
         "rate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
@@ -4528,7 +4528,7 @@ This operation does not require authentication
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -4544,12 +4544,12 @@ This operation does not require authentication
     ],
     "lendingRates": [
       {
-        "lendingRateType": "FIXED",
+        "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
         "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ARREARS",
+        "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
         "loanPurpose": "OWNER_OCCUPIED",
         "tiers": [
@@ -4558,7 +4558,7 @@ This operation does not require authentication
             "unitOfMeasure": "DOLLAR",
             "minimumValue": 0,
             "maximumValue": 0,
-            "rateApplicationMethod": "WHOLE_BALANCE",
+            "rateApplicationMethod": "PER_TIER",
             "applicabilityConditions": {
               "additionalInfo": "string",
               "additionalInfoUri": "string"
@@ -4574,7 +4574,7 @@ This operation does not require authentication
     ],
     "features": [
       {
-        "featureType": "CARD_ACCESS",
+        "featureType": "ADDITIONAL_CARDS",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
@@ -4584,7 +4584,7 @@ This operation does not require authentication
     "fees": [
       {
         "name": "string",
-        "feeType": "PERIODIC",
+        "feeType": "DEPOSIT",
         "amount": "string",
         "balanceRate": "string",
         "transactionRate": "string",
@@ -4687,7 +4687,7 @@ This operation does not require authentication
   "openStatus": "OPEN",
   "isOwned": true,
   "maskedNumber": "string",
-  "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+  "productCategory": "BUSINESS_LOANS",
   "productName": "string",
   "bsb": "string",
   "accountNumber": "string",
@@ -4699,7 +4699,7 @@ This operation does not require authentication
       "maturityDate": "string",
       "maturityAmount": "string",
       "maturityCurrency": "string",
-      "maturityInstructions": "ROLLED_OVER"
+      "maturityInstructions": "PAID_OUT_AT_MATURITY"
     }
   ],
   "creditCard": {
@@ -4731,7 +4731,7 @@ This operation does not require authentication
   "lendingRate": "string",
   "depositRates": [
     {
-      "depositRateType": "FIXED",
+      "depositRateType": "BONUS",
       "rate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
@@ -4741,7 +4741,7 @@ This operation does not require authentication
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
           "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
+          "rateApplicationMethod": "PER_TIER",
           "applicabilityConditions": {
             "additionalInfo": "string",
             "additionalInfoUri": "string"
@@ -4757,12 +4757,12 @@ This operation does not require authentication
   ],
   "lendingRates": [
     {
-      "lendingRateType": "FIXED",
+      "lendingRateType": "BUNDLE_DISCOUNT_FIXED",
       "rate": "string",
       "comparisonRate": "string",
       "calculationFrequency": "string",
       "applicationFrequency": "string",
-      "interestPaymentDue": "IN_ARREARS",
+      "interestPaymentDue": "IN_ADVANCE",
       "repaymentType": "INTEREST_ONLY",
       "loanPurpose": "OWNER_OCCUPIED",
       "tiers": [
@@ -4771,7 +4771,7 @@ This operation does not require authentication
           "unitOfMeasure": "DOLLAR",
           "minimumValue": 0,
           "maximumValue": 0,
-          "rateApplicationMethod": "WHOLE_BALANCE",
+          "rateApplicationMethod": "PER_TIER",
           "applicabilityConditions": {
             "additionalInfo": "string",
             "additionalInfoUri": "string"
@@ -4787,7 +4787,7 @@ This operation does not require authentication
   ],
   "features": [
     {
-      "featureType": "CARD_ACCESS",
+      "featureType": "ADDITIONAL_CARDS",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string",
@@ -4797,7 +4797,7 @@ This operation does not require authentication
   "fees": [
     {
       "name": "string",
-      "feeType": "PERIODIC",
+      "feeType": "DEPOSIT",
       "amount": "string",
       "balanceRate": "string",
       "transactionRate": "string",
@@ -4938,7 +4938,7 @@ This operation does not require authentication
   "maturityDate": "string",
   "maturityAmount": "string",
   "maturityCurrency": "string",
-  "maturityInstructions": "ROLLED_OVER"
+  "maturityInstructions": "PAID_OUT_AT_MATURITY"
 }
 
 ```
@@ -4957,8 +4957,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|maturityInstructions|ROLLED_OVER|
 |maturityInstructions|PAID_OUT_AT_MATURITY|
+|maturityInstructions|ROLLED_OVER|
 
 <h2 id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
 
@@ -5049,7 +5049,7 @@ This operation does not require authentication
         "accountId": "string",
         "transactionId": "string",
         "isDetailAvailable": true,
-        "type": "FEE",
+        "type": "DIRECT_DEBIT",
         "status": "PENDING",
         "description": "string",
         "postingDateTime": "string",
@@ -5100,7 +5100,7 @@ This operation does not require authentication
   "accountId": "string",
   "transactionId": "string",
   "isDetailAvailable": true,
-  "type": "FEE",
+  "type": "DIRECT_DEBIT",
   "status": "PENDING",
   "description": "string",
   "postingDateTime": "string",
@@ -5146,13 +5146,13 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
+|type|DIRECT_DEBIT|
 |type|FEE|
 |type|INTEREST_CHARGED|
 |type|INTEREST_PAID|
+|type|PAYMENT|
 |type|TRANSFER_OUTGOING|
 |type|TRANSFER_INCOMING|
-|type|PAYMENT|
-|type|DIRECT_DEBIT|
 |type|OTHER|
 |status|PENDING|
 |status|POSTED|
@@ -5167,7 +5167,7 @@ This operation does not require authentication
     "accountId": "string",
     "transactionId": "string",
     "isDetailAvailable": true,
-    "type": "FEE",
+    "type": "DIRECT_DEBIT",
     "status": "PENDING",
     "description": "string",
     "postingDateTime": "string",
@@ -5219,7 +5219,7 @@ This operation does not require authentication
   "accountId": "string",
   "transactionId": "string",
   "isDetailAvailable": true,
-  "type": "FEE",
+  "type": "DIRECT_DEBIT",
   "status": "PENDING",
   "description": "string",
   "postingDateTime": "string",
@@ -5428,7 +5428,7 @@ This operation does not require authentication
         "payeeId": "string",
         "nickname": "string",
         "description": "string",
-        "type": "DOMESTIC",
+        "type": "BILLER",
         "creationDate": "string"
       }
     ]
@@ -5467,7 +5467,7 @@ This operation does not require authentication
     "payeeId": "string",
     "nickname": "string",
     "description": "string",
-    "type": "DOMESTIC",
+    "type": "BILLER",
     "creationDate": "string",
     "payeeUType": "domestic",
     "domestic": {
@@ -5483,7 +5483,7 @@ This operation does not require authentication
       "payId": {
         "name": "string",
         "identifier": "string",
-        "type": "EMAIL"
+        "type": "ABN"
       }
     },
     "biller": {
@@ -5538,7 +5538,7 @@ This operation does not require authentication
   "payeeId": "string",
   "nickname": "string",
   "description": "string",
-  "type": "DOMESTIC",
+  "type": "BILLER",
   "creationDate": "string"
 }
 
@@ -5558,9 +5558,9 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
+|type|BILLER|
 |type|DOMESTIC|
 |type|INTERNATIONAL|
-|type|BILLER|
 
 <h2 id="tocSbankingpayeedetail">BankingPayeeDetail</h2>
 
@@ -5571,7 +5571,7 @@ This operation does not require authentication
   "payeeId": "string",
   "nickname": "string",
   "description": "string",
-  "type": "DOMESTIC",
+  "type": "BILLER",
   "creationDate": "string",
   "payeeUType": "domestic",
   "domestic": {
@@ -5587,7 +5587,7 @@ This operation does not require authentication
     "payId": {
       "name": "string",
       "identifier": "string",
-      "type": "EMAIL"
+      "type": "ABN"
     }
   },
   "biller": {
@@ -5664,7 +5664,7 @@ This operation does not require authentication
   "payId": {
     "name": "string",
     "identifier": "string",
-    "type": "EMAIL"
+    "type": "ABN"
   }
 }
 
@@ -5733,7 +5733,7 @@ This operation does not require authentication
 {
   "name": "string",
   "identifier": "string",
-  "type": "EMAIL"
+  "type": "ABN"
 }
 
 ```
@@ -5750,10 +5750,10 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|type|EMAIL|
-|type|TELEPHONE|
 |type|ABN|
+|type|EMAIL|
 |type|ORG_IDENTIFIER|
+|type|TELEPHONE|
 
 <h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
@@ -5962,7 +5962,7 @@ This operation does not require authentication
                 "payId": {
                   "name": "string",
                   "identifier": "string",
-                  "type": "EMAIL"
+                  "type": "ABN"
                 }
               },
               "biller": {
@@ -6085,7 +6085,7 @@ This operation does not require authentication
           "payId": {
             "name": "string",
             "identifier": "string",
-            "type": "EMAIL"
+            "type": "ABN"
           }
         },
         "biller": {
@@ -6170,8 +6170,8 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |status|ACTIVE|
-|status|SKIP|
 |status|INACTIVE|
+|status|SKIP|
 
 <h2 id="tocSbankingscheduledpaymentset">BankingScheduledPaymentSet</h2>
 
@@ -6196,7 +6196,7 @@ This operation does not require authentication
       "payId": {
         "name": "string",
         "identifier": "string",
-        "type": "EMAIL"
+        "type": "ABN"
       }
     },
     "biller": {
@@ -6266,7 +6266,7 @@ This operation does not require authentication
     "payId": {
       "name": "string",
       "identifier": "string",
-      "type": "EMAIL"
+      "type": "ABN"
     }
   },
   "biller": {
@@ -6578,8 +6578,8 @@ This operation does not require authentication
 |---|---|
 |status|OK|
 |status|PARTIAL_FAILURE|
-|status|UNAVAILABLE|
 |status|SCHEDULED_OUTAGE|
+|status|UNAVAILABLE|
 
 <h2 id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h2>
 
@@ -6670,7 +6670,7 @@ This operation does not require authentication
       "isACNCRegistered": true,
       "industryCode": "string",
       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
-      "organisationType": "SOLE_TRADER",
+      "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string"
     }
@@ -6775,7 +6775,7 @@ This operation does not require authentication
             "postcode": "string",
             "state": "string"
           },
-          "purpose": "REGISTERED"
+          "purpose": "MAIL"
         }
       ]
     },
@@ -6792,7 +6792,7 @@ This operation does not require authentication
       "isACNCRegistered": true,
       "industryCode": "string",
       "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
-      "organisationType": "SOLE_TRADER",
+      "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string",
       "physicalAddresses": [
@@ -6832,7 +6832,7 @@ This operation does not require authentication
             "postcode": "string",
             "state": "string"
           },
-          "purpose": "REGISTERED"
+          "purpose": "MAIL"
         }
       ]
     }
@@ -6893,8 +6893,8 @@ This operation does not require authentication
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
 |prefix|string|optional|none|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |suffix|string|optional|none|Used for a trailing suffix to the name (e.g. Jr)|
-|occupationCode|[ExternalRef](#common-field-types)|optional|none|Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.|
-|occupationCodeVersion|string|optional|none|The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.|
+|occupationCode|[ExternalRef](#common-field-types)|conditional|none|Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.|
+|occupationCodeVersion|string|conditional|none|The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.|
 
 #### Enumerated Values
 
@@ -6976,7 +6976,7 @@ This operation does not require authentication
         "postcode": "string",
         "state": "string"
       },
-      "purpose": "REGISTERED"
+      "purpose": "MAIL"
     }
   ]
 }
@@ -7018,7 +7018,7 @@ This operation does not require authentication
   "isACNCRegistered": true,
   "industryCode": "string",
   "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
-  "organisationType": "SOLE_TRADER",
+  "organisationType": "COMPANY",
   "registeredCountry": "string",
   "establishmentDate": "string"
 }
@@ -7039,8 +7039,8 @@ This operation does not require authentication
 |abn|string|optional|none|Australian Business Number for the organisation|
 |acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
 |isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
-|industryCode|[ExternalRef](#common-field-types)|optional|none|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.|
-|industryCodeVersion|string|optional|none|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.|
+|industryCode|[ExternalRef](#common-field-types)|conditional|none|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.|
+|industryCodeVersion|string|conditional|none|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.|
 |organisationType|string|mandatory|none|Legal organisation type|
 |registeredCountry|[ExternalRef](#common-field-types)|optional|none|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
 |establishmentDate|[DateString](#common-field-types)|optional|none|The date the organisation described was established|
@@ -7051,11 +7051,11 @@ This operation does not require authentication
 |---|---|
 |industryCodeVersion|ANZSIC_1292.0_2006_V2.0|
 |industryCodeVersion|ANZSIC_1292.0_2006_V1.0|
-|organisationType|SOLE_TRADER|
 |organisationType|COMPANY|
-|organisationType|PARTNERSHIP|
-|organisationType|TRUST|
 |organisationType|GOVERNMENT_ENTITY|
+|organisationType|PARTNERSHIP|
+|organisationType|SOLE_TRADER|
+|organisationType|TRUST|
 |organisationType|OTHER|
 
 <h2 id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
@@ -7076,7 +7076,7 @@ This operation does not require authentication
   "isACNCRegistered": true,
   "industryCode": "string",
   "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
-  "organisationType": "SOLE_TRADER",
+  "organisationType": "COMPANY",
   "registeredCountry": "string",
   "establishmentDate": "string",
   "physicalAddresses": [
@@ -7116,7 +7116,7 @@ This operation does not require authentication
         "postcode": "string",
         "state": "string"
       },
-      "purpose": "REGISTERED"
+      "purpose": "MAIL"
     }
   ]
 }
@@ -7173,9 +7173,9 @@ This operation does not require authentication
 |---|---|
 |purpose|MOBILE|
 |purpose|HOME|
+|purpose|INTERNATIONAL|
 |purpose|WORK|
 |purpose|OTHER|
-|purpose|INTERNATIONAL|
 |purpose|UNSPECIFIED|
 
 <h2 id="tocScommonemailaddress">CommonEmailAddress</h2>
@@ -7249,7 +7249,7 @@ This operation does not require authentication
     "postcode": "string",
     "state": "string"
   },
-  "purpose": "REGISTERED"
+  "purpose": "MAIL"
 }
 
 ```
@@ -7273,9 +7273,9 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|purpose|REGISTERED|
 |purpose|MAIL|
 |purpose|PHYSICAL|
+|purpose|REGISTERED|
 |purpose|WORK|
 |purpose|OTHER|
 
@@ -7538,7 +7538,7 @@ This operation does not require authentication
 <a id="schemabankingproductcategory"></a>
 
 ```json
-"TRANS_AND_SAVINGS_ACCOUNTS"
+"BUSINESS_LOANS"
 
 ```
 
@@ -7554,16 +7554,16 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
-|*anonymous*|TERM_DEPOSITS|
-|*anonymous*|TRAVEL_CARDS|
+|*anonymous*|BUSINESS_LOANS|
+|*anonymous*|CRED_AND_CHRG_CARDS|
+|*anonymous*|LEASES|
+|*anonymous*|MARGIN_LOANS|
+|*anonymous*|OVERDRAFTS|
+|*anonymous*|PERS_LOANS|
 |*anonymous*|REGULATED_TRUST_ACCOUNTS|
 |*anonymous*|RESIDENTIAL_MORTGAGES|
-|*anonymous*|CRED_AND_CHRG_CARDS|
-|*anonymous*|PERS_LOANS|
-|*anonymous*|MARGIN_LOANS|
-|*anonymous*|LEASES|
+|*anonymous*|TERM_DEPOSITS|
 |*anonymous*|TRADE_FINANCE|
-|*anonymous*|OVERDRAFTS|
-|*anonymous*|BUSINESS_LOANS|
+|*anonymous*|TRAVEL_CARDS|
+|*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
 
