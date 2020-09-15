@@ -3234,6 +3234,7 @@ definitions:
       occupationCode:
         type: string
         description: Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.
+        x-cds-type: ExternalRef
       occupationCodeVersion:
         type: string
         description: The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.
@@ -3309,6 +3310,7 @@ definitions:
       industryCode:
         type: string
         description: A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.
+        x-cds-type: ExternalRef
       industryCodeVersion:
         type: string
         description: The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.
