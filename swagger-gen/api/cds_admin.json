@@ -68,7 +68,7 @@
     "/admin/metrics": {
       "get": {
         "summary": "Get Metrics",
-        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **July 2021**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html)",
+        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **July 31st 2021**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html)",
         "operationId": "getMetrics",
         "tags": [
           "Admin",
@@ -100,7 +100,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {

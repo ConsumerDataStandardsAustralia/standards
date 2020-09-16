@@ -120,7 +120,7 @@ $.ajax({
 
 This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
-NOTE: This version must be implemented by **July 2021**
+NOTE: This version must be implemented by **July 31st 2021**
 
 Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 
@@ -287,7 +287,7 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
 This operation may only be called by the CDR Register

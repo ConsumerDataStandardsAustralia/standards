@@ -162,7 +162,7 @@ This operation may only be called by the CDR Register
 
 <p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
 
-<p>NOTE: This version must be implemented by <strong>July 2021</strong></p>
+<p>NOTE: This version must be implemented by <strong>July 31st 2021</strong></p>
 
 <p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a></p>
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
@@ -395,7 +395,7 @@ This operation may only be called by the CDR Register
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
