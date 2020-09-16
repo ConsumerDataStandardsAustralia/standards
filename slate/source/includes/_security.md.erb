@@ -308,7 +308,7 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 
 - `sub`: [Pairwise Pseudonymous Identifier (PPID)](#identifiers) for the End-User at the Data Holder.
 - `acr`: Authentication Context Class Reference.  MUST contain a valid [ordinal LoA value](#ordinal-loa).
-- `auth_time`: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `auth_time`.
+- `auth_time`: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `auth_time`. It MUST be returned by the Data Holder in the ID Token when the Data Recipient has requested it as an essential claim according to section 2 of the **[OIDC]** standard. It SHOULD NOT be returned via the UserInfo endpoint.
 - `name`: End-User's full name in displayable form including all name parts.
 - `given_name`: Given name(s) or first name(s) of the End-User.
 - `family_name`: Surname(s) or last name(s) of the End-User.
@@ -345,11 +345,7 @@ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-c
 to a Data Recipient from both the Authorisation
 End Point and Token End Point.
 
-As described under [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) of the **[FAPI-RW]** profile, ID Tokens MUST include the following claims (in addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard) as part of [Hybrid Flow authentication](#hybrid):
-
-- `nonce`: String value used to associate a Client session with an ID Token.
-- `s_hash`: Hash of the state value.
-- `c_hash`: Hash of the authorisation_code value.
+In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (Authentication using the Hybrid Flow) of the **[OIDC]** standards and [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack) of the **[FAPI-RW]** profile.
 
 ID Tokens MUST be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**.
 
@@ -391,7 +387,7 @@ In order to achieve this:
 ## Identifiers and Subject Types
 
 ### sub claim
-The identifier for an authenticated end-user (subject) MUST be passed in the `sub` claim of an [ID Token](https://openid.net/specs/openid-cocnnect-core-1_0.html#IDToken) and [UserInfo response](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) as defined by **[OIDC]**.
+The identifier for an authenticated end-user (subject) MUST be passed in the `sub` claim of an [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and [UserInfo response](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) as defined by **[OIDC]**.
 
 The Data Holder MUST generate the `sub` value as a Pairwise Pseudonymous Identifier (PPID) as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**. Furthermore, the identifier MUST be unique per customer as per the definition of customer in the CDR Federation section of this profile.
 
@@ -444,8 +440,7 @@ client_id=s6BhdRkqt3
   "auth_time": 1311280969,
   "acr": "urn:cds.au:cdr:3",
   "refresh_token_expires_at": 1311281970,
-  "sharing_expires_at": 1311281970,
-  "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb"
+  "sharing_expires_at": 1311281970
 }
 ```
 
@@ -471,30 +466,31 @@ client_id=s6BhdRkqt3
 {
   "active": true,
   "exp": 1311281970,
+  "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
   "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb"
 }
 ```
 
+The CDR Arrangement ID is a unique string representing a consent arrangement between a Data Recipient and Data Holder for a given consumer.
+
+The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile.
+
+The Data Holder MUST provide the CDR Arrangement ID as the claim ``cdr_arrangement_id`` in the Token End Point response and Token Introspection End Point response.
+
+A Data Holder MUST only return the ``cdr_arrangement_id`` in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipients have a reliable way to determine whether a given Data Holder supports concurrent consent.
+
 Statements related to the CDR Arrangement ID:
 
-* The CDR Arrangement ID is a string representing a unique sharing arrangement between a data recipient and data holder for a given consumer
-* The CDR Arrangement ID is represented as a claim "cdr_arrangement_id" returned in the Token endpoint and Token Introspection endpoint response JSON
 * The CDR Arrangement ID MUST be unique to a Data Holder
 * The CDR Arrangement ID MUST be non-guessable and must not identify a consumer
-* A CDR Arrangement ID MUST be bound to only one active consent at a time but may have no active consent
-* A CDR Arrangement ID can span multiple historical consents which are not active
 * A CDR Arrangement ID SHOULD be generated using an algorithm that reduces the chances of collision
 * A CDR Arrangement ID MUST be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)
-* A CDR Arrangement ID MUST be used to revoke consent
 
 #### Retrospectively obtaining a CDR Arrangement ID
 
-For consents The Data Holder must provide the CDR Arrangement ID as a claim in the Token endpoint response and Token Introspection endpoint response.
+For any existing consents, Data Holders must retrospectively generate a ``cdr_arrangement_id`` such that from November 2020, Data Recipients can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
 
-A Data Recipient can call either the Token or Token Introspection endpoints at any point post-consent to obtain the CDR Arrangement ID using a valid refresh token.
-
-The CDR Arrangement ID will be supplied in the response JSON as the claim `cdr_arrangement_id`.
-
+A Data Recipient can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.
 
 <a id="levels-of-assurance-loas"></a>
 ## Levels of Assurance (LoAs)
@@ -620,15 +616,17 @@ Note that the period of `one year` in the above statements should be interpreted
 The Data Recipient is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
 
 ### Specifying an existing arrangement
-To allow for an existing consent to be reliably revoked upon the establishment of a new consent intended as a replacement data holders MUST support an additional claim in the authorisation request object named `cdr_arrangement_id` that the data recipient may optionally include with the value set to the arrangement ID for a previously established sharing arrangement.
+Provided a Data Holder supports PAR, they MUST also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the PAR End Point. The Data Recipient MAY provide the ``cdr_arrangement_id`` claim in the Request Object sent to the PAR End Point.
 
-The `cdr_arrangement_id` claim MUST be handled as follows:
+The ``cdr_arrangement_id`` claim MUST be handled as follows:
 
-- **Until November 2020** data holders are not required to take any action if `cdr_arrangement_id` is supplied but MUST NOT respond with an error.
-- **From November 2020** data holders MUST revoke all existing tokens related to the arrangement identified by the `cdr_arrangement_id` claim in the request object once the new consent is successfully established and a new set of tokens has been provided to the data recipient.
-- **Until November 2020** data recipients MUST NOT implement scenarios that support concurrent consent.  Only single, extant consent scenarios should be implemented until this date.
-- **Until November 2020** data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the revocation end point.
+**Until November 2020** data holders are not required to take any action if ``cdr_arrangement_id`` is supplied but MUST NOT respond with an error.
 
+**Until November 2020** data recipients MUST NOT implement scenarios that support concurrent consent. Only single, extant consent scenarios should be implemented until this date.
+
+If a data recipient provides the ``cdr_arrangement_id`` claim in the request object to the data holder's PAR End Point, the data holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.
+
+For data recipients seeking to replace consent where the Data Holder does not support PAR, data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the appropriate revocation end point.
 
 ## End Points
 <aside class="warning">
@@ -667,7 +665,7 @@ Content-Type: application/json
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "id_token_encryption_alg_values_supported": [ "RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
   "id_token_encryption_enc_values_supported": [ "A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM" ],
-  "cdr_arrangement_endpoint": "https://data.holder.com.au/arrangements",
+  "cdr_arrangement_revocation_endpoint": "https://data.holder.com.au/arrangements/revoke",
   "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
@@ -698,12 +696,12 @@ At a minimum, the Data Holder metadata MUST include:
 - `claims_supported`:  The list of supported claims.
 - `acr_values_supported`:  The supported ACR values.
 - `jwks_uri`: The JSON Web Key Set for the data holder.
-- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **FAPI-RW** and **OIDD**.
+- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[FAPI-RW]** and **[OIDD]**.
 - `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens.
 
 **From November 2020**, the Data Holder metadata MUST include:
 
-- `cdr_arrangement_endpoint`: URL of the CDR Arrangement End Point for consent revocation.
+- ``cdr_arrangement_revocation_endpoint``: The URL of the CDR Arrangement Revocation End Point for consent revocation
 - `pushed_authorization_request_endpoint`: URL of the Pushed Authorisation End Point used to support **[PAR]**.
 
 
@@ -822,96 +820,127 @@ Introspection of Refresh Tokens MUST be supported.
 
 Introspection of Access Tokens and ID Tokens MUST NOT be supported.
 
-An Introspection End Point Response SHALL only include the following fields:
+A Token Introspection End Point Response SHALL include, at least, the following fields:
 
 - `active`: Boolean indicator of whether or not the presented token
       is currently active.
 - `exp`:  A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
+- `scope`: A JSON string containing a space-separated list of scopes associated with this token.
 - `cdr_arrangement_id`: A unique identifier of the CDR arrangement related to the authorisation.
 
-### Revocation End Point
+A Token Introspection End Point Response MAY include claims defined in Section 2.2 of **[RFC7662]** but ``username`` SHALL NOT be allowed.
+
+### Token Revocation End Point
 
 | Description | Value   |
 |---|---|
-| Hosted By  | Data Holder and Data Recipient (Data Recipient required until November 2020)  |
+| Hosted By  | Data Holder and Data Recipient |
 |  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
 | Client Authentication Required| Yes (for verifying Data Recipients)|
 | Bearer Token Required| Yes (for verifying Data Holders)|
 
 **Requirements for Data Holder implementations**
 
-Data Holders and MUST implement a Token Revocation End Point as described in [section 2](https://tools.ietf.org/html/rfc7009#section-2) of **[RFC7009]**.
+Data Holders MUST implement a Token Revocation End Point as described in [section 2](https://tools.ietf.org/html/rfc7009#section-2) of **[RFC7009]**.
 
 The Revocation End Point serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required to allow for token clean up.
 
 Revocation of Refresh Tokens and Access Tokens MUST be supported.
 
+
 **Requirements for Data Recipient implementations**
 
-*The following obligations are required by Data Recipients until November 2020.*
-
-The Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.
+The Token Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.
 
 Revocation of Access Tokens MUST not be supported.
 
-Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation
+Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation.
 
-If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST use the Data Holder’s implementation of the revocation end point with the current Refresh Token to notify the Data Holder.
+If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST revoke consent using Data Holder’s implementation.
 
+**Revoking consent**
 
-### CDR Arrangement Management End Point
+If the Data Holder does not support a CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder's Token Revocation End Point with the current Refresh Token to notify the Data Holder.
+
+If the Data Holder does support the CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder.
+
+**NOTE:** Data Recipients MUST continue to support this Token Revocation End Point until February 2021.
+
+**NOTE:** Data Holders MUST continue to support consent revocation via the oAuth Token Revocation end point until February 2021.
+
+### CDR Arrangement Revocation End Point
 
 > Non-Normative Example
 
 >Request
 
 ```
-DELETE https://data.holder.com.au/arrangements/5a1bf696-ee03-408b-b315-97955415d1f0
+POST https://data.holder.com.au/arrangements/revoke
 HTTP/1.1
 Host: data.holder.com.au
-Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
+Content-Type: application/x-www-form-urlencoded
+
+  client_id=s6BhdRkqt3&
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&
+  cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 ```
 
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder & Data Recipient  |
 |  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
-| Client Authentication Required| Yes (for verifying Data Recipients)|
-| Bearer Token Required| Yes (for verifying Data Holders)|
+| Client Authentication Required | Yes (for Data Holders verifying Data Recipients) |
+| Bearer Token Required| Yes (for Data Recipients verifying Data Holders) |
 
-**HTTP Method:** DELETE<br/>
-**Data Holder Path:** Defined using OIDC Discovery<br/>
-**Data Recipient Path:** <ResourceBaseURI>/arrangements/{cdr_arrangement_id}<br/>
+**HTTP Method:** POST<br/>
+**Data Holder Path:** The ``cdr_arrangement_revocation_endpoint`` defined using OIDC Discovery<br/>
+**Data Recipient Path:** ``<RecipientBaseUri>/arrangements/revoke`` where \<RecipientBaseUri\> is registered with the CDR Register.<br/>
 
-**From November 2020**, Data Holders and Data Recipients MUST implement an arrangement management end point that can be used to revoke an existing sharing arrangement.
+**From November 2020**, Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
+
+The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body: <br/>
+``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 
 This end point will be implemented according to the following:
 
-* Consent management MUST be managed through the new CDR Arrangement Management End PointCDR Arrangement Management API. The CDR Arrangement Management API only supports DELETE for revocation of consent for the scope of concurrent consent.
-* Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Management API with a valid CDR Arrangement Identifier
-* Data Holders MUST publish their CDR Arrangement Management API using their OpenID Provider Metadata discovery endpoint
-* Data Recipients MUST expose their CDR Arrangement Management API under their Recipient Base URI published in their Software Statement Assertion
-* If the CDR Arrangement Management API is called for revocation, it MUST delete associated refresh and/or access tokens
-* For Data Holders, Data Recipients must be authenticated when they call this end point using a valid Access Token as specified in section 10.3 of **[OAUTH2]**
-* For Data Holders, if the cdr_arrangement_id is not related to the consumer identified by the Access Token provided it MUST be rejected
-* For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the [Client Authentication](#client-authentication) section.
-* For Data Recipients, if the cdr_arrangement_id is not related to the Data Holder making the call it MUST be rejected
-* A call to this end point should be responded to with HTTP status code 204 if the sharing arrangement has been revoked successfully
-* A call to this end point should be responded to with HTTP status code 422 if the client submitted an invalid identifier
+* Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
+* Data Holders MUST publish their CDR Arrangement Revocation End Point  using their OpenID Provider Metadata Discovery End Point
+* Data Recipients MUST expose their CDR Arrangement Revocation End Point  under their Recipient Base URI published in their Software Statement Assertion
+* Consent revocation MUST also revoke associated refresh and/or access tokens
+* For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
+* If the ``cdr_arrangement_id`` is not related to the client making the call it MUST be rejected
 
-### Race conditions and handling consent revocation with Data Recipients
+**Response Codes**
 
-Because single-consent sharing arrangements will be established before concurrent consent
-future dated obligations, there is the chance that a consumer may revoke consent with a
-Data Holder before a Data Recipient has obtained a sharing ID. In this instance, a Data
-Holder will call the Data Recipient’s CDR Arrangement Management API with a CDR Arrangement
-ID that is not recognised by the Data Recipient. The Data Recipient would return a HTTP error code 422
-which signifies to the Data Holder that the cdr_arrangement_id is not recognised.
+The following responses are in addition to error responses covered by normative references. Error scenarios in the following table MUST use the error structure defined in the [Payload Conventions](#payload-conventions).
 
-In this instance, a Data Holder must attempt to call the Data Recipient’s revocation endpoint to
-notify the Data Recipient that a sharing arrangement has ended. If the Data Recipient has chosen to
-no longer support a revocation endpoint, the absence of support will be inferred through the
-absence of the revocation_endpoint in the Data Recipients software statement assertion (SSA).
+Response Code | Situation | Description
+-- | -- | --
+204 No Content | Success | The sharing arrangement has been revoked successfully
+422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found
+
+**Data Holders calling Data Recipients**
+
+Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.
+
+Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.
+
+Data Recipients MUST continue to support their Token Revocation End Point until February 2021 and until they have updated their client registrations.
+
+**Updating Register Meta Data and Client Registration**
+
+When a Data Recipient supports the CDR Arrangement Revocation End Point, they MUST:
+1. Update their meta data with the CDR Register to include their ``recipient_base_uri``.
+2. Update their client registration with each Data Holder.
+
+If the Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST instead revoke consent using the Data Recipient Token Revocation End Point.
+
+**Data Recipients calling Data Holders**
+
+Data Recipients may discover that a given Data Holder supports the CDR Arrangement Revocation End Point by the presence of the ``cdr_arrangement_revocation_endpoint`` in the Data Holder's OpenID Provider metadata.
+
+If a Data Recipient does not support the CDR Arrangement Revocation End Point, Data Holders must notify Data Recipients when consent is withdrawn by calling the Data Recipient Revocation End Point.
 
 ### Pushed Authorisation End Point
 
@@ -989,30 +1018,24 @@ Host: data.holder.com.au
 |---|---|
 | Hosted By  | Data Holder  |
 |  Transport Security |  MTLS |
-| Client Authentication Required| No |
+| Client Authentication Required| Yes |
 | Bearer Token Required| No |
 
 
 **From November 2020**, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[PAR]**.
 
-Data Recipients must send authorisation request objects by reference by calling the Data Holder’s pushed authorisation request endpoint if:
+Data Recipients MAY send authorisation requests using **[PAR]** if supported by the Data Holder. Request objects which contain the ``cdr_arrangement_id`` claim MUST only be sent using **[PAR]**. If a Data Holder does not support **[PAR]**, a Data Recipient SHOULD NOT provide the ``cdr_arrangement_id`` claim in the request object.
 
-* The request object is likely to be too large to be sent as a URI parameter
-* The request object contains a cdr_arrangement_id parameter
-
-The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation endpoint to initiate an authorisation flow. In this way, the Data Recipient has staged their authorisation intent with the Data Holder and can then proceed via the backchannel.
+The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.
 
 In addition:
 
-* Data Holders MUST support request objects sent by reference for Pushed Authorisation Requests
-* Request Object references SHALL NOT be supported in any mode of use other than Pushed Authorisation Requests (PAR). If a Data Holder does not support Pushed Authorisation Requests (PAR), it MUST NOT support Request Object references.
-* Data Holders MUST publish their support for PAR as per the specification using OAuth/OpenID Provider Metadata parameters in discovery responses
+* Request Object references SHALL NOT be supported in any mode of use other than **[PAR]**. If a Data Holder does not support **[PAR]**, it MUST NOT support Request Object references.
 * The Request URI MUST expire between 10 seconds and 90 seconds
-* Data Recipients MAY provide an existing cdr_arrangement_id claim in an authorisation request object to establish a new consent under an existing arrangement
-* Data Holders MUST revoke existing refresh tokens and access tokens when a cdr_arrangement_id is provided in the authorisation request object but ONLY after successful authorisation
-* Data Recipients MUST observe data deletion and de-identification requirements for revoked consent after successful authorisation
-* If the cdr_arrangement_id is not related to the consumer being authenticated it MUST be rejected
-* If the cdr_arrangement_id is not related to the Data Holder it MUST be rejected
+* Data Recipients MAY provide an existing ``cdr_arrangement_id`` claim in an authorisation request object to establish a new consent under an existing arrangement
+* Data Holders MUST revoke existing refresh tokens and access tokens when a ``cdr_arrangement_id`` is provided in the Request Object but only after successful authorisation
+* If the ``cdr_arrangement_id`` is not related to the consumer being authenticated it MUST be rejected
+* If the ``cdr_arrangement_id`` is not recognised by to the Data Holder it MUST be rejected
 
 ## Normative References
 
@@ -1030,7 +1053,7 @@ In addition:
 | <a id="OAUTH2"></a>**[OAUTH2]**    | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                  |Oct 2012
 | <a id="OIDC"></a>**[OIDC]**        | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                    |Nov 2014
 | <a id="OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |Nov 2014
-| <a id="TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/join-identity-federation/accreditation-and-onboarding/trusted-digital-identity-framework>|Apr 2019
+| <a id="TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework>                  |Apr 2019
 | <a id="RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |Mar 1997
 | <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |Aug 2013
 | <a id="RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |May 2015

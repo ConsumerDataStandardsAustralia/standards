@@ -186,3 +186,58 @@ For union objects an additional field, with a known suffix, is used to identify 
 As the name of this field is constant it can be used to perform an indirect lookup on the object type that has actually been provided removing the need to scan for which object is present.
 
 A field of this type will always be specified with the suffix `UType` meaning Union Type.
+
+### Array Conventions
+
+> Samples for providing array values:
+
+```
+## Many-values:
+"middleNames": ["Geoff", "John"],
+"errors": [
+    {
+      "code": "...",
+      "title": "...",
+      "detail": "..."
+    }, {
+      "code": "...",
+      "title": "...",
+      "detail": "..."
+    }
+]
+
+## Single-value:
+"middleNames": ["Geoff"],
+"errors": [
+    {
+      "code": "...",
+      "title": "...",
+      "detail": "..."
+    }
+]
+
+## Empty array:
+"middleNames": [ ],
+"errors": [ ]
+
+``` 
+
+Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads. 
+
+#### Mandatory fields
+
+In objects where an array field is defined as having 0..n values, the array field must be explicitly expressed as an array in the payload, even if it only contains one item or is empty.
+
+This applies equally for object arrays. Where a field is defined as an array value, the response should be:
+* an array of objects,
+* an array of values, or 
+* an empty array (``[]``).
+
+An empty array is the representation for an array equivalent to an empty string.
+
+#### Optional fields
+If the field is optional a ``null`` value or empty field response is accepted.
+
+#### Normative references
+The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.
+

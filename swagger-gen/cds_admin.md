@@ -120,10 +120,14 @@ $.ajax({
 
 This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
+NOTE: This version must be implemented by **July 31st 2021**
+
+Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -250,10 +254,18 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
       ]
     },
     "rejections": {
-      "currentDay": 0,
-      "previousDays": [
-        0
-      ]
+      "authenticated": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      },
+      "unauthenticated": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      }
     },
     "customerCount": 0,
     "recipientCount": 0
@@ -269,13 +281,13 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsList](#schemaresponsemetricslist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV2](#schemaresponsemetricslistv2)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
 This operation may only be called by the CDR Register
@@ -311,9 +323,9 @@ This operation may only be called by the CDR Register
 |---|---|
 |action|REFRESH|
 
-<h2 id="tocSresponsemetricslist">ResponseMetricsList</h2>
+<h2 id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
 
-<a id="schemaresponsemetricslist"></a>
+<a id="schemaresponsemetricslistv2"></a>
 
 ```json
 {
@@ -420,10 +432,18 @@ This operation may only be called by the CDR Register
       ]
     },
     "rejections": {
-      "currentDay": 0,
-      "previousDays": [
-        0
-      ]
+      "authenticated": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      },
+      "unauthenticated": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      }
     },
     "customerCount": 0,
     "recipientCount": 0
@@ -450,7 +470,7 @@ This operation may only be called by the CDR Register
 |» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|conditional|none|Transactions per second over time|
 |» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|conditional|none|Maximum record transactions per second over time|
 |» errors|[ErrorMetrics](#schemaerrormetrics)|conditional|none|Number of calls resulting in error due to server execution over time|
-|» rejections|[RejectionMetrics](#schemarejectionmetrics)|conditional|none|Number of calls rejected due to traffic thresholds over time|
+|» rejections|[RejectionMetricsV2](#schemarejectionmetricsv2)|conditional|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|conditional|none|Number of customers with active authorisations at the time of the call|
 |» recipientCount|integer|conditional|none|Number of data recipients with active authorisations at the time of the call|
 |links|[Links](#schemalinks)|mandatory|none|none|
@@ -718,16 +738,24 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Number of errors for current day|
 |previousDays|[number]|conditional|none|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSrejectionmetrics">RejectionMetrics</h2>
+<h2 id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
 
-<a id="schemarejectionmetrics"></a>
+<a id="schemarejectionmetricsv2"></a>
 
 ```json
 {
-  "currentDay": 0,
-  "previousDays": [
-    0
-  ]
+  "authenticated": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  },
+  "unauthenticated": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  }
 }
 
 ```
@@ -738,8 +766,12 @@ This operation may only be called by the CDR Register
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|currentDay|number|conditional|none|Number of calls rejected for current day|
-|previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|authenticated|object|optional|none|Rejection counts for all authenticated end points|
+|» currentDay|number|optional|none|Number of calls rejected for current day|
+|» previousDays|[number]|optional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|unauthenticated|object|optional|none|Rejection counts for all uauthenticated end points|
+|» currentDay|number|optional|none|Number of calls rejected for current day|
+|» previousDays|[number]|optional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
 <h2 id="tocSlinks">Links</h2>
 

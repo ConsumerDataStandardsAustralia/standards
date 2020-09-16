@@ -90,7 +90,7 @@ In addition, the concept of effective date and time has also been included.  Thi
 
 NOTE: This version must be implemented by **July 2020**
 
-Obsolete versions: [v1](includes/obsolete/get-products-v1.html)
+Obsolete versions: [v1](get-products-v1.html)
 
 ###Endpoint Version
 |   |  |

@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "1.4.0",
+    "version" : "1.5.0",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -32,7 +32,7 @@
           "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "required" : false,
           "type" : "string",
-          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+          "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
         }, {
           "name" : "open-status",
           "in" : "query",
@@ -136,7 +136,7 @@
           "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "required" : false,
           "type" : "string",
-          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+          "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
         }, {
           "name" : "open-status",
           "in" : "query",
@@ -778,7 +778,7 @@
           "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "required" : false,
           "type" : "string",
-          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+          "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
         }, {
           "name" : "open-status",
           "in" : "query",
@@ -1071,7 +1071,7 @@
           "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "required" : false,
           "type" : "string",
-          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+          "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
         }, {
           "name" : "open-status",
           "in" : "query",
@@ -1276,7 +1276,7 @@
           "required" : false,
           "type" : "string",
           "default" : "ALL",
-          "enum" : [ "DOMESTIC", "INTERNATIONAL", "BILLER", "ALL" ]
+          "enum" : [ "BILLER", "DOMESTIC", "INTERNATIONAL", "ALL" ]
         }, {
           "name" : "page",
           "in" : "query",
@@ -1459,7 +1459,7 @@
           "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
           "required" : false,
           "type" : "string",
-          "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+          "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
         }, {
           "name" : "page",
           "in" : "query",
@@ -1958,7 +1958,7 @@
         "featureType" : {
           "type" : "string",
           "description" : "The type of feature described",
-          "enum" : [ "CARD_ACCESS", "ADDITIONAL_CARDS", "UNLIMITED_TXNS", "FREE_TXNS", "FREE_TXNS_ALLOWANCE", "LOYALTY_PROGRAM", "OFFSET", "OVERDRAFT", "REDRAW", "INSURANCE", "BALANCE_TRANSFERS", "INTEREST_FREE", "INTEREST_FREE_TRANSFERS", "DIGITAL_WALLET", "DIGITAL_BANKING", "NPP_PAYID", "NPP_ENABLED", "DONATE_INTEREST", "BILL_PAYMENT", "COMPLEMENTARY_PRODUCT_DISCOUNTS", "BONUS_REWARDS", "NOTIFICATIONS", "OTHER" ]
+          "enum" : [ "ADDITIONAL_CARDS", "BALANCE_TRANSFERS", "BILL_PAYMENT", "BONUS_REWARDS", "CARD_ACCESS", "COMPLEMENTARY_PRODUCT_DISCOUNTS", "DIGITAL_BANKING", "DIGITAL_WALLET", "DONATE_INTEREST", "FREE_TXNS", "FREE_TXNS_ALLOWANCE", "INSURANCE", "INTEREST_FREE", "INTEREST_FREE_TRANSFERS", "LOYALTY_PROGRAM", "NOTIFICATIONS", "NPP_ENABLED", "NPP_PAYID", "OFFSET", "OVERDRAFT", "REDRAW", "UNLIMITED_TXNS", "OTHER" ]
         },
         "additionalValue" : {
           "type" : "string",
@@ -1983,7 +1983,7 @@
         "constraintType" : {
           "type" : "string",
           "description" : "The type of constraint described.  See the next section for an overview of valid values and their meaning",
-          "enum" : [ "MIN_BALANCE", "MAX_BALANCE", "OPENING_BALANCE", "MAX_LIMIT", "MIN_LIMIT" ]
+          "enum" : [ "MIN_BALANCE", "MIN_LIMIT", "MAX_BALANCE", "MAX_LIMIT", "OPENING_BALANCE" ]
         },
         "additionalValue" : {
           "type" : "string",
@@ -2008,7 +2008,7 @@
         "eligibilityType" : {
           "type" : "string",
           "description" : "The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning",
-          "enum" : [ "BUSINESS", "PENSION_RECIPIENT", "MIN_AGE", "MAX_AGE", "MIN_INCOME", "MIN_TURNOVER", "STAFF", "STUDENT", "EMPLOYMENT_STATUS", "RESIDENCY_STATUS", "NATURAL_PERSON", "OTHER" ]
+          "enum" : [ "BUSINESS", "EMPLOYMENT_STATUS", "MAX_AGE", "MIN_AGE", "MIN_INCOME", "MIN_TURNOVER", "NATURAL_PERSON", "PENSION_RECIPIENT", "RESIDENCY_STATUS", "STAFF", "STUDENT", "OTHER" ]
         },
         "additionalValue" : {
           "type" : "string",
@@ -2037,7 +2037,7 @@
         "feeType" : {
           "type" : "string",
           "description" : "The type of fee",
-          "enum" : [ "PERIODIC", "TRANSACTION", "WITHDRAWAL", "DEPOSIT", "PAYMENT", "PURCHASE", "EVENT", "UPFRONT", "EXIT", "VARIABLE" ]
+          "enum" : [ "DEPOSIT", "EVENT", "EXIT", "PAYMENT", "PERIODIC", "PURCHASE", "TRANSACTION", "UPFRONT", "VARIABLE", "WITHDRAWAL" ]
         },
         "amount" : {
           "type" : "string",
@@ -2103,11 +2103,11 @@
         "discountType" : {
           "type" : "string",
           "description" : "The type of discount. See the next section for an overview of valid values and their meaning",
-          "enum" : [ "BALANCE", "DEPOSITS", "PAYMENTS", "FEE_CAP", "ELIGIBILITY_ONLY" ]
+          "enum" : [ "BALANCE", "DEPOSITS", "ELIGIBILITY_ONLY", "FEE_CAP", "PAYMENTS" ]
         },
         "amount" : {
           "type" : "string",
-          "description" : "Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+          "description" : "Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.",
           "x-cds-type" : "AmountString"
         },
         "balanceRate" : {
@@ -2145,13 +2145,13 @@
         },
         "eligibility" : {
           "type" : "array",
-          "description" : "Eligibility constraints that apply to this discount",
+          "description" : "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
           "items" : {
             "$ref" : "#/definitions/BankingProductDiscountEligibility"
           }
         }
       },
-      "x-conditional" : [ "balanceRate", "transactionRate", "accruedRate", "feeRate", "additionalValue", "amount" ]
+      "x-conditional" : [ "accruedRate", "additionalValue", "amount", "balanceRate", "eligibility", "feeRate", "transactionRate" ]
     },
     "BankingProductDiscountEligibility" : {
       "type" : "object",
@@ -2160,7 +2160,7 @@
         "discountEligibilityType" : {
           "type" : "string",
           "description" : "The type of the specific eligibility constraint for a discount",
-          "enum" : [ "BUSINESS", "PENSION_RECIPIENT", "MIN_AGE", "MAX_AGE", "MIN_INCOME", "MIN_TURNOVER", "STAFF", "STUDENT", "EMPLOYMENT_STATUS", "RESIDENCY_STATUS", "NATURAL_PERSON", "INTRODUCTORY", "OTHER" ]
+          "enum" : [ "BUSINESS", "EMPLOYMENT_STATUS", "INTRODUCTORY", "MAX_AGE", "MIN_AGE", "MIN_INCOME", "MIN_TURNOVER", "NATURAL_PERSON", "PENSION_RECIPIENT", "RESIDENCY_STATUS", "STAFF", "STUDENT", "OTHER" ]
         },
         "additionalValue" : {
           "type" : "string",
@@ -2168,7 +2168,7 @@
         },
         "additionalInfo" : {
           "type" : "string",
-          "description" : "Display text providing more information on this eligibility constraint"
+          "description" : "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
         },
         "additionalInfoUri" : {
           "type" : "string",
@@ -2176,7 +2176,7 @@
           "x-cds-type" : "URIString"
         }
       },
-      "x-conditional" : [ "additionalValue" ]
+      "x-conditional" : [ "additionalInfo", "additionalValue" ]
     },
     "BankingProductDepositRate" : {
       "type" : "object",
@@ -2185,7 +2185,7 @@
         "depositRateType" : {
           "type" : "string",
           "description" : "The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning",
-          "enum" : [ "FIXED", "BONUS", "BUNDLE_BONUS", "VARIABLE", "INTRODUCTORY", "FLOATING", "MARKET_LINKED" ]
+          "enum" : [ "BONUS", "BUNDLE_BONUS", "FIXED", "FLOATING", "INTRODUCTORY", "MARKET_LINKED", "VARIABLE" ]
         },
         "rate" : {
           "type" : "string",
@@ -2232,7 +2232,7 @@
         "lendingRateType" : {
           "type" : "string",
           "description" : "The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning",
-          "enum" : [ "FIXED", "VARIABLE", "INTRODUCTORY", "DISCOUNT", "PENALTY", "FLOATING", "MARKET_LINKED", "CASH_ADVANCE", "PURCHASE", "BUNDLE_DISCOUNT_FIXED", "BUNDLE_DISCOUNT_VARIABLE" ]
+          "enum" : [ "BUNDLE_DISCOUNT_FIXED", "BUNDLE_DISCOUNT_VARIABLE", "CASH_ADVANCE", "DISCOUNT", "FLOATING", "INTRODUCTORY", "MARKET_LINKED", "PENALTY", "PURCHASE", "VARIABLE", "FIXED" ]
         },
         "rate" : {
           "type" : "string",
@@ -2257,7 +2257,7 @@
         "interestPaymentDue" : {
           "type" : "string",
           "description" : "When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered",
-          "enum" : [ "IN_ARREARS", "IN_ADVANCE" ]
+          "enum" : [ "IN_ADVANCE", "IN_ARREARS" ]
         },
         "repaymentType" : {
           "type" : "string",
@@ -2303,20 +2303,22 @@
         "unitOfMeasure" : {
           "type" : "string",
           "description" : "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
-          "enum" : [ "DOLLAR", "PERCENT", "MONTH", "DAY" ]
+          "enum" : [ "DOLLAR", "PERCENT", "DAY", "MONTH" ]
         },
         "minimumValue" : {
           "type" : "number",
-          "description" : "The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value"
+          "description" : "The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value",
+          "x-cds-type" : "Number"
         },
         "maximumValue" : {
           "type" : "number",
-          "description" : "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound."
+          "description" : "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
+          "x-cds-type" : "Number"
         },
         "rateApplicationMethod" : {
           "type" : "string",
           "description" : "The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')",
-          "enum" : [ "WHOLE_BALANCE", "PER_TIER" ]
+          "enum" : [ "PER_TIER", "WHOLE_BALANCE" ]
         },
         "applicabilityConditions" : {
           "$ref" : "#/definitions/BankingProductRateCondition"
@@ -2549,8 +2551,8 @@
         },
         "maturityInstructions" : {
           "type" : "string",
-          "description" : "Current instructions on action to be taken at maturity",
-          "enum" : [ "ROLLED_OVER", "PAID_OUT_AT_MATURITY" ]
+          "description" : "Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments",
+          "enum" : [ "ROLLED_OVER", "PAID_OUT_AT_MATURITY", "HOLD_ON_MATURITY" ]
         }
       }
     },
@@ -2702,7 +2704,7 @@
         "type" : {
           "type" : "string",
           "description" : "The type of the transaction",
-          "enum" : [ "FEE", "INTEREST_CHARGED", "INTEREST_PAID", "TRANSFER_OUTGOING", "TRANSFER_INCOMING", "PAYMENT", "DIRECT_DEBIT", "OTHER" ]
+          "enum" : [ "DIRECT_DEBIT", "FEE", "INTEREST_CHARGED", "INTEREST_PAID", "PAYMENT", "TRANSFER_OUTGOING", "TRANSFER_INCOMING", "OTHER" ]
         },
         "status" : {
           "type" : "string",
@@ -2926,7 +2928,7 @@
         },
         "nickname" : {
           "type" : "string",
-          "description" : "The short display name of the payee as provided by the customer"
+          "description" : "The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels"
         },
         "description" : {
           "type" : "string",
@@ -2935,7 +2937,7 @@
         "type" : {
           "type" : "string",
           "description" : "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
-          "enum" : [ "DOMESTIC", "INTERNATIONAL", "BILLER" ]
+          "enum" : [ "BILLER", "DOMESTIC", "INTERNATIONAL" ]
         },
         "creationDate" : {
           "type" : "string",
@@ -3034,13 +3036,13 @@
         "type" : {
           "type" : "string",
           "description" : "The type of the PayID",
-          "enum" : [ "EMAIL", "TELEPHONE", "ABN", "ORG_IDENTIFIER" ]
+          "enum" : [ "ABN", "EMAIL", "ORG_IDENTIFIER", "TELEPHONE" ]
         }
       }
     },
     "BankingBillerPayee" : {
       "type" : "object",
-      "required" : [ "billerCode", "billerName" ],
+      "required" : [ "billerCode", "billerName", "crnType" ],
       "properties" : {
         "billerCode" : {
           "type" : "string",
@@ -3048,7 +3050,12 @@
         },
         "crn" : {
           "type" : "string",
-          "description" : "BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
+          "description" : "BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type"
+        },
+        "crnType" : {
+          "type" : "string",
+          "description" : "Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.",
+          "enum" : [ "FIXED_CRN", "VARIABLE_CRN", "INTELLIGENT_CRN" ]
         },
         "billerName" : {
           "type" : "string",
@@ -3172,7 +3179,7 @@
         "status" : {
           "type" : "string",
           "description" : "Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.",
-          "enum" : [ "ACTIVE", "SKIP", "INACTIVE" ]
+          "enum" : [ "ACTIVE", "INACTIVE", "SKIP" ]
         },
         "from" : {
           "$ref" : "#/definitions/BankingScheduledPaymentFrom"
@@ -3435,7 +3442,8 @@
         },
         "isPartial" : {
           "type" : "boolean",
-          "description" : "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage"
+          "description" : "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
+          "x-cds-type" : "Boolean"
         },
         "explanation" : {
           "type" : "string",
@@ -3509,9 +3517,17 @@
         },
         "occupationCode" : {
           "type" : "string",
-          "description" : "Value is a valid [ANZSCO v1.2](http://www.abs.gov.au/ANZSCO) Standard Occupation classification."
+          "description" : "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.",
+          "x-cds-type" : "ExternalRef"
+        },
+        "occupationCodeVersion" : {
+          "type" : "string",
+          "description" : "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
+          "default" : "ANZSCO_1220.0_2013_V1.2",
+          "enum" : [ "ANZSCO_1220.0_2013_V1.3", "ANZSCO_1220.0_2013_V1.2", "ANZSCO_1220.0_2006_V1.1", "ANZSCO_1220.0_2006_V1.0" ]
         }
-      }
+      },
+      "x-conditional" : [ "occupationCodeVersion" ]
     },
     "CommonPersonDetail" : {
       "allOf" : [ {
@@ -3592,12 +3608,19 @@
         },
         "industryCode" : {
           "type" : "string",
-          "description" : "[ANZSIC (2006)](http://www.abs.gov.au/anzsic) code for the organisation."
+          "description" : "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
+          "x-cds-type" : "ExternalRef"
+        },
+        "industryCodeVersion" : {
+          "type" : "string",
+          "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
+          "default" : "ANZSIC_1292.0_2006_V2.0",
+          "enum" : [ "ANZSIC_1292.0_2006_V2.0", "ANZSIC_1292.0_2006_V1.0" ]
         },
         "organisationType" : {
           "type" : "string",
           "description" : "Legal organisation type",
-          "enum" : [ "SOLE_TRADER", "COMPANY", "PARTNERSHIP", "TRUST", "GOVERNMENT_ENTITY", "OTHER" ]
+          "enum" : [ "COMPANY", "GOVERNMENT_ENTITY", "PARTNERSHIP", "SOLE_TRADER", "TRUST", "OTHER" ]
         },
         "registeredCountry" : {
           "type" : "string",
@@ -3609,7 +3632,8 @@
           "description" : "The date the organisation described was established",
           "x-cds-type" : "DateString"
         }
-      }
+      },
+      "x-conditional" : [ "industryCodeVersion" ]
     },
     "CommonOrganisationDetail" : {
       "allOf" : [ {
@@ -3640,7 +3664,7 @@
         "purpose" : {
           "type" : "string",
           "description" : "The purpose of the number as specified by the customer",
-          "enum" : [ "MOBILE", "HOME", "WORK", "OTHER", "INTERNATIONAL", "UNSPECIFIED" ]
+          "enum" : [ "MOBILE", "HOME", "INTERNATIONAL", "WORK", "OTHER", "UNSPECIFIED" ]
         },
         "countryCode" : {
           "type" : "string",
@@ -3697,7 +3721,7 @@
           "purpose" : {
             "type" : "string",
             "description" : "Enumeration of values indicating the purpose of the physical address",
-            "enum" : [ "REGISTERED", "MAIL", "PHYSICAL", "WORK", "OTHER" ]
+            "enum" : [ "MAIL", "PHYSICAL", "REGISTERED", "WORK", "OTHER" ]
           }
         }
       } ]
@@ -3936,9 +3960,10 @@
     "BankingProductCategory" : {
       "type" : "string",
       "description" : "The category to which a product or account belongs. See [here](#product-categories) for more details",
-      "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+      "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
     },
     "RequestAccountIds_data" : {
+      "type" : "object",
       "required" : [ "accountIds" ],
       "properties" : {
         "accountIds" : {
@@ -3952,6 +3977,7 @@
       }
     },
     "ResponseBankingProductList_data" : {
+      "type" : "object",
       "required" : [ "products" ],
       "properties" : {
         "products" : {
@@ -3964,6 +3990,7 @@
       }
     },
     "BankingProductV3_additionalInformation" : {
+      "type" : "object",
       "properties" : {
         "overviewUri" : {
           "type" : "string",
@@ -3994,6 +4021,7 @@
       "description" : "Object that contains links to additional information on specific topics"
     },
     "BankingProductV3_cardArt" : {
+      "type" : "object",
       "required" : [ "imageUri" ],
       "properties" : {
         "title" : {
@@ -4008,6 +4036,7 @@
       }
     },
     "ResponseBankingAccountList_data" : {
+      "type" : "object",
       "required" : [ "accounts" ],
       "properties" : {
         "accounts" : {
@@ -4020,6 +4049,7 @@
       }
     },
     "ResponseBankingTransactionList_data" : {
+      "type" : "object",
       "required" : [ "transactions" ],
       "properties" : {
         "transactions" : {
@@ -4031,6 +4061,7 @@
       }
     },
     "BankingTransactionDetail_extendedData_x2p101Payload" : {
+      "type" : "object",
       "required" : [ "extendedDescription" ],
       "properties" : {
         "extendedDescription" : {
@@ -4048,6 +4079,7 @@
       }
     },
     "BankingTransactionDetail_extendedData" : {
+      "type" : "object",
       "required" : [ "service" ],
       "properties" : {
         "payer" : {
@@ -4071,9 +4103,11 @@
           "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
           "enum" : [ "X2P1.01" ]
         }
-      }
+      },
+      "x-conditional" : [ "payer", "payee", "extendedDescription" ]
     },
     "ResponseBankingAccountsBalanceList_data" : {
+      "type" : "object",
       "required" : [ "balances" ],
       "properties" : {
         "balances" : {
@@ -4086,6 +4120,7 @@
       }
     },
     "ResponseBankingPayeeList_data" : {
+      "type" : "object",
       "required" : [ "payees" ],
       "properties" : {
         "payees" : {
@@ -4098,6 +4133,7 @@
       }
     },
     "BankingInternationalPayee_beneficiaryDetails" : {
+      "type" : "object",
       "required" : [ "country" ],
       "properties" : {
         "name" : {
@@ -4116,6 +4152,7 @@
       }
     },
     "BankingInternationalPayee_bankDetails_bankAddress" : {
+      "type" : "object",
       "required" : [ "address", "name" ],
       "properties" : {
         "name" : {
@@ -4129,6 +4166,7 @@
       }
     },
     "BankingInternationalPayee_bankDetails" : {
+      "type" : "object",
       "required" : [ "accountNumber", "country" ],
       "properties" : {
         "country" : {
@@ -4172,6 +4210,7 @@
       }
     },
     "ResponseBankingDirectDebitAuthorisationList_data" : {
+      "type" : "object",
       "required" : [ "directDebitAuthorisations" ],
       "properties" : {
         "directDebitAuthorisations" : {
@@ -4184,6 +4223,7 @@
       }
     },
     "ResponseBankingScheduledPaymentsList_data" : {
+      "type" : "object",
       "required" : [ "scheduledPayments" ],
       "properties" : {
         "scheduledPayments" : {
@@ -4196,12 +4236,13 @@
       }
     },
     "ResponseCommonDiscoveryStatus_data" : {
+      "type" : "object",
       "required" : [ "status", "updateTime" ],
       "properties" : {
         "status" : {
           "type" : "string",
           "description" : "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
-          "enum" : [ "OK", "PARTIAL_FAILURE", "UNAVAILABLE", "SCHEDULED_OUTAGE" ]
+          "enum" : [ "OK", "PARTIAL_FAILURE", "SCHEDULED_OUTAGE", "UNAVAILABLE" ]
         },
         "explanation" : {
           "type" : "string",
@@ -4222,9 +4263,11 @@
           "description" : "The date and time that this status was last updated by the Data Holder.",
           "x-cds-type" : "DateTimeString"
         }
-      }
+      },
+      "x-conditional" : [ "explanation" ]
     },
     "ResponseDiscoveryOutagesList_data" : {
+      "type" : "object",
       "required" : [ "outages" ],
       "properties" : {
         "outages" : {
@@ -4237,6 +4280,7 @@
       }
     },
     "ResponseCommonCustomer_data" : {
+      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4253,6 +4297,7 @@
       }
     },
     "ResponseCommonCustomerDetail_data" : {
+      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4269,6 +4314,7 @@
       }
     },
     "ResponseErrorList_errors" : {
+      "type" : "object",
       "required" : [ "code", "detail", "title" ],
       "properties" : {
         "code" : {
@@ -4350,7 +4396,7 @@
       "description" : "Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
       "required" : false,
       "type" : "string",
-      "enum" : [ "TRANS_AND_SAVINGS_ACCOUNTS", "TERM_DEPOSITS", "TRAVEL_CARDS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "CRED_AND_CHRG_CARDS", "PERS_LOANS", "MARGIN_LOANS", "LEASES", "TRADE_FINANCE", "OVERDRAFTS", "BUSINESS_LOANS" ]
+      "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
     },
     "ParamAccountIsOwned" : {
       "name" : "is-owned",

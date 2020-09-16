@@ -24,6 +24,7 @@ In the following definition of NFRs specific terms have the following meanings:
 - **Unauthenticated**: API requests to API end points that the standards deem to be publically available.  This implies that these end points may be accessed by any client without the client performing any authentication or authorisation actions
 - **High Traffic Period**: Any time in the 18 hour period between 6am and 12am (midnight) is considered to be a high traffic period
 - **Low Traffic Period**: Any time of the day not considered to be included in a high traffic period.
+- **Large Payload**: An API which is capable of returning a large data response that would reasonably impose higher data retrieval times on the resource server. Typically bulk request end points.
 
 ## Session Requirements
 A expiry time of a unique session should be set according to the statements included in the [Security Profile](#security-profile).
@@ -58,11 +59,11 @@ The nominated threshold for each end point will be according to the following ta
 
 |Tier|Response Time|Applies To…|
 |----|-------------|-----------|
-|Unauthenticated|**1500ms**|All unauthenticated end points|
-|High Priority|**1000ms**|Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul>|
+|Unauthenticated|**1500ms**|All Unauthenticated end points not otherwise specified in a separate threshold.|
+|High Priority|**1000ms**|All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul>|
 |Low Priority|**1500ms**|Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul>|
-|Unattended|**4000ms**|Unattended calls to High Priority or Low Priority end points.</br>Additional Admin end points.|
-|Large Payload|**6000ms**|Any call to the following end points:<ul><li>Get Transactions For Account</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul>|
+|Unattended|**4000ms**|Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>All Admin end points.</li></ul>|
+|Large Payload|**6000ms**|Any Unattended calls to the following end points:<ul><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul>|
 
 Note that calls initiated in excess of a traffic threshold (see next section) may be excluded from the performance requirement.
 

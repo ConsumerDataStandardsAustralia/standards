@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "title": "Consumer Data Standards Administration End Points",
-    "description": "Data Holder/ Reciever Consumer Data Standards Administration End Points",
-    "version": "1.2.0",
+    "description": "Data Holder Consumer Data Standards Administration End Points",
+    "version": "1.3.0",
     "contact": {
       "name": "Consumer Data Standards Administration End Points",
       "url": "https://consumerdatastandards.org.au/",
@@ -68,7 +68,7 @@
     "/admin/metrics": {
       "get": {
         "summary": "Get Metrics",
-        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.",
+        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **July 31st 2021**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html)",
         "operationId": "getMetrics",
         "tags": [
           "Admin",
@@ -100,15 +100,15 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseMetricsList"
+              "$ref": "#/definitions/ResponseMetricsListV2"
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     }
   },
@@ -155,7 +155,7 @@
         }
       }
     },
-    "ResponseMetricsList": {
+    "ResponseMetricsListV2": {
       "type": "object",
       "required": [
         "data",
@@ -211,7 +211,7 @@
               "$ref": "#/definitions/ErrorMetrics"
             },
             "rejections": {
-              "$ref": "#/definitions/RejectionMetrics"
+              "$ref": "#/definitions/RejectionMetricsV2"
             },
             "customerCount": {
               "type": "integer",
@@ -579,22 +579,43 @@
         }
       }
     },
-    "RejectionMetrics": {
+    "RejectionMetricsV2": {
       "description": "Number of calls rejected due to traffic thresholds over time",
       "x-conditional": [
         "currentDay",
         "previousDays"
       ],
       "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "Number of calls rejected for current day"
+        "authenticated": {
+          "description": "Rejection counts for all authenticated end points",
+          "properties": {
+            "currentDay": {
+              "type": "number",
+              "description": "Number of calls rejected for current day"
+            },
+            "previousDays": {
+              "type": "array",
+              "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
         },
-        "previousDays": {
-          "type": "array",
-          "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
-          "items": {
-            "type": "number"
+        "unauthenticated": {
+          "description": "Rejection counts for all uauthenticated end points",
+          "properties": {
+            "currentDay": {
+              "type": "number",
+              "description": "Number of calls rejected for current day"
+            },
+            "previousDays": {
+              "type": "array",
+              "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+              "items": {
+                "type": "number"
+              }
+            }
           }
         }
       }

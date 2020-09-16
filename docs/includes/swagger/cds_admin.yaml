@@ -1,8 +1,8 @@
 ---
 swagger: "2.0"
 info:
-  description: Data Holder/ Reciever Consumer Data Standards Administration End Points
-  version: 1.2.0
+  description: Data Holder Consumer Data Standards Administration End Points
+  version: 1.3.0
   title: Consumer Data Standards Administration End Points
   contact:
     name: Consumer Data Standards Administration End Points
@@ -45,7 +45,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -58,7 +58,12 @@ paths:
       - Admin
       - Metrics
       summary: Get Metrics
-      description: This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
+      description: |-
+        This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
+
+        NOTE: This version must be implemented by **July 31st 2021**
+
+        Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
       operationId: getMetrics
       parameters:
       - name: period
@@ -82,15 +87,15 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
               type: string
-              description: The [version](##response-headers) of the API end point that the data holder has responded with.
+              description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
-            $ref: '#/definitions/ResponseMetricsList'
-      x-version: "1"
+            $ref: '#/definitions/ResponseMetricsListV2'
+      x-version: "2"
 definitions:
   RequestMetaDataUpdate:
     type: object
@@ -101,14 +106,14 @@ definitions:
         $ref: '#/definitions/RequestMetaDataUpdate_data'
       meta:
         $ref: '#/definitions/Meta'
-  ResponseMetricsList:
+  ResponseMetricsListV2:
     type: object
     required:
     - data
     - links
     properties:
       data:
-        $ref: '#/definitions/ResponseMetricsList_data'
+        $ref: '#/definitions/ResponseMetricsListV2_data'
       links:
         $ref: '#/definitions/Links'
       meta:
@@ -239,16 +244,12 @@ definitions:
     x-conditional:
     - currentDay
     - previousDays
-  RejectionMetrics:
+  RejectionMetricsV2:
     properties:
-      currentDay:
-        type: number
-        description: Number of calls rejected for current day
-      previousDays:
-        type: array
-        description: Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
-        items:
-          type: number
+      authenticated:
+        $ref: '#/definitions/RejectionMetricsV2_authenticated'
+      unauthenticated:
+        $ref: '#/definitions/RejectionMetricsV2_unauthenticated'
     description: Number of calls rejected due to traffic thresholds over time
     x-conditional:
     - currentDay
@@ -265,6 +266,7 @@ definitions:
   Meta:
     type: object
   RequestMetaDataUpdate_data:
+    type: object
     required:
     - action
     properties:
@@ -274,7 +276,8 @@ definitions:
         default: REFRESH
         enum:
         - REFRESH
-  ResponseMetricsList_data:
+  ResponseMetricsListV2_data:
+    type: object
     required:
     - requestTime
     properties:
@@ -299,14 +302,27 @@ definitions:
       errors:
         $ref: '#/definitions/ErrorMetrics'
       rejections:
-        $ref: '#/definitions/RejectionMetrics'
+        $ref: '#/definitions/RejectionMetricsV2'
       customerCount:
         type: integer
         description: Number of customers with active authorisations at the time of the call
       recipientCount:
         type: integer
         description: Number of data recipients with active authorisations at the time of the call
+    x-conditional:
+    - availability
+    - performance
+    - invocations
+    - averageResponse
+    - sessionCount
+    - averageTps
+    - peakTps
+    - errors
+    - rejections
+    - customerCount
+    - recipientCount
   InvocationMetrics_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -317,7 +333,11 @@ definitions:
         items:
           type: number
     description: API call counts for the unauthenticated tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_highPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -328,7 +348,11 @@ definitions:
         items:
           type: number
     description: API call counts for the high priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_lowPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -339,7 +363,11 @@ definitions:
         items:
           type: number
     description: API call counts for the low priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_unattended:
+    type: object
     properties:
       currentDay:
         type: number
@@ -350,7 +378,11 @@ definitions:
         items:
           type: number
     description: API call counts for the unattended tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_largePayload:
+    type: object
     properties:
       currentDay:
         type: number
@@ -361,7 +393,11 @@ definitions:
         items:
           type: number
     description: API call counts for the large payload tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -372,7 +408,11 @@ definitions:
         items:
           type: number
     description: Average response time for the unauthenticated tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_highPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -383,7 +423,11 @@ definitions:
         items:
           type: number
     description: Average response time for the high priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_lowPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -394,7 +438,11 @@ definitions:
         items:
           type: number
     description: Average response time for the low priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_unattended:
+    type: object
     properties:
       currentDay:
         type: number
@@ -405,7 +453,11 @@ definitions:
         items:
           type: number
     description: Average response time for the unattended tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_largePayload:
+    type: object
     properties:
       currentDay:
         type: number
@@ -416,6 +468,33 @@ definitions:
         items:
           type: number
     description: Average response time for the large payload tier
+    x-conditional:
+    - currentDay
+    - previousDays
+  RejectionMetricsV2_authenticated:
+    type: object
+    properties:
+      currentDay:
+        type: number
+        description: Number of calls rejected for current day
+      previousDays:
+        type: array
+        description: Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Rejection counts for all authenticated end points
+  RejectionMetricsV2_unauthenticated:
+    type: object
+    properties:
+      currentDay:
+        type: number
+        description: Number of calls rejected for current day
+      previousDays:
+        type: array
+        description: Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Rejection counts for all uauthenticated end points
 parameters:
   RequestHeader_x-v:
     name: x-v
