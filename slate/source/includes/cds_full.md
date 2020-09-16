@@ -2877,7 +2877,7 @@ Obtain basic information on the customer that has authorised the current session
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-customer-parameters">Parameters</h3>
 
@@ -3003,7 +3003,7 @@ Obtain detailed information on the authorised customer within the current sessio
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-customer-detail-parameters">Parameters</h3>
 

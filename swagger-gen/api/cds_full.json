@@ -1235,7 +1235,8 @@
               "$ref": "#/definitions/ResponseCommonCustomer"
             }
           }
-        }
+        },
+        "x-version": "1"
       }
     },
     "/common/customer/detail": {
@@ -1287,7 +1288,8 @@
               "$ref": "#/definitions/ResponseCommonCustomerDetail"
             }
           }
-        }
+        },
+        "x-version": "1"
       }
     },
     "/discovery/status": {

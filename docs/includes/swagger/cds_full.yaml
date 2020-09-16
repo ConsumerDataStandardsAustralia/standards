@@ -1491,6 +1491,7 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomer'
       x-scopes:
       - common:customer.basic:read
+      x-version: "1"
   /common/customer/detail:
     get:
       tags:
@@ -1545,6 +1546,7 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomerDetail'
       x-scopes:
       - common:customer.detail:read
+      x-version: "1"
   /discovery/status:
     get:
       tags:

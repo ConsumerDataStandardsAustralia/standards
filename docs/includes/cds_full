@@ -4705,7 +4705,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -4905,7 +4905,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 

@@ -1611,7 +1611,8 @@
             }
           }
         },
-        "x-scopes" : [ "common:customer.basic:read" ]
+        "x-scopes" : [ "common:customer.basic:read" ],
+        "x-version" : "1"
       }
     },
     "/common/customer/detail" : {
@@ -1676,7 +1677,8 @@
             }
           }
         },
-        "x-scopes" : [ "common:customer.detail:read" ]
+        "x-scopes" : [ "common:customer.detail:read" ],
+        "x-version" : "1"
       }
     },
     "/discovery/status" : {
