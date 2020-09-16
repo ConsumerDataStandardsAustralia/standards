@@ -9724,7 +9724,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» biller</td>
-<td><a href="#schemabankingbillerpayeev2">BankingBillerPayeeV2</a></td>
+<td><a href="#schemabankingbillerpayee">BankingBillerPayee</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>none</td>
@@ -9972,9 +9972,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSbankingbillerpayeev2">BankingBillerPayeeV2</h2>
+<h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
-<p><a id="schemabankingbillerpayeev2"></a></p>
+<p><a id="schemabankingbillerpayee"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10910,7 +10910,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>biller</td>
-<td><a href="#schemabankingbillerpayeev2">BankingBillerPayeeV2</a></td>
+<td><a href="#schemabankingbillerpayee">BankingBillerPayee</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>none</td>

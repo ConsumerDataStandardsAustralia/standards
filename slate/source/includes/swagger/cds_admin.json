@@ -308,7 +308,6 @@
       "type" : "object"
     },
     "RequestMetaDataUpdate_data" : {
-      "type" : "object",
       "required" : [ "action" ],
       "properties" : {
         "action" : {
@@ -320,7 +319,6 @@
       }
     },
     "ResponseMetricsListV2_data" : {
-      "type" : "object",
       "required" : [ "requestTime" ],
       "properties" : {
         "requestTime" : {
@@ -363,11 +361,9 @@
           "type" : "integer",
           "description" : "Number of data recipients with active authorisations at the time of the call"
         }
-      },
-      "x-conditional" : [ "availability", "performance", "invocations", "averageResponse", "sessionCount", "averageTps", "peakTps", "errors", "rejections", "customerCount", "recipientCount" ]
+      }
     },
     "InvocationMetrics_unauthenticated" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -381,11 +377,9 @@
           }
         }
       },
-      "description" : "API call counts for the unauthenticated tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "API call counts for the unauthenticated tier"
     },
     "InvocationMetrics_highPriority" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -399,11 +393,9 @@
           }
         }
       },
-      "description" : "API call counts for the high priority tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "API call counts for the high priority tier"
     },
     "InvocationMetrics_lowPriority" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -417,11 +409,9 @@
           }
         }
       },
-      "description" : "API call counts for the low priority tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "API call counts for the low priority tier"
     },
     "InvocationMetrics_unattended" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -435,11 +425,9 @@
           }
         }
       },
-      "description" : "API call counts for the unattended tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "API call counts for the unattended tier"
     },
     "InvocationMetrics_largePayload" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -453,11 +441,9 @@
           }
         }
       },
-      "description" : "API call counts for the large payload tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "API call counts for the large payload tier"
     },
     "AverageResponseMetrics_unauthenticated" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -471,11 +457,9 @@
           }
         }
       },
-      "description" : "Average response time for the unauthenticated tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "Average response time for the unauthenticated tier"
     },
     "AverageResponseMetrics_highPriority" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -489,11 +473,9 @@
           }
         }
       },
-      "description" : "Average response time for the high priority tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "Average response time for the high priority tier"
     },
     "AverageResponseMetrics_lowPriority" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -507,11 +489,9 @@
           }
         }
       },
-      "description" : "Average response time for the low priority tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "Average response time for the low priority tier"
     },
     "AverageResponseMetrics_unattended" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -525,11 +505,9 @@
           }
         }
       },
-      "description" : "Average response time for the unattended tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "Average response time for the unattended tier"
     },
     "AverageResponseMetrics_largePayload" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -543,11 +521,9 @@
           }
         }
       },
-      "description" : "Average response time for the large payload tier",
-      "x-conditional" : [ "currentDay", "previousDays" ]
+      "description" : "Average response time for the large payload tier"
     },
     "RejectionMetricsV2_authenticated" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",
@@ -564,7 +540,6 @@
       "description" : "Rejection counts for all authenticated end points"
     },
     "RejectionMetricsV2_unauthenticated" : {
-      "type" : "object",
       "properties" : {
         "currentDay" : {
           "type" : "number",

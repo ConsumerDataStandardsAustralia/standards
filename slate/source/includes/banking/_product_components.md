@@ -164,3 +164,23 @@ Description of the usage of the lendingRateType field as it applies to products.
 |PENALTY|A specific penalty rate that may be applied.  A penalty rate increases the interest payable|Description of the penalty rate that is applicable|
 |PURCHASE|Specific rate applied to purchases from the account|NA|
 |VARIABLE|A variable base rate for the product|NA|
+
+<a id="bankingtermdepositaccountedoc"></a>
+<h3 id="tocSbankingtermdepositaccountypedoc">Banking Term Deposit Account Types</h3>
+
+Description of the usage of the maturityInstructions field as it applies to accounts.
+
+|Value|Description|Use of additionalValue Field|
+|-----|-----------|----------------------------|
+|HOLD_ON_MATURITY|Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer|NA|
+
+<a id="bankingbankingbillerPayeeedoc"></a>
+<h3 id="tocSbankingbillerpayeeypedoc">Banking CRN Types</h3>
+
+Description of the usage of the crn types.
+
+|Value|Description|Use of additionalValue Field|
+|-----|-----------|----------------------------|
+|FIXED_CRN|A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill|NA|
+|VARIABLE_CRN|Biller generated reference number provided to the customer that is unique to each bill|NA|
+|INTELLIGENT_CRN|Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both|NA|

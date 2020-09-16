@@ -5642,7 +5642,7 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|none|
 |» payeeUType|string|mandatory|none|Type of object included that describes the payee in detail|
 |» domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
-|» biller|[BankingBillerPayeeV2](#schemabankingbillerpayeev2)|conditional|none|none|
+|» biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
 |» international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
 
 #### Enumerated Values
@@ -5762,9 +5762,9 @@ This operation does not require authentication
 |type|ORG_IDENTIFIER|
 |type|TELEPHONE|
 
-<h2 id="tocSbankingbillerpayeev2">BankingBillerPayeeV2</h2>
+<h2 id="tocSbankingbillerpayee">BankingBillerPayee</h2>
 
-<a id="schemabankingbillerpayeev2"></a>
+<a id="schemabankingbillerpayee"></a>
 
 ```json
 {
@@ -6330,7 +6330,7 @@ This operation does not require authentication
 |accountId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
 |payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
 |domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
-|biller|[BankingBillerPayeeV2](#schemabankingbillerpayeev2)|conditional|none|none|
+|biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
 |international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
 
 #### Enumerated Values

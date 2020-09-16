@@ -3184,7 +3184,7 @@
               "$ref": "#/definitions/BankingDomesticPayee"
             },
             "biller": {
-              "$ref": "#/definitions/BankingBillerPayeeV2"
+              "$ref": "#/definitions/BankingBillerPayee"
             },
             "international": {
               "$ref": "#/definitions/BankingInternationalPayee"
@@ -3285,7 +3285,7 @@
         }
       }
     },
-    "BankingBillerPayeeV2": {
+    "BankingBillerPayee": {
       "type": "object",
       "required": [
         "billerCode",
@@ -3644,7 +3644,7 @@
           "$ref": "#/definitions/BankingDomesticPayee"
         },
         "biller": {
-          "$ref": "#/definitions/BankingBillerPayeeV2"
+          "$ref": "#/definitions/BankingBillerPayee"
         },
         "international": {
           "$ref": "#/definitions/BankingInternationalPayee"
