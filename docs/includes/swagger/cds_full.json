@@ -1611,8 +1611,7 @@
             }
           }
         },
-        "x-scopes" : [ "common:customer.basic:read" ],
-        "x-version" : "2"
+        "x-scopes" : [ "common:customer.basic:read" ]
       }
     },
     "/common/customer/detail" : {
@@ -1677,8 +1676,7 @@
             }
           }
         },
-        "x-scopes" : [ "common:customer.detail:read" ],
-        "x-version" : "2"
+        "x-scopes" : [ "common:customer.detail:read" ]
       }
     },
     "/discovery/status" : {
@@ -3483,7 +3481,7 @@
       },
       "x-conditional" : [ "person", "organisation" ]
     },
-    "CommonPersonV2" : {
+    "CommonPerson" : {
       "type" : "object",
       "required" : [ "lastName", "middleNames" ],
       "properties" : {
@@ -3517,20 +3515,21 @@
         },
         "occupationCode" : {
           "type" : "string",
-          "description" : "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.",
+          "description" : "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.",
           "x-cds-type" : "ExternalRef"
         },
         "occupationCodeVersion" : {
           "type" : "string",
-          "description" : "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.",
+          "description" : "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
+          "default" : "ANZSCO_1220.0_2013_V1.2",
           "enum" : [ "ANZSCO_1220.0_2013_V1.3", "ANZSCO_1220.0_2013_V1.2", "ANZSCO_1220.0_2006_V1.1", "ANZSCO_1220.0_2006_V1.0" ]
         }
       },
-      "x-conditional" : [ "occupationCode", "occupationCodeVersion" ]
+      "x-conditional" : [ "occupationCodeVersion" ]
     },
     "CommonPersonDetail" : {
       "allOf" : [ {
-        "$ref" : "#/definitions/CommonPersonV2"
+        "$ref" : "#/definitions/CommonPerson"
       }, {
         "type" : "object",
         "required" : [ "emailAddresses", "phoneNumbers", "physicalAddresses" ],
@@ -3559,7 +3558,7 @@
         }
       } ]
     },
-    "CommonOrganisationV2" : {
+    "CommonOrganisation" : {
       "type" : "object",
       "required" : [ "agentLastName", "agentRole", "businessName", "organisationType" ],
       "properties" : {
@@ -3607,12 +3606,13 @@
         },
         "industryCode" : {
           "type" : "string",
-          "description" : "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.",
+          "description" : "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
           "x-cds-type" : "ExternalRef"
         },
         "industryCodeVersion" : {
           "type" : "string",
-          "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.",
+          "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
+          "default" : "ANZSIC_1292.0_2006_V2.0",
           "enum" : [ "ANZSIC_1292.0_2006_V2.0", "ANZSIC_1292.0_2006_V1.0" ]
         },
         "organisationType" : {
@@ -3631,11 +3631,11 @@
           "x-cds-type" : "DateString"
         }
       },
-      "x-conditional" : [ "industryCode", "industryCodeVersion" ]
+      "x-conditional" : [ "industryCodeVersion" ]
     },
     "CommonOrganisationDetail" : {
       "allOf" : [ {
-        "$ref" : "#/definitions/CommonOrganisationV2"
+        "$ref" : "#/definitions/CommonOrganisation"
       }, {
         "type" : "object",
         "required" : [ "physicalAddresses" ],
@@ -4287,10 +4287,10 @@
           "enum" : [ "person", "organisation" ]
         },
         "person" : {
-          "$ref" : "#/definitions/CommonPersonV2"
+          "$ref" : "#/definitions/CommonPerson"
         },
         "organisation" : {
-          "$ref" : "#/definitions/CommonOrganisationV2"
+          "$ref" : "#/definitions/CommonOrganisation"
         }
       }
     },

@@ -1491,7 +1491,6 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomer'
       x-scopes:
       - common:customer.basic:read
-      x-version: "2"
   /common/customer/detail:
     get:
       tags:
@@ -1546,7 +1545,6 @@ paths:
             $ref: '#/definitions/ResponseCommonCustomerDetail'
       x-scopes:
       - common:customer.detail:read
-      x-version: "2"
   /discovery/status:
     get:
       tags:
@@ -3218,7 +3216,7 @@ definitions:
     x-conditional:
     - person
     - organisation
-  CommonPersonV2:
+  CommonPerson:
     type: object
     required:
     - lastName
@@ -3247,22 +3245,22 @@ definitions:
         description: Used for a trailing suffix to the name (e.g. Jr)
       occupationCode:
         type: string
-        description: Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must be set to null.
+        description: Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.
         x-cds-type: ExternalRef
       occupationCodeVersion:
         type: string
-        description: The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied.
+        description: The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``
+        default: ANZSCO_1220.0_2013_V1.2
         enum:
         - ANZSCO_1220.0_2013_V1.3
         - ANZSCO_1220.0_2013_V1.2
         - ANZSCO_1220.0_2006_V1.1
         - ANZSCO_1220.0_2006_V1.0
     x-conditional:
-    - occupationCode
     - occupationCodeVersion
   CommonPersonDetail:
     allOf:
-    - $ref: '#/definitions/CommonPersonV2'
+    - $ref: '#/definitions/CommonPerson'
     - type: object
       required:
       - emailAddresses
@@ -3284,7 +3282,7 @@ definitions:
           description: Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail
           items:
             $ref: '#/definitions/CommonPhysicalAddressWithPurpose'
-  CommonOrganisationV2:
+  CommonOrganisation:
     type: object
     required:
     - agentLastName
@@ -3326,11 +3324,12 @@ definitions:
         x-cds-type: Boolean
       industryCode:
         type: string
-        description: A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must be set to null.
+        description: A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.
         x-cds-type: ExternalRef
       industryCodeVersion:
         type: string
-        description: The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided.
+        description: The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``
+        default: ANZSIC_1292.0_2006_V2.0
         enum:
         - ANZSIC_1292.0_2006_V2.0
         - ANZSIC_1292.0_2006_V1.0
@@ -3353,11 +3352,10 @@ definitions:
         description: The date the organisation described was established
         x-cds-type: DateString
     x-conditional:
-    - industryCode
     - industryCodeVersion
   CommonOrganisationDetail:
     allOf:
-    - $ref: '#/definitions/CommonOrganisationV2'
+    - $ref: '#/definitions/CommonOrganisation'
     - type: object
       required:
       - physicalAddresses
@@ -3926,9 +3924,9 @@ definitions:
         - person
         - organisation
       person:
-        $ref: '#/definitions/CommonPersonV2'
+        $ref: '#/definitions/CommonPerson'
       organisation:
-        $ref: '#/definitions/CommonOrganisationV2'
+        $ref: '#/definitions/CommonOrganisation'
   ResponseCommonCustomerDetail_data:
     type: object
     required:

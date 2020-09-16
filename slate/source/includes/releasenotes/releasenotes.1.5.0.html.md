@@ -33,6 +33,8 @@ Release notes for version 1.5.0 of the [CDR Standards](../../index.html).
 |Update to amount description|Update to the documentation for amount in BankingProductDiscount to remove grammatical mistakes| [BankingProductDiscount](#tocSbankingproductdiscount) |
 |Update to BankingProductDiscountEligibility|Update to correctly define additionalInfo and the eligibility array to be conditional based on applicable constraints|[BankingProductDiscountEligibility](#tocSbankingproductdiscounteligibility)
 |Update to Product Discount Type FEE_CAP description|Update to FEE_CAP description to correctly reference applicable rates|[Product Discount Types](#tocSproductdiscounttypedoc)
+|Added typed version support for ANZSIC and ANZSCO codes|Added version support for industryCode and occupationCode to allow data holders to reference the applicable document versions for the codes they hold.  | [Get Customer](#get-customer) |
+|Added Get Metrics v2 |Based on breaking changes, introduced v2 for Get Metrics end point |  [Get Metrics v2](#get-metrics) |
 
 ## Information Security Profile
 |Change|Description|Link|
@@ -41,9 +43,6 @@ Release notes for version 1.5.0 of the [CDR Standards](../../index.html).
 |Required use of Authentication Time claim|Updated description in the standards to remove the requirement for auth_time unless it is requested as an essential claim|[Scopes and Claims](../../#scopes-and-claims)|
 |Updates to November consent changes|Updates the sections covering Concurrent Consent, PAR client authentication, CDR Arrangement Revocation and CDR Arrangement ID documenation based on [DP135](https://github.com/ConsumerDataStandardsAustralia/standards/files/5159401/Decision.135.-.November.2020.Consent.Obligations.pdf)|[Scopes and Claims](../../#scopes-and-claims)|
 |Update token introspection endpoint|Updated token introspection text to align with normative reference and added scope claim|[Endpoints](../../#end-points)|
-|Added typed support for ANZSIC and ANZSCO codes|Added version support for industryCode and occupationCode to allow data holders to reference the applicable document versions for the codes they hold. Made these fields conditional where the code version is provided. | [Get Customer v2](#get-customer) |
-|Added Get Customer v2 and Get Customer Detail v2|Based on breaking changes, introduced v2 for Get Customer end points |  [Get Customer v2](#get-customer) |
-|Added Get Metrics v2 |Based on breaking changes, introduced v2 for Get Metrics end point |  [Get Metrics v2](#get-metrics) |
 
 ## Consumer Experience
 

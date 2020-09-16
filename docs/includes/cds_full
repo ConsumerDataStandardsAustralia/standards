@@ -4705,7 +4705,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>undefined</strong></td>
 </tr>
 </tbody></table>
 
@@ -4782,7 +4782,7 @@ This operation does not require authentication
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4905,7 +4905,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>undefined</strong></td>
 </tr>
 </tbody></table>
 
@@ -4982,7 +4982,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -11610,7 +11610,7 @@ This operation does not require authentication
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11662,14 +11662,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» person</td>
-<td><a href="#schemacommonpersonv2">CommonPersonV2</a></td>
+<td><a href="#schemacommonperson">CommonPerson</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>» organisation</td>
-<td><a href="#schemacommonorganisationv2">CommonOrganisationV2</a></td>
+<td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
@@ -11722,7 +11722,7 @@ This operation does not require authentication
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -11916,9 +11916,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocScommonpersonv2">CommonPersonV2</h2>
+<h2 id="tocScommonperson">CommonPerson</h2>
 
-<p><a id="schemacommonpersonv2"></a></p>
+<p><a id="schemacommonperson"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11929,7 +11929,7 @@ This operation does not require authentication
   </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="w">
+  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-61'>Properties</h3>
@@ -11987,16 +11987,16 @@ This operation does not require authentication
 <tr>
 <td>occupationCode</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>conditional</td>
+<td>optional</td>
 <td>none</td>
-<td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> versions, then it must be set to null.</td>
+<td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> versions, then it must not be supplied.</td>
 </tr>
 <tr>
 <td>occupationCodeVersion</td>
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>The applicable <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> release version of the occupation code provided. Mandatory if an <code>occupationCode</code> is supplied.</td>
+<td>The applicable <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> release version of the occupation code provided. Mandatory if an <code>occupationCode</code> is supplied. If <code>occupationCode</code> is supplied but <code>occupationCodeVersion</code> is absent, default is <code>ANZSCO_1220.0_2013_V1.2</code></td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-35'>Enumerated Values</h4>
@@ -12037,7 +12037,7 @@ This operation does not require authentication
   </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -12112,7 +12112,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacommonpersonv2">CommonPersonV2</a></td>
+<td><a href="#schemacommonperson">CommonPerson</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -12160,9 +12160,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocScommonorganisationv2">CommonOrganisationV2</h2>
+<h2 id="tocScommonorganisation">CommonOrganisation</h2>
 
-<p><a id="schemacommonorganisationv2"></a></p>
+<p><a id="schemacommonorganisation"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"agentFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12264,16 +12264,16 @@ This operation does not require authentication
 <tr>
 <td>industryCode</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
-<td>conditional</td>
+<td>optional</td>
 <td>none</td>
-<td>A valid <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> code for the organisation. If the industry code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> versions, then it must be set to null.</td>
+<td>A valid <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> code for the organisation. If the industry code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> versions, then it must not be supplied.</td>
 </tr>
 <tr>
 <td>industryCodeVersion</td>
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>The applicable <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> release version of the industry code provided.</td>
+<td>The applicable <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> release version of the industry code provided. Should only be supplied if <code>industryCode</code> is also supplied. If <code>industryCode</code> is supplied but <code>industryCodeVersion</code> is absent, default is <code>ANZSIC_1292.0_2006_V2.0</code></td>
 </tr>
 <tr>
 <td>organisationType</td>
@@ -12413,7 +12413,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacommonorganisationv2">CommonOrganisationV2</a></td>
+<td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
