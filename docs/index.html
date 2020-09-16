@@ -2885,7 +2885,7 @@ Content-Type: application/x-www-form-urlencoded
 
 <p><strong>Response Codes</strong></p>
 
-<p>The following responses are in addition to error responses covered by normative references. Error scenarios is the following table MUST use the error structure defined in the <a href="#payload-conventions">Payload Conventions</a>.</p>
+<p>The following responses are in addition to error responses covered by normative references. Error scenarios in the following table MUST use the error structure defined in the <a href="#payload-conventions">Payload Conventions</a>.</p>
 
 <table><thead>
 <tr>
@@ -2912,7 +2912,7 @@ Content-Type: application/x-www-form-urlencoded
 
 <p>Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.</p>
 
-<p>Data Recipients MUST continue to support their Token Revocation End Point until February 2021.</p>
+<p>Data Recipients MUST continue to support their Token Revocation End Point until February 2021 and until they have updated their client registrations.</p>
 
 <p><strong>Updating Register Meta Data and Client Registration</strong></p>
 
@@ -18749,7 +18749,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>The following Unauthenticated end points:<ul><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>CDR Arrangement Revocation</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
@@ -18759,12 +18759,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Unattended</td>
 <td><strong>4000ms</strong></td>
-<td>Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>InfoSec end points</li><li>CDR Arrangement Revocation</li><li>Admin end points.</li></ul>Dynamic Client Registration end points.</td>
+<td>Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>All Admin end points.</li></ul></td>
 </tr>
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any Unattended calls to the following end points:<ul><li>Get Transactions For Account</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
+<td>Any Unattended calls to the following end points:<ul><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
 </tr>
 </tbody></table>
 
