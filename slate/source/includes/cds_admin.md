@@ -1,6 +1,5 @@
 
 
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 
 ## Metadata Update
 
@@ -79,7 +78,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be called by the CDR Register
 </aside>
 
 ## Get Metrics
@@ -291,10 +290,10 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 |200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be called by the CDR Register
 </aside>
 
-# Schemas
+## Schemas
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 

@@ -629,9 +629,6 @@
           </li>
           <li>
             <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
-          </li>
-          <li>
-            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -639,11 +636,9 @@
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
-              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                  </li>
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
@@ -2171,7 +2166,7 @@ grant_type=authorization_code&amp;
 <ul>
 <li><code>sub</code>: <a href="#identifiers">Pairwise Pseudonymous Identifier (PPID)</a> for the End-User at the Data Holder.</li>
 <li><code>acr</code>: Authentication Context Class Reference.  MUST contain a valid <a href="#ordinal-loa">ordinal LoA value</a>.</li>
-<li><code>auth_time</code>: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>auth_time</code>. It MUST be returned by the Data Holder in the ID Token when the Data Recipient has requested it as an essential claim according to section 2 of the [OIDC] standard. It SHOULD NOT be returned via the UserInfo endpoint.</li>
+<li><code>auth_time</code>: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>auth_time</code>. It MUST be returned by the Data Holder in the ID Token when the Data Recipient has requested it as an essential claim according to section 2 of the <strong>[OIDC]</strong> standard. It SHOULD NOT be returned via the UserInfo endpoint.</li>
 <li><code>name</code>: End-User&#39;s full name in displayable form including all name parts.</li>
 <li><code>given_name</code>: Given name(s) or first name(s) of the End-User.</li>
 <li><code>family_name</code>: Surname(s) or last name(s) of the End-User.</li>
@@ -2206,7 +2201,7 @@ grant_type=authorization_code&amp;
 to a Data Recipient from both the Authorisation
 End Point and Token End Point.</p>
 
-<p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the [OIDC] standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the [OIDC] standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the [FAPI-RW] profile.</p>
+<p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong>[OIDC]</strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong>[FAPI-RW]</strong> profile.</p>
 
 <p>ID Tokens MUST be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
@@ -2770,7 +2765,7 @@ Host: www.holder.com.au
 <li><code>cdr_arrangement_id</code>: A unique identifier of the CDR arrangement related to the authorisation.</li>
 </ul>
 
-<p>A Token Introspection End Point Response MAY include claims defined in Section 2.2 of [RFC7662] but <code>username</code> SHALL NOT be allowed.</p>
+<p>A Token Introspection End Point Response MAY include claims defined in Section 2.2 of <strong>[RFC7662]</strong> but <code>username</code> SHALL NOT be allowed.</p>
 <h3 id='token-revocation-end-point'>Token Revocation End Point</h3>
 <table><thead>
 <tr>
@@ -3018,16 +3013,16 @@ Host: data.holder.com.au
 </tr>
 </tbody></table>
 
-<p><strong>From November 2020</strong>, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to [PAR].</p>
+<p><strong>From November 2020</strong>, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
 
-<p>Data Recipients MAY send authorisation requests using [PAR] if supported by the Data Holder. Request objects which contain the <code>cdr_arrangement_id</code> claim MUST only be sent using [PAR]. If a Data Holder does not support [PAR], a Data Recipient SHOULD NOT provide the <code>cdr_arrangement_id</code> claim in the request object.</p>
+<p>Data Recipients MAY send authorisation requests using <strong>[PAR]</strong> if supported by the Data Holder. Request objects which contain the <code>cdr_arrangement_id</code> claim MUST only be sent using <strong>[PAR]</strong>. If a Data Holder does not support <strong>[PAR]</strong>, a Data Recipient SHOULD NOT provide the <code>cdr_arrangement_id</code> claim in the request object.</p>
 
 <p>The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
 
 <p>In addition:</p>
 
 <ul>
-<li>Request Object references SHALL NOT be supported in any mode of use other than [PAR]. If a Data Holder does not support [PAR], it MUST NOT support Request Object references.</li>
+<li>Request Object references SHALL NOT be supported in any mode of use other than <strong>[PAR]</strong>. If a Data Holder does not support <strong>[PAR]</strong>, it MUST NOT support Request Object references.</li>
 <li>The Request URI MUST expire between 10 seconds and 90 seconds</li>
 <li>Data Recipients MAY provide an existing <code>cdr_arrangement_id</code> claim in an authorisation request object to establish a new consent under an existing arrangement</li>
 <li>Data Holders MUST revoke existing refresh tokens and access tokens when a <code>cdr_arrangement_id</code> is provided in the Request Object but only after successful authorisation</li>
@@ -17183,8 +17178,9 @@ This operation does not require authentication
 </tbody></table>
 
 <p><a id="bankingbankingbillerPayeeedoc"></a>
-<h3 id="tocSbankingbillerpayeeypedoc">Banking CRN Types</h3>
-Description of the usage of the maturityInstructions field as it applies to accounts.</p>
+<h3 id="tocSbankingbillerpayeeypedoc">Banking CRN Types</h3></p>
+
+<p>Description of the usage of the crn types.</p>
 
 <table><thead>
 <tr>
@@ -17217,8 +17213,6 @@ Description of the usage of the maturityInstructions field as it applies to acco
 <tr><td><a href='./includes/swagger/cds_admin.json'>Admin Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
-
-<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 
 <h2 id='metadata-update'>Metadata Update</h2>
 
@@ -17352,7 +17346,7 @@ Description of the usage of the maturityInstructions field as it applies to acco
 </tbody></table>
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be called by the CDR Register
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -17635,10 +17629,10 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation does not require authentication
+This operation may only be called by the CDR Register
 </aside>
 
-<h1 id='schemas'>Schemas</h1>
+<h2 id='schemas'>Schemas</h2>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 

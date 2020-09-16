@@ -3963,6 +3963,7 @@
       "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
     },
     "RequestAccountIds_data" : {
+      "type" : "object",
       "required" : [ "accountIds" ],
       "properties" : {
         "accountIds" : {
@@ -3976,6 +3977,7 @@
       }
     },
     "ResponseBankingProductList_data" : {
+      "type" : "object",
       "required" : [ "products" ],
       "properties" : {
         "products" : {
@@ -3988,6 +3990,7 @@
       }
     },
     "BankingProductV3_additionalInformation" : {
+      "type" : "object",
       "properties" : {
         "overviewUri" : {
           "type" : "string",
@@ -4018,6 +4021,7 @@
       "description" : "Object that contains links to additional information on specific topics"
     },
     "BankingProductV3_cardArt" : {
+      "type" : "object",
       "required" : [ "imageUri" ],
       "properties" : {
         "title" : {
@@ -4032,6 +4036,7 @@
       }
     },
     "ResponseBankingAccountList_data" : {
+      "type" : "object",
       "required" : [ "accounts" ],
       "properties" : {
         "accounts" : {
@@ -4044,6 +4049,7 @@
       }
     },
     "ResponseBankingTransactionList_data" : {
+      "type" : "object",
       "required" : [ "transactions" ],
       "properties" : {
         "transactions" : {
@@ -4055,6 +4061,7 @@
       }
     },
     "BankingTransactionDetail_extendedData_x2p101Payload" : {
+      "type" : "object",
       "required" : [ "extendedDescription" ],
       "properties" : {
         "extendedDescription" : {
@@ -4072,6 +4079,7 @@
       }
     },
     "BankingTransactionDetail_extendedData" : {
+      "type" : "object",
       "required" : [ "service" ],
       "properties" : {
         "payer" : {
@@ -4095,9 +4103,11 @@
           "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
           "enum" : [ "X2P1.01" ]
         }
-      }
+      },
+      "x-conditional" : [ "payer", "payee", "extendedDescription" ]
     },
     "ResponseBankingAccountsBalanceList_data" : {
+      "type" : "object",
       "required" : [ "balances" ],
       "properties" : {
         "balances" : {
@@ -4110,6 +4120,7 @@
       }
     },
     "ResponseBankingPayeeList_data" : {
+      "type" : "object",
       "required" : [ "payees" ],
       "properties" : {
         "payees" : {
@@ -4122,6 +4133,7 @@
       }
     },
     "BankingInternationalPayee_beneficiaryDetails" : {
+      "type" : "object",
       "required" : [ "country" ],
       "properties" : {
         "name" : {
@@ -4140,6 +4152,7 @@
       }
     },
     "BankingInternationalPayee_bankDetails_bankAddress" : {
+      "type" : "object",
       "required" : [ "address", "name" ],
       "properties" : {
         "name" : {
@@ -4153,6 +4166,7 @@
       }
     },
     "BankingInternationalPayee_bankDetails" : {
+      "type" : "object",
       "required" : [ "accountNumber", "country" ],
       "properties" : {
         "country" : {
@@ -4196,6 +4210,7 @@
       }
     },
     "ResponseBankingDirectDebitAuthorisationList_data" : {
+      "type" : "object",
       "required" : [ "directDebitAuthorisations" ],
       "properties" : {
         "directDebitAuthorisations" : {
@@ -4208,6 +4223,7 @@
       }
     },
     "ResponseBankingScheduledPaymentsList_data" : {
+      "type" : "object",
       "required" : [ "scheduledPayments" ],
       "properties" : {
         "scheduledPayments" : {
@@ -4220,6 +4236,7 @@
       }
     },
     "ResponseCommonDiscoveryStatus_data" : {
+      "type" : "object",
       "required" : [ "status", "updateTime" ],
       "properties" : {
         "status" : {
@@ -4246,9 +4263,11 @@
           "description" : "The date and time that this status was last updated by the Data Holder.",
           "x-cds-type" : "DateTimeString"
         }
-      }
+      },
+      "x-conditional" : [ "explanation" ]
     },
     "ResponseDiscoveryOutagesList_data" : {
+      "type" : "object",
       "required" : [ "outages" ],
       "properties" : {
         "outages" : {
@@ -4261,6 +4280,7 @@
       }
     },
     "ResponseCommonCustomer_data" : {
+      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4277,6 +4297,7 @@
       }
     },
     "ResponseCommonCustomerDetail_data" : {
+      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4293,6 +4314,7 @@
       }
     },
     "ResponseErrorList_errors" : {
+      "type" : "object",
       "required" : [ "code", "detail", "title" ],
       "properties" : {
         "code" : {

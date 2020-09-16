@@ -45,7 +45,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -87,7 +87,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -266,6 +266,7 @@ definitions:
   Meta:
     type: object
   RequestMetaDataUpdate_data:
+    type: object
     required:
     - action
     properties:
@@ -276,6 +277,7 @@ definitions:
         enum:
         - REFRESH
   ResponseMetricsListV2_data:
+    type: object
     required:
     - requestTime
     properties:
@@ -307,7 +309,20 @@ definitions:
       recipientCount:
         type: integer
         description: Number of data recipients with active authorisations at the time of the call
+    x-conditional:
+    - availability
+    - performance
+    - invocations
+    - averageResponse
+    - sessionCount
+    - averageTps
+    - peakTps
+    - errors
+    - rejections
+    - customerCount
+    - recipientCount
   InvocationMetrics_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -318,7 +333,11 @@ definitions:
         items:
           type: number
     description: API call counts for the unauthenticated tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_highPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -329,7 +348,11 @@ definitions:
         items:
           type: number
     description: API call counts for the high priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_lowPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -340,7 +363,11 @@ definitions:
         items:
           type: number
     description: API call counts for the low priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_unattended:
+    type: object
     properties:
       currentDay:
         type: number
@@ -351,7 +378,11 @@ definitions:
         items:
           type: number
     description: API call counts for the unattended tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_largePayload:
+    type: object
     properties:
       currentDay:
         type: number
@@ -362,7 +393,11 @@ definitions:
         items:
           type: number
     description: API call counts for the large payload tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -373,7 +408,11 @@ definitions:
         items:
           type: number
     description: Average response time for the unauthenticated tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_highPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -384,7 +423,11 @@ definitions:
         items:
           type: number
     description: Average response time for the high priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_lowPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -395,7 +438,11 @@ definitions:
         items:
           type: number
     description: Average response time for the low priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_unattended:
+    type: object
     properties:
       currentDay:
         type: number
@@ -406,7 +453,11 @@ definitions:
         items:
           type: number
     description: Average response time for the unattended tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_largePayload:
+    type: object
     properties:
       currentDay:
         type: number
@@ -417,7 +468,11 @@ definitions:
         items:
           type: number
     description: Average response time for the large payload tier
+    x-conditional:
+    - currentDay
+    - previousDays
   RejectionMetricsV2_authenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -429,6 +484,7 @@ definitions:
           type: number
     description: Rejection counts for all authenticated end points
   RejectionMetricsV2_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number

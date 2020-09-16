@@ -109,7 +109,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -212,7 +212,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -286,7 +286,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -297,7 +297,7 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceList'
-        422:
+        "422":
           description: The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context
           headers:
             x-fapi-interaction-id:
@@ -355,7 +355,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -416,7 +416,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -531,7 +531,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -598,7 +598,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -673,7 +673,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -776,7 +776,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -850,7 +850,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -861,7 +861,7 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
-        422:
+        "422":
           description: The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context
           headers:
             x-fapi-interaction-id:
@@ -933,7 +933,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1036,7 +1036,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1110,7 +1110,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1121,7 +1121,7 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
-        422:
+        "422":
           description: The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context
           headers:
             x-fapi-interaction-id:
@@ -1198,7 +1198,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1262,7 +1262,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1388,7 +1388,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1428,7 +1428,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1478,7 +1478,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1533,7 +1533,7 @@ paths:
         type: string
         x-cds-type: Base64
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1567,7 +1567,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -1596,7 +1596,7 @@ paths:
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
@@ -3069,11 +3069,11 @@ definitions:
       nonBusinessDayTreatment:
         type: string
         description: Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
-        default: ON
+        default: "ON"
         enum:
         - AFTER
         - BEFORE
-        - ON
+        - "ON"
         - ONLY
       intervals:
         type: array
@@ -3126,11 +3126,11 @@ definitions:
       nonBusinessDayTreatment:
         type: string
         description: Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
-        default: ON
+        default: "ON"
         enum:
         - AFTER
         - BEFORE
-        - ON
+        - "ON"
         - ONLY
     description: Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay
   BankingScheduledPaymentRecurrenceEventBased:
@@ -3655,6 +3655,7 @@ definitions:
     - TRAVEL_CARDS
     - TRANS_AND_SAVINGS_ACCOUNTS
   RequestAccountIds_data:
+    type: object
     required:
     - accountIds
     properties:
@@ -3665,6 +3666,7 @@ definitions:
           description: Array of specific accountIds to obtain authorisations for
           x-cds-type: ASCIIString
   ResponseBankingProductList_data:
+    type: object
     required:
     - products
     properties:
@@ -3674,6 +3676,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingProductV3'
   BankingProductV3_additionalInformation:
+    type: object
     properties:
       overviewUri:
         type: string
@@ -3697,6 +3700,7 @@ definitions:
         x-cds-type: URIString
     description: Object that contains links to additional information on specific topics
   BankingProductV3_cardArt:
+    type: object
     required:
     - imageUri
     properties:
@@ -3708,6 +3712,7 @@ definitions:
         description: URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)
         x-cds-type: URIString
   ResponseBankingAccountList_data:
+    type: object
     required:
     - accounts
     properties:
@@ -3717,6 +3722,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingAccount'
   ResponseBankingTransactionList_data:
+    type: object
     required:
     - transactions
     properties:
@@ -3725,6 +3731,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingTransaction'
   BankingTransactionDetail_extendedData_x2p101Payload:
+    type: object
     required:
     - extendedDescription
     properties:
@@ -3738,6 +3745,7 @@ definitions:
         type: string
         description: Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service
   BankingTransactionDetail_extendedData:
+    type: object
     required:
     - service
     properties:
@@ -3759,7 +3767,12 @@ definitions:
         description: 'Identifier of the applicable overlay service. Valid values are: X2P1.01'
         enum:
         - X2P1.01
+    x-conditional:
+    - payer
+    - payee
+    - extendedDescription
   ResponseBankingAccountsBalanceList_data:
+    type: object
     required:
     - balances
     properties:
@@ -3769,6 +3782,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingBalance'
   ResponseBankingPayeeList_data:
+    type: object
     required:
     - payees
     properties:
@@ -3778,6 +3792,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingPayee'
   BankingInternationalPayee_beneficiaryDetails:
+    type: object
     required:
     - country
     properties:
@@ -3792,6 +3807,7 @@ definitions:
         type: string
         description: Response message for the payment
   BankingInternationalPayee_bankDetails_bankAddress:
+    type: object
     required:
     - address
     - name
@@ -3803,6 +3819,7 @@ definitions:
         type: string
         description: Address of the recipient Bank
   BankingInternationalPayee_bankDetails:
+    type: object
     required:
     - accountNumber
     - country
@@ -3837,6 +3854,7 @@ definitions:
         description: The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)
         x-cds-type: ExternalRef
   ResponseBankingDirectDebitAuthorisationList_data:
+    type: object
     required:
     - directDebitAuthorisations
     properties:
@@ -3846,6 +3864,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingDirectDebit'
   ResponseBankingScheduledPaymentsList_data:
+    type: object
     required:
     - scheduledPayments
     properties:
@@ -3855,6 +3874,7 @@ definitions:
         items:
           $ref: '#/definitions/BankingScheduledPayment'
   ResponseCommonDiscoveryStatus_data:
+    type: object
     required:
     - status
     - updateTime
@@ -3882,7 +3902,10 @@ definitions:
         type: string
         description: The date and time that this status was last updated by the Data Holder.
         x-cds-type: DateTimeString
+    x-conditional:
+    - explanation
   ResponseDiscoveryOutagesList_data:
+    type: object
     required:
     - outages
     properties:
@@ -3892,6 +3915,7 @@ definitions:
         items:
           $ref: '#/definitions/DiscoveryOutage'
   ResponseCommonCustomer_data:
+    type: object
     required:
     - customerUType
     properties:
@@ -3906,6 +3930,7 @@ definitions:
       organisation:
         $ref: '#/definitions/CommonOrganisation'
   ResponseCommonCustomerDetail_data:
+    type: object
     required:
     - customerUType
     properties:
@@ -3920,6 +3945,7 @@ definitions:
       organisation:
         $ref: '#/definitions/CommonOrganisationDetail'
   ResponseErrorList_errors:
+    type: object
     required:
     - code
     - detail
