@@ -1,4 +1,0 @@
-123c123
-< NOTE: This version must be implemented by **July 31st 2021**
----
-> NOTE: This version must be implemented by **July 2021**

@@ -1,0 +1,36 @@
+1601a1602
+>                 "crnType": "FIXED_CRN",
+1823a1825
+>                 "crnType": "FIXED_CRN",
+2038a2041
+>                 "crnType": "FIXED_CRN",
+2354a2358
+>       "crnType": "FIXED_CRN",
+5492a5497
+>       "crnType": "FIXED_CRN",
+5596a5602
+>     "crnType": "FIXED_CRN",
+5766a5773
+>   "crnType": "FIXED_CRN",
+5777c5784,5785
+< |crn|string|conditional|none|BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+---
+> |crn|string|conditional|none|BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type|
+> |crnType|string|mandatory|none|Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.|
+5779a5788,5795
+> #### Enumerated Values
+> 
+> |Property|Value|
+> |---|---|
+> |crnType|FIXED_CRN|
+> |crnType|VARIABLE_CRN|
+> |crnType|INTELLIGENT_CRN|
+> 
+5971a5988
+>                 "crnType": "FIXED_CRN",
+6094a6112
+>           "crnType": "FIXED_CRN",
+6205a6224
+>       "crnType": "FIXED_CRN",
+6275a6295
+>     "crnType": "FIXED_CRN",
