@@ -629,6 +629,9 @@
           </li>
           <li>
             <a href="#admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
+          </li>
+          <li>
+            <a href="#consumer-data-standards-administration-end-points-admin-apis" class="toc-h1 toc-link" data-title="Admin APIs">Admin APIs</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#metadata-update" class="toc-h2 toc-link" data-title="Metadata Update">Metadata Update</a>
@@ -636,9 +639,11 @@
                   <li>
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
-                  <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
@@ -825,9 +830,14 @@
 <td>Version 2 of this end point must be made available by affected data holders by the end of July 2021</td>
 <td>July 31st 2021</td>
 </tr>
+<tr>
+<td><a href="#introspection-end-point">Token Introspection claims</a></td>
+<td>Whilst Data Holders must conform with the FAPI normative references, requiring the <code>scope</code> claim, the standards were clarified in v1.5.0 to clarify the minimum required set of claims to be supported by the Token Introspection end point. Data holders must support the <code>scope</code> claim not later than February 1st 2021</td>
+<td>February 1st 2021</td>
+</tr>
 </tbody></table>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.5.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent <strong>version 1.5.1</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -5962,7 +5972,6 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6337,7 +6346,6 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6644,7 +6652,6 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7159,7 +7166,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12649,7 +12655,6 @@ This operation does not require authentication
     </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12820,7 +12825,6 @@ This operation does not require authentication
   </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13155,7 +13159,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -13181,14 +13184,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type</td>
-</tr>
-<tr>
-<td>crnType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>none</td>
-<td>Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer&#39;s account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.</td>
+<td>BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
 </tr>
 <tr>
 <td>billerName</td>
@@ -13196,26 +13192,6 @@ This operation does not require authentication
 <td>mandatory</td>
 <td>none</td>
 <td>Name of the Biller</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>crnType</td>
-<td>FIXED_CRN</td>
-</tr>
-<tr>
-<td>crnType</td>
-<td>VARIABLE_CRN</td>
-</tr>
-<tr>
-<td>crnType</td>
-<td>INTELLIGENT_CRN</td>
 </tr>
 </tbody></table>
 
@@ -13595,7 +13571,6 @@ This operation does not require authentication
               </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13746,7 +13721,6 @@ This operation does not require authentication
         </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13873,7 +13847,7 @@ This operation does not require authentication
 <td>Object containing the detail of the schedule for the payment</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13921,7 +13895,6 @@ This operation does not require authentication
     </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14019,7 +13992,6 @@ This operation does not require authentication
   </span><span class="s2">"biller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"billerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"crnType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_CRN"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14100,7 +14072,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14244,7 +14216,7 @@ This operation does not require authentication
 <td>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14353,7 +14325,7 @@ This operation does not require authentication
 <td>An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14471,7 +14443,7 @@ This operation does not require authentication
 <td>Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/><strong>AFTER</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/><strong>BEFORE</strong> - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/><strong>ON</strong> - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/><strong>ONLY</strong> - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14636,7 +14608,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14866,7 +14838,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15076,7 +15048,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15176,7 +15148,7 @@ This operation does not require authentication
 <td>The applicable <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> release version of the occupation code provided. Mandatory if an <code>occupationCode</code> is supplied. If <code>occupationCode</code> is supplied but <code>occupationCodeVersion</code> is absent, default is <code>ANZSCO_1220.0_2013_V1.2</code></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15474,7 +15446,7 @@ This operation does not require authentication
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15697,7 +15669,7 @@ This operation does not require authentication
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15771,7 +15743,7 @@ This operation does not require authentication
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15885,7 +15857,7 @@ This operation does not require authentication
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15987,7 +15959,7 @@ This operation does not require authentication
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-40'>Enumerated Values</h4>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16494,7 +16466,7 @@ This operation does not require authentication
 <td>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-41'>Enumerated Values</h4>
+<h4 id='enumerated-values-40'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -17219,6 +17191,8 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
 
+<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
+
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -17351,7 +17325,7 @@ This operation does not require authentication
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation does not require authentication
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -17634,10 +17608,10 @@ This operation may only be called by the CDR Register
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation does not require authentication
 </aside>
 
-<h2 id='schemas'>Schemas</h2>
+<h1 id='schemas'>Schemas</h1>
 
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -18875,6 +18849,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td>25/9/2020</td>
+<td>1.5.1</td>
+<td>Revert 1.5.0 CRN update</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.5.1.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>16/9/2020</td>
 <td>1.5.0</td>
 <td>Second Banking Maintenance Iteration 4 Release</td>
@@ -19186,7 +19166,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
-<td><a href='./archive/standards-1.4.0/docs/'>22/5/2020</a></td>
+<td><a href='./archive/standards-1.4.0/docs/'>16/9/2020</a></td>
+<td>1.4.0</td>
+<td><a href='./archive/standards-1.5.0/docs/'>Banking Maintenance Iteration 4 Release</a></td>
+</tr>
+<tr>
+<td><a href='./archive/standards-1.4.0/docs/'>12/8/2020</a></td>
 <td>1.4.0</td>
 <td><a href='./archive/standards-1.4.0/docs/'>Banking Maintenance Iteration 3 Release</a></td>
 </tr>

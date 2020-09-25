@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "1.5.0",
+    "version" : "1.5.1",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -3042,7 +3042,7 @@
     },
     "BankingBillerPayee" : {
       "type" : "object",
-      "required" : [ "billerCode", "billerName", "crnType" ],
+      "required" : [ "billerCode", "billerName" ],
       "properties" : {
         "billerCode" : {
           "type" : "string",
@@ -3050,12 +3050,7 @@
         },
         "crn" : {
           "type" : "string",
-          "description" : "BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type"
-        },
-        "crnType" : {
-          "type" : "string",
-          "description" : "Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.",
-          "enum" : [ "FIXED_CRN", "VARIABLE_CRN", "INTELLIGENT_CRN" ]
+          "description" : "BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
         },
         "billerName" : {
           "type" : "string",
@@ -3963,7 +3958,6 @@
       "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRAVEL_CARDS", "TRANS_AND_SAVINGS_ACCOUNTS" ]
     },
     "RequestAccountIds_data" : {
-      "type" : "object",
       "required" : [ "accountIds" ],
       "properties" : {
         "accountIds" : {
@@ -3977,7 +3971,6 @@
       }
     },
     "ResponseBankingProductList_data" : {
-      "type" : "object",
       "required" : [ "products" ],
       "properties" : {
         "products" : {
@@ -3990,7 +3983,6 @@
       }
     },
     "BankingProductV3_additionalInformation" : {
-      "type" : "object",
       "properties" : {
         "overviewUri" : {
           "type" : "string",
@@ -4021,7 +4013,6 @@
       "description" : "Object that contains links to additional information on specific topics"
     },
     "BankingProductV3_cardArt" : {
-      "type" : "object",
       "required" : [ "imageUri" ],
       "properties" : {
         "title" : {
@@ -4036,7 +4027,6 @@
       }
     },
     "ResponseBankingAccountList_data" : {
-      "type" : "object",
       "required" : [ "accounts" ],
       "properties" : {
         "accounts" : {
@@ -4049,7 +4039,6 @@
       }
     },
     "ResponseBankingTransactionList_data" : {
-      "type" : "object",
       "required" : [ "transactions" ],
       "properties" : {
         "transactions" : {
@@ -4061,7 +4050,6 @@
       }
     },
     "BankingTransactionDetail_extendedData_x2p101Payload" : {
-      "type" : "object",
       "required" : [ "extendedDescription" ],
       "properties" : {
         "extendedDescription" : {
@@ -4079,7 +4067,6 @@
       }
     },
     "BankingTransactionDetail_extendedData" : {
-      "type" : "object",
       "required" : [ "service" ],
       "properties" : {
         "payer" : {
@@ -4103,11 +4090,9 @@
           "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
           "enum" : [ "X2P1.01" ]
         }
-      },
-      "x-conditional" : [ "payer", "payee", "extendedDescription" ]
+      }
     },
     "ResponseBankingAccountsBalanceList_data" : {
-      "type" : "object",
       "required" : [ "balances" ],
       "properties" : {
         "balances" : {
@@ -4120,7 +4105,6 @@
       }
     },
     "ResponseBankingPayeeList_data" : {
-      "type" : "object",
       "required" : [ "payees" ],
       "properties" : {
         "payees" : {
@@ -4133,7 +4117,6 @@
       }
     },
     "BankingInternationalPayee_beneficiaryDetails" : {
-      "type" : "object",
       "required" : [ "country" ],
       "properties" : {
         "name" : {
@@ -4152,7 +4135,6 @@
       }
     },
     "BankingInternationalPayee_bankDetails_bankAddress" : {
-      "type" : "object",
       "required" : [ "address", "name" ],
       "properties" : {
         "name" : {
@@ -4166,7 +4148,6 @@
       }
     },
     "BankingInternationalPayee_bankDetails" : {
-      "type" : "object",
       "required" : [ "accountNumber", "country" ],
       "properties" : {
         "country" : {
@@ -4210,7 +4191,6 @@
       }
     },
     "ResponseBankingDirectDebitAuthorisationList_data" : {
-      "type" : "object",
       "required" : [ "directDebitAuthorisations" ],
       "properties" : {
         "directDebitAuthorisations" : {
@@ -4223,7 +4203,6 @@
       }
     },
     "ResponseBankingScheduledPaymentsList_data" : {
-      "type" : "object",
       "required" : [ "scheduledPayments" ],
       "properties" : {
         "scheduledPayments" : {
@@ -4236,7 +4215,6 @@
       }
     },
     "ResponseCommonDiscoveryStatus_data" : {
-      "type" : "object",
       "required" : [ "status", "updateTime" ],
       "properties" : {
         "status" : {
@@ -4263,11 +4241,9 @@
           "description" : "The date and time that this status was last updated by the Data Holder.",
           "x-cds-type" : "DateTimeString"
         }
-      },
-      "x-conditional" : [ "explanation" ]
+      }
     },
     "ResponseDiscoveryOutagesList_data" : {
-      "type" : "object",
       "required" : [ "outages" ],
       "properties" : {
         "outages" : {
@@ -4280,7 +4256,6 @@
       }
     },
     "ResponseCommonCustomer_data" : {
-      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4297,7 +4272,6 @@
       }
     },
     "ResponseCommonCustomerDetail_data" : {
-      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4314,7 +4288,6 @@
       }
     },
     "ResponseErrorList_errors" : {
-      "type" : "object",
       "required" : [ "code", "detail", "title" ],
       "properties" : {
         "code" : {

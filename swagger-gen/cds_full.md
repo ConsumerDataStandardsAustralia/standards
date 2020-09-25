@@ -1599,7 +1599,6 @@ Obtain scheduled, outgoing payments for a specific account
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
-                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -1822,7 +1821,6 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
-                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -2038,7 +2036,6 @@ Obtain scheduled payments for a specified list of accounts
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
-                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -2355,7 +2352,6 @@ Note that the payee sub-structure should be selected to represent the payment de
     "biller": {
       "billerCode": "string",
       "crn": "string",
-      "crnType": "FIXED_CRN",
       "billerName": "string"
     },
     "international": {
@@ -5494,7 +5490,6 @@ This operation does not require authentication
     "biller": {
       "billerCode": "string",
       "crn": "string",
-      "crnType": "FIXED_CRN",
       "billerName": "string"
     },
     "international": {
@@ -5599,7 +5594,6 @@ This operation does not require authentication
   "biller": {
     "billerCode": "string",
     "crn": "string",
-    "crnType": "FIXED_CRN",
     "billerName": "string"
   },
   "international": {
@@ -5770,7 +5764,6 @@ This operation does not require authentication
 {
   "billerCode": "string",
   "crn": "string",
-  "crnType": "FIXED_CRN",
   "billerName": "string"
 }
 
@@ -5781,17 +5774,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |billerCode|string|mandatory|none|BPAY Biller Code of the Biller|
-|crn|string|conditional|none|BPAY CRN of the Biller. Where the crn contains sensitive information, it should be masked inline with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN or are otherwise sensitive, then it should be masked using the rules applicable for the MaskedPANString common type|
-|crnType|string|mandatory|none|Denotes the type of CRN. FIXED_CRN A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill. VARIABLE_CRN Biller generated reference number provided to the customer that is unique to each bill. INTELLIGENT_CRN Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both.|
+|crn|string|conditional|none|BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
 |billerName|string|mandatory|none|Name of the Biller|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|crnType|FIXED_CRN|
-|crnType|VARIABLE_CRN|
-|crnType|INTELLIGENT_CRN|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
 
@@ -5985,7 +5969,6 @@ This operation does not require authentication
               "biller": {
                 "billerCode": "string",
                 "crn": "string",
-                "crnType": "FIXED_CRN",
                 "billerName": "string"
               },
               "international": {
@@ -6109,7 +6092,6 @@ This operation does not require authentication
         "biller": {
           "billerCode": "string",
           "crn": "string",
-          "crnType": "FIXED_CRN",
           "billerName": "string"
         },
         "international": {
@@ -6221,7 +6203,6 @@ This operation does not require authentication
     "biller": {
       "billerCode": "string",
       "crn": "string",
-      "crnType": "FIXED_CRN",
       "billerName": "string"
     },
     "international": {
@@ -6292,7 +6273,6 @@ This operation does not require authentication
   "biller": {
     "billerCode": "string",
     "crn": "string",
-    "crnType": "FIXED_CRN",
     "billerName": "string"
   },
   "international": {

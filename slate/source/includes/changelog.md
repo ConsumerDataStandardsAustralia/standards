@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|25/9/2020|1.5.1|Revert 1.5.0 CRN update|See [release notes](includes/releasenotes/releasenotes.1.5.1.html) for details|
 |16/9/2020|1.5.0|Second Banking Maintenance Iteration 4 Release|See [release notes](includes/releasenotes/releasenotes.1.5.0.html) for details|
 |12/8/2020|1.4.0|Banking Maintenance Iteration 4 Release|See [release notes](includes/releasenotes/releasenotes.1.4.0.html) for details|
 |22/5/2020|1.3.1|Maintenance updates|Error Fixes<br/>See [release notes](includes/releasenotes/releasenotes.1.3.1.html) for detail
