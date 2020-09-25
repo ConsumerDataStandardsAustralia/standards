@@ -25,6 +25,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <li><strong>Unauthenticated</strong>: API requests to API end points that the standards deem to be publically available.  This implies that these end points may be accessed by any client without the client performing any authentication or authorisation actions</li>
 <li><strong>High Traffic Period</strong>: Any time in the 18 hour period between 6am and 12am (midnight) is considered to be a high traffic period</li>
 <li><strong>Low Traffic Period</strong>: Any time of the day not considered to be included in a high traffic period.</li>
+<li><strong>Large Payload</strong>: An API which is capable of returning a large data response that would reasonably impose higher data retrieval times on the resource server. Typically bulk request end points.</li>
 </ul>
 <h2 id='session-requirements'>Session Requirements</h2>
 <p>A expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
@@ -66,12 +67,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Unauthenticated</td>
 <td><strong>1500ms</strong></td>
-<td>All unauthenticated end points</td>
+<td>All Unauthenticated end points not otherwise specified in a separate threshold.</td>
 </tr>
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>InfoSec end points</li><li>Get Status</li><li>Get Outages</li><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
@@ -81,12 +82,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Unattended</td>
 <td><strong>4000ms</strong></td>
-<td>Unattended calls to High Priority or Low Priority end points.</br>Additional Admin end points.</td>
+<td>Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>All Admin end points.</li></ul></td>
 </tr>
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any call to the following end points:<ul><li>Get Transactions For Account</li><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
+<td>Any Unattended calls to the following end points:<ul><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
 </tr>
 </tbody></table>
 

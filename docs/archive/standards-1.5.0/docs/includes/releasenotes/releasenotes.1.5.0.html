@@ -1,0 +1,377 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.5.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-5-0-release-notes" class="toc-h1 toc-link" data-title="V1.5.0 Release Notes">V1.5.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='v1-5-0-release-notes'>V1.5.0 Release Notes</h1>
+<p>Release notes for version 1.5.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Update NFR description</td>
+<td>Update to the language for NFR thresholds to clarify how status and outage end points are addressed</td>
+<td><a href="../../#performance-requirements">Non Functional Requirements</a></td>
+</tr>
+<tr>
+<td>Future Date Obligations</td>
+<td>Future Dated Obligations for DP135 November consent changes and Maintenance Iteration 4 breaking changes</td>
+<td><a href="../../#future-dated-obligations">Future Date Obligations</a></td>
+</tr>
+<tr>
+<td>Minor errata for 1.4.0</td>
+<td>Fixed links and typos in 1.4.0 and correct use of common field types</td>
+<td></td>
+</tr>
+<tr>
+<td>Payload Conventions</td>
+<td>Added section on Arrays to clarify how empty and single valued arrays should be treated</td>
+<td><a href="../../#array-conventions">Array conventions</a></td>
+</tr>
+<tr>
+<td>NFR Performance Thresholds</td>
+<td>Clarified end point performance tiers and removed ambiguous overlaps</td>
+<td><a href="../../#performance-requirements">Performance Requirements</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Update to CRN description</td>
+<td>Update to the documentation to be clear on the expectations for masking any data that the data holder considers sensitive</td>
+<td><a href="../../#tocSbankingbillerpayee">BankingBillerPayee</a></td>
+</tr>
+<tr>
+<td>BankingPayee nickname</td>
+<td>Updated description of nickname</td>
+<td><a href="../../#tocSbankingpayee">BankingPayee</a></td>
+</tr>
+<tr>
+<td>BankingBillerPayee update</td>
+<td>Added crnType to BankingBillerPayee</td>
+<td><a href="../../#tocSbankingbillerpayee">BankingBillerPayee</a></td>
+</tr>
+<tr>
+<td>Extend rejection counts for unauthenticated APIs</td>
+<td>Introduced GetMetrics V2 and RejectionMetrics V2</td>
+<td><a href="../../#get-metrics">Get Metrics</a></td>
+</tr>
+<tr>
+<td>Correct isPartial field type</td>
+<td>Correctly references CDS Boolean common field type</td>
+<td><a href="../../#tocSdiscoveryoutage">DiscoveryOutage</a></td>
+</tr>
+<tr>
+<td>Correct minimumValue and maximumValue field type</td>
+<td>Correctly references CDS Number common field type</td>
+<td><a href="../../#tocSbankingproductratetierv3">BankingProductRateTierV3</a></td>
+</tr>
+<tr>
+<td>Update to amount description</td>
+<td>Update to the documentation for amount in BankingProductDiscount to remove grammatical mistakes</td>
+<td><a href="../../#tocSbankingproductdiscount">BankingProductDiscount</a></td>
+</tr>
+<tr>
+<td>Update to BankingProductDiscountEligibility</td>
+<td>Update to correctly define additionalInfo and the eligibility array to be conditional based on applicable constraints</td>
+<td><a href="../../#tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</a></td>
+</tr>
+<tr>
+<td>Update to Product Discount Type FEE_CAP description</td>
+<td>Update to FEE_CAP description to correctly reference applicable rates</td>
+<td><a href="../../#tocSproductdiscounttypedoc">Product Discount Types</a></td>
+</tr>
+<tr>
+<td>Added typed version support for ANZSIC and ANZSCO codes</td>
+<td>Added version support for industryCode and occupationCode to allow data holders to reference the applicable document versions for the codes they hold.</td>
+<td><a href="../../#get-customer">Get Customer</a></td>
+</tr>
+<tr>
+<td>Added Get Metrics v2</td>
+<td>Based on breaking changes, introduced v2 for Get Metrics end point</td>
+<td><a href="../../#get-metrics">Get Metrics v2</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Mandatory Claims for ID Token</td>
+<td>Changes related to alignment with normative references of ID Token</td>
+<td><a href="../../#tokens">Tokens</a></td>
+</tr>
+<tr>
+<td>Required use of Authentication Time claim</td>
+<td>Updated description in the standards to remove the requirement for auth_time unless it is requested as an essential claim</td>
+<td><a href="../../#scopes-and-claims">Scopes and Claims</a></td>
+</tr>
+<tr>
+<td>Updates to November consent changes</td>
+<td>Updates the sections covering Concurrent Consent, PAR client authentication, CDR Arrangement Revocation and CDR Arrangement ID documenation based on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/files/5159401/Decision.135.-.November.2020.Consent.Obligations.pdf">DP135</a></td>
+<td><a href="../../#scopes-and-claims">Scopes and Claims</a></td>
+</tr>
+<tr>
+<td>Update token introspection endpoint</td>
+<td>Updated token introspection text to align with normative reference and added scope claim</td>
+<td><a href="../../#end-points">Endpoints</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<p>No Changes</p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
