@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>25/9/2020</td>
+<td>1.5.1</td>
+<td>Revert 1.5.0 CRN update</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.5.1.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>16/9/2020</td>
 <td>1.5.0</td>
 <td>Second Banking Maintenance Iteration 4 Release</td>

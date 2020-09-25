@@ -1,0 +1,409 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.3.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-3-0-release-notes" class="toc-h1 toc-link" data-title="V1.3.0 Release Notes">V1.3.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='v1-3-0-release-notes'>V1.3.0 Release Notes</h1>
+<p>Release notes for version 1.3.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Principles</td>
+<td>Amendment to high level principles to include principles for CX and for cross-sector extension</td>
+<td><a href="../../#principles">Principles</a></td>
+</tr>
+<tr>
+<td>Maintenance Link</td>
+<td>A link to the standards maintenance GitHub repository has been added to the table of contents</td>
+<td>General</td>
+</tr>
+<tr>
+<td>x-fapi-auth-date Clarification</td>
+<td>Clarification that the FAPI Read profile defines the format for the <code>x-fapi-auth-date</code> header</td>
+<td><a href="../../#http-headers">HTTP Headers</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-cds-client-headers correction</td>
+<td>The <code>x-cds-client-headers</code> header was missing from the Get Transactions For Account end point.  This has been rectified</td>
+<td><a href="../../#get-transactions-for-account">Get Transactions For Account</a></td>
+</tr>
+<tr>
+<td>x-fapi-interaction-id correction</td>
+<td>The <code>x-fapi-interaction-id</code> header was missing from the Get Customer end point.  This has been rectified</td>
+<td><a href="../../#get-customer">Get Customer</a></td>
+</tr>
+<tr>
+<td>Product API v3</td>
+<td>Introduction of v3 of the Product Reference end points to remove sub tiers, addition of more info and info URL fields, and addition of repayment type and loan purpose fields</td>
+<td><a href="../../#get-products">Get Products</a></td>
+</tr>
+<tr>
+<td>APCA Field Description</td>
+<td>Clarified the description of the APCA field for the apcaNumber field</td>
+<td><a href="../../#tocSbankingtransaction">BankingTransaction</a></td>
+</tr>
+<tr>
+<td>MAX_LIMIT, MIN_LIMIT Descriptions</td>
+<td>Clarification of descriptions for MAX_LIMIT and MIN_LIMIT enumeration values</td>
+<td><a href="../../#product-amp-account-components">Product &amp; Account Components</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID Token Encryption</td>
+<td>Clarification of the non-normative examples for the OpenID Provider Configuration End Point regarding ID Token encryption algorithms</td>
+<td><a href="../../#end-points">InfoSec End Points</a></td>
+</tr>
+<tr>
+<td>Request Object Sample</td>
+<td>Clarifications of non-normative example for the Request Object</td>
+<td><a href="../../#request-object">Request Object</a></td>
+</tr>
+<tr>
+<td>Client Authentication Sample</td>
+<td>Addition of non-normative samples for the client authentication section</td>
+<td><a href="../../#client-authentication">Client Authentication</a></td>
+</tr>
+<tr>
+<td>Concurrent Consent</td>
+<td>Addition of changes arising from the concurrent consent consultation.  This resulted in a number of changes to the Information Security profile</td>
+<td>General</td>
+</tr>
+<tr>
+<td>MTLS RFC</td>
+<td>The reference to the MTLS normative reference has been updated from the draft to the final standard</td>
+<td><a href="../../#/#normative-references">Normative References</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Optional example for <em>‘Transaction Details’</em> amended</td>
+<td>CX Standards defect. An optional example for <em>‘Transaction Details’</em> incorrectly referred to <em>‘BSB, account number’</em>. This optional example has been removed.</td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.14</td>
+</tr>
+<tr>
+<td>Use of ‘One Time Password’</td>
+<td>CX Standards clarification. Amended to clarify that the use of the term “One Time Password” may be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.16</td>
+</tr>
+<tr>
+<td>Unavailable accounts in the authorisation flow</td>
+<td>CX Standards clarification. This clarification has been added to the standard as follows:<br/><br/><em>Data holders are not permitted to show unavailable joint accounts as joint accounts need to be elected via a joint account management service before they are permitted to appear in the authorisation flow (See CDR Rules: Schedule 3, 4.1(1); 4.2; 4.3(3); and CDR Rule 4.24)</em></td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.16</td>
+</tr>
+<tr>
+<td>Profile selection step</td>
+<td>CX Standards, optional addition. To avoid DH non-compliance this guideline has been added as an optional part of an existing CX standard on account selection as follows:<br/><br/><em>Data holders MAY add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts.<br/><br/>The ‘profile selection’ step</em> <strong><em>SHOULD</em></strong> <em>only be considered if it is an existing customer experience, and</em> <strong><em>SHOULD</em></strong> <em>be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).</em><br/><br/>This item was previously a guideline but was uplifted to be an optional part of the standards as it is not permitted in the authorisation flow unless it is a rule or standard.</td>
+<td><a href="../../#consumer-experience">CX Standards</a> p.16</td>
+</tr>
+<tr>
+<td>CX Principles</td>
+<td>The CX Guidelines and CX Standards artefacts now include the CX Principles and Outcome Principle 3.<br/>These principles guide standard/guideline development but are not standards themselves.</td>
+<td>General</td>
+</tr>
+<tr>
+<td>ABS hyperlink corrected</td>
+<td>Broken link replaced</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.24</td>
+</tr>
+<tr>
+<td>Concurrent consent</td>
+<td>CX Guideline amended to avoid implying that concurrent consent will support re-authorisation.<br/>Guideline amended to clarify that consumer withdrawal must occur before/in the course of replacing an existing consent.</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.65<br/>(Added to key decisions table p.3)</td>
+</tr>
+<tr>
+<td>CDR Logo in authorisation flow</td>
+<td>CX Guideline has been removed pending the ACCC making this functionality available.</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.79</td>
+</tr>
+<tr>
+<td>Accreditation ID in authorisation flow</td>
+<td>CX Guideline has been removed pending the ACCC making this functionality available. ACCC is consulting on the sharing of the accreditation ID with DHs on <a href="https://github.com/cdr-register/register/issues/94">GitHub</a></td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.79</td>
+</tr>
+<tr>
+<td>Historical data</td>
+<td>Screen example changed to ‘may date back to 1st January 2017’ as DH won’t know this detail.</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.83</td>
+</tr>
+<tr>
+<td>User-defined tags</td>
+<td>ADR guideline refers to ‘absence of information about the purpose or use case’. This has been removed as this only relates to DHs</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.93, 95</td>
+</tr>
+<tr>
+<td>Status of consent/sharing</td>
+<td>Guideline changed to clarify nuance of ‘status’ referring to both consent or data sharing</td>
+<td><a href="../../#consumer-experience">CX Guidelines</a> p.95, 108</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

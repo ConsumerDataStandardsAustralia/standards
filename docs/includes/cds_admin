@@ -1,3 +1,4 @@
+<h1 id="consumer-data-standards-administration-end-points-admin-apis">Admin APIs</h1>
 <h2 id='metadata-update'>Metadata Update</h2>
 <p><a id="opIdmetadataUpdate"></a></p>
 
@@ -126,7 +127,7 @@
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation does not require authentication
 </aside>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
@@ -400,9 +401,9 @@ This operation may only be called by the CDR Register
 </tbody></table>
 
 <aside class="success">
-This operation may only be called by the CDR Register
+This operation does not require authentication
 </aside>
-<h2 id='schemas'>Schemas</h2>
+<h1 id='schemas'>Schemas</h1>
 <h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>
