@@ -1,133 +1,270 @@
-<h2 id='metadata-update'>Metadata Update</h2>
-<p><a id="opIdmetadataUpdate"></a></p>
 
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/register/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Get Metrics v1</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
 
-<span class="err">x-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="err">x-min-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
 
-</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
+  <body class="includes includes_obsolete includes_obsolete_get-metrics-v1" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#get-metrics-v1" class="toc-h1 toc-link" data-title="Get Metrics V1">Get Metrics V1</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
+                  </li>
+                  <li>
+                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                  </li>
+                  <li>
+                    <a href="#tocSresponsemetricslist" class="toc-h2 toc-link" data-title="ResponseMetricsList">ResponseMetricsList</a>
+                  </li>
+                  <li>
+                    <a href="#tocSavailabilitymetrics" class="toc-h2 toc-link" data-title="AvailabilityMetrics">AvailabilityMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSperformancemetrics" class="toc-h2 toc-link" data-title="PerformanceMetrics">PerformanceMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSinvocationmetrics" class="toc-h2 toc-link" data-title="InvocationMetrics">InvocationMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSaverageresponsemetrics" class="toc-h2 toc-link" data-title="AverageResponseMetrics">AverageResponseMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSsessioncountmetrics" class="toc-h2 toc-link" data-title="SessionCountMetrics">SessionCountMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSaveragetpsmetrics" class="toc-h2 toc-link" data-title="AverageTPSMetrics">AverageTPSMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSpeaktpsmetrics" class="toc-h2 toc-link" data-title="PeakTPSMetrics">PeakTPSMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSerrormetrics" class="toc-h2 toc-link" data-title="ErrorMetrics">ErrorMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocSrejectionmetrics" class="toc-h2 toc-link" data-title="RejectionMetrics">RejectionMetrics</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='get-metrics-v1'>Get Metrics V1</h1>
+<p>This page documents the obsolete version 1 of the Get Metrics end point.</p>
 
-<span class="p">};</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/admin/register/metadata'</span><span class="p">,</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
-  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-
-</code></pre>
-<p><code>POST /admin/register/metadata</code></p>
-
-<p>Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained</p>
-
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFRESH"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='endpoint-version'>Endpoint Version</h3>
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
-
-<h3 id="metadata-update-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>x-v</td>
-<td>header</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
-</tr>
-<tr>
-<td>x-min-v</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td><a href="#schemarequestmetadataupdate">RequestMetaDataUpdate</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h3 id="metadata-update-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
-<td>None</td>
-</tr>
-</tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-v</td>
-<td>string</td>
-<td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-This operation may only be called by the CDR Register
-</aside>
+<p>This version is to be ceased to be called by data recipients by <strong>31st July 2021</strong> and can be decommissioned by data holders as of that date.</p>
 <h2 id='get-metrics'>Get Metrics</h2>
 <p><a id="opIdgetMetrics"></a></p>
 
@@ -161,11 +298,7 @@ This operation may only be called by the CDR Register
 <p><code>GET /admin/metrics</code></p>
 
 <p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
-
-<p>NOTE: This version must be implemented by <strong>July 31st 2021</strong></p>
-
-<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a></p>
-<h3 id='endpoint-version-2'>Endpoint Version</h3>
+<h3 id='endpoint-version'>Endpoint Version</h3>
 <table><thead>
 <tr>
 <th></th>
@@ -174,7 +307,7 @@ This operation may only be called by the CDR Register
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -201,14 +334,14 @@ This operation may only be called by the CDR Register
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="../../#request-headers">x-min-v</a> and <a href="../../request-headers">x-v</a>. If the value of <a href="../../request-headers">x-min-v</a> is equal to or higher than the value of <a href="../../request-headers">x-v</a> then the <a href="../../request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="../../#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v]#request-headers) and <a href="../../#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -341,18 +474,10 @@ This operation may only be called by the CDR Register
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"rejections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"authenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="mi">0</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="mi">0</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"customerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"recipientCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -377,10 +502,10 @@ This operation may only be called by the CDR Register
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsemetricslistv2">ResponseMetricsListV2</a></td>
+<td><a href="#schemaresponsemetricslist">ResponseMetricsList</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+<h3 id='response-headers'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -395,7 +520,7 @@ This operation may only be called by the CDR Register
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -403,64 +528,9 @@ This operation may only be called by the CDR Register
 This operation may only be called by the CDR Register
 </aside>
 <h2 id='schemas'>Schemas</h2>
-<h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
+<h2 id="tocSresponsemetricslist">ResponseMetricsList</h2>
 
-<p><a id="schemarequestmetadataupdate"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFRESH"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» action</td>
-<td>string</td>
-<td>mandatory</td>
-<td>none</td>
-<td>The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable</td>
-</tr>
-<tr>
-<td>meta</td>
-<td><a href="#schemameta">Meta</a></td>
-<td>optional</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>action</td>
-<td>REFRESH</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
-
-<p><a id="schemaresponsemetricslistv2"></a></p>
+<p><a id="schemaresponsemetricslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -565,18 +635,10 @@ This operation may only be called by the CDR Register
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"rejections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"authenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="mi">0</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="mi">0</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"customerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"recipientCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -587,7 +649,7 @@ This operation may only be called by the CDR Register
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre><h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -669,7 +731,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» rejections</td>
-<td><a href="#schemarejectionmetricsv2">RejectionMetricsV2</a></td>
+<td><a href="#schemarejectionmetrics">RejectionMetrics</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected due to traffic thresholds over time</td>
@@ -716,7 +778,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Percentage availability of the CDR platform over time</em></p>
-<h3 id='properties-3'>Properties</h3>
+<h3 id='properties-2'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -754,7 +816,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Percentage of calls within the performance thresholds</em></p>
-<h3 id='properties-4'>Properties</h3>
+<h3 id='properties-3'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -818,7 +880,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Number of API calls in each performance tier over time</em></p>
-<h3 id='properties-5'>Properties</h3>
+<h3 id='properties-4'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -973,7 +1035,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Average response time in seconds, at millisecond resolution, within each performance tier</em></p>
-<h3 id='properties-6'>Properties</h3>
+<h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1102,7 +1164,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Session counts over time. Note that a session is defined as the provisioning of an Access Token.</em></p>
-<h3 id='properties-7'>Properties</h3>
+<h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1140,7 +1202,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Transactions per second over time</em></p>
-<h3 id='properties-8'>Properties</h3>
+<h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1178,7 +1240,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Maximum record transactions per second over time</em></p>
-<h3 id='properties-9'>Properties</h3>
+<h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1216,7 +1278,7 @@ This operation may only be called by the CDR Register
 
 </span></code></pre>
 <p><em>Number of calls resulting in error due to server execution over time</em></p>
-<h3 id='properties-10'>Properties</h3>
+<h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1242,110 +1304,22 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
+<h2 id="tocSrejectionmetrics">RejectionMetrics</h2>
 
-<p><a id="schemarejectionmetricsv2"></a></p>
+<p><a id="schemarejectionmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"authenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">0</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">0</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p><em>Number of calls rejected due to traffic thresholds over time</em></p>
-<h3 id='properties-11'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>authenticated</td>
-<td>object</td>
-<td>optional</td>
-<td>none</td>
-<td>Rejection counts for all authenticated end points</td>
-</tr>
-<tr>
-<td>» currentDay</td>
-<td>number</td>
-<td>optional</td>
-<td>none</td>
-<td>Number of calls rejected for current day</td>
-</tr>
-<tr>
-<td>» previousDays</td>
-<td>[number]</td>
-<td>optional</td>
-<td>none</td>
-<td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
-</tr>
-<tr>
-<td>unauthenticated</td>
-<td>object</td>
-<td>optional</td>
-<td>none</td>
-<td>Rejection counts for all uauthenticated end points</td>
-</tr>
-<tr>
-<td>» currentDay</td>
-<td>number</td>
-<td>optional</td>
-<td>none</td>
-<td>Number of calls rejected for current day</td>
-</tr>
-<tr>
-<td>» previousDays</td>
-<td>[number]</td>
-<td>optional</td>
-<td>none</td>
-<td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
-</tr>
-</tbody></table>
 
-<h2 id="tocSlinks">Links</h2>
-
-<p><a id="schemalinks"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-12'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>none</td>
-<td>Fully qualified link to this API call</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocSmeta">Meta</h2>
-
-<p><a id="schemameta"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-
-</span></code></pre><h3 id='properties-13'>Properties</h3>
-<p><em>None</em></p>
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
