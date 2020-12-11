@@ -1,0 +1,342 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.3.1 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-3-1-release-notes" class="toc-h1 toc-link" data-title="V1.3.1 Release Notes">V1.3.1 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='v1-3-1-release-notes'>V1.3.1 Release Notes</h1>
+<p>Release notes for version 1.3.1 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Removal of aside comment</td>
+<td>In the availability section there was a redundant comment indicating the notification method for outages is pending.  This has been removed</td>
+<td><a href="../../#availability-requirements">Availability Requirements</a></td>
+</tr>
+<tr>
+<td>Error response clarification</td>
+<td>The requirement that a 406 response must be provided if x-v and x-min-v are not present was written before the must/should language was used with specific meaning.  This is not clarified as a MUST (as was intended) rather than a SHOULD.  This change has also been applied where the version headers are documented for end points.</td>
+<td><a href="../../#http-headers">HTTP Headers</a></td>
+</tr>
+<tr>
+<td>Example correction</td>
+<td>Corrected the non-normative example for the base URI to remove the resource component</td>
+<td><a href="../../#versioning">Versioning</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>imageUri clarification</td>
+<td>Add clarification to the imageUri field indicating that url-encoded data is valid for this field</td>
+<td><a href="../../#tocSbankingproductv3">BankingProductV3 Model</a></td>
+</tr>
+<tr>
+<td>MIN_LIMIT, MAX_LIMIT descriptions</td>
+<td>Align the language used to describe the MIN_LIMIT and MAX_LIMIT fields to remove inconsistency and ambiguity</td>
+<td><a href="../../#product-amp-account-components">Product &amp; Account Components</a></td>
+</tr>
+<tr>
+<td>Model versioning</td>
+<td>Versioning of schema models to accommodate v3 of the PRD end points</td>
+<td>Various</td>
+</tr>
+<tr>
+<td>PRD v2 obsolescence date</td>
+<td>Removed the obseloscence date for v2 PRD end points.  These were included erroneously</td>
+<td><a href="../obsolete/get-products-v2.html">Get Products v2</a>,<br/><a href="../../includes/obsolete/get-product-detail-v2.html-v2.html">Get Product Detail v2</a></td>
+</tr>
+<tr>
+<td>Invalid account ID</td>
+<td>Clarification that a 422 error in response to an invalid Account ID is required even if only one ID in a group is invalid</td>
+<td>POST APIs that query specific accounts</td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Markdown fix</td>
+<td>Some of the markdown for the Arrangement end point was not formatted correctly.  This has been fixed.</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
+<tr>
+<td>Revocation end point for ADRs</td>
+<td>The documentation covering the need for ADR&#39;s to host a revocation end point until November 2020 was inadvertently removed.  Revocation end point documentation has been modified to match the relevant decision proposals</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
+<tr>
+<td>Token example correction</td>
+<td>Change the non-normative example in the Tokens section to correctly use numeric date values instead of strings</td>
+<td><a href="../../#tokens">Token</a></td>
+</tr>
+<tr>
+<td>Client auth for security end points</td>
+<td>Clarify for the revocation and arrangement end points that client assertion is used to verify the identity of Data Recipients and bearer tokens are used to verify the identity of Data Holders</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
+<tr>
+<td>OIDC Discovery update</td>
+<td>Corrected the non-normative example for ODIC Discovery end point to correctly specify the <code>tls_client_certificate_bound_access_tokens</code> field</td>
+<td><a href="../../#end-points">Security End Points</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<p>No Change</p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
