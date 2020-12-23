@@ -4,6 +4,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='./archive/standards-1.5.1/docs/'>25/9/2020</a>|1.5.1|<a href='./archive/standards-1.5.1/docs/'>Revert 1.5.0 CRN update</a>
 |<a href='./archive/standards-1.5.0/docs/'>16/9/2020</a>|1.5.0|<a href='./archive/standards-1.5.0/docs/'>Banking Maintenance Iteration 4 Release</a>
 |<a href='./archive/standards-1.4.0/docs/'>12/8/2020</a>|1.4.0|<a href='./archive/standards-1.4.0/docs/'>Banking Maintenance Iteration 3 Release</a>
 |<a href='./archive/standards-1.3.1/docs/'>22/5/2020</a>|1.3.1|<a href='./archive/standards-1.3.1/docs/'>May Banking Maintenance Iteration 2 Release</a>|
