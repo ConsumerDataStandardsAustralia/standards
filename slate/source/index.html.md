@@ -12,6 +12,7 @@ toc_footers:
   - <a href='https://cdr-register.github.io/'>CDR Register</a>
   - <a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a>
   - <a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a>
+  - <a href='./draft/energy-draft.html'>Draft Energy Standards</a>
 
 includes:
   - intro
