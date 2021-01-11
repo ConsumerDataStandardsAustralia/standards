@@ -106,7 +106,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    redcarpet (3.4.0)
+    redcarpet (3.5.1)
     rouge (2.0.7)
     sass (3.4.25)
     servolux (0.13.0)
@@ -132,7 +132,7 @@ DEPENDENCIES
   middleman-sprockets (~> 4.1.0)
   middleman-syntax (~> 3.0.0)
   nokogiri (~> 1.10.4)
-  redcarpet (~> 3.4.0)
+  redcarpet (~> 3.5.1)
   rouge (~> 2.0.5)
 
 RUBY VERSION
