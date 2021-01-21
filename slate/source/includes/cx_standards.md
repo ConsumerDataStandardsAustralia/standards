@@ -18,9 +18,9 @@ Table 1.
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Name and occupation**|<ul><li>Name</li></ul><ul><li>Occupation</li></ul>|common:customer.basic:read|
-|**Contact Details**|<ul><li>Phone;</li></ul><ul><li>Email address;</li></ul><ul><li>Mail address;</li></ul> <ul><li>Residential address;</li></ul>|common:customer.detail:read|
-|**Name, occupation, contact details:**|<ul><li>Name;</li></ul> <ul><li>Occupation;</li></ul> <ul><li>Phone;</li></ul><ul><li>Email address;</li></ul> <ul><li>Mail address;</li></ul><ul><li>Residential address;</li></ul>|common:customer.detail:read|
+|**Name and occupation**|Name<br>Occupation|common:customer.basic:read|
+|**Contact Details**|Phone;<br>Email address;<br>Mail address;<br>Residential address;|common:customer.detail:read|
+|**Name, occupation, contact details:**|Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;|common:customer.detail:read|
 
 
 ####Business consumer
@@ -28,47 +28,60 @@ Table 1.
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|Organisation profile*|<ul><li>Agent name and role;</li></ul><ul><li>Organisation name;</li></ul><ul><li>Organisation numbers (ABN or ACN);</li></ul><ul><li>Charity status;</li></ul><ul><li>Establishment date;</li></ul><ul><li>Industry;</li></ul><ul><li>Organisation type;</li></ul><ul><li>Country of registration;</li></ul>|common:customer.basic:read|
+|**Organisation profile** *|Agent name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;|common:customer.basic:read|
 
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|Organisation contact details*|<ul><li>Organisation address;</li></ul><ul><li>Organisation address;</li></ul><ul><li>Phone number;</li></ul>|common:customer.detail:read|
+|**Organisation contact details** *|Organisation address;<br>Organisation address;<br>Phone number;|common:customer.detail:read|
 
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|Organisation profile and contact details*‡|<ul><li>Agent >name and role;</li></ul> <ul><li>Organisation name;</li></ul> <ul><li>Organisation numbers (ABN or ACN);† </li></ul><ul><li>Charity status;</li></ul> <ul><li>Establishment date;</li></ul><ul><li>Industry;</li></ul><ul><li>Organisation type;</li></ul><ul><li>Country of registration;</li></ul><ul><li>Organisation address;</ul></li><ul><li>Mail address;</li></ul><ul><li>address;</li></ul><ul><li>Phone number;</li></ul>|common:customer.detail:read|
+|**Organisation profile and contact details** *‡|Agent >name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);† <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address<br>address;<br>Phone number;<br>|common:customer.detail:read|
 
+
+
+####Common
+Table 1.
+
+|Data cluster language|Permission language|Authorisation Scopes|
+|----------------------|------------------------------|-------------------|
+|**Account name, type and balance**|Name of account;<br>Type of account;<br>Account balance;|bank:accounts.basic:read|
+|**Account numbers and features**|Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
+|**Account balance and details‡**|Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
+|**Transaction details**|Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; *(e.g. their name)†*|bank:transactions:read|
+|**Direct debits and scheduled payments**|Direct debits;<br>Scheduled payments;|bank:regular_payments:read|
+|**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)†*|bank:payees:read|
 
 ###Accessibility Standards
 
 
 |#|Area|CX Standard|
 |-|------------------------------|----------------|
-|3   | **Accessibility**  |At a minimum, all CDR participants **MUST** seek to comply with the following accessibility guidelines throughout the Consent Model.<ul><li>These standards SHOULD be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</li></ul>   |
-|  4 | **Accessibility** <br> Content distinction | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 1.4](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html) Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.  |
-| 5  | **Accessibility** <br> Keyboard functionality  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 2.1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html). This will make all functionality available from a keyboard.  |
-| 6  | **Accessibility** <br> Pointer interactions  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 2.5](https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible) . This will make it easier to operate functionality using various input devices  |
-| 7  | **Accessibility** <br> Reading experiences  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 3.1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html). This will make text content readable and understandable  |
-| 8  | **Accessibility** <br> Input assistance  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 3.3](https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html). This will help users avoid and correct mistakes.  |
+|3| **Accessibility**  |At a minimum, all CDR participants **MUST** seek to comply with the following accessibility guidelines throughout the Consent Model.<ul><li>These standards SHOULD be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</li></ul>|
+|4| **Accessibility** <br> Content distinction | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 1.4](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html) Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.  |
+|5| **Accessibility** <br> Keyboard functionality| Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 2.1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html). This will make all functionality available from a keyboard.|
+|6| **Accessibility** <br> Pointer interactions  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 2.5](https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible). This will make it easier to operate functionality using various input devices|
+|7| **Accessibility** <br> Reading experiences| Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 3.1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html). This will make text content readable and understandable|
+|8| **Accessibility** <br> Input assistance  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 3.3](https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html). This will help users avoid and correct mistakes.|
 
 ###Consent, Authenticate, and Authorise Standards
 
 |#|Area|CX Standard|
 |-|------------------------------|----------------|
-| 9  | **Seeking consent**  | Data recipients **MUST** notify consumers of redirection prior to authentication.  |
-| 10  | **Authentication:** <br> ‘One Time Password’  |  Data holders and data recipients **MUST** clearly refer to a “One Time Password” in consumer-facing interactions and communications. The use of the term “One Time Password” **MAY** be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.). |
-| 11 | **Authentication:** <br >Passwords  |  Data holders and data recipients **MUST** state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient. |
-| 12  | **Authentication:** <br> Password link  | Data holders **MUST NOT** include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.  |
-| 13  | **Authentication:** <br> OTP expiry  | Data holders **MUST** communicate the expiry period of the OTP to the consumer in the authentication flow.  |
-| 14  |  **Authorisation** & Account selection | Data holders **MUST** allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder **MAY** omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders **MAY** add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step **SHOULD** only be considered if it is an existing customer experience, and **SHOULD** be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step.</li><ul><li>Data holders **SHOULD** communicate why these accounts cannot be selected, and this SHOULD be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders MAY provide instructions on how to make these accounts available to share, and this SHOULD be communicated as in-line help or as a modal to reduce on-screen content.</li><li>*Note: Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul>|
+|9|**Seeking consent**|Data recipients **MUST** notify consumers of redirection prior to authentication.|
+|10|**Authentication:**<br>‘One Time Password’|Data holders and data recipients **MUST** clearly refer to a “One Time Password” in consumer-facing interactions and communications. The use of the term “One Time Password” **MAY** be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).|
+|11|**Authentication:**<br >Passwords|Data holders and data recipients **MUST** state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient.|
+|12|**Authentication:**<br> Password link  | Data holders **MUST NOT** include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.|
+|13|**Authentication:**<br>OTP expiry|Data holders **MUST** communicate the expiry period of the OTP to the consumer in the authentication flow.|
+|14|**Authorisation** & Account selection |Data holders **MUST** allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder **MAY** omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders **MAY** add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step **SHOULD** only be considered if it is an existing customer experience, and **SHOULD** be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step.</li><ul><li>Data holders **SHOULD** communicate why these accounts cannot be selected, and this SHOULD be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders MAY provide instructions on how to make these accounts available to share, and this SHOULD be communicated as in-line help or as a modal to reduce on-screen content.</li><li>*Note: Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul>|
 
 
 ###Withdrawal Standards
 
 |#|Area|CX Standard|
 |-|------------------------------|----------------|
-| 16 | **Withdrawing consent**  | If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients **MUST** allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </ul></li><ul><li>Data recipients **SHOULD** consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</ul></li>|
-| 17  | **Withdrawing authorisation:**<br> Consequences  | As part of the withdrawal process, the data holder **MUST* advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <ul><li>The data holder MAY consider using or paraphrasing the following message(s):</li><ul><li>*‘You should check with [Data Recipient] before you stop sharing to understand the consequences.’*</ul></li><ul><li>*‘You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.’*</li></ul></ul>|
-| 18  | **Withdrawing authorisation:** <br> Redundant data  | As part of the withdrawal process, the data holder **MUST** inform the consumer about the handling of redundant data and the right to delete. <ul><li>The Data Holder **MAY** consider using or paraphrasing the following message(s):</li><ul><li>*‘CDR data is either deleted or de-identified when it is no longer required.’*</li><li>*‘[Data recipient] will have specific policies on how to handle your data once it’s no longer required.’*</li><li>*‘If you haven’t already, you can ask [data recipient] to delete your data when they no longer need it, but you must do this before you stop sharing.’*</li></ul></ul> |
+|16|**Withdrawing consent**|If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients **MUST** allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </ul></li><ul><li>Data recipients **SHOULD** consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</ul></li>|
+|17| **Withdrawing authorisation:**<br>Consequences| As part of the withdrawal process, the data holder **MUST* advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <ul><li>The data holder MAY consider using or paraphrasing the following message(s):</li><ul><li>*‘You should check with [Data Recipient] before you stop sharing to understand the consequences.’*</ul></li><ul><li>*‘You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.’*</li></ul></ul>|
+|18|**Withdrawing authorisation:**<br>Redundant data| As part of the withdrawal process, the data holder **MUST** inform the consumer about the handling of redundant data and the right to delete. <ul><li>The Data Holder **MAY** consider using or paraphrasing the following message(s):</li><ul><li>*‘CDR data is either deleted or de-identified when it is no longer required.’*</li><li>*‘[Data recipient] will have specific policies on how to handle your data once it’s no longer required.’*</li><li>*‘If you haven’t already, you can ask [data recipient] to delete your data when they no longer need it, but you must do this before you stop sharing.’*</li></ul></ul> |
