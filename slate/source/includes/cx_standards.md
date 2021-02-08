@@ -2,6 +2,7 @@
 
 ###Data Language Standards
 
+
 >
 <img src="../images/cx_standards0.png" width=375px/> <br>
 <font size="1">Example of data language standards presented in a consumer-facing interaction</font>
@@ -10,11 +11,13 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 |#|Area|CX Standard|
 |-|--------------------|------------------------------------------|
-|1|**Data Language Standards:** Language to be used|Data Recipients and Data Holders MUST use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in [Table 1](#consumer) Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘\*’ in [Table 1](#consumer)</ul></li><ul><li>Data Recipients and Data Holders <b>SHOULD</b> expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <b>MAY</b> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in Table 1</li><li>Examples of permission details that MAY be used and provided as in-line help are denoted with an ‘†’ in [Table 1](#consumer)</li></ul></ul>|
-|2|**Data Language Standards:** Detailed scope requests|If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients **MUST** use the alternative language denoted with an ‘‡’ in [Table 1](#consumer) (rows greyed out for clarity).</ul></li>|
+|1|**Data Language Standards:** Language to be used|Data Recipients and Data Holders MUST use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in [Table 1](#individual-consumer) Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘\*’ in [Table 1](#individual-consumer)</ul></li><ul><li>Data Recipients and Data Holders <b>SHOULD</b> expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <b>MAY</b> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in Table 1</li><li>Examples of permission details that MAY be used and provided as in-line help are denoted with an ‘†’ in [Table 1](#individual-consumer)</li></ul></ul>|
+|2|**Data Language Standards:** Detailed scope requests|If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients **MUST** use the alternative language denoted with an ‘‡’ in [Table 1](#individual-consumer) (rows greyed out for clarity).</ul></li>|
+
+
+**Table 1.**
 
 ####Individual Consumer
-Table 1.
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
@@ -24,26 +27,16 @@ Table 1.
 
 
 ####Business consumer
-Table 1.
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Organisation profile** *|Agent name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;|common:customer.basic:read|
-
-
-|Data cluster language|Permission language|Authorisation Scopes|
-|----------------------|------------------------------|-------------------|
 |**Organisation contact details** *|Organisation address;<br>Organisation address;<br>Phone number;|common:customer.detail:read|
-
-
-|Data cluster language|Permission language|Authorisation Scopes|
-|----------------------|------------------------------|-------------------|
 |**Organisation profile and contact details** *‡|Agent >name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);† <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address<br>address;<br>Phone number;<br>|common:customer.detail:read|
 
 
 
 ####Common
-Table 1.
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
@@ -76,7 +69,7 @@ Table 1.
 |12|**Authentication:**<br> Password link  | Data holders **MUST NOT** include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.|
 |13|**Authentication:**<br>OTP expiry|Data holders **MUST** communicate the expiry period of the OTP to the consumer in the authentication flow.|
 |14|**Authorisation** & Account selection |Data holders **MUST** allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder **MAY** omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders **MAY** add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step **SHOULD** only be considered if it is an existing customer experience, and **SHOULD** be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step.</li><ul><li>Data holders **SHOULD** communicate why these accounts cannot be selected, and this SHOULD be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders MAY provide instructions on how to make these accounts available to share, and this SHOULD be communicated as in-line help or as a modal to reduce on-screen content.</li><li>*Note: Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul>|
-
+|15|**Authorisation:**<br>Account confirm|Data holders **MUST** show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder **MAY** omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).|
 
 ###Withdrawal Standards
 
