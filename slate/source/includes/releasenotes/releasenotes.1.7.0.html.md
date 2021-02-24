@@ -24,7 +24,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |
+| Updated CRN description | The CRN description was updated for BankingBillerPayee and BankingTransaction to appropriately reference conditionality of the response based on data sensitivity considerations and availability of the data for the posted transaction or saved payee. |
 
 ## Information Security Profile
 |Change|Description|Link|
