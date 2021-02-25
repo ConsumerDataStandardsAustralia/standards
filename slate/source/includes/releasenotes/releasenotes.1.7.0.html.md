@@ -24,7 +24,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |
+| Fixed paymentsRemaining value in Scheduled Payment non-normative examples | Non-normative examples showed paymentsRemaining = 0 however paymentsRemaining is a PositiveInteger with a value of 1 or greater. | [Scheduled Payments APIs](../../#get-scheduled-payments-for-account) |
 
 ## Information Security Profile
 |Change|Description|Link|
