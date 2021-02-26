@@ -19,6 +19,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 |Change|Description|Link|
 |------|-----------|----|
 | CDR Support Portal Link | Added a link to the CDR Support Portal in the side menu. |
+| Natural sort-ordered enumerations | Enumerated lists have been sorted by natural sort order | |
 
 ## API End Points
 
