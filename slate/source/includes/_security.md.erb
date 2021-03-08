@@ -298,6 +298,12 @@ Consent requirements will be communicated between the Data Recipient and Data Ho
 
 Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
+### One-time consent to collect
+In accordance with rule 4.11(1)(b)(i), ADRs may request consumer consent to collect once, but continue to use the data on an ongoing basis. To overcome technical issues, an ADR may reasonably request one-time consent to collect for a period of 24 hours provided the ADR does not collect the data in an ongoing basis over that period.
+*	If the sharing_duration value is less than or equal to 24 hours, then one-time collection will be assumed, and a Refresh Token and Access Token would be provided by the Data Holder
+*	If the sharing_duration value is zero or absent, then one-time collection will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.
+*	If a Refresh Token is issued for one-time collection the ADR must call the data holder’s revocation endpoint after successful collection of the CDR data.
+
 ## Scopes and Claims
 
 ### OIDC Scopes
