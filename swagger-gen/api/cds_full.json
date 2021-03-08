@@ -3727,7 +3727,7 @@
           "type": "integer",
           "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely",
           "x-cds-type": "PositiveInteger",
-          "minimum": "1"
+          "example": 1
         },
         "nonBusinessDayTreatment": {
           "type": "string",
@@ -3784,7 +3784,7 @@
           "type": "integer",
           "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
           "x-cds-type": "PositiveInteger",
-          "minimum": 1
+          "example": 1
         },
         "interval": {
           "type": "string",
