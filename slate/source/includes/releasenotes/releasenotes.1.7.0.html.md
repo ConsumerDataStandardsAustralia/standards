@@ -18,7 +18,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |
+| CDR Support Portal Link | Added a link to the CDR Support Portal in the side menu. |
 
 ## API End Points
 
