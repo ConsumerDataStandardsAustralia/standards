@@ -35,4 +35,6 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |
+| Added CX Standards into main Data Standards | CX Standards have been ported from the PDF version into the main Data Standards published on GitHub | [CX Standards](#consumer-experience) |
+| Removal of optional message in CX Standard #18 | An optional message in
+_"CX Standard #18 - Withdrawing Authorisation: Redundant Data"_ has been removed to align with the v2 rules on separate consents. | [Consumer Experience Standard #18](#withdrawal-standards)<br/><br/>[Decision Proposal 168](https://github.com/ConsumerDataStandardsAustralia/standards/issues/168) |
