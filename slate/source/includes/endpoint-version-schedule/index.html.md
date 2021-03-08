@@ -8,9 +8,19 @@ toc_footers:
 
 search: false
 ---
+# Endpoint Version Schedule
+The following tables describe the endpoint versions and the dates they become binding within the data standards.
+
+**Binding Date** indicates the dates the particular version of an endpoint becomes binding in the data standards.
+
+**Retirement Date** indicates, where relevant, denotes the date a specific version can be retired and is no longer supported. All consumers of the affected endpoint must upgrade to a more recent version currently available.
+
+**Date Introduced** indicates the release of the standards, including release date, when the endpoint version was first introduced. This is not the Binding Date.
+
+**Date Deprecated** indicates the release of the standards, including release date, when the endpoint version was first marked for deprecation. This is not the Retirement Date.
 
 ## Data Holders
-The following versioning schedule is reflective of the endpoints hosted by Data Holders. Binding dates indicate the dates the particular version of an endpoint becomes binding in the data standards. Data Holders should take into account their phasing obligations in accordance with the CDR Rules as well as any exemptions granted, when determining which API versions are considered applicable.
+The following versioning schedule is reflective of the endpoints hosted by Data Holders. Data Holders should take into account their phasing obligations in accordance with the CDR Rules as well as any exemptions granted, when determining which API versions are considered applicable.
 
 | Section         | Sub-section                                  | Endpoint                                                   | Method | Version | Binding Date        | Retirement Date | Date Introduced    | Date Deprecated    |
 |-----------------|----------------------------------------------|------------------------------------------------------------|--------|---------|---------------------|-----------------|--------------------|--------------------|
@@ -45,7 +55,7 @@ The following versioning schedule is reflective of the endpoints hosted by Data 
 | InfoSec Profile | Endpoints                                    | CDR Arrangement Revocation Endpoint                        | POST   | 1.5.0   | 2020-11-01          | N/A             | 2020-04-17, v1.2.0 | N/A                |
 
 ## Data Recipients
-The following versioning schedule is reflective of the endpoints hosted by Data Holders. Binding dates indicate the dates the particular version of an endpoint becomes binding in the data standards.
+The following versioning schedule is reflective of the endpoints hosted by Data Recipients.
 Data Recipients should take into account their commencement date within the CDR, relevant obligations in accordance with the CDR Rules, as well as any exemptions granted when factoring in which API versions are considered applicable.
 
 | Section         | Sub-section                                  | Endpoint                                                   | Method | Version | Binding Date        | Retirement Date | Date Introduced    | Date Deprecated    |
