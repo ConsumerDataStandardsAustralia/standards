@@ -36,3 +36,6 @@ The table below highlights these areas of the standards.
 A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.
 
 **Please note** this is currently experimental.
+| [Get Customer V1](#get-customer) | Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold. | July 1st 2021 |
+| [Banking Term Deposit Account Types](#product-amp-account-components) | Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021 | July 1st 2021 |
+| [Token Introspection Endpoint claims](#end-points) | Mandatory claims were updated in accordance with RFC7662 | November 1st 2020 |
