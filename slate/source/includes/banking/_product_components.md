@@ -16,20 +16,20 @@ Description of the usage of the featureType field as it applies to products.
 |DIGITAL_BANKING|Access is available to online banking features for the product|NA|
 |DIGITAL_WALLET|A Digital wallet can be attached to the product|The name or brand of the wallet|
 |DONATE_INTEREST|Indicates that interest generated from the product can be automatically donated to a charity or community group|NA|
-|FREE_TXNS_ALLOWANCE|A set amount of transaction fee value that is discounted per month|The amount of transaction fee discounted (in AUD)|
 |FREE_TXNS|A set number of free transactions available per month|The number of free transactions|
+|FREE_TXNS_ALLOWANCE|A set amount of transaction fee value that is discounted per month|The amount of transaction fee discounted (in AUD)|
 |INSURANCE|Insurance is provided as an additional feature of the product|Text description of the type of insurance (e.g. Travel Insurance)|
-|INTEREST_FREE_TRANSFERS|Interest free period for balance transfers|Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |INTEREST_FREE|Interest free period for purchases|Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
+|INTEREST_FREE_TRANSFERS|Interest free period for balance transfers|Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |LOYALTY_PROGRAM|A points based loyalty program is available|Name of the loyalty program|
 |NOTIFICATIONS|Advanced notifications are available for the product|Description of the notification capability|
 |NPP_ENABLED|An account of this product type can be used to receive funds as a result of a BSB/Number based NPP payment|NA|
 |NPP_PAYID|An account of this product type can be used as the target of an NPP PayID|NA|
 |OFFSET|An offset account can be connected to the product|NA|
+|OTHER|Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type|NA|
 |OVERDRAFT|An overdraft can be applied for|NA|
 |REDRAW|Redraw of repaid principal above minimum required is available|NA|
 |UNLIMITED_TXNS|Unlimited free transactions available|NA|
-|OTHER|Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type|NA|
 
 
 
@@ -40,10 +40,10 @@ Description of the usage of the constraintType field as it applies to products.
 
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
-|MIN_BALANCE|A minimum balance is required for the product|The minimum balance in AmountString format|
-|MIN_LIMIT|A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit)|The minimum limit in AmountString format|
 |MAX_BALANCE|A maximum balance is required for the product|The maximum balance in AmountString format|
 |MAX_LIMIT|A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit)|The maximum limit in AmountString format|
+|MIN_BALANCE|A minimum balance is required for the product|The minimum balance in AmountString format|
+|MIN_LIMIT|A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit)|The minimum limit in AmountString format|
 |OPENING_BALANCE|An opening balance is required for the product|The minimum opening balance in AmountString format|
 
 
@@ -62,11 +62,11 @@ Description of the usage of the eligibilityType field as it applies to products.
 |MIN_INCOME|The customer must have an income greater than a specified threshold to obtain the product|Minimum income in AmountString format|
 |MIN_TURNOVER|Only a business with greater than a minimum turnover may apply|Minimum turnover in AmountString format|
 |NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
+|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 |PENSION_RECIPIENT|A recipient of a government pension may apply for the product|NA|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
 |STAFF|Only a staff member of the provider may apply|NA|
 |STUDENT|Only students may apply for the product|NA|
-|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 
 
 
@@ -120,11 +120,11 @@ Description of the usage of the discountEligibilityType field as it applies to p
 |MIN_INCOME|The customer must have an income greater than a specified threshold to obtain the discount|Minimum income in AmountString format|
 |MIN_TURNOVER|Only a business with greater than a minimum turnover is eligible|Minimum turnover in AmountString format|
 |NATURAL_PERSON|The customer must be a natural person rather than another legal entity|NA|
+|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 |PENSION_RECIPIENT|A recipient of a government pension may receive the discount|Optional. Should contain a description of which pensions qualify|
 |RESIDENCY_STATUS|An eligibility constraint based on residency status applies|A description of the status required|
 |STAFF|Only a staff member of the provider may receive the discount|NA|
 |STUDENT|Only students may receive the discount|Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?|
-|OTHER|Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)|NA|
 
 
 
@@ -173,14 +173,3 @@ Description of the usage of the maturityInstructions field as it applies to acco
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |HOLD_ON_MATURITY|Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer|NA|
-
-<a id="bankingbankingbillerPayeeedoc"></a>
-<h3 id="tocSbankingbillerpayeeypedoc">Banking CRN Types</h3>
-
-Description of the usage of the crn types.
-
-|Value|Description|Use of additionalValue Field|
-|-----|-----------|----------------------------|
-|FIXED_CRN|A unique reference number such as a credit card or a fixed reference number identifying a customer's account that does not change with each bill|NA|
-|VARIABLE_CRN|Biller generated reference number provided to the customer that is unique to each bill|NA|
-|INTELLIGENT_CRN|Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both|NA|
