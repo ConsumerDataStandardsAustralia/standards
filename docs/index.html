@@ -222,6 +222,9 @@
                   <li>
                     <a href="#future-dated-obligations" class="toc-h2 toc-link" data-title="Future Dated Obligations">Future Dated Obligations</a>
                   </li>
+                  <li>
+                    <a href="#endpoint-version-schedule" class="toc-h2 toc-link" data-title="Endpoint Version Schedule">Endpoint Version Schedule</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -833,6 +836,13 @@
 <td>March 30th 2021</td>
 </tr>
 </tbody></table>
+<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
+<p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
+
+<p><strong>Please note</strong> this is currently experimental.
+| <a href="#get-customer">Get Customer V1</a> | Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold. | July 1st 2021 |
+| <a href="#product-amp-account-components">Banking Term Deposit Account Types</a> | Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021 | July 1st 2021 |
+| <a href="#end-points">Token Introspection Endpoint claims</a> | Mandatory claims were updated in accordance with RFC7662 | November 1st 2020 |</p>
 <h1 id='standards'>Standards</h1>
 <p>These standards represent <strong>version 1.7.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
@@ -1069,7 +1079,7 @@ always align to current consumer preferences.</p>
 <code>x-v : 5</code><br>
 <code>x-min-v : 3</code><br>
 <code>x-fapi-interaction-id : 6ba7b814-9dad-11d1-80b4-00c04fd430c8</code><br>
-<code>x-fapi-auth_date : 2020-01-16 16:50:15.507399</code><br>
+<code>x-fapi-auth-date : Thu, 16 Jan 2020 16:50:15 GMT</code><br>
 <code>x-fapi-customer-ip-address : 2001:0db8:85a3:0000:0000:8a2e:0370:7334</code><br>
 <code>x-cds-client-headers : TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNzkuMC4zOTQ1Ljg4IFNhZmFyaS81MzcuMzY=</code>  </p>
 
@@ -3597,15 +3607,15 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td>product-category</td>
-<td>TRAVEL_CARDS</td>
-</tr>
-<tr>
-<td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>TRAVEL_CARDS</td>
+</tr>
+<tr>
 <td>open-status</td>
-<td>OPEN</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -3613,7 +3623,7 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td>open-status</td>
-<td>ALL</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -3890,15 +3900,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>product-category</td>
-<td>TRAVEL_CARDS</td>
-</tr>
-<tr>
-<td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>TRAVEL_CARDS</td>
+</tr>
+<tr>
 <td>open-status</td>
-<td>OPEN</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -3906,7 +3916,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>open-status</td>
-<td>ALL</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -4559,14 +4569,14 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"termDeposit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creditCard"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+        </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"creditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4605,7 +4615,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -4631,11 +4641,11 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -4700,7 +4710,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -5678,15 +5688,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>product-category</td>
-<td>TRAVEL_CARDS</td>
-</tr>
-<tr>
-<td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>TRAVEL_CARDS</td>
+</tr>
+<tr>
 <td>open-status</td>
-<td>OPEN</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -5694,7 +5704,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>open-status</td>
-<td>ALL</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -6172,6 +6182,8 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6222,13 +6234,13 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"nextPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onceOff"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eventBased"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
@@ -6239,9 +6251,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6503,15 +6515,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>product-category</td>
-<td>TRAVEL_CARDS</td>
-</tr>
-<tr>
-<td>product-category</td>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
 <tr>
+<td>product-category</td>
+<td>TRAVEL_CARDS</td>
+</tr>
+<tr>
 <td>open-status</td>
-<td>OPEN</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td>open-status</td>
@@ -6519,7 +6531,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>open-status</td>
-<td>ALL</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -6546,6 +6558,8 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6596,13 +6610,13 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"nextPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onceOff"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eventBased"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
@@ -6613,9 +6627,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6852,6 +6866,8 @@ To perform this operation, you must be authenticated and authorised with the fol
               </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6902,13 +6918,13 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"nextPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onceOff"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eventBased"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
@@ -6919,9 +6935,9 @@ To perform this operation, you must be authenticated and authorised with the fol
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7142,6 +7158,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>type</td>
+<td>ALL</td>
+</tr>
+<tr>
+<td>type</td>
 <td>BILLER</td>
 </tr>
 <tr>
@@ -7151,10 +7171,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>type</td>
 <td>INTERNATIONAL</td>
-</tr>
-<tr>
-<td>type</td>
-<td>ALL</td>
 </tr>
 </tbody></table>
 
@@ -7365,7 +7381,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biller"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7618,15 +7634,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>effective</td>
+<td>ALL</td>
+</tr>
+<tr>
+<td>effective</td>
 <td>CURRENT</td>
 </tr>
 <tr>
 <td>effective</td>
 <td>FUTURE</td>
-</tr>
-<tr>
-<td>effective</td>
-<td>ALL</td>
 </tr>
 <tr>
 <td>product-category</td>
@@ -7670,11 +7686,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>product-category</td>
-<td>TRAVEL_CARDS</td>
+<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
 <tr>
 <td>product-category</td>
-<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
+<td>TRAVEL_CARDS</td>
 </tr>
 </tbody></table>
 
@@ -7902,7 +7918,7 @@ This operation does not require authentication
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -7962,7 +7978,7 @@ This operation does not require authentication
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -7988,11 +8004,11 @@ This operation does not require authentication
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -8173,7 +8189,7 @@ This operation does not require authentication
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8373,7 +8389,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8388,7 +8404,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBILE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8399,13 +8415,13 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"emailAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WORK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8462,7 +8478,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9185,7 +9201,7 @@ This operation does not require authentication
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -9245,7 +9261,7 @@ This operation does not require authentication
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -9271,11 +9287,11 @@ This operation does not require authentication
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -9381,7 +9397,7 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -9441,7 +9457,7 @@ This operation does not require authentication
       </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -9467,11 +9483,11 @@ This operation does not require authentication
       </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -9774,6 +9790,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>featureType</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>featureType</td>
 <td>OVERDRAFT</td>
 </tr>
 <tr>
@@ -9784,17 +9804,13 @@ This operation does not require authentication
 <td>featureType</td>
 <td>UNLIMITED_TXNS</td>
 </tr>
-<tr>
-<td>featureType</td>
-<td>OTHER</td>
-</tr>
 </tbody></table>
 
 <h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
 
 <p><a id="schemabankingproductconstraint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -9848,19 +9864,19 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>constraintType</td>
-<td>MIN_BALANCE</td>
-</tr>
-<tr>
-<td>constraintType</td>
-<td>MIN_LIMIT</td>
-</tr>
-<tr>
-<td>constraintType</td>
 <td>MAX_BALANCE</td>
 </tr>
 <tr>
 <td>constraintType</td>
 <td>MAX_LIMIT</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MIN_BALANCE</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MIN_LIMIT</td>
 </tr>
 <tr>
 <td>constraintType</td>
@@ -9954,6 +9970,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>eligibilityType</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
 <td>PENSION_RECIPIENT</td>
 </tr>
 <tr>
@@ -9967,10 +9987,6 @@ This operation does not require authentication
 <tr>
 <td>eligibilityType</td>
 <td>STUDENT</td>
-</tr>
-<tr>
-<td>eligibilityType</td>
-<td>OTHER</td>
 </tr>
 </tbody></table>
 
@@ -10388,6 +10404,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>discountEligibilityType</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
 <td>PENSION_RECIPIENT</td>
 </tr>
 <tr>
@@ -10402,10 +10422,6 @@ This operation does not require authentication
 <td>discountEligibilityType</td>
 <td>STUDENT</td>
 </tr>
-<tr>
-<td>discountEligibilityType</td>
-<td>OTHER</td>
-</tr>
 </tbody></table>
 
 <h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
@@ -10419,7 +10435,7 @@ This operation does not require authentication
   </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -10551,11 +10567,11 @@ This operation does not require authentication
   </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -10692,6 +10708,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>lendingRateType</td>
+<td>FIXED</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
 <td>FLOATING</td>
 </tr>
 <tr>
@@ -10715,10 +10735,6 @@ This operation does not require authentication
 <td>VARIABLE</td>
 </tr>
 <tr>
-<td>lendingRateType</td>
-<td>FIXED</td>
-</tr>
-<tr>
 <td>interestPaymentDue</td>
 <td>IN_ADVANCE</td>
 </tr>
@@ -10736,11 +10752,11 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>loanPurpose</td>
-<td>OWNER_OCCUPIED</td>
+<td>INVESTMENT</td>
 </tr>
 <tr>
 <td>loanPurpose</td>
-<td>INVESTMENT</td>
+<td>OWNER_OCCUPIED</td>
 </tr>
 </tbody></table>
 
@@ -10749,7 +10765,7 @@ This operation does not require authentication
 <p><a id="schemabankingproductratetierv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -10839,19 +10855,19 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>unitOfMeasure</td>
-<td>DOLLAR</td>
-</tr>
-<tr>
-<td>unitOfMeasure</td>
-<td>PERCENT</td>
-</tr>
-<tr>
-<td>unitOfMeasure</td>
 <td>DAY</td>
 </tr>
 <tr>
 <td>unitOfMeasure</td>
+<td>DOLLAR</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
 <td>MONTH</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>PERCENT</td>
 </tr>
 <tr>
 <td>rateApplicationMethod</td>
@@ -11069,11 +11085,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>openStatus</td>
-<td>OPEN</td>
+<td>CLOSED</td>
 </tr>
 <tr>
 <td>openStatus</td>
-<td>CLOSED</td>
+<td>OPEN</td>
 </tr>
 </tbody></table>
 
@@ -11094,14 +11110,14 @@ This operation does not require authentication
     </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"termDeposit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creditCard"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+        </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"creditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11140,7 +11156,7 @@ This operation does not require authentication
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -11166,11 +11182,11 @@ This operation does not require authentication
         </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -11235,7 +11251,7 @@ This operation does not require authentication
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11328,14 +11344,14 @@ This operation does not require authentication
   </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bundleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"termDeposit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"specificAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creditCard"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"termDeposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lodgementDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+      </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"creditCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11374,7 +11390,7 @@ This operation does not require authentication
       </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -11400,11 +11416,11 @@ This operation does not require authentication
       </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ADVANCE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER_OCCUPIED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loanPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVESTMENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PER_TIER"</span><span class="p">,</span><span class="w">
@@ -11469,7 +11485,7 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11715,15 +11731,15 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>specificAccountUType</td>
-<td>termDeposit</td>
-</tr>
-<tr>
-<td>specificAccountUType</td>
 <td>creditCard</td>
 </tr>
 <tr>
 <td>specificAccountUType</td>
 <td>loan</td>
+</tr>
+<tr>
+<td>specificAccountUType</td>
+<td>termDeposit</td>
 </tr>
 </tbody></table>
 
@@ -11735,7 +11751,7 @@ This operation does not require authentication
   </span><span class="s2">"maturityDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maturityAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLLED_OVER"</span><span class="w">
+  </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-21'>Properties</h3>
@@ -11793,7 +11809,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>maturityInstructions</td>
-<td>ROLLED_OVER</td>
+<td>HOLD_ON_MATURITY</td>
 </tr>
 <tr>
 <td>maturityInstructions</td>
@@ -11801,7 +11817,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>maturityInstructions</td>
-<td>HOLD_ON_MATURITY</td>
+<td>ROLLED_OVER</td>
 </tr>
 </tbody></table>
 
@@ -12241,9 +12257,9 @@ This operation does not require authentication
 <tr>
 <td>crn</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>BPAY CRN for the transaction (if available)</td>
+<td>BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>apcaNumber</td>
@@ -12278,11 +12294,11 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>PAYMENT</td>
+<td>OTHER</td>
 </tr>
 <tr>
 <td>type</td>
-<td>TRANSFER_OUTGOING</td>
+<td>PAYMENT</td>
 </tr>
 <tr>
 <td>type</td>
@@ -12290,7 +12306,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>type</td>
-<td>OTHER</td>
+<td>TRANSFER_OUTGOING</td>
 </tr>
 <tr>
 <td>status</td>
@@ -12854,7 +12870,7 @@ This operation does not require authentication
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biller"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13024,7 +13040,7 @@ This operation does not require authentication
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domestic"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payeeUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"biller"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13146,11 +13162,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>payeeUType</td>
-<td>domestic</td>
+<td>biller</td>
 </tr>
 <tr>
 <td>payeeUType</td>
-<td>biller</td>
+<td>domestic</td>
 </tr>
 <tr>
 <td>payeeUType</td>
@@ -13403,7 +13419,7 @@ This operation does not require authentication
 <td>string</td>
 <td>conditional</td>
 <td>none</td>
-<td>BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type</td>
+<td>BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.</td>
 </tr>
 <tr>
 <td>billerName</td>
@@ -13771,6 +13787,8 @@ This operation does not require authentication
               </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13821,13 +13839,13 @@ This operation does not require authentication
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"nextPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onceOff"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eventBased"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
@@ -13838,9 +13856,9 @@ This operation does not require authentication
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13921,6 +13939,8 @@ This operation does not require authentication
         </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13971,13 +13991,13 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"nextPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onceOff"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eventBased"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -13988,9 +14008,9 @@ This operation does not require authentication
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14021,7 +14041,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>The short display name of the payee as provided by the customer</td>
+<td>The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels</td>
 </tr>
 <tr>
 <td>payerReference</td>
@@ -14033,9 +14053,9 @@ This operation does not require authentication
 <tr>
 <td>payeeReference</td>
 <td>string</td>
-<td>mandatory</td>
+<td>conditional</td>
 <td>none</td>
-<td>The reference for the transaction that will be provided by the originating institution. Empty string if no data provided</td>
+<td>The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided</td>
 </tr>
 <tr>
 <td>status</td>
@@ -14095,6 +14115,8 @@ This operation does not require authentication
     </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14192,6 +14214,8 @@ This operation does not require authentication
   </span><span class="s2">"toUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountId"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domestic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payeeAccountUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14270,6 +14294,20 @@ This operation does not require authentication
 <td>Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead</td>
 </tr>
 <tr>
+<td>nickname</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels</td>
+</tr>
+<tr>
+<td>payeeReference</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.</td>
+</tr>
+<tr>
 <td>domestic</td>
 <td><a href="#schemabankingdomesticpayee">BankingDomesticPayee</a></td>
 <td>conditional</td>
@@ -14304,7 +14342,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>toUType</td>
-<td>payeeId</td>
+<td>biller</td>
 </tr>
 <tr>
 <td>toUType</td>
@@ -14312,11 +14350,11 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>toUType</td>
-<td>biller</td>
+<td>international</td>
 </tr>
 <tr>
 <td>toUType</td>
-<td>international</td>
+<td>payeeId</td>
 </tr>
 </tbody></table>
 
@@ -14353,13 +14391,13 @@ This operation does not require authentication
 <p><a id="schemabankingscheduledpaymentrecurrence"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"nextPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onceOff"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recurrenceUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eventBased"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"intervalSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -14370,9 +14408,9 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"eventBased"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14444,7 +14482,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>recurrenceUType</td>
-<td>onceOff</td>
+<td>eventBased</td>
 </tr>
 <tr>
 <td>recurrenceUType</td>
@@ -14456,7 +14494,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>recurrenceUType</td>
-<td>eventBased</td>
+<td>onceOff</td>
 </tr>
 </tbody></table>
 
@@ -14493,7 +14531,7 @@ This operation does not require authentication
 <p><a id="schemabankingscheduledpaymentrecurrenceintervalschedule"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"intervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -14608,9 +14646,9 @@ This operation does not require authentication
 <p><a id="schemabankingscheduledpaymentrecurrencelastweekday"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"finalPaymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paymentsRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MON"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -14671,23 +14709,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>lastWeekDay</td>
-<td>MON</td>
-</tr>
-<tr>
-<td>lastWeekDay</td>
-<td>TUE</td>
-</tr>
-<tr>
-<td>lastWeekDay</td>
-<td>WED</td>
-</tr>
-<tr>
-<td>lastWeekDay</td>
-<td>THU</td>
-</tr>
-<tr>
-<td>lastWeekDay</td>
 <td>FRI</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>MON</td>
 </tr>
 <tr>
 <td>lastWeekDay</td>
@@ -14696,6 +14722,18 @@ This operation does not require authentication
 <tr>
 <td>lastWeekDay</td>
 <td>SUN</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>THU</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>TUE</td>
+</tr>
+<tr>
+<td>lastWeekDay</td>
+<td>WED</td>
 </tr>
 <tr>
 <td>nonBusinessDayTreatment</td>
@@ -14967,7 +15005,7 @@ This operation does not require authentication
 <p><a id="schemaresponsecommoncustomer"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15066,11 +15104,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>customerUType</td>
-<td>person</td>
+<td>organisation</td>
 </tr>
 <tr>
 <td>customerUType</td>
-<td>organisation</td>
+<td>person</td>
 </tr>
 </tbody></table>
 
@@ -15079,7 +15117,7 @@ This operation does not require authentication
 <p><a id="schemaresponsecommoncustomerdetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organisation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15094,7 +15132,7 @@ This operation does not require authentication
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBILE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15105,13 +15143,13 @@ This operation does not require authentication
       </span><span class="s2">"emailAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WORK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15168,7 +15206,7 @@ This operation does not require authentication
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15276,11 +15314,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>customerUType</td>
-<td>person</td>
+<td>organisation</td>
 </tr>
 <tr>
 <td>customerUType</td>
-<td>organisation</td>
+<td>person</td>
 </tr>
 </tbody></table>
 
@@ -15376,11 +15414,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>occupationCodeVersion</td>
-<td>ANZSCO_1220.0_2013_V1.3</td>
-</tr>
-<tr>
-<td>occupationCodeVersion</td>
-<td>ANZSCO_1220.0_2013_V1.2</td>
+<td>ANZSCO_1220.0_2006_V1.0</td>
 </tr>
 <tr>
 <td>occupationCodeVersion</td>
@@ -15388,7 +15422,11 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>occupationCodeVersion</td>
-<td>ANZSCO_1220.0_2006_V1.0</td>
+<td>ANZSCO_1220.0_2013_V1.2</td>
+</tr>
+<tr>
+<td>occupationCodeVersion</td>
+<td>ANZSCO_1220.0_2013_V1.3</td>
 </tr>
 </tbody></table>
 
@@ -15409,7 +15447,7 @@ This operation does not require authentication
   </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBILE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15420,13 +15458,13 @@ This operation does not require authentication
   </span><span class="s2">"emailAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WORK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15674,11 +15712,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>industryCodeVersion</td>
-<td>ANZSIC_1292.0_2006_V2.0</td>
+<td>ANZSIC_1292.0_2006_V1.0</td>
 </tr>
 <tr>
 <td>industryCodeVersion</td>
-<td>ANZSIC_1292.0_2006_V1.0</td>
+<td>ANZSIC_1292.0_2006_V2.0</td>
 </tr>
 <tr>
 <td>organisationType</td>
@@ -15687,6 +15725,10 @@ This operation does not require authentication
 <tr>
 <td>organisationType</td>
 <td>GOVERNMENT_ENTITY</td>
+</tr>
+<tr>
+<td>organisationType</td>
+<td>OTHER</td>
 </tr>
 <tr>
 <td>organisationType</td>
@@ -15699,10 +15741,6 @@ This operation does not require authentication
 <tr>
 <td>organisationType</td>
 <td>TRUST</td>
-</tr>
-<tr>
-<td>organisationType</td>
-<td>OTHER</td>
 </tr>
 </tbody></table>
 
@@ -15727,7 +15765,7 @@ This operation does not require authentication
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"physicalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15820,7 +15858,7 @@ This operation does not require authentication
 <p><a id="schemacommonphonenumber"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBILE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15897,10 +15935,6 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>purpose</td>
-<td>MOBILE</td>
-</tr>
-<tr>
-<td>purpose</td>
 <td>HOME</td>
 </tr>
 <tr>
@@ -15909,7 +15943,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>purpose</td>
-<td>WORK</td>
+<td>MOBILE</td>
 </tr>
 <tr>
 <td>purpose</td>
@@ -15919,6 +15953,10 @@ This operation does not require authentication
 <td>purpose</td>
 <td>UNSPECIFIED</td>
 </tr>
+<tr>
+<td>purpose</td>
+<td>WORK</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocScommonemailaddress">CommonEmailAddress</h2>
@@ -15926,7 +15964,7 @@ This operation does not require authentication
 <p><a id="schemacommonemailaddress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WORK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -15971,10 +16009,6 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>purpose</td>
-<td>WORK</td>
-</tr>
-<tr>
-<td>purpose</td>
 <td>HOME</td>
 </tr>
 <tr>
@@ -15985,13 +16019,17 @@ This operation does not require authentication
 <td>purpose</td>
 <td>UNSPECIFIED</td>
 </tr>
+<tr>
+<td>purpose</td>
+<td>WORK</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
 
 <p><a id="schemacommonphysicaladdresswithpurpose"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16089,6 +16127,10 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>purpose</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>purpose</td>
 <td>PHYSICAL</td>
 </tr>
 <tr>
@@ -16099,17 +16141,13 @@ This operation does not require authentication
 <td>purpose</td>
 <td>WORK</td>
 </tr>
-<tr>
-<td>purpose</td>
-<td>OTHER</td>
-</tr>
 </tbody></table>
 
 <h2 id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
 
 <p><a id="schemacommonphysicaladdress"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16187,11 +16225,11 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>addressUType</td>
-<td>simple</td>
+<td>paf</td>
 </tr>
 <tr>
 <td>addressUType</td>
-<td>paf</td>
+<td>simple</td>
 </tr>
 </tbody></table>
 
@@ -16734,11 +16772,11 @@ This operation does not require authentication
 </tr>
 <tr>
 <td><em>anonymous</em></td>
-<td>TRAVEL_CARDS</td>
+<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
 </tr>
 <tr>
 <td><em>anonymous</em></td>
-<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
+<td>TRAVEL_CARDS</td>
 </tr>
 </tbody></table>
 <h2 id='product-categories'>Product Categories</h2>
@@ -16870,14 +16908,14 @@ This operation does not require authentication
 <td>NA</td>
 </tr>
 <tr>
-<td>FREE_TXNS_ALLOWANCE</td>
-<td>A set amount of transaction fee value that is discounted per month</td>
-<td>The amount of transaction fee discounted (in AUD)</td>
-</tr>
-<tr>
 <td>FREE_TXNS</td>
 <td>A set number of free transactions available per month</td>
 <td>The number of free transactions</td>
+</tr>
+<tr>
+<td>FREE_TXNS_ALLOWANCE</td>
+<td>A set amount of transaction fee value that is discounted per month</td>
+<td>The amount of transaction fee discounted (in AUD)</td>
 </tr>
 <tr>
 <td>INSURANCE</td>
@@ -16885,13 +16923,13 @@ This operation does not require authentication
 <td>Text description of the type of insurance (e.g. Travel Insurance)</td>
 </tr>
 <tr>
-<td>INTEREST_FREE_TRANSFERS</td>
-<td>Interest free period for balance transfers</td>
+<td>INTEREST_FREE</td>
+<td>Interest free period for purchases</td>
 <td>Interest free period. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
-<td>INTEREST_FREE</td>
-<td>Interest free period for purchases</td>
+<td>INTEREST_FREE_TRANSFERS</td>
+<td>Interest free period for balance transfers</td>
 <td>Interest free period. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
 </tr>
 <tr>
@@ -16920,6 +16958,11 @@ This operation does not require authentication
 <td>NA</td>
 </tr>
 <tr>
+<td>OTHER</td>
+<td>Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>OVERDRAFT</td>
 <td>An overdraft can be applied for</td>
 <td>NA</td>
@@ -16932,11 +16975,6 @@ This operation does not require authentication
 <tr>
 <td>UNLIMITED_TXNS</td>
 <td>Unlimited free transactions available</td>
-<td>NA</td>
-</tr>
-<tr>
-<td>OTHER</td>
-<td>Another feature that can not be included in any of the other categories.  The additionalInfo field is mandatory for this type</td>
 <td>NA</td>
 </tr>
 </tbody></table>
@@ -16954,16 +16992,6 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>MIN_BALANCE</td>
-<td>A minimum balance is required for the product</td>
-<td>The minimum balance in AmountString format</td>
-</tr>
-<tr>
-<td>MIN_LIMIT</td>
-<td>A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit)</td>
-<td>The minimum limit in AmountString format</td>
-</tr>
-<tr>
 <td>MAX_BALANCE</td>
 <td>A maximum balance is required for the product</td>
 <td>The maximum balance in AmountString format</td>
@@ -16972,6 +17000,16 @@ This operation does not require authentication
 <td>MAX_LIMIT</td>
 <td>A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit)</td>
 <td>The maximum limit in AmountString format</td>
+</tr>
+<tr>
+<td>MIN_BALANCE</td>
+<td>A minimum balance is required for the product</td>
+<td>The minimum balance in AmountString format</td>
+</tr>
+<tr>
+<td>MIN_LIMIT</td>
+<td>A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit)</td>
+<td>The minimum limit in AmountString format</td>
 </tr>
 <tr>
 <td>OPENING_BALANCE</td>
@@ -17028,6 +17066,11 @@ This operation does not require authentication
 <td>NA</td>
 </tr>
 <tr>
+<td>OTHER</td>
+<td>Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>PENSION_RECIPIENT</td>
 <td>A recipient of a government pension may apply for the product</td>
 <td>NA</td>
@@ -17045,11 +17088,6 @@ This operation does not require authentication
 <tr>
 <td>STUDENT</td>
 <td>Only students may apply for the product</td>
-<td>NA</td>
-</tr>
-<tr>
-<td>OTHER</td>
-<td>Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)</td>
 <td>NA</td>
 </tr>
 </tbody></table>
@@ -17210,6 +17248,11 @@ This operation does not require authentication
 <td>NA</td>
 </tr>
 <tr>
+<td>OTHER</td>
+<td>Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)</td>
+<td>NA</td>
+</tr>
+<tr>
 <td>PENSION_RECIPIENT</td>
 <td>A recipient of a government pension may receive the discount</td>
 <td>Optional. Should contain a description of which pensions qualify</td>
@@ -17228,11 +17271,6 @@ This operation does not require authentication
 <td>STUDENT</td>
 <td>Only students may receive the discount</td>
 <td>Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?</td>
-</tr>
-<tr>
-<td>OTHER</td>
-<td>Another eligibility criteria exists as described in the additionalInfo field (if this option is specified then the additionalInfo field is mandatory)</td>
-<td>NA</td>
 </tr>
 </tbody></table>
 
@@ -17369,35 +17407,6 @@ This operation does not require authentication
 <tr>
 <td>HOLD_ON_MATURITY</td>
 <td>Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer</td>
-<td>NA</td>
-</tr>
-</tbody></table>
-
-<p><a id="bankingbankingbillerPayeeedoc"></a>
-<h3 id="tocSbankingbillerpayeeypedoc">Banking CRN Types</h3></p>
-
-<p>Description of the usage of the crn types.</p>
-
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-<th>Use of additionalValue Field</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>FIXED_CRN</td>
-<td>A unique reference number such as a credit card or a fixed reference number identifying a customer&#39;s account that does not change with each bill</td>
-<td>NA</td>
-</tr>
-<tr>
-<td>VARIABLE_CRN</td>
-<td>Biller generated reference number provided to the customer that is unique to each bill</td>
-<td>NA</td>
-</tr>
-<tr>
-<td>INTELLIGENT_CRN</td>
-<td>Biller generated reference number provided to the customer that is unique to each bill which fixes the amount of the bill being paid, expiry date or both</td>
 <td>NA</td>
 </tr>
 </tbody></table>
@@ -19066,7 +19075,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
-<td>dd/mm/YYYY</td>
+<td>10/03/2021</td>
 <td>1.7.0</td>
 <td>Changes arising from the fifth Banking Maintenance Iteration</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.7.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/159">Decision 159</a> for details</td>
@@ -19394,6 +19403,11 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='./archive/standards-1.6.0/docs/'>23/12/2020</a></td>
+<td>1.6.0</td>
+<td><a href='./archive/standards-1.6.0/docs/'>Update to audience claim for client authentication arising from Decision Proposal 325</a></td>
+</tr>
 <tr>
 <td><a href='./archive/standards-1.5.1/docs/'>25/9/2020</a></td>
 <td>1.5.1</td>

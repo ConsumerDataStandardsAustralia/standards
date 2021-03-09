@@ -254,6 +254,16 @@
 <td>Added a link to the CDR Support Portal in the side menu.</td>
 <td></td>
 </tr>
+<tr>
+<td>Natural sort-ordered enumerations</td>
+<td>Enumerated lists have been sorted by natural sort order</td>
+<td></td>
+</tr>
+<tr>
+<td>CDR Support Portal Link</td>
+<td>Added a link to the CDR Support Portal in the side menu.</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='api-end-points'>API End Points</h2>
 <table><thead>
@@ -263,12 +273,13 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
+
+<p>=======
+| Fixed paymentsRemaining value in Scheduled Payment non-normative examples | Non-normative examples showed paymentsRemaining = 0 however paymentsRemaining is a PositiveInteger with a value of 1 or greater. | <a href="../../#get-scheduled-payments-for-account">Scheduled Payments APIs</a> |
+| Scheduled Payments | Corrected the description for the scheduled payment nickname and made payeeReference conditional, to be provided only if there is a global payee reference for the payment set. Introduced conditional payeeReference and nickname for the individualised payments in the scheduled payment set | <a href="../../#tocSbankingscheduledpayment">BankingScheduledPayment</a> |
+| Updated CRN description | The CRN description was updated for BankingBillerPayee and BankingTransaction to appropriately reference conditionality of the response based on data sensitivity considerations and availability of the data for the posted transaction or saved payee. |
+| Draft Energy Standards Update | Updated the draft energy standards to accommodate the feedback from DP 149 | <a href="../../draft/energy-draft.html">Draft Energy Standards</a> |</p>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
 <tr>
