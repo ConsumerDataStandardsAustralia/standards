@@ -2770,7 +2770,8 @@
       ],
       "x-conditional": [
         "transactionId",
-        "postingDateTime"
+        "postingDateTime",
+        "crn"
       ],
       "properties": {
         "accountId": {
@@ -2861,7 +2862,7 @@
         },
         "crn": {
           "type": "string",
-          "description": "BPAY CRN for the transaction (if available)"
+          "description": "BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
         },
         "apcaNumber": {
           "type": "string",
@@ -3301,7 +3302,7 @@
         },
         "crn": {
           "type": "string",
-          "description": "BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
+          "description": "BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
         },
         "billerName": {
           "type": "string",
@@ -3519,11 +3520,13 @@
       "required": [
         "scheduledPaymentId",
         "payerReference",
-        "payeeReference",
         "status",
         "from",
         "paymentSet",
         "recurrence"
+      ],
+      "x-conditional": [
+        "payeeReference"
       ],
       "properties": {
         "scheduledPaymentId": {
@@ -3533,7 +3536,7 @@
         },
         "nickname": {
           "type": "string",
-          "description": "The short display name of the payee as provided by the customer"
+          "description": "The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels"
         },
         "payerReference": {
           "type": "string",
@@ -3541,7 +3544,7 @@
         },
         "payeeReference": {
           "type": "string",
-          "description": "The reference for the transaction that will be provided by the originating institution. Empty string if no data provided"
+          "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided"
         },
         "status": {
           "type": "string",
@@ -3606,7 +3609,9 @@
         "payeeId",
         "domestic",
         "biller",
-        "international"
+        "international",
+        "nickname",
+        "payeeReference"
       ],
       "properties": {
         "toUType": {
@@ -3629,6 +3634,14 @@
           "type": "string",
           "description": "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
           "x-cds-type": "ASCIIString"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels"
+        },
+        "payeeReference": {
+          "type": "string",
+          "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
         },
         "domestic": {
           "$ref": "#/definitions/BankingDomesticPayee"
