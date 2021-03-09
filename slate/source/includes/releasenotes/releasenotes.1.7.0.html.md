@@ -18,12 +18,13 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-| CDR Support Portal Link | Added a link to the CDR Support Portal in the side menu. |
+| CDR Support Portal Link | Added a link to the CDR Support Portal in the side menu. | |
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
+| Scheduled Payments | Corrected the description for the scheduled payment nickname and made payeeReference conditional, to be provided only if there is a global payee reference for the payment set. Introduced conditional payeeReference and nickname for the individualised payments in the scheduled payment set | [BankingScheduledPayment](../../#tocSbankingscheduledpayment) |
 | Updated CRN description | The CRN description was updated for BankingBillerPayee and BankingTransaction to appropriately reference conditionality of the response based on data sensitivity considerations and availability of the data for the posted transaction or saved payee. |
 
 ## Information Security Profile
