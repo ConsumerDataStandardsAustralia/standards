@@ -4,7 +4,7 @@
 
 
 >
-<img src="../images/cx_standards0.png" width=375px/> <br>
+<img src="./images/cx_standards0.png" width=375px/> <br>
 <font size="1">Example of data language standards presented in a consumer-facing interaction</font>
 
 In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide descriptions of the types of data to be used by CDR participants in making and responding to requests. Adherence to this language will help ensure there is a consistent interpretation and description of the consumer data that will be shared across different CDR implementations.
