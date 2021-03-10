@@ -2488,7 +2488,9 @@ client_id=s6BhdRkqt3
 <li>The <code>sharing_duration</code> parameter is a number</li>
 <li>The value of the <code>sharing_duration</code> parameter will contain the requested duration for sharing, in seconds.</li>
 <li>If the <code>sharing_duration</code> value exceeds one year then a duration of one year will be assumed.</li>
+<li>  If the <code>sharing_duration</code> value is less than or equal to 24 hours, then one-time collection will be assumed, and a Refresh Token should be provided by the Data Holder</li>
 <li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
+<li>  If a Refresh Token is issued for one-time collection the Data Recipient must call the Data Holder’s revocation endpoint after successful collection of the CDR data.</li>
 <li>If the <code>sharing_duration</code> value is negative then the authorisation should fail.</li>
 </ul>
 
