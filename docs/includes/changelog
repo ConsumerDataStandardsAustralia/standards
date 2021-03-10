@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>10/03/2021</td>
+<td>1.7.0</td>
+<td>Changes arising from the fifth Banking Maintenance Iteration</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.7.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/159">Decision 159</a> for details</td>
+</tr>
+<tr>
 <td>23/12/2020</td>
 <td>1.6.0</td>
 <td>DP325 to address urgent community request regarding audience claim for client authentication for data recipients calling data holders</td>

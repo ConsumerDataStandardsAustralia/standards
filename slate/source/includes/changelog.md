@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|10/03/2021|1.7.0|Changes arising from the fifth Banking Maintenance Iteration|See [release notes](includes/releasenotes/releasenotes.1.7.0.html) and [Decision 159](https://github.com/ConsumerDataStandardsAustralia/standards/issues/159) for details|
 |23/12/2020|1.6.0|DP325 to address urgent community request regarding audience claim for client authentication for data recipients calling data holders|See [release notes](includes/releasenotes/releasenotes.1.6.0.html) for details|
 |25/9/2020|1.5.1|Revert 1.5.0 CRN update|See [release notes](includes/releasenotes/releasenotes.1.5.1.html) for details|
 |16/9/2020|1.5.0|Second Banking Maintenance Iteration 4 Release|See [release notes](includes/releasenotes/releasenotes.1.5.0.html) for details|

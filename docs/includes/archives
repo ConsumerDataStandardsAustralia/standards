@@ -9,6 +9,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='./archive/standards-1.6.0/docs/'>23/12/2020</a></td>
+<td>1.6.0</td>
+<td><a href='./archive/standards-1.6.0/docs/'>Update to audience claim for client authentication arising from Decision Proposal 325</a></td>
+</tr>
+<tr>
 <td><a href='./archive/standards-1.5.1/docs/'>25/9/2020</a></td>
 <td>1.5.1</td>
 <td><a href='./archive/standards-1.5.1/docs/'>Revert 1.5.0 CRN update</a></td>

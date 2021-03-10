@@ -1,0 +1,382 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.1.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-1-0-release-notes" class="toc-h1 toc-link" data-title="V1.1.0 Release Notes">V1.1.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#errata-for-v1-1-0" class="toc-h2 toc-link" data-title="Errata for v1.1.0">Errata for v1.1.0</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-end-points" class="toc-h2 toc-link" data-title="API End Points">API End Points</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='v1-1-0-release-notes'>V1.1.0 Release Notes</h1>
+<p>Release notes for version 1.1.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='errata-for-v1-1-0'>Errata for v1.1.0</h2>
+<p>Since v1.1.0 was published the following errors have been identified and will be corrected in the next version:</p>
+
+<ul>
+<li>The <code>x-cds-subject</code> header was intended to be removed but was accidentally left in the standards documentation.  The statements requiring <code>x-cds-subject</code> should be ignored.</li>
+<li>The statements regarding the use of TLS in the Information Security profile imply that the <code>authorize</code> end point should be protected with TLS using a certificate provided by the CDR CA.  As the <code>authorize</code> end point must be accessed by a public client this end point must use TLS but the data holder is free to use any certificate authority.</li>
+</ul>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Content-Type</code> header optionality</td>
+<td>Clarified that the Content-Type header is only mandatory for PUT and POST calls</td>
+<td><a href="../../#http-headers">HTTP Headers Section</a></td>
+</tr>
+<tr>
+<td><code>x-fapi-interaction-id</code> description clarification</td>
+<td>A clarification of the description recommended by the CDR Engineering team</td>
+<td><a href="../../#http-headers">HTTP Headers Section</a></td>
+</tr>
+<tr>
+<td><code>x-cds-subject</code> header removed</td>
+<td>This header has been removed from the standards based on community consultation</td>
+<td><a href="../../#http-headers">HTTP Headers Section</a></td>
+</tr>
+<tr>
+<td>Modification of <code>x-cds-User-Agent</code> header</td>
+<td>The <code>x-cds-User-Agent</code> header has been renamed to <code>x-cds-client-headers</code> and clarified to exclude specific types of headers</td>
+<td><a href="../../#http-headers">HTTP Headers Section</a></td>
+</tr>
+<tr>
+<td>Bug fix for rate type</td>
+<td>In a previous decision the limitation of the rate type to plus or minus 100% was agreed to be removed.  This has not been fixed</td>
+<td><a href="../../#common-field-types">Common Field Types Section</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-end-points'>API End Points</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Clarified description of <code>productName</code></td>
+<td>Clarified that the <code>productName</code> field in the account structure is set by the data holder not the account holder</td>
+<td><a href="../../#tocSbankingaccount">BankingAccount Section</a></td>
+</tr>
+<tr>
+<td><code>accountName</code> optional for domestic payee</td>
+<td>For some Banks the account name field is not captured for domestic payees so this field has been made optional</td>
+<td><a href="../../#tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount Section</a></td>
+</tr>
+<tr>
+<td>Aggregated transaction clarification</td>
+<td>The handling of the sharing of data related to aggregated transactions has been added to the description of the transaction history end point</td>
+<td><a href="../../#get-transactions-for-account">Get Transactions For Account Section</a></td>
+</tr>
+<tr>
+<td>Term deposit maturity instructions as array</td>
+<td>The termDeposit field in the account detail structure has been converted into an array</td>
+<td><a href="../../#tocSbankingaccountdetail">BankingAccountDetail Section</a></td>
+</tr>
+<tr>
+<td>International payees with domestic accounts clarification</td>
+<td>Description for how to represent international payees that are represented as a domestic account for payment purposes</td>
+<td><a href="../../#get-payee-detail">Get Payee Detail Section</a></td>
+</tr>
+<tr>
+<td>Corrected description for <code>amount</code> field</td>
+<td>The <code>amount</code> field in scheduled payments had an incorrect description text which has been fixed</td>
+<td><a href="../../#tocSbankingscheduledpaymentset">BankingScheduledPaymentSet Section</a></td>
+</tr>
+<tr>
+<td>Updates to scheduled payments</td>
+<td>Series of amendments to the scheduled payments structure for lastWeekDay</td>
+<td><a href="../../#tocSbankingscheduledpaymentrecurrencelastweekday">LastWeekday Section</a></td>
+</tr>
+<tr>
+<td>Clarification of ISO 8601 usage</td>
+<td>Clarification that the recurrence syntax in ISO 8601 will not be used</td>
+<td>Various</td>
+</tr>
+<tr>
+<td>Card art in product end points</td>
+<td>Version 2 of Get Products and Get Product Detail has been added to allow for the inclusion of card art fields</td>
+<td><a href="../../#consumer-data-standards-banking-apis">Banking APIs Section</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Normative reference versions</td>
+<td>Added specific dates or versions to the normative reference table to avoid ambiguity</td>
+<td><a href="../../#normative-references">Normative References</a></td>
+</tr>
+<tr>
+<td>Removed references to Vectors Of Trust</td>
+<td>This change was recommended via the maintenance iteration to remove ambiguity from the standards</td>
+<td><a href="../../#end-points">InfoSec End Points Section</a> &amp; <a href="../../#scopes-and-claims">Scopes and Claims Section</a></td>
+</tr>
+<tr>
+<td>Clarified id_token non-normative sample</td>
+<td>Non-normative id_token has been modified to include the <code>refresh_token_expires_at</code> and <code>sharing_expires_at</code> claims</td>
+<td><a href="../../#scopes-and-claims">Scopes and Claims Section</a></td>
+</tr>
+<tr>
+<td>Added CORS support for public end points</td>
+<td>Added a CORS section allowing for CORS to be enabled for Get Status, Get Outages, Get Products and Get Product Detail end points</td>
+<td><a href="../../#cors">CORS Section</a></td>
+</tr>
+<tr>
+<td>Removal of MTLS for specific end points</td>
+<td>Removal of the MTLS requirements for<br/><ul><li>The revocation end point hosted by Data Recipients</li><li>The JWKS end point hosted by Data Recipients</li><li>The JWKS end point hosted by Data Holders</li><li>The OIDC discovery end point hosted by Data Holders</li></ul></td>
+<td><a href="../../#end-points">InfoSec End Points Section</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<p>No Change</p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

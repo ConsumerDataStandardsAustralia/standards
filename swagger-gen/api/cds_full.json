@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.org.au/",
@@ -959,10 +959,10 @@
             "required": false,
             "type": "string",
             "enum": [
+              "ALL",
               "BILLER",
               "DOMESTIC",
-              "INTERNATIONAL",
-              "ALL"
+              "INTERNATIONAL"
             ],
             "default": "ALL"
           },
@@ -1090,9 +1090,9 @@
             "required": false,
             "type": "string",
             "enum": [
+              "ALL",
               "CURRENT",
-              "FUTURE",
-              "ALL"
+              "FUTURE"
             ],
             "default": "CURRENT"
           },
@@ -1407,9 +1407,9 @@
       "required": false,
       "type": "string",
       "enum": [
-        "OPEN",
+        "ALL",
         "CLOSED",
-        "ALL"
+        "OPEN"
       ],
       "default": "ALL"
     },
@@ -1430,8 +1430,8 @@
         "RESIDENTIAL_MORTGAGES",
         "TERM_DEPOSITS",
         "TRADE_FINANCE",
-        "TRAVEL_CARDS",
-        "TRANS_AND_SAVINGS_ACCOUNTS"
+        "TRANS_AND_SAVINGS_ACCOUNTS",
+        "TRAVEL_CARDS"
       ]
     },
     "ParamAccountIsOwned": {
@@ -1820,10 +1820,10 @@
             "NPP_ENABLED",
             "NPP_PAYID",
             "OFFSET",
+            "OTHER",
             "OVERDRAFT",
             "REDRAW",
-            "UNLIMITED_TXNS",
-            "OTHER"
+            "UNLIMITED_TXNS"
           ]
         },
         "additionalValue": {
@@ -1854,10 +1854,10 @@
           "type": "string",
           "description": "The type of constraint described.  See the next section for an overview of valid values and their meaning",
           "enum": [
-            "MIN_BALANCE",
-            "MIN_LIMIT",
             "MAX_BALANCE",
             "MAX_LIMIT",
+            "MIN_BALANCE",
+            "MIN_LIMIT",
             "OPENING_BALANCE"
           ]
         },
@@ -1897,11 +1897,11 @@
             "MIN_INCOME",
             "MIN_TURNOVER",
             "NATURAL_PERSON",
+            "OTHER",
             "PENSION_RECIPIENT",
             "RESIDENCY_STATUS",
             "STAFF",
-            "STUDENT",
-            "OTHER"
+            "STUDENT"
           ]
         },
         "additionalValue": {
@@ -2105,11 +2105,11 @@
             "MIN_INCOME",
             "MIN_TURNOVER",
             "NATURAL_PERSON",
+            "OTHER",
             "PENSION_RECIPIENT",
             "RESIDENCY_STATUS",
             "STAFF",
-            "STUDENT",
-            "OTHER"
+            "STUDENT"
           ]
         },
         "additionalValue": {
@@ -2205,13 +2205,13 @@
             "BUNDLE_DISCOUNT_VARIABLE",
             "CASH_ADVANCE",
             "DISCOUNT",
+            "FIXED",
             "FLOATING",
             "INTRODUCTORY",
             "MARKET_LINKED",
             "PENALTY",
             "PURCHASE",
-            "VARIABLE",
-            "FIXED"
+            "VARIABLE"
           ]
         },
         "rate": {
@@ -2254,8 +2254,8 @@
           "type": "string",
           "description": "The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes",
           "enum": [
-            "OWNER_OCCUPIED",
-            "INVESTMENT"
+            "INVESTMENT",
+            "OWNER_OCCUPIED"
           ]
         },
         "tiers": {
@@ -2297,10 +2297,10 @@
           "type": "string",
           "description": "The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)",
           "enum": [
-            "DOLLAR",
-            "PERCENT",
             "DAY",
-            "MONTH"
+            "DOLLAR",
+            "MONTH",
+            "PERCENT"
           ]
         },
         "minimumValue": {
@@ -2413,8 +2413,8 @@
           "type": "string",
           "description": "Open or closed status for the account. If not present then OPEN is assumed",
           "enum": [
-            "OPEN",
-            "CLOSED"
+            "CLOSED",
+            "OPEN"
           ],
           "default": "OPEN"
         },
@@ -2485,9 +2485,9 @@
               "type": "string",
               "description": "The type of structure to present account specific fields.",
               "enum": [
-                "termDeposit",
                 "creditCard",
-                "loan"
+                "loan",
+                "termDeposit"
               ]
             },
             "termDeposit": {
@@ -2598,9 +2598,9 @@
           "type": "string",
           "description": "Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments",
           "enum": [
-            "ROLLED_OVER",
+            "HOLD_ON_MATURITY",
             "PAID_OUT_AT_MATURITY",
-            "HOLD_ON_MATURITY"
+            "ROLLED_OVER"
           ]
         }
       }
@@ -2770,7 +2770,8 @@
       ],
       "x-conditional": [
         "transactionId",
-        "postingDateTime"
+        "postingDateTime",
+        "crn"
       ],
       "properties": {
         "accountId": {
@@ -2796,10 +2797,10 @@
             "FEE",
             "INTEREST_CHARGED",
             "INTEREST_PAID",
+            "OTHER",
             "PAYMENT",
-            "TRANSFER_OUTGOING",
             "TRANSFER_INCOMING",
-            "OTHER"
+            "TRANSFER_OUTGOING"
           ]
         },
         "status": {
@@ -2861,7 +2862,7 @@
         },
         "crn": {
           "type": "string",
-          "description": "BPAY CRN for the transaction (if available)"
+          "description": "BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
         },
         "apcaNumber": {
           "type": "string",
@@ -3175,8 +3176,8 @@
               "type": "string",
               "description": "Type of object included that describes the payee in detail",
               "enum": [
-                "domestic",
                 "biller",
+                "domestic",
                 "international"
               ]
             },
@@ -3301,7 +3302,7 @@
         },
         "crn": {
           "type": "string",
-          "description": "BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type"
+          "description": "BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
         },
         "billerName": {
           "type": "string",
@@ -3519,11 +3520,13 @@
       "required": [
         "scheduledPaymentId",
         "payerReference",
-        "payeeReference",
         "status",
         "from",
         "paymentSet",
         "recurrence"
+      ],
+      "x-conditional": [
+        "payeeReference"
       ],
       "properties": {
         "scheduledPaymentId": {
@@ -3533,7 +3536,7 @@
         },
         "nickname": {
           "type": "string",
-          "description": "The short display name of the payee as provided by the customer"
+          "description": "The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels"
         },
         "payerReference": {
           "type": "string",
@@ -3541,7 +3544,7 @@
         },
         "payeeReference": {
           "type": "string",
-          "description": "The reference for the transaction that will be provided by the originating institution. Empty string if no data provided"
+          "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided"
         },
         "status": {
           "type": "string",
@@ -3606,7 +3609,9 @@
         "payeeId",
         "domestic",
         "biller",
-        "international"
+        "international",
+        "nickname",
+        "payeeReference"
       ],
       "properties": {
         "toUType": {
@@ -3614,10 +3619,10 @@
           "description": "The type of object provided that specifies the destination of the funds for the payment.",
           "enum": [
             "accountId",
-            "payeeId",
-            "domestic",
             "biller",
-            "international"
+            "domestic",
+            "international",
+            "payeeId"
           ]
         },
         "accountId": {
@@ -3629,6 +3634,14 @@
           "type": "string",
           "description": "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
           "x-cds-type": "ASCIIString"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels"
+        },
+        "payeeReference": {
+          "type": "string",
+          "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
         },
         "domestic": {
           "$ref": "#/definitions/BankingDomesticPayee"
@@ -3677,10 +3690,10 @@
           "type": "string",
           "description": "The type of recurrence used to define the schedule",
           "enum": [
-            "onceOff",
+            "eventBased",
             "intervalSchedule",
             "lastWeekDay",
-            "eventBased"
+            "onceOff"
           ]
         },
         "onceOff": {
@@ -3726,7 +3739,8 @@
         "paymentsRemaining": {
           "type": "integer",
           "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely",
-          "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger",
+          "example": 1
         },
         "nonBusinessDayTreatment": {
           "type": "string",
@@ -3782,7 +3796,8 @@
         "paymentsRemaining": {
           "type": "integer",
           "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
-          "x-cds-type": "PositiveInteger"
+          "x-cds-type": "PositiveInteger",
+          "example": 1
         },
         "interval": {
           "type": "string",
@@ -3793,14 +3808,13 @@
           "type": "string",
           "description": "The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.",
           "enum": [
-            "MON",
-            "TUE",
-            "WED",
-            "THU",
             "FRI",
+            "MON",
             "SAT",
-            "SUN"
-          ]
+            "SUN",
+            "THU",
+            "TUE",
+            "WED"          ]
         },
         "nonBusinessDayTreatment": {
           "type": "string",
@@ -3964,8 +3978,8 @@
               "type": "string",
               "description": "The type of customer object that is present",
               "enum": [
-                "person",
-                "organisation"
+                "organisation",
+                "person"
               ]
             },
             "person": {
@@ -4005,8 +4019,8 @@
               "type": "string",
               "description": "The type of customer object that is present",
               "enum": [
-                "person",
-                "organisation"
+                "organisation",
+                "person"
               ]
             },
             "person": {
@@ -4072,10 +4086,10 @@
           "type": "string",
           "description": "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
           "enum": [
-            "ANZSCO_1220.0_2013_V1.3",
-            "ANZSCO_1220.0_2013_V1.2",
+            "ANZSCO_1220.0_2006_V1.0",
             "ANZSCO_1220.0_2006_V1.1",
-            "ANZSCO_1220.0_2006_V1.0"
+            "ANZSCO_1220.0_2013_V1.2",
+            "ANZSCO_1220.0_2013_V1.3"
             ],
             "default": "ANZSCO_1220.0_2013_V1.2"
         }
@@ -4182,8 +4196,8 @@
           "type" : "string",
           "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
           "enum" : [
-            "ANZSIC_1292.0_2006_V2.0",
-            "ANZSIC_1292.0_2006_V1.0"
+            "ANZSIC_1292.0_2006_V1.0",
+            "ANZSIC_1292.0_2006_V2.0"
           ],
           "default": "ANZSIC_1292.0_2006_V2.0"
         },
@@ -4193,10 +4207,10 @@
           "enum": [
             "COMPANY",
             "GOVERNMENT_ENTITY",
+            "OTHER",
             "PARTNERSHIP",
             "SOLE_TRADER",
-            "TRUST",
-            "OTHER"
+            "TRUST"
           ]
         },
         "registeredCountry": {
@@ -4253,12 +4267,12 @@
           "type": "string",
           "description": "The purpose of the number as specified by the customer",
           "enum": [
-            "MOBILE",
             "HOME",
             "INTERNATIONAL",
-            "WORK",
+            "MOBILE",
             "OTHER",
-            "UNSPECIFIED"
+            "UNSPECIFIED",
+            "WORK"
           ]
         },
         "countryCode": {
@@ -4300,10 +4314,10 @@
           "type": "string",
           "description": "The purpose for the email, as specified by the customer (Enumeration)",
           "enum": [
-            "WORK",
             "HOME",
             "OTHER",
-            "UNSPECIFIED"
+            "UNSPECIFIED",
+            "WORK"
           ]
         },
         "address": {
@@ -4329,10 +4343,10 @@
               "description": "Enumeration of values indicating the purpose of the physical address",
               "enum": [
                 "MAIL",
+                "OTHER",
                 "PHYSICAL",
                 "REGISTERED",
-                "WORK",
-                "OTHER"
+                "WORK"
               ]
             }
           }
@@ -4353,8 +4367,8 @@
           "type": "string",
           "description": "The type of address object present",
           "enum": [
-            "simple",
-            "paf"
+            "paf",
+            "simple"
           ]
         },
         "simple": {
@@ -4639,8 +4653,8 @@
         "RESIDENTIAL_MORTGAGES",
         "TERM_DEPOSITS",
         "TRADE_FINANCE",
-        "TRAVEL_CARDS",
-        "TRANS_AND_SAVINGS_ACCOUNTS"
+        "TRANS_AND_SAVINGS_ACCOUNTS",
+        "TRAVEL_CARDS"
       ]
     }
   }
