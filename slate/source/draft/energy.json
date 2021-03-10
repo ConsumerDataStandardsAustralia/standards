@@ -4,7 +4,7 @@
     {
         "title": "CDR Energy Standards - DRAFT",
         "description": "Consumer Data Right end points and payloads for the Energy sector",
-        "version": "0.0.1"
+        "version": "0.1.0"
     },
     "components":
     {
@@ -329,7 +329,9 @@
                 "description": "ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.",
                 "in": "path",
                 "required": true,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "accountId":
             {
@@ -337,7 +339,9 @@
                 "description": "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
                 "in": "path",
                 "required": true,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "newest-time":
             {
@@ -345,7 +349,9 @@
                 "in": "query",
                 "description": "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
                 "required": false,
-                "type": "string",
+                "schema": {
+                    "type": "string"
+                },
                 "x-cds-type": "DateTimeString"
             },
             "oldest-time":
@@ -354,7 +360,9 @@
                 "in": "query",
                 "description": "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type",
                 "required": false,
-                "type": "string",
+                "schema": {
+                    "type": "string"
+                },
                 "x-cds-type": "DateTimeString"
             },
             "newest-date":
@@ -363,7 +371,9 @@
                 "in": "query",
                 "description": "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
                 "required": false,
-                "type": "string",
+                "schema": {
+                    "type": "string"
+                },
                 "x-cds-type": "DateString"
             },
             "oldest-date":
@@ -372,7 +382,9 @@
                 "in": "query",
                 "description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type",
                 "required": false,
-                "type": "string",
+                "schema": {
+                    "type": "string"
+                },
                 "x-cds-type": "DateString"
             },
             "page":
@@ -381,8 +393,10 @@
                 "description": "Page of results to request (standard pagination)",
                 "in": "query",
                 "required": false,
-                "type": "number",
-                "default": "1"
+                "schema": {
+                    "type": "number",
+                    "default": "1"
+                }
             },
             "page-size":
             {
@@ -390,59 +404,70 @@
                 "description": "Page size to request.  Default is 25 (standard pagination)",
                 "in": "query",
                 "required": false,
-                "type": "number",
-                "default": "25"
-            }
-        },
-        "headers":
-        {
+                "schema": {
+                    "type": "number",
+                    "default": "25"
+                }
+            },
             "x-v":
             {
                 "name": "x-v",
-                "in": "header",
                 "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+                "in": "header",
                 "required": true,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "x-min-v":
             {
                 "name": "x-min-v",
-                "in": "header",
                 "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+                "in": "header",
                 "required": false,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "x-fapi-interaction-id":
             {
                 "name": "x-fapi-interaction-id",
-                "in": "header",
                 "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
+                "in": "header",
                 "required": false,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "x-fapi-auth-date":
             {
                 "name": "x-fapi-auth-date",
-                "in": "header",
                 "description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+                "in": "header",
                 "required": false,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "x-fapi-customer-ip-address":
             {
                 "name": "x-fapi-customer-ip-address",
-                "in": "header",
                 "description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                "in": "header",
                 "required": false,
-                "type": "string"
+                "schema": {
+                    "type": "string"
+                }
             },
             "x-cds-client-headers":
             {
                 "name": "x-cds-client-headers",
-                "in": "header",
                 "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+                "in": "header",
                 "required": false,
-                "type": "string",
+                "schema": {
+                    "type": "string"
+                },
                 "x-cds-type": "Base64"
             }
         },
@@ -710,6 +735,74 @@
                                                                 "description": "A link to detail on bundles that this plan can be a part of"
                                                             }
                                                         }
+                                                    },
+                                                    "customerType":
+                                                    {
+                                                        "type": "string",
+                                                        "description": "The type of customer that the plan is offered to.  If absent then the plan is available to all customers",
+                                                        "enum": ["RESIDENTIAL",
+                                                            "BUSINESS"
+                                                        ]
+                                                    },
+                                                    "geography":
+                                                    {
+                                                        "type": "object",
+                                                        "description": "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
+                                                        "required": ["supplyAreaId", "displayName"],
+                                                        "properties":
+                                                        {
+                                                            "excludedPostcodes":
+                                                            {
+                                                                "description": "Array of valid Australian post codes that are specifically excluded from the plan",
+                                                                "type": "array",
+                                                                "items":
+                                                                {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "includedPostcodes":
+                                                            {
+                                                                "description": "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes",
+                                                                "type": "array",
+                                                                "items":
+                                                                {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "supplyAreas":
+                                                            {
+                                                                "description": "Array of supply areas for which this plan is available",
+                                                                "type": "array",
+                                                                "items":
+                                                                {
+                                                                    "type": "object",
+                                                                    "properties":
+                                                                    {
+                                                                        "supplyAreaId":
+                                                                        {
+                                                                            "type": "string",
+                                                                            "x-cds-type": "ASCIIString",
+                                                                            "description": "ID of the supply area"
+                                                                        },
+                                                                        "displayName":
+                                                                        {
+                                                                            "type": "string",
+                                                                            "description": "Display name of the supply area"
+                                                                        },
+                                                                        "distributor":
+                                                                        {
+                                                                            "type": "string",
+                                                                            "description": "The name of the distributor for the supply area"
+                                                                        },
+                                                                        "state":
+                                                                        {
+                                                                            "type": "string",
+                                                                            "description": "The Australian state that the plan is applicable to.  Valid values are defined by Australia Post PAF code file State Type Abbreviation. For example: NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+                                                                        },
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -901,7 +994,7 @@
                                         {
                                             "type": "object",
                                             "description": "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
-                                            "required": ["supplyAreaId", "name"],
+                                            "required": ["supplyAreaId", "displayName"],
                                             "properties":
                                             {
                                                 "excludedPostcodes":
@@ -937,7 +1030,7 @@
                                                                 "x-cds-type": "ASCIIString",
                                                                 "description": "ID of the supply area"
                                                             },
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "Display name of the supply area"
@@ -964,10 +1057,10 @@
                                             "items":
                                             {
                                                 "type": "object",
-                                                "required": ["name", "minimumValue"],
+                                                "required": ["displayName", "minimumValue"],
                                                 "properties":
                                                 {
-                                                    "name":
+                                                    "displayName":
                                                     {
                                                         "type": "string",
                                                         "description": "Display name of the charge"
@@ -1110,10 +1203,10 @@
                                                 {
                                                     "type": "object",
                                                     "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-                                                    "required": ["name", "dailyCharge", "period", "rates"],
+                                                    "required": ["displayName", "dailyCharge", "period", "rates"],
                                                     "properties":
                                                     {
-                                                        "name":
+                                                        "displayName":
                                                         {
                                                             "type": "string",
                                                             "description": "A display name for the controlled load tier"
@@ -1183,10 +1276,10 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "description"],
+                                                        "required": ["displayName", "description"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The display name of the incentive"
@@ -1199,14 +1292,14 @@
                                                         }
                                                     }
                                                 },
-                                                "discount":
+                                                "discounts":
                                                 {
                                                     "description": "Optional list of discounts available for the contract",
                                                     "type": "array",
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "type", "methodUType"],
+                                                        "required": ["displayName", "type", "methodUType"],
                                                         "x-conditional": [
                                                             "category",
                                                             "percentOfBill",
@@ -1216,7 +1309,7 @@
                                                         ],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The display name of the discount"
@@ -1329,10 +1422,10 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "type", "tiers"],
+                                                        "required": ["displayName", "type", "tiers"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The display name of the charge"
@@ -1555,7 +1648,7 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "dailySupplyCharges", "rateBlockUType"],
+                                                        "required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
                                                         "x-conditional": [
                                                             "startDate",
                                                             "endDate",
@@ -1564,7 +1657,7 @@
                                                         ],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The name of the tariff period"
@@ -1597,13 +1690,13 @@
                                                             {
                                                                 "type": "object",
                                                                 "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
-                                                                "required": ["name", "rates"],
+                                                                "required": ["displayName", "rates"],
                                                                 "x-conditional": [
                                                                     "generalUnitPrice"
                                                                 ],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "Display name of the rate"
@@ -1658,10 +1751,10 @@
                                                                 "items":
                                                                 {
                                                                     "type": "object",
-                                                                    "required": ["name", "type", "rates", "timeOfUse"],
+                                                                    "required": ["displayName", "type", "rates", "timeOfUse"],
                                                                     "properties":
                                                                     {
-                                                                        "name":
+                                                                        "displayName":
                                                                         {
                                                                             "type": "string",
                                                                             "description": "Display name of the rate"
@@ -1677,6 +1770,7 @@
                                                                             "description": "The type of usage that the rate applies to",
                                                                             "enum": ["PEAK",
                                                                                 "OFF_PEAK",
+                                                                                "OFF_PEAK_DC",
                                                                                 "SHOULDER",
                                                                                 "SHOULDER1",
                                                                                 "SHOULDER2"
@@ -1754,13 +1848,13 @@
                                                                             "items":
                                                                             {
                                                                                 "type": "object",
-                                                                                "required": ["name", "startTime", "endTime"],
+                                                                                "required": ["displayName", "startTime", "endTime"],
                                                                                 "x-conditional": [
                                                                                     "amount"
                                                                                 ],
                                                                                 "properties":
                                                                                 {
-                                                                                    "name":
+                                                                                    "displayName":
                                                                                     {
                                                                                         "type": "string",
                                                                                         "description": "Display name of the charge"
@@ -1784,7 +1878,7 @@
                                                                                     "endTime":
                                                                                     {
                                                                                         "type": "string",
-                                                                                        "description ": "End of the period in HHMM format using 24 hour clock format "
+                                                                                        "description": "End of the period in HHMM format using 24 hour clock format"
                                                                                     }
                                                                                 }
                                                                             }
@@ -1906,10 +2000,10 @@
                                                 {
                                                     "type": "object",
                                                     "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-                                                    "required": ["name", "dailyCharge", "period", "rates"],
+                                                    "required": ["displayName", "dailyCharge", "period", "rates"],
                                                     "properties":
                                                     {
-                                                        "name":
+                                                        "displayName":
                                                         {
                                                             "type": "string",
                                                             "description": "A display name for the controlled load tier"
@@ -1978,10 +2072,10 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "description"],
+                                                        "required": ["displayName", "description"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The display name of the incentive"
@@ -1994,17 +2088,17 @@
                                                         }
                                                     }
                                                 },
-                                                "discount":
+                                                "discounts":
                                                 {
                                                     "description": "Optional list of discounts available for the contract",
                                                     "type": "array",
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "type", "methodUType"],
+                                                        "required": ["displayName", "type", "methodUType"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The display name of the discount"
@@ -2116,10 +2210,10 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "type", "tiers"],
+                                                        "required": ["displayName", "type", "tiers"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The display name of the charge"
@@ -2331,10 +2425,10 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "dailySupplyCharges", "rateBlockUType"],
+                                                        "required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "The name of the tariff period"
@@ -2367,10 +2461,10 @@
                                                             {
                                                                 "type": "object",
                                                                 "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
-                                                                "required": ["name", "rates"],
+                                                                "required": ["displayName", "rates"],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "Display name of the rate"
@@ -2425,10 +2519,10 @@
                                                                 "items":
                                                                 {
                                                                     "type": "object",
-                                                                    "required": ["name", "type", "rates", "timeOfUse"],
+                                                                    "required": ["displayName", "type", "rates", "timeOfUse"],
                                                                     "properties":
                                                                     {
-                                                                        "name":
+                                                                        "displayName":
                                                                         {
                                                                             "type": "string",
                                                                             "description": "Display name of the rate"
@@ -2444,6 +2538,7 @@
                                                                             "description": "The type of usage that the rate applies to",
                                                                             "enum": ["PEAK",
                                                                                 "OFF_PEAK",
+                                                                                "OFF_PEAK_DC",
                                                                                 "SHOULDER",
                                                                                 "SHOULDER1",
                                                                                 "SHOULDER2"
@@ -2521,10 +2616,10 @@
                                                                             "items":
                                                                             {
                                                                                 "type": "object",
-                                                                                "required": ["name", "startTime", "endTime"],
+                                                                                "required": ["displayName", "startTime", "endTime"],
                                                                                 "properties":
                                                                                 {
-                                                                                    "name":
+                                                                                    "displayName":
                                                                                     {
                                                                                         "type": "string",
                                                                                         "description": "Display name of the charge"
@@ -2548,7 +2643,7 @@
                                                                                     "endTime":
                                                                                     {
                                                                                         "type": "string",
-                                                                                        "description ": "End of the period in HHMM format using 24 hour clock format "
+                                                                                        "description": "End of the period in HHMM format using 24 hour clock format "
                                                                                     }
                                                                                 }
                                                                             }
@@ -2684,19 +2779,9 @@
                                                         "x-cds-type": "DateTimeString",
                                                         "description": "The date and time that the information for this service point was modified"
                                                     },
-                                                    "creationDateTime":
-                                                    {
-                                                        "type": "string",
-                                                        "x-cds-type": "DateTimeString",
-                                                        "description": "The date and time that this service point was created as a data entity"
-                                                    },
                                                     "consumerProfile":
                                                     {
                                                         "type": "object",
-                                                        "required": [
-                                                            "classification",
-                                                            "threshold"
-                                                        ],
                                                         "properties":
                                                         {
                                                             "classification":
@@ -2704,7 +2789,12 @@
                                                                 "type": "string",
                                                                 "description": "A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments",
                                                                 "enum": ["BUSINESS",
-                                                                    "RESIDENTIAL"
+                                                                    "RESIDENTIAL",
+                                                                    "BULK",
+                                                                    "XBOUNDARY",
+                                                                    "NCONUML",
+                                                                    "NREG",
+                                                                    "DWHOLSAL"
                                                                 ]
                                                             },
                                                             "threshold":
@@ -2760,9 +2850,7 @@
                                         "servicePointClassification",
                                         "servicePointStatus",
                                         "jurisdictionCode",
-                                        "validPeriod",
                                         "lastUpdateDateTime",
-                                        "creationDateTime",
                                         "distributionLossFactor",
                                         "relatedParticipants",
                                         "meters"
@@ -2822,28 +2910,6 @@
                                             "type": "boolean",
                                             "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads).If absent defaults to false"
                                         },
-                                        "validPeriod":
-                                        {
-                                            "type": "object",
-                                            "required": [
-                                                "fromDate"
-                                            ],
-                                            "properties":
-                                            {
-                                                "fromDate":
-                                                {
-                                                    "type": "string",
-                                                    "x-cds-type": "DateString",
-                                                    "description": "The start date that the information for this service point is valid"
-                                                },
-                                                "toDate":
-                                                {
-                                                    "type": "string",
-                                                    "x-cds-type": "DateString",
-                                                    "description": "The known end date for this service point.If absent then no end date has been set"
-                                                }
-                                            }
-                                        },
                                         "lastUpdateDateTime":
                                         {
                                             "type": "string",
@@ -2859,10 +2925,6 @@
                                         "consumerProfile":
                                         {
                                             "type": "object",
-                                            "required": [
-                                                "classification",
-                                                "threshold"
-                                            ],
                                             "properties":
                                             {
                                                 "classification":
@@ -3156,7 +3218,8 @@
                                                                 "PROF",
                                                                 "SAMPLE",
                                                                 "UMCP",
-                                                                "VICAMI"
+                                                                "VICAMI",
+                                                                "NCOLNUML"
                                                             ]
                                                         },
                                                         "manufacturer":
@@ -3182,18 +3245,8 @@
                                                     "description": "Usage data streams available from the meter",
                                                     "required": [
                                                         "streamId",
-                                                        "streamStatus",
-                                                        "averagedDailyLoad",
-                                                        "dataStreamType",
-                                                        "profileName",
-                                                        "networkTariffType",
-                                                        "unitOfMeasure",
-                                                        "timeOfDay",
-                                                        "multiplier",
-                                                        "controlledLoad",
-                                                        "consumptionType",
-                                                        "peakDemand1",
-                                                        "peakDemand2"
+                                                        "registerConsumptionType",
+                                                        "networkTariffType"
                                                     ],
                                                     "properties":
                                                     {
@@ -3202,23 +3255,15 @@
                                                             "type": "string",
                                                             "description": "Unique identifier of the stream within this service point.  Is not globally unique"
                                                         },
-                                                        "streamStatus":
-                                                        {
-                                                            "type": "string",
-                                                            "description": "Code used to indicate the status of the stream",
-                                                            "enum": ["ACTIVE",
-                                                                "INACTIVE"
-                                                            ]
-                                                        },
                                                         "averagedDailyLoad":
                                                         {
                                                             "type": "number",
                                                             "description": "The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh)"
                                                         },
-                                                        "dataStreamType":
+                                                        "registerConsumptionType":
                                                         {
                                                             "type": "string",
-                                                            "description": "Indicates the type of data that the stream is recording",
+                                                            "description": "Indicates the consumption type of register",
                                                             "enum": ["INTERVAL",
                                                                 "BASIC",
                                                                 "PROFILE_DATA",
@@ -3226,20 +3271,6 @@
                                                                 "NON_MARKET_ACTIVE",
                                                                 "NON_MARKET_REACTIVE_IMPORT",
                                                                 "NON_MARKET_REACTIVE"
-                                                            ]
-                                                        },
-                                                        "profileName":
-                                                        {
-                                                            "type": "string",
-                                                            "description": "The profile name is a code that identifies the name of the algorithmically derived shape that is used to allocate a datastream's consumption to TIs",
-                                                            "enum": ["NSLP",
-                                                                "CLOADNSWCE",
-                                                                "CLOADNSWEA",
-                                                                "CLOADNSWIE",
-                                                                "QLDEGXCL31",
-                                                                "QLDEGXCL33",
-                                                                "SACLOAD",
-                                                                "NOPROF"
                                                             ]
                                                         },
                                                         "networkTariffType":
@@ -3274,16 +3305,6 @@
                                                             "enum": ["ACTUAL",
                                                                 "CUMULATIVE"
                                                             ]
-                                                        },
-                                                        "peakDemand1":
-                                                        {
-                                                            "type": "number",
-                                                            "description": "This field contains the peak demand value for summer for network Tariff purposes. Units in kW or kVA"
-                                                        },
-                                                        "peakDemand2":
-                                                        {
-                                                            "type": "number",
-                                                            "description": "This field contains an additional demand value (not Summer period). Units in kW or kVA"
                                                         }
                                                     }
                                                 }
@@ -3684,7 +3705,7 @@
                                     "type": "object",
                                     "required": [
                                         "accountId",
-                                        "openDate",
+                                        "creationDate",
                                         "servicePointIds",
                                         "planOverview",
                                         "planDetail",
@@ -3704,7 +3725,7 @@
                                             "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
                                             "type": "string"
                                         },
-                                        "openDate": {
+                                        "creationDate": {
                                             "description": "The date that the account was created or opened",
                                             "type": "string",
                                             "x-cds-type": "DateString"
@@ -3766,10 +3787,10 @@
                                                     "items":
                                                     {
                                                         "type": "object",
-                                                        "required": ["name", "minimumValue"],
+                                                        "required": ["displayName", "minimumValue"],
                                                         "properties":
                                                         {
-                                                            "name":
+                                                            "displayName":
                                                             {
                                                                 "type": "string",
                                                                 "description": "Display name of the charge"
@@ -3853,10 +3874,10 @@
                                                         {
                                                             "type": "object",
                                                             "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-                                                            "required": ["name", "dailyCharge", "period", "rates"],
+                                                            "required": ["displayName", "dailyCharge", "period", "rates"],
                                                             "properties":
                                                             {
-                                                                "name":
+                                                                "displayName":
                                                                 {
                                                                     "type": "string",
                                                                     "description": "A display name for the controlled load tier"
@@ -3904,7 +3925,7 @@
                                                                 }
                                                             }
                                                         },
-                                                        "discount":
+                                                        "discounts":
                                                         {
                                                             "description": "Optional list of discounts available for the contract",
                                                             "type": "array",
@@ -3912,7 +3933,7 @@
                                                             {
                                                                 "type": "object",
                                                                 "required": [
-                                                                    "name",
+                                                                    "displayName",
                                                                     "type",
                                                                     "methodUType"
                                                                 ],
@@ -3925,7 +3946,7 @@
                                                                 ],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "The display name of the discount"
@@ -4041,10 +4062,10 @@
                                                             "items":
                                                             {
                                                                 "type": "object",
-                                                                "required": ["name", "type", "tiers"],
+                                                                "required": ["displayName", "type", "tiers"],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "The display name of the charge"
@@ -4218,7 +4239,7 @@
                                                             "items":
                                                             {
                                                                 "type": "object",
-                                                                "required": ["name", "dailySupplyCharges", "rateBlockUType"],
+                                                                "required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
                                                                 "x-conditional": [
                                                                     "startDate",
                                                                     "endDate",
@@ -4227,7 +4248,7 @@
                                                                 ],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "The name of the tariff period"
@@ -4260,13 +4281,13 @@
                                                                     {
                                                                         "type": "object",
                                                                         "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
-                                                                        "required": ["name", "rates"],
+                                                                        "required": ["displayName", "rates"],
                                                                         "x-conditional": [
                                                                             "generalUnitPrice"
                                                                         ],
                                                                         "properties":
                                                                         {
-                                                                            "name":
+                                                                            "displayName":
                                                                             {
                                                                                 "type": "string",
                                                                                 "description": "Display name of the rate"
@@ -4321,10 +4342,10 @@
                                                                         "items":
                                                                         {
                                                                             "type": "object",
-                                                                            "required": ["name", "type", "rates", "timeOfUse"],
+                                                                            "required": ["displayName", "type", "rates", "timeOfUse"],
                                                                             "properties":
                                                                             {
-                                                                                "name":
+                                                                                "displayName":
                                                                                 {
                                                                                     "type": "string",
                                                                                     "description": "Display name of the rate"
@@ -4340,6 +4361,7 @@
                                                                                     "description": "The type of usage that the rate applies to",
                                                                                     "enum": ["PEAK",
                                                                                         "OFF_PEAK",
+                                                                                        "OFF_PEAK_DC",
                                                                                         "SHOULDER",
                                                                                         "SHOULDER1",
                                                                                         "SHOULDER2"
@@ -4417,13 +4439,13 @@
                                                                                     "items":
                                                                                     {
                                                                                         "type": "object",
-                                                                                        "required": ["name", "startTime", "endTime"],
+                                                                                        "required": ["displayName", "startTime", "endTime"],
                                                                                         "x-conditional": [
                                                                                             "amount"
                                                                                         ],
                                                                                         "properties":
                                                                                         {
-                                                                                            "name":
+                                                                                            "displayName":
                                                                                             {
                                                                                                 "type": "string",
                                                                                                 "description": "Display name of the charge"
@@ -4447,7 +4469,7 @@
                                                                                             "endTime":
                                                                                             {
                                                                                                 "type": "string",
-                                                                                                "description ": "End of the period in HHMM format using 24 hour clock format "
+                                                                                                "description": "End of the period in HHMM format using 24 hour clock format "
                                                                                             }
                                                                                         }
                                                                                     }
@@ -4512,10 +4534,10 @@
                                                         {
                                                             "type": "object",
                                                             "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-                                                            "required": ["name", "dailyCharge", "period", "rates"],
+                                                            "required": ["displayName", "dailyCharge", "period", "rates"],
                                                             "properties":
                                                             {
-                                                                "name":
+                                                                "displayName":
                                                                 {
                                                                     "type": "string",
                                                                     "description": "A display name for the controlled load tier"
@@ -4563,7 +4585,7 @@
                                                                 }
                                                             }
                                                         },
-                                                        "discount":
+                                                        "discounts":
                                                         {
                                                             "description": "Optional list of discounts available for the contract",
                                                             "type": "array",
@@ -4571,7 +4593,7 @@
                                                             {
                                                                 "type": "object",
                                                                 "required": [
-                                                                    "name",
+                                                                    "displayName",
                                                                     "type",
                                                                     "methodUType"
                                                                 ],
@@ -4584,7 +4606,7 @@
                                                                 ],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "The display name of the discount"
@@ -4700,10 +4722,10 @@
                                                             "items":
                                                             {
                                                                 "type": "object",
-                                                                "required": ["name", "type", "tiers"],
+                                                                "required": ["displayName", "type", "tiers"],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "The display name of the charge"
@@ -4877,7 +4899,7 @@
                                                             "items":
                                                             {
                                                                 "type": "object",
-                                                                "required": ["name", "dailySupplyCharges", "rateBlockUType"],
+                                                                "required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
                                                                 "x-conditional": [
                                                                     "startDate",
                                                                     "endDate",
@@ -4886,7 +4908,7 @@
                                                                 ],
                                                                 "properties":
                                                                 {
-                                                                    "name":
+                                                                    "displayName":
                                                                     {
                                                                         "type": "string",
                                                                         "description": "The name of the tariff period"
@@ -4919,13 +4941,13 @@
                                                                     {
                                                                         "type": "object",
                                                                         "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
-                                                                        "required": ["name", "rates"],
+                                                                        "required": ["displayName", "rates"],
                                                                         "x-conditional": [
                                                                             "generalUnitPrice"
                                                                         ],
                                                                         "properties":
                                                                         {
-                                                                            "name":
+                                                                            "displayName":
                                                                             {
                                                                                 "type": "string",
                                                                                 "description": "Display name of the rate"
@@ -4980,10 +5002,10 @@
                                                                         "items":
                                                                         {
                                                                             "type": "object",
-                                                                            "required": ["name", "type", "rates", "timeOfUse"],
+                                                                            "required": ["displayName", "type", "rates", "timeOfUse"],
                                                                             "properties":
                                                                             {
-                                                                                "name":
+                                                                                "displayName":
                                                                                 {
                                                                                     "type": "string",
                                                                                     "description": "Display name of the rate"
@@ -4999,6 +5021,7 @@
                                                                                     "description": "The type of usage that the rate applies to",
                                                                                     "enum": ["PEAK",
                                                                                         "OFF_PEAK",
+                                                                                        "OFF_PEAK_DC",
                                                                                         "SHOULDER",
                                                                                         "SHOULDER1",
                                                                                         "SHOULDER2"
@@ -5076,13 +5099,13 @@
                                                                                     "items":
                                                                                     {
                                                                                         "type": "object",
-                                                                                        "required": ["name", "startTime", "endTime"],
+                                                                                        "required": ["displayName", "startTime", "endTime"],
                                                                                         "x-conditional": [
                                                                                             "amount"
                                                                                         ],
                                                                                         "properties":
                                                                                         {
-                                                                                            "name":
+                                                                                            "displayName":
                                                                                             {
                                                                                                 "type": "string",
                                                                                                 "description": "Display name of the charge"
@@ -5106,7 +5129,7 @@
                                                                                             "endTime":
                                                                                             {
                                                                                                 "type": "string",
-                                                                                                "description ": "End of the period in HHMM format using 24 hour clock format "
+                                                                                                "description": "End of the period in HHMM format using 24 hour clock format "
                                                                                             }
                                                                                         }
                                                                                     }
@@ -5232,7 +5255,8 @@
                                                         "MASTERCARD",
                                                         "AMEX",
                                                         "DINERS",
-                                                        "OTHER"
+                                                        "OTHER",
+                                                        "UNKNOWN"
                                                     ]
                                                 },
                                         		"paymentFrequency": {
@@ -5378,22 +5402,22 @@
                                                         "x-cds-type": "DateString"
                                                     },
                                             		"dailyDiscount": {
-                                                        "description": "Daily discount value due to the concession.  At least one perDayDiscount, perMonthDiscount, annualDiscount and percentageDiscount must be provided",
+                                                        "description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
                                                         "type": "string",
                                                         "x-cds-type": "AmountString"
                                                     },
                                             		"monthlyDiscount": {
-                                                        "description": "Monthly discount value due to the concession.  At least one perDayDiscount, perMonthDiscount, annualDiscount and percentageDiscount must be provided",
+                                                        "description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
                                                         "type": "string",
                                                         "x-cds-type": "AmountString"
                                                     },
                                             		"yearlyDiscount": {
-                                                        "description": "Annual discount value due to the concession.  At least one perDayDiscount, perMonthDiscount, annualDiscount and percentageDiscount must be provided",
+                                                        "description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
                                                         "type": "string",
                                                         "x-cds-type": "AmountString"
                                                     },
                                             		"percentageDiscount": {
-                                                        "description": "Percentage of each invoice to be discounted due to the concession.  At least one perDayDiscount, perMonthDiscount, annualDiscount and percentageDiscount must be provided",
+                                                        "description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
                                                         "type": "string",
                                                         "x-cds-type": "RateString"
                                                     }
@@ -5808,7 +5832,6 @@
                                                         "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
                                                         "type": "object",
                                                         "required": [
-                                                            "servicePointId",
                                                             "timeOfUseType",
                                                             "startDate",
                                                             "endDate",
@@ -5817,7 +5840,7 @@
                                                         ],
                                                         "properties": {
                                                     		"servicePointId": {
-                                                                "description": "The ID of the service point to which this transaction applies",
+                                                                "description": "The ID of the service point to which this transaction applies if any",
                                                                 "type": "string"
                                                             },
                                                     		"invoiceNumber": {
@@ -5830,6 +5853,7 @@
                                                                 "enum": [
                                                                     "PEAK",
                                                                     "OFF_PEAK",
+                                                                    "OFF_PEAK_DC",
                                                                     "SHOULDER",
                                                                     "SHOULDER1",
                                                                     "SHOULDER2"
@@ -5886,13 +5910,12 @@
                                                         "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
                                                         "type": "object",
                                                         "required": [
-                                                            "servicePointId",
                                                             "amount",
                                                             "description"
                                                         ],
                                                         "properties": {
                                                     		"servicePointId": {
-                                                                "description": "The ID of the service point to which this transaction applies",
+                                                                "description": "The ID of the service point to which this transaction applies if any",
                                                                 "type": "string"
                                                             },
                                                     		"invoiceNumber": {
@@ -5976,34 +5999,42 @@
                     "in": "query",
                     "description": "Used to filter results on the type field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'",
                     "required": false,
-                    "type": "string",
-                    "default": "ALL",
-                    "enum": ["STANDING", "MARKET", "REGULATED", "ALL"]
+                    "schema": {
+                        "type": "string",
+                        "default": "ALL",
+                        "enum": ["STANDING", "MARKET", "REGULATED", "ALL"]
+                    }
                 },
                 {
                     "name": "fuelType",
                     "in": "query",
                     "description": "Used to filter results on the fuelType field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'",
                     "required": false,
-                    "type": "string",
-                    "default": "ALL",
-                    "enum": ["ELECTRICITY", "GAS", "DUAL", "ALL"]
+                    "schema": {
+                        "type": "string",
+                        "default": "ALL",
+                        "enum": ["ELECTRICITY", "GAS", "DUAL", "ALL"]
+                    }
                 },
                 {
                     "name": "effective",
                     "in": "query",
                     "description": "Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
                     "required": false,
-                    "type": "string",
-                    "default": "CURRENT",
-                    "enum": ["CURRENT", "FUTURE", "ALL"]
+                    "schema": {
+                        "type": "string",
+                        "default": "CURRENT",
+                        "enum": ["CURRENT", "FUTURE", "ALL"]
+                    }
                 },
                 {
                     "name": "updated-since",
                     "in": "query",
                     "description": "Only include plans that have been updated after the specified date and time.  If absent defaults to include all plans",
                     "required": false,
-                    "type": "string",
+                    "schema": {
+                        "type": "string"
+                    },
                     "x-cds-type": "DateTimeString"
                 },
                 {
@@ -6011,7 +6042,9 @@
                     "in": "query",
                     "description": "Used to filter results on the brand field.  If absent defaults to include all plans",
                     "required": false,
-                    "type": "string"
+                    "schema": {
+                        "type": "string"
+                    }
                 },
                 {
                     "$ref": "#/components/parameters/page"
@@ -6020,13 +6053,13 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 }],
                 "responses":
                 {
@@ -6053,16 +6086,18 @@
                     "description": "ID of the specific plan requested",
                     "in": "path",
                     "required": true,
-                    "type": "string"
+                    "schema": {
+                        "type": "string"
+                    }
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 }],
                 "responses":
                 {
@@ -6091,22 +6126,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6132,22 +6167,22 @@
                     "$ref": "#/components/parameters/servicePointId"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6179,22 +6214,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6223,22 +6258,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6264,22 +6299,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "requestBody":
                 {
@@ -6309,22 +6344,22 @@
                     "$ref": "#/components/parameters/servicePointId"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6353,22 +6388,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6394,22 +6429,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "requestBody":
                 {
@@ -6442,22 +6477,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6483,22 +6518,22 @@
                     "$ref": "#/components/parameters/accountId"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6524,22 +6559,22 @@
                     "$ref": "#/components/parameters/accountId"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6565,22 +6600,22 @@
                     "$ref": "#/components/parameters/accountId"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6606,22 +6641,22 @@
                     "$ref": "#/components/parameters/accountId"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6650,22 +6685,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6691,22 +6726,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "requestBody":
                 {
@@ -6748,22 +6783,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6798,22 +6833,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6845,22 +6880,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "requestBody":
                 {
@@ -6902,22 +6937,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6952,22 +6987,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "responses":
                 {
@@ -6999,22 +7034,22 @@
                     "$ref": "#/components/parameters/page-size"
                 },
                 {
-                    "$ref": "#/components/headers/x-v"
+                    "$ref": "#/components/parameters/x-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-min-v"
+                    "$ref": "#/components/parameters/x-min-v"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-interaction-id"
+                    "$ref": "#/components/parameters/x-fapi-interaction-id"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-auth-date"
+                    "$ref": "#/components/parameters/x-fapi-auth-date"
                 },
                 {
-                    "$ref": "#/components/headers/x-fapi-customer-ip-address"
+                    "$ref": "#/components/parameters/x-fapi-customer-ip-address"
                 },
                 {
-                    "$ref": "#/components/headers/x-cds-client-headers"
+                    "$ref": "#/components/parameters/x-cds-client-headers"
                 }],
                 "requestBody":
                 {

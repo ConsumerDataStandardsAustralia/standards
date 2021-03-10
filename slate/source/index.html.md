@@ -20,6 +20,7 @@ includes:
   - standards
   - security
   - cx
+  - cx_standards.md
   - cds_full
   - banking/product_categories
   - banking/product_components

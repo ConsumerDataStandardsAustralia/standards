@@ -84,11 +84,11 @@ Obtain a list of accounts
 |product-category|RESIDENTIAL_MORTGAGES|
 |product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|TRAVEL_CARDS|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|open-status|OPEN|
-|open-status|CLOSED|
+|product-category|TRAVEL_CARDS|
 |open-status|ALL|
+|open-status|CLOSED|
+|open-status|OPEN|
 
 > Example responses
 
@@ -225,11 +225,11 @@ Obtain balances for multiple, filtered accounts
 |product-category|RESIDENTIAL_MORTGAGES|
 |product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|TRAVEL_CARDS|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|open-status|OPEN|
-|open-status|CLOSED|
+|product-category|TRAVEL_CARDS|
 |open-status|ALL|
+|open-status|CLOSED|
+|open-status|OPEN|
 
 > Example responses
 
@@ -618,14 +618,14 @@ Obtain detailed information on a single account
     "bsb": "string",
     "accountNumber": "string",
     "bundleName": "string",
-    "specificAccountUType": "termDeposit",
+    "specificAccountUType": "creditCard",
     "termDeposit": [
       {
         "lodgementDate": "string",
         "maturityDate": "string",
         "maturityAmount": "string",
         "maturityCurrency": "string",
-        "maturityInstructions": "ROLLED_OVER"
+        "maturityInstructions": "HOLD_ON_MATURITY"
       }
     ],
     "creditCard": {
@@ -664,7 +664,7 @@ Obtain detailed information on a single account
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -690,11 +690,11 @@ Obtain detailed information on a single account
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
-        "loanPurpose": "OWNER_OCCUPIED",
+        "loanPurpose": "INVESTMENT",
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -759,7 +759,7 @@ Obtain detailed information on a single account
     ],
     "addresses": [
       {
-        "addressUType": "simple",
+        "addressUType": "paf",
         "simple": {
           "mailingName": "string",
           "addressLine1": "string",
@@ -1294,11 +1294,11 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |product-category|RESIDENTIAL_MORTGAGES|
 |product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|TRAVEL_CARDS|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|open-status|OPEN|
-|open-status|CLOSED|
+|product-category|TRAVEL_CARDS|
 |open-status|ALL|
+|open-status|CLOSED|
+|open-status|OPEN|
 
 > Example responses
 
@@ -1580,6 +1580,8 @@ Obtain scheduled, outgoing payments for a specific account
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
+              "nickname": "string",
+              "payeeReference": "string",
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -1630,13 +1632,13 @@ Obtain scheduled, outgoing payments for a specific account
         ],
         "recurrence": {
           "nextPaymentDate": "string",
-          "recurrenceUType": "onceOff",
+          "recurrenceUType": "eventBased",
           "onceOff": {
             "paymentDate": "string"
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
@@ -1647,9 +1649,9 @@ Obtain scheduled, outgoing payments for a specific account
           },
           "lastWeekDay": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "interval": "string",
-            "lastWeekDay": "MON",
+            "lastWeekDay": "FRI",
             "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
@@ -1773,11 +1775,11 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |product-category|RESIDENTIAL_MORTGAGES|
 |product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|TRAVEL_CARDS|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|open-status|OPEN|
-|open-status|CLOSED|
+|product-category|TRAVEL_CARDS|
 |open-status|ALL|
+|open-status|CLOSED|
+|open-status|OPEN|
 
 > Example responses
 
@@ -1802,6 +1804,8 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
+              "nickname": "string",
+              "payeeReference": "string",
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -1852,13 +1856,13 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
         ],
         "recurrence": {
           "nextPaymentDate": "string",
-          "recurrenceUType": "onceOff",
+          "recurrenceUType": "eventBased",
           "onceOff": {
             "paymentDate": "string"
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
@@ -1869,9 +1873,9 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
           },
           "lastWeekDay": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "interval": "string",
-            "lastWeekDay": "MON",
+            "lastWeekDay": "FRI",
             "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
@@ -2017,6 +2021,8 @@ Obtain scheduled payments for a specified list of accounts
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
+              "nickname": "string",
+              "payeeReference": "string",
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -2067,13 +2073,13 @@ Obtain scheduled payments for a specified list of accounts
         ],
         "recurrence": {
           "nextPaymentDate": "string",
-          "recurrenceUType": "onceOff",
+          "recurrenceUType": "eventBased",
           "onceOff": {
             "paymentDate": "string"
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
@@ -2084,9 +2090,9 @@ Obtain scheduled payments for a specified list of accounts
           },
           "lastWeekDay": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "interval": "string",
-            "lastWeekDay": "MON",
+            "lastWeekDay": "FRI",
             "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
@@ -2200,10 +2206,10 @@ Obtain a list of pre-registered payees
 
 |Parameter|Value|
 |---|---|
+|type|ALL|
 |type|BILLER|
 |type|DOMESTIC|
 |type|INTERNATIONAL|
-|type|ALL|
 
 > Example responses
 
@@ -2332,7 +2338,7 @@ Note that the payee sub-structure should be selected to represent the payment de
     "description": "string",
     "type": "BILLER",
     "creationDate": "string",
-    "payeeUType": "domestic",
+    "payeeUType": "biller",
     "domestic": {
       "payeeAccountUType": "account",
       "account": {
@@ -2500,9 +2506,9 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 
 |Parameter|Value|
 |---|---|
+|effective|ALL|
 |effective|CURRENT|
 |effective|FUTURE|
-|effective|ALL|
 |product-category|BUSINESS_LOANS|
 |product-category|CRED_AND_CHRG_CARDS|
 |product-category|LEASES|
@@ -2513,8 +2519,8 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 |product-category|RESIDENTIAL_MORTGAGES|
 |product-category|TERM_DEPOSITS|
 |product-category|TRADE_FINANCE|
-|product-category|TRAVEL_CARDS|
 |product-category|TRANS_AND_SAVINGS_ACCOUNTS|
+|product-category|TRAVEL_CARDS|
 
 > Example responses
 
@@ -2690,7 +2696,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
     ],
     "constraints": [
       {
-        "constraintType": "MIN_BALANCE",
+        "constraintType": "MAX_BALANCE",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -2750,7 +2756,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -2776,11 +2782,11 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
-        "loanPurpose": "OWNER_OCCUPIED",
+        "loanPurpose": "INVESTMENT",
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -2893,7 +2899,7 @@ Obtain basic information on the customer that has authorised the current session
 ```json
 {
   "data": {
-    "customerUType": "person",
+    "customerUType": "organisation",
     "person": {
       "lastUpdateTime": "string",
       "firstName": "string",
@@ -3019,7 +3025,7 @@ Obtain detailed information on the authorised customer within the current sessio
 ```json
 {
   "data": {
-    "customerUType": "person",
+    "customerUType": "organisation",
     "person": {
       "lastUpdateTime": "string",
       "firstName": "string",
@@ -3034,7 +3040,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "phoneNumbers": [
         {
           "isPreferred": true,
-          "purpose": "MOBILE",
+          "purpose": "HOME",
           "countryCode": "string",
           "areaCode": "string",
           "number": "string",
@@ -3045,13 +3051,13 @@ Obtain detailed information on the authorised customer within the current sessio
       "emailAddresses": [
         {
           "isPreferred": true,
-          "purpose": "WORK",
+          "purpose": "HOME",
           "address": "string"
         }
       ],
       "physicalAddresses": [
         {
-          "addressUType": "simple",
+          "addressUType": "paf",
           "simple": {
             "mailingName": "string",
             "addressLine1": "string",
@@ -3108,7 +3114,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "establishmentDate": "string",
       "physicalAddresses": [
         {
-          "addressUType": "simple",
+          "addressUType": "paf",
           "simple": {
             "mailingName": "string",
             "addressLine1": "string",
@@ -3547,7 +3553,7 @@ This operation does not require authentication
     ],
     "constraints": [
       {
-        "constraintType": "MIN_BALANCE",
+        "constraintType": "MAX_BALANCE",
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string"
@@ -3607,7 +3613,7 @@ This operation does not require authentication
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -3633,11 +3639,11 @@ This operation does not require authentication
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
-        "loanPurpose": "OWNER_OCCUPIED",
+        "loanPurpose": "INVESTMENT",
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -3722,7 +3728,7 @@ This operation does not require authentication
   ],
   "constraints": [
     {
-      "constraintType": "MIN_BALANCE",
+      "constraintType": "MAX_BALANCE",
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
@@ -3782,7 +3788,7 @@ This operation does not require authentication
       "tiers": [
         {
           "name": "string",
-          "unitOfMeasure": "DOLLAR",
+          "unitOfMeasure": "DAY",
           "minimumValue": 0,
           "maximumValue": 0,
           "rateApplicationMethod": "PER_TIER",
@@ -3808,11 +3814,11 @@ This operation does not require authentication
       "applicationFrequency": "string",
       "interestPaymentDue": "IN_ADVANCE",
       "repaymentType": "INTEREST_ONLY",
-      "loanPurpose": "OWNER_OCCUPIED",
+      "loanPurpose": "INVESTMENT",
       "tiers": [
         {
           "name": "string",
-          "unitOfMeasure": "DOLLAR",
+          "unitOfMeasure": "DAY",
           "minimumValue": 0,
           "maximumValue": 0,
           "rateApplicationMethod": "PER_TIER",
@@ -3927,10 +3933,10 @@ This operation does not require authentication
 |featureType|NPP_ENABLED|
 |featureType|NPP_PAYID|
 |featureType|OFFSET|
+|featureType|OTHER|
 |featureType|OVERDRAFT|
 |featureType|REDRAW|
 |featureType|UNLIMITED_TXNS|
-|featureType|OTHER|
 
 <h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
 
@@ -3938,7 +3944,7 @@ This operation does not require authentication
 
 ```json
 {
-  "constraintType": "MIN_BALANCE",
+  "constraintType": "MAX_BALANCE",
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
@@ -3959,10 +3965,10 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|constraintType|MIN_BALANCE|
-|constraintType|MIN_LIMIT|
 |constraintType|MAX_BALANCE|
 |constraintType|MAX_LIMIT|
+|constraintType|MIN_BALANCE|
+|constraintType|MIN_LIMIT|
 |constraintType|OPENING_BALANCE|
 
 <h2 id="tocSbankingproducteligibility">BankingProductEligibility</h2>
@@ -3999,11 +4005,11 @@ This operation does not require authentication
 |eligibilityType|MIN_INCOME|
 |eligibilityType|MIN_TURNOVER|
 |eligibilityType|NATURAL_PERSON|
+|eligibilityType|OTHER|
 |eligibilityType|PENSION_RECIPIENT|
 |eligibilityType|RESIDENCY_STATUS|
 |eligibilityType|STAFF|
 |eligibilityType|STUDENT|
-|eligibilityType|OTHER|
 
 <h2 id="tocSbankingproductfee">BankingProductFee</h2>
 
@@ -4169,11 +4175,11 @@ This operation does not require authentication
 |discountEligibilityType|MIN_INCOME|
 |discountEligibilityType|MIN_TURNOVER|
 |discountEligibilityType|NATURAL_PERSON|
+|discountEligibilityType|OTHER|
 |discountEligibilityType|PENSION_RECIPIENT|
 |discountEligibilityType|RESIDENCY_STATUS|
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
-|discountEligibilityType|OTHER|
 
 <h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
 
@@ -4188,7 +4194,7 @@ This operation does not require authentication
   "tiers": [
     {
       "name": "string",
-      "unitOfMeasure": "DOLLAR",
+      "unitOfMeasure": "DAY",
       "minimumValue": 0,
       "maximumValue": 0,
       "rateApplicationMethod": "PER_TIER",
@@ -4245,11 +4251,11 @@ This operation does not require authentication
   "applicationFrequency": "string",
   "interestPaymentDue": "IN_ADVANCE",
   "repaymentType": "INTEREST_ONLY",
-  "loanPurpose": "OWNER_OCCUPIED",
+  "loanPurpose": "INVESTMENT",
   "tiers": [
     {
       "name": "string",
-      "unitOfMeasure": "DOLLAR",
+      "unitOfMeasure": "DAY",
       "minimumValue": 0,
       "maximumValue": 0,
       "rateApplicationMethod": "PER_TIER",
@@ -4293,19 +4299,19 @@ This operation does not require authentication
 |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
 |lendingRateType|CASH_ADVANCE|
 |lendingRateType|DISCOUNT|
+|lendingRateType|FIXED|
 |lendingRateType|FLOATING|
 |lendingRateType|INTRODUCTORY|
 |lendingRateType|MARKET_LINKED|
 |lendingRateType|PENALTY|
 |lendingRateType|PURCHASE|
 |lendingRateType|VARIABLE|
-|lendingRateType|FIXED|
 |interestPaymentDue|IN_ADVANCE|
 |interestPaymentDue|IN_ARREARS|
 |repaymentType|INTEREST_ONLY|
 |repaymentType|PRINCIPAL_AND_INTEREST|
-|loanPurpose|OWNER_OCCUPIED|
 |loanPurpose|INVESTMENT|
+|loanPurpose|OWNER_OCCUPIED|
 
 <h2 id="tocSbankingproductratetierv3">BankingProductRateTierV3</h2>
 
@@ -4314,7 +4320,7 @@ This operation does not require authentication
 ```json
 {
   "name": "string",
-  "unitOfMeasure": "DOLLAR",
+  "unitOfMeasure": "DAY",
   "minimumValue": 0,
   "maximumValue": 0,
   "rateApplicationMethod": "PER_TIER",
@@ -4347,10 +4353,10 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|unitOfMeasure|DOLLAR|
-|unitOfMeasure|PERCENT|
 |unitOfMeasure|DAY|
+|unitOfMeasure|DOLLAR|
 |unitOfMeasure|MONTH|
+|unitOfMeasure|PERCENT|
 |rateApplicationMethod|PER_TIER|
 |rateApplicationMethod|WHOLE_BALANCE|
 
@@ -4457,8 +4463,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|openStatus|OPEN|
 |openStatus|CLOSED|
+|openStatus|OPEN|
 
 <h2 id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
 
@@ -4479,14 +4485,14 @@ This operation does not require authentication
     "bsb": "string",
     "accountNumber": "string",
     "bundleName": "string",
-    "specificAccountUType": "termDeposit",
+    "specificAccountUType": "creditCard",
     "termDeposit": [
       {
         "lodgementDate": "string",
         "maturityDate": "string",
         "maturityAmount": "string",
         "maturityCurrency": "string",
-        "maturityInstructions": "ROLLED_OVER"
+        "maturityInstructions": "HOLD_ON_MATURITY"
       }
     ],
     "creditCard": {
@@ -4525,7 +4531,7 @@ This operation does not require authentication
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -4551,11 +4557,11 @@ This operation does not require authentication
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
-        "loanPurpose": "OWNER_OCCUPIED",
+        "loanPurpose": "INVESTMENT",
         "tiers": [
           {
             "name": "string",
-            "unitOfMeasure": "DOLLAR",
+            "unitOfMeasure": "DAY",
             "minimumValue": 0,
             "maximumValue": 0,
             "rateApplicationMethod": "PER_TIER",
@@ -4620,7 +4626,7 @@ This operation does not require authentication
     ],
     "addresses": [
       {
-        "addressUType": "simple",
+        "addressUType": "paf",
         "simple": {
           "mailingName": "string",
           "addressLine1": "string",
@@ -4692,14 +4698,14 @@ This operation does not require authentication
   "bsb": "string",
   "accountNumber": "string",
   "bundleName": "string",
-  "specificAccountUType": "termDeposit",
+  "specificAccountUType": "creditCard",
   "termDeposit": [
     {
       "lodgementDate": "string",
       "maturityDate": "string",
       "maturityAmount": "string",
       "maturityCurrency": "string",
-      "maturityInstructions": "ROLLED_OVER"
+      "maturityInstructions": "HOLD_ON_MATURITY"
     }
   ],
   "creditCard": {
@@ -4738,7 +4744,7 @@ This operation does not require authentication
       "tiers": [
         {
           "name": "string",
-          "unitOfMeasure": "DOLLAR",
+          "unitOfMeasure": "DAY",
           "minimumValue": 0,
           "maximumValue": 0,
           "rateApplicationMethod": "PER_TIER",
@@ -4764,11 +4770,11 @@ This operation does not require authentication
       "applicationFrequency": "string",
       "interestPaymentDue": "IN_ADVANCE",
       "repaymentType": "INTEREST_ONLY",
-      "loanPurpose": "OWNER_OCCUPIED",
+      "loanPurpose": "INVESTMENT",
       "tiers": [
         {
           "name": "string",
-          "unitOfMeasure": "DOLLAR",
+          "unitOfMeasure": "DAY",
           "minimumValue": 0,
           "maximumValue": 0,
           "rateApplicationMethod": "PER_TIER",
@@ -4833,7 +4839,7 @@ This operation does not require authentication
   ],
   "addresses": [
     {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -4924,9 +4930,9 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|specificAccountUType|termDeposit|
 |specificAccountUType|creditCard|
 |specificAccountUType|loan|
+|specificAccountUType|termDeposit|
 
 <h2 id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
 
@@ -4938,7 +4944,7 @@ This operation does not require authentication
   "maturityDate": "string",
   "maturityAmount": "string",
   "maturityCurrency": "string",
-  "maturityInstructions": "ROLLED_OVER"
+  "maturityInstructions": "HOLD_ON_MATURITY"
 }
 
 ```
@@ -4957,9 +4963,9 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|maturityInstructions|ROLLED_OVER|
-|maturityInstructions|PAID_OUT_AT_MATURITY|
 |maturityInstructions|HOLD_ON_MATURITY|
+|maturityInstructions|PAID_OUT_AT_MATURITY|
+|maturityInstructions|ROLLED_OVER|
 
 <h2 id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
 
@@ -5140,7 +5146,7 @@ This operation does not require authentication
 |merchantCategoryCode|string|optional|none|The merchant category code (or MCC) for an outgoing payment to a merchant|
 |billerCode|string|optional|none|BPAY Biller Code for the transaction (if available)|
 |billerName|string|optional|none|Name of the BPAY biller for the transaction (if available)|
-|crn|string|optional|none|BPAY CRN for the transaction (if available)|
+|crn|string|conditional|none|BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |apcaNumber|string|optional|none|6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.|
 
 #### Enumerated Values
@@ -5151,10 +5157,10 @@ This operation does not require authentication
 |type|FEE|
 |type|INTEREST_CHARGED|
 |type|INTEREST_PAID|
-|type|PAYMENT|
-|type|TRANSFER_OUTGOING|
-|type|TRANSFER_INCOMING|
 |type|OTHER|
+|type|PAYMENT|
+|type|TRANSFER_INCOMING|
+|type|TRANSFER_OUTGOING|
 |status|PENDING|
 |status|POSTED|
 
@@ -5470,7 +5476,7 @@ This operation does not require authentication
     "description": "string",
     "type": "BILLER",
     "creationDate": "string",
-    "payeeUType": "domestic",
+    "payeeUType": "biller",
     "domestic": {
       "payeeAccountUType": "account",
       "account": {
@@ -5574,7 +5580,7 @@ This operation does not require authentication
   "description": "string",
   "type": "BILLER",
   "creationDate": "string",
-  "payeeUType": "domestic",
+  "payeeUType": "biller",
   "domestic": {
     "payeeAccountUType": "account",
     "account": {
@@ -5643,8 +5649,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|payeeUType|domestic|
 |payeeUType|biller|
+|payeeUType|domestic|
 |payeeUType|international|
 
 <h2 id="tocSbankingdomesticpayee">BankingDomesticPayee</h2>
@@ -5774,7 +5780,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |billerCode|string|mandatory|none|BPAY Biller Code of the Biller|
-|crn|string|conditional|none|BPAY CRN of the Biller. If the contents of the CRN match the format of a Credit Card PAN then it should be masked using the rules applicable for the MaskedPANString common type|
+|crn|string|conditional|none|BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.|
 |billerName|string|mandatory|none|Name of the Biller|
 
 <h2 id="tocSbankinginternationalpayee">BankingInternationalPayee</h2>
@@ -5950,6 +5956,8 @@ This operation does not require authentication
               "toUType": "accountId",
               "accountId": "string",
               "payeeId": "string",
+              "nickname": "string",
+              "payeeReference": "string",
               "domestic": {
                 "payeeAccountUType": "account",
                 "account": {
@@ -6000,13 +6008,13 @@ This operation does not require authentication
         ],
         "recurrence": {
           "nextPaymentDate": "string",
-          "recurrenceUType": "onceOff",
+          "recurrenceUType": "eventBased",
           "onceOff": {
             "paymentDate": "string"
           },
           "intervalSchedule": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "nonBusinessDayTreatment": "ON",
             "intervals": [
               {
@@ -6017,9 +6025,9 @@ This operation does not require authentication
           },
           "lastWeekDay": {
             "finalPaymentDate": "string",
-            "paymentsRemaining": 0,
+            "paymentsRemaining": 1,
             "interval": "string",
-            "lastWeekDay": "MON",
+            "lastWeekDay": "FRI",
             "nonBusinessDayTreatment": "ON"
           },
           "eventBased": {
@@ -6073,6 +6081,8 @@ This operation does not require authentication
         "toUType": "accountId",
         "accountId": "string",
         "payeeId": "string",
+        "nickname": "string",
+        "payeeReference": "string",
         "domestic": {
           "payeeAccountUType": "account",
           "account": {
@@ -6123,13 +6133,13 @@ This operation does not require authentication
   ],
   "recurrence": {
     "nextPaymentDate": "string",
-    "recurrenceUType": "onceOff",
+    "recurrenceUType": "eventBased",
     "onceOff": {
       "paymentDate": "string"
     },
     "intervalSchedule": {
       "finalPaymentDate": "string",
-      "paymentsRemaining": 0,
+      "paymentsRemaining": 1,
       "nonBusinessDayTreatment": "ON",
       "intervals": [
         {
@@ -6140,9 +6150,9 @@ This operation does not require authentication
     },
     "lastWeekDay": {
       "finalPaymentDate": "string",
-      "paymentsRemaining": 0,
+      "paymentsRemaining": 1,
       "interval": "string",
-      "lastWeekDay": "MON",
+      "lastWeekDay": "FRI",
       "nonBusinessDayTreatment": "ON"
     },
     "eventBased": {
@@ -6158,9 +6168,9 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |scheduledPaymentId|[ASCIIString](#common-field-types)|mandatory|none|A unique ID of the scheduled payment adhering to the standards for ID permanence|
-|nickname|string|optional|none|The short display name of the payee as provided by the customer|
+|nickname|string|optional|none|The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels|
 |payerReference|string|mandatory|none|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided|
-|payeeReference|string|mandatory|none|The reference for the transaction that will be provided by the originating institution. Empty string if no data provided|
+|payeeReference|string|conditional|none|The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided|
 |status|string|mandatory|none|Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.|
 |from|[BankingScheduledPaymentFrom](#schemabankingscheduledpaymentfrom)|mandatory|none|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the to object|
 |paymentSet|[[BankingScheduledPaymentSet](#schemabankingscheduledpaymentset)]|mandatory|none|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry]|
@@ -6184,6 +6194,8 @@ This operation does not require authentication
     "toUType": "accountId",
     "accountId": "string",
     "payeeId": "string",
+    "nickname": "string",
+    "payeeReference": "string",
     "domestic": {
       "payeeAccountUType": "account",
       "account": {
@@ -6254,6 +6266,8 @@ This operation does not require authentication
   "toUType": "accountId",
   "accountId": "string",
   "payeeId": "string",
+  "nickname": "string",
+  "payeeReference": "string",
   "domestic": {
     "payeeAccountUType": "account",
     "account": {
@@ -6309,6 +6323,8 @@ This operation does not require authentication
 |toUType|string|mandatory|none|The type of object provided that specifies the destination of the funds for the payment.|
 |accountId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent|
 |payeeId|[ASCIIString](#common-field-types)|conditional|none|Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead|
+|nickname|string|conditional|none|The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels|
+|payeeReference|string|conditional|none|The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.|
 |domestic|[BankingDomesticPayee](#schemabankingdomesticpayee)|conditional|none|none|
 |biller|[BankingBillerPayee](#schemabankingbillerpayee)|conditional|none|none|
 |international|[BankingInternationalPayee](#schemabankinginternationalpayee)|conditional|none|none|
@@ -6318,10 +6334,10 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |toUType|accountId|
-|toUType|payeeId|
-|toUType|domestic|
 |toUType|biller|
+|toUType|domestic|
 |toUType|international|
+|toUType|payeeId|
 
 <h2 id="tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h2>
 
@@ -6349,13 +6365,13 @@ This operation does not require authentication
 ```json
 {
   "nextPaymentDate": "string",
-  "recurrenceUType": "onceOff",
+  "recurrenceUType": "eventBased",
   "onceOff": {
     "paymentDate": "string"
   },
   "intervalSchedule": {
     "finalPaymentDate": "string",
-    "paymentsRemaining": 0,
+    "paymentsRemaining": 1,
     "nonBusinessDayTreatment": "ON",
     "intervals": [
       {
@@ -6366,9 +6382,9 @@ This operation does not require authentication
   },
   "lastWeekDay": {
     "finalPaymentDate": "string",
-    "paymentsRemaining": 0,
+    "paymentsRemaining": 1,
     "interval": "string",
-    "lastWeekDay": "MON",
+    "lastWeekDay": "FRI",
     "nonBusinessDayTreatment": "ON"
   },
   "eventBased": {
@@ -6395,10 +6411,10 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|recurrenceUType|onceOff|
+|recurrenceUType|eventBased|
 |recurrenceUType|intervalSchedule|
 |recurrenceUType|lastWeekDay|
-|recurrenceUType|eventBased|
+|recurrenceUType|onceOff|
 
 <h2 id="tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h2>
 
@@ -6426,7 +6442,7 @@ This operation does not require authentication
 ```json
 {
   "finalPaymentDate": "string",
-  "paymentsRemaining": 0,
+  "paymentsRemaining": 1,
   "nonBusinessDayTreatment": "ON",
   "intervals": [
     {
@@ -6484,9 +6500,9 @@ This operation does not require authentication
 ```json
 {
   "finalPaymentDate": "string",
-  "paymentsRemaining": 0,
+  "paymentsRemaining": 1,
   "interval": "string",
-  "lastWeekDay": "MON",
+  "lastWeekDay": "FRI",
   "nonBusinessDayTreatment": "ON"
 }
 
@@ -6508,13 +6524,13 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|lastWeekDay|MON|
-|lastWeekDay|TUE|
-|lastWeekDay|WED|
-|lastWeekDay|THU|
 |lastWeekDay|FRI|
+|lastWeekDay|MON|
 |lastWeekDay|SAT|
 |lastWeekDay|SUN|
+|lastWeekDay|THU|
+|lastWeekDay|TUE|
+|lastWeekDay|WED|
 |nonBusinessDayTreatment|AFTER|
 |nonBusinessDayTreatment|BEFORE|
 |nonBusinessDayTreatment|ON|
@@ -6645,7 +6661,7 @@ This operation does not require authentication
 ```json
 {
   "data": {
-    "customerUType": "person",
+    "customerUType": "organisation",
     "person": {
       "lastUpdateTime": "string",
       "firstName": "string",
@@ -6699,8 +6715,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|customerUType|person|
 |customerUType|organisation|
+|customerUType|person|
 
 <h2 id="tocSresponsecommoncustomerdetail">ResponseCommonCustomerDetail</h2>
 
@@ -6709,7 +6725,7 @@ This operation does not require authentication
 ```json
 {
   "data": {
-    "customerUType": "person",
+    "customerUType": "organisation",
     "person": {
       "lastUpdateTime": "string",
       "firstName": "string",
@@ -6724,7 +6740,7 @@ This operation does not require authentication
       "phoneNumbers": [
         {
           "isPreferred": true,
-          "purpose": "MOBILE",
+          "purpose": "HOME",
           "countryCode": "string",
           "areaCode": "string",
           "number": "string",
@@ -6735,13 +6751,13 @@ This operation does not require authentication
       "emailAddresses": [
         {
           "isPreferred": true,
-          "purpose": "WORK",
+          "purpose": "HOME",
           "address": "string"
         }
       ],
       "physicalAddresses": [
         {
-          "addressUType": "simple",
+          "addressUType": "paf",
           "simple": {
             "mailingName": "string",
             "addressLine1": "string",
@@ -6798,7 +6814,7 @@ This operation does not require authentication
       "establishmentDate": "string",
       "physicalAddresses": [
         {
-          "addressUType": "simple",
+          "addressUType": "paf",
           "simple": {
             "mailingName": "string",
             "addressLine1": "string",
@@ -6861,8 +6877,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|customerUType|person|
 |customerUType|organisation|
+|customerUType|person|
 
 <h2 id="tocScommonperson">CommonPerson</h2>
 
@@ -6901,10 +6917,10 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|occupationCodeVersion|ANZSCO_1220.0_2013_V1.3|
-|occupationCodeVersion|ANZSCO_1220.0_2013_V1.2|
-|occupationCodeVersion|ANZSCO_1220.0_2006_V1.1|
 |occupationCodeVersion|ANZSCO_1220.0_2006_V1.0|
+|occupationCodeVersion|ANZSCO_1220.0_2006_V1.1|
+|occupationCodeVersion|ANZSCO_1220.0_2013_V1.2|
+|occupationCodeVersion|ANZSCO_1220.0_2013_V1.3|
 
 <h2 id="tocScommonpersondetail">CommonPersonDetail</h2>
 
@@ -6925,7 +6941,7 @@ This operation does not require authentication
   "phoneNumbers": [
     {
       "isPreferred": true,
-      "purpose": "MOBILE",
+      "purpose": "HOME",
       "countryCode": "string",
       "areaCode": "string",
       "number": "string",
@@ -6936,13 +6952,13 @@ This operation does not require authentication
   "emailAddresses": [
     {
       "isPreferred": true,
-      "purpose": "WORK",
+      "purpose": "HOME",
       "address": "string"
     }
   ],
   "physicalAddresses": [
     {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -7050,14 +7066,14 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|industryCodeVersion|ANZSIC_1292.0_2006_V2.0|
 |industryCodeVersion|ANZSIC_1292.0_2006_V1.0|
+|industryCodeVersion|ANZSIC_1292.0_2006_V2.0|
 |organisationType|COMPANY|
 |organisationType|GOVERNMENT_ENTITY|
+|organisationType|OTHER|
 |organisationType|PARTNERSHIP|
 |organisationType|SOLE_TRADER|
 |organisationType|TRUST|
-|organisationType|OTHER|
 
 <h2 id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
 
@@ -7082,7 +7098,7 @@ This operation does not require authentication
   "establishmentDate": "string",
   "physicalAddresses": [
     {
-      "addressUType": "simple",
+      "addressUType": "paf",
       "simple": {
         "mailingName": "string",
         "addressLine1": "string",
@@ -7146,7 +7162,7 @@ This operation does not require authentication
 ```json
 {
   "isPreferred": true,
-  "purpose": "MOBILE",
+  "purpose": "HOME",
   "countryCode": "string",
   "areaCode": "string",
   "number": "string",
@@ -7172,12 +7188,12 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|purpose|MOBILE|
 |purpose|HOME|
 |purpose|INTERNATIONAL|
-|purpose|WORK|
+|purpose|MOBILE|
 |purpose|OTHER|
 |purpose|UNSPECIFIED|
+|purpose|WORK|
 
 <h2 id="tocScommonemailaddress">CommonEmailAddress</h2>
 
@@ -7186,7 +7202,7 @@ This operation does not require authentication
 ```json
 {
   "isPreferred": true,
-  "purpose": "WORK",
+  "purpose": "HOME",
   "address": "string"
 }
 
@@ -7204,10 +7220,10 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|purpose|WORK|
 |purpose|HOME|
 |purpose|OTHER|
 |purpose|UNSPECIFIED|
+|purpose|WORK|
 
 <h2 id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
 
@@ -7215,7 +7231,7 @@ This operation does not require authentication
 
 ```json
 {
-  "addressUType": "simple",
+  "addressUType": "paf",
   "simple": {
     "mailingName": "string",
     "addressLine1": "string",
@@ -7275,10 +7291,10 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |purpose|MAIL|
+|purpose|OTHER|
 |purpose|PHYSICAL|
 |purpose|REGISTERED|
 |purpose|WORK|
-|purpose|OTHER|
 
 <h2 id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
 
@@ -7286,7 +7302,7 @@ This operation does not require authentication
 
 ```json
 {
-  "addressUType": "simple",
+  "addressUType": "paf",
   "simple": {
     "mailingName": "string",
     "addressLine1": "string",
@@ -7337,8 +7353,8 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
-|addressUType|simple|
 |addressUType|paf|
+|addressUType|simple|
 
 <h2 id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
 
@@ -7565,6 +7581,6 @@ This operation does not require authentication
 |*anonymous*|RESIDENTIAL_MORTGAGES|
 |*anonymous*|TERM_DEPOSITS|
 |*anonymous*|TRADE_FINANCE|
-|*anonymous*|TRAVEL_CARDS|
 |*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
+|*anonymous*|TRAVEL_CARDS|
 
