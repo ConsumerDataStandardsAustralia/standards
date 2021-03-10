@@ -34,7 +34,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |
+| One-Time Collection Consent | Clarified that one-time collection consent is permitted for a shraring duration up to 24 hours. This allows the Data Recipient to obtain a Refresh Token to collect data over a period longer than a single Access Token in case of technical issues during collection  | [Requesting Sharing Duration](../../#requesting-sharing-duration) |
 
 ## Consumer Experience
 
