@@ -835,14 +835,26 @@
 <td>Client Authentication has been updated to align to upstream standards. From March 30th 2021, Data Holders must support multiple valid values for the audience claim for Data Recipient client authentication as outlined in that section. Data Recipients may continue to supply the URL of the endpoint being invoked, however according to upstream standards, it is recommended according to <strong>[RFC8414]</strong> that issuer identifier URL of the authorisation server should be used as the value of the audience.<br/>Until March 31st 2021, Data Recipients must continue to use the URL of the endpoint being invoked as the audience claim value. Data Holders must continue to accept and validate the URL of the endpoint being invoked.</td>
 <td>March 30th 2021</td>
 </tr>
+<tr>
+<td><a href="#get-customer">Get Customer V1</a></td>
+<td>Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold.</td>
+<td>July 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#product-amp-account-components">Banking Term Deposit Account Types</a></td>
+<td>Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021</td>
+<td>July 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#end-points">Token Introspection Endpoint claims</a></td>
+<td>Mandatory claims were updated in accordance with RFC7662</td>
+<td>November 1st 2020</td>
+</tr>
 </tbody></table>
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
-<p><strong>Please note</strong> this is currently experimental.
-| <a href="#get-customer">Get Customer V1</a> | Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold. | July 1st 2021 |
-| <a href="#product-amp-account-components">Banking Term Deposit Account Types</a> | Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021 | July 1st 2021 |
-| <a href="#end-points">Token Introspection Endpoint claims</a> | Mandatory claims were updated in accordance with RFC7662 | November 1st 2020 |</p>
+<p><strong>Please note</strong> this is currently experimental.</p>
 <h1 id='standards'>Standards</h1>
 <p>These standards represent <strong>version 1.7.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
@@ -2476,7 +2488,9 @@ client_id=s6BhdRkqt3
 <li>The <code>sharing_duration</code> parameter is a number</li>
 <li>The value of the <code>sharing_duration</code> parameter will contain the requested duration for sharing, in seconds.</li>
 <li>If the <code>sharing_duration</code> value exceeds one year then a duration of one year will be assumed.</li>
+<li>  If the <code>sharing_duration</code> value is less than or equal to 24 hours, then one-time collection will be assumed, and a Refresh Token should be provided by the Data Holder</li>
 <li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
+<li>  If a Refresh Token is issued for one-time collection the Data Recipient must call the Data Holder’s revocation endpoint after successful collection of the CDR data.</li>
 <li>If the <code>sharing_duration</code> value is negative then the authorisation should fail.</li>
 </ul>
 

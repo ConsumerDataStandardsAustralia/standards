@@ -273,13 +273,27 @@
 <th>Link</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Fixed paymentsRemaining value in Scheduled Payment non-normative examples</td>
+<td>Non-normative examples showed paymentsRemaining = 0 however paymentsRemaining is a PositiveInteger with a value of 1 or greater.</td>
+<td><a href="../../#get-scheduled-payments-for-account">Scheduled Payments APIs</a></td>
+</tr>
+<tr>
+<td>Scheduled Payments</td>
+<td>Corrected the description for the scheduled payment nickname and made payeeReference conditional, to be provided only if there is a global payee reference for the payment set. Introduced conditional payeeReference and nickname for the individualised payments in the scheduled payment set</td>
+<td><a href="../../#tocSbankingscheduledpayment">BankingScheduledPayment</a></td>
+</tr>
+<tr>
+<td>Updated CRN description</td>
+<td>The CRN description was updated for BankingBillerPayee and BankingTransaction to appropriately reference conditionality of the response based on data sensitivity considerations and availability of the data for the posted transaction or saved payee.</td>
+<td></td>
+</tr>
+<tr>
+<td>Draft Energy Standards Update</td>
+<td>Updated the draft energy standards to accommodate the feedback from DP 149</td>
+<td><a href="../../draft/energy-draft.html">Draft Energy Standards</a></td>
+</tr>
 </tbody></table>
-
-<p>=======
-| Fixed paymentsRemaining value in Scheduled Payment non-normative examples | Non-normative examples showed paymentsRemaining = 0 however paymentsRemaining is a PositiveInteger with a value of 1 or greater. | <a href="../../#get-scheduled-payments-for-account">Scheduled Payments APIs</a> |
-| Scheduled Payments | Corrected the description for the scheduled payment nickname and made payeeReference conditional, to be provided only if there is a global payee reference for the payment set. Introduced conditional payeeReference and nickname for the individualised payments in the scheduled payment set | <a href="../../#tocSbankingscheduledpayment">BankingScheduledPayment</a> |
-| Updated CRN description | The CRN description was updated for BankingBillerPayee and BankingTransaction to appropriately reference conditionality of the response based on data sensitivity considerations and availability of the data for the posted transaction or saved payee. |
-| Draft Energy Standards Update | Updated the draft energy standards to accommodate the feedback from DP 149 | <a href="../../draft/energy-draft.html">Draft Energy Standards</a> |</p>
 <h2 id='information-security-profile'>Information Security Profile</h2>
 <table><thead>
 <tr>
@@ -289,9 +303,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>One-Time Collection Consent</td>
+<td>Clarified that one-time collection consent is permitted for a shraring duration up to 24 hours. This allows the Data Recipient to obtain a Refresh Token to collect data over a period longer than a single Access Token in case of technical issues during collection</td>
+<td><a href="../../#requesting-sharing-duration">Requesting Sharing Duration</a></td>
 </tr>
 </tbody></table>
 <h2 id='consumer-experience'>Consumer Experience</h2>

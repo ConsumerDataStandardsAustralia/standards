@@ -26,7 +26,6 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-=======
 | Fixed paymentsRemaining value in Scheduled Payment non-normative examples | Non-normative examples showed paymentsRemaining = 0 however paymentsRemaining is a PositiveInteger with a value of 1 or greater. | [Scheduled Payments APIs](../../#get-scheduled-payments-for-account) |
 | Scheduled Payments | Corrected the description for the scheduled payment nickname and made payeeReference conditional, to be provided only if there is a global payee reference for the payment set. Introduced conditional payeeReference and nickname for the individualised payments in the scheduled payment set | [BankingScheduledPayment](../../#tocSbankingscheduledpayment) |
 | Updated CRN description | The CRN description was updated for BankingBillerPayee and BankingTransaction to appropriately reference conditionality of the response based on data sensitivity considerations and availability of the data for the posted transaction or saved payee. |
@@ -35,7 +34,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |
+| One-Time Collection Consent | Clarified that one-time collection consent is permitted for a shraring duration up to 24 hours. This allows the Data Recipient to obtain a Refresh Token to collect data over a period longer than a single Access Token in case of technical issues during collection  | [Requesting Sharing Duration](../../#requesting-sharing-duration) |
 
 ## Consumer Experience
 
