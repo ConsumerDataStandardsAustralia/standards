@@ -165,9 +165,7 @@
         "data": {
           "type": "object",
           "required": [
-            "requestTime"
-          ],
-          "x-conditional": [
+            "requestTime",
             "availability",
             "performance",
             "invocations",
