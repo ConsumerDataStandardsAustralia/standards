@@ -57,7 +57,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             }
           }
@@ -73,6 +73,7 @@
         "x-scopes": [
           "admin:metrics.basic:read"
         ],
+        "x-restricted-access": true,
         "tags": [
           "Admin",
           "Metrics"
@@ -125,7 +126,7 @@
     },
     "RequestHeader_x-min-v": {
       "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
       "in": "header",
       "type": "string"
     }
