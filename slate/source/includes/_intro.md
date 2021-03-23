@@ -25,11 +25,9 @@ The table below highlights these areas of the standards.
 |-------|-----------|---------------|
 |[Non-functional Requirements](#non-functional-requirements)|The non-functional requirements for the CDR regime are documented but are not yet binding with no specific future binding date being set as yet|Not yet specified|
 |[Get Product Detail V3](#get-product-detail)|Version 3 of this end point must be made available by affected data holders by the end of February 2021|February 28th 2021|
-|[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Product Detail V2](#get-product-detail)|Version 2 of this end point must be made available by affected data holders by the end of July 2020|July 31st 2020|
 |[Get Product Detail V1](#get-product-detail)|Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time|August 29th 2020|
 |[Get Products V3](#get-products)|Version 3 of this end point must be made available by affected data holders by the end of February 2021|February 28th 2021|
-|[Get Products V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Products V2](#get-products)|Version 2 of this end point must be made available by affected data holders by the end of July 2020|July 31st 2020|
 |[Get Products V1](#get-products)|Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time|August 29th 2020|
 |Concurrent Consent|The target state concurrent consent solution covers various components of the Information Security profile is being phased in with alignment to the November 2020 implementation milestone set by the ACCC.  If this milestone moves then this obligation will also move.|November 1st 2020|
