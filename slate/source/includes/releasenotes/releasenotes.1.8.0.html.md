@@ -24,7 +24,7 @@ This release pertains to the changes approved by the Data Standards Chair in <To
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Added retirement date for PRD v2 endpoints | Retirement date of May 31st 2021 added for PRD v2 endpoints | [Get Products v2](../obsolete/get-products-v2.html#get-products-v2) and [Get Product Details v2](../obsolete/get-product-detail-v2.html#get-product-detail-v2) |
 
 ## Information Security Profile
 |Change|Description|Link|
