@@ -1,4 +1,5 @@
 ---
+layout: no_code_panel_layout
 title: Consumer Data Standards - Endpoint Versioning Schedule
 
 #language_tabs: # must be one of https://git.io/vQNgJ

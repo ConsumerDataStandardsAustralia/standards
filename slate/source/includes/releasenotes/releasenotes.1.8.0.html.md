@@ -18,7 +18,7 @@ This release pertains to the changes approved by the Data Standards Chair in <To
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Updated documentation layout | Improved layout for documentation pages that do not require code samples such as release notes | N/A |
 
 ## API End Points
 

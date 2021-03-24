@@ -505,6 +505,13 @@ html, body {
   }
 }
 
+// for pages where code samples are turned off, utilise the full page width
+.no-code-layout .content {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin-right: 0 !important;
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // CODE SAMPLE STYLES
 ////////////////////////////////////////////////////////////////////////////////

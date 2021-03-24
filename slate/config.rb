@@ -14,6 +14,10 @@ set :markdown,
     no_intra_emphasis: true,
     renderer: UniqueHeadCounter
 
+# Alternative layouts
+# For pages that don't include code snippets/ examples, remove the code panel so the main content has wider display real estate
+page "/includes/releasenotes/*", :layout => "no_code_panel_layout"
+
 # Assets
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
