@@ -30,6 +30,7 @@ This release pertains to the changes approved by the Data Standards Chair in <To
 |Change|Description|Link|
 |------|-----------|----|
 | Modularised build script | Changed the security profile build process to modularise the Markdown file into separate imports. This has no change to the standards. | [Security Profile](../../#security-profile) |
+| Client Authentication | Changed the Client Authentication section of the standards to streamline it and included the optional Data Holder support of private_key_jwt client authentication of the CDR Register. | [Client Authentication](../../#client-authentication) |
 
 ## Consumer Experience
 
