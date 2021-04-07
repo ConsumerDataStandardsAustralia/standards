@@ -35,6 +35,10 @@
           "Admin",
           "Register"
         ],
+        "x-scopes": [
+          "admin:metadata:update"
+        ],
+        "x-restricted-access": true,
         "parameters": [
           {
             "in": "body",
