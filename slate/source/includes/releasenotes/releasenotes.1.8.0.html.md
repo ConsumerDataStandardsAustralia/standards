@@ -24,7 +24,7 @@ This release pertains to the changes approved by the Data Standards Chair in <To
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Rejection Metrics | Fixed documentation error with the optionality of the high-level response objects for the Metrics API payload response. | [RejectionMetricsV2](../../#tocSrejectionmetricsv2)|
 
 ## Information Security Profile
 |Change|Description|Link|
