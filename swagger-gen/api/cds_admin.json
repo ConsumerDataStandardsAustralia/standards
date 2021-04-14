@@ -579,13 +579,17 @@
     },
     "RejectionMetricsV2": {
       "description": "Number of calls rejected due to traffic thresholds over time",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
+      "required": [
+        "authenticated",
+        "unauthenticated"
       ],
       "properties": {
         "authenticated": {
           "description": "Rejection counts for all authenticated end points",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ],
           "properties": {
             "currentDay": {
               "type": "number",
@@ -602,6 +606,10 @@
         },
         "unauthenticated": {
           "description": "Rejection counts for all uauthenticated end points",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ],
           "properties": {
             "currentDay": {
               "type": "number",
