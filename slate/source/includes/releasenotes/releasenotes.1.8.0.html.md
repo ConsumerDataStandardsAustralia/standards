@@ -16,15 +16,11 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 ## High Level Standards
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
+No change
 
 ## API End Points
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
+No change
 
 ## Information Security Profile
 |Change|Description|Link|
