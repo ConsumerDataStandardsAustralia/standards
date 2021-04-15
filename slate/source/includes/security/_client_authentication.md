@@ -9,7 +9,7 @@ The following authentication methods are supported:
 
   * Data Holders SHALL authenticate the CDR Register client using one of the following Client Authentication methods:  
       * Self-signed JWT client assertion authenticated by the protected request endpoint according to [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication), or  
-      * `private_key_jwt` authentication using `client_credentials` authorisation grant flow according to [Private Key JWT Client Authentication](#private-key-jwt-client-authentication).  
+      * `private_key_jwt` authentication using `client_credentials` authorisation grant flow according to [Private Key JWT Client Authentication](#private-key-jwt-client-authentication).<br/>  
 
   * Data Holders and the CDR Register MUST authenticate Data Recipients using the [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) method.
   * Data Recipients MUST authenticate Data Holders and the CDR Register using the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method.
@@ -187,10 +187,5 @@ grant_type=authorization_code&
 In addition to the requirements for [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) the following requirements MUST be supported:
 
 * The client ID represents the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.
-* The client assertion's `aud` claim value must be set as follows:  
-
-  * **Until March 31st, 2021**, Data Recipients MUST continue to send as a single value string the URL of the endpoint being invoked. Data Holders MUST support validation of the URL of the endpoint being invoked.
-  * **After March 30th, 2021**, Data Holders MUST support:<br/> The issuer identifier URL of the authorisation server according to **[RFC8414]** SHOULD be used as the value of the audience. In order to facilitate interoperability, the authorisation server MUST accept its Issuer Identifier, Token Endpoint URL, or the URI of the endpoint being invoked as values that identify it as an intended audience.
-
 * The authorisation grant's `client_id` parameter value MUST represent the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `grant_type` parameter value MUST only be included when invoking the Token End point and MUST be set to `authorisation_code` or `client_credentials`. The value `refresh_token` is also valid when refreshing an access token.
