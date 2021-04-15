@@ -274,7 +274,7 @@
     "InvocationMetrics": {
       "description": "Number of API calls in each performance tier over time",
       "type": "object",
-      "x-required": [
+      "required": [
         "unauthenticated",
         "highPriority",
         "lowPriority",
@@ -387,7 +387,7 @@
     "AverageResponseMetrics": {
       "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
       "type": "object",
-      "x-required": [
+      "required": [
         "unauthenticated",
         "highPriority",
         "lowPriority",
