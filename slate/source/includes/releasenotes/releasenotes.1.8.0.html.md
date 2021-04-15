@@ -35,4 +35,4 @@ This release pertains to the changes approved by the Data Standards Chair in <To
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Amending Consent CX Standards | Added new CX standards arising from [Decision Proposal 144](https://github.com/ConsumerDataStandardsAustralia/standards/issues/144) | [Amending Consent](../../#amending-authorisation-standards)|
