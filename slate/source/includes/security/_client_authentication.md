@@ -108,9 +108,9 @@ Data Recipients and Data Holders supporting the self-signed JWT authentication o
 
 ### CDR Register calling Data Holders
 
-Data Holders SHOULD support either [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) or [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) of the CDR Register.
+Data Holders MUST support either [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) or [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) of the CDR Register.
 
-Data Holders SHOULD support [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) but MAY support [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication). 
+Data Holders SHOULD support [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) but MAY support [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication).
 
 This method MAY be changed by updating Data Holder registration details with the CDR Register.
 
