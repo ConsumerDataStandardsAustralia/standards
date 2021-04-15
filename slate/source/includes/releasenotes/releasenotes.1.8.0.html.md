@@ -12,7 +12,7 @@ search: false
 # V1.8.0 Release Notes
 Release notes for version 1.8.0 of the [CDR Standards](../../index.html).
 
-This release pertains to the changes approved by the Data Standards Chair in <To be advised>.
+This release pertains to the changes approved by the Data Standards Chair in [Decision 144](https://github.com/ConsumerDataStandardsAustralia/standards/issues/144).
 
 ## High Level Standards
 
