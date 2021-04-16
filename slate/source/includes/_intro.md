@@ -34,6 +34,9 @@ The table below highlights these areas of the standards.
 | [Get Customer V1](#get-customer) | Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold. | July 1st 2021 |
 | [Banking Term Deposit Account Types](#product-amp-account-components) | Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021 | July 1st 2021 |
 | [Token Introspection Endpoint claims](#end-points) | Mandatory claims were updated in accordance with RFC7662 | November 1st 2020 |
+| [Amending Consent](#amending-authorisation-standards) |Data Holders MAY implement the following standards from July 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a `cdr_arrangement_id`| July 1st 2021|
+| [Amending Consent](#amending-authorisation-standards)|Data Holders MUST implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a `cdr_arrangement_id`|November 1st 2021|
+
 
 ## Endpoint Version Schedule
 A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.
