@@ -1,0 +1,626 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - Endpoint Versioning Schedule</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_endpoint-version-schedule includes_endpoint-version-schedule_index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#endpoint-version-schedule" class="toc-h1 toc-link" data-title="Endpoint Version Schedule">Endpoint Version Schedule</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#data-holders" class="toc-h2 toc-link" data-title="Data Holders">Data Holders</a>
+                  </li>
+                  <li>
+                    <a href="#data-recipients" class="toc-h2 toc-link" data-title="Data Recipients">Data Recipients</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='endpoint-version-schedule'>Endpoint Version Schedule</h1>
+<p>The following tables describe the endpoint versions and the dates they become binding within the data standards.</p>
+
+<p><strong>Binding Date</strong> indicates the dates the particular version of an endpoint becomes binding in the data standards.</p>
+
+<p><strong>Retirement Date</strong> indicates, where relevant, denotes the date a specific version can be retired and is no longer supported. All consumers of the affected endpoint must upgrade to a more recent version currently available.</p>
+
+<p><strong>Date Introduced</strong> indicates the release of the standards, including release date, when the endpoint version was first introduced. This is not the Binding Date.</p>
+
+<p><strong>Date Deprecated</strong> indicates the release of the standards, including release date, when the endpoint version was first marked for deprecation. This is not the Retirement Date.</p>
+<h2 id='data-holders'>Data Holders</h2>
+<p>The following versioning schedule is reflective of the endpoints hosted by Data Holders. Data Holders should take into account their phasing obligations in accordance with the CDR Rules as well as any exemptions granted, when determining which API versions are considered applicable.</p>
+
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Banking APIs</td>
+<td>Get Products</td>
+<td>/banking/products</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-02-01</td>
+<td>2020-09-29</td>
+<td>2019-09-30, v1.0.0</td>
+<td>2020-01-31, v1.2.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Products</td>
+<td>/banking/products</td>
+<td>GET</td>
+<td>V2</td>
+<td>2020-07-31</td>
+<td>N/A</td>
+<td>2020-01-31, V1.2.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Products</td>
+<td>/banking/products</td>
+<td>GET</td>
+<td>V3</td>
+<td>2021-02-28</td>
+<td>N/A</td>
+<td>2020-04-17, V1.3.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Product Detail</td>
+<td>/banking/product/{productId}</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-02-01</td>
+<td>2020-09-29</td>
+<td>2019-09-30, v1.0.0</td>
+<td>2020-09-01</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Product Detail</td>
+<td>/banking/product/{productId}</td>
+<td>GET</td>
+<td>V2</td>
+<td>2020-07-31</td>
+<td>N/A</td>
+<td>2020-01-31, V1.2.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Product Detail</td>
+<td>/banking/product/{productId}</td>
+<td>GET</td>
+<td>V3</td>
+<td>2021-02-28</td>
+<td>N/A</td>
+<td>2020-04-17, V1.3.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Accounts</td>
+<td>/banking/accounts/</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Account Balances</td>
+<td>/banking/accounts/balances</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Balances For Specific Accounts</td>
+<td>/banking/accounts/balances</td>
+<td>POST</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Account Balance</td>
+<td>/banking/accounts/{accountId}/balance</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Account Detail</td>
+<td>/banking/accounts/{accountId}/</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Transactions For Account</td>
+<td>/banking/accounts/{accountId}/transactions</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Transaction Detail</td>
+<td>/banking/accounts/{accountId}/transactions/{transactionId}</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Direct Debits For Account</td>
+<td>/banking/accounts/{accountId}/direct-debits</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Bulk Direct Debits</td>
+<td>/banking/accounts/direct-debits</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Direct Debits For Specific Accounts</td>
+<td>/banking/accounts/direct-debits</td>
+<td>POST</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Scheduled Payments For Account</td>
+<td>/banking/accounts/{accountId}/payments/scheduled</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Scheduled Payments Bulk</td>
+<td>/banking/payments/scheduled</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Scheduled Payments For Specific Accounts</td>
+<td>/banking/payments/scheduled</td>
+<td>POST</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Payees</td>
+<td>/banking/payees</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Payee Detail</td>
+<td>/banking/payees/{payeeId}</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Common APIs</td>
+<td>Get Customer</td>
+<td>/common/customer</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Common APIs</td>
+<td>Get Customer Detail</td>
+<td>/common/customer/detail</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Common APIs</td>
+<td>Get Status</td>
+<td>/discovery/status</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Common APIs</td>
+<td>Get Outages</td>
+<td>/discovery/outages</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Admin APIs</td>
+<td>Metadata Update</td>
+<td>/admin/register/metadata</td>
+<td>POST</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Admin APIs</td>
+<td>Get Metrics</td>
+<td>/admin/metrics</td>
+<td>GET</td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>N/A</td>
+<td>2019-09-30, v1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Admin APIs</td>
+<td>Get Metrics</td>
+<td>/admin/metrics</td>
+<td>GET</td>
+<td>V2</td>
+<td>2021-07-31</td>
+<td>N/A</td>
+<td>2020-09-16, v1.5.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>InfoSec Profile</td>
+<td>Endpoints</td>
+<td>CDR Arrangement Revocation Endpoint</td>
+<td>POST</td>
+<td>1.5.0</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2020-04-17, v1.2.0</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='data-recipients'>Data Recipients</h2>
+<p>The following versioning schedule is reflective of the endpoints hosted by Data Recipients.
+Data Recipients should take into account their commencement date within the CDR, relevant obligations in accordance with the CDR Rules, as well as any exemptions granted when factoring in which API versions are considered applicable.</p>
+
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Sub-section</th>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Version</th>
+<th>Binding Date</th>
+<th>Retirement Date</th>
+<th>Date Introduced</th>
+<th>Date Deprecated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InfoSec Profile</td>
+<td>Endpoints</td>
+<td>ADR Token Revocation Endpoint</td>
+<td>POST</td>
+<td>1.5.0</td>
+<td>2020-07-01</td>
+<td>2021-02-01</td>
+<td>2019-09-30, v1.0.0</td>
+<td>2020-04-17, v1.2.0</td>
+</tr>
+<tr>
+<td>InfoSec Profile</td>
+<td>Endpoints</td>
+<td>CDR Arrangement Revocation Endpoint</td>
+<td>POST</td>
+<td>1.5.0</td>
+<td>2020-11-01</td>
+<td>N/A</td>
+<td>2020-04-17, v1.2.0</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

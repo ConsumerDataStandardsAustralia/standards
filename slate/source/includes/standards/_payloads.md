@@ -220,9 +220,9 @@ A field of this type will always be specified with the suffix `UType` meaning Un
 "middleNames": [ ],
 "errors": [ ]
 
-``` 
+```
 
-Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads. 
+Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads.
 
 #### Mandatory fields
 
@@ -230,7 +230,7 @@ In objects where an array field is defined as having 0..n values, the array fiel
 
 This applies equally for object arrays. Where a field is defined as an array value, the response should be:
 * an array of objects,
-* an array of values, or 
+* an array of values, or
 * an empty array (``[]``).
 
 An empty array is the representation for an array equivalent to an empty string.
@@ -238,6 +238,5 @@ An empty array is the representation for an array equivalent to an empty string.
 #### Optional fields
 If the field is optional a ``null`` value or empty field response is accepted.
 
-#### Normative references
+<h4 id="payload-conventions-normative-references">Normative references</h4>
 The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.
-

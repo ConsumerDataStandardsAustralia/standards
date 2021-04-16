@@ -850,13 +850,23 @@
 <td>Mandatory claims were updated in accordance with RFC7662</td>
 <td>November 1st 2020</td>
 </tr>
+<tr>
+<td><a href="#amending-authorisation-standards">Amending Consent</a></td>
+<td>Data Holders MAY implement the following standards from July 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
+<td>July 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#amending-authorisation-standards">Amending Consent</a></td>
+<td>Data Holders MUST implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
+<td>November 1st 2021</td>
+</tr>
 </tbody></table>
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
 <p><strong>Please note</strong> this is currently experimental.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent <strong>version 1.7.0</strong> of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.8.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1570,7 +1580,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 </code></pre>
 
-<p>Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads. </p>
+<p>Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads.</p>
 
 <h4 id='mandatory-fields'>Mandatory fields</h4>
 
@@ -1578,7 +1588,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>This applies equally for object arrays. Where a field is defined as an array value, the response should be:
 * an array of objects,
-* an array of values, or 
+* an array of values, or
 * an empty array (<code>[]</code>).</p>
 
 <p>An empty array is the representation for an array equivalent to an empty string.</p>
@@ -1587,7 +1597,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>If the field is optional a <code>null</code> value or empty field response is accepted.</p>
 
-<h4 id='normative-references'>Normative references</h4>
+<h4 id="payload-conventions-normative-references">Normative references</h4>
 
 <p>The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.</p>
 
@@ -1878,12 +1888,16 @@ standards</li>
 <p>As described previously in the <a href="#versioning">versioning section</a> the standard provides for multiple versions of each API end point.  This implies the need for extensions to also be versioned.</p>
 
 <p>An optional header <code>x-&lt;HID&gt;-v</code> will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on <a href="#http-headers">HTTP Headers</a> for more information on the use of this header.</p>
-<h1 id='security-profile'>Security Profile</h1><h2 id='overview'>Overview</h2>
+<h1 id='security-profile'>Security Profile</h1>
+<h2 id='overview'>Overview</h2>
+
 <p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2.html">Financial-grade API Read Write Profile</a> <strong>[FAPI-RW]</strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong>[OIDC]</strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
+
 <h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
+
 <ul>
 <li>  <strong>API</strong>: Application Programming Interface</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
@@ -1915,7 +1929,9 @@ standards</li>
 <li>  <strong>TDIF:</strong> Trusted Digital Identity Framework</li>
 <li>  <strong>TLS:</strong> Transport Layer Security</li>
 </ul>
+
 <h2 id='cdr-federation'>CDR Federation</h2>
+
 <p>The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
 multiple system entities which will assume one or more of the following roles:</p>
 
@@ -1941,7 +1957,9 @@ multiple system entities which will assume one or more of the following roles:</
 <li>  The authorising customer that is authenticated by a Data Holder.</li>
 </ul></li>
 </ul>
+
 <h3 id='data-holder'>Data Holder</h3>
+
 <p>The Data Holder (DH) is a system entity that authenticates a Customer
 (resource owner or user), as part of an authorisation process initiated by a Data
 Recipient, and issues an authorisation for that Data Recipient to access the Customer&#39;s data via published APIs.</p>
@@ -1949,7 +1967,9 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 <p>A Data Holder assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">OpenID Provider</a>.</p>
 
 <p>For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.</p>
+
 <h3 id='data-recipient'>Data Recipient</h3>
+
 <p>A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.</p>
 
 <p>A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.</p>
@@ -1957,7 +1977,9 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 <p>A Data Recipient assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">Relying Party (Client)</a>.</p>
 
 <p>For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.</p>
+
 <h3 id='register'>Register</h3>
+
 <aside class="warning">
 NOTE: This section is reflective of the positioning of the Register in the CDR Rules Exposure Draft
 </aside>
@@ -1970,9 +1992,13 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <li><strong>Management of Certificates</strong>: The Register will facilitate the issuing, management and revocation of digital certificates.</li>
 <li><strong>Discoverability and Search</strong>: The Register will expose APIs and Web Interfaces in order to support metadata queries across Register entities.</li>
 </ul>
+
 <h3 id='customer'>Customer</h3>
+
 <p>For the purposes of this standard a single person or individual may be represented as multiple Customers according to the practice of the Data Holder according to their existing digital channels.</p>
+
 <h2 id='authentication-flows'>Authentication Flows</h2>
+
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong>[OIDC]</strong> as constrained further by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.</p>
 
 <p>Specifically the Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong>[OIDC]</strong>.</p>
@@ -1980,7 +2006,9 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <p>No other flows are currently supported.</p>
 
 <p><a id="hybrid-flow"></a></p>
+
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
+
 <p>The <strong>[OIDC]</strong> Hybrid Flow is a type of redirection flow where the consumer&#39;s user
 agent is redirected from a Data Recipient’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an <strong>[OIDC]</strong> authentication
@@ -2019,14 +2047,19 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
 
 <p><a id="client-authentication"></a></p>
+
 <h2 id='client-authentication'>Client Authentication</h2>
+
 <p>This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.</p>
 
 <p>Note that, while <strong>[MTLS]</strong> is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
+
 <h3 id='cdr-register-calling-data-holders-and-data-recipients'>CDR Register calling Data Holders and Data Recipients</h3>
+
 <blockquote>
 <p>Non-Normative Example - CDR Register calls the Data holder&#39;s Get Metrics end point with Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
 Host: admin.data.holder.com.au
 x-v: string
@@ -2048,6 +2081,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
 }
 </code></pre>
+
 <p>Data Holders and Data Recipients MUST support the authentication of the CDR Register using a signed JWT according to the following requirements:</p>
 
 <ul>
@@ -2064,10 +2098,13 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <li>  Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]</li>
 <li>  The JWT should be accepted from the client using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750">section 2.1 of RFC6750</a></li>
 </ul>
+
 <h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
+
 <blockquote>
 <p>Non-Normative Example - Data Holder calls the Data Recipient&#39;s revocation end point (note that the “aud” claim is the fully qualified path to the revocation end point because the full path is also the Base URI).</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST https://data.recipient.com.au/revocation HTTP/1.1
 Host: data.recipient.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -2090,6 +2127,7 @@ token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
    "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
 }
 </code></pre>
+
 <p>Data Recipients MUST support the authentication of Data Holders using a signed JWT according to the following requirements:</p>
 
 <ul>
@@ -2106,12 +2144,15 @@ token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
 <li>  Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]</li>
 <li>  The JWT should be accepted from the client using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750">section 2.1 of RFC6750</a></li>
 </ul>
+
 <h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
+
 <p>Data Holders MUST support the authentication of Data Recipients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
 
 <blockquote>
 <p>Non-Normative Example - Data Recipient calls Data Holder&#39;s token end point.</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: www.holder.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -2137,6 +2178,7 @@ grant_type=authorization_code&amp;
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 </code></pre>
+
 <p>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation.</p>
 
 <p>Client public keys are obtained from the <strong>[JWKS]</strong> endpoints.</p>
@@ -2168,7 +2210,9 @@ grant_type=authorization_code&amp;
 <li> <code>client_assertion_type</code>: This MUST be set to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
 <li> <code>client_assertion</code>: The encoded assertion JWT.</li>
 </ul>
+
 <h2 id='oidc-client-types'>OIDC Client Types</h2>
+
 <p>Only Confidential Clients SHALL be supported under this profile. Therefore, Public clients SHALL NOT be supported.</p>
 
 <p>In reference to the client types referenced in <a href="https://tools.ietf.org/html/rfc6749#section-2.1">section 2.1</a> of <strong>[OAUTH2]</strong>:</p>
@@ -2177,7 +2221,9 @@ grant_type=authorization_code&amp;
 <li>Confidential Clients MUST be supported under this profile.</li>
 <li>Public clients MUST NOT be supported.</li>
 </ul>
+
 <h3 id='json-web-key-sets'>JSON Web Key Sets</h3>
+
 <p>Data Holder public keys MUST only be obtained from the standard OIDC end point used for that purpose.</p>
 
 <p>Data Recipient public keys MUST only be obtained from the URI registered with the CDR Register.</p>
@@ -2185,10 +2231,13 @@ grant_type=authorization_code&amp;
 <p>CDR Register public keys MUST only be obtained from the end point exposed for that purpose.</p>
 
 <p><a id="consent"></a></p>
+
 <h2 id='consent'>Consent</h2>
+
 <p>Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under <strong>[OIDC]</strong>.</p>
 
 <p>Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.</p>
+
 <h2 id='scopes-and-claims'>Scopes and Claims</h2><h3 id='oidc-scopes'>OIDC Scopes</h3>
 <p>In addition to CDR data scopes the following scopes MUST be supported:</p>
 
@@ -2215,6 +2264,7 @@ grant_type=authorization_code&amp;
 <li><code>refresh_token_expires_at</code>: indicates the date-time at which the most recently provided refresh token will expire. Its value MUST be a number containing a NumericDate value, as specified in section 2 of <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2">section 2</a> <strong>[JWT]</strong>.  If no refresh token has been provided then a zero value should be returned.</li>
 <li><code>sharing_expires_at</code>: indicates the date-time at which the current sharing arrangement will expire. Its value MUST be a number containing a NumericDate value, as specified in <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-2">section 2</a> of <strong>[JWT]</strong>.  If consent is not complete or a <code>sharing_duration</code> was not requested in the authorisation request object then a zero value should be returned.</li>
 </ul>
+
 <h2 id='tokens'>Tokens</h2><h3 id='id-token'>ID Token</h3>
 <blockquote>
 <p>Non-Normative Example - acr</p>
@@ -2373,10 +2423,13 @@ client_id=s6BhdRkqt3
 
 <p><a id="levels-of-assurance-loas"></a></p>
 <h2 id='levels-of-assurance-loas'>Levels of Assurance (LoAs)</h2>
+
 <p>Levels Of Assurance (LoAs), returned after a successful authentication MUST be represented in Single Ordinal form where a single LoA value is represented.</p>
 
 <p><a id="ordinal-loa"></a></p>
+
 <h3 id='single-ordinal'>Single Ordinal</h3>
+
 <p>A Single LoA value is carried in the <code>acr</code> claim which is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of <strong>[OIDC]</strong>.</p>
 
 <ul>
@@ -2400,6 +2453,7 @@ client_id=s6BhdRkqt3
 <li><strong>At least</strong> an LoA of 3 has been achieved during the establishment of consent, or</li>
 <li><strong>At least</strong> an LoA of 2 has been achieved during the establishment of consent and a subsequent challenge/response has resulted in an LoA of 3 being achieved within the lifespan of the current Access Token.</li>
 </ul>
+
 <h2 id='transaction-security'>Transaction Security</h2><h3 id='use-of-tls'>Use of TLS</h3>
 <p>All HTTP calls MUST be made using HTTPS incorporating TLS &gt;= 1.2.</p>
 
@@ -2430,7 +2484,9 @@ client_id=s6BhdRkqt3
 <li>  TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</li>
 <li>  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</li>
 </ul>
+
 <h2 id='cors'>CORS</h2>
+
 <p>Cross-origin resource sharing (CORS) must be enabled (ie. <code>Access-Control-Allow-Origin</code> set to &quot;*&quot;) for the following end points:</p>
 
 <ul>
@@ -2441,10 +2497,13 @@ client_id=s6BhdRkqt3
 </ul>
 
 <p><a id="request-object"></a></p>
+
 <h2 id='request-object'>Request Object</h2>
+
 <blockquote>
 <p>Non-Normative Example - acr as an Essential Claim</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>#Decoded Request Object JWT
 
 {
@@ -2474,12 +2533,15 @@ client_id=s6BhdRkqt3
   }
 }
 </code></pre>
+
 <p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong>[FAPI-RW]</strong> <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter MUST be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation End Point. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
 
 <p>Request Objects MUST be signed by Data Recipients as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
 <p>Request Object references MUST be supported if the Data Holder supports Pushed Authorisation Requests (PAR).</p>
+
 <h3 id='requesting-sharing-duration'>Requesting Sharing Duration</h3>
+
 <p>To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.</p>
 
 <p>To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named <code>sharing_duration</code>.  The <code>sharing_duration</code> claim MUST be handled as follows:</p>
@@ -2497,7 +2559,9 @@ client_id=s6BhdRkqt3
 <p>Note that the period of <code>one year</code> in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).</p>
 
 <p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
+
 <h3 id='specifying-an-existing-arrangement'>Specifying an existing arrangement</h3>
+
 <p>Provided a Data Holder supports PAR, they MUST also support the <code>cdr_arrangement_id</code> claim provided in the Request Object sent to the PAR End Point. The Data Recipient MAY provide the <code>cdr_arrangement_id</code> claim in the Request Object sent to the PAR End Point.</p>
 
 <p>The <code>cdr_arrangement_id</code> claim MUST be handled as follows:</p>
@@ -2509,14 +2573,19 @@ client_id=s6BhdRkqt3
 <p>If a data recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the data holder&#39;s PAR End Point, the data holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
 
 <p>For data recipients seeking to replace consent where the Data Holder does not support PAR, data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the appropriate revocation end point.</p>
+
 <h2 id='end-points'>End Points</h2>
+
 <aside class="warning">
 NOTE: This section does not include any end points that will be defined by the design of the <a href='https://cdr-register.github.io/'>CDR Register</a>. End points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery are documented in the <a href='https://cdr-register.github.io/'>CDR Register</a> technical documentation.
 </aside>
+
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
+
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
@@ -2552,6 +2621,7 @@ Content-Type: application/json
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub", "refresh_token_expires_at", "sharing_expires_at"]
 }
 </code></pre>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2604,10 +2674,13 @@ Content-Type: application/json
 </ul>
 
 <p><a id="authorisation-endpoint"></a></p>
+
 <h3 id='authorisation-end-point'>Authorisation End Point</h3>
+
 <blockquote>
 <p>Non-Normative Example</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>## Request
 
 GET /authorise?
@@ -2649,6 +2722,7 @@ Host: www.holder.com.au
 }
 
 </code></pre>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2674,7 +2748,9 @@ Host: www.holder.com.au
 </tbody></table>
 
 <p>The requirements for the Authorisation End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridAuthorizationEndpoint">section 3.3.2</a> of <strong>[OIDC]</strong> and further specified under section <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">5.2.2</a> of <strong>[FAPI-RW]</strong>.  This end point is invoked as part of the <a href="#hybrid-flow">Hybrid Authentication flow</a>.</p>
+
 <h3 id='json-web-key-set-end-point'>JSON Web Key Set End Point</h3>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2704,7 +2780,9 @@ Host: www.holder.com.au
 <p>This end point is used by the Data Holder to provide the public keys they will use when required.</p>
 
 <p>Data Holders MUST support a JWKS End Point.</p>
+
 <h3 id='token-end-point'>Token End Point</h3>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2734,7 +2812,9 @@ Host: www.holder.com.au
 <p>To obtain an Access Token, an ID Token, and a Refresh Token, the Data Recipient sends a Token Request to the Token End Point.</p>
 
 <p>Data Holders MUST support a Token End Point.</p>
+
 <h3 id='userinfo-end-point'>UserInfo End Point</h3>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2762,7 +2842,9 @@ Host: www.holder.com.au
 <p>The requirements for the UserInfo End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfo">section 5.3</a> of <strong>[OIDC]</strong>.</p>
 
 <p>Data Holders MUST support a UserInfo End Point.</p>
+
 <h3 id='introspection-end-point'>Introspection End Point</h3>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2804,7 +2886,9 @@ Host: www.holder.com.au
 </ul>
 
 <p>A Token Introspection End Point Response MAY include claims defined in Section 2.2 of <strong>[RFC7662]</strong> but <code>username</code> SHALL NOT be allowed.</p>
+
 <h3 id='token-revocation-end-point'>Token Revocation End Point</h3>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2856,12 +2940,15 @@ Host: www.holder.com.au
 <p><strong>NOTE:</strong> Data Recipients MUST continue to support this Token Revocation End Point until February 2021.</p>
 
 <p><strong>NOTE:</strong> Data Holders MUST continue to support consent revocation via the oAuth Token Revocation end point until February 2021.</p>
+
 <h3 id='cdr-arrangement-revocation-end-point'>CDR Arrangement Revocation End Point</h3>
+
 <blockquote>
 <p>Non-Normative Example</p>
 
 <p>Request</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST https://data.holder.com.au/arrangements/revoke
 HTTP/1.1
 Host: data.holder.com.au
@@ -2872,6 +2959,7 @@ Content-Type: application/x-www-form-urlencoded
   client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&amp;
   cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
 </code></pre>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -2960,21 +3048,26 @@ Content-Type: application/x-www-form-urlencoded
 <p>Data Recipients may discover that a given Data Holder supports the CDR Arrangement Revocation End Point by the presence of the <code>cdr_arrangement_revocation_endpoint</code> in the Data Holder&#39;s OpenID Provider metadata.</p>
 
 <p>If a Data Recipient does not support the CDR Arrangement Revocation End Point, Data Holders must notify Data Recipients when consent is withdrawn by calling the Data Recipient Revocation End Point.</p>
+
 <h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3>
+
 <blockquote>
 <p>Non-Normative Example</p>
 
 <p>Request</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /par HTTP/1.1
      Host: data.holder.com.au
      Content-Type: application/x-www-form-urlencoded
 
 request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 </code></pre>
+
 <blockquote>
 <p>Decoded Request</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>{
   "iss": "s6BhdRkqt3",
   "exp": 1516239322,
@@ -3002,9 +3095,11 @@ request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
   }
 }
 </code></pre>
+
 <blockquote>
 <p>Response</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
@@ -3013,9 +3108,11 @@ Cache-Control: no-cache, no-store
   "expires_in": 3600
 }
 </code></pre>
+
 <blockquote>
 <p>Authorise</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>## This is used by the ADR in the subsequent authorisation request as follows
 ## (note that until PAR is an RFC standard, the mandatory oAuth parameters as
 ## per FAPI R/W for confidential clients must be replayed in the request URL):
@@ -3027,6 +3124,7 @@ GET /authorise?client_id=s6BhdRkqt3&amp;
 HTTP/1.1
 Host: data.holder.com.au
 </code></pre>
+
 <table><thead>
 <tr>
 <th>Description</th>
@@ -3067,7 +3165,9 @@ Host: data.holder.com.au
 <li>If the <code>cdr_arrangement_id</code> is not related to the consumer being authenticated it MUST be rejected</li>
 <li>If the <code>cdr_arrangement_id</code> is not recognised by to the Data Holder it MUST be rejected</li>
 </ul>
+
 <h2 id='normative-references'>Normative References</h2>
+
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -3166,7 +3266,9 @@ Host: data.holder.com.au
 <td>Feb 2020</td>
 </tr>
 </tbody></table>
+
 <h2 id='informative-references'>Informative References</h2>
+
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -3209,25 +3311,22 @@ Host: data.holder.com.au
 <h2 id='consumer-experience-standards'>Consumer Experience Standards</h2><h3 id='data-language-standards'>Data Language Standards</h3>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
-<font size="1">Example of data language standards presented in a consumer-facing interaction</font></p>
+<font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
 </blockquote>
 
 <p>In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide descriptions of the types of data to be used by CDR participants in making and responding to requests. Adherence to this language will help ensure there is a consistent interpretation and description of the consumer data that will be shared across different CDR implementations.</p>
 
 <table><thead>
 <tr>
-<th>#</th>
 <th>Area</th>
 <th>CX Standard</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>1</td>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
 <td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
 </tr>
 <tr>
-<td>2</td>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
 <td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘‡’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
 </tr>
@@ -3253,7 +3352,7 @@ Host: data.holder.com.au
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Name, occupation, contact details:</strong></td>
+<td><strong>Name, occupation, contact details ‡</strong></td>
 <td>Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
 <td>common:customer.detail:read</td>
 </tr>
@@ -3324,106 +3423,155 @@ Host: data.holder.com.au
 <h3 id='accessibility-standards'>Accessibility Standards</h3>
 <table><thead>
 <tr>
-<th>#</th>
 <th>Area</th>
 <th>CX Standard</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>3</td>
 <td><strong>Accessibility</strong></td>
 <td>At a minimum, all CDR participants <strong>MUST</strong> seek to comply with the following accessibility guidelines throughout the Consent Model.<ul><li>These standards <strong>SHOULD</strong> be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</li></ul></td>
 </tr>
 <tr>
-<td>4</td>
 <td><strong>Accessibility</strong> <br> Content distinction</td>
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a> Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.</td>
 </tr>
 <tr>
-<td>5</td>
 <td><strong>Accessibility</strong> <br> Keyboard functionality</td>
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html">WCAG 2.1</a>. This will make all functionality available from a keyboard.</td>
 </tr>
 <tr>
-<td>6</td>
 <td><strong>Accessibility</strong> <br> Pointer interactions</td>
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
 </tr>
 <tr>
-<td>7</td>
 <td><strong>Accessibility</strong> <br> Reading experiences</td>
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html">WCAG 3.1</a>. This will make text content readable and understandable</td>
 </tr>
 <tr>
-<td>8</td>
 <td><strong>Accessibility</strong> <br> Input assistance</td>
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
 </tr>
 </tbody></table>
-<h3 id='consent-authenticate-and-authorise-standards'>Consent, Authenticate, and Authorise Standards</h3>
+<h3 id='consent-standards'>Consent Standards</h3>
 <table><thead>
 <tr>
-<th>#</th>
 <th>Area</th>
 <th>CX Standard</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>9</td>
 <td><strong>Seeking consent</strong></td>
 <td>Data recipients <strong>MUST</strong> notify consumers of redirection prior to authentication.</td>
 </tr>
+</tbody></table>
+<h3 id='authentication-standards'>Authentication Standards</h3>
+<table><thead>
 <tr>
-<td>10</td>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
 <td><strong>Authentication:</strong><br>‘One Time Password’</td>
 <td>Data holders and data recipients <strong>MUST</strong> clearly refer to a “One Time Password” in consumer-facing interactions and communications. The use of the term “One Time Password” <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</td>
 </tr>
 <tr>
-<td>11</td>
 <td><strong>Authentication:</strong><br >Passwords</td>
 <td>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient.</td>
 </tr>
 <tr>
-<td>12</td>
 <td><strong>Authentication:</strong><br> Password link</td>
 <td>Data holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
 </tr>
 <tr>
-<td>13</td>
 <td><strong>Authentication:</strong><br>OTP expiry</td>
 <td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
 </tr>
-<tr>
-<td>14</td>
-<td><strong>Authorisation</strong> &amp; Account selection</td>
-<td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders <strong>MAY</strong> add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step.</li><ul><li>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li><em>Note:</em> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul></td>
-</tr>
-<tr>
-<td>15</td>
-<td><strong>Authorisation:</strong><br>Account confirm</td>
-<td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
-</tr>
 </tbody></table>
-<h3 id='withdrawal-standards'>Withdrawal Standards</h3>
+<h3 id='authorisation-standards'>Authorisation Standards</h3>
 <table><thead>
 <tr>
-<th>#</th>
 <th>Area</th>
 <th>CX Standard</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>16</td>
+<td><strong>Authorisation</strong> &amp; Account selection</td>
+<td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders <strong>MAY</strong> add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step.</li><ul><li>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li><em>Note:</em> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul></td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br>Account confirm</td>
+<td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
+</tr>
+</tbody></table>
+<h3 id='amending-authorisation-standards'>Amending Authorisation Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authorisation:</strong><br/>Amending consent</td>
+<td><strong>Effective from July 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id:</em><br><br></td>
+</tr>
+<tr>
+<td>Customer Profile</td>
+<td>Where customer profile selection applies, Data Holders <strong>MAY</strong> omit the profile selection step and assume the customer profile associated with the existing authorisation. Data Holders <strong>MAY</strong> indicate which profile the authorisation relates to during the authorisation process.</td>
+</tr>
+<tr>
+<td>Account Selection</td>
+<td>Where account selection applies, Data Holders <strong>MAY</strong> pre-select accounts that were associated with the previous authorisation provided these accounts remain eligible and available. Data Holders <strong>MAY</strong> allow these accounts to be amended, and <strong>MAY</strong> provide information regarding the pre-selection of accounts.</td>
+</tr>
+<tr>
+<td>Changing Attributes</td>
+<td>Data Holders <strong>MAY</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
+</tr>
+</tbody></table>
+
+<p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authorisation:</strong><br/>Amending consent</td>
+<td><strong>Effective from November 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
+</tr>
+<tr>
+<td>Customer Profile</td>
+<td>Where customer profile selection applies, Data Holders <strong>SHOULD</strong> omit the profile selection step and assume the customer profile associated with the existing authorisation. Data Holders <strong>MAY</strong> indicate which profile the authorisation relates to during the authorisation process.</td>
+</tr>
+<tr>
+<td>Account Selection</td>
+<td>Where account selection applies, Data Holders <strong>MUST</strong> pre-select accounts that were associated with the previous authorisation provided these accounts remain eligible and available to share. Data Holders <strong>MAY</strong> allow these accounts to be amended, and <strong>MAY</strong> provide information regarding the pre-selection of accounts.</td>
+</tr>
+<tr>
+<td>Changing Attributes</td>
+<td>Data Holders <strong>MUST</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
+</tr>
+</tbody></table>
+
+<p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
+<h3 id='withdrawal-standards'>Withdrawal Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
 <td><strong>Withdrawing consent</strong></td>
 <td>If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients <strong>MUST</strong> allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </ul></li><ul><li>Data recipients <strong>SHOULD</strong> consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</ul></li></td>
 </tr>
 <tr>
-<td>17</td>
 <td><strong>Withdrawing authorisation:</strong><br>Consequences</td>
 <td>As part of the withdrawal process, the data holder <strong>MUST</strong> advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <ul><li>The data holder <strong>MAY</strong> consider using or paraphrasing the following message(s):</li><ul><li><em>‘You should check with [Data Recipient] before you stop sharing to understand the consequences.’</em></ul></li><ul><li><em>‘You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.’</em></li></ul></ul></td>
 </tr>
 <tr>
-<td>18</td>
 <td><strong>Withdrawing authorisation:</strong><br>Redundant data</td>
 <td>As part of the withdrawal process, the data holder <strong>MUST</strong> inform the consumer about the handling of redundant data and the right to delete. <ul><li>The Data Holder <strong>MAY</strong> consider using or paraphrasing the following message(s):</li><ul><li><em>‘CDR data is either deleted or de-identified when it is no longer required.’</em></li><li><em>‘[Data recipient] will have specific policies on how to handle your data once it’s no longer required.’</em></li></ul></ul></td>
 </tr>
@@ -19089,6 +19237,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td>16/04/2021</td>
+<td>1.8.0</td>
+<td>CX Standards for Amending Consent</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.8.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/144">Decision 144</a> for details</td>
+</tr>
+<tr>
 <td>10/03/2021</td>
 <td>1.7.0</td>
 <td>Changes arising from the fifth Banking Maintenance Iteration</td>
@@ -19417,6 +19571,11 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='./archive/standards-1.7.0/docs/'>10/03/2021</a></td>
+<td>1.7.0</td>
+<td><a href='./archive/standards-1.7.0/docs/'>Banking Maintenance Iteration 5 and related changes arising from <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/159">Decision 159</a></a></td>
+</tr>
 <tr>
 <td><a href='./archive/standards-1.6.0/docs/'>23/12/2020</a></td>
 <td>1.6.0</td>
