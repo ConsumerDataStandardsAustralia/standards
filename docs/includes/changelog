@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>16/04/2021</td>
+<td>1.8.0</td>
+<td>CX Standards for Amending Consent</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.8.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/144">Decision 144</a> for details</td>
+</tr>
+<tr>
 <td>10/03/2021</td>
 <td>1.7.0</td>
 <td>Changes arising from the fifth Banking Maintenance Iteration</td>
