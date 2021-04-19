@@ -9,7 +9,7 @@ toc_footers:
 search: false
 ---
 
-# V1.8.0 Release Notes
+# V1.9.0 Release Notes
 Release notes for version 1.9.0 of the [CDR Standards](../../index.html).
 
 This release pertains to the changes approved by the Data Standards Chair in [Decision 161](https://github.com/ConsumerDataStandardsAustralia/standards/issues/161).
@@ -18,7 +18,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Updated documentation layout | Improved layout for documentation pages that do not require code samples such as release notes | N/A |
 
 ## API End Points
 
