@@ -29,7 +29,8 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Client Authentication | Changed the Client Authentication section of the standards to streamline it and included the optional Data Holder support of private_key_jwt client authentication of the CDR Register. | [Client Authentication](../../#client-authentication) |
+| Audience claim for Data Recipients calling Data Holders | Previously the documentation included pre-March 31st audience claim requirements. These have been removed and the post-March 2021 requirements retained. | [Client Authentication](../../#client-authentication)|
 
 ## Consumer Experience
 
