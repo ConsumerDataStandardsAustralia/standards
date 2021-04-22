@@ -173,9 +173,7 @@
         "data": {
           "type": "object",
           "required": [
-            "requestTime"
-          ],
-          "x-conditional": [
+            "requestTime",
             "availability",
             "performance",
             "invocations",
@@ -284,7 +282,7 @@
     "InvocationMetrics": {
       "description": "Number of API calls in each performance tier over time",
       "type": "object",
-      "x-conditional": [
+      "required": [
         "unauthenticated",
         "highPriority",
         "lowPriority",
@@ -397,7 +395,7 @@
     "AverageResponseMetrics": {
       "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
       "type": "object",
-      "x-conditional": [
+      "required": [
         "unauthenticated",
         "highPriority",
         "lowPriority",
@@ -589,13 +587,17 @@
     },
     "RejectionMetricsV2": {
       "description": "Number of calls rejected due to traffic thresholds over time",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
+      "required": [
+        "authenticated",
+        "unauthenticated"
       ],
       "properties": {
         "authenticated": {
           "description": "Rejection counts for all authenticated end points",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ],
           "properties": {
             "currentDay": {
               "type": "number",
@@ -612,6 +614,10 @@
         },
         "unauthenticated": {
           "description": "Rejection counts for all uauthenticated end points",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ],
           "properties": {
             "currentDay": {
               "type": "number",
