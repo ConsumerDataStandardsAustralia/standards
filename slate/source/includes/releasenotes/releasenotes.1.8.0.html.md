@@ -16,13 +16,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 ## High Level Standards
 
-<<<<<<< HEAD
 No change
-=======
-|Change|Description|Link|
-|------|-----------|----|
-| Updated documentation layout | Improved layout for documentation pages that do not require code samples such as release notes | N/A |
->>>>>>> poc/better-no-code-layout
 
 ## API End Points
 
