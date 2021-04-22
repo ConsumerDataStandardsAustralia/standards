@@ -25,6 +25,8 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 |Change|Description|Link|
 |------|-----------|----|
 | Added retirement date for the Get Metrics v1 endpoint | Retirement date of October 31st 2021 added for the Get Metics v1 endpoint | [Get Metrics v1](../obsolete/get-metrics-v1.html#get-metrics-v1) |
+| Added retirement date for PRD v2 endpoints | Retirement date of May 31st 2021 added for PRD v2 endpoints | [Get Products v2](../obsolete/get-products-v2.html#get-products-v2) and [Get Product Details v2](../obsolete/get-product-detail-v2.html#get-product-detail-v2) |
+
 
 ## Information Security Profile
 |Change|Description|Link|
