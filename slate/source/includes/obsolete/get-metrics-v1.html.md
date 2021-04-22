@@ -13,7 +13,7 @@ search: false
 # Get Metrics V1
 This page documents the obsolete version 1 of the Get Metrics end point.
 
-This version is to be ceased to be called by data recipients by **31st July 2021** and can be decommissioned by data holders as of that date.
+This version is to be ceased to be called by the CDR Register by **October 31st 2021** and can be decommissioned by affected data holders as of that date.
 ## Get Metrics
 
 <a id="opIdgetMetrics"></a>

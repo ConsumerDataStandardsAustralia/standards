@@ -24,7 +24,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Added retirement date for the Get Metrics v1 endpoint | Retirement date of October 31st 2021 added for the Get Metics v1 endpoint | [Get Metrics v1](../obsolete/get-metrics-v1.html#get-metrics-v1) |
 
 ## Information Security Profile
 |Change|Description|Link|

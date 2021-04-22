@@ -51,7 +51,7 @@ The following versioning schedule is reflective of the endpoints hosted by Data 
 | Common APIs     | Get Status                                   | /discovery/status                                          | GET    | V1      | 2020-07-01          | N/A             | 2019-09-30, v1.0.0 | N/A                |
 | Common APIs     | Get Outages                                  | /discovery/outages                                         | GET    | V1      | 2020-07-01          | N/A             | 2019-09-30, v1.0.0 | N/A                |
 | Admin APIs      | Metadata Update                              | /admin/register/metadata                                   | POST   | V1      | 2020-07-01          | N/A             | 2019-09-30, v1.0.0 | N/A                |
-| Admin APIs      | Get Metrics                                  | /admin/metrics                                             | GET    | V1      | 2020-07-01          | N/A             | 2019-09-30, v1.0.0 | N/A                |
+| Admin APIs      | Get Metrics                                  | /admin/metrics                                             | GET    | V1      | 2020-07-01          | 2021-10-31      | 2019-09-30, v1.0.0 | YYYY-mm-dd, v1.8.0 |
 | Admin APIs      | Get Metrics                                  | /admin/metrics                                             | GET    | V2      | 2021-07-31          | N/A             | 2020-09-16, v1.5.0 | N/A                |
 | InfoSec Profile | Endpoints                                    | CDR Arrangement Revocation Endpoint                        | POST   | 1.5.0   | 2020-11-01          | N/A             | 2020-04-17, v1.2.0 | N/A                |
 
