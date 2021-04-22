@@ -289,6 +289,12 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
+<aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metrics.basic:read</a>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside>
+
 <aside class="success">
 This operation may only be called by the CDR Register
 </aside>
@@ -802,4 +808,3 @@ This operation may only be called by the CDR Register
 ### Properties
 
 *None*
-

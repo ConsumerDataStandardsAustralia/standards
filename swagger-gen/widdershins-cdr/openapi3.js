@@ -534,6 +534,15 @@ function getResponseHeaders(data) {
     return headers;
 }
 
+function hasExRestrictedAuthenticationAccessOnly(data) {
+  if (data.operation['x-restricted-access'] && data.operation['x-restricted-access'] == true ) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 function hasExAuthentication(data) {
   if (data.operation['x-scopes'] && data.operation['x-scopes'].length) {
     return true;
@@ -676,6 +685,7 @@ function convertInner(api, options, callback) {
     data.utils.getAuthenticationStr = getAuthenticationStr;
     data.utils.hasExAuthentication = hasExAuthentication;
     data.utils.getExAuthenticationStr = getExAuthenticationStr;
+    data.utils.hasExRestrictedAuthenticationAccessOnly = hasExRestrictedAuthenticationAccessOnly;
     data.utils.join = function(s) {
         return s.split('\r').join('').split('\n').join(' ').trim();
     };

@@ -50,10 +50,14 @@
 {{#def.callbacks}}
 
 {{ data.security = data.operation.security ? data.operation.security : data.api.security; }}
-{{? data.utils.hasExAuthentication(data) }}
-{{#def.authentication_ex}}
-{{?? data.security && data.security.length }}
-{{#def.authentication}}
-{{??}}
-{{#def.authentication_none}}
-{{?}}
+  {{? data.utils.hasExAuthentication(data) }}
+    {{? data.utils.hasExRestrictedAuthenticationAccessOnly(data) }}
+      {{#def.restricted_access_authentication_ex}}
+    {{??}}
+      {{#def.authentication_ex}}
+    {{?}}
+  {{?? data.security && data.security.length }}
+    {{#def.authentication}}
+  {{??}}
+    {{#def.authentication_none}}
+  {{?}}
