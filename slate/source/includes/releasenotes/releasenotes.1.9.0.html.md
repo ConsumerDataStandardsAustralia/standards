@@ -36,6 +36,4 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 
 ## Consumer Experience
 
-|Change|Description|Link|
-|------|-----------|----|
-| | | |
+No change
