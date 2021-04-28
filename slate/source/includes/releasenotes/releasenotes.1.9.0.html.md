@@ -19,6 +19,7 @@ This release pertains to the changes approved by the Data Standards Chair in [De
 |Change|Description|Link|
 |------|-----------|----|
 | Updated documentation layout | Improved layout for documentation pages that do not require code samples such as release notes | N/A |
+| Documentation fix for Request Headers | Newlines and wildcard symbols were not correctly formatted. This has been corrected for the Accept request header description | [HTTP Headers](../../#http-headers)
 
 ## API End Points
 
