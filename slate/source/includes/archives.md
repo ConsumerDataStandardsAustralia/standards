@@ -4,7 +4,8 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
-|<a href='./archive/standards-1.7.0/docs/'>10/03/2021</a>|1.7.0|<a href='./archive/standards-1.7.0/docs/'>Banking Maintenance Iteration 5 and related changes arising from [Decision 159](https://github.com/ConsumerDataStandardsAustralia/standards/issues/159)</a>
+|<a href='./archive/standards-1.8.0/docs/'>16/04/2021</a>|1.8.0|<a href='./archive/standards-1.8.0/docs/'>CX Standards for Amending Consent</a> related to [Decision 144](https://github.com/ConsumerDataStandardsAustralia/standards/issues/144)
+|<a href='./archive/standards-1.7.0/docs/'>10/03/2021</a>|1.7.0|<a href='./archive/standards-1.7.0/docs/'>Banking Maintenance Iteration 5</a> and related changes arising from [Decision 159](https://github.com/ConsumerDataStandardsAustralia/standards/issues/159)
 |<a href='./archive/standards-1.6.0/docs/'>23/12/2020</a>|1.6.0|<a href='./archive/standards-1.6.0/docs/'>Update to audience claim for client authentication arising from Decision Proposal 325</a>
 |<a href='./archive/standards-1.5.1/docs/'>25/9/2020</a>|1.5.1|<a href='./archive/standards-1.5.1/docs/'>Revert 1.5.0 CRN update</a>
 |<a href='./archive/standards-1.5.0/docs/'>16/9/2020</a>|1.5.0|<a href='./archive/standards-1.5.0/docs/'>Banking Maintenance Iteration 4 Release</a>

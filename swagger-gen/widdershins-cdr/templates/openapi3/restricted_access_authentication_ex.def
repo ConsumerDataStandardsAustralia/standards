@@ -1,0 +1,9 @@
+<aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">{{= data.utils.getExAuthenticationStr(data) }}</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside>
+
+<aside class="success">
+This operation may only be called by the CDR Register
+</aside>

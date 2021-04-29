@@ -78,7 +78,7 @@
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -121,9 +121,15 @@
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<p><aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metadata:update</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside></p>
 
 <aside class="success">
 This operation may only be called by the CDR Register
@@ -164,7 +170,7 @@ This operation may only be called by the CDR Register
 
 <p>NOTE: This version must be implemented by <strong>July 31st 2021</strong></p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a>. If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.</p>
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -208,7 +214,7 @@ This operation may only be called by the CDR Register
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -398,6 +404,12 @@ This operation may only be called by the CDR Register
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<p><aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metrics.basic:read</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside></p>
 
 <aside class="success">
 This operation may only be called by the CDR Register
@@ -614,77 +626,77 @@ This operation may only be called by the CDR Register
 <tr>
 <td>» availability</td>
 <td><a href="#schemaavailabilitymetrics">AvailabilityMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Percentage availability of the CDR platform over time</td>
 </tr>
 <tr>
 <td>» performance</td>
 <td><a href="#schemaperformancemetrics">PerformanceMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Percentage of calls within the performance thresholds</td>
 </tr>
 <tr>
 <td>» invocations</td>
 <td><a href="#schemainvocationmetrics">InvocationMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of API calls in each performance tier over time</td>
 </tr>
 <tr>
 <td>» averageResponse</td>
 <td><a href="#schemaaverageresponsemetrics">AverageResponseMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time in seconds, at millisecond resolution, within each performance tier</td>
 </tr>
 <tr>
 <td>» sessionCount</td>
 <td><a href="#schemasessioncountmetrics">SessionCountMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Session counts over time. Note that a session is defined as the provisioning of an Access Token.</td>
 </tr>
 <tr>
 <td>» averageTps</td>
 <td><a href="#schemaaveragetpsmetrics">AverageTPSMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Transactions per second over time</td>
 </tr>
 <tr>
 <td>» peakTps</td>
 <td><a href="#schemapeaktpsmetrics">PeakTPSMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Maximum record transactions per second over time</td>
 </tr>
 <tr>
 <td>» errors</td>
 <td><a href="#schemaerrormetrics">ErrorMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of calls resulting in error due to server execution over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
 <td><a href="#schemarejectionmetricsv2">RejectionMetricsV2</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of calls rejected due to traffic thresholds over time</td>
 </tr>
 <tr>
 <td>» customerCount</td>
 <td>integer</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of customers with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» recipientCount</td>
 <td>integer</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of data recipients with active authorisations at the time of the call</td>
 </tr>
@@ -831,7 +843,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the unauthenticated tier</td>
 </tr>
@@ -852,7 +864,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>highPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the high priority tier</td>
 </tr>
@@ -873,7 +885,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>lowPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the low priority tier</td>
 </tr>
@@ -894,7 +906,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unattended</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the unattended tier</td>
 </tr>
@@ -915,7 +927,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>largePayload</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the large payload tier</td>
 </tr>
@@ -986,7 +998,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the unauthenticated tier</td>
 </tr>
@@ -1007,7 +1019,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>highPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the high priority tier</td>
 </tr>
@@ -1028,7 +1040,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>lowPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the low priority tier</td>
 </tr>
@@ -1049,7 +1061,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unattended</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the unattended tier</td>
 </tr>
@@ -1070,7 +1082,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>largePayload</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the large payload tier</td>
 </tr>
@@ -1275,42 +1287,42 @@ This operation may only be called by the CDR Register
 <tr>
 <td>authenticated</td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Rejection counts for all authenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Rejection counts for all uauthenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>

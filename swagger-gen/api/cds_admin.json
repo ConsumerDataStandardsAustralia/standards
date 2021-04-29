@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards Administration End Points",
     "description": "Data Holder Consumer Data Standards Administration End Points",
-    "version": "1.3.0",
+    "version": "1.9.0",
     "contact": {
       "name": "Consumer Data Standards Administration End Points",
       "url": "https://consumerdatastandards.org.au/",
@@ -35,6 +35,10 @@
           "Admin",
           "Register"
         ],
+        "x-scopes": [
+          "admin:metadata:update"
+        ],
+        "x-restricted-access": true,
         "parameters": [
           {
             "in": "body",
@@ -57,7 +61,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](##response-headers) of the API end point that the data holder has responded with."
+                "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             }
           }
@@ -68,8 +72,12 @@
     "/admin/metrics": {
       "get": {
         "summary": "Get Metrics",
-        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **July 31st 2021**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html)",
+        "description": "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **July 31st 2021**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
         "operationId": "getMetrics",
+        "x-scopes": [
+          "admin:metrics.basic:read"
+        ],
+        "x-restricted-access": true,
         "tags": [
           "Admin",
           "Metrics"
@@ -122,7 +130,7 @@
     },
     "RequestHeader_x-min-v": {
       "name": "x-min-v",
-      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+      "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
       "in": "header",
       "type": "string"
     }
@@ -165,9 +173,7 @@
         "data": {
           "type": "object",
           "required": [
-            "requestTime"
-          ],
-          "x-conditional": [
+            "requestTime",
             "availability",
             "performance",
             "invocations",
@@ -276,7 +282,7 @@
     "InvocationMetrics": {
       "description": "Number of API calls in each performance tier over time",
       "type": "object",
-      "x-conditional": [
+      "required": [
         "unauthenticated",
         "highPriority",
         "lowPriority",
@@ -389,7 +395,7 @@
     "AverageResponseMetrics": {
       "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
       "type": "object",
-      "x-conditional": [
+      "required": [
         "unauthenticated",
         "highPriority",
         "lowPriority",
@@ -581,13 +587,17 @@
     },
     "RejectionMetricsV2": {
       "description": "Number of calls rejected due to traffic thresholds over time",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
+      "required": [
+        "authenticated",
+        "unauthenticated"
       ],
       "properties": {
         "authenticated": {
           "description": "Rejection counts for all authenticated end points",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ],
           "properties": {
             "currentDay": {
               "type": "number",
@@ -604,6 +614,10 @@
         },
         "unauthenticated": {
           "description": "Rejection counts for all uauthenticated end points",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ],
           "properties": {
             "currentDay": {
               "type": "number",

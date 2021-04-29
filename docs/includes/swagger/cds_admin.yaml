@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Data Holder Consumer Data Standards Administration End Points
-  version: 1.3.0
+  version: 1.9.0
   title: Consumer Data Standards Administration End Points
   contact:
     name: Consumer Data Standards Administration End Points
@@ -41,7 +41,7 @@ paths:
         type: string
       - name: x-min-v
         in: header
-        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
         required: false
         type: string
       responses:
@@ -50,7 +50,10 @@ paths:
           headers:
             x-v:
               type: string
-              description: The [version](##response-headers) of the API end point that the data holder has responded with.
+              description: The [version](#response-headers) of the API end point that the data holder has responded with.
+      x-scopes:
+      - admin:metadata:update
+      x-restricted-access: true
       x-version: "1"
   /admin/metrics:
     get:
@@ -63,7 +66,7 @@ paths:
 
         NOTE: This version must be implemented by **July 31st 2021**
 
-        Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
+        Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
       operationId: getMetrics
       parameters:
       - name: period
@@ -83,7 +86,7 @@ paths:
         type: string
       - name: x-min-v
         in: header
-        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
         required: false
         type: string
       responses:
@@ -95,6 +98,9 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseMetricsListV2'
+      x-scopes:
+      - admin:metrics.basic:read
+      x-restricted-access: true
       x-version: "2"
 definitions:
   RequestMetaDataUpdate:
@@ -150,6 +156,12 @@ definitions:
     - previousDays
   InvocationMetrics:
     type: object
+    required:
+    - highPriority
+    - largePayload
+    - lowPriority
+    - unattended
+    - unauthenticated
     properties:
       unauthenticated:
         $ref: '#/definitions/InvocationMetrics_unauthenticated'
@@ -162,14 +174,14 @@ definitions:
       largePayload:
         $ref: '#/definitions/InvocationMetrics_largePayload'
     description: Number of API calls in each performance tier over time
-    x-conditional:
-    - unauthenticated
-    - highPriority
-    - lowPriority
-    - unattended
-    - largePayload
   AverageResponseMetrics:
     type: object
+    required:
+    - highPriority
+    - largePayload
+    - lowPriority
+    - unattended
+    - unauthenticated
     properties:
       unauthenticated:
         $ref: '#/definitions/AverageResponseMetrics_unauthenticated'
@@ -182,12 +194,6 @@ definitions:
       largePayload:
         $ref: '#/definitions/AverageResponseMetrics_largePayload'
     description: Average response time in seconds, at millisecond resolution, within each performance tier
-    x-conditional:
-    - unauthenticated
-    - highPriority
-    - lowPriority
-    - unattended
-    - largePayload
   SessionCountMetrics:
     properties:
       currentDay:
@@ -245,15 +251,15 @@ definitions:
     - currentDay
     - previousDays
   RejectionMetricsV2:
+    required:
+    - authenticated
+    - unauthenticated
     properties:
       authenticated:
         $ref: '#/definitions/RejectionMetricsV2_authenticated'
       unauthenticated:
         $ref: '#/definitions/RejectionMetricsV2_unauthenticated'
     description: Number of calls rejected due to traffic thresholds over time
-    x-conditional:
-    - currentDay
-    - previousDays
   Links:
     type: object
     required:
@@ -277,7 +283,18 @@ definitions:
         - REFRESH
   ResponseMetricsListV2_data:
     required:
+    - availability
+    - averageResponse
+    - averageTps
+    - customerCount
+    - errors
+    - invocations
+    - peakTps
+    - performance
+    - recipientCount
+    - rejections
     - requestTime
+    - sessionCount
     properties:
       requestTime:
         type: string
@@ -449,6 +466,6 @@ parameters:
   RequestHeader_x-min-v:
     name: x-min-v
     in: header
-    description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+    description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
     required: false
     type: string

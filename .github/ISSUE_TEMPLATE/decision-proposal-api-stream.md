@@ -4,7 +4,6 @@ about: Create a decision proposal entry.  Only to be used by the API Stream Lead
   delegate
 title: Decision Proposal <Number> - <Title>
 labels: API Decision Proposal, Proposal Pending
-assignees: JamesMBligh
 
 ---
 

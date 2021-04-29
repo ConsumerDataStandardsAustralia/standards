@@ -4,7 +4,6 @@ about: Create a noting paper entry.  Only to be used by the API Stream Lead or
   delegate
 title: Noting Paper <Number> - <Title>
 labels: Noting Paper, Proposal Pending
-assignees: JamesMBligh
 
 ---
 
