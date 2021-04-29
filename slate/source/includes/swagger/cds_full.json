@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "1.8.0",
+    "version" : "1.9.0",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",

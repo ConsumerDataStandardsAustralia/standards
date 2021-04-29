@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>29/04/2021</td>
+<td>1.9.0</td>
+<td>Changes arising from the sixth Data Standards Maintenance Iteration</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.9.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a> for details</td>
+</tr>
+<tr>
 <td>16/04/2021</td>
 <td>1.8.0</td>
 <td>CX Standards for Amending Consent</td>

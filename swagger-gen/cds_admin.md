@@ -62,7 +62,7 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestMetaDataUpdate](#schemarequestmetadataupdate)|mandatory|none|
 
 <h3 id="metadata-update-responses">Responses</h3>
@@ -75,11 +75,22 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](##response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
+
+  
+    
+      <aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metadata:update</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside>
 
 <aside class="success">
 This operation may only be called by the CDR Register
 </aside>
+
+    
+  
 
 ## Get Metrics
 
@@ -122,7 +133,7 @@ This end point allows the ACCC to obtain operational statistics from the Data Ho
 
 NOTE: This version must be implemented by **July 31st 2021**
 
-Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 
 ###Endpoint Version
 |   |  |
@@ -135,7 +146,7 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 |---|---|---|---|---|
 |period|query|string|optional|The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](##request-headers) and [x-v](##request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
+|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 
 #### Enumerated Values
 
@@ -289,9 +300,20 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html)
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
+  
+    
+      <aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metrics.basic:read</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside>
+
 <aside class="success">
 This operation may only be called by the CDR Register
 </aside>
+
+    
+  
 
 ## Schemas
 
@@ -462,17 +484,17 @@ This operation may only be called by the CDR Register
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» requestTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that the metrics in this payload were requested.|
-|» availability|[AvailabilityMetrics](#schemaavailabilitymetrics)|conditional|none|Percentage availability of the CDR platform over time|
-|» performance|[PerformanceMetrics](#schemaperformancemetrics)|conditional|none|Percentage of calls within the performance thresholds|
-|» invocations|[InvocationMetrics](#schemainvocationmetrics)|conditional|none|Number of API calls in each performance tier over time|
-|» averageResponse|[AverageResponseMetrics](#schemaaverageresponsemetrics)|conditional|none|Average response time in seconds, at millisecond resolution, within each performance tier|
-|» sessionCount|[SessionCountMetrics](#schemasessioncountmetrics)|conditional|none|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
-|» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|conditional|none|Transactions per second over time|
-|» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|conditional|none|Maximum record transactions per second over time|
-|» errors|[ErrorMetrics](#schemaerrormetrics)|conditional|none|Number of calls resulting in error due to server execution over time|
-|» rejections|[RejectionMetricsV2](#schemarejectionmetricsv2)|conditional|none|Number of calls rejected due to traffic thresholds over time|
-|» customerCount|integer|conditional|none|Number of customers with active authorisations at the time of the call|
-|» recipientCount|integer|conditional|none|Number of data recipients with active authorisations at the time of the call|
+|» availability|[AvailabilityMetrics](#schemaavailabilitymetrics)|mandatory|none|Percentage availability of the CDR platform over time|
+|» performance|[PerformanceMetrics](#schemaperformancemetrics)|mandatory|none|Percentage of calls within the performance thresholds|
+|» invocations|[InvocationMetrics](#schemainvocationmetrics)|mandatory|none|Number of API calls in each performance tier over time|
+|» averageResponse|[AverageResponseMetrics](#schemaaverageresponsemetrics)|mandatory|none|Average response time in seconds, at millisecond resolution, within each performance tier|
+|» sessionCount|[SessionCountMetrics](#schemasessioncountmetrics)|mandatory|none|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
+|» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|mandatory|none|Transactions per second over time|
+|» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|mandatory|none|Maximum record transactions per second over time|
+|» errors|[ErrorMetrics](#schemaerrormetrics)|mandatory|none|Number of calls resulting in error due to server execution over time|
+|» rejections|[RejectionMetricsV2](#schemarejectionmetricsv2)|mandatory|none|Number of calls rejected due to traffic thresholds over time|
+|» customerCount|integer|mandatory|none|Number of customers with active authorisations at the time of the call|
+|» recipientCount|integer|mandatory|none|Number of data recipients with active authorisations at the time of the call|
 |links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
@@ -568,19 +590,19 @@ This operation may only be called by the CDR Register
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|unauthenticated|object|conditional|none|API call counts for the unauthenticated tier|
+|unauthenticated|object|mandatory|none|API call counts for the unauthenticated tier|
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|highPriority|object|conditional|none|API call counts for the high priority tier|
+|highPriority|object|mandatory|none|API call counts for the high priority tier|
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|lowPriority|object|conditional|none|API call counts for the low priority tier|
+|lowPriority|object|mandatory|none|API call counts for the low priority tier|
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|unattended|object|conditional|none|API call counts for the unattended tier|
+|unattended|object|mandatory|none|API call counts for the unattended tier|
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
-|largePayload|object|conditional|none|API call counts for the large payload tier|
+|largePayload|object|mandatory|none|API call counts for the large payload tier|
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
@@ -630,19 +652,19 @@ This operation may only be called by the CDR Register
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|unauthenticated|object|conditional|none|Average response time for the unauthenticated tier|
+|unauthenticated|object|mandatory|none|Average response time for the unauthenticated tier|
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|highPriority|object|conditional|none|Average response time for the high priority tier|
+|highPriority|object|mandatory|none|Average response time for the high priority tier|
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|lowPriority|object|conditional|none|Average response time for the low priority tier|
+|lowPriority|object|mandatory|none|Average response time for the low priority tier|
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|unattended|object|conditional|none|Average response time for the unattended tier|
+|unattended|object|mandatory|none|Average response time for the unattended tier|
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|largePayload|object|conditional|none|Average response time for the large payload tier|
+|largePayload|object|mandatory|none|Average response time for the large payload tier|
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
@@ -766,12 +788,12 @@ This operation may only be called by the CDR Register
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|authenticated|object|optional|none|Rejection counts for all authenticated end points|
-|» currentDay|number|optional|none|Number of calls rejected for current day|
-|» previousDays|[number]|optional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
-|unauthenticated|object|optional|none|Rejection counts for all uauthenticated end points|
-|» currentDay|number|optional|none|Number of calls rejected for current day|
-|» previousDays|[number]|optional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|authenticated|object|mandatory|none|Rejection counts for all authenticated end points|
+|» currentDay|number|conditional|none|Number of calls rejected for current day|
+|» previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|unauthenticated|object|mandatory|none|Rejection counts for all uauthenticated end points|
+|» currentDay|number|conditional|none|Number of calls rejected for current day|
+|» previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
 <h2 id="tocSlinks">Links</h2>
 

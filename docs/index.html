@@ -755,7 +755,7 @@
 
 <p>The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
 
-<p>CSIRO’s Data61 has been appointed as the Data Standards Body (DSB) for the CDR regime. These standards have been prepared by the DSB.  The work of the team is  overseen by the Data Standards Chair, Mr. Andrew Stevens, with industry and consumer advice provided by an Advisory Committee. The work of standards development is conducted in close consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0">Australian Competition and Consumer Commission (ACCC)</a> as lead regulator of the Consumer Data Right, supported by the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/">Office of the Australian Information Commissioner (OAIC)</a>.</p>
+<p>These standards are maintained by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker.  The DSB is part of the <a href="https://www.directory.gov.au/portfolios/treasury/data-standards-body" title="Data Standards Body">Treasury</a>. The work of standards development is conducted in consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0" title="ACCC's CDR webpage">Australian Competition and Consumer Commission (ACCC)</a> as co-regulator of the Consumer Data Right, along with the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/" title="OAIC CDR webpage">Office of the Australian Information Commissioner (OAIC)</a>.</p>
 
 <p>The standards are required to be published. The obligations on CDR participants to apply the published standards commence on the commencement of the Consumer Data Right rules:</p>
 
@@ -786,6 +786,11 @@
 <td>February 28th 2021</td>
 </tr>
 <tr>
+<td><a href="#get-products">Get Product Detail V2</a></td>
+<td>Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time</td>
+<td>May 31st 2021</td>
+</tr>
+<tr>
 <td><a href="#get-product-detail">Get Product Detail V2</a></td>
 <td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
 <td>July 31st 2020</td>
@@ -799,6 +804,11 @@
 <td><a href="#get-products">Get Products V3</a></td>
 <td>Version 3 of this end point must be made available by affected data holders by the end of February 2021</td>
 <td>February 28th 2021</td>
+</tr>
+<tr>
+<td><a href="#get-products">Get Products V2</a></td>
+<td>Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time</td>
+<td>May 31st 2021</td>
 </tr>
 <tr>
 <td><a href="#get-products">Get Products V2</a></td>
@@ -819,6 +829,11 @@
 <td><a href="#token-revocation-end-point">Token Revocation End Point</a></td>
 <td>Data recipients may obsolete this end point from February 1st 2021.<br />Data holders may obsolete consent revocation via this end point from February 1st 2021, however they must still support oAuth token revocation. Data recipients must upgrade their implementations to use the Data Holder CDR Arrangement Revocation End Point by this time.</td>
 <td>February 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#get-metrics">Get Metrics V1</a></td>
+<td>Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time</td>
+<td>October 31st 2021</td>
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V2</a></td>
@@ -866,7 +881,7 @@
 
 <p><strong>Please note</strong> this is currently experimental.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent version 1.8.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.9.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -2054,10 +2069,82 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 
 <p>Note that, while <strong>[MTLS]</strong> is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
 
-<h3 id='cdr-register-calling-data-holders-and-data-recipients'>CDR Register calling Data Holders and Data Recipients</h3>
+<p>The following authentication methods are supported:</p>
+
+<ul>
+<li><p>Data Holders SHALL authenticate the CDR Register client using one of the following Client Authentication methods:  </p>
+
+<ul>
+<li>Self-signed JWT client assertion authenticated by the protected request endpoint according to <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, or<br></li>
+<li><code>private_key_jwt</code> authentication using <code>client_credentials</code> authorisation grant flow according to <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a>.<br/><br></li>
+</ul></li>
+<li><p>Data Holders and the CDR Register MUST authenticate Data Recipients using the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method.</p></li>
+<li><p>Data Recipients MUST authenticate Data Holders and the CDR Register using the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method.</p></li>
+</ul>
+
+<h4 id='private-key-jwt-client-authentication'>Private Key JWT Client Authentication</h4>
 
 <blockquote>
-<p>Non-Normative Example - CDR Register calls the Data holder&#39;s Get Metrics end point with Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).</p>
+<p>Private Key JWT Client Authentication Non-Normative Example - CDR Register calls the Data Holder&#39;s token end point to obtain an Access Token for the purposes of calling the Data Holder&#39;s Get Metrics endpoint.</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>POST /token HTTP/1.1
+Host: www.holder.com.au
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&amp;
+  client_id=5ntwEOpMdPxxy49Gt28SXWY6j3afl2CP2&amp;
+  scope=admin%3Ametrics.basic%3Aread&amp;
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+## Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "12456"
+}
+{
+  "iss": "5ntwEOpMdPxxy49Gt28SXWY6j3afl2CP2",
+  "sub": "5ntwEOpMdPxxy49Gt28SXWY6j3aflCP2",
+  "iat": 1516239022,
+  "exp": 1516239322,
+  "aud": "https://www.holder.com.au/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+</code></pre>
+
+<p>Authorisation Servers supporting <code>private_key_jwt</code> Client Authentication of clients MUST support the following requirements:</p>
+
+<ul>
+<li>Authorisation Servers MUST support the authentication of clients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</li>
+<li>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation.</li>
+<li>Client public keys are obtained from the <strong>[JWKS]</strong> endpoints.</li>
+<li><p>For the client authentication assertion, the <strong>[JWT]</strong> represents an assertion that MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:</p>
+
+<ul>
+<li><code>iss</code> - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.</li>
+<li><code>sub</code> - REQUIRED. Subject Identifier. The client ID of the bearer.</li>
+<li><code>aud</code> - REQUIRED. Audience(s) that the JWT is intended for. The issuer identifier URL of the authorisation server according to <strong>[RFC8414]</strong> SHOULD be used as the value of the audience. In order to facilitate interoperability, the authorisation server MUST accept its Issuer Identifier, Token Endpoint URL, or the URI of the endpoint being invoked as values that identify it as an intended audience.</li>
+<li><code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
+<li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
+<li><code>iat</code> - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
+</ul></li>
+<li><p>The aforementioned assertion MUST be sent to the Authorisation Server&#39;s Token endpoint with the <code>POST</code> method and MUST include the following REQUIRED parameters and MAY contain the following OPTIONAL parameters:</p>
+
+<ul>
+<li><code>grant_type</code> - REQUIRED. The grant type(s) supported by the Authorisation Server.<br></li>
+<li><code>client_id</code> - REQUIRED. The client ID of the bearer.</li>
+<li><code>client_assertion_type</code> - REQUIRED. This MUST be set to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
+<li><code>client_assertion</code> - REQUIRED. The encoded assertion JWT.</li>
+<li><code>scope</code> - OPTIONAL. The requested scope as described in <a href="https://tools.ietf.org/html/rfc6749#section-3.3">Section 3.3</a> of <strong>[RFC6749]</strong>.</li>
+</ul></li>
+</ul>
+
+<h4 id='self-signed-jwt-client-authentication'>Self-signed JWT Client Authentication</h4>
+
+<blockquote>
+<p>Self-signed JWT Client Authentication Non-Normative Example - CDR Register calls the Data holder&#39;s Get Metrics end point using self-signed JWT Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
@@ -2082,22 +2169,45 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 </code></pre>
 
-<p>Data Holders and Data Recipients MUST support the authentication of the CDR Register using a signed JWT according to the following requirements:</p>
+<p>Data Recipients and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT MUST do so according to the following requirements:</p>
 
 <ul>
-<li>  The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
+<li><p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:</p>
 
 <ul>
-<li><code>iss</code> - REQUIRED. Issuer. This MUST contain the static CDR Register id of ‘cdr-register’.</li>
-<li><code>sub</code> - REQUIRED. Subject. This MUST contain the static CDR Register id of ‘cdr-register’.</li>
-<li><code>aud</code> - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the intended audience. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.</li>
+<li><code>iss</code> - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.</li>
+<li><code>sub</code> - REQUIRED. Subject Identifier. The client ID of the bearer.</li>
+<li><code>aud</code> - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.</li>
 <li><code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
-<li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.</li>
-<li><code>iat</code> - OPTIONAL. Time at which the JWT was issued.</li>
+<li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
+<li><code>iat</code> - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
 </ul></li>
-<li>  Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]</li>
-<li>  The JWT should be accepted from the client using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750">section 2.1 of RFC6750</a></li>
+<li><p>Validation and use of the JWT and the claims described above MUST be performed in accordance with <strong>[JWT]</strong>.  </p></li>
+<li><p>The JWT MUST be accepted from the client at the requested endpoint using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750#section-2.1">section 2.1</a> of <strong>[RFC6750]</strong>.</p></li>
 </ul>
+
+<h3 id='cdr-register-calling-data-holders'>CDR Register calling Data Holders</h3>
+
+<p>Data Holders MUST support either <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> or <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> of the CDR Register.</p>
+
+<p>Data Holders SHOULD support <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> but MAY support <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>.</p>
+
+<p>This method MAY be changed by updating Data Holder registration details with the CDR Register.</p>
+
+<h4 id='private-key-jwt-authentication'>Private Key JWT authentication</h4>
+
+<p>If the Data Holder supports the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method for authenticating the CDR Register, it MUST also support the following requirements:</p>
+
+<ul>
+<li>Data Holders MUST issue a client ID that is provided to the CDR Register. The client ID is issued to the CDR Register during out of band registration processes, including, Data Holder onboarding. This MAY be a static client ID value of ‘cdr-register’.</li>
+<li>The authorisation grant&#39;s <code>grant_type</code> parameter MUST be set to <code>client_credentials</code>.<br></li>
+<li>The authorisation grant&#39;s <code>scope</code> parameter MUST be provided and MUST be set to the scope of the resource endpoint to be accessed.</li>
+<li>Upon successful authentication, Data Holders MUST issue an Access Token to the CDR Register. In accordance with <a href="https://tools.ietf.org/html/rfc6749#section-4.4">section 4.4</a> of <strong>[RFC6749]</strong> an Refresh Token SHOULD NOT be included.</li>
+</ul>
+
+<h4 id='self-signed-jwt-authentication'>Self-signed JWT authentication</h4>
+
+<p>If the Data Holder supports the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method for authenticating the CDR Register, the client ID MUST be set to a value of ‘cdr-register’.</p>
 
 <h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
 
@@ -2128,26 +2238,9 @@ token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
 }
 </code></pre>
 
-<p>Data Recipients MUST support the authentication of Data Holders using a signed JWT according to the following requirements:</p>
-
-<ul>
-<li>  The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
-
-<ul>
-<li>  <code>iss</code> - REQUIRED. Issuer. This MUST contain the id of the Data Holder obtained from the CDR Register.</li>
-<li>  <code>sub</code> - REQUIRED. Subject. This MUST contain the id of the Data Holder obtained from the CDR Register.</li>
-<li>  <code>aud</code> - REQUIRED. Audience. The aud (audience) Claim. Value that identifies the Data Recipient as the intended audience. The Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.</li>
-<li>  <code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
-<li>  <code>exp</code> - RE  QUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing.</li>
-<li>  <code>iat</code> - OPTIONAL. Time at which the JWT was issued.</li>
-</ul></li>
-<li>  Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT]</li>
-<li>  The JWT should be accepted from the client using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750">section 2.1 of RFC6750</a></li>
-</ul>
+<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the ID of the Data Holder obtained from the CDR Register.</p>
 
 <h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
-
-<p>Data Holders MUST support the authentication of Data Recipients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</p>
 
 <blockquote>
 <p>Non-Normative Example - Data Recipient calls Data Holder&#39;s token end point.</p>
@@ -2170,8 +2263,8 @@ grant_type=authorization_code&amp;
   "kid": "12456"
 }
 {
-  "iss": "12345",
-  "sub": "12345",
+  "iss": "s6BhdRkqt3",
+  "sub": "s6BhdRkqt3",
   "iat": 1516239022,
   "exp": 1516239322,
   "aud": "https://www.holder.com.au/token",
@@ -2179,36 +2272,12 @@ grant_type=authorization_code&amp;
 }
 </code></pre>
 
-<p>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation.</p>
-
-<p>Client public keys are obtained from the <strong>[JWKS]</strong> endpoints.</p>
-
-<p>For the client authentication assertion, the <strong>[JWT]</strong> represents an assertion that MUST include the following claims:</p>
+<p>In addition to the requirements for <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> the following requirements MUST be supported:</p>
 
 <ul>
-<li><code>iss</code>: The client ID of the bearer.</li>
-<li><code>sub</code>: The client ID of the bearer.</li>
-<li><p><code>aud</code>: The aud (audience) Claim. Identifies the recipients that the JWT is intended for.<br/>
-  <strong>Until March 31st, 2021</strong>, Data Recipients MUST continue to send as a single value string the URL of the endpoint being invoked. Data Holders MUST support validation of the URL of the endpoint being invoked.<br/>
-  <strong>After March 30th, 2021</strong>, Data Holders MUST support:<br/> The issuer identifier URL of the authorisation server according to <strong>[RFC8414]</strong> SHOULD be used as the value of the audience. In order to facilitate interoperability, the authorisation server MUST accept its Issuer Identifier, Token Endpoint URL, or the URI of the endpoint being invoked as values that identify it as an intended audience.<br/></p></li>
-<li><p><code>exp</code>: A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</p></li>
-<li><p><code>jti</code>: A unique identifier generated by the client for this authentication.</p></li>
-</ul>
-
-<p>The following claims MAY be included:</p>
-
-<ul>
-<li><code>iat</code>: A JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
-</ul>
-
-<p>When invoking a protected end point, the aforementioned assertion MUST be sent with the <code>POST</code> method and MUST include the following parameters:</p>
-
-<ul>
-<li> <code>grant_type</code>: This parameter MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>.  The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
-<li> <code>code</code>: This parameter MUST only be included when invoking the Token End point after utilising the <a href="#hybrid-flow">Hybrid Authentication flow</a>.  This is the value of the code parameter returned in the authorisation response.</li>
-<li> <code>client_id</code>: The ID of the calling Client.</li>
-<li> <code>client_assertion_type</code>: This MUST be set to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
-<li> <code>client_assertion</code>: The encoded assertion JWT.</li>
+<li>The client ID represents the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.</li>
+<li>The authorisation grant&#39;s <code>client_id</code> parameter value MUST represent the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.</li>
+<li>The authorisation grant&#39;s <code>grant_type</code> parameter value MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>. The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
 </ul>
 
 <h2 id='oidc-client-types'>OIDC Client Types</h2>
@@ -3261,6 +3330,11 @@ Host: data.holder.com.au
 <td>Oct 2015</td>
 </tr>
 <tr>
+<td><a id="RFC6750"></a><strong>[RFC6750]</strong></td>
+<td>The OAuth 2.0 Authorization Framework: Bearer Token Usage: <a href="https://tools.ietf.org/html/rfc6750">https://tools.ietf.org/html/rfc6750</a></td>
+<td>Oct 2012</td>
+</tr>
+<tr>
 <td><a id="PAR"></a><strong>[PAR]</strong></td>
 <td>OAuth 2.0 Pushed Authorization Requests: <a href="https://tools.ietf.org/html/draft-ietf-oauth-par-01">https://tools.ietf.org/html/draft-ietf-oauth-par-01</a></td>
 <td>Feb 2020</td>
@@ -3866,10 +3940,10 @@ Host: data.holder.com.au
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-bulk-balances'>Get Bulk Balances</h2>
 <p><a id="opIdlistBalancesBulk"></a></p>
 
@@ -4162,10 +4236,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-balances-for-specific-accounts'>Get Balances For Specific Accounts</h2>
 <p><a id="opIdlistBalancesSpecificAccounts"></a></p>
 
@@ -4403,10 +4477,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-account-balance'>Get Account Balance</h2>
 <p><a id="opIdgetBalance"></a></p>
 
@@ -4592,10 +4666,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-account-detail'>Get Account Detail</h2>
 <p><a id="opIdgetAccountDetail"></a></p>
 
@@ -4959,10 +5033,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.detail:read</a>
-</aside>
+</aside></p>
 <h2 id='get-transactions-for-account'>Get Transactions For Account</h2>
 <p><a id="opIdgetTransactions"></a></p>
 
@@ -5229,10 +5303,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
-</aside>
+</aside></p>
 <h2 id='get-transaction-detail'>Get Transaction Detail</h2>
 <p><a id="opIdgetTransactionDetail"></a></p>
 
@@ -5442,10 +5516,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
-</aside>
+</aside></p>
 <h2 id='get-direct-debits-for-account'>Get Direct Debits For Account</h2>
 <p><a id="opIdlistDirectDebits"></a></p>
 
@@ -5654,10 +5728,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-bulk-direct-debits'>Get Bulk Direct Debits</h2>
 <p><a id="opIdlistDirectDebitsBulk"></a></p>
 
@@ -5948,10 +6022,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-direct-debits-for-specific-accounts'>Get Direct Debits For Specific Accounts</h2>
 <p><a id="opIdlistDirectDebitsSpecificAccounts"></a></p>
 
@@ -6187,10 +6261,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-scheduled-payments-for-account'>Get Scheduled Payments for Account</h2>
 <p><a id="opIdlistScheduledPayments"></a></p>
 
@@ -6481,10 +6555,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-scheduled-payments-bulk'>Get Scheduled Payments Bulk</h2>
 <p><a id="opIdlistScheduledPaymentsBulk"></a></p>
 
@@ -6857,10 +6931,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-scheduled-payments-for-specific-accounts'>Get Scheduled Payments For Specific Accounts</h2>
 <p><a id="opIdlistScheduledPaymentsSpecificAccounts"></a></p>
 
@@ -7178,10 +7252,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-payees'>Get Payees</h2>
 <p><a id="opIdlistPayees"></a></p>
 
@@ -7409,10 +7483,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
-</aside>
+</aside></p>
 <h2 id='get-payee-detail'>Get Payee Detail</h2>
 <p><a id="opIdgetPayeeDetail"></a></p>
 
@@ -7636,10 +7710,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
-</aside>
+</aside></p>
 <h2 id='get-products'>Get Products</h2>
 <p><a id="opIdlistProducts"></a></p>
 
@@ -7941,9 +8015,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 <h2 id='get-product-detail'>Get Product Detail</h2>
 <p><a id="opIdgetProductDetail"></a></p>
 
@@ -8230,9 +8304,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 
 <h1 id="consumer-data-standards-common-apis">Common APIs</h1>
 <h2 id='get-customer'>Get Customer</h2>
@@ -8431,10 +8505,10 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-customer-detail'>Get Customer Detail</h2>
 <p><a id="opIdgetCustomerDetail"></a></p>
 
@@ -8729,10 +8803,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.detail:read</a>
-</aside>
+</aside></p>
 <h2 id='get-status'>Get Status</h2>
 <p><a id="opIdgetStatus"></a></p>
 
@@ -8861,9 +8935,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 <h2 id='get-outages'>Get Outages</h2>
 <p><a id="opIdgetOutages"></a></p>
 
@@ -8995,9 +9069,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 <h1 id='schemas'>Schemas</h1>
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
 
@@ -17665,7 +17739,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -17708,9 +17782,15 @@ This operation does not require authentication
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="##response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<p><aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metadata:update</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside></p>
 
 <aside class="success">
 This operation may only be called by the CDR Register
@@ -17752,7 +17832,7 @@ This operation may only be called by the CDR Register
 
 <p>NOTE: This version must be implemented by <strong>July 31st 2021</strong></p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a>. If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.</p>
 
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 
@@ -17798,7 +17878,7 @@ This operation may only be called by the CDR Register
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="##request-headers">x-min-v</a> and <a href="##request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -17994,6 +18074,12 @@ This operation may only be called by the CDR Register
 <td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
 </tr>
 </tbody></table>
+
+<p><aside class="notice">
+If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
+<a href="#authorisation-scopes">admin:metrics.basic:read</a>.<br/><br/>
+Otherwise, the scope is not applicable when the Data Holder supports Self-Signed JWT client authentication to authenticate the CDR Register.
+</aside></p>
 
 <aside class="success">
 This operation may only be called by the CDR Register
@@ -18213,77 +18299,77 @@ This operation may only be called by the CDR Register
 <tr>
 <td>» availability</td>
 <td><a href="#schemaavailabilitymetrics">AvailabilityMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Percentage availability of the CDR platform over time</td>
 </tr>
 <tr>
 <td>» performance</td>
 <td><a href="#schemaperformancemetrics">PerformanceMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Percentage of calls within the performance thresholds</td>
 </tr>
 <tr>
 <td>» invocations</td>
 <td><a href="#schemainvocationmetrics">InvocationMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of API calls in each performance tier over time</td>
 </tr>
 <tr>
 <td>» averageResponse</td>
 <td><a href="#schemaaverageresponsemetrics">AverageResponseMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time in seconds, at millisecond resolution, within each performance tier</td>
 </tr>
 <tr>
 <td>» sessionCount</td>
 <td><a href="#schemasessioncountmetrics">SessionCountMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Session counts over time. Note that a session is defined as the provisioning of an Access Token.</td>
 </tr>
 <tr>
 <td>» averageTps</td>
 <td><a href="#schemaaveragetpsmetrics">AverageTPSMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Transactions per second over time</td>
 </tr>
 <tr>
 <td>» peakTps</td>
 <td><a href="#schemapeaktpsmetrics">PeakTPSMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Maximum record transactions per second over time</td>
 </tr>
 <tr>
 <td>» errors</td>
 <td><a href="#schemaerrormetrics">ErrorMetrics</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of calls resulting in error due to server execution over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
 <td><a href="#schemarejectionmetricsv2">RejectionMetricsV2</a></td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of calls rejected due to traffic thresholds over time</td>
 </tr>
 <tr>
 <td>» customerCount</td>
 <td>integer</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of customers with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» recipientCount</td>
 <td>integer</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Number of data recipients with active authorisations at the time of the call</td>
 </tr>
@@ -18441,7 +18527,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the unauthenticated tier</td>
 </tr>
@@ -18462,7 +18548,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>highPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the high priority tier</td>
 </tr>
@@ -18483,7 +18569,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>lowPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the low priority tier</td>
 </tr>
@@ -18504,7 +18590,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unattended</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the unattended tier</td>
 </tr>
@@ -18525,7 +18611,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>largePayload</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>API call counts for the large payload tier</td>
 </tr>
@@ -18600,7 +18686,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the unauthenticated tier</td>
 </tr>
@@ -18621,7 +18707,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>highPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the high priority tier</td>
 </tr>
@@ -18642,7 +18728,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>lowPriority</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the low priority tier</td>
 </tr>
@@ -18663,7 +18749,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>unattended</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the unattended tier</td>
 </tr>
@@ -18684,7 +18770,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td>largePayload</td>
 <td>object</td>
-<td>conditional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Average response time for the large payload tier</td>
 </tr>
@@ -18909,42 +18995,42 @@ This operation may only be called by the CDR Register
 <tr>
 <td>authenticated</td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Rejection counts for all authenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 <td>Rejection counts for all uauthenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
@@ -19029,6 +19115,16 @@ This operation may only be called by the CDR Register
 <td><strong>Detailed Customer Data</strong></td>
 <td>common:customer.detail:read</td>
 <td>The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.</td>
+</tr>
+<tr>
+<td><strong>Basic Admin Metrics Data</strong></td>
+<td>admin:metrics.basic:read</td>
+<td>Metrics data accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes access to basic Metrics data.</td>
+</tr>
+<tr>
+<td><strong>Admin Metadata Update Data</strong></td>
+<td>admin:metadata:update</td>
+<td>Update notification accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes permission to notify Data Holders of changes to Data Recipient metadata held by the CDR Register.</td>
 </tr>
 <tr>
 <td><strong>Public</strong></td>
@@ -19236,6 +19332,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Detail Of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>29/04/2021</td>
+<td>1.9.0</td>
+<td>Changes arising from the sixth Data Standards Maintenance Iteration</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.9.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a> for details</td>
+</tr>
 <tr>
 <td>16/04/2021</td>
 <td>1.8.0</td>
@@ -19572,9 +19674,14 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='./archive/standards-1.8.0/docs/'>16/04/2021</a></td>
+<td>1.8.0</td>
+<td><a href='./archive/standards-1.8.0/docs/'>CX Standards for Amending Consent</a> related to <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/144">Decision 144</a></td>
+</tr>
+<tr>
 <td><a href='./archive/standards-1.7.0/docs/'>10/03/2021</a></td>
 <td>1.7.0</td>
-<td><a href='./archive/standards-1.7.0/docs/'>Banking Maintenance Iteration 5 and related changes arising from <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/159">Decision 159</a></a></td>
+<td><a href='./archive/standards-1.7.0/docs/'>Banking Maintenance Iteration 5</a> and related changes arising from <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/159">Decision 159</a></td>
 </tr>
 <tr>
 <td><a href='./archive/standards-1.6.0/docs/'>23/12/2020</a></td>

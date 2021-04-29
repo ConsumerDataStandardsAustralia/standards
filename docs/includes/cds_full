@@ -288,10 +288,10 @@
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-bulk-balances'>Get Bulk Balances</h2>
 <p><a id="opIdlistBalancesBulk"></a></p>
 
@@ -584,10 +584,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-balances-for-specific-accounts'>Get Balances For Specific Accounts</h2>
 <p><a id="opIdlistBalancesSpecificAccounts"></a></p>
 
@@ -825,10 +825,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-account-balance'>Get Account Balance</h2>
 <p><a id="opIdgetBalance"></a></p>
 
@@ -1014,10 +1014,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-account-detail'>Get Account Detail</h2>
 <p><a id="opIdgetAccountDetail"></a></p>
 
@@ -1381,10 +1381,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.detail:read</a>
-</aside>
+</aside></p>
 <h2 id='get-transactions-for-account'>Get Transactions For Account</h2>
 <p><a id="opIdgetTransactions"></a></p>
 
@@ -1651,10 +1651,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
-</aside>
+</aside></p>
 <h2 id='get-transaction-detail'>Get Transaction Detail</h2>
 <p><a id="opIdgetTransactionDetail"></a></p>
 
@@ -1864,10 +1864,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
-</aside>
+</aside></p>
 <h2 id='get-direct-debits-for-account'>Get Direct Debits For Account</h2>
 <p><a id="opIdlistDirectDebits"></a></p>
 
@@ -2076,10 +2076,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-bulk-direct-debits'>Get Bulk Direct Debits</h2>
 <p><a id="opIdlistDirectDebitsBulk"></a></p>
 
@@ -2370,10 +2370,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-direct-debits-for-specific-accounts'>Get Direct Debits For Specific Accounts</h2>
 <p><a id="opIdlistDirectDebitsSpecificAccounts"></a></p>
 
@@ -2609,10 +2609,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-scheduled-payments-for-account'>Get Scheduled Payments for Account</h2>
 <p><a id="opIdlistScheduledPayments"></a></p>
 
@@ -2903,10 +2903,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-scheduled-payments-bulk'>Get Scheduled Payments Bulk</h2>
 <p><a id="opIdlistScheduledPaymentsBulk"></a></p>
 
@@ -3279,10 +3279,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-scheduled-payments-for-specific-accounts'>Get Scheduled Payments For Specific Accounts</h2>
 <p><a id="opIdlistScheduledPaymentsSpecificAccounts"></a></p>
 
@@ -3600,10 +3600,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
-</aside>
+</aside></p>
 <h2 id='get-payees'>Get Payees</h2>
 <p><a id="opIdlistPayees"></a></p>
 
@@ -3831,10 +3831,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
-</aside>
+</aside></p>
 <h2 id='get-payee-detail'>Get Payee Detail</h2>
 <p><a id="opIdgetPayeeDetail"></a></p>
 
@@ -4058,10 +4058,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
-</aside>
+</aside></p>
 <h2 id='get-products'>Get Products</h2>
 <p><a id="opIdlistProducts"></a></p>
 
@@ -4363,9 +4363,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 <h2 id='get-product-detail'>Get Product Detail</h2>
 <p><a id="opIdgetProductDetail"></a></p>
 
@@ -4652,9 +4652,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 
 <h1 id="consumer-data-standards-common-apis">Common APIs</h1>
 <h2 id='get-customer'>Get Customer</h2>
@@ -4853,10 +4853,10 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.basic:read</a>
-</aside>
+</aside></p>
 <h2 id='get-customer-detail'>Get Customer Detail</h2>
 <p><a id="opIdgetCustomerDetail"></a></p>
 
@@ -5151,10 +5151,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="notice">
+<p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.detail:read</a>
-</aside>
+</aside></p>
 <h2 id='get-status'>Get Status</h2>
 <p><a id="opIdgetStatus"></a></p>
 
@@ -5283,9 +5283,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 <h2 id='get-outages'>Get Outages</h2>
 <p><a id="opIdgetOutages"></a></p>
 
@@ -5417,9 +5417,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<aside class="success">
+<p><aside class="success">
 This operation does not require authentication
-</aside>
+</aside></p>
 <h1 id='schemas'>Schemas</h1>
 <h2 id="tocSrequestaccountids">RequestAccountIds</h2>
 

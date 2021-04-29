@@ -1,0 +1,2502 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Get Product Detail v2</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_obsolete includes_obsolete_get-product-detail-v2" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#get-product-detail-v2" class="toc-h1 toc-link" data-title="Get Product Detail V2">Get Product Detail V2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-product-detail" class="toc-h2 toc-link" data-title="Get Product Detail">Get Product Detail</a>
+                  </li>
+                  <li>
+                    <a href="#tocSresponsebankingproductbyid" class="toc-h2 toc-link" data-title="ResponseBankingProductById">ResponseBankingProductById</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductdetail" class="toc-h2 toc-link" data-title="BankingProductDetail">BankingProductDetail</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductbundle" class="toc-h2 toc-link" data-title="BankingProductBundle">BankingProductBundle</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductfeature" class="toc-h2 toc-link" data-title="BankingProductFeature">BankingProductFeature</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductconstraint" class="toc-h2 toc-link" data-title="BankingProductConstraint">BankingProductConstraint</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproducteligibility" class="toc-h2 toc-link" data-title="BankingProductEligibility">BankingProductEligibility</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductfee" class="toc-h2 toc-link" data-title="BankingProductFee">BankingProductFee</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductdiscount" class="toc-h2 toc-link" data-title="BankingProductDiscount">BankingProductDiscount</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductdiscounteligibility" class="toc-h2 toc-link" data-title="BankingProductDiscountEligibility">BankingProductDiscountEligibility</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductdepositrate" class="toc-h2 toc-link" data-title="BankingProductDepositRate">BankingProductDepositRate</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductlendingrate" class="toc-h2 toc-link" data-title="BankingProductLendingRate">BankingProductLendingRate</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductratetier" class="toc-h2 toc-link" data-title="BankingProductRateTier">BankingProductRateTier</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductratecondition" class="toc-h2 toc-link" data-title="BankingProductRateCondition">BankingProductRateCondition</a>
+                  </li>
+                  <li>
+                    <a href="#tocSlinkspaginated" class="toc-h2 toc-link" data-title="LinksPaginated">LinksPaginated</a>
+                  </li>
+                  <li>
+                    <a href="#tocSmetapaginated" class="toc-h2 toc-link" data-title="MetaPaginated">MetaPaginated</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='get-product-detail-v2'>Get Product Detail V2</h1>
+<p>This page documents the obsolete version 2 of the Get Product Detail end point.</p>
+<h2 id='get-product-detail'>Get Product Detail</h2>
+<p><a id="opIdgetProductDetail"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/products/{productId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre>
+<p><code>GET /banking/products/{productId}</code></p>
+
+<p>Obtain detailed information on a single product offered openly to the market.</p>
+
+<p>NOTE: This version must be implemented by <strong>July 2020</strong></p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a></p>
+<h3 id='endpoint-version'>Endpoint Version</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>2</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="get-product-detail-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>productId</td>
+<td>path</td>
+<td><a href="../../#common-field-types">ASCIIString</a></td>
+<td>mandatory</td>
+<td>ID of the specific product requested</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERIODIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accrualFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"depositRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lendingRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-product-detail-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Success</td>
+<td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<p>...</p>
+
+<h2 id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
+
+<p><a id="schemaresponsebankingproductbyid"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERIODIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accrualFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"depositRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lendingRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td><a href="#schemabankingproductdetail">BankingProductDetail</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemalinks">Links</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductdetail">BankingProductDetail</h2>
+
+<p><a id="schemabankingproductdetail"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"cardArt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"bundles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERIODIC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accrualFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"depositRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"lendingRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-2'>Properties</h3>
+<p><em>allOf</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemabankingproductv2">BankingProductV2</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p><em>and</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» bundles</td>
+<td>[<a href="#schemabankingproductbundle">BankingProductBundle</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also</td>
+</tr>
+<tr>
+<td>» features</td>
+<td>[<a href="#schemabankingproductfeature">BankingProductFeature</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Array of features available for the product</td>
+</tr>
+<tr>
+<td>» constraints</td>
+<td>[<a href="#schemabankingproductconstraint">BankingProductConstraint</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Constraints on the application for or operation of the product such as minimum balances or limit thresholds</td>
+</tr>
+<tr>
+<td>» eligibility</td>
+<td>[<a href="#schemabankingproducteligibility">BankingProductEligibility</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Eligibility criteria for the product</td>
+</tr>
+<tr>
+<td>» fees</td>
+<td>[<a href="#schemabankingproductfee">BankingProductFee</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Fees applicable for the product</td>
+</tr>
+<tr>
+<td>» depositRates</td>
+<td>[<a href="#schemabankingproductdepositrate">BankingProductDepositRate</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Interest rates available for deposits</td>
+</tr>
+<tr>
+<td>» lendingRates</td>
+<td>[<a href="#schemabankingproductlendingrate">BankingProductLendingRate</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Interest rates charged against lending balances</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductbundle">BankingProductBundle</h2>
+
+<p><a id="schemabankingproductbundle"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Name of the bundle</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Description of the bundle</td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information on the bundle</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on the bundle criteria and benefits</td>
+</tr>
+<tr>
+<td>productIds</td>
+<td>[string]</td>
+<td>optional</td>
+<td>none</td>
+<td>Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductfeature">BankingProductFeature</h2>
+
+<p><a id="schemabankingproductfeature"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"featureType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ACCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>featureType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of feature described</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductfeaturetypedoc">featureType</a> specified. Whether mandatory or not is dependent on the value of the <a href="#tocSproductfeaturetypedoc">featureType.</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Display text providing more information on the feature. Mandatory if the <a href="#tocSproductfeaturetypedoc">feature type</a> is set to OTHER</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this feature</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>featureType</td>
+<td>CARD_ACCESS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>ADDITIONAL_CARDS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>UNLIMITED_TXNS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>FREE_TXNS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>FREE_TXNS_ALLOWANCE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>LOYALTY_PROGRAM</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OFFSET</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OVERDRAFT</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>REDRAW</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INSURANCE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BALANCE_TRANSFERS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INTEREST_FREE</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>INTEREST_FREE_TRANSFERS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>DIGITAL_WALLET</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>DIGITAL_BANKING</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NPP_PAYID</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NPP_ENABLED</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>DONATE_INTEREST</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BILL_PAYMENT</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>BONUS_REWARDS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>NOTIFICATIONS</td>
+</tr>
+<tr>
+<td>featureType</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductconstraint">BankingProductConstraint</h2>
+
+<p><a id="schemabankingproductconstraint"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>constraintType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of constraint described.  See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductconstrainttypedoc">constraintType</a> specified.  Whether mandatory or not is dependent on the value of <a href="#tocSproductconstrainttypedoc">constraintType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information the constraint</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on the constraint</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>constraintType</td>
+<td>MIN_BALANCE</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MAX_BALANCE</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>OPENING_BALANCE</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MAX_LIMIT</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MIN_LIMIT</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproducteligibility">BankingProductEligibility</h2>
+
+<p><a id="schemabankingproducteligibility"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"eligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-6'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eligibilityType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproducteligibilitytypedoc">eligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproducteligibilitytypedoc">eligibilityType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Display text providing more information on the <a href="#tocSproducteligibilitytypedoc">eligibility</a> criteria. Mandatory if the field is set to OTHER</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this eligibility criteria</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eligibilityType</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>PENSION_RECIPIENT</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MIN_AGE</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MAX_AGE</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MIN_INCOME</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>MIN_TURNOVER</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>STAFF</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>STUDENT</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>EMPLOYMENT_STATUS</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>RESIDENCY_STATUS</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>eligibilityType</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductfee">BankingProductFee</h2>
+
+<p><a id="schemabankingproductfee"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERIODIC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accrualFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Name of the fee</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of fee</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="../../#common-field-types">AmountString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+</tr>
+<tr>
+<td>balanceRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+</tr>
+<tr>
+<td>transactionRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+</tr>
+<tr>
+<td>accruedRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory</td>
+</tr>
+<tr>
+<td>accrualFrequency</td>
+<td><a href="../../#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td><a href="../../#common-field-types">CurrencyString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The currency the fee will be charged in. Assumes AUD if absent</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductfeetypedoc">feeType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductfeetypedoc">feeType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information on the fee</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this fee</td>
+</tr>
+<tr>
+<td>discounts</td>
+<td>[<a href="#schemabankingproductdiscount">BankingProductDiscount</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>An optional list of discounts to this fee that may be available</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>feeType</td>
+<td>PERIODIC</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>TRANSACTION</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>WITHDRAWAL</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>DEPOSIT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>PAYMENT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>PURCHASE</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>EVENT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>UPFRONT</td>
+</tr>
+<tr>
+<td>feeType</td>
+<td>EXIT</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductdiscount">BankingProductDiscount</h2>
+
+<p><a id="schemabankingproductdiscount"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balanceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accruedRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"eligibility"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Description of the discount</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of discount. See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="../../#common-field-types">AmountString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>Value of the discount. When following properties include one of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
+</tr>
+<tr>
+<td>balanceRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>transactionRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory</td>
+</tr>
+<tr>
+<td>accruedRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>feeRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounttypedoc">discountType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounttypedoc">discountType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information on the discount</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this discount</td>
+</tr>
+<tr>
+<td>eligibility</td>
+<td>[<a href="#schemabankingproductdiscounteligibility">BankingProductDiscountEligibility</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Eligibility constraints that apply to this discount</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>discountType</td>
+<td>BALANCE</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>DEPOSITS</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>PAYMENTS</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>FEE_CAP</td>
+</tr>
+<tr>
+<td>discountType</td>
+<td>ELIGIBILITY_ONLY</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h2>
+
+<p><a id="schemabankingproductdiscounteligibility"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"discountEligibilityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-9'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>discountEligibilityType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of the specific eligibility constraint for a discount</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdiscounteligibilitydoc">discountEligibilityType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information on this eligibility constraint</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this eligibility constraint</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>discountEligibilityType</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>PENSION_RECIPIENT</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_AGE</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MAX_AGE</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_INCOME</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>MIN_TURNOVER</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>STAFF</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>STUDENT</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>EMPLOYMENT_STATUS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>RESIDENCY_STATUS</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>NATURAL_PERSON</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>INTRODUCTORY</td>
+</tr>
+<tr>
+<td>discountEligibilityType</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductdepositrate">BankingProductDepositRate</h2>
+
+<p><a id="schemabankingproductdepositrate"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"depositRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-10'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>depositRateType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>rate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The rate to be applied</td>
+</tr>
+<tr>
+<td>calculationFrequency</td>
+<td><a href="../../#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>applicationFrequency</td>
+<td><a href="../../#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>tiers</td>
+<td>[<a href="#schemabankingproductratetier">BankingProductRateTier</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Rate tiers applicable for this rate</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductdepositratetypedoc">depositRateType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductdepositratetypedoc">depositRateType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information on the rate</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this rate</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>depositRateType</td>
+<td>FIXED</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>BONUS</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>BUNDLE_BONUS</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>VARIABLE</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>INTRODUCTORY</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>FLOATING</td>
+</tr>
+<tr>
+<td>depositRateType</td>
+<td>MARKET_LINKED</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductlendingrate">BankingProductLendingRate</h2>
+
+<p><a id="schemabankingproductlendingrate"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"lendingRateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comparisonRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"calculationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interestPaymentDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_ARREARS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-11'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lendingRateType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The type of rate (fixed, variable, etc). See the next section for an overview of valid values and their meaning</td>
+</tr>
+<tr>
+<td>rate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The rate to be applied</td>
+</tr>
+<tr>
+<td>comparisonRate</td>
+<td><a href="../../#common-field-types">RateString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>A comparison rate equivalent for this rate</td>
+</tr>
+<tr>
+<td>calculationFrequency</td>
+<td><a href="../../#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is &#39;applied&#39; to the account (see applicationFrequency). Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>applicationFrequency</td>
+<td><a href="../../#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The period after which the calculated amount(s) (see calculationFrequency) are &#39;applied&#39; (i.e. debited or credited) to the account. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
+</tr>
+<tr>
+<td>interestPaymentDue</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered</td>
+</tr>
+<tr>
+<td>tiers</td>
+<td>[<a href="#schemabankingproductratetier">BankingProductRateTier</a>]</td>
+<td>optional</td>
+<td>none</td>
+<td>Rate tiers applicable for this rate</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>Generic field containing additional information relevant to the <a href="#tocSproductlendingratetypedoc">lendingRateType</a> specified. Whether mandatory or not is dependent on the value of <a href="#tocSproductlendingratetypedoc">lendingRateType</a></td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>Display text providing more information on the rate.</td>
+</tr>
+<tr>
+<td>additionalInfoUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Link to a web page with more information on this rate</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lendingRateType</td>
+<td>FIXED</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>VARIABLE</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>INTRODUCTORY</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>DISCOUNT</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>PENALTY</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>FLOATING</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>MARKET_LINKED</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>CASH_ADVANCE</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>PURCHASE</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>BUNDLE_DISCOUNT_FIXED</td>
+</tr>
+<tr>
+<td>lendingRateType</td>
+<td>BUNDLE_DISCOUNT_VARIABLE</td>
+</tr>
+<tr>
+<td>interestPaymentDue</td>
+<td>IN_ARREARS</td>
+</tr>
+<tr>
+<td>interestPaymentDue</td>
+<td>IN_ADVANCE</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductratetier">BankingProductRateTier</h2>
+
+<p><a id="schemabankingproductratetier"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"subTier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOLLAR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minimumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rateApplicationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHOLE_BALANCE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicabilityConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Defines the criteria and conditions for which a rate applies</em></p>
+<h3 id='properties-12'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>A display name for the tier</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
+</tr>
+<tr>
+<td>minimumValue</td>
+<td>number</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value</td>
+</tr>
+<tr>
+<td>maximumValue</td>
+<td>number</td>
+<td>optional</td>
+<td>none</td>
+<td>The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier&#39;s range has no upper bound.</td>
+</tr>
+<tr>
+<td>rateApplicationMethod</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as &#39;bands&#39; or &#39;steps&#39;)</td>
+</tr>
+<tr>
+<td>applicabilityConditions</td>
+<td><a href="#schemabankingproductratecondition">BankingProductRateCondition</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Defines a condition for the applicability of a tiered rate</td>
+</tr>
+<tr>
+<td>subTier</td>
+<td>object</td>
+<td>optional</td>
+<td>none</td>
+<td>Defines the sub-tier criteria and conditions for which a rate applies</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>A display name for the tier</td>
+</tr>
+<tr>
+<td>» unitOfMeasure</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a <strong>DOLLAR</strong> amount. <strong>PERCENT</strong> (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of <strong>MONTH</strong>&#39;s or <strong>DAY</strong>&#39;s (in the case of term deposit tiers)</td>
+</tr>
+<tr>
+<td>» minimumValue</td>
+<td>number</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value</td>
+</tr>
+<tr>
+<td>» maximumValue</td>
+<td>number</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months)</td>
+</tr>
+<tr>
+<td>» rateApplicationMethod</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as &#39;bands&#39; or &#39;steps&#39;)</td>
+</tr>
+<tr>
+<td>» applicabilityConditions</td>
+<td><a href="#schemabankingproductratecondition">BankingProductRateCondition</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Defines a condition for the applicability of a tiered rate</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unitOfMeasure</td>
+<td>DOLLAR</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>PERCENT</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>MONTH</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>DAY</td>
+</tr>
+<tr>
+<td>rateApplicationMethod</td>
+<td>WHOLE_BALANCE</td>
+</tr>
+<tr>
+<td>rateApplicationMethod</td>
+<td>PER_TIER</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>DOLLAR</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>PERCENT</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>MONTH</td>
+</tr>
+<tr>
+<td>unitOfMeasure</td>
+<td>DAY</td>
+</tr>
+<tr>
+<td>rateApplicationMethod</td>
+<td>WHOLE_BALANCE</td>
+</tr>
+<tr>
+<td>rateApplicationMethod</td>
+<td>PER_TIER</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductratecondition">BankingProductRateCondition</h2>
+
+<p><a id="schemabankingproductratecondition"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h2 id="tocSlinkspaginated">LinksPaginated</h2>
+
+<p><a id="schemalinkspaginated"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>self</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>Fully qualified link that generated the current response document</td>
+</tr>
+<tr>
+<td>first</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
+</tr>
+<tr>
+<td>prev</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
+</tr>
+<tr>
+<td>next</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
+</tr>
+<tr>
+<td>last</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSmetapaginated">MetaPaginated</h2>
+
+<p><a id="schemametapaginated"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalRecords</td>
+<td><a href="../../#common-field-types">NaturalNumber</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The total number of records in the full set. See <a href="../../#pagination">pagination</a>.</td>
+</tr>
+<tr>
+<td>totalPages</td>
+<td><a href="../../#common-field-types">NaturalNumber</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The total number of pages in the full set. See <a href="../../#pagination">pagination</a>.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

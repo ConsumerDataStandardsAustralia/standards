@@ -138,10 +138,15 @@ Obtain a list of accounts
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
+
+    
+  
 
 ## Get Bulk Balances
 
@@ -282,10 +287,15 @@ Obtain balances for multiple, filtered accounts
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
+
+    
+  
 
 ## Get Balances For Specific Accounts
 
@@ -421,10 +431,15 @@ Obtain balances for a specified list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
+
+    
+  
 
 ## Get Account Balance
 
@@ -530,10 +545,15 @@ Obtain the balance for a single specified account
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.basic:read</a>
 </aside>
+
+    
+  
 
 ## Get Account Detail
 
@@ -817,10 +837,15 @@ Obtain detailed information on a single account
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:accounts.detail:read</a>
 </aside>
+
+    
+  
 
 ## Get Transactions For Account
 
@@ -960,10 +985,15 @@ Some general notes that apply to all end points that retrieve transactions:
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
+
+    
+  
 
 ## Get Transaction Detail
 
@@ -1087,10 +1117,15 @@ Obtain detailed information on a transaction for a specific account
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:transactions:read</a>
 </aside>
+
+    
+  
 
 ## Get Direct Debits For Account
 
@@ -1207,10 +1242,15 @@ Obtain direct debit authorisations for a specific account
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
+
+    
+  
 
 ## Get Bulk Direct Debits
 
@@ -1349,10 +1389,15 @@ Obtain direct debit authorisations for multiple, filtered accounts
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
+
+    
+  
 
 ## Get Direct Debits For Specific Accounts
 
@@ -1486,10 +1531,15 @@ Obtain direct debit authorisations for a specified list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
+
+    
+  
 
 ## Get Scheduled Payments for Account
 
@@ -1688,10 +1738,15 @@ Obtain scheduled, outgoing payments for a specific account
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
+
+    
+  
 
 ## Get Scheduled Payments Bulk
 
@@ -1912,10 +1967,15 @@ Obtain scheduled payments for multiple, filtered accounts that are the source of
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
+
+    
+  
 
 ## Get Scheduled Payments For Specific Accounts
 
@@ -2131,10 +2191,15 @@ Obtain scheduled payments for a specified list of accounts
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 |422|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:regular_payments:read</a>
 </aside>
+
+    
+  
 
 ## Get Payees
 
@@ -2255,10 +2320,15 @@ Obtain a list of pre-registered payees
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
+
+    
+  
 
 ## Get Payee Detail
 
@@ -2402,10 +2472,15 @@ Note that the payee sub-structure should be selected to represent the payment de
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">bank:payees:read</a>
 </aside>
+
+    
+  
 
 ## Get Products
 
@@ -2584,9 +2659,12 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/ob
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-<aside class="success">
+  
+    <aside class="success">
 This operation does not require authentication
 </aside>
+
+  
 
 ## Get Product Detail
 
@@ -2823,9 +2901,12 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](inclu
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-<aside class="success">
+  
+    <aside class="success">
 This operation does not require authentication
 </aside>
+
+  
 
 <h1 id="consumer-data-standards-common-apis">Common APIs</h1>
 
@@ -2950,10 +3031,15 @@ Obtain basic information on the customer that has authorised the current session
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.basic:read</a>
 </aside>
+
+    
+  
 
 ## Get Customer Detail
 
@@ -3174,10 +3260,15 @@ Obtain detailed information on the authorised customer within the current sessio
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 |200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
-<aside class="notice">
+  
+    
+      <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">common:customer.detail:read</a>
 </aside>
+
+    
+  
 
 ## Get Status
 
@@ -3262,9 +3353,12 @@ Obtain a health check status for the implementation
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-<aside class="success">
+  
+    <aside class="success">
 This operation does not require authentication
 </aside>
+
+  
 
 ## Get Outages
 
@@ -3352,9 +3446,12 @@ Obtain a list of scheduled outages for the implementation
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-<aside class="success">
+  
+    <aside class="success">
 This operation does not require authentication
 </aside>
+
+  
 
 # Schemas
 
