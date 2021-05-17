@@ -48,7 +48,7 @@ The following responses are in addition to error responses covered by normative 
 Response Code | Situation | Description
 -- | -- | --
 204 No Content | Success | The sharing arrangement has been revoked successfully
-422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found
+422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
 **Data Holders calling Data Recipients**
 
