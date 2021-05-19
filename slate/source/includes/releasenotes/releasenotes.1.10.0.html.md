@@ -35,4 +35,4 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Documentation fixes | Corrected documentation typos and transposition issues when the CX standards were ported from the PDF version to the Data Standards |  [CX Standards](../../#business-consumer) |
