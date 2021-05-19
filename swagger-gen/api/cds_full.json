@@ -3963,15 +3963,15 @@
         "data",
         "links"
       ],
-      "x-conditional": [
-        "person",
-        "organisation"
-      ],
       "properties": {
         "data": {
           "type": "object",
           "required": [
             "customerUType"
+          ],
+          "x-conditional": [
+            "person",
+            "organisation"
           ],
           "properties": {
             "customerUType": {
@@ -3983,9 +3983,11 @@
               ]
             },
             "person": {
+              "description": "Mandatory if `customerUType` is `person`",
               "$ref": "#/definitions/CommonPerson"
             },
             "organisation": {
+              "description": "Mandatory if `customerUType` is `organisation`",
               "$ref": "#/definitions/CommonOrganisation"
             }
           }
@@ -4004,15 +4006,15 @@
         "data",
         "links"
       ],
-      "x-conditional": [
-        "person",
-        "organisation"
-      ],
       "properties": {
         "data": {
           "type": "object",
           "required": [
             "customerUType"
+          ],
+          "x-conditional": [
+            "person",
+            "organisation"
           ],
           "properties": {
             "customerUType": {
@@ -4024,9 +4026,11 @@
               ]
             },
             "person": {
+              "description": "Mandatory if `customerUType` is `person`",
               "$ref": "#/definitions/CommonPersonDetail"
             },
             "organisation": {
+              "description": "Mandatory if `customerUType` is `organisation`",
               "$ref": "#/definitions/CommonOrganisationDetail"
             }
           }
