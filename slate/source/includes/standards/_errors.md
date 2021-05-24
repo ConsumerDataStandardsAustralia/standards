@@ -39,8 +39,8 @@ When responding with a standard CDR error code, the URN structure is defined as 
 <pre class="display-inline light-box highlight">
 <b>urn-string</b> = "urn:" <b>NID</b> ":" <b>metatype</b> ":" <b>sub-type</b> ":" <b>error-category</b> "/" <b>error-code</b>
 
-<ul><li><b>NID</b>            = "au-cds", string.</li>
-<li><b>metatype</b>       = "error", string.</li>
+<ul><li><b>NID</b>            = "au-cds" string.</li>
+<li><b>metatype</b>       = "error" string.</li>
 <li><b>sub-type</b>       = cds-all / cds-register / cds-banking / cds-energy
 <ul><li><b>cds-all</b>      = "cds-all" string. An error code common to all API responses,</li><li><b>cds-register</b> = "cds-register" string. Reserved for CDR Register issued error codes only,</li><li><b>cds-banking</b>  = "cds-banking" string. An error code specific to the CDR banking APIs only,</li><li><b>cds-energy</b>   = "cds-energy" string. An error code specific to the CDR energy APIs only.</li></ul></li>
 <li><b>error-category</b> = string. The high-level category code for the error defined in the Consumer Data Standards</li>
