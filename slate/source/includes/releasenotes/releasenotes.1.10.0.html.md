@@ -18,7 +18,7 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| URI Structure | Updated the formatting for the URI Structure to be consistent with the new error code URN formatting | [URI Structure](../../#uri-structure) |
 
 ## API End Points
 
