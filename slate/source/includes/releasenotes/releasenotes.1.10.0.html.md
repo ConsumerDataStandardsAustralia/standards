@@ -19,6 +19,7 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 |Change|Description|Link|
 |------|-----------|----|
 | Standard Error Codes | Changes arising from [Decision Proposal 154](https://github.com/ConsumerDataStandardsAustralia/standards/issues/154), [Decision Proposal 155](https://github.com/ConsumerDataStandardsAustralia/standards/issues/155) and [Decision Proposal 156](https://github.com/ConsumerDataStandardsAustralia/standards/issues/156).  | [Error Codes](../../#error-codes) |
+| URI Structure | Updated the formatting for the URI Structure to be consistent with the new error code URN formatting | [URI Structure](../../#uri-structure) |
 
 ## API End Points
 
