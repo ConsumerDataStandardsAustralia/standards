@@ -566,6 +566,10 @@ html, body {
       padding-top: 1em;
       float: none;
       white-space: pre-wrap;
+
+      * {
+        white-space: pre-wrap;
+      }
     }
     &.light-box {
       background: rgba(128,128,128,0.1);
@@ -573,6 +577,8 @@ html, body {
       border: 1px solid rgba(128,128,128,0.3);
       border-width: 1px 0;
     }
+
+
   }
 
   ul.error-code-list {
