@@ -37,28 +37,14 @@ If a Data Recipient or Data Holder responds with an application-specific error c
 When responding with a standard CDR error code, the URN structure is defined as follows:
 
 <pre class="display-inline light-box highlight">
-<b>urn-string</b> = "urn:" <b>NID</b> ":" <b>metatype</b> ":" <b>sub-type</b> ":"
-              <b>error-category</b> "/" <b>error-code</b>
+<b>urn-string</b> = "urn:" <b>NID</b> ":" <b>metatype</b> ":" <b>sub-type</b> ":" <b>error-category</b> "/" <b>error-code</b>
 
-    <b>NID</b>      = "au-cds"
-
-    <b>metatype</b> = "error"
-
-    <b>sub-type</b> = cds-all / cds-register / cds-banking / cds-energy
-        <b>cds-all</b>      = "cds-all" string. An error code common to all
-                       API responses,
-        <b>cds-register</b> = "cds-register" string. Reserved for CDR Register
-                       issued error codes only,
-        <b>cds-banking</b>  = "cds-banking" string. An error code specific to
-                       the CDR banking APIs only,
-        <b>cds-energy</b>   = "cds-energy" string. An error code specific to
-                       the CDR energy APIs only.
-
-    <b>error-category</b> = string. The high-level category code for the error
-                     defined in the Consumer Data Standards
-
-    <b>error-code</b>     = string. The specific error encountered, defined in
-                     the Consumer Data Standards
+<ul><li><b>NID</b>            = "au-cds", string.</li>
+<li><b>metatype</b>       = "error", string.</li>
+<li><b>sub-type</b>       = cds-all / cds-register / cds-banking / cds-energy
+<ul><li><b>cds-all</b>      = "cds-all" string. An error code common to all API responses,</li><li><b>cds-register</b> = "cds-register" string. Reserved for CDR Register issued error codes only,</li><li><b>cds-banking</b>  = "cds-banking" string. An error code specific to the CDR banking APIs only,</li><li><b>cds-energy</b>   = "cds-energy" string. An error code specific to the CDR energy APIs only.</li></ul></li>
+<li><b>error-category</b> = string. The high-level category code for the error defined in the Consumer Data Standards</li>
+<li><b>error-code</b>     = string. The specific error encountered, defined in the Consumer Data Standards</li></ul>
 </pre>
 <div class="clear both"></div>
 
@@ -89,7 +75,7 @@ Content-Type: application/json
       "title": "Application Is Missing Product ID",
       "description": "A new loan application was requested but the product ID was not provided",
       "meta": {
-         "urn": "urn:au-cds:error:cds-all:ExpectedError"
+         "urn": "urn:au-cds:error:cds-all:GeneralError/Expected"
       }
     }
   ]
@@ -98,8 +84,8 @@ Content-Type: application/json
 
 | Error Title      | Error Code            | HTTP Status Category | Description |  
 | :--------------- | :-------------------- | :------------------- | :---------- |  
-| <a id="error-4xx-expected-error"></a>Expected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>ExpectedError</code> | 4xx</td> | An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code. |
-| <a id="error-5xx-unexpected-error"></a>Unexpected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>UnexpectedError</code> | 5xx | An error code that can be used, when an unexpected error occurs.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code. |
+| <a id="error-4xx-expected-error"></a>Expected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>GeneralError/Expected</code> | 4xx</td> | An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code. |
+| <a id="error-5xx-unexpected-error"></a>Unexpected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>GeneralError/Unexpected</code> | 5xx | An error code that can be used, when an unexpected error occurs.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code. |
 | <a id="error-4503-service-unavailable"></a>Service Unavailable | <code>urn:au-cds:error:cds-all:<br/>Service/Unavailable</code> | 503 (Service Unavailable) | A request is made but the API unavailable as due to an outage.<br/><br/>The error description MAY describe whether the outage is scheduled or unexpected and whether it is fully unavailable or partially unavailable. |
 
 #### 400 Bad Request Errors

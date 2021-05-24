@@ -326,7 +326,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl, &>pre.display-inline {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -562,11 +562,10 @@ html, body {
   pre, blockquote {
     &.display-inline {
       clear: none;
-      width: 60%;
-      margin: 1em 40% 1em 0;
-      box-sizing: border-box;
-      display: block;
-      overflow-wrap: break-word;
+      width: calc(100% - #{$examples-width});
+      padding-top: 1em;
+      float: none;
+      white-space: pre-wrap;
     }
     &.light-box {
       background: rgba(128,128,128,0.1);
@@ -614,6 +613,13 @@ html, body {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
   }
+  .content {
+    pre, blockquote {
+      &.display-inline {
+        width: calc(100% - #{$examples-width});
+      }
+    }
+  }
 }
 
 @media (max-width: $phone-width) {
@@ -640,6 +646,14 @@ html, body {
 
   %right-col + %left-col {
     margin-top: $main-padding;
+  }
+
+  .content {
+    pre, blockquote {
+      &.display-inline {
+        width: 100%;
+      }
+    }
   }
 }
 
