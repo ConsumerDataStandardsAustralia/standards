@@ -362,19 +362,18 @@ To assist clients, the Data Recipient or Data Holder **MUST** provide the applic
 ] }
 ```
 
-If Data Recipients or Data Holders support custom error codes prior to July 1st 2021, the following transition arrangements apply:
+If Data Recipients or Data Holders support custom error codes prior to February 1st 2022, the following transition arrangements apply:
 
-* **Effective as soon as standardised error codes are supported:**  
+* **Effective as soon as standardised error codes are supported by the Data Recipient or Data Holder:**  
     * If the Data Recipient or Data Holder supports application-specific error codes they **MUST** publish a mapping of those codes to the standard CDR error codes in a developer friendly way that is discoverable and freely available.
-
     * Data Recipients and Data Holders **MAY** publish this mapping any time prior to February 1st 2022.
 
-* **Effective from February 1st 2022:** Data Holders and Data Recipients MUST support standardised error codes by this date and continue to support any custom error codes.
+* **Effective from February 1st 2022:** Data Holders and Data Recipients **MUST** support standardised error codes by this date and continue to support any custom error codes.
   * Standardised error codes **MUST** be provided in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field
   * If applicable, application specific error codes **MUST** be provided in the <code>ResponseErrorListV2 &raquo; code</code>
-  * Data Recipients and Data Holders **MAY** transition to support standardised error codes by endpoint or per error code if preferred.
+  * Data Recipients and Data Holders **MAY** phase their transition to support standardised error codes such as by endpoint or per error code if preferred prior to this date.
 
-* **Effective from November 1st 2022:** Data Holders and Data Recipients may deprecate any custom error codes
+* **Effective from November 1st 2022:** Data Holders and Data Recipients **MAY** deprecate any custom error codes
   * Standardised error codes **MAY** be provided in the <code>ResponseErrorListV2 &raquo; code</code> field if no application-specific error code applies
   * Application-specific error codes **MAY** be provided in the <code>ResponseErrorListV2 &raquo; code</code>
 
