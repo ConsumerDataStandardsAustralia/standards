@@ -2,8 +2,9 @@
 
 These standards define a standard list of error codes that Data Recipients and Data Holders SHOULD or MUST conform to. Further,
 
-* If otherwise specified, Data Recipients and Data Holders SHOULD use the standard error codes defined below
+* Data Recipients and Data Holders SHOULD use the standard error codes as defined
 * Where a specific error code MUST be responded, this requirement is stated against the applicable error code or API endpoints
+* Where a specific error code MAY be responded, this requirement is stated against the applicable error code or API endpoints
 * Data Recipients and Data Holders MAY respond with application-specific error codes and in doing so, MUST respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.
 
 ### Error Response Structure
