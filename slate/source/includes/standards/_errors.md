@@ -1,10 +1,10 @@
 ## Error Codes
 
-These standards define a standard list of error codes that Data Recipients and Data Holders SHOULD or MUST conform to.
+These standards define a standard list of error codes that Data Recipients and Data Holders SHOULD or MUST conform to. Further,
 
 * If otherwise specified, Data Recipients and Data Holders SHOULD use the standard error codes defined below
 * Where a specific error code MUST be responded, this requirement is stated against the applicable error code or API endpoints
-* Data Recipients and Data Holders MAY respond with application-specific error codes
+* Data Recipients and Data Holders MAY respond with application-specific error codes and in doing so, MUST respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.
 
 ### Error Response Structure
 
@@ -14,7 +14,7 @@ These standards define a standard list of error codes that Data Recipients and D
 {
   "errors": [
     {
-      "code": "urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount",
+      "code": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount",
       "title": "Unavailable Banking Account",
       "description": "808b5b1d-0798-4bdf-a3c8-f9cce2904eb2"
     }
@@ -193,7 +193,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Resource/Unavailable",
       "title": "Unavailable Resource",
-      "description": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+      "description": "52e443ae13c5"
     }
   ]
 }
@@ -234,7 +234,7 @@ Content-Type: application/json
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
-| <a id="error-406-header-unsupported-version"></a>Unsupported Version | <code>urn:au-cds:error:cds-all:<br/>Header/UnsupportedVersion</code> | A request is made for a version that is lower than the minimum version (`x-min-v`, `x-<HID>-v`) or greater than maximum version (`x-v`, `x-<HID>-v`) the Data Holder supports for the requested endpoint.<br/><br/>The error description MAY include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
+| <a id="error-406-header-unsupported-version"></a>Unsupported Version | <code>urn:au-cds:error:cds-all:<br/>Header/UnsupportedVersion</code> | A request is made for a version that is lower than the minimum version or greater than maximum version the Data Holder supports for the requested endpoint.<br/><br/>The error description MAY include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
 
 #### 422 (Unprocessable Entity) Errors
 
@@ -357,7 +357,7 @@ To assist clients, the Data Recipient or Data Holder **MUST** provide the applic
   {
     "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
-    "description": "'x-min-v' must be greater than or equal to '2'"
+    "description": "'x-v' must be greater than or equal to '2'"
   }
 ] }
 ```
