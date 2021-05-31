@@ -24,7 +24,7 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Draft Energy Standards Update | Minor updates to the draft energy standards to accommodate the initial feedback from DP 180 and follow up with EME from DP173 | [Draft Energy Standards](../../draft/energy-draft.html) |
 
 ## Information Security Profile
 |Change|Description|Link|
