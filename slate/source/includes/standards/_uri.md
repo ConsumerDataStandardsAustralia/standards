@@ -6,19 +6,19 @@
 
 The URI structure for API end points in the standards MUST be implemented as follows:  
 <pre class="display-inline light-box highlight">
-<b>uri-string</b> = <b>\<holder_path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" <b>\<industry\></b> "/" <b>\<resource\></b>
+<b>uri-string</b> = <b>\<holder-path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" <b>\<industry\></b> "/" <b>\<resource\></b>
 
 The components of this URI structure are described as follows:
-<ul><li><b>\<holder_path\></b>  = string.
+<ul><li><b>\<holder-path\></b>  = string.
 The holder path is a base path set by the data holder. It can be any URI desired by the holder. While all authenticated end points must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated end points.</li>
-<li><b>cds-au</b>           = "cds-au" string.
+<li><b>cds-au</b>         = "cds-au" string.
 This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
 <li><b>\<version\></b>      = "v1" string.
 The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76).</li>
 <li><b>\<industry\></b>     = banking / energy / telco / common
 A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.
 Note that the currently accepted values for the `industry` component of the base path are:
-    <ul><li><b>banking</b> = "banking" string. For APIs related to banking and potentially wider financial services data,</li><li><b>energy</b>  = "energy" string. For APIs related to the energy distribution industry,</li><li><b>telco</b>   = "telco" string. For APIs related to telecommunications,</li><li><b>common</b>  = "common" string. For APIs that potentially span industries.</li></ul></li>
+<ul><li><b>banking</b> = "banking" string. For APIs related to banking and potentially wider financial services data,</li><li><b>energy</b>  = "energy" string. For APIs related to the energy distribution industry,</li><li><b>telco</b>   = "telco" string. For APIs related to telecommunications,</li><li><b>common</b>  = "common" string. For APIs that potentially span industries.</li></ul></li>
 <li><b>\<resource\></b>     = string.
 The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li></ul>
 </pre>

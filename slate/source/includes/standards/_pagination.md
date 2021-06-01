@@ -35,7 +35,7 @@ values.
 ### Additional Pagination Rules
 
 * Holders are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.
-* A maximum page size of `1000` records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then a HTTP status of `422 Unprocessable Entity` SHOULD be returned.
+* A maximum page size of `1000` records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then an [Invalid Page Size](#error-400-field-invalid-page-size) error SHOULD be returned.
 
 ### Cursor Support
 
