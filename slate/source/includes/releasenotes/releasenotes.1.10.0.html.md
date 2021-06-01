@@ -25,6 +25,7 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 
 |Change|Description|Link|
 |------|-----------|----|
+| Draft Energy Standards Update | Minor updates to the draft energy standards to accommodate the initial feedback from DP 180 and follow up with EME from DP173 | [Draft Energy Standards](../../draft/energy-draft.html) |
 | Customer APIs | Documentation bug fix to correctly label person and organisation responses as conditional based on the value provided in the the customerUType field. | [ResponseCommonCustomer](../../#tocSdiscoveryoutage), [ResponseCommonCustomerDetail](../../#tocSresponsecommoncustomerdetail)|
 
 ## Information Security Profile
