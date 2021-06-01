@@ -1,4 +1,4 @@
-<h2 id='consumer-experience-standards'>Consumer Experience Standards</h2><h3 id='data-language-standards'>Data Language Standards</h3>
+<h2 id='data-language-standards'>Data Language Standards</h2>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
 <font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
@@ -14,16 +14,16 @@
 </thead><tbody>
 <tr>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘&dagger;’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘&dagger;’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
 </tr>
 <tr>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
-<td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘‡’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
+<td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘&Dagger;’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
 </tr>
 </tbody></table>
 
 <p><strong>Table 1.</strong></p>
-<h4 id='individual-consumer'>Individual Consumer</h4>
+<h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -42,12 +42,12 @@
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Name, occupation, contact details ‡</strong></td>
+<td><strong>Name, occupation, contact details &Dagger;</strong></td>
 <td>Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h4 id='business-consumer'>Business consumer</h4>
+<h3 id='business-consumer'>Business consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -57,21 +57,21 @@
 </thead><tbody>
 <tr>
 <td><strong>Organisation profile</strong> *</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;</td>
 <td>common:customer.basic:read</td>
 </tr>
 <tr>
 <td><strong>Organisation contact details</strong> *</td>
-<td>Organisation address;<br>Organisation address;<br>Phone number;</td>
+<td>Organisation address;<br>Mail address;<br>Phone number;</td>
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Organisation profile and contact details</strong> *‡</td>
-<td>Agent &gt;name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);† <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address<br>address;<br>Phone number;<br></td>
+<td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger; <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h4 id='common'>Common</h4>
+<h3 id='common'>Common</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -90,13 +90,13 @@
 <td>bank:accounts.detail:read</td>
 </tr>
 <tr>
-<td><strong>Account balance and details‡</strong></td>
+<td><strong>Account balance and details&Dagger;</strong></td>
 <td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
 <td>bank:accounts.detail:read</td>
 </tr>
 <tr>
 <td><strong>Transaction details</strong></td>
-<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)†</em></td>
+<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
 <td>bank:transactions:read</td>
 </tr>
 <tr>
@@ -106,11 +106,11 @@
 </tr>
 <tr>
 <td><strong>Saved payees</strong></td>
-<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)†</em></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
 <td>bank:payees:read</td>
 </tr>
 </tbody></table>
-<h3 id='accessibility-standards'>Accessibility Standards</h3>
+<h2 id='accessibility-standards'>Accessibility Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -142,7 +142,7 @@
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
 </tr>
 </tbody></table>
-<h3 id='consent-standards'>Consent Standards</h3>
+<h2 id='consent-standards'>Consent Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -154,7 +154,7 @@
 <td>Data recipients <strong>MUST</strong> notify consumers of redirection prior to authentication.</td>
 </tr>
 </tbody></table>
-<h3 id='authentication-standards'>Authentication Standards</h3>
+<h2 id='authentication-standards'>Authentication Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -178,7 +178,7 @@
 <td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
 </tr>
 </tbody></table>
-<h3 id='authorisation-standards'>Authorisation Standards</h3>
+<h2 id='authorisation-standards'>Authorisation Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -194,7 +194,7 @@
 <td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
 </tr>
 </tbody></table>
-<h3 id='amending-authorisation-standards'>Amending Authorisation Standards</h3>
+<h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -246,7 +246,7 @@
 </tbody></table>
 
 <p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
-<h3 id='withdrawal-standards'>Withdrawal Standards</h3>
+<h2 id='withdrawal-standards'>Withdrawal Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>

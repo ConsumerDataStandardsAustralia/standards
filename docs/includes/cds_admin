@@ -7,12 +7,13 @@
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/register/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
-<span class="err">x-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="err">x-min-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-
-</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
@@ -89,6 +90,10 @@
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+
 <h3 id="metadata-update-responses">Responses</h3>
 
 <table><thead>
@@ -105,7 +110,15 @@
 <td>Success</td>
 <td>None</td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td>None</td>
+</tr>
 </tbody></table>
+
+<h3 id="metadata-update-responseschema">Response Schema</h3>
 <h3 id='response-headers'>Response Headers</h3>
 <table><thead>
 <tr>
@@ -385,7 +398,15 @@ This operation may only be called by the CDR Register
 <td>Success</td>
 <td><a href="#schemaresponsemetricslistv2">ResponseMetricsListV2</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td>None</td>
+</tr>
 </tbody></table>
+
+<h3 id="get-metrics-responseschema">Response Schema</h3>
 <h3 id='response-headers-2'>Response Headers</h3>
 <table><thead>
 <tr>

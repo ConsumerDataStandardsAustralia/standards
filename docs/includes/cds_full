@@ -261,6 +261,12 @@
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountlist">ResponseBankingAccountList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers'>Response Headers</h3>
 <table><thead>
@@ -281,6 +287,13 @@
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -557,6 +570,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-2'>Response Headers</h3>
 <table><thead>
@@ -577,6 +596,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -786,10 +812,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-authorisation-unavailable-banking-account">422 - Unavailable Banking Account</a></li><li><a href="#error-422-authorisation-invalid-banking-account">422 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-3'>Response Headers</h3>
@@ -817,7 +843,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>422</td>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -987,6 +1013,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-4'>Response Headers</h3>
 <table><thead>
@@ -1007,6 +1039,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -1354,6 +1393,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountbyid">ResponseBankingAccountById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-5'>Response Headers</h3>
 <table><thead>
@@ -1374,6 +1419,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -1624,6 +1676,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-6'>Response Headers</h3>
 <table><thead>
@@ -1644,6 +1702,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -1837,6 +1902,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingtransactionbyid">ResponseBankingTransactionById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-404-resource-unavailable">Unavailable Resource</a></li><li><a href="#error-404-resource-invalid">Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-7'>Response Headers</h3>
 <table><thead>
@@ -1857,6 +1928,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -2049,6 +2127,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-8'>Response Headers</h3>
 <table><thead>
@@ -2069,6 +2153,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -2343,6 +2434,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-9'>Response Headers</h3>
 <table><thead>
@@ -2363,6 +2460,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -2570,10 +2674,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-authorisation-unavailable-banking-account">422 - Unavailable Banking Account</a></li><li><a href="#error-422-authorisation-invalid-banking-account">422 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-10'>Response Headers</h3>
@@ -2601,7 +2705,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>422</td>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -2876,6 +2980,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-11'>Response Headers</h3>
 <table><thead>
@@ -2896,6 +3006,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -3252,6 +3369,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-12'>Response Headers</h3>
 <table><thead>
@@ -3272,6 +3395,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -3561,10 +3691,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-authorisation-unavailable-banking-account">422 - Unavailable Banking Account</a></li><li><a href="#error-422-authorisation-invalid-banking-account">422 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-13'>Response Headers</h3>
@@ -3592,7 +3722,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>422</td>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -3804,6 +3934,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingpayeelist">ResponseBankingPayeeList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-14'>Response Headers</h3>
 <table><thead>
@@ -3824,6 +3960,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -4031,6 +4174,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingpayeebyid">ResponseBankingPayeeById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-resource-unavailable">404 - Unavailable Resource</a></li><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-15'>Response Headers</h3>
 <table><thead>
@@ -4051,6 +4200,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -4343,6 +4499,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-16'>Response Headers</h3>
 <table><thead>
@@ -4632,6 +4794,12 @@ This operation does not require authentication
 <td>Success</td>
 <td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-resource-unavailable">404 - Unavailable Resource</a></li><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-17'>Response Headers</h3>
 <table><thead>
@@ -4826,6 +4994,12 @@ This operation does not require authentication
 <td>Success</td>
 <td><a href="#schemaresponsecommoncustomer">ResponseCommonCustomer</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-18'>Response Headers</h3>
 <table><thead>
@@ -4846,6 +5020,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5124,6 +5305,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsecommoncustomerdetail">ResponseCommonCustomerDetail</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-19'>Response Headers</h3>
 <table><thead>
@@ -5144,6 +5331,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5262,6 +5456,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
 <td><a href="#schemaresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</a></td>
+</tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-20'>Response Headers</h3>
@@ -5396,6 +5596,12 @@ This operation does not require authentication
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
 <td><a href="#schemaresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</a></td>
+</tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-21'>Response Headers</h3>
@@ -11653,16 +11859,16 @@ This operation does not require authentication
 <tr>
 <td>» person</td>
 <td><a href="#schemacommonperson">CommonPerson</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
 <td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
 <tr>
 <td>links</td>
@@ -11863,16 +12069,16 @@ This operation does not require authentication
 <tr>
 <td>» person</td>
 <td><a href="#schemacommonpersondetail">CommonPersonDetail</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
 <td><a href="#schemacommonorganisationdetail">CommonOrganisationDetail</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
 <tr>
 <td>links</td>
@@ -13221,21 +13427,51 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
+<h2 id="tocSmetaerror">MetaError</h2>
 
-<p><a id="schemaresponseerrorlist"></a></p>
+<p><a id="schemametaerror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Additional data for customised error codes</em></p>
+<h3 id='properties-75'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>urn</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <code>code</code> is an application-specific error rather than a standardised error code.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+
+<p><a id="schemaresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-75'>Properties</h3>
+</span></code></pre><h3 id='properties-76'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13257,28 +13493,28 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Must be one of the following: 0001 – Account not able to be found</td>
+<td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.</td>
 </tr>
 <tr>
 <td>» title</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Must be one of the following: Invalid account</td>
+<td>A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.</td>
 </tr>
 <tr>
 <td>» detail</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>ID of the account not found</td>
+<td>A human-readable explanation specific to this occurrence of the problem.</td>
 </tr>
 <tr>
 <td>» meta</td>
-<td>object</td>
+<td><a href="#schemametaerror">MetaError</a></td>
 <td>optional</td>
 <td>none</td>
-<td>Optional additional data for specific error types</td>
+<td>Additional data for customised error codes</td>
 </tr>
 </tbody></table>
 
@@ -13289,7 +13525,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
-<h3 id='properties-76'>Properties</h3>
+<h3 id='properties-77'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
