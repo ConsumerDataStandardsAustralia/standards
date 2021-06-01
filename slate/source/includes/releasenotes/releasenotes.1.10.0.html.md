@@ -25,7 +25,7 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Customer APIs | Documentation bug fix to correctly label person and organisation responses as conditional based on the value provided in the the customerUType field. | [ResponseCommonCustomer](../../#tocSdiscoveryoutage), [ResponseCommonCustomerDetail](../../#tocSresponsecommoncustomerdetail)|
 
 ## Information Security Profile
 |Change|Description|Link|
