@@ -19,12 +19,14 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 |Change|Description|Link|
 |------|-----------|----|
 | URI Structure | Updated the formatting for the URI Structure to be consistent with the new error code URN formatting | [URI Structure](../../#uri-structure) |
+| Optional fields | Fixed a documentation bug in the Optional fields section that incorporated an older statement relating to empty fields being acceptable for optional fields needs that conflicted with the more specific optionality section. | [Payload Conventions](../../#payload-conventions) |
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
 | Draft Energy Standards Update | Minor updates to the draft energy standards to accommodate the initial feedback from DP 180 and follow up with EME from DP173 | [Draft Energy Standards](../../draft/energy-draft.html) |
+| Customer APIs | Documentation bug fix to correctly label person and organisation responses as conditional based on the value provided in the the customerUType field. | [ResponseCommonCustomer](../../#tocSdiscoveryoutage), [ResponseCommonCustomerDetail](../../#tocSresponsecommoncustomerdetail)|
 
 ## Information Security Profile
 |Change|Description|Link|
@@ -35,4 +37,4 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Documentation fixes | Corrected documentation typos and transposition issues when the CX standards were ported from the PDF version to the Data Standards |  [CX Standards](../../#business-consumer) |

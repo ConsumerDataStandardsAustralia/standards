@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.org.au/",
@@ -3963,15 +3963,15 @@
         "data",
         "links"
       ],
-      "x-conditional": [
-        "person",
-        "organisation"
-      ],
       "properties": {
         "data": {
           "type": "object",
           "required": [
             "customerUType"
+          ],
+          "x-conditional": [
+            "person",
+            "organisation"
           ],
           "properties": {
             "customerUType": {
@@ -3983,9 +3983,11 @@
               ]
             },
             "person": {
+              "description": "Mandatory if `customerUType` is `person`",
               "$ref": "#/definitions/CommonPerson"
             },
             "organisation": {
+              "description": "Mandatory if `customerUType` is `organisation`",
               "$ref": "#/definitions/CommonOrganisation"
             }
           }
@@ -4004,15 +4006,15 @@
         "data",
         "links"
       ],
-      "x-conditional": [
-        "person",
-        "organisation"
-      ],
       "properties": {
         "data": {
           "type": "object",
           "required": [
             "customerUType"
+          ],
+          "x-conditional": [
+            "person",
+            "organisation"
           ],
           "properties": {
             "customerUType": {
@@ -4024,9 +4026,11 @@
               ]
             },
             "person": {
+              "description": "Mandatory if `customerUType` is `person`",
               "$ref": "#/definitions/CommonPersonDetail"
             },
             "organisation": {
+              "description": "Mandatory if `customerUType` is `organisation`",
               "$ref": "#/definitions/CommonOrganisationDetail"
             }
           }
