@@ -661,16 +661,6 @@
                                                             "DUAL"
                                                         ]
                                                     },
-                                                    "availability":
-                                                    {
-                                                        "type": "string",
-                                                        "description": "The availability of the plan.  If absent then the value GENERAL is assumed",
-                                                        "enum": [
-                                                            "RESTRICTED",
-                                                            "GENERAL"
-                                                        ],
-                                                        "default": "GENERAL"
-                                                    },
                                                     "brand":
                                                     {
                                                         "type": "string",
@@ -909,14 +899,6 @@
                                                 "DUAL"
                                             ],
                                         },
-                                        "availability":
-                                        {
-                                            "type": "string",
-                                            "description": "The availability of the plan.  If absent then the value GENERAL is assumed",
-                                            "enum": ["RESTRICTED",
-                                                "GENERAL"
-                                            ],
-                                        },
                                         "brand":
                                         {
                                             "type": "string",
@@ -1119,7 +1101,7 @@
                                                 "pricingModel":
                                                 {
                                                     "type": "string",
-                                                    "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE",
+                                                    "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
                                                     "enum": ["SINGLE_RATE",
                                                         "SINGLE_RATE_CONT_LOAD",
                                                         "TIME_OF_USE",
@@ -1333,7 +1315,8 @@
                                                                 "description": "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
                                                                 "enum": ["PAY_ON_TIME",
                                                                     "DIRECT_DEBIT",
-                                                                    "GUARANTEED_DISCOUNT"
+                                                                    "GUARANTEED_DISCOUNT",
+                                                                    "OTHER"
                                                                 ]
                                                             },
                                                             "methodUType":
@@ -1919,7 +1902,7 @@
                                                 "pricingModel":
                                                 {
                                                     "type": "string",
-                                                    "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE",
+                                                    "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
                                                     "enum": ["SINGLE_RATE",
                                                         "SINGLE_RATE_CONT_LOAD",
                                                         "TIME_OF_USE",
@@ -2125,7 +2108,8 @@
                                                                 "description": "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
                                                                 "enum": ["PAY_ON_TIME",
                                                                     "DIRECT_DEBIT",
-                                                                    "GUARANTEED_DISCOUNT"
+                                                                    "GUARANTEED_DISCOUNT",
+                                                                    "OTHER"
                                                                 ]
                                                             },
                                                             "methodUType":
@@ -3852,7 +3836,7 @@
                                                         "pricingModel":
                                                         {
                                                             "type": "string",
-                                                            "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE",
+                                                            "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
                                                             "enum": [
                                                                 "SINGLE_RATE",
                                                                 "SINGLE_RATE_CONT_LOAD",
@@ -3979,7 +3963,8 @@
                                                                         "enum": [
                                                                             "PAY_ON_TIME",
                                                                             "DIRECT_DEBIT",
-                                                                            "GUARANTEED_DISCOUNT"
+                                                                            "GUARANTEED_DISCOUNT",
+                                                                            "OTHER"
                                                                         ]
                                                                     },
                                                                     "methodUType":
@@ -4516,7 +4501,7 @@
                                                         "pricingModel":
                                                         {
                                                             "type": "string",
-                                                            "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE",
+                                                            "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
                                                             "enum": ["SINGLE_RATE",
                                                                 "SINGLE_RATE_CONT_LOAD",
                                                                 "TIME_OF_USE",
@@ -4642,7 +4627,8 @@
                                                                         "enum": [
                                                                             "PAY_ON_TIME",
                                                                             "DIRECT_DEBIT",
-                                                                            "GUARANTEED_DISCOUNT"
+                                                                            "GUARANTEED_DISCOUNT",
+                                                                            "OTHER"
                                                                         ]
                                                                     },
                                                                     "methodUType":

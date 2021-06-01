@@ -1,0 +1,268 @@
+<h2 id='consumer-experience-standards'>Consumer Experience Standards</h2><h3 id='data-language-standards'>Data Language Standards</h3>
+<blockquote>
+<p><img src="./images/cx_standards0.png" width=375px/> <br>
+<font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
+</blockquote>
+
+<p>In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide descriptions of the types of data to be used by CDR participants in making and responding to requests. Adherence to this language will help ensure there is a consistent interpretation and description of the consumer data that will be shared across different CDR implementations.</p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Data Language Standards:</strong> Language to be used</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
+</tr>
+<tr>
+<td><strong>Data Language Standards:</strong> Detailed scope requests</td>
+<td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘‡’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
+</tr>
+</tbody></table>
+
+<p><strong>Table 1.</strong></p>
+<h4 id='individual-consumer'>Individual Consumer</h4>
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Name and occupation</strong></td>
+<td>Name<br>Occupation</td>
+<td>common:customer.basic:read</td>
+</tr>
+<tr>
+<td><strong>Contact Details</strong></td>
+<td>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
+<td>common:customer.detail:read</td>
+</tr>
+<tr>
+<td><strong>Name, occupation, contact details ‡</strong></td>
+<td>Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
+<td>common:customer.detail:read</td>
+</tr>
+</tbody></table>
+<h4 id='business-consumer'>Business consumer</h4>
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Organisation profile</strong> *</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;</td>
+<td>common:customer.basic:read</td>
+</tr>
+<tr>
+<td><strong>Organisation contact details</strong> *</td>
+<td>Organisation address;<br>Organisation address;<br>Phone number;</td>
+<td>common:customer.detail:read</td>
+</tr>
+<tr>
+<td><strong>Organisation profile and contact details</strong> *‡</td>
+<td>Agent &gt;name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);† <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address<br>address;<br>Phone number;<br></td>
+<td>common:customer.detail:read</td>
+</tr>
+</tbody></table>
+<h4 id='common'>Common</h4>
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Account name, type and balance</strong></td>
+<td>Name of account;<br>Type of account;<br>Account balance;</td>
+<td>bank:accounts.basic:read</td>
+</tr>
+<tr>
+<td><strong>Account numbers and features</strong></td>
+<td>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
+<td>bank:accounts.detail:read</td>
+</tr>
+<tr>
+<td><strong>Account balance and details‡</strong></td>
+<td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
+<td>bank:accounts.detail:read</td>
+</tr>
+<tr>
+<td><strong>Transaction details</strong></td>
+<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)†</em></td>
+<td>bank:transactions:read</td>
+</tr>
+<tr>
+<td><strong>Direct debits and scheduled payments</strong></td>
+<td>Direct debits;<br>Scheduled payments;</td>
+<td>bank:regular_payments:read</td>
+</tr>
+<tr>
+<td><strong>Saved payees</strong></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)†</em></td>
+<td>bank:payees:read</td>
+</tr>
+</tbody></table>
+<h3 id='accessibility-standards'>Accessibility Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>At a minimum, all CDR participants <strong>MUST</strong> seek to comply with the following accessibility guidelines throughout the Consent Model.<ul><li>These standards <strong>SHOULD</strong> be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</li></ul></td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong> <br> Content distinction</td>
+<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a> Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong> <br> Keyboard functionality</td>
+<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html">WCAG 2.1</a>. This will make all functionality available from a keyboard.</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong> <br> Pointer interactions</td>
+<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong> <br> Reading experiences</td>
+<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html">WCAG 3.1</a>. This will make text content readable and understandable</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong> <br> Input assistance</td>
+<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
+</tr>
+</tbody></table>
+<h3 id='consent-standards'>Consent Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Seeking consent</strong></td>
+<td>Data recipients <strong>MUST</strong> notify consumers of redirection prior to authentication.</td>
+</tr>
+</tbody></table>
+<h3 id='authentication-standards'>Authentication Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authentication:</strong><br>‘One Time Password’</td>
+<td>Data holders and data recipients <strong>MUST</strong> clearly refer to a “One Time Password” in consumer-facing interactions and communications. The use of the term “One Time Password” <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br >Passwords</td>
+<td>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient.</td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br> Password link</td>
+<td>Data holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br>OTP expiry</td>
+<td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
+</tr>
+</tbody></table>
+<h3 id='authorisation-standards'>Authorisation Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authorisation</strong> &amp; Account selection</td>
+<td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders <strong>MAY</strong> add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step.</li><ul><li>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li><em>Note:</em> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul></td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br>Account confirm</td>
+<td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
+</tr>
+</tbody></table>
+<h3 id='amending-authorisation-standards'>Amending Authorisation Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authorisation:</strong><br/>Amending consent</td>
+<td><strong>Effective from July 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id:</em><br><br></td>
+</tr>
+<tr>
+<td>Customer Profile</td>
+<td>Where customer profile selection applies, Data Holders <strong>MAY</strong> omit the profile selection step and assume the customer profile associated with the existing authorisation. Data Holders <strong>MAY</strong> indicate which profile the authorisation relates to during the authorisation process.</td>
+</tr>
+<tr>
+<td>Account Selection</td>
+<td>Where account selection applies, Data Holders <strong>MAY</strong> pre-select accounts that were associated with the previous authorisation provided these accounts remain eligible and available. Data Holders <strong>MAY</strong> allow these accounts to be amended, and <strong>MAY</strong> provide information regarding the pre-selection of accounts.</td>
+</tr>
+<tr>
+<td>Changing Attributes</td>
+<td>Data Holders <strong>MAY</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
+</tr>
+</tbody></table>
+
+<p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authorisation:</strong><br/>Amending consent</td>
+<td><strong>Effective from November 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:</td>
+</tr>
+<tr>
+<td>Customer Profile</td>
+<td>Where customer profile selection applies, Data Holders <strong>SHOULD</strong> omit the profile selection step and assume the customer profile associated with the existing authorisation. Data Holders <strong>MAY</strong> indicate which profile the authorisation relates to during the authorisation process.</td>
+</tr>
+<tr>
+<td>Account Selection</td>
+<td>Where account selection applies, Data Holders <strong>MUST</strong> pre-select accounts that were associated with the previous authorisation provided these accounts remain eligible and available to share. Data Holders <strong>MAY</strong> allow these accounts to be amended, and <strong>MAY</strong> provide information regarding the pre-selection of accounts.</td>
+</tr>
+<tr>
+<td>Changing Attributes</td>
+<td>Data Holders <strong>MUST</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
+</tr>
+</tbody></table>
+
+<p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
+<h3 id='withdrawal-standards'>Withdrawal Standards</h3>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Withdrawing consent</strong></td>
+<td>If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients <strong>MUST</strong> allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </ul></li><ul><li>Data recipients <strong>SHOULD</strong> consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</ul></li></td>
+</tr>
+<tr>
+<td><strong>Withdrawing authorisation:</strong><br>Consequences</td>
+<td>As part of the withdrawal process, the data holder <strong>MUST</strong> advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <ul><li>The data holder <strong>MAY</strong> consider using or paraphrasing the following message(s):</li><ul><li><em>‘You should check with [Data Recipient] before you stop sharing to understand the consequences.’</em></ul></li><ul><li><em>‘You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.’</em></li></ul></ul></td>
+</tr>
+<tr>
+<td><strong>Withdrawing authorisation:</strong><br>Redundant data</td>
+<td>As part of the withdrawal process, the data holder <strong>MUST</strong> inform the consumer about the handling of redundant data and the right to delete. <ul><li>The Data Holder <strong>MAY</strong> consider using or paraphrasing the following message(s):</li><ul><li><em>‘CDR data is either deleted or de-identified when it is no longer required.’</em></li><li><em>‘[Data recipient] will have specific policies on how to handle your data once it’s no longer required.’</em></li></ul></ul></td>
+</tr>
+</tbody></table>

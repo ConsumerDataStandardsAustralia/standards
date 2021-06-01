@@ -326,7 +326,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl, &>pre.display-inline {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -503,13 +503,14 @@ html, body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
-}
 
-// for pages where code samples are turned off, utilise the full page width
-.no-code-layout .content {
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
-    margin-right: 0 !important;
+  // for pages where code samples are turned off, utilise the full page width
+  .no-code-layout .content {
+    &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+        margin-right: 0 !important;
+    }
   }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -557,6 +558,40 @@ html, body {
   }
 }
 
+.content {
+  pre, blockquote {
+    &.display-inline {
+      clear: none;
+      width: calc(100% - #{$examples-width});
+      padding-top: 1em;
+      float: none;
+      white-space: pre-wrap;
+
+      * {
+        white-space: pre-wrap;
+      }
+    }
+    &.light-box {
+      background: rgba(128,128,128,0.1);
+      color: initial;
+      border: 1px solid rgba(128,128,128,0.3);
+      border-width: 1px 0;
+    }
+
+
+  }
+
+  ul.error-code-list {
+    margin-top: 0.5em;
+  }
+}
+
+.clear {
+  &.right { clear: right; }
+  &.left { clear: left; }
+  &.both { clear: both; }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // RESPONSIVE DESIGN
 ////////////////////////////////////////////////////////////////////////////////
@@ -584,6 +619,13 @@ html, body {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
   }
+  .content {
+    pre, blockquote {
+      &.display-inline {
+        width: calc(100% - #{$examples-width});
+      }
+    }
+  }
 }
 
 @media (max-width: $phone-width) {
@@ -610,6 +652,14 @@ html, body {
 
   %right-col + %left-col {
     margin-top: $main-padding;
+  }
+
+  .content {
+    pre, blockquote {
+      &.display-inline {
+        width: 100%;
+      }
+    }
   }
 }
 

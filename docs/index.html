@@ -258,6 +258,9 @@
                     <a href="#id-permanence" class="toc-h2 toc-link" data-title="ID Permanence">ID Permanence</a>
                   </li>
                   <li>
+                    <a href="#error-codes" class="toc-h2 toc-link" data-title="Error Codes">Error Codes</a>
+                  </li>
+                  <li>
                     <a href="#extensibility" class="toc-h2 toc-link" data-title="Extensibility">Extensibility</a>
                   </li>
               </ul>
@@ -319,7 +322,25 @@
             <a href="#consumer-experience" class="toc-h1 toc-link" data-title="Consumer Experience">Consumer Experience</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#consumer-experience-standards" class="toc-h2 toc-link" data-title="Consumer Experience Standards">Consumer Experience Standards</a>
+                    <a href="#data-language-standards" class="toc-h2 toc-link" data-title="Data Language Standards">Data Language Standards</a>
+                  </li>
+                  <li>
+                    <a href="#accessibility-standards" class="toc-h2 toc-link" data-title="Accessibility Standards">Accessibility Standards</a>
+                  </li>
+                  <li>
+                    <a href="#consent-standards" class="toc-h2 toc-link" data-title="Consent Standards">Consent Standards</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-standards" class="toc-h2 toc-link" data-title="Authentication Standards">Authentication Standards</a>
+                  </li>
+                  <li>
+                    <a href="#authorisation-standards" class="toc-h2 toc-link" data-title="Authorisation Standards">Authorisation Standards</a>
+                  </li>
+                  <li>
+                    <a href="#amending-authorisation-standards" class="toc-h2 toc-link" data-title="Amending Authorisation Standards">Amending Authorisation Standards</a>
+                  </li>
+                  <li>
+                    <a href="#withdrawal-standards" class="toc-h2 toc-link" data-title="Withdrawal Standards">Withdrawal Standards</a>
                   </li>
               </ul>
           </li>
@@ -622,7 +643,10 @@
                     <a href="#tocSmetapaginated" class="toc-h2 toc-link" data-title="MetaPaginated">MetaPaginated</a>
                   </li>
                   <li>
-                    <a href="#tocSresponseerrorlist" class="toc-h2 toc-link" data-title="ResponseErrorList">ResponseErrorList</a>
+                    <a href="#tocSmetaerror" class="toc-h2 toc-link" data-title="MetaError">MetaError</a>
+                  </li>
+                  <li>
+                    <a href="#tocSresponseerrorlistv2" class="toc-h2 toc-link" data-title="ResponseErrorListV2">ResponseErrorListV2</a>
                   </li>
                   <li>
                     <a href="#tocSbankingproductcategory" class="toc-h2 toc-link" data-title="BankingProductCategory">BankingProductCategory</a>
@@ -875,13 +899,28 @@
 <td>Data Holders MUST implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
 <td>November 1st 2021</td>
 </tr>
+<tr>
+<td><a href="#error-codes">Standard Error Codes</a></td>
+<td>Data Recipients and Data Holders MAY implement the standard error codes from July 1st 2021</td>
+<td>July 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#error-codes">Standard Error Codes</a></td>
+<td>Data Recipients and Data Holders MUST implement the standard error codes from February 1st 2022</td>
+<td>February 1st 2022</td>
+</tr>
+<tr>
+<td><a href="#error-codes">Standard Error Codes</a></td>
+<td>Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022</td>
+<td>November 1st 2022</td>
+</tr>
 </tbody></table>
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
 <p><strong>Please note</strong> this is currently experimental.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent version 1.9.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.10.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1039,26 +1078,24 @@ always align to current consumer preferences.</p>
 </blockquote>
 
 <p>The URI structure for API end points in the standards MUST be implemented as follows:<br>
-<code>&lt;holder path&gt; / cds-au / &lt;version&gt; / &lt;industry&gt; / &lt;resource&gt;</code></p>
+<pre class="display-inline light-box highlight">
+<b>uri-string</b> = <b>&lt;holder-path&gt;</b> &quot;/&quot; <b>cds-au</b> &quot;/&quot; <b>&lt;version&gt;</b> &quot;/&quot; <b>&lt;industry&gt;</b> &quot;/&quot; <b>&lt;resource&gt;</b></p>
 
-<p>The components of this URI structure are described as follows:</p>
-
-<ul>
-<li><strong>Holder Path</strong>: The holder path is a base path set by the data holder. It can be any URI desired by the holder. While all authenticated end points must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated end points.</li>
-<li><strong>“cds-au”</strong>: This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
-<li><strong>Version</strong>: The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76).</li>
-<li><strong>Industry</strong>: A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.</li>
-<li><strong>Resource</strong>: The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li>
-</ul>
-
-<p>Note that the currently accepted values for the <code>Industry</code> component of the base path are:</p>
-
-<ul>
-<li><strong>banking</strong> – for APIs related to banking and potentially wider financial services data</li>
-<li><strong>energy</strong> – for APIs related to the energy distribution industry</li>
-<li><strong>telco</strong> – for APIs related to telecommunications</li>
-<li><strong>common</strong> – for APIs that potentially span industries</li>
-</ul>
+<p>The components of this URI structure are described as follows:
+<ul><li><b>&lt;holder-path&gt;</b>  = string.
+The holder path is a base path set by the data holder. It can be any URI desired by the holder. While all authenticated end points must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated end points.</li>
+<li><b>cds-au</b>         = &quot;cds-au&quot; string.
+This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
+<li><b>&lt;version&gt;</b>      = &quot;v1&quot; string.
+The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76).</li>
+<li><b>&lt;industry&gt;</b>     = banking / energy / telco / common
+A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.
+Note that the currently accepted values for the <code>industry</code> component of the base path are:
+<ul><li><b>banking</b> = &quot;banking&quot; string. For APIs related to banking and potentially wider financial services data,</li><li><b>energy</b>  = &quot;energy&quot; string. For APIs related to the energy distribution industry,</li><li><b>telco</b>   = &quot;telco&quot; string. For APIs related to telecommunications,</li><li><b>common</b>  = &quot;common&quot; string. For APIs that potentially span industries.</li></ul></li>
+<li><b>&lt;resource&gt;</b>     = string.
+The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li></ul>
+</pre>
+<div class="clear both"></div></p>
 
 <h3 id='resource-uris'>Resource URIs</h3>
 
@@ -1149,7 +1186,7 @@ always align to current consumer preferences.</p>
 </tr>
 <tr>
 <td><strong>Accept</strong></td>
-<td>If specified, the media type must be set to <code>application/json</code>, unless otherwise specified in the resource end point standard. \n\n If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, or a wildcard (<em>/</em>) is provided, the default media type is <code>application/json</code>.</td>
+<td>If specified, the media type must be set to <code>application/json</code>, unless otherwise specified in the resource end point standard. <br/><br/>If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, or a wildcard (*/*) is provided, the default media type is <code>application/json</code>.</td>
 <td>Optional</td>
 </tr>
 <tr>
@@ -1215,7 +1252,7 @@ always align to current consumer preferences.</p>
 </tr>
 <tr>
 <td><strong>x-fapi-interaction-id</strong></td>
-<td>An [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. The data holder must set the response header <code>x-fapi-interaction-id</code> to the value received from the corresponding request header or to a new [RFC4122] UUID value if the request header was not provided.</td>
+<td>An [<a href="https://tools.ietf.org/html/rfc4122">RFC4122</a>] UUID used as a correlation id. The data holder must set the response header <code>x-fapi-interaction-id</code> to the value received from the corresponding request header or to a new [RFC4122] UUID value if the request header was not provided. This header MUST be responded for success and error responses for authenticated APIs.</td>
 <td>Mandatory</td>
 </tr>
 </tbody></table>
@@ -1290,6 +1327,14 @@ always align to current consumer preferences.</p>
 <td>Token has incorrect scope or a security policy was violated.</td>
 <td>403 Forbidden</td>
 <td>The operation was refused access. Re-authenticating is unlikely to remediate the situation. It is expected that this error will result in an <a href="#error_payload">error payload</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>The resource matching the request URI is not known or is unable to be processed due to business logic specific to the resource being requested</td>
+<td>404 Not Found</td>
+<td>No indication is given of whether the condition is temporary or permanent. This response code MUST NOT be used for resources presented in the body of the request.</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -1379,19 +1424,15 @@ always align to current consumer preferences.</p>
   }
 }
 </code></pre>
-
 <p>Each API request payload MUST have a JSON object at the root level known as the <strong>root object</strong>. This object MUST contain a <code>data</code> object to hold the primary data for the request.</p>
 
 <p>The root object will contain a <code>meta</code> object if, and only if, it is specifically REQUIRED by the end point. The meta object is used to provide additional information such as second factor authorisation data, traffic management, pagination counts or other purposes that are complementary to the workings of the API.</p>
 
 <p>The definition of the contents for the <code>data</code> object and <code>meta</code> object will be defined separately for each end point.</p>
-
 <h3 id='response-payload-structure'>Response Payload Structure</h3>
-
 <blockquote>
 <p>A sample successful response:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   “data”: {
     ...
@@ -1404,11 +1445,9 @@ always align to current consumer preferences.</p>
   }
 }
 </code></pre>
-
 <blockquote>
 <p>A sample unsuccessful response:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   “errors”: [
     {
@@ -1426,7 +1465,6 @@ always align to current consumer preferences.</p>
   ]
 }
 </code></pre>
-
 <p>Each API request payload MUST have a JSON object at the root level known as the <strong>root object</strong>.</p>
 
 <p>The contents of the root object are as follows:</p>
@@ -1452,16 +1490,7 @@ always align to current consumer preferences.</p>
 
 <p>The links object MUST contain a field named <code>self</code> that will have the fully qualified URI to the current request as a value.</p>
 
-<p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
-
-<ul>
-<li><code>code</code> field MUST be present: holds an end point specific error code</li>
-<li><code>title</code> field MUST be present: holds a human readable label of the error that is constant
-per code</li>
-<li><code>detail</code> field MUST be present: holds a human readable description of this specific error</li>
-<li><code>meta</code> object MAY be present: holds additional end point specific data relevant to the error</li>
-</ul>
-
+<p>The <code>errors</code> object is defined in the <a href="#error_payload">Error Codes</a> section.</p>
 <h3 id='field-naming-conventions'>Field Naming Conventions</h3><h4 id='valid-characters-in-field-names'>Valid Characters In Field Names</h4>
 <p>All field names defined in either a request or response payload MUST be treated as case sensitive by clients and servers, and they MUST meet all of the following conditions:</p>
 
@@ -1517,7 +1546,7 @@ the same name.</p>
 <p>Conditional fields MUST have an associated conditional statement. If the conditional statement is true in a specific request or response the field is considered mandatory. If the conditional statement is false then the field is considered optional.</p>
 
 <aside class="notice">
-Note that for optional fields are not considered optionally implementable by a Data Holder.
+Note that optional fields are not considered optionally implementable by a Data Holder.
 
 For instance, if a Data Holder holds data in digital form for a Customer that is represented in a payload then it is expected that this data will be shared when authorised by the Customer.  For payloads unrelated to Customers, such as product reference data, there is more discretion for the Data Holder but other drivers, such as complementary regulation or the requirement to align to other channels, should be taken into consideration.
 </aside>
@@ -1528,11 +1557,9 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>A Boolean value of false is not considered to be equivalent to <code>null</code>. Optional Boolean fields, by implication, have three possible values: true, false and indeterminate (ie. <code>null</code>).</p>
 <h3 id='object-conventions'>Object conventions</h3>
-
 <blockquote>
 <p>Sample union object structure:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>“data”: {
     [
         {
@@ -1548,7 +1575,6 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
     ]
 }
 </code></pre>
-
 <p>A specific convention will apply to union objects.</p>
 
 <p>In the standards a union object is used in a situation where a set of data can be represented with different sets of fields depending on the context.  To maintain strong typing of the fields one of a series of known object structures will be used.  An example where this technique is used in the standard is in the definition of account balances where balance information can be represented differently, but unambiguously, for different account types.</p>
@@ -1558,13 +1584,10 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 <p>As the name of this field is constant it can be used to perform an indirect lookup on the object type that has actually been provided removing the need to scan for which object is present.</p>
 
 <p>A field of this type will always be specified with the suffix <code>UType</code> meaning Union Type.</p>
-
 <h3 id='array-conventions'>Array Conventions</h3>
-
 <blockquote>
 <p>Samples for providing array values:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>## Many-values:
 "middleNames": ["Geoff", "John"],
 "errors": [
@@ -1594,11 +1617,8 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 "errors": [ ]
 
 </code></pre>
-
 <p>Unless otherwise stated within the data standards, arrays are explicitly expressed in response payloads.</p>
-
 <h4 id='mandatory-fields'>Mandatory fields</h4>
-
 <p>In objects where an array field is defined as having 0..n values, the array field must be explicitly expressed as an array in the payload, even if it only contains one item or is empty.</p>
 
 <p>This applies equally for object arrays. Where a field is defined as an array value, the response should be:
@@ -1607,17 +1627,14 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 * an empty array (<code>[]</code>).</p>
 
 <p>An empty array is the representation for an array equivalent to an empty string.</p>
-
 <h4 id='optional-fields'>Optional fields</h4>
-
-<p>If the field is optional a <code>null</code> value or empty field response is accepted.</p>
+<p>If the field is optional a <code>null</code> value or omission of the field in the response is accepted.</p>
 
 <h4 id="payload-conventions-normative-references">Normative references</h4>
 
 <p>The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.</p>
 
 <h2 id='common-field-types'>Common Field Types</h2>
-
 <p>The following table outlines the common data types for fields used in the standard.</p>
 
 <table><thead>
@@ -1730,13 +1747,10 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 </tbody></table>
 
 <h2 id='pagination'>Pagination</h2>
-
 <p>Each API end point that can return multiple records will stipulate whether pagination is supported for the end point or not. For end points that will return less than a reasonably sized page of results in the majority of circumstances support for paging may not be included.</p>
 
 <p>Note that the use of paging for an end point does not require or preclude the use of filtering query parameters. It is expected that filtering and paging will be applied independently of each other.</p>
-
 <h3 id='query-parameters'>Query Parameters</h3>
-
 <p>The consumer will stipulate pagination requirements on the request using query parameters. When paging is supported the consumer MAY provide the following query parameters:</p>
 
 <ul>
@@ -1750,9 +1764,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 <li><strong>page</strong> – a default of 1 (the first page) will be assumed</li>
 <li><strong>page-size</strong> – a default of 25 will be assumed</li>
 </ul>
-
 <h3 id='response-fields'>Response Fields</h3>
-
 <p>In addition to the data requested a holder MUST provide the following additional information in the response payload:</p>
 
 <ul>
@@ -1774,16 +1786,12 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 <p>For each of these fields the page size specified in the request should be assumed when calculating
 values.</p>
-
 <h3 id='additional-pagination-rules'>Additional Pagination Rules</h3>
-
 <ul>
 <li>Holders are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.</li>
-<li>A maximum page size of <code>1000</code> records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then a HTTP status of <code>422 Unprocessable Entity</code> SHOULD be returned.</li>
+<li>A maximum page size of <code>1000</code> records is assumed for all end points (unless otherwise stipulated in the end point definition). If a page size greater than this maximum is requested then an <a href="#error-400-field-invalid-page-size">Invalid Page Size</a> error SHOULD be returned.</li>
 </ul>
-
 <h3 id='cursor-support'>Cursor Support</h3>
-
 <p>For performance reasons data holders may wish to support other pagination patterns such as cursors or continuation tokens.  While the standard does not explicitly support these additional mechanisms it is considered allowable to implement these patterns and expose them via the <a href="#pagination_links">pagination links</a>.</p>
 
 <p>In this scenario the URIs included in the links for other pages may not be compliant with the standard and may, instead, include other query parameters that support another pagination pattern. It is expected that all other pagination requirements such as link fields and meta fields will still be supported if other patterns are implemented.</p>
@@ -1791,7 +1799,6 @@ values.</p>
 <p>To allow for a more performant implementation data consumers are encouraged to utilise <a href="#pagination_links">pagination links</a> wherever possible and only use constructed URIs for the first page or if random access to a specific set of records is required.</p>
 
 <h2 id='id-permanence'>ID Permanence</h2>
-
 <p>Within these standards resource IDs are REQUIRED to comply with the following:</p>
 
 <ul>
@@ -1804,6 +1811,571 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li>IDs MUST NOT be transferable between different customers for the same data recipient. For example, a data recipient should obtain a different ID for a joint account if the ID was obtained independently using authorisations from both customers.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
+
+<h2 id='error-codes'>Error Codes</h2>
+<p>These standards define a standard list of error codes that Data Recipients and Data Holders SHOULD or MUST conform to. Further,</p>
+
+<ul>
+<li>Data Recipients and Data Holders SHOULD use the standard error codes as defined</li>
+<li>Where a specific error code MUST be responded, this requirement is stated against the applicable error code or API endpoints</li>
+<li>Where a specific error code MAY be responded, this requirement is stated against the applicable error code or API endpoints</li>
+<li>Data Recipients and Data Holders MAY respond with application-specific error codes and in doing so, MUST respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.</li>
+</ul>
+<h3 id='error-response-structure'>Error Response Structure</h3>
+<blockquote>
+<p>Non-Normative Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount",
+      "title": "Unavailable Banking Account",
+      "description": "808b5b1d-0798-4bdf-a3c8-f9cce2904eb2"
+    }
+  ]
+}
+</code></pre>
+<p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
+
+<ul>
+<li><code>code</code> field MUST be present: holds an end point specific error code. This MAY be a standard CDR error code or an application-specific error code.</li>
+<li><code>title</code> field MUST be present: holds a human readable label of the error that is constant
+per <code>code</code></li>
+<li><code>detail</code> field MUST be present: holds a human readable description of this specific error</li>
+<li><code>meta</code> object MAY be present: holds additional end point specific data relevant to the error</li>
+</ul>
+
+<p>If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code MUST be provided in the <code>MetaError</code> object.</p>
+
+<div class="clear both"></div>
+<h4 id='urn-structure'>URN Structure</h4>
+<p>When responding with a standard CDR error code, the URN structure is defined as follows:</p>
+
+<pre class="display-inline light-box highlight">
+<b>urn-string</b> = "urn:" <b>NID</b> ":" <b>metatype</b> ":" <b>sub-type</b> ":" <b>error-category</b> "/" <b>error-code</b>
+
+<ul><li><b>NID</b>            = "au-cds" string.</li>
+<li><b>metatype</b>       = "error" string.</li>
+<li><b>sub-type</b>       = cds-all / cds-register / cds-banking / cds-energy
+<ul><li><b>cds-all</b>      = "cds-all" string. An error code common to all API responses,</li><li><b>cds-register</b> = "cds-register" string. Reserved for CDR Register issued error codes only,</li><li><b>cds-banking</b>  = "cds-banking" string. An error code specific to the CDR banking APIs only,</li><li><b>cds-energy</b>   = "cds-energy" string. An error code specific to the CDR energy APIs only.</li></ul></li>
+<li><b>error-category</b> = string. The high-level category code for the error defined in the Consumer Data Standards</li>
+<li><b>error-code</b>     = string. The specific error encountered, defined in the Consumer Data Standards</li></ul>
+</pre>
+
+<div class="clear both"></div>
+
+<h3 id='standard-error-codes'>Standard Error Codes</h3>
+
+<p>A list of standard error codes to help categorise an error response. The applicable HTTP response code is also given.</p>
+
+<h4 id='general-errors'>General Errors</h4>
+
+<blockquote>
+<p>Non-Normative Example</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code># A request to a Data Holder extension API is made where an application-specific error is returned
+#
+# Request
+POST https://data.acme.com.au/cds-au/v1/banking/ACME-new-loan-application HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+x-ACME-v : 7
+
+# Response
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "ACME-APPLY-017",
+      "title": "Application Is Missing Product ID",
+      "description": "A new loan application was requested but the product ID was not provided",
+      "meta": {
+         "urn": "urn:au-cds:error:cds-all:GeneralError/Expected"
+      }
+    }
+  ]
+}
+</code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">HTTP Status Category</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="error-4xx-expected-error"></a>Expected Error Encountered</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>GeneralError/Expected</code></td>
+<td style="text-align: left">4xx</td></td>
+<td style="text-align: left">An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-5xx-unexpected-error"></a>Unexpected Error Encountered</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>GeneralError/Unexpected</code></td>
+<td style="text-align: left">5xx</td>
+<td style="text-align: left">An error code that can be used, when an unexpected error occurs.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-4503-service-unavailable"></a>Service Unavailable</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Service/Unavailable</code></td>
+<td style="text-align: left">503 (Service Unavailable)</td>
+<td style="text-align: left">A request is made but the API unavailable as due to an outage.<br/><br/>The error description MAY describe whether the outage is scheduled or unexpected and whether it is fully unavailable or partially unavailable.</td>
+</tr>
+</tbody></table>
+
+<h4 id='400-bad-request-errors'>400 Bad Request Errors</h4>
+
+<blockquote>
+<p>Non-Normative Example</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code># A request to Get Accounts is made however
+# the value of is-owned is not a Boolean value
+#
+# Request
+GET https://data.holder.com.au/cds-au/v1/banking/accounts?is-owned=2007-05-01 HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+
+# Response
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-all:Field/Invalid",
+      "title": "Invalid Field",
+      "description": "is-owned"
+    }
+  ]
+}
+</code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="error-400-field-missing"></a>Missing Required Field</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/Missing</code></td>
+<td style="text-align: left">The request is missing a mandatory field required for the API. It may be a missing query parameter or missing field in the request payload. This error code can be used, where a more specific validation error is not applicable.<br/><br/>The error description SHOULD be the parameter name of the missing field.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-400-header-missing"></a>Missing Required Header</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/Missing</code></td>
+<td style="text-align: left">A required HTTP header has not been provided.<br/><br/>The error description SHOULD be the HTTP header name.<br/><br/>This error code SHOULD be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-400-field-invalid"></a>Invalid Field</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/Invalid</code></td>
+<td style="text-align: left">Applies when the value of the URL parameter or request body parameter is an invalid type or the value violates the field&#39;s constraints as defined by the interface contract.<br/>For example, <code>is-owned</code> is a <code>Boolean</code> but a <code>DateString</code> value is provided.<br/><br/>The error description SHOULD be the parameter name of the invalid field. The error description MAY include further details explaining the valid format.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-400-header-invalid"></a>Invalid Header</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/Invalid</code></td>
+<td style="text-align: left">Applies when a HTTP Header is provided but the value provided is an invalid type or violates the field type constraints as defined in the Consumer Data Standards.<br/><br/>The error description SHOULD be the HTTP header name. The error description MAY include further details explaining the valid format.<br/><br/>This error code SHOULD be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-400-field-invalid-date-time"></a>Invalid Date</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidDateTime</code></td>
+<td style="text-align: left">An invalid date is provided. For example, a future date value is expected, but a date in past or current date is supplied. Applies to <code>DateTimeString</code>, <code>DateString</code>, and <code>TimeString</code> field types.<br/><br/>The error description SHOULD be the parameter name of the invalid date field. The error description MAY include further details explaining the expected date value.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-400-field-invalid-page-size"></a>Invalid Page Size</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code></td>
+<td style="text-align: left">The value provided in the <code>page-size</code> pagination field is greater than the maximum allowed by the Consumer Data Standards (<code>page_size &gt; 1000</code>).<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-400-header-invalid-version"></a>Invalid Version</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/InvalidVersion</code></td>
+<td style="text-align: left">A request is made for a version that is not a <code>PositiveInteger</code>.<br/>For example:<ul><li><code>x-min-v</code>, <code>x-v</code> or <code>x-&lt;HID&gt;-v</code> are not <code>Integers</code> (e.g. <code>x-min-v=foo</code>, <code>x-v=bar</code>, <code>x-ACME-v=cheese</code>)</li><li><code>x-min-v</code>, <code>x-v</code> or <code>x-&lt;HID&gt;-v</code> are not positive-value integers (they are an <code>Integer</code> but <code>&lt;= 0</code>)</li></ul><br/>This error code MUST be supported for unauthenticated and authenticated APIs.<br/><br/>If the version header is a <code>PositiveInteger</code> but is not a version supported by the Data Holder, the <a href="#error-406-header-unsupported-version">Unsupported Version code</a> applies.</td>
+</tr>
+</tbody></table>
+
+<h4 id='403-forbidden-errors'>403 (Forbidden) Errors</h4>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="error-403-authorisation-adr-status-not-active"></a>ADR Status Is Not Active</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/AdrStatusNotActive</code></td>
+<td style="text-align: left">The ADR or the ADR&#39;s software product is not &quot;active&quot;.<br/><br/>The error description SHOULD contain the current status of the ADR software product.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-403-authorisation-revoked-consent"></a>Consent Is Revoked</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/RevokedConsent</code></td>
+<td style="text-align: left">The consumer&#39;s consent is no longer authorised (for example revoked or expired) and the requested resource will not be provided.<br/><br/>This error code SHOULD be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-403-authorisation-invalid-consent"></a>Consent Is Invalid</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidConsent</code></td>
+<td style="text-align: left">The authorised consumer&#39;s consent is not associated to the resource requested, is insufficient to execute the resource or is in a status that prevents the resource being executed.<br/><br/>For example, if consent is awaiting authorisation of a secondary account holder.<br/><br/>The error description SHOULD be a description of the status of consent without revealing sensitive information.<br/><br/>This error code SHOULD be supported for authenticated APIs.</td>
+</tr>
+</tbody></table>
+
+<h4 id='404-not-found-errors'>404 (Not Found) Errors</h4>
+
+<blockquote>
+<p>Non-Normative Examples</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code># A request to a resource endpoint that does not exist
+#
+# Request
+GET https://data.holder.com.au/cds-au/v1/banking/payments/294819e6-7ae0-4e20-900a-6a733fd97854/location HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+
+# Response
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-all:Resource/NotFound",
+      "title": "Resource Not Found"
+    }
+  ]
+}
+
+# A request to a resource endpoint that exists in the data standards,
+# but is not currently implemented
+#
+# Request
+POST https://data.holder.com.au/cds-au/v1/admin/register/metadata HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+
+# Response
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-all:Resource/NotImplemented",
+      "title": "Resource Not Implemented"
+    }
+  ]
+}
+
+#
+# A request to a resource that is temporarily unavailable
+#
+# Request
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/b3f0c9d0/transactions/52e443ae13c5 HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+
+# Response
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-all:Resource/Unavailable",
+      "title": "Unavailable Resource",
+      "description": "52e443ae13c5"
+    }
+  ]
+}
+
+#
+# A request to a get a banking account that is invalid
+#
+# Request
+GET https://data.holder.com.au/cds-au/v1/banking/accounts/invalid-id/ HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+
+# Response
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-banking:Authorisation/InvalidBankingAccount",
+      "title": "Invalid Banking Account",
+      "description": "invalid-id"
+    }
+  ]
+}
+
+</code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="error-404-resource-not-implemented"></a>Resource Not Implemented</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code></td>
+<td style="text-align: left">The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code SHOULD be supported for unimplemented APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-404-resource-not-found"></a>Resource Not Found</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/NotFound</code></td>
+<td style="text-align: left">The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-404-resource-invalid"></a>Invalid Resource</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code></td>
+<td style="text-align: left">The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-404-resource-unavailable"></a>Unavailable Resource</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code></td>
+<td style="text-align: left">The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-404-authorisation-invalid-banking-account"></a>Invalid Banking Account</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code></td>
+<td style="text-align: left">The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-404-authorisation-unavailable-banking-account"></a>Unavailable Banking Account</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code></td>
+<td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+</tr>
+</tbody></table>
+
+<h4 id='406-not-acceptable-errors'>406 (Not Acceptable) Errors</h4>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="error-406-header-unsupported-version"></a>Unsupported Version</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/UnsupportedVersion</code></td>
+<td style="text-align: left">A request is made for a version that is lower than the minimum version or greater than maximum version the Data Holder supports for the requested endpoint.<br/><br/>The error description MAY include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+</tbody></table>
+
+<h4 id='422-unprocessable-entity-errors'>422 (Unprocessable Entity) Errors</h4>
+
+<blockquote>
+<p>Non-Normative Example</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>#
+# A bulk request to a get a banking account that is unavailable
+#
+# Request
+POST https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
+Host: data.holder.com.au
+Accept: application/json
+
+{
+  "data": {
+    "accountIds": [
+      "b3f0c9d0-457d-4578-b0cd-52e443ae13c5",
+      "b1bccd84-d29a-4233-8e44-be01c74eb85b"
+    ]
+  },
+  "meta": {}
+}
+
+# Response
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/json
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-all:Authorisation/UnavailableBankingAccount",
+      "title": "Unavailable Banking Account",
+      "description": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+    }
+  ]
+}
+
+</code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="error-422-resource-invalid"></a>Invalid Resource</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code></td>
+<td style="text-align: left">The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-resource-unavailable"></a>Unavailable Resource</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code></td>
+<td style="text-align: left">The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-authorisation-invalid-banking-account"></a>Invalid Banking Account</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code></td>
+<td style="text-align: left">The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-authorisation-unavailable-banking-account"></a>Unavailable Banking Account</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code></td>
+<td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code></td>
+<td style="text-align: left">The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error description is the CDR Arrangement ID of the being executed.<br/><br/>This error code MUST be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-field-invalid-page"></a>Invalid Page</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidPage</code></td>
+<td style="text-align: left">The page being requested it out of of range. For example, the valid pagination range is 5 pages and the client requested <code>page=10</code>).<br/><br/>The error description SHOULD be the maximum number of pages that are available.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+</tr>
+</tbody></table>
+
+<h4 id='cdr-register-errors'>CDR Register Errors</h4>
+
+<p>The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register may expect the following standard CDR error codes to be encountered:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Title</th>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">HTTP Status Category</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a id="register-error-404-field-invalid-brand"></a>Invalid Brand</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-register:<br/>Field/InvalidBrand</code></td>
+<td style="text-align: left">404 (Not Found)</td>
+<td style="text-align: left">The brand provided to get the Data Recipient software statement assertion is invalid. Applies to the <code>dataRecipientBrandId</code> path parameter for CDR Register APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="register-error-400-field-invalid-industry"></a>Invalid Industry</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-register:<br/>Field/InvalidIndustry</code></td>
+<td style="text-align: left">404 (Not Found)</td>
+<td style="text-align: left">The industry requested in the path to get Data Recipient or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the <code>industry</code> path parameter for CDR Register APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="register-error-403-field-invalid-software-product"></a>Invalid Software Product</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-register:<br/>Field/InvalidSoftwareProduct</code></td>
+<td style="text-align: left">404 (Not Found)</td>
+<td style="text-align: left">The software product requested to get the Data Recipient software statement assertion is invalid or cannot be found. Applies to the <code>softwareProductId</code> path parameter.</td>
+</tr>
+</tbody></table>
+
+<h3 id='processing-errors'>Processing Errors</h3>
+
+<p>When a server encounters multiple problems for a single request, the most generally applicable HTTP error code <strong>SHOULD</strong> be used in the response. For instance, <code>400 Bad Request</code> might be appropriate for multiple 4xx errors or <code>500 Internal Server Error</code> might be appropriate for multiple 5xx errors.</p>
+
+<p>A server <strong>MAY</strong> choose to stop processing as soon as a problem is encountered, or it <strong>MAY</strong> continue processing and encounter multiple problems. For instance, a server might process multiple attributes and then return multiple validation problems in a single response.</p>
+
+<h3 id='extensibility-and-application-specific-errors'>Extensibility And Application Specific Errors</h3>
+
+<p>Error handling has been designed with extensibility in mind. Where an application supports error codes specific to that implementation, it is intended that implementations can extend the standard CDR error codes with application-specific error responses whilst maintaining interoperability for clients.</p>
+
+<blockquote>
+<p>Non-Normative Example</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code># Application-specific error code extends a standard CDR error code with
+# details specific to the Data Holder
+{
+  "errors": [
+    {
+      "code": "acme-bank:JointAccountElectionRemoved",
+      "title": "Joint Account Consent Election Is Removed",
+      "description": "Description of the specific error encountered",
+      "meta": {
+        "urn": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount"
+      }
+    }
+  ]
+}
+</code></pre>
+
+<p>To assist clients, the Data Recipient or Data Holder <strong>MUST</strong> provide the application-specific error code in the <code>ResponseErrorListV2 &raquo; code</code> and the standard CDR error code in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field denoting the standard error code the implementation extends.</p>
+
+<h3 id='transition-arrangements'>Transition arrangements</h3>
+
+<blockquote>
+<p>Non-Normative Examples</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code># Application-specific error code before transition
+
+{ "errors": [
+  {
+    "code": "old error code",
+    "title": "error message",
+    "description": "Description of the specific error encountered"
+  }
+] }
+
+# Application-specific error code during transition
+
+{ "errors": [
+  {
+    "code": "old error code",
+    "title": "error message",
+    "description": "Description of the specific error encountered",
+    "meta": {
+      "urn": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion"
+    }
+  }
+] }
+
+# Standardised-error code after retirement of application-specific error code
+
+{ "errors": [
+  {
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
+    "title": "Unsupported Version",
+    "description": "'x-v' must be greater than or equal to '2'"
+  }
+] }
+</code></pre>
+
+<p>If Data Recipients or Data Holders support custom error codes prior to February 1st 2022, the following transition arrangements apply:</p>
+
+<ul>
+<li><p><strong>Effective as soon as standardised error codes are supported by the Data Recipient or Data Holder:</strong>  </p>
+
+<ul>
+<li>If the Data Recipient or Data Holder supports application-specific error codes they <strong>MUST</strong> publish a mapping of those codes to the standard CDR error codes in a developer friendly way that is discoverable and freely available.</li>
+<li>Data Recipients and Data Holders <strong>MAY</strong> publish this mapping any time prior to February 1st 2022.</li>
+</ul></li>
+<li><p><strong>Effective from February 1st 2022:</strong> Data Holders and Data Recipients <strong>MUST</strong> support standardised error codes by this date and continue to support any custom error codes.</p>
+
+<ul>
+<li>Standardised error codes <strong>MUST</strong> be provided in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field</li>
+<li>If applicable, application specific error codes <strong>MUST</strong> be provided in the <code>ResponseErrorListV2 &raquo; code</code></li>
+<li>Data Recipients and Data Holders <strong>MAY</strong> phase their transition to support standardised error codes such as by endpoint or per error code if preferred prior to this date.</li>
+</ul></li>
+<li><p><strong>Effective from November 1st 2022:</strong> Data Holders and Data Recipients <strong>MAY</strong> deprecate any custom error codes</p>
+
+<ul>
+<li>Standardised error codes <strong>MAY</strong> be provided in the <code>ResponseErrorListV2 &raquo; code</code> field if no application-specific error code applies</li>
+<li>Application-specific error codes <strong>MAY</strong> be provided in the <code>ResponseErrorListV2 &raquo; code</code></li>
+</ul></li>
+</ul>
+
+<!--</div>-->
 
 <h2 id='extensibility'>Extensibility</h2>
 
@@ -3092,7 +3664,7 @@ Content-Type: application/x-www-form-urlencoded
 <tr>
 <td>422 Unprocessable Entity</td>
 <td>Invalid Arrangement ID</td>
-<td>The client submitted an invalid arrangement identifier or the identifier could not be found</td>
+<td>The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with <a href="#error-422-authorisation-invalid-arrangement">Invalid Consent Arrangement</a>.</td>
 </tr>
 </tbody></table>
 
@@ -3382,7 +3954,7 @@ Host: data.holder.com.au
 <ul>
 <li><a href='https://consumerdatastandards.gov.au/guidelines-and-conventions/consumer-experience-guidelines/'>CX Guidelines</a></li>
 </ul>
-<h2 id='consumer-experience-standards'>Consumer Experience Standards</h2><h3 id='data-language-standards'>Data Language Standards</h3>
+<h2 id='data-language-standards'>Data Language Standards</h2>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
 <font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
@@ -3398,16 +3970,16 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘†’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘&dagger;’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘&dagger;’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
 </tr>
 <tr>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
-<td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘‡’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
+<td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘&Dagger;’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
 </tr>
 </tbody></table>
 
 <p><strong>Table 1.</strong></p>
-<h4 id='individual-consumer'>Individual Consumer</h4>
+<h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -3426,12 +3998,12 @@ Host: data.holder.com.au
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Name, occupation, contact details ‡</strong></td>
+<td><strong>Name, occupation, contact details &Dagger;</strong></td>
 <td>Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h4 id='business-consumer'>Business consumer</h4>
+<h3 id='business-consumer'>Business consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -3441,21 +4013,21 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><strong>Organisation profile</strong> *</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;</td>
 <td>common:customer.basic:read</td>
 </tr>
 <tr>
 <td><strong>Organisation contact details</strong> *</td>
-<td>Organisation address;<br>Organisation address;<br>Phone number;</td>
+<td>Organisation address;<br>Mail address;<br>Phone number;</td>
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Organisation profile and contact details</strong> *‡</td>
-<td>Agent &gt;name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);† <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address<br>address;<br>Phone number;<br></td>
+<td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger; <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h4 id='common'>Common</h4>
+<h3 id='common'>Common</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -3474,13 +4046,13 @@ Host: data.holder.com.au
 <td>bank:accounts.detail:read</td>
 </tr>
 <tr>
-<td><strong>Account balance and details‡</strong></td>
+<td><strong>Account balance and details&Dagger;</strong></td>
 <td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
 <td>bank:accounts.detail:read</td>
 </tr>
 <tr>
 <td><strong>Transaction details</strong></td>
-<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)†</em></td>
+<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
 <td>bank:transactions:read</td>
 </tr>
 <tr>
@@ -3490,11 +4062,11 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td><strong>Saved payees</strong></td>
-<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)†</em></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
 <td>bank:payees:read</td>
 </tr>
 </tbody></table>
-<h3 id='accessibility-standards'>Accessibility Standards</h3>
+<h2 id='accessibility-standards'>Accessibility Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3526,7 +4098,7 @@ Host: data.holder.com.au
 <td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
 </tr>
 </tbody></table>
-<h3 id='consent-standards'>Consent Standards</h3>
+<h2 id='consent-standards'>Consent Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3538,7 +4110,7 @@ Host: data.holder.com.au
 <td>Data recipients <strong>MUST</strong> notify consumers of redirection prior to authentication.</td>
 </tr>
 </tbody></table>
-<h3 id='authentication-standards'>Authentication Standards</h3>
+<h2 id='authentication-standards'>Authentication Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3562,7 +4134,7 @@ Host: data.holder.com.au
 <td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
 </tr>
 </tbody></table>
-<h3 id='authorisation-standards'>Authorisation Standards</h3>
+<h2 id='authorisation-standards'>Authorisation Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3578,7 +4150,7 @@ Host: data.holder.com.au
 <td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
 </tr>
 </tbody></table>
-<h3 id='amending-authorisation-standards'>Amending Authorisation Standards</h3>
+<h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3630,7 +4202,7 @@ Host: data.holder.com.au
 </tbody></table>
 
 <p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
-<h3 id='withdrawal-standards'>Withdrawal Standards</h3>
+<h2 id='withdrawal-standards'>Withdrawal Standards</h2>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3913,6 +4485,12 @@ Host: data.holder.com.au
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountlist">ResponseBankingAccountList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers'>Response Headers</h3>
 <table><thead>
@@ -3933,6 +4511,13 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -4209,6 +4794,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-2'>Response Headers</h3>
 <table><thead>
@@ -4229,6 +4820,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -4438,10 +5036,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-authorisation-unavailable-banking-account">422 - Unavailable Banking Account</a></li><li><a href="#error-422-authorisation-invalid-banking-account">422 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-3'>Response Headers</h3>
@@ -4469,7 +5067,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>422</td>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -4639,6 +5237,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-4'>Response Headers</h3>
 <table><thead>
@@ -4659,6 +5263,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5006,6 +5617,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingaccountbyid">ResponseBankingAccountById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-5'>Response Headers</h3>
 <table><thead>
@@ -5026,6 +5643,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5276,6 +5900,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-6'>Response Headers</h3>
 <table><thead>
@@ -5296,6 +5926,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5489,6 +6126,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingtransactionbyid">ResponseBankingTransactionById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-404-resource-unavailable">Unavailable Resource</a></li><li><a href="#error-404-resource-invalid">Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-7'>Response Headers</h3>
 <table><thead>
@@ -5509,6 +6152,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5701,6 +6351,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-8'>Response Headers</h3>
 <table><thead>
@@ -5721,6 +6377,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -5995,6 +6658,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-9'>Response Headers</h3>
 <table><thead>
@@ -6015,6 +6684,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -6222,10 +6898,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-authorisation-unavailable-banking-account">422 - Unavailable Banking Account</a></li><li><a href="#error-422-authorisation-invalid-banking-account">422 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-10'>Response Headers</h3>
@@ -6253,7 +6929,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>422</td>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -6528,6 +7204,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-authorisation-unavailable-banking-account">404 - Unavailable Banking Account</a></li><li><a href="#error-404-authorisation-invalid-banking-account">404 - Invalid Banking Account</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-11'>Response Headers</h3>
 <table><thead>
@@ -6548,6 +7230,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -6904,6 +7593,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-12'>Response Headers</h3>
 <table><thead>
@@ -6924,6 +7619,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -7213,10 +7915,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#schemaresponsebankingscheduledpaymentslist">ResponseBankingScheduledPaymentsList</a></td>
 </tr>
 <tr>
-<td>422</td>
-<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
-<td>The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-authorisation-unavailable-banking-account">422 - Unavailable Banking Account</a></li><li><a href="#error-422-authorisation-invalid-banking-account">422 - Invalid Banking Account</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-13'>Response Headers</h3>
@@ -7244,7 +7946,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>422</td>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -7456,6 +8158,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingpayeelist">ResponseBankingPayeeList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-14'>Response Headers</h3>
 <table><thead>
@@ -7476,6 +8184,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -7683,6 +8398,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingpayeebyid">ResponseBankingPayeeById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-resource-unavailable">404 - Unavailable Resource</a></li><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-15'>Response Headers</h3>
 <table><thead>
@@ -7703,6 +8424,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -7995,6 +8723,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-16'>Response Headers</h3>
 <table><thead>
@@ -8284,6 +9018,12 @@ This operation does not require authentication
 <td>Success</td>
 <td><a href="#schemaresponsebankingproductbyid">ResponseBankingProductById</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-resource-unavailable">404 - Unavailable Resource</a></li><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-17'>Response Headers</h3>
 <table><thead>
@@ -8478,6 +9218,12 @@ This operation does not require authentication
 <td>Success</td>
 <td><a href="#schemaresponsecommoncustomer">ResponseCommonCustomer</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-18'>Response Headers</h3>
 <table><thead>
@@ -8498,6 +9244,13 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -8776,6 +9529,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Success</td>
 <td><a href="#schemaresponsecommoncustomerdetail">ResponseCommonCustomerDetail</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
 </tbody></table>
 <h3 id='response-headers-19'>Response Headers</h3>
 <table><thead>
@@ -8796,6 +9555,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td></td>
+<td>An <a href="https://tools.ietf.org/html/rfc4122">RFC4122</a> UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>4xx</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
 <td></td>
@@ -8914,6 +9680,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
 <td><a href="#schemaresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</a></td>
+</tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-20'>Response Headers</h3>
@@ -9048,6 +9820,12 @@ This operation does not require authentication
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
 <td><a href="#schemaresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</a></td>
+</tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemaresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-21'>Response Headers</h3>
@@ -15305,16 +16083,16 @@ This operation does not require authentication
 <tr>
 <td>» person</td>
 <td><a href="#schemacommonperson">CommonPerson</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
 <td><a href="#schemacommonorganisation">CommonOrganisation</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
 <tr>
 <td>links</td>
@@ -15515,16 +16293,16 @@ This operation does not require authentication
 <tr>
 <td>» person</td>
 <td><a href="#schemacommonpersondetail">CommonPersonDetail</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
 <td><a href="#schemacommonorganisationdetail">CommonOrganisationDetail</a></td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
-<td>none</td>
+<td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
 <tr>
 <td>links</td>
@@ -16873,21 +17651,51 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponseerrorlist">ResponseErrorList</h2>
+<h2 id="tocSmetaerror">MetaError</h2>
 
-<p><a id="schemaresponseerrorlist"></a></p>
+<p><a id="schemametaerror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Additional data for customised error codes</em></p>
+<h3 id='properties-75'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>urn</td>
+<td>string</td>
+<td>conditional</td>
+<td>none</td>
+<td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <code>code</code> is an application-specific error rather than a standardised error code.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+
+<p><a id="schemaresponseerrorlistv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-75'>Properties</h3>
+</span></code></pre><h3 id='properties-76'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16909,28 +17717,28 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Must be one of the following: 0001 – Account not able to be found</td>
+<td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.</td>
 </tr>
 <tr>
 <td>» title</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Must be one of the following: Invalid account</td>
+<td>A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.</td>
 </tr>
 <tr>
 <td>» detail</td>
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>ID of the account not found</td>
+<td>A human-readable explanation specific to this occurrence of the problem.</td>
 </tr>
 <tr>
 <td>» meta</td>
-<td>object</td>
+<td><a href="#schemametaerror">MetaError</a></td>
 <td>optional</td>
 <td>none</td>
-<td>Optional additional data for specific error types</td>
+<td>Additional data for customised error codes</td>
 </tr>
 </tbody></table>
 
@@ -16941,7 +17749,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details</em></p>
-<h3 id='properties-76'>Properties</h3>
+<h3 id='properties-77'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17666,12 +18474,13 @@ This operation does not require authentication
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/admin/register/metadata</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 
-<span class="err">x-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="err">x-min-v</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-
-</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 
@@ -17750,6 +18559,10 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+
 <h3 id="metadata-update-responses">Responses</h3>
 
 <table><thead>
@@ -17766,7 +18579,15 @@ This operation does not require authentication
 <td>Success</td>
 <td>None</td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td>None</td>
+</tr>
 </tbody></table>
+
+<h3 id="metadata-update-responseschema">Response Schema</h3>
 <h3 id='response-headers'>Response Headers</h3>
 <table><thead>
 <tr>
@@ -18053,7 +18874,15 @@ This operation may only be called by the CDR Register
 <td>Success</td>
 <td><a href="#schemaresponsemetricslistv2">ResponseMetricsListV2</a></td>
 </tr>
+<tr>
+<td>4xx</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td>None</td>
+</tr>
 </tbody></table>
+
+<h3 id="get-metrics-responseschema">Response Schema</h3>
 
 <h3 id='response-headers-2'>Response Headers</h3>
 
@@ -19333,6 +20162,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td>01/06/2021</td>
+<td>1.10.0</td>
+<td>Changes arising from Enhanced Error Handling decision proposals</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.10.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/154">Decision 154</a> for details</td>
+</tr>
+<tr>
 <td>29/04/2021</td>
 <td>1.9.0</td>
 <td>Changes arising from the sixth Data Standards Maintenance Iteration</td>
@@ -19673,6 +20508,11 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><a href='./archive/standards-1.9.0/docs/'>29/04/2021</a></td>
+<td>1.9.0</td>
+<td><a href='./archive/standards-1.9.0/docs/'> Changes arising from the sixth Data Standards Maintenance Iteration related to <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a></td>
+</tr>
 <tr>
 <td><a href='./archive/standards-1.8.0/docs/'>16/04/2021</a></td>
 <td>1.8.0</td>

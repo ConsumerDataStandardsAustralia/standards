@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards Administration End Points",
     "description": "Data Holder Consumer Data Standards Administration End Points",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "contact": {
       "name": "Consumer Data Standards Administration End Points",
       "url": "https://consumerdatastandards.org.au/",
@@ -64,6 +64,12 @@
                 "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
               }
             }
+          },
+          "4xx": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorListV2"
+            }
           }
         },
         "x-version": "1"
@@ -113,6 +119,12 @@
             },
             "schema": {
               "$ref": "#/definitions/ResponseMetricsListV2"
+            }
+          },
+          "4xx": {
+            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorListV2"
             }
           }
         },

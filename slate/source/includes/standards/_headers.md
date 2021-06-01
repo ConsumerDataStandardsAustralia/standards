@@ -31,7 +31,7 @@ Supported HTTP headers, and their usage, for the standards are as laid out in th
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
 **Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. The media type must be set to `application/json`. Mandatory for PUT and POST calls.| Conditional
-**Accept** | If specified, the media type must be set to `application/json`, unless otherwise specified in the resource end point standard. \n\n If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, or a wildcard (*/*) is provided, the default media type is `application/json`.| Optional
+**Accept** | If specified, the media type must be set to `application/json`, unless otherwise specified in the resource end point standard. <br/><br/>If set to an unacceptable value the holder must respond with a 406 Not Acceptable. If not specified, or a wildcard (\*/\*) is provided, the default media type is `application/json`.| Optional
 **x-v** | Version of the API end point requested by the client. Must be set to a positive integer. The holder should respond with the highest supported version between `x-min-v` and `x-v`. If the value of `x-min-v` is equal to or higher than the value of `x-v` then the `x-min-v` header should be treated as absent. <br/>If all versions requested are not supported then the holder must respond with a `406 Not Acceptable`. | Mandatory
 **x-min-v** | Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between `x-min-v` and `x-v`. If the value of `x-min-v` is equal to or higher than the value of `x-v` then the `x-min-v` header should be treated as absent. <br/>If all versions requested are not supported then the holder must respond with a `406 Not Acceptable`. | Optional
 **x-&lt;HID&gt;-v** | A holder specific version of extension fields. Should not be used in conjunction with `x-min-v`. | Optional
@@ -46,7 +46,7 @@ Header Field | Description | Mandatory?
 **Content-Type** | Standard HTTP Header. Represents the format of the payload returned in the response.<br/>Must be `application/json` unless otherwise specified in the resource end point standard. | Mandatory
 **Retry-After** | Header indicating the time (in seconds) that the client should wait before retrying an operation. The holder should include this header along with responses with the HTTP status code of `429 Too many requests`. | Optional
 **x-v** | The version of the API end point that the holder has responded with. | Mandatory
-**x-fapi-interaction-id** | An [[RFC4122](https://tools.ietf.org/html/rfc4122)] UUID used as a correlation id. The data holder must set the response header `x-fapi-interaction-id` to the value received from the corresponding request header or to a new [RFC4122] UUID value if the request header was not provided.| Mandatory
+**x-fapi-interaction-id** | An [[RFC4122](https://tools.ietf.org/html/rfc4122)] UUID used as a correlation id. The data holder must set the response header `x-fapi-interaction-id` to the value received from the corresponding request header or to a new [RFC4122] UUID value if the request header was not provided. This header MUST be responded for success and error responses for authenticated APIs. | Mandatory
 
 ### Additional Headers
 

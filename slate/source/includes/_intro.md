@@ -38,6 +38,9 @@ The table below highlights these areas of the standards.
 | [Token Introspection Endpoint claims](#end-points) | Mandatory claims were updated in accordance with RFC7662 | November 1st 2020 |
 | [Amending Consent](#amending-authorisation-standards) |Data Holders MAY implement the following standards from July 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a `cdr_arrangement_id`| July 1st 2021|
 | [Amending Consent](#amending-authorisation-standards)|Data Holders MUST implement the following standards from November 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a `cdr_arrangement_id`|November 1st 2021|
+| [Standard Error Codes](#error-codes) | Data Recipients and Data Holders MAY implement the standard error codes from July 1st 2021 | July 1st 2021 |
+| [Standard Error Codes](#error-codes) | Data Recipients and Data Holders MUST implement the standard error codes from February 1st 2022 | February 1st 2022 |
+| [Standard Error Codes](#error-codes) | Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022 | November 1st 2022 |
 
 
 ## Endpoint Version Schedule

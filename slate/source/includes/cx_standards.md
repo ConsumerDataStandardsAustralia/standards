@@ -1,6 +1,4 @@
-##Consumer Experience Standards
-
-###Data Language Standards
+## Data Language Standards
 
 
 >
@@ -11,43 +9,42 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 |Area|CX Standard|
 |--------------------|------------------------------------------|
-|**Data Language Standards:** Language to be used|Data Recipients and Data Holders **MUST** use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in [Table 1](#individual-consumer) Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards **MUST** be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘\*’ in [Table 1](#individual-consumer)</ul></li><ul><li>Data Recipients and Data Holders **SHOULD**  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details **MAY** include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘†’ in [Table 1](#individual-consumer)</li><li>Examples of permission details that **MAY** be used and provided as in-line help are denoted with an ‘†’ in [Table 1](#individual-consumer)</li></ul></ul>|
-|**Data Language Standards:** Detailed scope requests|If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients **MUST** use the alternative language denoted with an ‘‡’ in [Table 1](#individual-consumer) (rows greyed out for clarity).</ul></li>|
+|**Data Language Standards:** Language to be used|Data Recipients and Data Holders **MUST** use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in [Table 1](#individual-consumer) Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards **MUST** be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘\*’ in [Table 1](#individual-consumer)</ul></li><ul><li>Data Recipients and Data Holders **SHOULD**  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details **MAY** include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘&dagger;’ in [Table 1](#individual-consumer)</li><li>Examples of permission details that **MAY** be used and provided as in-line help are denoted with an ‘&dagger;’ in [Table 1](#individual-consumer)</li></ul></ul>|
+|**Data Language Standards:** Detailed scope requests|If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients **MUST** use the alternative language denoted with an ‘&Dagger;’ in [Table 1](#individual-consumer) (rows greyed out for clarity).</ul></li>|
 
 
 **Table 1.**
 
-####Individual Consumer
+### Individual Consumer
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Name and occupation**|Name<br>Occupation|common:customer.basic:read|
 |**Contact Details**|Phone;<br>Email address;<br>Mail address;<br>Residential address;|common:customer.detail:read|
-|**Name, occupation, contact details ‡**|Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;|common:customer.detail:read|
+|**Name, occupation, contact details &Dagger;**|Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;|common:customer.detail:read|
 
 
-####Business consumer
+### Business consumer
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Organisation profile** *|Agent name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;|common:customer.basic:read|
-|**Organisation contact details** *|Organisation address;<br>Organisation address;<br>Phone number;|common:customer.detail:read|
-|**Organisation profile and contact details** *‡|Agent >name and role;<br>Organisation name;<br>Organisation numbers (ABN or ACN);† <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address<br>address;<br>Phone number;<br>|common:customer.detail:read|
+|**Organisation profile** *|Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;|common:customer.basic:read|
+|**Organisation contact details** *|Organisation address;<br>Mail address;<br>Phone number;|common:customer.detail:read|
+|**Organisation profile and contact details** *&Dagger;|Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger; <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address;<br>Phone number;<br>|common:customer.detail:read|
 
 
-
-####Common
+### Common
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
 |**Account name, type and balance**|Name of account;<br>Type of account;<br>Account balance;|bank:accounts.basic:read|
 |**Account numbers and features**|Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
-|**Account balance and details‡**|Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
-|**Transaction details**|Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; *(e.g. their name)†*|bank:transactions:read|
+|**Account balance and details&Dagger;**|Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|bank:accounts.detail:read|
+|**Transaction details**|Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; *(e.g. their name)&dagger;*|bank:transactions:read|
 |**Direct debits and scheduled payments**|Direct debits;<br>Scheduled payments;|bank:regular_payments:read|
-|**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)†*|bank:payees:read|
+|**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;*|bank:payees:read|
 
-###Accessibility Standards
+## Accessibility Standards
 
 
 |Area|CX Standard|
@@ -59,13 +56,13 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 | **Accessibility** <br> Reading experiences| Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 3.1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html). This will make text content readable and understandable|
 | **Accessibility** <br> Input assistance  | Data recipients and data holders **MUST** seek to have all aspects of the Consent Model comply with [WCAG 3.3](https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html). This will help users avoid and correct mistakes.|
 
-###Consent Standards
+## Consent Standards
 
 |Area|CX Standard|
 |-------------------|------------------------------|
 |**Seeking consent**|Data recipients **MUST** notify consumers of redirection prior to authentication.|
 
-###Authentication Standards
+## Authentication Standards
 
 |Area|CX Standard|
 |-------------------|------------------------------|
@@ -74,7 +71,7 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 |**Authentication:**<br> Password link  | Data holders **MUST NOT** include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.|
 |**Authentication:**<br>OTP expiry|Data holders **MUST** communicate the expiry period of the OTP to the consumer in the authentication flow.|
 
-###Authorisation Standards
+## Authorisation Standards
 
 |Area|CX Standard|
 |-------------------|------------------------------|
@@ -82,7 +79,7 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 |**Authorisation:**<br>Account confirm|Data holders **MUST** show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder **MAY** omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).|
 
 
-###Amending Authorisation Standards
+## Amending Authorisation Standards
 |Area|CX Standard|
 |-------------------|------------------------------|
 |**Authorisation:**<br/>Amending consent | **Effective from July 2021**: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a *cdr_arrangement_id:*<br><br>
@@ -101,7 +98,7 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 <br>Refer also to [Future Dated obligations](#future-dated-obligations)<br>
 
-###Withdrawal Standards
+## Withdrawal Standards
 
 |Area|CX Standard|
 |-------------------|------------------------------|

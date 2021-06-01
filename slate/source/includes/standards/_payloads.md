@@ -78,13 +78,7 @@ The `links` object will contain links to related API end points. This will inclu
 
 The links object MUST contain a field named `self` that will have the fully qualified URI to the current request as a value.
 
-<a name="error_payload"></a>The `errors` object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:
-
-* `code` field MUST be present: holds an end point specific error code
-* `title` field MUST be present: holds a human readable label of the error that is constant
-per code
-* `detail` field MUST be present: holds a human readable description of this specific error
-* `meta` object MAY be present: holds additional end point specific data relevant to the error
+The `errors` object is defined in the [Error Codes](#error_payload) section.
 
 ### Field Naming Conventions
 
@@ -143,7 +137,7 @@ Optional fields MAY be present but this is not guaranteed. It is also valid for 
 Conditional fields MUST have an associated conditional statement. If the conditional statement is true in a specific request or response the field is considered mandatory. If the conditional statement is false then the field is considered optional.
 
 <aside class="notice">
-Note that for optional fields are not considered optionally implementable by a Data Holder.
+Note that optional fields are not considered optionally implementable by a Data Holder.
 
 For instance, if a Data Holder holds data in digital form for a Customer that is represented in a payload then it is expected that this data will be shared when authorised by the Customer.  For payloads unrelated to Customers, such as product reference data, there is more discretion for the Data Holder but other drivers, such as complementary regulation or the requirement to align to other channels, should be taken into consideration.
 </aside>
@@ -236,7 +230,7 @@ This applies equally for object arrays. Where a field is defined as an array val
 An empty array is the representation for an array equivalent to an empty string.
 
 #### Optional fields
-If the field is optional a ``null`` value or empty field response is accepted.
+If the field is optional a ``null`` value or omission of the field in the response is accepted.
 
 <h4 id="payload-conventions-normative-references">Normative references</h4>
 The only exception to this, unless explicitly stated, is normative standards. The requirements for expressing arrays within those normative standards apply per the normative references.
