@@ -12,7 +12,7 @@ search: false
 # V1.10.0 Release Notes
 Release notes for version 1.10.0 of the [CDR Standards](../../index.html).
 
-This release pertains to the changes approved by the Data Standards Chair in <Decision Proposal>.
+This release pertains to the changes approved by the Data Standards Chair in Decision Proposal 154, 155 and 156.
 
 ## High Level Standards
 
@@ -30,9 +30,7 @@ This release pertains to the changes approved by the Data Standards Chair in <De
 | Customer APIs | Documentation bug fix to correctly label person and organisation responses as conditional based on the value provided in the the customerUType field. | [ResponseCommonCustomer](../../#tocSdiscoveryoutage), [ResponseCommonCustomerDetail](../../#tocSresponsecommoncustomerdetail)|
 
 ## Information Security Profile
-|Change|Description|Link|
-|------|-----------|----|
-|  |  |  |
+No changes
 
 ## Consumer Experience
 
