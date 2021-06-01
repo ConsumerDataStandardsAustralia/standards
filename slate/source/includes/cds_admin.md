@@ -11,7 +11,7 @@
 POST https://data.holder.com.au/cds-au/v1/admin/register/metadata HTTP/1.1
 Host: data.holder.com.au
 Content-Type: application/json
-
+Accept: application/json
 x-v: string
 x-min-v: string
 
@@ -20,6 +20,7 @@ x-min-v: string
 ```javascript
 var headers = {
   'Content-Type':'application/json',
+  'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
 
@@ -65,11 +66,16 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.|
 |body|body|[RequestMetaDataUpdate](#schemarequestmetadataupdate)|mandatory|none|
 
+> Example responses
+
 <h3 id="metadata-update-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|None|
+
+<h3 id="metadata-update-responseschema">Response Schema</h3>
 
 ### Response Headers
 
@@ -293,6 +299,9 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Hold
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV2](#schemaresponsemetricslistv2)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|None|
+
+<h3 id="get-metrics-responseschema">Response Schema</h3>
 
 ### Response Headers
 

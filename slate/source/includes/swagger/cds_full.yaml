@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right
-  version: 1.9.0
+  version: 1.10.0
   title: Consumer Data Standards
   contact:
     name: Consumer Data Standards
@@ -120,6 +120,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingAccountList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:accounts.basic:read
       x-version: "1"
@@ -223,6 +231,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:accounts.basic:read
       x-version: "1"
@@ -297,14 +313,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceList'
-        422:
-          description: The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>
           headers:
             x-fapi-interaction-id:
               type: string
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
-            $ref: '#/definitions/ResponseErrorList'
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:accounts.basic:read
       x-version: "1"
@@ -366,6 +382,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingAccountsBalanceById'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:accounts.basic:read
       x-version: "1"
@@ -427,6 +451,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingAccountById'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:accounts.detail:read
       x-version: "1"
@@ -542,6 +574,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingTransactionList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:transactions:read
       x-version: "1"
@@ -609,6 +649,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingTransactionById'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[Unavailable Resource](#error-404-resource-unavailable)</li><li>[Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:transactions:read
       x-version: "1"
@@ -684,6 +732,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:regular_payments:read
       x-version: "1"
@@ -787,6 +843,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:regular_payments:read
       x-version: "1"
@@ -861,14 +925,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingDirectDebitAuthorisationList'
-        422:
-          description: The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>
           headers:
             x-fapi-interaction-id:
               type: string
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
-            $ref: '#/definitions/ResponseErrorList'
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:regular_payments:read
       x-version: "1"
@@ -944,6 +1008,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:regular_payments:read
       x-version: "1"
@@ -1047,6 +1119,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:regular_payments:read
       x-version: "1"
@@ -1121,14 +1201,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingScheduledPaymentsList'
-        422:
-          description: The request was well formed but was unable to be processed due to business logic specific to the request.  For this API a 422 response must be given if any of the account IDs provided are invalid for the consent context
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>
           headers:
             x-fapi-interaction-id:
               type: string
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
-            $ref: '#/definitions/ResponseErrorList'
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:regular_payments:read
       x-version: "1"
@@ -1209,6 +1289,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingPayeeList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:payees:read
       x-version: "1"
@@ -1273,6 +1361,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseBankingPayeeById'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - bank:payees:read
       x-version: "1"
@@ -1396,6 +1492,10 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-version: "3"
   /banking/products/{productId}:
     get:
@@ -1436,6 +1536,10 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseBankingProductById'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-version: "3"
   /common/customer:
     get:
@@ -1489,6 +1593,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseCommonCustomer'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - common:customer.basic:read
       x-version: "1"
@@ -1544,6 +1656,14 @@ paths:
               description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
           schema:
             $ref: '#/definitions/ResponseCommonCustomerDetail'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              type: string
+              description: An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
       - common:customer.detail:read
       x-version: "1"
@@ -1575,6 +1695,10 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseCommonDiscoveryStatus'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-version: "1"
   /discovery/outages:
     get:
@@ -1604,6 +1728,10 @@ paths:
               description: The [version](#response-headers) of the API end point that the data holder has responded with.
           schema:
             $ref: '#/definitions/ResponseDiscoveryOutagesList'
+        4xx:
+          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          schema:
+            $ref: '#/definitions/ResponseErrorListV2'
       x-version: "1"
 definitions:
   RequestAccountIds:
@@ -3204,9 +3332,6 @@ definitions:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-    x-conditional:
-    - person
-    - organisation
   ResponseCommonCustomerDetail:
     type: object
     required:
@@ -3219,9 +3344,6 @@ definitions:
         $ref: '#/definitions/Links'
       meta:
         $ref: '#/definitions/Meta'
-    x-conditional:
-    - person
-    - organisation
   CommonPerson:
     type: object
     required:
@@ -3633,15 +3755,27 @@ definitions:
         type: integer
         description: The total number of pages in the full set. See [pagination](#pagination).
         x-cds-type: NaturalNumber
-  ResponseErrorList:
+  MetaError:
+    type: object
+    properties:
+      urn:
+        type: string
+        description: The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.
+    description: Additional data for customised error codes
+    x-conditional:
+    - urn
+  ResponseErrorListV2:
     type: object
     required:
     - errors
     properties:
       errors:
         type: array
+        description: ""
         items:
-          $ref: '#/definitions/ResponseErrorList_errors'
+          $ref: '#/definitions/ResponseErrorListV2_errors'
+    x-conditional:
+    - meta
   BankingProductCategory:
     type: string
     description: The category to which a product or account belongs. See [here](#product-categories) for more details
@@ -3906,8 +4040,10 @@ definitions:
         - organisation
         - person
       person:
+        description: Mandatory if `customerUType` is `person`
         $ref: '#/definitions/CommonPerson'
       organisation:
+        description: Mandatory if `customerUType` is `organisation`
         $ref: '#/definitions/CommonOrganisation'
   ResponseCommonCustomerDetail_data:
     required:
@@ -3920,10 +4056,12 @@ definitions:
         - organisation
         - person
       person:
+        description: Mandatory if `customerUType` is `person`
         $ref: '#/definitions/CommonPersonDetail'
       organisation:
+        description: Mandatory if `customerUType` is `organisation`
         $ref: '#/definitions/CommonOrganisationDetail'
-  ResponseErrorList_errors:
+  ResponseErrorListV2_errors:
     required:
     - code
     - detail
@@ -3931,17 +4069,15 @@ definitions:
     properties:
       code:
         type: string
-        description: 'Must be one of the following: 0001 – Account not able to be found'
+        description: The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.
       title:
         type: string
-        description: 'Must be one of the following: Invalid account'
+        description: A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.
       detail:
         type: string
-        description: ID of the account not found
+        description: A human-readable explanation specific to this occurrence of the problem.
       meta:
-        type: object
-        description: Optional additional data for specific error types
-        properties: {}
+        $ref: '#/definitions/MetaError'
 parameters:
   RequestHeader_x-v:
     name: x-v

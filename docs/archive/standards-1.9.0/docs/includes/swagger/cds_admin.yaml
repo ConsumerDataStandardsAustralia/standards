@@ -1,0 +1,471 @@
+---
+swagger: "2.0"
+info:
+  description: Data Holder Consumer Data Standards Administration End Points
+  version: 1.9.0
+  title: Consumer Data Standards Administration End Points
+  contact:
+    name: Consumer Data Standards Administration End Points
+    url: https://consumerdatastandards.org.au/
+    email: cdr-data61@csiro.au
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+host: data.holder.com.au
+basePath: /cds-au/v1
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /admin/register/metadata:
+    post:
+      tags:
+      - Admin
+      - Register
+      summary: Metadata Update
+      description: Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained
+      operationId: metadataUpdate
+      parameters:
+      - in: body
+        name: action
+        required: true
+        schema:
+          $ref: '#/definitions/RequestMetaDataUpdate'
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+        required: false
+        type: string
+      responses:
+        200:
+          description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](#response-headers) of the API end point that the data holder has responded with.
+      x-scopes:
+      - admin:metadata:update
+      x-restricted-access: true
+      x-version: "1"
+  /admin/metrics:
+    get:
+      tags:
+      - Admin
+      - Metrics
+      summary: Get Metrics
+      description: |-
+        This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
+
+        NOTE: This version must be implemented by **July 31st 2021**
+
+        Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
+      operationId: getMetrics
+      parameters:
+      - name: period
+        in: query
+        description: The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.
+        required: false
+        type: string
+        default: ALL
+        enum:
+        - CURRENT
+        - HISTORIC
+        - ALL
+      - name: x-v
+        in: header
+        description: Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        required: true
+        type: string
+      - name: x-min-v
+        in: header
+        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+        required: false
+        type: string
+      responses:
+        200:
+          description: Success
+          headers:
+            x-v:
+              type: string
+              description: The [version](#response-headers) of the API end point that the data holder has responded with.
+          schema:
+            $ref: '#/definitions/ResponseMetricsListV2'
+      x-scopes:
+      - admin:metrics.basic:read
+      x-restricted-access: true
+      x-version: "2"
+definitions:
+  RequestMetaDataUpdate:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: '#/definitions/RequestMetaDataUpdate_data'
+      meta:
+        $ref: '#/definitions/Meta'
+  ResponseMetricsListV2:
+    type: object
+    required:
+    - data
+    - links
+    properties:
+      data:
+        $ref: '#/definitions/ResponseMetricsListV2_data'
+      links:
+        $ref: '#/definitions/Links'
+      meta:
+        $ref: '#/definitions/Meta'
+  AvailabilityMetrics:
+    type: object
+    properties:
+      currentMonth:
+        type: number
+        description: Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%.
+      previousMonths:
+        type: array
+        description: Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
+        items:
+          type: number
+    description: Percentage availability of the CDR platform over time
+    x-conditional:
+    - currentMonth
+    - previousMonths
+  PerformanceMetrics:
+    type: object
+    properties:
+      currentDay:
+        type: number
+        description: Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%
+      previousDays:
+        type: array
+        description: Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%
+        items:
+          type: number
+    description: Percentage of calls within the performance thresholds
+    x-conditional:
+    - currentDay
+    - previousDays
+  InvocationMetrics:
+    type: object
+    required:
+    - highPriority
+    - largePayload
+    - lowPriority
+    - unattended
+    - unauthenticated
+    properties:
+      unauthenticated:
+        $ref: '#/definitions/InvocationMetrics_unauthenticated'
+      highPriority:
+        $ref: '#/definitions/InvocationMetrics_highPriority'
+      lowPriority:
+        $ref: '#/definitions/InvocationMetrics_lowPriority'
+      unattended:
+        $ref: '#/definitions/InvocationMetrics_unattended'
+      largePayload:
+        $ref: '#/definitions/InvocationMetrics_largePayload'
+    description: Number of API calls in each performance tier over time
+  AverageResponseMetrics:
+    type: object
+    required:
+    - highPriority
+    - largePayload
+    - lowPriority
+    - unattended
+    - unauthenticated
+    properties:
+      unauthenticated:
+        $ref: '#/definitions/AverageResponseMetrics_unauthenticated'
+      highPriority:
+        $ref: '#/definitions/AverageResponseMetrics_highPriority'
+      lowPriority:
+        $ref: '#/definitions/AverageResponseMetrics_lowPriority'
+      unattended:
+        $ref: '#/definitions/AverageResponseMetrics_unattended'
+      largePayload:
+        $ref: '#/definitions/AverageResponseMetrics_largePayload'
+    description: Average response time in seconds, at millisecond resolution, within each performance tier
+  SessionCountMetrics:
+    properties:
+      currentDay:
+        type: number
+        description: Session count for current day
+      previousDays:
+        type: array
+        description: Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: Session counts over time. Note that a session is defined as the provisioning of an Access Token.
+    x-conditional:
+    - currentDay
+    - previousDays
+  AverageTPSMetrics:
+    properties:
+      currentDay:
+        type: number
+        description: Average TPS for current day
+      previousDays:
+        type: array
+        description: Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: Transactions per second over time
+    x-conditional:
+    - currentDay
+    - previousDays
+  PeakTPSMetrics:
+    properties:
+      currentDay:
+        type: number
+        description: Peak TPS for current day
+      previousDays:
+        type: array
+        description: Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: Maximum record transactions per second over time
+    x-conditional:
+    - currentDay
+    - previousDays
+  ErrorMetrics:
+    properties:
+      currentDay:
+        type: number
+        description: Number of errors for current day
+      previousDays:
+        type: array
+        description: Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: Number of calls resulting in error due to server execution over time
+    x-conditional:
+    - currentDay
+    - previousDays
+  RejectionMetricsV2:
+    required:
+    - authenticated
+    - unauthenticated
+    properties:
+      authenticated:
+        $ref: '#/definitions/RejectionMetricsV2_authenticated'
+      unauthenticated:
+        $ref: '#/definitions/RejectionMetricsV2_unauthenticated'
+    description: Number of calls rejected due to traffic thresholds over time
+  Links:
+    type: object
+    required:
+    - self
+    properties:
+      self:
+        type: string
+        description: Fully qualified link to this API call
+        x-cds-type: URIString
+  Meta:
+    type: object
+  RequestMetaDataUpdate_data:
+    required:
+    - action
+    properties:
+      action:
+        type: string
+        description: The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable
+        default: REFRESH
+        enum:
+        - REFRESH
+  ResponseMetricsListV2_data:
+    required:
+    - availability
+    - averageResponse
+    - averageTps
+    - customerCount
+    - errors
+    - invocations
+    - peakTps
+    - performance
+    - recipientCount
+    - rejections
+    - requestTime
+    - sessionCount
+    properties:
+      requestTime:
+        type: string
+        description: The date and time that the metrics in this payload were requested.
+        x-cds-type: DateTimeString
+      availability:
+        $ref: '#/definitions/AvailabilityMetrics'
+      performance:
+        $ref: '#/definitions/PerformanceMetrics'
+      invocations:
+        $ref: '#/definitions/InvocationMetrics'
+      averageResponse:
+        $ref: '#/definitions/AverageResponseMetrics'
+      sessionCount:
+        $ref: '#/definitions/SessionCountMetrics'
+      averageTps:
+        $ref: '#/definitions/AverageTPSMetrics'
+      peakTps:
+        $ref: '#/definitions/PeakTPSMetrics'
+      errors:
+        $ref: '#/definitions/ErrorMetrics'
+      rejections:
+        $ref: '#/definitions/RejectionMetricsV2'
+      customerCount:
+        type: integer
+        description: Number of customers with active authorisations at the time of the call
+      recipientCount:
+        type: integer
+        description: Number of data recipients with active authorisations at the time of the call
+  InvocationMetrics_unauthenticated:
+    properties:
+      currentDay:
+        type: number
+        description: API call counts for current day
+      previousDays:
+        type: array
+        description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: API call counts for the unauthenticated tier
+  InvocationMetrics_highPriority:
+    properties:
+      currentDay:
+        type: number
+        description: API call counts for current day
+      previousDays:
+        type: array
+        description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: API call counts for the high priority tier
+  InvocationMetrics_lowPriority:
+    properties:
+      currentDay:
+        type: number
+        description: API call counts for current day
+      previousDays:
+        type: array
+        description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: API call counts for the low priority tier
+  InvocationMetrics_unattended:
+    properties:
+      currentDay:
+        type: number
+        description: API call counts for current day
+      previousDays:
+        type: array
+        description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: API call counts for the unattended tier
+  InvocationMetrics_largePayload:
+    properties:
+      currentDay:
+        type: number
+        description: API call counts for current day
+      previousDays:
+        type: array
+        description: API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available
+        items:
+          type: number
+    description: API call counts for the large payload tier
+  AverageResponseMetrics_unauthenticated:
+    properties:
+      currentDay:
+        type: number
+        description: Average response time for current day
+      previousDays:
+        type: array
+        description: Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Average response time for the unauthenticated tier
+  AverageResponseMetrics_highPriority:
+    properties:
+      currentDay:
+        type: number
+        description: Average response time for current day
+      previousDays:
+        type: array
+        description: Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Average response time for the high priority tier
+  AverageResponseMetrics_lowPriority:
+    properties:
+      currentDay:
+        type: number
+        description: Average response time for current day
+      previousDays:
+        type: array
+        description: Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Average response time for the low priority tier
+  AverageResponseMetrics_unattended:
+    properties:
+      currentDay:
+        type: number
+        description: Average response time for current day
+      previousDays:
+        type: array
+        description: Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Average response time for the unattended tier
+  AverageResponseMetrics_largePayload:
+    properties:
+      currentDay:
+        type: number
+        description: Average response time for current day
+      previousDays:
+        type: array
+        description: Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Average response time for the large payload tier
+  RejectionMetricsV2_authenticated:
+    properties:
+      currentDay:
+        type: number
+        description: Number of calls rejected for current day
+      previousDays:
+        type: array
+        description: Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Rejection counts for all authenticated end points
+  RejectionMetricsV2_unauthenticated:
+    properties:
+      currentDay:
+        type: number
+        description: Number of calls rejected for current day
+      previousDays:
+        type: array
+        description: Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.
+        items:
+          type: number
+    description: Rejection counts for all uauthenticated end points
+parameters:
+  RequestHeader_x-v:
+    name: x-v
+    in: header
+    description: Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+    required: true
+    type: string
+  RequestHeader_x-min-v:
+    name: x-min-v
+    in: header
+    description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+    required: false
+    type: string
