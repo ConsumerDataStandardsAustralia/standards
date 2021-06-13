@@ -22,12 +22,12 @@ Release notes for version 1.12.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Documentation bug in Product Fee Types | Removed documentation bug in Product Fee Types (maintenance issue #386) | [Product Fee Types](../../#tocSproductfeetypedoc) |
 
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Levels of Assurance navigation anchor | Removed duplicate menu navigation anchor for levels of assurance | [Levels of Assurance](../../#levels-of-assurance-loas)  |
 
 ## Consumer Experience
 
