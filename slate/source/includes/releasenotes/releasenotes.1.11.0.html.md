@@ -16,7 +16,7 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Contact details | Updated swagger schemas to reference Consumer Data Standards contact details  | N/A  |
 
 ## API End Points
 
