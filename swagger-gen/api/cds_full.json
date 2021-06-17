@@ -3653,6 +3653,9 @@
     },
     "BankingAuthorisedEntity": {
       "type": "object",
+      "x-conditional": [
+        "financialInstitution"
+      ],
       "properties": {
         "description": {
           "type": "string",
