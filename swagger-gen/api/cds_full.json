@@ -3,7 +3,7 @@
   "info": {
     "title": "Consumer Data Standards",
     "description": "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
-    "version": "1.10.0",
+    "version": "1.12.0",
     "contact": {
       "name": "Consumer Data Standards",
       "url": "https://consumerdatastandards.gov.au",
@@ -2973,7 +2973,7 @@
         },
         "transactionId": {
           "type": "string",
-          "description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
+          "description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.",
           "x-cds-type": "ASCIIString"
         },
         "isDetailAvailable": {

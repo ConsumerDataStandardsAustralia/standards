@@ -22,7 +22,7 @@ Release notes for version 1.12.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Transaction ID description | Clarified that `transactionId` is required when `isDetailAvailable` is set to true | [Banking Transaction](../../#tocSbankingtransaction) |
 
 ## Information Security Profile
 |Change|Description|Link|
