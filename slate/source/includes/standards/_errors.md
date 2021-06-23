@@ -1,11 +1,11 @@
 ## Error Codes
 
-These standards define a standard list of error codes that Data Recipients and Data Holders SHOULD or MUST conform to. Further,
+These standards define a standard list of error codes that Data Recipients and Data Holders **SHOULD** or **MUST** conform to. Further,
 
-* Data Recipients and Data Holders SHOULD use the standard error codes as defined
-* Where a specific error code MUST be responded, this requirement is stated against the applicable error code or API endpoints
-* Where a specific error code MAY be responded, this requirement is stated against the applicable error code or API endpoints
-* Data Recipients and Data Holders MAY respond with application-specific error codes and in doing so, MUST respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.
+* Data Recipients and Data Holders **SHOULD** use the standard error codes as defined
+* Where a specific error code **MUST** be responded, this requirement is stated against the applicable error code or API endpoints
+* Where a specific error code **MAY** be responded, this requirement is stated against the applicable error code or API endpoints
+* Data Recipients and Data Holders **MAY** respond with application-specific error codes and in doing so, **MUST** respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.
 
 ### Error Response Structure
 
@@ -17,20 +17,20 @@ These standards define a standard list of error codes that Data Recipients and D
     {
       "code": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount",
       "title": "Unavailable Banking Account",
-      "description": "808b5b1d-0798-4bdf-a3c8-f9cce2904eb2"
+      "detail": "808b5b1d-0798-4bdf-a3c8-f9cce2904eb2"
     }
   ]
 }
 ```
 <a name="error_payload"></a>The `errors` object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:
 
-* `code` field MUST be present: holds an end point specific error code. This MAY be a standard CDR error code or an application-specific error code.
-* `title` field MUST be present: holds a human readable label of the error that is constant
+* `code` field **MUST** be present: holds an end point specific error code. This **MAY** be a standard CDR error code or an application-specific error code.
+* `title` field **MUST** be present: holds a human readable label of the error that is constant
 per `code`
-* `detail` field MUST be present: holds a human readable description of this specific error
-* `meta` object MAY be present: holds additional end point specific data relevant to the error
+* `detail` field **MUST** be present: holds a human readable description of this specific error
+* `meta` object **MAY** be present: holds additional end point specific data relevant to the error
 
-If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code MUST be provided in the `MetaError` object.
+If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code **MUST** be provided in the `MetaError` object.
 
 <div class="clear both"></div>
 #### URN Structure
@@ -74,7 +74,7 @@ Content-Type: application/json
     {
       "code": "ACME-APPLY-017",
       "title": "Application Is Missing Product ID",
-      "description": "A new loan application was requested but the product ID was not provided",
+      "detail": "A new loan application was requested but the product ID was not provided",
       "meta": {
          "urn": "urn:au-cds:error:cds-all:GeneralError/Expected"
       }
@@ -85,9 +85,9 @@ Content-Type: application/json
 
 | Error Title      | Error Code            | HTTP Status Category | Description |  
 | :--------------- | :-------------------- | :------------------- | :---------- |  
-| <a id="error-4xx-expected-error"></a>Expected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>GeneralError/Expected</code> | 4xx</td> | An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code. |
-| <a id="error-5xx-unexpected-error"></a>Unexpected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>GeneralError/Unexpected</code> | 5xx | An error code that can be used, when an unexpected error occurs.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code. |
-| <a id="error-4503-service-unavailable"></a>Service Unavailable | <code>urn:au-cds:error:cds-all:<br/>Service/Unavailable</code> | 503 (Service Unavailable) | A request is made but the API unavailable as due to an outage.<br/><br/>The error description MAY describe whether the outage is scheduled or unexpected and whether it is fully unavailable or partially unavailable. |
+| <a id="error-4xx-expected-error"></a>Expected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>GeneralError/Expected</code> | 4xx</td> | An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error `detail` **SHOULD** be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code **MAY** be provided. The <code>MetaError &raquo; urn</code> **MUST** be populated with the standard CDR error code. |
+| <a id="error-5xx-unexpected-error"></a>Unexpected Error Encountered | <code>urn:au-cds:error:cds-all:<br/>GeneralError/Unexpected</code> | 5xx | An error code that can be used, when an unexpected error occurs.<br/><br/>The error `detail` **SHOULD** be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code **MAY** be provided. The <code>MetaError &raquo; urn</code> **MUST** be populated with the standard CDR error code. |
+| <a id="error-4503-service-unavailable"></a>Service Unavailable | <code>urn:au-cds:error:cds-all:<br/>Service/Unavailable</code> | 503 (Service Unavailable) | A request is made but the API unavailable as due to an outage.<br/><br/>The error `detail` **MAY** describe whether the outage is scheduled or unexpected and whether it is fully unavailable or partially unavailable. |
 
 #### 400 Bad Request Errors
 
@@ -110,7 +110,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Field/Invalid",
       "title": "Invalid Field",
-      "description": "is-owned"
+      "detail": "is-owned"
     }
   ]
 }
@@ -118,21 +118,21 @@ Content-Type: application/json
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
-| <a id="error-400-field-missing"></a>Missing Required Field | <code>urn:au-cds:error:cds-all:<br/>Field/Missing</code> | The request is missing a mandatory field required for the API. It may be a missing query parameter or missing field in the request payload. This error code can be used, where a more specific validation error is not applicable.<br/><br/>The error description SHOULD be the parameter name of the missing field.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-header-missing"></a>Missing Required Header | <code>urn:au-cds:error:cds-all:<br/>Header/Missing</code> | A required HTTP header has not been provided.<br/><br/>The error description SHOULD be the HTTP header name.<br/><br/>This error code SHOULD be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-field-invalid"></a>Invalid Field | <code>urn:au-cds:error:cds-all:<br/>Field/Invalid</code> | Applies when the value of the URL parameter or request body parameter is an invalid type or the value violates the field's constraints as defined by the interface contract.<br/>For example, `is-owned` is a `Boolean` but a `DateString` value is provided.<br/><br/>The error description SHOULD be the parameter name of the invalid field. The error description MAY include further details explaining the valid format.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-header-invalid"></a>Invalid Header | <code>urn:au-cds:error:cds-all:<br/>Header/Invalid</code> | Applies when a HTTP Header is provided but the value provided is an invalid type or violates the field type constraints as defined in the Consumer Data Standards.<br/><br/>The error description SHOULD be the HTTP header name. The error description MAY include further details explaining the valid format.<br/><br/>This error code SHOULD be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-field-invalid-date-time"></a>Invalid Date | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidDateTime</code> | An invalid date is provided. For example, a future date value is expected, but a date in past or current date is supplied. Applies to `DateTimeString`, `DateString`, and `TimeString` field types.<br/><br/>The error description SHOULD be the parameter name of the invalid date field. The error description MAY include further details explaining the expected date value.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-field-invalid-page-size"></a>Invalid Page Size | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code> | The value provided in the `page-size` pagination field is greater than the maximum allowed by the Consumer Data Standards (`page_size > 1000`).<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
-| <a id="error-400-header-invalid-version"></a>Invalid Version | <code>urn:au-cds:error:cds-all:<br/>Header/InvalidVersion</code> | A request is made for a version that is not a `PositiveInteger`.<br/>For example:<ul><li>`x-min-v`, `x-v` or `x-<HID>-v` are not `Integers` (e.g. `x-min-v=foo`, `x-v=bar`, `x-ACME-v=cheese`)</li><li>`x-min-v`, `x-v` or `x-<HID>-v` are not positive-value integers (they are an `Integer` but `<= 0`)</li></ul><br/>This error code MUST be supported for unauthenticated and authenticated APIs.<br/><br/>If the version header is a `PositiveInteger` but is not a version supported by the Data Holder, the [Unsupported Version code](#error-406-header-unsupported-version) applies. |
+| <a id="error-400-field-missing"></a>Missing Required Field | <code>urn:au-cds:error:cds-all:<br/>Field/Missing</code> | The request is missing a mandatory field required for the API. It **MAY** be a missing query parameter or missing field in the request payload. This error code can be used, where a more specific validation error is not applicable.<br/><br/>The error `detail` **SHOULD** be the parameter name of the missing field.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-header-missing"></a>Missing Required Header | <code>urn:au-cds:error:cds-all:<br/>Header/Missing</code> | A required HTTP header has not been provided.<br/><br/>The error `detail` **SHOULD** be the HTTP header name.<br/><br/>This error code **SHOULD** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-field-invalid"></a>Invalid Field | <code>urn:au-cds:error:cds-all:<br/>Field/Invalid</code> | Applies when the value of the URL parameter or request body parameter is an invalid type or the value violates the field's constraints as defined by the interface contract.<br/>For example, `is-owned` is a `Boolean` but a `DateString` value is provided.<br/><br/>The error `detail` **SHOULD** be the parameter name of the invalid field. The error `detail` **MAY** include further details explaining the valid format.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-header-invalid"></a>Invalid Header | <code>urn:au-cds:error:cds-all:<br/>Header/Invalid</code> | Applies when a HTTP Header is provided but the value provided is an invalid type or violates the field type constraints as defined in the Consumer Data Standards.<br/><br/>The error `detail` **SHOULD** be the HTTP header name. The error `detail` **MAY** include further details explaining the valid format.<br/><br/>This error code **SHOULD** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-field-invalid-date-time"></a>Invalid Date | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidDateTime</code> | An invalid date is provided. For example, a future date value is expected, but a date in past or current date is supplied. Applies to `DateTimeString`, `DateString`, and `TimeString` field types.<br/><br/>The error `detail` **SHOULD** be the parameter name of the invalid date field. The error `detail` **MAY** include further details explaining the expected date value.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-field-invalid-page-size"></a>Invalid Page Size | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code> | The value provided in the `page-size` pagination field is greater than the maximum allowed by the Consumer Data Standards (`page_size > 1000`).<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-400-header-invalid-version"></a>Invalid Version | <code>urn:au-cds:error:cds-all:<br/>Header/InvalidVersion</code> | A request is made for a version that is not a `PositiveInteger`.<br/>For example:<ul><li>`x-min-v`, `x-v` or `x-<HID>-v` are not `Integers` (e.g. `x-min-v=foo`, `x-v=bar`, `x-ACME-v=cheese`)</li><li>`x-min-v`, `x-v` or `x-<HID>-v` are not positive-value integers (they are an `Integer` but `<= 0`)</li></ul><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs.<br/><br/>If the version header is a `PositiveInteger` but is not a version supported by the Data Holder, the [Unsupported Version code](#error-406-header-unsupported-version) applies. |
 
 #### 403 (Forbidden) Errors
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
-| <a id="error-403-authorisation-adr-status-not-active"></a>ADR Status Is Not Active | <code>urn:au-cds:error:cds-all:<br/>Authorisation/AdrStatusNotActive</code> | The ADR or the ADR's software product is not "active".<br/><br/>The error description SHOULD contain the current status of the ADR software product. |
-| <a id="error-403-authorisation-revoked-consent"></a>Consent Is Revoked | <code>urn:au-cds:error:cds-all:<br/>Authorisation/RevokedConsent</code> | The consumer's consent is no longer authorised (for example revoked or expired) and the requested resource will not be provided.<br/><br/>This error code SHOULD be supported for authenticated APIs. |
-| <a id="error-403-authorisation-invalid-consent"></a>Consent Is Invalid | <code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidConsent</code> | The authorised consumer's consent is not associated to the resource requested, is insufficient to execute the resource or is in a status that prevents the resource being executed.<br/><br/>For example, if consent is awaiting authorisation of a secondary account holder.<br/><br/>The error description SHOULD be a description of the status of consent without revealing sensitive information.<br/><br/>This error code SHOULD be supported for authenticated APIs. |
+| <a id="error-403-authorisation-adr-status-not-active"></a>ADR Status Is Not Active | <code>urn:au-cds:error:cds-all:<br/>Authorisation/AdrStatusNotActive</code> | The ADR or the ADR's software product is not "active".<br/><br/>The error `detail` **SHOULD** contain the current status of the ADR software product. |
+| <a id="error-403-authorisation-revoked-consent"></a>Consent Is Revoked | <code>urn:au-cds:error:cds-all:<br/>Authorisation/RevokedConsent</code> | The consumer's consent is no longer authorised (for example revoked or expired) and the requested resource will not be provided.<br/><br/>This error code **SHOULD** be supported for authenticated APIs. |
+| <a id="error-403-authorisation-invalid-consent"></a>Consent Is Invalid | <code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidConsent</code> | The authorised consumer's consent is not associated to the resource requested, is insufficient to execute the resource or is in a status that prevents the resource being executed.<br/><br/>For example, if consent is awaiting authorisation of a secondary account holder.<br/><br/>The error `detail` **SHOULD** be a description of the status of consent without revealing sensitive information.<br/><br/>This error code **SHOULD** be supported for authenticated APIs. |
 
 #### 404 (Not Found) Errors
 
@@ -194,7 +194,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Resource/Unavailable",
       "title": "Unavailable Resource",
-      "description": "52e443ae13c5"
+      "detail": "52e443ae13c5"
     }
   ]
 }
@@ -215,7 +215,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-banking:Authorisation/InvalidBankingAccount",
       "title": "Invalid Banking Account",
-      "description": "invalid-id"
+      "detail": "invalid-id"
     }
   ]
 }
@@ -224,18 +224,18 @@ Content-Type: application/json
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
-| <a id="error-404-resource-not-implemented"></a>Resource Not Implemented | <code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code> | The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code SHOULD be supported for unimplemented APIs.|
+| <a id="error-404-resource-not-implemented"></a>Resource Not Implemented | <code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code> | The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code **SHOULD** be supported for unimplemented APIs.|
 | <a id="error-404-resource-not-found"></a>Resource Not Found | <code>urn:au-cds:error:cds-all:<br/>Resource/NotFound</code> | The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient. |
-| <a id="error-404-resource-invalid"></a>Invalid Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code> | The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
-| <a id="error-404-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
-| <a id="error-404-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs. |
-| <a id="error-404-authorisation-unavailable-banking-account"></a>Unavailable Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code> | The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs. |
+| <a id="error-404-resource-invalid"></a>Invalid Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code> | The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-404-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource **MAY** be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
+| <a id="error-404-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-404-authorisation-unavailable-banking-account"></a>Unavailable Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code> | The requested bank account is temporarily unavailable. Subsequent requests for the account **MAY** be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
 
 #### 406 (Not Acceptable) Errors
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
-| <a id="error-406-header-unsupported-version"></a>Unsupported Version | <code>urn:au-cds:error:cds-all:<br/>Header/UnsupportedVersion</code> | A request is made for a version that is lower than the minimum version or greater than maximum version the Data Holder supports for the requested endpoint.<br/><br/>The error description MAY include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
+| <a id="error-406-header-unsupported-version"></a>Unsupported Version | <code>urn:au-cds:error:cds-all:<br/>Header/UnsupportedVersion</code> | A request is made for a version that is lower than the minimum version or greater than maximum version the Data Holder supports for the requested endpoint.<br/><br/>The error `detail` **MAY** include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 
 #### 422 (Unprocessable Entity) Errors
 
@@ -268,7 +268,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Authorisation/UnavailableBankingAccount",
       "title": "Unavailable Banking Account",
-      "description": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+      "detail": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
     }
   ]
 }
@@ -277,15 +277,15 @@ Content-Type: application/json
 
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
-| <a id="error-422-resource-invalid"></a>Invalid Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code> | The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs. |
-| <a id="error-422-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs. |
-| <a id="error-422-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs. |
-| <a id="error-422-authorisation-unavailable-banking-account"></a>Unavailable Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code> | The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs. |
-| <a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement | <code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code> | The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error description is the CDR Arrangement ID of the being executed.<br/><br/>This error code MUST be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint. |
-| <a id="error-422-field-invalid-page"></a>Invalid Page | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPage</code> | The page being requested it out of of range. For example, the valid pagination range is 5 pages and the client requested `page=10`).<br/><br/>The error description SHOULD be the maximum number of pages that are available.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs. |
+| <a id="error-422-resource-invalid"></a>Invalid Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code> | The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-422-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource **MAY** be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-422-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-422-authorisation-unavailable-banking-account"></a>Unavailable Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code> | The requested bank account is temporarily unavailable. Subsequent requests for the account **MAY** be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
+| <a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement | <code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code> | The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error `detail` is the CDR Arrangement ID of the being executed.<br/><br/>This error code **MUST** be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint. |
+| <a id="error-422-field-invalid-page"></a>Invalid Page | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPage</code> | The page being requested it out of of range. For example, the valid pagination range is 5 pages and the client requested `page=10`).<br/><br/>The error `detail` **SHOULD** be the maximum number of pages that are available.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 
 #### CDR Register Errors
-The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register may expect the following standard CDR error codes to be encountered:
+The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register **MAY** expect the following standard CDR error codes to be encountered:
 
 | Error Title            | Error Code                           | HTTP Status Category | Description |  
 | :--------------------- | :----------------------------------- | :------------------- | :---------- |  
@@ -313,7 +313,7 @@ Error handling has been designed with extensibility in mind. Where an applicatio
     {
       "code": "acme-bank:JointAccountElectionRemoved",
       "title": "Joint Account Consent Election Is Removed",
-      "description": "Description of the specific error encountered",
+      "detail": "Description of the specific error encountered",
       "meta": {
         "urn": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount"
       }
@@ -335,7 +335,7 @@ To assist clients, the Data Recipient or Data Holder **MUST** provide the applic
   {
     "code": "old error code",
     "title": "error message",
-    "description": "Description of the specific error encountered"
+    "detail": "Description of the specific error encountered"
   }
 ] }
 
@@ -345,7 +345,7 @@ To assist clients, the Data Recipient or Data Holder **MUST** provide the applic
   {
     "code": "old error code",
     "title": "error message",
-    "description": "Description of the specific error encountered",
+    "detail": "Description of the specific error encountered",
     "meta": {
       "urn": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion"
     }
@@ -358,7 +358,7 @@ To assist clients, the Data Recipient or Data Holder **MUST** provide the applic
   {
     "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
-    "description": "'x-v' must be greater than or equal to '2'"
+    "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
 ] }
 ```
@@ -377,5 +377,3 @@ If Data Recipients or Data Holders support custom error codes prior to February 
 * **Effective from November 1st 2022:** Data Holders and Data Recipients **MAY** deprecate any custom error codes
   * Standardised error codes **MAY** be provided in the <code>ResponseErrorListV2 &raquo; code</code> field if no application-specific error code applies
   * Application-specific error codes **MAY** be provided in the <code>ResponseErrorListV2 &raquo; code</code>
-
-<!--</div>-->
