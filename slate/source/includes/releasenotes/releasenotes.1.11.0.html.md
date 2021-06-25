@@ -33,4 +33,5 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
+| Modularised CX standards | Modularised the CX standards code for maintenance and build purposes | N/A |
 | Disclosure Consents CX Standards | Standards introduced in relation to DP187 regarding disclosure consent standards, trusted advisers and insights | [Consumer Experience](../../#consumer-experience) |
