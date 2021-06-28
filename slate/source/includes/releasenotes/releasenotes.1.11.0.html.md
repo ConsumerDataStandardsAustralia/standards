@@ -24,7 +24,6 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
-| Direct Debit APIs | Fix to the swagger schema to correctly denote `financialInstitution` as conditional | [BankingAuthorisedEntity](../../#tocSbankingauthorisedentity) |
 
 ## Information Security Profile
 |Change|Description|Link|
