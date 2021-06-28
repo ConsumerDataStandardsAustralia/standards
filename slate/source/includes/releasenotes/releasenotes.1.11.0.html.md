@@ -34,4 +34,4 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Modularised CX standards | Modularised the CX standards code for maintenance and build purposes | N/A |
