@@ -17,7 +17,7 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 |Change|Description|Link|
 |------|-----------|----|
 | Contact details | Updated swagger schemas to reference Consumer Data Standards contact details  | N/A  |
-| Error codes | Fixed the description for 422 error codes that incorrectly referred to the URI instead of the request body | [422 (Unprocessable Entity) Error Codes](../../#422-unprocessable-entity-errors)
+|  |  |  |
 
 ## API End Points
 
