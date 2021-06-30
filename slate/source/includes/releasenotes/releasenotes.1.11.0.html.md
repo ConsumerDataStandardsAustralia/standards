@@ -17,6 +17,8 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 |Change|Description|Link|
 |------|-----------|----|
 | Contact details | Updated swagger schemas to reference Consumer Data Standards contact details  | N/A  |
+| Error codes | Fixed the description for 422 error codes that incorrectly referred to the URI instead of the request body | [422 (Unprocessable Entity) Error Codes](../../#422-unprocessable-entity-errors) |
+| Future Dated Obligations | Obligations which were due more than 3 months since publication of this release of the standards have been removed. They remain accessible in the archived versions of the standards. They have been removed from the main (current) version to reduce ambiguity and keep the standards streamlined | [Future Dated Obligations](../../#future-dated-obligations)
 
 ## API End Points
 
@@ -33,4 +35,4 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
-|  |  |  |
+| Modularised CX standards | Modularised the CX standards code for maintenance and build purposes | N/A |

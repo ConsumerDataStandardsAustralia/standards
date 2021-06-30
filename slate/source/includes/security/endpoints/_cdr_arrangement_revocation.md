@@ -27,7 +27,7 @@ Content-Type: application/x-www-form-urlencoded
 **Data Holder Path:** The ``cdr_arrangement_revocation_endpoint`` defined using OIDC Discovery<br/>
 **Data Recipient Path:** ``<RecipientBaseUri>/arrangements/revoke`` where \<RecipientBaseUri\> is registered with the CDR Register.<br/>
 
-**From November 2020**, Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
+Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body: <br/>
 ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
@@ -55,8 +55,6 @@ Response Code | Situation | Description
 Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.
 
 Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.
-
-Data Recipients MUST continue to support their Token Revocation End Point until February 2021 and until they have updated their client registrations.
 
 **Updating Register Meta Data and Client Registration**
 

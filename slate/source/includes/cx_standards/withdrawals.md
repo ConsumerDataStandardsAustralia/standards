@@ -1,0 +1,8 @@
+
+## Withdrawal Standards
+
+|Area|CX Standard|
+|-------------------|------------------------------|
+|**Withdrawing consent**|If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients **MUST** allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step.</li><li>Data recipients **SHOULD** consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</li></ul>|
+| **Withdrawing authorisation:**<br>Consequences| As part of the withdrawal process, the data holder **MUST** advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. The data holder **MAY** consider using or paraphrasing the following message(s):<ul><li>*'You should check with [Data Recipient] before you stop sharing to understand the consequences.'*</li><li>*'You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.'*</li></ul>|
+|**Withdrawing authorisation:**<br>Redundant data| As part of the withdrawal process, the data holder **MUST** inform the consumer about the handling of redundant data and the right to delete. The Data Holder **MAY** consider using or paraphrasing the following message(s):<ul><li>*'CDR data is either deleted or de-identified when it is no longer required.'*</li><li>*'[Data recipient] will have specific policies on how to handle your data once it's no longer required.'*</li></ul> |
