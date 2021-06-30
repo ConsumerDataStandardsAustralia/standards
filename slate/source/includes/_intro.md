@@ -30,6 +30,7 @@ The table below highlights these areas of the standards.
 | [Standard Error Codes](#error-codes) | Data Recipients and Data Holders MAY implement the standard error codes from July 1st 2021 | July 1st 2021 |
 | [Standard Error Codes](#error-codes) | Data Recipients and Data Holders MUST implement the standard error codes from February 1st 2022 | February 1st 2022 |
 | [Standard Error Codes](#error-codes) | Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022 | November 1st 2022 |
+|[CX Standards: Disclosure Consents](#consent-standards)|Data Holders **MUST** implement the following data standards effective from July 1st 2021:<ul><li>Disclosure Consent: Collection Source</li><li>Disclosure Consent: Descriptions of Data to be Collected and Disclosed</li><li>Withdrawal: Disclosure Consent</li></ul> | July 1st 2021 |
 | [CX Standards: Unavailable Accounts](#authorisation-standards)|Data Holders **MAY** implement the following data standards effective from 1 November 2021:<ul><li>**Unavailable Accounts:** No accounts can be shown</li><li>**Unavailable Accounts:** Authorisation not permitted</li><li>**Unavailable Accounts:** Request sharing rights</li></ul>|November 1st 2021|
 | [CX Standards: Withdrawals](#withdrawal-standards)|Data Holders **MUST** implement the following data standards effective from 1 February 2022:<ul><li>**Withdrawal:** Secondary User Instruction</li></ul>|February 1st 2022|
 
