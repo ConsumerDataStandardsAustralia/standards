@@ -12,6 +12,8 @@ search: false
 # V1.11.0 Release Notes
 Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 
+This release pertains to the changes approved by the Data Standards Chair in Decision Proposal 160, 178 and 187.
+
 ## High Level Standards
 
 |Change|Description|Link|
