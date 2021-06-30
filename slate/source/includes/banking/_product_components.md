@@ -78,13 +78,13 @@ Description of the usage of the feeType field as it applies to products.
 |Value|Description|Use of additionalValue Field|
 |-----|-----------|----------------------------|
 |DEPOSIT|A fee associated with making a deposit|NA|
-|EVENT|A fee in relation to a particular event (e.g. NA ordering a new card, viewing a balance or stopping a cheque)|NA|
+|EVENT|A fee in relation to a particular event (e.g. ordering a new card, viewing a balance or stopping a cheque)|NA|
 |EXIT|A fee for closing the product|NA|
 |PAYMENT|A fee associated with making a payment|NA|
 |PERIODIC|A periodic fee such as a monthly account servicing fee|The period of charge.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)|
 |PURCHASE|A fee associated with making a purchase at a merchant|NA|
 |TRANSACTION|A fee associated with any transaction (incorporates WITHDRAWAL, DEPOSIT, PAYMENT and PURCHASE)|NA|
-|UPFRONT|A fee paid at the beginning of the product NA lifecycle, such as an establishment fee, loyalty program fee or application fee|NA|
+|UPFRONT|A fee paid at the beginning of the product lifecycle, such as an establishment fee, loyalty program fee or application fee|NA|
 |VARIABLE|An at-cost fee that is relevant to a customer's circumstances where the amount or rate may not be known until negotiated with the customer|NA|
 |WITHDRAWAL|A fee associated with making a withdrawal|NA|
 

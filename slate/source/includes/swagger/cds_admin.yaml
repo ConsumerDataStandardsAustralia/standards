@@ -1,13 +1,13 @@
 ---
 swagger: "2.0"
 info:
-  description: Data Holder Consumer Data Standards Administration End Points
+  description: "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker"
   version: 1.10.0
   title: Consumer Data Standards Administration End Points
   contact:
     name: Consumer Data Standards Administration End Points
-    url: https://consumerdatastandards.org.au/
-    email: cdr-data61@csiro.au
+    url: https://consumerdatastandards.gov.au
+    email: contact@consumerdatastandards.gov.au
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -36,23 +36,23 @@ paths:
           $ref: '#/definitions/RequestMetaDataUpdate'
       - name: x-v
         in: header
-        description: Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        description: "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)"
         required: true
         type: string
       - name: x-min-v
         in: header
-        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+        description: "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable."
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
               type: string
-              description: The [version](#response-headers) of the API end point that the data holder has responded with.
-        4xx:
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+              description: "The [version](#response-headers) of the API end point that the data holder has responded with."
+        "4xx":
+          description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           schema:
             $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
@@ -65,17 +65,12 @@ paths:
       - Admin
       - Metrics
       summary: Get Metrics
-      description: |-
-        This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
-
-        NOTE: This version must be implemented by **July 31st 2021**
-
-        Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
+      description: "This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nNOTE: This version must be implemented by **July 31st 2021**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope."
       operationId: getMetrics
       parameters:
       - name: period
         in: query
-        description: The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL.
+        description: "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current day), HISTORIC (meaning metrics for previous days or months) or ALL. If absent the default is ALL."
         required: false
         type: string
         default: ALL
@@ -85,25 +80,25 @@ paths:
         - ALL
       - name: x-v
         in: header
-        description: Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        description: "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)"
         required: true
         type: string
       - name: x-min-v
         in: header
-        description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+        description: "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable."
         required: false
         type: string
       responses:
-        200:
+        "200":
           description: Success
           headers:
             x-v:
               type: string
-              description: The [version](#response-headers) of the API end point that the data holder has responded with.
+              description: "The [version](#response-headers) of the API end point that the data holder has responded with."
           schema:
             $ref: '#/definitions/ResponseMetricsListV2'
-        4xx:
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+        "4xx":
+          description: "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           schema:
             $ref: '#/definitions/ResponseErrorListV2'
       x-scopes:
@@ -201,7 +196,7 @@ definitions:
         $ref: '#/definitions/AverageResponseMetrics_unattended'
       largePayload:
         $ref: '#/definitions/AverageResponseMetrics_largePayload'
-    description: Average response time in seconds, at millisecond resolution, within each performance tier
+    description: "Average response time in seconds, at millisecond resolution, within each performance tier"
   SessionCountMetrics:
     properties:
       currentDay:
@@ -280,6 +275,7 @@ definitions:
   Meta:
     type: object
   RequestMetaDataUpdate_data:
+    type: object
     required:
     - action
     properties:
@@ -290,6 +286,7 @@ definitions:
         enum:
         - REFRESH
   ResponseMetricsListV2_data:
+    type: object
     required:
     - availability
     - averageResponse
@@ -333,6 +330,7 @@ definitions:
         type: integer
         description: Number of data recipients with active authorisations at the time of the call
   InvocationMetrics_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -343,7 +341,11 @@ definitions:
         items:
           type: number
     description: API call counts for the unauthenticated tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_highPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -354,7 +356,11 @@ definitions:
         items:
           type: number
     description: API call counts for the high priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_lowPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -365,7 +371,11 @@ definitions:
         items:
           type: number
     description: API call counts for the low priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_unattended:
+    type: object
     properties:
       currentDay:
         type: number
@@ -376,7 +386,11 @@ definitions:
         items:
           type: number
     description: API call counts for the unattended tier
+    x-conditional:
+    - currentDay
+    - previousDays
   InvocationMetrics_largePayload:
+    type: object
     properties:
       currentDay:
         type: number
@@ -387,7 +401,11 @@ definitions:
         items:
           type: number
     description: API call counts for the large payload tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -398,7 +416,11 @@ definitions:
         items:
           type: number
     description: Average response time for the unauthenticated tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_highPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -409,7 +431,11 @@ definitions:
         items:
           type: number
     description: Average response time for the high priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_lowPriority:
+    type: object
     properties:
       currentDay:
         type: number
@@ -420,7 +446,11 @@ definitions:
         items:
           type: number
     description: Average response time for the low priority tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_unattended:
+    type: object
     properties:
       currentDay:
         type: number
@@ -431,7 +461,11 @@ definitions:
         items:
           type: number
     description: Average response time for the unattended tier
+    x-conditional:
+    - currentDay
+    - previousDays
   AverageResponseMetrics_largePayload:
+    type: object
     properties:
       currentDay:
         type: number
@@ -442,7 +476,11 @@ definitions:
         items:
           type: number
     description: Average response time for the large payload tier
+    x-conditional:
+    - currentDay
+    - previousDays
   RejectionMetricsV2_authenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -453,7 +491,11 @@ definitions:
         items:
           type: number
     description: Rejection counts for all authenticated end points
+    x-conditional:
+    - currentDay
+    - previousDays
   RejectionMetricsV2_unauthenticated:
+    type: object
     properties:
       currentDay:
         type: number
@@ -464,16 +506,19 @@ definitions:
         items:
           type: number
     description: Rejection counts for all uauthenticated end points
+    x-conditional:
+    - currentDay
+    - previousDays
 parameters:
   RequestHeader_x-v:
     name: x-v
     in: header
-    description: Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+    description: "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)"
     required: true
     type: string
   RequestHeader_x-min-v:
     name: x-min-v
     in: header
-    description: Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.
+    description: "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable."
     required: false
     type: string

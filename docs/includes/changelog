@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>30/06/2021</td>
+<td>1.11.0</td>
+<td>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 DP 178</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.11.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/160">Decision 160</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/187">Decision 187</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/178">Decision 178</a> for details</td>
+</tr>
+<tr>
 <td>01/06/2021</td>
 <td>1.10.0</td>
 <td>Changes arising from Enhanced Error Handling decision proposals</td>

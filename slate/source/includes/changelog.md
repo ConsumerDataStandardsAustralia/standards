@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|30/06/2021|1.11.0| Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 DP 178 | See [release notes](includes/releasenotes/releasenotes.1.11.0.html), [Decision 160](https://github.com/ConsumerDataStandardsAustralia/standards/issues/160), [Decision 187](https://github.com/ConsumerDataStandardsAustralia/standards/issues/187) and [Decision 178](https://github.com/ConsumerDataStandardsAustralia/standards/issues/178) for details |
 |01/06/2021|1.10.0| Changes arising from Enhanced Error Handling decision proposals | See [release notes](includes/releasenotes/releasenotes.1.10.0.html) and [Decision 154](https://github.com/ConsumerDataStandardsAustralia/standards/issues/154) for details |
 |29/04/2021|1.9.0| Changes arising from the sixth Data Standards Maintenance Iteration | See [release notes](includes/releasenotes/releasenotes.1.9.0.html) and [Decision 161](https://github.com/ConsumerDataStandardsAustralia/standards/issues/161) for details|
 |16/04/2021|1.8.0| CX Standards for Amending Consent | See [release notes](includes/releasenotes/releasenotes.1.8.0.html) and [Decision 144](https://github.com/ConsumerDataStandardsAustralia/standards/issues/144) for details|
