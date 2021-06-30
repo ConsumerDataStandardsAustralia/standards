@@ -41,6 +41,7 @@ This release pertains to the changes approved by the Data Standards Chair in Dec
 |Change|Description|Link|
 |------|-----------|----|
 | Modularised CX standards | Modularised the CX standards code for maintenance and build purposes | N/A |
+| Re-formatted | Layout of the CX standards were changed and some improvements were made to the content areas and formatting | [Consumer Experience](../../#consumer-experience) |
 | Disclosure Consents CX Standards | Standards introduced in relation to DP187 regarding disclosure consent standards, trusted advisers and insights | [Consumer Experience](../../#consumer-experience) |
 | Separated Authorisation: Account selection statements | For improved readability, the statements were divided into three separate standards pertaining to authorisation | [Authorisation Standards](../../#authorisation-standards)|
 | Unavailable Accounts | Added changes arising from DP160 in relation to unavailable accounts | [Authorisation Standards](../../#authorisation-standards)|
