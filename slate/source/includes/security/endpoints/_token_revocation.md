@@ -31,7 +31,3 @@ If consent is withdrawn by a Customer in writing or by using the Data Recipientâ
 If the Data Holder does not support a CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder's Token Revocation End Point with the current Refresh Token to notify the Data Holder.
 
 If the Data Holder does support the CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder.
-
-**NOTE:** Data Recipients MUST continue to support this Token Revocation End Point until February 2021.
-
-**NOTE:** Data Holders MUST continue to support consent revocation via the oAuth Token Revocation end point until February 2021.
