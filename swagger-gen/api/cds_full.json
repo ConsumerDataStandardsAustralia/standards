@@ -2973,7 +2973,7 @@
         },
         "transactionId": {
           "type": "string",
-          "description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
+          "description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.",
           "x-cds-type": "ASCIIString"
         },
         "isDetailAvailable": {
