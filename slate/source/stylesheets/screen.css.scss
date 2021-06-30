@@ -503,14 +503,13 @@ html, body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
+}
 
-  // for pages where code samples are turned off, utilise the full page width
-  .no-code-layout .content {
-    &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
-        margin-right: 0 !important;
-    }
+// for pages where code samples are turned off, utilise the full page width
+.no-code-layout .content {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+      margin-right: 0 !important;
   }
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
