@@ -805,54 +805,14 @@
 <td>Not yet specified</td>
 </tr>
 <tr>
-<td><a href="#get-product-detail">Get Product Detail V3</a></td>
-<td>Version 3 of this end point must be made available by affected data holders by the end of February 2021</td>
-<td>February 28th 2021</td>
-</tr>
-<tr>
 <td><a href="#get-products">Get Product Detail V2</a></td>
 <td>Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time</td>
 <td>May 31st 2021</td>
 </tr>
 <tr>
-<td><a href="#get-product-detail">Get Product Detail V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
-<td>July 31st 2020</td>
-</tr>
-<tr>
-<td><a href="#get-product-detail">Get Product Detail V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
-<td>August 29th 2020</td>
-</tr>
-<tr>
-<td><a href="#get-products">Get Products V3</a></td>
-<td>Version 3 of this end point must be made available by affected data holders by the end of February 2021</td>
-<td>February 28th 2021</td>
-</tr>
-<tr>
 <td><a href="#get-products">Get Products V2</a></td>
 <td>Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time</td>
 <td>May 31st 2021</td>
-</tr>
-<tr>
-<td><a href="#get-products">Get Products V2</a></td>
-<td>Version 2 of this end point must be made available by affected data holders by the end of July 2020</td>
-<td>July 31st 2020</td>
-</tr>
-<tr>
-<td><a href="#get-products">Get Products V1</a></td>
-<td>Data holders may obsolete version 1 of this end point from August 29th 2020.  Data recipients must upgrade their implementations to use version 2 by this time</td>
-<td>August 29th 2020</td>
-</tr>
-<tr>
-<td>Concurrent Consent</td>
-<td>The target state concurrent consent solution covers various components of the Information Security profile is being phased in with alignment to the November 2020 implementation milestone set by the ACCC.  If this milestone moves then this obligation will also move.</td>
-<td>November 1st 2020</td>
-</tr>
-<tr>
-<td><a href="#token-revocation-end-point">Token Revocation End Point</a></td>
-<td>Data recipients may obsolete this end point from February 1st 2021.<br />Data holders may obsolete consent revocation via this end point from February 1st 2021, however they must still support oAuth token revocation. Data recipients must upgrade their implementations to use the Data Holder CDR Arrangement Revocation End Point by this time.</td>
-<td>February 1st 2021</td>
 </tr>
 <tr>
 <td><a href="#get-metrics">Get Metrics V1</a></td>
@@ -865,16 +825,6 @@
 <td>July 31st 2021</td>
 </tr>
 <tr>
-<td><a href="#introspection-end-point">Token Introspection claims</a></td>
-<td>Whilst Data Holders must conform with the FAPI normative references, requiring the <code>scope</code> claim, the standards were clarified in v1.5.0 to clarify the minimum required set of claims to be supported by the Token Introspection end point. Data holders must support the <code>scope</code> claim not later than February 1st 2021</td>
-<td>February 1st 2021</td>
-</tr>
-<tr>
-<td><a href="#client-authentication">Client Authentication for Data Recipients calling Data Holder</a></td>
-<td>Client Authentication has been updated to align to upstream standards. From March 30th 2021, Data Holders must support multiple valid values for the audience claim for Data Recipient client authentication as outlined in that section. Data Recipients may continue to supply the URL of the endpoint being invoked, however according to upstream standards, it is recommended according to <strong>[RFC8414]</strong> that issuer identifier URL of the authorisation server should be used as the value of the audience.<br/>Until March 31st 2021, Data Recipients must continue to use the URL of the endpoint being invoked as the audience claim value. Data Holders must continue to accept and validate the URL of the endpoint being invoked.</td>
-<td>March 30th 2021</td>
-</tr>
-<tr>
 <td><a href="#get-customer">Get Customer V1</a></td>
 <td>Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold.</td>
 <td>July 1st 2021</td>
@@ -883,11 +833,6 @@
 <td><a href="#product-amp-account-components">Banking Term Deposit Account Types</a></td>
 <td>Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021</td>
 <td>July 1st 2021</td>
-</tr>
-<tr>
-<td><a href="#end-points">Token Introspection Endpoint claims</a></td>
-<td>Mandatory claims were updated in accordance with RFC7662</td>
-<td>November 1st 2020</td>
 </tr>
 <tr>
 <td><a href="#amending-authorisation-standards">Amending Consent</a></td>
@@ -914,13 +859,23 @@
 <td>Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022</td>
 <td>November 1st 2022</td>
 </tr>
+<tr>
+<td><a href="#authorisation-standards">CX Standards: Unavailable Accounts</a></td>
+<td>Data Holders <strong>MAY</strong> implement the following data standards effective from 1 November 2021:<ul><li><strong>Unavailable Accounts:</strong> No accounts can be shown</li><li><strong>Unavailable Accounts:</strong> Authorisation not permitted</li><li><strong>Unavailable Accounts:</strong> Request sharing rights</li></ul></td>
+<td>November 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#withdrawal-standards">CX Standards: Withdrawals</a></td>
+<td>Data Holders <strong>MUST</strong> implement the following data standards effective from 1 February 2022:<ul><li><strong>Withdrawal:</strong> Secondary User Instruction</li></ul></td>
+<td>February 1st 2022</td>
+</tr>
 </tbody></table>
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
 
 <p><strong>Please note</strong> this is currently experimental.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent version 1.10.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.11.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1813,13 +1768,13 @@ obtain detail for that resource or to change the state of the resource.</li>
 </ul>
 
 <h2 id='error-codes'>Error Codes</h2>
-<p>These standards define a standard list of error codes that Data Recipients and Data Holders SHOULD or MUST conform to. Further,</p>
+<p>These standards define a standard list of error codes that Data Recipients and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
 
 <ul>
-<li>Data Recipients and Data Holders SHOULD use the standard error codes as defined</li>
-<li>Where a specific error code MUST be responded, this requirement is stated against the applicable error code or API endpoints</li>
-<li>Where a specific error code MAY be responded, this requirement is stated against the applicable error code or API endpoints</li>
-<li>Data Recipients and Data Holders MAY respond with application-specific error codes and in doing so, MUST respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.</li>
+<li>Data Recipients and Data Holders <strong>SHOULD</strong> use the standard error codes as defined</li>
+<li>Where a specific error code <strong>MUST</strong> be responded, this requirement is stated against the applicable error code or API endpoints</li>
+<li>Where a specific error code <strong>MAY</strong> be responded, this requirement is stated against the applicable error code or API endpoints</li>
+<li>Data Recipients and Data Holders <strong>MAY</strong> respond with application-specific error codes and in doing so, <strong>MUST</strong> respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.</li>
 </ul>
 <h3 id='error-response-structure'>Error Response Structure</h3>
 <blockquote>
@@ -1830,7 +1785,7 @@ obtain detail for that resource or to change the state of the resource.</li>
     {
       "code": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount",
       "title": "Unavailable Banking Account",
-      "description": "808b5b1d-0798-4bdf-a3c8-f9cce2904eb2"
+      "detail": "808b5b1d-0798-4bdf-a3c8-f9cce2904eb2"
     }
   ]
 }
@@ -1838,14 +1793,14 @@ obtain detail for that resource or to change the state of the resource.</li>
 <p><a name="error_payload"></a>The <code>errors</code> object will be an array of zero or more unnamed objects. The fields in each of these objects will be as follows:</p>
 
 <ul>
-<li><code>code</code> field MUST be present: holds an end point specific error code. This MAY be a standard CDR error code or an application-specific error code.</li>
-<li><code>title</code> field MUST be present: holds a human readable label of the error that is constant
+<li><code>code</code> field <strong>MUST</strong> be present: holds an end point specific error code. This <strong>MAY</strong> be a standard CDR error code or an application-specific error code.</li>
+<li><code>title</code> field <strong>MUST</strong> be present: holds a human readable label of the error that is constant
 per <code>code</code></li>
-<li><code>detail</code> field MUST be present: holds a human readable description of this specific error</li>
-<li><code>meta</code> object MAY be present: holds additional end point specific data relevant to the error</li>
+<li><code>detail</code> field <strong>MUST</strong> be present: holds a human readable description of this specific error</li>
+<li><code>meta</code> object <strong>MAY</strong> be present: holds additional end point specific data relevant to the error</li>
 </ul>
 
-<p>If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code MUST be provided in the <code>MetaError</code> object.</p>
+<p>If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code <strong>MUST</strong> be provided in the <code>MetaError</code> object.</p>
 
 <div class="clear both"></div>
 <h4 id='urn-structure'>URN Structure</h4>
@@ -1890,7 +1845,7 @@ Content-Type: application/json
     {
       "code": "ACME-APPLY-017",
       "title": "Application Is Missing Product ID",
-      "description": "A new loan application was requested but the product ID was not provided",
+      "detail": "A new loan application was requested but the product ID was not provided",
       "meta": {
          "urn": "urn:au-cds:error:cds-all:GeneralError/Expected"
       }
@@ -1911,19 +1866,19 @@ Content-Type: application/json
 <td style="text-align: left"><a id="error-4xx-expected-error"></a>Expected Error Encountered</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>GeneralError/Expected</code></td>
 <td style="text-align: left">4xx</td></td>
-<td style="text-align: left">An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code.</td>
+<td style="text-align: left">An error code that can be used, when an expected error occurs that is otherwise not covered by a more specific error.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code <strong>MAY</strong> be provided. The <code>MetaError &raquo; urn</code> <strong>MUST</strong> be populated with the standard CDR error code.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-5xx-unexpected-error"></a>Unexpected Error Encountered</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>GeneralError/Unexpected</code></td>
 <td style="text-align: left">5xx</td>
-<td style="text-align: left">An error code that can be used, when an unexpected error occurs.<br/><br/>The error description SHOULD be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code MAY be provided. The <code>MetaError &raquo; urn</code> MUST be populated with the standard CDR error code.</td>
+<td style="text-align: left">An error code that can be used, when an unexpected error occurs.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be populated with a meaningful error description, without revealing sensitive information.<br/><br/>An application specific error code <strong>MAY</strong> be provided. The <code>MetaError &raquo; urn</code> <strong>MUST</strong> be populated with the standard CDR error code.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-4503-service-unavailable"></a>Service Unavailable</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Service/Unavailable</code></td>
 <td style="text-align: left">503 (Service Unavailable)</td>
-<td style="text-align: left">A request is made but the API unavailable as due to an outage.<br/><br/>The error description MAY describe whether the outage is scheduled or unexpected and whether it is fully unavailable or partially unavailable.</td>
+<td style="text-align: left">A request is made but the API unavailable as due to an outage.<br/><br/>The error <code>detail</code> <strong>MAY</strong> describe whether the outage is scheduled or unexpected and whether it is fully unavailable or partially unavailable.</td>
 </tr>
 </tbody></table>
 
@@ -1949,7 +1904,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Field/Invalid",
       "title": "Invalid Field",
-      "description": "is-owned"
+      "detail": "is-owned"
     }
   ]
 }
@@ -1965,37 +1920,37 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-400-field-missing"></a>Missing Required Field</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/Missing</code></td>
-<td style="text-align: left">The request is missing a mandatory field required for the API. It may be a missing query parameter or missing field in the request payload. This error code can be used, where a more specific validation error is not applicable.<br/><br/>The error description SHOULD be the parameter name of the missing field.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">The request is missing a mandatory field required for the API. It <strong>MAY</strong> be a missing query parameter or missing field in the request payload. This error code can be used, where a more specific validation error is not applicable.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be the parameter name of the missing field.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-header-missing"></a>Missing Required Header</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/Missing</code></td>
-<td style="text-align: left">A required HTTP header has not been provided.<br/><br/>The error description SHOULD be the HTTP header name.<br/><br/>This error code SHOULD be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">A required HTTP header has not been provided.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be the HTTP header name.<br/><br/>This error code <strong>SHOULD</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-field-invalid"></a>Invalid Field</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/Invalid</code></td>
-<td style="text-align: left">Applies when the value of the URL parameter or request body parameter is an invalid type or the value violates the field&#39;s constraints as defined by the interface contract.<br/>For example, <code>is-owned</code> is a <code>Boolean</code> but a <code>DateString</code> value is provided.<br/><br/>The error description SHOULD be the parameter name of the invalid field. The error description MAY include further details explaining the valid format.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">Applies when the value of the URL parameter or request body parameter is an invalid type or the value violates the field&#39;s constraints as defined by the interface contract.<br/>For example, <code>is-owned</code> is a <code>Boolean</code> but a <code>DateString</code> value is provided.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be the parameter name of the invalid field. The error <code>detail</code> <strong>MAY</strong> include further details explaining the valid format.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-header-invalid"></a>Invalid Header</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/Invalid</code></td>
-<td style="text-align: left">Applies when a HTTP Header is provided but the value provided is an invalid type or violates the field type constraints as defined in the Consumer Data Standards.<br/><br/>The error description SHOULD be the HTTP header name. The error description MAY include further details explaining the valid format.<br/><br/>This error code SHOULD be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">Applies when a HTTP Header is provided but the value provided is an invalid type or violates the field type constraints as defined in the Consumer Data Standards.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be the HTTP header name. The error <code>detail</code> <strong>MAY</strong> include further details explaining the valid format.<br/><br/>This error code <strong>SHOULD</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-field-invalid-date-time"></a>Invalid Date</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidDateTime</code></td>
-<td style="text-align: left">An invalid date is provided. For example, a future date value is expected, but a date in past or current date is supplied. Applies to <code>DateTimeString</code>, <code>DateString</code>, and <code>TimeString</code> field types.<br/><br/>The error description SHOULD be the parameter name of the invalid date field. The error description MAY include further details explaining the expected date value.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">An invalid date is provided. For example, a future date value is expected, but a date in past or current date is supplied. Applies to <code>DateTimeString</code>, <code>DateString</code>, and <code>TimeString</code> field types.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be the parameter name of the invalid date field. The error <code>detail</code> <strong>MAY</strong> include further details explaining the expected date value.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-field-invalid-page-size"></a>Invalid Page Size</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidPageSize</code></td>
-<td style="text-align: left">The value provided in the <code>page-size</code> pagination field is greater than the maximum allowed by the Consumer Data Standards (<code>page_size &gt; 1000</code>).<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">The value provided in the <code>page-size</code> pagination field is greater than the maximum allowed by the Consumer Data Standards (<code>page_size &gt; 1000</code>).<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-400-header-invalid-version"></a>Invalid Version</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/InvalidVersion</code></td>
-<td style="text-align: left">A request is made for a version that is not a <code>PositiveInteger</code>.<br/>For example:<ul><li><code>x-min-v</code>, <code>x-v</code> or <code>x-&lt;HID&gt;-v</code> are not <code>Integers</code> (e.g. <code>x-min-v=foo</code>, <code>x-v=bar</code>, <code>x-ACME-v=cheese</code>)</li><li><code>x-min-v</code>, <code>x-v</code> or <code>x-&lt;HID&gt;-v</code> are not positive-value integers (they are an <code>Integer</code> but <code>&lt;= 0</code>)</li></ul><br/>This error code MUST be supported for unauthenticated and authenticated APIs.<br/><br/>If the version header is a <code>PositiveInteger</code> but is not a version supported by the Data Holder, the <a href="#error-406-header-unsupported-version">Unsupported Version code</a> applies.</td>
+<td style="text-align: left">A request is made for a version that is not a <code>PositiveInteger</code>.<br/>For example:<ul><li><code>x-min-v</code>, <code>x-v</code> or <code>x-&lt;HID&gt;-v</code> are not <code>Integers</code> (e.g. <code>x-min-v=foo</code>, <code>x-v=bar</code>, <code>x-ACME-v=cheese</code>)</li><li><code>x-min-v</code>, <code>x-v</code> or <code>x-&lt;HID&gt;-v</code> are not positive-value integers (they are an <code>Integer</code> but <code>&lt;= 0</code>)</li></ul><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.<br/><br/>If the version header is a <code>PositiveInteger</code> but is not a version supported by the Data Holder, the <a href="#error-406-header-unsupported-version">Unsupported Version code</a> applies.</td>
 </tr>
 </tbody></table>
 
@@ -2011,17 +1966,17 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-403-authorisation-adr-status-not-active"></a>ADR Status Is Not Active</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/AdrStatusNotActive</code></td>
-<td style="text-align: left">The ADR or the ADR&#39;s software product is not &quot;active&quot;.<br/><br/>The error description SHOULD contain the current status of the ADR software product.</td>
+<td style="text-align: left">The ADR or the ADR&#39;s software product is not &quot;active&quot;.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> contain the current status of the ADR software product.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-403-authorisation-revoked-consent"></a>Consent Is Revoked</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/RevokedConsent</code></td>
-<td style="text-align: left">The consumer&#39;s consent is no longer authorised (for example revoked or expired) and the requested resource will not be provided.<br/><br/>This error code SHOULD be supported for authenticated APIs.</td>
+<td style="text-align: left">The consumer&#39;s consent is no longer authorised (for example revoked or expired) and the requested resource will not be provided.<br/><br/>This error code <strong>SHOULD</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-403-authorisation-invalid-consent"></a>Consent Is Invalid</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidConsent</code></td>
-<td style="text-align: left">The authorised consumer&#39;s consent is not associated to the resource requested, is insufficient to execute the resource or is in a status that prevents the resource being executed.<br/><br/>For example, if consent is awaiting authorisation of a secondary account holder.<br/><br/>The error description SHOULD be a description of the status of consent without revealing sensitive information.<br/><br/>This error code SHOULD be supported for authenticated APIs.</td>
+<td style="text-align: left">The authorised consumer&#39;s consent is not associated to the resource requested, is insufficient to execute the resource or is in a status that prevents the resource being executed.<br/><br/>For example, if consent is awaiting authorisation of a secondary account holder.<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be a description of the status of consent without revealing sensitive information.<br/><br/>This error code <strong>SHOULD</strong> be supported for authenticated APIs.</td>
 </tr>
 </tbody></table>
 
@@ -2086,7 +2041,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Resource/Unavailable",
       "title": "Unavailable Resource",
-      "description": "52e443ae13c5"
+      "detail": "52e443ae13c5"
     }
   ]
 }
@@ -2107,7 +2062,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-banking:Authorisation/InvalidBankingAccount",
       "title": "Invalid Banking Account",
-      "description": "invalid-id"
+      "detail": "invalid-id"
     }
   ]
 }
@@ -2124,7 +2079,7 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-404-resource-not-implemented"></a>Resource Not Implemented</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code></td>
-<td style="text-align: left">The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code SHOULD be supported for unimplemented APIs.</td>
+<td style="text-align: left">The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code <strong>SHOULD</strong> be supported for unimplemented APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-404-resource-not-found"></a>Resource Not Found</td>
@@ -2134,22 +2089,22 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-404-resource-invalid"></a>Invalid Resource</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code></td>
-<td style="text-align: left">The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error <code>detail</code> is the resource ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-404-resource-unavailable"></a>Unavailable Resource</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code></td>
-<td style="text-align: left">The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error <code>detail</code> is the resource ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-404-authorisation-invalid-banking-account"></a>Invalid Banking Account</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code></td>
-<td style="text-align: left">The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+<td style="text-align: left">The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-404-authorisation-unavailable-banking-account"></a>Unavailable Banking Account</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code></td>
-<td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+<td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 </tbody></table>
 
@@ -2165,7 +2120,7 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-406-header-unsupported-version"></a>Unsupported Version</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Header/UnsupportedVersion</code></td>
-<td style="text-align: left">A request is made for a version that is lower than the minimum version or greater than maximum version the Data Holder supports for the requested endpoint.<br/><br/>The error description MAY include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">A request is made for a version that is lower than the minimum version or greater than maximum version the Data Holder supports for the requested endpoint.<br/><br/>The error <code>detail</code> <strong>MAY</strong> include the minimum and maximum versions the Data Holder supports.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 </tbody></table>
 
@@ -2201,7 +2156,7 @@ Content-Type: application/json
     {
       "code": "urn:au-cds:error:cds-all:Authorisation/UnavailableBankingAccount",
       "title": "Unavailable Banking Account",
-      "description": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
+      "detail": "b3f0c9d0-457d-4578-b0cd-52e443ae13c5"
     }
   ]
 }
@@ -2218,38 +2173,38 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-422-resource-invalid"></a>Invalid Resource</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code></td>
-<td style="text-align: left">The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+<td style="text-align: left">The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error <code>detail</code> is the resource ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-422-resource-unavailable"></a>Unavailable Resource</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code></td>
-<td style="text-align: left">The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error description is the resource ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+<td style="text-align: left">The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error <code>detail</code> is the resource ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-422-authorisation-invalid-banking-account"></a>Invalid Banking Account</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code></td>
-<td style="text-align: left">The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+<td style="text-align: left">The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the request body.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-422-authorisation-unavailable-banking-account"></a>Unavailable Banking Account</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code></td>
-<td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the URI.<br/><br/>The error description is the account ID of the resource being requested.<br/><br/>This error code MUST be supported for authenticated APIs.</td>
+<td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the request body.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code></td>
-<td style="text-align: left">The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error description is the CDR Arrangement ID of the being executed.<br/><br/>This error code MUST be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint.</td>
+<td style="text-align: left">The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error <code>detail</code> is the CDR Arrangement ID of the being executed.<br/><br/>This error code <strong>MUST</strong> be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-422-field-invalid-page"></a>Invalid Page</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Field/InvalidPage</code></td>
-<td style="text-align: left">The page being requested it out of of range. For example, the valid pagination range is 5 pages and the client requested <code>page=10</code>).<br/><br/>The error description SHOULD be the maximum number of pages that are available.<br/><br/>This error code MUST be supported for unauthenticated and authenticated APIs.</td>
+<td style="text-align: left">The page being requested it out of of range. For example, the valid pagination range is 5 pages and the client requested <code>page=10</code>).<br/><br/>The error <code>detail</code> <strong>SHOULD</strong> be the maximum number of pages that are available.<br/><br/>This error code <strong>MUST</strong> be supported for unauthenticated and authenticated APIs.</td>
 </tr>
 </tbody></table>
 
 <h4 id='cdr-register-errors'>CDR Register Errors</h4>
 
-<p>The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register may expect the following standard CDR error codes to be encountered:</p>
+<p>The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register <strong>MAY</strong> expect the following standard CDR error codes to be encountered:</p>
 
 <table><thead>
 <tr>
@@ -2300,7 +2255,7 @@ Content-Type: application/json
     {
       "code": "acme-bank:JointAccountElectionRemoved",
       "title": "Joint Account Consent Election Is Removed",
-      "description": "Description of the specific error encountered",
+      "detail": "Description of the specific error encountered",
       "meta": {
         "urn": "urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount"
       }
@@ -2323,7 +2278,7 @@ Content-Type: application/json
   {
     "code": "old error code",
     "title": "error message",
-    "description": "Description of the specific error encountered"
+    "detail": "Description of the specific error encountered"
   }
 ] }
 
@@ -2333,7 +2288,7 @@ Content-Type: application/json
   {
     "code": "old error code",
     "title": "error message",
-    "description": "Description of the specific error encountered",
+    "detail": "Description of the specific error encountered",
     "meta": {
       "urn": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion"
     }
@@ -2346,7 +2301,7 @@ Content-Type: application/json
   {
     "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
     "title": "Unsupported Version",
-    "description": "'x-v' must be greater than or equal to '2'"
+    "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }
 ] }
 </code></pre>
@@ -2374,8 +2329,6 @@ Content-Type: application/json
 <li>Application-specific error codes <strong>MAY</strong> be provided in the <code>ResponseErrorListV2 &raquo; code</code></li>
 </ul></li>
 </ul>
-
-<!--</div>-->
 
 <h2 id='extensibility'>Extensibility</h2>
 
@@ -3057,12 +3010,11 @@ client_id=s6BhdRkqt3
 <li>A CDR Arrangement ID SHOULD be generated using an algorithm that reduces the chances of collision</li>
 <li>A CDR Arrangement ID MUST be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)</li>
 </ul>
-<h4 id='retrospectively-obtaining-a-cdr-arrangement-id'>Retrospectively obtaining a CDR Arrangement ID</h4>
-<p>For any existing consents, Data Holders must retrospectively generate a <code>cdr_arrangement_id</code> such that from November 2020, Data Recipients can obtain a valid <code>cdr_arrangement_id</code> for all active consents they hold.</p>
+<h4 id='obtaining-a-cdr-arrangement-id'>Obtaining a CDR Arrangement ID</h4>
+<p>For any existing consents, Data Holders must retrospectively generate a <code>cdr_arrangement_id</code> such that Data Recipients can obtain a valid <code>cdr_arrangement_id</code> for all active consents they hold.</p>
 
 <p>A Data Recipient can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim <code>cdr_arrangement_id</code>.</p>
 
-<p><a id="levels-of-assurance-loas"></a></p>
 <h2 id='levels-of-assurance-loas'>Levels of Assurance (LoAs)</h2>
 
 <p>Levels Of Assurance (LoAs), returned after a successful authentication MUST be represented in Single Ordinal form where a single LoA value is represented.</p>
@@ -3305,11 +3257,6 @@ Content-Type: application/json
 <li><code>jwks_uri</code>: The JSON Web Key Set for the data holder.</li>
 <li><code>id_token_encryption_alg_values_supported</code>: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to <strong>[FAPI-RW]</strong> and <strong>[OIDD]</strong>.</li>
 <li><code>id_token_encryption_enc_values_supported</code>: The list of the supported JWE encryption methods for securing the issued ID tokens.</li>
-</ul>
-
-<p><strong>From November 2020</strong>, the Data Holder metadata MUST include:</p>
-
-<ul>
 <li><code>cdr_arrangement_revocation_endpoint</code>: The URL of the CDR Arrangement Revocation End Point for consent revocation</li>
 <li><code>pushed_authorization_request_endpoint</code>: URL of the Pushed Authorisation End Point used to support <strong>[PAR]</strong>.</li>
 </ul>
@@ -3578,10 +3525,6 @@ Host: www.holder.com.au
 
 <p>If the Data Holder does support the CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Holder.</p>
 
-<p><strong>NOTE:</strong> Data Recipients MUST continue to support this Token Revocation End Point until February 2021.</p>
-
-<p><strong>NOTE:</strong> Data Holders MUST continue to support consent revocation via the oAuth Token Revocation end point until February 2021.</p>
-
 <h3 id='cdr-arrangement-revocation-end-point'>CDR Arrangement Revocation End Point</h3>
 
 <blockquote>
@@ -3629,7 +3572,7 @@ Content-Type: application/x-www-form-urlencoded
 <strong>Data Holder Path:</strong> The <code>cdr_arrangement_revocation_endpoint</code> defined using OIDC Discovery<br/>
 <strong>Data Recipient Path:</strong> <code>&lt;RecipientBaseUri&gt;/arrangements/revoke</code> where &lt;RecipientBaseUri&gt; is registered with the CDR Register.<br/></p>
 
-<p><strong>From November 2020</strong>, Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
+<p>Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
 
 <p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body: <br/>
 <code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</p>
@@ -3673,8 +3616,6 @@ Content-Type: application/x-www-form-urlencoded
 <p>Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.</p>
 
 <p>Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.</p>
-
-<p>Data Recipients MUST continue to support their Token Revocation End Point until February 2021 and until they have updated their client registrations.</p>
 
 <p><strong>Updating Register Meta Data and Client Registration</strong></p>
 
@@ -3790,7 +3731,7 @@ Host: data.holder.com.au
 </tr>
 </tbody></table>
 
-<p><strong>From November 2020</strong>, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
+<p>Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
 
 <p>Data Recipients MAY send authorisation requests using <strong>[PAR]</strong> if supported by the Data Holder. Request objects which contain the <code>cdr_arrangement_id</code> claim MUST only be sent using <strong>[PAR]</strong>. If a Data Holder does not support <strong>[PAR]</strong>, a Data Recipient SHOULD NOT provide the <code>cdr_arrangement_id</code> claim in the request object.</p>
 
@@ -3955,6 +3896,7 @@ Host: data.holder.com.au
 <li><a href='https://consumerdatastandards.gov.au/guidelines-and-conventions/consumer-experience-guidelines/'>CX Guidelines</a></li>
 </ul>
 <h2 id='data-language-standards'>Data Language Standards</h2>
+
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
 <font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
@@ -3970,16 +3912,18 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a> Data language standards <b>MUST</b> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.<ul><li>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</ul></li><ul><li>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an ‘*’ in <a href="#individual-consumer">Table 1</a></ul></li><ul><li>Data Recipients and Data Holders <strong>SHOULD</strong>  expand on the proposed language where appropriate to communicate further details of what is being shared.</ul></li><ul><li>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist. denoted with an ‘&dagger;’ in <a href="#individual-consumer">Table 1</a></li><li>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an ‘&dagger;’ in <a href="#individual-consumer">Table 1</a></li></ul></ul></td>
+<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a>.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; in <a href="#individual-consumer">Table 1</a>.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; in <a href="#individual-consumer">Table 1</a></p></td>
 </tr>
 <tr>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
-<td>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend Basic and Detailed data cluster and permission language to show that Detailed scopes include Basic data. <ul><li>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an ‘&Dagger;’ in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</ul></li></td>
+<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
 </tr>
 </tbody></table>
 
 <p><strong>Table 1.</strong></p>
+
 <h3 id='individual-consumer'>Individual Consumer</h3>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -4003,7 +3947,9 @@ Host: data.holder.com.au
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
+
 <h3 id='business-consumer'>Business consumer</h3>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -4027,7 +3973,9 @@ Host: data.holder.com.au
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
+
 <h3 id='common'>Common</h3>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -4066,7 +4014,9 @@ Host: data.holder.com.au
 <td>bank:payees:read</td>
 </tr>
 </tbody></table>
+
 <h2 id='accessibility-standards'>Accessibility Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4075,30 +4025,32 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><strong>Accessibility</strong></td>
-<td>At a minimum, all CDR participants <strong>MUST</strong> seek to comply with the following accessibility guidelines throughout the Consent Model.<ul><li>These standards <strong>SHOULD</strong> be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</li></ul></td>
+<td><p>At a minimum, all CDR participants <strong>MUST</strong> seek to comply with the following accessibility guidelines throughout the Consent Model.</p><p>These standards <strong>SHOULD</strong> be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</p></td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Content distinction</td>
-<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a> Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a>. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Keyboard functionality</td>
-<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html">WCAG 2.1</a>. This will make all functionality available from a keyboard.</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html">WCAG 2.1</a>. This will make all functionality available from a keyboard.</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Pointer interactions</td>
-<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Reading experiences</td>
-<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html">WCAG 3.1</a>. This will make text content readable and understandable</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html">WCAG 3.1</a>. This will make text content readable and understandable</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Input assistance</td>
-<td>Data recipients and data holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
 </tr>
 </tbody></table>
+
 <h2 id='consent-standards'>Consent Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4106,11 +4058,21 @@ Host: data.holder.com.au
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Seeking consent</strong></td>
+<td><strong>Disclosure consent:</strong><br/>Collection source</td>
+<td>In the course of seeking a consumer’s consent to disclose data as part of a disclosure consent:<ol><li>Data Recipients <strong>MUST</strong> specify which CDR Participant(s) they collected the associated CDR data from</li><li>Data Recipients <strong>SHOULD</strong> specify the sector(s) the data was collected from or associated with</li></ol><strong>Note:</strong><ul><li>Point (1) only requires the Data Recipient to refer to the CDR Participant(s) immediately preceding them in the disclosure chain, which may not always include a consumer’s Data Holder(s)</li><li>This standard is proposed to apply to all data to be disclosed by a Data Recipient, including unmodified, aggregated, derived, and transformed CDR data</li><li>Where applicable, the existing data language standards apply to descriptions of CDR data that have not been modified</li></ul></td>
+</tr>
+<tr>
+<td><strong>Disclosure Consent:</strong> Descriptions of Data to be Collected and Disclosed</td>
+<td>If:<ol><li>An accredited person is seeking a collection consent to collect CDR data from a particular accredited data recipient; or</li><li>An accredited data recipient is seeking a disclosure consent from a consumer to disclose CDR data;</li></ol>and the data subject to the disclosure or collection is not within the data language standards as it does not relate to a relevant data cluster, then that data <strong>MUST</strong> be described in language that is as easy to understand as practicable.</td>
+</tr>
+<tr>
+<td><strong>Consent:</strong><br/>Redirection</td>
 <td>Data recipients <strong>MUST</strong> notify consumers of redirection prior to authentication.</td>
 </tr>
 </tbody></table>
+
 <h2 id='authentication-standards'>Authentication Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4118,15 +4080,15 @@ Host: data.holder.com.au
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Authentication:</strong><br>‘One Time Password’</td>
-<td>Data holders and data recipients <strong>MUST</strong> clearly refer to a “One Time Password” in consumer-facing interactions and communications. The use of the term “One Time Password” <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</td>
+<td><strong>Authentication:</strong><br>&#39;One Time Password&#39; (OTP)</td>
+<td><p>Data holders and data recipients <strong>MUST</strong> clearly refer to a &quot;One Time Password&quot; in consumer-facing interactions and communications.</p><p>The use of the term &quot;One Time Password&quot; <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</p></td>
 </tr>
 <tr>
 <td><strong>Authentication:</strong><br >Passwords</td>
 <td>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient.</td>
 </tr>
 <tr>
-<td><strong>Authentication:</strong><br> Password link</td>
+<td><strong>Authentication:</strong><br>Password link</td>
 <td>Data holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
 </tr>
 <tr>
@@ -4134,7 +4096,9 @@ Host: data.holder.com.au
 <td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
 </tr>
 </tbody></table>
+
 <h2 id='authorisation-standards'>Authorisation Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4142,15 +4106,37 @@ Host: data.holder.com.au
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Authorisation</strong> &amp; Account selection</td>
-<td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).<br><br>  Data holders <strong>MAY</strong> add a ‘profile selection’ step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts. The ‘profile selection’ step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).<ul><li>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step.</li><ul><li>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</li><li><em>Note:</em> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</li></ul></ul></td>
+<td><strong>Authorisation:</strong><br/> Account selection</td>
+<td>Data holders <strong>MUST</strong> allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder <strong>MAY</strong> omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br/>Profile selection</td>
+<td><p>Data holders <strong>MAY</strong> add a &#39;profile selection&#39; step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts.</p><p>The &#39;profile selection&#39; step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).</p></td>
+</tr>
+<tr>
+<td><strong>Unavailable Accounts:</strong><br/>Displaying accounts</td>
+<td><p>If certain accounts are unavailable to share, data holders <strong>SHOULD</strong> show these unavailable accounts in the account-selection step. </p><p>Data holders <strong>SHOULD</strong> communicate why these accounts cannot be selected, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</p><p>Data holders <strong>MAY</strong> provide instructions on how to make these accounts available to share, and this <strong>SHOULD</strong> be communicated as in-line help or as a modal to reduce on-screen content.</p><p><em>Note:</em> Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</p></td>
+</tr>
+<tr>
+<td><strong>Unavailable Accounts:</strong><br/>No accounts can be shown</td>
+<td>If unavailable accounts cannot be shown in the account selection step, data holders <strong>MAY</strong> display a generic explanation and instructions.</td>
+</tr>
+<tr>
+<td><strong>Unavailable Accounts:</strong><br/>Authorisation not permitted</td>
+<td>If a successfully authenticated user cannot proceed to establish an authorisation in accordance with the rules on eligible consumers and required consumer data, data holders <strong>MAY</strong> provide the option of concluding the authorisation process.</td>
+</tr>
+<tr>
+<td><strong>Unavailable Accounts:</strong><br/>Request sharing rights</td>
+<td>If a user does not have sharing rights for a particular account or set of accounts, data holders <strong>MAY</strong> invite the user to request sharing rights from the authorisation flow. The presentation of this mechanism <strong>MUST NOT</strong> introduce unwarranted friction as defined in rule 4.24 on restrictions.</td>
 </tr>
 <tr>
 <td><strong>Authorisation:</strong><br>Account confirm</td>
 <td>Data holders <strong>MUST</strong> show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder <strong>MAY</strong> omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).</td>
 </tr>
 </tbody></table>
+
 <h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4159,7 +4145,7 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><strong>Authorisation:</strong><br/>Amending consent</td>
-<td><strong>Effective from July 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id:</em><br><br></td>
+<td><strong>Effective from July 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:<br><br></td>
 </tr>
 <tr>
 <td>Customer Profile</td>
@@ -4202,7 +4188,9 @@ Host: data.holder.com.au
 </tbody></table>
 
 <p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
+
 <h2 id='withdrawal-standards'>Withdrawal Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4211,15 +4199,23 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><strong>Withdrawing consent</strong></td>
-<td>If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients <strong>MUST</strong> allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </ul></li><ul><li>Data recipients <strong>SHOULD</strong> consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</ul></li></td>
+<td>If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients <strong>MUST</strong> allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </li><li>Data recipients <strong>SHOULD</strong> consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</li></ul></td>
 </tr>
 <tr>
 <td><strong>Withdrawing authorisation:</strong><br>Consequences</td>
-<td>As part of the withdrawal process, the data holder <strong>MUST</strong> advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <ul><li>The data holder <strong>MAY</strong> consider using or paraphrasing the following message(s):</li><ul><li><em>‘You should check with [Data Recipient] before you stop sharing to understand the consequences.’</em></ul></li><ul><li><em>‘You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.’</em></li></ul></ul></td>
+<td>As part of the withdrawal process, the data holder <strong>MUST</strong> advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <br/>The data holder <strong>MAY</strong> consider using or paraphrasing the following message(s):<ul><li><em>&#39;You should check with [Data Recipient] before you stop sharing to understand the consequences.&#39;</em></li><li><em>&#39;You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.&#39;</em></li></ul></td>
 </tr>
 <tr>
 <td><strong>Withdrawing authorisation:</strong><br>Redundant data</td>
-<td>As part of the withdrawal process, the data holder <strong>MUST</strong> inform the consumer about the handling of redundant data and the right to delete. <ul><li>The Data Holder <strong>MAY</strong> consider using or paraphrasing the following message(s):</li><ul><li><em>‘CDR data is either deleted or de-identified when it is no longer required.’</em></li><li><em>‘[Data recipient] will have specific policies on how to handle your data once it’s no longer required.’</em></li></ul></ul></td>
+<td>As part of the withdrawal process, the data holder <strong>MUST</strong> inform the consumer about the handling of redundant data and the right to delete. The Data Holder <strong>MAY</strong> consider using or paraphrasing the following message(s):<br/><ul><li><em>&#39;CDR data is either deleted or de-identified when it is no longer required.&#39;</em></li><li><em>&#39;[Data recipient] will have specific policies on how to handle your data once it&#39;s no longer required.&#39;</em></li></ul></td>
+</tr>
+<tr>
+<td><strong>Withdrawal:</strong> Disclosure consent</td>
+<td>As part of the disclosure consent withdrawal process, Data Recipients <strong>MUST</strong> advise the consumer to review, with the recipient that the data was disclosed to:<ol><li>How their data will be handled; and</li><li>The consequences of withdrawing the disclosure consent</li></ol>Note: The precise wording of the withdrawal message is at the discretion of the ADR</td>
+</tr>
+<tr>
+<td><strong>Withdrawal:</strong><br/>Secondary User Instruction</td>
+<td>As part of the secondary user instruction withdrawal process, data holders <strong>MUST</strong> advise the consumer:<br/><ol><li>That removing a secondary user instruction will stop all current and future data sharing for the secondary user(s)</li><li>To review the consequences of withdrawal with the secondary user(s) before removing the secondary user instruction</li></ol><strong>Note:</strong> The exact phrasing of this message is at the discretion of the data holder.</td>
 </tr>
 </tbody></table>
 <h1 id="consumer-data-standards-banking-apis">Banking APIs</h1>
@@ -8505,8 +8501,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
 
-<p>NOTE: This version must be implemented by <strong>February 2021</strong></p>
-
 <p>Obsolete versions: <a href="includes/obsolete/get-products-v1.html">v1</a> <a href="includes/obsolete/get-products-v2.html">v2</a></p>
 <h3 id='endpoint-version-16'>Endpoint Version</h3>
 <table><thead>
@@ -8785,8 +8779,6 @@ This operation does not require authentication
 <p><code>GET /banking/products/{productId}</code></p>
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
-
-<p>NOTE: This version must be implemented by <strong>February 2021</strong></p>
 
 <p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a> <a href="includes/obsolete/get-product-detail-v2.html">v2</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
@@ -13168,7 +13160,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type</td>
+<td>A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if <code>isDetailAvailable</code> is set to true.</td>
 </tr>
 <tr>
 <td>isDetailAvailable</td>
@@ -14753,7 +14745,7 @@ This operation does not require authentication
 <tr>
 <td>financialInstitution</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme</td>
 </tr>
@@ -18155,7 +18147,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>EVENT</td>
-<td>A fee in relation to a particular event (e.g. NA ordering a new card, viewing a balance or stopping a cheque)</td>
+<td>A fee in relation to a particular event (e.g. ordering a new card, viewing a balance or stopping a cheque)</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -18185,7 +18177,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>UPFRONT</td>
-<td>A fee paid at the beginning of the product NA lifecycle, such as an establishment fee, loyalty program fee or application fee</td>
+<td>A fee paid at the beginning of the product lifecycle, such as an establishment fee, loyalty program fee or application fee</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -20162,6 +20154,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td>30/06/2021</td>
+<td>1.11.0</td>
+<td>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 DP 178</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.11.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/160">Decision 160</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/187">Decision 187</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/178">Decision 178</a> for details</td>
+</tr>
+<tr>
 <td>01/06/2021</td>
 <td>1.10.0</td>
 <td>Changes arising from Enhanced Error Handling decision proposals</td>
@@ -20509,9 +20507,14 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='./archive/standards-1.10.0/docs/'>01/06/2021</a></td>
+<td>1.10.0</td>
+<td><a href='./archive/standards-1.9.0/docs/'>Changes arising from Enhanced Error Handling decision proposals.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/154">Decision 154</a> for details</td>
+</tr>
+<tr>
 <td><a href='./archive/standards-1.9.0/docs/'>29/04/2021</a></td>
 <td>1.9.0</td>
-<td><a href='./archive/standards-1.9.0/docs/'> Changes arising from the sixth Data Standards Maintenance Iteration related to <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a></td>
+<td><a href='./archive/standards-1.9.0/docs/'>Changes arising from the sixth Data Standards Maintenance Iteration</a> related to <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a></td>
 </tr>
 <tr>
 <td><a href='./archive/standards-1.8.0/docs/'>16/04/2021</a></td>

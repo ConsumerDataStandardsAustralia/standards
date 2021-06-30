@@ -4281,8 +4281,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
 
-<p>NOTE: This version must be implemented by <strong>February 2021</strong></p>
-
 <p>Obsolete versions: <a href="includes/obsolete/get-products-v1.html">v1</a> <a href="includes/obsolete/get-products-v2.html">v2</a></p>
 <h3 id='endpoint-version-16'>Endpoint Version</h3>
 <table><thead>
@@ -4561,8 +4559,6 @@ This operation does not require authentication
 <p><code>GET /banking/products/{productId}</code></p>
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
-
-<p>NOTE: This version must be implemented by <strong>February 2021</strong></p>
 
 <p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a> <a href="includes/obsolete/get-product-detail-v2.html">v2</a></p>
 <h3 id='endpoint-version-17'>Endpoint Version</h3>
@@ -8944,7 +8940,7 @@ This operation does not require authentication
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type</td>
+<td>A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if <code>isDetailAvailable</code> is set to true.</td>
 </tr>
 <tr>
 <td>isDetailAvailable</td>
@@ -10529,7 +10525,7 @@ This operation does not require authentication
 <tr>
 <td>financialInstitution</td>
 <td>string</td>
-<td>optional</td>
+<td>conditional</td>
 <td>none</td>
 <td>Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme</td>
 </tr>

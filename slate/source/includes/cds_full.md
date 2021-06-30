@@ -2579,8 +2579,6 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-NOTE: This version must be implemented by **February 2021**
-
 Obsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)
 
 ###Endpoint Version
@@ -2729,8 +2727,6 @@ $.ajax({
 `GET /banking/products/{productId}`
 
 Obtain detailed information on a single product offered openly to the market.
-
-NOTE: This version must be implemented by **February 2021**
 
 Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
 
@@ -5260,7 +5256,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |accountId|[ASCIIString](#common-field-types)|mandatory|none|ID of the account for which transactions are provided|
-|transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type|
+|transactionId|[ASCIIString](#common-field-types)|conditional|none|A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory|none|True if extended information is available using the transaction detail end point. False if extended data is not available|
 |type|string|mandatory|none|The type of the transaction|
 |status|string|mandatory|none|Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction|
@@ -6057,7 +6053,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |description|string|optional|none|Description of the authorised entity derived from previously executed direct debits|
-|financialInstitution|string|optional|none|Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme|
+|financialInstitution|string|conditional|none|Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme|
 |abn|string|optional|none|Australian Business Number for the authorised entity|
 |acn|string|optional|none|Australian Company Number for the authorised entity|
 |arbn|string|optional|none|Australian Registered Body Number for the authorised entity|

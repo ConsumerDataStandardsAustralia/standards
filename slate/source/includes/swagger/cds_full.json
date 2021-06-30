@@ -1,13 +1,13 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-    "version" : "1.10.0",
+    "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
+    "version" : "1.11.0",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
-      "url" : "https://consumerdatastandards.org.au/",
-      "email" : "cdr-data61@csiro.au"
+      "url" : "https://consumerdatastandards.gov.au",
+      "email" : "contact@consumerdatastandards.gov.au"
     },
     "license" : {
       "name" : "MIT License",
@@ -1574,7 +1574,7 @@
       "get" : {
         "tags" : [ "Banking", "Products" ],
         "summary" : "Get Products",
-        "description" : "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nNOTE: This version must be implemented by **February 2021**\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)",
+        "description" : "Obtain a list of products that are currently openly offered to the market\n\nNote that the results returned by this end point are expected to be ordered in descending order according to ``lastUpdated``.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field name [additionalValue](#productfeaturetypedoc).  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.\n\nIn addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html) [v2](includes/obsolete/get-products-v2.html)",
         "operationId" : "listProducts",
         "parameters" : [ {
           "name" : "effective",
@@ -1660,7 +1660,7 @@
       "get" : {
         "tags" : [ "Banking", "Products" ],
         "summary" : "Get Product Detail",
-        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nNOTE: This version must be implemented by **February 2021**\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
+        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
         "operationId" : "getProductDetail",
         "parameters" : [ {
           "name" : "productId",
@@ -2885,7 +2885,7 @@
         },
         "transactionId" : {
           "type" : "string",
-          "description" : "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type",
+          "description" : "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.",
           "x-cds-type" : "ASCIIString"
         },
         "isDetailAvailable" : {
@@ -3325,7 +3325,8 @@
           "type" : "string",
           "description" : "Australian Registered Body Number for the authorised entity"
         }
-      }
+      },
+      "x-conditional" : [ "financialInstitution" ]
     },
     "ResponseBankingScheduledPaymentsList" : {
       "type" : "object",
@@ -4172,6 +4173,7 @@
       "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRANS_AND_SAVINGS_ACCOUNTS", "TRAVEL_CARDS" ]
     },
     "RequestAccountIds_data" : {
+      "type" : "object",
       "required" : [ "accountIds" ],
       "properties" : {
         "accountIds" : {
@@ -4185,6 +4187,7 @@
       }
     },
     "ResponseBankingProductList_data" : {
+      "type" : "object",
       "required" : [ "products" ],
       "properties" : {
         "products" : {
@@ -4197,6 +4200,7 @@
       }
     },
     "BankingProductV3_additionalInformation" : {
+      "type" : "object",
       "properties" : {
         "overviewUri" : {
           "type" : "string",
@@ -4227,6 +4231,7 @@
       "description" : "Object that contains links to additional information on specific topics"
     },
     "BankingProductV3_cardArt" : {
+      "type" : "object",
       "required" : [ "imageUri" ],
       "properties" : {
         "title" : {
@@ -4241,6 +4246,7 @@
       }
     },
     "ResponseBankingAccountList_data" : {
+      "type" : "object",
       "required" : [ "accounts" ],
       "properties" : {
         "accounts" : {
@@ -4253,6 +4259,7 @@
       }
     },
     "ResponseBankingTransactionList_data" : {
+      "type" : "object",
       "required" : [ "transactions" ],
       "properties" : {
         "transactions" : {
@@ -4264,6 +4271,7 @@
       }
     },
     "BankingTransactionDetail_extendedData_x2p101Payload" : {
+      "type" : "object",
       "required" : [ "extendedDescription" ],
       "properties" : {
         "extendedDescription" : {
@@ -4281,6 +4289,7 @@
       }
     },
     "BankingTransactionDetail_extendedData" : {
+      "type" : "object",
       "required" : [ "service" ],
       "properties" : {
         "payer" : {
@@ -4304,9 +4313,11 @@
           "description" : "Identifier of the applicable overlay service. Valid values are: X2P1.01",
           "enum" : [ "X2P1.01" ]
         }
-      }
+      },
+      "x-conditional" : [ "payer", "payee", "extendedDescription" ]
     },
     "ResponseBankingAccountsBalanceList_data" : {
+      "type" : "object",
       "required" : [ "balances" ],
       "properties" : {
         "balances" : {
@@ -4319,6 +4330,7 @@
       }
     },
     "ResponseBankingPayeeList_data" : {
+      "type" : "object",
       "required" : [ "payees" ],
       "properties" : {
         "payees" : {
@@ -4331,6 +4343,7 @@
       }
     },
     "BankingInternationalPayee_beneficiaryDetails" : {
+      "type" : "object",
       "required" : [ "country" ],
       "properties" : {
         "name" : {
@@ -4349,6 +4362,7 @@
       }
     },
     "BankingInternationalPayee_bankDetails_bankAddress" : {
+      "type" : "object",
       "required" : [ "address", "name" ],
       "properties" : {
         "name" : {
@@ -4362,6 +4376,7 @@
       }
     },
     "BankingInternationalPayee_bankDetails" : {
+      "type" : "object",
       "required" : [ "accountNumber", "country" ],
       "properties" : {
         "country" : {
@@ -4405,6 +4420,7 @@
       }
     },
     "ResponseBankingDirectDebitAuthorisationList_data" : {
+      "type" : "object",
       "required" : [ "directDebitAuthorisations" ],
       "properties" : {
         "directDebitAuthorisations" : {
@@ -4417,6 +4433,7 @@
       }
     },
     "ResponseBankingScheduledPaymentsList_data" : {
+      "type" : "object",
       "required" : [ "scheduledPayments" ],
       "properties" : {
         "scheduledPayments" : {
@@ -4429,6 +4446,7 @@
       }
     },
     "ResponseCommonDiscoveryStatus_data" : {
+      "type" : "object",
       "required" : [ "status", "updateTime" ],
       "properties" : {
         "status" : {
@@ -4455,9 +4473,11 @@
           "description" : "The date and time that this status was last updated by the Data Holder.",
           "x-cds-type" : "DateTimeString"
         }
-      }
+      },
+      "x-conditional" : [ "explanation" ]
     },
     "ResponseDiscoveryOutagesList_data" : {
+      "type" : "object",
       "required" : [ "outages" ],
       "properties" : {
         "outages" : {
@@ -4470,6 +4490,7 @@
       }
     },
     "ResponseCommonCustomer_data" : {
+      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4485,9 +4506,11 @@
           "description" : "Mandatory if `customerUType` is `organisation`",
           "$ref" : "#/definitions/CommonOrganisation"
         }
-      }
+      },
+      "x-conditional" : [ "person", "organisation" ]
     },
     "ResponseCommonCustomerDetail_data" : {
+      "type" : "object",
       "required" : [ "customerUType" ],
       "properties" : {
         "customerUType" : {
@@ -4503,9 +4526,11 @@
           "description" : "Mandatory if `customerUType` is `organisation`",
           "$ref" : "#/definitions/CommonOrganisationDetail"
         }
-      }
+      },
+      "x-conditional" : [ "person", "organisation" ]
     },
     "ResponseErrorListV2_errors" : {
+      "type" : "object",
       "required" : [ "code", "detail", "title" ],
       "properties" : {
         "code" : {

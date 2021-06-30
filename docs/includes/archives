@@ -9,9 +9,14 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='./archive/standards-1.10.0/docs/'>01/06/2021</a></td>
+<td>1.10.0</td>
+<td><a href='./archive/standards-1.9.0/docs/'>Changes arising from Enhanced Error Handling decision proposals.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/154">Decision 154</a> for details</td>
+</tr>
+<tr>
 <td><a href='./archive/standards-1.9.0/docs/'>29/04/2021</a></td>
 <td>1.9.0</td>
-<td><a href='./archive/standards-1.9.0/docs/'> Changes arising from the sixth Data Standards Maintenance Iteration related to <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a></td>
+<td><a href='./archive/standards-1.9.0/docs/'>Changes arising from the sixth Data Standards Maintenance Iteration</a> related to <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a></td>
 </tr>
 <tr>
 <td><a href='./archive/standards-1.8.0/docs/'>16/04/2021</a></td>
