@@ -1,4 +1,3 @@
-<a id="levels-of-assurance-loas"></a>
 ## Levels of Assurance (LoAs)
 Levels Of Assurance (LoAs), returned after a successful authentication MUST be represented in Single Ordinal form where a single LoA value is represented.
 
