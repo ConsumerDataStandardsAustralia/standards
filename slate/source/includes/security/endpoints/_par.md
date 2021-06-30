@@ -79,7 +79,7 @@ Host: data.holder.com.au
 | Bearer Token Required| No |
 
 
-**From November 2020**, Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[PAR]**.
+Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[PAR]**.
 
 Data Recipients MAY send authorisation requests using **[PAR]** if supported by the Data Holder. Request objects which contain the ``cdr_arrangement_id`` claim MUST only be sent using **[PAR]**. If a Data Holder does not support **[PAR]**, a Data Recipient SHOULD NOT provide the ``cdr_arrangement_id`` claim in the request object.
 
