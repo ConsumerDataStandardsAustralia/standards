@@ -39,3 +39,6 @@ Release notes for version 1.11.0 of the [CDR Standards](../../index.html).
 |Change|Description|Link|
 |------|-----------|----|
 | Modularised CX standards | Modularised the CX standards code for maintenance and build purposes | N/A |
+| Separated Authorisation: Account selection statements | For improved readability, the statements were divided into three separate standards pertaining to authorisation | [Authorisation Standards](../../#authorisation-standards)|
+| Unavailable Accounts | Added changes arising from DP160 in relation to unavailable accounts | [Authorisation Standards](../../#authorisation-standards)|
+| Secondary User Instructions | Added changes arising from DP160 in relation to secondary user instructions | [Withdrawal Standards](../../#withdrawal-standards)|
