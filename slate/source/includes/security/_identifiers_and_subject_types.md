@@ -100,8 +100,8 @@ Statements related to the CDR Arrangement ID:
 * A CDR Arrangement ID SHOULD be generated using an algorithm that reduces the chances of collision
 * A CDR Arrangement ID MUST be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)
 
-#### Retrospectively obtaining a CDR Arrangement ID
+#### Obtaining a CDR Arrangement ID
 
-For any existing consents, Data Holders must retrospectively generate a ``cdr_arrangement_id`` such that from November 2020, Data Recipients can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
+For any existing consents, Data Holders must retrospectively generate a ``cdr_arrangement_id`` such that Data Recipients can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
 
 A Data Recipient can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.
