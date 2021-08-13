@@ -24,7 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Get Transactions For Account | Documentation fix to ensure quote marks render correctly in YAML | [Get Transactions For Account](../../#get-transactions-for-account)|
 
 ## Information Security Profile
 |Change|Description|Link|
