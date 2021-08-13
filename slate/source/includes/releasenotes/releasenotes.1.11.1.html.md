@@ -18,7 +18,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Fixed website link | Fixed the link to the Consumer Data Standards website | N/A |
 
 ## API End Points
 
