@@ -24,7 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Lending Products Categories | Fixed documentation where `TRADE FINANCE` is missing an underscore and it should be `TRADE_FINANCE` | [Product Categories](../../#product-categories) |
 
 ## Information Security Profile
 |Change|Description|Link|
