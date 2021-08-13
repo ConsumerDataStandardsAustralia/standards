@@ -2,8 +2,8 @@
 
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
-| <a id="FAPI-R"></a>**[FAPI-R]**    | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1.html>                                                     |Draft-06
-| <a id="FAPI-RW"></a>**[FAPI-RW]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2.html>                                                |Draft-06
+| <a id="FAPI-R"></a>**[FAPI-R]**    | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1-ID2.html>                                                     |Draft-06
+| <a id="FAPI-RW"></a>**[FAPI-RW]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2-ID2.html>                                                |Draft-06
 | <a id="JSON"></a>**[JSON]**        | The JavaScript Object Notation (JSON) Data Interchange Format: <https://tools.ietf.org/html/rfc8259>                                                                          |Dec 2017
 | <a id="JWA"></a>**[JWA]**          | JSON Web Algorithms (JWA): <https://tools.ietf.org/html/rfc7518>                                                                                                              |May 2015
 | <a id="JWK"></a>**[JWK]**          | JSON Web Key (JWK): <https://tools.ietf.org/html/rfc7517>                                                                                                                     |May 2015
