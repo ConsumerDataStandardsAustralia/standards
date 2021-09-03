@@ -2,10 +2,10 @@
 
 | Description | Value   |
 |---|---|
-| Hosted By  | Data Holder and Data Recipient |
-|  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
-| Client Authentication Required| Yes (for verifying Data Recipients)|
-| Bearer Token Required| Yes (for verifying Data Holders)|
+| Hosted By  | Data Holder |
+|  Transport Security |  MTLS |
+| Client Authentication Required| Yes |
+| Bearer Token Required| No |
 
 **Requirements for Data Holder implementations**
 
@@ -16,18 +16,8 @@ The Revocation End Point serves as a revocation mechanism that allows a Data Rec
 Revocation of Refresh Tokens and Access Tokens MUST be supported.
 
 
-**Requirements for Data Recipient implementations**
-
-The Token Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.
-
-Revocation of Access Tokens MUST not be supported.
-
-Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation.
-
-If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST revoke consent using Data Holder’s implementation.
-
 **Revoking consent**
 
-If the Data Holder does not support a CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder's Token Revocation End Point with the current Refresh Token to notify the Data Holder.
+Data Recipients MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient.
 
-If the Data Holder does support the CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder.
+Data Holder's MUST use the Data Recipient's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Recipient when consent is revoked by the consumer via the Data Holder.

@@ -29,7 +29,7 @@ This release minor errata and documentation fixes.
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Token Revocation | Updated token revocation endpoint documentation to remove legacy references to Data Recipient support for a Token Revocation endpoint. This has been replaced by the CDR Arrangement Revocation end point. | [Token Revocation](../../#token-revocation-end-point) |
 
 ## Consumer Experience
 
