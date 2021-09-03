@@ -24,7 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Get Customer / Get Customer Detail | Documentation was updated to clarify that given names which cannot be separated can be represented as a single string in the `firstName` field | [Get Customer](../../#get-customer)|
 
 ## Information Security Profile
 |Change|Description|Link|
