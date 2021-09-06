@@ -24,7 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Base path terminology | Consistent use of terminology for holder path, base path, and resource path | N/A |
 
 ## Information Security Profile
 |Change|Description|Link|

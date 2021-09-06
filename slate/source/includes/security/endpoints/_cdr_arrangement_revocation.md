@@ -35,8 +35,8 @@ The request MUST include the following parameters using the ``application/x-www-
 This end point will be implemented according to the following:
 
 * Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
-* Data Holders MUST publish their CDR Arrangement Revocation End Point  using their OpenID Provider Metadata Discovery End Point
-* Data Recipients MUST expose their CDR Arrangement Revocation End Point  under their Recipient Base URI published in their Software Statement Assertion
+* Data Holders MUST publish their CDR Arrangement Revocation End Point using their OpenID Provider Metadata Discovery End Point
+* Data Recipients MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
 * Consent revocation MUST also revoke associated refresh and/or access tokens
 * For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
 * If the ``cdr_arrangement_id`` is not related to the client making the call it MUST be rejected
@@ -52,7 +52,7 @@ Response Code | Situation | Description
 
 **Data Holders calling Data Recipients**
 
-Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.
+Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the `recipient_base_uri` in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.
 
 Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.
 
