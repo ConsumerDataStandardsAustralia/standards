@@ -12,11 +12,11 @@
 >The holder path for each example is:  
 
 ```
-1. https://www.bank.com.au/api  
-2. https://www.bank.com.au/api   
-3. https://www.bank.com.au/complex/uri/taxonomy  
-4. https://www.energyretailer.com.au/api  
-5. https://www.energyretailer.com.au/api
+1. www.bank.com.au/api  
+2. www.bank.com.au/api   
+3. www.bank.com.au/complex/uri/taxonomy  
+4. www.energyretailer.com.au/api  
+5. www.energyretailer.com.au/api
 ```
 
 >The base path for each example is:  
@@ -41,7 +41,7 @@
 
 The URI structure for API end points in the standards MUST be implemented as follows:  
 <pre class="display-inline light-box highlight">
-<b>uri-string</b> = <b>\<holder-path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" ( <b>\<industry\></b> | <b>\<HID\></b> ) "/" <b>\<resource\></b>
+<b>uri-string</b> =  "https://" <b>\<holder-path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" ( <b>\<industry\></b> | <b>\<HID\></b> ) "/" <b>\<resource\></b>
 
 The components of this URI structure are described as follows:
 <ul><li><b>\<holder-path\></b>  = string.
@@ -63,13 +63,13 @@ The URI for the specific resource requested. This end point URI will be defined 
 <div class="clear both"></div>
 
 **Base Path**  
-Base path is intended to be the portion of the URL up to but not including the endpoint resource. In other words, the base path is the portion of the URL up to and including the `<industry>` or `<HID>` component. The base path is defined as follows:
+Base path is intended to be the portion of the URL up to but not including the endpoint resource. In other words, the base path is the portion of the URL up to and including the `<industry>` or `<HID>` component. The base path string is defined as follows:
 
-* `https://<holder path> / cds-au / <version> / <industry>`, or
-* `https://<holder path> / cds-au / <version> / <HID>`
+`https:// <holder-path> / cds-au / <version> / ( <industry> | <HID> )`
+
 
 **Resource Path**  
-The resource path is intended to be the portion of the URL including the base path and resource location. The resource path is defined as: `<base-path> / <resource>`
+The resource path is intended to be the portion of the URL including the base path and resource location. The resource path string is defined as: `<base-path> / <resource>`.
 
 ### Resource URIs
 

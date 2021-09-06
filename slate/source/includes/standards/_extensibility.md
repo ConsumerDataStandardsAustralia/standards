@@ -26,17 +26,17 @@ standards
 
 Data holders seeking to extend the standards MUST nominate a prefix to identify all extensions.  Extended fields and end points and would use this prefix consistently. This prefix would be, by preference, the ASX symbol for the holder. Care should be taken not to use a prefix already adopted by another holder in the regime.
 
-In these standards, where a holder Identifier would be included, the term `<HID>` will be used.
+In these standards, where a Holder Identifier would be included, the term `<HID>` will be used.
 
 ###New API Categories
 
 When extending by adding new API categories a holder MUST add these to the overall URI structure by substituting the industry element with the Holder (Provider) ID.
 
 For instance, the standard URI base path is structured as:  
-`<holder path> / cds-au / <version> / <industry> / <resource>`
+`https:// <holder-path> / cds-au / <version> / <industry> / <resource>`
 
 For the extension API categories for a specific holder they would be structured as:  
-`<holder path> / cds-au / <version> / <HID> / <resource>`
+`https:// <holder-path> / cds-au / <version> / <HID> / <resource>`
 
 The end points defined under this structure, including the payloads of these end points do not need to be prefixed in any way. The fact that they are underneath the holder section implies that they are additional to the standard.
 
@@ -51,10 +51,10 @@ Note that:
 When creating new end points that are in parallel to existing API categories in the standard the Holder Identifier MUST be used to prefix the highest URI element where divergence occurs.
 
 For example, assume an existing balance end point is defined as follows:  
-`<base path>/accounts/{account ID}/transactions`
+`<base-path>/accounts/{account ID}/transactions`
 
 and the holder wishes to add an end point that summarises balance movement for a specific time period then they may define the end point as:  
-`<base path>/account/{account ID}/<HID>-balance-movement`
+`<base-path>/account/{account ID}/<HID>-balance-movement`
 
 
 Note that:
