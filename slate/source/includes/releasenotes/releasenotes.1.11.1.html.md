@@ -29,7 +29,7 @@ This release minor errata and documentation fixes.
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Authorisation Scopes| Clarified the documentation for the "Basic Bank Account Data" scope that account numbers are not included with the basic scope | [Authorisation Scopes](../../#authorisation-scopes)|
 
 ## Consumer Experience
 
