@@ -30,8 +30,10 @@ Content-Type: application/x-www-form-urlencoded
 Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body: <br/>
-``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
 
+- ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
+
+<br/>
 This end point will be implemented according to the following:
 
 * Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
@@ -49,6 +51,12 @@ Response Code | Situation | Description
 -- | -- | --
 204 No Content | Success | The sharing arrangement has been revoked successfully
 422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
+
+**Revoking consent**
+
+Data Recipients MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient.
+
+Data Holder's MUST use the Data Recipient's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Recipient when consent is revoked by the consumer via the Data Holder.
 
 **Data Holders calling Data Recipients**
 

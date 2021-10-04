@@ -58,14 +58,6 @@ Note that the period of `one year` in the above statements should be interpreted
 The Data Recipient is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
 
 ### Specifying an existing arrangement
-Provided a Data Holder supports PAR, they MUST also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the PAR End Point. The Data Recipient MAY provide the ``cdr_arrangement_id`` claim in the Request Object sent to the PAR End Point.
+Provided a Data Holder supports PAR, they MUST also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point). The Data Recipient MAY provide the ``cdr_arrangement_id`` claim in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point).
 
-The ``cdr_arrangement_id`` claim MUST be handled as follows:
-
-**Until November 2020** data holders are not required to take any action if ``cdr_arrangement_id`` is supplied but MUST NOT respond with an error.
-
-**Until November 2020** data recipients MUST NOT implement scenarios that support concurrent consent. Only single, extant consent scenarios should be implemented until this date.
-
-If a data recipient provides the ``cdr_arrangement_id`` claim in the request object to the data holder's PAR End Point, the data holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.
-
-For data recipients seeking to replace consent where the Data Holder does not support PAR, data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the appropriate revocation end point.
+If a Data Recipient provides the ``cdr_arrangement_id`` claim in the request object to the Data Holder's [PAR End Point](#pushed-authorisation-end-point), the Data Holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.
