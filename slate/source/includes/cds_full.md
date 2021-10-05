@@ -905,7 +905,7 @@ Obtain transactions for a specific account.
 Some general notes that apply to all end points that retrieve transactions:
 
 - Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
-- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:
+- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the "effective" date/time which will be defined as:
   - Posted date/time if available, then
   - Execution date/time if available, then
   - A reasonable date/time nominated by the data holder using internal data structures
@@ -2978,6 +2978,19 @@ $.ajax({
 `GET /common/customer`
 
 Obtain basic information on the customer that has authorised the current session
+
+### Conventions
+In the customer payloads relevant conventions are explained here, in one place.
+
+#### Given Names
+
+`firstName` represents the first of a person's given names.
+
+`middleNames` represents a collection of given names if the person has more than one given name.
+
+Where a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.
+
+For example, a person whose given names are "John Paul Winston" but the data holder cannot determine what is the first name, can return `"firstName": "John Paul Winston"`.
 
 ###Endpoint Version
 |   |  |
@@ -7030,7 +7043,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
-|firstName|string|optional|none|For people with single names this field need not be present.  The single name should be in the lastName field|
+|firstName|string|optional|none|For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.|
 |lastName|string|mandatory|none|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
 |prefix|string|optional|none|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|

@@ -761,7 +761,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://consumerdatastandards.org.au/'>Consumer Data Standards Home</a></li>
+            <li><a href='https://consumerdatastandards.gov.au/'>Consumer Data Standards Home</a></li>
             <li><a href='https://cdr-support.zendesk.com/'>CDR Support Portal</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards'>CDR Standards on GitHub</a></li>
             <li><a href='https://github.com/ConsumerDataStandardsAustralia/standards-maintenance'>CDR Maintenance on GitHub</a></li>
@@ -875,7 +875,7 @@
 
 <p><strong>Please note</strong> this is currently experimental.</p>
 <h1 id='standards'>Standards</h1>
-<p>These standards represent version 1.11.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version 1.11.1 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <p>Note that, in this proposal, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
 
@@ -1013,8 +1013,8 @@ always align to current consumer preferences.</p>
 <h3 id='uniform-resource-identifier-uri-versioning'>Uniform Resource Identifier (URI) Versioning</h3>
 
 <blockquote>
-<p>The base URI structure containing the version for this standard is:<br>
-<code>http://&lt;holder path&gt;/cds-au/v&lt;major version&gt;</code></p>
+<p>The base path structure containing the &quot;version&quot; for this standard is:<br>
+<code>https://&lt;holder-path&gt;/cds-au/v&lt;major version&gt;/&lt;industry&gt;</code></p>
 </blockquote>
 
 <p>The high level standard will be versioned as described above.  The major component of this version will be embedded in the <a href="#uri-structure">URI Structure</a> for the APIs.  This allows for a data holder to support multiple major versions of the standards in production even if the significant breaking changes occur between major versions.</p>
@@ -1026,19 +1026,49 @@ always align to current consumer preferences.</p>
 <h2 id='uri-structure'>URI Structure</h2>
 
 <blockquote>
-<p>Some example URIs that meet this standard are:<br>
-<code>http://www.bank.com.au/api/cds-au/v1/banking/accounts</code><br>
-<code>http://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products</code><br>
-<code>http://www.energyretailer.com.au/api/cds-au/v1/energy/usage</code></p>
+<p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
+</code></pre>
+<blockquote>
+<p>The holder path for each example is:  </p>
+</blockquote>
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
+2. www.bank.com.au/api   
+3. www.bank.com.au/complex/uri/taxonomy  
+4. www.energyretailer.com.au/api  
+5. www.energyretailer.com.au/api
+</code></pre>
+<blockquote>
+<p>The base path for each example is:  </p>
+</blockquote>
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
+2. https://www.bank.com.au/api/cds-au/v1/banking   
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
+</code></pre>
+<blockquote>
+<p>The resource path for each example is:  </p>
+</blockquote>
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+</code></pre>
 <p>The URI structure for API end points in the standards MUST be implemented as follows:<br>
 <pre class="display-inline light-box highlight">
-<b>uri-string</b> = <b>&lt;holder-path&gt;</b> &quot;/&quot; <b>cds-au</b> &quot;/&quot; <b>&lt;version&gt;</b> &quot;/&quot; <b>&lt;industry&gt;</b> &quot;/&quot; <b>&lt;resource&gt;</b></p>
+<b>uri-string</b> =  &quot;https://&quot; <b>&lt;holder-path&gt;</b> &quot;/&quot; <b>cds-au</b> &quot;/&quot; <b>&lt;version&gt;</b> &quot;/&quot; ( <b>&lt;industry&gt;</b> | <b>&lt;HID&gt;</b> ) &quot;/&quot; <b>&lt;resource&gt;</b></p>
 
 <p>The components of this URI structure are described as follows:
 <ul><li><b>&lt;holder-path&gt;</b>  = string.
-The holder path is a base path set by the data holder. It can be any URI desired by the holder. While all authenticated end points must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated end points.</li>
+The holder path is a path set by the data holder. It can be any URI desired by the holder. While all authenticated end points must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated end points.</li>
 <li><b>cds-au</b>         = &quot;cds-au&quot; string.
 This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
 <li><b>&lt;version&gt;</b>      = &quot;v1&quot; string.
@@ -1047,13 +1077,23 @@ The major version of the high level standards. This is not the version of the en
 A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.
 Note that the currently accepted values for the <code>industry</code> component of the base path are:
 <ul><li><b>banking</b> = &quot;banking&quot; string. For APIs related to banking and potentially wider financial services data,</li><li><b>energy</b>  = &quot;energy&quot; string. For APIs related to the energy distribution industry,</li><li><b>telco</b>   = &quot;telco&quot; string. For APIs related to telecommunications,</li><li><b>common</b>  = &quot;common&quot; string. For APIs that potentially span industries.</li></ul></li>
+<li><b>&lt;HID&gt;</b>          = string.
+The Holder Identifier used to denote extension API categories for a specific holder.</li>
 <li><b>&lt;resource&gt;</b>     = string.
-The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.</li></ul>
+The URI for the specific resource requested. This end point URI will be defined as part of the end point definitions for each API group.
+</li></ul>
 </pre>
+
 <div class="clear both"></div></p>
 
-<h3 id='resource-uris'>Resource URIs</h3>
+<p><strong>Base Path</strong><br>
+Base path is intended to be the portion of the URL up to but not including the endpoint resource. In other words, the base path is the portion of the URL up to and including the <code>&lt;industry&gt;</code> or <code>&lt;HID&gt;</code> component. The base path string is defined as follows:</p>
 
+<p><code>https:// &lt;holder-path&gt; / cds-au / &lt;version&gt; / ( &lt;industry&gt; | &lt;HID&gt; )</code></p>
+
+<p><strong>Resource Path</strong><br>
+The resource path is intended to be the portion of the URL including the base path and resource location. The resource path string is defined as: <code>&lt;base-path&gt; / &lt;resource&gt;</code>.</p>
+<h3 id='resource-uris'>Resource URIs</h3>
 <p>Resources that are collections, and members of collections, will follow the <a href="http://jsonapi.org">JSONAPI.org</a> recommendation.</p>
 
 <p>Under this model, collections, individual members and collection sub-resources would be accessed as follows:</p>
@@ -1095,11 +1135,8 @@ The URI for the specific resource requested. This end point URI will be defined 
 <p>If no valid sub-resource exists then a dedicated sub-resource should be created, such as the “search” URI listed in the example above.</p>
 
 <h2 id='http-headers'>HTTP Headers</h2>
-
 <p>Supported HTTP headers, and their usage, for the standards are as laid out in the following sections.</p>
-
 <h3 id='request-headers'>Request Headers</h3>
-
 <blockquote>
 <p>A sample set of headers requesting version 3 to 5:<br>
 <BR>
@@ -1180,9 +1217,7 @@ The URI for the specific resource requested. This end point URI will be defined 
 <td>Conditional</td>
 </tr>
 </tbody></table>
-
 <h3 id='response-headers'>Response headers</h3>
-
 <table><thead>
 <tr>
 <th>Header Field</th>
@@ -1211,13 +1246,10 @@ The URI for the specific resource requested. This end point URI will be defined 
 <td>Mandatory</td>
 </tr>
 </tbody></table>
-
 <h3 id='additional-headers'>Additional Headers</h3>
-
 <p>Generally understood headers used in HTTP transactions to provide caching guidance and the use of the compression are not specified but are considered acceptable. It is at the discretion of the data holder if these headers are used for a specific implementation. Data holders should not require these headers for successful API access, however.</p>
 
 <h2 id='http-response-codes'>HTTP Response Codes</h2>
-
 <p>The handling and usage of HTTP response codes for the standards will be according to the following table.</p>
 
 <table><thead>
@@ -1361,15 +1393,11 @@ The URI for the specific resource requested. This end point URI will be defined 
 </tbody></table>
 
 <h2 id='payload-conventions'>Payload Conventions</h2>
-
 <p>This section of the standard outlines the request and response payload structures for all API end points as well as the naming conventions for fields.</p>
-
 <h3 id='request-payload-structure'>Request Payload Structure</h3>
-
 <blockquote>
 <p>A sample request would be structured as follows:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   “data”: {
     ...
@@ -1803,7 +1831,9 @@ per <code>code</code></li>
 <p>If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code <strong>MUST</strong> be provided in the <code>MetaError</code> object.</p>
 
 <div class="clear both"></div>
+
 <h4 id='urn-structure'>URN Structure</h4>
+
 <p>When responding with a standard CDR error code, the URN structure is defined as follows:</p>
 
 <pre class="display-inline light-box highlight">
@@ -2361,17 +2391,17 @@ standards</li>
 
 <p>Data holders seeking to extend the standards MUST nominate a prefix to identify all extensions.  Extended fields and end points and would use this prefix consistently. This prefix would be, by preference, the ASX symbol for the holder. Care should be taken not to use a prefix already adopted by another holder in the regime.</p>
 
-<p>In these standards, where a holder Identifier would be included, the term <code>&lt;HID&gt;</code> will be used.</p>
+<p>In these standards, where a Holder Identifier would be included, the term <code>&lt;HID&gt;</code> will be used.</p>
 
 <h3 id='new-api-categories'>New API Categories</h3>
 
 <p>When extending by adding new API categories a holder MUST add these to the overall URI structure by substituting the industry element with the Holder (Provider) ID.</p>
 
 <p>For instance, the standard URI base path is structured as:<br>
-<code>&lt;holder path&gt; / cds-au / &lt;version&gt; / &lt;industry&gt; / &lt;resource&gt;</code></p>
+<code>https:// &lt;holder-path&gt; / cds-au / &lt;version&gt; / &lt;industry&gt; / &lt;resource&gt;</code></p>
 
 <p>For the extension API categories for a specific holder they would be structured as:<br>
-<code>&lt;holder path&gt; / cds-au / &lt;version&gt; / &lt;HID&gt; / &lt;resource&gt;</code></p>
+<code>https:// &lt;holder-path&gt; / cds-au / &lt;version&gt; / &lt;HID&gt; / &lt;resource&gt;</code></p>
 
 <p>The end points defined under this structure, including the payloads of these end points do not need to be prefixed in any way. The fact that they are underneath the holder section implies that they are additional to the standard.</p>
 
@@ -2387,10 +2417,10 @@ standards</li>
 <p>When creating new end points that are in parallel to existing API categories in the standard the Holder Identifier MUST be used to prefix the highest URI element where divergence occurs.</p>
 
 <p>For example, assume an existing balance end point is defined as follows:<br>
-<code>&lt;base path&gt;/accounts/{account ID}/transactions</code></p>
+<code>&lt;base-path&gt;/accounts/{account ID}/transactions</code></p>
 
 <p>and the holder wishes to add an end point that summarises balance movement for a specific time period then they may define the end point as:<br>
-<code>&lt;base path&gt;/account/{account ID}/&lt;HID&gt;-balance-movement</code></p>
+<code>&lt;base-path&gt;/account/{account ID}/&lt;HID&gt;-balance-movement</code></p>
 
 <p>Note that:</p>
 
@@ -2702,7 +2732,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <ul>
 <li><code>iss</code> - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.</li>
 <li><code>sub</code> - REQUIRED. Subject Identifier. The client ID of the bearer.</li>
-<li><code>aud</code> - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.</li>
+<li><code>aud</code> - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the &quot;resource path&quot; for the end point being accessed.</li>
 <li><code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
 <li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
 <li><code>iat</code> - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
@@ -2737,7 +2767,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
 
 <blockquote>
-<p>Non-Normative Example - Data Holder calls the Data Recipient&#39;s revocation end point (note that the “aud” claim is the fully qualified path to the revocation end point because the full path is also the Base URI).</p>
+<p>Non-Normative Example - Data Holder calls the Data Recipient&#39;s revocation end point (note that the &quot;aud&quot; claim is &quot;resource path&quot; to the revocation end point).</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>POST https://data.recipient.com.au/revocation HTTP/1.1
@@ -3155,17 +3185,9 @@ client_id=s6BhdRkqt3
 
 <h3 id='specifying-an-existing-arrangement'>Specifying an existing arrangement</h3>
 
-<p>Provided a Data Holder supports PAR, they MUST also support the <code>cdr_arrangement_id</code> claim provided in the Request Object sent to the PAR End Point. The Data Recipient MAY provide the <code>cdr_arrangement_id</code> claim in the Request Object sent to the PAR End Point.</p>
+<p>Provided a Data Holder supports PAR, they MUST also support the <code>cdr_arrangement_id</code> claim provided in the Request Object sent to the <a href="#pushed-authorisation-end-point">PAR End Point</a>. The Data Recipient MAY provide the <code>cdr_arrangement_id</code> claim in the Request Object sent to the <a href="#pushed-authorisation-end-point">PAR End Point</a>.</p>
 
-<p>The <code>cdr_arrangement_id</code> claim MUST be handled as follows:</p>
-
-<p><strong>Until November 2020</strong> data holders are not required to take any action if <code>cdr_arrangement_id</code> is supplied but MUST NOT respond with an error.</p>
-
-<p><strong>Until November 2020</strong> data recipients MUST NOT implement scenarios that support concurrent consent. Only single, extant consent scenarios should be implemented until this date.</p>
-
-<p>If a data recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the data holder&#39;s PAR End Point, the data holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
-
-<p>For data recipients seeking to replace consent where the Data Holder does not support PAR, data recipients MUST actively revoke previously supplied refresh tokens, immediately after receiving the tokens for a newly established consent, using the appropriate revocation end point.</p>
+<p>If a Data Recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the Data Holder&#39;s <a href="#pushed-authorisation-end-point">PAR End Point</a>, the Data Holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
 
 <h2 id='end-points'>End Points</h2>
 
@@ -3485,19 +3507,19 @@ Host: www.holder.com.au
 </thead><tbody>
 <tr>
 <td>Hosted By</td>
-<td>Data Holder and Data Recipient</td>
+<td>Data Holder</td>
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS for Data Holders, TLS for Data Recipients</td>
+<td>MTLS</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
-<td>Yes (for verifying Data Recipients)</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Bearer Token Required</td>
-<td>Yes (for verifying Data Holders)</td>
+<td>No</td>
 </tr>
 </tbody></table>
 
@@ -3508,22 +3530,6 @@ Host: www.holder.com.au
 <p>The Revocation End Point serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required to allow for token clean up.</p>
 
 <p>Revocation of Refresh Tokens and Access Tokens MUST be supported.</p>
-
-<p><strong>Requirements for Data Recipient implementations</strong></p>
-
-<p>The Token Revocation End Point, when implemented by the Data Recipient allows a Data Holder to notify the Data Recipient of the revocation of a sharing arrangement by the Customer in totality as required by the ACCC CDR Rules. This revocation will have been actioned by the Customer via the Data Holder’s consent dashboard as described in the ACCC CDR Rules.</p>
-
-<p>Revocation of Access Tokens MUST not be supported.</p>
-
-<p>Revocation of Refresh Tokens MUST be supported and will be used to notify the Data Recipient of sharing revocation.</p>
-
-<p>If consent is withdrawn by a Customer in writing or by using the Data Recipient’s dashboard the Data Recipient MUST revoke consent using Data Holder’s implementation.</p>
-
-<p><strong>Revoking consent</strong></p>
-
-<p>If the Data Holder does not support a CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder&#39;s Token Revocation End Point with the current Refresh Token to notify the Data Holder.</p>
-
-<p>If the Data Holder does support the CDR Arrangement Revocation End Point, Data Recipients MUST use the Data Holder&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Holder.</p>
 
 <h3 id='cdr-arrangement-revocation-end-point'>CDR Arrangement Revocation End Point</h3>
 
@@ -3568,21 +3574,25 @@ Content-Type: application/x-www-form-urlencoded
 </tr>
 </tbody></table>
 
-<p><strong>HTTP Method:</strong> POST<br/>
-<strong>Data Holder Path:</strong> The <code>cdr_arrangement_revocation_endpoint</code> defined using OIDC Discovery<br/>
+<p><strong>HTTP Method:</strong> POST<br/><br>
+<strong>Data Holder Path:</strong> The <code>cdr_arrangement_revocation_endpoint</code> defined using OIDC Discovery<br/><br>
 <strong>Data Recipient Path:</strong> <code>&lt;RecipientBaseUri&gt;/arrangements/revoke</code> where &lt;RecipientBaseUri&gt; is registered with the CDR Register.<br/></p>
 
 <p>Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
 
-<p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body: <br/>
-<code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</p>
+<p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body: <br/></p>
 
-<p>This end point will be implemented according to the following:</p>
+<ul>
+<li><code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</li>
+</ul>
+
+<p><br/>
+This end point will be implemented according to the following:</p>
 
 <ul>
 <li>Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID</li>
-<li>Data Holders MUST publish their CDR Arrangement Revocation End Point  using their OpenID Provider Metadata Discovery End Point</li>
-<li>Data Recipients MUST expose their CDR Arrangement Revocation End Point  under their Recipient Base URI published in their Software Statement Assertion</li>
+<li>Data Holders MUST publish their CDR Arrangement Revocation End Point using their OpenID Provider Metadata Discovery End Point</li>
+<li>Data Recipients MUST expose their CDR Arrangement Revocation End Point under their <code>recipient_base_uri</code> published in their Software Statement Assertion</li>
 <li>Consent revocation MUST also revoke associated refresh and/or access tokens</li>
 <li>For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.</li>
 <li>If the <code>cdr_arrangement_id</code> is not related to the client making the call it MUST be rejected</li>
@@ -3611,25 +3621,19 @@ Content-Type: application/x-www-form-urlencoded
 </tr>
 </tbody></table>
 
+<p><strong>Revoking consent</strong></p>
+
+<p>Data Recipients MUST use the Data Holder&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Holder when consent is revoked by the consumer via the Data Recipient.</p>
+
+<p>Data Holder&#39;s MUST use the Data Recipient&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Recipient when consent is revoked by the consumer via the Data Holder.</p>
+
 <p><strong>Data Holders calling Data Recipients</strong></p>
 
-<p>Data Holders may discover that a given Data Recipient supports the CDR Arrangement Revocation End Point  by the presence of the Recipient Base URI in the Software Statement Assertion (SSA). If a Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST call the Data Recipient Token Revocation End Point.</p>
-
-<p>Data Recipients SHOULD update their client registration with each Data Holder as soon as is practical once they support the CDR Arrangement Revocation End Point.</p>
-
-<p><strong>Updating Register Meta Data and Client Registration</strong></p>
-
-<p>When a Data Recipient supports the CDR Arrangement Revocation End Point, they MUST:
-1. Update their meta data with the CDR Register to include their <code>recipient_base_uri</code>.
-2. Update their client registration with each Data Holder.</p>
-
-<p>If the Data Recipient does not support the CDR Arrangement Revocation End Point, the Data Holder MUST instead revoke consent using the Data Recipient Token Revocation End Point.</p>
+<p>The location of the Data Recipient CDR Arrangement Revocation End Point is determined by the <code>RecipientBaseURI</code> provided by the Data Recipient in the client Software Statement Assertion (SSA).</p>
 
 <p><strong>Data Recipients calling Data Holders</strong></p>
 
-<p>Data Recipients may discover that a given Data Holder supports the CDR Arrangement Revocation End Point by the presence of the <code>cdr_arrangement_revocation_endpoint</code> in the Data Holder&#39;s OpenID Provider metadata.</p>
-
-<p>If a Data Recipient does not support the CDR Arrangement Revocation End Point, Data Holders must notify Data Recipients when consent is withdrawn by calling the Data Recipient Revocation End Point.</p>
+<p>The location of the Data Holder CDR Arrangement Revocation End Point is determined by the <code>cdr_arrangement_revocation_endpoint</code> in the Data Holder&#39;s OpenID Provider metadata.</p>
 
 <h3 id='pushed-authorisation-end-point'>Pushed Authorisation End Point</h3>
 
@@ -3759,12 +3763,12 @@ Host: data.holder.com.au
 </thead><tbody>
 <tr>
 <td><a id="FAPI-R"></a><strong>[FAPI-R]</strong></td>
-<td>Financial-grade API - Part 1: Read Only API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-1.html">https://openid.net/specs/openid-financial-api-part-1.html</a></td>
+<td>Financial-grade API - Part 1: Read Only API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-1-ID2.html">https://openid.net/specs/openid-financial-api-part-1-ID2.html</a></td>
 <td>Draft-06</td>
 </tr>
 <tr>
 <td><a id="FAPI-RW"></a><strong>[FAPI-RW]</strong></td>
-<td>Financial-grade API - Part 2: Read and Write API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-2.html">https://openid.net/specs/openid-financial-api-part-2.html</a></td>
+<td>Financial-grade API - Part 2: Read and Write API Security Profile: <a href="https://openid.net/specs/openid-financial-api-part-2-ID2.html">https://openid.net/specs/openid-financial-api-part-2-ID2.html</a></td>
 <td>Draft-06</td>
 </tr>
 <tr>
@@ -4029,7 +4033,7 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Content distinction</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a>. This will make it easier to see and hear content, including separate foreground information from the background. This will make it easier to see and hear content, including separate foreground information from the background.</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a>. This will make it easier to see and hear content, including separate foreground information from the background.</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Keyboard functionality</td>
@@ -4037,7 +4041,7 @@ Host: data.holder.com.au
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Pointer interactions</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-accessible">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/input-modalities">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
 </tr>
 <tr>
 <td><strong>Accessibility</strong> <br> Reading experiences</td>
@@ -5703,7 +5707,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <ul>
 <li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order</li>
-<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:
+<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:
 
 <ul>
 <li>Posted date/time if available, then</li>
@@ -9082,6 +9086,16 @@ This operation does not require authentication
 <p><code>GET /common/customer</code></p>
 
 <p>Obtain basic information on the customer that has authorised the current session</p>
+<h3 id='conventions-2'>Conventions</h3>
+<p>In the customer payloads relevant conventions are explained here, in one place.</p>
+<h4 id='given-names'>Given Names</h4>
+<p><code>firstName</code> represents the first of a person&#39;s given names.</p>
+
+<p><code>middleNames</code> represents a collection of given names if the person has more than one given name.</p>
+
+<p>Where a data holder holds a person&#39;s given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the <code>firstName</code> field to return the single string of given names and an empty <code>middleNames</code> array.</p>
+
+<p>For example, a person whose given names are &quot;John Paul Winston&quot; but the data holder cannot determine what is the first name, can return <code>&quot;firstName&quot;: &quot;John Paul Winston&quot;</code>.</p>
 <h3 id='endpoint-version-18'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -16366,7 +16380,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>For people with single names this field need not be present.  The single name should be in the lastName field</td>
+<td>For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.</td>
 </tr>
 <tr>
 <td>lastName</td>
@@ -17881,7 +17895,7 @@ This operation does not require authentication
 <td>This grouping of products includes all lending products that are available for the primary purpose of borrowing for the purpose of purchasing or renovating residential property, where a residential property will be used as security. This group will include both fixed, variable &amp; secured overdraft types of product and may include both owner-occupied and investment purpose borrowing.</td>
 </tr>
 <tr>
-<td>TRADE FINANCE</td>
+<td>TRADE_FINANCE</td>
 <td>This grouping of products includes specialised lending products specifically designed to facilitate domestic &amp; international trade. This includes the issuance of letters of credit, factoring, export credit.</td>
 </tr>
 </tbody></table>
@@ -19905,7 +19919,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td><strong>Basic Bank Account Data</strong></td>
 <td>bank:accounts.basic:read</td>
-<td>This scope would allow for the third party to access basic information of the customer’s accounts.<br/><br/>Includes simple account information including balance.<br/>Does not include account identifiers, product information or transaction data.</td>
+<td>This scope would allow for the third party to access basic information of the customer’s accounts.<br/><br/>Includes simple account information including balance.<br/>Does not include detailed account information such as account numbers, product information or transaction data.</td>
 </tr>
 <tr>
 <td><strong>Detailed Bank Account Data</strong></td>
@@ -20154,9 +20168,15 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td>05/10/2021</td>
+<td>1.11.1</td>
+<td>Minor errata and documentation fixes</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.11.1.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>30/06/2021</td>
 <td>1.11.0</td>
-<td>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 DP 178</td>
+<td>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 Decision Proposal 178</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.11.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/160">Decision 160</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/187">Decision 187</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/178">Decision 178</a> for details</td>
 </tr>
 <tr>
@@ -20507,9 +20527,14 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='./archive/standards-1.11.0/docs/'>30/06/2021</a></td>
+<td>1.11.0</td>
+<td><a href='./archive/standards-1.11.0/docs/'>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 Decision Proposal 178.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/160">Decision 160</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/187">Decision 187</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/178">Decision 178</a> for details</td>
+</tr>
+<tr>
 <td><a href='./archive/standards-1.10.0/docs/'>01/06/2021</a></td>
 <td>1.10.0</td>
-<td><a href='./archive/standards-1.9.0/docs/'>Changes arising from Enhanced Error Handling decision proposals.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/154">Decision 154</a> for details</td>
+<td><a href='./archive/standards-1.10.0/docs/'>Changes arising from Enhanced Error Handling decision proposals.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/154">Decision 154</a> for details</td>
 </tr>
 <tr>
 <td><a href='./archive/standards-1.9.0/docs/'>29/04/2021</a></td>

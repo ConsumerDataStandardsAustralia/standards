@@ -98,7 +98,7 @@ Data Recipients and Data Holders supporting the self-signed JWT authentication o
 *	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
     * `sub` - REQUIRED. Subject Identifier. The client ID of the bearer.
-    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the base URI for the end point being accessed.
+    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the "resource path" for the end point being accessed.
     * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
     * `exp` - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
@@ -129,7 +129,7 @@ If the Data Holder supports the [Self-signed JWT Client Authentication](#self-si
 
 ### Data Holders calling Data Recipients
 
-> Non-Normative Example - Data Holder calls the Data Recipient's revocation end point (note that the “aud” claim is the fully qualified path to the revocation end point because the full path is also the Base URI).
+> Non-Normative Example - Data Holder calls the Data Recipient's revocation end point (note that the "aud" claim is "resource path" to the revocation end point).
 
 ```
 POST https://data.recipient.com.au/revocation HTTP/1.1
