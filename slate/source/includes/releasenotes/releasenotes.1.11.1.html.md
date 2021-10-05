@@ -29,7 +29,7 @@ This release minor errata and documentation fixes.
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Normative references | Updated the FAPI normative references to correctly point to the Draft 06 version specified in the data standards | [Normative References](../../#normative-references)|
 
 ## Consumer Experience
 
