@@ -37,8 +37,8 @@ The request MUST include the following parameters using the ``application/x-www-
 This end point will be implemented according to the following:
 
 * Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
-* Data Holders MUST publish their CDR Arrangement Revocation End Point  using their OpenID Provider Metadata Discovery End Point
-* Data Recipients MUST expose their CDR Arrangement Revocation End Point  under their Recipient Base URI published in their Software Statement Assertion
+* Data Holders MUST publish their CDR Arrangement Revocation End Point using their OpenID Provider Metadata Discovery End Point
+* Data Recipients MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
 * Consent revocation MUST also revoke associated refresh and/or access tokens
 * For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
 * If the ``cdr_arrangement_id`` is not related to the client making the call it MUST be rejected

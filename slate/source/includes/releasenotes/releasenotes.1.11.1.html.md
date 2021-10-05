@@ -24,6 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Base path terminology | Consistent use of terminology for holder path, base path, and resource path | N/A |
 | Get Transactions For Account | Documentation fix to ensure quote marks render correctly in YAML | [Get Transactions For Account](../../#get-transactions-for-account)|
 | Lending Products Categories | Fixed documentation where `TRADE FINANCE` is missing an underscore and it should be `TRADE_FINANCE` | [Product Categories](../../#product-categories) |
 
