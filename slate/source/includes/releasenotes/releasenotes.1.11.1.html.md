@@ -35,4 +35,4 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-| | |
+| Documentation fixes for Accessibility section | Removed duplicate sentence in "Content distinction" and fixed the WCAG hyperlink | [Accessibility](../../#accessibility-standards)|
