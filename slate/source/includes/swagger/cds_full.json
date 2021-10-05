@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
-    "version" : "1.11.0",
+    "version" : "1.11.1",
     "title" : "Consumer Data Standards",
     "contact" : {
       "name" : "Consumer Data Standards",
@@ -526,7 +526,7 @@
       "get" : {
         "tags" : [ "Banking", "Accounts" ],
         "summary" : "Get Transactions For Account",
-        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the “effective” date/time which will be defined as:\n  - Posted date/time if available, then\n  - Execution date/time if available, then\n  - A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared",
+        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all end points that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:\n  - Posted date/time if available, then\n  - Execution date/time if available, then\n  - A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (ie. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information accross the subsidiary transactions as possible, is required to be shared",
         "operationId" : "getTransactions",
         "parameters" : [ {
           "name" : "accountId",
@@ -1709,7 +1709,7 @@
       "get" : {
         "tags" : [ "Common", "Customer" ],
         "summary" : "Get Customer",
-        "description" : "Obtain basic information on the customer that has authorised the current session",
+        "description" : "Obtain basic information on the customer that has authorised the current session\n\n### Conventions\nIn the customer payloads relevant conventions are explained here, in one place.\n\n#### Given Names\n\n`firstName` represents the first of a person's given names.\n\n`middleNames` represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.\n\nFor example, a person whose given names are \"John Paul Winston\" but the data holder cannot determine what is the first name, can return `\"firstName\": \"John Paul Winston\"`.",
         "operationId" : "getCustomer",
         "parameters" : [ {
           "name" : "x-v",
@@ -3691,7 +3691,7 @@
         },
         "firstName" : {
           "type" : "string",
-          "description" : "For people with single names this field need not be present.  The single name should be in the lastName field"
+          "description" : "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided."
         },
         "lastName" : {
           "type" : "string",
