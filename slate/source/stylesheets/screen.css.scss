@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'extends/tabs';
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -446,7 +447,14 @@ html, body {
 
   img {
     max-width: 100%;
+    &.medium-image {
+      max-width: 70%;
+    }
+    &.small-image {
+      max-width: 60%;
+    }
   }
+
 
   code {
     background-color: rgba(0,0,0,0.05);
@@ -494,6 +502,14 @@ html, body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  .icon-check:before {
+    @extend %icon-check;
+  }
+
+  .icon-close:before {
+    @extend %icon-close;
   }
 
   .search-highlight {

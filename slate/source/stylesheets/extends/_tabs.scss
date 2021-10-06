@@ -1,0 +1,97 @@
+@import '../variables';
+
+$max-tab-count: 4; // Lays out the width of the tabs
+$tab-highlite-color: $search-box-border-color !default;
+$tab-border-color: lightgray !default;
+
+
+.cdr-tabs {
+  clear: none !important; // TODO: How do we make this generic
+  display: block;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: $main-padding;
+  padding-right: $main-padding;
+  overflow: hidden;
+}
+
+.cdr-tabs [class^="cdr-tab"] label,
+.cdr-tabs [class*="cdr-tab"] label {
+  color: #6c757d;
+  cursor: pointer;
+  display: block;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1em;
+  padding: 1rem 0;
+  text-align: left;
+  &:hover{
+    background-color: #e9ecef;
+  }
+}
+
+.cdr-tabs [class^="cdr-tab"] [type="radio"],
+.cdr-tabs [class*="cdr-tab"] [type="radio"] {
+
+  border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+}
+
+.cdr-tabs [class^="cdr-tab"] [type="radio"]:hover, .cdr-tabs [class^="cdr-tab"] [type="radio"]:focus,
+.cdr-tabs [class*="cdr-tab"] [type="radio"]:hover,
+.cdr-tabs [class*="cdr-tab"] [type="radio"]:focus {
+  border-bottom: 1px solid $tab-highlite-color;
+
+}
+
+.cdr-tabs [class^="cdr-tab"] [type="radio"]:checked,
+.cdr-tabs [class*="cdr-tab"] [type="radio"]:checked {
+  border-bottom: 2px solid $tab-highlite-color;
+
+}
+
+.cdr-tabs [class^="cdr-tab"] [type="radio"]:checked + div,
+.cdr-tabs [class*="cdr-tab"] [type="radio"]:checked + div {
+  display: block;
+
+}
+
+.cdr-tabs [class^="cdr-tab"] [type="radio"] + div,
+.cdr-tabs [class*="cdr-tab"] [type="radio"] + div {
+  display: none;
+  padding: 0.5rem 0.5rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.cdr-tabs .cdr-tab-body {
+  width: 100% / $max-tab-count;
+}
+
+.cdr-tab-contents {
+  border-style: solid;
+  border-color: $tab-border-color;
+  border-width: 1px;
+
+}
+
+// Dynamically set the left margin based on the tab number
+@for $i from 1 through $max-tab-count {
+  .cdr-tabs .cdr-tab-body:nth-child(#{$i}) [type="radio"] + div {
+    width: 100% * $max-tab-count;
+    margin-left: -100% * ($i - 1);
+    margin-right: $main-padding;
+  }
+}
+

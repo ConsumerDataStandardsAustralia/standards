@@ -21,12 +21,17 @@ includes:
   - security
   - cx
   - cx_standards
+  - register/registerSecurityProfile
+  - register/clientRegistration
+  - register/participantStatuses
   - cds_full
   - banking/product_categories
   - banking/product_components
-  - admin  
+  - admin
+  - register/dcrAPI
   - scopes
   - nfrs
+  - register/discoveryAPI
   - known-issues
   - changelog
   - archives

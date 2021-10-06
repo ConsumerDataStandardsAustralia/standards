@@ -1,0 +1,28 @@
+
+| Client Metadata | Required | Modifiable | Description
+|--------------|-------|-------|----------------------------------------------------------------------------------------
+|**iss**|	Required | | Contains the `iss` (issuer) claim denoting the party attesting to the claims in the software statement</br>**value: "cdr-register"**
+|**iat**|	Required | | The time at which the request was issued by the CDR Register, expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
+|**exp**|	Required | | The time at which the SSA expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
+|**jti**|	Required | | Unique identifier for the JWT, used to prevent reuse of the SSA.
+|**org_id**|	Required | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand
+|**org_name**|	Required | <i class="icon-check"></i> | Human-readable string name of the Accredited Data Recipient Brand to be presented to the end user during authorization
+|**client_name**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product to be presented to the end-user during authorization
+|**client_description**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product description to be presented to the end user during authorization
+|**client_uri**|	Required | <i class="icon-check"></i> | URL string of a web page providing information about the client
+|**redirect_uris**|	Required | <i class="icon-check"></i> | Array of redirection URI strings for use in redirect-based flows
+|**logo_uri**|	Required | <i class="icon-check"></i> | URL string that references a logo for the client software product. The server SHOULD display this image to the end-user during approval
+|**tos_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product
+|**policy_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product
+|**jwks_uri**|	Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[RFC7517]** document, which contains the client's public keys
+|**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
+|**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard data recipient endpoints. This should be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) </br> **Scheduled for Nov 2020**
+|**software_id**|	Required | | String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` should be used as the primary external identifier for the client to prevent duplicate client registrations
+|**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used with be **“data-recipient-software-product”**
+|**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#client-registration-management)
+
+* **Nov 2020:** the `revocation_uri` becomes **optional** and `recipient_base_uri` will be introduced as **required**
+
+* **Feb 2021:** the `revocation_uri` remains **optional** and `recipient_base_uri` will remain **required**
+
+* Deprecation of the `revocation_uri` from the SSA will be planned for a future release of the CDR Register design
