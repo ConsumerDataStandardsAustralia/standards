@@ -4,6 +4,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+<a href='./archive/standards-1.11.1/docs/'>05/10/2021</a>|1.11.1|<a href='./archive/standards-1.11.1/docs/'>Minor errata and documentation fixes.</a> |
 <a href='./archive/standards-1.11.0/docs/'>30/06/2021</a>|1.11.0|<a href='./archive/standards-1.11.0/docs/'>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 Decision Proposal 178.</a> See [Decision 160](https://github.com/ConsumerDataStandardsAustralia/standards/issues/160), [Decision 187](https://github.com/ConsumerDataStandardsAustralia/standards/issues/187) and [Decision 178](https://github.com/ConsumerDataStandardsAustralia/standards/issues/178) for details |
 <a href='./archive/standards-1.10.0/docs/'>01/06/2021</a>|1.10.0|<a href='./archive/standards-1.10.0/docs/'>Changes arising from Enhanced Error Handling decision proposals.</a> See [Decision 154](https://github.com/ConsumerDataStandardsAustralia/standards/issues/154) for details |
 |<a href='./archive/standards-1.9.0/docs/'>29/04/2021</a>|1.9.0|<a href='./archive/standards-1.9.0/docs/'>Changes arising from the sixth Data Standards Maintenance Iteration</a> related to [Decision 161](https://github.com/ConsumerDataStandardsAustralia/standards/issues/161) |

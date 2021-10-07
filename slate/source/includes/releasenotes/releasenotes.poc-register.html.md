@@ -1,0 +1,35 @@
+---
+title: Consumer Data Standards - "PoC Register Standards" Release Notes
+
+#language_tabs: # must be one of https://git.io/vQNgJ
+
+toc_footers:
+  - <a href='../../index.html'>Consumer Data Standards</a>
+
+search: false
+---
+
+# V1.11.1 Release Notes
+Release notes for version "PoC Register Standards" of the [CDR Standards](../../index.html).
+
+This release minor errata and documentation fixes.
+
+## High Level Standards
+
+|Change|Description|Link|
+|------|-----------|----|
+| Register Standards | Incorporated CDR Register standards | N/A |
+
+## API End Points
+
+|Change|Description|Link|
+|------|-----------|----|
+
+## Information Security Profile
+|Change|Description|Link|
+|------|-----------|----|
+
+## Consumer Experience
+
+|Change|Description|Link|
+|------|-----------|----|
