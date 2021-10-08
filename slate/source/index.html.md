@@ -20,7 +20,6 @@ includes:
   - security
   - cx
   - cx_standards
-  - register/registerSecurityProfile
   - register/clientRegistration
   - register/participantStatuses
   - cds_full

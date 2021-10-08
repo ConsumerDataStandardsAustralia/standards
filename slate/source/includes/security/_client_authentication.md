@@ -193,3 +193,64 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 * The client ID represents the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `client_id` parameter value MUST represent the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `grant_type` parameter value MUST only be included when invoking the Token End point and MUST be set to `authorisation_code` or `client_credentials`. The value `refresh_token` is also valid when refreshing an access token.
+
+
+
+### Data Recipients calling the CDR Register
+
+
+> Non-Normative Example - Data recipient requests CDR Register Access Token
+
+```
+POST /token HTTP/1.1
+Host: cdr.register
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+  client_id=<brand id> OR <software product id> &
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...&
+  scope=cdr-register%3Abank%3Aread
+
+## Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "b50641343f8f4717a4865d238b6297b8"
+}
+{
+  "iss": "<brand id> OR <software product id>",
+  "sub": "<brand id> OR <software product id>",
+  "exp": 1516239322,
+  "aud": "https://cdr.register/idp/connect/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+
+
+## Response
+{
+    "access_token": "eyJhbGciOiJQUz...",
+    "expires_in": 7200,
+    "token_type": "Bearer",
+    "scope": "cdr-register:bank:read openid"
+}
+```
+
+In addition to the requirements for [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) the following requirements MUST be supported:
+
+* `grant_type` MUST be set to `client_credentials`
+* Refresh tokens will not be provided for grant_type `client_credentials`
+* `client_id`, `iss` and `sub` claims MUST be set to the ID of the calling client `Data Recipient Brand ID` OR `Software Product ID` issued by the CDR Register
+
+
+### Identifiers
+`client_id`, `sub` and where appropriate `iss`, are expected to contain the unique identifier for the client.<br>
+The following client identifiers will be used:
+
+| Client | Scenario | Identifier |
+|-----------|------------------|----------------------------------------------------------------------------|
+|**Software Product**| Calls to Data Holder Brand Authenticated APIs | `Client ID` as issued by the target Data Holder Brand
+|**Data Recipient Brand / Software Product**| Calls to [CDR Register Authenticated APIs](#consumer-data-right-cdr-register-apis) | `Data Recipient Brand ID` or `Software Product ID` as issued by CDR Register
+|**Data Holder Brand**|	Calls to Data Recipient [Revocation](https://consumerdatastandardsaustralia.github.io/standards/#end-points) and [CDR Arrangement Management](https://consumerdatastandardsaustralia.github.io/standards/#end-points) APIs | `Data Holder Brand ID` as issued by CDR Register
+
+* _`Data Recipient Brand ID` as a client identifier will be deprecated in a future version of the CDR Register design and is currently retained for backwards compatibility_
