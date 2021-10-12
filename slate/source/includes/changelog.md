@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|<TBD>|1.12.0| Inclusion of a series of decisions related to energy and non-functional requirements | See [release notes](includes/releasenotes/releasenotes.1.12.0.html) for details |
 |05/10/2021|1.11.1| Minor errata and documentation fixes | See [release notes](includes/releasenotes/releasenotes.1.11.1.html) for details |
 |30/06/2021|1.11.0| Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 Decision Proposal 178 | See [release notes](includes/releasenotes/releasenotes.1.11.0.html), [Decision 160](https://github.com/ConsumerDataStandardsAustralia/standards/issues/160), [Decision 187](https://github.com/ConsumerDataStandardsAustralia/standards/issues/187) and [Decision 178](https://github.com/ConsumerDataStandardsAustralia/standards/issues/178) for details |
 |01/06/2021|1.10.0| Changes arising from Enhanced Error Handling decision proposals | See [release notes](includes/releasenotes/releasenotes.1.10.0.html) and [Decision 154](https://github.com/ConsumerDataStandardsAustralia/standards/issues/154) for details |
