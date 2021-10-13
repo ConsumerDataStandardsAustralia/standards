@@ -30,6 +30,22 @@ The cascading status mappings are as follows:
 
 These cascaded software product statuses are also catered for in collection arrangements. Please refer to the [Accreditation Status Discovery](#collection-arrangements) section for more details.
 
+### Collection Arrangements
+The status of a software product, managed within a collection arrangement, will be coupled to the accreditation status of both the principal and provider in this arrangement.
+
+To achieve this, cascade rules for software product statuses, as defined in [Status Mapping](#accredited-data-recipient-and-software-product-statuses), will be defined for a collection arrangement as follows:
+
+| Provider Status | Principal Status | Cascaded Principal SP Status
+|-------------------|--------------------------------------------|-------------------------------------------
+| Active |	Active | Active
+| Suspended |	Active | Inactive
+| Revoked |	Active | Inactive
+| Surrendered |	Active | Inactive
+| Any |	Suspended | Inactive
+| Any |	Revoked | Removed
+| Any |	Surrendered | Removed
+
+
 ### Archiving Entities
 In order to keep the Register APIs efficient and to minimise the amount of metadata traffic, dormant entries will be identified and archived automatically within the CDR Register.
 
