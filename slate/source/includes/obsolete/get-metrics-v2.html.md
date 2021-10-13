@@ -13,7 +13,7 @@ search: false
 # Get Metrics V2
 This page documents the obsolete version 2 of the Get Metrics end point.
 
-This version is to be ceased to be called by the CDR Register by **December 5th 2021** and can be decommissioned by affected data holders as of that date.
+This version is to be ceased to be called by the CDR Register by **December 5th 2022** and can be decommissioned by affected data holders as of that date.
 
 ## Get Metrics
 

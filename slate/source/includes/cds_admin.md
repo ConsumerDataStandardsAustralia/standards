@@ -83,8 +83,8 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-  
-    
+
+
       <aside class="notice">
 If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
 <a href="#authorisation-scopes">admin:metadata:update</a>.<br/><br/>
@@ -95,8 +95,8 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-    
-  
+
+
 
 ## Get Metrics
 
@@ -137,7 +137,7 @@ $.ajax({
 
 This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
-NOTE: This version must be implemented by **October 1st 2021**
+NOTE: This version must be implemented by **October 1st 2022**
 
 Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
 
@@ -365,8 +365,8 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-  
-    
+
+
       <aside class="notice">
 If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
 <a href="#authorisation-scopes">admin:metrics.basic:read</a>.<br/><br/>
@@ -377,8 +377,8 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-    
-  
+
+
 
 ## Schemas
 
@@ -1039,4 +1039,3 @@ This operation may only be called by the CDR Register
 ### Properties
 
 *None*
-
