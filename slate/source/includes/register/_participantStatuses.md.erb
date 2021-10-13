@@ -98,24 +98,7 @@ All **public** APIs are hosted on a CDN supporting ETag cache validators. ETags 
 
 Further information on the usage of `ETag` and the associated `If-None-Match` headers can be found at: [https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works](https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works)
 
-### Change detection using ETags
-Clients polling the CDN hosted APIs specifying the `ETag` header can rely on the `304 Not Modified` response to indicate no changes have occurred since the previous poll.
 
-<img class=small-image src="images/status/DataHolderPollingWithETags.png" ></img>
-
-
-
-## Checking Request Validity
-
-### Request for Disclosure of CDR Data: Checking Validity of Accredited Data Recipient and associated Software Product
-<img src="images/ChecksForDhToShareData.png" ></img>
-*Pre-requisites: SSL connection has been established between all parties and Data Recipient has been issued an access token*
-
-### Request for Consent Withdrawal: Checking Validity of Accredited Data Recipient and associated Software Product
-<img src="images/ChecksForDhToWithdrawConsent.png" ></img>
-*Pre-requisites: SSL connection has been established between all parties*
-
-Data recipients authenticate data holders using JWKS specified in [data holder brands discovery APIs](#getdataholderbrands).
 
 ## Status Changes
 
@@ -195,33 +178,6 @@ Where the ACCC (as Data Recipient Accreditor) has made a decision to revoke the 
 1.	The Registrar will update the CDR Register to change the Software Product’s status to **'removed'**
 2.  The Data Holder will identify the change in status of the Software Product during its next poll within the required timeframe
 3.	The Data Holder's responsibilities with this removed ADR Software Product are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-
-### Data Holder Status Change
-
-Rules regarding Data Holder off-boarding and revocation have not yet been provided. Updates to this design will be added once the rules have been defined.
-
-
-
-## Cache Refresh Metadata Request
-<aside class="notice">
-The following design for the Cache Refresh in response to a Metadata Update Request will be considered for a future iteration of the Register design.
-</aside>
-
-
-To facilitate the Metadata update requests, Data Holders will need to implement the Admin endpoint as per CDS standard: [https://consumerdatastandardsaustralia.github.io/standards/#admin-apis](https://consumerdatastandardsaustralia.github.io/standards/#admin-apis)
-
-This endpoint exposes functionality for the ACCC to request participants to refresh their caches.
-Cache refreshes may be requested in the following scenarios:
-
-1.	A new Data Holder Brand becomes active
-2.	A new Accredited Data Recipient Software Product becomes active
-3.	A Data Holder Brand has been removed from the CDR
-4.	An Accredited Data Recipient Software Product has been deactivated or removed from the CDR Register
-5.  An Accredited Data Recipient has been surrendered, suspended or revoked from the CDR
-
-### Data Holder Caching of Accredited Data Recipients Software Product Metadata
-<img src="images/status/DataHolderMetadataRefresh.png" ></img>
 
 
 ## Refusal To Disclose
