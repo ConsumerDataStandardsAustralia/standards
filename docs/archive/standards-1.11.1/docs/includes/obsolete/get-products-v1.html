@@ -1,0 +1,960 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Get Products v1</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_obsolete includes_obsolete_get-products-v1" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#get-products-v1" class="toc-h1 toc-link" data-title="Get Products V1">Get Products V1</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-products" class="toc-h2 toc-link" data-title="Get Products">Get Products</a>
+                  </li>
+                  <li>
+                    <a href="#tocSresponsebankingproductlist" class="toc-h2 toc-link" data-title="ResponseBankingProductList">ResponseBankingProductList</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproduct" class="toc-h2 toc-link" data-title="BankingProduct">BankingProduct</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbankingproductcategory" class="toc-h2 toc-link" data-title="BankingProductCategory">BankingProductCategory</a>
+                  </li>
+                  <li>
+                    <a href="#tocSlinkspaginated" class="toc-h2 toc-link" data-title="LinksPaginated">LinksPaginated</a>
+                  </li>
+                  <li>
+                    <a href="#tocSmetapaginated" class="toc-h2 toc-link" data-title="MetaPaginated">MetaPaginated</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='get-products-v1'>Get Products V1</h1>
+<p>This page documents the obsolete version 1 of the Get Products end point.</p>
+
+<p>This version is to be ceased to be called by data recipients by <strong>August 29th 2020</strong> and can be decommissioned by data holders as of that date.</p>
+<h2 id='get-products'>Get Products</h2>
+<p><a id="opIdlistProducts"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/products</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'get'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre>
+<p><code>GET /banking/products</code></p>
+
+<p>Obtain a list of products that are currently openly offered to the market</p>
+
+<p>Note that the results returned by this end point are expected to be ordered according to updated-since</p>
+<h3 id='conventions'>Conventions</h3>
+<p>In the product reference payloads there are a number of recurring conventions that are explained here, in one place.</p>
+<h4 id='arrays-of-features'>Arrays Of Features</h4>
+<p>In the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:</p>
+
+<ul>
+<li>Each element in an array has the same structure so that clients can reliably interpret the payloads</li>
+<li>Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.</li>
+<li>Each element has a field name additionalValue.  This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the ADDITIONAL_CARDS feature is the number of cards allowed while the contents of this field for the MAX_LIMIT constraint would be the maximum credit limit allowed for the product.</li>
+<li>An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.</li>
+<li>An element in these arrays may contain an additionalInfo and additionalInfoUri field. The additionalInfo field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The additionalInfoUri provides a link to externally hosted information specifically relevant to that feature of the product.</li>
+<li>Depending on the type of data being represented there may be additional specific fields.</li>
+</ul>
+<h4 id='uris-to-more-information'>URIs To More Information</h4>
+<p>As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.</p>
+
+<p>These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.</p>
+<h4 id='linkage-to-accounts'>Linkage To Accounts</h4>
+<p>From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge.  Rates and features of the product may change and a discount may be negotiated for the account.</p>
+
+<p>For this reason, while productCategory is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.</p>
+
+<p>Similarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actual has been instantiated and created along with the associated decisions inherent in that process.</p>
+<h4 id='dates'>Dates</h4>
+<p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank.  To minimise the volume and frequency of these calls the ability to set a lastUpdated field with the date and time of the last update to this product is included.  A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the updated-since query parameter.</p>
+
+<p>In addition, the concept of effective date and time has also been included.  This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed.  The inclusion of these dates also removes the need to represent deleted products in the payload.  Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
+<h3 id='endpoint-version'>Endpoint Version</h3>
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="get-products-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>effective</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to &#39;CURRENT&#39;</td>
+</tr>
+<tr>
+<td>updated-since</td>
+<td>query</td>
+<td><a href="../../index.html../../index.html#common-field-types">DateTimeString</a></td>
+<td>optional</td>
+<td>Only include products that have been updated after the specified date and time. If absent defaults to include all products</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Filter results based on a specific brand</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>query</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>query</td>
+<td><a href="../../#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Page of results to request (standard pagination)</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td><a href="../../#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td>Page size to request. Default is 25 (standard pagination)</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="../../#request-headers">x-min-v</a> and <a href="../../#request-headers">x-v</a>. If the value of <a href="../../#request-headers">x-min-v</a> is equal to or higher than the value of <a href="../../#request-headers">x-v</a> then the <a href="../../#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See <a href="../../#request-headers">HTTP Headers</a></td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="../../#request-headers">x-min-v</a> and <a href="../../#request-headers">x-v</a>. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>effective</td>
+<td>CURRENT</td>
+</tr>
+<tr>
+<td>effective</td>
+<td>FUTURE</td>
+</tr>
+<tr>
+<td>effective</td>
+<td>ALL</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>TERM_DEPOSITS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>TRAVEL_CARDS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>REGULATED_TRUST_ACCOUNTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>RESIDENTIAL_MORTGAGES</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>CRED_AND_CHRG_CARDS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>PERS_LOANS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>MARGIN_LOANS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>LEASES</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td>product-category</td>
+<td>BUSINESS_LOANS</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-products-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Success</td>
+<td><a href="#schemaresponsebankingproductlist">ResponseBankingProductList</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td></td>
+<td>The version of the API end point that the data holder has responded with.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h2 id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
+
+<p><a id="schemaresponsebankingproductlist"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» products</td>
+<td>[<a href="#schemabankingproduct">BankingProduct</a>]</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The list of products returned.  If the filter results in an empty set then this array may have no records</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemalinkspaginated">LinksPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemametapaginated">MetaPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproduct">BankingProduct</h2>
+
+<p><a id="schemabankingproduct"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"effectiveTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eligibilityUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feesAndPricingUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bundleUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>productId</td>
+<td><a href="../../#common-field-types">ASCIIString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.</td>
+</tr>
+<tr>
+<td>effectiveFrom</td>
+<td><a href="../../#common-field-types">DateTimeString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate</td>
+</tr>
+<tr>
+<td>effectiveTo</td>
+<td><a href="../../#common-field-types">DateTimeString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products</td>
+</tr>
+<tr>
+<td>lastUpdated</td>
+<td><a href="../../#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)</td>
+</tr>
+<tr>
+<td>productCategory</td>
+<td><a href="#schemabankingproductcategory">BankingProductCategory</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The category to which a product or account belongs. See <a href="../../#product-categories">here</a> for more details</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The display name of the product</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>A description of the product</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required</td>
+</tr>
+<tr>
+<td>brandName</td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>An optional display name of the brand</td>
+</tr>
+<tr>
+<td>applicationUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>A link to an application web page where this product can be applied for.</td>
+</tr>
+<tr>
+<td>isTailored</td>
+<td><a href="../../#common-field-types">Boolean</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable</td>
+</tr>
+<tr>
+<td>additionalInformation</td>
+<td>object</td>
+<td>optional</td>
+<td>none</td>
+<td>Object that contains links to additional information on specific topics</td>
+</tr>
+<tr>
+<td>» overviewUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>General overview of the product</td>
+</tr>
+<tr>
+<td>» termsUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Terms and conditions for the product</td>
+</tr>
+<tr>
+<td>» eligibilityUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Eligibility rules and criteria for the product</td>
+</tr>
+<tr>
+<td>» feesAndPricingUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Description of fees, pricing, discounts, exemptions and bonuses for the product</td>
+</tr>
+<tr>
+<td>» bundleUri</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>optional</td>
+<td>none</td>
+<td>Description of a bundle that this product can be part of</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbankingproductcategory">BankingProductCategory</h2>
+
+<p><a id="schemabankingproductcategory"></a></p>
+<pre class="highlight json tab-json"><code><span class="s2">"TRANS_AND_SAVINGS_ACCOUNTS"</span><span class="w">
+
+</span></code></pre>
+<p><em>The category to which a product or account belongs. See <a href="../../#product-categories">here</a> for more details</em></p>
+<h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>The category to which a product or account belongs. See <a href="../../#product-categories">here</a> for more details</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRANS_AND_SAVINGS_ACCOUNTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TERM_DEPOSITS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRAVEL_CARDS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>REGULATED_TRUST_ACCOUNTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>RESIDENTIAL_MORTGAGES</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>CRED_AND_CHRG_CARDS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>PERS_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>MARGIN_LOANS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>LEASES</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRADE_FINANCE</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OVERDRAFTS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>BUSINESS_LOANS</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSlinkspaginated">LinksPaginated</h2>
+
+<p><a id="schemalinkspaginated"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>self</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>Fully qualified link that generated the current response document</td>
+</tr>
+<tr>
+<td>first</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
+</tr>
+<tr>
+<td>prev</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
+</tr>
+<tr>
+<td>next</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
+</tr>
+<tr>
+<td>last</td>
+<td><a href="../../#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSmetapaginated">MetaPaginated</h2>
+
+<p><a id="schemametapaginated"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalRecords</td>
+<td><a href="../../#common-field-types">NaturalNumber</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The total number of records in the full set. See <a href="../../#pagination">pagination</a>.</td>
+</tr>
+<tr>
+<td>totalPages</td>
+<td><a href="../../#common-field-types">NaturalNumber</a></td>
+<td>mandatory</td>
+<td>none</td>
+<td>The total number of pages in the full set. See <a href="../../#pagination">pagination</a>.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
