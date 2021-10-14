@@ -12,6 +12,7 @@ The non-functional requirements (NFRs) for the Consumer Data Right regime cover 
 In the following definition of NFRs specific terms have the following meanings:
 
 - **Data Recipient**: For the purposes of these NFRs a data recipient is defined as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.
+- **Secondary Responsibility Request**: A request made to a secondary data holder by a data holder for designated data to fulfil a Consumer Data Request made by an accredited data recipient.
 - **Session**: A session is defined as the life span of a unique Access Token.  Multiple API requests made with a single, valid, Access Token would be considered part of a single Session.
 - **Customer Present**: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the data recipient will be considered “Customer Present”.  Technically a data holder will define an API request as “Customer Present” if, and only if, the x-fapi-customer-ip-address header is populated with a valid IP address of the end customer’s device.
 - **Customer Not Present**: Authenticated API requests that are not deemed to be “Customer Present”
@@ -28,7 +29,7 @@ A expiry time of a unique session should be set according to the statements incl
 After a unique session is expired it is expected that the data recipient, for the same customer, may establish a new session as long as the authorisation is still valid.
 
 ## Availability Requirements
-Service availability requirement for data holders:
+Service availability requirement for data holders and secondary data holders:
 *99.5% per month*
 
 The definition of a period of unavailability is any period of time when any of the API end points defined in the standard is unable to reliably provide a successful response to an appropriately constructed request.
@@ -40,6 +41,8 @@ The availability requirement does not include planned outages.  Planned outages 
 - Commensurate in length and frequency to other primary digital channels offered by the data holder,
 - Published to data recipients with at least one week lead time for normal outages,
 - May occur without notification if the change is to resolve a critical service or security issue.
+
+The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a secondary responsibility request.  This will not be taken to mean that the data holder is unavailable.
 
 ## Performance Requirements
 
@@ -56,10 +59,12 @@ The nominated threshold for each end point will be according to the following ta
 |Tier|Response Time|Applies To…|
 |----|-------------|-----------|
 |Unauthenticated|**1500ms**|All Unauthenticated end points not otherwise specified in a separate threshold.|
-|High Priority|**1000ms**|All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul>|
-|Low Priority|**1500ms**|Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul>|
+|High Priority|**1000ms**|All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul>*Common*<li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul>*Banking*<li>Get Accounts</li>*Energy*<li>Get Accounts</li><li>Get Account Detail</li><li>Get Balance For Account</li><li>Get Invoices For Account</li>*Common*<li>Get Customer</li><li>Get Customer Detail</li></ul>|
+|Low Priority|**1500ms**|Customer Present calls to the following end points:<ul>*Banking*<li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li>*Energy*<li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li></ul>|
 |Unattended|**4000ms**|Unattended calls to the following end points that are not Large Payload end points:<ul><li>High Priority Authenticated end points</li><li>Low Priority Authenticated end points</li><li>All Admin end points.</li></ul>|
-|Large Payload|**6000ms**|Any Unattended calls to the following end points:<ul><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul>|
+|Large Payload|**6000ms**|Any Unattended calls to the following end points:<ul>*Banking*<li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li>*Energy*<li>Get Bulk Billing</li><li>Get Billing For Specific Accounts</li></ul>|
+|Secondary Request|**1000ms** (for data holders)<br/>**1500ms** (for secondary data holders)|Customer Present calls to the following end points:<ul>*Energy*<li>Get Service Points</li><li>Get Service Point Detail</li><li>Get DER For Service Point</li></ul>|
+|Large Secondary Request|**1500ms** (for data holders)<br/>**4500ms** (for secondary data holders)|Unattended calls to the following end points:<ul>*Energy*<li>Get Service Points</li><li>Get Service Point Detail</li><li>Get DER For Service Point</li></ul>All calls to the following end points:<ul>*Energy*<li>Get Bulk Usage</li><li>Get Usage For Service Point</li><li>Get Usage For Specific Service Points</li><li>Get Bulk DER</li><li>Get DER For Specific Service Points</li></ul>|Customer Present calls to the following end points:<ul>*Energy*<li>Get Service Points</li><li>Get Service Point Detail</li><li>Get DER For Service Point</li></ul>|
 
 Note that calls initiated in excess of a traffic threshold (see next section) may be excluded from the performance requirement.
 
@@ -94,6 +99,8 @@ For secure traffic (both Customer Present and Unattended) the following traffic 
 For Public traffic (i.e. traffic to unauthenticated end points) the following traffic thresholds will apply:
 
 - 300 TPS total across all consumers (additive to secure traffic)
+
+As traffic from data recipients to data holders will be shaped by the thresholds above, there are no specific thresholds applicable to secondary data holders.
 
 ## Data Recipient Requirements
 Data recipients will be limited by the traffic thresholds documented in the previous section.  In addition to this data recipients are expected to design their services according to the following principles:
@@ -133,6 +140,8 @@ The following information is to be reported:
 Within this proposal there is no specific requirement with regard to data latency (ie. how up to date data should be).  Instead, the requirement for data latency is that data presented via API end points should be commensurate to data presented via other primary digital channels.
 
 For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance end points should be the same as the balance presented through the mobile application.
+
+To be able to manage network efficiency using normal mechanisms, a data holder making secondary responsibility requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the data recipient.  Any such cache should be short lived.
 
 ## Data Quality
 Data holders are required to take reasonable steps to ensure that CDR data, having regard to the purpose for which it is held, is accurate and up to date.
