@@ -1,0 +1,30 @@
+<h1 id='consumer-data-right-standards'>Consumer Data Right Standards</h1>
+<p>This repository contains the binding API Standards and Information Security profile created in response to the <a href="https://treasury.gov.au/consumer-data-right" title="Treasury's Consumer Data Right webpage">Consumer Data Right</a> legislation and the subsequent regulatory rules.  The purpose of the Consumer Data Right regime is to give Australians greater control over their data and is intended to apply sector by sector across the whole Australian economy.</p>
+
+<p>These standards are maintained by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker.  The Data Standards Body is part of the <a href="https://www.directory.gov.au/portfolios/treasury/data-standards-body" title="Data Standards Body">Treasury</a>. The work of standards development is conducted in consultation with the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0" title="ACCC's CDR webpage">Australian Competition and Consumer Commission (ACCC)</a> as co-regulator of the Consumer Data Right, along with the <a href="https://www.oaic.gov.au/consumer-data-right/about-the-consumer-data-right/" title="OAIC CDR webpage">Office of the Australian Information Commissioner (OAIC)</a>.</p>
+<h2 id='additional-information'>Additional Information</h2>
+<ul>
+<li><a href="https://consumerdatastandards.org.au/">Data Standards Body Web Site</a> - Contains additional information on the CDR and the DSB as well as notifications of the latest developments in the regime.</li>
+<li><a href="https://consumerdatastandardsaustralia.github.io/standards/">Formal Standards Site</a> - The published contents of the standards in this repository.  This is the formal documentation of the binding standards.</li>
+<li><a href="https://cdr-register.github.io/register/#introduction">CDR Register Design Documentation</a> - The documentation for the CDR Register which is a core piece of infrastructure that facilitates the operation of the CDR regime.</li>
+</ul>
+<h2 id='contributing-to-the-standards'>Contributing To The Standards</h2>
+<p>Consultation on the standards as they evolve is performed transparently with any interested contributor invited to participate in accordance with the rules of engagement described below.</p>
+
+<p>There are a number ofways to contribute to these standards:</p>
+
+<ul>
+<li><p><strong><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Issues posted on this repository</a></strong> - The issues posted on this repository are used for formal consultation of specific decision proposals that are to be considered by the Data Standards Chair.  These decisions constitute significant changes to the standards and are raised as required.  These issues constitute an audit trail of the decisions taken by the Data Standards Chair.  As this is the case it is requested that contributors do not raise new issues and instead contribute comments to the issues created by the DSB.</p></li>
+<li><p><strong><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance">The standards maintenance repository</a></strong> - This repository is used to manage minor changes to established aspects of the standards.  Contributors are encouraged to raise new issues in this repository that will then be prioritised for resolution in a series of multi-week iterations.  Outcomes of these iterations will then be submitted to the Data Standards Chair for approval on this repository as a decision.  The <a href="https://cdr-support.zendesk.com/hc/en-us">Consumer Data Right Support Portal</a> is the preferred way to search for answers, raise questions and request clarification of the standards.</p></li>
+<li><p><strong><a href="mailto:cdr-data61@csiro.au">Via Email</a></strong> - If you would like to submit a confidential question or item of feedback, or if GitHub feels unfamiliar, the DSB welcome email correspondence related to the standards and the standards development process.</p></li>
+</ul>
+<h2 id='rules-of-engagement-for-this-repository'>Rules of engagement for this repository</h2>
+<p>We&#39;re committed to undertaking conversations relating to the technical standards in the open. Questions or comments that participants might ask us via email or private message are likely to be questions or comments other participants have as well. Our answers will be of interest to everyone. There are likely to be experiences and lessons everybody working in this ecosystem can learn from. Having these conversations transparently helps us reduce duplication, resolve issues faster and keep everyone up to date with the conversation.</p>
+
+<p>We ask that all contributors to the Consumer Data Standards repositories comply with the <a href="https://help.github.com/articles/github-community-forum-code-of-conduct/">GitHub Community Forum Code of Conduct</a>.</p>
+
+<p>In addition, it would be appreciated if the following rules are adhered to when commenting or contributing:
+* Please provide a single, considered response to each proposal covering all feedback concerning the proposal.
+* For transparency, if you work at or are associated with an organisation with an interest in the standards, please indicate this in your response.
+* Please ensure you are aware of and compliant with any social media guidelines or internal processes for response set by your organisation before providing feedback.
+* Please refrain from initiating new issues or pull requests in this repository due to the need for formal approval of all aspects of the standards</p>
