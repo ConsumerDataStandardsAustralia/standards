@@ -28,10 +28,7 @@ Release notes for version 1.12.0 of the [CDR Standards](../../index.html).
 | Metrics v3 | Introduction of v3 of the metrics API to accommodate reporting of the performance of secondary requests | [Get Metrics API](../../#get-metrics) |
 
 ## Information Security Profile
-|Change|Description|Link|
-|------|-----------|----|
+No changes
 
 ## Consumer Experience
-
-|Change|Description|Link|
-|------|-----------|----|
+No changes
