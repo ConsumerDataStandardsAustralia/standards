@@ -16,6 +16,7 @@ Release notes for version 1.12.0 of the [CDR Standards](../../index.html).
 
 |Change|Description|Link|
 |------|-----------|----|
+| Binding NFRs | Removal of the statement for non-functional requirements indicating that these aspects of the standards are not yet binding | [Non-functional Requirements]](../../#non-functional-requirements) |
 
 ## API End Points
 
