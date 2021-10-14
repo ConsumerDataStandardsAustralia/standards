@@ -1,9 +1,5 @@
 # Non-functional Requirements
 
-<aside class="notice">
-The standard relating to NFRs will commence on a date specified by the Data Standards Chair. It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are appropriate prior to this standard commencing and becoming a binding data standard under the Consumer Data Rules.
-</aside>
-
 The non-functional requirements (NFRs) for the Consumer Data Right regime cover a number of considerations:
 
 - Minimum performance and availability expectations for data holders.  Included to ensure a reliable and performant service is offered to data recipients and customers.
