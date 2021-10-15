@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>TBC</td>
+<td>PoC Register Standards</td>
+<td>Inclusion of CDR Register standards</td>
+<td>See <a href="includes/releasenotes/releasenotes.poc-register.html">release notes</a> for details</td>
+</tr>
+<tr>
 <td>05/10/2021</td>
 <td>1.11.1</td>
 <td>Minor errata and documentation fixes</td>

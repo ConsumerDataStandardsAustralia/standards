@@ -1,0 +1,1085 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.4.0",
+    "title": "Consumer Data Right (CDR) Register - Participant Discovery APIs"
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/cdr-register/v1",
+  "paths": {
+    "/.well-known/openid-configuration": {
+      "get": {
+        "tags": [
+          "OpenID Connect"
+        ],
+        "summary": "GetOpenIdProviderConfig",
+        "operationId": "GetOpenIdProviderConfig",
+        "description": "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "The OpenID Provider Configuration Metadata values",
+            "schema": {
+              "$ref": "#/definitions/ResponseOpenIDProviderConfigMetadata"
+            }
+          }
+        }
+      }
+    },
+    "/jwks": {
+      "get": {
+        "tags": [
+          "JWKS"
+        ],
+        "summary": "GetJWKS",
+        "operationId": "GetJWKS",
+        "description": "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object that represents a set of JWKs",
+            "schema": {
+              "$ref": "#/definitions/ResponseJWKS"
+            }
+          }
+        }
+      }
+    },
+    "/{industry}/data-holders/brands": {
+      "get": {
+        "tags": [
+          "Data Holder Brands"
+        ],
+        "summary": "GetDataHolderBrands",
+        "operationId": "GetDataHolderBrands",
+        "description": "Allows Data Recipients to discover data holder brands available in the CDR ecosystem",
+        "x-version": "1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "name": "updated-since",
+            "in": "query",
+            "description": "query filter returns data holder brands updated since the specified date-time",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "the page number to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "the number of records to return per page",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "$ref": "#/parameters/Authorization"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ResponseRegisterDataHolderBrandList"
+            }
+          },
+          "400": {
+            "description": "Bad Request</br>Invalid industry path parameter",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer Token"
+          },
+          "406": {
+            "description": "Invalid x-v header</br>Invalid Accept header"
+          }
+        },
+        "x-scopes": [
+          "cdr-register:bank:read"
+        ]
+      }
+    },
+    "/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
+      "get": {
+        "tags": [
+          "Software Statement Assertion"
+        ],
+        "summary": "GetSoftwareStatementAssertion (SSA)",
+        "operationId": "GetSoftwareStatementAssertion",
+        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand",
+        "x-version": "2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "name": "dataRecipientBrandId",
+            "in": "path",
+            "description": "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "softwareProductId",
+            "in": "path",
+            "description": "Unique id for the Accredited Data Recipient Software Product in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/Authorization"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              }
+            },
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Invalid industry path parameter</br>Invalid SoftwareProductId",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer Token"
+          },
+          "403": {
+            "description": "Invalid BrandId",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          },
+          "406": {
+            "description": "Invalid x-v header</br>Invalid Accept header"
+          },
+          "422": {
+            "description": "SSA fields invalid or incomplete",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          }
+        },
+        "x-scopes": [
+          "cdr-register:bank:read"
+        ]
+      }
+    },
+    "/{industry}/data-recipients/brands/software-products/status": {
+      "get": {
+        "tags": [
+          "Software Products Status"
+        ],
+        "summary": "GetSoftwareProductsStatus",
+        "operationId": "GetSoftwareProductsStatus",
+        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register",
+        "x-version": "1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/SoftwareProductsStatusList"
+            }
+          },
+          "400": {
+            "description": "Bad Request</br>Invalid industry path parameter",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          },
+          "406": {
+            "description": "Invalid x-v header</br>Invalid Accept header"
+          }
+        }
+      }
+    },
+    "/{industry}/data-recipients/status": {
+      "get": {
+        "tags": [
+          "Data Recipients Status"
+        ],
+        "summary": "GetDataRecipientsStatus",
+        "operationId": "GetDataRecipientsStatus",
+        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register",
+        "x-version": "1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/DataRecipientsStatusList"
+            }
+          },
+          "400": {
+            "description": "Bad Request</br>Invalid industry path parameter",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          },
+          "406": {
+            "description": "Invalid x-v header</br>Invalid Accept header"
+          }
+        }
+      }
+    },
+    "/{industry}/data-recipients": {
+      "get": {
+        "tags": [
+          "Data Recipients"
+        ],
+        "summary": "GetDataRecipients",
+        "operationId": "GetDataRecipients",
+        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem",
+        "x-version": "2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ResponseRegisterDataRecipientList"
+            }
+          },
+          "400": {
+            "description": "Bad Request</br>Invalid industry path parameter",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorList"
+            }
+          },
+          "406": {
+            "description": "Invalid x-v header</br>Invalid Accept header"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "Authorization": {
+      "name": "Authorization",
+      "in": "header",
+      "required": true,
+      "description": "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)",
+      "type": "string"
+    },
+    "XV": {
+      "name": "x-v",
+      "in": "header",
+      "required": false,
+      "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.",
+      "type": "string"
+    },
+    "Industry": {
+      "name": "industry",
+      "in": "path",
+      "description": "The industry the participant is retrieving data for (Banking, etc)",
+      "required": true,
+      "enum": [
+        "banking"
+      ],
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "ResponseOpenIDProviderConfigMetadata": {
+      "description": "Response containing the Open ID Provider Configuration Metadata",
+      "required": [
+        "issuer",
+        "jwks_uri",
+        "token_endpoint",
+        "claims_supported",
+        "id_token_signing_alg_values_supported",
+        "subject_types_supported",
+        "code_challenge_methods_supported",
+        "scopes_supported",
+        "response_types_supported",
+        "grant_types_supported",
+        "token_endpoint_auth_methods_supported",
+        "tls_client_certificate_bound_access_tokens",
+        "request_object_signing_alg_values_supported"
+      ],
+      "type": "object",
+      "properties": {
+        "issuer": {
+          "type": "string",
+          "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier"
+        },
+        "jwks_uri": {
+          "type": "string",
+          "description": "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the [JWKS endpoint](https://cdr-register.github.io/register/#getjwks) used to validate SSAs and CDR Register client authentication"
+        },
+        "token_endpoint": {
+          "type": "string",
+          "description": "URL of the CDR Register's OAuth 2.0 Token Endpoint"
+        },
+        "claims_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for"
+        },
+        "id_token_signing_alg_values_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored"
+        },
+        "subject_types_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored"
+        },
+        "code_challenge_methods_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored"
+        },
+        "scopes_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports"
+        },
+        "response_types_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports"
+        },
+        "grant_types_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports"
+        },
+        "token_endpoint_auth_methods_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of Client Authentication methods supported by this Token Endpoint"
+        },
+        "tls_client_certificate_bound_access_tokens": {
+          "type": "boolean",
+          "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens"
+        },
+        "request_object_signing_alg_values_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects."
+        }
+      }
+    },
+    "ResponseJWKS": {
+      "description": "Response containing the JSON Web Key Set",
+      "required": [
+        "keys"
+      ],
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "description": "The value of the \"keys\" parameter is an array of JWK values",
+          "items": {
+            "$ref": "#/definitions/JWK"
+          }
+        }
+      }
+    },
+    "JWK": {
+      "description": "Object representing a JSON Web Key",
+      "required": [
+        "alg",
+        "e",
+        "key_ops",
+        "kid",
+        "kty",
+        "n"
+      ],
+      "type": "object",
+      "properties": {
+        "alg": {
+          "type": "string",
+          "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key"
+        },
+        "e": {
+          "type": "string",
+          "description": "The \"e\" RSA public exponent parameter"
+        },
+        "key_ops": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used"
+        },
+        "kid": {
+          "type": "string",
+          "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set"
+        },
+        "kty": {
+          "type": "string",
+          "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key"
+        },
+        "n": {
+          "type": "string",
+          "description": "The \"n\" RSA public modulus parameter"
+        }
+      }
+    },
+    "ResponseRegisterDataHolderBrandList": {
+      "description": "Response containing a list of CDR Register Data Holder Brand objects",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "Response data for the query",
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RegisterDataHolderBrand"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/LinksPaginated"
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaPaginated"
+        }
+      }
+    },
+    "RegisterDataHolderBrand": {
+      "required": [
+        "dataHolderBrandId",
+        "brandName",
+        "industry",
+        "logoUri",
+        "legalEntity",
+        "status",
+        "endpointDetail",
+        "authDetails",
+        "lastUpdated"
+      ],
+      "type": "object",
+      "properties": {
+        "dataHolderBrandId": {
+          "description": "Unique id of the Data Holder Brand issued by the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "brandName": {
+          "description": "The name of Data Holder Brand",
+          "type": "string"
+        },
+        "industry": {
+          "description": "The industry the Data Holder brand belongs to (Banking, etc)",
+          "enum": [
+            "banking"
+          ],
+          "type": "string"
+        },
+        "logoUri": {
+          "description": "Brand logo URI",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "legalEntity": {
+          "$ref": "#/definitions/LegalEntityDetail"
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "REMOVED"
+          ],
+          "type": "string"
+        },
+        "endpointDetail": {
+          "$ref": "#/definitions/RegisterDataHolderBrandServiceEndpoint"
+        },
+        "authDetails": {
+          "type": "array",
+          "uniqueItems": false,
+          "items": {
+            "$ref": "#/definitions/RegisterDataHolderAuth"
+          }
+        },
+        "lastUpdated": {
+          "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+          "type": "string",
+          "format": "date-time",
+          "x-cds-type": "DateTimeString"
+        }
+      }
+    },
+    "SoftwareProductsStatusList": {
+      "required": [
+        "softwareProducts"
+      ],
+      "type": "object",
+      "properties": {
+        "softwareProducts": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SoftwareProductStatus"
+          }
+        }
+      }
+    },
+    "SoftwareProductStatus": {
+      "required": [
+        "softwareProductId",
+        "softwareProductStatus"
+      ],
+      "type": "object",
+      "properties": {
+        "softwareProductId": {
+          "description": "Unique id of the software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "softwareProductStatus": {
+          "description": "Software product status in the CDR Register",
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "REMOVED"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "DataRecipientsStatusList": {
+      "required": [
+        "dataRecipients"
+      ],
+      "type": "object",
+      "properties": {
+        "dataRecipients": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataRecipientStatus"
+          }
+        }
+      }
+    },
+    "DataRecipientStatus": {
+      "required": [
+        "dataRecipientId",
+        "dataRecipientStatus"
+      ],
+      "type": "object",
+      "properties": {
+        "dataRecipientId": {
+          "description": "Unique id of the Data Recipient issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "dataRecipientStatus": {
+          "description": "Data Recipient status in the CDR Register",
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED",
+            "REVOKED",
+            "SURRENDERED"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "ResponseRegisterDataRecipientList": {
+      "description": "Response containing a list of Data Recipients in the CDR Register",
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "Response data for the query",
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RegisterDataRecipient"
+          }
+        }
+      }
+    },
+    "RegisterDataRecipient": {
+      "required": [
+        "legalEntityId",
+        "legalEntityName",
+        "accreditationNumber",
+        "industry",
+        "logoUri",
+        "status",
+        "lastUpdated"
+      ],
+      "type": "object",
+      "properties": {
+        "legalEntityId": {
+          "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "legalEntityName": {
+          "description": "Legal name of the Data Recipient",
+          "type": "string"
+        },
+        "accreditationNumber": {
+          "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation",
+          "type": "string"
+        },
+        "industry": {
+          "enum": [
+            "banking"
+          ],
+          "type": "string"
+        },
+        "logoUri": {
+          "description": "Legal Entity logo URI",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "dataRecipientBrands": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataRecipientBrandMetaData"
+          }
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED",
+            "REVOKED",
+            "SURRENDERED"
+          ],
+          "type": "string"
+        },
+        "lastUpdated": {
+          "format": "date-time",
+          "description": "The date/time that the Legal Entity was last updated in the CDR Register",
+          "type": "string",
+          "x-cds-type": "DateTimeString"
+        }
+      }
+    },
+    "DataRecipientBrandMetaData": {
+      "description": "Metadata related to Data Recipient Brand",
+      "required": [
+        "dataRecipientBrandId",
+        "brandName",
+        "logoUri",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "dataRecipientBrandId": {
+          "description": "Unique id of the Data Recipient brand issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "brandName": {
+          "description": "Data Recipient Brand name",
+          "type": "string"
+        },
+        "logoUri": {
+          "description": "Data Recipient Brand logo URI",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "softwareProducts": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SoftwareProductMetaData"
+          }
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "REMOVED"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "SoftwareProductMetaData": {
+      "description": "Data Recipient Brand Software Products",
+      "required": [
+        "softwareProductId",
+        "softwareProductName",
+        "logoUri",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "softwareProductId": {
+          "description": "Unique id of the Data Recipient software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "softwareProductName": {
+          "description": "Name of the software product",
+          "type": "string"
+        },
+        "softwareProductDescription": {
+          "description": "Description of the software product",
+          "type": "string"
+        },
+        "logoUri": {
+          "description": "Software product logo URI",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "REMOVED"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "LegalEntityDetail": {
+      "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
+      "required": [
+        "legalEntityId",
+        "legalEntityName",
+        "logoUri"
+      ],
+      "type": "object",
+      "properties": {
+        "legalEntityId": {
+          "description": "Unique id of the organisation issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "type": "string"
+        },
+        "legalEntityName": {
+          "description": "Unique legal name of the organisation",
+          "type": "string"
+        },
+        "logoUri": {
+          "description": "Legal Entity logo URI",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "registrationNumber": {
+          "description": "Unique registration number (if the company is registered outside Australia)",
+          "type": "string"
+        },
+        "registrationDate": {
+          "format": "date",
+          "description": "Date of registration (if the company is registered outside Australia)",
+          "type": "string",
+          "x-cds-type": "DateString"
+        },
+        "registeredCountry": {
+          "description": "Country of registeration (if the company is registered outside Australia)",
+          "type": "string"
+        },
+        "abn": {
+          "description": "Australian Business Number for the organisation",
+          "type": "string"
+        },
+        "acn": {
+          "description": "Australian Company Number for the organisation",
+          "type": "string"
+        },
+        "arbn": {
+          "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+          "type": "string"
+        },
+        "industryCode": {
+          "description": "Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)",
+          "type": "string"
+        },
+        "organisationType": {
+          "description": "Legal organisation type",
+          "enum": [
+            "SOLE_TRADER",
+            "COMPANY",
+            "PARTNERSHIP",
+            "TRUST",
+            "GOVERNMENT_ENTITY",
+            "OTHER"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "RegisterDataHolderBrandServiceEndpoint": {
+      "description": "Endpoints related to Data Holder Brand services",
+      "required": [
+        "version",
+        "publicBaseUri",
+        "resourceBaseUri",
+        "infosecBaseUri",
+        "websiteUri"
+      ],
+      "type": "object",
+      "properties": {
+        "version": {
+          "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)",
+          "type": "string"
+        },
+        "publicBaseUri": {
+          "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "resourceBaseUri": {
+          "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "infosecBaseUri": {
+          "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "extensionBaseUri": {
+          "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "websiteUri": {
+          "description": "Publicly available website or web resource URI",
+          "type": "string",
+          "x-cds-type": "URIString"
+        }
+      }
+    },
+    "RegisterDataHolderAuth": {
+      "description": "Provides details of authorisation endpoints for Data Holders",
+      "type": "object",
+      "required": [
+        "registerUType",
+        "jwksEndpoint"
+      ],
+      "properties": {
+        "registerUType": {
+          "type": "string",
+          "description": "The type of authentication and authorisation mechanism in use",
+          "enum": [
+            "SIGNED-JWT"
+          ]
+        },
+        "jwksEndpoint": {
+          "description": "JWKS endpoint for private_key_jwt client authentication with Data Recipient",
+          "type": "string",
+          "x-cds-type": "URIString"
+        }
+      }
+    },
+    "LinksPaginated": {
+      "required": [
+        "self"
+      ],
+      "type": "object",
+      "properties": {
+        "first": {
+          "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+          "type": "string"
+        },
+        "last": {
+          "description": "URI to the last page of this set. Mandatory if this response is not the last page",
+          "type": "string"
+        },
+        "next": {
+          "description": "URI to the next page of this set. Mandatory if this response is not the last page",
+          "type": "string"
+        },
+        "prev": {
+          "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
+          "type": "string"
+        },
+        "self": {
+          "description": "Fully qualified link to this API call",
+          "type": "string"
+        }
+      }
+    },
+    "MetaPaginated": {
+      "required": [
+        "totalPages",
+        "totalRecords"
+      ],
+      "type": "object",
+      "properties": {
+        "totalPages": {
+          "format": "int32",
+          "description": "The total number of pages in the full set",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "description": "The total number of records in the full set",
+          "type": "integer"
+        }
+      }
+    },
+    "ResponseErrorList": {
+      "required": [
+        "errors"
+      ],
+      "type": "object",
+      "properties": {
+        "errors": {
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    },
+    "Error": {
+      "required": [
+        "code",
+        "title",
+        "detail"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code",
+          "type": "string"
+        },
+        "title": {
+          "description": "Error title",
+          "type": "string"
+        },
+        "detail": {
+          "description": "Error detail",
+          "type": "string"
+        },
+        "meta": {
+          "description": "Optional additional data for specific error types",
+          "type": "object"
+        }
+      }
+    }
+  },
+  "tags": []
+}

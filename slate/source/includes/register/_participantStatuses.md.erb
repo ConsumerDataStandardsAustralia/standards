@@ -1,41 +1,76 @@
 # Participant Statuses
 
-## Accredited Data Recipient and Software Product Statuses
-The accreditation status of Accredited Data Recipients, and the status of their associated software products, may traverse through multiple statuses in the CDR as a result of decisions by the ACCC, in its capacity as Data Recipient Accreditor, or where an Accredited Data Recipient surrenders accreditation.
 
-Data Holders will have the responsibility to ensure that CDR data relating to consumers is disclosed to Accredited Data Recipients and to cease sharing data where the accreditation of a data recipient is
 
-1.	Suspended or revoked by the ACCC
+## Data Recipient and Software Product Statuses
+
+> Data Recipient Statuses
+<img src="images/ADRStateMachine.png" ></img>
+
+The accreditation status of Data Recipients, and the status of their associated Software Products, may traverse through multiple statuses in the CDR as a result of decisions by the CDR Registrar, in its capacity as Data Recipient Accreditor, or where a Data Recipient surrenders accreditation.
+
+Data Holders must ensure that CDR data relating to consumers is disclosed to Data Recipients and to cease sharing data where the accreditation of a data recipient is
+
+1.	Suspended or revoked by the CDR Registrar
 2.	Surrendered by the Data Recipient
 
-The Register will notify all Data Holders of the above changes in Accredited Data Recipient status as per the ACCC’s decisions.
+The Register will notify all Data Holders of the above changes in  Data Recipient statuses as per the Registrar’s decisions.
 
-### Accredited Data Recipient Status
-<img class=medium-image src="images/ADRStateMachine.png" ></img>
 
-### Software Product Status
-<img class=medium-image src="images/SoftwareProductStateMachine.png" ></img>
+> Software Product Statuses
+<img src="images/SoftwareProductStateMachine.png" ></img>
+
+
+|Data Recipient Statuses|
+|-----------------|
+|Active|
+|Suspended|
+|Revoked|
+|Surrendered|
+
+
+|Software Product Statuses|
+|-----------------|
+|Active|
+|Inactive|
+|Removed|
+
 
 
 ### Status Mapping
-When the ACCC Registrar changes the accreditation status for an ADR for any status other than active, the associated Software Products status will be changed accordingly.
+When the CDR Registrar changes the accreditation status for a Data Recipient for any status other than active, the associated Software Product statuses will be changed accordingly.
 
 The cascading status mappings are as follows:
 
-|**ADR Status**|**Cascaded SP Status**|
+|**DR Status**|**Cascaded SP Status**|
 |-----------------|-----------------------|
 |Suspended|Inactive|
 |Revoked|Removed|
 |Surrendered|Removed|
 
-These cascaded software product statuses are also catered for in collection arrangements. Please refer to the [Accreditation Status Discovery](#collection-arrangements) section for more details.
+
+### Collection Arrangements
+The status of a Software Product, managed within a collection arrangement, is coupled to the accreditation status of both the principal and provider in this arrangement.
+
+To achieve this, cascade rules for Software Product statuses, as defined in [Status Mapping](#accredited-data-recipient-and-software-product-statuses), are defined for a collection arrangement as follows:
+
+| Provider Status | Principal Status | Cascaded Principal SP Status
+|-------------------|--------------------------------------------|-------------------------------------------
+| Active |	Active | Active
+| Suspended |	Active | Inactive
+| Revoked |	Active | Inactive
+| Surrendered |	Active | Inactive
+| Any |	Suspended | Inactive
+| Any |	Revoked | Removed
+| Any |	Surrendered | Removed
+
 
 ### Archiving Entities
-In order to keep the Register APIs efficient and to minimise the amount of metadata traffic, dormant entries will be identified and archived automatically within the CDR Register.
+In order to keep the Register APIs efficient and to minimise the amount of traffic, dormant entries will be identified and archived automatically within the CDR Register.
 
 Dormant entries are defined as those records that have reached and maintained an __end state__ in the CDR Register for the past **2 years**.
 
-Each entity within the CDR Register can be archived independently of the parent entity. For example, a software product that has been dormant for **2 years** can be archived whilst the brand remains active. However, if a parent entity is archived (Legal Entity / Brand) then all child entities will also be archived.
+Each entity within the CDR Register can be archived independently of the parent entity. For example, a Software Product that has been dormant for **2 years** can be archived whilst the brand remains active. However, if a parent entity is archived (Legal Entity / Brand) then all child entities will also be archived.
 
 The table below outlines the end state for each Register entry type:
 
@@ -52,7 +87,7 @@ When an entry is archived on the Register, the entry will no longer appear in th
 
 
 ## Data Holder Responsibilities
-</br>The ACCC Registrar has the ability to change the status of a Software Product independently of the ADR accreditation status. Therefore, both the ADR and Software Product statuses should be referenced, to determine the Data Holder's responsibilities for data disclosure, consent and registration management
+</br>The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient's accreditation status. Therefore, both the ADR and Software Product statuses should be referenced, to determine the Data Holder's responsibilities for data disclosure, consent and registration management
 '
 
 |**ADR Status**|**SP Status**|**Disclose of CDR Data**|**Facilitate Consent Authorisation**|**Facilitate Consent Withdrawal**|**Invalidate Consents**|**Cleanup Registration**|
@@ -66,20 +101,20 @@ When an entry is archived on the Register, the entry will no longer appear in th
 |Surrendered|Removed| | | | <i class="icon-check"></i> | <i class="icon-check"></i> |
 
 * Disclosure of CDR data MUST be in response to valid requests in accordance with the CDR rules and standards
-* The status of an Accredited Data Recipient Brand does not impact Data Holder responsibilities due to the cascade rules outlined above
-* When an Accredited Data Recipient status is Suspended, Revoked or Surrendered the Software Product status cannot be Active
+* The status of a Data Recipient Brand does not impact Data Holder responsibilities due to the cascade rules outlined above
+* When a Data Recipient status is Suspended, Revoked or Surrendered the Software Product status cannot be Active
 * Invalidation of consents and cleanup of registrations are bulk operations. It is reasonable to execute these as batch tasks performed overnight
 
 
 ## Metadata Cache Management
-Data Holders are required to be able to react to Data Recipient and associated Software Statuses changes within **5 minutes** of the change occuring on the CDR Register
+Data Holders must react to Data Recipient and associated Software Statuses changes within **5 minutes** of the change occurring on the CDR Register
 
-To achieve this, Data Holders can poll the [GetDataRecipientsStatus](#getdatarecipientsstatus), [GetSoftwareProductsStatus](#getsoftwareproductsstatus) and [GetDataRecipients](#getdatarecipients) APIs to retrieve the current statuses and cache these for use during requests for Consumer Data
+To achieve this, Data Holders should poll the [GetDataRecipientsStatus](#getdatarecipientsstatus), [GetSoftwareProductsStatus](#getsoftwareproductsstatus) and [GetDataRecipients](#getdatarecipients) APIs to retrieve the current statuses and cache these for use during requests for Consumer Data
 
-Data Holders will need to choose a frequency of polling which ensures their systems can respond to status changes within the required timeframe
+Data Holders should choose a frequency of polling which ensures their systems can respond to status changes within the required timeframe
 
 
-Data Holders and Data Recipients will be required to cache all other participant data they use and periodically update this cache using a slow poll. This ensures that changes to participant configuration propagates throughout the ecosystem in a predictable timeframe
+Data Holders and Data Recipients must cache all other participant data they use and periodically update this cache using a slow poll. This ensures that changes to participant configuration propagates throughout the ecosystem in a predictable timeframe
 
 ### Cache update periods
 The following are the recommended caching times for data retrieved from the Register APIs.
@@ -98,133 +133,9 @@ All **public** APIs are hosted on a CDN supporting ETag cache validators. ETags 
 
 Further information on the usage of `ETag` and the associated `If-None-Match` headers can be found at: [https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works](https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works)
 
-### Change detection using ETags
-Clients polling the CDN hosted APIs specifying the `ETag` header can rely on the `304 Not Modified` response to indicate no changes have occurred since the previous poll.
-
-<img class=small-image src="images/status/DataHolderPollingWithETags.png" ></img>
-
-
-
-## Checking Request Validity
-
-### Request for Disclosure of CDR Data: Checking Validity of Accredited Data Recipient and associated Software Product
-<img src="images/ChecksForDhToShareData.png" ></img>
-*Pre-requisites: SSL connection has been established between all parties and Data Recipient has been issued an access token*
-
-### Request for Consent Withdrawal: Checking Validity of Accredited Data Recipient and associated Software Product
-<img src="images/ChecksForDhToWithdrawConsent.png" ></img>
-*Pre-requisites: SSL connection has been established between all parties*
-
-Data recipients authenticate data holders using JWKS specified in [data holder brands discovery APIs](#getdataholderbrands).
-
-## Status Changes
-
-### ADR Active
-Once a Data Recipient has been granted accreditation by the ACCC (as Data Recipient Accreditor) and has completed the necessary steps to be added to the Register (as specified in the rules), the following actions and responsibilities will arise:
-
-1.	The Registrar will issue the Accredited Data Recipient all [required certificates](#certificate-management)</br>
-2.	The Accredited Data Recipient's status will be set to **'active'**</br>
-3.  The Accredited Data Recipient will be able to register their Software Products with Data Holders within the ecosystem
-4.	The Data Holder's responsibilities with this active Data Recipient are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Suspended
-Where the ACCC (as Data Recipient Accreditor) has made a decision to suspend the accreditation of an Accredited Data Recipient, and has notified the decision to the Registrar the following actions and responsibilities will arise:
-
-1.	The Registrar will update the CDR Register to change the Accredited Data Recipient's status to **'suspended'** and status of all associated Software Products to **'inactive'**
-2.  The Data Holder will identify the change in status of the Data Recipient and associated Software Products during its next poll within the required timeframe
-3.	The Data Holder's responsibilities with this suspended Data Recipient are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Reactivated from Suspension
-An Accredited Data Recipient can move from the suspended status back to the active status when a suspension expires or is revoked by the ACCC (as Data Recipient Accreditor). Once this has occurred, the following actions and responsibilities are:
-
-1.	The Registrar will update the CDR Register to change the Data Recipient's status to **'active'**
-2.  The Data Holder will identify the change in status of the Data Recipient during its next poll within the required timeframe
-3.	The Data Holder's responsibilities with this reactivated Data Recipient are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-4.  Software Products for the associated Data Recipient will only be reactivated on a case by case basis
-
-### ADR Revoked
-Where the ACCC (as Data Recipient Accreditor) has made a decision to revoke the accreditation of an Accredited Data Recipient, and has notified the decision to the Registrar, the following actions and responsibilities will arise:
-
-1.	The Registrar will revoke Accredited Data Recipient's [certificates](#certificate-management)
-2.	The Registrar will update the CDR Register to change the Accredited Data Recipient's status to **'revoked'** and status of all associated Software Products to **'inactive'**
-3.  Once the appeals timeframe has been exceeded, Software Products will be moved to the **'removed'** status
-4.  The Data Holder will identify the change in status of the Data Recipient and associated Software Products during its next poll within the required timeframe
-5.	The Data Holder's responsibilities with this revoked Data Recipient are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Reactivated from Revoked
-An Accredited Data Recipient can move from the revoked status back to the active status. Once this has occurred, the following actions and responsibilities are:
-
-1.	The Registrar will reissue the Accredited Data Recipient all [required certificates](#certificate-management)</br>
-2.	The Registrar will update the CDR Register to change the Data Recipient's status to **'active'**
-3.  The Data Holder will identify the change in status of the Data Recipient during its next poll within the required timeframe
-4.	The Data Holder's responsibilities with this reactivated Data Recipient are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Surrendered
-Where an Accredited Data Recipient has surrendered their accreditation, and the Data Recipient Accreditor has notified the Registrar of the surrender, the following actions and responsibilities will arise:
-
-1.	The Registrar will revoke Accredited Data Recipient's [certificates](#certificate-management)
-2.	The Registrar will update the CDR Register to change the Accredited Data Recipient's status to **'surrendered'** and status of all associated Software Products to **'removed'**
-3.  The Data Holder will identify the change in status of the Data Recipient and associated Software Products during its next poll within the required timeframe
-4.	The Data Holder's responsibilities with this surrendered Data Recipient and associated Software Products are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-
-### New ADR Software Product Active
-Once an Accredited Data Recipient has completed the necessary steps to add a new Software Product to the Register, the following actions and responsibilities will arise:
-
-1.	The Software Product status will be set to **'active'**
-2.  The Accredited Data Recipient will be able to register this Software Product with Data Holders within the ecosystem
-3.	The Data Holder's responsibilities with this active ADR Software Product are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Software Product Deactivated
-Where the ACCC (as Data Recipient Accreditor) has made a decision to deactivate the status of an Accredited Data Recipient’s Software Product, and has notified the decision to the Registrar the following actions and responsibilities will arise:
-
-1.	The Registrar will update the CDR Register to change the Software Product’s status to **'inactive'**
-2.  The Data Holder will identify the change in status of the Software Product during its next poll within the required timeframe
-3.	The Data Holder's responsibilities with this deactivated ADR Software Product are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Software Product Reactivated
-A Software Product can move from the inactive status back to the active status where a suspension expires or is revoked by the ACCC (as Data Recipient Accreditor). Once this has occurred, the following actions and responsibilities are:
-
-1.	The Registrar will update the CDR Register to change the Software Product’s status to **'active'**
-2.  The Data Holder will identify the change in status of the Software Product during its next poll within the required timeframe
-3.	The Data Holder's responsibilities with this reactivated ADR Software Product are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-### ADR Software Product Removed
-Where the ACCC (as Data Recipient Accreditor) has made a decision to revoke the status of an Accredited Data Recipient’s Software Product, and has notified the decision to the Registrar, the following actions and responsibilities will arise:
-
-1.	The Registrar will update the CDR Register to change the Software Product’s status to **'removed'**
-2.  The Data Holder will identify the change in status of the Software Product during its next poll within the required timeframe
-3.	The Data Holder's responsibilities with this removed ADR Software Product are outlined at [Data Holder Responsibilities](#data-holder-responsibilities)</br>
-
-
-### Data Holder Status Change
-
-Rules regarding Data Holder off-boarding and revocation have not yet been provided. Updates to this design will be added once the rules have been defined.
-
-
-
-## Cache Refresh Metadata Request
-<aside class="notice">
-The following design for the Cache Refresh in response to a Metadata Update Request will be considered for a future iteration of the Register design.
-</aside>
-
-
-To facilitate the Metadata update requests, Data Holders will need to implement the Admin endpoint as per CDS standard: [https://consumerdatastandardsaustralia.github.io/standards/#admin-apis](https://consumerdatastandardsaustralia.github.io/standards/#admin-apis)
-
-This endpoint exposes functionality for the ACCC to request participants to refresh their caches.
-Cache refreshes may be requested in the following scenarios:
-
-1.	A new Data Holder Brand becomes active
-2.	A new Accredited Data Recipient Software Product becomes active
-3.	A Data Holder Brand has been removed from the CDR
-4.	An Accredited Data Recipient Software Product has been deactivated or removed from the CDR Register
-5.  An Accredited Data Recipient has been surrendered, suspended or revoked from the CDR
-
-### Data Holder Caching of Accredited Data Recipients Software Product Metadata
-<img src="images/status/DataHolderMetadataRefresh.png" ></img>
 
 
 ## Refusal To Disclose
-Currently under the CDR rules, Data Holders within the CDR ecosystem can refuse to disclose CDR data in response to valid requests from Accredited Data Recipients.
+Under the CDR rules, Data Holders within the CDR ecosystem can refuse to disclose CDR data in response to valid requests from Accredited Data Recipients.
 
 See [CDR Rules Compliation 3](https://www.legislation.gov.au/Series/F2020L00094) Part 4 Division 4.2, Subdivision 4.2.4 Rule 4.7.
