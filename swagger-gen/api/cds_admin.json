@@ -32,7 +32,7 @@
         "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
         "operationId": "metadataUpdate",
         "tags": [
-          "Admin APIs",
+          "Admin",
           "Register"
         ],
         "x-scopes": [
@@ -85,7 +85,7 @@
         ],
         "x-restricted-access": true,
         "tags": [
-          "Admin APIs",
+          "Admin",
           "Metrics"
         ],
         "parameters": [
