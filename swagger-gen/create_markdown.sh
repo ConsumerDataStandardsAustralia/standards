@@ -10,10 +10,29 @@ node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widder
 
 # TODO Fix
 # Hack to clean up markdown for slate. Widdershins output does not support more than one swagger file markdown
-sed -i '' -e '/consumer-data-standards-administration-end-points-admin-apis/d' cds_admin.md
-sed -i '' -e 's/# Schemas/## Schemas/g' cds_admin.md
-sed -i '' -e 's/This operation does not require authentication/This operation may only be called by the CDR Register/g' cds_admin.md
+echo "@@@@Removing redundant Admin header@@@@"
+sed -i'' -e 'consumer-data-standards-administration-end-points-admin/d' cds_admin.md
+sed -i'' -e '/consumer-data-standards-administration-end-points-admin-apis/d' cds_admin.md
+sed -i'' -e 's/# Schemas/## Schemas/g' cds_admin.md
+sed -i'' -e 's/This operation does not require authentication/This operation may only be called by the CDR Register/g' cds_admin.md
 
 diff -w cds_admin.md ../slate/source/includes/cds_admin.md > diff_admin.txt
+
+node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_register.json -o cds_register.md
+
+echo "@@@@Removing redundant Register header@@@@"
+#sed -i 'consumer-data-right-cdr-register-participant-discovery-apis-register' cds_register.md
+sed -i '' -e 's/# Schemas/## Schemas/g' cds_register.md
+
+diff -w cds_register.md ../slate/source/includes/cds_register.md > diff_register.txt
+
+node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_dcr.json -o cds_dcr.md
+
+echo "@@@@Removing redundant DCR header@@@@"
+
+sed -i'' -e '/cdr-dynamic-client-registration-api-client-registration/d' cds_dcr.md
+sed -i'' -e 's/# Schemas/## Schemas/g' cds_dcr.md
+
+diff -w cds_dcr.md ../slate/source/includes/cds_dcr.md > diff_dcr.txt
 
 echo "*** Complete ***"

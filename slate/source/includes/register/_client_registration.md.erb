@@ -1,0 +1,419 @@
+## Client Registration
+
+### Dynamic Client Registration
+Data Recipients register with Data Holders according to [**[RFC7591]**](https://tools.ietf.org/html/rfc7591) to obtain client credentials used to retrieve consumer data on behalf of a consumer.
+
+<p class="content-flagged for-removal">
+<bold>Pre-Requisites:</bold> Prior to Client Registration, the registering Data Recipient must be accredited and the associated Software Product must be configured within the CDR Register
+</p>
+
+
+#### Software Statement Assertion (SSA)
+
+As per **[RFC7591]**, a Software Statement is defined in as:
+> A digitally signed JSON Web Token (JWT) **[RFC7519]** that asserts metadata values about the client software.
+
+Such that:
+
+* The CDR Register issues Software Statements to *active* Data Recipients.
+* Software Statements are issued with an 10 minute expiry time.
+* As per **[FAPI-RW]**, SSAs are signed by the CDR Register using **PS256**.
+* CDR Register public keys are exposed on a dedicated JWKS URI endpoint.
+* The CDR Register JWKS is an unauthenticated endpoint, using TLS.
+
+CDR Register endpoint details are provided to participants during the onboarding process.
+
+
+<p class="content-flagged for-guidance"></p>
+The trust relationship the authorization server has with the issuer of the software statement is to be used as an input to the evaluation of whether the registration request is accepted.
+
+A software statement is presented by Accredited Data Recipient’s Software Product to Data Holder’s authorisation server as part of a client registration request.
+
+An SSA will be issued for each <i>active</i> Software Product and is retrievable using the CDR Register <a href="getsoftwarestatementassertion-ssa">GetSoftwareStatementAssertion API</a>.
+<p class="content-flagged for-guidance end"></p>
+
+<p class="content-flagged for-removal"></p>
+#### Namespacing
+The design will conform to **[RFC7591]** and will not use the software namespace convention as used in the Open Banking UK Dynamic Registration Standard
+<p class="content-flagged for-guidance end"></p>
+
+#### SSA Definition
+
+>
+Example SSA:
+
+
+```
+eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.ew0KICAiaXNzIjogImNkci1yZWdpc3RlciIsDQogICJpYXQiOiAxNTcxODA4MTY3LA0KICAiZXhwIjogMjE0NzQ4MzY0NiwNCiAgImp0aSI6ICIzYmMyMDVhMWViYzk0M2ZiYjYyNGIxNGZjYjI0MTE5NiIsDQogICJvcmdfaWQiOiAiM0IwQjBBN0ItM0U3Qi00QTJDLTk0OTctRTM1N0E3MUQwN0M4IiwNCiAgIm9yZ19uYW1lIjogIk1vY2sgQ29tcGFueSBJbmMuIiwNCiAgImNsaWVudF9uYW1lIjogIk1vY2sgU29mdHdhcmUiLA0KICAiY2xpZW50X2Rlc2NyaXB0aW9uIjogIkEgbW9jayBzb2Z0d2FyZSBwcm9kdWN0IGZvciB0ZXN0aW5nIFNTQSIsDQogICJjbGllbnRfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdSIsDQogICJyZWRpcmVjdF91cmlzIjogWw0KICAgICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmVkaXJlY3RzL3JlZGlyZWN0MSIsDQogICAgImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9yZWRpcmVjdHMvcmVkaXJlY3QyIg0KICBdLA0KICAibG9nb191cmkiOiAiaHR0cHM6Ly93d3cubW9ja2NvbXBhbnkuY29tLmF1L2xvZ29zL2xvZ28xLnBuZyIsDQogICJ0b3NfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS90b3MuaHRtbCIsDQogICJwb2xpY3lfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9wb2xpY3kuaHRtbCIsDQogICJqd2tzX3VyaSI6ICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvandrcyIsDQogICJyZXZvY2F0aW9uX3VyaSI6ICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmV2b2NhdGlvbiIsDQogICJzb2Z0d2FyZV9pZCI6ICI3NDBDMzY4Ri1FQ0Y5LTREMjktQTJFQS0wNTE0QTY2QjBDREUiLA0KICAic29mdHdhcmVfcm9sZXMiOiAiZGF0YS1yZWNpcGllbnQtc29mdHdhcmUtcHJvZHVjdCIsDQogICJzY29wZSI6ICJiYW5rOmFjY291bnRzLmJhc2ljOnJlYWQgYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCBiYW5rOnRyYW5zYWN0aW9uczpyZWFkIGJhbms6cGF5ZWVzOnJlYWQgYmFuazpyZWd1bGFyX3BheW1lbnRzOnJlYWQgY29tbW9uOmN1c3RvbWVyLmJhc2ljOnJlYWQgY29tbW9uOmN1c3RvbWVyLmRldGFpbDpyZWFkIg0KfQ.ZNKe8aBHcsZ_OfdP0GvUa0AHrjcoC0Coky4jQHrPsRoG3YMcS2XG9JtyB5zq-AMOQoaib1Ijx1m7B-JOEbVcnNJcLUZeVEIwnP8hRssAnGjWwaYGUAiY-DEFUsuXqpQWgyIOFz84W-FaHFcqpOSGxjGmjICZU9S1Pl4o8b5poA_kJ2n_wdiOBUG4xl3uXqzK_vstcGXbAubFyLhjOxhc_rqONO2NCtpyCwj83Zqi7Ve_A27-ty5N0AQa2xYWvjDt_Xh8xcxRI_ih7_sStvDTTy3gtyX5bAdXsDsweCcvN0d2vOCpm6-dnr8D1fXDTnlT3x2uQ0XAysWr6wU4mAZFVA
+```
+
+
+>
+Associated JWKS:
+
+```
+{
+  "keys": [
+    {
+      "kid": "b8facf2ff39444f781e0be5db4b14f16",
+      "kty": "RSA",
+      "key_ops": [
+        "sign",
+        "verify"
+      ],
+      "n": "s0zGoaOEJE8HDfHjWtO0xLXtuPcwio8BEoj0-uu9kxxDIF7jH0jb06EwoPkb83BET59x6C0TtRfc_I5ZDksQKRClWXzbazqi62M5YhCgwyB-S09PJb8P1GfQBYyK346nLKARHbFJ1t1SHARcVFJA_8NeHfQn_0fyEc55R3GGNDL3YQtjEoTb-LMR-KpcPB2BpyDuie-jk-3f1t0EfvnkVp-6co1_KTXrbwuYtH31YBZLgU4JeZEJLTnGdMKmJppZ9SnyrBB461hMmw0HJHJj6uZJSiP2onmvlrUezv1T3NM3HOE7WHxlps9MUJj3vcpea-O6n5JBX8emTduLuLuKuw",
+      "e": "AQAB"
+    }
+  ]
+}
+```
+
+>
+Decoded SSA
+
+```
+{
+  "alg": "PS256",
+  "kid": "b8facf2ff39444f781e0be5db4b14f16",
+  "typ": "JWT"
+}
+
+{
+  "iss": "cdr-register",
+  "iat": 1571808167,
+  "exp": 2147483646,
+  "jti": "3bc205a1ebc943fbb624b14fcb241196",
+  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
+  "legal_entity_name": "Mock Company Pty Ltd.",
+  "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+  "org_name": "Mock Company Brand",
+  "client_name": "Mock Software",
+  "client_description": "A mock software product for testing SSA",
+  "client_uri": "https://www.mockcompany.com.au",
+  "redirect_uris": [
+    "https://www.mockcompany.com.au/redirects/redirect1",
+    "https://www.mockcompany.com.au/redirects/redirect2"
+  ],
+  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier",
+  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
+  "tos_uri": "https://www.mockcompany.com.au/tos.html",
+  "policy_uri": "https://www.mockcompany.com.au/policy.html",
+  "jwks_uri": "https://www.mockcompany.com.au/jwks",
+  "revocation_uri": "https://www.mockcompany.com.au/revocation",
+  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+  "software_roles": "data-recipient-software-product",
+  "scope":
+        "openid
+         profile
+         bank:accounts.basic:read
+         bank:accounts.detail:read
+         bank:transactions:read
+         bank:payees:read
+         bank:regular_payments:read
+         common:customer.basic:read
+         common:customer.detail:read
+         cdr:registration"
+}
+
+```
+
+
+<%= partial "includes/register/partials/dcr/_dcr_20210701.md.erb" %>
+
+
+#### Sector Identifiers
+
+<p class="content-flagged for-guidance"></p>
+As per the [Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/#identifiers-and-subject-types), the Pairwise Pseudonymous Identifier (PPID) as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**, will use the host component of the `redirect_uris` as the sector identifier. This introduces a constraint that the `redirect_uris` must all contain the same hostname.
+
+The CDR Register registration design will introduce support for the `sector_identifier_uri` in the **July 2021** release. Adoption will require data holder implementation and updates to Software Product registrations to update the field `sector_identifier_uri` with all data holder brands.
+
+For more information on `sector_identifier_uri` impacts to the ecosystem, please refer the the CDR Support article [Data Holder sector_identifier_uri Support](https://cdr-support.zendesk.com/hc/en-us/articles/360004324176-Data-Holder-sector-identifier-uri-Support)
+<p class="content-flagged for-guidance end"></p>
+
+<p class="content-flagged for-guidance"></p>
+###Logos
+Logos will be incorporated within the SSA to ensure there is consistency between the logos published on the Public Register and those passed to Data Holders as part of Registration.
+<p class="content-flagged for-guidance end"></p>
+
+### Registration Request using JWT
+
+>
+Example Request
+
+```
+HTTP/1.1 POST /register
+Content-Type: application/jwt
+Accept: application/json
+
+### Non-normative Decoded JWT
+{
+   "alg":"PS256",
+   "typ":"JWT",
+   "kid":"12456"
+}
+{
+   "iss":"CDR Software Product ID",
+   "iat":1571808167,
+   "exp":2147483646,
+   "jti":"37747cd1c10545699f754adf28b73e31",
+   "aud":"https://secure.api.dataholder.com/issuer",
+   "redirect_uris":[
+      "https://www.mockcompany.com.au/redirects/redirect1",
+      "https://www.mockcompany.com.au/redirects/redirect2"
+   ],
+   "token_endpoint_auth_signing_alg":"PS256",
+   "token_endpoint_auth_method":"private_key_jwt",
+   "grant_types":[
+      "client_credentials",
+      "authorization_code",
+      "refresh_token"
+   ],
+   "response_types":["code id_token"],
+   "application_type":"web",
+   "id_token_signed_response_alg":"PS256",
+   "id_token_encrypted_response_alg":"RSA-OAEP",
+   "id_token_encrypted_response_enc:"A256GCM",
+   "request_object_signing_alg":"PS256",
+   "software_statement":…
+}
+{
+  "signature":...
+}
+```
+
+
+To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.
+
+* The request MUST be presented in the format of a **[RFC7519]** compliant JWT.
+* The request MUST use the HTTP POST method, using the `application/jwt` content type.
+* The JWT MUST be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**
+
+The client registration request MUST contain the following claims in the JWT payload unless designated as Optional:
+
+| Claim | Required | Description
+|--------------|-------|-----------------------------------------------------------------------------------------------
+|**iss**|	Required | Contains the identifier for the Data Recipient Software Product (SoftwareProductId) as defined in the CDR Register
+|**iat**|	Required | The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
+|**exp**|	Required | The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
+|**jti**|	Required | Unique identifier for the JWT, used to prevent reuse of the token.
+|**aud**|	Required | Contains the DH issuer value as described in the [OIDC Discovery Document](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
+|**redirect_uris**|	Optional | Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA
+|**token_endpoint_auth_method**| Required | The requested authentication method for the token endpoint. The only supported method will be **private_key_jwt**
+|**token_endpoint_auth_signing_alg**| Required | The algorithm used for signing the JWT
+|**grant_types**|	Required | Array of OAuth 2.0 grant type strings that the client can use at the token endpoint. Supported values: **[client_credentials, authorization_code, refresh_token]**
+|**response_types**|	Required | Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. **value: [code id_token]**
+|**application_type**|	Optional | Kind of the application. The only supported application type will be **web**
+|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by **[FAPI-RW]**
+|**id_token_encrypted_response_alg**| Required | JWE `alg` algorithm with which an id_token is to be encrypted
+|**id_token_encrypted_response_enc**| Required | JWE `enc` algorithm with which an id_token is to be encrypted
+|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[FAPI-RW]**
+|**software_statement**|	Required | Software statement assertion issued by the CDR Register
+
+#### ID Token Algorithm Selection Considerations
+The CDR Register currently supports the following ID Token algorithms::
+
+| Claim | Values |
+|--------------|---------
+|**id_token_encrypted_response_alg**|	RSA-OAEP</br>RSA-OAEP-256
+|**id_token_encrypted_response_enc**|	A256GCM</br>A128CBC-HS256
+
+
+### Registration Validation
+Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+
+SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register [GetJWKS endpoint](#getjwks).
+
+Validation of the SSA `software_id` and the associated software status is not required as the SSA will have been issued and signed by the CDR Register.
+
+Each `software_id` issued by the CDR Register should only be registered on each Data Holder Brand IDP once. Multiple registrations per `software_id` are NOT permitted.
+
+
+### Registration Response
+
+>
+Example Created Response
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
+  "client_id_issued_at": 1574398823,
+  "redirect_uris": [
+     "https://www.mockcompany.com.au/redirects/redirect1",
+     "https://www.mockcompany.com.au/redirects/redirect2"
+   ],
+   "token_endpoint_auth_signing_alg":"PS256",
+   "token_endpoint_auth_method":"private_key_jwt",
+   "grant_types":[
+      "client_credentials",
+      "authorization_code",
+      "refresh_token"
+   ],
+   "response_types":["code id_token"],
+   "application_type":"web",
+   "id_token_signed_response_alg":"PS256",
+   "id_token_encrypted_response_alg":"RSA-OAEP",
+   "id_token_encrypted_response_enc:"A256GCM",
+   "request_object_signing_alg":"PS256",
+   "software_statement":"…",
+   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
+   "legal_entity_name": "Mock Company Pty Ltd",
+   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+   "org_name": "Mock Company Brand",
+   "client_name": "Mock Software",
+   "client_description": "A mock software product for testing SSA",
+   "client_uri": "https://www.mockcompany.com.au",
+   "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
+   "tos_uri": "https://www.mockcompany.com.au/tos.html",
+   "policy_uri": "https://www.mockcompany.com.au/policy.html",
+   "jwks_uri": "https://www.mockcompany.com.au/jwks",
+   "revocation_uri": "https://www.mockcompany.com.au/revocation",
+   "recipient_base_uri": "https://www.mockcompany.com.au",
+   "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier"
+   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+   "software_roles": "data-recipient-software-product",
+   "scope":
+         "openid
+          profile
+          bank:accounts.basic:read
+          bank:accounts.detail:read
+          bank:transactions:read
+          bank:payees:read
+          bank:regular_payments:read
+          common:customer.basic:read
+          common:customer.detail:read
+          cdr:registration"
+}
+```
+
+On successful registration, the response MUST be returned to the  Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[RFC7591]**.
+
+| Claim | Required | Description
+|--------------|-------|-----------------------------------------------------------------------------------------------
+|**client_id**|	Required | Contains the dynamically generated identifier for the ADR Software Product issued by the Data Holder
+|**client_id_issued_at**|	Optional | Time at which the client identifier was issued
+
+As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[RFC7591]**, additionally, the authorisation server MUST return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
+
+The Software Statement value MUST be returned unmodified. Client metadata elements used from the software statement MUST also be returned directly as top-level client metadata values in the registration response.
+
+Any additional claims MUST be ignored and not returned on completion of the request.
+
+
+### Registration Errors
+
+>
+Example Error Response
+
+```HTTP
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+```
+```json
+{
+ "error": "invalid_software_statement",
+ "error_description": "Duplicate registrations for a given software_id are not valid"
+}
+```
+
+When an error condition occurs during a registration request, the response MUST be returned to the Accredited Data Recipient conforming to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[RFC7591]**.
+
+Duplicate registrations are not permitted so attempts to create a registration which already exists MUST return an HTTP 400 error.
+
+Registration error responses schemas are defined in the [API Documentation](#dcr-api).
+
+For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[RFC7591]**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards should be used.
+
+
+### Client Registration Management
+
+
+#### Registration API Endpoints
+Data Holder Authorisation Servers must expose the following Client Registration Management endpoints
+
+| HTTP Verb | Auth Server Support | TLS-MA | HoK | Grant Type | Access Token Scope
+|--------------|-------|-------|-------|------|-----------------------------------------------------------------------------
+|**POST /register**|	Required | <i class="icon-check"></i> |  | N/A | None
+|**GET /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
+|**PUT /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
+|**DELETE /register/{clientID}**|	Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
+
+<p class="content-flagged for-removal">Please refer to [API documentation](#dcr-api) for further examples</p>
+
+* During registration management requests, Data Holders MUST validate the scope of access tokens provided matches `cdr:registration`
+* Data Holders advertise their registration endpoints to Data Recipients in their [OIDD]
+
+#### PUT Operations
+Registrations MUST only be updated via Registration PUT operations.
+
+PUT operations are to be used for one of two scenarios:
+
+1. The client has updated their registration details on the CDR Register and updates this information to the data holder brands
+2. A new version of the SSA has been released and the client updates this information to the data holder brands
+
+* POST and PUT operations MUST accept the SSA payload.
+* Any fields the Data Holder does not support MUST be ignored. However, registration responses must conform to the [DCR API](#dcr-api) specification.
+
+### Authorisation Server
+
+
+```
+Non-Normative Example for access token retrieval
+
+HTTP/1.1 POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+  scope=cdr%3Aregistration&
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+### Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "12456"
+}
+{
+  "iss": "12345",
+  "sub": "12345",
+  "iat": 1516239022,
+  "exp": 1516239322,
+  "aud": "https://www.holder.com.au/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+
+```
+
+#### Token Endpoint Authentication
+The Accredited Data Recipient MUST use the `private_key_jwt client` authentication method with the `client_credentials` grant to authenticate with the Data Holder token endpoint
+
+#### Access Token Separation of Duties
+Access tokens issued for consuming CDR Data should not be used for client registration maintenance and vice-versa
+
+ADRs should ensure they only use access tokens with the scope `cdr:registration` for client registration maintenance tasks and [CDR Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes) for consuming CDR data
+
+
+#### Registration Transaction Security
+DCR API endpoints will conform to the same transaction security requirements as Data Holder Resource endpoints
+</br>Please refer to the [Consumer Data Standards Transaction Security](https://consumerdatastandardsaustralia.github.io/standards/#transaction-security) for Transaction Security details
+
+
+### Registration Flows
+The following sequence diagrams outline the responsibilities for each party during the dynamic client registration processes.
+
+#### Create Registration
+
+<img class=medium-image src="images/registration/CreateRegistration1.png" ></img>
+
+###Modify Registration
+
+<img class=medium-image src="images/registration/ModifyRegistration1.png" ></img>
+
+Software Product Configuration is a manual process performed via the CDR Participant Portal. Information on this process will be provided during onboarding
+
+Registration request details are described at: [registration-request-using-jwt](#registration-request-using-jwt)

@@ -12,6 +12,14 @@
     {
       "title": "Admin APIs",
       "tags": ["Admin"]
+    },
+    {
+      "title": "Client Registration APIs",
+      "tags": ["Client Registration"]
+    },
+    {
+      "title": "Register APIs",
+      "tags": ["Register"]
     }
-  ]
+  }
 }

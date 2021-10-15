@@ -1,29 +1,26 @@
 
 ## Certificate Management
 
-### Issued by ACCC CA for Data Holders
+### Issued by the Register for Data Holders
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
-|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints | It will be up to the DH on how these endpoints are</br>segregated. They may all be on the one domain</br>(so only one certificate required) or could be separated
+|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints | It will be up to the DH on how these endpoints are</br>segregated. They may all be on the one domain</br>(so only one certificate required) or could be separated.
 
 
-### Issued by ACCC CA for Accredited Data Recipients
+### Issued by the Register CA for Data Recipients
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 |**Client Certificate**| Secures the following:</br>- Consuming Register APIs</br>- Consuming Data Holder APIs
-|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) </br> with an ACCC CA issued certificate or a certificate </br>issued by a public CA
-
-[CDR Arrangement Management Endpoint](https://consumerdatastandardsaustralia.github.io/standards/#end-points) is a requirement from **November 2020**
-
+|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) </br> with an the Register CA issued certificate or a certificate </br>issued by a public CA.
 
 ### CDR Certificate Authority
-[DigiCert](https://www.digicert.com) acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC in its capacity as the CDR Registrar
+[DigiCert](https://www.digicert.com) acts as the certificate authority that issues and manages certificates to CDR participants as directed by the the Register in its capacity as the CDR Registrar.
 
 
 ### Certificate Trust Model
-The CDR utilises a private certificate trust chain for all ACCC CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [CDR Register](#consumer-data-right-cdr-register-apis).
+The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#consumer-data-right-cdr-register-apis).
 
-This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments
+This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.
 
 |||
 |---|---|
@@ -34,7 +31,7 @@ This trust chain encompasses a set of root and intermediate CAs issued for the t
 
 
 ### Certificate Signing Request Profile
-When requesting ACCC CA certificates, certificate signing requests will need to be provided, conforming to the following profile:
+When requesting the Register CA certificates, certificate signing requests will need to be provided, conforming to the following profile:
 
 CSR Field | Server | Client
 -----------|------------------------------------------|------------------------------
@@ -47,32 +44,31 @@ CSR Field | Server | Client
 |**Key Algorithm**| RSA | RSA
 |**Key Size**| 2048 | 2048
 
-Please refer to the [onboarding guide](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0/on-boarding-guide) for further information on certificate issuance
+Please refer to the [Register onboarding guide](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0/on-boarding-guide) for further information on certificate issuance.
 
 ### Certificate Usage
-Further details on ACCC CA issued certificates can be found in the [ACCC Certificate Practice Statement V1.0](https://www.cdr.gov.au/sites/default/files/2020-12/CDR%20-%20ACCC%20Certification%20practice%20statement.pdf)
+Further details on the Register CA issued certificates can be found in the [ACCC Certificate Practice Statement V1.0](https://www.cdr.gov.au/sites/default/files/2020-12/CDR%20-%20ACCC%20Certification%20practice%20statement.pdf).
 
 ### Certificate Validation
-The Certificate Practice Statement provides details for DigiCert's certificate validation requirements and a summary has been provided in the CDR Support Portal article: [Certificate Validation](https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation)
-
-To summarise, certificate validation must check:
+Certificate validation must check:
 
 **1. Checking for certificate validity**
 
-Verify private key signature is mathematically linked to the presented public key certificate, presented certificate identifies trusted User/Application and/or Service and certificate is both valid and not revoked
+Verify private key signature is mathematically linked to the presented public key certificate, presented certificate identifies trusted User/Application and/or Service and certificate is both valid and not revoked.
 
 **2. Issuer‐to‐subject name chaining**
 
-Signatures from Issuing CA’s and associated CA public key certificates are trusted, valid and not revoked
+Signatures from Issuing CA’s and associated CA public key certificates are trusted, valid and not revoked.
 
 **3. Policy and key use constraints**
 
-Each certificate has the applicable and appropriate x.509 certificate extensions, e.g. CA and CRL signing, Digital Signing, Client and Server Authentication, etc
+Each certificate has the applicable and appropriate x.509 certificate extensions, e.g. CA and CRL signing, Digital Signing, Client and Server Authentication, etc.
 
 **4. Revocation Status**
 
 Status is checked through Certificate Revocation Lists (CRL) or Online Certificate Status Protocol (OCSP) responders, identified in each certificate in the chain.
 
+The Certificate Practice Statement provides details for DigiCert's certificate validation requirements and a summary has been provided in the CDR Support Portal article: [Certificate Validation](https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation).
 
 ### OCSP stapling
-The use of OCSP Stapling within the CDR ecosystem is not currently recommended.
+The use of OCSP Stapling within the CDR ecosystem is not recommended.

@@ -30,9 +30,6 @@ A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](http
 For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.
 
 ### Register
-<aside class="warning">
-NOTE: This section is reflective of the positioning of the Register in the CDR Rules Exposure Draft
-</aside>
 
 The Register is a central point of discovery for both Data Holders and Data
 Recipients. Data Holders and Data Recipients must be created as entities in the Register in order for them to participate as members of the CDR Federation.  The functionality of the Register will include but will not be limited to:

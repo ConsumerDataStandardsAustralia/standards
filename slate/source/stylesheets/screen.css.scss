@@ -685,3 +685,47 @@ html, body {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+
+.content-flagged:before {
+display: block;
+font-weight: bold;
+font-size: 0.8;
+color: white;
+}
+
+.for-removal:before {
+content: 'REMOVE? >>>';
+}
+
+.for-removal.end:before {
+content: '<<< END REMOVE?';
+}
+
+.for-removal {
+  background-color: rgb(255, 117, 117);
+}
+
+.for-guidance:before {
+  content: 'GUIDANCE? >>>';
+}
+.for-guidance.end:before {
+content: '<<< END GUIDANCE?';
+}
+
+
+.for-guidance {
+  background-color: rgb(245, 122, 81);
+}
+
+.for-discussion:before {
+  content: 'DISCUSS? >>>';
+}
+.for-discussion.end:before {
+content: '<<< END DISCUSS?';
+}
+
+
+.for-discussion {
+  background-color: rgb(168, 81, 245);
+}

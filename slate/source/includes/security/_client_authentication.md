@@ -242,15 +242,18 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 * Refresh tokens will not be provided for grant_type `client_credentials`
 * `client_id`, `iss` and `sub` claims MUST be set to the ID of the calling client `Data Recipient Brand ID` OR `Software Product ID` issued by the CDR Register
 
-
+<p class="content-flagged for-removal"/>
 ### Identifiers
 `client_id`, `sub` and where appropriate `iss`, are expected to contain the unique identifier for the client.<br>
+
 The following client identifiers will be used:
 
-| Client | Scenario | Identifier |
-|-----------|------------------|----------------------------------------------------------------------------|
-|**Software Product**| Calls to Data Holder Brand Authenticated APIs | `Client ID` as issued by the target Data Holder Brand
-|**Data Recipient Brand / Software Product**| Calls to [CDR Register Authenticated APIs](#consumer-data-right-cdr-register-apis) | `Data Recipient Brand ID` or `Software Product ID` as issued by CDR Register
-|**Data Holder Brand**|	Calls to Data Recipient [Revocation](https://consumerdatastandardsaustralia.github.io/standards/#end-points) and [CDR Arrangement Management](https://consumerdatastandardsaustralia.github.io/standards/#end-points) APIs | `Data Holder Brand ID` as issued by CDR Register
+Client | Scenario | Identifier
+:-- | :-- | :--
+**Software Product** | Calls to Data Holder Brand Authenticated APIs | `Client ID` as issued by the target Data Holder Brand<
+**Data Recipient Brand / Software Product** | Calls to [CDR Register Authenticated APIs](#consumer-data-right-cdr-register-apis) | `Data Recipient Brand ID` or `Software Product ID` as issued by CDR Register
+**Data Holder Brand** | Calls to Data Recipient [Revocation](https://consumerdatastandardsaustralia.github.io/standards/#end-points) and [CDR Arrangement Management APIs](https://consumerdatastandardsaustralia.github.io/standards/#end-points) | `Data Holder Brand ID` as issued by CDR Register
 
-* _`Data Recipient Brand ID` as a client identifier will be deprecated in a future version of the CDR Register design and is currently retained for backwards compatibility_
+*_`Data Recipient Brand ID` as a client identifier will be deprecated in a future version of the CDR Register design and is currently retained for backwards compatibility_
+
+<p class="content-flagged for-removal end"/>

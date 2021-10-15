@@ -13,18 +13,19 @@ toc_footers:
   - <a href='./includes/swagger/cds_full.json'>Swagger (JSON)</a>
   - <a href='./includes/swagger/cds_full.yaml'>Swagger (YAML)</a>
   - <a href='./draft/energy-draft.html'>Draft Energy Standards</a>
-  - <a href='./index2.html'>Draft Register Standards</a>
 
 includes:
   - intro
   - standards
-  - security
   - cx
   - cx_standards
+  - security2
+  - dcr_apis
   - cds_full
   - banking/product_categories
   - banking/product_components
   - admin
+  - register
   - scopes
   - nfrs
   - known-issues
