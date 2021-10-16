@@ -326,7 +326,7 @@ This operation may only be called by the CDR Register
 
 ## Schemas
 
-<h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
+<h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <a id="schemarequestmetadataupdate"></a>
 
@@ -354,7 +354,7 @@ This operation may only be called by the CDR Register
 |---|---|
 |action|REFRESH|
 
-<h2 id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
 
 <a id="schemaresponsemetricslistv2"></a>
 
@@ -507,7 +507,7 @@ This operation may only be called by the CDR Register
 |links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
-<h2 id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
+<h2 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
 
 <a id="schemaavailabilitymetrics"></a>
 
@@ -530,7 +530,7 @@ This operation may only be called by the CDR Register
 |currentMonth|number|conditional|none|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%.|
 |previousMonths|[number]|conditional|none|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.|
 
-<h2 id="tocSperformancemetrics">PerformanceMetrics</h2>
+<h2 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h2>
 
 <a id="schemaperformancemetrics"></a>
 
@@ -553,7 +553,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%|
 |previousDays|[number]|conditional|none|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%|
 
-<h2 id="tocSinvocationmetrics">InvocationMetrics</h2>
+<h2 class="schema-toc" id="tocSinvocationmetrics">InvocationMetrics</h2>
 
 <a id="schemainvocationmetrics"></a>
 
@@ -615,7 +615,7 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSaverageresponsemetrics">AverageResponseMetrics</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetrics">AverageResponseMetrics</h2>
 
 <a id="schemaaverageresponsemetrics"></a>
 
@@ -677,7 +677,7 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h2 id="tocSsessioncountmetrics">SessionCountMetrics</h2>
+<h2 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h2>
 
 <a id="schemasessioncountmetrics"></a>
 
@@ -700,7 +700,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Session count for current day|
 |previousDays|[number]|conditional|none|Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
+<h2 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
 
 <a id="schemaaveragetpsmetrics"></a>
 
@@ -723,7 +723,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Average TPS for current day|
 |previousDays|[number]|conditional|none|Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
+<h2 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
 
 <a id="schemapeaktpsmetrics"></a>
 
@@ -746,7 +746,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Peak TPS for current day|
 |previousDays|[number]|conditional|none|Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSerrormetrics">ErrorMetrics</h2>
+<h2 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h2>
 
 <a id="schemaerrormetrics"></a>
 
@@ -769,7 +769,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Number of errors for current day|
 |previousDays|[number]|conditional|none|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
+<h2 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
 
 <a id="schemarejectionmetricsv2"></a>
 
@@ -804,7 +804,7 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|Number of calls rejected for current day|
 |» previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <a id="schemalinks"></a>
 
@@ -821,7 +821,7 @@ This operation may only be called by the CDR Register
 |---|---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
 
-<h2 id="tocSmeta">Meta</h2>
+<h2 class="schema-toc" id="tocSmeta">Meta</h2>
 
 <a id="schemameta"></a>
 
