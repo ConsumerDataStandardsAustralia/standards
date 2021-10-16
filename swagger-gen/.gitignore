@@ -1,1 +1,4 @@
 node_modules
+create-markdown-log.txt
+diff*.txt
+*-e.md
