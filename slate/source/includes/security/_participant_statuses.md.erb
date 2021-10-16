@@ -1,8 +1,8 @@
-# Participant Statuses
+## Participant Statuses
 
 
 
-## Data Recipient and Software Product Statuses
+### Data Recipient and Software Product Statuses
 
 > Data Recipient Statuses
 <img src="images/ADRStateMachine.png" ></img>
@@ -37,7 +37,7 @@ The Register will notify all Data Holders of the above changes in  Data Recipien
 
 
 
-### Status Mapping
+#### Status Mapping
 When the CDR Registrar changes the accreditation status for a Data Recipient for any status other than active, the associated Software Product statuses will be changed accordingly.
 
 The cascading status mappings are as follows:
@@ -49,7 +49,7 @@ The cascading status mappings are as follows:
 |Surrendered|Removed|
 
 
-### Collection Arrangements
+#### Collection Arrangements
 The status of a Software Product, managed within a collection arrangement, is coupled to the accreditation status of both the principal and provider in this arrangement.
 
 To achieve this, cascade rules for Software Product statuses, as defined in [Status Mapping](#accredited-data-recipient-and-software-product-statuses), are defined for a collection arrangement as follows:
@@ -65,7 +65,7 @@ To achieve this, cascade rules for Software Product statuses, as defined in [Sta
 | Any |	Surrendered | Removed
 
 
-### Archiving Entities
+#### Archiving Entities
 In order to keep the Register APIs efficient and to minimise the amount of traffic, dormant entries will be identified and archived automatically within the CDR Register.
 
 Dormant entries are defined as those records that have reached and maintained an __end state__ in the CDR Register for the past **2 years**.
@@ -86,7 +86,7 @@ When an entry is archived on the Register, the entry will no longer appear in th
 
 
 
-## Data Holder Responsibilities
+### Data Holder Responsibilities
 </br>The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient's accreditation status. Therefore, both the ADR and Software Product statuses should be referenced, to determine the Data Holder's responsibilities for data disclosure, consent and registration management
 '
 
@@ -106,7 +106,7 @@ When an entry is archived on the Register, the entry will no longer appear in th
 * Invalidation of consents and cleanup of registrations are bulk operations. It is reasonable to execute these as batch tasks performed overnight
 
 
-## Metadata Cache Management
+### Metadata Cache Management
 Data Holders must react to Data Recipient and associated Software Statuses changes within **5 minutes** of the change occurring on the CDR Register
 
 To achieve this, Data Holders should poll the [GetDataRecipientsStatus](#getdatarecipientsstatus), [GetSoftwareProductsStatus](#getsoftwareproductsstatus) and [GetDataRecipients](#getdatarecipients) APIs to retrieve the current statuses and cache these for use during requests for Consumer Data
@@ -116,7 +116,7 @@ Data Holders should choose a frequency of polling which ensures their systems ca
 
 Data Holders and Data Recipients must cache all other participant data they use and periodically update this cache using a slow poll. This ensures that changes to participant configuration propagates throughout the ecosystem in a predictable timeframe
 
-### Cache update periods
+#### Cache update periods
 The following are the recommended caching times for data retrieved from the Register APIs.
 
 | API | Type | Period |
@@ -128,14 +128,14 @@ The following are the recommended caching times for data retrieved from the Regi
 |**GetDataHolderBrands**| Private | 6 hours |
 
 
-## ETag Support
+### ETag Support
 All **public** APIs are hosted on a CDN supporting ETag cache validators. ETags can be utilised to detect whether the content has changed.
 
 Further information on the usage of `ETag` and the associated `If-None-Match` headers can be found at: [https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works](https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works)
 
 
 
-## Refusal To Disclose
+### Refusal To Disclose
 Under the CDR rules, Data Holders within the CDR ecosystem can refuse to disclose CDR data in response to valid requests from Accredited Data Recipients.
 
 See [CDR Rules Compliation 3](https://www.legislation.gov.au/Series/F2020L00094) Part 4 Division 4.2, Subdivision 4.2.4 Rule 4.7.

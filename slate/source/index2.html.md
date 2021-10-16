@@ -21,13 +21,13 @@ includes:
   - cx_standards
   - security2
   - dcr_apis
+  - register
+  - scopes
+  - nfrs
   - cds_full
   - banking/product_categories
   - banking/product_components
   - admin
-  - register
-  - scopes
-  - nfrs
   - known-issues
   - changelog
   - archives
