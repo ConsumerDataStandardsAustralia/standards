@@ -1,43 +1,28 @@
 ## Client Registration
 
 ### Dynamic Client Registration
-Data Recipients register with Data Holders according to [**[RFC7591]**](https://tools.ietf.org/html/rfc7591) to obtain client credentials used to retrieve consumer data on behalf of a consumer.
-
-<p class="content-flagged for-removal">
-<bold>Pre-Requisites:</bold> Prior to Client Registration, the registering Data Recipient must be accredited and the associated Software Product must be configured within the CDR Register
-</p>
-
+Data Recipients register with Data Holders according to **[DCR]** to obtain client credentials used to retrieve consumer data on behalf of a consumer.
 
 #### Software Statement Assertion (SSA)
 
-As per **[RFC7591]**, a Software Statement is defined in as:
-> A digitally signed JSON Web Token (JWT) **[RFC7519]** that asserts metadata values about the client software.
+As per **[DCR]**, a Software Statement is defined in as:
+> A digitally signed JSON Web Token (JWT) created in accordance with **[JWT]** that asserts metadata values about the client software.
 
 Such that:
 
-* The CDR Register issues Software Statements to *active* Data Recipients.
-* Software Statements are issued with an 10 minute expiry time.
-* As per **[FAPI-RW]**, SSAs are signed by the CDR Register using **PS256**.
-* CDR Register public keys are exposed on a dedicated JWKS URI endpoint.
-* The CDR Register JWKS is an unauthenticated endpoint, using TLS.
+* The CDR Register MUST issue Software Statements to *active* Data Recipients
+* The CDR Register MUST issue distinct Software Statements for each `Software Product ID`
+* Software Statements are issued with an 10 minute expiry time
+* As per **[FAPI-RW]**, SSAs are signed by the CDR Register using **PS256**
+* CDR Register public keys are exposed on a dedicated JWKS URI endpoint
+* The CDR Register JWKS is an unauthenticated endpoint, using TLS
+* Data Recipients MUST present a valid SSA when undertaking dynamic client registration
+* Data Holders MUST NOT register Data Recipients unless they present a verified SSA
 
-CDR Register endpoint details are provided to participants during the onboarding process.
-
-
-<p class="content-flagged for-guidance"></p>
-The trust relationship the authorization server has with the issuer of the software statement is to be used as an input to the evaluation of whether the registration request is accepted.
-
-A software statement is presented by Accredited Data Recipient’s Software Product to Data Holder’s authorisation server as part of a client registration request.
-
-An SSA will be issued for each <i>active</i> Software Product and is retrievable using the CDR Register <a href="getsoftwarestatementassertion-ssa">GetSoftwareStatementAssertion API</a>.
-<p class="content-flagged for-guidance end"></p>
-
-<p class="content-flagged for-removal"></p>
-#### Namespacing
-The design will conform to **[RFC7591]** and will not use the software namespace convention as used in the Open Banking UK Dynamic Registration Standard
-<p class="content-flagged for-guidance end"></p>
+Refer to the [Register APIs](#register-apis) section for the endpoint definitions that will be used to retrieve and validate SSAs.
 
 #### SSA Definition
+
 
 >
 Example SSA:
@@ -118,24 +103,33 @@ Decoded SSA
 
 ```
 
+The SSA will conform to the requirements of **[DCR]** with the following clarifications:
 
-<%= partial "includes/register/partials/dcr/_dcr_20210701.md.erb" %>
+| Client Metadata | Required | Modifiable | Description
+|--------------|-------|-------|----------------------------------------------------------------------------------------
+|**iss**|	Required | | Contains the `iss` (issuer) claim denoting the party attesting to the claims in the software statement</br>**value: "cdr-register"**
+|**iat**|	Required | | The time at which the request was issued by the CDR Register, expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
+|**exp**|	Required | | The time at which the SSA expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
+|**jti**|	Required | | Unique identifier for the JWT, used to prevent reuse of the SSA.
+|**legal_entity_id**|	Optional | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity
+|**legal_entity_name**|	Optional | | Human-readable string name of the Accredited Data Recipient Legal Entity
+|**org_id**|	Required | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand
+|**org_name**|	Required | <i class="icon-check"></i> | Human-readable string name of the Accredited Data Recipient Brand to be presented to the end user during authorization
+|**client_name**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product to be presented to the end-user during authorization
+|**client_description**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product description to be presented to the end user during authorization
+|**client_uri**|	Required | <i class="icon-check"></i> | URL string of a web page providing information about the client
+|**redirect_uris**|	Required | <i class="icon-check"></i> | Array of redirection URI strings for use in redirect-based flows
+|**sector_identifier_uri**| Optional | <i class="icon-check"></i>  | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**
+|**logo_uri**|	Required | <i class="icon-check"></i> | URL string that references a logo for the client software product. The server SHOULD display this image to the end-user during approval
+|**tos_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product
+|**policy_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product
+|**jwks_uri**|	Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[RFC7517]** document, which contains the client's public keys
+|**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
+|**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)
+|**software_id**|	Required | | String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` should be used as the primary external identifier for the client to prevent duplicate client registrations
+|**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used with be **“data-recipient-software-product”**
+|**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#client-registration-management)</br></br>As per the [CDS Scopes and Claims](https://consumerdatastandardsaustralia.github.io/standards/#scopes-and-claims), **openid** and **profile** are included in the SSA
 
-
-#### Sector Identifiers
-
-<p class="content-flagged for-guidance"></p>
-As per the [Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/#identifiers-and-subject-types), the Pairwise Pseudonymous Identifier (PPID) as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[OIDC]**, will use the host component of the `redirect_uris` as the sector identifier. This introduces a constraint that the `redirect_uris` must all contain the same hostname.
-
-The CDR Register registration design will introduce support for the `sector_identifier_uri` in the **July 2021** release. Adoption will require data holder implementation and updates to Software Product registrations to update the field `sector_identifier_uri` with all data holder brands.
-
-For more information on `sector_identifier_uri` impacts to the ecosystem, please refer the the CDR Support article [Data Holder sector_identifier_uri Support](https://cdr-support.zendesk.com/hc/en-us/articles/360004324176-Data-Holder-sector-identifier-uri-Support)
-<p class="content-flagged for-guidance end"></p>
-
-<p class="content-flagged for-guidance"></p>
-###Logos
-Logos will be incorporated within the SSA to ensure there is consistency between the logos published on the Public Register and those passed to Data Holders as part of Registration.
-<p class="content-flagged for-guidance end"></p>
 
 ### Registration Request using JWT
 
@@ -212,7 +206,7 @@ The client registration request MUST contain the following claims in the JWT pay
 |**software_statement**|	Required | Software statement assertion issued by the CDR Register
 
 #### ID Token Algorithm Selection Considerations
-The CDR Register currently supports the following ID Token algorithms::
+Participants MUST support, at a minimum, the following ID Token algorithms:
 
 | Claim | Values |
 |--------------|---------
@@ -221,13 +215,11 @@ The CDR Register currently supports the following ID Token algorithms::
 
 
 ### Registration Validation
-Validation and use of the JWT and the claims described above MUST be performed in accordance with [JWT](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+Validation and use of the JWT and the claims described above MUST be performed in accordance with **[JWT]**.
 
-SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register [GetJWKS endpoint](#getjwks).
+SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register JWKS endpoint.
 
-Validation of the SSA `software_id` and the associated software status is not required as the SSA will have been issued and signed by the CDR Register.
-
-Each `software_id` issued by the CDR Register should only be registered on each Data Holder Brand IDP once. Multiple registrations per `software_id` are NOT permitted.
+Data Holders MUST NOT allow multiple active registrations for the same `software_id`.
 
 
 ### Registration Response
@@ -290,14 +282,14 @@ Content-Type: application/json
 }
 ```
 
-On successful registration, the response MUST be returned to the  Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[RFC7591]**.
+On successful registration, the response MUST be returned to the  Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[DCR]**.
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
 |**client_id**|	Required | Contains the dynamically generated identifier for the ADR Software Product issued by the Data Holder
 |**client_id_issued_at**|	Optional | Time at which the client identifier was issued
 
-As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[RFC7591]**, additionally, the authorisation server MUST return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
+As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[DCR]**, additionally, the authorisation server MUST return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
 
 The Software Statement value MUST be returned unmodified. Client metadata elements used from the software statement MUST also be returned directly as top-level client metadata values in the registration response.
 
@@ -320,17 +312,18 @@ Content-Type: application/json
 }
 ```
 
-When an error condition occurs during a registration request, the response MUST be returned to the Accredited Data Recipient conforming to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[RFC7591]**.
+When an error condition occurs during a registration request, the response MUST be returned to the Accredited Data Recipient conforming to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[DCR]**.
 
 Duplicate registrations are not permitted so attempts to create a registration which already exists MUST return an HTTP 400 error.
 
-Registration error responses schemas are defined in the [API Documentation](#dcr-api).
+Registration error responses schemas are defined in the [DCR APIs](#dcr-apis) section.
 
-For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[RFC7591]**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards should be used.
+For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[DCR]**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards should be used.
 
 
 ### Client Registration Management
 
+<p class="content-flagged for-removal"/> I think this should be moved to the security endpoints section as individual entries to align</p>
 
 #### Registration API Endpoints
 Data Holder Authorisation Servers must expose the following Client Registration Management endpoints
@@ -342,11 +335,17 @@ Data Holder Authorisation Servers must expose the following Client Registration 
 |**PUT /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
 |**DELETE /register/{clientID}**|	Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
 
-<p class="content-flagged for-removal">Please refer to [API documentation](#dcr-api) for further examples</p>
+<p class="content-flagged for-removal end"/></p>
 
+<p class="content-flagged for-removal"/> This should be moved to the Authorisation Scopes section as a valid scope.  It's a shame the scope doesn't align with our overall scope structure</p>
 * During registration management requests, Data Holders MUST validate the scope of access tokens provided matches `cdr:registration`
-* Data Holders advertise their registration endpoints to Data Recipients in their [OIDD]
+<p class="content-flagged for-removal end"/></p>
 
+<p class="content-flagged for-removal"/> Updated the OIDD section with this statement</p>
+* Data Holders advertise their registration endpoints to Data Recipients in their [OIDD]
+<p class="content-flagged for-removal end"/></p>
+
+<p class="content-flagged for-removal"/>Should also be added to the specific endpoint entries in security endpoints</p>
 #### PUT Operations
 Registrations MUST only be updated via Registration PUT operations.
 
@@ -357,6 +356,7 @@ PUT operations are to be used for one of two scenarios:
 
 * POST and PUT operations MUST accept the SSA payload.
 * Any fields the Data Holder does not support MUST be ignored. However, registration responses must conform to the [DCR API](#dcr-api) specification.
+<p class="content-flagged for-removal end"/></p>
 
 ### Authorisation Server
 
@@ -389,20 +389,20 @@ grant_type=client_credentials&
 
 ```
 
+<p class="content-flagged for-removal"/>I think this statement is redundant</p>
 #### Token Endpoint Authentication
 The Accredited Data Recipient MUST use the `private_key_jwt client` authentication method with the `client_credentials` grant to authenticate with the Data Holder token endpoint
+<p class="content-flagged for-removal end"/></p>
 
+<p class="content-flagged for-removal"/>We should add these statements (or equivalent) to the authorisation scope section.  We may want to separate between scopes that work with the refresh_token grant vs client_credential grant</p>
 #### Access Token Separation of Duties
 Access tokens issued for consuming CDR Data should not be used for client registration maintenance and vice-versa
 
 ADRs should ensure they only use access tokens with the scope `cdr:registration` for client registration maintenance tasks and [CDR Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes) for consuming CDR data
+<p class="content-flagged for-removal end"/></p>
 
 
-#### Registration Transaction Security
-DCR API endpoints will conform to the same transaction security requirements as Data Holder Resource endpoints
-</br>Please refer to the [Consumer Data Standards Transaction Security](https://consumerdatastandardsaustralia.github.io/standards/#transaction-security) for Transaction Security details
-
-
+<p class="content-flagged for-guidance"/></p>
 ### Registration Flows
 The following sequence diagrams outline the responsibilities for each party during the dynamic client registration processes.
 
@@ -412,8 +412,9 @@ The following sequence diagrams outline the responsibilities for each party duri
 
 ###Modify Registration
 
-<img class=medium-image src="images/registration/ModifyRegistration1.png" ></img>
+<img class=medium-image src="images/registration/ModifyRegistration1.png" >I think this should be guidance</img>
 
 Software Product Configuration is a manual process performed via the CDR Participant Portal. Information on this process will be provided during onboarding
 
 Registration request details are described at: [registration-request-using-jwt](#registration-request-using-jwt)
+<p class="content-flagged for-guidance end"/></p>
