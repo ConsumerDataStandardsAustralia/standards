@@ -37,7 +37,7 @@ echo "*** Generate cds_register.md"
 
 echo "*** Removing redundant Register header"
 {
-  #sed -i 'consumer-data-right-cdr-register-participant-discovery-apis-register' cds_register.md
+  sed -i '' -e '/consumer-data-right-cdr-register-participant-discovery-apis-register-apis/d' cds_register.md
   sed -i '' -e 's/# Schemas/## Schemas/g' cds_register.md
 } >> create-markdown-log.txt 2>&1
 

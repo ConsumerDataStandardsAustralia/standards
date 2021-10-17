@@ -1,6 +1,5 @@
 
 
-<h1 class="title-prefix" id="consumer-data-right-cdr-register-participant-discovery-apis-register-apis">Register APIs</h1>
 
 ## Get OpenId Provider Config
 
