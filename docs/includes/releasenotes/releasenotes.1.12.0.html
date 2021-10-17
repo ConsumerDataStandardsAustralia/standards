@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Consumer Data Standards - v1.11.1 Release Notes</title>
+    <title>Consumer Data Standards - v1.12.0 Release Notes</title>
     <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
 
     <style>
@@ -213,7 +213,7 @@
       <img src="../../images/logo.png" class="logo" alt="Logo" />
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#v1-11-1-release-notes" class="toc-h1 toc-link" data-title="V1.11.1 Release Notes">V1.11.1 Release Notes</a>
+            <a href="#v1-12-0-release-notes" class="toc-h1 toc-link" data-title="V1.12.0 Release Notes">V1.12.0 Release Notes</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
@@ -236,10 +236,8 @@
     </div>
     <div class="page-wrapper">
       <div class="content">
-        <h1 id='v1-11-1-release-notes'>V1.11.1 Release Notes</h1>
-<p>Release notes for version 1.11.1 of the <a href="../../">CDR Standards</a>.</p>
-
-<p>This release contains minor errata and documentation fixes.</p>
+        <h1 id='v1-12-0-release-notes'>V1.12.0 Release Notes</h1>
+<p>Release notes for version 1.12.0 of the <a href="../../">CDR Standards</a>.</p>
 <h2 id='high-level-standards'>High Level Standards</h2>
 <table><thead>
 <tr>
@@ -249,9 +247,24 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Fixed website link</td>
-<td>Fixed the link to the Consumer Data Standards website</td>
-<td>N/A</td>
+<td>Energy NFRs</td>
+<td>Addition of energy specific non-functional requirements determined in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/193">Decision 193</a></td>
+<td><a href="../../#non-functional-requirements">Non-functional Requirements</a></td>
+</tr>
+<tr>
+<td>Secondary Holder</td>
+<td>Definition of a Secondary Data Holder to support the energy sector</td>
+<td><a href="../../#cdr-federation">CDR Federation</a></td>
+</tr>
+<tr>
+<td>Register Aside</td>
+<td>Removed the redundant aside referring to the CDR Exposure Draft Rules in the definition of Register</td>
+<td><a href="../../#cdr-federation">CDR Federation</a></td>
+</tr>
+<tr>
+<td>Binding NFRs</td>
+<td>Removal of the statement for non-functional requirements indicating that these aspects of the standards are not yet binding</td>
+<td><a href="../../#non-functional-requirements">Non-functional Requirements</a></td>
 </tr>
 </tbody></table>
 <h2 id='api-end-points'>API End Points</h2>
@@ -263,64 +276,15 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Get Customer / Get Customer Detail</td>
-<td>Documentation was updated to clarify that given names which cannot be separated can be represented as a single string in the <code>firstName</code> field</td>
-<td><a href="../../#get-customer">Get Customer</a></td>
-</tr>
-<tr>
-<td>Base path terminology</td>
-<td>Consistent use of terminology for holder path, base path, and resource path</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>Get Transactions For Account</td>
-<td>Documentation fix to ensure quote marks render correctly in YAML</td>
-<td><a href="../../#get-transactions-for-account">Get Transactions For Account</a></td>
-</tr>
-<tr>
-<td>Lending Products Categories</td>
-<td>Fixed documentation where <code>TRADE FINANCE</code> is missing an underscore and it should be <code>TRADE_FINANCE</code></td>
-<td><a href="../../#product-categories">Product Categories</a></td>
+<td>Metrics v3</td>
+<td>Introduction of v3 of the metrics API to accommodate reporting of the performance of secondary requests</td>
+<td><a href="../../#get-metrics">Get Metrics API</a></td>
 </tr>
 </tbody></table>
 <h2 id='information-security-profile'>Information Security Profile</h2>
-<table><thead>
-<tr>
-<th>Change</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorisation Scopes</td>
-<td>Clarified the documentation for the &quot;Basic Bank Account Data&quot; scope that account numbers are not included with the basic scope</td>
-<td><a href="../../#authorisation-scopes">Authorisation Scopes</a></td>
-</tr>
-<tr>
-<td>Token Revocation</td>
-<td>Updated token revocation endpoint documentation to remove legacy references to Data Recipient support for a Token Revocation endpoint. This has been replaced by the CDR Arrangement Revocation end point.</td>
-<td><a href="../../#token-revocation-end-point">Token Revocation</a></td>
-</tr>
-<tr>
-<td>Normative references</td>
-<td>Updated the FAPI normative references to correctly point to the Draft 06 version specified in the data standards</td>
-<td><a href="../../#normative-references">Normative References</a></td>
-</tr>
-</tbody></table>
+<p>No changes</p>
 <h2 id='consumer-experience'>Consumer Experience</h2>
-<table><thead>
-<tr>
-<th>Change</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Documentation fixes for Accessibility section</td>
-<td>Removed duplicate sentence in &quot;Content distinction&quot; and fixed the WCAG hyperlink</td>
-<td><a href="../../#accessibility-standards">Accessibility</a></td>
-</tr>
-</tbody></table>
+<p>No changes</p>
 
       </div>
     </div>

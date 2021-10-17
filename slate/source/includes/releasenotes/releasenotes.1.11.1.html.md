@@ -12,7 +12,7 @@ search: false
 # V1.11.1 Release Notes
 Release notes for version 1.11.1 of the [CDR Standards](../../index.html).
 
-This release minor errata and documentation fixes.
+This release contains minor errata and documentation fixes.
 
 ## High Level Standards
 

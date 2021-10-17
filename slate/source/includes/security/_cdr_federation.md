@@ -20,6 +20,11 @@ A Data Holder assumes the role of an **[OIDC]** [OpenID Provider](https://openid
 
 For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
 
+### Secondary Data Holder
+A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.
+
+A request for data from a Secondary Data Holder by a standard Data Holder is known as a *Secondary Responsibility Request*.
+
 ### Data Recipient
 A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
 

@@ -774,6 +774,9 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+        <aside class="warning">
+        This is an archived version of the Consumer Data Right Standards and is retained for reference only.
+        </aside>
         <h1 id='introduction'>Introduction</h1>
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
 
@@ -1029,28 +1032,28 @@ always align to current consumer preferences.</p>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
 
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts  
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar  
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2  
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage  
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply  
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
+2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
+5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
 </code></pre>
 <blockquote>
 <p>The holder path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. www.bank.com.au/api  
-2. www.bank.com.au/api   
-3. www.bank.com.au/complex/uri/taxonomy  
-4. www.energyretailer.com.au/api  
+<pre class="highlight plaintext"><code>1. www.bank.com.au/api
+2. www.bank.com.au/api
+3. www.bank.com.au/complex/uri/taxonomy
+4. www.energyretailer.com.au/api
 5. www.energyretailer.com.au/api
 </code></pre>
 <blockquote>
 <p>The base path for each example is:  </p>
 </blockquote>
-<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking  
-2. https://www.bank.com.au/api/cds-au/v1/banking   
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking  
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy  
+<pre class="highlight plaintext"><code>1. https://www.bank.com.au/api/cds-au/v1/banking
+2. https://www.bank.com.au/api/cds-au/v1/banking
+3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
+4. https://www.energyretailer.com.au/api/cds-au/v1/energy
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 </code></pre>
 <blockquote>
@@ -2329,7 +2332,7 @@ Content-Type: application/json
 
 { "errors": [
   {
-    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",    
+    "code": "urn:au-cds:error:cdr-all:Header/UnsupportedVersion",
     "title": "Unsupported Version",
     "detail": "'x-v' **MUST** be greater than or equal to '2'"
   }

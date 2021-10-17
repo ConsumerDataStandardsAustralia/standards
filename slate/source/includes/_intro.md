@@ -40,6 +40,8 @@ The table below highlights these areas of the standards.
 | [Standard Error Codes](#error-codes) | Data Recipients and Data Holders MUST implement the standard error codes from February 1st 2022 | February 1st 2022 |
 | [Standard Error Codes](#error-codes) | Data Holders MAY retire application-specific error codes in favour of standard error codes from November 1st 2022 | November 1st 2022 |
 | [CX Standards: Unavailable Accounts](#authorisation-standards)|Data Holders **MAY** implement the following data standards effective from 1 November 2021:<ul><li>**Unavailable Accounts:** No accounts can be shown</li><li>**Unavailable Accounts:** Authorisation not permitted</li><li>**Unavailable Accounts:** Request sharing rights</li></ul>|November 1st 2021|
+|[Get Metrics V3](#get-metrics)|Version 3 of this end point must be made available by affected data holders by October 1st 2022|October 1st 2022|
+|[Get Metrics V2](#get-metrics)|Data holders may obsolete version 2 of this end point from December 5th 2022. Data Holders in the energy sector MAY go live with only Get Metrics v3 support. The CDR Register must upgrade their implementation to use version 3 by this time|December 5th 2022|
 | [CX Standards: Withdrawals](#withdrawal-standards)|Data Holders **MUST** implement the following data standards effective from 1 February 2022:<ul><li>**Withdrawal:** Secondary User Instruction</li></ul>|February 1st 2022|
 
 ## Endpoint Version Schedule
