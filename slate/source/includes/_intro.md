@@ -10,6 +10,15 @@ The standards are required to be published. The obligations on CDR participants 
 - where the rules require compliance with the standards, non-compliance with the standards may constitute a breach of the rules.
 - where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.
 
+## Version
+
+These standards represent version 1.13.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+
+## Interpretation
+
+Note that, in these standards, the key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in [RFC2119](http://tools.ietf.org/html/rfc2119).
+
+
 ## Future Dated Obligations
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date.
