@@ -62,7 +62,7 @@
 <td>body</td>
 <td><a href="#schemapostdatarecipientregistrationclientregistrationrequest">PostDataRecipientRegistrationClientregistrationrequest</a></td>
 <td>mandatory</td>
-<td>The registration request JWT, as defined in <a href="https://cdr-register.github.io/register/#dynamic-client-registration">Dynamic Client Registration</a>, to be used to register with a Data Holder</td>
+<td>The registration request JWT to be used to register with a Data Holder</td>
 </tr>
 </tbody></table>
 
@@ -302,8 +302,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 <h2 id='update-data-recipient-registration'>Update Data Recipient Registration</h2>
 <p><a id="opIdPutDataRecipientRegistration"></a></p>
@@ -385,7 +386,7 @@ This operation does not require authentication
 <td>body</td>
 <td><a href="#schemapostdatarecipientregistrationclientregistrationrequest">PostDataRecipientRegistrationClientregistrationrequest</a></td>
 <td>mandatory</td>
-<td>The registration request JWT, as defined in <a href="https://cdr-register.github.io/register/#dynamic-client-registration">Dynamic Client Registration</a>, to be used to register with a Data Holder</td>
+<td>The registration request JWT to be used to register with a Data Holder</td>
 </tr>
 </tbody></table>
 
@@ -488,8 +489,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 <h2 id='delete-data-recipient-oauth-client-registration'>Delete Data Recipient oAuth Client Registration</h2>
 <p><a id="opIdDeleteDataRecipientRegistration"></a></p>
@@ -615,8 +617,9 @@ Authorization: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 <h2 id='schemas'>Schemas</h2>
 <h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
@@ -789,7 +792,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Data Recipient Endpoints</a></td>
+<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_method</td>
@@ -859,7 +862,7 @@ This operation does not require authentication
 <td>string(JWT)</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The Software Statement Assertion, as defined in <a href="https://cdr-register.github.io/register/#dynamic-client-registration">Dynamic Client Registration</a></td>
+<td>The Software Statement Assertion, as defined in CDR standards</td>
 </tr>
 <tr>
 <td>software_id</td>
@@ -1024,7 +1027,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>&#39;Contains the DH issuer value as described in the <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">OIDC Discovery Document</a>&#39;&#39;</td>
+<td>&#39;Contains the Data Holder issuer value as described in the OIDC Discovery Document</td>
 </tr>
 </tbody></table>
 

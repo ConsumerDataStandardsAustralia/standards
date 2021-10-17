@@ -317,7 +317,7 @@
                     <a href="#request-object" class="toc-h2 toc-link" data-title="Request Object">Request Object</a>
                   </li>
                   <li>
-                    <a href="#end-points" class="toc-h2 toc-link" data-title="End Points">End Points</a>
+                    <a href="#security-endpoints" class="toc-h2 toc-link" data-title="Security Endpoints">Security Endpoints</a>
                   </li>
                   <li>
                     <a href="#normative-references" class="toc-h2 toc-link" data-title="Normative References">Normative References</a>
@@ -726,6 +726,17 @@
           </li>
           <li>
               <a href="#authorisation-scopes" class="toc-h1 toc-link" data-title="Authorisation Scopes">Authorisation Scopes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#public" class="toc-h2 toc-link" data-title="Public">Public</a>
+                  </li>
+                  <li>
+                    <a href="#cdr-data" class="toc-h2 toc-link" data-title="CDR Data">CDR Data</a>
+                  </li>
+                  <li>
+                    <a href="#admin-amp-registration" class="toc-h2 toc-link" data-title="Admin &amp; Registration">Admin &amp; Registration</a>
+                  </li>
+              </ul>
           </li>
           <li>
               <a href="#non-functional-requirements" class="toc-h1 toc-link" data-title="Non-functional Requirements">Non-functional Requirements</a>
@@ -2819,7 +2830,7 @@ token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
 }
 </code></pre>
 
-<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the ID of the Data Holder obtained from the CDR Register.</p>
+<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the <code>Data Holder Brand ID</code> as issued by CDR Register.</p>
 
 <h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
 
@@ -2909,41 +2920,9 @@ grant_type=client_credentials&amp;
 <li><code>client_id</code>, <code>iss</code> and <code>sub</code> claims MUST be set to the ID of the calling client <code>Data Recipient Brand ID</code> OR <code>Software Product ID</code> issued by the CDR Register</li>
 </ul>
 
-<p><p class="content-flagged for-removal"/></p>
-
-<h3 id='identifiers'>Identifiers</h3>
-
-<p><code>client_id</code>, <code>sub</code> and where appropriate <code>iss</code>, are expected to contain the unique identifier for the client.<br></p>
-
-<p>The following client identifiers will be used:</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Client</th>
-<th style="text-align: left">Scenario</th>
-<th style="text-align: left">Identifier</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left"><strong>Software Product</strong></td>
-<td style="text-align: left">Calls to Data Holder Brand Authenticated APIs</td>
-<td style="text-align: left"><code>Client ID</code> as issued by the target Data Holder Brand&lt;</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Data Recipient Brand / Software Product</strong></td>
-<td style="text-align: left">Calls to <a href="#consumer-data-right-cdr-register-apis">CDR Register Authenticated APIs</a></td>
-<td style="text-align: left"><code>Data Recipient Brand ID</code> or <code>Software Product ID</code> as issued by CDR Register</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Data Holder Brand</strong></td>
-<td style="text-align: left">Calls to Data Recipient <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Revocation</a> and <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">CDR Arrangement Management APIs</a></td>
-<td style="text-align: left"><code>Data Holder Brand ID</code> as issued by CDR Register</td>
-</tr>
-</tbody></table>
-
-<p>*<em><code>Data Recipient Brand ID</code> as a client identifier will be deprecated in a future version of the CDR Register design and is currently retained for backwards compatibility</em></p>
-
-<p><p class="content-flagged for-removal end"/></p>
+<aside class="notice">
+Note that the values of <code>Data Recipient Brand ID</code> and <code>Software Product ID</code> as the same.  <code>Data Recipient Brand ID</code> as a client identifier will be deprecated in the future and is currently retained for backwards compatibility
+</aside>
 
 <h2 id='oidc-client-types'>OIDC Client Types</h2>
 
@@ -3061,6 +3040,8 @@ End Point and Token End Point.</p>
 <p>The identifier for an authenticated end-user (subject) MUST be passed in the <code>sub</code> claim of an <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">ID Token</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse">UserInfo response</a> as defined by <strong>[OIDC]</strong>.</p>
 
 <p>The Data Holder MUST generate the <code>sub</code> value as a Pairwise Pseudonymous Identifier (PPID) as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>. Furthermore, the identifier MUST be unique per customer as per the definition of customer in the CDR Federation section of this profile.</p>
+
+<p>The Data Holder MUST support the <code>sector_identifier_uri</code> in PPID generation according to <strong>[OIDC]</strong> if this field was supplied by the client during registration.</p>
 
 <p>It is RECOMMENDED that the <code>sub</code> value is generated as a version 4 Universally Unique
 Identifier (UUID) <strong>[RFC4122]</strong>.</p>
@@ -3436,11 +3417,7 @@ client_id=s6BhdRkqt3
 
 <p>If a Data Recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the Data Holder&#39;s <a href="#pushed-authorisation-end-point">PAR End Point</a>, the Data Holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
 
-<h2 id='end-points'>End Points</h2>
-
-<aside class="warning">
-NOTE: This section does not include any end points that will be defined by the design of the <a href='https://cdr-register.github.io/'>CDR Register</a>. End points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery are documented in the <a href='https://cdr-register.github.io/'>CDR Register</a> technical documentation.
-</aside>
+<h2 id='security-endpoints'>Security Endpoints</h2>
 
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
@@ -3999,6 +3976,74 @@ Host: data.holder.com.au
 <li>If the <code>cdr_arrangement_id</code> is not recognised by to the Data Holder it MUST be rejected</li>
 </ul>
 
+<h3 id='dynamic-client-registration-endpoints'>Dynamic Client Registration Endpoints</h3>
+
+<p>Data Holders MUST expose the following endpoints in accordance with <strong>[DCR]</strong>.</p>
+
+<p>For more details of these endpoints see the <a href="#dcr-apis">DCR Apis</a> section.</p>
+
+<p>For additional statements on the operation of these endpoint during client registration see the <a href="#client-registration">Client Registration</a> section.</p>
+
+<table><thead>
+<tr>
+<th>HTTP Verb</th>
+<th>Auth Server Support</th>
+<th>TLS-MA</th>
+<th>HoK</th>
+<th>Grant Type</th>
+<th>Access Token Scope</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>POST /register</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td></td>
+<td>N/A</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>GET /register/{clientID}</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials</td>
+<td>cdr:registration</td>
+</tr>
+<tr>
+<td><strong>PUT /register/{clientID}</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials</td>
+<td>cdr:registration</td>
+</tr>
+<tr>
+<td><strong>DELETE /register/{clientID}</strong></td>
+<td>Optional</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials</td>
+<td>cdr:registration</td>
+</tr>
+</tbody></table>
+
+<p>Additional statements regarding these endpoings:</p>
+
+<ul>
+<li>During registration management requests, Data Holders MUST validate that the scope of access tokens provided includes <code>cdr:registration</code></li>
+<li>Registration requests and responses must conform to the specification in the <a href="#dcr-apis">DCR APIs</a> section.</li>
+<li>Any fields the Data Holder does not support MUST be ignored without error.</li>
+<li>Registrations MUST only be updated via a PUT operation on the registration endpoint</li>
+<li>POST and PUT operations MUST accept the SSA payload</li>
+<li>Update (PUT) operations are to be used for one of two scenarios:
+
+<ol>
+<li>The client has updated their registration details on the CDR Register and updates this information to the data holder brands</li>
+<li>A new version of the SSA has been released and the client updates this information to the data holder brands</li>
+</ol></li>
+</ul>
+
 <h3 id='register-endpoints'>Register Endpoints</h3>
 
 <p>The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to faciliate issuance of access tokens to consume the protected Register APIs.</p>
@@ -4197,6 +4242,11 @@ Host: cdr.register
 <td><a id="PAR"></a><strong>[PAR]</strong></td>
 <td>OAuth 2.0 Pushed Authorization Requests: <a href="https://tools.ietf.org/html/draft-ietf-oauth-par-01">https://tools.ietf.org/html/draft-ietf-oauth-par-01</a></td>
 <td>Feb 2020</td>
+</tr>
+<tr>
+<td><a id="DCR"></a><strong>[DCR]</strong></td>
+<td>OAuth 2.0 Dynamic Client Registration Protocol: <a href="https://datatracker.ietf.org/doc/html/rfc7591">https://datatracker.ietf.org/doc/html/rfc7591</a></td>
+<td>Jul 2015</td>
 </tr>
 </tbody></table>
 
@@ -19376,7 +19426,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
 <p><a id="schemaresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -19766,7 +19816,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
+<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
 <p><a id="schemainvocationmetricsv2"></a></p>
 
@@ -19979,7 +20029,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
 <p><a id="schemaaverageresponsemetricsv2"></a></p>
 
@@ -20510,7 +20560,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
 
 <p><a id="schemasecondaryholdermetrics"></a></p>
 
@@ -20588,7 +20638,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <p><a id="schemalinks"></a></p>
 
@@ -20625,6 +20675,22 @@ This operation may only be called by the CDR Register
 <p><em>None</em></p></p>
 <h1 id='authorisation-scopes'>Authorisation Scopes</h1>
 <p>The following authorisation scopes have been defined for the standards.  Each API end point will specify which scopes are required to access the data available via that end point.</p>
+<h2 id='public'>Public</h2>
+<table><thead>
+<tr>
+<th>Scope Name</th>
+<th>Scope ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Public</strong></td>
+<td>NA</td>
+<td>Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.</td>
+</tr>
+</tbody></table>
+<h2 id='cdr-data'>CDR Data</h2>
+<p>These scopes are used to access authenticated resource endpoints that can be used to obtain CDR Data.</p>
 
 <table><thead>
 <tr>
@@ -20668,6 +20734,17 @@ This operation may only be called by the CDR Register
 <td>common:customer.detail:read</td>
 <td>The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.</td>
 </tr>
+</tbody></table>
+<h2 id='admin-amp-registration'>Admin &amp; Registration</h2>
+<p>The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.</p>
+
+<table><thead>
+<tr>
+<th>Scope Name</th>
+<th>Scope ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Basic Admin Metrics Data</strong></td>
 <td>admin:metrics.basic:read</td>
@@ -20687,11 +20764,6 @@ This operation may only be called by the CDR Register
 <td><strong>Register Client</strong></td>
 <td>cdr:registration</td>
 <td>This scope would allow a Data Recipient to register or manage a software product client with a Data Holder</td>
-</tr>
-<tr>
-<td><strong>Public</strong></td>
-<td>NA</td>
-<td>Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.</td>
 </tr>
 </tbody></table>
 <h1 id='non-functional-requirements'>Non-functional Requirements</h1>

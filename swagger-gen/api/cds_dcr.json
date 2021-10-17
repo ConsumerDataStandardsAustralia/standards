@@ -52,6 +52,9 @@
         "tags": [
           "Client Registration"
         ],
+        "x-scopes": [
+					"cdr:registration"
+				],
         "parameters": [
           {
             "$ref": "#/parameters/ClientId"
@@ -83,6 +86,9 @@
         "tags": [
           "Client Registration"
         ],
+        "x-scopes": [
+					"cdr:registration"
+				],
         "parameters": [
           {
             "$ref": "#/parameters/ClientRegistrationRequest"
@@ -120,6 +126,9 @@
         "tags": [
           "Client Registration"
         ],
+        "x-scopes": [
+					"cdr:registration"
+				],
         "parameters": [
           {
             "$ref": "#/parameters/ClientId"
@@ -164,7 +173,7 @@
     "ClientRegistrationRequest": {
       "in": "body",
       "name": "ClientRegistrationRequest",
-      "description": "The registration request JWT, as defined in [Dynamic Client Registration](https://cdr-register.github.io/register/#dynamic-client-registration), to be used to register with a Data Holder",
+      "description": "The registration request JWT to be used to register with a Data Holder",
       "required": true,
       "schema": {
         "type": "string",
@@ -311,7 +320,7 @@
           "example": "https://www.mockcompany.com.au/revocation"
         },
         "recipient_base_uri": {
-          "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)",
+          "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
           "type": "string",
           "example": "https://www.mockcompany.com.au"
         },
@@ -386,7 +395,7 @@
           ]
         },
         "software_statement": {
-          "description": "The Software Statement Assertion, as defined in [Dynamic Client Registration](https://cdr-register.github.io/register/#dynamic-client-registration)",
+          "description": "The Software Statement Assertion, as defined in CDR standards",
           "type": "string",
           "format": "JWT"
         },
@@ -442,7 +451,7 @@
               "example": "37747cd1c10545699f754adf28b73e31"
             },
             "aud": {
-              "description": "'Contains the DH issuer value as described in the [OIDC Discovery Document](https://consumerdatastandardsaustralia.github.io/standards/#end-points)''\n",
+              "description": "'Contains the Data Holder issuer value as described in the OIDC Discovery Document",
               "type": "string",
               "example": "https://secure.api.dataholder.com/issuer"
             }

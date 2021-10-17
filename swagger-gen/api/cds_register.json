@@ -108,7 +108,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+                "description": "The version of the API end point that the CDR Register has responded with."
               }
             },
             "schema": {
@@ -155,14 +155,14 @@
           {
             "name": "dataRecipientBrandId",
             "in": "path",
-            "description": "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+            "description": "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value",
             "required": true,
             "type": "string"
           },
           {
             "name": "softwareProductId",
             "in": "path",
-            "description": "Unique id for the Accredited Data Recipient Software Product in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+            "description": "Unique id for the Accredited Data Recipient Software Product in the CDR Register",
             "required": true,
             "type": "string"
           },
@@ -179,7 +179,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+                "description": "The version of the API end point that the CDR Register has responded with."
               }
             },
             "schema": {
@@ -245,7 +245,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+                "description": "The version of the API end point that the CDR Register has responded with."
               }
             },
             "schema": {
@@ -293,7 +293,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+                "description": "The version of the API end point that the CDR Register has responded with."
               }
             },
             "schema": {
@@ -341,7 +341,7 @@
             "headers": {
               "x-v": {
                 "type": "string",
-                "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+                "description": "The version of the API end point that the CDR Register has responded with."
               }
             },
             "schema": {
@@ -373,7 +373,7 @@
       "name": "x-v",
       "in": "header",
       "required": false,
-      "description": "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.",
+      "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
       "type": "string"
     },
     "Industry": {
@@ -413,7 +413,7 @@
         },
         "jwks_uri": {
           "type": "string",
-          "description": "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the [JWKS endpoint](https://cdr-register.github.io/register/#getjwks) used to validate SSAs and CDR Register client authentication"
+          "description": "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
         },
         "token_endpoint": {
           "type": "string",
@@ -585,7 +585,7 @@
       "type": "object",
       "properties": {
         "dataHolderBrandId": {
-          "description": "Unique id of the Data Holder Brand issued by the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the Data Holder Brand issued by the CDR Register",
           "type": "string"
         },
         "brandName": {
@@ -656,7 +656,7 @@
       "type": "object",
       "properties": {
         "softwareProductId": {
-          "description": "Unique id of the software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the software product issued by the CDR Register",
           "type": "string"
         },
         "softwareProductStatus": {
@@ -693,7 +693,7 @@
       "type": "object",
       "properties": {
         "dataRecipientId": {
-          "description": "Unique id of the Data Recipient issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the Data Recipient issued by the CDR Register",
           "type": "string"
         },
         "dataRecipientStatus": {
@@ -740,7 +740,7 @@
       "type": "object",
       "properties": {
         "legalEntityId": {
-          "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
           "type": "string"
         },
         "legalEntityName": {
@@ -797,7 +797,7 @@
       "type": "object",
       "properties": {
         "dataRecipientBrandId": {
-          "description": "Unique id of the Data Recipient brand issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the Data Recipient brand issued by the CDR Register",
           "type": "string"
         },
         "brandName": {
@@ -837,7 +837,7 @@
       "type": "object",
       "properties": {
         "softwareProductId": {
-          "description": "Unique id of the Data Recipient software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the Data Recipient software product issued by the CDR Register",
           "type": "string"
         },
         "softwareProductName": {
@@ -873,7 +873,7 @@
       "type": "object",
       "properties": {
         "legalEntityId": {
-          "description": "Unique id of the organisation issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details",
+          "description": "Unique id of the organisation issued by the CDR Register",
           "type": "string"
         },
         "legalEntityName": {

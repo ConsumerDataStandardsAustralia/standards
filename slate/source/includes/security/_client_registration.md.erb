@@ -133,8 +133,35 @@ The SSA will conform to the requirements of **[DCR]** with the following clarifi
 
 ### Registration Request using JWT
 
->
-Example Request
+> Non-Normative Example for access token retrieval to perform registration
+
+```
+HTTP/1.1 POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+  scope=cdr%3Aregistration&
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+### Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "12456"
+}
+{
+  "iss": "12345",
+  "sub": "12345",
+  "iat": 1516239022,
+  "exp": 1516239322,
+  "aud": "https://www.holder.com.au/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+
+```
+
+> Example Request
 
 ```
 HTTP/1.1 POST /register
@@ -319,102 +346,3 @@ Duplicate registrations are not permitted so attempts to create a registration w
 Registration error responses schemas are defined in the [DCR APIs](#dcr-apis) section.
 
 For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[DCR]**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards should be used.
-
-
-### Client Registration Management
-
-<p class="content-flagged for-removal"/> I think this should be moved to the security endpoints section as individual entries to align</p>
-
-#### Registration API Endpoints
-Data Holder Authorisation Servers must expose the following Client Registration Management endpoints
-
-| HTTP Verb | Auth Server Support | TLS-MA | HoK | Grant Type | Access Token Scope
-|--------------|-------|-------|-------|------|-----------------------------------------------------------------------------
-|**POST /register**|	Required | <i class="icon-check"></i> |  | N/A | None
-|**GET /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
-|**PUT /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
-|**DELETE /register/{clientID}**|	Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration
-
-<p class="content-flagged for-removal end"/></p>
-
-<p class="content-flagged for-removal"/> This should be moved to the Authorisation Scopes section as a valid scope.  It's a shame the scope doesn't align with our overall scope structure</p>
-* During registration management requests, Data Holders MUST validate the scope of access tokens provided matches `cdr:registration`
-<p class="content-flagged for-removal end"/></p>
-
-<p class="content-flagged for-removal"/> Updated the OIDD section with this statement</p>
-* Data Holders advertise their registration endpoints to Data Recipients in their [OIDD]
-<p class="content-flagged for-removal end"/></p>
-
-<p class="content-flagged for-removal"/>Should also be added to the specific endpoint entries in security endpoints</p>
-#### PUT Operations
-Registrations MUST only be updated via Registration PUT operations.
-
-PUT operations are to be used for one of two scenarios:
-
-1. The client has updated their registration details on the CDR Register and updates this information to the data holder brands
-2. A new version of the SSA has been released and the client updates this information to the data holder brands
-
-* POST and PUT operations MUST accept the SSA payload.
-* Any fields the Data Holder does not support MUST be ignored. However, registration responses must conform to the [DCR API](#dcr-api) specification.
-<p class="content-flagged for-removal end"/></p>
-
-### Authorisation Server
-
-
-```
-Non-Normative Example for access token retrieval
-
-HTTP/1.1 POST /token
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=client_credentials&
-  scope=cdr%3Aregistration&
-  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
-
-### Decoded client assertion JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "12456"
-}
-{
-  "iss": "12345",
-  "sub": "12345",
-  "iat": 1516239022,
-  "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
-  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
-}
-
-```
-
-<p class="content-flagged for-removal"/>I think this statement is redundant</p>
-#### Token Endpoint Authentication
-The Accredited Data Recipient MUST use the `private_key_jwt client` authentication method with the `client_credentials` grant to authenticate with the Data Holder token endpoint
-<p class="content-flagged for-removal end"/></p>
-
-<p class="content-flagged for-removal"/>We should add these statements (or equivalent) to the authorisation scope section.  We may want to separate between scopes that work with the refresh_token grant vs client_credential grant</p>
-#### Access Token Separation of Duties
-Access tokens issued for consuming CDR Data should not be used for client registration maintenance and vice-versa
-
-ADRs should ensure they only use access tokens with the scope `cdr:registration` for client registration maintenance tasks and [CDR Authorisation Scopes](https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes) for consuming CDR data
-<p class="content-flagged for-removal end"/></p>
-
-
-<p class="content-flagged for-guidance"/></p>
-### Registration Flows
-The following sequence diagrams outline the responsibilities for each party during the dynamic client registration processes.
-
-#### Create Registration
-
-<img class=medium-image src="images/registration/CreateRegistration1.png" ></img>
-
-###Modify Registration
-
-<img class=medium-image src="images/registration/ModifyRegistration1.png" >I think this should be guidance</img>
-
-Software Product Configuration is a manual process performed via the CDR Participant Portal. Information on this process will be provided during onboarding
-
-Registration request details are described at: [registration-request-using-jwt](#registration-request-using-jwt)
-<p class="content-flagged for-guidance end"/></p>

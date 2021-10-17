@@ -358,7 +358,7 @@
                     <a href="#request-object" class="toc-h2 toc-link" data-title="Request Object">Request Object</a>
                   </li>
                   <li>
-                    <a href="#end-points" class="toc-h2 toc-link" data-title="End Points">End Points</a>
+                    <a href="#security-endpoints" class="toc-h2 toc-link" data-title="Security Endpoints">Security Endpoints</a>
                   </li>
                   <li>
                     <a href="#normative-references" class="toc-h2 toc-link" data-title="Normative References">Normative References</a>
@@ -491,6 +491,17 @@
           </li>
           <li>
               <a href="#authorisation-scopes" class="toc-h1 toc-link" data-title="Authorisation Scopes">Authorisation Scopes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#public" class="toc-h2 toc-link" data-title="Public">Public</a>
+                  </li>
+                  <li>
+                    <a href="#cdr-data" class="toc-h2 toc-link" data-title="CDR Data">CDR Data</a>
+                  </li>
+                  <li>
+                    <a href="#admin-amp-registration" class="toc-h2 toc-link" data-title="Admin &amp; Registration">Admin &amp; Registration</a>
+                  </li>
+              </ul>
           </li>
           <li>
               <p class="toc-sep"></p>
@@ -2967,7 +2978,9 @@ standards</li>
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong>[OIDC]</strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
+
 <h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
+
 <ul>
 <li>  <strong>API</strong>: Application Programming Interface</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
@@ -3001,6 +3014,7 @@ standards</li>
 </ul>
 
 <h2 id='cdr-federation'>CDR Federation</h2>
+
 <p>The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
 multiple system entities which will assume one or more of the following roles:</p>
 
@@ -3026,7 +3040,9 @@ multiple system entities which will assume one or more of the following roles:</
 <li>  The authorising customer that is authenticated by a Data Holder.</li>
 </ul></li>
 </ul>
+
 <h3 id='data-holder'>Data Holder</h3>
+
 <p>The Data Holder (DH) is a system entity that authenticates a Customer
 (resource owner or user), as part of an authorisation process initiated by a Data
 Recipient, and issues an authorisation for that Data Recipient to access the Customer&#39;s data via published APIs.</p>
@@ -3034,11 +3050,15 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 <p>A Data Holder assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">OpenID Provider</a>.</p>
 
 <p>For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.</p>
+
 <h3 id='secondary-data-holder'>Secondary Data Holder</h3>
+
 <p>A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.</p>
 
 <p>A request for data from a Secondary Data Holder by a standard Data Holder is known as a <em>Secondary Responsibility Request</em>.</p>
+
 <h3 id='data-recipient'>Data Recipient</h3>
+
 <p>A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.</p>
 
 <p>A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.</p>
@@ -3046,7 +3066,9 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 <p>A Data Recipient assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">Relying Party (Client)</a>.</p>
 
 <p>For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.</p>
+
 <h3 id='register'>Register</h3>
+
 <p>The Register is a central point of discovery for both Data Holders and Data
 Recipients. Data Holders and Data Recipients must be created as entities in the Register in order for them to participate as members of the CDR Federation.  The functionality of the Register will include but will not be limited to:</p>
 
@@ -3055,10 +3077,13 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <li><strong>Management of Certificates</strong>: The Register will facilitate the issuing, management and revocation of digital certificates.</li>
 <li><strong>Discoverability and Search</strong>: The Register will expose APIs and Web Interfaces in order to support metadata queries across Register entities.</li>
 </ul>
+
 <h3 id='customer'>Customer</h3>
+
 <p>For the purposes of this standard a single person or individual may be represented as multiple Customers according to the practice of the Data Holder according to their existing digital channels.</p>
 
 <h2 id='authentication-flows'>Authentication Flows</h2>
+
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong>[OIDC]</strong> as constrained further by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.</p>
 
 <p>Specifically the Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong>[OIDC]</strong>.</p>
@@ -3066,7 +3091,9 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <p>No other flows are currently supported.</p>
 
 <p><a id="hybrid-flow"></a></p>
+
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
+
 <p>The <strong>[OIDC]</strong> Hybrid Flow is a type of redirection flow where the consumer&#39;s user
 agent is redirected from a Data Recipient’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an <strong>[OIDC]</strong> authentication
@@ -3105,7 +3132,9 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
 
 <p><a id="client-authentication"></a></p>
+
 <h2 id='client-authentication'>Client Authentication</h2>
+
 <p>This section outlines how participants in the CDR regime will authenticate clients seeking access to end points.</p>
 
 <p>Note that, while <strong>[MTLS]</strong> is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.</p>
@@ -3122,10 +3151,13 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li><p>Data Holders and the CDR Register MUST authenticate Data Recipients using the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method.</p></li>
 <li><p>Data Recipients MUST authenticate Data Holders and the CDR Register using the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method.</p></li>
 </ul>
+
 <h4 id='private-key-jwt-client-authentication'>Private Key JWT Client Authentication</h4>
+
 <blockquote>
 <p>Private Key JWT Client Authentication Non-Normative Example - CDR Register calls the Data Holder&#39;s token end point to obtain an Access Token for the purposes of calling the Data Holder&#39;s Get Metrics endpoint.</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: www.holder.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -3151,6 +3183,7 @@ grant_type=client_credentials&amp;
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 </code></pre>
+
 <p>Authorisation Servers supporting <code>private_key_jwt</code> Client Authentication of clients MUST support the following requirements:</p>
 
 <ul>
@@ -3177,10 +3210,13 @@ grant_type=client_credentials&amp;
 <li><code>scope</code> - OPTIONAL. The requested scope as described in <a href="https://tools.ietf.org/html/rfc6749#section-3.3">Section 3.3</a> of <strong>[RFC6749]</strong>.</li>
 </ul></li>
 </ul>
+
 <h4 id='self-signed-jwt-client-authentication'>Self-signed JWT Client Authentication</h4>
+
 <blockquote>
 <p>Self-signed JWT Client Authentication Non-Normative Example - CDR Register calls the Data holder&#39;s Get Metrics end point using self-signed JWT Client Authentication (note that the “aud” claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
 Host: admin.data.holder.com.au
 x-v: string
@@ -3202,6 +3238,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
 }
 </code></pre>
+
 <p>Data Recipients and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT MUST do so according to the following requirements:</p>
 
 <ul>
@@ -3218,13 +3255,17 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <li><p>Validation and use of the JWT and the claims described above MUST be performed in accordance with <strong>[JWT]</strong>.  </p></li>
 <li><p>The JWT MUST be accepted from the client at the requested endpoint using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750#section-2.1">section 2.1</a> of <strong>[RFC6750]</strong>.</p></li>
 </ul>
+
 <h3 id='cdr-register-calling-data-holders'>CDR Register calling Data Holders</h3>
+
 <p>Data Holders MUST support either <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> or <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> of the CDR Register.</p>
 
 <p>Data Holders SHOULD support <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> but MAY support <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>.</p>
 
 <p>This method MAY be changed by updating Data Holder registration details with the CDR Register.</p>
+
 <h4 id='private-key-jwt-authentication'>Private Key JWT authentication</h4>
+
 <p>If the Data Holder supports the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method for authenticating the CDR Register, it MUST also support the following requirements:</p>
 
 <ul>
@@ -3233,12 +3274,17 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <li>The authorisation grant&#39;s <code>scope</code> parameter MUST be provided and MUST be set to the scope of the resource endpoint to be accessed.</li>
 <li>Upon successful authentication, Data Holders MUST issue an Access Token to the CDR Register. In accordance with <a href="https://tools.ietf.org/html/rfc6749#section-4.4">section 4.4</a> of <strong>[RFC6749]</strong> an Refresh Token SHOULD NOT be included.</li>
 </ul>
+
 <h4 id='self-signed-jwt-authentication'>Self-signed JWT authentication</h4>
+
 <p>If the Data Holder supports the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method for authenticating the CDR Register, the client ID MUST be set to a value of ‘cdr-register’.</p>
+
 <h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
+
 <blockquote>
 <p>Non-Normative Example - Data Holder calls the Data Recipient&#39;s revocation end point (note that the &quot;aud&quot; claim is &quot;resource path&quot; to the revocation end point).</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST https://data.recipient.com.au/revocation HTTP/1.1
 Host: data.recipient.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -3261,11 +3307,15 @@ token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
    "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
 }
 </code></pre>
-<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the ID of the Data Holder obtained from the CDR Register.</p>
+
+<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the <code>Data Holder Brand ID</code> as issued by CDR Register.</p>
+
 <h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
+
 <blockquote>
 <p>Non-Normative Example - Data Recipient calls Data Holder&#39;s token end point.</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: www.holder.com.au
 Content-Type: application/x-www-form-urlencoded
@@ -3291,6 +3341,7 @@ grant_type=authorization_code&amp;
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 </code></pre>
+
 <p>In addition to the requirements for <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> the following requirements MUST be supported:</p>
 
 <ul>
@@ -3298,10 +3349,13 @@ grant_type=authorization_code&amp;
 <li>The authorisation grant&#39;s <code>client_id</code> parameter value MUST represent the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.</li>
 <li>The authorisation grant&#39;s <code>grant_type</code> parameter value MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>. The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
 </ul>
+
 <h3 id='data-recipients-calling-the-cdr-register'>Data Recipients calling the CDR Register</h3>
+
 <blockquote>
 <p>Non-Normative Example - Data recipient requests CDR Register Access Token</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: cdr.register
 Content-Type: application/x-www-form-urlencoded
@@ -3335,6 +3389,7 @@ grant_type=client_credentials&amp;
     "scope": "cdr-register:bank:read openid"
 }
 </code></pre>
+
 <p>In addition to the requirements for <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> the following requirements MUST be supported:</p>
 
 <ul>
@@ -3343,96 +3398,42 @@ grant_type=client_credentials&amp;
 <li><code>client_id</code>, <code>iss</code> and <code>sub</code> claims MUST be set to the ID of the calling client <code>Data Recipient Brand ID</code> OR <code>Software Product ID</code> issued by the CDR Register</li>
 </ul>
 
-<p><p class="content-flagged for-removal"/></p>
-<h3 id='identifiers'>Identifiers</h3>
-<p><code>client_id</code>, <code>sub</code> and where appropriate <code>iss</code>, are expected to contain the unique identifier for the client.<br></p>
-
-<p>The following client identifiers will be used:</p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Client</th>
-<th style="text-align: left">Scenario</th>
-<th style="text-align: left">Identifier</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left"><strong>Software Product</strong></td>
-<td style="text-align: left">Calls to Data Holder Brand Authenticated APIs</td>
-<td style="text-align: left"><code>Client ID</code> as issued by the target Data Holder Brand&lt;</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Data Recipient Brand / Software Product</strong></td>
-<td style="text-align: left">Calls to <a href="#consumer-data-right-cdr-register-apis">CDR Register Authenticated APIs</a></td>
-<td style="text-align: left"><code>Data Recipient Brand ID</code> or <code>Software Product ID</code> as issued by CDR Register</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Data Holder Brand</strong></td>
-<td style="text-align: left">Calls to Data Recipient <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Revocation</a> and <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">CDR Arrangement Management APIs</a></td>
-<td style="text-align: left"><code>Data Holder Brand ID</code> as issued by CDR Register</td>
-</tr>
-</tbody></table>
-
-<p>*<em><code>Data Recipient Brand ID</code> as a client identifier will be deprecated in a future version of the CDR Register design and is currently retained for backwards compatibility</em></p>
-
-<p><p class="content-flagged for-removal end"/></p>
+<aside class="notice">
+Note that the values of <code>Data Recipient Brand ID</code> and <code>Software Product ID</code> as the same.  <code>Data Recipient Brand ID</code> as a client identifier will be deprecated in the future and is currently retained for backwards compatibility
+</aside>
 
 <h2 id='client-registration'>Client Registration</h2><h3 id='dynamic-client-registration'>Dynamic Client Registration</h3>
-<p>Data Recipients register with Data Holders according to <a href="https://tools.ietf.org/html/rfc7591"><strong>[RFC7591]</strong></a> to obtain client credentials used to retrieve consumer data on behalf of a consumer.</p>
-
-<p class="content-flagged for-removal">
-<bold>Pre-Requisites:</bold> Prior to Client Registration, the registering Data Recipient must be accredited and the associated Software Product must be configured within the CDR Register
-</p>
-
+<p>Data Recipients register with Data Holders according to <strong>[DCR]</strong> to obtain client credentials used to retrieve consumer data on behalf of a consumer.</p>
 <h4 id='software-statement-assertion-ssa'>Software Statement Assertion (SSA)</h4>
-
-<p>As per <strong>[RFC7591]</strong>, a Software Statement is defined in as:</p>
+<p>As per <strong>[DCR]</strong>, a Software Statement is defined in as:</p>
 
 <blockquote>
-<p>A digitally signed JSON Web Token (JWT) <strong>[RFC7519]</strong> that asserts metadata values about the client software.</p>
+<p>A digitally signed JSON Web Token (JWT) created in accordance with <strong>[JWT]</strong> that asserts metadata values about the client software.</p>
 </blockquote>
 
 <p>Such that:</p>
 
 <ul>
-<li>The CDR Register issues Software Statements to <em>active</em> Data Recipients.</li>
-<li>Software Statements are issued with an 10 minute expiry time.</li>
-<li>As per <strong>[FAPI-RW]</strong>, SSAs are signed by the CDR Register using <strong>PS256</strong>.</li>
-<li>CDR Register public keys are exposed on a dedicated JWKS URI endpoint.</li>
-<li>The CDR Register JWKS is an unauthenticated endpoint, using TLS.</li>
+<li>The CDR Register MUST issue Software Statements to <em>active</em> Data Recipients</li>
+<li>The CDR Register MUST issue distinct Software Statements for each <code>Software Product ID</code></li>
+<li>Software Statements are issued with an 10 minute expiry time</li>
+<li>As per <strong>[FAPI-RW]</strong>, SSAs are signed by the CDR Register using <strong>PS256</strong></li>
+<li>CDR Register public keys are exposed on a dedicated JWKS URI endpoint</li>
+<li>The CDR Register JWKS is an unauthenticated endpoint, using TLS</li>
+<li>Data Recipients MUST present a valid SSA when undertaking dynamic client registration</li>
+<li>Data Holders MUST NOT register Data Recipients unless they present a verified SSA</li>
 </ul>
 
-<p>CDR Register endpoint details are provided to participants during the onboarding process.</p>
-
-<p class="content-flagged for-guidance"></p>
-
-<p>The trust relationship the authorization server has with the issuer of the software statement is to be used as an input to the evaluation of whether the registration request is accepted.</p>
-
-<p>A software statement is presented by Accredited Data Recipient’s Software Product to Data Holder’s authorisation server as part of a client registration request.</p>
-
-<p>An SSA will be issued for each <i>active</i> Software Product and is retrievable using the CDR Register <a href="getsoftwarestatementassertion-ssa">GetSoftwareStatementAssertion API</a>.
-<p class="content-flagged for-guidance end"></p></p>
-
-<p class="content-flagged for-removal"></p>
-
-<h4 id='namespacing'>Namespacing</h4>
-
-<p>The design will conform to <strong>[RFC7591]</strong> and will not use the software namespace convention as used in the Open Banking UK Dynamic Registration Standard
-<p class="content-flagged for-guidance end"></p></p>
-
+<p>Refer to the <a href="#register-apis">Register APIs</a> section for the endpoint definitions that will be used to retrieve and validate SSAs.</p>
 <h4 id='ssa-definition'>SSA Definition</h4>
-
 <blockquote>
 <p>Example SSA:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.ew0KICAiaXNzIjogImNkci1yZWdpc3RlciIsDQogICJpYXQiOiAxNTcxODA4MTY3LA0KICAiZXhwIjogMjE0NzQ4MzY0NiwNCiAgImp0aSI6ICIzYmMyMDVhMWViYzk0M2ZiYjYyNGIxNGZjYjI0MTE5NiIsDQogICJvcmdfaWQiOiAiM0IwQjBBN0ItM0U3Qi00QTJDLTk0OTctRTM1N0E3MUQwN0M4IiwNCiAgIm9yZ19uYW1lIjogIk1vY2sgQ29tcGFueSBJbmMuIiwNCiAgImNsaWVudF9uYW1lIjogIk1vY2sgU29mdHdhcmUiLA0KICAiY2xpZW50X2Rlc2NyaXB0aW9uIjogIkEgbW9jayBzb2Z0d2FyZSBwcm9kdWN0IGZvciB0ZXN0aW5nIFNTQSIsDQogICJjbGllbnRfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdSIsDQogICJyZWRpcmVjdF91cmlzIjogWw0KICAgICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmVkaXJlY3RzL3JlZGlyZWN0MSIsDQogICAgImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9yZWRpcmVjdHMvcmVkaXJlY3QyIg0KICBdLA0KICAibG9nb191cmkiOiAiaHR0cHM6Ly93d3cubW9ja2NvbXBhbnkuY29tLmF1L2xvZ29zL2xvZ28xLnBuZyIsDQogICJ0b3NfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS90b3MuaHRtbCIsDQogICJwb2xpY3lfdXJpIjogImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9wb2xpY3kuaHRtbCIsDQogICJqd2tzX3VyaSI6ICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvandrcyIsDQogICJyZXZvY2F0aW9uX3VyaSI6ICJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmV2b2NhdGlvbiIsDQogICJzb2Z0d2FyZV9pZCI6ICI3NDBDMzY4Ri1FQ0Y5LTREMjktQTJFQS0wNTE0QTY2QjBDREUiLA0KICAic29mdHdhcmVfcm9sZXMiOiAiZGF0YS1yZWNpcGllbnQtc29mdHdhcmUtcHJvZHVjdCIsDQogICJzY29wZSI6ICJiYW5rOmFjY291bnRzLmJhc2ljOnJlYWQgYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCBiYW5rOnRyYW5zYWN0aW9uczpyZWFkIGJhbms6cGF5ZWVzOnJlYWQgYmFuazpyZWd1bGFyX3BheW1lbnRzOnJlYWQgY29tbW9uOmN1c3RvbWVyLmJhc2ljOnJlYWQgY29tbW9uOmN1c3RvbWVyLmRldGFpbDpyZWFkIg0KfQ.ZNKe8aBHcsZ_OfdP0GvUa0AHrjcoC0Coky4jQHrPsRoG3YMcS2XG9JtyB5zq-AMOQoaib1Ijx1m7B-JOEbVcnNJcLUZeVEIwnP8hRssAnGjWwaYGUAiY-DEFUsuXqpQWgyIOFz84W-FaHFcqpOSGxjGmjICZU9S1Pl4o8b5poA_kJ2n_wdiOBUG4xl3uXqzK_vstcGXbAubFyLhjOxhc_rqONO2NCtpyCwj83Zqi7Ve_A27-ty5N0AQa2xYWvjDt_Xh8xcxRI_ih7_sStvDTTy3gtyX5bAdXsDsweCcvN0d2vOCpm6-dnr8D1fXDTnlT3x2uQ0XAysWr6wU4mAZFVA
 </code></pre>
-
 <blockquote>
 <p>Associated JWKS:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   "keys": [
     {
@@ -3448,11 +3449,9 @@ grant_type=client_credentials&amp;
   ]
 }
 </code></pre>
-
 <blockquote>
 <p>Decoded SSA</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   "alg": "PS256",
   "kid": "b8facf2ff39444f781e0be5db4b14f16",
@@ -3498,6 +3497,7 @@ grant_type=client_credentials&amp;
 }
 
 </code></pre>
+<p>The SSA will conform to the requirements of <strong>[DCR]</strong> with the following clarifications:</p>
 
 <table><thead>
 <tr>
@@ -3535,13 +3535,13 @@ grant_type=client_credentials&amp;
 <td><strong>legal_entity_id</strong></td>
 <td>Optional</td>
 <td></td>
-<td>A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity </br> <strong>Scheduled for July 2021</strong></td>
+<td>A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity</td>
 </tr>
 <tr>
 <td><strong>legal_entity_name</strong></td>
 <td>Optional</td>
 <td></td>
-<td>Human-readable string name of the Accredited Data Recipient Legal Entity </br> <strong>Scheduled for July 2021</strong></td>
+<td>Human-readable string name of the Accredited Data Recipient Legal Entity</td>
 </tr>
 <tr>
 <td><strong>org_id</strong></td>
@@ -3583,7 +3583,7 @@ grant_type=client_credentials&amp;
 <td><strong>sector_identifier_uri</strong></td>
 <td>Optional</td>
 <td><i class="icon-check"></i></td>
-<td>URL string referencing the client&#39;s sector identifier URI, used as an optional input to the Pairwise Identifier as described in described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>.  </br> <strong>Scheduled for July 2021</strong></td>
+<td>URL string referencing the client&#39;s sector identifier URI, used as an optional input to the Pairwise Identifier as described in described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong></td>
 </tr>
 <tr>
 <td><strong>logo_uri</strong></td>
@@ -3619,7 +3619,7 @@ grant_type=client_credentials&amp;
 <td><strong>recipient_base_uri</strong></td>
 <td>Required</td>
 <td><i class="icon-check"></i></td>
-<td>Base URI for the Consumer Data Standard data recipient endpoints. This should be the base to provide reference to all other <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Data Recipient Endpoints</a></td>
+<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Data Recipient Endpoints</a></td>
 </tr>
 <tr>
 <td><strong>software_id</strong></td>
@@ -3640,36 +3640,37 @@ grant_type=client_credentials&amp;
 <td>String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: <a href="https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes">Authorisation Scopes</a></br>The DCR scope value is defined at: <a href="#client-registration-management">Client Registration Management</a></br></br>As per the <a href="https://consumerdatastandardsaustralia.github.io/standards/#scopes-and-claims">CDS Scopes and Claims</a>, <strong>openid</strong> and <strong>profile</strong> are included in the SSA</td>
 </tr>
 </tbody></table>
-
-<ul>
-<li><p><strong>July 2021:</strong> the <code>sector_identifier_uri</code> is introduced as <strong>optional</strong></p></li>
-<li><p><strong>July 2021:</strong> the <code>legal_entity_id</code> and <code>legal_entity_name</code> are introduced as <strong>optional</strong></p></li>
-</ul>
-
-<h4 id='sector-identifiers'>Sector Identifiers</h4>
-
-<p class="content-flagged for-guidance"></p>
-
-<p>As per the <a href="https://consumerdatastandardsaustralia.github.io/standards/#identifiers-and-subject-types">Consumer Data Standards</a>, the Pairwise Pseudonymous Identifier (PPID) as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>, will use the host component of the <code>redirect_uris</code> as the sector identifier. This introduces a constraint that the <code>redirect_uris</code> must all contain the same hostname.</p>
-
-<p>The CDR Register registration design will introduce support for the <code>sector_identifier_uri</code> in the <strong>July 2021</strong> release. Adoption will require data holder implementation and updates to Software Product registrations to update the field <code>sector_identifier_uri</code> with all data holder brands.</p>
-
-<p>For more information on <code>sector_identifier_uri</code> impacts to the ecosystem, please refer the the CDR Support article <a href="https://cdr-support.zendesk.com/hc/en-us/articles/360004324176-Data-Holder-sector-identifier-uri-Support">Data Holder sector_identifier_uri Support</a>
-<p class="content-flagged for-guidance end"></p></p>
-
-<p class="content-flagged for-guidance"></p>
-
-<h3 id='logos'>Logos</h3>
-
-<p>Logos will be incorporated within the SSA to ensure there is consistency between the logos published on the Public Register and those passed to Data Holders as part of Registration.
-<p class="content-flagged for-guidance end"></p></p>
-
 <h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
+<blockquote>
+<p>Non-Normative Example for access token retrieval to perform registration</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 POST /token
+Content-Type: application/x-www-form-urlencoded
 
+grant_type=client_credentials&amp;
+  scope=cdr%3Aregistration&amp;
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+### Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "12456"
+}
+{
+  "iss": "12345",
+  "sub": "12345",
+  "iat": 1516239022,
+  "exp": 1516239322,
+  "aud": "https://www.holder.com.au/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+
+</code></pre>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 POST /register
 Content-Type: application/jwt
 Accept: application/json
@@ -3709,7 +3710,6 @@ Accept: application/json
   "signature":...
 }
 </code></pre>
-
 <p>To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.</p>
 
 <ul>
@@ -3808,10 +3808,8 @@ Accept: application/json
 <td>Software statement assertion issued by the CDR Register</td>
 </tr>
 </tbody></table>
-
 <h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4>
-
-<p>The CDR Register currently supports the following ID Token algorithms::</p>
+<p>Participants MUST support, at a minimum, the following ID Token algorithms:</p>
 
 <table><thead>
 <tr>
@@ -3828,23 +3826,16 @@ Accept: application/json
 <td>A256GCM</br>A128CBC-HS256</td>
 </tr>
 </tbody></table>
-
 <h3 id='registration-validation'>Registration Validation</h3>
+<p>Validation and use of the JWT and the claims described above MUST be performed in accordance with <strong>[JWT]</strong>.</p>
 
-<p>Validation and use of the JWT and the claims described above MUST be performed in accordance with <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32">JWT</a>.</p>
+<p>SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register JWKS endpoint.</p>
 
-<p>SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register <a href="#getjwks">GetJWKS endpoint</a>.</p>
-
-<p>Validation of the SSA <code>software_id</code> and the associated software status is not required as the SSA will have been issued and signed by the CDR Register.</p>
-
-<p>Each <code>software_id</code> issued by the CDR Register should only be registered on each Data Holder Brand IDP once. Multiple registrations per <code>software_id</code> are NOT permitted.</p>
-
+<p>Data Holders MUST NOT allow multiple active registrations for the same <code>software_id</code>.</p>
 <h3 id='registration-response'>Registration Response</h3>
-
 <blockquote>
 <p>Example Created Response</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 
@@ -3898,8 +3889,7 @@ Content-Type: application/json
           cdr:registration"
 }
 </code></pre>
-
-<p>On successful registration, the response MUST be returned to the  Data Recipient conforming to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.1">Section 3.2.1</a> of <strong>[RFC7591]</strong>.</p>
+<p>On successful registration, the response MUST be returned to the  Data Recipient conforming to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.1">Section 3.2.1</a> of <strong>[DCR]</strong>.</p>
 
 <table><thead>
 <tr>
@@ -3920,18 +3910,15 @@ Content-Type: application/json
 </tr>
 </tbody></table>
 
-<p>As per <a href="https://tools.ietf.org/html/rfc7591#section-3.2.1">Section 3.2.1</a> of <strong>[RFC7591]</strong>, additionally, the authorisation server MUST return all registered metadata about this client, including any fields provisioned by the authorisation server itself.</p>
+<p>As per <a href="https://tools.ietf.org/html/rfc7591#section-3.2.1">Section 3.2.1</a> of <strong>[DCR]</strong>, additionally, the authorisation server MUST return all registered metadata about this client, including any fields provisioned by the authorisation server itself.</p>
 
 <p>The Software Statement value MUST be returned unmodified. Client metadata elements used from the software statement MUST also be returned directly as top-level client metadata values in the registration response.</p>
 
 <p>Any additional claims MUST be ignored and not returned on completion of the request.</p>
-
 <h3 id='registration-errors'>Registration Errors</h3>
-
 <blockquote>
 <p>Example Error Response</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 400 Bad Request
 Content-Type: application/json
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3939,131 +3926,13 @@ Content-Type: application/json
  </span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Duplicate registrations for a given software_id are not valid"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<p>When an error condition occurs during a registration request, the response MUST be returned to the Accredited Data Recipient conforming to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong>[RFC7591]</strong>.</p>
+<p>When an error condition occurs during a registration request, the response MUST be returned to the Accredited Data Recipient conforming to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong>[DCR]</strong>.</p>
 
 <p>Duplicate registrations are not permitted so attempts to create a registration which already exists MUST return an HTTP 400 error.</p>
 
-<p>Registration error responses schemas are defined in the <a href="#dcr-api">API Documentation</a>.</p>
+<p>Registration error responses schemas are defined in the <a href="#dcr-apis">DCR APIs</a> section.</p>
 
-<p>For those Registration errors which do not map to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong>[RFC7591]</strong>, <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes">HTTP Response Codes</a> in the Consumer Data Standards should be used.</p>
-
-<h3 id='client-registration-management'>Client Registration Management</h3><h4 id='registration-api-endpoints'>Registration API Endpoints</h4>
-<p>Data Holder Authorisation Servers must expose the following Client Registration Management endpoints</p>
-
-<table><thead>
-<tr>
-<th>HTTP Verb</th>
-<th>Auth Server Support</th>
-<th>TLS-MA</th>
-<th>HoK</th>
-<th>Grant Type</th>
-<th>Access Token Scope</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>POST /register</strong></td>
-<td>Required</td>
-<td><i class="icon-check"></i></td>
-<td></td>
-<td>N/A</td>
-<td>None</td>
-</tr>
-<tr>
-<td><strong>GET /register/{clientID}</strong></td>
-<td>Required</td>
-<td><i class="icon-check"></i></td>
-<td><i class="icon-check"></i></td>
-<td>Client Credentials</td>
-<td>cdr:registration</td>
-</tr>
-<tr>
-<td><strong>PUT /register/{clientID}</strong></td>
-<td>Required</td>
-<td><i class="icon-check"></i></td>
-<td><i class="icon-check"></i></td>
-<td>Client Credentials</td>
-<td>cdr:registration</td>
-</tr>
-<tr>
-<td><strong>DELETE /register/{clientID}</strong></td>
-<td>Optional</td>
-<td><i class="icon-check"></i></td>
-<td><i class="icon-check"></i></td>
-<td>Client Credentials</td>
-<td>cdr:registration</td>
-</tr>
-</tbody></table>
-
-<p class="content-flagged for-removal">Please refer to [API documentation](#dcr-api) for further examples</p>
-
-<ul>
-<li>During registration management requests, Data Holders MUST validate the scope of access tokens provided matches <code>cdr:registration</code></li>
-<li>Data Holders advertise their registration endpoints to Data Recipients in their [OIDD]</li>
-</ul>
-<h4 id='put-operations'>PUT Operations</h4>
-<p>Registrations MUST only be updated via Registration PUT operations.</p>
-
-<p>PUT operations are to be used for one of two scenarios:</p>
-
-<ol>
-<li>The client has updated their registration details on the CDR Register and updates this information to the data holder brands</li>
-<li>A new version of the SSA has been released and the client updates this information to the data holder brands</li>
-</ol>
-
-<ul>
-<li>POST and PUT operations MUST accept the SSA payload.</li>
-<li>Any fields the Data Holder does not support MUST be ignored. However, registration responses must conform to the <a href="#dcr-api">DCR API</a> specification.</li>
-</ul>
-<h3 id='authorisation-server'>Authorisation Server</h3><pre class="highlight plaintext"><code>Non-Normative Example for access token retrieval
-
-HTTP/1.1 POST /token
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=client_credentials&amp;
-  scope=cdr%3Aregistration&amp;
-  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
-
-### Decoded client assertion JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "12456"
-}
-{
-  "iss": "12345",
-  "sub": "12345",
-  "iat": 1516239022,
-  "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
-  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
-}
-
-</code></pre><h4 id='token-endpoint-authentication'>Token Endpoint Authentication</h4>
-<p>The Accredited Data Recipient MUST use the <code>private_key_jwt client</code> authentication method with the <code>client_credentials</code> grant to authenticate with the Data Holder token endpoint</p>
-<h4 id='access-token-separation-of-duties'>Access Token Separation of Duties</h4>
-<p>Access tokens issued for consuming CDR Data should not be used for client registration maintenance and vice-versa</p>
-
-<p>ADRs should ensure they only use access tokens with the scope <code>cdr:registration</code> for client registration maintenance tasks and <a href="https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes">CDR Authorisation Scopes</a> for consuming CDR data</p>
-<h4 id='registration-transaction-security'>Registration Transaction Security</h4>
-<p>DCR API endpoints will conform to the same transaction security requirements as Data Holder Resource endpoints
-</br>Please refer to the <a href="https://consumerdatastandardsaustralia.github.io/standards/#transaction-security">Consumer Data Standards Transaction Security</a> for Transaction Security details</p>
-<h3 id='registration-flows'>Registration Flows</h3>
-
-<p>The following sequence diagrams outline the responsibilities for each party during the dynamic client registration processes.</p>
-
-<h4 id='create-registration'>Create Registration</h4>
-
-<p><img class=medium-image src="images/registration/CreateRegistration1.png" ></img></p>
-
-<h3 id='modify-registration'>Modify Registration</h3>
-
-<p><img class=medium-image src="images/registration/ModifyRegistration1.png" ></img></p>
-
-<p>Software Product Configuration is a manual process performed via the CDR Participant Portal. Information on this process will be provided during onboarding</p>
-
-<p>Registration request details are described at: <a href="#registration-request-using-jwt">registration-request-using-jwt</a></p>
+<p>For those Registration errors which do not map to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong>[DCR]</strong>, <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes">HTTP Response Codes</a> in the Consumer Data Standards should be used.</p>
 
 <h2 id='participant-statuses'>Participant Statuses</h2><h3 id='data-recipient-and-software-product-statuses'>Data Recipient and Software Product Statuses</h3>
 <blockquote>
@@ -4071,16 +3940,18 @@ grant_type=client_credentials&amp;
 <img src="images/ADRStateMachine.png" ></img></p>
 </blockquote>
 
-<p>The accreditation status of Data Recipients, and the status of their associated Software Products, may traverse through multiple statuses in the CDR as a result of decisions by the CDR Registrar, in its capacity as Data Recipient Accreditor, or where a Data Recipient surrenders accreditation.</p>
+<p>The accreditation status of Data Recipients, and the status of their associated Software Products, may traverse through multiple statuses in the CDR.</p>
 
-<p>Data Holders must ensure that CDR data relating to consumers is disclosed to Data Recipients and to cease sharing data where the accreditation of a data recipient is</p>
+<p>The status of participants is maintained in the CDR Register by the CDR Registrar according to determination of the CDR Accreditor or the participant themselves.</p>
+
+<p>CDR data may only be disclosed to active Data Recipients.  Data Holders MUST to cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:</p>
 
 <ol>
 <li> Suspended or revoked by the CDR Registrar</li>
 <li> Surrendered by the Data Recipient</li>
 </ol>
 
-<p>The Register will notify all Data Holders of the above changes in  Data Recipient statuses as per the Registrar’s decisions.</p>
+<p>The CDR Register will notify all Data Holders of the above changes in Data Recipient and Software Package status.</p>
 
 <blockquote>
 <p>Software Product Statuses
@@ -4122,7 +3993,7 @@ grant_type=client_credentials&amp;
 </tr>
 </tbody></table>
 <h4 id='status-mapping'>Status Mapping</h4>
-<p>When the CDR Registrar changes the accreditation status for a Data Recipient for any status other than active, the associated Software Product statuses will be changed accordingly.</p>
+<p>When the CDR Registrar changes the accreditation status for a Data Recipient for any status other than active, the associated Software Product statuses MUST be changed accordingly.</p>
 
 <p>The cascading status mappings are as follows:</p>
 
@@ -4145,92 +4016,8 @@ grant_type=client_credentials&amp;
 <td>Removed</td>
 </tr>
 </tbody></table>
-<h4 id='collection-arrangements'>Collection Arrangements</h4>
-<p>The status of a Software Product, managed within a collection arrangement, is coupled to the accreditation status of both the principal and provider in this arrangement.</p>
 
-<p>To achieve this, cascade rules for Software Product statuses, as defined in <a href="#accredited-data-recipient-and-software-product-statuses">Status Mapping</a>, are defined for a collection arrangement as follows:</p>
-
-<table><thead>
-<tr>
-<th>Provider Status</th>
-<th>Principal Status</th>
-<th>Cascaded Principal SP Status</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Active</td>
-<td>Active</td>
-<td>Active</td>
-</tr>
-<tr>
-<td>Suspended</td>
-<td>Active</td>
-<td>Inactive</td>
-</tr>
-<tr>
-<td>Revoked</td>
-<td>Active</td>
-<td>Inactive</td>
-</tr>
-<tr>
-<td>Surrendered</td>
-<td>Active</td>
-<td>Inactive</td>
-</tr>
-<tr>
-<td>Any</td>
-<td>Suspended</td>
-<td>Inactive</td>
-</tr>
-<tr>
-<td>Any</td>
-<td>Revoked</td>
-<td>Removed</td>
-</tr>
-<tr>
-<td>Any</td>
-<td>Surrendered</td>
-<td>Removed</td>
-</tr>
-</tbody></table>
-<h4 id='archiving-entities'>Archiving Entities</h4>
-<p>In order to keep the Register APIs efficient and to minimise the amount of traffic, dormant entries will be identified and archived automatically within the CDR Register.</p>
-
-<p>Dormant entries are defined as those records that have reached and maintained an <strong>end state</strong> in the CDR Register for the past <strong>2 years</strong>.</p>
-
-<p>Each entity within the CDR Register can be archived independently of the parent entity. For example, a Software Product that has been dormant for <strong>2 years</strong> can be archived whilst the brand remains active. However, if a parent entity is archived (Legal Entity / Brand) then all child entities will also be archived.</p>
-
-<p>The table below outlines the end state for each Register entry type:</p>
-
-<table><thead>
-<tr>
-<th><strong>Register Entity</strong></th>
-<th><strong>End State</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Data Holder</td>
-<td>Removed</td>
-</tr>
-<tr>
-<td>Data Holder Brand</td>
-<td>Removed</td>
-</tr>
-<tr>
-<td>Data Recipient</td>
-<td>Surrendered, Revoked</td>
-</tr>
-<tr>
-<td>Data Recipient Brand</td>
-<td>Removed</td>
-</tr>
-<tr>
-<td>Data Recipient Software Product</td>
-<td>Removed</td>
-</tr>
-</tbody></table>
-
-<p>When an entry is archived on the Register, the entry will no longer appear in the output of the Register APIs by default. The archived records will still be accessible, if needed, by providing a query string parameter <code>include-archived=true</code> on the request.</p>
+<p>If a previously available Software Package ceases to be available its status MUST be assumed to be <code>Removed</code>.</p>
 <h3 id='data-holder-responsibilities'>Data Holder Responsibilities</h3>
 <p></br>The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient&#39;s accreditation status. Therefore, both the ADR and Software Product statuses should be referenced, to determine the Data Holder&#39;s responsibilities for data disclosure, consent and registration management
 &#39;</p>
@@ -4318,13 +4105,15 @@ grant_type=client_credentials&amp;
 <li>Invalidation of consents and cleanup of registrations are bulk operations. It is reasonable to execute these as batch tasks performed overnight</li>
 </ul>
 <h3 id='metadata-cache-management'>Metadata Cache Management</h3>
-<p>Data Holders must react to Data Recipient and associated Software Statuses changes within <strong>5 minutes</strong> of the change occurring on the CDR Register</p>
+<p>Data Holders MUST react to Data Recipient and associated Software Statuses changes within <strong>5 minutes</strong> of the change occurring on the CDR Register</p>
 
-<p>To achieve this, Data Holders should poll the <a href="#getdatarecipientsstatus">GetDataRecipientsStatus</a>, <a href="#getsoftwareproductsstatus">GetSoftwareProductsStatus</a> and <a href="#getdatarecipients">GetDataRecipients</a> APIs to retrieve the current statuses and cache these for use during requests for Consumer Data</p>
+<p>To achieve this, Data Holders will poll the <a href="#getdatarecipientsstatus">GetDataRecipientsStatus</a>, <a href="#getsoftwareproductsstatus">GetSoftwareProductsStatus</a> and <a href="#getdatarecipients">GetDataRecipients</a> APIs to retrieve the current statuses and cache these for use during requests for Consumer Data</p>
 
-<p>Data Holders should choose a frequency of polling which ensures their systems can respond to status changes within the required timeframe</p>
+<p>Data Holders MUST choose a frequency of polling which ensures their systems can respond to status changes within the required timeframe</p>
 
-<p>Data Holders and Data Recipients must cache all other participant data they use and periodically update this cache using a slow poll. This ensures that changes to participant configuration propagates throughout the ecosystem in a predictable timeframe</p>
+<p>Data Holders and Data Recipients MUST cache all other participant data they use and periodically update this cache using a slow poll. This ensures that changes to participant configuration propagates throughout the ecosystem in a predictable timeframe</p>
+
+<p>The CDR Register MAY cache the responses for <strong>public</strong> APIs hosted by the CDR Register.  If caching is supported the CDR Register MUST support ETag cache validators allowing participants to detect whether the content has changed.</p>
 <h4 id='cache-update-periods'>Cache update periods</h4>
 <p>The following are the recommended caching times for data retrieved from the Register APIs.</p>
 
@@ -4361,14 +4150,6 @@ grant_type=client_credentials&amp;
 <td>6 hours</td>
 </tr>
 </tbody></table>
-<h3 id='etag-support'>ETag Support</h3>
-<p>All <strong>public</strong> APIs are hosted on a CDN supporting ETag cache validators. ETags can be utilised to detect whether the content has changed.</p>
-
-<p>Further information on the usage of <code>ETag</code> and the associated <code>If-None-Match</code> headers can be found at: <a href="https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works">https://docs.microsoft.com/en-au/azure/cdn/cdn-how-caching-works</a></p>
-<h3 id='refusal-to-disclose'>Refusal To Disclose</h3>
-<p>Under the CDR rules, Data Holders within the CDR ecosystem can refuse to disclose CDR data in response to valid requests from Accredited Data Recipients.</p>
-
-<p>See <a href="https://www.legislation.gov.au/Series/F2020L00094">CDR Rules Compliation 3</a> Part 4 Division 4.2, Subdivision 4.2.4 Rule 4.7.</p>
 
 <h2 id='oidc-client-types'>OIDC Client Types</h2>
 
@@ -4486,6 +4267,8 @@ End Point and Token End Point.</p>
 <p>The identifier for an authenticated end-user (subject) MUST be passed in the <code>sub</code> claim of an <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">ID Token</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse">UserInfo response</a> as defined by <strong>[OIDC]</strong>.</p>
 
 <p>The Data Holder MUST generate the <code>sub</code> value as a Pairwise Pseudonymous Identifier (PPID) as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes">section 8</a> of <strong>[OIDC]</strong>. Furthermore, the identifier MUST be unique per customer as per the definition of customer in the CDR Federation section of this profile.</p>
+
+<p>The Data Holder MUST support the <code>sector_identifier_uri</code> in PPID generation according to <strong>[OIDC]</strong> if this field was supplied by the client during registration.</p>
 
 <p>It is RECOMMENDED that the <code>sub</code> value is generated as a version 4 Universally Unique
 Identifier (UUID) <strong>[RFC4122]</strong>.</p>
@@ -4861,11 +4644,7 @@ client_id=s6BhdRkqt3
 
 <p>If a Data Recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the Data Holder&#39;s <a href="#pushed-authorisation-end-point">PAR End Point</a>, the Data Holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
 
-<h2 id='end-points'>End Points</h2>
-
-<aside class="warning">
-NOTE: This section does not include any end points that will be defined by the design of the <a href='https://cdr-register.github.io/'>CDR Register</a>. End points related to Data Recipient registration, certificate revocation, Data Recipient discovery or Data Holder discovery are documented in the <a href='https://cdr-register.github.io/'>CDR Register</a> technical documentation.
-</aside>
+<h2 id='security-endpoints'>Security Endpoints</h2>
 
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
@@ -5424,6 +5203,74 @@ Host: data.holder.com.au
 <li>If the <code>cdr_arrangement_id</code> is not recognised by to the Data Holder it MUST be rejected</li>
 </ul>
 
+<h3 id='dynamic-client-registration-endpoints'>Dynamic Client Registration Endpoints</h3>
+
+<p>Data Holders MUST expose the following endpoints in accordance with <strong>[DCR]</strong>.</p>
+
+<p>For more details of these endpoints see the <a href="#dcr-apis">DCR Apis</a> section.</p>
+
+<p>For additional statements on the operation of these endpoint during client registration see the <a href="#client-registration">Client Registration</a> section.</p>
+
+<table><thead>
+<tr>
+<th>HTTP Verb</th>
+<th>Auth Server Support</th>
+<th>TLS-MA</th>
+<th>HoK</th>
+<th>Grant Type</th>
+<th>Access Token Scope</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>POST /register</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td></td>
+<td>N/A</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>GET /register/{clientID}</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials</td>
+<td>cdr:registration</td>
+</tr>
+<tr>
+<td><strong>PUT /register/{clientID}</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials</td>
+<td>cdr:registration</td>
+</tr>
+<tr>
+<td><strong>DELETE /register/{clientID}</strong></td>
+<td>Optional</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials</td>
+<td>cdr:registration</td>
+</tr>
+</tbody></table>
+
+<p>Additional statements regarding these endpoings:</p>
+
+<ul>
+<li>During registration management requests, Data Holders MUST validate that the scope of access tokens provided includes <code>cdr:registration</code></li>
+<li>Registration requests and responses must conform to the specification in the <a href="#dcr-apis">DCR APIs</a> section.</li>
+<li>Any fields the Data Holder does not support MUST be ignored without error.</li>
+<li>Registrations MUST only be updated via a PUT operation on the registration endpoint</li>
+<li>POST and PUT operations MUST accept the SSA payload</li>
+<li>Update (PUT) operations are to be used for one of two scenarios:
+
+<ol>
+<li>The client has updated their registration details on the CDR Register and updates this information to the data holder brands</li>
+<li>A new version of the SSA has been released and the client updates this information to the data holder brands</li>
+</ol></li>
+</ul>
+
 <h3 id='register-endpoints'>Register Endpoints</h3>
 
 <p>The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to faciliate issuance of access tokens to consume the protected Register APIs.</p>
@@ -5623,6 +5470,11 @@ Host: cdr.register
 <td>OAuth 2.0 Pushed Authorization Requests: <a href="https://tools.ietf.org/html/draft-ietf-oauth-par-01">https://tools.ietf.org/html/draft-ietf-oauth-par-01</a></td>
 <td>Feb 2020</td>
 </tr>
+<tr>
+<td><a id="DCR"></a><strong>[DCR]</strong></td>
+<td>OAuth 2.0 Dynamic Client Registration Protocol: <a href="https://datatracker.ietf.org/doc/html/rfc7591">https://datatracker.ietf.org/doc/html/rfc7591</a></td>
+<td>Jul 2015</td>
+</tr>
 </tbody></table>
 
 <h2 id='informative-references'>Informative References</h2>
@@ -5736,7 +5588,7 @@ Host: cdr.register
 <td>body</td>
 <td><a href="#schemapostdatarecipientregistrationclientregistrationrequest">PostDataRecipientRegistrationClientregistrationrequest</a></td>
 <td>mandatory</td>
-<td>The registration request JWT, as defined in <a href="https://cdr-register.github.io/register/#dynamic-client-registration">Dynamic Client Registration</a>, to be used to register with a Data Holder</td>
+<td>The registration request JWT to be used to register with a Data Holder</td>
 </tr>
 </tbody></table>
 
@@ -5988,8 +5840,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 
 <h2 id='update-data-recipient-registration'>Update Data Recipient Registration</h2>
@@ -6077,7 +5930,7 @@ This operation does not require authentication
 <td>body</td>
 <td><a href="#schemapostdatarecipientregistrationclientregistrationrequest">PostDataRecipientRegistrationClientregistrationrequest</a></td>
 <td>mandatory</td>
-<td>The registration request JWT, as defined in <a href="https://cdr-register.github.io/register/#dynamic-client-registration">Dynamic Client Registration</a>, to be used to register with a Data Holder</td>
+<td>The registration request JWT to be used to register with a Data Holder</td>
 </tr>
 </tbody></table>
 
@@ -6184,8 +6037,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 
 <h2 id='delete-data-recipient-oauth-client-registration'>Delete Data Recipient oAuth Client Registration</h2>
@@ -6319,8 +6173,9 @@ Authorization: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 
 <h2 id='schemas'>Schemas</h2>
@@ -6496,7 +6351,7 @@ This operation does not require authentication
 <td>string</td>
 <td>optional</td>
 <td>none</td>
-<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Data Recipient Endpoints</a></td>
+<td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_method</td>
@@ -6566,7 +6421,7 @@ This operation does not require authentication
 <td>string(JWT)</td>
 <td>mandatory</td>
 <td>none</td>
-<td>The Software Statement Assertion, as defined in <a href="https://cdr-register.github.io/register/#dynamic-client-registration">Dynamic Client Registration</a></td>
+<td>The Software Statement Assertion, as defined in CDR standards</td>
 </tr>
 <tr>
 <td>software_id</td>
@@ -6732,7 +6587,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>&#39;Contains the DH issuer value as described in the <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">OIDC Discovery Document</a>&#39;&#39;</td>
+<td>&#39;Contains the Data Holder issuer value as described in the OIDC Discovery Document</td>
 </tr>
 </tbody></table>
 
@@ -7217,7 +7072,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 </tbody></table>
 
@@ -7345,7 +7200,7 @@ This operation does not require authentication
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -7428,14 +7283,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value</td>
 </tr>
 <tr>
 <td>softwareProductId</td>
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique id for the Accredited Data Recipient Software Product in the CDR Register. Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id for the Accredited Data Recipient Software Product in the CDR Register</td>
 </tr>
 <tr>
 <td>Authorization Endpoint (Register)</td>
@@ -7449,7 +7304,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 </tbody></table>
 
@@ -7540,7 +7395,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -7621,7 +7476,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 </tbody></table>
 
@@ -7701,7 +7556,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -7781,7 +7636,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 </tbody></table>
 
@@ -7861,7 +7716,7 @@ This operation does not require authentication
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -7941,7 +7796,7 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
 </tr>
 </tbody></table>
 
@@ -8043,7 +7898,7 @@ This operation does not require authentication
 <td>x-v</td>
 <td>string</td>
 <td></td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#response-headers">version</a> of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API end point that the CDR Register has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -8118,7 +7973,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>URL of the CDR Register&#39;s JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the <a href="https://cdr-register.github.io/register/#getjwks">JWKS endpoint</a> used to validate SSAs and CDR Register client authentication</td>
+<td>URL of the CDR Register&#39;s JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
 </tr>
 <tr>
 <td>token_endpoint</td>
@@ -8464,7 +8319,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the Data Holder Brand issued by the CDR Register. Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the Data Holder Brand issued by the CDR Register</td>
 </tr>
 <tr>
 <td>brandName</td>
@@ -8602,7 +8457,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the software product issued by the CDR Register.  Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the software product issued by the CDR Register</td>
 </tr>
 <tr>
 <td>softwareProductStatus</td>
@@ -8687,7 +8542,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the Data Recipient issued by the CDR Register.  Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the Data Recipient issued by the CDR Register</td>
 </tr>
 <tr>
 <td>dataRecipientStatus</td>
@@ -8826,7 +8681,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the Data Recipient Legal Entity issued by the CDR Register.  Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the Data Recipient Legal Entity issued by the CDR Register</td>
 </tr>
 <tr>
 <td>legalEntityName</td>
@@ -8946,7 +8801,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the Data Recipient brand issued by the CDR Register.  Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the Data Recipient brand issued by the CDR Register</td>
 </tr>
 <tr>
 <td>brandName</td>
@@ -9032,7 +8887,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the Data Recipient software product issued by the CDR Register.  Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the Data Recipient software product issued by the CDR Register</td>
 </tr>
 <tr>
 <td>softwareProductName</td>
@@ -9124,7 +8979,7 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Unique id of the organisation issued by the CDR Register.  Refer to <a href="https://cdr-register.github.io/register/#identifiers">Identifiers</a> for details</td>
+<td>Unique id of the organisation issued by the CDR Register</td>
 </tr>
 <tr>
 <td>legalEntityName</td>
@@ -9538,6 +9393,22 @@ This operation does not require authentication
 </tbody></table></p>
 <h1 id='authorisation-scopes'>Authorisation Scopes</h1>
 <p>The following authorisation scopes have been defined for the standards.  Each API end point will specify which scopes are required to access the data available via that end point.</p>
+<h2 id='public'>Public</h2>
+<table><thead>
+<tr>
+<th>Scope Name</th>
+<th>Scope ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Public</strong></td>
+<td>NA</td>
+<td>Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.</td>
+</tr>
+</tbody></table>
+<h2 id='cdr-data'>CDR Data</h2>
+<p>These scopes are used to access authenticated resource endpoints that can be used to obtain CDR Data.</p>
 
 <table><thead>
 <tr>
@@ -9581,6 +9452,17 @@ This operation does not require authentication
 <td>common:customer.detail:read</td>
 <td>The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.</td>
 </tr>
+</tbody></table>
+<h2 id='admin-amp-registration'>Admin &amp; Registration</h2>
+<p>The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.</p>
+
+<table><thead>
+<tr>
+<th>Scope Name</th>
+<th>Scope ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Basic Admin Metrics Data</strong></td>
 <td>admin:metrics.basic:read</td>
@@ -9600,11 +9482,6 @@ This operation does not require authentication
 <td><strong>Register Client</strong></td>
 <td>cdr:registration</td>
 <td>This scope would allow a Data Recipient to register or manage a software product client with a Data Holder</td>
-</tr>
-<tr>
-<td><strong>Public</strong></td>
-<td>NA</td>
-<td>Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.</td>
 </tr>
 </tbody></table>
 <h1 style="display:none"></h1>
@@ -24621,7 +24498,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
 <p><a id="schemaresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -25011,7 +24888,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
+<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
 <p><a id="schemainvocationmetricsv2"></a></p>
 
@@ -25224,7 +25101,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
 <p><a id="schemaaverageresponsemetricsv2"></a></p>
 
@@ -25755,7 +25632,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
 
 <p><a id="schemasecondaryholdermetrics"></a></p>
 
@@ -25833,7 +25710,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <p><a id="schemalinks"></a></p>
 

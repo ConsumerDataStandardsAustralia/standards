@@ -221,7 +221,7 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 |page|query|integer(int32)|optional|the page number to return|
 |page-size|query|integer(int32)|optional|the number of records to return per page|
 |Authorization Endpoint (Register)|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
-|x-v|header|string|optional|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -299,7 +299,7 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     
@@ -360,10 +360,10 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
-|softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value|
+|softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
 |Authorization Endpoint (Register)|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
-|x-v|header|string|optional|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -394,7 +394,7 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     
@@ -453,7 +453,7 @@ Endpoint used by participants to discover the statuses for software products fro
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -488,7 +488,7 @@ Endpoint used by participants to discover the statuses for software products fro
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     <aside class="success">
@@ -544,7 +544,7 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -579,7 +579,7 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     <aside class="success">
@@ -635,7 +635,7 @@ Endpoint used by participants to discover data recipients and associated brands 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -692,7 +692,7 @@ Endpoint used by participants to discover data recipients and associated brands 
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
-|200|x-v|string||The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with.|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
 
   
     <aside class="success">
@@ -751,7 +751,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |issuer|string|mandatory|none|URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier|
-|jwks_uri|string|mandatory|none|URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the [JWKS endpoint](https://cdr-register.github.io/register/#getjwks) used to validate SSAs and CDR Register client authentication|
+|jwks_uri|string|mandatory|none|URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
 |token_endpoint|string|mandatory|none|URL of the CDR Register's OAuth 2.0 Token Endpoint|
 |claims_supported|[string]|mandatory|none|JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for|
 |id_token_signing_alg_values_supported|[string]|mandatory|none|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
@@ -940,7 +940,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|dataHolderBrandId|string|mandatory|none|Unique id of the Data Holder Brand issued by the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|dataHolderBrandId|string|mandatory|none|Unique id of the Data Holder Brand issued by the CDR Register|
 |brandName|string|mandatory|none|The name of Data Holder Brand|
 |industry|string|mandatory|none|The industry the Data Holder brand belongs to (Banking, etc)|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Brand logo URI|
@@ -997,7 +997,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|softwareProductId|string|mandatory|none|Unique id of the software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|softwareProductId|string|mandatory|none|Unique id of the software product issued by the CDR Register|
 |softwareProductStatus|string|mandatory|none|Software product status in the CDR Register|
 
 #### Enumerated Values
@@ -1046,7 +1046,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|dataRecipientId|string|mandatory|none|Unique id of the Data Recipient issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|dataRecipientId|string|mandatory|none|Unique id of the Data Recipient issued by the CDR Register|
 |dataRecipientStatus|string|mandatory|none|Data Recipient status in the CDR Register|
 
 #### Enumerated Values
@@ -1142,7 +1142,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|legalEntityId|string|mandatory|none|Unique id of the Data Recipient Legal Entity issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|legalEntityId|string|mandatory|none|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
 |legalEntityName|string|mandatory|none|Legal name of the Data Recipient|
 |accreditationNumber|string|mandatory|none|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
 |industry|string|mandatory|none|none|
@@ -1190,7 +1190,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|dataRecipientBrandId|string|mandatory|none|Unique id of the Data Recipient brand issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|dataRecipientBrandId|string|mandatory|none|Unique id of the Data Recipient brand issued by the CDR Register|
 |brandName|string|mandatory|none|Data Recipient Brand name|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Data Recipient Brand logo URI|
 |softwareProducts|[[SoftwareProductMetaData](#schemasoftwareproductmetadata)]|optional|none|[Data Recipient Brand Software Products]|
@@ -1225,7 +1225,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|softwareProductId|string|mandatory|none|Unique id of the Data Recipient software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|softwareProductId|string|mandatory|none|Unique id of the Data Recipient software product issued by the CDR Register|
 |softwareProductName|string|mandatory|none|Name of the software product|
 |softwareProductDescription|string|optional|none|Description of the software product|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Software product logo URI|
@@ -1266,7 +1266,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|legalEntityId|string|mandatory|none|Unique id of the organisation issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
+|legalEntityId|string|mandatory|none|Unique id of the organisation issued by the CDR Register|
 |legalEntityName|string|mandatory|none|Unique legal name of the organisation|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Legal Entity logo URI|
 |registrationNumber|string|optional|none|Unique registration number (if the company is registered outside Australia)|

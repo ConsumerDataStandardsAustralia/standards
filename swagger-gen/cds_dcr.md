@@ -49,7 +49,7 @@ Register a client using a CDR Register issued Software Statement Assertion.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[PostDataRecipientRegistrationClientregistrationrequest](#schemapostdatarecipientregistrationclientregistrationrequest)|mandatory|The registration request JWT, as defined in [Dynamic Client Registration](https://cdr-register.github.io/register/#dynamic-client-registration), to be used to register with a Data Holder|
+|body|body|[PostDataRecipientRegistrationClientregistrationrequest](#schemapostdatarecipientregistrationclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder|
 
 > Example responses
 
@@ -221,10 +221,13 @@ Get a Client Registration for a given Client ID.
 |401|WWW-Authenticate|string||The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside>
 
+    
   
 
 ## Update Data Recipient Registration
@@ -279,7 +282,7 @@ Update a Client Registration for a given Client ID.
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
 |Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
-|body|body|[PostDataRecipientRegistrationClientregistrationrequest](#schemapostdatarecipientregistrationclientregistrationrequest)|mandatory|The registration request JWT, as defined in [Dynamic Client Registration](https://cdr-register.github.io/register/#dynamic-client-registration), to be used to register with a Data Holder|
+|body|body|[PostDataRecipientRegistrationClientregistrationrequest](#schemapostdatarecipientregistrationclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder|
 
 > Example responses
 
@@ -343,10 +346,13 @@ Update a Client Registration for a given Client ID.
 |401|WWW-Authenticate|string||The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside>
 
+    
   
 
 ## Delete Data Recipient oAuth Client Registration
@@ -413,10 +419,13 @@ Delete a Client Registration for a given Client ID.
 |401|WWW-Authenticate|string||The Response Header Field as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr:registration</a>
 </aside>
 
+    
   
 
 ## Schemas
@@ -488,7 +497,7 @@ This operation does not require authentication
 |policy_uri|string|optional|none|URL string that points to a human-readable policy document for the Software Product|
 |jwks_uri|string|mandatory|none|URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys|
 |revocation_uri|string|optional|none|URI string that references the location of the Software Product consent revocation endpoint|
-|recipient_base_uri|string|optional|none|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)|
+|recipient_base_uri|string|optional|none|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints|
 |token_endpoint_auth_method|string|mandatory|none|The requested authentication method for the token endpoint|
 |token_endpoint_auth_signing_alg|string|mandatory|none|The algorithm used for signing the JWT|
 |grant_types|[string]|mandatory|none|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint|
@@ -498,7 +507,7 @@ This operation does not require authentication
 |id_token_encrypted_response_alg|string|mandatory|none|JWE `alg` algorithm with which an id_token is to be encrypted|
 |id_token_encrypted_response_enc|string|mandatory|none|JWE `enc` algorithm with which an id_token is to be encrypted|
 |request_object_signing_alg|string|mandatory|none|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
-|software_statement|string(JWT)|mandatory|none|The Software Statement Assertion, as defined in [Dynamic Client Registration](https://cdr-register.github.io/register/#dynamic-client-registration)|
+|software_statement|string(JWT)|mandatory|none|The Software Statement Assertion, as defined in CDR standards|
 |software_id|string|mandatory|none|String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
 |software_roles|string|optional|none|String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`|
 |scope|string|mandatory|none|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
@@ -579,7 +588,7 @@ This operation does not require authentication
 |» iat|integer(int32)|mandatory|none|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
 |» exp|integer(int32)|mandatory|none|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
 |» jti|string|mandatory|none|Unique identifier for the JWT, used to prevent replay of the token|
-|» aud|string|mandatory|none|'Contains the DH issuer value as described in the [OIDC Discovery Document](https://consumerdatastandardsaustralia.github.io/standards/#end-points)''|
+|» aud|string|mandatory|none|'Contains the Data Holder issuer value as described in the OIDC Discovery Document|
 
 *and*
 

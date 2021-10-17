@@ -2,6 +2,15 @@
 
 The following authorisation scopes have been defined for the standards.  Each API end point will specify which scopes are required to access the data available via that end point.
 
+## Public
+
+Scope Name | Scope ID |Description
+-----------|----------|-----------
+**Public** | NA | Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.
+
+## CDR Data
+These scopes are used to access authenticated resource endpoints that can be used to obtain CDR Data.
+
 Scope Name | Scope ID |Description
 -----------|----------|-----------
 **Basic Bank Account Data** | bank:accounts.basic:read | This scope would allow for the third party to access basic information of the customer’s accounts.<br/><br/>Includes simple account information including balance.<br/>Does not include detailed account information such as account numbers, product information or transaction data.
@@ -11,8 +20,13 @@ Scope Name | Scope ID |Description
 **Bank Regular Payments** | bank:regular_payments:read | The scope would allow the third party to access regular payments.  Includes Direct Debits and Scheduled Payments.
 **Basic Customer Data** | common:customer.basic:read | The scope would allow the third party to access personally identifiable information about the customer.  For retail customers this would be information about the customer themselves.  For business customers it would imply the name of specific user but also information about the business.<br/><br/>Includes name and occupation for individuals or name, business numbers and industry code for organisations
 **Detailed Customer Data** | common:customer.detail:read | The scope would allow the third party to access more detailed information about the customer.  Includes the data available with the Basic Customer Data scope plus contact details.<br/><br/>Includes basic data plus phone, email and address information.
+
+## Admin &amp; Registration
+The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.
+
+Scope Name | Scope ID |Description
+-----------|----------|-----------
 **Basic Admin Metrics Data** | admin:metrics.basic:read | Metrics data accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes access to basic Metrics data.
 **Admin Metadata Update Data** | admin:metadata:update | Update notification accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes permission to notify Data Holders of changes to Data Recipient metadata held by the CDR Register.
 **Bank Data Holders List** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to Data Holder metadata held by the Register.
 **Register Client** | cdr:registration | This scope would allow a Data Recipient to register or manage a software product client with a Data Holder
-**Public** | NA | Openly accessible information.  A customer would never need to grant this scope.  This scope is included so that end points that can be called without requiring authorisation can be identified.<br/><br/>Includes access to openly available information such as generic product information.

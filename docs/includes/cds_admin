@@ -547,7 +547,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
 <p><a id="schemaresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -930,7 +930,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
+<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
 <p><a id="schemainvocationmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1139,7 +1139,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
 <p><a id="schemaaverageresponsemetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1646,7 +1646,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
 
 <p><a id="schemasecondaryholdermetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1720,7 +1720,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <p><a id="schemalinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

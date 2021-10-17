@@ -83,8 +83,8 @@ Indicate that a critical update to the metadata for Accredited Data Recipients h
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-
-
+  
+    
       <aside class="notice">
 If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
 <a href="#authorisation-scopes">admin:metadata:update</a>.<br/><br/>
@@ -95,8 +95,8 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-
-
+    
+  
 
 ## Get Metrics
 
@@ -365,8 +365,8 @@ If the Data Holder supports private_key_jwt client authentication they MUST vali
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
 
-
-
+  
+    
       <aside class="notice">
 If the Data Holder supports Private Key JWT client authentication to authenticate the CDR Register, authorisation requires the following scope:
 <a href="#authorisation-scopes">admin:metrics.basic:read</a>.<br/><br/>
@@ -377,8 +377,8 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-
-
+    
+  
 
 ## Schemas
 
@@ -410,7 +410,7 @@ This operation may only be called by the CDR Register
 |---|---|
 |action|REFRESH|
 
-<h2 id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
 <a id="schemaresponsemetricslistv3"></a>
 
@@ -664,7 +664,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%|
 |previousDays|[number]|conditional|none|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%|
 
-<h2 id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
+<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
 <a id="schemainvocationmetricsv2"></a>
 
@@ -744,7 +744,7 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
 <a id="schemaaverageresponsemetricsv2"></a>
 
@@ -975,7 +975,7 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|Number of calls rejected for current day|
 |» previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h2 id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
 
 <a id="schemasecondaryholdermetrics"></a>
 
@@ -1010,7 +1010,7 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|Number of rejections for current day|
 |» previousDays|[number]|conditional|none|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <a id="schemalinks"></a>
 
@@ -1039,3 +1039,4 @@ This operation may only be called by the CDR Register
 ### Properties
 
 *None*
+
