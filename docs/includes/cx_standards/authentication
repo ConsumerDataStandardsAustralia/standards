@@ -1,0 +1,24 @@
+<h2 id='authentication-standards'>Authentication Standards</h2>
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authentication:</strong><br>&#39;One Time Password&#39; (OTP)</td>
+<td><p>Data holders and data recipients <strong>MUST</strong> clearly refer to a &quot;One Time Password&quot; in consumer-facing interactions and communications.</p><p>The use of the term &quot;One Time Password&quot; <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</p></td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br >Passwords</td>
+<td>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient.</td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br>Password link</td>
+<td>Data holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br>OTP expiry</td>
+<td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
+</tr>
+</tbody></table>

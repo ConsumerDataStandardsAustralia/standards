@@ -864,7 +864,7 @@
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
                   </li>
                   <li>
-                    <a href="#tocSresponsemetricslistv2" class="toc-h2 toc-link" data-title="ResponseMetricsListV2">ResponseMetricsListV2</a>
+                    <a href="#tocSresponsemetricslistv3" class="toc-h2 toc-link" data-title="ResponseMetricsListV3">ResponseMetricsListV3</a>
                   </li>
                   <li>
                     <a href="#tocSavailabilitymetrics" class="toc-h2 toc-link" data-title="AvailabilityMetrics">AvailabilityMetrics</a>
@@ -873,10 +873,10 @@
                     <a href="#tocSperformancemetrics" class="toc-h2 toc-link" data-title="PerformanceMetrics">PerformanceMetrics</a>
                   </li>
                   <li>
-                    <a href="#tocSinvocationmetrics" class="toc-h2 toc-link" data-title="InvocationMetrics">InvocationMetrics</a>
+                    <a href="#tocSinvocationmetricsv2" class="toc-h2 toc-link" data-title="InvocationMetricsV2">InvocationMetricsV2</a>
                   </li>
                   <li>
-                    <a href="#tocSaverageresponsemetrics" class="toc-h2 toc-link" data-title="AverageResponseMetrics">AverageResponseMetrics</a>
+                    <a href="#tocSaverageresponsemetricsv2" class="toc-h2 toc-link" data-title="AverageResponseMetricsV2">AverageResponseMetricsV2</a>
                   </li>
                   <li>
                     <a href="#tocSsessioncountmetrics" class="toc-h2 toc-link" data-title="SessionCountMetrics">SessionCountMetrics</a>
@@ -892,6 +892,9 @@
                   </li>
                   <li>
                     <a href="#tocSrejectionmetricsv2" class="toc-h2 toc-link" data-title="RejectionMetricsV2">RejectionMetricsV2</a>
+                  </li>
+                  <li>
+                    <a href="#tocSsecondaryholdermetrics" class="toc-h2 toc-link" data-title="SecondaryHolderMetrics">SecondaryHolderMetrics</a>
                   </li>
                   <li>
                     <a href="#tocSlinks" class="toc-h2 toc-link" data-title="Links">Links</a>
@@ -1020,6 +1023,16 @@
 <td><a href="#authorisation-standards">CX Standards: Unavailable Accounts</a></td>
 <td>Data Holders <strong>MAY</strong> implement the following data standards effective from 1 November 2021:<ul><li><strong>Unavailable Accounts:</strong> No accounts can be shown</li><li><strong>Unavailable Accounts:</strong> Authorisation not permitted</li><li><strong>Unavailable Accounts:</strong> Request sharing rights</li></ul></td>
 <td>November 1st 2021</td>
+</tr>
+<tr>
+<td><a href="#get-metrics">Get Metrics V3</a></td>
+<td>Version 3 of this end point must be made available by affected data holders by October 1st 2022</td>
+<td>October 1st 2022</td>
+</tr>
+<tr>
+<td><a href="#get-metrics">Get Metrics V2</a></td>
+<td>Data holders may obsolete version 2 of this end point from December 5th 2022. Data Holders in the energy sector MAY go live with only Get Metrics v3 support. The CDR Register must upgrade their implementation to use version 3 by this time</td>
+<td>December 5th 2022</td>
 </tr>
 <tr>
 <td><a href="#withdrawal-standards">CX Standards: Withdrawals</a></td>
@@ -3021,6 +3034,10 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 <p>A Data Holder assumes the role of an <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#Overview">OpenID Provider</a>.</p>
 
 <p>For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.</p>
+<h3 id='secondary-data-holder'>Secondary Data Holder</h3>
+<p>A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.</p>
+
+<p>A request for data from a Secondary Data Holder by a standard Data Holder is known as a <em>Secondary Responsibility Request</em>.</p>
 <h3 id='data-recipient'>Data Recipient</h3>
 <p>A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.</p>
 
@@ -5646,8 +5663,8 @@ Host: cdr.register
 
 <p><br>
 <table>
-<tr><td><a href='./includes/swagger/swagger_dcr.json'>DCR Swagger (JSON)</a></td></tr>
-<tr><td><a href='./includes/swagger/swagger_dcr.yaml'>DCR Swagger (YAML)</a></td></tr>
+<tr><td><a href='./includes/swagger/cds_dcr.json'>DCR Swagger (JSON)</a></td></tr>
+<tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR Swagger (YAML)</a></td></tr>
 </table></p>
 
 <h2 id='register-data-recipient-oauth-client'>Register Data Recipient oAuth Client</h2>
@@ -9592,10 +9609,6 @@ This operation does not require authentication
 </tbody></table>
 <h1 style="display:none"></h1>
 <h1 id='non-functional-requirements'>Non-functional Requirements</h1>
-<aside class="notice">
-The standard relating to NFRs will commence on a date specified by the Data Standards Chair. It is intended that an analysis of actual usage in a production implementation for a period of time is conducted to validate that the specific thresholds stipulated in this section are appropriate prior to this standard commencing and becoming a binding data standard under the Consumer Data Rules.
-</aside>
-
 <p>The non-functional requirements (NFRs) for the Consumer Data Right regime cover a number of considerations:</p>
 
 <ul>
@@ -9610,6 +9623,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 
 <ul>
 <li><strong>Data Recipient</strong>: For the purposes of these NFRs a data recipient is defined as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
+<li><strong>Secondary Responsibility Request</strong>: A request made to a secondary data holder by a data holder for designated data to fulfil a Consumer Data Request made by an accredited data recipient.</li>
 <li><strong>Session</strong>: A session is defined as the life span of a unique Access Token.  Multiple API requests made with a single, valid, Access Token would be considered part of a single Session.</li>
 <li><strong>Customer Present</strong>: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the data recipient will be considered “Customer Present”.  Technically a data holder will define an API request as “Customer Present” if, and only if, the x-fapi-customer-ip-address header is populated with a valid IP address of the end customer’s device.</li>
 <li><strong>Customer Not Present</strong>: Authenticated API requests that are not deemed to be “Customer Present”</li>
@@ -9625,7 +9639,7 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 
 <p>After a unique session is expired it is expected that the data recipient, for the same customer, may establish a new session as long as the authorisation is still valid.</p>
 <h2 id='availability-requirements'>Availability Requirements</h2>
-<p>Service availability requirement for data holders:
+<p>Service availability requirement for data holders and secondary data holders:
 <em>99.5% per month</em></p>
 
 <p>The definition of a period of unavailability is any period of time when any of the API end points defined in the standard is unable to reliably provide a successful response to an appropriately constructed request.</p>
@@ -9639,6 +9653,8 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <li>Published to data recipients with at least one week lead time for normal outages,</li>
 <li>May occur without notification if the change is to resolve a critical service or security issue.</li>
 </ul>
+
+<p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a secondary responsibility request.  This will not be taken to mean that the data holder is unavailable.</p>
 <h2 id='performance-requirements'>Performance Requirements</h2>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
@@ -9665,12 +9681,12 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>High Priority</td>
 <td><strong>1000ms</strong></td>
-<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><li>Get Accounts</li><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
+<td>All calls to the following end points:<ul><li>All InfoSec end points including Dynamic Client Registration</li><li>CDR Arrangement Revocation</li></ul>The following Unauthenticated end points:<ul><em>Common</em><li>Get Status</li><li>Get Outages</li></ul>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Accounts</li><em>Energy</em><li>Get Accounts</li><li>Get Account Detail</li><li>Get Balance For Account</li><li>Get Invoices For Account</li><em>Common</em><li>Get Customer</li><li>Get Customer Detail</li></ul></td>
 </tr>
 <tr>
 <td>Low Priority</td>
 <td><strong>1500ms</strong></td>
-<td>Customer Present calls to the following end points:<ul><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li></ul></td>
+<td>Customer Present calls to the following end points:<ul><em>Banking</em><li>Get Account Detail</li><li>Get Account Balance</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Transactions For Account</li><li>Get Transaction Detail</li><li>Get Payees</li><li>Get Payee Detail</li><li>Get Direct Debits For Account</li><li>Get Scheduled Payments For Account</li><li>Get Scheduled Payments Bulk</li></li><li>Get Scheduled Payments For Specific Accounts</li><em>Energy</em><li>Get Agreed Payment Schedule</li><li>Get Concessions</li><li>Get Bulk Balances</li><li>Get Balances For Specific Accounts</li><li>Get Bulk Invoices</li><li>Get Invoices For Specific Accounts</li><li>Get Billing For Account</li></ul></td>
 </tr>
 <tr>
 <td>Unattended</td>
@@ -9680,7 +9696,17 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <tr>
 <td>Large Payload</td>
 <td><strong>6000ms</strong></td>
-<td>Any Unattended calls to the following end points:<ul><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li></ul></td>
+<td>Any Unattended calls to the following end points:<ul><em>Banking</em><li>Get Bulk Direct Debits</li><li>Get Direct Debits For Specific Accounts</li><em>Energy</em><li>Get Bulk Billing</li><li>Get Billing For Specific Accounts</li></ul></td>
+</tr>
+<tr>
+<td>Secondary Request</td>
+<td><strong>1000ms</strong> (for data holders)<br/><strong>1500ms</strong> (for secondary data holders)</td>
+<td>Customer Present calls to the following end points:<ul><em>Energy</em><li>Get Service Points</li><li>Get Service Point Detail</li><li>Get DER For Service Point</li></ul></td>
+</tr>
+<tr>
+<td>Large Secondary Request</td>
+<td><strong>1500ms</strong> (for data holders)<br/><strong>4500ms</strong> (for secondary data holders)</td>
+<td>Unattended calls to the following end points:<ul><em>Energy</em><li>Get Service Points</li><li>Get Service Point Detail</li><li>Get DER For Service Point</li></ul>All calls to the following end points:<ul><em>Energy</em><li>Get Bulk Usage</li><li>Get Usage For Service Point</li><li>Get Usage For Specific Service Points</li><li>Get Bulk DER</li><li>Get DER For Specific Service Points</li></ul></td>
 </tr>
 </tbody></table>
 
@@ -9726,6 +9752,8 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <ul>
 <li>300 TPS total across all consumers (additive to secure traffic)</li>
 </ul>
+
+<p>As traffic from data recipients to data holders will be shaped by the thresholds above, there are no specific thresholds applicable to secondary data holders.</p>
 <h2 id='data-recipient-requirements'>Data Recipient Requirements</h2>
 <p>Data recipients will be limited by the traffic thresholds documented in the previous section.  In addition to this data recipients are expected to design their services according to the following principles:</p>
 
@@ -9766,6 +9794,8 @@ The standard relating to NFRs will commence on a date specified by the Data Stan
 <p>Within this proposal there is no specific requirement with regard to data latency (ie. how up to date data should be).  Instead, the requirement for data latency is that data presented via API end points should be commensurate to data presented via other primary digital channels.</p>
 
 <p>For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance end points should be the same as the balance presented through the mobile application.</p>
+
+<p>To be able to manage network efficiency using normal mechanisms, a data holder making secondary responsibility requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the data recipient.  Any such cache should be short lived.</p>
 <h2 id='data-quality'>Data Quality</h2>
 <p>Data holders are required to take reasonable steps to ensure that CDR data, having regard to the purpose for which it is held, is accurate and up to date.</p>
 
@@ -24214,9 +24244,11 @@ This operation may only be called by the CDR Register
 
 <p>This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.</p>
 
-<p>NOTE: This version must be implemented by <strong>July 31st 2021</strong></p>
+<p>NOTE: This version must be implemented by <strong>October 1st 2022</strong></p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a>. If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a> <a href="includes/obsolete/get-metrics-v2.html">v2</a>.</p>
+
+<p>If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.</p>
 
 <h3 id='endpoint-version-2'>Endpoint Version</h3>
 
@@ -24228,7 +24260,7 @@ This operation may only be called by the CDR Register
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -24339,6 +24371,18 @@ This operation may only be called by the CDR Register
         </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="mi">0</span><span class="w">
         </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"averageResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24371,6 +24415,34 @@ This operation may only be called by the CDR Register
         </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="mi">0</span><span class="w">
         </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"sessionCount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24412,7 +24484,21 @@ This operation may only be called by the CDR Register
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"customerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipientCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="s2">"recipientCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondaryHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"rejections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -24435,7 +24521,7 @@ This operation may only be called by the CDR Register
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsemetricslistv2">ResponseMetricsListV2</a></td>
+<td><a href="#schemaresponsemetricslistv3">ResponseMetricsListV3</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -24535,9 +24621,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
+<h2 id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
-<p><a id="schemaresponsemetricslistv2"></a></p>
+<p><a id="schemaresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -24583,6 +24669,18 @@ This operation may only be called by the CDR Register
         </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="mi">0</span><span class="w">
         </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"averageResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24615,6 +24713,34 @@ This operation may only be called by the CDR Register
         </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="mi">0</span><span class="w">
         </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"sessionCount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24656,7 +24782,21 @@ This operation may only be called by the CDR Register
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"customerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipientCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="s2">"recipientCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secondaryHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"rejections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -24704,14 +24844,14 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» invocations</td>
-<td><a href="#schemainvocationmetrics">InvocationMetrics</a></td>
+<td><a href="#schemainvocationmetricsv2">InvocationMetricsV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Number of API calls in each performance tier over time</td>
 </tr>
 <tr>
 <td>» averageResponse</td>
-<td><a href="#schemaaverageresponsemetrics">AverageResponseMetrics</a></td>
+<td><a href="#schemaaverageresponsemetricsv2">AverageResponseMetricsV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Average response time in seconds, at millisecond resolution, within each performance tier</td>
@@ -24764,6 +24904,13 @@ This operation may only be called by the CDR Register
 <td>mandatory</td>
 <td>none</td>
 <td>Number of data recipients with active authorisations at the time of the call</td>
+</tr>
+<tr>
+<td>» secondaryHolder</td>
+<td><a href="#schemasecondaryholdermetrics">SecondaryHolderMetrics</a></td>
+<td>conditional</td>
+<td>none</td>
+<td>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
 <td>links</td>
@@ -24864,9 +25011,9 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSinvocationmetrics">InvocationMetrics</h2>
+<h2 id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
-<p><a id="schemainvocationmetrics"></a></p>
+<p><a id="schemainvocationmetricsv2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24894,6 +25041,18 @@ This operation may only be called by the CDR Register
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"largePayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">0</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">0</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">0</span><span class="w">
@@ -25021,11 +25180,53 @@ This operation may only be called by the CDR Register
 <td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
+<tr>
+<td>secondary</td>
+<td>object</td>
+<td>conditional</td>
+<td>none</td>
+<td>API call counts for the secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+</tr>
+<tr>
+<td>» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>API call counts for current day</td>
+</tr>
+<tr>
+<td>» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
+</tr>
+<tr>
+<td>largeSecondary</td>
+<td>object</td>
+<td>conditional</td>
+<td>none</td>
+<td>API call counts for the large secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+</tr>
+<tr>
+<td>» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>API call counts for current day</td>
+</tr>
+<tr>
+<td>» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
+</tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSaverageresponsemetrics">AverageResponseMetrics</h2>
+<h2 id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
-<p><a id="schemaaverageresponsemetrics"></a></p>
+<p><a id="schemaaverageresponsemetricsv2"></a></p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -25057,6 +25258,34 @@ This operation may only be called by the CDR Register
     </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mi">0</span><span class="w">
     </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"largeSecondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"primary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -25175,6 +25404,104 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+<tr>
+<td>secondary</td>
+<td>object</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for the secondary tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+</tr>
+<tr>
+<td>» primary</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Average response time as measured for the primary data holder</td>
+</tr>
+<tr>
+<td>»» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for current day</td>
+</tr>
+<tr>
+<td>»» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+<tr>
+<td>» secondary</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Average response time as measured for the secondary data holder</td>
+</tr>
+<tr>
+<td>»» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for current day</td>
+</tr>
+<tr>
+<td>»» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+<tr>
+<td>» largeSecondary</td>
+<td>object</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for the large payload tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
+</tr>
+<tr>
+<td>»» primary</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Average response time as measured for the primary data holder</td>
+</tr>
+<tr>
+<td>»»» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for current day</td>
+</tr>
+<tr>
+<td>»»» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+<tr>
+<td>»» secondary</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Average response time as measured for the secondary data holder</td>
+</tr>
+<tr>
+<td>»»» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>Average response time for current day</td>
+</tr>
+<tr>
+<td>»»» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
 <td>none</td>
@@ -25428,7 +25755,85 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 class="schema-toc" id="tocSlinks">Links</h2>
+<h2 id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+
+<p><a id="schemasecondaryholdermetrics"></a></p>
+
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">0</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"rejections"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">0</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p><em>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster</em></p>
+
+<h3 id='properties-12'>Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Number of calls resulting in error due to server execution over time</td>
+</tr>
+<tr>
+<td>» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>Number of errors for current day</td>
+</tr>
+<tr>
+<td>» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
+</tr>
+<tr>
+<td>rejections</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+<td>Number of calls resulting in a rejection due to server execution over time</td>
+</tr>
+<tr>
+<td>» currentDay</td>
+<td>number</td>
+<td>conditional</td>
+<td>none</td>
+<td>Number of rejections for current day</td>
+</tr>
+<tr>
+<td>» previousDays</td>
+<td>[number]</td>
+<td>conditional</td>
+<td>none</td>
+<td>Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSlinks">Links</h2>
 
 <p><a id="schemalinks"></a></p>
 
@@ -25436,7 +25841,7 @@ This operation may only be called by the CDR Register
   </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-12'>Properties</h3>
+<p></span></code></pre><h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25461,7 +25866,7 @@ This operation may only be called by the CDR Register
 
 <p><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w"></p>
 
-<p></span></code></pre><h3 id='properties-13'>Properties</h3>
+<p></span></code></pre><h3 id='properties-14'>Properties</h3>
 <p><em>None</em></p></p>
 <h1 style="display:none"></h1>
 <h1 id='known-issues'>Known Issues</h1>
@@ -25479,9 +25884,15 @@ This operation may only be called by the CDR Register
 </thead><tbody>
 <tr>
 <td>TBC</td>
-<td>PoC Register Standards</td>
+<td>1.13.0</td>
 <td>Inclusion of CDR Register standards</td>
-<td>See <a href="includes/releasenotes/releasenotes.poc-register.html">release notes</a> for details</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.13.0.html">release notes</a> for details</td>
+</tr>
+<tr>
+<td>14/10/2021</td>
+<td>1.12.0</td>
+<td>Inclusion of a series of decisions related to energy and non-functional requirements</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.12.0.html">release notes</a> for details</td>
 </tr>
 <tr>
 <td>05/10/2021</td>
@@ -25845,7 +26256,7 @@ This operation may only be called by the CDR Register
 <tr>
 <td><a href='./archive/standards-1.11.1/docs/'>05/10/2021</a></td>
 <td>1.11.1</td>
-<td><a href='./archive/standards-1.11.1/docs/'>Minor errata and documentation fixes.</a></td>
+<td><a href='./archive/standards-1.11.1/docs/'>Changes arising from Decision Proposals 193 and 208.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/193">Decision 193</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/208">Decision 208</a> for details</td>
 </tr>
 <tr>
 <td><a href='./archive/standards-1.11.0/docs/'>30/06/2021</a></td>
