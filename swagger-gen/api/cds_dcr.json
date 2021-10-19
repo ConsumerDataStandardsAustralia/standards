@@ -40,8 +40,7 @@
           "400": {
             "$ref": "#/responses/400Error"
           }
-        },
-        "x-version": "1"
+        }
       }
     },
     "/register/{ClientId}": {
@@ -76,8 +75,7 @@
           "403": {
             "$ref": "#/responses/403Error"
           }
-        },
-        "x-version": "1"
+        }
       },
       "put": {
         "description": "Update a Client Registration for a given Client ID.",
@@ -116,8 +114,7 @@
           "403": {
             "$ref": "#/responses/403Error"
           }
-        },
-        "x-version": "1"
+        }
       },
       "delete": {
         "description": "Delete a Client Registration for a given Client ID.",
@@ -150,8 +147,7 @@
           "405": {
             "$ref": "#/responses/405Error"
           }
-        },
-        "x-version": "1"
+        }
       }
     }
   },
@@ -400,7 +396,7 @@
           "format": "JWT"
         },
         "software_id": {
-          "description": "String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
+          "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
           "type": "string",
           "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE"
         },

@@ -434,7 +434,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |id_token_encrypted_response_enc|string|true|none|JWE `enc` algorithm with which an id_token is to be encrypted|
 |request_object_signing_alg|string|true|none|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
 |software_statement|string(JWT)|true|none|The Software Statement Assertion, as defined in [Dynamic Client Registration](https://cdr-register.github.io/register/#dynamic-client-registration)|
-|software_id|string|true|none|String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
+|software_id|string|true|none|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
 |software_roles|string|false|none|String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`|
 |scope|string|true|none|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 
