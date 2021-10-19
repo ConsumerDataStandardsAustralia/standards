@@ -426,10 +426,15 @@ html, body {
 
     td {
       padding: 10px;
+      border-top: 1px solid #eee;
     }
 
     tr:last-child {
       border-bottom: 1px solid #ccc;
+    }
+
+    tr:first>td {
+      top: 0;
     }
 
     tr:nth-child(odd)>td {
