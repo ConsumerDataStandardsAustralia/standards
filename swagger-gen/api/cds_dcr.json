@@ -27,7 +27,13 @@
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/ClientRegistrationRequest"
+            "in": "body",
+            "name": "ClientRegistrationRequest",
+            "description": "The registration request JWT to be used to register with a Data Holder.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClientRegistrationRequest"
+            }
           }
         ],
         "responses": {
@@ -89,7 +95,13 @@
 				],
         "parameters": [
           {
-            "$ref": "#/parameters/ClientRegistrationRequest"
+            "in": "body",
+            "name": "ClientRegistrationRequest",
+            "description": "The registration request JWT to be used to register with a Data Holder.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClientRegistrationRequest"
+            }
           },
           {
             "$ref": "#/parameters/ClientId"
@@ -165,17 +177,6 @@
       "description": "The client ID issued by the target Data Holder",
       "type": "string",
       "required": true
-    },
-    "ClientRegistrationRequest": {
-      "in": "body",
-      "name": "ClientRegistrationRequest",
-      "description": "The registration request JWT to be used to register with a Data Holder",
-      "required": true,
-      "schema": {
-        "type": "string",
-        "format": "JWT",
-        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-      }
     }
   },
   "responses": {
@@ -203,6 +204,12 @@
     }
   },
   "definitions": {
+    "ClientRegistrationRequest": {
+        "type": "string",
+        "format": "JWT",
+        "description": "The registration request JWT to be used to register with a Data Holder.",
+        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    },
     "RegistrationProperties": {
       "type": "object",
       "required": [
