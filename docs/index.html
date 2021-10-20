@@ -922,6 +922,20 @@
               <hr class="toc-sep" />
           </li>
             <li class="toc-child">
+              <a href="#secondary-responsibility" class="toc-h1 toc-link" data-title="Secondary Responsibility">Secondary Responsibility</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#energy" class="toc-h2 toc-link" data-title="Energy">Energy</a>
+                  </li>
+              </ul>
+          </li>
+            <li class="toc-group">
+              <hr class="toc-sep" />
+          </li>
+            <li class="toc-child">
               <a href="#known-issues" class="toc-h1 toc-link" data-title="Known Issues">Known Issues</a>
           </li>
             <li class="toc-child">
@@ -3064,6 +3078,8 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 <p>A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.</p>
 
 <p>A request for data from a Secondary Data Holder by a standard Data Holder is known as a <em>Secondary Responsibility Request</em>.</p>
+
+<p>See the <a href="#secondary-responsibility">Secondary Responsibility</a> section contains standards related to Secondary Data Holders and Secondary Responsibility Requests.</p>
 
 <h3 id='data-recipient'>Data Recipient</h3>
 
@@ -25790,6 +25806,50 @@ This operation may only be called by the CDR Register
 
 <p></span></code></pre><h3 id='properties-14'>Properties</h3>
 <p><em>None</em></p></p>
+<h1 style="display:none"></h1>
+<h1 id='secondary-responsibility'>Secondary Responsibility</h1>
+<h2 id='overview'>Overview</h2>
+
+<p>This section outlines standards related to Secondary Responsibility Requests.  These standards are applicable to CDR data clusters that are designated to be provided by a Secondary Data Holder via a CDR request to a Data Holder.</p>
+
+<p>These standards define the information security mechanisms by which a Data Holder will connect with a Secondary Data Holder to fulfil a valid CDR request and the endpoints that the Secondary Data Holder will expose to fulfil such a request. </p>
+
+<h2 id='energy'>Energy</h2>
+
+<p>For the energy sector requests for the following data clusters are Secondary Responsibility Requests for which the Australian Energy Market Operator (AEMO) is the single designated data holder:
+* NMI Standard Data
+* Energy Usage
+* Distributed Energy Resources</p>
+
+<p>CDR requests for these data clusters to a Data Holder MUST be fulfilled by a request to AEMO.</p>
+
+<h3 id='security-profile'>Security Profile</h3>
+
+<p>In its function as market operator of the National Energy Market, AEMO already maintains a
+registration process for industry participants and shares data with participants using real time,
+RESTful APIs. This is done via the platform known as the e-Hub.</p>
+
+<p>These processes currently include support processes for registration, maintenance of certificates,
+and the management of change. Documentation includes a developer portal, API documentation
+and a security profile. More information is published by AEMO.</p>
+
+<p>The e-Hub platform and associated mechanisms (<strong>[EHUB]</strong>) will be considered a normative standard for the requesting of data from AEMO to fulfil Secondary Responsibility Requests.</p>
+
+<h4 id='normative-references'>Normative References</h4>
+
+<table><thead>
+<tr>
+<th><strong>Reference</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>[EHUB]</strong></td>
+<td>AEMO e-Hub <TBC></td>
+<td><TBC></td>
+</tr>
+</tbody></table>
 <h1 style="display:none"></h1>
 <h1 id='known-issues'>Known Issues</h1>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
