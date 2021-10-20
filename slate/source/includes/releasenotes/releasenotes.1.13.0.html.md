@@ -20,17 +20,16 @@ This release minor errata and documentation fixes.
 |------|-----------|----|
 | Structure | Restructured the overall standards structure to accommodate energy and register standards.  These changes were aesthetic only and not intended to result in material change to the standards | Multiple sections affected |
 | Register Standards | Incorporated CDR Register standards according to Decision 206 | Multiple sections affected |
+| Secondary Responsibility | Addition of the secondary responsibility section incorporating the AEMO security profile and AEMO endpoint decisions | [Secondary Responsibility](../../#secondary-responsibility)
 
 ## API End Points
 
-|Change|Description|Link|
-|------|-----------|----|
+No change
 
 ## Information Security Profile
-|Change|Description|Link|
-|------|-----------|----|
+
+No change
 
 ## Consumer Experience
 
-|Change|Description|Link|
-|------|-----------|----|
+No change
