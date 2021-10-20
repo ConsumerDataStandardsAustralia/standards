@@ -25850,6 +25850,69 @@ and a security profile. More information is published by AEMO.</p>
 <td><TBC></td>
 </tr>
 </tbody></table>
+
+<h3 id='aemo-endpoints'>AEMO Endpoints</h3>
+
+<p>AEMO will expose the following end points, to retailers only, to service Secondary Responsibility Requests:</p>
+
+<ul>
+<li><strong>Get Service Points</strong>: Obtain high level details for a list of service points</li>
+<li><strong>Get Service Point Detail</strong>: Obtain the detail for a specific service point</li>
+<li><strong>Get Usage For Service Point</strong>: Obtain a list of electricity usage data from a particular service point</li>
+<li><strong>Get Usage For Specific Service Points</strong>: Obtain the electricity usage data for a specific set of service points</li>
+<li><strong>Get DER For Service Point</strong>: Obtain a list of DER data for a particular service point</li>
+<li><strong>Get DER For Specific Service Points</strong>: Obtain DER data for a specific set of service points</li>
+</ul>
+
+<p>The endpoints above MUST be implemented by AEMO exactly as they would be by Data Holders designated for the energy sector unless explicitly indicated otherwise in the following sections.</p>
+
+<h4 id='secondary-base-path'>Secondary Base Path</h4>
+
+<p>The term <code>secondary</code> will be added to the URI path for these the AEMO versions of the
+endpoints to create a clear separation between the secondary data holder version of the
+endpoints and the primary data holder version of the endpoints.</p>
+
+<p>For instance, the primary endpoint:
+<code>GET &lt;base&gt;/energy/electricity/servicepoints</code>
+would become the secondary endpoint:
+<code>GET &lt;base&gt;/secondary/energy/electricity/servicepoints</code></p>
+
+<h4 id='endpoint-variations'>Endpoint Variations</h4>
+
+<p>The following variations to the endpoints published by AEMO from the energy sector endpoints apply:</p>
+
+<ul>
+<li>The <code>x-fapi-auth-date</code> header MUST NOT be passed to AEMO and AEMO MUST NOT require this header</li>
+<li>The <code>x-fapi-customer-ip-address</code> header MUST NOT be passed to AEMO and AEMO MUST NOT require this header</li>
+<li>The <code>x-cds-client-headers</code> header MUST NOT be passed to AEMO and AEMO MUST NOT require this header</li>
+<li>A new header named <code>x-cds-arrangement</code> must be passed to AEMO for every invocation. This header should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement</li>
+<li>All occurrences of the <code>servicePointId</code> field, whether in a request, a response, or as a query parameter should be populated with the equivalent <code>NationalMeteringId</code> in plain text</li>
+<li>Fields in the links object for all responses MUST be translated by the Data Holder into
+values that are valid for a Data Recipient to be able to call back to the Data Holder</li>
+<li>The <em>Get Service Points</em> end point MUST be changed from a GET to a POST and will have the same request payload as the <em>Get Usage For Specific Service Points</em> endpoint</li>
+</ul>
+
+<h4 id='additional-requirements'>Additional Requirements</h4>
+
+<p>The following statements also apply to the endpoints published by AEMO:</p>
+
+<ul>
+<li>General headers should be provided as if the request were coming from the primary Data Holder and not propagated from the call made by the Data Recipient</li>
+<li>The <code>x-fapi-interaction-id</code> header must be propagated from the Data Recipient call to AEMO to allow for end to end tracing. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique value for the <code>x-fapi-interaction-id</code> header before calling AEMO</li>
+<li>Endpoints that require knowledge of the NMIs that belong to the CDR Consumer have been
+excluded from the AEMO endpoint set. This includes <em>Get Bulk Usage</em> and <em>Get Bulk DER</em>.  When a primary Data Holder is required to respond to these endpoints they should call the equivalent
+endpoint for specific service points and provide the specific list of NMIs to AEMO</li>
+<li>Some primary Data Holders may interact with AEMO using multiple participant IDs. For these Data Holders it is possible that a single request from a CDR Consumer covering multiple NMIs would require multiple calls to AEMO if the NMIs were associated with multiple participant IDs owned by
+the Data Holder. In this scenario the retailer MUST call AEMO multiple times and aggregate the results before responding to the Data Recipient</li>
+<li>If a request for usage data spans a time period when AEMO cannot definitively determine that the primary Data Holder was not in control of the NMI then:
+
+<ul>
+<li>AEMO MUST NOT respond with an error</li>
+<li>AEMO MUST respond with the usage for the period that the primary Data Holder can be definitively determined to be in control of the NMI</li>
+<li>AEMO MUST NOT share data outside the period of control of the primary Data Holder</li>
+</ul></li>
+<li>The primary Data Holder MUST ensure that the data requested and then shared with the Data Recipient is not outside the bounds of control of the specific CDR Consumer</li>
+</ul>
 <h1 style="display:none"></h1>
 <h1 id='known-issues'>Known Issues</h1>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
