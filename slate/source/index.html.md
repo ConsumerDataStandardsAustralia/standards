@@ -34,6 +34,8 @@ includes:
   - banking/product_components
   - admin
   - separator
+  - secondary_responsibility
+  - separator
   - known-issues
   - changelog
   - archives

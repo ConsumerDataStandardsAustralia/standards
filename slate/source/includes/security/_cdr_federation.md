@@ -27,6 +27,8 @@ A Secondary Data Holder (SDH) is a system entity that is designated to provide C
 
 A request for data from a Secondary Data Holder by a standard Data Holder is known as a *Secondary Responsibility Request*.
 
+See the [Secondary Responsibility](#secondary-responsibility) section contains standards related to Secondary Data Holders and Secondary Responsibility Requests.
+
 ### Data Recipient
 A Data Recipient (DR) is a system entity that is accredited to collect CDR data from Data Holders or other DRs through authorised Software Products.
 
