@@ -43,13 +43,13 @@ Register a client using a CDR Register issued Software Statement Assertion.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**undefined**
 
 <h3 id="register-data-recipient-oauth-client-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[PostDataRecipientRegistrationClientregistrationrequest](#schemapostdatarecipientregistrationclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder|
+|body|body|[ClientRegistrationRequest](#schemaclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -151,7 +151,7 @@ Get a Client Registration for a given Client ID.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**undefined**
 
 <h3 id="get-oauth-client-registration-parameters">Parameters</h3>
 
@@ -274,7 +274,7 @@ Update a Client Registration for a given Client ID.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**undefined**
 
 <h3 id="update-data-recipient-registration-parameters">Parameters</h3>
 
@@ -282,7 +282,7 @@ Update a Client Registration for a given Client ID.
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
 |Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
-|body|body|[PostDataRecipientRegistrationClientregistrationrequest](#schemapostdatarecipientregistrationclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder|
+|body|body|[ClientRegistrationRequest](#schemaclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -394,7 +394,7 @@ Delete a Client Registration for a given Client ID.
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**undefined**
 
 <h3 id="delete-data-recipient-oauth-client-registration-parameters">Parameters</h3>
 
@@ -429,6 +429,23 @@ To perform this operation, you must be authenticated and authorised with the fol
   
 
 ## Schemas
+
+<h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
+
+<a id="schemaclientregistrationrequest"></a>
+
+```json
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+
+```
+
+*The registration request JWT to be used to register with a Data Holder.*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|string(JWT)|mandatory|none|The registration request JWT to be used to register with a Data Holder.|
 
 <h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
 
@@ -508,7 +525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |id_token_encrypted_response_enc|string|mandatory|none|JWE `enc` algorithm with which an id_token is to be encrypted|
 |request_object_signing_alg|string|mandatory|none|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
 |software_statement|string(JWT)|mandatory|none|The Software Statement Assertion, as defined in CDR standards|
-|software_id|string|mandatory|none|String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
+|software_id|string|mandatory|none|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
 |software_roles|string|optional|none|String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`|
 |scope|string|mandatory|none|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 

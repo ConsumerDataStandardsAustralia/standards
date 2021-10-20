@@ -42,7 +42,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>undefined</strong></td>
 </tr>
 </tbody></table>
 
@@ -60,9 +60,9 @@
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemapostdatarecipientregistrationclientregistrationrequest">PostDataRecipientRegistrationClientregistrationrequest</a></td>
+<td><a href="#schemaclientregistrationrequest">ClientRegistrationRequest</a></td>
 <td>mandatory</td>
-<td>The registration request JWT to be used to register with a Data Holder</td>
+<td>The registration request JWT to be used to register with a Data Holder.</td>
 </tr>
 </tbody></table>
 
@@ -178,7 +178,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>undefined</strong></td>
 </tr>
 </tbody></table>
 
@@ -352,7 +352,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>undefined</strong></td>
 </tr>
 </tbody></table>
 
@@ -384,9 +384,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemapostdatarecipientregistrationclientregistrationrequest">PostDataRecipientRegistrationClientregistrationrequest</a></td>
+<td><a href="#schemaclientregistrationrequest">ClientRegistrationRequest</a></td>
 <td>mandatory</td>
-<td>The registration request JWT to be used to register with a Data Holder</td>
+<td>The registration request JWT to be used to register with a Data Holder.</td>
 </tr>
 </tbody></table>
 
@@ -532,7 +532,7 @@ Authorization: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>undefined</strong></td>
 </tr>
 </tbody></table>
 
@@ -622,6 +622,32 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 <h2 id='schemas'>Schemas</h2>
+<h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
+
+<p><a id="schemaclientregistrationrequest"></a></p>
+<pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="w">
+
+</span></code></pre>
+<p><em>The registration request JWT to be used to register with a Data Holder.</em></p>
+<h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string(JWT)</td>
+<td>mandatory</td>
+<td>none</td>
+<td>The registration request JWT to be used to register with a Data Holder.</td>
+</tr>
+</tbody></table>
+
 <h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
 
 <p><a id="schemaregistrationproperties"></a></p>
@@ -665,7 +691,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties'>Properties</h3>
+</span></code></pre><h3 id='properties-2'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -869,7 +895,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>String representing a unique identifier assigned by the ACCC Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The &quot;software_id&quot; will remain the same for the lifetime of the product, across multiple updates and versions</td>
+<td>String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The &quot;software_id&quot; will remain the same for the lifetime of the product, across multiple updates and versions</td>
 </tr>
 <tr>
 <td>software_roles</td>
@@ -975,7 +1001,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-2'>Properties</h3>
+</span></code></pre><h3 id='properties-3'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -1059,7 +1085,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-3'>Properties</h3>
+</span></code></pre><h3 id='properties-4'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>

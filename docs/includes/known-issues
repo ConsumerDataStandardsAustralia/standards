@@ -1,2 +1,30 @@
 <h1 id='known-issues'>Known Issues</h1>
-<p>This version of the standards currently has no known issues</p>
+<p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Issue</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Banking and Common swagger is combined</td>
+<td style="text-align: left">Common entity definitions to be split out into a separate swagger which can be leveraged by Banking, Energy and Register APIs. This will create a separate Banking APIs swagger that references the common swagger specification.</td>
+</tr>
+<tr>
+<td style="text-align: left">Register APIs use local version of common definitions</td>
+<td style="text-align: left">The Register APIs use a locally defined version of common schema definitions such as <code>ResponseErrorList</code> for error responses. These need to be updated to reference common swagger specifications inherited by the Common Swagger spec.</td>
+</tr>
+<tr>
+<td style="text-align: left">Register APIs don&#39;t specify standardised CDR error codes</td>
+<td style="text-align: left">The Register APIs need to be changed to support common CDR error codes to be consistent with the rest of the data standards.</td>
+</tr>
+<tr>
+<td style="text-align: left">Register APIs use different field type definitions</td>
+<td style="text-align: left">The Register APIs define their own field types that are not consistent with the <a href="#common-field-types">Common Field Types</a> defined in the data standards. As part of porting the Register standards across to the primary data standards, the field types need to be re-aligned to use the common field type definitions. For example, <code>string (data-time)</code> should be changed to <code>DataTime</code> and <code>integer(int32)</code> should be changed to <code>PositiveInteger</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left">DCR and Register Swagger naming conventions</td>
+<td style="text-align: left">The DCR and Register naming conventions are not consistent with the broader data standards. Field names should be standardised to camelCase and snake_case inline with the data standards</td>
+</tr>
+</tbody></table>

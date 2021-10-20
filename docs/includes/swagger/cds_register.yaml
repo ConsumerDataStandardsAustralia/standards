@@ -83,7 +83,7 @@ paths:
         type: string
       - name: x-v
         in: header
-        description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer."
+        description: The version of the API end point requested by the client. Must be set to a positive integer.
         required: false
         type: string
       responses:
@@ -92,7 +92,7 @@ paths:
           headers:
             x-v:
               type: string
-              description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              description: The version of the API end point that the CDR Register has responded with.
           schema:
             $ref: '#/definitions/ResponseRegisterDataHolderBrandList'
         "400":
@@ -127,12 +127,12 @@ paths:
         - banking
       - name: dataRecipientBrandId
         in: path
-        description: "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value
         required: true
         type: string
       - name: softwareProductId
         in: path
-        description: "Unique id for the Accredited Data Recipient Software Product in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id for the Accredited Data Recipient Software Product in the CDR Register
         required: true
         type: string
       - name: Authorization Endpoint (Register)
@@ -142,7 +142,7 @@ paths:
         type: string
       - name: x-v
         in: header
-        description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer."
+        description: The version of the API end point requested by the client. Must be set to a positive integer.
         required: false
         type: string
       responses:
@@ -151,7 +151,7 @@ paths:
           headers:
             x-v:
               type: string
-              description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              description: The version of the API end point that the CDR Register has responded with.
           schema:
             type: string
         "400":
@@ -194,7 +194,7 @@ paths:
         - banking
       - name: x-v
         in: header
-        description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer."
+        description: The version of the API end point requested by the client. Must be set to a positive integer.
         required: false
         type: string
       responses:
@@ -203,7 +203,7 @@ paths:
           headers:
             x-v:
               type: string
-              description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              description: The version of the API end point that the CDR Register has responded with.
           schema:
             $ref: '#/definitions/SoftwareProductsStatusList'
         "400":
@@ -234,7 +234,7 @@ paths:
         - banking
       - name: x-v
         in: header
-        description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer."
+        description: The version of the API end point requested by the client. Must be set to a positive integer.
         required: false
         type: string
       responses:
@@ -243,7 +243,7 @@ paths:
           headers:
             x-v:
               type: string
-              description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              description: The version of the API end point that the CDR Register has responded with.
           schema:
             $ref: '#/definitions/DataRecipientsStatusList'
         "400":
@@ -274,7 +274,7 @@ paths:
         - banking
       - name: x-v
         in: header
-        description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer."
+        description: The version of the API end point requested by the client. Must be set to a positive integer.
         required: false
         type: string
       responses:
@@ -283,7 +283,7 @@ paths:
           headers:
             x-v:
               type: string
-              description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point that the CDR Register has responded with."
+              description: The version of the API end point that the CDR Register has responded with.
           schema:
             $ref: '#/definitions/ResponseRegisterDataRecipientList'
         "400":
@@ -316,7 +316,7 @@ definitions:
         description: URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier
       jwks_uri:
         type: string
-        description: "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the [JWKS endpoint](https://cdr-register.github.io/register/#getjwks) used to validate SSAs and CDR Register client authentication"
+        description: "URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
       token_endpoint:
         type: string
         description: URL of the CDR Register's OAuth 2.0 Token Endpoint
@@ -443,7 +443,7 @@ definitions:
     properties:
       dataHolderBrandId:
         type: string
-        description: "Unique id of the Data Holder Brand issued by the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the Data Holder Brand issued by the CDR Register
       brandName:
         type: string
         description: The name of Data Holder Brand
@@ -493,7 +493,7 @@ definitions:
     properties:
       softwareProductId:
         type: string
-        description: "Unique id of the software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the software product issued by the CDR Register
       softwareProductStatus:
         type: string
         description: Software product status in the CDR Register
@@ -519,7 +519,7 @@ definitions:
     properties:
       dataRecipientId:
         type: string
-        description: "Unique id of the Data Recipient issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the Data Recipient issued by the CDR Register
       dataRecipientStatus:
         type: string
         description: Data Recipient status in the CDR Register
@@ -552,7 +552,7 @@ definitions:
     properties:
       legalEntityId:
         type: string
-        description: "Unique id of the Data Recipient Legal Entity issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the Data Recipient Legal Entity issued by the CDR Register
       legalEntityName:
         type: string
         description: Legal name of the Data Recipient
@@ -594,7 +594,7 @@ definitions:
     properties:
       dataRecipientBrandId:
         type: string
-        description: "Unique id of the Data Recipient brand issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the Data Recipient brand issued by the CDR Register
       brandName:
         type: string
         description: Data Recipient Brand name
@@ -624,7 +624,7 @@ definitions:
     properties:
       softwareProductId:
         type: string
-        description: "Unique id of the Data Recipient software product issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the Data Recipient software product issued by the CDR Register
       softwareProductName:
         type: string
         description: Name of the software product
@@ -651,7 +651,7 @@ definitions:
     properties:
       legalEntityId:
         type: string
-        description: "Unique id of the organisation issued by the CDR Register.  Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details"
+        description: Unique id of the organisation issued by the CDR Register
       legalEntityName:
         type: string
         description: Unique legal name of the organisation
@@ -815,7 +815,7 @@ parameters:
   XV:
     name: x-v
     in: header
-    description: "The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer."
+    description: The version of the API end point requested by the client. Must be set to a positive integer.
     required: false
     type: string
   Industry:
