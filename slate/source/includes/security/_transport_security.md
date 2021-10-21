@@ -5,7 +5,7 @@ All HTTP calls MUST be made using HTTPS incorporating TLS >= 1.2.
 <a id="mutual-tls"></a>
 ### Use of MTLS
 
-All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, **[MTLS]** as part of the TLS handshake:
+All back-channel communication between Data Recipient Software Product and Data Holder systems MUST incorporate, unless stated otherwise, **[MTLS]** as part of the TLS handshake:
 
 - The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.
 - The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.

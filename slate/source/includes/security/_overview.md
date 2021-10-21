@@ -14,8 +14,10 @@ For information on the specific normative references that underpin this profile 
 -   **CL**: Credential Level
 -   **DH:** Data Holder
 -   **DR:** Data Recipient
+-   **DRSP:** Data Recipient Software Product
 -   **DTA:** Digital Transformation Agency
 -   **FAPI:** Financial API
+-   **FQDN:** Fully Qualified Domain Name
 -   **HoK:** Holder of Key
 -   **JSON:** The JavaScript Object Notation
 -   **JWA:** JSON Web Algorithms
@@ -34,5 +36,6 @@ For information on the specific normative references that underpin this profile 
 -   **PKI:** Public Key Infrastructure
 -   **PPID:** Pairwise Pseudonymous Identifier
 -   **REST:** Representational State Transfer
+-   **SP:** Data Recipient Software Product
 -   **TDIF:** Trusted Digital Identity Framework
 -   **TLS:** Transport Layer Security

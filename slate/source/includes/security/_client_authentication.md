@@ -11,8 +11,8 @@ The following authentication methods are supported:
       * Self-signed JWT client assertion authenticated by the protected request endpoint according to [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication), or  
       * `private_key_jwt` authentication using `client_credentials` authorisation grant flow according to [Private Key JWT Client Authentication](#private-key-jwt-client-authentication).<br/>  
 
-  * Data Holders and the CDR Register MUST authenticate Data Recipients using the [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) method.
-  * Data Recipients MUST authenticate Data Holders and the CDR Register using the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method.
+  * Data Holders and the CDR Register MUST authenticate Data Recipient Software Products using the [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) method.
+  * Data Recipient Software Products MUST authenticate Data Holders and the CDR Register using the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method.
 
 #### Private Key JWT Client Authentication
 
@@ -48,7 +48,7 @@ grant_type=client_credentials&
 Authorisation Servers supporting `private_key_jwt` Client Authentication of clients MUST support the following requirements:
 
 * Authorisation Servers MUST support the authentication of clients using the `private_key_jwt` Client Authentication method specified at [section 9](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) of **[OIDC]**.
-* The `private_key_jwt` authentication method is enabled through the delivery of an encoded **[JWT]** signed using the Data Recipient's private key and thus facilitates non-repudiation.
+* The `private_key_jwt` authentication method is enabled through the delivery of an encoded **[JWT]** signed using the Data Recipient Software Product's private key and thus facilitates non-repudiation.
 * Client public keys are obtained from the **[JWKS]** endpoints.
 * For the client authentication assertion, the **[JWT]** represents an assertion that MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
@@ -93,12 +93,12 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 ```
 
-Data Recipients and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT MUST do so according to the following requirements:
+Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT MUST do so according to the following requirements:
 
 *	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
     * `sub` - REQUIRED. Subject Identifier. The client ID of the bearer.
-    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the "resource path" for the end point being accessed.
+    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. Contents MUST be the "resource path" for the end point being accessed.
     * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
     * `exp` - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
@@ -129,7 +129,7 @@ If the Data Holder supports the [Self-signed JWT Client Authentication](#self-si
 
 ### Data Holders calling Data Recipients
 
-> Non-Normative Example - Data Holder calls the Data Recipient's revocation end point (note that the "aud" claim is "resource path" to the revocation end point).
+> Non-Normative Example - Data Holder calls the Data Recipient Software Product's revocation end point (note that the "aud" claim is "resource path" to the revocation end point).
 
 ```
 POST https://data.recipient.com.au/revocation HTTP/1.1
@@ -159,7 +159,7 @@ In addition to the requirements for [Self-signed JWT Client Authentication](#sel
 
 ### Data Recipients calling Data Holders
 
-> Non-Normative Example - Data Recipient calls Data Holder's token end point.
+> Non-Normative Example - Data Recipient Software Product calls Data Holder's token end point.
 
 ```
 POST /token HTTP/1.1
@@ -190,8 +190,8 @@ grant_type=authorization_code&
 
 In addition to the requirements for [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) the following requirements MUST be supported:
 
-* The client ID represents the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.
-* The authorisation grant's `client_id` parameter value MUST represent the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.
+* The client ID represents the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
+* The authorisation grant's `client_id` parameter value MUST represent the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `grant_type` parameter value MUST only be included when invoking the Token End point and MUST be set to `authorisation_code` or `client_credentials`. The value `refresh_token` is also valid when refreshing an access token.
 
 
@@ -199,7 +199,7 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 ### Data Recipients calling the CDR Register
 
 
-> Non-Normative Example - Data recipient requests CDR Register Access Token
+> Non-Normative Example - Data Recipient Software Product requests CDR Register Access Token
 
 ```
 POST /token HTTP/1.1

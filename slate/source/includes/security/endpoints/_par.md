@@ -81,15 +81,15 @@ Host: data.holder.com.au
 
 Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[PAR]**.
 
-Data Recipients MAY send authorisation requests using **[PAR]** if supported by the Data Holder. Request objects which contain the ``cdr_arrangement_id`` claim MUST only be sent using **[PAR]**. If a Data Holder does not support **[PAR]**, a Data Recipient SHOULD NOT provide the ``cdr_arrangement_id`` claim in the request object.
+Data Recipient Software Products MAY send authorisation requests using **[PAR]** if supported by the Data Holder. Request objects which contain the ``cdr_arrangement_id`` claim MUST only be sent using **[PAR]**. If a Data Holder does not support **[PAR]**, a Data Recipient Software Product SHOULD NOT provide the ``cdr_arrangement_id`` claim in the request object.
 
-The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.
+The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.
 
 In addition:
 
 * Request Object references SHALL NOT be supported in any mode of use other than **[PAR]**. If a Data Holder does not support **[PAR]**, it MUST NOT support Request Object references.
 * The Request URI MUST expire between 10 seconds and 90 seconds
-* Data Recipients MAY provide an existing ``cdr_arrangement_id`` claim in an authorisation request object to establish a new consent under an existing arrangement
+* Data Recipient Software Products MAY provide an existing ``cdr_arrangement_id`` claim in an authorisation request object to establish a new consent under an existing arrangement
 * Data Holders MUST revoke existing refresh tokens and access tokens when a ``cdr_arrangement_id`` is provided in the Request Object but only after successful authorisation
 * If the ``cdr_arrangement_id`` is not related to the consumer being authenticated it MUST be rejected
 * If the ``cdr_arrangement_id`` is not recognised by to the Data Holder it MUST be rejected
