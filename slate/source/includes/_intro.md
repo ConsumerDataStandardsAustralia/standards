@@ -27,7 +27,7 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
-|[Non-functional Requirements](#non-functional-requirements)|The non-functional requirements for the CDR regime are documented but are not yet binding with no specific future binding date being set as yet|Not yet specified|
+|[Non-functional Requirements](#non-functional-requirements)|The non-functional requirements for the CDR regime are binding effective from October 14th 2021. |October 14th 2021|
 |[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Products V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Metrics V1](#get-metrics)|Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time|October 31st 2021|
