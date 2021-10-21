@@ -46,5 +46,3 @@ The table below highlights these areas of the standards.
 
 ## Endpoint Version Schedule
 A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.
-
-**Please note** this is currently experimental.
