@@ -125,7 +125,7 @@ If the Data Holder supports the [Private Key JWT Client Authentication](#private
 
 #### Self-signed JWT authentication
 
-If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID MUST be set to a value of ‘cdr-register’.
+If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID MUST be set to a value of `cdr-register`.
 
 ### Data Holders calling Data Recipients
 
@@ -155,9 +155,12 @@ token=45ghiukldjahdnhzdauz&token_type_hint=refresh_token
 }
 ```
 
-In addition to the requirements for [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication), the `client_id` is the `Data Holder Brand ID` as issued by CDR Register.
+If the Data Holder supports the [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication) method for authenticating the CDR Register, the client ID MUST be set to a value of ‘cdr-register’.
 
-### Data Recipients calling Data Holders
+
+
+### Data Holders calling Data Recipients
+
 
 > Non-Normative Example - Data Recipient Software Product calls Data Holder's token end point.
 
@@ -187,6 +190,12 @@ grant_type=authorization_code&
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 ```
+
+In addition to the requirements for [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication), the `client_id` is the `Data Holder Brand ID` as issued by CDR Register.
+
+
+
+### Data Recipients calling Data Holders
 
 In addition to the requirements for [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) the following requirements MUST be supported:
 
@@ -243,5 +252,6 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 * `client_id`, `iss` and `sub` claims MUST be set to the ID of the calling client `Data Recipient Brand ID` OR `Software Product ID` issued by the CDR Register
 
 <aside class="notice">
-Note that the values of <code>Data Recipient Brand ID</code> and <code>Software Product ID</code> as the same.  <code>Data Recipient Brand ID</code> as a client identifier will be deprecated in the future and is currently retained for backwards compatibility
+<code>Data Recipient Brand ID</code> and <code>Software Product ID</code> are both currently supported as client identifiers for client authentication.
+<code>Data Recipient Brand ID</code> as a client identifier will be deprecated in the future and is currently retained for backwards compatibility
 </aside>
