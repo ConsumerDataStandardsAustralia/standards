@@ -4,14 +4,14 @@
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
-|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints | It will be up to the DH on how these endpoints are</br>segregated. They may all be on the one domain</br>(so only one certificate required) or could be separated.
+|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following endpoints:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints | It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.
 
 
 ### Issued by the Register CA for Data Recipients
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 |**Client Certificate**| Secures the following:</br>- Consuming Register APIs</br>- Consuming Data Holder APIs
-|**Server Certificate(s)**|	Certificate is issued to a FQDN</br></br>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) </br> with an the Register CA issued certificate or a certificate </br>issued by a public CA.
+|**Server Certificate(s)**|	Certificate is issued to a FQDN.<br/>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint | ADRs may choose to secure their [endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) with an the Register CA issued certificate or a certificate issued by a public CA.
 
 ### CDR Certificate Authority
 [DigiCert](https://www.digicert.com) acts as the certificate authority that issues and manages certificates to CDR participants as directed by the the Register in its capacity as the CDR Registrar.
