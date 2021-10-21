@@ -48,7 +48,22 @@ The cascading status mappings are as follows:
 |Revoked|Removed|
 |Surrendered|Removed|
 
-If a previously available Software Package ceases to be available its status MUST be assumed to be `Removed`.
+### Archiving
+Dormant entries will be identified and archived automatically within the CDR Register.
+
+Dormant entries are defined as those records that have reached and maintained an __end state__ in the CDR Register for the past **2 years**.
+
+The table below outlines the end state for each Register entry type:
+
+|**Register Entity**|**End State**|
+|-----------------|-----------------------|
+|Data Holder|Removed|
+|Data Holder Brand|Removed|
+|Data Recipient|Surrendered, Revoked|
+|Data Recipient Brand|Removed|
+|Data Recipient Software Product|Removed|
+
+
 
 ### Data Holder Responsibilities
 
@@ -81,6 +96,7 @@ Data Holders and Data Recipients MUST cache all other participant data they use 
 
 The CDR Register MAY cache the responses for **public** APIs hosted by the CDR Register.  If caching is supported the CDR Register MUST support ETag cache validators allowing participants to detect whether the content has changed.
 
+
 #### Cache update periods
 The following are the recommended caching times for data retrieved from the Register APIs.
 
@@ -91,3 +107,4 @@ The following are the recommended caching times for data retrieved from the Regi
 |**GetDataRecipients (statuses)**| Public | 2-5 minutes |
 |**GetDataRecipients (other data)**| Public | 6 hours |
 |**GetDataHolderBrands**| Private | 6 hours |
+

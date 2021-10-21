@@ -46,6 +46,6 @@ Participants will be required to register base URIs against each of their brands
 |**AdminBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard admin endpoints called by the CDR Register |
 |**ExtensionBaseUri**|	<i class="icon-check"></i> | | Base URI for the Data Holder extension endpoints to the Consumer Data Standard **(optional)** |
 |**RevocationUri**|	| <i class="icon-check"></i> | Used for consent withdrawal notification from a Data Holder and is populated in the [SSA](#dynamic-client-registration) |
-|**RecipientBaseUri**|	| <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient endpoints. </br>This should be the base to provide reference to [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points) |
-|**JwksUri**|	<i class="icon-check"></i> | <i class="icon-check"></i> | **DH:** Used for client authentication for DH -> ADR communication and is populated in the [GetDataHolderBrands API](#getdataholderbrands)</br> **ADR:** Used for client authentication for ADR -> DH & Register communication and is populated in the [SSA](#dynamic-client-registration) |
+|**RecipientBaseUri**|	| <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient endpoints. </br>This should be the base to provide reference to [Data Recipient Endpoints](#end-points) |
+|**JwksUri**|	<i class="icon-check"></i> | <i class="icon-check"></i> | **DH:** Used for client authentication for DH -> DR communication and is populated in the [GetDataHolderBrands API](#getdataholderbrands)</br> **DR:** Used for client authentication for DR -> DH & Register communication and is populated in the [SSA](#dynamic-client-registration) |
 
