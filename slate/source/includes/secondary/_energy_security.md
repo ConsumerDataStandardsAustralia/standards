@@ -24,4 +24,4 @@ The e-Hub platform and associated mechanisms (**[EHUB]**) will be considered a n
 
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
-| **[EHUB]**    | AEMO e-Hub [business to business procedures](https://aemo.com.au/en/energy-systems/electricity/national-electricity-market-nem/market-operations/retail-and-metering/business-to-business-procedures)| Standards dated 1/10/2021
+| **[EHUB]**    | AEMO e-Hub [business to business procedures](https://aemo.com.au/en/energy-systems/market-it-systems/electricity-system-guides/participant-it-interfaces)| Standards dated 9/4/2021
