@@ -9,6 +9,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><a href='./archive/standards-1.12.0/docs/'>22/10/2021</a></td>
+<td>1.12.0</td>
+<td><a href='./archive/standards-1.12.0/docs/'>Inclusion of a series of decisions related to energy and non-functional requirements.</a></td>
+</tr>
+<tr>
 <td><a href='./archive/standards-1.11.1/docs/'>05/10/2021</a></td>
 <td>1.11.1</td>
 <td><a href='./archive/standards-1.11.1/docs/'>Changes arising from Decision Proposals 193 and 208.</a> See <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/193">Decision 193</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/208">Decision 208</a> for details</td>
