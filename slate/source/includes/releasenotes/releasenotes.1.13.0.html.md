@@ -9,7 +9,7 @@ toc_footers:
 search: false
 ---
 
-# V1.11.1 Release Notes
+# V1.13.0 Release Notes
 Release notes for version v1.13.0 of the [CDR Standards](../../index.html).
 
 This release minor errata and documentation fixes.
