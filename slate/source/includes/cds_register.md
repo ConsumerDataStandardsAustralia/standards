@@ -36,6 +36,10 @@ $.ajax({
 
 Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**undefined**
 
 > Example responses
 
@@ -125,6 +129,10 @@ $.ajax({
 
 JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**undefined**
 
 > Example responses
 
@@ -693,7 +701,8 @@ This operation does not require authentication
 
   
 
-## Schemas
+<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
+<a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 

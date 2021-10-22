@@ -701,7 +701,8 @@ This operation does not require authentication
 
   
 
-## Schemas
+<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
+<a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 

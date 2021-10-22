@@ -380,7 +380,8 @@ This operation may only be called by the CDR Register
     
   
 
-## Schemas
+<h2 class="schema-heading" id="consumer-data-standards-administration-end-points-schemas">Schemas</h2>
+<a class="schema-link" id="consumer-data-standards-administration-end-points-schemas"></a>
 
 <h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -613,7 +614,7 @@ This operation may only be called by the CDR Register
 |» errors|[ErrorMetrics](#schemaerrormetrics)|mandatory|none|Number of calls resulting in error due to server execution over time|
 |» rejections|[RejectionMetricsV2](#schemarejectionmetricsv2)|mandatory|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|mandatory|none|Number of customers with active authorisations at the time of the call|
-|» recipientCount|integer|mandatory|none|Number of data recipients with active authorisations at the time of the call|
+|» recipientCount|integer|mandatory|none|Number of Data Recipient Software Products with active authorisations at the time of the call|
 |» secondaryHolder|[SecondaryHolderMetrics](#schemasecondaryholdermetrics)|conditional|none|Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster|
 |links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|

@@ -40,6 +40,10 @@ Register a client using a CDR Register issued Software Statement Assertion.
 
 > Body parameter
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**undefined**
 
 <h3 id="register-data-recipient-oauth-client-parameters">Parameters</h3>
 
@@ -144,6 +148,10 @@ $.ajax({
 
 Get a Client Registration for a given Client ID.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**undefined**
 
 <h3 id="get-oauth-client-registration-parameters">Parameters</h3>
 
@@ -263,6 +271,10 @@ Update a Client Registration for a given Client ID.
 
 > Body parameter
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**undefined**
 
 <h3 id="update-data-recipient-registration-parameters">Parameters</h3>
 
@@ -379,6 +391,10 @@ $.ajax({
 
 Delete a Client Registration for a given Client ID.
 
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**undefined**
 
 <h3 id="delete-data-recipient-oauth-client-registration-parameters">Parameters</h3>
 
@@ -412,7 +428,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Schemas
+<h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
+<a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a>
 
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 

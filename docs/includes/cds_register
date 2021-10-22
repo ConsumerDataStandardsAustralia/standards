@@ -1059,7 +1059,11 @@ This operation does not require authentication
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h2 id='schemas'>Schemas</h2>
+
+<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a></p>
+
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 
 <p><a id="schemaresponseopenidproviderconfigmetadata"></a></p>

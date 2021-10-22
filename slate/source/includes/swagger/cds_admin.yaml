@@ -352,7 +352,7 @@ definitions:
         description: Number of customers with active authorisations at the time of the call
       recipientCount:
         type: integer
-        description: Number of data recipients with active authorisations at the time of the call
+        description: Number of Data Recipient Software Products with active authorisations at the time of the call
       secondaryHolder:
         $ref: '#/definitions/SecondaryHolderMetrics'
     x-conditional:

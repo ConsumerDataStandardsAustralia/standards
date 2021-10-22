@@ -384,7 +384,7 @@
                     <a href="#delete-data-recipient-oauth-client-registration" class="toc-h2 toc-link" data-title="Delete Data Recipient oAuth Client Registration">Delete Data Recipient oAuth Client Registration</a>
                   </li>
                   <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                    <a href="#cdr-dynamic-client-registration-api-schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
                   </li>
                   <li>
                     <a href="#tocSclientregistrationrequest" class="toc-h2 toc-link" data-title="ClientRegistrationRequest">ClientRegistrationRequest</a>
@@ -428,7 +428,7 @@
                     <a href="#get-data-recipients" class="toc-h2 toc-link" data-title="Get Data Recipients">Get Data Recipients</a>
                   </li>
                   <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                    <a href="#consumer-data-right-cdr-register-participant-discovery-apis-schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
                   </li>
                   <li>
                     <a href="#tocSresponseopenidproviderconfigmetadata" class="toc-h2 toc-link" data-title="ResponseOpenIDProviderConfigMetadata">ResponseOpenIDProviderConfigMetadata</a>
@@ -618,11 +618,9 @@
                   <li>
                     <a href="#get-outages" class="toc-h2 toc-link" data-title="Get Outages">Get Outages</a>
                   </li>
-              </ul>
-          </li>
-            <li class="toc-child">
-              <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
-              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#consumer-data-standards-schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                  </li>
                   <li>
                     <a href="#tocSrequestaccountids" class="toc-h2 toc-link" data-title="RequestAccountIds">RequestAccountIds</a>
                   </li>
@@ -872,7 +870,7 @@
                     <a href="#get-metrics" class="toc-h2 toc-link" data-title="Get Metrics">Get Metrics</a>
                   </li>
                   <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                    <a href="#consumer-data-standards-administration-end-points-schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
                   </li>
                   <li>
                     <a href="#tocSrequestmetadataupdate" class="toc-h2 toc-link" data-title="RequestMetaDataUpdate">RequestMetaDataUpdate</a>
@@ -974,11 +972,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#non-functional-requirements">Non-functional Requirements</a></td>
-<td>The non-functional requirements for the CDR regime are documented but are not yet binding with no specific future binding date being set as yet</td>
-<td>Not yet specified</td>
-</tr>
-<tr>
 <td><a href="#get-products">Get Product Detail V2</a></td>
 <td>Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time</td>
 <td>May 31st 2021</td>
@@ -1056,8 +1049,6 @@
 </tbody></table>
 <h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.</p>
-
-<p><strong>Please note</strong> this is currently experimental.</p>
 <h1 style="display:none"></h1>
 <h1 id='high-level-standards'>High Level Standards</h1>
 <p>This section contains components of the standards that are foundational and generally applicable.</p>
@@ -1386,17 +1377,17 @@ The resource path is intended to be the portion of the URL including the base pa
 </tr>
 <tr>
 <td><strong>x-fapi-auth-date</strong></td>
-<td>The time when the customer last logged in to the data recipient as described in [FAPI-R].  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in [FAPI-R].  Required for all resource calls (customer present and unattended).   Not required for unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 <tr>
 <td><strong>x-fapi-customer-ip-address</strong></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 <td>Conditional</td>
 </tr>
 <tr>
 <td><strong>x-cds-client-headers</strong></td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul></td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul></td>
 <td>Conditional</td>
 </tr>
 </tbody></table>
@@ -1973,19 +1964,19 @@ obtain detail for that resource or to change the state of the resource.</li>
 <li>If an ID is specified in the standards for a resource then it is mandatory and MUST be supplied, by the data holder, in accordance with the standards.</li>
 <li>If an ID is specified the ID value MUST be entirely arbitrary and have no inherent meaning. For instance, an ID should not be a combination of other fields or a string that can be parsed to extract meaningful information.</li>
 <li>IDs SHOULD be unique but that uniqueness may be within a clearly bounded context. For example, a beneficiary ID may be unique but only in the context of a specific account. The bounds of uniqueness should be clearly described in the standards definition for the end point.</li>
-<li>IDs MUST be immutable across sessions and consents but MUST NOT be transferable across data recipients. For example, data recipient A obtaining an account ID would get a different result from data recipient B obtaining the ID for the same account even if the same customer authorised the access. Under this constraint IDs cannot be usefully transferred between client organisations or data holders.</li>
-<li>IDs MUST NOT be transferable between different customers for the same data recipient. For example, a data recipient should obtain a different ID for a joint account if the ID was obtained independently using authorisations from both customers.</li>
+<li>IDs MUST be immutable across sessions and consents but MUST NOT be transferable across Data Recipient Software Products. For example, &quot;Data Recipient Software Product &quot;A&quot; obtaining an account ID would get a different result from &quot;Data Recipient Software Product B&quot; obtaining the ID for the same account even if the same customer authorised the access. Under this constraint IDs cannot be usefully transferred between client organisations or data holders.</li>
+<li>IDs MUST NOT be transferable between different customers for the same Data Recipient Software Product. For example, a Data Recipient Software Product should obtain a different ID for a joint account if the ID was obtained independently using authorisations from both customers.</li>
 <li>In payloads the field name of “id” should NEVER be used. Each ID field should be meaningfully named so that wherever that ID is used across multiple end points it always refers to the same ID set. For instance, the IDs for accounts would be represented in JSON in a field named “accountId”.</li>
 </ul>
 
 <h2 id='error-codes'>Error Codes</h2>
-<p>These standards define a standard list of error codes that Data Recipients and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
+<p>These standards define a standard list of error codes that Data Recipient Software Products and Data Holders <strong>SHOULD</strong> or <strong>MUST</strong> conform to. Further,</p>
 
 <ul>
-<li>Data Recipients and Data Holders <strong>SHOULD</strong> use the standard error codes as defined</li>
+<li>Data Recipient Software Products and Data Holders <strong>SHOULD</strong> use the standard error codes as defined</li>
 <li>Where a specific error code <strong>MUST</strong> be responded, this requirement is stated against the applicable error code or API endpoints</li>
 <li>Where a specific error code <strong>MAY</strong> be responded, this requirement is stated against the applicable error code or API endpoints</li>
-<li>Data Recipients and Data Holders <strong>MAY</strong> respond with application-specific error codes and in doing so, <strong>MUST</strong> respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.</li>
+<li>Data Recipient Software Products and Data Holders <strong>MAY</strong> respond with application-specific error codes and in doing so, <strong>MUST</strong> respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.</li>
 </ul>
 <h3 id='error-response-structure'>Error Response Structure</h3>
 <blockquote>
@@ -2011,7 +2002,7 @@ per <code>code</code></li>
 <li><code>meta</code> object <strong>MAY</strong> be present: holds additional end point specific data relevant to the error</li>
 </ul>
 
-<p>If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code <strong>MUST</strong> be provided in the <code>MetaError</code> object.</p>
+<p>If a Data Recipient Software Product or Data Holder responds with an application-specific error code, the standard CDR URN error code <strong>MUST</strong> be provided in the <code>MetaError</code> object.</p>
 
 <div class="clear both"></div>
 
@@ -2297,7 +2288,7 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-404-resource-not-found"></a>Resource Not Found</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Resource/NotFound</code></td>
-<td style="text-align: left">The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient.</td>
+<td style="text-align: left">The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient Software Product.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-404-resource-invalid"></a>Invalid Resource</td>
@@ -2406,7 +2397,7 @@ Content-Type: application/json
 <tr>
 <td style="text-align: left"><a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code></td>
-<td style="text-align: left">The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error <code>detail</code> is the CDR Arrangement ID of the being executed.<br/><br/>This error code <strong>MUST</strong> be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint.</td>
+<td style="text-align: left">The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error <code>detail</code> is the CDR Arrangement ID of the being executed.<br/><br/>This error code <strong>MUST</strong> be supported for the Data Recipient Software Product and Data Holder CDR Arrangement Revocation endpoint.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="error-422-field-invalid-page"></a>Invalid Page</td>
@@ -2417,7 +2408,7 @@ Content-Type: application/json
 
 <h4 id='cdr-register-errors'>CDR Register Errors</h4>
 
-<p>The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register <strong>MAY</strong> expect the following standard CDR error codes to be encountered:</p>
+<p>The following error codes apply to responses from the CDR Register. Data Recipient Software Product and Data Holder clients requesting data from the CDR Register <strong>MAY</strong> expect the following standard CDR error codes to be encountered:</p>
 
 <table><thead>
 <tr>
@@ -2431,19 +2422,19 @@ Content-Type: application/json
 <td style="text-align: left"><a id="register-error-404-field-invalid-brand"></a>Invalid Brand</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-register:<br/>Field/InvalidBrand</code></td>
 <td style="text-align: left">404 (Not Found)</td>
-<td style="text-align: left">The brand provided to get the Data Recipient software statement assertion is invalid. Applies to the <code>dataRecipientBrandId</code> path parameter for CDR Register APIs.</td>
+<td style="text-align: left">The brand provided to get the Data Recipient Software Product software statement assertion is invalid. Applies to the <code>dataRecipientBrandId</code> path parameter for CDR Register APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="register-error-400-field-invalid-industry"></a>Invalid Industry</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-register:<br/>Field/InvalidIndustry</code></td>
 <td style="text-align: left">404 (Not Found)</td>
-<td style="text-align: left">The industry requested in the path to get Data Recipient or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the <code>industry</code> path parameter for CDR Register APIs.</td>
+<td style="text-align: left">The industry requested in the path to get Data Recipient Software Product or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the <code>industry</code> path parameter for CDR Register APIs.</td>
 </tr>
 <tr>
 <td style="text-align: left"><a id="register-error-403-field-invalid-software-product"></a>Invalid Software Product</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-register:<br/>Field/InvalidSoftwareProduct</code></td>
 <td style="text-align: left">404 (Not Found)</td>
-<td style="text-align: left">The software product requested to get the Data Recipient software statement assertion is invalid or cannot be found. Applies to the <code>softwareProductId</code> path parameter.</td>
+<td style="text-align: left">The software product requested to get the Data Recipient Software Product software statement assertion is invalid or cannot be found. Applies to the <code>softwareProductId</code> path parameter.</td>
 </tr>
 </tbody></table>
 
@@ -2477,7 +2468,7 @@ Content-Type: application/json
 }
 </code></pre>
 
-<p>To assist clients, the Data Recipient or Data Holder <strong>MUST</strong> provide the application-specific error code in the <code>ResponseErrorListV2 &raquo; code</code> and the standard CDR error code in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field denoting the standard error code the implementation extends.</p>
+<p>To assist clients, the Data Recipient Software Product or Data Holder <strong>MUST</strong> provide the application-specific error code in the <code>ResponseErrorListV2 &raquo; code</code> and the standard CDR error code in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field denoting the standard error code the implementation extends.</p>
 
 <h3 id='transition-arrangements'>Transition arrangements</h3>
 
@@ -2519,23 +2510,23 @@ Content-Type: application/json
 ] }
 </code></pre>
 
-<p>If Data Recipients or Data Holders support custom error codes prior to February 1st 2022, the following transition arrangements apply:</p>
+<p>If Data Recipient Software Products or Data Holders support custom error codes prior to February 1st 2022, the following transition arrangements apply:</p>
 
 <ul>
-<li><p><strong>Effective as soon as standardised error codes are supported by the Data Recipient or Data Holder:</strong>  </p>
+<li><p><strong>Effective as soon as standardised error codes are supported by the Data Recipient Software Product or Data Holder:</strong>  </p>
 
 <ul>
-<li>If the Data Recipient or Data Holder supports application-specific error codes they <strong>MUST</strong> publish a mapping of those codes to the standard CDR error codes in a developer friendly way that is discoverable and freely available.</li>
-<li>Data Recipients and Data Holders <strong>MAY</strong> publish this mapping any time prior to February 1st 2022.</li>
+<li>If the Data Recipient Software Product or Data Holder supports application-specific error codes they <strong>MUST</strong> publish a mapping of those codes to the standard CDR error codes in a developer friendly way that is discoverable and freely available.</li>
+<li>Data Recipient Software Products and Data Holders <strong>MAY</strong> publish this mapping any time prior to February 1st 2022.</li>
 </ul></li>
-<li><p><strong>Effective from February 1st 2022:</strong> Data Holders and Data Recipients <strong>MUST</strong> support standardised error codes by this date and continue to support any custom error codes.</p>
+<li><p><strong>Effective from February 1st 2022:</strong> Data Holders and Data Recipient Software Products <strong>MUST</strong> support standardised error codes by this date and continue to support any custom error codes.</p>
 
 <ul>
 <li>Standardised error codes <strong>MUST</strong> be provided in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field</li>
 <li>If applicable, application specific error codes <strong>MUST</strong> be provided in the <code>ResponseErrorListV2 &raquo; code</code></li>
-<li>Data Recipients and Data Holders <strong>MAY</strong> phase their transition to support standardised error codes such as by endpoint or per error code if preferred prior to this date.</li>
+<li>Data Recipient Software Products and Data Holders <strong>MAY</strong> phase their transition to support standardised error codes such as by endpoint or per error code if preferred prior to this date.</li>
 </ul></li>
-<li><p><strong>Effective from November 1st 2022:</strong> Data Holders and Data Recipients <strong>MAY</strong> deprecate any custom error codes</p>
+<li><p><strong>Effective from November 1st 2022:</strong> Data Holders and Data Recipient Software Products <strong>MAY</strong> deprecate any custom error codes</p>
 
 <ul>
 <li>Standardised error codes <strong>MAY</strong> be provided in the <code>ResponseErrorListV2 &raquo; code</code> field if no application-specific error code applies</li>
@@ -2836,19 +2827,19 @@ standards</li>
 </thead><tbody>
 <tr>
 <td><strong>Authentication:</strong><br>&#39;One Time Password&#39; (OTP)</td>
-<td><p>Data holders and data recipients <strong>MUST</strong> clearly refer to a &quot;One Time Password&quot; in consumer-facing interactions and communications.</p><p>The use of the term &quot;One Time Password&quot; <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</p></td>
+<td><p>Data Holders and Data Recipients <strong>MUST</strong> clearly refer to a &quot;One Time Password&quot; in consumer-facing interactions and communications.</p><p>The use of the term &quot;One Time Password&quot; <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</p></td>
 </tr>
 <tr>
 <td><strong>Authentication:</strong><br >Passwords</td>
-<td>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the data holder and data recipient.</td>
+<td>Data Holders and Data Recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the Data Holder and Data Recipient.</td>
 </tr>
 <tr>
 <td><strong>Authentication:</strong><br>Password link</td>
-<td>Data holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
+<td>Data Holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
 </tr>
 <tr>
 <td><strong>Authentication:</strong><br>OTP expiry</td>
-<td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
+<td>Data Holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
 </tr>
 </tbody></table>
 
@@ -2954,15 +2945,15 @@ standards</li>
 </thead><tbody>
 <tr>
 <td><strong>Withdrawing consent</strong></td>
-<td>If a data recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data recipients <strong>MUST</strong> allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </li><li>Data recipients <strong>SHOULD</strong> consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</li></ul></td>
+<td>If a Data Recipient does not have a general policy to delete redundant data, and the consumer has not already requested that their redundant data be deleted: <ul><li>Data Recipients <strong>MUST</strong> allow consumers to elect to have their redundant data deleted as part of the withdrawal process prior to the final withdrawal step. </li><li>Data Recipients <strong>SHOULD</strong> consider prompting consumers to exercise this right at appropriate times (e.g. when inaction on the part of the consumer may cause them to lose the opportunity to exercise the right to delete their redundant data).</li></ul></td>
 </tr>
 <tr>
 <td><strong>Withdrawing authorisation:</strong><br>Consequences</td>
-<td>As part of the withdrawal process, the data holder <strong>MUST</strong> advise the consumer to review the consequences of withdrawal with the data recipient before they stop sharing their data. <br/>The data holder <strong>MAY</strong> consider using or paraphrasing the following message(s):<ul><li><em>&#39;You should check with [Data Recipient] before you stop sharing to understand the consequences.&#39;</em></li><li><em>&#39;You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.&#39;</em></li></ul></td>
+<td>As part of the withdrawal process, the data holder <strong>MUST</strong> advise the consumer to review the consequences of withdrawal with the Data Recipient before they stop sharing their data. <br/>The data holder <strong>MAY</strong> consider using or paraphrasing the following message(s):<ul><li><em>&#39;You should check with [Data Recipient] before you stop sharing to understand the consequences.&#39;</em></li><li><em>&#39;You should check with [Data Recipient] to see if your service will be impacted before you stop sharing.&#39;</em></li></ul></td>
 </tr>
 <tr>
 <td><strong>Withdrawing authorisation:</strong><br>Redundant data</td>
-<td>As part of the withdrawal process, the data holder <strong>MUST</strong> inform the consumer about the handling of redundant data and the right to delete. The Data Holder <strong>MAY</strong> consider using or paraphrasing the following message(s):<br/><ul><li><em>&#39;CDR data is either deleted or de-identified when it is no longer required.&#39;</em></li><li><em>&#39;[Data recipient] will have specific policies on how to handle your data once it&#39;s no longer required.&#39;</em></li></ul></td>
+<td>As part of the withdrawal process, the data holder <strong>MUST</strong> inform the consumer about the handling of redundant data and the right to delete. The Data Holder <strong>MAY</strong> consider using or paraphrasing the following message(s):<br/><ul><li><em>&#39;CDR data is either deleted or de-identified when it is no longer required.&#39;</em></li><li><em>&#39;[Data Recipient] will have specific policies on how to handle your data once it&#39;s no longer required.&#39;</em></li></ul></td>
 </tr>
 <tr>
 <td><strong>Withdrawal:</strong> Disclosure consent</td>
@@ -2992,8 +2983,10 @@ standards</li>
 <li>  <strong>CL</strong>: Credential Level</li>
 <li>  <strong>DH:</strong> Data Holder</li>
 <li>  <strong>DR:</strong> Data Recipient</li>
+<li>  <strong>DRSP:</strong> Data Recipient Software Product</li>
 <li>  <strong>DTA:</strong> Digital Transformation Agency</li>
 <li>  <strong>FAPI:</strong> Financial API</li>
+<li>  <strong>FQDN:</strong> Fully Qualified Domain Name</li>
 <li>  <strong>HoK:</strong> Holder of Key</li>
 <li>  <strong>JSON:</strong> The JavaScript Object Notation</li>
 <li>  <strong>JWA:</strong> JSON Web Algorithms</li>
@@ -3012,6 +3005,7 @@ standards</li>
 <li>  <strong>PKI:</strong> Public Key Infrastructure</li>
 <li>  <strong>PPID:</strong> Pairwise Pseudonymous Identifier</li>
 <li>  <strong>REST:</strong> Representational State Transfer</li>
+<li>  <strong>SP:</strong> Data Recipient Software Product</li>
 <li>  <strong>TDIF:</strong> Trusted Digital Identity Framework</li>
 <li>  <strong>TLS:</strong> Transport Layer Security</li>
 </ul>
@@ -3111,7 +3105,7 @@ Recipients. Data Holders and Data Recipients must be created as entities in the 
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
 
 <p>The <strong>[OIDC]</strong> Hybrid Flow is a type of redirection flow where the consumer&#39;s user
-agent is redirected from a Data Recipient’s (Relying Party) web site to a Data
+agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an <strong>[OIDC]</strong> authentication
 request. The Hybrid flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
@@ -3133,7 +3127,7 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li>The provided OTP MUST be numeric digits and be between 4 and 6 digits in length</li>
 <li>The algorithm for the creation of the OTP is at the discretion of the Data Holder but SHOULD incorporate a level of pseudorandomness appropriate for the use case</li>
 <li>Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page</li>
-<li>Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.</li>
+<li>Data Recipient Software Products SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.</li>
 </ul>
 
 <p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:</p>
@@ -3164,8 +3158,8 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 <li>Self-signed JWT client assertion authenticated by the protected request endpoint according to <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, or<br></li>
 <li><code>private_key_jwt</code> authentication using <code>client_credentials</code> authorisation grant flow according to <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a>.<br/><br></li>
 </ul></li>
-<li><p>Data Holders and the CDR Register MUST authenticate Data Recipients using the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method.</p></li>
-<li><p>Data Recipients MUST authenticate Data Holders and the CDR Register using the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method.</p></li>
+<li><p>Data Holders and the CDR Register MUST authenticate Data Recipient Software Products using the <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> method.</p></li>
+<li><p>Data Recipient Software Products MUST authenticate Data Holders and the CDR Register using the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method.</p></li>
 </ul>
 
 <h4 id='private-key-jwt-client-authentication'>Private Key JWT Client Authentication</h4>
@@ -3204,7 +3198,7 @@ grant_type=client_credentials&amp;
 
 <ul>
 <li>Authorisation Servers MUST support the authentication of clients using the <code>private_key_jwt</code> Client Authentication method specified at <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">section 9</a> of <strong>[OIDC]</strong>.</li>
-<li>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient&#39;s private key and thus facilitates non-repudiation.</li>
+<li>The <code>private_key_jwt</code> authentication method is enabled through the delivery of an encoded <strong>[JWT]</strong> signed using the Data Recipient Software Product&#39;s private key and thus facilitates non-repudiation.</li>
 <li>Client public keys are obtained from the <strong>[JWKS]</strong> endpoints.</li>
 <li><p>For the client authentication assertion, the <strong>[JWT]</strong> represents an assertion that MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:</p>
 
@@ -3255,7 +3249,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 </code></pre>
 
-<p>Data Recipients and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT MUST do so according to the following requirements:</p>
+<p>Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT MUST do so according to the following requirements:</p>
 
 <ul>
 <li><p>The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:</p>
@@ -3263,7 +3257,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <ul>
 <li><code>iss</code> - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.</li>
 <li><code>sub</code> - REQUIRED. Subject Identifier. The client ID of the bearer.</li>
-<li><code>aud</code> - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient MUST verify that it is an intended audience for the token. Contents MUST be the &quot;resource path&quot; for the end point being accessed.</li>
+<li><code>aud</code> - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. Contents MUST be the &quot;resource path&quot; for the end point being accessed.</li>
 <li><code>jti</code> - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.</li>
 <li><code>exp</code> - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.</li>
 <li><code>iat</code> - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.</li>
@@ -3293,12 +3287,12 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 <h4 id='self-signed-jwt-authentication'>Self-signed JWT authentication</h4>
 
-<p>If the Data Holder supports the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method for authenticating the CDR Register, the client ID MUST be set to a value of ‘cdr-register’.</p>
+<p>If the Data Holder supports the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method for authenticating the CDR Register, the client ID MUST be set to a value of <code>cdr-register</code>.</p>
 
 <h3 id='data-holders-calling-data-recipients'>Data Holders calling Data Recipients</h3>
 
 <blockquote>
-<p>Non-Normative Example - Data Holder calls the Data Recipient&#39;s revocation end point (note that the &quot;aud&quot; claim is &quot;resource path&quot; to the revocation end point).</p>
+<p>Non-Normative Example - Data Holder calls the Data Recipient Software Product&#39;s revocation end point (note that the &quot;aud&quot; claim is &quot;resource path&quot; to the revocation end point).</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>POST https://data.recipient.com.au/revocation HTTP/1.1
@@ -3324,12 +3318,12 @@ token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
 }
 </code></pre>
 
-<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the <code>Data Holder Brand ID</code> as issued by CDR Register.</p>
+<p>If the Data Holder supports the <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a> method for authenticating the CDR Register, the client ID MUST be set to a value of ‘cdr-register’.</p>
 
-<h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
+<h3 id='data-holders-calling-data-recipients-2'>Data Holders calling Data Recipients</h3>
 
 <blockquote>
-<p>Non-Normative Example - Data Recipient calls Data Holder&#39;s token end point.</p>
+<p>Non-Normative Example - Data Recipient Software Product calls Data Holder&#39;s token end point.</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
@@ -3358,18 +3352,22 @@ grant_type=authorization_code&amp;
 }
 </code></pre>
 
+<p>In addition to the requirements for <a href="#self-signed-jwt-client-authentication">Self-signed JWT Client Authentication</a>, the <code>client_id</code> is the <code>Data Holder Brand ID</code> as issued by CDR Register.</p>
+
+<h3 id='data-recipients-calling-data-holders'>Data Recipients calling Data Holders</h3>
+
 <p>In addition to the requirements for <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> the following requirements MUST be supported:</p>
 
 <ul>
-<li>The client ID represents the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.</li>
-<li>The authorisation grant&#39;s <code>client_id</code> parameter value MUST represent the ID issued to the Data Recipient by the Data Holder upon successful dynamic client registration.</li>
+<li>The client ID represents the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.</li>
+<li>The authorisation grant&#39;s <code>client_id</code> parameter value MUST represent the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.</li>
 <li>The authorisation grant&#39;s <code>grant_type</code> parameter value MUST only be included when invoking the Token End point and MUST be set to <code>authorisation_code</code> or <code>client_credentials</code>. The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
 </ul>
 
 <h3 id='data-recipients-calling-the-cdr-register'>Data Recipients calling the CDR Register</h3>
 
 <blockquote>
-<p>Non-Normative Example - Data recipient requests CDR Register Access Token</p>
+<p>Non-Normative Example - Data Recipient Software Product requests CDR Register Access Token</p>
 </blockquote>
 
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
@@ -3415,29 +3413,30 @@ grant_type=client_credentials&amp;
 </ul>
 
 <aside class="notice">
-Note that the values of <code>Data Recipient Brand ID</code> and <code>Software Product ID</code> as the same.  <code>Data Recipient Brand ID</code> as a client identifier will be deprecated in the future and is currently retained for backwards compatibility
+<code>Data Recipient Brand ID</code> and <code>Software Product ID</code> are both currently supported as client identifiers for client authentication.
+<code>Data Recipient Brand ID</code> as a client identifier will be deprecated in the future and is currently retained for backwards compatibility
 </aside>
 
 <h2 id='client-registration'>Client Registration</h2><h3 id='dynamic-client-registration'>Dynamic Client Registration</h3>
 <p>Data Recipients register with Data Holders according to <strong>[DCR]</strong> to obtain client credentials used to retrieve consumer data on behalf of a consumer.</p>
 <h4 id='software-statement-assertion-ssa'>Software Statement Assertion (SSA)</h4>
-<p>As per <strong>[DCR]</strong>, a Software Statement is defined in as:</p>
+<p>As per <strong>[DCR]</strong>, a Software Statement is defined in as: <em>A digitally signed JSON Web Token (JWT) created in accordance with [JWT] that asserts metadata values about the client software</em></p>
 
 <blockquote>
-<p>A digitally signed JSON Web Token (JWT) created in accordance with <strong>[JWT]</strong> that asserts metadata values about the client software.</p>
+<p>An SSA is a digitally signed JSON Web Token (JWT) created in accordance with <strong>[JWT]</strong> that asserts metadata values about the client software.</p>
 </blockquote>
 
 <p>Such that:</p>
 
 <ul>
-<li>The CDR Register MUST issue Software Statements to <em>active</em> Data Recipients</li>
+<li>The CDR Register MUST issue Software Statements to <strong>active</strong> Data Recipients for <strong>active</strong> Software Products</li>
 <li>The CDR Register MUST issue distinct Software Statements for each <code>Software Product ID</code></li>
-<li>Software Statements are issued with an 10 minute expiry time</li>
+<li>Software Statements are issued with a <strong>10 minute</strong> expiry time</li>
 <li>As per <strong>[FAPI-RW]</strong>, SSAs are signed by the CDR Register using <strong>PS256</strong></li>
 <li>CDR Register public keys are exposed on a dedicated JWKS URI endpoint</li>
-<li>The CDR Register JWKS is an unauthenticated endpoint, using TLS</li>
+<li>The CDR Register <a href="#get-jwks">JWKS</a> is an unauthenticated endpoint, using TLS</li>
 <li>Data Recipients MUST present a valid SSA when undertaking dynamic client registration</li>
-<li>Data Holders MUST NOT register Data Recipients unless they present a verified SSA</li>
+<li>Data Holders MUST NOT register Data Recipient software products unless they present a verified <a href="#registration-request-using-jwt">Registration Request</a> with a verified <a href="#ssa-definition">SSA</a></li>
 </ul>
 
 <p>Refer to the <a href="#register-apis">Register APIs</a> section for the endpoint definitions that will be used to retrieve and validate SSAs.</p>
@@ -3658,33 +3657,6 @@ Note that the values of <code>Data Recipient Brand ID</code> and <code>Software 
 </tbody></table>
 <h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
 <blockquote>
-<p>Non-Normative Example for access token retrieval to perform registration</p>
-</blockquote>
-<pre class="highlight plaintext"><code>HTTP/1.1 POST /token
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=client_credentials&amp;
-  scope=cdr%3Aregistration&amp;
-  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
-
-### Decoded client assertion JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "12456"
-}
-{
-  "iss": "12345",
-  "sub": "12345",
-  "iat": 1516239022,
-  "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
-  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
-}
-
-</code></pre>
-<blockquote>
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight plaintext"><code>HTTP/1.1 POST /register
@@ -3845,7 +3817,7 @@ Accept: application/json
 <h3 id='registration-validation'>Registration Validation</h3>
 <p>Validation and use of the JWT and the claims described above MUST be performed in accordance with <strong>[JWT]</strong>.</p>
 
-<p>SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register JWKS endpoint.</p>
+<p>SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register <a href="#get-jwks">JWKS endpoint</a>.</p>
 
 <p>Data Holders MUST NOT allow multiple active registrations for the same <code>software_id</code>.</p>
 <h3 id='registration-response'>Registration Response</h3>
@@ -3917,7 +3889,7 @@ Content-Type: application/json
 <tr>
 <td><strong>client_id</strong></td>
 <td>Required</td>
-<td>Contains the dynamically generated identifier for the ADR Software Product issued by the Data Holder</td>
+<td>Contains the dynamically generated identifier for the Software Product issued by the Data Holder</td>
 </tr>
 <tr>
 <td><strong>client_id_issued_at</strong></td>
@@ -3949,65 +3921,110 @@ Content-Type: application/json
 <p>Registration error responses schemas are defined in the <a href="#dcr-apis">DCR APIs</a> section.</p>
 
 <p>For those Registration errors which do not map to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong>[DCR]</strong>, <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes">HTTP Response Codes</a> in the Consumer Data Standards should be used.</p>
+<h3 id='registration-management'>Registration Management</h3>
+<blockquote>
+<p>Non-Normative Example for access token retrieval to perform registration management</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&amp;
+  scope=cdr%3Aregistration&amp;
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+### Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "12456"
+}
+{
+  "iss": "12345",
+  "sub": "12345",
+  "iat": 1516239022,
+  "exp": 1516239322,
+  "aud": "https://www.holder.com.au/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+
+</code></pre>
+<p>Data Holders MUST expose Client Registration Management endpoints as defined in the <a href="#dcr-apis">DCR APIs</a></p>
+
+<table><thead>
+<tr>
+<th>HTTP Verb</th>
+<th></th>
+<th>MTLS</th>
+<th>HoK</th>
+<th>Client Authentication</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>POST /register</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><strong>GET /register/{clientID}</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials with cdr:registration scope</td>
+</tr>
+<tr>
+<td><strong>PUT /register/{clientID}</strong></td>
+<td>Required</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials with cdr:registration scope</td>
+</tr>
+<tr>
+<td><strong>DELETE /register/{clientID}</strong></td>
+<td>Optional</td>
+<td><i class="icon-check"></i></td>
+<td><i class="icon-check"></i></td>
+<td>Client Credentials with cdr:registration scope</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Registration endpoints will be exposed in the OIDC Discovery Configuration Endpoint</li>
+<li>POST and PUT operations MUST accept the SSA payload.</li>
+<li>Fields data holders do not support are not persisted.</li>
+<li>Access tokens issued for consuming CDR Data should not be used for client registration maintenance and vice-versa</li>
+</ul>
+<h3 id='put-operations'>PUT Operations</h3>
+<p>Registrations MUST only be updated via Registration PUT operations</p>
+
+<p>PUT operations are to be used for one of two scenarios:</p>
+
+<ol>
+<li>The client has updated their registration details on the CDR Register and updates this information to the data holder</li>
+<li>A new version of the SSA has been released and the client updates this information to the data holder</li>
+</ol>
 
 <h2 id='participant-statuses'>Participant Statuses</h2><h3 id='data-recipient-and-software-product-statuses'>Data Recipient and Software Product Statuses</h3>
-<blockquote>
-<p>Data Recipient Statuses
-<img src="images/ADRStateMachine.png" ></img></p>
-</blockquote>
-
 <p>The accreditation status of Data Recipients, and the status of their associated Software Products, may traverse through multiple statuses in the CDR.</p>
 
 <p>The status of participants is maintained in the CDR Register by the CDR Registrar according to determination of the CDR Accreditor or the participant themselves.</p>
 
-<p>CDR data may only be disclosed to active Data Recipients.  Data Holders MUST to cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:</p>
+<p>CDR data may only be disclosed to active Data Recipients.  Data Holders MUST cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:</p>
 
 <ol>
 <li> Suspended or revoked by the CDR Registrar.</li>
 <li> Surrendered by the Data Recipient.</li>
 </ol>
 
-<p>The CDR Register will notify all Data Holders of the above changes in Data Recipient and Software Package status.</p>
+<p>The CDR Register MUST notify all Data Holders of the above changes in Data Recipient and Software Package status via the <a href="#register-apis">Register APIs</a>.</p>
 
-<blockquote>
-<p>Software Product Statuses
-<img src="images/SoftwareProductStateMachine.png" ></img></p>
-</blockquote>
-
-<table><thead>
-<tr>
-<th>Data Recipient Statuses</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Active</td>
-</tr>
-<tr>
-<td>Suspended</td>
-</tr>
-<tr>
-<td>Revoked</td>
-</tr>
-<tr>
-<td>Surrendered</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Software Product Statuses</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Active</td>
-</tr>
-<tr>
-<td>Inactive</td>
-</tr>
-<tr>
-<td>Removed</td>
-</tr>
-</tbody></table>
+<p>The CDR Register MUST expose the statuses of data recipients and their associated software products via the <a href="#register-apis">Register APIs</a>, using the following state models:</p>
+<h3 id='data-recipient-status'>Data Recipient Status</h3>
+<p><img class=medium-image src="images/ADRStateMachine.png" ></img></p>
+<h3 id='software-product-status'>Software Product Status</h3>
+<p><img class=medium-image src="images/SoftwareProductStateMachine.png" ></img></p>
 <h4 id='status-mapping'>Status Mapping</h4>
 <p>When the CDR Registrar changes the accreditation status for a Data Recipient for any status other than active, the associated Software Product statuses MUST be changed accordingly.</p>
 
@@ -4032,8 +4049,40 @@ Content-Type: application/json
 <td>Removed</td>
 </tr>
 </tbody></table>
+<h3 id='archiving'>Archiving</h3>
+<p>Dormant entries will be identified and archived automatically within the CDR Register.</p>
 
-<p>If a previously available Software Package ceases to be available its status MUST be assumed to be <code>Removed</code>.</p>
+<p>Dormant entries are defined as those records that have reached and maintained an <strong>end state</strong> in the CDR Register for the past <strong>2 years</strong>.</p>
+
+<p>The table below outlines the end state for each Register entry type:</p>
+
+<table><thead>
+<tr>
+<th><strong>Register Entity</strong></th>
+<th><strong>End State</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Data Holder</td>
+<td>Removed</td>
+</tr>
+<tr>
+<td>Data Holder Brand</td>
+<td>Removed</td>
+</tr>
+<tr>
+<td>Data Recipient</td>
+<td>Surrendered, Revoked</td>
+</tr>
+<tr>
+<td>Data Recipient Brand</td>
+<td>Removed</td>
+</tr>
+<tr>
+<td>Data Recipient Software Product</td>
+<td>Removed</td>
+</tr>
+</tbody></table>
 <h3 id='data-holder-responsibilities'>Data Holder Responsibilities</h3>
 <p>The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient&#39;s accreditation status. Therefore, both the Data Recipient and Software Product statuses should be referenced, to determine the Data Holder&#39;s responsibilities for data disclosure, consent and registration management.</p>
 
@@ -4181,7 +4230,7 @@ Content-Type: application/json
 
 <p>Data Holder public keys MUST only be obtained from the standard OIDC end point used for that purpose.</p>
 
-<p>Data Recipient public keys MUST only be obtained from the URI registered with the CDR Register.</p>
+<p>Data Recipient Software Product public keys MUST only be obtained from the URI registered with the CDR Register.</p>
 
 <p>CDR Register public keys MUST only be obtained from the end point exposed for that purpose.</p>
 
@@ -4189,7 +4238,7 @@ Content-Type: application/json
 
 <h2 id='consent'>Consent</h2>
 
-<p>Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under <strong>[OIDC]</strong>.</p>
+<p>Consent requirements will be communicated between the Data Recipient Software Product and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under <strong>[OIDC]</strong>.</p>
 
 <p>Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.</p>
 
@@ -4206,7 +4255,7 @@ Content-Type: application/json
 <ul>
 <li><code>sub</code>: <a href="#identifiers">Pairwise Pseudonymous Identifier (PPID)</a> for the End-User at the Data Holder.</li>
 <li><code>acr</code>: Authentication Context Class Reference.  MUST contain a valid <a href="#ordinal-loa">ordinal LoA value</a>.</li>
-<li><code>auth_time</code>: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>auth_time</code>. It MUST be returned by the Data Holder in the ID Token when the Data Recipient has requested it as an essential claim according to section 2 of the <strong>[OIDC]</strong> standard. It SHOULD NOT be returned via the UserInfo endpoint.</li>
+<li><code>auth_time</code>: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC <code>auth_time</code>. It MUST be returned by the Data Holder in the ID Token when the Data Recipient Software Product has requested it as an essential claim according to section 2 of the <strong>[OIDC]</strong> standard. It SHOULD NOT be returned via the UserInfo endpoint.</li>
 <li><code>name</code>: End-User&#39;s full name in displayable form including all name parts.</li>
 <li><code>given_name</code>: Given name(s) or first name(s) of the End-User.</li>
 <li><code>family_name</code>: Surname(s) or last name(s) of the End-User.</li>
@@ -4239,8 +4288,7 @@ Content-Type: application/json
 }
 </code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard.  In accordance with <strong>[FAPI-RW]</strong>, ID Tokens must be signed and encrypted when returned
-to a Data Recipient from both the Authorisation
-End Point and Token End Point.</p>
+to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.</p>
 
 <p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong>[OIDC]</strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong>[FAPI-RW]</strong> profile.</p>
 
@@ -4268,7 +4316,7 @@ End Point and Token End Point.</p>
 
 <p>Data Holders MAY cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token MUST NOT expire before the expiration of the sharing consented by the Customer.</p>
 <h3 id='token-expiry'>Token Expiry</h3>
-<p>The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient.</p>
+<p>The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient Software Product.</p>
 
 <p>In order to achieve this:</p>
 
@@ -4357,13 +4405,13 @@ client_id=s6BhdRkqt3
   "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb"
 }
 </code></pre>
-<p>The CDR Arrangement ID is a unique string representing a consent arrangement between a Data Recipient and Data Holder for a given consumer.</p>
+<p>The CDR Arrangement ID is a unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer.</p>
 
 <p>The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile.</p>
 
 <p>The Data Holder MUST provide the CDR Arrangement ID as the claim <code>cdr_arrangement_id</code> in the Token End Point response and Token Introspection End Point response.</p>
 
-<p>A Data Holder MUST only return the <code>cdr_arrangement_id</code> in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipients have a reliable way to determine whether a given Data Holder supports concurrent consent.</p>
+<p>A Data Holder MUST only return the <code>cdr_arrangement_id</code> in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipient Software Products have a reliable way to determine whether a given Data Holder supports concurrent consent.</p>
 
 <p>Statements related to the CDR Arrangement ID:</p>
 
@@ -4374,9 +4422,9 @@ client_id=s6BhdRkqt3
 <li>A CDR Arrangement ID MUST be static across consents within the one sharing arrangement (e.g. across consent renewal and re-authorisation)</li>
 </ul>
 <h4 id='obtaining-a-cdr-arrangement-id'>Obtaining a CDR Arrangement ID</h4>
-<p>For any existing consents, Data Holders must retrospectively generate a <code>cdr_arrangement_id</code> such that Data Recipients can obtain a valid <code>cdr_arrangement_id</code> for all active consents they hold.</p>
+<p>For any existing consents, Data Holders must retrospectively generate a <code>cdr_arrangement_id</code> such that Data Recipient Software Products can obtain a valid <code>cdr_arrangement_id</code> for all active consents they hold.</p>
 
-<p>A Data Recipient can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim <code>cdr_arrangement_id</code>.</p>
+<p>A Data Recipient Software Product can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim <code>cdr_arrangement_id</code>.</p>
 
 <h2 id='levels-of-assurance-loas'>Levels of Assurance (LoAs)</h2>
 
@@ -4415,7 +4463,7 @@ client_id=s6BhdRkqt3
 
 <p><a id="mutual-tls"></a></p>
 <h3 id='use-of-mtls'>Use of MTLS</h3>
-<p>All back-channel communication between Data Recipient and Data Holder systems MUST incorporate, unless stated otherwise, <strong>[MTLS]</strong> as part of the TLS handshake:</p>
+<p>All back-channel communication between Data Recipient Software Product and Data Holder systems MUST incorporate, unless stated otherwise, <strong>[MTLS]</strong> as part of the TLS handshake:</p>
 
 <ul>
 <li>The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.</li>
@@ -4451,8 +4499,8 @@ client_id=s6BhdRkqt3
 </thead><tbody>
 <tr>
 <td><strong>Server Certificate(s)</strong></td>
-<td>Certificate is issued to a FQDN</br></br>Secures the following:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints</td>
-<td>It will be up to the DH on how these endpoints are</br>segregated. They may all be on the one domain</br>(so only one certificate required) or could be separated.</td>
+<td>Certificate is issued to a FQDN</br></br>Secures the following endpoints:</br>- Resource endpoints</br>- InfoSec endpoints</br>- Admin endpoints</td>
+<td>It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.</td>
 </tr>
 </tbody></table>
 <h3 id='issued-by-the-register-ca-for-data-recipients'>Issued by the Register CA for Data Recipients</h3>
@@ -4470,8 +4518,8 @@ client_id=s6BhdRkqt3
 </tr>
 <tr>
 <td><strong>Server Certificate(s)</strong></td>
-<td>Certificate is issued to a FQDN</br></br>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint</td>
-<td>ADRs may choose to secure their <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">endpoints</a> </br> with an the Register CA issued certificate or a certificate </br>issued by a public CA.</td>
+<td>Certificate is issued to a FQDN.<br/>Secures the following:</br>- Revocation endpoint </br>- CDR Arrangement Management endpoint </br>- JWKS endpoint</td>
+<td>ADRs may choose to secure their <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">endpoints</a> with an the Register CA issued certificate or a certificate issued by a public CA.</td>
 </tr>
 </tbody></table>
 <h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
@@ -4629,13 +4677,13 @@ client_id=s6BhdRkqt3
 
 <p>The Request Object is a signed and encoded JWT specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RequestObject">section 6.1</a> of <strong>[OIDC]</strong>.  As per <strong>[FAPI-RW]</strong> <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a>, the <code>request</code> parameter MUST be present on requests to the <strong>[OIDC]</strong> Hybrid Authorisation End Point. The Request Object enables <strong>[OIDC]</strong> requests to be passed in a single and self-contained parameter.</p>
 
-<p>Request Objects MUST be signed by Data Recipients as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
+<p>Request Objects MUST be signed by Data Recipient Software Products as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW]</strong>.</p>
 
 <p>Request Object references MUST be supported if the Data Holder supports Pushed Authorisation Requests (PAR).</p>
 
 <h3 id='requesting-sharing-duration'>Requesting Sharing Duration</h3>
 
-<p>To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient to specify a sharing duration to the Data Holder is required.</p>
+<p>To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient Software Product to specify a sharing duration to the Data Holder is required.</p>
 
 <p>To accomplish this, the Data Holder MUST support an additional claim in the authorisation request object named <code>sharing_duration</code>.  The <code>sharing_duration</code> claim MUST be handled as follows:</p>
 
@@ -4645,19 +4693,19 @@ client_id=s6BhdRkqt3
 <li>If the <code>sharing_duration</code> value exceeds one year then a duration of one year will be assumed.</li>
 <li>  If the <code>sharing_duration</code> value is less than or equal to 24 hours, then one-time collection will be assumed, and a Refresh Token should be provided by the Data Holder</li>
 <li>If the <code>sharing_duration</code> value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.</li>
-<li>  If a Refresh Token is issued for one-time collection the Data Recipient must call the Data Holder’s revocation endpoint after successful collection of the CDR data.</li>
+<li>  If a Refresh Token is issued for one-time collection the Data Recipient Software Product must call the Data Holder’s revocation endpoint after successful collection of the CDR data.</li>
 <li>If the <code>sharing_duration</code> value is negative then the authorisation should fail.</li>
 </ul>
 
 <p>Note that the period of <code>one year</code> in the above statements should be interpreted as 365, 24 hour days (or 31,536,000 seconds).</p>
 
-<p>The Data Recipient is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
+<p>The Data Recipient Software Product is able to obtain the expiration of sharing via the <code>sharing_expires_at</code> claim.</p>
 
 <h3 id='specifying-an-existing-arrangement'>Specifying an existing arrangement</h3>
 
-<p>Provided a Data Holder supports PAR, they MUST also support the <code>cdr_arrangement_id</code> claim provided in the Request Object sent to the <a href="#pushed-authorisation-end-point">PAR End Point</a>. The Data Recipient MAY provide the <code>cdr_arrangement_id</code> claim in the Request Object sent to the <a href="#pushed-authorisation-end-point">PAR End Point</a>.</p>
+<p>Provided a Data Holder supports PAR, they MUST also support the <code>cdr_arrangement_id</code> claim provided in the Request Object sent to the <a href="#pushed-authorisation-end-point">PAR End Point</a>. The Data Recipient Software Product MAY provide the <code>cdr_arrangement_id</code> claim in the Request Object sent to the <a href="#pushed-authorisation-end-point">PAR End Point</a>.</p>
 
-<p>If a Data Recipient provides the <code>cdr_arrangement_id</code> claim in the request object to the Data Holder&#39;s <a href="#pushed-authorisation-end-point">PAR End Point</a>, the Data Holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the data recipient.</p>
+<p>If a Data Recipient Software Product provides the <code>cdr_arrangement_id</code> claim in the request object to the Data Holder&#39;s <a href="#pushed-authorisation-end-point">PAR End Point</a>, the Data Holder MUST revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.</p>
 
 <h2 id='security-endpoints'>Security Endpoints</h2>
 
@@ -4835,7 +4883,7 @@ Host: www.holder.com.au
 </thead><tbody>
 <tr>
 <td>Hosted By</td>
-<td>Data Holder &amp; Data Recipient</td>
+<td>Data Holder &amp; Data Recipient Software Product</td>
 </tr>
 <tr>
 <td>Transport Security</td>
@@ -4885,7 +4933,7 @@ Host: www.holder.com.au
 
 <p>The requirements for the Token End Point are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridTokenEndpoint">section 3.3.3</a> of <strong>[OIDC]</strong>.</p>
 
-<p>To obtain an Access Token, an ID Token, and a Refresh Token, the Data Recipient sends a Token Request to the Token End Point.</p>
+<p>To obtain an Access Token, an ID Token, and a Refresh Token, the Data Recipient Software Product sends a Token Request to the Token End Point.</p>
 
 <p>Data Holders MUST support a Token End Point.</p>
 
@@ -4945,7 +4993,7 @@ Host: www.holder.com.au
 </tr>
 </tbody></table>
 
-<p>Data Holders MUST implement an Introspection End Point to allow Data Recipients to determine the status and expiry date of Refresh Tokens.  The requirements for an Introspection End Point are described in <a href="https://tools.ietf.org/html/rfc7662#section-2">section 2</a> of <strong>[RFC7662]</strong>.</p>
+<p>Data Holders MUST implement an Introspection End Point to allow Data Recipient Software Products to determine the status and expiry date of Refresh Tokens.  The requirements for an Introspection End Point are described in <a href="https://tools.ietf.org/html/rfc7662#section-2">section 2</a> of <strong>[RFC7662]</strong>.</p>
 
 <p>Introspection of Refresh Tokens MUST be supported.</p>
 
@@ -4993,7 +5041,7 @@ Host: www.holder.com.au
 
 <p>Data Holders MUST implement a Token Revocation End Point as described in <a href="https://tools.ietf.org/html/rfc7009#section-2">section 2</a> of <strong>[RFC7009]</strong>.</p>
 
-<p>The Revocation End Point serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required to allow for token clean up.</p>
+<p>The Revocation End Point serves as a revocation mechanism that allows a Data Recipient Software Product to invalidate its tokens as required to allow for token clean up.</p>
 
 <p>Revocation of Refresh Tokens and Access Tokens MUST be supported.</p>
 
@@ -5024,27 +5072,27 @@ Content-Type: application/x-www-form-urlencoded
 </thead><tbody>
 <tr>
 <td>Hosted By</td>
-<td>Data Holder &amp; Data Recipient</td>
+<td>Data Holder &amp; Data Recipient Software Product</td>
 </tr>
 <tr>
 <td>Transport Security</td>
-<td>MTLS for Data Holders, TLS for Data Recipients</td>
+<td>MTLS for Data Holders, TLS for Data Recipient Software Products</td>
 </tr>
 <tr>
 <td>Client Authentication Required</td>
-<td>Yes (for Data Holders verifying Data Recipients)</td>
+<td>Yes (for Data Holders verifying Data Recipient Software Products)</td>
 </tr>
 <tr>
 <td>Bearer Token Required</td>
-<td>Yes (for Data Recipients verifying Data Holders)</td>
+<td>Yes (for Data Recipient Software Products verifying Data Holders)</td>
 </tr>
 </tbody></table>
 
 <p><strong>HTTP Method:</strong> POST<br/><br>
 <strong>Data Holder Path:</strong> The <code>cdr_arrangement_revocation_endpoint</code> defined using OIDC Discovery<br/><br>
-<strong>Data Recipient Path:</strong> <code>&lt;RecipientBaseUri&gt;/arrangements/revoke</code> where &lt;RecipientBaseUri&gt; is registered with the CDR Register.<br/></p>
+<strong>Data Recipient Software Product Path:</strong> <code>&lt;RecipientBaseUri&gt;/arrangements/revoke</code> where &lt;RecipientBaseUri&gt; is registered with the CDR Register.<br/></p>
 
-<p>Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
+<p>Data Holders and Data Recipient Software Products MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.</p>
 
 <p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body: <br/></p>
 
@@ -5056,11 +5104,11 @@ Content-Type: application/x-www-form-urlencoded
 This end point will be implemented according to the following:</p>
 
 <ul>
-<li>Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID</li>
+<li>Data Recipient Software Products and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID</li>
 <li>Data Holders MUST publish their CDR Arrangement Revocation End Point using their OpenID Provider Metadata Discovery End Point</li>
-<li>Data Recipients MUST expose their CDR Arrangement Revocation End Point under their <code>recipient_base_uri</code> published in their Software Statement Assertion</li>
+<li>Data Recipient Software Products MUST expose their CDR Arrangement Revocation End Point under their <code>recipient_base_uri</code> published in their Software Statement Assertion</li>
 <li>Consent revocation MUST also revoke associated refresh and/or access tokens</li>
-<li>For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.</li>
+<li>For Data Recipient Software Products, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.</li>
 <li>If the <code>cdr_arrangement_id</code> is not related to the client making the call it MUST be rejected</li>
 </ul>
 
@@ -5089,13 +5137,13 @@ This end point will be implemented according to the following:</p>
 
 <p><strong>Revoking consent</strong></p>
 
-<p>Data Recipients MUST use the Data Holder&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Holder when consent is revoked by the consumer via the Data Recipient.</p>
+<p>Data Recipient Software Products MUST use the Data Holder&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Holder when consent is revoked by the consumer via the Data Recipient Software Product.</p>
 
-<p>Data Holder&#39;s MUST use the Data Recipient&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Recipient when consent is revoked by the consumer via the Data Holder.</p>
+<p>Data Holder&#39;s MUST use the Data Recipient Software Product&#39;s CDR Arrangement Revocation End Point with a valid <code>cdr_arrangement_id</code> to notify the Data Recipient Software Product when consent is revoked by the consumer via the Data Holder.</p>
 
 <p><strong>Data Holders calling Data Recipients</strong></p>
 
-<p>The location of the Data Recipient CDR Arrangement Revocation End Point is determined by the <code>RecipientBaseURI</code> provided by the Data Recipient in the client Software Statement Assertion (SSA).</p>
+<p>The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the <code>RecipientBaseURI</code> provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).</p>
 
 <p><strong>Data Recipients calling Data Holders</strong></p>
 
@@ -5203,16 +5251,16 @@ Host: data.holder.com.au
 
 <p>Data Holders MUST support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
 
-<p>Data Recipients MAY send authorisation requests using <strong>[PAR]</strong> if supported by the Data Holder. Request objects which contain the <code>cdr_arrangement_id</code> claim MUST only be sent using <strong>[PAR]</strong>. If a Data Holder does not support <strong>[PAR]</strong>, a Data Recipient SHOULD NOT provide the <code>cdr_arrangement_id</code> claim in the request object.</p>
+<p>Data Recipient Software Products MAY send authorisation requests using <strong>[PAR]</strong> if supported by the Data Holder. Request objects which contain the <code>cdr_arrangement_id</code> claim MUST only be sent using <strong>[PAR]</strong>. If a Data Holder does not support <strong>[PAR]</strong>, a Data Recipient Software Product SHOULD NOT provide the <code>cdr_arrangement_id</code> claim in the request object.</p>
 
-<p>The Data Holder response provides the Data Recipient with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
+<p>The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
 
 <p>In addition:</p>
 
 <ul>
 <li>Request Object references SHALL NOT be supported in any mode of use other than <strong>[PAR]</strong>. If a Data Holder does not support <strong>[PAR]</strong>, it MUST NOT support Request Object references.</li>
 <li>The Request URI MUST expire between 10 seconds and 90 seconds</li>
-<li>Data Recipients MAY provide an existing <code>cdr_arrangement_id</code> claim in an authorisation request object to establish a new consent under an existing arrangement</li>
+<li>Data Recipient Software Products MAY provide an existing <code>cdr_arrangement_id</code> claim in an authorisation request object to establish a new consent under an existing arrangement</li>
 <li>Data Holders MUST revoke existing refresh tokens and access tokens when a <code>cdr_arrangement_id</code> is provided in the Request Object but only after successful authorisation</li>
 <li>If the <code>cdr_arrangement_id</code> is not related to the consumer being authenticated it MUST be rejected</li>
 <li>If the <code>cdr_arrangement_id</code> is not recognised by to the Data Holder it MUST be rejected</li>
@@ -5371,13 +5419,13 @@ Host: cdr.register
 <td><strong>RecipientBaseUri</strong></td>
 <td></td>
 <td><i class="icon-check"></i></td>
-<td>Base URI for the Consumer Data Standard Data Recipient endpoints. </br>This should be the base to provide reference to <a href="https://consumerdatastandardsaustralia.github.io/standards/#end-points">Data Recipient Endpoints</a></td>
+<td>Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. </br>This should be the base to provide reference to <a href="#end-points">Data Recipient Endpoints</a></td>
 </tr>
 <tr>
 <td><strong>JwksUri</strong></td>
 <td><i class="icon-check"></i></td>
 <td><i class="icon-check"></i></td>
-<td><strong>DH:</strong> Used for client authentication for DH -&gt; ADR communication and is populated in the <a href="#getdataholderbrands">GetDataHolderBrands API</a></br> <strong>ADR:</strong> Used for client authentication for ADR -&gt; DH &amp; Register communication and is populated in the <a href="#dynamic-client-registration">SSA</a></td>
+<td><strong>DH:</strong> Used for client authentication for DH -&gt; DRSP communication and is populated in the <a href="#getdataholderbrands">GetDataHolderBrands API</a></br> <strong>DR:</strong> Used for client authentication for DRSP -&gt; DH &amp; Register communication and is populated in the <a href="#dynamic-client-registration">SSA</a></td>
 </tr>
 </tbody></table>
 
@@ -6193,7 +6241,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
 
-<h2 id='schemas'>Schemas</h2>
+<h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 
@@ -6720,7 +6770,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
-  Data Holders and Data Recipients are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
+  Data Holders and Data Recipient Software Productss are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
 
@@ -6735,7 +6785,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <th>API</th>
 <th>Caller</th>
 <th>Description</th>
-<th>mTLS</th>
+<th>MTLS</th>
 <th>TLS</th>
 <th>Bearer Token</th>
 </tr>
@@ -7951,7 +8001,9 @@ This operation does not require authentication
 This operation does not require authentication
 </aside></p>
 
-<h2 id='schemas'>Schemas</h2>
+<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 
@@ -9534,24 +9586,24 @@ This operation does not require authentication
 <p>The non-functional requirements (NFRs) for the Consumer Data Right regime cover a number of considerations:</p>
 
 <ul>
-<li>Minimum performance and availability expectations for data holders.  Included to ensure a reliable and performant service is offered to data recipients and customers.</li>
+<li>Minimum performance and availability expectations for data holders.  Included to ensure a reliable and performant service is offered to Data Recipients and customers.</li>
 <li>Maximum traffic expectations for data holders.  Included to ensure there is a ceiling for the amount of traffic that a data holder is expected to service.</li>
 <li>Requirements for reporting of performance.  Included to provide transparency of performance without the need for time consuming auditing or inspection.</li>
 <li>Requirements for data latency and quality.  Included to give a clear indication to the depth and recency of the data available under the regime.</li>
-<li>Limitations on the number of calls that a data recipient can make to a single provider.  Included to protect data holders from poorly designed or overly transactional data recipient implementations.</li>
+<li>Limitations on the number of calls that a Data Recipient Software Product can make to a single provider.  Included to protect data holders from poorly designed or overly transactional Data Recipient implementations.</li>
 </ul>
 <h2 id='definitions'>Definitions</h2>
 <p>In the following definition of NFRs specific terms have the following meanings:</p>
 
 <ul>
-<li><strong>Data Recipient</strong>: For the purposes of these NFRs a data recipient is defined as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
-<li><strong>Secondary Responsibility Request</strong>: A request made to a secondary data holder by a data holder for designated data to fulfil a Consumer Data Request made by an accredited data recipient.</li>
+<li><strong>Data Recipient Software Product</strong>: For the purposes of these NFRs a Data Recipient Software Product is defined, inline with the definition given in the <a href="#cdr-federation">CDR Federation</a>, as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
+<li><strong>Secondary Responsibility Request</strong>: A request made to a secondary data holder by a Data Holder for designated data to fulfil a Consumer Data Request made by a Data Recipient Software Product.</li>
 <li><strong>Session</strong>: A session is defined as the life span of a unique Access Token.  Multiple API requests made with a single, valid, Access Token would be considered part of a single Session.</li>
-<li><strong>Customer Present</strong>: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the data recipient will be considered “Customer Present”.  Technically a data holder will define an API request as “Customer Present” if, and only if, the x-fapi-customer-ip-address header is populated with a valid IP address of the end customer’s device.</li>
+<li><strong>Customer Present</strong>: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the Data Recipient Software Product will be considered “Customer Present”.  Technically a data holder will define an API request as “Customer Present” if, and only if, the <code>x-fapi-customer-ip-address</code> header is populated with a valid IP address of the end customer’s device.</li>
 <li><strong>Customer Not Present</strong>: Authenticated API requests that are not deemed to be “Customer Present”</li>
 <li><strong>Unattended</strong>: A synonym of “Customer Not Present”</li>
 <li><strong>Authenticated</strong>: API requests to API end points that the standards require to be protected by security mechanisms that enforce explicit customer authorisation</li>
-<li><strong>Unauthenticated</strong>: API requests to API end points that the standards deem to be publically available.  This implies that these end points may be accessed by any client without the client performing any authentication or authorisation actions</li>
+<li><strong>Unauthenticated</strong>: API requests to API end points that the standards deem to be publicly available.  This implies that these end points may be accessed by any client without the client performing any authentication or authorisation actions</li>
 <li><strong>High Traffic Period</strong>: Any time in the 18 hour period between 6am and 12am (midnight) is considered to be a high traffic period</li>
 <li><strong>Low Traffic Period</strong>: Any time of the day not considered to be included in a high traffic period.</li>
 <li><strong>Large Payload</strong>: An API which is capable of returning a large data response that would reasonably impose higher data retrieval times on the resource server. Typically bulk request end points.</li>
@@ -9559,7 +9611,7 @@ This operation does not require authentication
 <h2 id='session-requirements'>Session Requirements</h2>
 <p>A expiry time of a unique session should be set according to the statements included in the <a href="#security-profile">Security Profile</a>.</p>
 
-<p>After a unique session is expired it is expected that the data recipient, for the same customer, may establish a new session as long as the authorisation is still valid.</p>
+<p>After a unique session is expired it is expected that the Data Recipient Software Product, for the same customer, may establish a new session as long as the authorisation is still valid.</p>
 <h2 id='availability-requirements'>Availability Requirements</h2>
 <p>Service availability requirement for data holders and secondary data holders:
 <em>99.5% per month</em></p>
@@ -9572,7 +9624,7 @@ This operation does not require authentication
 
 <ul>
 <li>Commensurate in length and frequency to other primary digital channels offered by the data holder,</li>
-<li>Published to data recipients with at least one week lead time for normal outages,</li>
+<li>Published to Data Recipient Software Products with at least one week lead time for normal outages,</li>
 <li>May occur without notification if the change is to resolve a critical service or security issue.</li>
 </ul>
 
@@ -9580,9 +9632,9 @@ This operation does not require authentication
 <h2 id='performance-requirements'>Performance Requirements</h2>
 <p>API end point performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
-<p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the data recipient and the data holder will be in the control of the data holder.  As this is implementation specific it is expected that the data holder will ensure that the measurement of response time occurs as close to the data recipient as practicable.</p>
+<p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder.  As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
 
-<p>In light of these considerations, the performance requirement for data holders is:</p>
+<p>In light of these considerations, the performance requirement for Data Holders is:</p>
 
 <p><strong>95% of calls per hour responded to within a nominated threshold</strong></p>
 
@@ -9649,16 +9701,16 @@ This operation does not require authentication
 <ul>
 <li>Unlimited sessions per day</li>
 <li>10 TPS per customer</li>
-<li>50 TPS per data recipient</li>
+<li>50 TPS per Data Recipient Software Product</li>
 </ul>
 
 <p>For Unattended traffic the following traffic thresholds will apply for low traffic periods:</p>
 
 <ul>
-<li>20 sessions per day, per customer, per data recipient</li>
+<li>20 sessions per day, per customer, per Data Recipient Software Product</li>
 <li>100 total calls per session</li>
 <li>5TPS per session</li>
-<li>50 TPS per data recipient</li>
+<li>50 TPS per Data Recipient Software Product</li>
 </ul>
 
 <p>For Unattended traffic during high traffic periods only best effort support is required.</p>
@@ -9675,13 +9727,13 @@ This operation does not require authentication
 <li>300 TPS total across all consumers (additive to secure traffic)</li>
 </ul>
 
-<p>As traffic from data recipients to data holders will be shaped by the thresholds above, there are no specific thresholds applicable to secondary data holders.</p>
+<p>As traffic from Data Recipient Software Products to Data Holders will be shaped by the thresholds above, there are no specific thresholds applicable to secondary Data Holders.</p>
 <h2 id='data-recipient-requirements'>Data Recipient Requirements</h2>
-<p>Data recipients will be limited by the traffic thresholds documented in the previous section.  In addition to this data recipients are expected to design their services according to the following principles:</p>
+<p>Data Recipient Software Products will be limited by the traffic thresholds documented in the previous section.  In addition to this Data Recipients are expected to design their services according to the following principles:</p>
 
 <ul>
-<li>Services should be designed to minimise traffic with data holders</li>
-<li>Services should be designed to be resilient in the case of the rejection of a call by a data holder due to traffic threshold breaches</li>
+<li>Services should be designed to minimise traffic with Data Holders</li>
+<li>Services should be designed to be resilient in the case of the rejection of a call by a Data Holder due to traffic threshold breaches</li>
 <li>Services should schedule unattended calls to avoid high traffic periods</li>
 <li>Unattended calls should be managed to avoid short term bursts of traffic</li>
 </ul>
@@ -9710,14 +9762,14 @@ This operation does not require authentication
 <li>Number of calls rejected due to traffic thresholds for current day</li>
 <li>Number of calls rejected due to traffic thresholds for each of the previous seven days</li>
 <li>Number of customers with active authorisations</li>
-<li>Number of data recipients with active authorisations</li>
+<li>Number of Data Recipient Software Products with active authorisations</li>
 </ul>
 <h2 id='data-latency'>Data Latency</h2>
 <p>Within this proposal there is no specific requirement with regard to data latency (ie. how up to date data should be).  Instead, the requirement for data latency is that data presented via API end points should be commensurate to data presented via other primary digital channels.</p>
 
 <p>For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance end points should be the same as the balance presented through the mobile application.</p>
 
-<p>To be able to manage network efficiency using normal mechanisms, a data holder making secondary responsibility requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the data recipient.  Any such cache should be short lived.</p>
+<p>To be able to manage network efficiency using normal mechanisms, a data holder making secondary responsibility requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the Data Recipient Software Product.  Any such cache should be short lived.</p>
 <h2 id='data-quality'>Data Quality</h2>
 <p>Data holders are required to take reasonable steps to ensure that CDR data, having regard to the purpose for which it is held, is accurate and up to date.</p>
 
@@ -9727,7 +9779,7 @@ This operation does not require authentication
 
 <ul>
 <li>Periods of time when the digital channels for the data holder are the target for a distributed denial of service or equivalent form of attack (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
-<li>A significant increase in traffic from a poorly designed or misbehaving data recipient (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
+<li>A significant increase in traffic from a poorly designed or misbehaving Data Recipient Software Product (this should result in http error <code>429 Too Many Requests</code> being returned).</li>
 <li>If the data holder identifies a situation where there is the potential for physical or financial harm or abuse (this should result in http error <code>403 Forbidden</code> being returned).</li>
 </ul>
 <h1 style="display:none"></h1>
@@ -9858,21 +9910,21 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -10164,21 +10216,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -10466,21 +10518,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -10686,21 +10738,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -10888,21 +10940,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -11332,21 +11384,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -11558,21 +11610,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -11791,21 +11843,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -12030,21 +12082,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-3'>Enumerated Values</h4>
@@ -12330,21 +12382,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -12562,21 +12614,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -12883,21 +12935,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -13265,21 +13317,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -13579,21 +13631,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-5'>Enumerated Values</h4>
@@ -13811,21 +13863,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -14655,21 +14707,21 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -14868,21 +14920,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>optional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -15365,7 +15417,11 @@ This operation does not require authentication
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h1 id='schemas'>Schemas</h1>
+
+<h2 class="schema-heading" id="consumer-data-standards-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="consumer-data-standards-schemas"></a></p>
+
 <h2 class="schema-toc" id="tocSrequestaccountids">RequestAccountIds</h2>
 
 <p><a id="schemarequestaccountids"></a></p>
@@ -24485,7 +24541,9 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-<h2 id='schemas'>Schemas</h2>
+<h2 class="schema-heading" id="consumer-data-standards-administration-end-points-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="consumer-data-standards-administration-end-points-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
@@ -24825,7 +24883,7 @@ This operation may only be called by the CDR Register
 <td>integer</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Number of data recipients with active authorisations at the time of the call</td>
+<td>Number of Data Recipient Software Products with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» secondaryHolder</td>
