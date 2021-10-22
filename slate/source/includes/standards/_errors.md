@@ -1,11 +1,11 @@
 ## Error Codes
 
-These standards define a standard list of error codes that Data Recipients and Data Holders **SHOULD** or **MUST** conform to. Further,
+These standards define a standard list of error codes that Data Recipient Software Products and Data Holders **SHOULD** or **MUST** conform to. Further,
 
-* Data Recipients and Data Holders **SHOULD** use the standard error codes as defined
+* Data Recipient Software Products and Data Holders **SHOULD** use the standard error codes as defined
 * Where a specific error code **MUST** be responded, this requirement is stated against the applicable error code or API endpoints
 * Where a specific error code **MAY** be responded, this requirement is stated against the applicable error code or API endpoints
-* Data Recipients and Data Holders **MAY** respond with application-specific error codes and in doing so, **MUST** respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.
+* Data Recipient Software Products and Data Holders **MAY** respond with application-specific error codes and in doing so, **MUST** respond with the <code>MetaError &raquo; urn</code> field populated with the standard CDR error code.
 
 ### Error Response Structure
 
@@ -30,7 +30,7 @@ per `code`
 * `detail` field **MUST** be present: holds a human readable description of this specific error
 * `meta` object **MAY** be present: holds additional end point specific data relevant to the error
 
-If a Data Recipient or Data Holder responds with an application-specific error code, the standard CDR URN error code **MUST** be provided in the `MetaError` object.
+If a Data Recipient Software Product or Data Holder responds with an application-specific error code, the standard CDR URN error code **MUST** be provided in the `MetaError` object.
 
 <div class="clear both"></div>
 #### URN Structure
@@ -225,7 +225,7 @@ Content-Type: application/json
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
 | <a id="error-404-resource-not-implemented"></a>Resource Not Implemented | <code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code> | The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code **SHOULD** be supported for unimplemented APIs.|
-| <a id="error-404-resource-not-found"></a>Resource Not Found | <code>urn:au-cds:error:cds-all:<br/>Resource/NotFound</code> | The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient. |
+| <a id="error-404-resource-not-found"></a>Resource Not Found | <code>urn:au-cds:error:cds-all:<br/>Resource/NotFound</code> | The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient Software Product. |
 | <a id="error-404-resource-invalid"></a>Invalid Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Invalid</code> | The requested resource identifier is permanently unavailable. No subsequent request for the resource will be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 | <a id="error-404-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the URI.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 | <a id="error-404-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the URI.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
@@ -281,17 +281,17 @@ Content-Type: application/json
 | <a id="error-422-resource-unavailable"></a>Unavailable Resource | <code>urn:au-cds:error:cds-all:<br/>Resource/Unavailable</code> | The requested resource identifier is temporarily unavailable. Subsequent requests for the resource may be successful. Applies when the resource ID is provided in the request body.<br/><br/>The error `detail` is the resource ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
 | <a id="error-422-authorisation-invalid-banking-account"></a>Invalid Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/InvalidBankingAccount</code> | The requested bank account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the request body.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
 | <a id="error-422-authorisation-unavailable-banking-account"></a>Unavailable Banking Account | <code>urn:au-cds:error:cds-banking:<br/>Authorisation/UnavailableBankingAccount</code> | The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the request body.<br/><br/>The error `detail` is the account ID of the resource being requested.<br/><br/>This error code **MUST** be supported for authenticated APIs. |
-| <a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement | <code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code> | The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error `detail` is the CDR Arrangement ID of the being executed.<br/><br/>This error code **MUST** be supported for the Data Recipient and Data Holder CDR Arrangement Revocation endpoint. |
+| <a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement | <code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code> | The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error `detail` is the CDR Arrangement ID of the being executed.<br/><br/>This error code **MUST** be supported for the Data Recipient Software Product and Data Holder CDR Arrangement Revocation endpoint. |
 | <a id="error-422-field-invalid-page"></a>Invalid Page | <code>urn:au-cds:error:cds-all:<br/>Field/InvalidPage</code> | The page being requested it out of of range. For example, the valid pagination range is 5 pages and the client requested `page=10`).<br/><br/>The error `detail` **SHOULD** be the maximum number of pages that are available.<br/><br/>This error code **MUST** be supported for unauthenticated and authenticated APIs. |
 
 #### CDR Register Errors
-The following error codes apply to responses from the CDR Register. Data Recipient and Data Holder clients requesting data from the CDR Register **MAY** expect the following standard CDR error codes to be encountered:
+The following error codes apply to responses from the CDR Register. Data Recipient Software Product and Data Holder clients requesting data from the CDR Register **MAY** expect the following standard CDR error codes to be encountered:
 
 | Error Title            | Error Code                           | HTTP Status Category | Description |  
 | :--------------------- | :----------------------------------- | :------------------- | :---------- |  
-| <a id="register-error-404-field-invalid-brand"></a>Invalid Brand | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidBrand</code> | 404 (Not Found) | The brand provided to get the Data Recipient software statement assertion is invalid. Applies to the `dataRecipientBrandId` path parameter for CDR Register APIs. |
-| <a id="register-error-400-field-invalid-industry"></a>Invalid Industry | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidIndustry</code> | 404 (Not Found) | The industry requested in the path to get Data Recipient or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the `industry` path parameter for CDR Register APIs. |
-| <a id="register-error-403-field-invalid-software-product"></a>Invalid Software Product | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidSoftwareProduct</code> | 404 (Not Found) | The software product requested to get the Data Recipient software statement assertion is invalid or cannot be found. Applies to the `softwareProductId` path parameter. |
+| <a id="register-error-404-field-invalid-brand"></a>Invalid Brand | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidBrand</code> | 404 (Not Found) | The brand provided to get the Data Recipient Software Product software statement assertion is invalid. Applies to the `dataRecipientBrandId` path parameter for CDR Register APIs. |
+| <a id="register-error-400-field-invalid-industry"></a>Invalid Industry | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidIndustry</code> | 404 (Not Found) | The industry requested in the path to get Data Recipient Software Product or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the `industry` path parameter for CDR Register APIs. |
+| <a id="register-error-403-field-invalid-software-product"></a>Invalid Software Product | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidSoftwareProduct</code> | 404 (Not Found) | The software product requested to get the Data Recipient Software Product software statement assertion is invalid or cannot be found. Applies to the `softwareProductId` path parameter. |
 
 ### Processing Errors
 
@@ -322,7 +322,7 @@ Error handling has been designed with extensibility in mind. Where an applicatio
 }
 ```
 
-To assist clients, the Data Recipient or Data Holder **MUST** provide the application-specific error code in the <code>ResponseErrorListV2 &raquo; code</code> and the standard CDR error code in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field denoting the standard error code the implementation extends.
+To assist clients, the Data Recipient Software Product or Data Holder **MUST** provide the application-specific error code in the <code>ResponseErrorListV2 &raquo; code</code> and the standard CDR error code in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field denoting the standard error code the implementation extends.
 
 ### Transition arrangements
 
@@ -363,17 +363,17 @@ To assist clients, the Data Recipient or Data Holder **MUST** provide the applic
 ] }
 ```
 
-If Data Recipients or Data Holders support custom error codes prior to February 1st 2022, the following transition arrangements apply:
+If Data Recipient Software Products or Data Holders support custom error codes prior to February 1st 2022, the following transition arrangements apply:
 
-* **Effective as soon as standardised error codes are supported by the Data Recipient or Data Holder:**  
-    * If the Data Recipient or Data Holder supports application-specific error codes they **MUST** publish a mapping of those codes to the standard CDR error codes in a developer friendly way that is discoverable and freely available.
-    * Data Recipients and Data Holders **MAY** publish this mapping any time prior to February 1st 2022.
+* **Effective as soon as standardised error codes are supported by the Data Recipient Software Product or Data Holder:**  
+    * If the Data Recipient Software Product or Data Holder supports application-specific error codes they **MUST** publish a mapping of those codes to the standard CDR error codes in a developer friendly way that is discoverable and freely available.
+    * Data Recipient Software Products and Data Holders **MAY** publish this mapping any time prior to February 1st 2022.
 
-* **Effective from February 1st 2022:** Data Holders and Data Recipients **MUST** support standardised error codes by this date and continue to support any custom error codes.
+* **Effective from February 1st 2022:** Data Holders and Data Recipient Software Products **MUST** support standardised error codes by this date and continue to support any custom error codes.
   * Standardised error codes **MUST** be provided in the <code>ResponseErrorListV2 &raquo; MetaError &raquo; urn</code> field
   * If applicable, application specific error codes **MUST** be provided in the <code>ResponseErrorListV2 &raquo; code</code>
-  * Data Recipients and Data Holders **MAY** phase their transition to support standardised error codes such as by endpoint or per error code if preferred prior to this date.
+  * Data Recipient Software Products and Data Holders **MAY** phase their transition to support standardised error codes such as by endpoint or per error code if preferred prior to this date.
 
-* **Effective from November 1st 2022:** Data Holders and Data Recipients **MAY** deprecate any custom error codes
+* **Effective from November 1st 2022:** Data Holders and Data Recipient Software Products **MAY** deprecate any custom error codes
   * Standardised error codes **MAY** be provided in the <code>ResponseErrorListV2 &raquo; code</code> field if no application-specific error code applies
   * Application-specific error codes **MAY** be provided in the <code>ResponseErrorListV2 &raquo; code</code>

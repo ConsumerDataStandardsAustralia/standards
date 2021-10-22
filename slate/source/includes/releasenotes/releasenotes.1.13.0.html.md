@@ -20,6 +20,8 @@ This release minor errata and documentation fixes.
 |------|-----------|----|
 | Structure | Restructured the overall standards structure to accommodate energy and register standards.  These changes were aesthetic only and not intended to result in material change to the standards | Multiple sections affected |
 | Register Standards | Incorporated CDR Register standards according to Decision 206 | Multiple sections affected |
+| CDR Federation | Updated definitions to be consistent with the definitions of Data Recipient and Data Recipient Software Product as described and permitted by the CDR Register design. | Multiple sections affected |
+| Endpoint Versioning Schedule | Removed "experimental" note. Endpoint verioning has proved useful to the community and will continue to be maintained. Enhancements to the versioning schedule can be raised as change requests via the Standards Maintenance process. | [Endpoint Version Schedule](../../#endpoint-version-schedule) |
 | Secondary Responsibility | Addition of the secondary responsibility section incorporating the AEMO security profile and AEMO endpoint decisions | [Secondary Responsibility](../../#secondary-responsibility)
 
 ## API End Points

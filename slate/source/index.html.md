@@ -22,7 +22,7 @@ includes:
   - cx
   - cx_standards
   - separator
-  - security2
+  - security
   - dcr_apis
   - register
   - scopes

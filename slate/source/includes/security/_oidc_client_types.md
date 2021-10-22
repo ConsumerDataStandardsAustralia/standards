@@ -10,6 +10,6 @@ In reference to the client types referenced in [section 2.1] (https://tools.ietf
 
 Data Holder public keys MUST only be obtained from the standard OIDC end point used for that purpose.
 
-Data Recipient public keys MUST only be obtained from the URI registered with the CDR Register.
+Data Recipient Software Product public keys MUST only be obtained from the URI registered with the CDR Register.
 
 CDR Register public keys MUST only be obtained from the end point exposed for that purpose.

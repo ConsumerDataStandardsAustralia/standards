@@ -11,6 +11,6 @@
 
 Data Holders MUST implement a Token Revocation End Point as described in [section 2](https://tools.ietf.org/html/rfc7009#section-2) of **[RFC7009]**.
 
-The Revocation End Point serves as a revocation mechanism that allows a Data Recipient to invalidate its tokens as required to allow for token clean up.
+The Revocation End Point serves as a revocation mechanism that allows a Data Recipient Software Product to invalidate its tokens as required to allow for token clean up.
 
 Revocation of Refresh Tokens and Access Tokens MUST be supported.

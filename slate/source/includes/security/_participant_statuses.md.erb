@@ -2,38 +2,27 @@
 
 ### Data Recipient and Software Product Statuses
 
-> Data Recipient Statuses
-<img src="images/ADRStateMachine.png" ></img>
 
 The accreditation status of Data Recipients, and the status of their associated Software Products, may traverse through multiple statuses in the CDR.
 
 The status of participants is maintained in the CDR Register by the CDR Registrar according to determination of the CDR Accreditor or the participant themselves.
 
-CDR data may only be disclosed to active Data Recipients.  Data Holders MUST to cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:
+CDR data may only be disclosed to active Data Recipients.  Data Holders MUST cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:
 
 1.	Suspended or revoked by the CDR Registrar.
 2.	Surrendered by the Data Recipient.
 
-The CDR Register will notify all Data Holders of the above changes in Data Recipient and Software Package status.
+The CDR Register MUST notify all Data Holders of the above changes in Data Recipient and Software Package status via the [Register APIs](#register-apis).
+
+The CDR Register MUST expose the statuses of data recipients and their associated software products via the [Register APIs](#register-apis), using the following state models:
+
+### Data Recipient Status
+<img class=medium-image src="images/ADRStateMachine.png" ></img>
+
+### Software Product Status
+<img class=medium-image src="images/SoftwareProductStateMachine.png" ></img>
 
 
-> Software Product Statuses
-<img src="images/SoftwareProductStateMachine.png" ></img>
-
-
-|Data Recipient Statuses|
-|-----------------|
-|Active|
-|Suspended|
-|Revoked|
-|Surrendered|
-
-
-|Software Product Statuses|
-|-----------------|
-|Active|
-|Inactive|
-|Removed|
 
 
 
@@ -48,7 +37,22 @@ The cascading status mappings are as follows:
 |Revoked|Removed|
 |Surrendered|Removed|
 
-If a previously available Software Package ceases to be available its status MUST be assumed to be `Removed`.
+### Archiving
+Dormant entries will be identified and archived automatically within the CDR Register.
+
+Dormant entries are defined as those records that have reached and maintained an __end state__ in the CDR Register for the past **2 years**.
+
+The table below outlines the end state for each Register entry type:
+
+|**Register Entity**|**End State**|
+|-----------------|-----------------------|
+|Data Holder|Removed|
+|Data Holder Brand|Removed|
+|Data Recipient|Surrendered, Revoked|
+|Data Recipient Brand|Removed|
+|Data Recipient Software Product|Removed|
+
+
 
 ### Data Holder Responsibilities
 
@@ -81,6 +85,7 @@ Data Holders and Data Recipients MUST cache all other participant data they use 
 
 The CDR Register MAY cache the responses for **public** APIs hosted by the CDR Register.  If caching is supported the CDR Register MUST support ETag cache validators allowing participants to detect whether the content has changed.
 
+
 #### Cache update periods
 The following are the recommended caching times for data retrieved from the Register APIs.
 
@@ -91,3 +96,4 @@ The following are the recommended caching times for data retrieved from the Regi
 |**GetDataRecipients (statuses)**| Public | 2-5 minutes |
 |**GetDataRecipients (other data)**| Public | 6 hours |
 |**GetDataHolderBrands**| Private | 6 hours |
+

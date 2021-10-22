@@ -25,7 +25,8 @@
 {{ } /* of resources */ }}
 
 {{? data.api.components && data.api.components.schemas }}
-# Schemas
+<h2 class="schema-heading" id="{{=data.title_prefix+'-schemas'}}">Schemas</h2>
+<a class="schema-link" id="{{=data.title_prefix+'-schemas'}}"></a>
 
 {{ for (var s in data.components.schemas) { }}
 {{ var origSchema = data.components.schemas[s]; }}

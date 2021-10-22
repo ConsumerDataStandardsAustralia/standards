@@ -428,7 +428,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Schemas
+<h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
+<a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a>
 
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 

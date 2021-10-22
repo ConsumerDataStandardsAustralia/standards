@@ -85,19 +85,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -201,19 +201,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -301,19 +301,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -386,19 +386,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -471,19 +471,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -606,19 +606,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -698,19 +698,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -799,19 +799,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -915,19 +915,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1015,19 +1015,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1116,19 +1116,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1232,19 +1232,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1332,19 +1332,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1434,19 +1434,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1519,19 +1519,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1732,19 +1732,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -1810,19 +1810,19 @@
         }, {
           "name" : "x-fapi-auth-date",
           "in" : "header",
-          "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-fapi-customer-ip-address",
           "in" : "header",
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "x-cds-client-headers",
           "in" : "header",
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
           "required" : false,
           "type" : "string",
           "x-cds-type" : "Base64"
@@ -4576,21 +4576,21 @@
     "RequestHeader_x-fapi-auth-date" : {
       "name" : "x-fapi-auth-date",
       "in" : "header",
-      "description" : "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+      "description" : "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
       "required" : false,
       "type" : "string"
     },
     "RequestHeader_x-fapi-customer-ip-address" : {
       "name" : "x-fapi-customer-ip-address",
       "in" : "header",
-      "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+      "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
       "required" : false,
       "type" : "string"
     },
     "RequestHeader_x-cds-client-headers" : {
       "name" : "x-cds-client-headers",
       "in" : "header",
-      "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+      "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "required" : false,
       "type" : "string",
       "x-cds-type" : "Base64"

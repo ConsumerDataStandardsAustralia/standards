@@ -87,13 +87,13 @@ client_id=s6BhdRkqt3
 }
 ```
 
-The CDR Arrangement ID is a unique string representing a consent arrangement between a Data Recipient and Data Holder for a given consumer.
+The CDR Arrangement ID is a unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer.
 
 The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile.
 
 The Data Holder MUST provide the CDR Arrangement ID as the claim ``cdr_arrangement_id`` in the Token End Point response and Token Introspection End Point response.
 
-A Data Holder MUST only return the ``cdr_arrangement_id`` in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipients have a reliable way to determine whether a given Data Holder supports concurrent consent.
+A Data Holder MUST only return the ``cdr_arrangement_id`` in the Token and Token Introspection End Point responses if they also support concurrent consent. This ensures that Data Recipient Software Products have a reliable way to determine whether a given Data Holder supports concurrent consent.
 
 Statements related to the CDR Arrangement ID:
 
@@ -104,6 +104,6 @@ Statements related to the CDR Arrangement ID:
 
 #### Obtaining a CDR Arrangement ID
 
-For any existing consents, Data Holders must retrospectively generate a ``cdr_arrangement_id`` such that Data Recipients can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
+For any existing consents, Data Holders must retrospectively generate a ``cdr_arrangement_id`` such that Data Recipient Software Products can obtain a valid ``cdr_arrangement_id`` for all active consents they hold.
 
-A Data Recipient can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.
+A Data Recipient Software Product can call either the Token or Token Introspection End Points at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim ``cdr_arrangement_id``.

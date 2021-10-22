@@ -8,7 +8,7 @@ No other flows are currently supported.
 <a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
 The **[OIDC]** Hybrid Flow is a type of redirection flow where the consumer's user
-agent is redirected from a Data Recipient’s (Relying Party) web site to a Data
+agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an **[OIDC]** authentication
 request. The Hybrid flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under **[OIDC]**.
@@ -29,7 +29,7 @@ In addition, the following statements are applicable for this flow:
 - The provided OTP MUST be numeric digits and be between 4 and 6 digits in length
 - The algorithm for the creation of the OTP is at the discretion of the Data Holder but SHOULD incorporate a level of pseudorandomness appropriate for the use case
 - Data Holders SHOULD implement additional controls to minimise the risk of enumeration attacks via the redirect page
-- Data recipients SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the data recipient), timestamp, IP, consent scopes and duration.
+- Data Recipient Software Products SHOULD record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
 
 In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:
 

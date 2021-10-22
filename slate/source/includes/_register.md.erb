@@ -5,7 +5,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
-  Data Holders and Data Recipients are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
+  Data Holders and Data Recipient Software Productss are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
 
@@ -16,7 +16,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <tr><td><a href='./includes/swagger/cds_register.yaml'>Register Swagger (YAML)</a></td></tr>
 </table>
 
-|API|Caller|Description|mTLS|TLS|Bearer Token|
+|API|Caller|Description|MTLS|TLS|Bearer Token|
 |---|---|---|---|---|---|
 | Get Register OpenId Provider Config | Data Recipient Brand or Software Product | Discovery of CDR Register OpenID Configuration | | <i class="icon-check"></i> | |
 | Get Register JWKS | Data Holder | Validate SSA and CDR Register authentication JWT signatures | | <i class="icon-check"></i> | |

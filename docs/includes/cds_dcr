@@ -621,7 +621,11 @@ Authorization: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">cdr:registration</a>
 </aside></p>
-<h2 id='schemas'>Schemas</h2>
+
+<h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="cdr-dynamic-client-registration-api-schemas"></a></p>
+
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 
 <p><a id="schemaclientregistrationrequest"></a></p>

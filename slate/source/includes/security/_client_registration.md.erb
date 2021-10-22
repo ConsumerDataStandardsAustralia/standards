@@ -5,19 +5,19 @@ Data Recipients register with Data Holders according to **[DCR]** to obtain clie
 
 #### Software Statement Assertion (SSA)
 
-As per **[DCR]**, a Software Statement is defined in as:
-> A digitally signed JSON Web Token (JWT) created in accordance with **[JWT]** that asserts metadata values about the client software.
+As per **[DCR]**, a Software Statement is defined in as: *A digitally signed JSON Web Token (JWT) created in accordance with [JWT] that asserts metadata values about the client software*
+> An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[JWT]** that asserts metadata values about the client software.
 
 Such that:
 
-* The CDR Register MUST issue Software Statements to *active* Data Recipients
+* The CDR Register MUST issue Software Statements to **active** Data Recipients for **active** Software Products
 * The CDR Register MUST issue distinct Software Statements for each `Software Product ID`
-* Software Statements are issued with an 10 minute expiry time
+* Software Statements are issued with a **10 minute** expiry time
 * As per **[FAPI-RW]**, SSAs are signed by the CDR Register using **PS256**
 * CDR Register public keys are exposed on a dedicated JWKS URI endpoint
-* The CDR Register JWKS is an unauthenticated endpoint, using TLS
+* The CDR Register [JWKS](#get-jwks) is an unauthenticated endpoint, using TLS
 * Data Recipients MUST present a valid SSA when undertaking dynamic client registration
-* Data Holders MUST NOT register Data Recipients unless they present a verified SSA
+* Data Holders MUST NOT register Data Recipient software products unless they present a verified [Registration Request](#registration-request-using-jwt) with a verified [SSA](#ssa-definition)
 
 Refer to the [Register APIs](#register-apis) section for the endpoint definitions that will be used to retrieve and validate SSAs.
 
@@ -133,34 +133,6 @@ The SSA will conform to the requirements of **[DCR]** with the following clarifi
 
 ### Registration Request using JWT
 
-> Non-Normative Example for access token retrieval to perform registration
-
-```
-HTTP/1.1 POST /token
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=client_credentials&
-  scope=cdr%3Aregistration&
-  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
-
-### Decoded client assertion JWT
-{
-  "alg": "PS256",
-  "typ": "JWT",
-  "kid": "12456"
-}
-{
-  "iss": "12345",
-  "sub": "12345",
-  "iat": 1516239022,
-  "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
-  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
-}
-
-```
-
 > Example Request
 
 ```
@@ -244,7 +216,7 @@ Participants MUST support, at a minimum, the following ID Token algorithms:
 ### Registration Validation
 Validation and use of the JWT and the claims described above MUST be performed in accordance with **[JWT]**.
 
-SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register JWKS endpoint.
+SSA JWT signatures MUST be verified against the associated JWK published at the CDR Register [JWKS endpoint](#get-jwks).
 
 Data Holders MUST NOT allow multiple active registrations for the same `software_id`.
 
@@ -313,7 +285,7 @@ On successful registration, the response MUST be returned to the  Data Recipient
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
-|**client_id**|	Required | Contains the dynamically generated identifier for the ADR Software Product issued by the Data Holder
+|**client_id**|	Required | Contains the dynamically generated identifier for the Software Product issued by the Data Holder
 |**client_id_issued_at**|	Optional | Time at which the client identifier was issued
 
 As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[DCR]**, additionally, the authorisation server MUST return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
@@ -346,3 +318,59 @@ Duplicate registrations are not permitted so attempts to create a registration w
 Registration error responses schemas are defined in the [DCR APIs](#dcr-apis) section.
 
 For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[DCR]**, [HTTP Response Codes](https://consumerdatastandardsaustralia.github.io/standards/#http-response-codes) in the Consumer Data Standards should be used.
+
+
+### Registration Management
+
+
+> Non-Normative Example for access token retrieval to perform registration management
+
+```
+HTTP/1.1 POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+  scope=cdr%3Aregistration&
+  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+
+### Decoded client assertion JWT
+{
+  "alg": "PS256",
+  "typ": "JWT",
+  "kid": "12456"
+}
+{
+  "iss": "12345",
+  "sub": "12345",
+  "iat": 1516239022,
+  "exp": 1516239322,
+  "aud": "https://www.holder.com.au/token",
+  "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
+}
+
+```
+
+
+Data Holders MUST expose Client Registration Management endpoints as defined in the [DCR APIs](#dcr-apis)
+
+| HTTP Verb |  | MTLS | HoK | Client Authentication
+|--------------|-------|-------|-------|------|-----------------------------------------------------------------------------
+|**POST /register**|	Required | <i class="icon-check"></i> |  | N/A
+|**GET /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with cdr:registration scope
+|**PUT /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with cdr:registration scope
+|**DELETE /register/{clientID}**|	Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with cdr:registration scope
+
+* Registration endpoints will be exposed in the OIDC Discovery Configuration Endpoint
+* POST and PUT operations MUST accept the SSA payload.
+* Fields data holders do not support are not persisted.
+* Access tokens issued for consuming CDR Data should not be used for client registration maintenance and vice-versa
+
+
+### PUT Operations
+Registrations MUST only be updated via Registration PUT operations
+
+PUT operations are to be used for one of two scenarios:
+
+1. The client has updated their registration details on the CDR Register and updates this information to the data holder
+2. A new version of the SSA has been released and the client updates this information to the data holder

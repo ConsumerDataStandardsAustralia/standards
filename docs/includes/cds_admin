@@ -491,7 +491,11 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 <aside class="success">
 This operation may only be called by the CDR Register
 </aside>
-<h2 id='schemas'>Schemas</h2>
+
+<h2 class="schema-heading" id="consumer-data-standards-administration-end-points-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="consumer-data-standards-administration-end-points-schemas"></a></p>
+
 <h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>
@@ -829,7 +833,7 @@ This operation may only be called by the CDR Register
 <td>integer</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Number of data recipients with active authorisations at the time of the call</td>
+<td>Number of Data Recipient Software Products with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» secondaryHolder</td>
