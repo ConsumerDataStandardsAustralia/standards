@@ -137,14 +137,16 @@ $.ajax({
 
 This end point allows the ACCC to obtain operational statistics from the Data Holder on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.
 
-NOTE: This version must be implemented by **July 31st 2021**
+NOTE: This version must be implemented by **October 1st 2022**
 
-Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
+Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
+
+If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-metrics-parameters">Parameters</h3>
 
@@ -212,6 +214,18 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Hold
         "previousDays": [
           0
         ]
+      },
+      "secondary": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      },
+      "largeSecondary": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
       }
     },
     "averageResponse": {
@@ -244,6 +258,34 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Hold
         "previousDays": [
           0
         ]
+      },
+      "secondary": {
+        "primary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "secondary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        }
+      },
+      "largeSecondary": {
+        "primary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "secondary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        }
       }
     },
     "sessionCount": {
@@ -285,7 +327,21 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Hold
       }
     },
     "customerCount": 0,
-    "recipientCount": 0
+    "recipientCount": 0,
+    "secondaryHolder": {
+      "errors": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      },
+      "rejections": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      }
+    }
   },
   "links": {
     "self": "string"
@@ -298,7 +354,7 @@ Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html). If the Data Hold
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV2](#schemaresponsemetricslistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseMetricsListV3](#schemaresponsemetricslistv3)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|None|
 
 <h3 id="get-metrics-responseschema">Response Schema</h3>
@@ -324,9 +380,10 @@ This operation may only be called by the CDR Register
     
   
 
-## Schemas
+<h2 class="schema-heading" id="consumer-data-standards-administration-end-points-schemas">Schemas</h2>
+<a class="schema-link" id="consumer-data-standards-administration-end-points-schemas"></a>
 
-<h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
+<h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <a id="schemarequestmetadataupdate"></a>
 
@@ -354,9 +411,9 @@ This operation may only be called by the CDR Register
 |---|---|
 |action|REFRESH|
 
-<h2 id="tocSresponsemetricslistv2">ResponseMetricsListV2</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
-<a id="schemaresponsemetricslistv2"></a>
+<a id="schemaresponsemetricslistv3"></a>
 
 ```json
 {
@@ -404,6 +461,18 @@ This operation may only be called by the CDR Register
         "previousDays": [
           0
         ]
+      },
+      "secondary": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      },
+      "largeSecondary": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
       }
     },
     "averageResponse": {
@@ -436,6 +505,34 @@ This operation may only be called by the CDR Register
         "previousDays": [
           0
         ]
+      },
+      "secondary": {
+        "primary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "secondary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        }
+      },
+      "largeSecondary": {
+        "primary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        },
+        "secondary": {
+          "currentDay": 0,
+          "previousDays": [
+            0
+          ]
+        }
       }
     },
     "sessionCount": {
@@ -477,7 +574,21 @@ This operation may only be called by the CDR Register
       }
     },
     "customerCount": 0,
-    "recipientCount": 0
+    "recipientCount": 0,
+    "secondaryHolder": {
+      "errors": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      },
+      "rejections": {
+        "currentDay": 0,
+        "previousDays": [
+          0
+        ]
+      }
+    }
   },
   "links": {
     "self": "string"
@@ -495,19 +606,20 @@ This operation may only be called by the CDR Register
 |» requestTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that the metrics in this payload were requested.|
 |» availability|[AvailabilityMetrics](#schemaavailabilitymetrics)|mandatory|none|Percentage availability of the CDR platform over time|
 |» performance|[PerformanceMetrics](#schemaperformancemetrics)|mandatory|none|Percentage of calls within the performance thresholds|
-|» invocations|[InvocationMetrics](#schemainvocationmetrics)|mandatory|none|Number of API calls in each performance tier over time|
-|» averageResponse|[AverageResponseMetrics](#schemaaverageresponsemetrics)|mandatory|none|Average response time in seconds, at millisecond resolution, within each performance tier|
+|» invocations|[InvocationMetricsV2](#schemainvocationmetricsv2)|mandatory|none|Number of API calls in each performance tier over time|
+|» averageResponse|[AverageResponseMetricsV2](#schemaaverageresponsemetricsv2)|mandatory|none|Average response time in seconds, at millisecond resolution, within each performance tier|
 |» sessionCount|[SessionCountMetrics](#schemasessioncountmetrics)|mandatory|none|Session counts over time. Note that a session is defined as the provisioning of an Access Token.|
 |» averageTps|[AverageTPSMetrics](#schemaaveragetpsmetrics)|mandatory|none|Transactions per second over time|
 |» peakTps|[PeakTPSMetrics](#schemapeaktpsmetrics)|mandatory|none|Maximum record transactions per second over time|
 |» errors|[ErrorMetrics](#schemaerrormetrics)|mandatory|none|Number of calls resulting in error due to server execution over time|
 |» rejections|[RejectionMetricsV2](#schemarejectionmetricsv2)|mandatory|none|Number of calls rejected due to traffic thresholds over time|
 |» customerCount|integer|mandatory|none|Number of customers with active authorisations at the time of the call|
-|» recipientCount|integer|mandatory|none|Number of data recipients with active authorisations at the time of the call|
+|» recipientCount|integer|mandatory|none|Number of Data Recipient Software Products with active authorisations at the time of the call|
+|» secondaryHolder|[SecondaryHolderMetrics](#schemasecondaryholdermetrics)|conditional|none|Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster|
 |links|[Links](#schemalinks)|mandatory|none|none|
 |meta|[Meta](#schemameta)|optional|none|none|
 
-<h2 id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
+<h2 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
 
 <a id="schemaavailabilitymetrics"></a>
 
@@ -530,7 +642,7 @@ This operation may only be called by the CDR Register
 |currentMonth|number|conditional|none|Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%.|
 |previousMonths|[number]|conditional|none|Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.|
 
-<h2 id="tocSperformancemetrics">PerformanceMetrics</h2>
+<h2 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h2>
 
 <a id="schemaperformancemetrics"></a>
 
@@ -553,9 +665,9 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%|
 |previousDays|[number]|conditional|none|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%|
 
-<h2 id="tocSinvocationmetrics">InvocationMetrics</h2>
+<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
-<a id="schemainvocationmetrics"></a>
+<a id="schemainvocationmetricsv2"></a>
 
 ```json
 {
@@ -584,6 +696,18 @@ This operation may only be called by the CDR Register
     ]
   },
   "largePayload": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  },
+  "secondary": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  },
+  "largeSecondary": {
     "currentDay": 0,
     "previousDays": [
       0
@@ -614,10 +738,16 @@ This operation may only be called by the CDR Register
 |largePayload|object|mandatory|none|API call counts for the large payload tier|
 |» currentDay|number|conditional|none|API call counts for current day|
 |» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|secondary|object|conditional|none|API call counts for the secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|largeSecondary|object|conditional|none|API call counts for the large secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster|
+|» currentDay|number|conditional|none|API call counts for current day|
+|» previousDays|[number]|conditional|none|API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSaverageresponsemetrics">AverageResponseMetrics</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
-<a id="schemaaverageresponsemetrics"></a>
+<a id="schemaaverageresponsemetricsv2"></a>
 
 ```json
 {
@@ -650,6 +780,34 @@ This operation may only be called by the CDR Register
     "previousDays": [
       0
     ]
+  },
+  "secondary": {
+    "primary": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "secondary": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    }
+  },
+  "largeSecondary": {
+    "primary": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    },
+    "secondary": {
+      "currentDay": 0,
+      "previousDays": [
+        0
+      ]
+    }
   }
 }
 
@@ -676,8 +834,22 @@ This operation may only be called by the CDR Register
 |largePayload|object|mandatory|none|Average response time for the large payload tier|
 |» currentDay|number|conditional|none|Average response time for current day|
 |» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|secondary|object|conditional|none|Average response time for the secondary tier.  Mandatory for data holders designated for a secondary responsibility request data cluster|
+|» primary|object|mandatory|none|Average response time as measured for the primary data holder|
+|»» currentDay|number|conditional|none|Average response time for current day|
+|»» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|» secondary|object|mandatory|none|Average response time as measured for the secondary data holder|
+|»» currentDay|number|conditional|none|Average response time for current day|
+|»» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|» largeSecondary|object|conditional|none|Average response time for the large payload tier.  Mandatory for data holders designated for a secondary responsibility request data cluster|
+|»» primary|object|mandatory|none|Average response time as measured for the primary data holder|
+|»»» currentDay|number|conditional|none|Average response time for current day|
+|»»» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
+|»» secondary|object|mandatory|none|Average response time as measured for the secondary data holder|
+|»»» currentDay|number|conditional|none|Average response time for current day|
+|»»» previousDays|[number]|conditional|none|Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h2 id="tocSsessioncountmetrics">SessionCountMetrics</h2>
+<h2 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h2>
 
 <a id="schemasessioncountmetrics"></a>
 
@@ -700,7 +872,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Session count for current day|
 |previousDays|[number]|conditional|none|Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
+<h2 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
 
 <a id="schemaaveragetpsmetrics"></a>
 
@@ -723,7 +895,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Average TPS for current day|
 |previousDays|[number]|conditional|none|Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
+<h2 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
 
 <a id="schemapeaktpsmetrics"></a>
 
@@ -746,7 +918,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Peak TPS for current day|
 |previousDays|[number]|conditional|none|Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSerrormetrics">ErrorMetrics</h2>
+<h2 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h2>
 
 <a id="schemaerrormetrics"></a>
 
@@ -769,7 +941,7 @@ This operation may only be called by the CDR Register
 |currentDay|number|conditional|none|Number of errors for current day|
 |previousDays|[number]|conditional|none|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
 
-<h2 id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
+<h2 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
 
 <a id="schemarejectionmetricsv2"></a>
 
@@ -804,7 +976,42 @@ This operation may only be called by the CDR Register
 |» currentDay|number|conditional|none|Number of calls rejected for current day|
 |» previousDays|[number]|conditional|none|Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.|
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+
+<a id="schemasecondaryholdermetrics"></a>
+
+```json
+{
+  "errors": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  },
+  "rejections": {
+    "currentDay": 0,
+    "previousDays": [
+      0
+    ]
+  }
+}
+
+```
+
+*Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|errors|object|mandatory|none|Number of calls resulting in error due to server execution over time|
+|» currentDay|number|conditional|none|Number of errors for current day|
+|» previousDays|[number]|conditional|none|Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+|rejections|object|mandatory|none|Number of calls resulting in a rejection due to server execution over time|
+|» currentDay|number|conditional|none|Number of rejections for current day|
+|» previousDays|[number]|conditional|none|Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available|
+
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <a id="schemalinks"></a>
 
@@ -821,7 +1028,7 @@ This operation may only be called by the CDR Register
 |---|---|---|---|---|
 |self|[URIString](#common-field-types)|mandatory|none|Fully qualified link to this API call|
 
-<h2 id="tocSmeta">Meta</h2>
+<h2 class="schema-toc" id="tocSmeta">Meta</h2>
 
 <a id="schemameta"></a>
 

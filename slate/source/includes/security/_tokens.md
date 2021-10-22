@@ -20,8 +20,7 @@
 ```
 
 ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.  In accordance with **[FAPI-RW]**, ID Tokens must be signed and encrypted when returned
-to a Data Recipient from both the Authorisation
-End Point and Token End Point.
+to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
 
 In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (Authentication using the Hybrid Flow) of the **[OIDC]** standards and [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack) of the **[FAPI-RW]** profile.
 
@@ -53,7 +52,7 @@ Refresh Token expiration MAY be any length of time greater than 28 days but MUST
 Data Holders MAY cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token MUST NOT expire before the expiration of the sharing consented by the Customer.
 
 ### Token Expiry
-The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient.
+The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient Software Product.
 
 In order to achieve this:
 

@@ -1,6 +1,6 @@
 <a id="consent"></a>
 ## Consent
-Consent requirements will be communicated between the Data Recipient and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under **[OIDC]**.
+Consent requirements will be communicated between the Data Recipient Software Product and Data Holder via the authorisation request object.  The primary mechanism for capturing consent will be scopes and claims under **[OIDC]**.
 
 Other patterns for the establishment of consent may be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
@@ -17,7 +17,7 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 
 - `sub`: [Pairwise Pseudonymous Identifier (PPID)](#identifiers) for the End-User at the Data Holder.
 - `acr`: Authentication Context Class Reference.  MUST contain a valid [ordinal LoA value](#ordinal-loa).
-- `auth_time`: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `auth_time`. It MUST be returned by the Data Holder in the ID Token when the Data Recipient has requested it as an essential claim according to section 2 of the **[OIDC]** standard. It SHOULD NOT be returned via the UserInfo endpoint.
+- `auth_time`: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC `auth_time`. It MUST be returned by the Data Holder in the ID Token when the Data Recipient Software Product has requested it as an essential claim according to section 2 of the **[OIDC]** standard. It SHOULD NOT be returned via the UserInfo endpoint.
 - `name`: End-User's full name in displayable form including all name parts.
 - `given_name`: Given name(s) or first name(s) of the End-User.
 - `family_name`: Surname(s) or last name(s) of the End-User.

@@ -10,6 +10,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>22/10/2021</td>
+<td>1.13.0</td>
+<td>Changes arising from Decisions 206 (Register Standards), 191 and 192</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.13.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/206">Decision 206</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/191">Decision 191</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/192">Decision 192</a> for details</td>
+</tr>
+<tr>
 <td>14/10/2021</td>
 <td>1.12.0</td>
 <td>Inclusion of a series of decisions related to energy and non-functional requirements</td>

@@ -7,7 +7,7 @@
 | Client Authentication Required| Yes|
 | Bearer Token Required| No|
 
-Data Holders MUST implement an Introspection End Point to allow Data Recipients to determine the status and expiry date of Refresh Tokens.  The requirements for an Introspection End Point are described in [section 2](https://tools.ietf.org/html/rfc7662#section-2) of **[RFC7662]**.
+Data Holders MUST implement an Introspection End Point to allow Data Recipient Software Products to determine the status and expiry date of Refresh Tokens.  The requirements for an Introspection End Point are described in [section 2](https://tools.ietf.org/html/rfc7662#section-2) of **[RFC7662]**.
 
 Introspection of Refresh Tokens MUST be supported.
 

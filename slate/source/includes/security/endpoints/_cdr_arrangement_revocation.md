@@ -18,16 +18,16 @@ Content-Type: application/x-www-form-urlencoded
 
 | Description | Value   |
 |---|---|
-| Hosted By  | Data Holder & Data Recipient  |
-|  Transport Security |  MTLS for Data Holders, TLS for Data Recipients |
-| Client Authentication Required | Yes (for Data Holders verifying Data Recipients) |
-| Bearer Token Required| Yes (for Data Recipients verifying Data Holders) |
+| Hosted By  | Data Holder & Data Recipient Software Product  |
+|  Transport Security |  MTLS for Data Holders, TLS for Data Recipient Software Products |
+| Client Authentication Required | Yes (for Data Holders verifying Data Recipient Software Products) |
+| Bearer Token Required| Yes (for Data Recipient Software Products verifying Data Holders) |
 
 **HTTP Method:** POST<br/>  
 **Data Holder Path:** The ``cdr_arrangement_revocation_endpoint`` defined using OIDC Discovery<br/>  
-**Data Recipient Path:** ``<RecipientBaseUri>/arrangements/revoke`` where \<RecipientBaseUri\> is registered with the CDR Register.<br/>
+**Data Recipient Software Product Path:** ``<RecipientBaseUri>/arrangements/revoke`` where \<RecipientBaseUri\> is registered with the CDR Register.<br/>
 
-Data Holders and Data Recipients MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
+Data Holders and Data Recipient Software Products MUST implement a CDR Arrangement Revocation End Point that can be used to revoke an existing sharing arrangement.
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body: <br/>
 
@@ -36,11 +36,11 @@ The request MUST include the following parameters using the ``application/x-www-
 <br/>
 This end point will be implemented according to the following:
 
-* Data Recipients and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
+* Data Recipient Software Products and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
 * Data Holders MUST publish their CDR Arrangement Revocation End Point using their OpenID Provider Metadata Discovery End Point
-* Data Recipients MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
+* Data Recipient Software Products MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
 * Consent revocation MUST also revoke associated refresh and/or access tokens
-* For Data Recipients, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
+* For Data Recipient Software Products, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
 * If the ``cdr_arrangement_id`` is not related to the client making the call it MUST be rejected
 
 **Response Codes**
@@ -54,13 +54,13 @@ Response Code | Situation | Description
 
 **Revoking consent**
 
-Data Recipients MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient.
+Data Recipient Software Products MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient Software Product.
 
-Data Holder's MUST use the Data Recipient's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Recipient when consent is revoked by the consumer via the Data Holder.
+Data Holder's MUST use the Data Recipient Software Product's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Recipient Software Product when consent is revoked by the consumer via the Data Holder.
 
 **Data Holders calling Data Recipients**
 
-The location of the Data Recipient CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient in the client Software Statement Assertion (SSA).
+The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
 
 **Data Recipients calling Data Holders**
 

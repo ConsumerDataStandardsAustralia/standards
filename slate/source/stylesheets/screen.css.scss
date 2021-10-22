@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'extends/tabs';
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -172,6 +173,15 @@ html, body {
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 12px;
+  }
+
+  .toc-sep {
+    margin: 5px 0;
+    padding: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-top: 1px solid rgba(47, 183, 135,0.3);
   }
 
   .toc-footer {
@@ -416,10 +426,15 @@ html, body {
 
     td {
       padding: 10px;
+      border-top: 1px solid #eee;
     }
 
     tr:last-child {
       border-bottom: 1px solid #ccc;
+    }
+
+    tr:first>td {
+      top: 0;
     }
 
     tr:nth-child(odd)>td {
@@ -446,7 +461,14 @@ html, body {
 
   img {
     max-width: 100%;
+    &.medium-image {
+      max-width: 70%;
+    }
+    &.small-image {
+      max-width: 60%;
+    }
   }
+
 
   code {
     background-color: rgba(0,0,0,0.05);
@@ -494,6 +516,14 @@ html, body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  .icon-check:before {
+    @extend %icon-check;
+  }
+
+  .icon-close:before {
+    @extend %icon-close;
   }
 
   .search-highlight {
@@ -668,4 +698,48 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+
+.content-flagged:before {
+display: block;
+font-weight: bold;
+font-size: 0.8;
+color: white;
+}
+
+.for-removal:before {
+content: 'REMOVE? >>>';
+}
+
+.for-removal.end:before {
+content: '<<< END REMOVE?';
+}
+
+.for-removal {
+  background-color: rgb(255, 117, 117);
+}
+
+.for-guidance:before {
+  content: 'GUIDANCE? >>>';
+}
+.for-guidance.end:before {
+content: '<<< END GUIDANCE?';
+}
+
+
+.for-guidance {
+  background-color: rgb(245, 122, 81);
+}
+
+.for-discussion:before {
+  content: 'DISCUSS? >>>';
+}
+.for-discussion.end:before {
+content: '<<< END DISCUSS?';
+}
+
+
+.for-discussion {
+  background-color: rgb(168, 81, 245);
 }

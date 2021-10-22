@@ -6,8 +6,10 @@ multiple system entities which will assume one or more of the following roles:
     -   Multiple Data Holders will be supported.
 -   **Data Recipient**:
     -   Multiple Data Recipients will be supported.
+-   **Software Product**:
+    -   Multiple Software Products will be supported for each Data Recipient.
 - 	**Register**:
-    -   A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC).
+    -   A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC) acting in its capacity as the _Registrar_ for the CDR.
 - 	**Customer**:
     -   The authorising customer that is authenticated by a Data Holder.
 
@@ -25,16 +27,26 @@ A Secondary Data Holder (SDH) is a system entity that is designated to provide C
 
 A request for data from a Secondary Data Holder by a standard Data Holder is known as a *Secondary Responsibility Request*.
 
+See the [Secondary Responsibility](#secondary-responsibility) section contains standards related to Secondary Data Holders and Secondary Responsibility Requests.
+
 ### Data Recipient
-A Data Recipient (DR) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Data Recipient MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
+A Data Recipient (DR) is a system entity that is accredited to collect CDR data from Data Holders or other DRs through authorised Software Products.
 
-A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artifact.
+A Data Recipient MUST be accredited in order to participate in the CDR Federation. Accreditation rules for Data Recipients are beyond the scope of this artefact. The process of accreditation is managed by the CDR Registrar.
 
-A Data Recipient assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
+For the purposes of this standard a single accredited organisation is represented via the Register as a single Data Recipient and may be represented by multiple separate Software Products to support multiple applications or services.
 
-For the purposes of this standard a single accredited organisation may be represented via the Register as multiple separate Data Recipients to support multiple applications or services.
+### Software Product
+A Data Recipient Software Product (DRSP) is a system entity that is authorised by a Data Holder to access consumer resources (APIs). A Software Product MUST capture consumer consent prior to commencing an authorisation process with a Data Holder.
+
+A Software Product MUST be registered with the Registrar and approved for use in order to participate in the CDR Federation.
+
+A Software Product MAY be registered for use across one or more sectors (e.g. banking and energy).
+
+A Software Product assumes the role of an **[OIDC]** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
 ### Register
+
 The Register is a central point of discovery for both Data Holders and Data
 Recipients. Data Holders and Data Recipients must be created as entities in the Register in order for them to participate as members of the CDR Federation.  The functionality of the Register will include but will not be limited to:
 

@@ -1,7 +1,7 @@
 ### JSON Web Key Set End Point
 | Description | Value   |
 |---|---|
-| Hosted By  | Data Holder & Data Recipient  |
+| Hosted By  | Data Holder & Data Recipient Software Product  |
 |  Transport Security |  TLS |
 | Client Authentication Required| No|
 | Bearer Token Required| No|

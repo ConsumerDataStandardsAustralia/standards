@@ -1,0 +1,99 @@
+## Participant Statuses
+
+### Data Recipient and Software Product Statuses
+
+
+The accreditation status of Data Recipients, and the status of their associated Software Products, may traverse through multiple statuses in the CDR.
+
+The status of participants is maintained in the CDR Register by the CDR Registrar according to determination of the CDR Accreditor or the participant themselves.
+
+CDR data may only be disclosed to active Data Recipients.  Data Holders MUST cease disclosing CDR data where the accreditation of a Data Recipient or Software Package is:
+
+1.	Suspended or revoked by the CDR Registrar.
+2.	Surrendered by the Data Recipient.
+
+The CDR Register MUST notify all Data Holders of the above changes in Data Recipient and Software Package status via the [Register APIs](#register-apis).
+
+The CDR Register MUST expose the statuses of data recipients and their associated software products via the [Register APIs](#register-apis), using the following state models:
+
+### Data Recipient Status
+<img class=medium-image src="images/ADRStateMachine.png" ></img>
+
+### Software Product Status
+<img class=medium-image src="images/SoftwareProductStateMachine.png" ></img>
+
+
+
+
+
+#### Status Mapping
+When the CDR Registrar changes the accreditation status for a Data Recipient for any status other than active, the associated Software Product statuses MUST be changed accordingly.
+
+The cascading status mappings are as follows:
+
+|**Data Recipient Status**|**Cascaded Software Product Status**|
+|-----------------|-----------------------|
+|Suspended|Inactive|
+|Revoked|Removed|
+|Surrendered|Removed|
+
+### Archiving
+Dormant entries will be identified and archived automatically within the CDR Register.
+
+Dormant entries are defined as those records that have reached and maintained an __end state__ in the CDR Register for the past **2 years**.
+
+The table below outlines the end state for each Register entry type:
+
+|**Register Entity**|**End State**|
+|-----------------|-----------------------|
+|Data Holder|Removed|
+|Data Holder Brand|Removed|
+|Data Recipient|Surrendered, Revoked|
+|Data Recipient Brand|Removed|
+|Data Recipient Software Product|Removed|
+
+
+
+### Data Holder Responsibilities
+
+The CDR Registrar has the ability to change the status of a Software Product independently of the Data Recipient's accreditation status. Therefore, both the Data Recipient and Software Product statuses should be referenced, to determine the Data Holder's responsibilities for data disclosure, consent and registration management.
+
+|**Data Recipient<br/>Status**|**Software Product<br/>Status**|**Disclose of CDR Data**|**Facilitate Consent Authorisation**|**Facilitate Consent Withdrawal**|**Invalidate Consents**|**Cleanup Registration**|
+|-----------------|-----------------------|-----------|----------|----------|----------|----------|
+|Active|Active|<i class="icon-check"></i>|<i class="icon-check"></i>|<i class="icon-check"></i>| | |
+|Active|Inactive| | |<i class="icon-check"></i>| | |
+|Active|Removed| | | | <i class="icon-check"></i> | <i class="icon-check"></i> |
+|Suspended|Inactive| | |<i class="icon-check"></i>| | |
+|Suspended|Removed| | | | <i class="icon-check"></i> | <i class="icon-check"></i> |
+|Revoked|Removed|	| | | <i class="icon-check"></i> | <i class="icon-check"></i> |
+|Surrendered|Removed| | | | <i class="icon-check"></i> | <i class="icon-check"></i> |
+
+* Disclosure of CDR data MUST be in response to valid requests in accordance with the CDR rules and standards
+* The status of a Data Recipient Brand does not impact Data Holder responsibilities due to the cascade rules outlined above
+* When a Data Recipient status is Suspended, Revoked or Surrendered the Software Product status cannot be Active
+* Invalidation of consents and cleanup of registrations are bulk operations. It is reasonable to execute these as batch tasks performed overnight
+
+
+### Metadata Cache Management
+Data Holders MUST react to Data Recipient and associated Software Statuses changes within **5 minutes** of the change occurring on the CDR Register.
+
+To achieve this, Data Holders will poll the [GetDataRecipientsStatus](#getdatarecipientsstatus), [GetSoftwareProductsStatus](#getsoftwareproductsstatus) and [GetDataRecipients](#getdatarecipients) APIs to retrieve the current statuses and cache these for use during requests for Consumer Data.
+
+Data Holders MUST choose a frequency of polling which ensures their systems can respond to status changes within the required timeframe.
+
+Data Holders and Data Recipients MUST cache all other participant data they use and periodically update this cache using a slow poll. This ensures that changes to participant configuration propagates throughout the ecosystem in a predictable timeframe.
+
+The CDR Register MAY cache the responses for **public** APIs hosted by the CDR Register.  If caching is supported the CDR Register MUST support ETag cache validators allowing participants to detect whether the content has changed.
+
+
+#### Cache update periods
+The following are the recommended caching times for data retrieved from the Register APIs.
+
+| API | Type | Period |
+|------------------------------------|---------------------------------|------------------------|
+|**GetDataRecipientsStatus**|	Public | 2-5 minutes |
+|**GetSoftwareProductsStatus**|	Public | 2-5 minutes |
+|**GetDataRecipients (statuses)**| Public | 2-5 minutes |
+|**GetDataRecipients (other data)**| Public | 6 hours |
+|**GetDataHolderBrands**| Private | 6 hours |
+

@@ -491,8 +491,12 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 <aside class="success">
 This operation may only be called by the CDR Register
 </aside>
-<h2 id='schemas'>Schemas</h2>
-<h2 id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
+
+<h2 class="schema-heading" id="consumer-data-standards-administration-end-points-schemas">Schemas</h2>
+
+<p><a class="schema-link" id="consumer-data-standards-administration-end-points-schemas"></a></p>
+
+<h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
 <p><a id="schemarequestmetadataupdate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -547,7 +551,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
+<h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
 <p><a id="schemaresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -829,7 +833,7 @@ This operation may only be called by the CDR Register
 <td>integer</td>
 <td>mandatory</td>
 <td>none</td>
-<td>Number of data recipients with active authorisations at the time of the call</td>
+<td>Number of Data Recipient Software Products with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» secondaryHolder</td>
@@ -854,7 +858,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
+<h2 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
 
 <p><a id="schemaavailabilitymetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -892,7 +896,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSperformancemetrics">PerformanceMetrics</h2>
+<h2 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h2>
 
 <p><a id="schemaperformancemetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -930,7 +934,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
+<h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
 <p><a id="schemainvocationmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1139,7 +1143,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
+<h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
 <p><a id="schemaaverageresponsemetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1420,7 +1424,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSsessioncountmetrics">SessionCountMetrics</h2>
+<h2 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h2>
 
 <p><a id="schemasessioncountmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1458,7 +1462,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
+<h2 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
 
 <p><a id="schemaaveragetpsmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1496,7 +1500,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
+<h2 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
 
 <p><a id="schemapeaktpsmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1534,7 +1538,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSerrormetrics">ErrorMetrics</h2>
+<h2 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h2>
 
 <p><a id="schemaerrormetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1572,7 +1576,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
+<h2 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
 
 <p><a id="schemarejectionmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1646,7 +1650,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
+<h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
 
 <p><a id="schemasecondaryholdermetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1720,7 +1724,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSlinks">Links</h2>
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
 
 <p><a id="schemalinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1746,7 +1750,7 @@ This operation may only be called by the CDR Register
 </tr>
 </tbody></table>
 
-<h2 id="tocSmeta">Meta</h2>
+<h2 class="schema-toc" id="tocSmeta">Meta</h2>
 
 <p><a id="schemameta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">

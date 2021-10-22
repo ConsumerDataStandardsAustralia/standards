@@ -6,7 +6,7 @@
 {{ for (var r in data.resources) { }}
 {{ data.resource = data.resources[r]; }}
 
-<h1 id="{{=data.title_prefix+'-'+data.utils.slugify(r)}}">{{= r}}</h1>
+<h1 class="title-prefix" id="{{=data.title_prefix+'-'+data.utils.slugify(r)}}">{{= r}}</h1>
 
 {{? data.resource.description }}{{= data.resource.description}}{{?}}
 
@@ -25,13 +25,14 @@
 {{ } /* of resources */ }}
 
 {{? data.api.components && data.api.components.schemas }}
-# Schemas
+<h2 class="schema-heading" id="{{=data.title_prefix+'-schemas'}}">Schemas</h2>
+<a class="schema-link" id="{{=data.title_prefix+'-schemas'}}"></a>
 
 {{ for (var s in data.components.schemas) { }}
 {{ var origSchema = data.components.schemas[s]; }}
 {{ var schema = data.api.components.schemas[s]; }}
 
-<h2 id="tocS{{=s.toLowerCase()}}">{{=s}}</h2>
+<h2 class="schema-toc" id="tocS{{=s.toLowerCase()}}">{{=s}}</h2>
 
 <a id="schema{{=s.toLowerCase()}}"></a>
 
