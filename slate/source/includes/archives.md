@@ -4,7 +4,8 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
-|<a href='./archive/standards-1.12.0/docs/'>22/10/2021</a>|1.12.0|<a href='./archive/standards-1.12.0/docs/'>Inclusion of a series of decisions related to energy and non-functional requirements.</a>|
+|<a href='./archive/standards-1.13.0/docs/'>22/10/2021</a>|1.13.0|<a href='./archive/standards-1.13.0/docs/'>Changes arising from Decisions 206 (Register Standards), 191 and 192</a>|
+|<a href='./archive/standards-1.12.0/docs/'>22/10/2021</a>|1.12.0|<a href='./archive/standards-1.12.0/docs/'>Inclusion of a series of decisions related to energy and non-functional requirements</a>|
 |<a href='./archive/standards-1.11.1/docs/'>05/10/2021</a>|1.11.1|<a href='./archive/standards-1.11.1/docs/'>Changes arising from Decision Proposals 193 and 208.</a> See [Decision 193](https://github.com/ConsumerDataStandardsAustralia/standards/issues/193) and [Decision 208](https://github.com/ConsumerDataStandardsAustralia/standards/issues/208) for details |
 |<a href='./archive/standards-1.11.0/docs/'>30/06/2021</a>|1.11.0|<a href='./archive/standards-1.11.0/docs/'>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 Decision Proposal 178.</a> See [Decision 160](https://github.com/ConsumerDataStandardsAustralia/standards/issues/160), [Decision 187](https://github.com/ConsumerDataStandardsAustralia/standards/issues/187) and [Decision 178](https://github.com/ConsumerDataStandardsAustralia/standards/issues/178) for details |
 |<a href='./archive/standards-1.10.0/docs/'>01/06/2021</a>|1.10.0|<a href='./archive/standards-1.10.0/docs/'>Changes arising from Enhanced Error Handling decision proposals.</a> See [Decision 154](https://github.com/ConsumerDataStandardsAustralia/standards/issues/154) for details |
