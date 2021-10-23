@@ -127,7 +127,7 @@ paths:
         - banking
       - name: dataRecipientBrandId
         in: path
-        description: Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value
+        description: Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register
         required: true
         type: string
       - name: softwareProductId

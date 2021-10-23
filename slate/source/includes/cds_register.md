@@ -360,7 +360,7 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value|
+|dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
 |Authorization Endpoint (Register)|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
 |x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
