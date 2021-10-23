@@ -26,11 +26,9 @@ includes:
   - separator
   - nfrs
   - separator
-  - cds_banking
-  - banking/product_categories
-  - banking/product_components
-  - cds_energy
-  - cds_common
+  - banking_apis
+  - energy_apis
+  - common_apis
   - admin
   - separator
   - secondary_responsibility

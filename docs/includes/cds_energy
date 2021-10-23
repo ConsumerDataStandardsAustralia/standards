@@ -1,4 +1,3 @@
-<h1 class="title-prefix" id="cdr-energy-standards-draft-generic-tariffs">Generic Tariffs</h1>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 <p><a id="opIdlistPlans"></a></p>
 
@@ -3406,8 +3405,6 @@ x-fapi-interaction-id: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-
-<h1 class="title-prefix" id="cdr-energy-standards-draft-nmi-standing-data">NMI Standing Data</h1>
 <h2 id='get-service-points'>Get Service Points</h2>
 <p><a id="opIdlistServicePoints"></a></p>
 
@@ -4911,8 +4908,6 @@ x-cds-client-headers: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-
-<h1 class="title-prefix" id="cdr-energy-standards-draft-electricity-usage">Electricity Usage</h1>
 <h2 id='get-usage-for-service-point'>Get Usage For Service Point</h2>
 <p><a id="opIdgetUsageForServicePoint"></a></p>
 
@@ -6312,8 +6307,6 @@ x-cds-client-headers: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-
-<h1 class="title-prefix" id="cdr-energy-standards-draft-distributed-energy-resources">Distributed Energy Resources</h1>
 <h2 id='get-der-for-service-point'>Get DER For Service Point</h2>
 <p><a id="opIdgetDERForServicePoint"></a></p>
 
@@ -8317,8 +8310,6 @@ x-cds-client-headers: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-
-<h1 class="title-prefix" id="cdr-energy-standards-draft-energy-accounts">Energy Accounts</h1>
 <h2 id='get-accounts'>Get Accounts</h2>
 <p><a id="opIdlistAccounts"></a></p>
 
@@ -11549,8 +11540,6 @@ x-cds-client-headers: string
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-
-<h1 class="title-prefix" id="cdr-energy-standards-draft-billing">Billing</h1>
 <h2 id='get-balance-for-account'>Get Balance For Account</h2>
 <p><a id="opIdgetBalanceForAccount"></a></p>
 

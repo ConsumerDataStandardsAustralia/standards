@@ -142,6 +142,7 @@ paths:
           description: Successful response
       summary: Get Generic Plans
       tags:
+      - Energy
       - Generic Tariffs
   /energy/plans/{planId}:
     get:
@@ -204,6 +205,7 @@ paths:
           description: Successful response
       summary: Get Generic Plan Detail
       tags:
+      - Energy
       - Generic Tariffs
   /energy/electricity/servicepoints:
     get:
@@ -307,6 +309,7 @@ paths:
           description: Successful response
       summary: Get Service Points
       tags:
+      - Energy
       - NMI Standing Data
   /energy/electricity/servicepoints/{servicePointId}:
     get:
@@ -404,6 +407,7 @@ paths:
           description: Successful response
       summary: Get Service Point Detail
       tags:
+      - Energy
       - NMI Standing Data
   /energy/electricity/servicepoints/{servicePointId}/usage:
     get:
@@ -517,6 +521,7 @@ paths:
           description: Successful response
       summary: Get Usage For Service Point
       tags:
+      - Energy
       - Electricity Usage
   /energy/electricity/servicepoints/usage:
     get:
@@ -619,6 +624,7 @@ paths:
           description: Successful response
       summary: Get Bulk Usage
       tags:
+      - Energy
       - Electricity Usage
     post:
       description: Obtain the electricity usage data for a specific set of service
@@ -723,6 +729,7 @@ paths:
           description: Successful response
       summary: Get Usage For Specific Service Points
       tags:
+      - Energy
       - Electricity Usage
   /energy/electricity/servicepoints/{servicePointId}/der:
     get:
@@ -819,6 +826,7 @@ paths:
           description: Successful response
       summary: Get DER For Service Point
       tags:
+      - Energy
       - Distributed Energy Resources
   /energy/electricity/servicepoints/der:
     get:
@@ -921,6 +929,7 @@ paths:
           description: Successful response
       summary: Get Bulk DER
       tags:
+      - Energy
       - Distributed Energy Resources
     post:
       description: Obtain DER data for a specific set of service points
@@ -1024,6 +1033,7 @@ paths:
           description: Successful response
       summary: Get DER For Specific Service Points
       tags:
+      - Energy
       - Distributed Energy Resources
   /energy/accounts:
     get:
@@ -1127,6 +1137,7 @@ paths:
           description: Successful response
       summary: Get Accounts
       tags:
+      - Energy
       - Energy Accounts
   /energy/accounts/{accountId}:
     get:
@@ -1222,6 +1233,7 @@ paths:
           description: Successful response
       summary: Get Account Detail
       tags:
+      - Energy
       - Energy Accounts
   /energy/accounts/{accountId}/payment-schedule:
     get:
@@ -1318,6 +1330,7 @@ paths:
           description: Successful response
       summary: Get Agreed Payment Schedule
       tags:
+      - Energy
       - Energy Accounts
   /energy/accounts/{accountId}/concessions:
     get:
@@ -1414,6 +1427,7 @@ paths:
           description: Successful response
       summary: Get Concessions
       tags:
+      - Energy
       - Energy Accounts
   /energy/accounts/{accountId}/balance:
     get:
@@ -1509,6 +1523,7 @@ paths:
           description: Successful response
       summary: Get Balance For Account
       tags:
+      - Energy
       - Billing
   /energy/accounts/balances:
     get:
@@ -1611,6 +1626,7 @@ paths:
           description: Successful response
       summary: Get Bulk Balances
       tags:
+      - Energy
       - Billing
     post:
       description: Obtain the current balance for a specified set of accounts
@@ -1714,6 +1730,7 @@ paths:
           description: Successful response
       summary: Get Balances For Specific Accounts
       tags:
+      - Energy
       - Billing
   /energy/accounts/{accountId}/invoices:
     get:
@@ -1847,6 +1864,7 @@ paths:
           description: Successful response
       summary: Get Invoices For Account
       tags:
+      - Energy
       - Billing
   /energy/accounts/invoices:
     get:
@@ -1971,6 +1989,7 @@ paths:
           description: Successful response
       summary: Get Bulk Invoices
       tags:
+      - Energy
       - Billing
     post:
       description: Obtain invoices for a specified set of accounts
@@ -2096,6 +2115,7 @@ paths:
           description: Successful response
       summary: Get Invoices For Specific Accounts
       tags:
+      - Energy
       - Billing
   /energy/accounts/{accountId}/billing:
     get:
@@ -2229,6 +2249,7 @@ paths:
           description: Successful response
       summary: Get Billing For Account
       tags:
+      - Energy
       - Billing
   /energy/accounts/billing:
     get:
@@ -2353,6 +2374,7 @@ paths:
           description: Successful response
       summary: Get Bulk Billing
       tags:
+      - Energy
       - Billing
     post:
       description: Obtain billing for a specified set of accounts
@@ -2478,6 +2500,7 @@ paths:
           description: Successful response
       summary: Get Billing For Specific Accounts
       tags:
+      - Energy
       - Billing
 components:
   parameters:

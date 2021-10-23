@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.13.0",
+    "version": "1.14.0",
     "title": "Consumer Data Right (CDR) Register - Participant Discovery APIs"
   },
   "schemes": [

@@ -134,7 +134,7 @@
           }
         },
         "summary" : "Get Generic Plans",
-        "tags" : [ "Generic Tariffs" ]
+        "tags" : [ "Energy", "Generic Tariffs" ]
       }
     },
     "/energy/plans/{planId}" : {
@@ -195,7 +195,7 @@
           }
         },
         "summary" : "Get Generic Plan Detail",
-        "tags" : [ "Generic Tariffs" ]
+        "tags" : [ "Energy", "Generic Tariffs" ]
       }
     },
     "/energy/electricity/servicepoints" : {
@@ -297,7 +297,7 @@
           }
         },
         "summary" : "Get Service Points",
-        "tags" : [ "NMI Standing Data" ]
+        "tags" : [ "Energy", "NMI Standing Data" ]
       }
     },
     "/energy/electricity/servicepoints/{servicePointId}" : {
@@ -389,7 +389,7 @@
           }
         },
         "summary" : "Get Service Point Detail",
-        "tags" : [ "NMI Standing Data" ]
+        "tags" : [ "Energy", "NMI Standing Data" ]
       }
     },
     "/energy/electricity/servicepoints/{servicePointId}/usage" : {
@@ -501,7 +501,7 @@
           }
         },
         "summary" : "Get Usage For Service Point",
-        "tags" : [ "Electricity Usage" ]
+        "tags" : [ "Energy", "Electricity Usage" ]
       }
     },
     "/energy/electricity/servicepoints/usage" : {
@@ -603,7 +603,7 @@
           }
         },
         "summary" : "Get Bulk Usage",
-        "tags" : [ "Electricity Usage" ]
+        "tags" : [ "Energy", "Electricity Usage" ]
       },
       "post" : {
         "description" : "Obtain the electricity usage data for a specific set of service points",
@@ -706,7 +706,7 @@
           }
         },
         "summary" : "Get Usage For Specific Service Points",
-        "tags" : [ "Electricity Usage" ]
+        "tags" : [ "Energy", "Electricity Usage" ]
       }
     },
     "/energy/electricity/servicepoints/{servicePointId}/der" : {
@@ -798,7 +798,7 @@
           }
         },
         "summary" : "Get DER For Service Point",
-        "tags" : [ "Distributed Energy Resources" ]
+        "tags" : [ "Energy", "Distributed Energy Resources" ]
       }
     },
     "/energy/electricity/servicepoints/der" : {
@@ -900,7 +900,7 @@
           }
         },
         "summary" : "Get Bulk DER",
-        "tags" : [ "Distributed Energy Resources" ]
+        "tags" : [ "Energy", "Distributed Energy Resources" ]
       },
       "post" : {
         "description" : "Obtain DER data for a specific set of service points",
@@ -1003,7 +1003,7 @@
           }
         },
         "summary" : "Get DER For Specific Service Points",
-        "tags" : [ "Distributed Energy Resources" ]
+        "tags" : [ "Energy", "Distributed Energy Resources" ]
       }
     },
     "/energy/accounts" : {
@@ -1105,7 +1105,7 @@
           }
         },
         "summary" : "Get Accounts",
-        "tags" : [ "Energy Accounts" ]
+        "tags" : [ "Energy", "Energy Accounts" ]
       }
     },
     "/energy/accounts/{accountId}" : {
@@ -1197,7 +1197,7 @@
           }
         },
         "summary" : "Get Account Detail",
-        "tags" : [ "Energy Accounts" ]
+        "tags" : [ "Energy", "Energy Accounts" ]
       }
     },
     "/energy/accounts/{accountId}/payment-schedule" : {
@@ -1289,7 +1289,7 @@
           }
         },
         "summary" : "Get Agreed Payment Schedule",
-        "tags" : [ "Energy Accounts" ]
+        "tags" : [ "Energy", "Energy Accounts" ]
       }
     },
     "/energy/accounts/{accountId}/concessions" : {
@@ -1381,7 +1381,7 @@
           }
         },
         "summary" : "Get Concessions",
-        "tags" : [ "Energy Accounts" ]
+        "tags" : [ "Energy", "Energy Accounts" ]
       }
     },
     "/energy/accounts/{accountId}/balance" : {
@@ -1473,7 +1473,7 @@
           }
         },
         "summary" : "Get Balance For Account",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       }
     },
     "/energy/accounts/balances" : {
@@ -1575,7 +1575,7 @@
           }
         },
         "summary" : "Get Bulk Balances",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       },
       "post" : {
         "description" : "Obtain the current balance for a specified set of accounts",
@@ -1678,7 +1678,7 @@
           }
         },
         "summary" : "Get Balances For Specific Accounts",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       }
     },
     "/energy/accounts/{accountId}/invoices" : {
@@ -1812,7 +1812,7 @@
           }
         },
         "summary" : "Get Invoices For Account",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       }
     },
     "/energy/accounts/invoices" : {
@@ -1936,7 +1936,7 @@
           }
         },
         "summary" : "Get Bulk Invoices",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       },
       "post" : {
         "description" : "Obtain invoices for a specified set of accounts",
@@ -2061,7 +2061,7 @@
           }
         },
         "summary" : "Get Invoices For Specific Accounts",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       }
     },
     "/energy/accounts/{accountId}/billing" : {
@@ -2195,7 +2195,7 @@
           }
         },
         "summary" : "Get Billing For Account",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       }
     },
     "/energy/accounts/billing" : {
@@ -2319,7 +2319,7 @@
           }
         },
         "summary" : "Get Bulk Billing",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       },
       "post" : {
         "description" : "Obtain billing for a specified set of accounts",
@@ -2444,7 +2444,7 @@
           }
         },
         "summary" : "Get Billing For Specific Accounts",
-        "tags" : [ "Billing" ]
+        "tags" : [ "Energy", "Billing" ]
       }
     }
   },

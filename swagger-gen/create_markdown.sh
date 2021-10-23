@@ -3,7 +3,7 @@
 echo "*** Generating Markdown ***"
 
 # Initialise the log file
-echo "Starting create_mardown..." > create-markdown-log.txt
+echo "Starting create_markdown..." > create-markdown-log.txt
 
 
 echo "*** Generate cds_banking.md"
@@ -13,7 +13,7 @@ echo "*** Generate cds_banking.md"
 
 echo "*** Removing redundant Banking header"
 {
-  sed -i '' -e '/xxxx/d' cds_banking.md
+  sed -i '' -e '/consumer-data-standards-banking-apis/d' cds_banking.md
   sed -i '' -e 's/# Schemas/## Schemas/g' cds_banking.md
 } >> create-markdown-log.txt 2>&1
 
@@ -27,7 +27,7 @@ echo "*** Generate cds_energy.md"
 
 echo "*** Removing redundant Energy header"
 {
-  sed -i '' -e '/xxxx/d' cds_energy.md
+  sed -i '' -e '/cdr-energy-standards-draft-energy-apis/d' cds_energy.md
   sed -i '' -e 's/# Schemas/## Schemas/g' cds_energy.md
 } >> create-markdown-log.txt 2>&1
 
@@ -41,7 +41,7 @@ echo "*** Generate cds_common.md"
 
 echo "*** Removing redundant Common header"
 {
-  sed -i '' -e '/xxxx/d' cds_common.md
+  sed -i '' -e '/consumer-data-standards-common-apis/d' cds_common.md
   sed -i '' -e 's/# Schemas/## Schemas/g' cds_common.md
 } >> create-markdown-log.txt 2>&1
 

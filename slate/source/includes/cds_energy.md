@@ -1,6 +1,5 @@
 
 
-<h1 class="title-prefix" id="cdr-energy-standards-draft-energy-apis">Energy APIs</h1>
 
 ## Get Generic Plans
 

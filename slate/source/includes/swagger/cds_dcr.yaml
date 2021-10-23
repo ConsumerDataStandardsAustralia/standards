@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.
-  version: 1.13.0
+  version: 1.14.0
   title: CDR Dynamic Client Registration API
 host: data.holder.com.au
 basePath: /register
