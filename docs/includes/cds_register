@@ -479,7 +479,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. This field is intended to be deprecated in preference for softwareProductId which has the same value</td>
+<td>Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register</td>
 </tr>
 <tr>
 <td>softwareProductId</td>
