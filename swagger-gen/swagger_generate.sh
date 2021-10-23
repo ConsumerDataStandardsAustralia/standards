@@ -22,7 +22,6 @@ OUTPUT_FORMAT="$2"
 OUTPUT_EXT="$3"
 OUTPUT_DIR="$4"
 
-echo "*** PATH: " $PATH
 echo "*** Input Swagger: " $INPUT_SWAGGER
 echo "*** Output Format: " $OUTPUT_FORMAT
 echo "*** Output Extension" $OUTPUT_EXT

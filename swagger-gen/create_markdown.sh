@@ -2,23 +2,57 @@
 
 echo "*** Generating Markdown ***"
 
-echo "*** Generate cds_full.md"
+# Initialise the log file
+echo "Starting create_mardown..." > create-markdown-log.txt
+
+
+echo "*** Generate cds_banking.md"
 {
-  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_full.json -o cds_full.md > create-markdown-log.txt
+  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_banking.json -o cds_banking.md >> create-markdown-log.txt
 } >> create-markdown-log.txt 2>&1
 
-diff -w cds_full.md ../slate/source/includes/cds_full.md > diff.txt
+echo "*** Removing redundant Banking header"
+{
+  sed -i '' -e '/xxxx/d' cds_banking.md
+  sed -i '' -e 's/# Schemas/## Schemas/g' cds_banking.md
+} >> create-markdown-log.txt 2>&1
 
-# Initialise the log file
-echo "Staring create_mardown..." > create-markdown-log.txt
+diff -w cds_banking.md ../slate/source/includes/cds_banking.md > diff_banking.txt
+
+
+echo "*** Generate cds_energy.md"
+{
+  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_energy.json -o cds_energy.md >> create-markdown-log.txt
+} >> create-markdown-log.txt 2>&1
+
+echo "*** Removing redundant Energy header"
+{
+  sed -i '' -e '/xxxx/d' cds_energy.md
+  sed -i '' -e 's/# Schemas/## Schemas/g' cds_energy.md
+} >> create-markdown-log.txt 2>&1
+
+diff -w cds_energy.md ../slate/source/includes/cds_energy.md > diff_energy.txt
+
+
+echo "*** Generate cds_common.md"
+{
+  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_common.json -o cds_common.md >> create-markdown-log.txt
+} >> create-markdown-log.txt 2>&1
+
+echo "*** Removing redundant Common header"
+{
+  sed -i '' -e '/xxxx/d' cds_common.md
+  sed -i '' -e 's/# Schemas/## Schemas/g' cds_common.md
+} >> create-markdown-log.txt 2>&1
+
+diff -w cds_common.md ../slate/source/includes/cds_common.md > diff_common.txt
+
 
 echo "*** Generate cds_admin.md"
 {
   node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript:Javascript' --summary api/cds_admin.json -o cds_admin.md
 } >> create-markdown-log.txt 2>&1
 
-# TODO Fix by extending Widdershins to do this automagically
-# Hack to clean up markdown for slate. Widdershins output does not support more than one swagger file markdown
 echo "*** Removing redundant Admin header"
 {
   sed -i '' -e '/consumer-data-standards-administration-end-points-admin/d' cds_admin.md
