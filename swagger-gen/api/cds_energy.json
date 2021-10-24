@@ -1,7 +1,7 @@
 {
 	"openapi": "3.0.3",
 	"info": {
-		"title": "CDR Energy Standards - DRAFT",
+		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
 		"version": "1.14.0"
 	},

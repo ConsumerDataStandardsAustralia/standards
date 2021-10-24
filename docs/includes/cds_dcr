@@ -60,7 +60,7 @@
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaclientregistrationrequest">ClientRegistrationRequest</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiclientregistrationrequest">ClientRegistrationRequest</a></td>
 <td>mandatory</td>
 <td>The registration request JWT to be used to register with a Data Holder.</td>
 </tr>
@@ -125,13 +125,13 @@
 <td>201</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
 <td>Client registration success</td>
-<td><a href="#schemaregistrationproperties">RegistrationProperties</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiregistrationproperties">RegistrationProperties</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Request failed due to client error</td>
-<td><a href="#schemaregistrationerror">RegistrationError</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiregistrationerror">RegistrationError</a></td>
 </tr>
 </tbody></table>
 
@@ -268,7 +268,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Client registration retrieval success</td>
-<td><a href="#schemaregistrationproperties">RegistrationProperties</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiregistrationproperties">RegistrationProperties</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -384,7 +384,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaclientregistrationrequest">ClientRegistrationRequest</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiclientregistrationrequest">ClientRegistrationRequest</a></td>
 <td>mandatory</td>
 <td>The registration request JWT to be used to register with a Data Holder.</td>
 </tr>
@@ -449,13 +449,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Client registration update success</td>
-<td><a href="#schemaregistrationproperties">RegistrationProperties</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiregistrationproperties">RegistrationProperties</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Request failed due to client error</td>
-<td><a href="#schemaregistrationerror">RegistrationError</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiregistrationerror">RegistrationError</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -628,7 +628,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 
-<p><a id="schemaclientregistrationrequest"></a></p>
+<p><a id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a></p>
 <pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="w">
 
 </span></code></pre>
@@ -654,7 +654,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
 
-<p><a id="schemaregistrationproperties"></a></p>
+<p><a id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"client_id_issued_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1571808167</span><span class="p">,</span><span class="w">
@@ -959,7 +959,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSclientregistration">ClientRegistration</h2>
 
-<p><a id="schemaclientregistration"></a></p>
+<p><a id="schemacdr-dynamic-client-registration-apiclientregistration"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CDR Software Product ID"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1571808167</span><span class="p">,</span><span class="w">
@@ -1074,7 +1074,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemaregistrationproperties">RegistrationProperties</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiregistrationproperties">RegistrationProperties</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -1083,7 +1083,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSregistrationerror">RegistrationError</h2>
 
-<p><a id="schemaregistrationerror"></a></p>
+<p><a id="schemacdr-dynamic-client-registration-apiregistrationerror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_redirect_uri"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">

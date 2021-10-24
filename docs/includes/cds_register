@@ -93,7 +93,7 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>The OpenID Provider Configuration Metadata values</td>
-<td><a href="#schemaresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</a></td>
 </tr>
 </tbody></table>
 
@@ -176,7 +176,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>A JSON object that represents a set of JWKs</td>
-<td><a href="#schemaresponsejwks">ResponseJWKS</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponsejwks">ResponseJWKS</a></td>
 </tr>
 </tbody></table>
 
@@ -366,13 +366,13 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -543,7 +543,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Invalid industry path parameter</br>Invalid SoftwareProductId</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -555,7 +555,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Invalid BrandId</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -567,7 +567,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>SSA fields invalid or incomplete</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-2'>Response Headers</h3>
@@ -704,13 +704,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemasoftwareproductsstatuslist">SoftwareProductsStatusList</a></td>
+<td><a href="#schemacdr-participant-discovery-apisoftwareproductsstatuslist">SoftwareProductsStatusList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -852,13 +852,13 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemadatarecipientsstatuslist">DataRecipientsStatusList</a></td>
+<td><a href="#schemacdr-participant-discovery-apidatarecipientsstatuslist">DataRecipientsStatusList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -1022,13 +1022,13 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -1060,13 +1060,13 @@ This operation does not require authentication
 This operation does not require authentication
 </aside></p>
 
-<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
+<h2 class="schema-heading" id="cdr-participant-discovery-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a></p>
+<p><a class="schema-link" id="cdr-participant-discovery-api-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 
-<p><a id="schemaresponseopenidproviderconfigmetadata"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1208,7 +1208,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h2>
 
-<p><a id="schemaresponsejwks"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponsejwks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1238,7 +1238,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>keys</td>
-<td>[<a href="#schemajwk">JWK</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apijwk">JWK</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>The value of the &quot;keys&quot; parameter is an array of JWK values</td>
@@ -1247,7 +1247,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSjwk">JWK</h2>
 
-<p><a id="schemajwk"></a></p>
+<p><a id="schemacdr-participant-discovery-apijwk"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1317,7 +1317,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h2>
 
-<p><a id="schemaresponseregisterdataholderbrandlist"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1383,21 +1383,21 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemaregisterdataholderbrand">RegisterDataHolderBrand</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdataholderbrand">RegisterDataHolderBrand</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>Response data for the query</td>
 </tr>
 <tr>
 <td>links</td>
-<td><a href="#schemalinkspaginated">LinksPaginated</a></td>
+<td><a href="#schemacdr-participant-discovery-apilinkspaginated">LinksPaginated</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemametapaginated">MetaPaginated</a></td>
+<td><a href="#schemacdr-participant-discovery-apimetapaginated">MetaPaginated</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -1406,7 +1406,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h2>
 
-<p><a id="schemaregisterdataholderbrand"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1483,7 +1483,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>legalEntity</td>
-<td><a href="#schemalegalentitydetail">LegalEntityDetail</a></td>
+<td><a href="#schemacdr-participant-discovery-apilegalentitydetail">LegalEntityDetail</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)</td>
@@ -1497,14 +1497,14 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>endpointDetail</td>
-<td><a href="#schemaregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
+<td><a href="#schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Endpoints related to Data Holder Brand services</td>
 </tr>
 <tr>
 <td>authDetails</td>
-<td>[<a href="#schemaregisterdataholderauth">RegisterDataHolderAuth</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdataholderauth">RegisterDataHolderAuth</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>[Provides details of authorisation endpoints for Data Holders]</td>
@@ -1544,7 +1544,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
 
-<p><a id="schemasoftwareproductsstatuslist"></a></p>
+<p><a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1566,7 +1566,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>softwareProducts</td>
-<td>[<a href="#schemasoftwareproductstatus">SoftwareProductStatus</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apisoftwareproductstatus">SoftwareProductStatus</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -1575,7 +1575,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
 
-<p><a id="schemasoftwareproductstatus"></a></p>
+<p><a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"softwareProductStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -1629,7 +1629,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
 
-<p><a id="schemadatarecipientsstatuslist"></a></p>
+<p><a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1651,7 +1651,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>dataRecipients</td>
-<td>[<a href="#schemadatarecipientstatus">DataRecipientStatus</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apidatarecipientstatus">DataRecipientStatus</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -1660,7 +1660,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
 
-<p><a id="schemadatarecipientstatus"></a></p>
+<p><a id="schemacdr-participant-discovery-apidatarecipientstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"dataRecipientStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -1718,7 +1718,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
 
-<p><a id="schemaresponseregisterdatarecipientlist"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1764,7 +1764,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemaregisterdatarecipient">RegisterDataRecipient</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdatarecipient">RegisterDataRecipient</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>Response data for the query</td>
@@ -1773,7 +1773,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
 
-<p><a id="schemaregisterdatarecipient"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1848,7 +1848,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>dataRecipientBrands</td>
-<td>[<a href="#schemadatarecipientbrandmetadata">DataRecipientBrandMetaData</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apidatarecipientbrandmetadata">DataRecipientBrandMetaData</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>[Metadata related to Data Recipient Brand]</td>
@@ -1899,7 +1899,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
 
-<p><a id="schemadatarecipientbrandmetadata"></a></p>
+<p><a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1951,7 +1951,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>softwareProducts</td>
-<td>[<a href="#schemasoftwareproductmetadata">SoftwareProductMetaData</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apisoftwareproductmetadata">SoftwareProductMetaData</a>]</td>
 <td>optional</td>
 <td>none</td>
 <td>[Data Recipient Brand Software Products]</td>
@@ -1987,7 +1987,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
 
-<p><a id="schemasoftwareproductmetadata"></a></p>
+<p><a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2067,7 +2067,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
 
-<p><a id="schemalegalentitydetail"></a></p>
+<p><a id="schemacdr-participant-discovery-apilegalentitydetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2207,7 +2207,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
 
-<p><a id="schemaregisterdataholderbrandserviceendpoint"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2275,7 +2275,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
 
-<p><a id="schemaregisterdataholderauth"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -2323,7 +2323,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
 
-<p><a id="schemalinkspaginated"></a></p>
+<p><a id="schemacdr-participant-discovery-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2381,7 +2381,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
 
-<p><a id="schemametapaginated"></a></p>
+<p><a id="schemacdr-participant-discovery-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -2415,7 +2415,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<p><a id="schemaresponseerrorlist"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2439,7 +2439,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>errors</td>
-<td>[<a href="#schemaerror">Error</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apierror">Error</a>]</td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
@@ -2448,7 +2448,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSerror">Error</h2>
 
-<p><a id="schemaerror"></a></p>
+<p><a id="schemacdr-participant-discovery-apierror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">

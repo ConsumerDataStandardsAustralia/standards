@@ -486,7 +486,7 @@ x-fapi-interaction-id: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -528,7 +528,7 @@ x-fapi-interaction-id: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -2621,7 +2621,7 @@ x-fapi-interaction-id: string
 </tr>
 <tr>
 <td>»»»»»»»»»»»»»»»»» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -2635,7 +2635,7 @@ x-fapi-interaction-id: string
 </tr>
 <tr>
 <td>»»»»»»»»»»»»»»»»» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -3689,7 +3689,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -3731,7 +3731,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -4624,7 +4624,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»»» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -4638,7 +4638,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»»» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -5251,7 +5251,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -5293,7 +5293,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -5701,7 +5701,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -5743,7 +5743,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -5953,7 +5953,7 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-apiservicepointidlist">servicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
 </tr>
@@ -5974,7 +5974,7 @@ x-cds-client-headers: string
 <tr>
 <td>» meta</td>
 <td>body</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -6193,7 +6193,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -6235,7 +6235,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -6520,7 +6520,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>» data</td>
-<td><a href="#schemaderrecord">derRecord</a></td>
+<td><a href="#schemacdr-energy-apiderrecord">derRecord</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -6828,7 +6828,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -6842,7 +6842,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -7154,7 +7154,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» derRecords</td>
-<td>[<a href="#schemaderrecord">derRecord</a>]</td>
+<td>[<a href="#schemacdr-energy-apiderrecord">derRecord</a>]</td>
 <td>true</td>
 <td>none</td>
 <td>Array of meter reads</td>
@@ -7462,7 +7462,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -7504,7 +7504,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -7730,7 +7730,7 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaservicepointidlist">servicePointIdList</a></td>
+<td><a href="#schemacdr-energy-apiservicepointidlist">servicePointIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Service Points to obtain data for</td>
 </tr>
@@ -7751,7 +7751,7 @@ x-cds-client-headers: string
 <tr>
 <td>» meta</td>
 <td>body</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -7872,7 +7872,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» derRecords</td>
-<td>[<a href="#schemaderrecord">derRecord</a>]</td>
+<td>[<a href="#schemacdr-energy-apiderrecord">derRecord</a>]</td>
 <td>true</td>
 <td>none</td>
 <td>Array of meter reads</td>
@@ -8180,7 +8180,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -8222,7 +8222,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -8580,7 +8580,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -8622,7 +8622,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -10330,7 +10330,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»»»»»»»»»»»»»»» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -10344,7 +10344,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»»»»»»»»»»»»»»» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11171,7 +11171,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11185,7 +11185,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11516,7 +11516,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11530,7 +11530,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11718,7 +11718,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>» links</td>
-<td><a href="#schemalinks">links</a></td>
+<td><a href="#schemacdr-energy-apilinks">links</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11732,7 +11732,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>» meta</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11953,7 +11953,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -11995,7 +11995,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -12157,7 +12157,7 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
 </tr>
@@ -12178,7 +12178,7 @@ x-cds-client-headers: string
 <tr>
 <td>» meta</td>
 <td>body</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -12272,7 +12272,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -12314,7 +12314,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -12760,7 +12760,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -12802,7 +12802,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -13261,7 +13261,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -13303,7 +13303,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -13499,7 +13499,7 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
 </tr>
@@ -13520,7 +13520,7 @@ x-cds-client-headers: string
 <tr>
 <td>» meta</td>
 <td>body</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -13804,7 +13804,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -13846,7 +13846,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -14296,7 +14296,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -14338,7 +14338,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -14833,7 +14833,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -14875,7 +14875,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -15123,7 +15123,7 @@ x-cds-client-headers: string
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccountidlist">accountIdList</a></td>
+<td><a href="#schemacdr-energy-apiaccountidlist">accountIdList</a></td>
 <td>mandatory</td>
 <td>Request payload containing list of specific Accounts to obtain data for</td>
 </tr>
@@ -15144,7 +15144,7 @@ x-cds-client-headers: string
 <tr>
 <td>» meta</td>
 <td>body</td>
-<td><a href="#schemameta">meta</a></td>
+<td><a href="#schemacdr-energy-apimeta">meta</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -15412,7 +15412,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» links</td>
-<td><a href="#schemalinkspaginated">linksPaginated</a></td>
+<td><a href="#schemacdr-energy-apilinkspaginated">linksPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -15454,7 +15454,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>»»»» meta</td>
-<td><a href="#schemametapaginated">metaPaginated</a></td>
+<td><a href="#schemacdr-energy-apimetapaginated">metaPaginated</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -15551,13 +15551,13 @@ x-cds-client-headers: string
 This operation does not require authentication
 </aside></p>
 
-<h2 class="schema-heading" id="cdr-energy-standards-draft-schemas">Schemas</h2>
+<h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="cdr-energy-standards-draft-schemas"></a></p>
+<p><a class="schema-link" id="cdr-energy-api-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSderrecord">derRecord</h2>
 
-<p><a id="schemaderrecord"></a></p>
+<p><a id="schemacdr-energy-apiderrecord"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -15990,7 +15990,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinks">links</h2>
 
-<p><a id="schemalinks"></a></p>
+<p><a id="schemacdr-energy-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -16016,7 +16016,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmeta">meta</h2>
 
-<p><a id="schemameta"></a></p>
+<p><a id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre><h3 id='properties-3'>Properties</h3>
@@ -16024,7 +16024,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinkspaginated">linksPaginated</h2>
 
-<p><a id="schemalinkspaginated"></a></p>
+<p><a id="schemacdr-energy-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16082,7 +16082,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmetapaginated">metaPaginated</h2>
 
-<p><a id="schemametapaginated"></a></p>
+<p><a id="schemacdr-energy-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">

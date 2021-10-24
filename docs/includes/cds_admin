@@ -84,7 +84,7 @@
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemarequestmetadataupdate">RequestMetaDataUpdate</a></td>
+<td><a href="#schemacdr-admin-apirequestmetadataupdate">RequestMetaDataUpdate</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -452,7 +452,7 @@ This operation may only be called by the CDR Register
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponsemetricslistv3">ResponseMetricsListV3</a></td>
+<td><a href="#schemacdr-admin-apiresponsemetricslistv3">ResponseMetricsListV3</a></td>
 </tr>
 <tr>
 <td>4xx</td>
@@ -492,13 +492,13 @@ Otherwise, the scope is not applicable when the Data Holder supports Self-Signed
 This operation may only be called by the CDR Register
 </aside>
 
-<h2 class="schema-heading" id="consumer-data-standards-administration-end-points-schemas">Schemas</h2>
+<h2 class="schema-heading" id="cdr-admin-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="consumer-data-standards-administration-end-points-schemas"></a></p>
+<p><a class="schema-link" id="cdr-admin-api-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSrequestmetadataupdate">RequestMetaDataUpdate</h2>
 
-<p><a id="schemarequestmetadataupdate"></a></p>
+<p><a id="schemacdr-admin-apirequestmetadataupdate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFRESH"</span><span class="w">
@@ -532,7 +532,7 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemameta">Meta</a></td>
+<td><a href="#schemacdr-admin-apimeta">Meta</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
@@ -553,7 +553,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSresponsemetricslistv3">ResponseMetricsListV3</h2>
 
-<p><a id="schemaresponsemetricslistv3"></a></p>
+<p><a id="schemacdr-admin-apiresponsemetricslistv3"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -760,63 +760,63 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» availability</td>
-<td><a href="#schemaavailabilitymetrics">AvailabilityMetrics</a></td>
+<td><a href="#schemacdr-admin-apiavailabilitymetrics">AvailabilityMetrics</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Percentage availability of the CDR platform over time</td>
 </tr>
 <tr>
 <td>» performance</td>
-<td><a href="#schemaperformancemetrics">PerformanceMetrics</a></td>
+<td><a href="#schemacdr-admin-apiperformancemetrics">PerformanceMetrics</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Percentage of calls within the performance thresholds</td>
 </tr>
 <tr>
 <td>» invocations</td>
-<td><a href="#schemainvocationmetricsv2">InvocationMetricsV2</a></td>
+<td><a href="#schemacdr-admin-apiinvocationmetricsv2">InvocationMetricsV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Number of API calls in each performance tier over time</td>
 </tr>
 <tr>
 <td>» averageResponse</td>
-<td><a href="#schemaaverageresponsemetricsv2">AverageResponseMetricsV2</a></td>
+<td><a href="#schemacdr-admin-apiaverageresponsemetricsv2">AverageResponseMetricsV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Average response time in seconds, at millisecond resolution, within each performance tier</td>
 </tr>
 <tr>
 <td>» sessionCount</td>
-<td><a href="#schemasessioncountmetrics">SessionCountMetrics</a></td>
+<td><a href="#schemacdr-admin-apisessioncountmetrics">SessionCountMetrics</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Session counts over time. Note that a session is defined as the provisioning of an Access Token.</td>
 </tr>
 <tr>
 <td>» averageTps</td>
-<td><a href="#schemaaveragetpsmetrics">AverageTPSMetrics</a></td>
+<td><a href="#schemacdr-admin-apiaveragetpsmetrics">AverageTPSMetrics</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Transactions per second over time</td>
 </tr>
 <tr>
 <td>» peakTps</td>
-<td><a href="#schemapeaktpsmetrics">PeakTPSMetrics</a></td>
+<td><a href="#schemacdr-admin-apipeaktpsmetrics">PeakTPSMetrics</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Maximum record transactions per second over time</td>
 </tr>
 <tr>
 <td>» errors</td>
-<td><a href="#schemaerrormetrics">ErrorMetrics</a></td>
+<td><a href="#schemacdr-admin-apierrormetrics">ErrorMetrics</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Number of calls resulting in error due to server execution over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
-<td><a href="#schemarejectionmetricsv2">RejectionMetricsV2</a></td>
+<td><a href="#schemacdr-admin-apirejectionmetricsv2">RejectionMetricsV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>Number of calls rejected due to traffic thresholds over time</td>
@@ -837,21 +837,21 @@ This operation may only be called by the CDR Register
 </tr>
 <tr>
 <td>» secondaryHolder</td>
-<td><a href="#schemasecondaryholdermetrics">SecondaryHolderMetrics</a></td>
+<td><a href="#schemacdr-admin-apisecondaryholdermetrics">SecondaryHolderMetrics</a></td>
 <td>conditional</td>
 <td>none</td>
 <td>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
 <td>links</td>
-<td><a href="#schemalinks">Links</a></td>
+<td><a href="#schemacdr-admin-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemameta">Meta</a></td>
+<td><a href="#schemacdr-admin-apimeta">Meta</a></td>
 <td>optional</td>
 <td>none</td>
 <td>none</td>
@@ -860,7 +860,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSavailabilitymetrics">AvailabilityMetrics</h2>
 
-<p><a id="schemaavailabilitymetrics"></a></p>
+<p><a id="schemacdr-admin-apiavailabilitymetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentMonth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previousMonths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -898,7 +898,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSperformancemetrics">PerformanceMetrics</h2>
 
-<p><a id="schemaperformancemetrics"></a></p>
+<p><a id="schemacdr-admin-apiperformancemetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -936,7 +936,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSinvocationmetricsv2">InvocationMetricsV2</h2>
 
-<p><a id="schemainvocationmetricsv2"></a></p>
+<p><a id="schemacdr-admin-apiinvocationmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1145,7 +1145,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h2>
 
-<p><a id="schemaaverageresponsemetricsv2"></a></p>
+<p><a id="schemacdr-admin-apiaverageresponsemetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"unauthenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1426,7 +1426,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSsessioncountmetrics">SessionCountMetrics</h2>
 
-<p><a id="schemasessioncountmetrics"></a></p>
+<p><a id="schemacdr-admin-apisessioncountmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1464,7 +1464,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSaveragetpsmetrics">AverageTPSMetrics</h2>
 
-<p><a id="schemaaveragetpsmetrics"></a></p>
+<p><a id="schemacdr-admin-apiaveragetpsmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1502,7 +1502,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSpeaktpsmetrics">PeakTPSMetrics</h2>
 
-<p><a id="schemapeaktpsmetrics"></a></p>
+<p><a id="schemacdr-admin-apipeaktpsmetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1540,7 +1540,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSerrormetrics">ErrorMetrics</h2>
 
-<p><a id="schemaerrormetrics"></a></p>
+<p><a id="schemacdr-admin-apierrormetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1578,7 +1578,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSrejectionmetricsv2">RejectionMetricsV2</h2>
 
-<p><a id="schemarejectionmetricsv2"></a></p>
+<p><a id="schemacdr-admin-apirejectionmetricsv2"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"authenticated"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1652,7 +1652,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSsecondaryholdermetrics">SecondaryHolderMetrics</h2>
 
-<p><a id="schemasecondaryholdermetrics"></a></p>
+<p><a id="schemacdr-admin-apisecondaryholdermetrics"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"currentDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1726,7 +1726,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSlinks">Links</h2>
 
-<p><a id="schemalinks"></a></p>
+<p><a id="schemacdr-admin-apilinks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1752,7 +1752,7 @@ This operation may only be called by the CDR Register
 
 <h2 class="schema-toc" id="tocSmeta">Meta</h2>
 
-<p><a id="schemameta"></a></p>
+<p><a id="schemacdr-admin-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre><h3 id='properties-14'>Properties</h3>

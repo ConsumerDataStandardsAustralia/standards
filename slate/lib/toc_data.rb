@@ -11,6 +11,7 @@ def toc_data(page_content)
       content: header.children,
       title: header.children.to_s.gsub(/<[^>]*>/, ''),
       level: header.name[1].to_i,
+      css_class: header.attribute('class').to_s,
       children: []
     })
   end

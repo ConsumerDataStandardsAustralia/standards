@@ -1,6 +1,5 @@
 
 
-
 ## Get OpenId Provider Config
 
 <a id="opIdGetOpenIdProviderConfig"></a>
@@ -85,7 +84,7 @@ Endpoint used by participants to discover the CDR Register OpenID configuration 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The OpenID Provider Configuration Metadata values|[ResponseOpenIDProviderConfigMetadata](#schemaresponseopenidproviderconfigmetadata)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The OpenID Provider Configuration Metadata values|[ResponseOpenIDProviderConfigMetadata](#schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata)|
 
   
     <aside class="success">
@@ -159,7 +158,7 @@ JWKS endpoint containing the public keys used by the CDR Register to validate th
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|A JSON object that represents a set of JWKs|[ResponseJWKS](#schemaresponsejwks)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|A JSON object that represents a set of JWKs|[ResponseJWKS](#schemacdr-participant-discovery-apiresponsejwks)|
 
   
     <aside class="success">
@@ -290,8 +289,8 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataHolderBrandList](#schemaresponseregisterdataholderbrandlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataHolderBrandList](#schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
@@ -384,11 +383,11 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|string|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid industry path parameter</br>Invalid SoftwareProductId|[ResponseErrorList](#schemaresponseerrorlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid industry path parameter</br>Invalid SoftwareProductId|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorList](#schemaresponseerrorlist)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA fields invalid or incomplete|[ResponseErrorList](#schemaresponseerrorlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA fields invalid or incomplete|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 
 ### Response Headers
 
@@ -480,8 +479,8 @@ Endpoint used by participants to discover the statuses for software products fro
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[SoftwareProductsStatusList](#schemasoftwareproductsstatuslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[SoftwareProductsStatusList](#schemacdr-participant-discovery-apisoftwareproductsstatuslist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
 ### Response Headers
@@ -571,8 +570,8 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataRecipientsStatusList](#schemadatarecipientsstatuslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataRecipientsStatusList](#schemacdr-participant-discovery-apidatarecipientsstatuslist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
 ### Response Headers
@@ -684,8 +683,8 @@ Endpoint used by participants to discover data recipients and associated brands 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataRecipientList](#schemaresponseregisterdatarecipientlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataRecipientList](#schemacdr-participant-discovery-apiresponseregisterdatarecipientlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
 ### Response Headers
@@ -701,12 +700,12 @@ This operation does not require authentication
 
   
 
-<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
-<a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a>
+<h2 class="schema-heading" id="cdr-participant-discovery-api-schemas">Schemas</h2>
+<a class="schema-link" id="cdr-participant-discovery-api-schemas"></a>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 
-<a id="schemaresponseopenidproviderconfigmetadata"></a>
+<a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a>
 
 ```json
 {
@@ -767,7 +766,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h2>
 
-<a id="schemaresponsejwks"></a>
+<a id="schemacdr-participant-discovery-apiresponsejwks"></a>
 
 ```json
 {
@@ -793,11 +792,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|keys|[[JWK](#schemajwk)]|mandatory|none|The value of the "keys" parameter is an array of JWK values|
+|keys|[[JWK](#schemacdr-participant-discovery-apijwk)]|mandatory|none|The value of the "keys" parameter is an array of JWK values|
 
 <h2 class="schema-toc" id="tocSjwk">JWK</h2>
 
-<a id="schemajwk"></a>
+<a id="schemacdr-participant-discovery-apijwk"></a>
 
 ```json
 {
@@ -828,7 +827,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h2>
 
-<a id="schemaresponseregisterdataholderbrandlist"></a>
+<a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
 
 ```json
 {
@@ -890,13 +889,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|[[RegisterDataHolderBrand](#schemaregisterdataholderbrand)]|mandatory|none|Response data for the query|
-|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
+|data|[[RegisterDataHolderBrand](#schemacdr-participant-discovery-apiregisterdataholderbrand)]|mandatory|none|Response data for the query|
+|links|[LinksPaginated](#schemacdr-participant-discovery-apilinkspaginated)|mandatory|none|none|
+|meta|[MetaPaginated](#schemacdr-participant-discovery-apimetapaginated)|mandatory|none|none|
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h2>
 
-<a id="schemaregisterdataholderbrand"></a>
+<a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
 
 ```json
 {
@@ -945,10 +944,10 @@ This operation does not require authentication
 |brandName|string|mandatory|none|The name of Data Holder Brand|
 |industry|string|mandatory|none|The industry the Data Holder brand belongs to (Banking, etc)|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Brand logo URI|
-|legalEntity|[LegalEntityDetail](#schemalegalentitydetail)|mandatory|none|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
+|legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|none|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
 |status|string|mandatory|none|none|
-|endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemaregisterdataholderbrandserviceendpoint)|mandatory|none|Endpoints related to Data Holder Brand services|
-|authDetails|[[RegisterDataHolderAuth](#schemaregisterdataholderauth)]|mandatory|none|[Provides details of authorisation endpoints for Data Holders]|
+|endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint)|mandatory|none|Endpoints related to Data Holder Brand services|
+|authDetails|[[RegisterDataHolderAuth](#schemacdr-participant-discovery-apiregisterdataholderauth)]|mandatory|none|[Provides details of authorisation endpoints for Data Holders]|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date/time that the Data Holder Brand data was last updated in the Register|
 
 #### Enumerated Values
@@ -962,7 +961,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
 
-<a id="schemasoftwareproductsstatuslist"></a>
+<a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
 
 ```json
 {
@@ -980,11 +979,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|softwareProducts|[[SoftwareProductStatus](#schemasoftwareproductstatus)]|mandatory|none|none|
+|softwareProducts|[[SoftwareProductStatus](#schemacdr-participant-discovery-apisoftwareproductstatus)]|mandatory|none|none|
 
 <h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
 
-<a id="schemasoftwareproductstatus"></a>
+<a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a>
 
 ```json
 {
@@ -1011,7 +1010,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
 
-<a id="schemadatarecipientsstatuslist"></a>
+<a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a>
 
 ```json
 {
@@ -1029,11 +1028,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|dataRecipients|[[DataRecipientStatus](#schemadatarecipientstatus)]|mandatory|none|none|
+|dataRecipients|[[DataRecipientStatus](#schemacdr-participant-discovery-apidatarecipientstatus)]|mandatory|none|none|
 
 <h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
 
-<a id="schemadatarecipientstatus"></a>
+<a id="schemacdr-participant-discovery-apidatarecipientstatus"></a>
 
 ```json
 {
@@ -1061,7 +1060,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
 
-<a id="schemaresponseregisterdatarecipientlist"></a>
+<a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a>
 
 ```json
 {
@@ -1103,11 +1102,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|data|[[RegisterDataRecipient](#schemaregisterdatarecipient)]|mandatory|none|Response data for the query|
+|data|[[RegisterDataRecipient](#schemacdr-participant-discovery-apiregisterdatarecipient)]|mandatory|none|Response data for the query|
 
 <h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
 
-<a id="schemaregisterdatarecipient"></a>
+<a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a>
 
 ```json
 {
@@ -1148,7 +1147,7 @@ This operation does not require authentication
 |accreditationNumber|string|mandatory|none|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
 |industry|string|mandatory|none|none|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Legal Entity logo URI|
-|dataRecipientBrands|[[DataRecipientBrandMetaData](#schemadatarecipientbrandmetadata)]|optional|none|[Metadata related to Data Recipient Brand]|
+|dataRecipientBrands|[[DataRecipientBrandMetaData](#schemacdr-participant-discovery-apidatarecipientbrandmetadata)]|optional|none|[Metadata related to Data Recipient Brand]|
 |status|string|mandatory|none|none|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date/time that the Legal Entity was last updated in the CDR Register|
 
@@ -1164,7 +1163,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
 
-<a id="schemadatarecipientbrandmetadata"></a>
+<a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a>
 
 ```json
 {
@@ -1194,7 +1193,7 @@ This operation does not require authentication
 |dataRecipientBrandId|string|mandatory|none|Unique id of the Data Recipient brand issued by the CDR Register|
 |brandName|string|mandatory|none|Data Recipient Brand name|
 |logoUri|[URIString](#common-field-types)|mandatory|none|Data Recipient Brand logo URI|
-|softwareProducts|[[SoftwareProductMetaData](#schemasoftwareproductmetadata)]|optional|none|[Data Recipient Brand Software Products]|
+|softwareProducts|[[SoftwareProductMetaData](#schemacdr-participant-discovery-apisoftwareproductmetadata)]|optional|none|[Data Recipient Brand Software Products]|
 |status|string|mandatory|none|none|
 
 #### Enumerated Values
@@ -1207,7 +1206,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
 
-<a id="schemasoftwareproductmetadata"></a>
+<a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a>
 
 ```json
 {
@@ -1242,7 +1241,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
 
-<a id="schemalegalentitydetail"></a>
+<a id="schemacdr-participant-discovery-apilegalentitydetail"></a>
 
 ```json
 {
@@ -1292,7 +1291,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
 
-<a id="schemaregisterdataholderbrandserviceendpoint"></a>
+<a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
 
 ```json
 {
@@ -1321,7 +1320,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
 
-<a id="schemaregisterdataholderauth"></a>
+<a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
 
 ```json
 {
@@ -1348,7 +1347,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
 
-<a id="schemalinkspaginated"></a>
+<a id="schemacdr-participant-discovery-apilinkspaginated"></a>
 
 ```json
 {
@@ -1373,7 +1372,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
 
-<a id="schemametapaginated"></a>
+<a id="schemacdr-participant-discovery-apimetapaginated"></a>
 
 ```json
 {
@@ -1392,7 +1391,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<a id="schemaresponseerrorlist"></a>
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
 
 ```json
 {
@@ -1412,11 +1411,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|errors|[[Error](#schemaerror)]|mandatory|none|none|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|none|
 
 <h2 class="schema-toc" id="tocSerror">Error</h2>
 
-<a id="schemaerror"></a>
+<a id="schemacdr-participant-discovery-apierror"></a>
 
 ```json
 {

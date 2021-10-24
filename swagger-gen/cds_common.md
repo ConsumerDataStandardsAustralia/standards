@@ -1,6 +1,5 @@
 
 
-
 ## Get Customer
 
 <a id="opIdgetCustomer"></a>
@@ -126,8 +125,8 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemaresponsecommoncustomer)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemaresponseerrorlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemacdr-common-apiresponsecommoncustomer)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -357,8 +356,8 @@ Obtain detailed information on the authorised customer within the current sessio
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetail](#schemaresponsecommoncustomerdetail)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemaresponseerrorlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetail](#schemacdr-common-apiresponsecommoncustomerdetail)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -453,8 +452,8 @@ Obtain a health check status for the implementation
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonDiscoveryStatus](#schemaresponsecommondiscoverystatus)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemaresponseerrorlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonDiscoveryStatus](#schemacdr-common-apiresponsecommondiscoverystatus)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -547,8 +546,8 @@ Obtain a list of scheduled outages for the implementation
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutagesList](#schemaresponsediscoveryoutageslist)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemaresponseerrorlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutagesList](#schemacdr-common-apiresponsediscoveryoutageslist)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -563,12 +562,12 @@ This operation does not require authentication
 
   
 
-<h2 class="schema-heading" id="consumer-data-standards-schemas">Schemas</h2>
-<a class="schema-link" id="consumer-data-standards-schemas"></a>
+<h2 class="schema-heading" id="cdr-common-api-schemas">Schemas</h2>
+<a class="schema-link" id="cdr-common-api-schemas"></a>
 
 <h2 class="schema-toc" id="tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h2>
 
-<a id="schemaresponsecommondiscoverystatus"></a>
+<a id="schemacdr-common-apiresponsecommondiscoverystatus"></a>
 
 ```json
 {
@@ -597,8 +596,8 @@ This operation does not require authentication
 |» detectionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE|
 |» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
 |» updateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this status was last updated by the Data Holder.|
-|links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|optional|none|none|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -611,7 +610,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h2>
 
-<a id="schemaresponsediscoveryoutageslist"></a>
+<a id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
 
 ```json
 {
@@ -638,13 +637,13 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
-|» outages|[[DiscoveryOutage](#schemadiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
-|links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|optional|none|none|
+|» outages|[[DiscoveryOutage](#schemacdr-common-apidiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
 
 <h2 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h2>
 
-<a id="schemadiscoveryoutage"></a>
+<a id="schemacdr-common-apidiscoveryoutage"></a>
 
 ```json
 {
@@ -667,7 +666,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 
-<a id="schemaresponsecommoncustomer"></a>
+<a id="schemacdr-common-apiresponsecommoncustomer"></a>
 
 ```json
 {
@@ -717,10 +716,10 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPerson](#schemacommonperson)|conditional|none|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisation](#schemacommonorganisation)|conditional|none|Mandatory if `customerUType` is `organisation`|
-|links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|optional|none|none|
+|» person|[CommonPerson](#schemacdr-common-apicommonperson)|conditional|none|Mandatory if `customerUType` is `person`|
+|» organisation|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|conditional|none|Mandatory if `customerUType` is `organisation`|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -731,7 +730,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponsecommoncustomerdetail">ResponseCommonCustomerDetail</h2>
 
-<a id="schemaresponsecommoncustomerdetail"></a>
+<a id="schemacdr-common-apiresponsecommoncustomerdetail"></a>
 
 ```json
 {
@@ -879,10 +878,10 @@ This operation does not require authentication
 |---|---|---|---|---|
 |data|object|mandatory|none|none|
 |» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPersonDetail](#schemacommonpersondetail)|conditional|none|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisationDetail](#schemacommonorganisationdetail)|conditional|none|Mandatory if `customerUType` is `organisation`|
-|links|[Links](#schemalinks)|mandatory|none|none|
-|meta|[Meta](#schemameta)|optional|none|none|
+|» person|[CommonPersonDetail](#schemacdr-common-apicommonpersondetail)|conditional|none|Mandatory if `customerUType` is `person`|
+|» organisation|[CommonOrganisationDetail](#schemacdr-common-apicommonorganisationdetail)|conditional|none|Mandatory if `customerUType` is `organisation`|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
 
 #### Enumerated Values
 
@@ -893,7 +892,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonperson">CommonPerson</h2>
 
-<a id="schemacommonperson"></a>
+<a id="schemacdr-common-apicommonperson"></a>
 
 ```json
 {
@@ -935,7 +934,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonpersondetail">CommonPersonDetail</h2>
 
-<a id="schemacommonpersondetail"></a>
+<a id="schemacdr-common-apicommonpersondetail"></a>
 
 ```json
 {
@@ -1017,20 +1016,20 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonPerson](#schemacommonperson)|mandatory|none|none|
+|*anonymous*|[CommonPerson](#schemacdr-common-apicommonperson)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|mandatory|none|none|
-|» phoneNumbers|[[CommonPhoneNumber](#schemacommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
-|» emailAddresses|[[CommonEmailAddress](#schemacommonemailaddress)]|mandatory|none|May be empty|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|» phoneNumbers|[[CommonPhoneNumber](#schemacdr-common-apicommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
+|» emailAddresses|[[CommonEmailAddress](#schemacdr-common-apicommonemailaddress)]|mandatory|none|May be empty|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
 <h2 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h2>
 
-<a id="schemacommonorganisation"></a>
+<a id="schemacdr-common-apicommonorganisation"></a>
 
 ```json
 {
@@ -1088,7 +1087,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonorganisationdetail">CommonOrganisationDetail</h2>
 
-<a id="schemacommonorganisationdetail"></a>
+<a id="schemacdr-common-apicommonorganisationdetail"></a>
 
 ```json
 {
@@ -1157,18 +1156,18 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonOrganisation](#schemacommonorganisation)|mandatory|none|none|
+|*anonymous*|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|mandatory|none|none|
 
 *and*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|object|mandatory|none|none|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
 <h2 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h2>
 
-<a id="schemacommonphonenumber"></a>
+<a id="schemacdr-common-apicommonphonenumber"></a>
 
 ```json
 {
@@ -1208,7 +1207,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonemailaddress">CommonEmailAddress</h2>
 
-<a id="schemacommonemailaddress"></a>
+<a id="schemacdr-common-apicommonemailaddress"></a>
 
 ```json
 {
@@ -1238,7 +1237,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h2>
 
-<a id="schemacommonphysicaladdresswithpurpose"></a>
+<a id="schemacdr-common-apicommonphysicaladdresswithpurpose"></a>
 
 ```json
 {
@@ -1288,7 +1287,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[CommonPhysicalAddress](#schemacommonphysicaladdress)|mandatory|none|none|
+|*anonymous*|[CommonPhysicalAddress](#schemacdr-common-apicommonphysicaladdress)|mandatory|none|none|
 
 *and*
 
@@ -1309,7 +1308,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonphysicaladdress">CommonPhysicalAddress</h2>
 
-<a id="schemacommonphysicaladdress"></a>
+<a id="schemacdr-common-apicommonphysicaladdress"></a>
 
 ```json
 {
@@ -1357,8 +1356,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |addressUType|string|mandatory|none|The type of address object present|
-|simple|[CommonSimpleAddress](#schemacommonsimpleaddress)|conditional|none|none|
-|paf|[CommonPAFAddress](#schemacommonpafaddress)|conditional|none|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
+|simple|[CommonSimpleAddress](#schemacdr-common-apicommonsimpleaddress)|conditional|none|none|
+|paf|[CommonPAFAddress](#schemacdr-common-apicommonpafaddress)|conditional|none|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
 
 #### Enumerated Values
 
@@ -1369,7 +1368,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonsimpleaddress">CommonSimpleAddress</h2>
 
-<a id="schemacommonsimpleaddress"></a>
+<a id="schemacdr-common-apicommonsimpleaddress"></a>
 
 ```json
 {
@@ -1400,7 +1399,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h2>
 
-<a id="schemacommonpafaddress"></a>
+<a id="schemacdr-common-apicommonpafaddress"></a>
 
 ```json
 {
@@ -1461,7 +1460,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinks">Links</h2>
 
-<a id="schemalinks"></a>
+<a id="schemacdr-common-apilinks"></a>
 
 ```json
 {
@@ -1478,7 +1477,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmeta">Meta</h2>
 
-<a id="schemameta"></a>
+<a id="schemacdr-common-apimeta"></a>
 
 ```json
 {}
@@ -1491,7 +1490,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
 
-<a id="schemametaerror"></a>
+<a id="schemacdr-common-apimetaerror"></a>
 
 ```json
 {
@@ -1510,7 +1509,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
 
-<a id="schemaresponseerrorlistv2"></a>
+<a id="schemacdr-common-apiresponseerrorlistv2"></a>
 
 ```json
 {
@@ -1536,5 +1535,5 @@ This operation does not require authentication
 |» code|string|mandatory|none|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
 |» title|string|mandatory|none|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |» detail|string|mandatory|none|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|[MetaError](#schemametaerror)|optional|none|Additional data for customised error codes|
+|» meta|[MetaError](#schemacdr-common-apimetaerror)|optional|none|Additional data for customised error codes|
 

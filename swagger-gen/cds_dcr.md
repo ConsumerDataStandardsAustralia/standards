@@ -1,6 +1,5 @@
 
 
-
 ## Register Data Recipient oAuth Client
 
 <a id="opIdPostDataRecipientRegistration"></a>
@@ -49,7 +48,7 @@ Register a client using a CDR Register issued Software Statement Assertion.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ClientRegistrationRequest](#schemaclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -101,8 +100,8 @@ Register a client using a CDR Register issued Software Statement Assertion.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Client registration success|[RegistrationProperties](#schemaregistrationproperties)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemaregistrationerror)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Client registration success|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemacdr-dynamic-client-registration-apiregistrationerror)|
 
   
     <aside class="success">
@@ -210,7 +209,7 @@ Get a Client Registration for a given Client ID.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration retrieval success|[RegistrationProperties](#schemaregistrationproperties)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration retrieval success|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Request failed due to unknown or invalid Client or invalid access token|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 
@@ -282,7 +281,7 @@ Update a Client Registration for a given Client ID.
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
 |Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
-|body|body|[ClientRegistrationRequest](#schemaclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -334,8 +333,8 @@ Update a Client Registration for a given Client ID.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration update success|[RegistrationProperties](#schemaregistrationproperties)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemaregistrationerror)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration update success|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemacdr-dynamic-client-registration-apiregistrationerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Request failed due to unknown or invalid Client or invalid access token|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 
@@ -433,7 +432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 
-<a id="schemaclientregistrationrequest"></a>
+<a id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
 
 ```json
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -450,7 +449,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
 
-<a id="schemaregistrationproperties"></a>
+<a id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
 
 ```json
 {
@@ -545,7 +544,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSclientregistration">ClientRegistration</h2>
 
-<a id="schemaclientregistration"></a>
+<a id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
 
 ```json
 {
@@ -612,11 +611,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[RegistrationProperties](#schemaregistrationproperties)|mandatory|none|none|
+|*anonymous*|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|mandatory|none|none|
 
 <h2 class="schema-toc" id="tocSregistrationerror">RegistrationError</h2>
 
-<a id="schemaregistrationerror"></a>
+<a id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
 
 ```json
 {

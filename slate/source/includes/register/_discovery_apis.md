@@ -14,7 +14,7 @@ The following APIs are published by the Registrar. Data Recipients and Data Hold
 | Get Data Recipients | Data Holder Brand | Data Recipient, brand and product details to render Data Holder Consumer Dashboard | | <i class="icon-check"></i> | |
 
 
-### Base URLs:
+### Base URLs
 
 |||
 |---|---|

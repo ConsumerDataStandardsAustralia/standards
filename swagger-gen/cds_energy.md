@@ -1,6 +1,5 @@
 
 
-
 ## Get Generic Plans
 
 <a id="opIdlistPlans"></a>
@@ -183,13 +182,13 @@ Status Code **200**
 |»»»»» displayName|string|false|none|Display name of the supply area|
 |»»»»» distributor|string|false|none|The name of the distributor for the supply area|
 |»»»»» state|string|false|none|The Australian state that the plan is applicable to.  Valid values are defined by Australia Post PAF code file State Type Abbreviation. For example: NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -862,9 +861,9 @@ Status Code **200**
 |»»»»»»»»»»»»»»»»»» amount|string|false|none|The charge amount per kWh exclusive of GST|
 |»»»»»»»»»»»»»»»»»» startTime|string|true|none|Start of the period in HHMM format using 24 hour clock format|
 |»»»»»»»»»»»»»»»»»» endTime|string|true|none|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»»»»»»»» links|[links](#schemalinks)|true|none|none|
+|»»»»»»»»»»»»»»»»» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»»»»»»»»»»»»»»»»»» self|string|true|none|Fully qualified link that generated the current response document|
-|»»»»»»»»»»»»»»»»» meta|[meta](#schemameta)|true|none|none|
+|»»»»»»»»»»»»»»»»» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
 #### Enumerated Values
 
@@ -1194,13 +1193,13 @@ Status Code **200**
 |»»» consumerProfile|object|false|none|none|
 |»»»» classification|string|false|none|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
 |»»»» threshold|any|false|none|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -1489,9 +1488,9 @@ Status Code **200**
 |»»»»»» multiplier|number|false|none|Multiplier required to take a register value and turn it into a value representing billable energy|
 |»»»»»» controlledLoad|string|false|none|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime.|
 |»»»»»» consumptionType|string|false|none|Actual/Subtractive Indicator|
-|»»»»» links|[links](#schemalinks)|true|none|none|
+|»»»»» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»»»»»» self|string|true|none|Fully qualified link that generated the current response document|
-|»»»»» meta|[meta](#schemameta)|true|none|none|
+|»»»»» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
 #### Enumerated Values
 
@@ -1713,13 +1712,13 @@ Status Code **200**
 |»»»» intervalReads|[object]|true|none|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
 |»»»»» quality|string|false|none|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|true|none|Interval value.  If positive then it means consumption, if negative it means export|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -1889,13 +1888,13 @@ Status Code **200**
 |»»»» intervalReads|[object]|true|none|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
 |»»»»» quality|string|false|none|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|true|none|Interval value.  If positive then it means consumption, if negative it means export|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -2000,10 +1999,10 @@ Obtain the electricity usage data for a specific set of service points
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[servicePointIdList](#schemaservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
+|body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[meta](#schemameta)|mandatory|none|
+|» meta|body|[meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -2084,13 +2083,13 @@ Status Code **200**
 |»»»» intervalReads|[object]|true|none|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
 |»»»»» quality|string|false|none|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|true|none|Interval value.  If positive then it means consumption, if negative it means export|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -2257,7 +2256,7 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» data|[derRecord](#schemaderrecord)|true|none|none|
+|» data|[derRecord](#schemacdr-energy-apiderrecord)|true|none|none|
 |»» servicePointId|string|true|none|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»» approvedCapacity|number|true|none|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |»» availablePhasesCount|number|true|none|The number of phases available for the installation of DER|
@@ -2301,9 +2300,9 @@ Status Code **200**
 |»»»» subtype|string|false|none|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
 |»»»» nominalRatedCapacity|number|false|none|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
 |»»»» nominalStorageCapacity|number|false|none|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
-|»»» links|[links](#schemalinks)|true|none|none|
+|»»» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»»»» self|string|true|none|Fully qualified link that generated the current response document|
-|»»» meta|[meta](#schemameta)|true|none|none|
+|»»» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
 #### Enumerated Values
 
@@ -2485,7 +2484,7 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» data|object|true|none|none|
-|»» derRecords|[[derRecord](#schemaderrecord)]|true|none|Array of meter reads|
+|»» derRecords|[[derRecord](#schemacdr-energy-apiderrecord)]|true|none|Array of meter reads|
 |»»» servicePointId|string|true|none|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» approvedCapacity|number|true|none|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |»»» availablePhasesCount|number|true|none|The number of phases available for the installation of DER|
@@ -2529,13 +2528,13 @@ Status Code **200**
 |»»»»» subtype|string|false|none|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
 |»»»»» nominalRatedCapacity|number|false|none|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
 |»»»»» nominalStorageCapacity|number|false|none|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -2644,10 +2643,10 @@ Obtain DER data for a specific set of service points
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[servicePointIdList](#schemaservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
+|body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|[meta](#schemameta)|mandatory|none|
+|» meta|body|[meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -2738,7 +2737,7 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» data|object|true|none|none|
-|»» derRecords|[[derRecord](#schemaderrecord)]|true|none|Array of meter reads|
+|»» derRecords|[[derRecord](#schemacdr-energy-apiderrecord)]|true|none|Array of meter reads|
 |»»» servicePointId|string|true|none|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» approvedCapacity|number|true|none|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |»»» availablePhasesCount|number|true|none|The number of phases available for the installation of DER|
@@ -2782,13 +2781,13 @@ Status Code **200**
 |»»»»» subtype|string|false|none|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
 |»»»»» nominalRatedCapacity|number|false|none|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
 |»»»»» nominalStorageCapacity|number|false|none|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -2944,13 +2943,13 @@ Status Code **200**
 |»»»» displayName|string|false|none|The name of the plan if one exists|
 |»»»» startDate|string|true|none|The start date of the applicability of this plan|
 |»»»» endDate|string|false|none|The end date of the applicability of this plan|
-|»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -3505,9 +3504,9 @@ Status Code **200**
 |»»»»»»»»»»»»»»»»»» middleNames|[string]|false|none|Field is mandatory but array may be empty|
 |»»»»»»»»»»»»»»»»»» prefix|string|false|none|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |»»»»»»»»»»»»»»»»»» suffix|string|false|none|Used for a trailing suffix to the name (e.g. Jr)|
-|»»»»»»»»»»»»»»»»» links|[links](#schemalinks)|true|none|none|
+|»»»»»»»»»»»»»»»»» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»»»»»»»»»»»»»»»»»» self|string|true|none|Fully qualified link that generated the current response document|
-|»»»»»»»»»»»»»»»»» meta|[meta](#schemameta)|true|none|none|
+|»»»»»»»»»»»»»»»»» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
 #### Enumerated Values
 
@@ -3775,9 +3774,9 @@ Status Code **200**
 |»»» calculationType|string|true|none|The mechanism by which the payment amount is calculated|
 |»» manualPayment|object|false|none|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
 |»»» billFrequency|string|true|none|The frequency with which a bill will be issued.  Formatted according to ISO 8601 Durations (excludes recurrence syntax)|
-|»» links|[links](#schemalinks)|true|none|none|
+|»» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
-|»» meta|[meta](#schemameta)|true|none|none|
+|»» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
 #### Enumerated Values
 
@@ -3921,9 +3920,9 @@ Status Code **200**
 |»»» monthlyDiscount|string|false|none|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |»»» yearlyDiscount|string|false|none|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |»»» percentageDiscount|string|false|none|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»» links|[links](#schemalinks)|true|none|none|
+|»» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
-|»» meta|[meta](#schemameta)|true|none|none|
+|»» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
   
     <aside class="success">
@@ -4026,9 +4025,9 @@ Status Code **200**
 |---|---|---|---|---|
 |» data|object|true|none|none|
 |»» balance|string|true|none|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|» links|[links](#schemalinks)|true|none|none|
+|» links|[links](#schemacdr-energy-apilinks)|true|none|none|
 |»» self|string|true|none|Fully qualified link that generated the current response document|
-|» meta|[meta](#schemameta)|true|none|none|
+|» meta|[meta](#schemacdr-energy-apimeta)|true|none|none|
 
   
     <aside class="success">
@@ -4146,13 +4145,13 @@ Status Code **200**
 |»» balances|[object]|true|none|Array of account balances|
 |»»» accountId|string|true|none|The ID of the account|
 |»»» balance|string|true|none|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -4242,10 +4241,10 @@ Obtain the current balance for a specified set of accounts
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemaaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[meta](#schemameta)|mandatory|none|
+|» meta|body|[meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -4291,13 +4290,13 @@ Status Code **200**
 |»» balances|[object]|true|none|Array of account balances|
 |»»» accountId|string|true|none|The ID of the account|
 |»»» balance|string|true|none|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -4472,13 +4471,13 @@ Status Code **200**
 |»»» totalAccountCharges|string|true|none|The aggregate total of account level charges for the period covered by the invoice|
 |»»» totalAccountDiscounts|string|true|none|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |»»» paymentStatus|string|true|none|Indicator of the payment status for the invoice|
-|»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -4660,13 +4659,13 @@ Status Code **200**
 |»»» totalAccountCharges|string|true|none|The aggregate total of account level charges for the period covered by the invoice|
 |»»» totalAccountDiscounts|string|true|none|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |»»» paymentStatus|string|true|none|Indicator of the payment status for the invoice|
-|»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -4766,10 +4765,10 @@ Obtain invoices for a specified set of accounts
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemaaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[meta](#schemameta)|mandatory|none|
+|» meta|body|[meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -4867,13 +4866,13 @@ Status Code **200**
 |»»» totalAccountCharges|string|true|none|The aggregate total of account level charges for the period covered by the invoice|
 |»»» totalAccountDiscounts|string|true|none|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |»»» paymentStatus|string|true|none|Indicator of the payment status for the invoice|
-|»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -5052,13 +5051,13 @@ Status Code **200**
 |»»»» payment|object|false|none|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 |»»»»» amount|string|true|none|The amount paid|
 |»»»»» method|string|true|none|The method of payment|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -5249,13 +5248,13 @@ Status Code **200**
 |»»»» payment|object|false|none|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 |»»»»» amount|string|true|none|The amount paid|
 |»»»»» method|string|true|none|The method of payment|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -5368,10 +5367,10 @@ Obtain billing for a specified set of accounts
 |x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemaaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|[meta](#schemameta)|mandatory|none|
+|» meta|body|[meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -5465,13 +5464,13 @@ Status Code **200**
 |»»»» payment|object|false|none|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 |»»»»» amount|string|true|none|The amount paid|
 |»»»»» method|string|true|none|The method of payment|
-|»»»» links|[linksPaginated](#schemalinkspaginated)|true|none|none|
+|»»»» links|[linksPaginated](#schemacdr-energy-apilinkspaginated)|true|none|none|
 |»»»»» self|string|true|none|Fully qualified link that generated the current response document|
 |»»»»» first|string|false|none|URI to the first page of this set. Mandatory if this response is not the first page|
 |»»»»» prev|string|false|none|URI to the previous page of this set. Mandatory if this response is not the first page|
 |»»»»» next|string|false|none|URI to the next page of this set. Mandatory if this response is not the last page|
 |»»»»» last|string|false|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[metaPaginated](#schemametapaginated)|true|none|none|
+|»»»» meta|[metaPaginated](#schemacdr-energy-apimetapaginated)|true|none|none|
 |»»»»» totalRecords|integer|true|none|The total number of records in the full set. See [pagination](#pagination).|
 |»»»»» totalPages|integer|true|none|The total number of pages in the full set. See [pagination](#pagination).|
 
@@ -5503,12 +5502,12 @@ This operation does not require authentication
 
   
 
-<h2 class="schema-heading" id="cdr-energy-standards-draft-schemas">Schemas</h2>
-<a class="schema-link" id="cdr-energy-standards-draft-schemas"></a>
+<h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
+<a class="schema-link" id="cdr-energy-api-schemas"></a>
 
 <h2 class="schema-toc" id="tocSderrecord">derRecord</h2>
 
-<a id="schemaderrecord"></a>
+<a id="schemacdr-energy-apiderrecord"></a>
 
 ```json
 {
@@ -5635,7 +5634,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinks">links</h2>
 
-<a id="schemalinks"></a>
+<a id="schemacdr-energy-apilinks"></a>
 
 ```json
 {
@@ -5652,7 +5651,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmeta">meta</h2>
 
-<a id="schemameta"></a>
+<a id="schemacdr-energy-apimeta"></a>
 
 ```json
 {}
@@ -5665,7 +5664,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinkspaginated">linksPaginated</h2>
 
-<a id="schemalinkspaginated"></a>
+<a id="schemacdr-energy-apilinkspaginated"></a>
 
 ```json
 {
@@ -5690,7 +5689,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSmetapaginated">metaPaginated</h2>
 
-<a id="schemametapaginated"></a>
+<a id="schemacdr-energy-apimetapaginated"></a>
 
 ```json
 {

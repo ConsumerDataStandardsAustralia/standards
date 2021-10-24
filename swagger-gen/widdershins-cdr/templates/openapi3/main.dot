@@ -6,8 +6,6 @@
 {{ for (var r in data.resources) { }}
 {{ data.resource = data.resources[r]; }}
 
-<h1 class="title-prefix" id="{{=data.title_prefix+'-'+data.utils.slugify(r)}}">{{= r}}</h1>
-
 {{? data.resource.description }}{{= data.resource.description}}{{?}}
 
 {{? data.resource.externalDocs}}
@@ -34,7 +32,7 @@
 
 <h2 class="schema-toc" id="tocS{{=s.toLowerCase()}}">{{=s}}</h2>
 
-<a id="schema{{=s.toLowerCase()}}"></a>
+<a id="schema{{=data.title_prefix}}{{=s.toLowerCase()}}"></a>
 
 {{? data.options.yaml }}
 ```yaml
