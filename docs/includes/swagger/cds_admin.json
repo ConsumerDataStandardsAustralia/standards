@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
     "version" : "1.14.0",
-    "title" : "Consumer Data Standards Administration End Points",
+    "title" : "CDR Admin API",
     "contact" : {
       "name" : "Consumer Data Standards Administration End Points",
       "url" : "https://consumerdatastandards.gov.au",

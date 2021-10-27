@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "description" : "Consumer Data Right end points and payloads for the Energy sector",
-    "title" : "CDR Energy Standards - DRAFT",
+    "title" : "CDR Energy API",
     "version" : "1.14.0"
   },
   "servers" : [ {
@@ -11,7 +11,7 @@
   "paths" : {
     "/energy/plans" : {
       "get" : {
-        "description" : "Obtain a list of energy plans that are currently offered to the market",
+        "description" : "Obtain a list of energy plans that are currently offered to the market.\n\nNote that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.",
         "operationId" : "listPlans",
         "parameters" : [ {
           "description" : "Used to filter results on the type field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'",
@@ -126,7 +126,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/EnergyPlanListResponse"
                 }
               }
             },
@@ -187,7 +187,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_1"
+                  "$ref" : "#/components/schemas/EnergyPlanResponse"
                 }
               }
             },
@@ -289,7 +289,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_2"
+                  "$ref" : "#/components/schemas/inline_response_200"
                 }
               }
             },
@@ -381,7 +381,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_3"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
                 }
               }
             },
@@ -493,7 +493,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
+                  "$ref" : "#/components/schemas/inline_response_200_2"
                 }
               }
             },
@@ -595,7 +595,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
+                  "$ref" : "#/components/schemas/inline_response_200_2"
                 }
               }
             },
@@ -698,7 +698,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
+                  "$ref" : "#/components/schemas/inline_response_200_2"
                 }
               }
             },
@@ -790,7 +790,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_5"
+                  "$ref" : "#/components/schemas/inline_response_200_3"
                 }
               }
             },
@@ -892,7 +892,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_6"
+                  "$ref" : "#/components/schemas/inline_response_200_4"
                 }
               }
             },
@@ -995,7 +995,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_6"
+                  "$ref" : "#/components/schemas/inline_response_200_4"
                 }
               }
             },
@@ -1097,7 +1097,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_7"
+                  "$ref" : "#/components/schemas/inline_response_200_5"
                 }
               }
             },
@@ -1189,7 +1189,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_8"
+                  "$ref" : "#/components/schemas/inline_response_200_6"
                 }
               }
             },
@@ -1281,7 +1281,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_9"
+                  "$ref" : "#/components/schemas/inline_response_200_7"
                 }
               }
             },
@@ -1373,7 +1373,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_10"
+                  "$ref" : "#/components/schemas/inline_response_200_8"
                 }
               }
             },
@@ -1465,7 +1465,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_11"
+                  "$ref" : "#/components/schemas/inline_response_200_9"
                 }
               }
             },
@@ -1567,7 +1567,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_12"
+                  "$ref" : "#/components/schemas/inline_response_200_10"
                 }
               }
             },
@@ -1670,7 +1670,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_12"
+                  "$ref" : "#/components/schemas/inline_response_200_10"
                 }
               }
             },
@@ -1804,7 +1804,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_13"
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 }
               }
             },
@@ -1928,7 +1928,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_13"
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 }
               }
             },
@@ -2053,7 +2053,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_13"
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 }
               }
             },
@@ -2187,7 +2187,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_14"
+                  "$ref" : "#/components/schemas/inline_response_200_12"
                 }
               }
             },
@@ -2311,7 +2311,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_14"
+                  "$ref" : "#/components/schemas/inline_response_200_12"
                 }
               }
             },
@@ -2436,7 +2436,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_14"
+                  "$ref" : "#/components/schemas/inline_response_200_12"
                 }
               }
             },
@@ -2630,7 +2630,7 @@
                   "type" : "object"
                 },
                 "meta" : {
-                  "$ref" : "#/components/schemas/meta"
+                  "$ref" : "#/components/schemas/Meta"
                 }
               },
               "required" : [ "data", "meta" ],
@@ -2660,7 +2660,7 @@
                   "type" : "object"
                 },
                 "meta" : {
-                  "$ref" : "#/components/schemas/meta"
+                  "$ref" : "#/components/schemas/Meta"
                 }
               },
               "required" : [ "data", "meta" ],
@@ -2677,7 +2677,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200"
+              "$ref" : "#/components/schemas/EnergyPlanListResponse"
             }
           }
         },
@@ -2687,7 +2687,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_1"
+              "$ref" : "#/components/schemas/EnergyPlanResponse"
             }
           }
         },
@@ -2697,7 +2697,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_2"
+              "$ref" : "#/components/schemas/inline_response_200"
             }
           }
         },
@@ -2707,7 +2707,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_3"
+              "$ref" : "#/components/schemas/inline_response_200_1"
             }
           }
         },
@@ -2717,7 +2717,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_4"
+              "$ref" : "#/components/schemas/inline_response_200_2"
             }
           }
         },
@@ -2727,7 +2727,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_6"
+              "$ref" : "#/components/schemas/inline_response_200_4"
             }
           }
         },
@@ -2737,7 +2737,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_5"
+              "$ref" : "#/components/schemas/inline_response_200_3"
             }
           }
         },
@@ -2747,7 +2747,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_7"
+              "$ref" : "#/components/schemas/inline_response_200_5"
             }
           }
         },
@@ -2757,7 +2757,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_8"
+              "$ref" : "#/components/schemas/inline_response_200_6"
             }
           }
         },
@@ -2767,7 +2767,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_9"
+              "$ref" : "#/components/schemas/inline_response_200_7"
             }
           }
         },
@@ -2777,7 +2777,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_10"
+              "$ref" : "#/components/schemas/inline_response_200_8"
             }
           }
         },
@@ -2787,7 +2787,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_12"
+              "$ref" : "#/components/schemas/inline_response_200_10"
             }
           }
         },
@@ -2797,7 +2797,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_11"
+              "$ref" : "#/components/schemas/inline_response_200_9"
             }
           }
         },
@@ -2807,7 +2807,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_13"
+              "$ref" : "#/components/schemas/inline_response_200_11"
             }
           }
         },
@@ -2817,7 +2817,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/inline_response_200_14"
+              "$ref" : "#/components/schemas/inline_response_200_12"
             }
           }
         },
@@ -2825,6 +2825,786 @@
       }
     },
     "schemas" : {
+      "EnergyPlanListResponse" : {
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/EnergyPlanListResponse_data"
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/LinksPaginated"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/MetaPaginated"
+          }
+        },
+        "required" : [ "data", "links", "meta" ],
+        "type" : "object"
+      },
+      "EnergyPlanResponse" : {
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/EnergyPlanDetail"
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/Links"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/Meta"
+          }
+        },
+        "required" : [ "data", "links", "meta" ],
+        "type" : "object"
+      },
+      "EnergyPlan" : {
+        "properties" : {
+          "planId" : {
+            "description" : "The ID of the specific plan",
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
+          },
+          "effectiveFrom" : {
+            "description" : "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
+            "type" : "string",
+            "x-cds-type" : "DateTimeString"
+          },
+          "effectiveTo" : {
+            "description" : "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
+            "type" : "string",
+            "x-cds-type" : "DateTimeString"
+          },
+          "lastUpdated" : {
+            "description" : "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
+            "type" : "string",
+            "x-cds-type" : "DateTimeString"
+          },
+          "displayName" : {
+            "description" : "The display name of the plan",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "A description of the plan",
+            "type" : "string"
+          },
+          "type" : {
+            "description" : "The type of the plan",
+            "enum" : [ "STANDING", "MARKET", "REGULATED" ],
+            "type" : "string"
+          },
+          "fuelType" : {
+            "description" : "The fuel types covered by the plan",
+            "enum" : [ "ELECTRICITY", "GAS", "DUAL" ],
+            "type" : "string"
+          },
+          "brand" : {
+            "description" : "The ID of the brand under which this plan is offered",
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
+          },
+          "brandName" : {
+            "description" : "The display name of the brand under which this plan is offered",
+            "type" : "string"
+          },
+          "applicationUri" : {
+            "description" : "A link to an application web page where this plan can be applied for",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "additionalInformation" : {
+            "$ref" : "#/components/schemas/EnergyPlan_additionalInformation"
+          },
+          "customerType" : {
+            "description" : "The type of customer that the plan is offered to.  If absent then the plan is available to all customers",
+            "enum" : [ "RESIDENTIAL", "BUSINESS" ],
+            "type" : "string"
+          },
+          "geography" : {
+            "$ref" : "#/components/schemas/EnergyPlan_geography"
+          }
+        },
+        "required" : [ "brand", "brandName", "fuelType", "lastUpdated", "planId", "type" ],
+        "type" : "object"
+      },
+      "EnergyPlanDetail" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/EnergyPlan"
+        }, {
+          "$ref" : "#/components/schemas/EnergyPlanDetail_allOf"
+        } ]
+      },
+      "EnergyPlanContract" : {
+        "properties" : {
+          "additionalFeeInformation" : {
+            "description" : "Free text field containing additional information of the fees for this contract",
+            "type" : "string"
+          },
+          "pricingModel" : {
+            "description" : "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>",
+            "enum" : [ "SINGLE_RATE", "SINGLE_RATE_CONT_LOAD", "TIME_OF_USE", "TIME_OF_USE_CONT_LOAD", "FLEXIBLE", "FLEXIBLE_CONT_LOAD", "QUOTA" ],
+            "type" : "string"
+          },
+          "termType" : {
+            "description" : "The term for the contract.  If absent assumes no specified term",
+            "enum" : [ "1_YEAR", "2_YEAR", "3_YEAR", "4_YEAR", "5_YEAR", "ONGOING", "OTHER" ],
+            "type" : "string"
+          },
+          "timeZone" : {
+            "description" : "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
+            "enum" : [ "LOCAL", "AEST" ],
+            "type" : "string"
+          },
+          "benefitPeriod" : {
+            "description" : "Description of the benefit period.  Should only be present if termType has the value ONGOING",
+            "type" : "string"
+          },
+          "terms" : {
+            "description" : "Free text description of the terms for the contract",
+            "type" : "string"
+          },
+          "isFixed" : {
+            "description" : "Flag indicating whether prices are fixed or variable",
+            "type" : "boolean"
+          },
+          "variation" : {
+            "description" : "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true",
+            "type" : "string"
+          },
+          "onExpiryDescription" : {
+            "description" : "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period",
+            "type" : "string"
+          },
+          "meterTypes" : {
+            "description" : "An array of the meter types that this contract is available for",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "coolingOffDays" : {
+            "description" : "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET ",
+            "type" : "string",
+            "x-cds-type" : "PositiveInteger"
+          },
+          "billFrequency" : {
+            "description" : "An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "paymentOption" : {
+            "description" : "Payment options for this contract",
+            "items" : {
+              "enum" : [ "PAPER_BILL", "CREDIT_CARD", "DIRECT_DEBIT", "BPAY", "OTHER" ],
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "intrinsicGreenPower" : {
+            "$ref" : "#/components/schemas/EnergyPlanContract_intrinsicGreenPower"
+          },
+          "controlledLoad" : {
+            "$ref" : "#/components/schemas/EnergyPlanControlledLoad"
+          },
+          "incentives" : {
+            "$ref" : "#/components/schemas/EnergyPlanIncentives"
+          },
+          "discounts" : {
+            "$ref" : "#/components/schemas/EnergyPlanDiscounts"
+          },
+          "greenPowerCharges" : {
+            "$ref" : "#/components/schemas/EnergyPlanGreenPowerCharges"
+          },
+          "eligibility" : {
+            "$ref" : "#/components/schemas/EnergyPlanEligibility"
+          },
+          "fees" : {
+            "$ref" : "#/components/schemas/EnergyPlanFees"
+          },
+          "solarFeedInTariff" : {
+            "$ref" : "#/components/schemas/EnergyPlanSolarFeedInTariff"
+          },
+          "tariffPeriod" : {
+            "$ref" : "#/components/schemas/EnergyPlanTariffPeriod"
+          }
+        },
+        "required" : [ "billFrequency", "isFixed", "paymentOption", "pricingModel", "tariffPeriod" ],
+        "type" : "object",
+        "x-conditional" : [ "timeZone", "benefitPeriod", "variation", "coolingOffDays", "controlledLoad" ]
+      },
+      "EnergyPlanControlledLoad" : {
+        "description" : "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
+        "properties" : {
+          "displayName" : {
+            "description" : "A display name for the controlled load tier",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "A description of the controlled load tier",
+            "type" : "string"
+          },
+          "dailyCharge" : {
+            "description" : "The daily supply charge (exclusive of GST) for this controlled load tier",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "period" : {
+            "description" : "The period for which the controlled load rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
+          },
+          "rates" : {
+            "description" : "Array of controlled load rates in order of usage volume",
+            "items" : {
+              "$ref" : "#/components/schemas/EnergyPlanControlledLoad_rates"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "dailyCharge", "displayName", "period", "rates" ],
+        "type" : "object"
+      },
+      "EnergyPlanIncentives" : {
+        "description" : "Optional list of incentives available for the contract",
+        "items" : {
+          "properties" : {
+            "displayName" : {
+              "description" : "The display name of the incentive",
+              "type" : "string"
+            },
+            "description" : {
+              "description" : "The description of the incentive",
+              "type" : "string"
+            },
+            "category" : {
+              "description" : "The type of the incentive",
+              "enum" : [ "GIFT", "ACCOUNT_CREDIT", "OTHER" ],
+              "type" : "string"
+            },
+            "eligibility" : {
+              "description" : "A display message outlining an eligibility criteria that may apply",
+              "type" : "string"
+            }
+          },
+          "required" : [ "category", "description", "displayName" ],
+          "type" : "object"
+        },
+        "type" : "array"
+      },
+      "EnergyPlanDiscounts" : {
+        "description" : "Optional list of discounts available for the contract",
+        "items" : {
+          "properties" : {
+            "displayName" : {
+              "description" : "The display name of the discount",
+              "type" : "string"
+            },
+            "description" : {
+              "description" : "The description of the discount",
+              "type" : "string"
+            },
+            "type" : {
+              "description" : "The type of the discount",
+              "enum" : [ "CONDITIONAL", "GUARANTEED" ],
+              "type" : "string"
+            },
+            "category" : {
+              "description" : "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
+              "enum" : [ "PAY_ON_TIME", "DIRECT_DEBIT", "GUARANTEED_DISCOUNT", "OTHER" ],
+              "type" : "string"
+            },
+            "endDate" : {
+              "description" : "Optional end date for the discount after which the discount is no longer available",
+              "type" : "string",
+              "x-cds-type" : "DateString"
+            },
+            "methodUType" : {
+              "description" : "The method of calculation of the discount",
+              "enum" : [ "percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold" ],
+              "type" : "string"
+            },
+            "percentOfBill" : {
+              "description" : "Required if methodUType is percentOfBill",
+              "properties" : {
+                "rate" : {
+                  "description" : "The rate of the discount applied to the bill amount",
+                  "type" : "string",
+                  "x-cds-type" : "RateString"
+                }
+              },
+              "required" : [ "rate" ],
+              "type" : "object"
+            },
+            "percentOfUse" : {
+              "description" : "Required if methodUType is percentOfUse",
+              "properties" : {
+                "rate" : {
+                  "description" : "The rate of the discount applied to the usageamount",
+                  "type" : "string",
+                  "x-cds-type" : "RateString"
+                }
+              },
+              "required" : [ "rate" ],
+              "type" : "object"
+            },
+            "fixedAmount" : {
+              "description" : "Required if methodUType is fixedAmount",
+              "properties" : {
+                "amount" : {
+                  "description" : "The amount of the discount",
+                  "type" : "string",
+                  "x-cds-type" : "AmountString"
+                }
+              },
+              "required" : [ "amount" ],
+              "type" : "object"
+            },
+            "percentOverThreshold" : {
+              "description" : "Required if methodUType is percentOverThreshold",
+              "properties" : {
+                "rate" : {
+                  "description" : "The rate of the discount over the usage amount",
+                  "type" : "string",
+                  "x-cds-type" : "RateString"
+                },
+                "usageAmount" : {
+                  "description" : "The usage amount threshold above which the discount applies",
+                  "type" : "string",
+                  "x-cds-type" : "AmountString"
+                }
+              },
+              "required" : [ "rate", "usageAmount" ],
+              "type" : "object"
+            }
+          },
+          "required" : [ "displayName", "methodUType", "type" ],
+          "type" : "object"
+        },
+        "type" : "array"
+      },
+      "EnergyPlanGreenPowerCharges" : {
+        "description" : "Optional list of charges applicable to green power",
+        "items" : {
+          "properties" : {
+            "displayName" : {
+              "description" : "The display name of the charge",
+              "type" : "string"
+            },
+            "description" : {
+              "description" : "The description of the charge",
+              "type" : "string"
+            },
+            "scheme" : {
+              "description" : "The applicable green power scheme",
+              "enum" : [ "GREENPOWER", "OTHER" ],
+              "type" : "string"
+            },
+            "type" : {
+              "description" : "The type of charge",
+              "enum" : [ "FIXED_PER_DAY", "FIXED_PER_WEEK", "FIXED_PER_MONTH", "FIXED_PER_UNIT", "PERCENT_OF_USE", "PERCENT_OF_BILL" ],
+              "type" : "string"
+            },
+            "tiers" : {
+              "description" : "Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power",
+              "items" : {
+                "properties" : {
+                  "percentGreen" : {
+                    "description" : "The upper percentage of green power used applicable for this tier",
+                    "type" : "string",
+                    "x-cds-type" : "RateString"
+                  },
+                  "rate" : {
+                    "description" : "The rate of the charge if the type implies the application of a rate",
+                    "type" : "string",
+                    "x-cds-type" : "RateString"
+                  },
+                  "amount" : {
+                    "description" : "The amount of the charge if the type implies the application of a fixed amount",
+                    "type" : "string",
+                    "x-cds-type" : "AmountString"
+                  }
+                },
+                "required" : [ "percentGreen" ],
+                "type" : "object",
+                "x-conditional" : [ "rate", "amount" ]
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "displayName", "scheme", "tiers", "type" ],
+          "type" : "object"
+        },
+        "type" : "array"
+      },
+      "EnergyPlanEligibility" : {
+        "description" : "Eligibility restrictions or requirements",
+        "items" : {
+          "properties" : {
+            "type" : {
+              "description" : "The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)",
+              "enum" : [ "EXISTING_CUST", "EXISTING_POOL", "EXISTING_SOLAR", "EXISTING_BATTERY", "EXISTING_SMART_METER", "EXISTING_BASIC_METER", "SENIOR_CARD", "SMALL_BUSINESS", "NO_SOLAR_FIT", "NEW_CUSTOMER", "ONLINE_ONLY", "REQ_EQUIP_SUPPLIER", "THIRD_PARTY_ONLY", "SPORT_CLUB_MEMBER", "ORG_MEMBER", "SPECIFIC_LOCATION", "MINIMUM_USAGE", "LOYALTY_MEMBER", "GROUP_BUY_MEMBER", "CONTINGENT_PLAN", "OTHER" ],
+              "type" : "string"
+            },
+            "information" : {
+              "description" : "Information of the eligibility restriction specific to the type of the restriction",
+              "type" : "string"
+            },
+            "description" : {
+              "description" : "A description of the eligibility restriction",
+              "type" : "string"
+            }
+          },
+          "required" : [ "information", "type" ],
+          "type" : "object"
+        },
+        "type" : "array"
+      },
+      "EnergyPlanFees" : {
+        "description" : "An array of fees applicable to the plan",
+        "items" : {
+          "properties" : {
+            "type" : {
+              "description" : "The type of the fee",
+              "enum" : [ "EXIT", "ESTABLISHMENT", "LATE_PAYMENT", "DISCONNECTION", "DISCONNECT_MOVE_OUT", "DISCONNECT_NON_PAY", "RECONNECTION", "CONNECTION", "PAYMENT_PROCESSING", "CC_PROCESSING", "CHEQUE_DISHONOUR", "DD_DISHONOUR", "MEMBERSHIP", "CONTRIBUTION", "PAPER_BILL", "OTHER" ],
+              "type" : "string"
+            },
+            "term" : {
+              "description" : "The term of the fee",
+              "enum" : [ "FIXED", "1_YEAR", "2_YEAR", "3_YEAR", "4_YEAR", "5_YEAR", "PERCENT_OF_BILL", "ANNUAL", "DAILY", "MONTHLY", "BIANNUAL" ],
+              "type" : "string"
+            },
+            "amount" : {
+              "description" : "The fee amount. Required if term is not PERCENT_OF_BILL",
+              "type" : "string",
+              "x-cds-type" : "AmountString"
+            },
+            "rate" : {
+              "description" : "The fee rate. Required if term is PERCENT_OF_BILL",
+              "type" : "string",
+              "x-cds-type" : "RateString"
+            },
+            "description" : {
+              "description" : "A description of the fee",
+              "type" : "string"
+            }
+          },
+          "required" : [ "term", "type" ],
+          "type" : "object",
+          "x-conditional" : [ "amount", "rate" ]
+        },
+        "type" : "array"
+      },
+      "EnergyPlanSolarFeedInTariff" : {
+        "description" : "Array of feed in tariffs for solar power",
+        "items" : {
+          "properties" : {
+            "displayName" : {
+              "description" : "The name of the tariff",
+              "type" : "string"
+            },
+            "description" : {
+              "description" : "A description of the tariff",
+              "type" : "string"
+            },
+            "scheme" : {
+              "description" : "The applicable scheme",
+              "enum" : [ "PREMIUM", "OTHER" ],
+              "type" : "string"
+            },
+            "payerType" : {
+              "description" : "The type of the payer",
+              "enum" : [ "GOVERNMENT", "RETAILER" ],
+              "type" : "string"
+            },
+            "tariffUType" : {
+              "description" : "The type of the payer",
+              "enum" : [ "GOVERNMENT", "RETAILER" ],
+              "type" : "string"
+            },
+            "singleTariff" : {
+              "description" : "Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff",
+              "properties" : {
+                "amount" : {
+                  "description" : "The tariff amount",
+                  "type" : "string",
+                  "x-cds-type" : "AmountString"
+                }
+              },
+              "required" : [ "amount" ],
+              "type" : "object"
+            },
+            "timeVaryingTariffs" : {
+              "description" : "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
+              "properties" : {
+                "type" : {
+                  "description" : "The type of the charging time period. If absent applies to all periods",
+                  "enum" : [ "PEAK", "OFF_PEAK", "SHOULDER" ],
+                  "type" : "string"
+                },
+                "amount" : {
+                  "description" : "The tariff amount",
+                  "type" : "string",
+                  "x-cds-type" : "AmountString"
+                },
+                "timeVariations" : {
+                  "description" : "Array of time periods for which this tariff is applicable",
+                  "items" : {
+                    "properties" : {
+                      "days" : {
+                        "properties" : {
+                          "weekdays" : {
+                            "description" : "Indicates whether the tariff is applicable Monday to Friday",
+                            "type" : "boolean"
+                          },
+                          "weekend" : {
+                            "description" : "Indicates whether the tariff is applicable Saturday and Sunday",
+                            "type" : "boolean"
+                          }
+                        },
+                        "required" : [ "weekdays", "weekend" ],
+                        "type" : "object"
+                      },
+                      "startTime" : {
+                        "description" : "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)",
+                        "type" : "string",
+                        "x-cds-type" : "TimeString"
+                      },
+                      "endTime" : {
+                        "description" : "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)",
+                        "type" : "string",
+                        "x-cds-type" : "TimeString"
+                      }
+                    },
+                    "type" : "object"
+                  },
+                  "type" : "array"
+                }
+              },
+              "required" : [ "amount", "timeVariations" ],
+              "type" : "object"
+            }
+          },
+          "required" : [ "displayName", "payerType", "scheme", "tariffUType" ],
+          "type" : "object",
+          "x-conditional" : [ "singleTariff", "timeVaryingTariffs" ]
+        },
+        "type" : "array"
+      },
+      "EnergyPlanTariffPeriod" : {
+        "description" : "Array of tariff periods",
+        "items" : {
+          "properties" : {
+            "displayName" : {
+              "description" : "The name of the tariff period",
+              "type" : "string"
+            },
+            "startDate" : {
+              "description" : "The start date of the tariff period in a calendar year.  Formatted in mm-dd format",
+              "type" : "string"
+            },
+            "endDate" : {
+              "description" : "The end date of the tariff period in a calendar year.  Formatted in mm-dd format",
+              "type" : "string"
+            },
+            "dailySupplyCharges" : {
+              "description" : "The amount of access charge for the tariff period, in cents per day exclusive of GST.",
+              "type" : "string",
+              "x-cds-type" : "AmountString"
+            },
+            "rateBlockUType" : {
+              "description" : "Specifies the type of rate applicable to this tariff period",
+              "enum" : [ "singleRate", "timeOfUseRates", "demandCharges" ],
+              "type" : "string"
+            },
+            "singleRate" : {
+              "description" : "Object representing a single rate.  Required if rateBlockUType is singleRate",
+              "properties" : {
+                "displayName" : {
+                  "description" : "Display name of the rate",
+                  "type" : "string"
+                },
+                "description" : {
+                  "description" : "Description of the rate",
+                  "type" : "string"
+                },
+                "generalUnitPrice" : {
+                  "description" : "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’",
+                  "type" : "string",
+                  "x-cds-type" : "AmountString"
+                },
+                "rates" : {
+                  "description" : "Array of controlled load rates in order of usage volume",
+                  "items" : {
+                    "properties" : {
+                      "unitPrice" : {
+                        "description" : "Unit price of usage per kWh (exclusive of GST)",
+                        "type" : "string",
+                        "x-cds-type" : "AmountString"
+                      },
+                      "volume" : {
+                        "description" : "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                        "type" : "number"
+                      }
+                    },
+                    "required" : [ "unitPrice" ],
+                    "type" : "object"
+                  },
+                  "type" : "array"
+                },
+                "period" : {
+                  "description" : "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                  "type" : "string",
+                  "x-cds-type" : "ExternalRef"
+                }
+              },
+              "required" : [ "displayName", "rates" ],
+              "type" : "object",
+              "x-conditional" : [ "generalUnitPrice" ]
+            },
+            "timeOfUseRates" : {
+              "description" : "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
+              "items" : {
+                "properties" : {
+                  "displayName" : {
+                    "description" : "Display name of the rate",
+                    "type" : "string"
+                  },
+                  "description" : {
+                    "description" : "Description of the rate",
+                    "type" : "string"
+                  },
+                  "rates" : {
+                    "description" : "Array of controlled load rates in order of usage volume",
+                    "items" : {
+                      "properties" : {
+                        "unitPrice" : {
+                          "description" : "Unit price of usage per kWh (exclusive of GST)",
+                          "type" : "string",
+                          "x-cds-type" : "AmountString"
+                        },
+                        "volume" : {
+                          "description" : "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                          "type" : "number"
+                        }
+                      },
+                      "required" : [ "unitPrice" ],
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "timeOfUse" : {
+                    "description" : "Array of times of use",
+                    "items" : {
+                      "properties" : {
+                        "days" : {
+                          "description" : "The days that the rate applies to",
+                          "items" : {
+                            "enum" : [ "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "BUSINESS_DAYS" ],
+                            "type" : "string"
+                          },
+                          "type" : "array"
+                        },
+                        "startTime" : {
+                          "description" : "Start of the period in HHMM format using 24 hour clock format",
+                          "type" : "string"
+                        },
+                        "endTime" : {
+                          "description" : "End of the period in HHMM format using 24 hour clock format",
+                          "type" : "string"
+                        }
+                      },
+                      "required" : [ "days", "endTime", "startTime" ],
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "type" : {
+                    "description" : "The type of usage that the rate applies to",
+                    "enum" : [ "PEAK", "OFF_PEAK", "SHOULDER", "SHOULDER1", "SHOULDER2" ],
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "displayName", "rates", "timeOfUse", "type" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "demandCharges" : {
+              "description" : "Array of demand charges.  Required if rateBlockUType is demandCharges",
+              "items" : {
+                "properties" : {
+                  "displayName" : {
+                    "description" : "Display name of the charge",
+                    "type" : "string"
+                  },
+                  "description" : {
+                    "description" : "Description of the charge",
+                    "type" : "string"
+                  },
+                  "amount" : {
+                    "description" : "The charge amount per kWh exclusive of GST",
+                    "type" : "string",
+                    "x-cds-type" : "AmountString"
+                  },
+                  "startTime" : {
+                    "description" : "Start of the period in HHMM format using 24 hour clock format",
+                    "type" : "string"
+                  },
+                  "endTime" : {
+                    "description" : "End of the period in HHMM format using 24 hour clock format",
+                    "type" : "string"
+                  },
+                  "days" : {
+                    "description" : "Object containing demand tariff by day of week",
+                    "properties" : {
+                      "weekdays" : {
+                        "description" : "Indicates the demand tariff is applicable on weekdays",
+                        "type" : "boolean"
+                      },
+                      "saturday" : {
+                        "description" : "Indicates the demand tariff is applicable on Saturdays",
+                        "type" : "boolean"
+                      },
+                      "sunday" : {
+                        "description" : "Indicates the demand tariff is applicable on Sundays",
+                        "type" : "boolean"
+                      }
+                    },
+                    "required" : [ "saturday", "sunday", "weekdays" ],
+                    "type" : "object"
+                  },
+                  "minDemand" : {
+                    "description" : "Minimum demand for this demand tariff in kW.  If absent then 0 is assumed",
+                    "type" : "string",
+                    "x-cds-type" : "AmountString"
+                  },
+                  "maxDemand" : {
+                    "description" : "Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field",
+                    "type" : "string",
+                    "x-cds-type" : "AmountString"
+                  },
+                  "measurementPeriod" : {
+                    "description" : "Application period for the demand tariff",
+                    "enum" : [ "DAY", "MONTH", "TARIFF_PERIOD" ],
+                    "type" : "string"
+                  },
+                  "chargePeriod" : {
+                    "description" : "Charge period for the demand tariff",
+                    "enum" : [ "DAY", "MONTH", "TARIFF_PERIOD" ],
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "amount", "chargePeriod", "displayName", "endTime", "measurementPeriod", "startTime" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "dailySupplyCharges", "displayName", "endDate", "rateBlockUType", "startDate" ],
+          "type" : "object",
+          "x-conditional" : [ "singleRate", "timeOfUseRates", "demandCharges" ]
+        },
+        "type" : "array"
+      },
       "derRecord" : {
         "properties" : {
           "servicePointId" : {
@@ -2866,7 +3646,7 @@
         "type" : "object",
         "x-conditional" : [ "protectionMode" ]
       },
-      "links" : {
+      "Links" : {
         "properties" : {
           "self" : {
             "description" : "Fully qualified link that generated the current response document",
@@ -2877,10 +3657,10 @@
         "required" : [ "self" ],
         "type" : "object"
       },
-      "meta" : {
+      "Meta" : {
         "type" : "object"
       },
-      "linksPaginated" : {
+      "LinksPaginated" : {
         "properties" : {
           "self" : {
             "description" : "Fully qualified link that generated the current response document",
@@ -2912,7 +3692,7 @@
         "type" : "object",
         "x-conditional" : [ "first", "prev", "next", "last" ]
       },
-      "metaPaginated" : {
+      "MetaPaginated" : {
         "properties" : {
           "totalRecords" : {
             "description" : "The total number of records in the full set. See [pagination](#pagination).",
@@ -2928,1304 +3708,7 @@
         "required" : [ "totalPages", "totalRecords" ],
         "type" : "object"
       },
-      "inline_response_200_data_additionalInformation" : {
-        "description" : "Object that contains links to additional information on specific topics",
-        "properties" : {
-          "overviewUri" : {
-            "description" : "A link to a general overview of the plan",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "termsUri" : {
-            "description" : "A link to terms and conditions for the plan",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "eligibilityUri" : {
-            "description" : "A link to detail on eligibility criteria for the plan",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "pricingUri" : {
-            "description" : "A link to detail on pricing for the plan",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "bundleUri" : {
-            "description" : "A link to detail on bundles that this plan can be a part of",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          }
-        },
-        "type" : "object"
-      },
-      "inline_response_200_data_geography_supplyAreas" : {
-        "properties" : {
-          "supplyAreaId" : {
-            "description" : "ID of the supply area",
-            "type" : "string",
-            "x-cds-type" : "ASCIIString"
-          },
-          "displayName" : {
-            "description" : "Display name of the supply area",
-            "type" : "string"
-          },
-          "distributor" : {
-            "description" : "The name of the distributor for the supply area",
-            "type" : "string"
-          },
-          "state" : {
-            "description" : "The Australian state that the plan is applicable to.  Valid values are defined by Australia Post PAF code file State Type Abbreviation. For example: NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
-            "type" : "string"
-          }
-        },
-        "type" : "object"
-      },
-      "inline_response_200_data_geography" : {
-        "description" : "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
-        "properties" : {
-          "excludedPostcodes" : {
-            "description" : "Array of valid Australian post codes that are specifically excluded from the plan",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "includedPostcodes" : {
-            "description" : "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "supplyAreas" : {
-            "description" : "Array of supply areas for which this plan is available",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_data_geography_supplyAreas"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "supplyAreaId" ],
-        "type" : "object"
-      },
-      "inline_response_200_data_plans" : {
-        "properties" : {
-          "planId" : {
-            "description" : "The ID of the specific plan",
-            "type" : "string",
-            "x-cds-type" : "ASCIIString"
-          },
-          "effectiveFrom" : {
-            "description" : "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
-            "type" : "string",
-            "x-cds-type" : "DateTimeString"
-          },
-          "effectiveTo" : {
-            "description" : "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
-            "type" : "string",
-            "x-cds-type" : "DateTimeString"
-          },
-          "lastUpdated" : {
-            "description" : "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
-            "type" : "string",
-            "x-cds-type" : "DateTimeString"
-          },
-          "displayName" : {
-            "description" : "The display name of the plan",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "A description of the plan",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of the plan",
-            "enum" : [ "STANDING", "MARKET", "REGULATED" ],
-            "type" : "string"
-          },
-          "fuelType" : {
-            "description" : "The fuel types covered by the plan",
-            "enum" : [ "ELECTRICITY", "GAS", "DUAL" ],
-            "type" : "string"
-          },
-          "brand" : {
-            "description" : "The ID of the brand under which this plan is offered",
-            "type" : "string",
-            "x-cds-type" : "ASCIIString"
-          },
-          "brandName" : {
-            "description" : "The display name of the brand under which this plan is offered",
-            "type" : "string"
-          },
-          "thirdPartyAgentId" : {
-            "description" : "The ID of the Third Party through which this plan may be originated",
-            "type" : "string"
-          },
-          "thirdPartyAgentName" : {
-            "description" : "The display name of the Third Party through which this plan may be originated",
-            "type" : "string"
-          },
-          "applicationUri" : {
-            "description" : "A link to an application web page where this plan can be applied for",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "additionalInformation" : {
-            "$ref" : "#/components/schemas/inline_response_200_data_additionalInformation"
-          },
-          "customerType" : {
-            "description" : "The type of customer that the plan is offered to.  If absent then the plan is available to all customers",
-            "enum" : [ "RESIDENTIAL", "BUSINESS" ],
-            "type" : "string"
-          },
-          "geography" : {
-            "$ref" : "#/components/schemas/inline_response_200_data_geography"
-          }
-        },
-        "required" : [ "brand", "brandName", "fuelType", "lastUpdated", "planId", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_data" : {
-        "properties" : {
-          "plans" : {
-            "description" : "Array of plans",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_data_plans"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "plans" ],
-        "type" : "object"
-      },
-      "inline_response_200" : {
-        "properties" : {
-          "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_data"
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
-          },
-          "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
-          }
-        },
-        "required" : [ "data", "links", "meta" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_meteringCharges" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the charge",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the charge",
-            "type" : "string"
-          },
-          "minimumValue" : {
-            "description" : "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "maximumValue" : {
-            "description" : "The upper limit of the charge if the charge could occur in a range",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "period" : {
-            "description" : "The charges that occur on a schedule indicates the frequency. Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
-            "type" : "string",
-            "x-cds-type" : "ExternalRef"
-          }
-        },
-        "required" : [ "displayName", "minimumValue" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_controlledLoad_rates" : {
-        "properties" : {
-          "unitPrice" : {
-            "description" : "Unit price of usage per kWh (exclusive of GST)",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "volume" : {
-            "description" : "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
-            "type" : "number"
-          }
-        },
-        "required" : [ "unitPrice" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_controlledLoad" : {
-        "description" : "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-        "properties" : {
-          "displayName" : {
-            "description" : "A display name for the controlled load tier",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "A description of the controlled load tier",
-            "type" : "string"
-          },
-          "dailyCharge" : {
-            "description" : "The daily supply charge (exclusive of GST) for this controlled load tier",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "period" : {
-            "description" : "The period for which the controlled load rate applies. Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
-            "type" : "string",
-            "x-cds-type" : "ExternalRef"
-          },
-          "rates" : {
-            "description" : "Array of controlled load rates in order of usage volume",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad_rates"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "dailyCharge", "displayName", "period", "rates" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_incentives" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the incentive",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the incentive",
-            "type" : "string"
-          }
-        },
-        "required" : [ "description", "displayName" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_percentOfBill" : {
-        "description" : "Required if methodUType is percentOfBill",
-        "properties" : {
-          "rate" : {
-            "description" : "The rate of the discount applied to the bill amount (some types of charges may be excluded from this discount based on plan terms)",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          }
-        },
-        "required" : [ "rate" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_percentOfUse" : {
-        "description" : "Required if methodUType is percentOfUse",
-        "properties" : {
-          "rate" : {
-            "description" : "The rate of the discount applied to the usageamount",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          }
-        },
-        "required" : [ "rate" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_fixedAmount" : {
-        "description" : "Required if methodUType is fixedAmount",
-        "properties" : {
-          "amount" : {
-            "description" : "The amount of the discount",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          }
-        },
-        "required" : [ "amount" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_percentOverThreshold" : {
-        "description" : "Required if methodUType is percentOverThreshold",
-        "properties" : {
-          "rate" : {
-            "description" : "The rate of the discount over the usage amount",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "usageAmount" : {
-            "description" : "The usage amount threshold above which the discount applies",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          }
-        },
-        "required" : [ "rate", "usageAmount" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_discounts" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the discount",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the discount",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of the discount",
-            "enum" : [ "CONDITIONAL", "GUARANTEED" ],
-            "type" : "string"
-          },
-          "category" : {
-            "description" : "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
-            "enum" : [ "PAY_ON_TIME", "DIRECT_DEBIT", "GUARANTEED_DISCOUNT", "OTHER" ],
-            "type" : "string"
-          },
-          "methodUType" : {
-            "description" : "The method of calculation of the discount",
-            "enum" : [ "percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold" ],
-            "type" : "string"
-          },
-          "percentOfBill" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOfBill"
-          },
-          "percentOfUse" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOfUse"
-          },
-          "fixedAmount" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_fixedAmount"
-          },
-          "percentOverThreshold" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOverThreshold"
-          }
-        },
-        "required" : [ "displayName", "methodUType", "type" ],
-        "type" : "object",
-        "x-conditional" : [ "category", "percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold" ]
-      },
-      "inline_response_200_1_data_gasContract_tiers" : {
-        "properties" : {
-          "percentGreen" : {
-            "description" : "The upper percentage of green power used applicable for this tier",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "rate" : {
-            "description" : "The rate of the charge if the type implies the application of a rate",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "amount" : {
-            "description" : "The amount of the charge if the type implies the application of a fixed amount",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          }
-        },
-        "required" : [ "percentGreen" ],
-        "type" : "object",
-        "x-conditional" : [ "rate", "amount" ]
-      },
-      "inline_response_200_1_data_gasContract_greenPowerCharges" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the charge",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the charge",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of charge",
-            "enum" : [ "FIXED_PER_DAY", "FIXED_PER_WEEK", "FIXED_PER_MONTH", "FIXED_PER_UNIT", "PERCENT_OF_USE", "PERCENT_OF_BILL" ],
-            "type" : "string"
-          },
-          "tiers" : {
-            "description" : "Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_tiers"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "tiers", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_eligibility" : {
-        "properties" : {
-          "type" : {
-            "description" : "The type of the eligibility restriction",
-            "enum" : [ "EXISTING_CUST", "EXISTING_POOL", "EXISTING_SOLAR", "EXISTING_BATTERY", "EXISTING_SMART_METER", "EXISTING_BASIC_METER", "SENIOR_CARD", "SMALL_BUSINESS", "NO_SOLAR_FIT", "NEW_CUSTOMER", "ONLINE_ONLY", "REQ_EQUIP_SUPPLIER", "THIRD_PARTY_ONLY", "SPORT_CLUB_MEMBER", "ORG_MEMBER", "SPECIFIC_LOCATION", "MINIMUM_USAGE", "LOYALTY_MEMBER", "GROUP_BUY_MEMBER", "OTHER" ],
-            "type" : "string"
-          },
-          "information" : {
-            "description" : "Information of the eligibility restriction specific to the type of the restriction",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "A description of the eligibility restriction",
-            "type" : "string"
-          }
-        },
-        "required" : [ "information", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_fee" : {
-        "properties" : {
-          "type" : {
-            "description" : "The type of the fee",
-            "enum" : [ "EXIT", "ESTABLISHMENT", "LATE_PAYMENT", "DISCONNECTION", "DISCONNECT_MOVE_OUT", "DISCONNECT_NON_PAY", "RECONNECTION", "CONNECTION", "PAYMENT_PROCESSING", "CC_PROCESSING", "CHEQUE_DISHONOUR", "DD_DISHONOUR", "MEMBERSHIP", "CONTRIBUTION", "PAPER_BILL", "OTHER" ],
-            "type" : "string"
-          },
-          "term" : {
-            "description" : "The term of the fee",
-            "enum" : [ "FIXED", "1_YEAR", "2_YEAR", "3_YEAR", "4_YEAR", "5_YEAR", "PERCENT_OF_BILL", "ANNUAL", "DAILY", "WEEKLY", "MONTHLY", "BIANNUAL" ],
-            "type" : "string"
-          },
-          "amount" : {
-            "description" : "The fee amount. Required if term is not PERCENT_OF_BILL",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "rate" : {
-            "description" : "The fee rate. Required if term is PERCENT_OF_BILL",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "description" : {
-            "description" : "A description of the fee",
-            "type" : "string"
-          }
-        },
-        "required" : [ "term", "type" ],
-        "type" : "object",
-        "x-conditional" : [ "rate", "amount" ]
-      },
-      "inline_response_200_1_data_gasContract_solarFeedInTariff" : {
-        "properties" : {
-          "type" : {
-            "description" : "The type of the tariff",
-            "enum" : [ "GOVERNMENT", "RETAILER" ],
-            "type" : "string"
-          },
-          "amount" : {
-            "description" : "The tariff amount per kWh",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "description" : {
-            "description" : "A description of the tariff",
-            "type" : "string"
-          }
-        },
-        "required" : [ "type" ],
-        "type" : "object",
-        "x-conditional" : [ "amount" ]
-      },
-      "inline_response_200_1_data_gasContract_singleRate" : {
-        "description" : "Object representing a single rate.  Required if rateBlockUType is singleRate",
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the rate",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the rate",
-            "type" : "string"
-          },
-          "generalUnitPrice" : {
-            "description" : "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "period" : {
-            "description" : "Usage period for which the block rate applies. Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
-            "type" : "string",
-            "x-cds-type" : "ExternalRef"
-          },
-          "rates" : {
-            "description" : "Array of controlled load rates in order of usage volume",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad_rates"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "rates" ],
-        "type" : "object",
-        "x-conditional" : [ "generalUnitPrice" ]
-      },
-      "inline_response_200_1_data_gasContract_timeOfUse" : {
-        "properties" : {
-          "days" : {
-            "description" : "The days that the rate applies to",
-            "items" : {
-              "enum" : [ "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "BUSINESS_DAYS" ],
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "startTime" : {
-            "description" : "Start of the period in HHMM format using 24 hour clock format",
-            "type" : "string"
-          },
-          "endTime" : {
-            "description" : "End of the period in HHMM format using 24 hour clock format",
-            "type" : "string"
-          }
-        },
-        "required" : [ "days", "endTime", "startTime" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_demandCharges" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the charge",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the charge",
-            "type" : "string"
-          },
-          "amount" : {
-            "description" : "The charge amount per kWh exclusive of GST",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "startTime" : {
-            "description" : "Start of the period in HHMM format using 24 hour clock format",
-            "type" : "string"
-          },
-          "endTime" : {
-            "description" : "End of the period in HHMM format using 24 hour clock format",
-            "type" : "string"
-          }
-        },
-        "required" : [ "displayName", "endTime", "startTime" ],
-        "type" : "object",
-        "x-conditional" : [ "amount" ]
-      },
-      "inline_response_200_1_data_gasContract_timeOfUseRates" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the rate",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the rate",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of usage that the rate applies to",
-            "enum" : [ "PEAK", "OFF_PEAK", "OFF_PEAK_DC", "SHOULDER", "SHOULDER1", "SHOULDER2" ],
-            "type" : "string"
-          },
-          "rates" : {
-            "description" : "Array of controlled load rates in order of usage volume",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad_rates"
-            },
-            "type" : "array"
-          },
-          "timeOfUse" : {
-            "description" : "Array of times of use",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_timeOfUse"
-            },
-            "type" : "array"
-          },
-          "demandCharges" : {
-            "description" : "Array of demand charges",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_demandCharges"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "rates", "timeOfUse", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_gasContract_tariffPeriod" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The name of the tariff period",
-            "type" : "string"
-          },
-          "startDate" : {
-            "description" : "The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format",
-            "type" : "string"
-          },
-          "endDate" : {
-            "description" : "The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format",
-            "type" : "string"
-          },
-          "dailySupplyCharges" : {
-            "description" : "The amount of access charge for the tariff period, in cents per day exclusive of GST.",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "rateBlockUType" : {
-            "description" : "Specifies the type of rate applicable to this tariff period",
-            "enum" : [ "singleRate", "timeOfUseRates" ],
-            "type" : "string"
-          },
-          "singleRate" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_singleRate"
-          },
-          "timeOfUseRates" : {
-            "description" : "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_timeOfUseRates"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "dailySupplyCharges", "displayName", "rateBlockUType" ],
-        "type" : "object",
-        "x-conditional" : [ "startDate", "endDate", "singleRate", "timeOfUseRates" ]
-      },
-      "inline_response_200_1_data_gasContract" : {
-        "description" : "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-        "properties" : {
-          "additionalFeeInformation" : {
-            "description" : "Free text field containing additional information of the fees for this contract",
-            "type" : "string"
-          },
-          "pricingModel" : {
-            "description" : "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
-            "enum" : [ "SINGLE_RATE", "SINGLE_RATE_CONT_LOAD", "TIME_OF_USE", "TIME_OF_USE_CONT_LOAD", "FLEXIBLE", "FLEXIBLE_CONT_LOAD", "QUOTA" ],
-            "type" : "string"
-          },
-          "termType" : {
-            "description" : "The term for the contract.  If absent assumes no specified term",
-            "enum" : [ "1_YEAR", "2_YEAR", "3_YEAR", "4_YEAR", "5_YEAR", "ONGOING", "OTHER" ],
-            "type" : "string"
-          },
-          "timeZone" : {
-            "description" : "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
-            "enum" : [ "LOCAL", "AEST" ],
-            "type" : "string"
-          },
-          "benefitPeriod" : {
-            "description" : "Description of the benefit period.  Should only be present if termType has the value ONGOING",
-            "type" : "string"
-          },
-          "terms" : {
-            "description" : "Free text description of the terms for the contract",
-            "type" : "string"
-          },
-          "isFixed" : {
-            "description" : "Flag indicating whether prices are fixed or variable",
-            "type" : "boolean"
-          },
-          "variation" : {
-            "description" : "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true",
-            "type" : "string"
-          },
-          "onExpiryDescription" : {
-            "description" : "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period",
-            "type" : "string"
-          },
-          "meterTypes" : {
-            "description" : "An array of the meter types that this contract is available for",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "coolingOffDays" : {
-            "description" : "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET ",
-            "type" : "string",
-            "x-cds-type" : "PositiveInteger"
-          },
-          "billFrequency" : {
-            "description" : "An array of the available billing schedules for this contract. Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "controlledLoad" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad"
-          },
-          "paymentOption" : {
-            "description" : "Payment options for this contract",
-            "items" : {
-              "enum" : [ "PAPER_BILL", "CREDIT_CARD", "DIRECT_DEBIT", "BPAY" ],
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "incentives" : {
-            "description" : "Optional list of incentives available for the contract",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_incentives"
-            },
-            "type" : "array"
-          },
-          "discounts" : {
-            "description" : "Optional list of discounts available for the contract",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_discounts"
-            },
-            "type" : "array"
-          },
-          "greenPowerCharges" : {
-            "description" : "Optional list of charges applicable to green power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_greenPowerCharges"
-            },
-            "type" : "array"
-          },
-          "eligibility" : {
-            "description" : "Eligibility restrictions or requirements",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_eligibility"
-            },
-            "type" : "array"
-          },
-          "fee" : {
-            "description" : "An array of fees applicable to the plan",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_fee"
-            },
-            "type" : "array"
-          },
-          "solarFeedInTariff" : {
-            "description" : "Array of feed in tariffs for solar power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_solarFeedInTariff"
-            },
-            "type" : "array"
-          },
-          "tariffPeriod" : {
-            "description" : "Array of tariff periods",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_tariffPeriod"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "billFrequency", "isFixed", "paymentOption", "pricingModel", "tariffPeriod" ],
-        "type" : "object",
-        "x-conditional" : [ "timeZone", "benefitPeriod", "variation", "coolingOffDays", "controlledLoad" ]
-      },
-      "inline_response_200_1_data_electricityContract_percentOfBill" : {
-        "description" : "Required if methodUType is percentOfBill",
-        "properties" : {
-          "rate" : {
-            "description" : "The rate of the discount applied to the bill amount",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          }
-        },
-        "required" : [ "rate" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_discounts" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the discount",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the discount",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of the discount",
-            "enum" : [ "CONDITIONAL", "GUARANTEED" ],
-            "type" : "string"
-          },
-          "category" : {
-            "description" : "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
-            "enum" : [ "PAY_ON_TIME", "DIRECT_DEBIT", "GUARANTEED_DISCOUNT", "OTHER" ],
-            "type" : "string"
-          },
-          "methodUType" : {
-            "description" : "The method of calculation of the discount",
-            "enum" : [ "percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold" ],
-            "type" : "string"
-          },
-          "percentOfBill" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_percentOfBill"
-          },
-          "percentOfUse" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOfUse"
-          },
-          "fixedAmount" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_fixedAmount"
-          },
-          "percentOverThreshold" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOverThreshold"
-          }
-        },
-        "required" : [ "displayName", "methodUType", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_tiers" : {
-        "properties" : {
-          "percentGreen" : {
-            "description" : "The upper percentage of green power used applicable for this tier",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "rate" : {
-            "description" : "The rate of the charge if the type implies the application of a rate",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "amount" : {
-            "description" : "The amount of the charge if the type implies the application of a fixed amount",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          }
-        },
-        "required" : [ "percentGreen" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_greenPowerCharges" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the charge",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the charge",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of charge",
-            "enum" : [ "FIXED_PER_DAY", "FIXED_PER_WEEK", "FIXED_PER_MONTH", "FIXED_PER_UNIT", "PERCENT_OF_USE", "PERCENT_OF_BILL" ],
-            "type" : "string"
-          },
-          "tiers" : {
-            "description" : "Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_tiers"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "tiers", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_fee" : {
-        "properties" : {
-          "type" : {
-            "description" : "The type of the fee",
-            "enum" : [ "EXIT", "ESTABLISHMENT", "LATE_PAYMENT", "DISCONNECTION", "DISCONNECT_MOVE_OUT", "DISCONNECT_NON_PAY", "RECONNECTION", "CONNECTION", "PAYMENT_PROCESSING", "CC_PROCESSING", "CHEQUE_DISHONOUR", "DD_DISHONOUR", "MEMBERSHIP", "CONTRIBUTION", "PAPER_BILL", "OTHER" ],
-            "type" : "string"
-          },
-          "term" : {
-            "description" : "The term of the fee",
-            "enum" : [ "FIXED", "1_YEAR", "2_YEAR", "3_YEAR", "4_YEAR", "5_YEAR", "PERCENT_OF_BILL", "ANNUAL", "DAILY", "WEEKLY", "MONTHLY", "BIANNUAL" ],
-            "type" : "string"
-          },
-          "amount" : {
-            "description" : "The fee amount. Required if term is not PERCENT_OF_BILL",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "rate" : {
-            "description" : "The fee rate. Required if term is PERCENT_OF_BILL",
-            "type" : "string",
-            "x-cds-type" : "RateString"
-          },
-          "description" : {
-            "description" : "A description of the fee",
-            "type" : "string"
-          }
-        },
-        "required" : [ "term", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_solarFeedInTariff" : {
-        "properties" : {
-          "type" : {
-            "description" : "The type of the tariff",
-            "enum" : [ "GOVERNMENT", "RETAILER" ],
-            "type" : "string"
-          },
-          "amount" : {
-            "description" : "The tariff amount per kWh",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "description" : {
-            "description" : "A description of the tariff",
-            "type" : "string"
-          }
-        },
-        "required" : [ "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_singleRate" : {
-        "description" : "Object representing a single rate.  Required if rateBlockUType is singleRate",
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the rate",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the rate",
-            "type" : "string"
-          },
-          "generalUnitPrice" : {
-            "description" : "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "period" : {
-            "description" : "Usage period for which the block rate applies. Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
-            "type" : "string",
-            "x-cds-type" : "ExternalRef"
-          },
-          "rates" : {
-            "description" : "Array of controlled load rates in order of usage volume",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad_rates"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "rates" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_demandCharges" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the charge",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the charge",
-            "type" : "string"
-          },
-          "amount" : {
-            "description" : "The charge amount per kWh exclusive of GST",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "startTime" : {
-            "description" : "Start of the period in HHMM format using 24 hour clock format",
-            "type" : "string"
-          },
-          "endTime" : {
-            "description" : "End of the period in HHMM format using 24 hour clock format ",
-            "type" : "string"
-          }
-        },
-        "required" : [ "displayName", "endTime", "startTime" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_timeOfUseRates" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the rate",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the rate",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of usage that the rate applies to",
-            "enum" : [ "PEAK", "OFF_PEAK", "OFF_PEAK_DC", "SHOULDER", "SHOULDER1", "SHOULDER2" ],
-            "type" : "string"
-          },
-          "rates" : {
-            "description" : "Array of controlled load rates in order of usage volume",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad_rates"
-            },
-            "type" : "array"
-          },
-          "timeOfUse" : {
-            "description" : "Array of times of use",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_timeOfUse"
-            },
-            "type" : "array"
-          },
-          "demandCharges" : {
-            "description" : "Array of demand charges",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_demandCharges"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "rates", "timeOfUse", "type" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract_tariffPeriod" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The name of the tariff period",
-            "type" : "string"
-          },
-          "startDate" : {
-            "description" : "The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format",
-            "type" : "string"
-          },
-          "endDate" : {
-            "description" : "The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format",
-            "type" : "string"
-          },
-          "dailySupplyCharges" : {
-            "description" : "The amount of access charge for the tariff period, in cents per day exclusive of GST.",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "rateBlockUType" : {
-            "description" : "Specifies the type of rate applicable to this tariff period",
-            "enum" : [ "singleRate", "timeOfUseRates" ],
-            "type" : "string"
-          },
-          "singleRate" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_singleRate"
-          },
-          "timeOfUseRates" : {
-            "description" : "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_timeOfUseRates"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "dailySupplyCharges", "displayName", "rateBlockUType" ],
-        "type" : "object"
-      },
-      "inline_response_200_1_data_electricityContract" : {
-        "description" : "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-        "properties" : {
-          "additionalFeeInformation" : {
-            "description" : "Free text field containing additional information of the fees for this contract",
-            "type" : "string"
-          },
-          "pricingModel" : {
-            "description" : "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
-            "enum" : [ "SINGLE_RATE", "SINGLE_RATE_CONT_LOAD", "TIME_OF_USE", "TIME_OF_USE_CONT_LOAD", "FLEXIBLE", "FLEXIBLE_CONT_LOAD", "QUOTA" ],
-            "type" : "string"
-          },
-          "termType" : {
-            "description" : "The term for the contract.  If absent assumes no specified term",
-            "enum" : [ "1_YEAR", "2_YEAR", "3_YEAR", "4_YEAR", "5_YEAR", "ONGOING", "OTHER" ],
-            "type" : "string"
-          },
-          "timeZone" : {
-            "description" : "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
-            "enum" : [ "LOCAL", "AEST" ],
-            "type" : "string"
-          },
-          "benefitPeriod" : {
-            "description" : "Description of the benefit period.  Should only be present if termType has the value ONGOING",
-            "type" : "string"
-          },
-          "terms" : {
-            "description" : "Free text description of the terms for the contract",
-            "type" : "string"
-          },
-          "isFixed" : {
-            "description" : "Flag indicating whether prices are fixed or variable",
-            "type" : "boolean"
-          },
-          "variation" : {
-            "description" : "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true",
-            "type" : "string"
-          },
-          "onExpiryDescription" : {
-            "description" : "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period",
-            "type" : "string"
-          },
-          "meterTypes" : {
-            "description" : "An array of the meter types that this contract is available for",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "coolingOffDays" : {
-            "description" : "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET ",
-            "type" : "string",
-            "x-cds-type" : "PositiveInteger"
-          },
-          "billFrequency" : {
-            "description" : "An array of the available billing schedules for this contract. Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
-            "items" : {
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "controlledLoad" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad"
-          },
-          "paymentOption" : {
-            "description" : "Payment options for this contract",
-            "items" : {
-              "enum" : [ "PAPER_BILL", "CREDIT_CARD", "DIRECT_DEBIT", "BPAY" ],
-              "type" : "string"
-            },
-            "type" : "array"
-          },
-          "incentives" : {
-            "description" : "Optional list of incentives available for the contract",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_incentives"
-            },
-            "type" : "array"
-          },
-          "discounts" : {
-            "description" : "Optional list of discounts available for the contract",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_discounts"
-            },
-            "type" : "array"
-          },
-          "greenPowerCharges" : {
-            "description" : "Optional list of charges applicable to green power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_greenPowerCharges"
-            },
-            "type" : "array"
-          },
-          "eligibility" : {
-            "description" : "Eligibility restrictions or requirements",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_eligibility"
-            },
-            "type" : "array"
-          },
-          "fee" : {
-            "description" : "An array of fees applicable to the plan",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_fee"
-            },
-            "type" : "array"
-          },
-          "solarFeedInTariff" : {
-            "description" : "Array of feed in tariffs for solar power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_solarFeedInTariff"
-            },
-            "type" : "array"
-          },
-          "tariffPeriod" : {
-            "description" : "Array of tariff periods",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract_tariffPeriod"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "billFrequency", "isFixed", "paymentOption", "pricingModel", "tariffPeriod" ],
-        "type" : "object",
-        "x-conditional" : [ "timeZone", "controlledLoad" ]
-      },
-      "inline_response_200_1_data" : {
-        "properties" : {
-          "planId" : {
-            "description" : "The ID of the specific plan",
-            "type" : "string",
-            "x-cds-type" : "ASCIIString"
-          },
-          "effectiveFrom" : {
-            "description" : "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
-            "type" : "string",
-            "x-cds-type" : "DateTimeString"
-          },
-          "effectiveTo" : {
-            "description" : "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
-            "type" : "string",
-            "x-cds-type" : "DateTimeString"
-          },
-          "lastUpdated" : {
-            "description" : "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
-            "type" : "string",
-            "x-cds-type" : "DateTimeString"
-          },
-          "displayName" : {
-            "description" : "The display name of the plan",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "A description of the plan",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of the plan",
-            "enum" : [ "STANDING", "MARKET", "REGULATED" ],
-            "type" : "string"
-          },
-          "fuelType" : {
-            "description" : "The fuel types covered by the plan",
-            "enum" : [ "ELECTRICITY", "GAS", "DUAL" ],
-            "type" : "string"
-          },
-          "brand" : {
-            "description" : "The ID of the brand under which this plan is offered",
-            "type" : "string",
-            "x-cds-type" : "ASCIIString"
-          },
-          "brandName" : {
-            "description" : "The display name of the brand under which this plan is offered",
-            "type" : "string"
-          },
-          "thirdPartyAgentId" : {
-            "description" : "The ID of the Third Party through which this plan may be originated",
-            "type" : "string"
-          },
-          "thirdPartyAgentName" : {
-            "description" : "The display name of the Third Party through which this plan may be originated",
-            "type" : "string"
-          },
-          "applicationUri" : {
-            "description" : "A link to an application web page where this plan can be applied for",
-            "type" : "string",
-            "x-cds-type" : "URIString"
-          },
-          "additionalInformation" : {
-            "$ref" : "#/components/schemas/inline_response_200_data_additionalInformation"
-          },
-          "customerType" : {
-            "description" : "The type of customer that the plan is offered to.  If absent then the plan is available to all customers",
-            "enum" : [ "RESIDENTIAL", "BUSINESS" ],
-            "type" : "string"
-          },
-          "geography" : {
-            "$ref" : "#/components/schemas/inline_response_200_data_geography"
-          },
-          "meteringCharges" : {
-            "description" : "Charges for metering included in the plan",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_meteringCharges"
-            },
-            "type" : "array"
-          },
-          "gasContract" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract"
-          },
-          "electricityContract" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_electricityContract"
-          }
-        },
-        "required" : [ "brand", "brandName", "fuelType", "lastUpdated", "planId", "type" ],
-        "type" : "object",
-        "x-conditional" : [ "gasContract", "electricityContract" ]
-      },
-      "inline_response_200_1" : {
-        "properties" : {
-          "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data"
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/links"
-          },
-          "meta" : {
-            "$ref" : "#/components/schemas/meta"
-          }
-        },
-        "required" : [ "data", "links", "meta" ],
-        "type" : "object"
-      },
-      "inline_response_200_2_data_consumerProfile" : {
+      "inline_response_200_data_consumerProfile" : {
         "properties" : {
           "classification" : {
             "description" : "A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments",
@@ -4240,7 +3723,7 @@
         },
         "type" : "object"
       },
-      "inline_response_200_2_data_servicePoints" : {
+      "inline_response_200_data_servicePoints" : {
         "properties" : {
           "servicePointId" : {
             "description" : "The ID of the service point for use in the CDR APIs.  Created according to the rules for ID permanence",
@@ -4280,17 +3763,17 @@
             "x-cds-type" : "DateTimeString"
           },
           "consumerProfile" : {
-            "$ref" : "#/components/schemas/inline_response_200_2_data_consumerProfile"
+            "$ref" : "#/components/schemas/inline_response_200_data_consumerProfile"
           }
         },
         "required" : [ "creationDateTime", "jurisdictionCode", "lastUpdateDateTime", "nationalMeteringId", "servicePointClassification", "servicePointId", "servicePointStatus", "validFromDate" ],
         "type" : "object"
       },
-      "inline_response_200_2_data" : {
+      "inline_response_200_data" : {
         "properties" : {
           "servicePoints" : {
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_2_data_servicePoints"
+              "$ref" : "#/components/schemas/inline_response_200_data_servicePoints"
             },
             "type" : "array"
           }
@@ -4298,22 +3781,22 @@
         "required" : [ "servicePoints" ],
         "type" : "object"
       },
-      "inline_response_200_2" : {
+      "inline_response_200" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_2_data"
+            "$ref" : "#/components/schemas/inline_response_200_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_3" : {
+      "inline_response_200_1" : {
         "properties" : {
           "data" : {
             "properties" : {
@@ -4645,16 +4128,16 @@
             "required" : [ "distributionLossFactor", "jurisdictionCode", "lastUpdateDateTime", "meters", "nationalMeteringId", "relatedParticipants", "servicePointClassification", "servicePointId", "servicePointStatus" ]
           },
           "links" : {
-            "$ref" : "#/components/schemas/links"
+            "$ref" : "#/components/schemas/Links"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/meta"
+            "$ref" : "#/components/schemas/Meta"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_4_data_basicRead" : {
+      "inline_response_200_2_data_basicRead" : {
         "description" : "Mandatory if readUType is set to basicRead",
         "properties" : {
           "quality" : {
@@ -4671,7 +4154,7 @@
         "required" : [ "value" ],
         "type" : "object"
       },
-      "inline_response_200_4_data_intervalRead_intervalReads" : {
+      "inline_response_200_2_data_intervalRead_intervalReads" : {
         "properties" : {
           "quality" : {
             "default" : "ACTUAL",
@@ -4687,7 +4170,7 @@
         "required" : [ "value" ],
         "type" : "object"
       },
-      "inline_response_200_4_data_intervalRead" : {
+      "inline_response_200_2_data_intervalRead" : {
         "description" : "Mandatory if readUType is set to intervalRead",
         "properties" : {
           "readIntervalLength" : {
@@ -4702,7 +4185,7 @@
           "intervalReads" : {
             "description" : "Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_4_data_intervalRead_intervalReads"
+              "$ref" : "#/components/schemas/inline_response_200_2_data_intervalRead_intervalReads"
             },
             "type" : "array"
           }
@@ -4710,7 +4193,7 @@
         "required" : [ "aggregateValue", "intervalReads" ],
         "type" : "object"
       },
-      "inline_response_200_4_data_reads" : {
+      "inline_response_200_2_data_reads" : {
         "properties" : {
           "servicePointId" : {
             "description" : "Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements",
@@ -4750,22 +4233,22 @@
             "type" : "string"
           },
           "basicRead" : {
-            "$ref" : "#/components/schemas/inline_response_200_4_data_basicRead"
+            "$ref" : "#/components/schemas/inline_response_200_2_data_basicRead"
           },
           "intervalRead" : {
-            "$ref" : "#/components/schemas/inline_response_200_4_data_intervalRead"
+            "$ref" : "#/components/schemas/inline_response_200_2_data_intervalRead"
           }
         },
         "required" : [ "readStartDate", "readUType", "registerSuffix", "servicePointId" ],
         "type" : "object",
         "x-conditional" : [ "basicRead", "intervalRead" ]
       },
-      "inline_response_200_4_data" : {
+      "inline_response_200_2_data" : {
         "properties" : {
           "reads" : {
             "description" : "Array of meter reads",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_4_data_reads"
+              "$ref" : "#/components/schemas/inline_response_200_2_data_reads"
             },
             "type" : "array"
           }
@@ -4773,37 +4256,37 @@
         "required" : [ "reads" ],
         "type" : "object"
       },
-      "inline_response_200_4" : {
+      "inline_response_200_2" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_4_data"
+            "$ref" : "#/components/schemas/inline_response_200_2_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_5" : {
+      "inline_response_200_3" : {
         "properties" : {
           "data" : {
             "$ref" : "#/components/schemas/derRecord"
           },
           "links" : {
-            "$ref" : "#/components/schemas/links"
+            "$ref" : "#/components/schemas/Links"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/meta"
+            "$ref" : "#/components/schemas/Meta"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_6_data" : {
+      "inline_response_200_4_data" : {
         "properties" : {
           "derRecords" : {
             "description" : "Array of meter reads",
@@ -4816,22 +4299,22 @@
         "required" : [ "derRecords" ],
         "type" : "object"
       },
-      "inline_response_200_6" : {
+      "inline_response_200_4" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_6_data"
+            "$ref" : "#/components/schemas/inline_response_200_4_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_7_data_planOverview" : {
+      "inline_response_200_5_data_planOverview" : {
         "properties" : {
           "displayName" : {
             "description" : "The name of the plan if one exists",
@@ -4851,7 +4334,7 @@
         "required" : [ "startDate" ],
         "type" : "object"
       },
-      "inline_response_200_7_data_accounts" : {
+      "inline_response_200_5_data_accounts" : {
         "properties" : {
           "accountId" : {
             "description" : "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
@@ -4878,18 +4361,18 @@
             "type" : "array"
           },
           "planOverview" : {
-            "$ref" : "#/components/schemas/inline_response_200_7_data_planOverview"
+            "$ref" : "#/components/schemas/inline_response_200_5_data_planOverview"
           }
         },
         "required" : [ "accountId", "creationDate", "planOverview", "servicePointIds" ],
         "type" : "object"
       },
-      "inline_response_200_7_data" : {
+      "inline_response_200_5_data" : {
         "properties" : {
           "accounts" : {
             "description" : "Array of accounts",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_7_data_accounts"
+              "$ref" : "#/components/schemas/inline_response_200_5_data_accounts"
             },
             "type" : "array"
           }
@@ -4897,64 +4380,22 @@
         "required" : [ "accounts" ],
         "type" : "object"
       },
-      "inline_response_200_7" : {
+      "inline_response_200_5" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_7_data"
+            "$ref" : "#/components/schemas/inline_response_200_5_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_8_data_planDetail_gasContract_discounts" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The display name of the discount",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "The description of the discount",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of the discount",
-            "enum" : [ "CONDITIONAL", "GUARANTEED", "OTHER" ],
-            "type" : "string"
-          },
-          "category" : {
-            "description" : "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
-            "enum" : [ "PAY_ON_TIME", "DIRECT_DEBIT", "GUARANTEED_DISCOUNT", "OTHER" ],
-            "type" : "string"
-          },
-          "methodUType" : {
-            "description" : "The method of calculation of the discount",
-            "enum" : [ "percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold" ],
-            "type" : "string"
-          },
-          "percentOfBill" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOfBill"
-          },
-          "percentOfUse" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOfUse"
-          },
-          "fixedAmount" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_fixedAmount"
-          },
-          "percentOverThreshold" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_percentOverThreshold"
-          }
-        },
-        "required" : [ "displayName", "methodUType", "type" ],
-        "type" : "object",
-        "x-conditional" : [ "category", "percentOfBill", "percentOfUse", "fixedAmount", "percentOverThreshold" ]
-      },
-      "inline_response_200_8_data_planDetail_gasContract_demandCharges" : {
+      "inline_response_200_6_data_planDetail_meteringCharges" : {
         "properties" : {
           "displayName" : {
             "description" : "Display name of the charge",
@@ -4964,168 +4405,26 @@
             "description" : "Description of the charge",
             "type" : "string"
           },
-          "amount" : {
-            "description" : "The charge amount per kWh exclusive of GST",
+          "minimumValue" : {
+            "description" : "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },
-          "startTime" : {
-            "description" : "Start of the period in HHMM format using 24 hour clock format",
-            "type" : "string"
+          "maximumValue" : {
+            "description" : "The upper limit of the charge if the charge could occur in a range",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
           },
-          "endTime" : {
-            "description" : "End of the period in HHMM format using 24 hour clock format ",
-            "type" : "string"
+          "period" : {
+            "description" : "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           }
         },
-        "required" : [ "displayName", "endTime", "startTime" ],
-        "type" : "object",
-        "x-conditional" : [ "amount" ]
-      },
-      "inline_response_200_8_data_planDetail_gasContract_timeOfUseRates" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "Display name of the rate",
-            "type" : "string"
-          },
-          "description" : {
-            "description" : "Description of the rate",
-            "type" : "string"
-          },
-          "type" : {
-            "description" : "The type of usage that the rate applies to",
-            "enum" : [ "PEAK", "OFF_PEAK", "OFF_PEAK_DC", "SHOULDER", "SHOULDER1", "SHOULDER2" ],
-            "type" : "string"
-          },
-          "rates" : {
-            "description" : "Array of controlled load rates in order of usage volume",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad_rates"
-            },
-            "type" : "array"
-          },
-          "timeOfUse" : {
-            "description" : "Array of times of use",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_timeOfUse"
-            },
-            "type" : "array"
-          },
-          "demandCharges" : {
-            "description" : "Array of demand charges",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail_gasContract_demandCharges"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "displayName", "rates", "timeOfUse", "type" ],
+        "required" : [ "displayName", "minimumValue" ],
         "type" : "object"
       },
-      "inline_response_200_8_data_planDetail_gasContract_tariffPeriod" : {
-        "properties" : {
-          "displayName" : {
-            "description" : "The name of the tariff period",
-            "type" : "string"
-          },
-          "startDate" : {
-            "description" : "The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format",
-            "type" : "string"
-          },
-          "endDate" : {
-            "description" : "The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format",
-            "type" : "string"
-          },
-          "dailySupplyCharges" : {
-            "description" : "The amount of access charge for the tariff period, in cents per day exclusive of GST.",
-            "type" : "string",
-            "x-cds-type" : "AmountString"
-          },
-          "rateBlockUType" : {
-            "description" : "Specifies the type of rate applicable to this tariff period",
-            "enum" : [ "singleRate", "timeOfUseRates" ],
-            "type" : "string"
-          },
-          "singleRate" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_singleRate"
-          },
-          "timeOfUseRates" : {
-            "description" : "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail_gasContract_timeOfUseRates"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "dailySupplyCharges", "displayName", "rateBlockUType" ],
-        "type" : "object",
-        "x-conditional" : [ "startDate", "endDate", "singleRate", "timeOfUseRates" ]
-      },
-      "inline_response_200_8_data_planDetail_gasContract" : {
-        "description" : "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-        "properties" : {
-          "additionalFeeInformation" : {
-            "description" : "Free text field containing additional information of the fees for this contract",
-            "type" : "string"
-          },
-          "pricingModel" : {
-            "description" : "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
-            "enum" : [ "SINGLE_RATE", "SINGLE_RATE_CONT_LOAD", "TIME_OF_USE", "TIME_OF_USE_CONT_LOAD", "FLEXIBLE", "FLEXIBLE_CONT_LOAD", "QUOTA" ],
-            "type" : "string"
-          },
-          "timeZone" : {
-            "description" : "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
-            "enum" : [ "LOCAL", "AEST" ],
-            "type" : "string"
-          },
-          "isFixed" : {
-            "description" : "Flag indicating whether prices are fixed or variable",
-            "type" : "boolean"
-          },
-          "controlledLoad" : {
-            "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_controlledLoad"
-          },
-          "discounts" : {
-            "description" : "Optional list of discounts available for the contract",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail_gasContract_discounts"
-            },
-            "type" : "array"
-          },
-          "greenPowerCharges" : {
-            "description" : "Optional list of charges applicable to green power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_greenPowerCharges"
-            },
-            "type" : "array"
-          },
-          "fee" : {
-            "description" : "An array of fees applicable to the plan",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_fee"
-            },
-            "type" : "array"
-          },
-          "solarFeedInTariff" : {
-            "description" : "Array of feed in tariffs for solar power",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_gasContract_solarFeedInTariff"
-            },
-            "type" : "array"
-          },
-          "tariffPeriod" : {
-            "description" : "Array of tariff periods",
-            "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail_gasContract_tariffPeriod"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "billFrequency", "isFixed", "paymentOption", "pricingModel", "tariffPeriod" ],
-        "type" : "object",
-        "x-conditional" : [ "timeZone", "controlledLoad" ]
-      },
-      "inline_response_200_8_data_planDetail" : {
+      "inline_response_200_6_data_planDetail" : {
         "description" : "Detail on the plan applicable to this account",
         "properties" : {
           "fuelType" : {
@@ -5136,22 +4435,22 @@
           "meteringCharges" : {
             "description" : "Charges for metering included in the plan",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_1_data_meteringCharges"
+              "$ref" : "#/components/schemas/inline_response_200_6_data_planDetail_meteringCharges"
             },
             "type" : "array"
           },
           "gasContract" : {
-            "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail_gasContract"
+            "$ref" : "#/components/schemas/EnergyPlanContract"
           },
           "electricityContract" : {
-            "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail_gasContract"
+            "$ref" : "#/components/schemas/EnergyPlanContract"
           }
         },
         "required" : [ "fuelType" ],
         "type" : "object",
         "x-conditional" : [ "gasContract", "electricityContract" ]
       },
-      "inline_response_200_8_data_authorisedContacts" : {
+      "inline_response_200_6_data_authorisedContacts" : {
         "properties" : {
           "firstName" : {
             "description" : "For people with single names this field need not be present. The single name should be in the lastName field",
@@ -5180,7 +4479,7 @@
         "required" : [ "lastName" ],
         "type" : "object"
       },
-      "inline_response_200_8_data" : {
+      "inline_response_200_6_data" : {
         "properties" : {
           "accountId" : {
             "description" : "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
@@ -5207,15 +4506,15 @@
             "type" : "array"
           },
           "planOverview" : {
-            "$ref" : "#/components/schemas/inline_response_200_7_data_planOverview"
+            "$ref" : "#/components/schemas/inline_response_200_5_data_planOverview"
           },
           "planDetail" : {
-            "$ref" : "#/components/schemas/inline_response_200_8_data_planDetail"
+            "$ref" : "#/components/schemas/inline_response_200_6_data_planDetail"
           },
           "authorisedContacts" : {
             "description" : "An array of additional contacts that are authorised to act on this account",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_8_data_authorisedContacts"
+              "$ref" : "#/components/schemas/inline_response_200_6_data_authorisedContacts"
             },
             "type" : "array"
           }
@@ -5223,22 +4522,22 @@
         "required" : [ "accountId", "authorisedContacts", "creationDate", "planDetail", "planOverview", "servicePointIds" ],
         "type" : "object"
       },
-      "inline_response_200_8" : {
+      "inline_response_200_6" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_8_data"
+            "$ref" : "#/components/schemas/inline_response_200_6_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/links"
+            "$ref" : "#/components/schemas/Links"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/meta"
+            "$ref" : "#/components/schemas/Meta"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_9_data_cardDebit" : {
+      "inline_response_200_7_data_cardDebit" : {
         "description" : "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
         "properties" : {
           "cardScheme" : {
@@ -5247,7 +4546,7 @@
             "type" : "string"
           },
           "paymentFrequency" : {
-            "description" : "The frequency that payments will occur.  Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
+            "description" : "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
@@ -5260,7 +4559,7 @@
         "required" : [ "calculationType", "cardScheme", "paymentFrequency" ],
         "type" : "object"
       },
-      "inline_response_200_9_data_directDebit" : {
+      "inline_response_200_7_data_directDebit" : {
         "description" : "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
         "properties" : {
           "isTokenised" : {
@@ -5276,7 +4575,7 @@
             "type" : "string"
           },
           "paymentFrequency" : {
-            "description" : "The frequency that payments will occur.  Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
+            "description" : "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
@@ -5290,11 +4589,11 @@
         "type" : "object",
         "x-conditional" : [ "bsb", "accountNumber" ]
       },
-      "inline_response_200_9_data_manualPayment" : {
+      "inline_response_200_7_data_manualPayment" : {
         "description" : "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
         "properties" : {
           "billFrequency" : {
-            "description" : "The frequency with which a bill will be issued.  Formatted according to ISO 8601 Durations (excludes recurrence syntax)",
+            "description" : "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           }
@@ -5302,7 +4601,7 @@
         "required" : [ "billFrequency" ],
         "type" : "object"
       },
-      "inline_response_200_9_data" : {
+      "inline_response_200_7_data" : {
         "properties" : {
           "amount" : {
             "description" : "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
@@ -5315,35 +4614,35 @@
             "type" : "string"
           },
           "cardDebit" : {
-            "$ref" : "#/components/schemas/inline_response_200_9_data_cardDebit"
+            "$ref" : "#/components/schemas/inline_response_200_7_data_cardDebit"
           },
           "directDebit" : {
-            "$ref" : "#/components/schemas/inline_response_200_9_data_directDebit"
+            "$ref" : "#/components/schemas/inline_response_200_7_data_directDebit"
           },
           "manualPayment" : {
-            "$ref" : "#/components/schemas/inline_response_200_9_data_manualPayment"
+            "$ref" : "#/components/schemas/inline_response_200_7_data_manualPayment"
           }
         },
         "required" : [ "paymentScheduleUType" ],
         "type" : "object",
         "x-conditional" : [ "cardDebit", "directDebit", "manualPayment" ]
       },
-      "inline_response_200_9" : {
+      "inline_response_200_7" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_9_data"
+            "$ref" : "#/components/schemas/inline_response_200_7_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/links"
+            "$ref" : "#/components/schemas/Links"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/meta"
+            "$ref" : "#/components/schemas/Meta"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_10_data_concessions" : {
+      "inline_response_200_8_data_concessions" : {
         "properties" : {
           "displayName" : {
             "description" : "The display name of the concession",
@@ -5393,12 +4692,12 @@
         "type" : "object",
         "x-conditional" : [ "dailyDiscount", "monthlyDiscount", "yearlyDiscount", "percentageDiscount" ]
       },
-      "inline_response_200_10_data" : {
+      "inline_response_200_8_data" : {
         "properties" : {
           "concessions" : {
             "description" : "Array may be empty if no concessions exist",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_10_data_concessions"
+              "$ref" : "#/components/schemas/inline_response_200_8_data_concessions"
             },
             "type" : "array"
           }
@@ -5406,22 +4705,22 @@
         "required" : [ "concessions" ],
         "type" : "object"
       },
-      "inline_response_200_10" : {
+      "inline_response_200_8" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_10_data"
+            "$ref" : "#/components/schemas/inline_response_200_8_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/links"
+            "$ref" : "#/components/schemas/Links"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/meta"
+            "$ref" : "#/components/schemas/Meta"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_11_data" : {
+      "inline_response_200_9_data" : {
         "properties" : {
           "balance" : {
             "description" : "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
@@ -5432,22 +4731,22 @@
         "required" : [ "balance" ],
         "type" : "object"
       },
-      "inline_response_200_11" : {
+      "inline_response_200_9" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_11_data"
+            "$ref" : "#/components/schemas/inline_response_200_9_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/links"
+            "$ref" : "#/components/schemas/Links"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/meta"
+            "$ref" : "#/components/schemas/Meta"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_12_data_balances" : {
+      "inline_response_200_10_data_balances" : {
         "properties" : {
           "accountId" : {
             "description" : "The ID of the account",
@@ -5462,12 +4761,12 @@
         "required" : [ "accountId", "balance" ],
         "type" : "object"
       },
-      "inline_response_200_12_data" : {
+      "inline_response_200_10_data" : {
         "properties" : {
           "balances" : {
             "description" : "Array of account balances",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_12_data_balances"
+              "$ref" : "#/components/schemas/inline_response_200_10_data_balances"
             },
             "type" : "array"
           }
@@ -5475,22 +4774,22 @@
         "required" : [ "balances" ],
         "type" : "object"
       },
-      "inline_response_200_12" : {
+      "inline_response_200_10" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_12_data"
+            "$ref" : "#/components/schemas/inline_response_200_10_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_13_data_period" : {
+      "inline_response_200_11_data_period" : {
         "description" : "Object containing the start and end date for the period covered by the invoice",
         "properties" : {
           "startDate" : {
@@ -5507,7 +4806,7 @@
         "required" : [ "endDate", "startDate" ],
         "type" : "object"
       },
-      "inline_response_200_13_data_payOnTimeDiscount" : {
+      "inline_response_200_11_data_payOnTimeDiscount" : {
         "description" : "A discount for on time payment",
         "properties" : {
           "amount" : {
@@ -5524,7 +4823,7 @@
         "required" : [ "amount", "date" ],
         "type" : "object"
       },
-      "inline_response_200_13_data_gas" : {
+      "inline_response_200_11_data_gas" : {
         "description" : "Object contain charges and credits related to gas usage",
         "properties" : {
           "totalUsageCharges" : {
@@ -5546,7 +4845,7 @@
         "required" : [ "totalOnceOffCharges", "totalOnceOffDiscounts", "totalUsageCharges" ],
         "type" : "object"
       },
-      "inline_response_200_13_data_electricity" : {
+      "inline_response_200_11_data_electricity" : {
         "description" : "Object contain charges and credits related to electricity usage",
         "properties" : {
           "totalUsageCharges" : {
@@ -5573,7 +4872,7 @@
         "required" : [ "totalGenerationCredits", "totalOnceOffCharges", "totalOnceOffDiscounts", "totalUsageCharges" ],
         "type" : "object"
       },
-      "inline_response_200_13_data_invoices" : {
+      "inline_response_200_11_data_invoices" : {
         "properties" : {
           "accountId" : {
             "description" : "The ID of the account for which the invoice was issued",
@@ -5594,7 +4893,7 @@
             "x-cds-type" : "DateString"
           },
           "period" : {
-            "$ref" : "#/components/schemas/inline_response_200_13_data_period"
+            "$ref" : "#/components/schemas/inline_response_200_11_data_period"
           },
           "invoiceAmount" : {
             "description" : "The net amount due for this invoice regardless of previous balance",
@@ -5602,7 +4901,7 @@
             "x-cds-type" : "AmountString"
           },
           "payOnTimeDiscount" : {
-            "$ref" : "#/components/schemas/inline_response_200_13_data_payOnTimeDiscount"
+            "$ref" : "#/components/schemas/inline_response_200_11_data_payOnTimeDiscount"
           },
           "balanceAtIssue" : {
             "description" : "The account balance at the time the invoice was issued",
@@ -5617,10 +4916,10 @@
             "type" : "array"
           },
           "gas" : {
-            "$ref" : "#/components/schemas/inline_response_200_13_data_gas"
+            "$ref" : "#/components/schemas/inline_response_200_11_data_gas"
           },
           "electricity" : {
-            "$ref" : "#/components/schemas/inline_response_200_13_data_electricity"
+            "$ref" : "#/components/schemas/inline_response_200_11_data_electricity"
           },
           "totalAccountCharges" : {
             "description" : "The aggregate total of account level charges for the period covered by the invoice",
@@ -5641,12 +4940,12 @@
         "required" : [ "accountId", "amountDue", "balanceAtIssue", "issueDate", "paymentStatus", "period", "servicePoints", "totalAccountCharges", "totalAccountDiscounts" ],
         "type" : "object"
       },
-      "inline_response_200_13_data" : {
+      "inline_response_200_11_data" : {
         "properties" : {
           "invoices" : {
             "description" : "Array of invoices sorted by date in descending order",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_13_data_invoices"
+              "$ref" : "#/components/schemas/inline_response_200_11_data_invoices"
             },
             "type" : "array"
           }
@@ -5654,22 +4953,22 @@
         "required" : [ "invoices" ],
         "type" : "object"
       },
-      "inline_response_200_13" : {
+      "inline_response_200_11" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_13_data"
+            "$ref" : "#/components/schemas/inline_response_200_11_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
         "type" : "object"
       },
-      "inline_response_200_14_data_usage_adjustments" : {
+      "inline_response_200_12_data_usage_adjustments" : {
         "properties" : {
           "amount" : {
             "description" : "The amount of the adjustment",
@@ -5684,7 +4983,7 @@
         "required" : [ "amount", "description" ],
         "type" : "object"
       },
-      "inline_response_200_14_data_usage" : {
+      "inline_response_200_12_data_usage" : {
         "description" : "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
         "properties" : {
           "servicePointId" : {
@@ -5726,7 +5025,7 @@
           "adjustments" : {
             "description" : "Optional array of adjustments arising for this transaction",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_14_data_usage_adjustments"
+              "$ref" : "#/components/schemas/inline_response_200_12_data_usage_adjustments"
             },
             "type" : "array"
           }
@@ -5734,7 +5033,7 @@
         "required" : [ "amount", "endDate", "startDate", "timeOfUseType", "usage" ],
         "type" : "object"
       },
-      "inline_response_200_14_data_onceOff" : {
+      "inline_response_200_12_data_onceOff" : {
         "description" : "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
         "properties" : {
           "servicePointId" : {
@@ -5758,7 +5057,7 @@
         "required" : [ "amount", "description" ],
         "type" : "object"
       },
-      "inline_response_200_14_data_payment" : {
+      "inline_response_200_12_data_payment" : {
         "description" : "Represents a payment to the account.  Mandatory if transactionUType is equal to payment",
         "properties" : {
           "amount" : {
@@ -5775,7 +5074,7 @@
         "required" : [ "amount", "method" ],
         "type" : "object"
       },
-      "inline_response_200_14_data_transactions" : {
+      "inline_response_200_12_data_transactions" : {
         "properties" : {
           "accountId" : {
             "description" : "The ID of the account for which transaction applies",
@@ -5792,25 +5091,25 @@
             "type" : "string"
           },
           "usage" : {
-            "$ref" : "#/components/schemas/inline_response_200_14_data_usage"
+            "$ref" : "#/components/schemas/inline_response_200_12_data_usage"
           },
           "onceOff" : {
-            "$ref" : "#/components/schemas/inline_response_200_14_data_onceOff"
+            "$ref" : "#/components/schemas/inline_response_200_12_data_onceOff"
           },
           "payment" : {
-            "$ref" : "#/components/schemas/inline_response_200_14_data_payment"
+            "$ref" : "#/components/schemas/inline_response_200_12_data_payment"
           }
         },
         "required" : [ "accountId", "executionDateTime", "transactionUType" ],
         "type" : "object",
         "x-conditional" : [ "usage", "onceOff", "payment" ]
       },
-      "inline_response_200_14_data" : {
+      "inline_response_200_12_data" : {
         "properties" : {
           "transactions" : {
             "description" : "Array of transactions sorted by date and time in descending order",
             "items" : {
-              "$ref" : "#/components/schemas/inline_response_200_14_data_transactions"
+              "$ref" : "#/components/schemas/inline_response_200_12_data_transactions"
             },
             "type" : "array"
           }
@@ -5818,19 +5117,129 @@
         "required" : [ "transactions" ],
         "type" : "object"
       },
-      "inline_response_200_14" : {
+      "inline_response_200_12" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/inline_response_200_14_data"
+            "$ref" : "#/components/schemas/inline_response_200_12_data"
           },
           "links" : {
-            "$ref" : "#/components/schemas/linksPaginated"
+            "$ref" : "#/components/schemas/LinksPaginated"
           },
           "meta" : {
-            "$ref" : "#/components/schemas/metaPaginated"
+            "$ref" : "#/components/schemas/MetaPaginated"
           }
         },
         "required" : [ "data", "links", "meta" ],
+        "type" : "object"
+      },
+      "EnergyPlanListResponse_data" : {
+        "properties" : {
+          "plans" : {
+            "description" : "Array of plans",
+            "items" : {
+              "$ref" : "#/components/schemas/EnergyPlan"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "plans" ],
+        "type" : "object"
+      },
+      "EnergyPlan_additionalInformation" : {
+        "description" : "Object that contains links to additional information on specific topics",
+        "properties" : {
+          "overviewUri" : {
+            "description" : "A link to a general overview of the plan",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "termsUri" : {
+            "description" : "A link to terms and conditions for the plan",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "eligibilityUri" : {
+            "description" : "A link to detail on eligibility criteria for the plan",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "pricingUri" : {
+            "description" : "A link to detail on pricing for the plan",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "bundleUri" : {
+            "description" : "A link to detail on bundles that this plan can be a part of",
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          }
+        },
+        "type" : "object"
+      },
+      "EnergyPlan_geography" : {
+        "description" : "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
+        "properties" : {
+          "excludedPostcodes" : {
+            "description" : "Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "includedPostcodes" : {
+            "description" : "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "EnergyPlanDetail_allOf" : {
+        "properties" : {
+          "meteringCharges" : {
+            "description" : "Charges for metering included in the plan",
+            "items" : {
+              "$ref" : "#/components/schemas/inline_response_200_6_data_planDetail_meteringCharges"
+            },
+            "type" : "array"
+          },
+          "gasContract" : {
+            "$ref" : "#/components/schemas/EnergyPlanContract"
+          },
+          "electricityContract" : {
+            "$ref" : "#/components/schemas/EnergyPlanContract"
+          }
+        },
+        "type" : "object",
+        "x-conditional" : [ "gasContract", "electricityContract" ]
+      },
+      "EnergyPlanContract_intrinsicGreenPower" : {
+        "description" : "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
+        "properties" : {
+          "greenPercentage" : {
+            "description" : "Percentage of green power intrinsically included in the plan",
+            "type" : "string",
+            "x-cds-type" : "RateString"
+          }
+        },
+        "required" : [ "greenPercentage" ],
+        "type" : "object"
+      },
+      "EnergyPlanControlledLoad_rates" : {
+        "properties" : {
+          "unitPrice" : {
+            "description" : "Unit price of usage per kWh (exclusive of GST)",
+            "type" : "string",
+            "x-cds-type" : "AmountString"
+          },
+          "volume" : {
+            "description" : "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+            "type" : "number"
+          }
+        },
+        "required" : [ "unitPrice" ],
         "type" : "object"
       },
       "derRecord_protectionMode" : {
