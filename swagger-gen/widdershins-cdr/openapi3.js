@@ -370,8 +370,10 @@ function fakeBodyParameter(data) {
                     param.schema = prop.schema;
                     param.name = prop.displayName;
                     param.required = prop.required;
+                    param.required_text = prop.required_text;
                     param.description = prop.description;
                     param.safeType = prop.safeType;
+                    param.cdrType = prop.cdrType;
                     bodyParams.push(param);
                 }
             }

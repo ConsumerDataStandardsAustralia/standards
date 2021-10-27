@@ -94,7 +94,7 @@ For example, a person whose given names are "John Paul Winston" but the data hol
       "prefix": "string",
       "suffix": "string",
       "occupationCode": "string",
-      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.2"
+      "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0"
     },
     "organisation": {
       "lastUpdateTime": "string",
@@ -108,7 +108,7 @@ For example, a person whose given names are "John Paul Winston" but the data hol
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
-      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V1.0",
       "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string"
@@ -227,7 +227,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "prefix": "string",
       "suffix": "string",
       "occupationCode": "string",
-      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.2",
+      "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0",
       "phoneNumbers": [
         {
           "isPreferred": true,
@@ -299,7 +299,7 @@ Obtain detailed information on the authorised customer within the current sessio
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
-      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V1.0",
       "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string",
@@ -588,16 +588,16 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|object|mandatory|none|none|
-|» status|string|mandatory|none|Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)|
-|» explanation|string|conditional|none|Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK|
-|» detectionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE|
-|» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|none|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
-|» updateTime|[DateTimeString](#common-field-types)|mandatory|none|The date and time that this status was last updated by the Data Holder.|
-|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
-|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» status|string|mandatory|Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)|
+|» explanation|string|conditional|Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK|
+|» detectionTime|[DateTimeString](#common-field-types)|optional|The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE|
+|» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
+|» updateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that this status was last updated by the Data Holder.|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
 #### Enumerated Values
 
@@ -634,12 +634,12 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|object|mandatory|none|none|
-|» outages|[[DiscoveryOutage](#schemacdr-common-apidiscoveryoutage)]|mandatory|none|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
-|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
-|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» outages|[[DiscoveryOutage](#schemacdr-common-apidiscoveryoutage)]|mandatory|List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
 <h2 class="schema-toc" id="tocSdiscoveryoutage">DiscoveryOutage</h2>
 
@@ -657,12 +657,12 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|outageTime|[DateTimeString](#common-field-types)|mandatory|none|Date and time that the outage is scheduled to begin|
-|duration|[ExternalRef](#common-field-types)|mandatory|none|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|isPartial|[Boolean](#common-field-types)|optional|none|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
-|explanation|string|mandatory|none|Provides an explanation of the current outage that can be displayed to an end customer|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|outageTime|[DateTimeString](#common-field-types)|mandatory|Date and time that the outage is scheduled to begin|
+|duration|[ExternalRef](#common-field-types)|mandatory|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|isPartial|[Boolean](#common-field-types)|optional|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+|explanation|string|mandatory|Provides an explanation of the current outage that can be displayed to an end customer|
 
 <h2 class="schema-toc" id="tocSresponsecommoncustomer">ResponseCommonCustomer</h2>
 
@@ -682,7 +682,7 @@ This operation does not require authentication
       "prefix": "string",
       "suffix": "string",
       "occupationCode": "string",
-      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.2"
+      "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0"
     },
     "organisation": {
       "lastUpdateTime": "string",
@@ -696,7 +696,7 @@ This operation does not require authentication
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
-      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V1.0",
       "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string"
@@ -712,14 +712,14 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|object|mandatory|none|none|
-|» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPerson](#schemacdr-common-apicommonperson)|conditional|none|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|conditional|none|Mandatory if `customerUType` is `organisation`|
-|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
-|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» customerUType|string|mandatory|The type of customer object that is present|
+|» person|[CommonPerson](#schemacdr-common-apicommonperson)|conditional|Mandatory if `customerUType` is `person`|
+|» organisation|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|conditional|Mandatory if `customerUType` is `organisation`|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
 #### Enumerated Values
 
@@ -746,7 +746,7 @@ This operation does not require authentication
       "prefix": "string",
       "suffix": "string",
       "occupationCode": "string",
-      "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.2",
+      "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0",
       "phoneNumbers": [
         {
           "isPreferred": true,
@@ -818,7 +818,7 @@ This operation does not require authentication
       "acn": "string",
       "isACNCRegistered": true,
       "industryCode": "string",
-      "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+      "industryCodeVersion": "ANZSIC_1292.0_2006_V1.0",
       "organisationType": "COMPANY",
       "registeredCountry": "string",
       "establishmentDate": "string",
@@ -874,14 +874,14 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|object|mandatory|none|none|
-|» customerUType|string|mandatory|none|The type of customer object that is present|
-|» person|[CommonPersonDetail](#schemacdr-common-apicommonpersondetail)|conditional|none|Mandatory if `customerUType` is `person`|
-|» organisation|[CommonOrganisationDetail](#schemacdr-common-apicommonorganisationdetail)|conditional|none|Mandatory if `customerUType` is `organisation`|
-|links|[Links](#schemacdr-common-apilinks)|mandatory|none|none|
-|meta|[Meta](#schemacdr-common-apimeta)|optional|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» customerUType|string|mandatory|The type of customer object that is present|
+|» person|[CommonPersonDetail](#schemacdr-common-apicommonpersondetail)|conditional|Mandatory if `customerUType` is `person`|
+|» organisation|[CommonOrganisationDetail](#schemacdr-common-apicommonorganisationdetail)|conditional|Mandatory if `customerUType` is `organisation`|
+|links|[Links](#schemacdr-common-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-common-apimeta)|optional|none|
 
 #### Enumerated Values
 
@@ -905,23 +905,23 @@ This operation does not require authentication
   "prefix": "string",
   "suffix": "string",
   "occupationCode": "string",
-  "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.2"
+  "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0"
 }
 
 ```
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
-|firstName|string|optional|none|For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.|
-|lastName|string|mandatory|none|For people with single names the single name should be in this field|
-|middleNames|[string]|mandatory|none|Field is mandatory but array may be empty|
-|prefix|string|optional|none|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|suffix|string|optional|none|Used for a trailing suffix to the name (e.g. Jr)|
-|occupationCode|[ExternalRef](#common-field-types)|optional|none|Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.|
-|occupationCodeVersion|string|conditional|none|The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|lastUpdateTime|[DateTimeString](#common-field-types)|optional|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.|
+|lastName|string|mandatory|For people with single names the single name should be in this field|
+|middleNames|[string]|mandatory|Field is mandatory but array may be empty|
+|prefix|string|optional|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+|occupationCode|[ExternalRef](#common-field-types)|optional|Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.|
+|occupationCodeVersion|string|conditional|The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``|
 
 #### Enumerated Values
 
@@ -947,7 +947,7 @@ This operation does not require authentication
   "prefix": "string",
   "suffix": "string",
   "occupationCode": "string",
-  "occupationCodeVersion": "ANZSCO_1220.0_2013_V1.2",
+  "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0",
   "phoneNumbers": [
     {
       "isPreferred": true,
@@ -1014,18 +1014,18 @@ This operation does not require authentication
 
 *allOf*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[CommonPerson](#schemacdr-common-apicommonperson)|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[CommonPerson](#schemacdr-common-apicommonperson)|mandatory|none|
 
 *and*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|object|mandatory|none|none|
-|» phoneNumbers|[[CommonPhoneNumber](#schemacdr-common-apicommonphonenumber)]|mandatory|none|Array is mandatory but may be empty if no phone numbers are held|
-|» emailAddresses|[[CommonEmailAddress](#schemacdr-common-apicommonemailaddress)]|mandatory|none|May be empty|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|none|
+|» phoneNumbers|[[CommonPhoneNumber](#schemacdr-common-apicommonphonenumber)]|mandatory|Array is mandatory but may be empty if no phone numbers are held|
+|» emailAddresses|[[CommonEmailAddress](#schemacdr-common-apicommonemailaddress)]|mandatory|May be empty|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
 <h2 class="schema-toc" id="tocScommonorganisation">CommonOrganisation</h2>
 
@@ -1044,7 +1044,7 @@ This operation does not require authentication
   "acn": "string",
   "isACNCRegistered": true,
   "industryCode": "string",
-  "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+  "industryCodeVersion": "ANZSIC_1292.0_2006_V1.0",
   "organisationType": "COMPANY",
   "registeredCountry": "string",
   "establishmentDate": "string"
@@ -1054,23 +1054,23 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|optional|none|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
-|agentFirstName|string|optional|none|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
-|agentLastName|string|mandatory|none|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
-|agentRole|string|mandatory|none|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known|
-|businessName|string|mandatory|none|Name of the organisation|
-|legalName|string|optional|none|Legal name, if different to the business name|
-|shortName|string|optional|none|Short name used for communication, if different to the business name|
-|abn|string|optional|none|Australian Business Number for the organisation|
-|acn|string|optional|none|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
-|isACNCRegistered|[Boolean](#common-field-types)|optional|none|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
-|industryCode|[ExternalRef](#common-field-types)|optional|none|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.|
-|industryCodeVersion|string|conditional|none|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``|
-|organisationType|string|mandatory|none|Legal organisation type|
-|registeredCountry|[ExternalRef](#common-field-types)|optional|none|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
-|establishmentDate|[DateString](#common-field-types)|optional|none|The date the organisation described was established|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|lastUpdateTime|[DateTimeString](#common-field-types)|optional|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
+|agentFirstName|string|optional|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
+|agentLastName|string|mandatory|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
+|agentRole|string|mandatory|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known|
+|businessName|string|mandatory|Name of the organisation|
+|legalName|string|optional|Legal name, if different to the business name|
+|shortName|string|optional|Short name used for communication, if different to the business name|
+|abn|string|optional|Australian Business Number for the organisation|
+|acn|string|optional|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
+|isACNCRegistered|[Boolean](#common-field-types)|optional|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
+|industryCode|[ExternalRef](#common-field-types)|optional|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.|
+|industryCodeVersion|string|conditional|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``|
+|organisationType|string|mandatory|Legal organisation type|
+|registeredCountry|[ExternalRef](#common-field-types)|optional|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
+|establishmentDate|[DateString](#common-field-types)|optional|The date the organisation described was established|
 
 #### Enumerated Values
 
@@ -1102,7 +1102,7 @@ This operation does not require authentication
   "acn": "string",
   "isACNCRegistered": true,
   "industryCode": "string",
-  "industryCodeVersion": "ANZSIC_1292.0_2006_V2.0",
+  "industryCodeVersion": "ANZSIC_1292.0_2006_V1.0",
   "organisationType": "COMPANY",
   "registeredCountry": "string",
   "establishmentDate": "string",
@@ -1154,16 +1154,16 @@ This operation does not require authentication
 
 *allOf*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[CommonOrganisation](#schemacdr-common-apicommonorganisation)|mandatory|none|
 
 *and*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|object|mandatory|none|none|
-|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|none|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|none|
+|» physicalAddresses|[[CommonPhysicalAddressWithPurpose](#schemacdr-common-apicommonphysicaladdresswithpurpose)]|mandatory|Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail|
 
 <h2 class="schema-toc" id="tocScommonphonenumber">CommonPhoneNumber</h2>
 
@@ -1184,15 +1184,15 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|optional|none|May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present|
-|purpose|string|mandatory|none|The purpose of the number as specified by the customer|
-|countryCode|string|optional|none|If absent, assumed to be Australia (+61). The + should be included|
-|areaCode|string|conditional|none|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
-|number|string|mandatory|none|The actual phone number, with leading zeros as appropriate|
-|extension|string|optional|none|An extension number (if applicable)|
-|fullNumber|[ExternalRef](#common-field-types)|mandatory|none|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|isPreferred|[Boolean](#common-field-types)|optional|May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present|
+|purpose|string|mandatory|The purpose of the number as specified by the customer|
+|countryCode|string|optional|If absent, assumed to be Australia (+61). The + should be included|
+|areaCode|string|conditional|Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.|
+|number|string|mandatory|The actual phone number, with leading zeros as appropriate|
+|extension|string|optional|An extension number (if applicable)|
+|fullNumber|[ExternalRef](#common-field-types)|mandatory|Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)|
 
 #### Enumerated Values
 
@@ -1220,11 +1220,11 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|isPreferred|[Boolean](#common-field-types)|optional|none|May be true for one and only one email record in the collection. Denotes the default email address|
-|purpose|string|mandatory|none|The purpose for the email, as specified by the customer (Enumeration)|
-|address|[ExternalRef](#common-field-types)|mandatory|none|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|isPreferred|[Boolean](#common-field-types)|optional|May be true for one and only one email record in the collection. Denotes the default email address|
+|purpose|string|mandatory|The purpose for the email, as specified by the customer (Enumeration)|
+|address|[ExternalRef](#common-field-types)|mandatory|A correctly formatted email address, as defined by the addr_spec format in [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt)|
 
 #### Enumerated Values
 
@@ -1285,16 +1285,16 @@ This operation does not require authentication
 
 *allOf*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[CommonPhysicalAddress](#schemacdr-common-apicommonphysicaladdress)|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[CommonPhysicalAddress](#schemacdr-common-apicommonphysicaladdress)|mandatory|none|
 
 *and*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|object|mandatory|none|none|
-|» purpose|string|mandatory|none|Enumeration of values indicating the purpose of the physical address|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|none|
+|» purpose|string|mandatory|Enumeration of values indicating the purpose of the physical address|
 
 #### Enumerated Values
 
@@ -1353,11 +1353,11 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|addressUType|string|mandatory|none|The type of address object present|
-|simple|[CommonSimpleAddress](#schemacdr-common-apicommonsimpleaddress)|conditional|none|none|
-|paf|[CommonPAFAddress](#schemacdr-common-apicommonpafaddress)|conditional|none|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|addressUType|string|mandatory|The type of address object present|
+|simple|[CommonSimpleAddress](#schemacdr-common-apicommonsimpleaddress)|conditional|none|
+|paf|[CommonPAFAddress](#schemacdr-common-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
 
 #### Enumerated Values
 
@@ -1386,16 +1386,16 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|mailingName|string|optional|none|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|addressLine1|string|mandatory|none|First line of the standard address object|
-|addressLine2|string|optional|none|Second line of the standard address object|
-|addressLine3|string|optional|none|Third line of the standard address object|
-|postcode|string|conditional|none|Mandatory for Australian addresses|
-|city|string|mandatory|none|Name of the city or locality|
-|state|string|mandatory|none|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|country|[ExternalRef](#common-field-types)|optional|none|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
+|addressLine1|string|mandatory|First line of the standard address object|
+|addressLine2|string|optional|Second line of the standard address object|
+|addressLine3|string|optional|Third line of the standard address object|
+|postcode|string|conditional|Mandatory for Australian addresses|
+|city|string|mandatory|Name of the city or locality|
+|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
 
 <h2 class="schema-toc" id="tocScommonpafaddress">CommonPAFAddress</h2>
 
@@ -1433,30 +1433,30 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|dpid|string|optional|none|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|none|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|optional|none|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|none|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|optional|none|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|flatUnitType|string|optional|none|Type of flat or unit for the address|
-|flatUnitNumber|string|optional|none|Unit number (including suffix, if applicable)|
-|floorLevelType|string|optional|none|Type of floor or level for the address|
-|floorLevelNumber|string|optional|none|Floor or level number (including alpha characters)|
-|lotNumber|string|optional|none|Allotment number for the address|
-|buildingName1|string|optional|none|Building/Property name 1|
-|buildingName2|string|optional|none|Building/Property name 2|
-|streetName|string|optional|none|The name of the street|
-|streetType|string|optional|none|The street type. Valid enumeration defined by Australia Post PAF code file|
-|streetSuffix|string|optional|none|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryType|string|optional|none|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|none|Postal delivery number if the address is a postal delivery type|
-|postalDeliveryNumberPrefix|string|optional|none|Postal delivery number prefix related to the postal delivery number|
-|postalDeliveryNumberSuffix|string|optional|none|Postal delivery number suffix related to the postal delivery number|
-|localityName|string|mandatory|none|Full name of locality|
-|postcode|string|mandatory|none|Postcode for the locality|
-|state|string|mandatory|none|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|flatUnitType|string|optional|Type of flat or unit for the address|
+|flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
+|floorLevelType|string|optional|Type of floor or level for the address|
+|floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
+|lotNumber|string|optional|Allotment number for the address|
+|buildingName1|string|optional|Building/Property name 1|
+|buildingName2|string|optional|Building/Property name 2|
+|streetName|string|optional|The name of the street|
+|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
+|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
+|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
+|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
+|localityName|string|mandatory|Full name of locality|
+|postcode|string|mandatory|Postcode for the locality|
+|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
 
 <h2 class="schema-toc" id="tocSlinks">Links</h2>
 
@@ -1471,9 +1471,9 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|none|Fully qualified link that generated the current response document|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 
 <h2 class="schema-toc" id="tocSmeta">Meta</h2>
 
@@ -1503,9 +1503,9 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|urn|string|conditional|none|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
 <h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
 
@@ -1529,11 +1529,11 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|errors|[object]|mandatory|none|none|
-|» code|string|mandatory|none|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
-|» title|string|mandatory|none|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
-|» detail|string|mandatory|none|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|[MetaError](#schemacdr-common-apimetaerror)|optional|none|Additional data for customised error codes|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[object]|mandatory|none|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|[MetaError](#schemacdr-common-apimetaerror)|optional|Additional data for customised error codes|
 
