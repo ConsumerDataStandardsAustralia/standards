@@ -206,7 +206,7 @@
                                     "type": "object",
                                     "required": ["displayName", "minimumValue"],
                                     "properties": {
-                                        "name": {
+                                        "displayName": {
                                             "type": "string",
                                             "description": "Display name of the charge"
                                         },
@@ -566,7 +566,7 @@
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["displayName", "type", "tiers"],
+                    "required": ["displayName", "scheme", "type", "tiers"],
                     "properties": {
                         "displayName": {
                             "type": "string",
@@ -575,6 +575,13 @@
                         "description": {
                             "type": "string",
                             "description": "The description of the charge"
+                        },
+                        "scheme": {
+                            "type": "string",
+                            "description": "The applicable green power scheme",
+                            "enum": ["GREENPOWER",
+                                "OTHER"
+                            ]
                         },
                         "type": {
                             "type": "string",
@@ -628,7 +635,7 @@
                     "properties": {
                         "type": {
                             "type": "string",
-                            "description": "The type of the eligibility restriction",
+                            "description": "The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)",
                             "enum": ["EXISTING_CUST",
                                 "EXISTING_POOL",
                                 "EXISTING_SOLAR",
@@ -648,6 +655,7 @@
                                 "MINIMUM_USAGE",
                                 "LOYALTY_MEMBER",
                                 "GROUP_BUY_MEMBER",
+                                "CONTINGENT_PLAN",
                                 "OTHER"
                             ]
                         },
@@ -668,6 +676,7 @@
                 "items": {
                     "type": "object",
                     "required": ["type", "term"],
+                    "x-conditional": ["amount", "rate"],
                     "properties": {
                         "type": {
                             "type": "string",
@@ -702,7 +711,6 @@
                                 "PERCENT_OF_BILL",
                                 "ANNUAL",
                                 "DAILY",
-                                "WEEKLY",
                                 "MONTHLY",
                                 "BIANNUAL"
                             ]
@@ -729,23 +737,104 @@
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["type"],
+                    "required": ["displayName", "scheme", "payerType", "tariffUType"],
+                    "x-conditional": ["singleTariff", "timeVaryingTariffs"],
                     "properties": {
-                        "type": {
+                        "displayName": {
                             "type": "string",
-                            "description": "The type of the tariff",
-                            "enum": ["GOVERNMENT",
-                                "RETAILER"
-                            ]
-                        },
-                        "amount": {
-                            "type": "string",
-                            "x-cds-type": "AmountString",
-                            "description": "The tariff amount per kWh"
+                            "description": "The name of the tariff"
                         },
                         "description": {
                             "type": "string",
                             "description": "A description of the tariff"
+                        },
+                        "scheme": {
+                            "type": "string",
+                            "description": "The applicable scheme",
+                            "enum": ["PREMIUM",
+                                "OTHER"
+                            ]
+                        },
+                        "payerType": {
+                            "type": "string",
+                            "description": "The type of the payer",
+                            "enum": ["GOVERNMENT",
+                                "RETAILER"
+                            ]
+                        },
+                        "tariffUType": {
+                            "type": "string",
+                            "description": "The type of the payer",
+                            "enum": ["GOVERNMENT",
+                                "RETAILER"
+                            ]
+                        },
+                        "singleTariff": {
+                            "type": "object",
+                            "description": "Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff",
+                            "required": ["amount"],
+                            "properties": {
+                                "amount": {
+                                    "type": "string",
+                                    "x-cds-type": "AmountString",
+                                    "description": "The tariff amount"
+                                }
+
+                            }
+                        },
+                        "timeVaryingTariffs": {
+                            "type": "object",
+                            "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
+                            "required": ["amount", "timeVariations"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "description": "The type of the charging time period. If absent applies to all periods",
+                                    "enum": ["PEAK",
+                                        "OFF_PEAK",
+                                        "SHOULDER"
+                                    ]
+                                },
+                                "amount": {
+                                    "type": "string",
+                                    "x-cds-type": "AmountString",
+                                    "description": "The tariff amount"
+                                },
+                                "timeVariations": {
+                                    "description": "Array of time periods for which this tariff is applicable",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "days": {
+                                                "type": "object",
+                                                "required": ["weekdays", "weekend"],
+                                                "properties": {
+                                                    "weekdays": {
+                                						"description": "Indicates whether the tariff is applicable Monday to Friday",
+                                						"type": "boolean"
+                                					},
+                                                    "weekend": {
+                                						"description": "Indicates whether the tariff is applicable Saturday and Sunday",
+                                						"type": "boolean"
+                                					}
+                                                }
+                                            },
+                                            "startTime": {
+                                                "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)",
+                                                "type": "string",
+                                                "x-cds-type": "TimeString"
+                                            },
+                                            "endTime": {
+                                                "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)",
+                                                "type": "string",
+                                                "x-cds-type": "TimeString"
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
                         }
                     }
                 }
@@ -755,7 +844,8 @@
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
+                    "required": ["displayName", "startDate", "endDate", "dailySupplyCharges", "rateBlockUType"],
+                    "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges"],
                     "properties": {
                         "displayName": {
                             "type": "string",
@@ -763,11 +853,11 @@
                         },
                         "startDate": {
                             "type": "string",
-                            "description": "The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format"
+                            "description": "The start date of the tariff period in a calendar year.  Formatted in mm-dd format"
                         },
                         "endDate": {
                             "type": "string",
-                            "description": "The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format"
+                            "description": "The end date of the tariff period in a calendar year.  Formatted in mm-dd format"
                         },
                         "dailySupplyCharges": {
                             "type": "string",
@@ -778,13 +868,15 @@
                             "type": "string",
                             "description": "Specifies the type of rate applicable to this tariff period",
                             "enum": ["singleRate",
-                                "timeOfUseRates"
+                                "timeOfUseRates",
+                                "demandCharges"
                             ]
                         },
                         "singleRate": {
                             "type": "object",
                             "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
                             "required": ["displayName", "rates"],
+                            "x-conditional": ["generalUnitPrice"],
                             "properties": {
                                 "displayName": {
                                     "type": "string",
@@ -798,11 +890,6 @@
                                     "type": "string",
                                     "x-cds-type": "AmountString",
                                     "description": "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
-                                },
-                                "period": {
-                                    "type": "string",
-                                    "x-cds-type": "ExternalRef",
-                                    "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
                                 },
                                 "rates": {
                                     "description": "Array of controlled load rates in order of usage volume",
@@ -822,6 +909,11 @@
                                             }
                                         }
                                     }
+                                },
+                                "period": {
+                                    "type": "string",
+                                    "x-cds-type": "ExternalRef",
+                                    "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
                                 }
                             }
                         },
@@ -839,17 +931,6 @@
                                     "description": {
                                         "type": "string",
                                         "description": "Description of the rate"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "description": "The type of usage that the rate applies to",
-                                        "enum": ["PEAK",
-                                            "OFF_PEAK",
-                                            "OFF_PEAK_DC",
-                                            "SHOULDER",
-                                            "SHOULDER1",
-                                            "SHOULDER2"
-                                        ]
                                     },
                                     "rates": {
                                         "description": "Array of controlled load rates in order of usage volume",
@@ -904,36 +985,98 @@
                                             }
                                         }
                                     },
-                                    "demandCharges": {
-                                        "description": "Array of demand charges",
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "required": ["displayName", "startTime", "endTime"],
-                                            "properties": {
-                                                "displayName": {
-                                                    "type": "string",
-                                                    "description": "Display name of the charge"
-                                                },
-                                                "description": {
-                                                    "type": "string",
-                                                    "description": "Description of the charge"
-                                                },
-                                                "amount": {
-                                                    "type": "string",
-                                                    "x-cds-type": "AmountString",
-                                                    "description": "The charge amount per kWh exclusive of GST"
-                                                },
-                                                "startTime": {
-                                                    "type": "string",
-                                                    "description": "Start of the period in HHMM format using 24 hour clock format"
-                                                },
-                                                "endTime": {
-                                                    "type": "string",
-                                                    "description": "End of the period in HHMM format using 24 hour clock format "
-                                                }
-                                            }
+                                    "type": {
+                                        "type": "string",
+                                        "description": "The type of usage that the rate applies to",
+                                        "enum": ["PEAK",
+                                            "OFF_PEAK",
+                                            "SHOULDER",
+                                            "SHOULDER1",
+                                            "SHOULDER2"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "demandCharges": {
+                            "description": "Array of demand charges.  Required if rateBlockUType is demandCharges",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "displayName",
+                                    "amount",
+                                    "startTime",
+                                    "endTime",
+                                    "measurementPeriod",
+                                    "chargePeriod"
+                                ],
+                                "properties": {
+                                    "displayName": {
+                                        "type": "string",
+                                        "description": "Display name of the charge"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "Description of the charge"
+                                    },
+                                    "amount": {
+                                        "type": "string",
+                                        "x-cds-type": "AmountString",
+                                        "description": "The charge amount per kWh exclusive of GST"
+                                    },
+                                    "startTime": {
+                                        "type": "string",
+                                        "description": "Start of the period in HHMM format using 24 hour clock format"
+                                    },
+                                    "endTime": {
+                                        "type": "string",
+                                        "description": "End of the period in HHMM format using 24 hour clock format"
+                                    },
+                                    "days": {
+                                        "description": "Object containing demand tariff by day of week",
+                                        "type": "object",
+                                        "required": ["weekdays", "saturday", "sunday"],
+                                        "properties": {
+                                            "weekdays": {
+                        						"description": "Indicates the demand tariff is applicable on weekdays",
+                        						"type": "boolean"
+                        					},
+                                            "saturday": {
+                        						"description": "Indicates the demand tariff is applicable on Saturdays",
+                        						"type": "boolean"
+                        					},
+                                            "sunday": {
+                        						"description": "Indicates the demand tariff is applicable on Sundays",
+                        						"type": "boolean"
+                        					}
                                         }
+                                    },
+                                    "minDemand": {
+                                        "type": "string",
+                                        "x-cds-type": "AmountString",
+                                        "description": "Minimum demand for this demand tariff in kW.  If absent then 0 is assumed"
+                                    },
+                                    "maxDemand": {
+                                        "type": "string",
+                                        "x-cds-type": "AmountString",
+                                        "description": "Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field"
+                                    },
+                                    "measurementPeriod": {
+                                        "type": "string",
+                                        "description": "Application period for the demand tariff",
+                                        "enum": ["DAY",
+                                            "MONTH",
+                                            "TARIFF_PERIOD"
+                                        ]
+                                    },
+                                    "chargePeriod": {
+                                        "type": "string",
+                                        "description": "Charge period for the demand tariff",
+                                        "enum": ["DAY",
+                                            "MONTH",
+                                            "TARIFF_PERIOD"
+                                        ]
                                     }
                                 }
                             }
@@ -1400,7 +1543,7 @@
 									}
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -1435,7 +1578,7 @@
 									}
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -1584,10 +1727,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}
@@ -2027,10 +2170,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/links"
+									"$ref": "#/components/schemas/Links"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -2188,10 +2331,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}
@@ -2226,10 +2369,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}
@@ -2252,10 +2395,10 @@
 									"$ref": "#/components/schemas/derRecord"
 								},
 								"links": {
-									"$ref": "#/components/schemas/links"
+									"$ref": "#/components/schemas/Links"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -2344,10 +2487,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}
@@ -2476,1117 +2619,14 @@
 														}
 													}
 												},
-												"gasContract": {
-													"type": "object",
-													"description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-													"required": [
-														"pricingModel",
-														"isFixed",
-														"billFrequency",
-														"paymentOption",
-														"tariffPeriod"
-													],
-													"x-conditional": [
-														"timeZone",
-														"controlledLoad"
-													],
-													"properties": {
-														"additionalFeeInformation": {
-															"type": "string",
-															"description": "Free text field containing additional information of the fees for this contract"
-														},
-														"pricingModel": {
-															"type": "string",
-															"description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>",
-															"enum": [
-																"SINGLE_RATE",
-																"SINGLE_RATE_CONT_LOAD",
-																"TIME_OF_USE",
-																"TIME_OF_USE_CONT_LOAD",
-																"FLEXIBLE",
-																"FLEXIBLE_CONT_LOAD",
-																"QUOTA"
-															]
-														},
-														"timeZone": {
-															"type": "string",
-															"description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
-															"enum": ["LOCAL",
-																"AEST"
-															]
-														},
-														"isFixed": {
-															"type": "boolean",
-															"description": "Flag indicating whether prices are fixed or variable"
-														},
-														"controlledLoad": {
-															"type": "object",
-															"description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-															"required": ["displayName", "dailyCharge", "period", "rates"],
-															"properties": {
-																"displayName": {
-																	"type": "string",
-																	"description": "A display name for the controlled load tier"
-																},
-																"description": {
-																	"type": "string",
-																	"description": "A description of the controlled load tier"
-																},
-																"dailyCharge": {
-																	"type": "string",
-																	"x-cds-type": "AmountString",
-																	"description": "The daily supply charge (exclusive of GST) for this controlled load tier"
-																},
-																"period": {
-																	"type": "string",
-																	"x-cds-type": "ExternalRef",
-																	"description": "The period for which the controlled load rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
-																},
-																"rates": {
-																	"description": "Array of controlled load rates in order of usage volume",
-																	"type": "array",
-																	"items": {
-																		"type": "object",
-																		"required": ["unitPrice"],
-																		"properties": {
-																			"unitPrice": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "Unit price of usage per kWh (exclusive of GST)"
-																			},
-																			"volume": {
-																				"type": "number",
-																				"description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"discounts": {
-															"description": "Optional list of discounts available for the contract",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": [
-																	"displayName",
-																	"type",
-																	"methodUType"
-																],
-																"x-conditional": [
-																	"category",
-																	"percentOfBill",
-																	"percentOfUse",
-																	"fixedAmount",
-																	"percentOverThreshold"
-																],
-																"properties": {
-																	"displayName": {
-																		"type": "string",
-																		"description": "The display name of the discount"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "The description of the discount"
-																	},
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the discount",
-																		"enum": [
-																			"CONDITIONAL",
-																			"GUARANTEED",
-																			"OTHER"
-																		]
-																	},
-																	"category": {
-																		"type": "string",
-																		"description": "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
-																		"enum": [
-																			"PAY_ON_TIME",
-																			"DIRECT_DEBIT",
-																			"GUARANTEED_DISCOUNT",
-																			"OTHER"
-																		]
-																	},
-																	"methodUType": {
-																		"type": "string",
-																		"description": "The method of calculation of the discount",
-																		"enum": [
-																			"percentOfBill",
-																			"percentOfUse",
-																			"fixedAmount",
-																			"percentOverThreshold"
-																		]
-																	},
-																	"percentOfBill": {
-																		"type": "object",
-																		"description": "Required if methodUType is percentOfBill",
-																		"required": ["rate"],
-																		"properties": {
-																			"rate": {
-																				"type": "string",
-																				"x-cds-type": "RateString",
-																				"description": "The rate of the discount applied to the bill amount (some types of charges may be excluded from this discount based on plan terms)"
-																			}
-																		}
-																	},
-																	"percentOfUse": {
-																		"type": "object",
-																		"description": "Required if methodUType is percentOfUse",
-																		"required": ["rate"],
-																		"properties": {
-																			"rate": {
-																				"type": "string",
-																				"x-cds-type": "RateString",
-																				"description": "The rate of the discount applied to the usageamount"
-																			}
-																		}
-																	},
-																	"fixedAmount": {
-																		"type": "object",
-																		"description": "Required if methodUType is fixedAmount",
-																		"required": ["amount"],
-																		"properties": {
-																			"amount": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "The amount of the discount"
-																			}
-																		}
-																	},
-																	"percentOverThreshold": {
-																		"type": "object",
-																		"description": "Required if methodUType is percentOverThreshold",
-																		"required": ["rate", "usageAmount"],
-																		"properties": {
-																			"rate": {
-																				"type": "string",
-																				"x-cds-type": "RateString",
-																				"description": "The rate of the discount over the usage amount"
-																			},
-																			"usageAmount": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "The usage amount threshold above which the discount applies"
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"greenPowerCharges": {
-															"description": "Optional list of charges applicable to green power",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["displayName", "type", "tiers"],
-																"properties": {
-																	"displayName": {
-																		"type": "string",
-																		"description": "The display name of the charge"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "The description of the charge"
-																	},
-																	"type": {
-																		"type": "string",
-																		"description": "The type of charge",
-																		"enum": ["FIXED_PER_DAY",
-																			"FIXED_PER_WEEK",
-																			"FIXED_PER_MONTH",
-																			"FIXED_PER_UNIT",
-																			"PERCENT_OF_USE",
-																			"PERCENT_OF_BILL"
-																		]
-																	},
-																	"tiers": {
-																		"description": "Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power",
-																		"type": "array",
-																		"items": {
-																			"type": "object",
-																			"required": ["percentGreen"],
-																			"x-conditional": [
-																				"rate",
-																				"amount"
-																			],
-																			"properties": {
-																				"percentGreen": {
-																					"type": "string",
-																					"x-cds-type": "RateString",
-																					"description": "The upper percentage of green power used applicable for this tier"
-																				},
-																				"rate": {
-																					"type": "string",
-																					"x-cds-type": "RateString",
-																					"description": "The rate of the charge if the type implies the application of a rate"
-																				},
-																				"amount": {
-																					"type": "string",
-																					"x-cds-type": "AmountString",
-																					"description": "The amount of the charge if the type implies the application of a fixed amount"
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"fee": {
-															"description": "An array of fees applicable to the plan",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["type", "term"],
-																"x-conditional": [
-																	"rate",
-																	"amount"
-																],
-																"properties": {
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the fee",
-																		"enum": ["EXIT",
-																			"ESTABLISHMENT",
-																			"LATE_PAYMENT",
-																			"DISCONNECTION",
-																			"DISCONNECT_MOVE_OUT",
-																			"DISCONNECT_NON_PAY",
-																			"RECONNECTION",
-																			"CONNECTION",
-																			"PAYMENT_PROCESSING",
-																			"CC_PROCESSING",
-																			"CHEQUE_DISHONOUR",
-																			"DD_DISHONOUR",
-																			"MEMBERSHIP",
-																			"CONTRIBUTION",
-																			"PAPER_BILL",
-																			"OTHER"
-																		]
-																	},
-																	"term": {
-																		"type": "string",
-																		"description": "The term of the fee",
-																		"enum": ["FIXED",
-																			"1_YEAR",
-																			"2_YEAR",
-																			"3_YEAR",
-																			"4_YEAR",
-																			"5_YEAR",
-																			"PERCENT_OF_BILL",
-																			"ANNUAL",
-																			"DAILY",
-																			"WEEKLY",
-																			"MONTHLY",
-																			"BIANNUAL"
-																		]
-																	},
-																	"amount": {
-																		"type": "string",
-																		"x-cds-type": "AmountString",
-																		"description": "The fee amount. Required if term is not PERCENT_OF_BILL"
-																	},
-																	"rate": {
-																		"type": "string",
-																		"x-cds-type": "RateString",
-																		"description": "The fee rate. Required if term is PERCENT_OF_BILL"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "A description of the fee"
-																	}
-																}
-															}
-														},
-														"solarFeedInTariff": {
-															"description": "Array of feed in tariffs for solar power",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["type"],
-																"x-conditional": [
-																	"amount"
-																],
-																"properties": {
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the tariff",
-																		"enum": ["GOVERNMENT",
-																			"RETAILER"
-																		]
-																	},
-																	"amount": {
-																		"type": "string",
-																		"x-cds-type": "AmountString",
-																		"description": "The tariff amount per kWh"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "A description of the tariff"
-																	}
-																}
-															}
-														},
-														"tariffPeriod": {
-															"description": "Array of tariff periods",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
-																"x-conditional": [
-																	"startDate",
-																	"endDate",
-																	"singleRate",
-																	"timeOfUseRates"
-																],
-																"properties": {
-																	"displayName": {
-																		"type": "string",
-																		"description": "The name of the tariff period"
-																	},
-																	"startDate": {
-																		"type": "string",
-																		"description": "The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format"
-																	},
-																	"endDate": {
-																		"type": "string",
-																		"description": "The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format"
-																	},
-																	"dailySupplyCharges": {
-																		"type": "string",
-																		"x-cds-type": "AmountString",
-																		"description": "The amount of access charge for the tariff period, in cents per day exclusive of GST."
-																	},
-																	"rateBlockUType": {
-																		"type": "string",
-																		"description": "Specifies the type of rate applicable to this tariff period",
-																		"enum": ["singleRate",
-																			"timeOfUseRates"
-																		]
-																	},
-																	"singleRate": {
-																		"type": "object",
-																		"description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
-																		"required": ["displayName", "rates"],
-																		"x-conditional": [
-																			"generalUnitPrice"
-																		],
-																		"properties": {
-																			"displayName": {
-																				"type": "string",
-																				"description": "Display name of the rate"
-																			},
-																			"description": {
-																				"type": "string",
-																				"description": "Description of the rate"
-																			},
-																			"generalUnitPrice": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
-																			},
-																			"period": {
-																				"type": "string",
-																				"x-cds-type": "ExternalRef",
-																				"description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
-																			},
-																			"rates": {
-																				"description": "Array of controlled load rates in order of usage volume",
-																				"type": "array",
-																				"items": {
-																					"type": "object",
-																					"required": ["unitPrice"],
-																					"properties": {
-																						"unitPrice": {
-																							"type": "string",
-																							"x-cds-type": "AmountString",
-																							"description": "Unit price of usage per kWh (exclusive of GST)"
-																						},
-																						"volume": {
-																							"type": "number",
-																							"description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-																						}
-																					}
-																				}
-																			}
-																		}
-																	},
-																	"timeOfUseRates": {
-																		"description": "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-																		"type": "array",
-																		"items": {
-																			"type": "object",
-																			"required": ["displayName", "type", "rates", "timeOfUse"],
-																			"properties": {
-																				"displayName": {
-																					"type": "string",
-																					"description": "Display name of the rate"
-																				},
-																				"description": {
-																					"type": "string",
-																					"description": "Description of the rate"
-																				},
-																				"type": {
-																					"type": "string",
-																					"description": "The type of usage that the rate applies to",
-																					"enum": ["PEAK",
-																						"OFF_PEAK",
-																						"OFF_PEAK_DC",
-																						"SHOULDER",
-																						"SHOULDER1",
-																						"SHOULDER2"
-																					]
-																				},
-																				"rates": {
-																					"description": "Array of controlled load rates in order of usage volume",
-																					"type": "array",
-																					"items": {
-																						"type": "object",
-																						"required": ["unitPrice"],
-																						"properties": {
-																							"unitPrice": {
-																								"type": "string",
-																								"x-cds-type": "AmountString",
-																								"description": "Unit price of usage per kWh (exclusive of GST)"
-																							},
-																							"volume": {
-																								"type": "number",
-																								"description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-																							}
-																						}
-																					}
-																				},
-																				"timeOfUse": {
-																					"description": "Array of times of use",
-																					"type": "array",
-																					"items": {
-																						"type": "object",
-																						"required": ["days", "startTime", "endTime"],
-																						"properties": {
-																							"days": {
-																								"description": "The days that the rate applies to",
-																								"type": "array",
-																								"items": {
-																									"type": "string",
-																									"enum": ["SUNDAY",
-																										"MONDAY",
-																										"TUESDAY",
-																										"WEDNESDAY",
-																										"THURSDAY",
-																										"FRIDAY",
-																										"SATURDAY",
-																										"BUSINESS_DAYS"
-																									]
-																								}
-																							},
-																							"startTime": {
-																								"type": "string",
-																								"description": "Start of the period in HHMM format using 24 hour clock format"
-																							},
-																							"endTime": {
-																								"type": "string",
-																								"description": "End of the period in HHMM format using 24 hour clock format"
-																							}
-																						}
-																					}
-																				},
-																				"demandCharges": {
-																					"description": "Array of demand charges",
-																					"type": "array",
-																					"items": {
-																						"type": "object",
-																						"required": ["displayName", "startTime", "endTime"],
-																						"x-conditional": [
-																							"amount"
-																						],
-																						"properties": {
-																							"displayName": {
-																								"type": "string",
-																								"description": "Display name of the charge"
-																							},
-																							"description": {
-																								"type": "string",
-																								"description": "Description of the charge"
-																							},
-																							"amount": {
-																								"type": "string",
-																								"x-cds-type": "AmountString",
-																								"description": "The charge amount per kWh exclusive of GST"
-																							},
-																							"startTime": {
-																								"type": "string",
-																								"description": "Start of the period in HHMM format using 24 hour clock format"
-																							},
-																							"endTime": {
-																								"type": "string",
-																								"description": "End of the period in HHMM format using 24 hour clock format "
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												},
-												"electricityContract": {
-													"type": "object",
-													"description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-													"required": [
-														"pricingModel",
-														"isFixed",
-														"billFrequency",
-														"paymentOption",
-														"tariffPeriod"
-													],
-													"x-conditional": [
-														"timeZone",
-														"controlledLoad"
-													],
-													"properties": {
-														"additionalFeeInformation": {
-															"type": "string",
-															"description": "Free text field containing additional information of the fees for this contract"
-														},
-														"pricingModel": {
-															"type": "string",
-															"description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:\n\n* **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.\n* **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed\n* **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.\n* **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage\n",
-															"enum": ["SINGLE_RATE",
-																"SINGLE_RATE_CONT_LOAD",
-																"TIME_OF_USE",
-																"TIME_OF_USE_CONT_LOAD",
-																"FLEXIBLE",
-																"FLEXIBLE_CONT_LOAD",
-																"QUOTA"
-															]
-														},
-														"timeZone": {
-															"type": "string",
-															"description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
-															"enum": ["LOCAL",
-																"AEST"
-															]
-														},
-														"isFixed": {
-															"type": "boolean",
-															"description": "Flag indicating whether prices are fixed or variable"
-														},
-														"controlledLoad": {
-															"type": "object",
-															"description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
-															"required": ["displayName", "dailyCharge", "period", "rates"],
-															"properties": {
-																"displayName": {
-																	"type": "string",
-																	"description": "A display name for the controlled load tier"
-																},
-																"description": {
-																	"type": "string",
-																	"description": "A description of the controlled load tier"
-																},
-																"dailyCharge": {
-																	"type": "string",
-																	"x-cds-type": "AmountString",
-																	"description": "The daily supply charge (exclusive of GST) for this controlled load tier"
-																},
-																"period": {
-																	"type": "string",
-																	"x-cds-type": "ExternalRef",
-																	"description": "The period for which the controlled load rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
-																},
-																"rates": {
-																	"description": "Array of controlled load rates in order of usage volume",
-																	"type": "array",
-																	"items": {
-																		"type": "object",
-																		"required": ["unitPrice"],
-																		"properties": {
-																			"unitPrice": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "Unit price of usage per kWh (exclusive of GST)"
-																			},
-																			"volume": {
-																				"type": "number",
-																				"description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"discounts": {
-															"description": "Optional list of discounts available for the contract",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": [
-																	"displayName",
-																	"type",
-																	"methodUType"
-																],
-																"x-conditional": [
-																	"category",
-																	"percentOfBill",
-																	"percentOfUse",
-																	"fixedAmount",
-																	"percentOverThreshold"
-																],
-																"properties": {
-																	"displayName": {
-																		"type": "string",
-																		"description": "The display name of the discount"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "The description of the discount"
-																	},
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the discount",
-																		"enum": [
-																			"CONDITIONAL",
-																			"GUARANTEED",
-																			"OTHER"
-																		]
-																	},
-																	"category": {
-																		"type": "string",
-																		"description": "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
-																		"enum": [
-																			"PAY_ON_TIME",
-																			"DIRECT_DEBIT",
-																			"GUARANTEED_DISCOUNT",
-																			"OTHER"
-																		]
-																	},
-																	"methodUType": {
-																		"type": "string",
-																		"description": "The method of calculation of the discount",
-																		"enum": [
-																			"percentOfBill",
-																			"percentOfUse",
-																			"fixedAmount",
-																			"percentOverThreshold"
-																		]
-																	},
-																	"percentOfBill": {
-																		"type": "object",
-																		"description": "Required if methodUType is percentOfBill",
-																		"required": ["rate"],
-																		"properties": {
-																			"rate": {
-																				"type": "string",
-																				"x-cds-type": "RateString",
-																				"description": "The rate of the discount applied to the bill amount (some types of charges may be excluded from this discount based on plan terms)"
-																			}
-																		}
-																	},
-																	"percentOfUse": {
-																		"type": "object",
-																		"description": "Required if methodUType is percentOfUse",
-																		"required": ["rate"],
-																		"properties": {
-																			"rate": {
-																				"type": "string",
-																				"x-cds-type": "RateString",
-																				"description": "The rate of the discount applied to the usageamount"
-																			}
-																		}
-																	},
-																	"fixedAmount": {
-																		"type": "object",
-																		"description": "Required if methodUType is fixedAmount",
-																		"required": ["amount"],
-																		"properties": {
-																			"amount": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "The amount of the discount"
-																			}
-																		}
-																	},
-																	"percentOverThreshold": {
-																		"type": "object",
-																		"description": "Required if methodUType is percentOverThreshold",
-																		"required": ["rate", "usageAmount"],
-																		"properties": {
-																			"rate": {
-																				"type": "string",
-																				"x-cds-type": "RateString",
-																				"description": "The rate of the discount over the usage amount"
-																			},
-																			"usageAmount": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "The usage amount threshold above which the discount applies"
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"greenPowerCharges": {
-															"description": "Optional list of charges applicable to green power",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["displayName", "type", "tiers"],
-																"properties": {
-																	"displayName": {
-																		"type": "string",
-																		"description": "The display name of the charge"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "The description of the charge"
-																	},
-																	"type": {
-																		"type": "string",
-																		"description": "The type of charge",
-																		"enum": ["FIXED_PER_DAY",
-																			"FIXED_PER_WEEK",
-																			"FIXED_PER_MONTH",
-																			"FIXED_PER_UNIT",
-																			"PERCENT_OF_USE",
-																			"PERCENT_OF_BILL"
-																		]
-																	},
-																	"tiers": {
-																		"description": "Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power",
-																		"type": "array",
-																		"items": {
-																			"type": "object",
-																			"required": ["percentGreen"],
-																			"x-conditional": [
-																				"rate",
-																				"amount"
-																			],
-																			"properties": {
-																				"percentGreen": {
-																					"type": "string",
-																					"x-cds-type": "RateString",
-																					"description": "The upper percentage of green power used applicable for this tier"
-																				},
-																				"rate": {
-																					"type": "string",
-																					"x-cds-type": "RateString",
-																					"description": "The rate of the charge if the type implies the application of a rate"
-																				},
-																				"amount": {
-																					"type": "string",
-																					"x-cds-type": "AmountString",
-																					"description": "The amount of the charge if the type implies the application of a fixed amount"
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"fee": {
-															"description": "An array of fees applicable to the plan",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["type", "term"],
-																"x-conditional": [
-																	"rate",
-																	"amount"
-																],
-																"properties": {
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the fee",
-																		"enum": ["EXIT",
-																			"ESTABLISHMENT",
-																			"LATE_PAYMENT",
-																			"DISCONNECTION",
-																			"DISCONNECT_MOVE_OUT",
-																			"DISCONNECT_NON_PAY",
-																			"RECONNECTION",
-																			"CONNECTION",
-																			"PAYMENT_PROCESSING",
-																			"CC_PROCESSING",
-																			"CHEQUE_DISHONOUR",
-																			"DD_DISHONOUR",
-																			"MEMBERSHIP",
-																			"CONTRIBUTION",
-																			"PAPER_BILL",
-																			"OTHER"
-																		]
-																	},
-																	"term": {
-																		"type": "string",
-																		"description": "The term of the fee",
-																		"enum": ["FIXED",
-																			"1_YEAR",
-																			"2_YEAR",
-																			"3_YEAR",
-																			"4_YEAR",
-																			"5_YEAR",
-																			"PERCENT_OF_BILL",
-																			"ANNUAL",
-																			"DAILY",
-																			"WEEKLY",
-																			"MONTHLY",
-																			"BIANNUAL"
-																		]
-																	},
-																	"amount": {
-																		"type": "string",
-																		"x-cds-type": "AmountString",
-																		"description": "The fee amount. Required if term is not PERCENT_OF_BILL"
-																	},
-																	"rate": {
-																		"type": "string",
-																		"x-cds-type": "RateString",
-																		"description": "The fee rate. Required if term is PERCENT_OF_BILL"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "A description of the fee"
-																	}
-																}
-															}
-														},
-														"solarFeedInTariff": {
-															"description": "Array of feed in tariffs for solar power",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["type"],
-																"x-conditional": [
-																	"amount"
-																],
-																"properties": {
-																	"type": {
-																		"type": "string",
-																		"description": "The type of the tariff",
-																		"enum": ["GOVERNMENT",
-																			"RETAILER"
-																		]
-																	},
-																	"amount": {
-																		"type": "string",
-																		"x-cds-type": "AmountString",
-																		"description": "The tariff amount per kWh"
-																	},
-																	"description": {
-																		"type": "string",
-																		"description": "A description of the tariff"
-																	}
-																}
-															}
-														},
-														"tariffPeriod": {
-															"description": "Array of tariff periods",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"required": ["displayName", "dailySupplyCharges", "rateBlockUType"],
-																"x-conditional": [
-																	"startDate",
-																	"endDate",
-																	"singleRate",
-																	"timeOfUseRates"
-																],
-																"properties": {
-																	"displayName": {
-																		"type": "string",
-																		"description": "The name of the tariff period"
-																	},
-																	"startDate": {
-																		"type": "string",
-																		"description": "The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format"
-																	},
-																	"endDate": {
-																		"type": "string",
-																		"description": "The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format"
-																	},
-																	"dailySupplyCharges": {
-																		"type": "string",
-																		"x-cds-type": "AmountString",
-																		"description": "The amount of access charge for the tariff period, in cents per day exclusive of GST."
-																	},
-																	"rateBlockUType": {
-																		"type": "string",
-																		"description": "Specifies the type of rate applicable to this tariff period",
-																		"enum": ["singleRate",
-																			"timeOfUseRates"
-																		]
-																	},
-																	"singleRate": {
-																		"type": "object",
-																		"description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
-																		"required": ["displayName", "rates"],
-																		"x-conditional": [
-																			"generalUnitPrice"
-																		],
-																		"properties": {
-																			"displayName": {
-																				"type": "string",
-																				"description": "Display name of the rate"
-																			},
-																			"description": {
-																				"type": "string",
-																				"description": "Description of the rate"
-																			},
-																			"generalUnitPrice": {
-																				"type": "string",
-																				"x-cds-type": "AmountString",
-																				"description": "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
-																			},
-																			"period": {
-																				"type": "string",
-																				"x-cds-type": "ExternalRef",
-																				"description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
-																			},
-																			"rates": {
-																				"description": "Array of controlled load rates in order of usage volume",
-																				"type": "array",
-																				"items": {
-																					"type": "object",
-																					"required": ["unitPrice"],
-																					"properties": {
-																						"unitPrice": {
-																							"type": "string",
-																							"x-cds-type": "AmountString",
-																							"description": "Unit price of usage per kWh (exclusive of GST)"
-																						},
-																						"volume": {
-																							"type": "number",
-																							"description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-																						}
-																					}
-																				}
-																			}
-																		}
-																	},
-																	"timeOfUseRates": {
-																		"description": "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-																		"type": "array",
-																		"items": {
-																			"type": "object",
-																			"required": ["displayName", "type", "rates", "timeOfUse"],
-																			"properties": {
-																				"displayName": {
-																					"type": "string",
-																					"description": "Display name of the rate"
-																				},
-																				"description": {
-																					"type": "string",
-																					"description": "Description of the rate"
-																				},
-																				"type": {
-																					"type": "string",
-																					"description": "The type of usage that the rate applies to",
-																					"enum": ["PEAK",
-																						"OFF_PEAK",
-																						"OFF_PEAK_DC",
-																						"SHOULDER",
-																						"SHOULDER1",
-																						"SHOULDER2"
-																					]
-																				},
-																				"rates": {
-																					"description": "Array of controlled load rates in order of usage volume",
-																					"type": "array",
-																					"items": {
-																						"type": "object",
-																						"required": ["unitPrice"],
-																						"properties": {
-																							"unitPrice": {
-																								"type": "string",
-																								"x-cds-type": "AmountString",
-																								"description": "Unit price of usage per kWh (exclusive of GST)"
-																							},
-																							"volume": {
-																								"type": "number",
-																								"description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
-																							}
-																						}
-																					}
-																				},
-																				"timeOfUse": {
-																					"description": "Array of times of use",
-																					"type": "array",
-																					"items": {
-																						"type": "object",
-																						"required": ["days", "startTime", "endTime"],
-																						"properties": {
-																							"days": {
-																								"description": "The days that the rate applies to",
-																								"type": "array",
-																								"items": {
-																									"type": "string",
-																									"enum": ["SUNDAY",
-																										"MONDAY",
-																										"TUESDAY",
-																										"WEDNESDAY",
-																										"THURSDAY",
-																										"FRIDAY",
-																										"SATURDAY",
-																										"BUSINESS_DAYS"
-																									]
-																								}
-																							},
-																							"startTime": {
-																								"type": "string",
-																								"description": "Start of the period in HHMM format using 24 hour clock format"
-																							},
-																							"endTime": {
-																								"type": "string",
-																								"description": "End of the period in HHMM format using 24 hour clock format"
-																							}
-																						}
-																					}
-																				},
-																				"demandCharges": {
-																					"description": "Array of demand charges",
-																					"type": "array",
-																					"items": {
-																						"type": "object",
-																						"required": ["displayName", "startTime", "endTime"],
-																						"x-conditional": [
-																							"amount"
-																						],
-																						"properties": {
-																							"displayName": {
-																								"type": "string",
-																								"description": "Display name of the charge"
-																							},
-																							"description": {
-																								"type": "string",
-																								"description": "Description of the charge"
-																							},
-																							"amount": {
-																								"type": "string",
-																								"x-cds-type": "AmountString",
-																								"description": "The charge amount per kWh exclusive of GST"
-																							},
-																							"startTime": {
-																								"type": "string",
-																								"description": "Start of the period in HHMM format using 24 hour clock format"
-																							},
-																							"endTime": {
-																								"type": "string",
-																								"description": "End of the period in HHMM format using 24 hour clock format "
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
+                                                "gasContract": {
+                                                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
+                                                    "$ref": "#/components/schemas/EnergyPlanContract"
+                                                },
+                                                "electricityContract": {
+                                                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
+                                                    "$ref": "#/components/schemas/EnergyPlanContract"
+                                                }
 											}
 										},
 										"authorisedContacts": {
@@ -3627,10 +2667,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/links"
+									"$ref": "#/components/schemas/Links"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -3768,10 +2808,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/links"
+									"$ref": "#/components/schemas/Links"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -3860,10 +2900,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/links"
+									"$ref": "#/components/schemas/Links"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -3913,10 +2953,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}
@@ -3950,10 +2990,10 @@
 
 								},
 								"links": {
-									"$ref": "#/components/schemas/links"
+									"$ref": "#/components/schemas/Links"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/meta"
+									"$ref": "#/components/schemas/Meta"
 								}
 							}
 						}
@@ -4153,10 +3193,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}
@@ -4354,10 +3394,10 @@
 									}
 								},
 								"links": {
-									"$ref": "#/components/schemas/linksPaginated"
+									"$ref": "#/components/schemas/LinksPaginated"
 								},
 								"meta": {
-									"$ref": "#/components/schemas/metaPaginated"
+									"$ref": "#/components/schemas/MetaPaginated"
 								}
 							}
 						}

@@ -236,7 +236,7 @@ Obtain detailed information on a single energy plan offered openly to the market
     },
     "meteringCharges": [
       {
-        "name": "string",
+        "displayName": "string",
         "description": "string",
         "minimumValue": "string",
         "maximumValue": "string",
@@ -313,6 +313,7 @@ Obtain detailed information on a single energy plan offered openly to the market
         {
           "displayName": "string",
           "description": "string",
+          "scheme": "GREENPOWER",
           "type": "FIXED_PER_DAY",
           "tiers": [
             {
@@ -341,9 +342,28 @@ Obtain detailed information on a single energy plan offered openly to the market
       ],
       "solarFeedInTariff": [
         {
-          "type": "GOVERNMENT",
-          "amount": "string",
-          "description": "string"
+          "displayName": "string",
+          "description": "string",
+          "scheme": "PREMIUM",
+          "payerType": "GOVERNMENT",
+          "tariffUType": "GOVERNMENT",
+          "singleTariff": {
+            "amount": "string"
+          },
+          "timeVaryingTariffs": {
+            "type": "PEAK",
+            "amount": "string",
+            "timeVariations": [
+              {
+                "days": {
+                  "weekdays": true,
+                  "weekend": true
+                },
+                "startTime": "string",
+                "endTime": "string"
+              }
+            ]
+          }
         }
       ],
       "tariffPeriod": [
@@ -357,19 +377,18 @@ Obtain detailed information on a single energy plan offered openly to the market
             "displayName": "string",
             "description": "string",
             "generalUnitPrice": "string",
-            "period": "string",
             "rates": [
               {
                 "unitPrice": "string",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
               "displayName": "string",
               "description": "string",
-              "type": "PEAK",
               "rates": [
                 {
                   "unitPrice": "string",
@@ -385,15 +404,25 @@ Obtain detailed information on a single energy plan offered openly to the market
                   "endTime": "string"
                 }
               ],
-              "demandCharges": [
-                {
-                  "displayName": "string",
-                  "description": "string",
-                  "amount": "string",
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
+              "type": "PEAK"
+            }
+          ],
+          "demandCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "amount": "string",
+              "startTime": "string",
+              "endTime": "string",
+              "days": {
+                "weekdays": true,
+                "saturday": true,
+                "sunday": true
+              },
+              "minDemand": "string",
+              "maxDemand": "string",
+              "measurementPeriod": "DAY",
+              "chargePeriod": "DAY"
             }
           ]
         }
@@ -469,6 +498,7 @@ Obtain detailed information on a single energy plan offered openly to the market
         {
           "displayName": "string",
           "description": "string",
+          "scheme": "GREENPOWER",
           "type": "FIXED_PER_DAY",
           "tiers": [
             {
@@ -497,9 +527,28 @@ Obtain detailed information on a single energy plan offered openly to the market
       ],
       "solarFeedInTariff": [
         {
-          "type": "GOVERNMENT",
-          "amount": "string",
-          "description": "string"
+          "displayName": "string",
+          "description": "string",
+          "scheme": "PREMIUM",
+          "payerType": "GOVERNMENT",
+          "tariffUType": "GOVERNMENT",
+          "singleTariff": {
+            "amount": "string"
+          },
+          "timeVaryingTariffs": {
+            "type": "PEAK",
+            "amount": "string",
+            "timeVariations": [
+              {
+                "days": {
+                  "weekdays": true,
+                  "weekend": true
+                },
+                "startTime": "string",
+                "endTime": "string"
+              }
+            ]
+          }
         }
       ],
       "tariffPeriod": [
@@ -513,19 +562,18 @@ Obtain detailed information on a single energy plan offered openly to the market
             "displayName": "string",
             "description": "string",
             "generalUnitPrice": "string",
-            "period": "string",
             "rates": [
               {
                 "unitPrice": "string",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
               "displayName": "string",
               "description": "string",
-              "type": "PEAK",
               "rates": [
                 {
                   "unitPrice": "string",
@@ -541,15 +589,25 @@ Obtain detailed information on a single energy plan offered openly to the market
                   "endTime": "string"
                 }
               ],
-              "demandCharges": [
-                {
-                  "displayName": "string",
-                  "description": "string",
-                  "amount": "string",
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
+              "type": "PEAK"
+            }
+          ],
+          "demandCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "amount": "string",
+              "startTime": "string",
+              "endTime": "string",
+              "days": {
+                "weekdays": true,
+                "saturday": true,
+                "sunday": true
+              },
+              "minDemand": "string",
+              "maxDemand": "string",
+              "measurementPeriod": "DAY",
+              "chargePeriod": "DAY"
             }
           ]
         }
@@ -665,8 +723,17 @@ Obtain a list of service points owned by the customer that has authorised the cu
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -695,8 +762,15 @@ Status Code **200**
 |»»» consumerProfile|object|optional|none|
 |»»»» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
 |»»»» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|»»» links|any|mandatory|none|
-|»»» meta|any|mandatory|none|
+|»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -893,8 +967,10 @@ Obtain a list of service points owned by the customer that has authorised the cu
       }
     }
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -981,8 +1057,9 @@ Status Code **200**
 |»»»»»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
 |»»»»»» controlledLoad|string|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime.|
 |»»»»»» consumptionType|string|optional|Actual/Subtractive Indicator|
-|»»»»» links|any|mandatory|none|
-|»»»»» meta|any|mandatory|none|
+|»»»»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|»»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 #### Enumerated Values
 
@@ -1159,8 +1236,17 @@ Obtain a list of electricity usage data from a particular service point
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -1195,8 +1281,15 @@ Status Code **200**
 |»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
 |»»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -1319,8 +1412,17 @@ Obtain usage data for all service points associated with the customer
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -1355,8 +1457,15 @@ Status Code **200**
 |»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
 |»»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -1438,7 +1547,7 @@ Obtain the electricity usage data for a specific set of service points
       "string"
     ]
   },
-  "meta": null
+  "meta": {}
 }
 ```
 
@@ -1462,7 +1571,7 @@ Obtain the electricity usage data for a specific set of service points
 |body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|any|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -1498,8 +1607,17 @@ Obtain the electricity usage data for a specific set of service points
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -1534,8 +1652,15 @@ Status Code **200**
 |»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
 |»»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -1681,8 +1806,10 @@ Obtain a list of DER data from a particular service point
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -1742,8 +1869,9 @@ Status Code **200**
 |»»»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
 |»»»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
 |»»»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
-|»»» links|any|mandatory|none|
-|»»» meta|any|mandatory|none|
+|»»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 #### Enumerated Values
 
@@ -1898,8 +2026,17 @@ Obtain DER data for all service points associated with the customer
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -1960,8 +2097,15 @@ Status Code **200**
 |»»»»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
 |»»»»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
 |»»»»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -2047,7 +2191,7 @@ Obtain DER data for a specific set of service points
       "string"
     ]
   },
-  "meta": null
+  "meta": {}
 }
 ```
 
@@ -2071,7 +2215,7 @@ Obtain DER data for a specific set of service points
 |body|body|[servicePointIdList](#schemacdr-energy-apiservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» servicePointIds|body|[string]|mandatory|Array of specific servicePointIds to obtain data for|
-|» meta|body|any|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -2135,8 +2279,17 @@ Obtain DER data for a specific set of service points
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -2197,8 +2350,15 @@ Status Code **200**
 |»»»»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
 |»»»»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
 |»»»»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -2315,8 +2475,17 @@ Obtain the list of energy accounts available under the authorised consent
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -2343,8 +2512,15 @@ Status Code **200**
 |»»»» displayName|string|optional|The name of the plan if one exists|
 |»»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
 |»»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»»» links|any|mandatory|none|
-|»»» meta|any|mandatory|none|
+|»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
   
     <aside class="success">
@@ -2450,8 +2626,26 @@ Obtain detailed information for a specific energy account
       "gasContract": {
         "additionalFeeInformation": "string",
         "pricingModel": "SINGLE_RATE",
+        "termType": "1_YEAR",
         "timeZone": "LOCAL",
+        "benefitPeriod": "string",
+        "terms": "string",
         "isFixed": true,
+        "variation": "string",
+        "onExpiryDescription": "string",
+        "meterTypes": [
+          "string"
+        ],
+        "coolingOffDays": "string",
+        "billFrequency": [
+          "string"
+        ],
+        "paymentOption": [
+          "PAPER_BILL"
+        ],
+        "intrinsicGreenPower": {
+          "greenPercentage": "string"
+        },
         "controlledLoad": {
           "displayName": "string",
           "description": "string",
@@ -2464,12 +2658,21 @@ Obtain detailed information for a specific energy account
             }
           ]
         },
+        "incentives": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "category": "GIFT",
+            "eligibility": "string"
+          }
+        ],
         "discounts": [
           {
             "displayName": "string",
             "description": "string",
             "type": "CONDITIONAL",
             "category": "PAY_ON_TIME",
+            "endDate": "string",
             "methodUType": "percentOfBill",
             "percentOfBill": {
               "rate": "string"
@@ -2490,6 +2693,7 @@ Obtain detailed information for a specific energy account
           {
             "displayName": "string",
             "description": "string",
+            "scheme": "GREENPOWER",
             "type": "FIXED_PER_DAY",
             "tiers": [
               {
@@ -2500,7 +2704,14 @@ Obtain detailed information for a specific energy account
             ]
           }
         ],
-        "fee": [
+        "eligibility": [
+          {
+            "type": "EXISTING_CUST",
+            "information": "string",
+            "description": "string"
+          }
+        ],
+        "fees": [
           {
             "type": "EXIT",
             "term": "FIXED",
@@ -2511,9 +2722,28 @@ Obtain detailed information for a specific energy account
         ],
         "solarFeedInTariff": [
           {
-            "type": "GOVERNMENT",
-            "amount": "string",
-            "description": "string"
+            "displayName": "string",
+            "description": "string",
+            "scheme": "PREMIUM",
+            "payerType": "GOVERNMENT",
+            "tariffUType": "GOVERNMENT",
+            "singleTariff": {
+              "amount": "string"
+            },
+            "timeVaryingTariffs": {
+              "type": "PEAK",
+              "amount": "string",
+              "timeVariations": [
+                {
+                  "days": {
+                    "weekdays": true,
+                    "weekend": true
+                  },
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
           }
         ],
         "tariffPeriod": [
@@ -2527,19 +2757,18 @@ Obtain detailed information for a specific energy account
               "displayName": "string",
               "description": "string",
               "generalUnitPrice": "string",
-              "period": "string",
               "rates": [
                 {
                   "unitPrice": "string",
                   "volume": 0
                 }
-              ]
+              ],
+              "period": "string"
             },
             "timeOfUseRates": [
               {
                 "displayName": "string",
                 "description": "string",
-                "type": "PEAK",
                 "rates": [
                   {
                     "unitPrice": "string",
@@ -2553,15 +2782,25 @@ Obtain detailed information for a specific energy account
                     "endTime": "string"
                   }
                 ],
-                "demandCharges": [
-                  {
-                    "displayName": "string",
-                    "description": "string",
-                    "amount": "string",
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ]
+                "type": "PEAK"
+              }
+            ],
+            "demandCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "amount": "string",
+                "startTime": "string",
+                "endTime": "string",
+                "days": {
+                  "weekdays": true,
+                  "saturday": true,
+                  "sunday": true
+                },
+                "minDemand": "string",
+                "maxDemand": "string",
+                "measurementPeriod": "DAY",
+                "chargePeriod": "DAY"
               }
             ]
           }
@@ -2570,8 +2809,26 @@ Obtain detailed information for a specific energy account
       "electricityContract": {
         "additionalFeeInformation": "string",
         "pricingModel": "SINGLE_RATE",
+        "termType": "1_YEAR",
         "timeZone": "LOCAL",
+        "benefitPeriod": "string",
+        "terms": "string",
         "isFixed": true,
+        "variation": "string",
+        "onExpiryDescription": "string",
+        "meterTypes": [
+          "string"
+        ],
+        "coolingOffDays": "string",
+        "billFrequency": [
+          "string"
+        ],
+        "paymentOption": [
+          "PAPER_BILL"
+        ],
+        "intrinsicGreenPower": {
+          "greenPercentage": "string"
+        },
         "controlledLoad": {
           "displayName": "string",
           "description": "string",
@@ -2584,12 +2841,21 @@ Obtain detailed information for a specific energy account
             }
           ]
         },
+        "incentives": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "category": "GIFT",
+            "eligibility": "string"
+          }
+        ],
         "discounts": [
           {
             "displayName": "string",
             "description": "string",
             "type": "CONDITIONAL",
             "category": "PAY_ON_TIME",
+            "endDate": "string",
             "methodUType": "percentOfBill",
             "percentOfBill": {
               "rate": "string"
@@ -2610,6 +2876,7 @@ Obtain detailed information for a specific energy account
           {
             "displayName": "string",
             "description": "string",
+            "scheme": "GREENPOWER",
             "type": "FIXED_PER_DAY",
             "tiers": [
               {
@@ -2620,7 +2887,14 @@ Obtain detailed information for a specific energy account
             ]
           }
         ],
-        "fee": [
+        "eligibility": [
+          {
+            "type": "EXISTING_CUST",
+            "information": "string",
+            "description": "string"
+          }
+        ],
+        "fees": [
           {
             "type": "EXIT",
             "term": "FIXED",
@@ -2631,9 +2905,28 @@ Obtain detailed information for a specific energy account
         ],
         "solarFeedInTariff": [
           {
-            "type": "GOVERNMENT",
-            "amount": "string",
-            "description": "string"
+            "displayName": "string",
+            "description": "string",
+            "scheme": "PREMIUM",
+            "payerType": "GOVERNMENT",
+            "tariffUType": "GOVERNMENT",
+            "singleTariff": {
+              "amount": "string"
+            },
+            "timeVaryingTariffs": {
+              "type": "PEAK",
+              "amount": "string",
+              "timeVariations": [
+                {
+                  "days": {
+                    "weekdays": true,
+                    "weekend": true
+                  },
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
           }
         ],
         "tariffPeriod": [
@@ -2647,19 +2940,18 @@ Obtain detailed information for a specific energy account
               "displayName": "string",
               "description": "string",
               "generalUnitPrice": "string",
-              "period": "string",
               "rates": [
                 {
                   "unitPrice": "string",
                   "volume": 0
                 }
-              ]
+              ],
+              "period": "string"
             },
             "timeOfUseRates": [
               {
                 "displayName": "string",
                 "description": "string",
-                "type": "PEAK",
                 "rates": [
                   {
                     "unitPrice": "string",
@@ -2673,15 +2965,25 @@ Obtain detailed information for a specific energy account
                     "endTime": "string"
                   }
                 ],
-                "demandCharges": [
-                  {
-                    "displayName": "string",
-                    "description": "string",
-                    "amount": "string",
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ]
+                "type": "PEAK"
+              }
+            ],
+            "demandCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "amount": "string",
+                "startTime": "string",
+                "endTime": "string",
+                "days": {
+                  "weekdays": true,
+                  "saturday": true,
+                  "sunday": true
+                },
+                "minDemand": "string",
+                "maxDemand": "string",
+                "measurementPeriod": "DAY",
+                "chargePeriod": "DAY"
               }
             ]
           }
@@ -2700,8 +3002,10 @@ Obtain detailed information for a specific energy account
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -2735,12 +3039,23 @@ Status Code **200**
 |»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» gasContract|object|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|»»» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|none|
 |»»»» additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
-|»»»» pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
+|»»»» pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
+|»»»» termType|string|optional|The term for the contract.  If absent assumes no specified term|
 |»»»» timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds|
+|»»»» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
+|»»»» terms|string|optional|Free text description of the terms for the contract|
 |»»»» isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
-|»»»» controlledLoad|object|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD|
+|»»»» variation|string|conditional|Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true|
+|»»»» onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
+|»»»» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
+|»»»» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
+|»»»» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»»»» paymentOption|[string]|mandatory|Payment options for this contract|
+|»»»» intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
+|»»»»» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
+|»»»» controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD|
 |»»»»» displayName|string|mandatory|A display name for the controlled load tier|
 |»»»»» description|string|optional|A description of the controlled load tier|
 |»»»»» dailyCharge|[AmountString](#common-field-types)|mandatory|The daily supply charge (exclusive of GST) for this controlled load tier|
@@ -2748,155 +3063,112 @@ Status Code **200**
 |»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
 |»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
 |»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|»»»»» incentives|[object]|optional|Optional list of incentives available for the contract|
+|»»»»»» displayName|string|mandatory|The display name of the incentive|
+|»»»»»» description|string|mandatory|The description of the incentive|
+|»»»»»» category|string|mandatory|The type of the incentive|
+|»»»»»» eligibility|string|optional|A display message outlining an eligibility criteria that may apply|
 |»»»»» discounts|[object]|optional|Optional list of discounts available for the contract|
 |»»»»»» displayName|string|mandatory|The display name of the discount|
 |»»»»»» description|string|optional|The description of the discount|
 |»»»»»» type|string|mandatory|The type of the discount|
-|»»»»»» category|string|conditional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
+|»»»»»» category|string|optional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
+|»»»»»» endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available|
 |»»»»»» methodUType|string|mandatory|The method of calculation of the discount|
-|»»»»»» percentOfBill|object|conditional|Required if methodUType is percentOfBill|
-|»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount (some types of charges may be excluded from this discount based on plan terms)|
-|»»»»»» percentOfUse|object|conditional|Required if methodUType is percentOfUse|
+|»»»»»» percentOfBill|object|optional|Required if methodUType is percentOfBill|
+|»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
+|»»»»»» percentOfUse|object|optional|Required if methodUType is percentOfUse|
 |»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
-|»»»»»» fixedAmount|object|conditional|Required if methodUType is fixedAmount|
+|»»»»»» fixedAmount|object|optional|Required if methodUType is fixedAmount|
 |»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
-|»»»»»» percentOverThreshold|object|conditional|Required if methodUType is percentOverThreshold|
+|»»»»»» percentOverThreshold|object|optional|Required if methodUType is percentOverThreshold|
 |»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
 |»»»»»»» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
 |»»»»»» greenPowerCharges|[object]|optional|Optional list of charges applicable to green power|
 |»»»»»»» displayName|string|mandatory|The display name of the charge|
 |»»»»»»» description|string|optional|The description of the charge|
+|»»»»»»» scheme|string|mandatory|The applicable green power scheme|
 |»»»»»»» type|string|mandatory|The type of charge|
 |»»»»»»» tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
 |»»»»»»»» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
 |»»»»»»»» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
 |»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
-|»»»»»»» fee|[object]|optional|An array of fees applicable to the plan|
+|»»»»»»» eligibility|[object]|optional|Eligibility restrictions or requirements|
+|»»»»»»»» type|string|mandatory|The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)|
+|»»»»»»»» information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction|
+|»»»»»»»» description|string|optional|A description of the eligibility restriction|
+|»»»»»»» fees|[object]|optional|An array of fees applicable to the plan|
 |»»»»»»»» type|string|mandatory|The type of the fee|
 |»»»»»»»» term|string|mandatory|The term of the fee|
 |»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if term is not PERCENT_OF_BILL|
 |»»»»»»»» rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
 |»»»»»»»» description|string|optional|A description of the fee|
 |»»»»»»» solarFeedInTariff|[object]|optional|Array of feed in tariffs for solar power|
-|»»»»»»»» type|string|mandatory|The type of the tariff|
-|»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The tariff amount per kWh|
+|»»»»»»»» displayName|string|mandatory|The name of the tariff|
 |»»»»»»»» description|string|optional|A description of the tariff|
-|»»»»»»» tariffPeriod|[object]|mandatory|Array of tariff periods|
-|»»»»»»»» displayName|string|mandatory|The name of the tariff period|
-|»»»»»»»» startDate|string|conditional|The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format|
-|»»»»»»»» endDate|string|conditional|The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format|
-|»»»»»»»» dailySupplyCharges|[AmountString](#common-field-types)|mandatory|The amount of access charge for the tariff period, in cents per day exclusive of GST.|
-|»»»»»»»» rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
-|»»»»»»»» singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
-|»»»»»»»»» displayName|string|mandatory|Display name of the rate|
-|»»»»»»»»» description|string|optional|Description of the rate|
-|»»»»»»»»» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
-|»»»»»»»»» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»» timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
-|»»»»»»»»»» description|string|optional|Description of the rate|
-|»»»»»»»»»» type|string|mandatory|The type of usage that the rate applies to|
-|»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»»» timeOfUse|[object]|mandatory|Array of times of use|
-|»»»»»»»»»»» days|[string]|mandatory|The days that the rate applies to|
-|»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»» demandCharges|[object]|optional|Array of demand charges|
+|»»»»»»»» scheme|string|mandatory|The applicable scheme|
+|»»»»»»»» payerType|string|mandatory|The type of the payer|
+|»»»»»»»» tariffUType|string|mandatory|The type of the payer|
+|»»»»»»»» singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
+|»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
+|»»»»»»»» timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
+|»»»»»»»»» type|string|optional|The type of the charging time period. If absent applies to all periods|
+|»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
+|»»»»»»»»» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
+|»»»»»»»»»» days|object|optional|none|
+|»»»»»»»»»»» weekdays|boolean|mandatory|Indicates whether the tariff is applicable Monday to Friday|
+|»»»»»»»»»»» weekend|boolean|mandatory|Indicates whether the tariff is applicable Saturday and Sunday|
+|»»»»»»»»»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
+|»»»»»»»»»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
+|»»»»»»»»» tariffPeriod|[object]|mandatory|Array of tariff periods|
+|»»»»»»»»»» displayName|string|mandatory|The name of the tariff period|
+|»»»»»»»»»» startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
+|»»»»»»»»»» endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
+|»»»»»»»»»» dailySupplyCharges|[AmountString](#common-field-types)|mandatory|The amount of access charge for the tariff period, in cents per day exclusive of GST.|
+|»»»»»»»»»» rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
+|»»»»»»»»»» singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
+|»»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
+|»»»»»»»»»»» description|string|optional|Description of the rate|
+|»»»»»»»»»»» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
+|»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
+|»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|»»»»»»»»»»» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»»»»»»»»»» timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
+|»»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
+|»»»»»»»»»»» description|string|optional|Description of the rate|
+|»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
+|»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|»»»»»»»»»»» timeOfUse|[object]|mandatory|Array of times of use|
+|»»»»»»»»»»»» days|[string]|mandatory|The days that the rate applies to|
+|»»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
+|»»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
+|»»»»»»»»»»» type|string|mandatory|The type of usage that the rate applies to|
+|»»»»»»»»»» demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
 |»»»»»»»»»»» displayName|string|mandatory|Display name of the charge|
 |»»»»»»»»»»» description|string|optional|Description of the charge|
-|»»»»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The charge amount per kWh exclusive of GST|
+|»»»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The charge amount per kWh exclusive of GST|
 |»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
 |»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»» electricityContract|object|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|»»»»»»»»»»» additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
-|»»»»»»»»»»» pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:  * **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc. * **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc. * **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed * **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc. * **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage|
-|»»»»»»»»»»» timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds|
-|»»»»»»»»»»» isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
-|»»»»»»»»»»» controlledLoad|object|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD|
-|»»»»»»»»»»»» displayName|string|mandatory|A display name for the controlled load tier|
-|»»»»»»»»»»»» description|string|optional|A description of the controlled load tier|
-|»»»»»»»»»»»» dailyCharge|[AmountString](#common-field-types)|mandatory|The daily supply charge (exclusive of GST) for this controlled load tier|
-|»»»»»»»»»»»» period|[ExternalRef](#common-field-types)|mandatory|The period for which the controlled load rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»»»»» discounts|[object]|optional|Optional list of discounts available for the contract|
-|»»»»»»»»»»»»» displayName|string|mandatory|The display name of the discount|
-|»»»»»»»»»»»»» description|string|optional|The description of the discount|
-|»»»»»»»»»»»»» type|string|mandatory|The type of the discount|
-|»»»»»»»»»»»»» category|string|conditional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
-|»»»»»»»»»»»»» methodUType|string|mandatory|The method of calculation of the discount|
-|»»»»»»»»»»»»» percentOfBill|object|conditional|Required if methodUType is percentOfBill|
-|»»»»»»»»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount (some types of charges may be excluded from this discount based on plan terms)|
-|»»»»»»»»»»»»» percentOfUse|object|conditional|Required if methodUType is percentOfUse|
-|»»»»»»»»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
-|»»»»»»»»»»»»» fixedAmount|object|conditional|Required if methodUType is fixedAmount|
-|»»»»»»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
-|»»»»»»»»»»»»» percentOverThreshold|object|conditional|Required if methodUType is percentOverThreshold|
-|»»»»»»»»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
-|»»»»»»»»»»»»»» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
-|»»»»»»»»»»»»» greenPowerCharges|[object]|optional|Optional list of charges applicable to green power|
-|»»»»»»»»»»»»»» displayName|string|mandatory|The display name of the charge|
-|»»»»»»»»»»»»»» description|string|optional|The description of the charge|
-|»»»»»»»»»»»»»» type|string|mandatory|The type of charge|
-|»»»»»»»»»»»»»» tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
-|»»»»»»»»»»»»»»» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
-|»»»»»»»»»»»»»»» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
-|»»»»»»»»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
-|»»»»»»»»»»»»»» fee|[object]|optional|An array of fees applicable to the plan|
-|»»»»»»»»»»»»»»» type|string|mandatory|The type of the fee|
-|»»»»»»»»»»»»»»» term|string|mandatory|The term of the fee|
-|»»»»»»»»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if term is not PERCENT_OF_BILL|
-|»»»»»»»»»»»»»»» rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
-|»»»»»»»»»»»»»»» description|string|optional|A description of the fee|
-|»»»»»»»»»»»»»» solarFeedInTariff|[object]|optional|Array of feed in tariffs for solar power|
-|»»»»»»»»»»»»»»» type|string|mandatory|The type of the tariff|
-|»»»»»»»»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The tariff amount per kWh|
-|»»»»»»»»»»»»»»» description|string|optional|A description of the tariff|
-|»»»»»»»»»»»»»» tariffPeriod|[object]|mandatory|Array of tariff periods|
-|»»»»»»»»»»»»»»» displayName|string|mandatory|The name of the tariff period|
-|»»»»»»»»»»»»»»» startDate|string|conditional|The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format|
-|»»»»»»»»»»»»»»» endDate|string|conditional|The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format|
-|»»»»»»»»»»»»»»» dailySupplyCharges|[AmountString](#common-field-types)|mandatory|The amount of access charge for the tariff period, in cents per day exclusive of GST.|
-|»»»»»»»»»»»»»»» rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
-|»»»»»»»»»»»»»»» singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
-|»»»»»»»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
-|»»»»»»»»»»»»»»»» description|string|optional|Description of the rate|
-|»»»»»»»»»»»»»»»» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
-|»»»»»»»»»»»»»»»» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»»»»»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»»»»»»»»» timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|»»»»»»»»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
-|»»»»»»»»»»»»»»»»» description|string|optional|Description of the rate|
-|»»»»»»»»»»»»»»»»» type|string|mandatory|The type of usage that the rate applies to|
-|»»»»»»»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»»»»»»»»»» timeOfUse|[object]|mandatory|Array of times of use|
-|»»»»»»»»»»»»»»»»»» days|[string]|mandatory|The days that the rate applies to|
-|»»»»»»»»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»»»»»»»» demandCharges|[object]|optional|Array of demand charges|
-|»»»»»»»»»»»»»»»»»» displayName|string|mandatory|Display name of the charge|
-|»»»»»»»»»»»»»»»»»» description|string|optional|Description of the charge|
-|»»»»»»»»»»»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The charge amount per kWh exclusive of GST|
-|»»»»»»»»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»»»»»»»» authorisedContacts|[object]|mandatory|An array of additional contacts that are authorised to act on this account|
-|»»»»»»»»»»»»»»»»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|»»»»»»»»»»»»»»»»»» lastName|string|mandatory|For people with single names the single name should be in this field|
-|»»»»»»»»»»»»»»»»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
-|»»»»»»»»»»»»»»»»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|»»»»»»»»»»»»»»»»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
-|»»»»»»»»»»»»»»»»» links|any|mandatory|none|
-|»»»»»»»»»»»»»»»»» meta|any|mandatory|none|
+|»»»»»»»»»»» days|object|optional|Object containing demand tariff by day of week|
+|»»»»»»»»»»»» weekdays|boolean|mandatory|Indicates the demand tariff is applicable on weekdays|
+|»»»»»»»»»»»» saturday|boolean|mandatory|Indicates the demand tariff is applicable on Saturdays|
+|»»»»»»»»»»»» sunday|boolean|mandatory|Indicates the demand tariff is applicable on Sundays|
+|»»»»»»»»»»» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
+|»»»»»»»»»»» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
+|»»»»»»»»»»» measurementPeriod|string|mandatory|Application period for the demand tariff|
+|»»»»»»»»»»» chargePeriod|string|mandatory|Charge period for the demand tariff|
+|»»»»»»»»»» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|none|
+|»»»»»»»»» authorisedContacts|[object]|mandatory|An array of additional contacts that are authorised to act on this account|
+|»»»»»»»»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
+|»»»»»»»»»» lastName|string|mandatory|For people with single names the single name should be in this field|
+|»»»»»»»»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
+|»»»»»»»»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|»»»»»»»»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+|»»»»»»»»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|»»»»»»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»»»»»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 #### Enumerated Values
 
@@ -2912,11 +3184,20 @@ Status Code **200**
 |pricingModel|FLEXIBLE|
 |pricingModel|FLEXIBLE_CONT_LOAD|
 |pricingModel|QUOTA|
+|termType|1_YEAR|
+|termType|2_YEAR|
+|termType|3_YEAR|
+|termType|4_YEAR|
+|termType|5_YEAR|
+|termType|ONGOING|
+|termType|OTHER|
 |timeZone|LOCAL|
 |timeZone|AEST|
+|category|GIFT|
+|category|ACCOUNT_CREDIT|
+|category|OTHER|
 |type|CONDITIONAL|
 |type|GUARANTEED|
-|type|OTHER|
 |category|PAY_ON_TIME|
 |category|DIRECT_DEBIT|
 |category|GUARANTEED_DISCOUNT|
@@ -2925,12 +3206,35 @@ Status Code **200**
 |methodUType|percentOfUse|
 |methodUType|fixedAmount|
 |methodUType|percentOverThreshold|
+|scheme|GREENPOWER|
+|scheme|OTHER|
 |type|FIXED_PER_DAY|
 |type|FIXED_PER_WEEK|
 |type|FIXED_PER_MONTH|
 |type|FIXED_PER_UNIT|
 |type|PERCENT_OF_USE|
 |type|PERCENT_OF_BILL|
+|type|EXISTING_CUST|
+|type|EXISTING_POOL|
+|type|EXISTING_SOLAR|
+|type|EXISTING_BATTERY|
+|type|EXISTING_SMART_METER|
+|type|EXISTING_BASIC_METER|
+|type|SENIOR_CARD|
+|type|SMALL_BUSINESS|
+|type|NO_SOLAR_FIT|
+|type|NEW_CUSTOMER|
+|type|ONLINE_ONLY|
+|type|REQ_EQUIP_SUPPLIER|
+|type|THIRD_PARTY_ONLY|
+|type|SPORT_CLUB_MEMBER|
+|type|ORG_MEMBER|
+|type|SPECIFIC_LOCATION|
+|type|MINIMUM_USAGE|
+|type|LOYALTY_MEMBER|
+|type|GROUP_BUY_MEMBER|
+|type|CONTINGENT_PLAN|
+|type|OTHER|
 |type|EXIT|
 |type|ESTABLISHMENT|
 |type|LATE_PAYMENT|
@@ -2956,83 +3260,31 @@ Status Code **200**
 |term|PERCENT_OF_BILL|
 |term|ANNUAL|
 |term|DAILY|
-|term|WEEKLY|
 |term|MONTHLY|
 |term|BIANNUAL|
-|type|GOVERNMENT|
-|type|RETAILER|
-|rateBlockUType|singleRate|
-|rateBlockUType|timeOfUseRates|
+|scheme|PREMIUM|
+|scheme|OTHER|
+|payerType|GOVERNMENT|
+|payerType|RETAILER|
+|tariffUType|GOVERNMENT|
+|tariffUType|RETAILER|
 |type|PEAK|
 |type|OFF_PEAK|
-|type|OFF_PEAK_DC|
+|type|SHOULDER|
+|rateBlockUType|singleRate|
+|rateBlockUType|timeOfUseRates|
+|rateBlockUType|demandCharges|
+|type|PEAK|
+|type|OFF_PEAK|
 |type|SHOULDER|
 |type|SHOULDER1|
 |type|SHOULDER2|
-|pricingModel|SINGLE_RATE|
-|pricingModel|SINGLE_RATE_CONT_LOAD|
-|pricingModel|TIME_OF_USE|
-|pricingModel|TIME_OF_USE_CONT_LOAD|
-|pricingModel|FLEXIBLE|
-|pricingModel|FLEXIBLE_CONT_LOAD|
-|pricingModel|QUOTA|
-|timeZone|LOCAL|
-|timeZone|AEST|
-|type|CONDITIONAL|
-|type|GUARANTEED|
-|type|OTHER|
-|category|PAY_ON_TIME|
-|category|DIRECT_DEBIT|
-|category|GUARANTEED_DISCOUNT|
-|category|OTHER|
-|methodUType|percentOfBill|
-|methodUType|percentOfUse|
-|methodUType|fixedAmount|
-|methodUType|percentOverThreshold|
-|type|FIXED_PER_DAY|
-|type|FIXED_PER_WEEK|
-|type|FIXED_PER_MONTH|
-|type|FIXED_PER_UNIT|
-|type|PERCENT_OF_USE|
-|type|PERCENT_OF_BILL|
-|type|EXIT|
-|type|ESTABLISHMENT|
-|type|LATE_PAYMENT|
-|type|DISCONNECTION|
-|type|DISCONNECT_MOVE_OUT|
-|type|DISCONNECT_NON_PAY|
-|type|RECONNECTION|
-|type|CONNECTION|
-|type|PAYMENT_PROCESSING|
-|type|CC_PROCESSING|
-|type|CHEQUE_DISHONOUR|
-|type|DD_DISHONOUR|
-|type|MEMBERSHIP|
-|type|CONTRIBUTION|
-|type|PAPER_BILL|
-|type|OTHER|
-|term|FIXED|
-|term|1_YEAR|
-|term|2_YEAR|
-|term|3_YEAR|
-|term|4_YEAR|
-|term|5_YEAR|
-|term|PERCENT_OF_BILL|
-|term|ANNUAL|
-|term|DAILY|
-|term|WEEKLY|
-|term|MONTHLY|
-|term|BIANNUAL|
-|type|GOVERNMENT|
-|type|RETAILER|
-|rateBlockUType|singleRate|
-|rateBlockUType|timeOfUseRates|
-|type|PEAK|
-|type|OFF_PEAK|
-|type|OFF_PEAK_DC|
-|type|SHOULDER|
-|type|SHOULDER1|
-|type|SHOULDER2|
+|measurementPeriod|DAY|
+|measurementPeriod|MONTH|
+|measurementPeriod|TARIFF_PERIOD|
+|chargePeriod|DAY|
+|chargePeriod|MONTH|
+|chargePeriod|TARIFF_PERIOD|
 
   
     <aside class="success">
@@ -3130,8 +3382,10 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
       "billFrequency": "string"
     }
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -3162,8 +3416,9 @@ Status Code **200**
 |»»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
 |»» manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
 |»»» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 #### Enumerated Values
 
@@ -3277,8 +3532,10 @@ Obtain the details of any concessions or hardship arrangements applied to a spec
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -3305,8 +3562,9 @@ Status Code **200**
 |»»» monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |»»» yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |»»» percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
   
     <aside class="success">
@@ -3388,8 +3646,10 @@ Obtain the current balance for a specific account
   "data": {
     "balance": "string"
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
@@ -3407,8 +3667,9 @@ Status Code **200**
 |---|---|---|---|
 |» data|object|mandatory|none|
 |»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|» links|any|mandatory|none|
-|» meta|any|mandatory|none|
+|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
   
     <aside class="success">
@@ -3496,8 +3757,17 @@ Obtain the current balance for all accounts
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -3517,8 +3787,15 @@ Status Code **200**
 |»» balances|[object]|mandatory|Array of account balances|
 |»»» accountId|string|mandatory|The ID of the account|
 |»»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
   
     <aside class="success">
@@ -3585,7 +3862,7 @@ Obtain the current balance for a specified set of accounts
       "string"
     ]
   },
-  "meta": null
+  "meta": {}
 }
 ```
 
@@ -3609,7 +3886,7 @@ Obtain the current balance for a specified set of accounts
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|any|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -3625,8 +3902,17 @@ Obtain the current balance for a specified set of accounts
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -3646,8 +3932,15 @@ Status Code **200**
 |»» balances|[object]|mandatory|Array of account balances|
 |»»» accountId|string|mandatory|The ID of the account|
 |»»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
   
     <aside class="success">
@@ -3767,8 +4060,17 @@ Obtain the invoices for a specific account
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -3811,8 +4113,15 @@ Status Code **200**
 |»»» totalAccountCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
 |»»» totalAccountDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |»»» paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -3939,8 +4248,17 @@ Obtain the invoices for all accounts
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -3983,8 +4301,15 @@ Status Code **200**
 |»»» totalAccountCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
 |»»» totalAccountDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |»»» paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -4059,7 +4384,7 @@ Obtain invoices for a specified set of accounts
       "string"
     ]
   },
-  "meta": null
+  "meta": {}
 }
 ```
 
@@ -4085,7 +4410,7 @@ Obtain invoices for a specified set of accounts
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|any|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -4130,8 +4455,17 @@ Obtain invoices for a specified set of accounts
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -4174,8 +4508,15 @@ Status Code **200**
 |»»» totalAccountCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
 |»»» totalAccountDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |»»» paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
-|»» links|any|mandatory|none|
-|»» meta|any|mandatory|none|
+|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -4301,8 +4642,17 @@ Obtain the billing transactions for a specific account
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -4343,8 +4693,15 @@ Status Code **200**
 |»»»» payment|object|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 |»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount paid|
 |»»»»» method|string|mandatory|The method of payment|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -4482,8 +4839,17 @@ Obtain billing transactions for all accounts
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -4524,8 +4890,15 @@ Status Code **200**
 |»»»» payment|object|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 |»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount paid|
 |»»»»» method|string|mandatory|The method of payment|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -4613,7 +4986,7 @@ Obtain billing for a specified set of accounts
       "string"
     ]
   },
-  "meta": null
+  "meta": {}
 }
 ```
 
@@ -4639,7 +5012,7 @@ Obtain billing for a specified set of accounts
 |body|body|[accountIdList](#schemacdr-energy-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for|
-|» meta|body|any|mandatory|none|
+|» meta|body|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 > Example responses
 
@@ -4682,8 +5055,17 @@ Obtain billing for a specified set of accounts
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -4724,8 +5106,15 @@ Status Code **200**
 |»»»» payment|object|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
 |»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount paid|
 |»»»»» method|string|mandatory|The method of payment|
-|»»»» links|any|mandatory|none|
-|»»»» meta|any|mandatory|none|
+|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -4857,7 +5246,7 @@ This operation does not require authentication
     },
     "meteringCharges": [
       {
-        "name": "string",
+        "displayName": "string",
         "description": "string",
         "minimumValue": "string",
         "maximumValue": "string",
@@ -4934,6 +5323,7 @@ This operation does not require authentication
         {
           "displayName": "string",
           "description": "string",
+          "scheme": "GREENPOWER",
           "type": "FIXED_PER_DAY",
           "tiers": [
             {
@@ -4962,9 +5352,28 @@ This operation does not require authentication
       ],
       "solarFeedInTariff": [
         {
-          "type": "GOVERNMENT",
-          "amount": "string",
-          "description": "string"
+          "displayName": "string",
+          "description": "string",
+          "scheme": "PREMIUM",
+          "payerType": "GOVERNMENT",
+          "tariffUType": "GOVERNMENT",
+          "singleTariff": {
+            "amount": "string"
+          },
+          "timeVaryingTariffs": {
+            "type": "PEAK",
+            "amount": "string",
+            "timeVariations": [
+              {
+                "days": {
+                  "weekdays": true,
+                  "weekend": true
+                },
+                "startTime": "string",
+                "endTime": "string"
+              }
+            ]
+          }
         }
       ],
       "tariffPeriod": [
@@ -4978,19 +5387,18 @@ This operation does not require authentication
             "displayName": "string",
             "description": "string",
             "generalUnitPrice": "string",
-            "period": "string",
             "rates": [
               {
                 "unitPrice": "string",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
               "displayName": "string",
               "description": "string",
-              "type": "PEAK",
               "rates": [
                 {
                   "unitPrice": "string",
@@ -5006,15 +5414,25 @@ This operation does not require authentication
                   "endTime": "string"
                 }
               ],
-              "demandCharges": [
-                {
-                  "displayName": "string",
-                  "description": "string",
-                  "amount": "string",
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
+              "type": "PEAK"
+            }
+          ],
+          "demandCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "amount": "string",
+              "startTime": "string",
+              "endTime": "string",
+              "days": {
+                "weekdays": true,
+                "saturday": true,
+                "sunday": true
+              },
+              "minDemand": "string",
+              "maxDemand": "string",
+              "measurementPeriod": "DAY",
+              "chargePeriod": "DAY"
             }
           ]
         }
@@ -5090,6 +5508,7 @@ This operation does not require authentication
         {
           "displayName": "string",
           "description": "string",
+          "scheme": "GREENPOWER",
           "type": "FIXED_PER_DAY",
           "tiers": [
             {
@@ -5118,9 +5537,28 @@ This operation does not require authentication
       ],
       "solarFeedInTariff": [
         {
-          "type": "GOVERNMENT",
-          "amount": "string",
-          "description": "string"
+          "displayName": "string",
+          "description": "string",
+          "scheme": "PREMIUM",
+          "payerType": "GOVERNMENT",
+          "tariffUType": "GOVERNMENT",
+          "singleTariff": {
+            "amount": "string"
+          },
+          "timeVaryingTariffs": {
+            "type": "PEAK",
+            "amount": "string",
+            "timeVariations": [
+              {
+                "days": {
+                  "weekdays": true,
+                  "weekend": true
+                },
+                "startTime": "string",
+                "endTime": "string"
+              }
+            ]
+          }
         }
       ],
       "tariffPeriod": [
@@ -5134,19 +5572,18 @@ This operation does not require authentication
             "displayName": "string",
             "description": "string",
             "generalUnitPrice": "string",
-            "period": "string",
             "rates": [
               {
                 "unitPrice": "string",
                 "volume": 0
               }
-            ]
+            ],
+            "period": "string"
           },
           "timeOfUseRates": [
             {
               "displayName": "string",
               "description": "string",
-              "type": "PEAK",
               "rates": [
                 {
                   "unitPrice": "string",
@@ -5162,15 +5599,25 @@ This operation does not require authentication
                   "endTime": "string"
                 }
               ],
-              "demandCharges": [
-                {
-                  "displayName": "string",
-                  "description": "string",
-                  "amount": "string",
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
+              "type": "PEAK"
+            }
+          ],
+          "demandCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "amount": "string",
+              "startTime": "string",
+              "endTime": "string",
+              "days": {
+                "weekdays": true,
+                "saturday": true,
+                "sunday": true
+              },
+              "minDemand": "string",
+              "maxDemand": "string",
+              "measurementPeriod": "DAY",
+              "chargePeriod": "DAY"
             }
           ]
         }
@@ -5304,7 +5751,7 @@ This operation does not require authentication
   },
   "meteringCharges": [
     {
-      "name": "string",
+      "displayName": "string",
       "description": "string",
       "minimumValue": "string",
       "maximumValue": "string",
@@ -5381,6 +5828,7 @@ This operation does not require authentication
       {
         "displayName": "string",
         "description": "string",
+        "scheme": "GREENPOWER",
         "type": "FIXED_PER_DAY",
         "tiers": [
           {
@@ -5409,9 +5857,28 @@ This operation does not require authentication
     ],
     "solarFeedInTariff": [
       {
-        "type": "GOVERNMENT",
-        "amount": "string",
-        "description": "string"
+        "displayName": "string",
+        "description": "string",
+        "scheme": "PREMIUM",
+        "payerType": "GOVERNMENT",
+        "tariffUType": "GOVERNMENT",
+        "singleTariff": {
+          "amount": "string"
+        },
+        "timeVaryingTariffs": {
+          "type": "PEAK",
+          "amount": "string",
+          "timeVariations": [
+            {
+              "days": {
+                "weekdays": true,
+                "weekend": true
+              },
+              "startTime": "string",
+              "endTime": "string"
+            }
+          ]
+        }
       }
     ],
     "tariffPeriod": [
@@ -5425,19 +5892,18 @@ This operation does not require authentication
           "displayName": "string",
           "description": "string",
           "generalUnitPrice": "string",
-          "period": "string",
           "rates": [
             {
               "unitPrice": "string",
               "volume": 0
             }
-          ]
+          ],
+          "period": "string"
         },
         "timeOfUseRates": [
           {
             "displayName": "string",
             "description": "string",
-            "type": "PEAK",
             "rates": [
               {
                 "unitPrice": "string",
@@ -5453,15 +5919,25 @@ This operation does not require authentication
                 "endTime": "string"
               }
             ],
-            "demandCharges": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "amount": "string",
-                "startTime": "string",
-                "endTime": "string"
-              }
-            ]
+            "type": "PEAK"
+          }
+        ],
+        "demandCharges": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "amount": "string",
+            "startTime": "string",
+            "endTime": "string",
+            "days": {
+              "weekdays": true,
+              "saturday": true,
+              "sunday": true
+            },
+            "minDemand": "string",
+            "maxDemand": "string",
+            "measurementPeriod": "DAY",
+            "chargePeriod": "DAY"
           }
         ]
       }
@@ -5537,6 +6013,7 @@ This operation does not require authentication
       {
         "displayName": "string",
         "description": "string",
+        "scheme": "GREENPOWER",
         "type": "FIXED_PER_DAY",
         "tiers": [
           {
@@ -5565,9 +6042,28 @@ This operation does not require authentication
     ],
     "solarFeedInTariff": [
       {
-        "type": "GOVERNMENT",
-        "amount": "string",
-        "description": "string"
+        "displayName": "string",
+        "description": "string",
+        "scheme": "PREMIUM",
+        "payerType": "GOVERNMENT",
+        "tariffUType": "GOVERNMENT",
+        "singleTariff": {
+          "amount": "string"
+        },
+        "timeVaryingTariffs": {
+          "type": "PEAK",
+          "amount": "string",
+          "timeVariations": [
+            {
+              "days": {
+                "weekdays": true,
+                "weekend": true
+              },
+              "startTime": "string",
+              "endTime": "string"
+            }
+          ]
+        }
       }
     ],
     "tariffPeriod": [
@@ -5581,19 +6077,18 @@ This operation does not require authentication
           "displayName": "string",
           "description": "string",
           "generalUnitPrice": "string",
-          "period": "string",
           "rates": [
             {
               "unitPrice": "string",
               "volume": 0
             }
-          ]
+          ],
+          "period": "string"
         },
         "timeOfUseRates": [
           {
             "displayName": "string",
             "description": "string",
-            "type": "PEAK",
             "rates": [
               {
                 "unitPrice": "string",
@@ -5609,15 +6104,25 @@ This operation does not require authentication
                 "endTime": "string"
               }
             ],
-            "demandCharges": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "amount": "string",
-                "startTime": "string",
-                "endTime": "string"
-              }
-            ]
+            "type": "PEAK"
+          }
+        ],
+        "demandCharges": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "amount": "string",
+            "startTime": "string",
+            "endTime": "string",
+            "days": {
+              "weekdays": true,
+              "saturday": true,
+              "sunday": true
+            },
+            "minDemand": "string",
+            "maxDemand": "string",
+            "measurementPeriod": "DAY",
+            "chargePeriod": "DAY"
           }
         ]
       }
@@ -5641,7 +6146,7 @@ This operation does not require authentication
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
 |» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»» name|string|optional|Display name of the charge|
+|»» displayName|string|mandatory|Display name of the charge|
 |»» description|string|optional|Description of the charge|
 |»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
@@ -5724,6 +6229,7 @@ This operation does not require authentication
     {
       "displayName": "string",
       "description": "string",
+      "scheme": "GREENPOWER",
       "type": "FIXED_PER_DAY",
       "tiers": [
         {
@@ -5752,9 +6258,28 @@ This operation does not require authentication
   ],
   "solarFeedInTariff": [
     {
-      "type": "GOVERNMENT",
-      "amount": "string",
-      "description": "string"
+      "displayName": "string",
+      "description": "string",
+      "scheme": "PREMIUM",
+      "payerType": "GOVERNMENT",
+      "tariffUType": "GOVERNMENT",
+      "singleTariff": {
+        "amount": "string"
+      },
+      "timeVaryingTariffs": {
+        "type": "PEAK",
+        "amount": "string",
+        "timeVariations": [
+          {
+            "days": {
+              "weekdays": true,
+              "weekend": true
+            },
+            "startTime": "string",
+            "endTime": "string"
+          }
+        ]
+      }
     }
   ],
   "tariffPeriod": [
@@ -5768,19 +6293,18 @@ This operation does not require authentication
         "displayName": "string",
         "description": "string",
         "generalUnitPrice": "string",
-        "period": "string",
         "rates": [
           {
             "unitPrice": "string",
             "volume": 0
           }
-        ]
+        ],
+        "period": "string"
       },
       "timeOfUseRates": [
         {
           "displayName": "string",
           "description": "string",
-          "type": "PEAK",
           "rates": [
             {
               "unitPrice": "string",
@@ -5796,15 +6320,25 @@ This operation does not require authentication
               "endTime": "string"
             }
           ],
-          "demandCharges": [
-            {
-              "displayName": "string",
-              "description": "string",
-              "amount": "string",
-              "startTime": "string",
-              "endTime": "string"
-            }
-          ]
+          "type": "PEAK"
+        }
+      ],
+      "demandCharges": [
+        {
+          "displayName": "string",
+          "description": "string",
+          "amount": "string",
+          "startTime": "string",
+          "endTime": "string",
+          "days": {
+            "weekdays": true,
+            "saturday": true,
+            "sunday": true
+          },
+          "minDemand": "string",
+          "maxDemand": "string",
+          "measurementPeriod": "DAY",
+          "chargePeriod": "DAY"
         }
       ]
     }
@@ -6008,6 +6542,7 @@ This operation does not require authentication
   {
     "displayName": "string",
     "description": "string",
+    "scheme": "GREENPOWER",
     "type": "FIXED_PER_DAY",
     "tiers": [
       {
@@ -6029,16 +6564,19 @@ This operation does not require authentication
 |---|---|---|---|
 |displayName|string|mandatory|The display name of the charge|
 |description|string|optional|The description of the charge|
+|scheme|string|mandatory|The applicable green power scheme|
 |type|string|mandatory|The type of charge|
 |tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
 |» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
-|» rate|[RateString](#common-field-types)|optional|The rate of the charge if the type implies the application of a rate|
-|» amount|[AmountString](#common-field-types)|optional|The amount of the charge if the type implies the application of a fixed amount|
+|» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
+|» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
+|scheme|GREENPOWER|
+|scheme|OTHER|
 |type|FIXED_PER_DAY|
 |type|FIXED_PER_WEEK|
 |type|FIXED_PER_MONTH|
@@ -6067,7 +6605,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|mandatory|The type of the eligibility restriction|
+|type|string|mandatory|The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)|
 |information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction|
 |description|string|optional|A description of the eligibility restriction|
 
@@ -6094,6 +6632,7 @@ This operation does not require authentication
 |type|MINIMUM_USAGE|
 |type|LOYALTY_MEMBER|
 |type|GROUP_BUY_MEMBER|
+|type|CONTINGENT_PLAN|
 |type|OTHER|
 
 <h2 class="schema-toc" id="tocSenergyplanfees">EnergyPlanFees</h2>
@@ -6121,8 +6660,8 @@ This operation does not require authentication
 |---|---|---|---|
 |type|string|mandatory|The type of the fee|
 |term|string|mandatory|The term of the fee|
-|amount|[AmountString](#common-field-types)|optional|The fee amount. Required if term is not PERCENT_OF_BILL|
-|rate|[RateString](#common-field-types)|optional|The fee rate. Required if term is PERCENT_OF_BILL|
+|amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if term is not PERCENT_OF_BILL|
+|rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
 |description|string|optional|A description of the fee|
 
 #### Enumerated Values
@@ -6154,7 +6693,6 @@ This operation does not require authentication
 |term|PERCENT_OF_BILL|
 |term|ANNUAL|
 |term|DAILY|
-|term|WEEKLY|
 |term|MONTHLY|
 |term|BIANNUAL|
 
@@ -6165,9 +6703,28 @@ This operation does not require authentication
 ```json
 [
   {
-    "type": "GOVERNMENT",
-    "amount": "string",
-    "description": "string"
+    "displayName": "string",
+    "description": "string",
+    "scheme": "PREMIUM",
+    "payerType": "GOVERNMENT",
+    "tariffUType": "GOVERNMENT",
+    "singleTariff": {
+      "amount": "string"
+    },
+    "timeVaryingTariffs": {
+      "type": "PEAK",
+      "amount": "string",
+      "timeVariations": [
+        {
+          "days": {
+            "weekdays": true,
+            "weekend": true
+          },
+          "startTime": "string",
+          "endTime": "string"
+        }
+      ]
+    }
   }
 ]
 
@@ -6179,16 +6736,36 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|string|mandatory|The type of the tariff|
-|amount|[AmountString](#common-field-types)|optional|The tariff amount per kWh|
+|displayName|string|mandatory|The name of the tariff|
 |description|string|optional|A description of the tariff|
+|scheme|string|mandatory|The applicable scheme|
+|payerType|string|mandatory|The type of the payer|
+|tariffUType|string|mandatory|The type of the payer|
+|singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
+|» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
+|timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
+|» type|string|optional|The type of the charging time period. If absent applies to all periods|
+|» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
+|» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
+|»» days|object|optional|none|
+|»»» weekdays|boolean|mandatory|Indicates whether the tariff is applicable Monday to Friday|
+|»»» weekend|boolean|mandatory|Indicates whether the tariff is applicable Saturday and Sunday|
+|»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
+|»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|type|GOVERNMENT|
-|type|RETAILER|
+|scheme|PREMIUM|
+|scheme|OTHER|
+|payerType|GOVERNMENT|
+|payerType|RETAILER|
+|tariffUType|GOVERNMENT|
+|tariffUType|RETAILER|
+|type|PEAK|
+|type|OFF_PEAK|
+|type|SHOULDER|
 
 <h2 class="schema-toc" id="tocSenergyplantariffperiod">EnergyPlanTariffPeriod</h2>
 
@@ -6206,19 +6783,18 @@ This operation does not require authentication
       "displayName": "string",
       "description": "string",
       "generalUnitPrice": "string",
-      "period": "string",
       "rates": [
         {
           "unitPrice": "string",
           "volume": 0
         }
-      ]
+      ],
+      "period": "string"
     },
     "timeOfUseRates": [
       {
         "displayName": "string",
         "description": "string",
-        "type": "PEAK",
         "rates": [
           {
             "unitPrice": "string",
@@ -6234,15 +6810,25 @@ This operation does not require authentication
             "endTime": "string"
           }
         ],
-        "demandCharges": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "amount": "string",
-            "startTime": "string",
-            "endTime": "string"
-          }
-        ]
+        "type": "PEAK"
+      }
+    ],
+    "demandCharges": [
+      {
+        "displayName": "string",
+        "description": "string",
+        "amount": "string",
+        "startTime": "string",
+        "endTime": "string",
+        "days": {
+          "weekdays": true,
+          "saturday": true,
+          "sunday": true
+        },
+        "minDemand": "string",
+        "maxDemand": "string",
+        "measurementPeriod": "DAY",
+        "chargePeriod": "DAY"
       }
     ]
   }
@@ -6257,35 +6843,43 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |displayName|string|mandatory|The name of the tariff period|
-|startDate|string|optional|The start date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format|
-|endDate|string|optional|The end date of the tariff period in a calendar year.  Required if there is more than one period.  Formatted in mm-dd format|
+|startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
+|endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |dailySupplyCharges|[AmountString](#common-field-types)|mandatory|The amount of access charge for the tariff period, in cents per day exclusive of GST.|
 |rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
-|singleRate|object|optional|Object representing a single rate.  Required if rateBlockUType is singleRate|
+|singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
 |» displayName|string|mandatory|Display name of the rate|
 |» description|string|optional|Description of the rate|
-|» generalUnitPrice|[AmountString](#common-field-types)|optional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
 |» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
 |»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» timeOfUseRates|[object]|optional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|»» displayName|string|mandatory|Display name of the rate|
-|»» description|string|optional|Description of the rate|
-|»» type|string|mandatory|The type of usage that the rate applies to|
-|»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»» timeOfUse|[object]|mandatory|Array of times of use|
-|»»» days|[string]|mandatory|The days that the rate applies to|
-|»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»» demandCharges|[object]|optional|Array of demand charges|
-|»»» displayName|string|mandatory|Display name of the charge|
-|»»» description|string|optional|Description of the charge|
-|»»» amount|[AmountString](#common-field-types)|optional|The charge amount per kWh exclusive of GST|
-|»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
+|» displayName|string|mandatory|Display name of the rate|
+|» description|string|optional|Description of the rate|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
+|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
+|» timeOfUse|[object]|mandatory|Array of times of use|
+|»» days|[string]|mandatory|The days that the rate applies to|
+|»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
+|»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
+|» type|string|mandatory|The type of usage that the rate applies to|
+|demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
+|» displayName|string|mandatory|Display name of the charge|
+|» description|string|optional|Description of the charge|
+|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per kWh exclusive of GST|
+|» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
+|» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
+|» days|object|optional|Object containing demand tariff by day of week|
+|»» weekdays|boolean|mandatory|Indicates the demand tariff is applicable on weekdays|
+|»» saturday|boolean|mandatory|Indicates the demand tariff is applicable on Saturdays|
+|»» sunday|boolean|mandatory|Indicates the demand tariff is applicable on Sundays|
+|» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
+|» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
+|» measurementPeriod|string|mandatory|Application period for the demand tariff|
+|» chargePeriod|string|mandatory|Charge period for the demand tariff|
 
 #### Enumerated Values
 
@@ -6293,12 +6887,18 @@ This operation does not require authentication
 |---|---|
 |rateBlockUType|singleRate|
 |rateBlockUType|timeOfUseRates|
+|rateBlockUType|demandCharges|
 |type|PEAK|
 |type|OFF_PEAK|
-|type|OFF_PEAK_DC|
 |type|SHOULDER|
 |type|SHOULDER1|
 |type|SHOULDER2|
+|measurementPeriod|DAY|
+|measurementPeriod|MONTH|
+|measurementPeriod|TARIFF_PERIOD|
+|chargePeriod|DAY|
+|chargePeriod|MONTH|
+|chargePeriod|TARIFF_PERIOD|
 
 <h2 class="schema-toc" id="tocSderrecord">derRecord</h2>
 
