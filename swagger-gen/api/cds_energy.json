@@ -57,6 +57,483 @@
                     }
                 }
             },
+            "EnergyAccountListResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "accounts"
+                        ],
+                        "properties": {
+                            "accounts": {
+                                "description": "Array of accounts",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "accountId",
+                                        "creationDate",
+                                        "servicePointIds",
+                                        "planOverview"
+                                    ],
+                                    "properties": {
+                                        "accountId": {
+                                            "description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
+                                            "type": "string"
+                                        },
+                                        "accountNumber": {
+                                            "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
+                                            "type": "string"
+                                        },
+                                        "displayName": {
+                                            "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
+                                            "type": "string"
+                                        },
+                                        "creationDate": {
+                                            "description": "The date that the account was created or opened",
+                                            "type": "string",
+                                            "x-cds-type": "DateString"
+                                        },
+                                        "servicePointIds": {
+                                            "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "planOverview": {
+                                            "type": "object",
+                                            "required": [
+                                                "startDate"
+                                            ],
+                                            "properties": {
+                                                "displayName": {
+                                                    "description": "The name of the plan if one exists",
+                                                    "type": "string"
+                                                },
+                                                "startDate": {
+                                                    "description": "The start date of the applicability of this plan",
+                                                    "type": "string",
+                                                    "x-cds-type": "DateString"
+                                                },
+                                                "endDate": {
+                                                    "description": "The end date of the applicability of this plan",
+                                                    "type": "string",
+                                                    "x-cds-type": "DateString"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/LinksPaginated"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/MetaPaginated"
+                    }
+                }
+            },
+            "EnergyAccountDetailResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "accountId",
+                            "creationDate",
+                            "servicePointIds",
+                            "planOverview",
+                            "planDetail",
+                            "authorisedContacts"
+                        ],
+                        "properties": {
+                            "accountId": {
+                                "description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
+                                "type": "string"
+                            },
+                            "accountNumber": {
+                                "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
+                                "type": "string"
+                            },
+                            "displayName": {
+                                "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
+                                "type": "string"
+                            },
+                            "creationDate": {
+                                "description": "The date that the account was created or opened",
+                                "type": "string",
+                                "x-cds-type": "DateString"
+                            },
+                            "servicePointIds": {
+                                "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "planOverview": {
+                                "type": "object",
+                                "required": [
+                                    "startDate"
+                                ],
+                                "properties": {
+                                    "displayName": {
+                                        "description": "The name of the plan if one exists",
+                                        "type": "string"
+                                    },
+                                    "startDate": {
+                                        "description": "The start date of the applicability of this plan",
+                                        "type": "string",
+                                        "x-cds-type": "DateString"
+                                    },
+                                    "endDate": {
+                                        "description": "The end date of the applicability of this plan",
+                                        "type": "string",
+                                        "x-cds-type": "DateString"
+                                    }
+                                }
+                            },
+                            "planDetail": {
+                                "description": "Detail on the plan applicable to this account",
+                                "type": "object",
+                                "required": [
+                                    "fuelType"
+                                ],
+                                "x-conditional": [
+                                    "gasContract",
+                                    "electricityContract"
+                                ],
+                                "properties": {
+                                    "fuelType": {
+                                        "type": "string",
+                                        "description": "The fuel types covered by the plan",
+                                        "enum": [
+                                            "ELECTRICITY",
+                                            "GAS",
+                                            "DUAL"
+                                        ]
+                                    },
+                                    "meteringCharges": {
+                                        "description": "Charges for metering included in the plan",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": ["displayName", "minimumValue"],
+                                            "properties": {
+                                                "displayName": {
+                                                    "type": "string",
+                                                    "description": "Display name of the charge"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "description": "Description of the charge"
+                                                },
+                                                "minimumValue": {
+                                                    "type": "string",
+                                                    "x-cds-type": "AmountString",
+                                                    "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
+                                                },
+                                                "maximumValue": {
+                                                    "type": "string",
+                                                    "x-cds-type": "AmountString",
+                                                    "description": "The upper limit of the charge if the charge could occur in a range"
+                                                },
+                                                "period": {
+                                                    "type": "string",
+                                                    "x-cds-type": "ExternalRef",
+                                                    "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "gasContract": {
+                                        "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
+                                        "$ref": "#/components/schemas/EnergyPlanContract"
+                                    },
+                                    "electricityContract": {
+                                        "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
+                                        "$ref": "#/components/schemas/EnergyPlanContract"
+                                    }
+                                }
+                            },
+                            "authorisedContacts": {
+                                "description": "An array of additional contacts that are authorised to act on this account",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "lastName"
+                                    ],
+                                    "properties": {
+                                        "firstName": {
+                                            "description": "For people with single names this field need not be present. The single name should be in the lastName field",
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "description": "For people with single names the single name should be in this field",
+                                            "type": "string"
+                                        },
+                                        "middleNames": {
+                                            "description": "Field is mandatory but array may be empty",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "prefix": {
+                                            "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+                                            "type": "string"
+                                        },
+                                        "suffix": {
+                                            "description": "Used for a trailing suffix to the name (e.g. Jr)",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },
+            "EnergyPaymentScheduleDetailResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "paymentScheduleUType"
+                        ],
+                        "x-conditional": [
+                            "cardDebit",
+                            "directDebit",
+                            "manualPayment"
+                        ],
+                        "properties": {
+                            "amount": {
+                                "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
+                                "type": "string",
+                                "x-cds-type": "AmountString"
+                            },
+                            "paymentScheduleUType": {
+                                "description": "The type of object present in this response",
+                                "type": "string",
+                                "enum": [
+                                    "cardDebit",
+                                    "directDebit",
+                                    "manualPayment"
+                                ]
+                            },
+                            "cardDebit": {
+                                "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
+                                "type": "object",
+                                "required": [
+                                    "cardScheme",
+                                    "paymentFrequency",
+                                    "calculationType"
+                                ],
+                                "properties": {
+                                    "cardScheme": {
+                                        "description": "The type of credit card held on file",
+                                        "type": "string",
+                                        "enum": [
+                                            "VISA",
+                                            "MASTERCARD",
+                                            "AMEX",
+                                            "DINERS",
+                                            "OTHER",
+                                            "UNKNOWN"
+                                        ]
+                                    },
+                                    "paymentFrequency": {
+                                        "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef"
+                                    },
+                                    "calculationType": {
+                                        "description": "The mechanism by which the payment amount is calculated",
+                                        "type": "string",
+                                        "enum": [
+                                            "STATIC",
+                                            "BALANCE",
+                                            "CALCULATED"
+                                        ]
+                                    }
+                                }
+                            },
+                            "directDebit": {
+                                "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
+                                "type": "object",
+                                "required": [
+                                    "paymentFrequency",
+                                    "calculationType"
+                                ],
+                                "x-conditional": [
+                                    "bsb",
+                                    "accountNumber"
+                                ],
+                                "properties": {
+                                    "isTokenised": {
+                                        "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
+                                        "type": "string"
+                                    },
+                                    "bsb": {
+                                        "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+                                        "type": "string"
+                                    },
+                                    "accountNumber": {
+                                        "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+                                        "type": "string"
+                                    },
+                                    "paymentFrequency": {
+                                        "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef"
+                                    },
+                                    "calculationType": {
+                                        "description": "The mechanism by which the payment amount is calculated",
+                                        "type": "string",
+                                        "enum": [
+                                            "STATIC",
+                                            "BALANCE",
+                                            "CALCULATED"
+                                        ]
+                                    }
+                                }
+                            },
+                            "manualPayment": {
+                                "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
+                                "type": "object",
+                                "required": [
+                                    "billFrequency"
+                                ],
+                                "properties": {
+                                    "billFrequency": {
+                                        "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                        "type": "string",
+                                        "x-cds-type": "ExternalRef"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },
+            "EnergyConcessionsDetailResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "concessions"
+                        ],
+                        "properties": {
+                            "concessions": {
+                                "description": "Array may be empty if no concessions exist",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "displayName"
+                                    ],
+                                    "x-conditional": [
+                                        "dailyDiscount",
+                                        "monthlyDiscount",
+                                        "yearlyDiscount",
+                                        "percentageDiscount"
+                                    ],
+                                    "properties": {
+                                        "displayName": {
+                                            "description": "The display name of the concession",
+                                            "type": "string"
+                                        },
+                                        "additionalInfo": {
+                                            "description": "Display text providing more information on the concession",
+                                            "type": "string"
+                                        },
+                                        "additionalInfoUri": {
+                                            "description": "Optional link to additional information regarding the concession",
+                                            "type": "string",
+                                            "x-cds-type": "URIString"
+                                        },
+                                        "startDate": {
+                                            "description": "Optional start date for the application of the concession",
+                                            "type": "string",
+                                            "x-cds-type": "DateString"
+                                        },
+                                        "endDate": {
+                                            "description": "Optional end date for the application of the concession",
+                                            "type": "string",
+                                            "x-cds-type": "DateString"
+                                        },
+                                        "dailyDiscount": {
+                                            "description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                                            "type": "string",
+                                            "x-cds-type": "AmountString"
+                                        },
+                                        "monthlyDiscount": {
+                                            "description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                                            "type": "string",
+                                            "x-cds-type": "AmountString"
+                                        },
+                                        "yearlyDiscount": {
+                                            "description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                                            "type": "string",
+                                            "x-cds-type": "AmountString"
+                                        },
+                                        "percentageDiscount": {
+                                            "description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                                            "type": "string",
+                                            "x-cds-type": "RateString"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },            
             "EnergyPlan": {
                 "type": "object",
                 "required": [
@@ -2409,90 +2886,8 @@
 				"description": "Successful response",
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"accounts"
-									],
-									"properties": {
-										"accounts": {
-											"description": "Array of accounts",
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"accountId",
-													"creationDate",
-													"servicePointIds",
-													"planOverview"
-												],
-												"properties": {
-													"accountId": {
-														"description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
-														"type": "string"
-													},
-													"accountNumber": {
-														"description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
-														"type": "string"
-													},
-													"displayName": {
-														"description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
-														"type": "string"
-													},
-													"creationDate": {
-														"description": "The date that the account was created or opened",
-														"type": "string",
-														"x-cds-type": "DateString"
-													},
-													"servicePointIds": {
-														"description": "An array of servicePointIds, representing NMIs, that this account is linked to",
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"planOverview": {
-														"type": "object",
-														"required": [
-															"startDate"
-														],
-														"properties": {
-															"displayName": {
-																"description": "The name of the plan if one exists",
-																"type": "string"
-															},
-															"startDate": {
-																"description": "The start date of the applicability of this plan",
-																"type": "string",
-																"x-cds-type": "DateString"
-															},
-															"endDate": {
-																"description": "The end date of the applicability of this plan",
-																"type": "string",
-																"x-cds-type": "DateString"
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/LinksPaginated"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/MetaPaginated"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyAccountListResponse"
 						}
 					}
 				}
@@ -2501,178 +2896,8 @@
 				"description": "Successful response",
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"accountId",
-										"creationDate",
-										"servicePointIds",
-										"planOverview",
-										"planDetail",
-										"authorisedContacts"
-									],
-									"properties": {
-										"accountId": {
-											"description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
-											"type": "string"
-										},
-										"accountNumber": {
-											"description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
-											"type": "string"
-										},
-										"displayName": {
-											"description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
-											"type": "string"
-										},
-										"creationDate": {
-											"description": "The date that the account was created or opened",
-											"type": "string",
-											"x-cds-type": "DateString"
-										},
-										"servicePointIds": {
-											"description": "An array of servicePointIds, representing NMIs, that this account is linked to",
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"planOverview": {
-											"type": "object",
-											"required": [
-												"startDate"
-											],
-											"properties": {
-												"displayName": {
-													"description": "The name of the plan if one exists",
-													"type": "string"
-												},
-												"startDate": {
-													"description": "The start date of the applicability of this plan",
-													"type": "string",
-													"x-cds-type": "DateString"
-												},
-												"endDate": {
-													"description": "The end date of the applicability of this plan",
-													"type": "string",
-													"x-cds-type": "DateString"
-												}
-											}
-										},
-										"planDetail": {
-											"description": "Detail on the plan applicable to this account",
-											"type": "object",
-											"required": [
-												"fuelType"
-											],
-											"x-conditional": [
-												"gasContract",
-												"electricityContract"
-											],
-											"properties": {
-												"fuelType": {
-													"type": "string",
-													"description": "The fuel types covered by the plan",
-													"enum": [
-														"ELECTRICITY",
-														"GAS",
-														"DUAL"
-													]
-												},
-												"meteringCharges": {
-													"description": "Charges for metering included in the plan",
-													"type": "array",
-													"items": {
-														"type": "object",
-														"required": ["displayName", "minimumValue"],
-														"properties": {
-															"displayName": {
-																"type": "string",
-																"description": "Display name of the charge"
-															},
-															"description": {
-																"type": "string",
-																"description": "Description of the charge"
-															},
-															"minimumValue": {
-																"type": "string",
-																"x-cds-type": "AmountString",
-																"description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
-															},
-															"maximumValue": {
-																"type": "string",
-																"x-cds-type": "AmountString",
-																"description": "The upper limit of the charge if the charge could occur in a range"
-															},
-															"period": {
-																"type": "string",
-																"x-cds-type": "ExternalRef",
-																"description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
-															}
-														}
-													}
-												},
-                                                "gasContract": {
-                                                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                                    "$ref": "#/components/schemas/EnergyPlanContract"
-                                                },
-                                                "electricityContract": {
-                                                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                                    "$ref": "#/components/schemas/EnergyPlanContract"
-                                                }
-											}
-										},
-										"authorisedContacts": {
-											"description": "An array of additional contacts that are authorised to act on this account",
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"lastName"
-												],
-												"properties": {
-													"firstName": {
-														"description": "For people with single names this field need not be present. The single name should be in the lastName field",
-														"type": "string"
-													},
-													"lastName": {
-														"description": "For people with single names the single name should be in this field",
-														"type": "string"
-													},
-													"middleNames": {
-														"description": "Field is mandatory but array may be empty",
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"prefix": {
-														"description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
-														"type": "string"
-													},
-													"suffix": {
-														"description": "Used for a trailing suffix to the name (e.g. Jr)",
-														"type": "string"
-													}
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/Links"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/Meta"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyAccountDetailResponse"
 						}
 					}
 				}
@@ -2681,139 +2906,8 @@
 				"description": "Successful response",
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"paymentScheduleUType"
-									],
-									"x-conditional": [
-										"cardDebit",
-										"directDebit",
-										"manualPayment"
-									],
-									"properties": {
-										"amount": {
-											"description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
-											"type": "string",
-											"x-cds-type": "AmountString"
-										},
-										"paymentScheduleUType": {
-											"description": "The type of object present in this response",
-											"type": "string",
-											"enum": [
-												"cardDebit",
-												"directDebit",
-												"manualPayment"
-											]
-										},
-										"cardDebit": {
-											"description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
-											"type": "object",
-											"required": [
-												"cardScheme",
-												"paymentFrequency",
-												"calculationType"
-											],
-											"properties": {
-												"cardScheme": {
-													"description": "The type of credit card held on file",
-													"type": "string",
-													"enum": [
-														"VISA",
-														"MASTERCARD",
-														"AMEX",
-														"DINERS",
-														"OTHER",
-														"UNKNOWN"
-													]
-												},
-												"paymentFrequency": {
-													"description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-													"type": "string",
-													"x-cds-type": "ExternalRef"
-												},
-												"calculationType": {
-													"description": "The mechanism by which the payment amount is calculated",
-													"type": "string",
-													"enum": [
-														"STATIC",
-														"BALANCE",
-														"CALCULATED"
-													]
-												}
-											}
-										},
-										"directDebit": {
-											"description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
-											"type": "object",
-											"required": [
-												"paymentFrequency",
-												"calculationType"
-											],
-											"x-conditional": [
-												"bsb",
-												"accountNumber"
-											],
-											"properties": {
-												"isTokenised": {
-													"description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
-													"type": "string"
-												},
-												"bsb": {
-													"description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
-													"type": "string"
-												},
-												"accountNumber": {
-													"description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
-													"type": "string"
-												},
-												"paymentFrequency": {
-													"description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-													"type": "string",
-													"x-cds-type": "ExternalRef"
-												},
-												"calculationType": {
-													"description": "The mechanism by which the payment amount is calculated",
-													"type": "string",
-													"enum": [
-														"STATIC",
-														"BALANCE",
-														"CALCULATED"
-													]
-												}
-											}
-										},
-										"manualPayment": {
-											"description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
-											"type": "object",
-											"required": [
-												"billFrequency"
-											],
-											"properties": {
-												"billFrequency": {
-													"description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-													"type": "string",
-													"x-cds-type": "ExternalRef"
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/Links"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/Meta"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyPaymentScheduleDetailResponse"
 						}
 					}
 				}
@@ -2822,90 +2916,8 @@
 				"description": "Successful response",
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"concessions"
-									],
-									"properties": {
-										"concessions": {
-											"description": "Array may be empty if no concessions exist",
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"displayName"
-												],
-												"x-conditional": [
-													"dailyDiscount",
-													"monthlyDiscount",
-													"yearlyDiscount",
-													"percentageDiscount"
-												],
-												"properties": {
-													"displayName": {
-														"description": "The display name of the concession",
-														"type": "string"
-													},
-													"additionalInfo": {
-														"description": "Display text providing more information on the concession",
-														"type": "string"
-													},
-													"additionalInfoUri": {
-														"description": "Optional link to additional information regarding the concession",
-														"type": "string",
-														"x-cds-type": "URIString"
-													},
-													"startDate": {
-														"description": "Optional start date for the application of the concession",
-														"type": "string",
-														"x-cds-type": "DateString"
-													},
-													"endDate": {
-														"description": "Optional end date for the application of the concession",
-														"type": "string",
-														"x-cds-type": "DateString"
-													},
-													"dailyDiscount": {
-														"description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"monthlyDiscount": {
-														"description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"yearlyDiscount": {
-														"description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"percentageDiscount": {
-														"description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-														"type": "string",
-														"x-cds-type": "RateString"
-													}
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/Links"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/Meta"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyConcessionsDetailResponse"
 						}
 					}
 				}
@@ -3858,6 +3870,9 @@
 				"summary": "Get Accounts",
 				"operationId": "listAccounts",
 				"description": "Obtain the list of energy accounts available under the authorised consent",
+                "x-cds-scopes": [
+                    "energy:accounts.basic:read"
+                ],
 				"tags": [
                     "Energy",
 					"Energy Accounts"
@@ -3899,6 +3914,9 @@
 				"summary": "Get Account Detail",
 				"operationId": "getAccount",
 				"description": "Obtain detailed information for a specific energy account",
+                "x-cds-scopes": [
+                    "energy:accounts.detail:read"
+                ],
 				"tags": [
                     "Energy",
 					"Energy Accounts"
@@ -3937,6 +3955,9 @@
 				"summary": "Get Agreed Payment Schedule",
 				"operationId": "getPaymentSchedule",
 				"description": "Obtain the agreed payment schedule and details, if any, for a specific energy account",
+                "x-cds-scopes": [
+                    "energy:accounts.paymentschedule:read"
+                ],
 				"tags": [
                     "Energy",
 					"Energy Accounts"
@@ -3975,6 +3996,9 @@
 				"summary": "Get Concessions",
 				"operationId": "getConcessions",
 				"description": "Obtain the details of any concessions or hardship arrangements applied to a specific energy account",
+                "x-cds-scopes": [
+                    "energy:accounts.concessions:read"
+                ],
 				"tags": [
                     "Energy",
 					"Energy Accounts"

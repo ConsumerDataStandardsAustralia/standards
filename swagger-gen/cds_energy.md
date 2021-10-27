@@ -2493,34 +2493,7 @@ Obtain the list of energy accounts available under the authorised consent
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
-
-<h3 id="get-accounts-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» accounts|[object]|mandatory|Array of accounts|
-|»»» accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
-|»»» accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
-|»»» displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|»»» creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
-|»»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|»»» planOverview|object|mandatory|none|
-|»»»» displayName|string|optional|The name of the plan if one exists|
-|»»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountListResponse](#schemacdr-energy-apienergyaccountlistresponse)|
 
   
     <aside class="success">
@@ -3013,278 +2986,7 @@ Obtain detailed information for a specific energy account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
-
-<h3 id="get-account-detail-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
-|»» accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
-|»» displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|»» creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
-|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|»» planOverview|object|mandatory|none|
-|»»» displayName|string|optional|The name of the plan if one exists|
-|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»» planDetail|object|mandatory|Detail on the plan applicable to this account|
-|»»» fuelType|string|mandatory|The fuel types covered by the plan|
-|»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»»»» displayName|string|mandatory|Display name of the charge|
-|»»»» description|string|optional|Description of the charge|
-|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|none|
-|»»»» additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
-|»»»» pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
-|»»»» termType|string|optional|The term for the contract.  If absent assumes no specified term|
-|»»»» timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds|
-|»»»» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
-|»»»» terms|string|optional|Free text description of the terms for the contract|
-|»»»» isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
-|»»»» variation|string|conditional|Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true|
-|»»»» onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
-|»»»» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
-|»»»» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
-|»»»» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»»» paymentOption|[string]|mandatory|Payment options for this contract|
-|»»»» intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
-|»»»»» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
-|»»»» controlledLoad|[EnergyPlanControlledLoad](#schemacdr-energy-apienergyplancontrolledload)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD|
-|»»»»» displayName|string|mandatory|A display name for the controlled load tier|
-|»»»»» description|string|optional|A description of the controlled load tier|
-|»»»»» dailyCharge|[AmountString](#common-field-types)|mandatory|The daily supply charge (exclusive of GST) for this controlled load tier|
-|»»»»» period|[ExternalRef](#common-field-types)|mandatory|The period for which the controlled load rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»» incentives|[object]|optional|Optional list of incentives available for the contract|
-|»»»»»» displayName|string|mandatory|The display name of the incentive|
-|»»»»»» description|string|mandatory|The description of the incentive|
-|»»»»»» category|string|mandatory|The type of the incentive|
-|»»»»»» eligibility|string|optional|A display message outlining an eligibility criteria that may apply|
-|»»»»» discounts|[object]|optional|Optional list of discounts available for the contract|
-|»»»»»» displayName|string|mandatory|The display name of the discount|
-|»»»»»» description|string|optional|The description of the discount|
-|»»»»»» type|string|mandatory|The type of the discount|
-|»»»»»» category|string|optional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
-|»»»»»» endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available|
-|»»»»»» methodUType|string|mandatory|The method of calculation of the discount|
-|»»»»»» percentOfBill|object|optional|Required if methodUType is percentOfBill|
-|»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
-|»»»»»» percentOfUse|object|optional|Required if methodUType is percentOfUse|
-|»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
-|»»»»»» fixedAmount|object|optional|Required if methodUType is fixedAmount|
-|»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
-|»»»»»» percentOverThreshold|object|optional|Required if methodUType is percentOverThreshold|
-|»»»»»»» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
-|»»»»»»» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
-|»»»»»» greenPowerCharges|[object]|optional|Optional list of charges applicable to green power|
-|»»»»»»» displayName|string|mandatory|The display name of the charge|
-|»»»»»»» description|string|optional|The description of the charge|
-|»»»»»»» scheme|string|mandatory|The applicable green power scheme|
-|»»»»»»» type|string|mandatory|The type of charge|
-|»»»»»»» tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
-|»»»»»»»» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
-|»»»»»»»» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
-|»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
-|»»»»»»» eligibility|[object]|optional|Eligibility restrictions or requirements|
-|»»»»»»»» type|string|mandatory|The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)|
-|»»»»»»»» information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction|
-|»»»»»»»» description|string|optional|A description of the eligibility restriction|
-|»»»»»»» fees|[object]|optional|An array of fees applicable to the plan|
-|»»»»»»»» type|string|mandatory|The type of the fee|
-|»»»»»»»» term|string|mandatory|The term of the fee|
-|»»»»»»»» amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if term is not PERCENT_OF_BILL|
-|»»»»»»»» rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
-|»»»»»»»» description|string|optional|A description of the fee|
-|»»»»»»» solarFeedInTariff|[object]|optional|Array of feed in tariffs for solar power|
-|»»»»»»»» displayName|string|mandatory|The name of the tariff|
-|»»»»»»»» description|string|optional|A description of the tariff|
-|»»»»»»»» scheme|string|mandatory|The applicable scheme|
-|»»»»»»»» payerType|string|mandatory|The type of the payer|
-|»»»»»»»» tariffUType|string|mandatory|The type of the payer|
-|»»»»»»»» singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
-|»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
-|»»»»»»»» timeVaryingTariffs|object|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
-|»»»»»»»»» type|string|optional|The type of the charging time period. If absent applies to all periods|
-|»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The tariff amount|
-|»»»»»»»»» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
-|»»»»»»»»»» days|object|optional|none|
-|»»»»»»»»»»» weekdays|boolean|mandatory|Indicates whether the tariff is applicable Monday to Friday|
-|»»»»»»»»»»» weekend|boolean|mandatory|Indicates whether the tariff is applicable Saturday and Sunday|
-|»»»»»»»»»» startTime|[TimeString](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight)|
-|»»»»»»»»»» endTime|[TimeString](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)|
-|»»»»»»»»» tariffPeriod|[object]|mandatory|Array of tariff periods|
-|»»»»»»»»»» displayName|string|mandatory|The name of the tariff period|
-|»»»»»»»»»» startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
-|»»»»»»»»»» endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
-|»»»»»»»»»» dailySupplyCharges|[AmountString](#common-field-types)|mandatory|The amount of access charge for the tariff period, in cents per day exclusive of GST.|
-|»»»»»»»»»» rateBlockUType|string|mandatory|Specifies the type of rate applicable to this tariff period|
-|»»»»»»»»»» singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
-|»»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
-|»»»»»»»»»»» description|string|optional|Description of the rate|
-|»»»»»»»»»»» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
-|»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»»»» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»»»»»»»»» timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|»»»»»»»»»»» displayName|string|mandatory|Display name of the rate|
-|»»»»»»»»»»» description|string|optional|Description of the rate|
-|»»»»»»»»»»» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»»»»»»»»»»»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per kWh (exclusive of GST)|
-|»»»»»»»»»»»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|»»»»»»»»»»» timeOfUse|[object]|mandatory|Array of times of use|
-|»»»»»»»»»»»» days|[string]|mandatory|The days that the rate applies to|
-|»»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»» type|string|mandatory|The type of usage that the rate applies to|
-|»»»»»»»»»» demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
-|»»»»»»»»»»» displayName|string|mandatory|Display name of the charge|
-|»»»»»»»»»»» description|string|optional|Description of the charge|
-|»»»»»»»»»»» amount|[AmountString](#common-field-types)|mandatory|The charge amount per kWh exclusive of GST|
-|»»»»»»»»»»» startTime|string|mandatory|Start of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
-|»»»»»»»»»»» days|object|optional|Object containing demand tariff by day of week|
-|»»»»»»»»»»»» weekdays|boolean|mandatory|Indicates the demand tariff is applicable on weekdays|
-|»»»»»»»»»»»» saturday|boolean|mandatory|Indicates the demand tariff is applicable on Saturdays|
-|»»»»»»»»»»»» sunday|boolean|mandatory|Indicates the demand tariff is applicable on Sundays|
-|»»»»»»»»»»» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
-|»»»»»»»»»»» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
-|»»»»»»»»»»» measurementPeriod|string|mandatory|Application period for the demand tariff|
-|»»»»»»»»»»» chargePeriod|string|mandatory|Charge period for the demand tariff|
-|»»»»»»»»»» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|none|
-|»»»»»»»»» authorisedContacts|[object]|mandatory|An array of additional contacts that are authorised to act on this account|
-|»»»»»»»»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|»»»»»»»»»» lastName|string|mandatory|For people with single names the single name should be in this field|
-|»»»»»»»»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
-|»»»»»»»»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|»»»»»»»»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
-|»»»»»»»»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|»»»»»»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»»»»»»»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|fuelType|ELECTRICITY|
-|fuelType|GAS|
-|fuelType|DUAL|
-|pricingModel|SINGLE_RATE|
-|pricingModel|SINGLE_RATE_CONT_LOAD|
-|pricingModel|TIME_OF_USE|
-|pricingModel|TIME_OF_USE_CONT_LOAD|
-|pricingModel|FLEXIBLE|
-|pricingModel|FLEXIBLE_CONT_LOAD|
-|pricingModel|QUOTA|
-|termType|1_YEAR|
-|termType|2_YEAR|
-|termType|3_YEAR|
-|termType|4_YEAR|
-|termType|5_YEAR|
-|termType|ONGOING|
-|termType|OTHER|
-|timeZone|LOCAL|
-|timeZone|AEST|
-|category|GIFT|
-|category|ACCOUNT_CREDIT|
-|category|OTHER|
-|type|CONDITIONAL|
-|type|GUARANTEED|
-|category|PAY_ON_TIME|
-|category|DIRECT_DEBIT|
-|category|GUARANTEED_DISCOUNT|
-|category|OTHER|
-|methodUType|percentOfBill|
-|methodUType|percentOfUse|
-|methodUType|fixedAmount|
-|methodUType|percentOverThreshold|
-|scheme|GREENPOWER|
-|scheme|OTHER|
-|type|FIXED_PER_DAY|
-|type|FIXED_PER_WEEK|
-|type|FIXED_PER_MONTH|
-|type|FIXED_PER_UNIT|
-|type|PERCENT_OF_USE|
-|type|PERCENT_OF_BILL|
-|type|EXISTING_CUST|
-|type|EXISTING_POOL|
-|type|EXISTING_SOLAR|
-|type|EXISTING_BATTERY|
-|type|EXISTING_SMART_METER|
-|type|EXISTING_BASIC_METER|
-|type|SENIOR_CARD|
-|type|SMALL_BUSINESS|
-|type|NO_SOLAR_FIT|
-|type|NEW_CUSTOMER|
-|type|ONLINE_ONLY|
-|type|REQ_EQUIP_SUPPLIER|
-|type|THIRD_PARTY_ONLY|
-|type|SPORT_CLUB_MEMBER|
-|type|ORG_MEMBER|
-|type|SPECIFIC_LOCATION|
-|type|MINIMUM_USAGE|
-|type|LOYALTY_MEMBER|
-|type|GROUP_BUY_MEMBER|
-|type|CONTINGENT_PLAN|
-|type|OTHER|
-|type|EXIT|
-|type|ESTABLISHMENT|
-|type|LATE_PAYMENT|
-|type|DISCONNECTION|
-|type|DISCONNECT_MOVE_OUT|
-|type|DISCONNECT_NON_PAY|
-|type|RECONNECTION|
-|type|CONNECTION|
-|type|PAYMENT_PROCESSING|
-|type|CC_PROCESSING|
-|type|CHEQUE_DISHONOUR|
-|type|DD_DISHONOUR|
-|type|MEMBERSHIP|
-|type|CONTRIBUTION|
-|type|PAPER_BILL|
-|type|OTHER|
-|term|FIXED|
-|term|1_YEAR|
-|term|2_YEAR|
-|term|3_YEAR|
-|term|4_YEAR|
-|term|5_YEAR|
-|term|PERCENT_OF_BILL|
-|term|ANNUAL|
-|term|DAILY|
-|term|MONTHLY|
-|term|BIANNUAL|
-|scheme|PREMIUM|
-|scheme|OTHER|
-|payerType|GOVERNMENT|
-|payerType|RETAILER|
-|tariffUType|GOVERNMENT|
-|tariffUType|RETAILER|
-|type|PEAK|
-|type|OFF_PEAK|
-|type|SHOULDER|
-|rateBlockUType|singleRate|
-|rateBlockUType|timeOfUseRates|
-|rateBlockUType|demandCharges|
-|type|PEAK|
-|type|OFF_PEAK|
-|type|SHOULDER|
-|type|SHOULDER1|
-|type|SHOULDER2|
-|measurementPeriod|DAY|
-|measurementPeriod|MONTH|
-|measurementPeriod|TARIFF_PERIOD|
-|chargePeriod|DAY|
-|chargePeriod|MONTH|
-|chargePeriod|TARIFF_PERIOD|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponse](#schemacdr-energy-apienergyaccountdetailresponse)|
 
   
     <aside class="success">
@@ -3393,52 +3095,7 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
-
-<h3 id="get-agreed-payment-schedule-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
-|»» paymentScheduleUType|string|mandatory|The type of object present in this response|
-|»» cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|»»» cardScheme|string|mandatory|The type of credit card held on file|
-|»»» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
-|»» directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
-|»»» isTokenised|string|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included|
-|»»» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|»»» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|»»» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
-|»» manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
-|»»» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|paymentScheduleUType|cardDebit|
-|paymentScheduleUType|directDebit|
-|paymentScheduleUType|manualPayment|
-|cardScheme|VISA|
-|cardScheme|MASTERCARD|
-|cardScheme|AMEX|
-|cardScheme|DINERS|
-|cardScheme|OTHER|
-|cardScheme|UNKNOWN|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPaymentScheduleDetailResponse](#schemacdr-energy-apienergypaymentscheduledetailresponse)|
 
   
     <aside class="success">
@@ -3543,28 +3200,7 @@ Obtain the details of any concessions or hardship arrangements applied to a spec
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
-
-<h3 id="get-concessions-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» concessions|[object]|mandatory|Array may be empty if no concessions exist|
-|»»» displayName|string|mandatory|The display name of the concession|
-|»»» additionalInfo|string|optional|Display text providing more information on the concession|
-|»»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
-|»»» startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession|
-|»»» endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
-|»»» dailyDiscount|[AmountString](#common-field-types)|conditional|Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»»» monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»»» yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»»» percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyConcessionsDetailResponse](#schemacdr-energy-apienergyconcessionsdetailresponse)|
 
   
     <aside class="success">
@@ -5639,6 +5275,643 @@ This operation does not require authentication
 |data|[EnergyPlanDetail](#schemacdr-energy-apienergyplandetail)|mandatory|none|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSenergyaccountlistresponse">EnergyAccountListResponse</h2>
+
+<a id="schemacdr-energy-apienergyaccountlistresponse"></a>
+
+```json
+{
+  "data": {
+    "accounts": [
+      {
+        "accountId": "string",
+        "accountNumber": "string",
+        "displayName": "string",
+        "creationDate": "string",
+        "servicePointIds": [
+          "string"
+        ],
+        "planOverview": {
+          "displayName": "string",
+          "startDate": "string",
+          "endDate": "string"
+        }
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» accounts|[object]|mandatory|Array of accounts|
+|»» accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
+|»» accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
+|»» displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
+|»» creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
+|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
+|»» planOverview|object|mandatory|none|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h2>
+
+<a id="schemacdr-energy-apienergyaccountdetailresponse"></a>
+
+```json
+{
+  "data": {
+    "accountId": "string",
+    "accountNumber": "string",
+    "displayName": "string",
+    "creationDate": "string",
+    "servicePointIds": [
+      "string"
+    ],
+    "planOverview": {
+      "displayName": "string",
+      "startDate": "string",
+      "endDate": "string"
+    },
+    "planDetail": {
+      "fuelType": "ELECTRICITY",
+      "meteringCharges": [
+        {
+          "displayName": "string",
+          "description": "string",
+          "minimumValue": "string",
+          "maximumValue": "string",
+          "period": "string"
+        }
+      ],
+      "gasContract": {
+        "additionalFeeInformation": "string",
+        "pricingModel": "SINGLE_RATE",
+        "termType": "1_YEAR",
+        "timeZone": "LOCAL",
+        "benefitPeriod": "string",
+        "terms": "string",
+        "isFixed": true,
+        "variation": "string",
+        "onExpiryDescription": "string",
+        "meterTypes": [
+          "string"
+        ],
+        "coolingOffDays": "string",
+        "billFrequency": [
+          "string"
+        ],
+        "paymentOption": [
+          "PAPER_BILL"
+        ],
+        "intrinsicGreenPower": {
+          "greenPercentage": "string"
+        },
+        "controlledLoad": {
+          "displayName": "string",
+          "description": "string",
+          "dailyCharge": "string",
+          "period": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "volume": 0
+            }
+          ]
+        },
+        "incentives": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "category": "GIFT",
+            "eligibility": "string"
+          }
+        ],
+        "discounts": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "type": "CONDITIONAL",
+            "category": "PAY_ON_TIME",
+            "endDate": "string",
+            "methodUType": "percentOfBill",
+            "percentOfBill": {
+              "rate": "string"
+            },
+            "percentOfUse": {
+              "rate": "string"
+            },
+            "fixedAmount": {
+              "amount": "string"
+            },
+            "percentOverThreshold": {
+              "rate": "string",
+              "usageAmount": "string"
+            }
+          }
+        ],
+        "greenPowerCharges": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "scheme": "GREENPOWER",
+            "type": "FIXED_PER_DAY",
+            "tiers": [
+              {
+                "percentGreen": "string",
+                "rate": "string",
+                "amount": "string"
+              }
+            ]
+          }
+        ],
+        "eligibility": [
+          {
+            "type": "EXISTING_CUST",
+            "information": "string",
+            "description": "string"
+          }
+        ],
+        "fees": [
+          {
+            "type": "EXIT",
+            "term": "FIXED",
+            "amount": "string",
+            "rate": "string",
+            "description": "string"
+          }
+        ],
+        "solarFeedInTariff": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "scheme": "PREMIUM",
+            "payerType": "GOVERNMENT",
+            "tariffUType": "GOVERNMENT",
+            "singleTariff": {
+              "amount": "string"
+            },
+            "timeVaryingTariffs": {
+              "type": "PEAK",
+              "amount": "string",
+              "timeVariations": [
+                {
+                  "days": {
+                    "weekdays": true,
+                    "weekend": true
+                  },
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "tariffPeriod": [
+          {
+            "displayName": "string",
+            "startDate": "string",
+            "endDate": "string",
+            "dailySupplyCharges": "string",
+            "rateBlockUType": "singleRate",
+            "singleRate": {
+              "displayName": "string",
+              "description": "string",
+              "generalUnitPrice": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "volume": 0
+                }
+              ],
+              "period": "string"
+            },
+            "timeOfUseRates": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "volume": 0
+                  }
+                ],
+                "timeOfUse": [
+                  {
+                    "days": [],
+                    "startTime": "string",
+                    "endTime": "string"
+                  }
+                ],
+                "type": "PEAK"
+              }
+            ],
+            "demandCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "amount": "string",
+                "startTime": "string",
+                "endTime": "string",
+                "days": {
+                  "weekdays": true,
+                  "saturday": true,
+                  "sunday": true
+                },
+                "minDemand": "string",
+                "maxDemand": "string",
+                "measurementPeriod": "DAY",
+                "chargePeriod": "DAY"
+              }
+            ]
+          }
+        ]
+      },
+      "electricityContract": {
+        "additionalFeeInformation": "string",
+        "pricingModel": "SINGLE_RATE",
+        "termType": "1_YEAR",
+        "timeZone": "LOCAL",
+        "benefitPeriod": "string",
+        "terms": "string",
+        "isFixed": true,
+        "variation": "string",
+        "onExpiryDescription": "string",
+        "meterTypes": [
+          "string"
+        ],
+        "coolingOffDays": "string",
+        "billFrequency": [
+          "string"
+        ],
+        "paymentOption": [
+          "PAPER_BILL"
+        ],
+        "intrinsicGreenPower": {
+          "greenPercentage": "string"
+        },
+        "controlledLoad": {
+          "displayName": "string",
+          "description": "string",
+          "dailyCharge": "string",
+          "period": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "volume": 0
+            }
+          ]
+        },
+        "incentives": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "category": "GIFT",
+            "eligibility": "string"
+          }
+        ],
+        "discounts": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "type": "CONDITIONAL",
+            "category": "PAY_ON_TIME",
+            "endDate": "string",
+            "methodUType": "percentOfBill",
+            "percentOfBill": {
+              "rate": "string"
+            },
+            "percentOfUse": {
+              "rate": "string"
+            },
+            "fixedAmount": {
+              "amount": "string"
+            },
+            "percentOverThreshold": {
+              "rate": "string",
+              "usageAmount": "string"
+            }
+          }
+        ],
+        "greenPowerCharges": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "scheme": "GREENPOWER",
+            "type": "FIXED_PER_DAY",
+            "tiers": [
+              {
+                "percentGreen": "string",
+                "rate": "string",
+                "amount": "string"
+              }
+            ]
+          }
+        ],
+        "eligibility": [
+          {
+            "type": "EXISTING_CUST",
+            "information": "string",
+            "description": "string"
+          }
+        ],
+        "fees": [
+          {
+            "type": "EXIT",
+            "term": "FIXED",
+            "amount": "string",
+            "rate": "string",
+            "description": "string"
+          }
+        ],
+        "solarFeedInTariff": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "scheme": "PREMIUM",
+            "payerType": "GOVERNMENT",
+            "tariffUType": "GOVERNMENT",
+            "singleTariff": {
+              "amount": "string"
+            },
+            "timeVaryingTariffs": {
+              "type": "PEAK",
+              "amount": "string",
+              "timeVariations": [
+                {
+                  "days": {
+                    "weekdays": true,
+                    "weekend": true
+                  },
+                  "startTime": "string",
+                  "endTime": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "tariffPeriod": [
+          {
+            "displayName": "string",
+            "startDate": "string",
+            "endDate": "string",
+            "dailySupplyCharges": "string",
+            "rateBlockUType": "singleRate",
+            "singleRate": {
+              "displayName": "string",
+              "description": "string",
+              "generalUnitPrice": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "volume": 0
+                }
+              ],
+              "period": "string"
+            },
+            "timeOfUseRates": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "volume": 0
+                  }
+                ],
+                "timeOfUse": [
+                  {
+                    "days": [],
+                    "startTime": "string",
+                    "endTime": "string"
+                  }
+                ],
+                "type": "PEAK"
+              }
+            ],
+            "demandCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "amount": "string",
+                "startTime": "string",
+                "endTime": "string",
+                "days": {
+                  "weekdays": true,
+                  "saturday": true,
+                  "sunday": true
+                },
+                "minDemand": "string",
+                "maxDemand": "string",
+                "measurementPeriod": "DAY",
+                "chargePeriod": "DAY"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "authorisedContacts": [
+      {
+        "firstName": "string",
+        "lastName": "string",
+        "middleNames": [
+          "string"
+        ],
+        "prefix": "string",
+        "suffix": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
+|» accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
+|» displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
+|» creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
+|» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
+|» planOverview|object|mandatory|none|
+|»» displayName|string|optional|The name of the plan if one exists|
+|»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|» planDetail|object|mandatory|Detail on the plan applicable to this account|
+|»» fuelType|string|mandatory|The fuel types covered by the plan|
+|»» meteringCharges|[object]|optional|Charges for metering included in the plan|
+|»»» displayName|string|mandatory|Display name of the charge|
+|»»» description|string|optional|Description of the charge|
+|»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
+|»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
+|»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|»» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|» authorisedContacts|[object]|mandatory|An array of additional contacts that are authorised to act on this account|
+|»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
+|»» lastName|string|mandatory|For people with single names the single name should be in this field|
+|»» middleNames|[string]|optional|Field is mandatory but array may be empty|
+|»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|fuelType|ELECTRICITY|
+|fuelType|GAS|
+|fuelType|DUAL|
+
+<h2 class="schema-toc" id="tocSenergypaymentscheduledetailresponse">EnergyPaymentScheduleDetailResponse</h2>
+
+<a id="schemacdr-energy-apienergypaymentscheduledetailresponse"></a>
+
+```json
+{
+  "data": {
+    "amount": "string",
+    "paymentScheduleUType": "cardDebit",
+    "cardDebit": {
+      "cardScheme": "VISA",
+      "paymentFrequency": "string",
+      "calculationType": "STATIC"
+    },
+    "directDebit": {
+      "isTokenised": "string",
+      "bsb": "string",
+      "accountNumber": "string",
+      "paymentFrequency": "string",
+      "calculationType": "STATIC"
+    },
+    "manualPayment": {
+      "billFrequency": "string"
+    }
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
+|» paymentScheduleUType|string|mandatory|The type of object present in this response|
+|» cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
+|»» cardScheme|string|mandatory|The type of credit card held on file|
+|»» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
+|» directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
+|»» isTokenised|string|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included|
+|»» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|»» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|»» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
+|» manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
+|»» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|paymentScheduleUType|cardDebit|
+|paymentScheduleUType|directDebit|
+|paymentScheduleUType|manualPayment|
+|cardScheme|VISA|
+|cardScheme|MASTERCARD|
+|cardScheme|AMEX|
+|cardScheme|DINERS|
+|cardScheme|OTHER|
+|cardScheme|UNKNOWN|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
+
+<h2 class="schema-toc" id="tocSenergyconcessionsdetailresponse">EnergyConcessionsDetailResponse</h2>
+
+<a id="schemacdr-energy-apienergyconcessionsdetailresponse"></a>
+
+```json
+{
+  "data": {
+    "concessions": [
+      {
+        "displayName": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "startDate": "string",
+        "endDate": "string",
+        "dailyDiscount": "string",
+        "monthlyDiscount": "string",
+        "yearlyDiscount": "string",
+        "percentageDiscount": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» concessions|[object]|mandatory|Array may be empty if no concessions exist|
+|»» displayName|string|mandatory|The display name of the concession|
+|»» additionalInfo|string|optional|Display text providing more information on the concession|
+|»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
+|»» startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession|
+|»» endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
+|»» dailyDiscount|[AmountString](#common-field-types)|conditional|Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|»» monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|»» yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|»» percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSenergyplan">EnergyPlan</h2>
 
