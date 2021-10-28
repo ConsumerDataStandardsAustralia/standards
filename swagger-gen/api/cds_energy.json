@@ -2879,11 +2879,15 @@
 														"description": "Register suffix of the meter register where the meter reads are obtained",
 														"type": "string"
 													},
-													"meterSerial": {
-														"description": "Meter serial number as it appears in customer’s bill",
+                                                    "meterID": {
+														"description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
 														"type": "string"
 													},
-													"readStartDate": {
+													"controlledLoad": {
+														"description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown. ",
+														"type": "boolean"
+													},
+                                                    "readStartDate": {
 														"description": "Date time when the meter reads start",
 														"type": "string",
 														"x-cds-type": "DateString"
@@ -2894,13 +2898,8 @@
 														"x-cds-type": "DateString"
 													},
 													"unitOfMeasure": {
-														"description": "Unit of measure of the meter reads. If absent then assumed to be KWH",
-														"type": "string",
-														"enum": [
-															"KWH",
-															"GWH"
-														],
-														"default": "KWH"
+                                                        "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values",
+														"type": "string"
 													},
 													"readUType": {
 														"description": "Specify the type of the meter read data",
@@ -2937,6 +2936,7 @@
 														"description": "Mandatory if readUType is set to intervalRead",
 														"type": "object",
 														"required": [
+                                                            "readIntervalLength",
 															"aggregateValue",
 															"intervalReads"
 														],
@@ -2947,11 +2947,11 @@
 																"x-cds-type": "PositiveInteger"
 															},
 															"aggregateValue": {
-																"description": "The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise",
+                                                                "description": "The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export",
 																"type": "number"
 															},
 															"intervalReads": {
-																"description": "Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate",
+                                                                "description": "Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)",
 																"type": "array",
 																"items": {
 																	"type": "object",
@@ -3951,6 +3951,9 @@
 			"get": {
 				"summary": "Get Usage For Service Point",
 				"operationId": "getUsageForServicePoint",
+                "x-scopes": [
+					"energy:electricity.usage:read"
+				],
 				"description": "Obtain a list of electricity usage data from a particular service point",
 				"tags": [
                     "Energy",
@@ -3958,6 +3961,12 @@
 				],
 				"parameters": [{
 						"$ref": "#/components/parameters/servicePointId"
+					},
+                    {
+						"$ref": "#/components/parameters/oldest-date"
+					},
+					{
+						"$ref": "#/components/parameters/newest-date"
 					},
 					{
 						"$ref": "#/components/parameters/page"
@@ -4007,12 +4016,21 @@
 			"get": {
 				"summary": "Get Bulk Usage",
 				"operationId": "listUsageBulk",
+                "x-scopes": [
+					"energy:electricity.usage:read"
+				],
 				"description": "Obtain usage data for all service points associated with the customer",
 				"tags": [
                     "Energy",
 					"Electricity Usage"
 				],
 				"parameters": [{
+                        "$ref": "#/components/parameters/oldest-date"
+                    },
+                    {
+                        "$ref": "#/components/parameters/newest-date"
+                    },
+                    {
 						"$ref": "#/components/parameters/page"
 					},
 					{
@@ -4058,12 +4076,21 @@
 			"post": {
 				"summary": "Get Usage For Specific Service Points",
 				"operationId": "listUsageForServicePoints",
+                "x-scopes": [
+					"energy:electricity.usage:read"
+                ],
 				"description": "Obtain the electricity usage data for a specific set of service points",
 				"tags": [
                     "Energy",
 					"Electricity Usage"
 				],
 				"parameters": [{
+                        "$ref": "#/components/parameters/oldest-date"
+                    },
+                    {
+                        "$ref": "#/components/parameters/newest-date"
+                    },
+                    {
 						"$ref": "#/components/parameters/page"
 					},
 					{
