@@ -3969,21 +3969,20 @@ x-cds-client-headers: string
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4063,7 +4062,7 @@ x-cds-client-headers: string
 <td>»» installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>»» islandableInstallation</td>
@@ -4081,102 +4080,102 @@ x-cds-client-headers: string
 <td>»» protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>»»» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>»»» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>»»» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>»»» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>»»» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>»»» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>»» acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -4195,55 +4194,55 @@ x-cds-client-headers: string
 <td>»»» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>»»» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>»»» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>»»» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»»» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»»»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»»»» count</td>
@@ -4255,13 +4254,13 @@ x-cds-client-headers: string
 <td>»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»» status</td>
@@ -4270,34 +4269,28 @@ x-cds-client-headers: string
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»»»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»»»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»»»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»»»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»»»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 <tr>
 <td>»»» links</td>
@@ -4325,6 +4318,14 @@ x-cds-client-headers: string
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -4415,8 +4416,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
 <h2 id='get-bulk-der'>Get Bulk DER</h2>
 <p><a id="opIdlistDERBulk"></a></p>
@@ -4577,21 +4579,20 @@ x-cds-client-headers: string
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4686,7 +4687,7 @@ x-cds-client-headers: string
 <td>»»» installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>»»» islandableInstallation</td>
@@ -4704,102 +4705,102 @@ x-cds-client-headers: string
 <td>»»» protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>»»»» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>»»»» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>»»»» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>»»»» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>»»» acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -4818,55 +4819,55 @@ x-cds-client-headers: string
 <td>»»»» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>»»»» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>»»»» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>»»»» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»»»» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»»»»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»»»»» count</td>
@@ -4878,13 +4879,13 @@ x-cds-client-headers: string
 <td>»»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» status</td>
@@ -4893,34 +4894,28 @@ x-cds-client-headers: string
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»»»»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»»»»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»»»»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»»»»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»»»»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 <tr>
 <td>»»»» links</td>
@@ -4984,6 +4979,14 @@ x-cds-client-headers: string
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -5074,8 +5077,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
 <h2 id='get-der-for-specific-service-points'>Get DER For Specific Service Points</h2>
 <p><a id="opIdlistDERForServicePoints"></a></p>
@@ -5278,21 +5282,20 @@ x-cds-client-headers: string
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5387,7 +5390,7 @@ x-cds-client-headers: string
 <td>»»» installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>»»» islandableInstallation</td>
@@ -5405,102 +5408,102 @@ x-cds-client-headers: string
 <td>»»» protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>»»»» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>»»»» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>»»»» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>»»»» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>»»» acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -5519,55 +5522,55 @@ x-cds-client-headers: string
 <td>»»»» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>»»»» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>»»»» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>»»»» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»»»» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»»»»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»»»»» count</td>
@@ -5579,13 +5582,13 @@ x-cds-client-headers: string
 <td>»»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» status</td>
@@ -5594,34 +5597,28 @@ x-cds-client-headers: string
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»»»»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»»»»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»»»»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»»»»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»»»»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 <tr>
 <td>»»»» links</td>
@@ -5685,6 +5682,14 @@ x-cds-client-headers: string
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -5775,8 +5780,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
 <h2 id='get-energy-accounts'>Get Energy Accounts</h2>
 <p><a id="opIdlistAccounts"></a></p>
@@ -15642,21 +15648,20 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -15698,7 +15703,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>islandableInstallation</td>
@@ -15716,102 +15721,102 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -15830,55 +15835,55 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»» count</td>
@@ -15890,13 +15895,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»» status</td>
@@ -15905,34 +15910,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-27'>Enumerated Values</h4>
@@ -15942,6 +15941,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>

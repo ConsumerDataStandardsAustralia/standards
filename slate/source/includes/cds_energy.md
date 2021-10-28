@@ -1868,21 +1868,20 @@ Obtain a list of DER data from a particular service point
       {
         "connectionIdentifier": 0,
         "count": "string",
-        "equipmentType": "string",
+        "equipmentType": "INVERTER",
         "manufacturerName": "string",
         "inverterSeries": "string",
         "inverterModelNumber": "string",
         "commissioningDate": "string",
-        "installationStage": "string",
         "status": "ACTIVE",
         "inverterDeviceCapacity": 0,
         "derDevices": [
           {
+            "deviceIdentifier": 0,
             "count": 0,
             "manufacturer": "string",
             "modelNumber": "string",
             "status": "ACTIVE",
-            "installationStage": 0,
             "type": "FOSSIL",
             "subtype": "string",
             "nominalRatedCapacity": 0,
@@ -1916,46 +1915,45 @@ Status Code **200**
 |»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»» approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |»» availablePhasesCount|number|mandatory|The number of phases available for the installation of DER|
-|»» installedPhasesCount|number|mandatory|The number of phases that DER is installed on|
+|»» installedPhasesCount|number|mandatory|The number of phases that DER is connected to|
 |»» islandableInstallation|string|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |»» hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
-|»» protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true|
-|»»» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit|
-|»»» underFrequencyProtection|number|optional|Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2|
-|»»» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»» overFrequencyProtection|number|optional|Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2|
-|»»» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»» underVoltageProtection|number|optional|Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2|
-|»»» underVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»» overVoltageProtection|number|optional|Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2|
-|»»» overVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»» sustainedOverVoltage|number|optional|Sustained over voltage|
-|»»» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds|
-|»»» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s)|
-|»»» voltageVectorShift|number|optional|Trip angle in degrees|
-|»»» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation')|
-|»»» neutralVoltageDisplacement|number|optional|Trip voltage|
-|»» acConnections|[object]|optional|none|
+|»» protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
+|»»» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|»»» underFrequencyProtection|number|optional|Protective function limit in Hz.|
+|»»» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»» overFrequencyProtection|number|optional|Protective function limit in Hz.|
+|»»» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»» underVoltageProtection|number|optional|Protective function limit in V.|
+|»»» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»» overVoltageProtection|number|optional|Protective function limit in V.|
+|»»» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»» sustainedOverVoltage|number|optional|Sustained over voltage.|
+|»»» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds.|
+|»»» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
+|»»» voltageVectorShift|number|optional|Trip angle in degrees.|
+|»»» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|»»» neutralVoltageDisplacement|number|optional|Trip voltage.|
+|»» acConnections|[object]|mandatory|none|
 |»»» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
 |»»» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|»»» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)|
-|»»» manufacturerName|string|optional|The name of the inverter manufacturer|
-|»»» inverterSeries|string|optional|The inverter series|
-|»»» inverterModelNumber|string|optional|The inverter model number|
-|»»» commissioningDate|[DateString](#common-field-types)|optional|The date that the DER installation is commissioned|
-|»»» installationStage|string|optional|Description of the installation stage|
-|»»» status|string|optional|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»»» inverterDeviceCapacity|number|optional|The rated AC output power that is listed in the product specified by the manufacturer|
-|»»» derDevices|[object]|optional|none|
+|»»» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|»»» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
+|»»» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
+|»»» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
+|»»» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
+|»»» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|»»» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
+|»»» derDevices|[object]|mandatory|none|
+|»»»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»»»» count|number|mandatory|Number of devices in the group of DER devices|
-|»»»» manufacturer|string|optional|The name of the device manufacturer|
-|»»»» modelNumber|string|optional|The model number of the device|
+|»»»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
+|»»»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
 |»»»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»»»» installationStage|number|optional|Description of the device installation stage|
-|»»»» type|string|optional|Used to indicate the primary technology used in the DER device|
-|»»»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
-|»»»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
-|»»»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
+|»»»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»»»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
+|»»»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
+|»»»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”|
 |»»» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 |»»» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
@@ -1964,6 +1962,8 @@ Status Code **200**
 
 |Property|Value|
 |---|---|
+|equipmentType|INVERTER|
+|equipmentType|OTHER|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|DECOMMISSIONED|
@@ -1988,10 +1988,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside>
 
+    
   
 
 ## Get Bulk DER
@@ -2095,21 +2098,20 @@ Obtain DER data for all service points associated with the customer
           {
             "connectionIdentifier": 0,
             "count": "string",
-            "equipmentType": "string",
+            "equipmentType": "INVERTER",
             "manufacturerName": "string",
             "inverterSeries": "string",
             "inverterModelNumber": "string",
             "commissioningDate": "string",
-            "installationStage": "string",
             "status": "ACTIVE",
             "inverterDeviceCapacity": 0,
             "derDevices": [
               {
+                "deviceIdentifier": 0,
                 "count": 0,
                 "manufacturer": "string",
                 "modelNumber": "string",
                 "status": "ACTIVE",
-                "installationStage": 0,
                 "type": "FOSSIL",
                 "subtype": "string",
                 "nominalRatedCapacity": 0,
@@ -2153,46 +2155,45 @@ Status Code **200**
 |»»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |»»» availablePhasesCount|number|mandatory|The number of phases available for the installation of DER|
-|»»» installedPhasesCount|number|mandatory|The number of phases that DER is installed on|
+|»»» installedPhasesCount|number|mandatory|The number of phases that DER is connected to|
 |»»» islandableInstallation|string|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |»»» hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
-|»»» protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true|
-|»»»» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit|
-|»»»» underFrequencyProtection|number|optional|Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2|
-|»»»» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» overFrequencyProtection|number|optional|Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2|
-|»»»» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» underVoltageProtection|number|optional|Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2|
-|»»»» underVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» overVoltageProtection|number|optional|Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2|
-|»»»» overVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» sustainedOverVoltage|number|optional|Sustained over voltage|
-|»»»» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds|
-|»»»» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s)|
-|»»»» voltageVectorShift|number|optional|Trip angle in degrees|
-|»»»» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation')|
-|»»»» neutralVoltageDisplacement|number|optional|Trip voltage|
-|»»» acConnections|[object]|optional|none|
+|»»» protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
+|»»»» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|»»»» underFrequencyProtection|number|optional|Protective function limit in Hz.|
+|»»»» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» overFrequencyProtection|number|optional|Protective function limit in Hz.|
+|»»»» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» underVoltageProtection|number|optional|Protective function limit in V.|
+|»»»» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» overVoltageProtection|number|optional|Protective function limit in V.|
+|»»»» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» sustainedOverVoltage|number|optional|Sustained over voltage.|
+|»»»» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds.|
+|»»»» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
+|»»»» voltageVectorShift|number|optional|Trip angle in degrees.|
+|»»»» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|»»»» neutralVoltageDisplacement|number|optional|Trip voltage.|
+|»»» acConnections|[object]|mandatory|none|
 |»»»» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
 |»»»» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|»»»» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)|
-|»»»» manufacturerName|string|optional|The name of the inverter manufacturer|
-|»»»» inverterSeries|string|optional|The inverter series|
-|»»»» inverterModelNumber|string|optional|The inverter model number|
-|»»»» commissioningDate|[DateString](#common-field-types)|optional|The date that the DER installation is commissioned|
-|»»»» installationStage|string|optional|Description of the installation stage|
-|»»»» status|string|optional|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»»»» inverterDeviceCapacity|number|optional|The rated AC output power that is listed in the product specified by the manufacturer|
-|»»»» derDevices|[object]|optional|none|
+|»»»» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|»»»» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
+|»»»» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
+|»»»» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
+|»»»» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
+|»»»» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|»»»» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
+|»»»» derDevices|[object]|mandatory|none|
+|»»»»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»»»»» count|number|mandatory|Number of devices in the group of DER devices|
-|»»»»» manufacturer|string|optional|The name of the device manufacturer|
-|»»»»» modelNumber|string|optional|The model number of the device|
+|»»»»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
+|»»»»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
 |»»»»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»»»»» installationStage|number|optional|Description of the device installation stage|
-|»»»»» type|string|optional|Used to indicate the primary technology used in the DER device|
-|»»»»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
-|»»»»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
-|»»»»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
+|»»»»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»»»»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
+|»»»»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
+|»»»»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”|
 |»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 |»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
@@ -2207,6 +2208,8 @@ Status Code **200**
 
 |Property|Value|
 |---|---|
+|equipmentType|INVERTER|
+|equipmentType|OTHER|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|DECOMMISSIONED|
@@ -2231,10 +2234,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside>
 
+    
   
 
 ## Get DER For Specific Service Points
@@ -2357,21 +2363,20 @@ Obtain DER data for a specific set of service points
           {
             "connectionIdentifier": 0,
             "count": "string",
-            "equipmentType": "string",
+            "equipmentType": "INVERTER",
             "manufacturerName": "string",
             "inverterSeries": "string",
             "inverterModelNumber": "string",
             "commissioningDate": "string",
-            "installationStage": "string",
             "status": "ACTIVE",
             "inverterDeviceCapacity": 0,
             "derDevices": [
               {
+                "deviceIdentifier": 0,
                 "count": 0,
                 "manufacturer": "string",
                 "modelNumber": "string",
                 "status": "ACTIVE",
-                "installationStage": 0,
                 "type": "FOSSIL",
                 "subtype": "string",
                 "nominalRatedCapacity": 0,
@@ -2415,46 +2420,45 @@ Status Code **200**
 |»»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |»»» availablePhasesCount|number|mandatory|The number of phases available for the installation of DER|
-|»»» installedPhasesCount|number|mandatory|The number of phases that DER is installed on|
+|»»» installedPhasesCount|number|mandatory|The number of phases that DER is connected to|
 |»»» islandableInstallation|string|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |»»» hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
-|»»» protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true|
-|»»»» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit|
-|»»»» underFrequencyProtection|number|optional|Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2|
-|»»»» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» overFrequencyProtection|number|optional|Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2|
-|»»»» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» underVoltageProtection|number|optional|Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2|
-|»»»» underVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» overVoltageProtection|number|optional|Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2|
-|»»»» overVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|»»»» sustainedOverVoltage|number|optional|Sustained over voltage|
-|»»»» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds|
-|»»»» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s)|
-|»»»» voltageVectorShift|number|optional|Trip angle in degrees|
-|»»»» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation')|
-|»»»» neutralVoltageDisplacement|number|optional|Trip voltage|
-|»»» acConnections|[object]|optional|none|
+|»»» protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
+|»»»» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|»»»» underFrequencyProtection|number|optional|Protective function limit in Hz.|
+|»»»» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» overFrequencyProtection|number|optional|Protective function limit in Hz.|
+|»»»» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» underVoltageProtection|number|optional|Protective function limit in V.|
+|»»»» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» overVoltageProtection|number|optional|Protective function limit in V.|
+|»»»» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|»»»» sustainedOverVoltage|number|optional|Sustained over voltage.|
+|»»»» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds.|
+|»»»» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
+|»»»» voltageVectorShift|number|optional|Trip angle in degrees.|
+|»»»» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|»»»» neutralVoltageDisplacement|number|optional|Trip voltage.|
+|»»» acConnections|[object]|mandatory|none|
 |»»»» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
 |»»»» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|»»»» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)|
-|»»»» manufacturerName|string|optional|The name of the inverter manufacturer|
-|»»»» inverterSeries|string|optional|The inverter series|
-|»»»» inverterModelNumber|string|optional|The inverter model number|
-|»»»» commissioningDate|[DateString](#common-field-types)|optional|The date that the DER installation is commissioned|
-|»»»» installationStage|string|optional|Description of the installation stage|
-|»»»» status|string|optional|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»»»» inverterDeviceCapacity|number|optional|The rated AC output power that is listed in the product specified by the manufacturer|
-|»»»» derDevices|[object]|optional|none|
+|»»»» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|»»»» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
+|»»»» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
+|»»»» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
+|»»»» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
+|»»»» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|»»»» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
+|»»»» derDevices|[object]|mandatory|none|
+|»»»»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»»»»» count|number|mandatory|Number of devices in the group of DER devices|
-|»»»»» manufacturer|string|optional|The name of the device manufacturer|
-|»»»»» modelNumber|string|optional|The model number of the device|
+|»»»»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
+|»»»»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
 |»»»»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»»»»» installationStage|number|optional|Description of the device installation stage|
-|»»»»» type|string|optional|Used to indicate the primary technology used in the DER device|
-|»»»»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
-|»»»»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
-|»»»»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
+|»»»»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»»»»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
+|»»»»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
+|»»»»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”|
 |»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 |»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
@@ -2469,6 +2473,8 @@ Status Code **200**
 
 |Property|Value|
 |---|---|
+|equipmentType|INVERTER|
+|equipmentType|OTHER|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|DECOMMISSIONED|
@@ -2493,10 +2499,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside>
 
+    
   
 
 ## Get Energy Accounts
@@ -8631,21 +8640,20 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "connectionIdentifier": 0,
       "count": "string",
-      "equipmentType": "string",
+      "equipmentType": "INVERTER",
       "manufacturerName": "string",
       "inverterSeries": "string",
       "inverterModelNumber": "string",
       "commissioningDate": "string",
-      "installationStage": "string",
       "status": "ACTIVE",
       "inverterDeviceCapacity": 0,
       "derDevices": [
         {
+          "deviceIdentifier": 0,
           "count": 0,
           "manufacturer": "string",
           "modelNumber": "string",
           "status": "ACTIVE",
-          "installationStage": 0,
           "type": "FOSSIL",
           "subtype": "string",
           "nominalRatedCapacity": 0,
@@ -8665,51 +8673,52 @@ To perform this operation, you must be authenticated and authorised with the fol
 |servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA|
 |availablePhasesCount|number|mandatory|The number of phases available for the installation of DER|
-|installedPhasesCount|number|mandatory|The number of phases that DER is installed on|
+|installedPhasesCount|number|mandatory|The number of phases that DER is connected to|
 |islandableInstallation|string|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
 |hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
-|protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true|
-|» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit|
-|» underFrequencyProtection|number|optional|Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2|
-|» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|» overFrequencyProtection|number|optional|Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2|
-|» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|» underVoltageProtection|number|optional|Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2|
-|» underVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|» overVoltageProtection|number|optional|Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2|
-|» overVoltageProtectionDelay|number|optional|Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2|
-|» sustainedOverVoltage|number|optional|Sustained over voltage|
-|» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds|
-|» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s)|
-|» voltageVectorShift|number|optional|Trip angle in degrees|
-|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation')|
-|» neutralVoltageDisplacement|number|optional|Trip voltage|
-|acConnections|[object]|optional|none|
+|protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
+|» exportLimitkva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|» underFrequencyProtection|number|optional|Protective function limit in Hz.|
+|» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|» overFrequencyProtection|number|optional|Protective function limit in Hz.|
+|» overFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
+|» underVoltageProtection|number|optional|Protective function limit in V.|
+|» underVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|» overVoltageProtection|number|optional|Protective function limit in V.|
+|» overVoltageProtectionDelay|number|optional|Trip delay time in seconds.|
+|» sustainedOverVoltage|number|optional|Sustained over voltage.|
+|» sustainedOverVoltageDelay|number|optional|Trip delay time in seconds.|
+|» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
+|» voltageVectorShift|number|optional|Trip angle in degrees.|
+|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|» neutralVoltageDisplacement|number|optional|Trip voltage.|
+|acConnections|[object]|mandatory|none|
 |» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
 |» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)|
-|» manufacturerName|string|optional|The name of the inverter manufacturer|
-|» inverterSeries|string|optional|The inverter series|
-|» inverterModelNumber|string|optional|The inverter model number|
-|» commissioningDate|[DateString](#common-field-types)|optional|The date that the DER installation is commissioned|
-|» installationStage|string|optional|Description of the installation stage|
-|» status|string|optional|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|» inverterDeviceCapacity|number|optional|The rated AC output power that is listed in the product specified by the manufacturer|
-|» derDevices|[object]|optional|none|
+|» equipmentType|string|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
+|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
+|» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
+|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
+|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
+|» status|string|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
+|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER|
+|» derDevices|[object]|mandatory|none|
+|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
 |»» count|number|mandatory|Number of devices in the group of DER devices|
-|»» manufacturer|string|optional|The name of the device manufacturer|
-|»» modelNumber|string|optional|The model number of the device|
+|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
+|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
 |»» status|string|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»» installationStage|number|optional|Description of the device installation stage|
-|»» type|string|optional|Used to indicate the primary technology used in the DER device|
-|»» subtype|string|optional|This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement|
-|»» nominalRatedCapacity|number|optional|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
-|»» nominalStorageCapacity|number|optional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group|
+|»» type|string|mandatory|Used to indicate the primary technology used in the DER device|
+|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
+|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group|
+|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
+|equipmentType|INVERTER|
+|equipmentType|OTHER|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|DECOMMISSIONED|
