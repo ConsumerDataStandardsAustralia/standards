@@ -238,7 +238,7 @@ Note that the data language standards for the energy sector are currently consid
 </thead><tbody>
 <tr>
 <td><strong>Billing payments and history</strong></td>
-<td>Account balance(s);<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing dates;<br>Usage for billing period;<br>Payment date;<br>Invoice numbers;</td>
+<td>Account balance;<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;</td>
 <td>energy:billing:read</td>
 </tr>
 </tbody></table>
@@ -279,9 +279,9 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Concessions and assistance</strong></td>
-<td>Concession type;<br>Concession information;</td>
-<td>energy:accounts.concessions:read</td>
+<td><strong>Energy generation and storage</strong></td>
+<td>Generation information;<br>Device characteristics;<br>Generation or storage device type ;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
+<td>energy:electricity.der:read</td>
 </tr>
 </tbody></table>
 <h3 id='electricity-usage'>Electricity Usage</h3>
@@ -295,8 +295,8 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Stored payment information</strong></td>
-<td>Payment details;<br>Scheduled payment amount;</td>
-<td>energy:accounts.paymentschedule:read</td>
+<td><strong>Electricity usage</strong></td>
+<td>Usage;<br>Meter details;</td>
+<td>energy:electricity.usage:read</td>
 </tr>
 </tbody></table>

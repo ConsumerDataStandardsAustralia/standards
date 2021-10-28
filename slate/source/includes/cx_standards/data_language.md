@@ -98,7 +98,7 @@ The below tables outline the data language standards for the billing scope:
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Billing payments and history**|Account balance(s);<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing dates;<br>Usage for billing period;<br>Payment date;<br>Invoice numbers;|energy:billing:read|
+|**Billing payments and history**|Account balance;<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;|energy:billing:read|
 
 ### NMI Standing Data
 The below tables outline the data language standards for the NMI standing data scopes:
@@ -114,11 +114,11 @@ The below tables outline the data language standards for the Distributed Energy 
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Concessions and assistance**|Concession type;<br>Concession information;|energy:accounts.concessions:read|
+|**Energy generation and storage**|Generation information;<br>Device characteristics;<br>Generation or storage device type ;<br>Devices that can operate without the grid;<br>Energy conversion information;|energy:electricity.der:read|
 
 ### Electricity Usage
 The below tables outline the data language standards for the electricity usage scope:
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Stored payment information**|Payment details;<br>Scheduled payment amount;|energy:accounts.paymentschedule:read|
+|**Electricity usage**|Usage;<br>Meter details;|energy:electricity.usage:read|

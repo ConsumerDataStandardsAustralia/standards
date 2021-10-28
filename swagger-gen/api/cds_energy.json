@@ -4025,6 +4025,7 @@
                     "Energy",
 					"Generic Tariffs"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"name": "type",
 						"in": "query",
@@ -4121,6 +4122,7 @@
                     "Energy",
 					"Generic Tariffs"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"name": "planId",
 						"description": "ID of the specific plan requested",
@@ -4166,11 +4168,12 @@
 				"operationId": "listServicePoints",
 				"x-scopes": [
 					"energy:electricity.servicepoints.basic:read"
-				  ],
+				],
 				"tags": [
                     "Energy",
 					"NMI Standing Data"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/page"
 					},
@@ -4221,12 +4224,13 @@
 				"operationId": "getServicePoint",
 				"x-scopes": [
 					"energy:electricity.servicepoints.detail:read"
-				  ],
+				],
 				"description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session",
 				"tags": [
                     "Energy",
 					"NMI Standing Data"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/servicePointId"
 					},
@@ -4280,6 +4284,7 @@
                     "Energy",
 					"Electricity Usage"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/servicePointId"
 					},
@@ -4345,6 +4350,7 @@
                     "Energy",
 					"Electricity Usage"
 				],
+                "x-version": "1",
 				"parameters": [{
                         "$ref": "#/components/parameters/oldest-date"
                     },
@@ -4405,6 +4411,7 @@
                     "Energy",
 					"Electricity Usage"
 				],
+                "x-version": "1",
 				"parameters": [{
                         "$ref": "#/components/parameters/oldest-date"
                     },
@@ -4470,6 +4477,7 @@
                     "Energy",
 					"Distributed Energy Resources"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/servicePointId"
 					},
@@ -4523,6 +4531,7 @@
                     "Energy",
 					"Distributed Energy Resources"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/page"
 					},
@@ -4577,6 +4586,7 @@
                     "Energy",
 					"Distributed Energy Resources"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/page"
 					},
@@ -4636,6 +4646,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/page"
 					},
@@ -4692,6 +4703,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -4745,6 +4757,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -4798,6 +4811,7 @@
                     "Energy",
 					"Energy Accounts"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -4851,6 +4865,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -4907,6 +4922,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/page"
 					},
@@ -4961,6 +4977,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/page"
 					},
@@ -5020,6 +5037,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -5085,6 +5103,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-date"
 					},
@@ -5145,6 +5164,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-date"
 					},
@@ -5210,6 +5230,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -5275,6 +5296,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-time"
 					},
@@ -5335,6 +5357,7 @@
                     "Energy",
 					"Billing"
 				],
+                "x-version": "1",
 				"parameters": [{
 						"$ref": "#/components/parameters/newest-time"
 					},

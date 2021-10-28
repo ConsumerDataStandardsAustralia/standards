@@ -46,7 +46,7 @@ Note that the results returned by this end point are expected to be ordered in d
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-generic-plans-parameters">Parameters</h3>
 
@@ -198,7 +198,7 @@ Obtain detailed information on a single energy plan offered openly to the market
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-generic-plan-detail-parameters">Parameters</h3>
 
@@ -702,7 +702,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-service-points-parameters">Parameters</h3>
 
@@ -890,7 +890,7 @@ Obtain detailed standing information for a specific service point that is owned 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-service-point-detail-parameters">Parameters</h3>
 
@@ -1230,7 +1230,7 @@ Obtain a list of electricity usage data from a particular service point
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-usage-for-service-point-parameters">Parameters</h3>
 
@@ -1421,7 +1421,7 @@ Obtain usage data for all service points associated with the customer
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-bulk-usage-parameters">Parameters</h3>
 
@@ -1626,7 +1626,7 @@ Obtain the electricity usage data for a specific set of service points
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-usage-for-specific-service-points-parameters">Parameters</h3>
 
@@ -1820,7 +1820,7 @@ Obtain a list of DER data from a particular service point
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-der-for-service-point-parameters">Parameters</h3>
 
@@ -2047,7 +2047,7 @@ Obtain DER data for all service points associated with the customer
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-bulk-der-parameters">Parameters</h3>
 
@@ -2308,7 +2308,7 @@ Obtain DER data for a specific set of service points
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-der-for-specific-service-points-parameters">Parameters</h3>
 
@@ -2558,7 +2558,7 @@ Obtain the list of energy accounts available under the authorised consent
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-energy-accounts-parameters">Parameters</h3>
 
@@ -2691,7 +2691,7 @@ Obtain detailed information for a specific energy account
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-energy-account-detail-parameters">Parameters</h3>
 
@@ -3132,7 +3132,7 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-agreed-payment-schedule-parameters">Parameters</h3>
 
@@ -3253,7 +3253,7 @@ Obtain the details of any concessions or hardship arrangements applied to a spec
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-concessions-parameters">Parameters</h3>
 
@@ -3370,7 +3370,7 @@ Obtain the current balance for a specific account
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-balance-for-energy-account-parameters">Parameters</h3>
 
@@ -3475,7 +3475,7 @@ Obtain the current balance for all accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-bulk-balances-(energy)-parameters">Parameters</h3>
 
@@ -3608,7 +3608,7 @@ Obtain the current balance for a specified set of accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-balances-for-specific-energy-accounts-parameters">Parameters</h3>
 
@@ -3730,7 +3730,7 @@ Obtain the invoices for a specific account
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-invoices-for-account-parameters">Parameters</h3>
 
@@ -3900,7 +3900,7 @@ Obtain the invoices for all accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-bulk-invoices-parameters">Parameters</h3>
 
@@ -4084,7 +4084,7 @@ Obtain invoices for a specified set of accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-invoices-for-specific-accounts-parameters">Parameters</h3>
 
@@ -4257,7 +4257,7 @@ Obtain the billing transactions for a specific account
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-billing-for-account-parameters">Parameters</h3>
 
@@ -4442,7 +4442,7 @@ Obtain billing transactions for all accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-bulk-billing-parameters">Parameters</h3>
 
@@ -4641,7 +4641,7 @@ Obtain billing for a specified set of accounts
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**undefined**
+|Version|**1**
 
 <h3 id="get-billing-for-specific-accounts-parameters">Parameters</h3>
 
