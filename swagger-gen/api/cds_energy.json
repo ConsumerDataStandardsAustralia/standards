@@ -1437,7 +1437,7 @@
                                     "properties": {
                                         "nickname": {
                                             "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
-                                            "type": "string",
+                                            "type": "string"
                                         },
                                         "servicePointIds": {
                                             "description": "An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected",
@@ -1500,7 +1500,7 @@
                                     "properties": {
                                         "nickname": {
                                             "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
-                                            "type": "string",
+                                            "type": "string"
                                         },
                                         "servicePointIds": {
                                             "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
@@ -2446,7 +2446,8 @@
 					"approvedCapacity",
 					"availablePhasesCount",
 					"installedPhasesCount",
-					"islandableInstallation"
+					"islandableInstallation",
+					"acConnections"
 				],
 				"x-conditional": [
 					"protectionMode"
@@ -2465,7 +2466,7 @@
 						"type": "number"
 					},
 					"installedPhasesCount": {
-						"description": "The number of phases that DER is installed on",
+						"description": "The number of phases that DER is connected to",
 						"type": "number"
 					},
 					"islandableInstallation": {
@@ -2478,67 +2479,67 @@
 						"default": false
 					},
 					"protectionMode": {
-						"description": "Required only when the hasCentralProtectionAndControl flag is set to true",
+						"description": "Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place",
 						"type": "object",
 						"properties": {
 							"exportLimitkva": {
-								"description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit",
+								"description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
 								"type": "number"
 							},
 							"underFrequencyProtection": {
-								"description": "Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2",
+								"description": "Protective function limit in Hz.",
 								"type": "number"
 							},
 							"underFrequencyProtectionDelay": {
-								"description": "Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2",
+								"description": "Trip delay time in seconds.",
 								"type": "number"
 							},
 							"overFrequencyProtection": {
-								"description": "Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2",
+								"description": "Protective function limit in Hz.",
 								"type": "number"
 							},
 							"overFrequencyProtectionDelay": {
-								"description": "Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2",
+								"description": "Trip delay time in seconds.",
 								"type": "number"
 							},
 							"underVoltageProtection": {
-								"description": "Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2",
+								"description": "Protective function limit in V.",
 								"type": "number"
 							},
 							"underVoltageProtectionDelay": {
-								"description": "Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2",
+								"description": "Trip delay time in seconds.",
 								"type": "number"
 							},
 							"overVoltageProtection": {
-								"description": "Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2",
+								"description": "Protective function limit in V.",
 								"type": "number"
 							},
 							"overVoltageProtectionDelay": {
-								"description": "Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2",
+								"description": "Trip delay time in seconds.",
 								"type": "number"
 							},
 							"sustainedOverVoltage": {
-								"description": "Sustained over voltage",
+								"description": "Sustained over voltage.",
 								"type": "number"
 							},
 							"sustainedOverVoltageDelay": {
-								"description": "Trip delay time in seconds",
+								"description": "Trip delay time in seconds.",
 								"type": "number"
 							},
 							"frequencyRateOfChange": {
-								"description": "Rate of change of frequency trip point (Hz/s)",
+								"description": "Rate of change of frequency trip point (Hz/s).",
 								"type": "number"
 							},
 							"voltageVectorShift": {
-								"description": "Trip angle in degrees",
+								"description": "Trip angle in degrees.",
 								"type": "number"
 							},
 							"interTripScheme": {
-								"description": "Description of the form of inter-trip (e.g. 'from local substation')",
+								"description": "Description of the form of inter-trip (e.g. 'from local substation').",
 								"type": "string"
 							},
 							"neutralVoltageDisplacement": {
-								"description": "Trip voltage",
+								"description": "Trip voltage.",
 								"type": "number"
 							}
 						}
@@ -2549,7 +2550,16 @@
 							"type": "object",
 							"required": [
 								"connectionIdentifier",
-								"count"
+								"count",
+								"commissioningDate",
+								"status",
+								"derDevices"
+							],
+							"x-conditional": [
+								"manufacturerName",
+								"inverterSeries",
+								"inverterModelNumber",
+								"inverterDeviceCapacity"
 							],
 							"properties": {
 								"connectionIdentifier": {
@@ -2562,29 +2572,29 @@
 									"x-cds-type": "PositiveInteger"
 								},
 								"equipmentType": {
-									"description": "Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)",
-									"type": "string"
+									"description": "Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.",
+									"type": "string",
+									"enum": [
+										"INVERTER",
+										"OTHER"
+									]
 								},
 								"manufacturerName": {
-									"description": "The name of the inverter manufacturer",
+									"description": "The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER",
 									"type": "string"
 								},
 								"inverterSeries": {
-									"description": "The inverter series",
+									"description": "The inverter series. Mandatory if equipmentType is INVERTER",
 									"type": "string"
 								},
 								"inverterModelNumber": {
-									"description": "The inverter model number",
+									"description": "The inverter model number. Mandatory if equipmentType is INVERTER",
 									"type": "string"
 								},
 								"commissioningDate": {
 									"description": "The date that the DER installation is commissioned",
 									"type": "string",
 									"x-cds-type": "DateString"
-								},
-								"installationStage": {
-									"description": "Description of the installation stage",
-									"type": "string"
 								},
 								"status": {
 									"description": "Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned",
@@ -2596,7 +2606,7 @@
 									]
 								},
 								"inverterDeviceCapacity": {
-									"description": "The rated AC output power that is listed in the product specified by the manufacturer",
+									"description": "The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER",
 									"type": "number"
 								},
 								"derDevices": {
@@ -2604,19 +2614,27 @@
 									"items": {
 										"type": "object",
 										"required": [
-											"count"
+											"deviceIdentifier",
+											"count",
+											"type",
+											"nominalRatedCapacity"
 										],
+										"x-conditional": ["nominalStorageCapacity"],
 										"properties": {
+											"deviceIdentifier": {
+												"description": "Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards",
+												"type": "number"
+											},
 											"count": {
 												"description": "Number of devices in the group of DER devices",
 												"type": "number"
 											},
 											"manufacturer": {
-												"description": "The name of the device manufacturer",
+												"description": "The name of the device manufacturer. If absent then assumed to be “unknown”",
 												"type": "string"
 											},
 											"modelNumber": {
-												"description": "The model number of the device",
+												"description": "The model number of the device. If absent then assumed to be “unknown”",
 												"type": "string"
 											},
 											"status": {
@@ -2627,10 +2645,6 @@
 													"INACTIVE",
 													"DECOMMISSIONED"
 												]
-											},
-											"installationStage": {
-												"description": "Description of the device installation stage",
-												"type": "number"
 											},
 											"type": {
 												"description": "Used to indicate the primary technology used in the DER device",
@@ -2647,7 +2661,7 @@
 												]
 											},
 											"subtype": {
-												"description": "This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement",
+												"description": "Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”",
 												"type": "string"
 											},
 											"nominalRatedCapacity": {
@@ -2655,7 +2669,7 @@
 												"type": "number"
 											},
 											"nominalStorageCapacity": {
-												"description": "Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group",
+												"description": "Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”",
 												"type": "number"
 											}
 										}
@@ -4449,6 +4463,9 @@
 				"summary": "Get DER For Service Point",
 				"operationId": "getDERForServicePoint",
 				"description": "Obtain a list of DER data from a particular service point",
+				"x-scopes": [
+                    "energy:electricity.der:read"
+                ],
 				"tags": [
                     "Energy",
 					"Distributed Energy Resources"
@@ -4499,6 +4516,9 @@
 				"summary": "Get Bulk DER",
 				"operationId": "listDERBulk",
 				"description": "Obtain DER data for all service points associated with the customer",
+				"x-scopes": [
+                    "energy:electricity.der:read"
+                ],
 				"tags": [
                     "Energy",
 					"Distributed Energy Resources"
@@ -4550,6 +4570,9 @@
 				"summary": "Get DER For Specific Service Points",
 				"operationId": "listDERForServicePoints",
 				"description": "Obtain DER data for a specific set of service points",
+				"x-scopes": [
+                    "energy:electricity.der:read"
+                ],
 				"tags": [
                     "Energy",
 					"Distributed Energy Resources"
