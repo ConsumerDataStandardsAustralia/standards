@@ -137,6 +137,15 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanListResponse](#schemacdr-energy-apienergyplanlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -246,20 +255,10 @@ Obtain detailed information on a single energy plan offered openly to the market
     "gasContract": {
       "additionalFeeInformation": "string",
       "pricingModel": "SINGLE_RATE",
-      "termType": "1_YEAR",
       "timeZone": "LOCAL",
-      "benefitPeriod": "string",
-      "terms": "string",
       "isFixed": true,
       "variation": "string",
       "onExpiryDescription": "string",
-      "meterTypes": [
-        "string"
-      ],
-      "coolingOffDays": "string",
-      "billFrequency": [
-        "string"
-      ],
       "paymentOption": [
         "PAPER_BILL"
       ],
@@ -426,25 +425,25 @@ Obtain detailed information on a single energy plan offered openly to the market
             }
           ]
         }
+      ],
+      "termType": "1_YEAR",
+      "benefitPeriod": "string",
+      "terms": "string",
+      "meterTypes": [
+        "string"
+      ],
+      "coolingOffDays": "string",
+      "billFrequency": [
+        "string"
       ]
     },
     "electricityContract": {
       "additionalFeeInformation": "string",
       "pricingModel": "SINGLE_RATE",
-      "termType": "1_YEAR",
       "timeZone": "LOCAL",
-      "benefitPeriod": "string",
-      "terms": "string",
       "isFixed": true,
       "variation": "string",
       "onExpiryDescription": "string",
-      "meterTypes": [
-        "string"
-      ],
-      "coolingOffDays": "string",
-      "billFrequency": [
-        "string"
-      ],
       "paymentOption": [
         "PAPER_BILL"
       ],
@@ -611,6 +610,16 @@ Obtain detailed information on a single energy plan offered openly to the market
             }
           ]
         }
+      ],
+      "termType": "1_YEAR",
+      "benefitPeriod": "string",
+      "terms": "string",
+      "meterTypes": [
+        "string"
+      ],
+      "coolingOffDays": "string",
+      "billFrequency": [
+        "string"
       ]
     }
   },
@@ -626,6 +635,15 @@ Obtain detailed information on a single energy plan offered openly to the market
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponse](#schemacdr-energy-apienergyplanresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -742,6 +760,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-service-points-responseschema">Response Schema</h3>
 
@@ -806,6 +825,14 @@ Status Code **200**
 |threshold|LOW|
 |threshold|MEDIUM|
 |threshold|HIGH|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -979,6 +1006,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-service-point-detail-responseschema">Response Schema</h3>
 
@@ -1129,6 +1157,14 @@ Status Code **200**
 |consumptionType|ACTUAL|
 |consumptionType|CUMULATIVE|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+
   
     <aside class="success">
 This operation does not require authentication
@@ -1255,6 +1291,7 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-usage-for-service-point-responseschema">Response Schema</h3>
 
@@ -1305,6 +1342,14 @@ Status Code **200**
 |quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -1431,6 +1476,7 @@ Obtain usage data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-bulk-usage-responseschema">Response Schema</h3>
 
@@ -1481,6 +1527,14 @@ Status Code **200**
 |quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -1626,6 +1680,7 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-usage-for-specific-service-points-responseschema">Response Schema</h3>
 
@@ -1676,6 +1731,14 @@ Status Code **200**
 |quality|ACTUAL|
 |quality|SUBSTITUTE|
 |quality|FINAL_SUBSTITUTE|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -1818,6 +1881,7 @@ Obtain a list of DER data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-der-for-service-point-responseschema">Response Schema</h3>
 
@@ -1891,6 +1955,14 @@ Status Code **200**
 |type|GEOTHERMAL|
 |type|STORAGE|
 |type|OTHER|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -2045,6 +2117,7 @@ Obtain DER data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-bulk-der-responseschema">Response Schema</h3>
 
@@ -2125,6 +2198,14 @@ Status Code **200**
 |type|GEOTHERMAL|
 |type|STORAGE|
 |type|OTHER|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -2298,6 +2379,7 @@ Obtain DER data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-der-for-specific-service-points-responseschema">Response Schema</h3>
 
@@ -2379,6 +2461,14 @@ Status Code **200**
 |type|STORAGE|
 |type|OTHER|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+
   
     <aside class="success">
 This operation does not require authentication
@@ -2386,7 +2476,7 @@ This operation does not require authentication
 
   
 
-## Get Accounts
+## Get Energy Accounts
 
 <a id="opIdlistAccounts"></a>
 
@@ -2438,7 +2528,7 @@ Obtain the list of energy accounts available under the authorised consent
 |---|--|
 |Version|**undefined**
 
-<h3 id="get-accounts-parameters">Parameters</h3>
+<h3 id="get-energy-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2464,14 +2554,19 @@ Obtain the list of energy accounts available under the authorised consent
         "accountNumber": "string",
         "displayName": "string",
         "creationDate": "string",
-        "servicePointIds": [
-          "string"
-        ],
-        "planOverview": {
-          "displayName": "string",
-          "startDate": "string",
-          "endDate": "string"
-        }
+        "plans": [
+          {
+            "nickname": "string",
+            "servicePointIds": [
+              "string"
+            ],
+            "planOverview": {
+              "displayName": "string",
+              "startDate": "string",
+              "endDate": "string"
+            }
+          }
+        ]
       }
     ]
   },
@@ -2489,20 +2584,32 @@ Obtain the list of energy accounts available under the authorised consent
 }
 ```
 
-<h3 id="get-accounts-responses">Responses</h3>
+<h3 id="get-energy-accounts-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountListResponse](#schemacdr-energy-apienergyaccountlistresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:accounts.basic:read</a>
 </aside>
 
+    
   
 
-## Get Account Detail
+## Get Energy Account Detail
 
 <a id="opIdgetAccount"></a>
 
@@ -2554,7 +2661,7 @@ Obtain detailed information for a specific energy account
 |---|--|
 |Version|**undefined**
 
-<h3 id="get-account-detail-parameters">Parameters</h3>
+<h3 id="get-energy-account-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2577,401 +2684,337 @@ Obtain detailed information for a specific energy account
     "accountNumber": "string",
     "displayName": "string",
     "creationDate": "string",
-    "servicePointIds": [
-      "string"
-    ],
-    "planOverview": {
-      "displayName": "string",
-      "startDate": "string",
-      "endDate": "string"
-    },
-    "planDetail": {
-      "fuelType": "ELECTRICITY",
-      "meteringCharges": [
-        {
-          "displayName": "string",
-          "description": "string",
-          "minimumValue": "string",
-          "maximumValue": "string",
-          "period": "string"
-        }
-      ],
-      "gasContract": {
-        "additionalFeeInformation": "string",
-        "pricingModel": "SINGLE_RATE",
-        "termType": "1_YEAR",
-        "timeZone": "LOCAL",
-        "benefitPeriod": "string",
-        "terms": "string",
-        "isFixed": true,
-        "variation": "string",
-        "onExpiryDescription": "string",
-        "meterTypes": [
-          "string"
-        ],
-        "coolingOffDays": "string",
-        "billFrequency": [
-          "string"
-        ],
-        "paymentOption": [
-          "PAPER_BILL"
-        ],
-        "intrinsicGreenPower": {
-          "greenPercentage": "string"
-        },
-        "controlledLoad": {
-          "displayName": "string",
-          "description": "string",
-          "dailyCharge": "string",
-          "period": "string",
-          "rates": [
-            {
-              "unitPrice": "string",
-              "volume": 0
-            }
-          ]
-        },
-        "incentives": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "category": "GIFT",
-            "eligibility": "string"
-          }
-        ],
-        "discounts": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "type": "CONDITIONAL",
-            "category": "PAY_ON_TIME",
-            "endDate": "string",
-            "methodUType": "percentOfBill",
-            "percentOfBill": {
-              "rate": "string"
-            },
-            "percentOfUse": {
-              "rate": "string"
-            },
-            "fixedAmount": {
-              "amount": "string"
-            },
-            "percentOverThreshold": {
-              "rate": "string",
-              "usageAmount": "string"
-            }
-          }
-        ],
-        "greenPowerCharges": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "GREENPOWER",
-            "type": "FIXED_PER_DAY",
-            "tiers": [
-              {
-                "percentGreen": "string",
-                "rate": "string",
-                "amount": "string"
-              }
-            ]
-          }
-        ],
-        "eligibility": [
-          {
-            "type": "EXISTING_CUST",
-            "information": "string",
-            "description": "string"
-          }
-        ],
-        "fees": [
-          {
-            "type": "EXIT",
-            "term": "FIXED",
-            "amount": "string",
-            "rate": "string",
-            "description": "string"
-          }
-        ],
-        "solarFeedInTariff": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "PREMIUM",
-            "payerType": "GOVERNMENT",
-            "tariffUType": "GOVERNMENT",
-            "singleTariff": {
-              "amount": "string"
-            },
-            "timeVaryingTariffs": {
-              "type": "PEAK",
-              "amount": "string",
-              "timeVariations": [
-                {
-                  "days": {
-                    "weekdays": true,
-                    "weekend": true
-                  },
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
-            }
-          }
-        ],
-        "tariffPeriod": [
-          {
-            "displayName": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "dailySupplyCharges": "string",
-            "rateBlockUType": "singleRate",
-            "singleRate": {
-              "displayName": "string",
-              "description": "string",
-              "generalUnitPrice": "string",
-              "rates": [
-                {
-                  "unitPrice": "string",
-                  "volume": 0
-                }
-              ],
-              "period": "string"
-            },
-            "timeOfUseRates": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "rates": [
-                  {
-                    "unitPrice": "string",
-                    "volume": 0
-                  }
-                ],
-                "timeOfUse": [
-                  {
-                    "days": [],
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ],
-                "type": "PEAK"
-              }
-            ],
-            "demandCharges": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "amount": "string",
-                "startTime": "string",
-                "endTime": "string",
-                "days": {
-                  "weekdays": true,
-                  "saturday": true,
-                  "sunday": true
-                },
-                "minDemand": "string",
-                "maxDemand": "string",
-                "measurementPeriod": "DAY",
-                "chargePeriod": "DAY"
-              }
-            ]
-          }
-        ]
-      },
-      "electricityContract": {
-        "additionalFeeInformation": "string",
-        "pricingModel": "SINGLE_RATE",
-        "termType": "1_YEAR",
-        "timeZone": "LOCAL",
-        "benefitPeriod": "string",
-        "terms": "string",
-        "isFixed": true,
-        "variation": "string",
-        "onExpiryDescription": "string",
-        "meterTypes": [
-          "string"
-        ],
-        "coolingOffDays": "string",
-        "billFrequency": [
-          "string"
-        ],
-        "paymentOption": [
-          "PAPER_BILL"
-        ],
-        "intrinsicGreenPower": {
-          "greenPercentage": "string"
-        },
-        "controlledLoad": {
-          "displayName": "string",
-          "description": "string",
-          "dailyCharge": "string",
-          "period": "string",
-          "rates": [
-            {
-              "unitPrice": "string",
-              "volume": 0
-            }
-          ]
-        },
-        "incentives": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "category": "GIFT",
-            "eligibility": "string"
-          }
-        ],
-        "discounts": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "type": "CONDITIONAL",
-            "category": "PAY_ON_TIME",
-            "endDate": "string",
-            "methodUType": "percentOfBill",
-            "percentOfBill": {
-              "rate": "string"
-            },
-            "percentOfUse": {
-              "rate": "string"
-            },
-            "fixedAmount": {
-              "amount": "string"
-            },
-            "percentOverThreshold": {
-              "rate": "string",
-              "usageAmount": "string"
-            }
-          }
-        ],
-        "greenPowerCharges": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "GREENPOWER",
-            "type": "FIXED_PER_DAY",
-            "tiers": [
-              {
-                "percentGreen": "string",
-                "rate": "string",
-                "amount": "string"
-              }
-            ]
-          }
-        ],
-        "eligibility": [
-          {
-            "type": "EXISTING_CUST",
-            "information": "string",
-            "description": "string"
-          }
-        ],
-        "fees": [
-          {
-            "type": "EXIT",
-            "term": "FIXED",
-            "amount": "string",
-            "rate": "string",
-            "description": "string"
-          }
-        ],
-        "solarFeedInTariff": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "PREMIUM",
-            "payerType": "GOVERNMENT",
-            "tariffUType": "GOVERNMENT",
-            "singleTariff": {
-              "amount": "string"
-            },
-            "timeVaryingTariffs": {
-              "type": "PEAK",
-              "amount": "string",
-              "timeVariations": [
-                {
-                  "days": {
-                    "weekdays": true,
-                    "weekend": true
-                  },
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
-            }
-          }
-        ],
-        "tariffPeriod": [
-          {
-            "displayName": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "dailySupplyCharges": "string",
-            "rateBlockUType": "singleRate",
-            "singleRate": {
-              "displayName": "string",
-              "description": "string",
-              "generalUnitPrice": "string",
-              "rates": [
-                {
-                  "unitPrice": "string",
-                  "volume": 0
-                }
-              ],
-              "period": "string"
-            },
-            "timeOfUseRates": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "rates": [
-                  {
-                    "unitPrice": "string",
-                    "volume": 0
-                  }
-                ],
-                "timeOfUse": [
-                  {
-                    "days": [],
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ],
-                "type": "PEAK"
-              }
-            ],
-            "demandCharges": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "amount": "string",
-                "startTime": "string",
-                "endTime": "string",
-                "days": {
-                  "weekdays": true,
-                  "saturday": true,
-                  "sunday": true
-                },
-                "minDemand": "string",
-                "maxDemand": "string",
-                "measurementPeriod": "DAY",
-                "chargePeriod": "DAY"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "authorisedContacts": [
+    "plans": [
       {
-        "firstName": "string",
-        "lastName": "string",
-        "middleNames": [
+        "nickname": "string",
+        "servicePointIds": [
           "string"
         ],
-        "prefix": "string",
-        "suffix": "string"
+        "planOverview": {
+          "displayName": "string",
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "planDetail": {
+          "fuelType": "ELECTRICITY",
+          "isContingentPlan": false,
+          "meteringCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "minimumValue": "string",
+              "maximumValue": "string",
+              "period": "string"
+            }
+          ],
+          "gasContract": {
+            "additionalFeeInformation": "string",
+            "pricingModel": "SINGLE_RATE",
+            "timeZone": "LOCAL",
+            "isFixed": true,
+            "variation": "string",
+            "onExpiryDescription": "string",
+            "paymentOption": [
+              "PAPER_BILL"
+            ],
+            "intrinsicGreenPower": {
+              "greenPercentage": "string"
+            },
+            "controlledLoad": {
+              "displayName": "string",
+              "description": "string",
+              "dailyCharge": "string",
+              "period": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "volume": 0
+                }
+              ]
+            },
+            "incentives": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "category": "GIFT",
+                "eligibility": "string"
+              }
+            ],
+            "discounts": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "type": "CONDITIONAL",
+                "category": "PAY_ON_TIME",
+                "endDate": "string",
+                "methodUType": "percentOfBill",
+                "percentOfBill": {
+                  "rate": "string"
+                },
+                "percentOfUse": {
+                  "rate": "string"
+                },
+                "fixedAmount": {
+                  "amount": "string"
+                },
+                "percentOverThreshold": {
+                  "rate": "string",
+                  "usageAmount": "string"
+                }
+              }
+            ],
+            "greenPowerCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "GREENPOWER",
+                "type": "FIXED_PER_DAY",
+                "tiers": [
+                  {
+                    "percentGreen": "string",
+                    "rate": "string",
+                    "amount": "string"
+                  }
+                ]
+              }
+            ],
+            "eligibility": [
+              {
+                "type": "EXISTING_CUST",
+                "information": "string",
+                "description": "string"
+              }
+            ],
+            "fees": [
+              {
+                "type": "EXIT",
+                "term": "FIXED",
+                "amount": "string",
+                "rate": "string",
+                "description": "string"
+              }
+            ],
+            "solarFeedInTariff": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "PREMIUM",
+                "payerType": "GOVERNMENT",
+                "tariffUType": "GOVERNMENT",
+                "singleTariff": {
+                  "amount": "string"
+                },
+                "timeVaryingTariffs": {
+                  "type": "PEAK",
+                  "amount": "string",
+                  "timeVariations": [
+                    {}
+                  ]
+                }
+              }
+            ],
+            "tariffPeriod": [
+              {
+                "displayName": "string",
+                "startDate": "string",
+                "endDate": "string",
+                "dailySupplyCharges": "string",
+                "rateBlockUType": "singleRate",
+                "singleRate": {
+                  "displayName": "string",
+                  "description": "string",
+                  "generalUnitPrice": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "period": "string"
+                },
+                "timeOfUseRates": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "rates": [],
+                    "timeOfUse": [],
+                    "type": "PEAK"
+                  }
+                ],
+                "demandCharges": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "amount": "string",
+                    "startTime": "string",
+                    "endTime": "string",
+                    "days": {},
+                    "minDemand": "string",
+                    "maxDemand": "string",
+                    "measurementPeriod": "DAY",
+                    "chargePeriod": "DAY"
+                  }
+                ]
+              }
+            ]
+          },
+          "electricityContract": {
+            "additionalFeeInformation": "string",
+            "pricingModel": "SINGLE_RATE",
+            "timeZone": "LOCAL",
+            "isFixed": true,
+            "variation": "string",
+            "onExpiryDescription": "string",
+            "paymentOption": [
+              "PAPER_BILL"
+            ],
+            "intrinsicGreenPower": {
+              "greenPercentage": "string"
+            },
+            "controlledLoad": {
+              "displayName": "string",
+              "description": "string",
+              "dailyCharge": "string",
+              "period": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "volume": 0
+                }
+              ]
+            },
+            "incentives": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "category": "GIFT",
+                "eligibility": "string"
+              }
+            ],
+            "discounts": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "type": "CONDITIONAL",
+                "category": "PAY_ON_TIME",
+                "endDate": "string",
+                "methodUType": "percentOfBill",
+                "percentOfBill": {
+                  "rate": "string"
+                },
+                "percentOfUse": {
+                  "rate": "string"
+                },
+                "fixedAmount": {
+                  "amount": "string"
+                },
+                "percentOverThreshold": {
+                  "rate": "string",
+                  "usageAmount": "string"
+                }
+              }
+            ],
+            "greenPowerCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "GREENPOWER",
+                "type": "FIXED_PER_DAY",
+                "tiers": [
+                  {
+                    "percentGreen": "string",
+                    "rate": "string",
+                    "amount": "string"
+                  }
+                ]
+              }
+            ],
+            "eligibility": [
+              {
+                "type": "EXISTING_CUST",
+                "information": "string",
+                "description": "string"
+              }
+            ],
+            "fees": [
+              {
+                "type": "EXIT",
+                "term": "FIXED",
+                "amount": "string",
+                "rate": "string",
+                "description": "string"
+              }
+            ],
+            "solarFeedInTariff": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "PREMIUM",
+                "payerType": "GOVERNMENT",
+                "tariffUType": "GOVERNMENT",
+                "singleTariff": {
+                  "amount": "string"
+                },
+                "timeVaryingTariffs": {
+                  "type": "PEAK",
+                  "amount": "string",
+                  "timeVariations": [
+                    {}
+                  ]
+                }
+              }
+            ],
+            "tariffPeriod": [
+              {
+                "displayName": "string",
+                "startDate": "string",
+                "endDate": "string",
+                "dailySupplyCharges": "string",
+                "rateBlockUType": "singleRate",
+                "singleRate": {
+                  "displayName": "string",
+                  "description": "string",
+                  "generalUnitPrice": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "period": "string"
+                },
+                "timeOfUseRates": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "rates": [],
+                    "timeOfUse": [],
+                    "type": "PEAK"
+                  }
+                ],
+                "demandCharges": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "amount": "string",
+                    "startTime": "string",
+                    "endTime": "string",
+                    "days": {},
+                    "minDemand": "string",
+                    "maxDemand": "string",
+                    "measurementPeriod": "DAY",
+                    "chargePeriod": "DAY"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "authorisedContacts": [
+          {
+            "firstName": "string",
+            "lastName": "string",
+            "middleNames": [
+              "string"
+            ],
+            "prefix": "string",
+            "suffix": "string"
+          }
+        ]
       }
     ]
   },
@@ -2982,17 +3025,29 @@ Obtain detailed information for a specific energy account
 }
 ```
 
-<h3 id="get-account-detail-responses">Responses</h3>
+<h3 id="get-energy-account-detail-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponse](#schemacdr-energy-apienergyaccountdetailresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:accounts.detail:read</a>
 </aside>
 
+    
   
 
 ## Get Agreed Payment Schedule
@@ -3095,13 +3150,25 @@ Obtain the agreed payment schedule and details, if any, for a specific energy ac
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPaymentScheduleDetailResponse](#schemacdr-energy-apienergypaymentscheduledetailresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPaymentScheduleResponse](#schemacdr-energy-apienergypaymentscheduleresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:accounts.paymentschedule:read</a>
 </aside>
 
+    
   
 
 ## Get Concessions
@@ -3200,13 +3267,25 @@ Obtain the details of any concessions or hardship arrangements applied to a spec
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyConcessionsDetailResponse](#schemacdr-energy-apienergyconcessionsdetailresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyConcessionsResponse](#schemacdr-energy-apienergyconcessionsresponse)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:accounts.concessions:read</a>
 </aside>
 
+    
   
 
 ## Get Balance For Account
@@ -3294,6 +3373,7 @@ Obtain the current balance for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-balance-for-account-responseschema">Response Schema</h3>
 
@@ -3306,6 +3386,14 @@ Status Code **200**
 |» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
 |» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -3412,6 +3500,7 @@ Obtain the current balance for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-bulk-balances-responseschema">Response Schema</h3>
 
@@ -3432,6 +3521,14 @@ Status Code **200**
 |»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 |»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -3557,6 +3654,7 @@ Obtain the current balance for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-balances-for-specific-accounts-responseschema">Response Schema</h3>
 
@@ -3577,6 +3675,14 @@ Status Code **200**
 |»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 |»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
 |»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -3715,6 +3821,7 @@ Obtain the invoices for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-invoices-for-account-responseschema">Response Schema</h3>
 
@@ -3766,6 +3873,14 @@ Status Code **200**
 |paymentStatus|PAID|
 |paymentStatus|PARTIALLY_PAID|
 |paymentStatus|NOT_PAID|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -3903,6 +4018,7 @@ Obtain the invoices for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-bulk-invoices-responseschema">Response Schema</h3>
 
@@ -3954,6 +4070,14 @@ Status Code **200**
 |paymentStatus|PAID|
 |paymentStatus|PARTIALLY_PAID|
 |paymentStatus|NOT_PAID|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -4110,6 +4234,7 @@ Obtain invoices for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-invoices-for-specific-accounts-responseschema">Response Schema</h3>
 
@@ -4161,6 +4286,14 @@ Status Code **200**
 |paymentStatus|PAID|
 |paymentStatus|PARTIALLY_PAID|
 |paymentStatus|NOT_PAID|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -4297,6 +4430,7 @@ Obtain the billing transactions for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-billing-for-account-responseschema">Response Schema</h3>
 
@@ -4359,6 +4493,14 @@ Status Code **200**
 |method|CASH|
 |method|CHEQUE|
 |method|OTHER|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -4494,6 +4636,7 @@ Obtain billing transactions for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-bulk-billing-responseschema">Response Schema</h3>
 
@@ -4556,6 +4699,14 @@ Status Code **200**
 |method|CASH|
 |method|CHEQUE|
 |method|OTHER|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -4710,6 +4861,7 @@ Obtain billing for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
 
 <h3 id="get-billing-for-specific-accounts-responseschema">Response Schema</h3>
 
@@ -4772,6 +4924,14 @@ Status Code **200**
 |method|CASH|
 |method|CHEQUE|
 |method|OTHER|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|undefined||The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
+|4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
     <aside class="success">
@@ -4892,20 +5052,10 @@ This operation does not require authentication
     "gasContract": {
       "additionalFeeInformation": "string",
       "pricingModel": "SINGLE_RATE",
-      "termType": "1_YEAR",
       "timeZone": "LOCAL",
-      "benefitPeriod": "string",
-      "terms": "string",
       "isFixed": true,
       "variation": "string",
       "onExpiryDescription": "string",
-      "meterTypes": [
-        "string"
-      ],
-      "coolingOffDays": "string",
-      "billFrequency": [
-        "string"
-      ],
       "paymentOption": [
         "PAPER_BILL"
       ],
@@ -5072,25 +5222,25 @@ This operation does not require authentication
             }
           ]
         }
+      ],
+      "termType": "1_YEAR",
+      "benefitPeriod": "string",
+      "terms": "string",
+      "meterTypes": [
+        "string"
+      ],
+      "coolingOffDays": "string",
+      "billFrequency": [
+        "string"
       ]
     },
     "electricityContract": {
       "additionalFeeInformation": "string",
       "pricingModel": "SINGLE_RATE",
-      "termType": "1_YEAR",
       "timeZone": "LOCAL",
-      "benefitPeriod": "string",
-      "terms": "string",
       "isFixed": true,
       "variation": "string",
       "onExpiryDescription": "string",
-      "meterTypes": [
-        "string"
-      ],
-      "coolingOffDays": "string",
-      "billFrequency": [
-        "string"
-      ],
       "paymentOption": [
         "PAPER_BILL"
       ],
@@ -5257,6 +5407,16 @@ This operation does not require authentication
             }
           ]
         }
+      ],
+      "termType": "1_YEAR",
+      "benefitPeriod": "string",
+      "terms": "string",
+      "meterTypes": [
+        "string"
+      ],
+      "coolingOffDays": "string",
+      "billFrequency": [
+        "string"
       ]
     }
   },
@@ -5289,14 +5449,19 @@ This operation does not require authentication
         "accountNumber": "string",
         "displayName": "string",
         "creationDate": "string",
-        "servicePointIds": [
-          "string"
-        ],
-        "planOverview": {
-          "displayName": "string",
-          "startDate": "string",
-          "endDate": "string"
-        }
+        "plans": [
+          {
+            "nickname": "string",
+            "servicePointIds": [
+              "string"
+            ],
+            "planOverview": {
+              "displayName": "string",
+              "startDate": "string",
+              "endDate": "string"
+            }
+          }
+        ]
       }
     ]
   },
@@ -5320,18 +5485,9 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[object]|mandatory|Array of accounts|
-|»» accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
-|»» accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
-|»» displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|»» creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
-|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|»» planOverview|object|mandatory|none|
-|»»» displayName|string|optional|The name of the plan if one exists|
-|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|» accounts|[[EnergyAccount](#schemacdr-energy-apienergyaccount)]|mandatory|Array of accounts|
+|links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSenergyaccountdetailresponse">EnergyAccountDetailResponse</h2>
 
@@ -5344,401 +5500,337 @@ This operation does not require authentication
     "accountNumber": "string",
     "displayName": "string",
     "creationDate": "string",
-    "servicePointIds": [
-      "string"
-    ],
-    "planOverview": {
-      "displayName": "string",
-      "startDate": "string",
-      "endDate": "string"
-    },
-    "planDetail": {
-      "fuelType": "ELECTRICITY",
-      "meteringCharges": [
-        {
-          "displayName": "string",
-          "description": "string",
-          "minimumValue": "string",
-          "maximumValue": "string",
-          "period": "string"
-        }
-      ],
-      "gasContract": {
-        "additionalFeeInformation": "string",
-        "pricingModel": "SINGLE_RATE",
-        "termType": "1_YEAR",
-        "timeZone": "LOCAL",
-        "benefitPeriod": "string",
-        "terms": "string",
-        "isFixed": true,
-        "variation": "string",
-        "onExpiryDescription": "string",
-        "meterTypes": [
-          "string"
-        ],
-        "coolingOffDays": "string",
-        "billFrequency": [
-          "string"
-        ],
-        "paymentOption": [
-          "PAPER_BILL"
-        ],
-        "intrinsicGreenPower": {
-          "greenPercentage": "string"
-        },
-        "controlledLoad": {
-          "displayName": "string",
-          "description": "string",
-          "dailyCharge": "string",
-          "period": "string",
-          "rates": [
-            {
-              "unitPrice": "string",
-              "volume": 0
-            }
-          ]
-        },
-        "incentives": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "category": "GIFT",
-            "eligibility": "string"
-          }
-        ],
-        "discounts": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "type": "CONDITIONAL",
-            "category": "PAY_ON_TIME",
-            "endDate": "string",
-            "methodUType": "percentOfBill",
-            "percentOfBill": {
-              "rate": "string"
-            },
-            "percentOfUse": {
-              "rate": "string"
-            },
-            "fixedAmount": {
-              "amount": "string"
-            },
-            "percentOverThreshold": {
-              "rate": "string",
-              "usageAmount": "string"
-            }
-          }
-        ],
-        "greenPowerCharges": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "GREENPOWER",
-            "type": "FIXED_PER_DAY",
-            "tiers": [
-              {
-                "percentGreen": "string",
-                "rate": "string",
-                "amount": "string"
-              }
-            ]
-          }
-        ],
-        "eligibility": [
-          {
-            "type": "EXISTING_CUST",
-            "information": "string",
-            "description": "string"
-          }
-        ],
-        "fees": [
-          {
-            "type": "EXIT",
-            "term": "FIXED",
-            "amount": "string",
-            "rate": "string",
-            "description": "string"
-          }
-        ],
-        "solarFeedInTariff": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "PREMIUM",
-            "payerType": "GOVERNMENT",
-            "tariffUType": "GOVERNMENT",
-            "singleTariff": {
-              "amount": "string"
-            },
-            "timeVaryingTariffs": {
-              "type": "PEAK",
-              "amount": "string",
-              "timeVariations": [
-                {
-                  "days": {
-                    "weekdays": true,
-                    "weekend": true
-                  },
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
-            }
-          }
-        ],
-        "tariffPeriod": [
-          {
-            "displayName": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "dailySupplyCharges": "string",
-            "rateBlockUType": "singleRate",
-            "singleRate": {
-              "displayName": "string",
-              "description": "string",
-              "generalUnitPrice": "string",
-              "rates": [
-                {
-                  "unitPrice": "string",
-                  "volume": 0
-                }
-              ],
-              "period": "string"
-            },
-            "timeOfUseRates": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "rates": [
-                  {
-                    "unitPrice": "string",
-                    "volume": 0
-                  }
-                ],
-                "timeOfUse": [
-                  {
-                    "days": [],
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ],
-                "type": "PEAK"
-              }
-            ],
-            "demandCharges": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "amount": "string",
-                "startTime": "string",
-                "endTime": "string",
-                "days": {
-                  "weekdays": true,
-                  "saturday": true,
-                  "sunday": true
-                },
-                "minDemand": "string",
-                "maxDemand": "string",
-                "measurementPeriod": "DAY",
-                "chargePeriod": "DAY"
-              }
-            ]
-          }
-        ]
-      },
-      "electricityContract": {
-        "additionalFeeInformation": "string",
-        "pricingModel": "SINGLE_RATE",
-        "termType": "1_YEAR",
-        "timeZone": "LOCAL",
-        "benefitPeriod": "string",
-        "terms": "string",
-        "isFixed": true,
-        "variation": "string",
-        "onExpiryDescription": "string",
-        "meterTypes": [
-          "string"
-        ],
-        "coolingOffDays": "string",
-        "billFrequency": [
-          "string"
-        ],
-        "paymentOption": [
-          "PAPER_BILL"
-        ],
-        "intrinsicGreenPower": {
-          "greenPercentage": "string"
-        },
-        "controlledLoad": {
-          "displayName": "string",
-          "description": "string",
-          "dailyCharge": "string",
-          "period": "string",
-          "rates": [
-            {
-              "unitPrice": "string",
-              "volume": 0
-            }
-          ]
-        },
-        "incentives": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "category": "GIFT",
-            "eligibility": "string"
-          }
-        ],
-        "discounts": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "type": "CONDITIONAL",
-            "category": "PAY_ON_TIME",
-            "endDate": "string",
-            "methodUType": "percentOfBill",
-            "percentOfBill": {
-              "rate": "string"
-            },
-            "percentOfUse": {
-              "rate": "string"
-            },
-            "fixedAmount": {
-              "amount": "string"
-            },
-            "percentOverThreshold": {
-              "rate": "string",
-              "usageAmount": "string"
-            }
-          }
-        ],
-        "greenPowerCharges": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "GREENPOWER",
-            "type": "FIXED_PER_DAY",
-            "tiers": [
-              {
-                "percentGreen": "string",
-                "rate": "string",
-                "amount": "string"
-              }
-            ]
-          }
-        ],
-        "eligibility": [
-          {
-            "type": "EXISTING_CUST",
-            "information": "string",
-            "description": "string"
-          }
-        ],
-        "fees": [
-          {
-            "type": "EXIT",
-            "term": "FIXED",
-            "amount": "string",
-            "rate": "string",
-            "description": "string"
-          }
-        ],
-        "solarFeedInTariff": [
-          {
-            "displayName": "string",
-            "description": "string",
-            "scheme": "PREMIUM",
-            "payerType": "GOVERNMENT",
-            "tariffUType": "GOVERNMENT",
-            "singleTariff": {
-              "amount": "string"
-            },
-            "timeVaryingTariffs": {
-              "type": "PEAK",
-              "amount": "string",
-              "timeVariations": [
-                {
-                  "days": {
-                    "weekdays": true,
-                    "weekend": true
-                  },
-                  "startTime": "string",
-                  "endTime": "string"
-                }
-              ]
-            }
-          }
-        ],
-        "tariffPeriod": [
-          {
-            "displayName": "string",
-            "startDate": "string",
-            "endDate": "string",
-            "dailySupplyCharges": "string",
-            "rateBlockUType": "singleRate",
-            "singleRate": {
-              "displayName": "string",
-              "description": "string",
-              "generalUnitPrice": "string",
-              "rates": [
-                {
-                  "unitPrice": "string",
-                  "volume": 0
-                }
-              ],
-              "period": "string"
-            },
-            "timeOfUseRates": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "rates": [
-                  {
-                    "unitPrice": "string",
-                    "volume": 0
-                  }
-                ],
-                "timeOfUse": [
-                  {
-                    "days": [],
-                    "startTime": "string",
-                    "endTime": "string"
-                  }
-                ],
-                "type": "PEAK"
-              }
-            ],
-            "demandCharges": [
-              {
-                "displayName": "string",
-                "description": "string",
-                "amount": "string",
-                "startTime": "string",
-                "endTime": "string",
-                "days": {
-                  "weekdays": true,
-                  "saturday": true,
-                  "sunday": true
-                },
-                "minDemand": "string",
-                "maxDemand": "string",
-                "measurementPeriod": "DAY",
-                "chargePeriod": "DAY"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "authorisedContacts": [
+    "plans": [
       {
-        "firstName": "string",
-        "lastName": "string",
-        "middleNames": [
+        "nickname": "string",
+        "servicePointIds": [
           "string"
         ],
-        "prefix": "string",
-        "suffix": "string"
+        "planOverview": {
+          "displayName": "string",
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "planDetail": {
+          "fuelType": "ELECTRICITY",
+          "isContingentPlan": false,
+          "meteringCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "minimumValue": "string",
+              "maximumValue": "string",
+              "period": "string"
+            }
+          ],
+          "gasContract": {
+            "additionalFeeInformation": "string",
+            "pricingModel": "SINGLE_RATE",
+            "timeZone": "LOCAL",
+            "isFixed": true,
+            "variation": "string",
+            "onExpiryDescription": "string",
+            "paymentOption": [
+              "PAPER_BILL"
+            ],
+            "intrinsicGreenPower": {
+              "greenPercentage": "string"
+            },
+            "controlledLoad": {
+              "displayName": "string",
+              "description": "string",
+              "dailyCharge": "string",
+              "period": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "volume": 0
+                }
+              ]
+            },
+            "incentives": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "category": "GIFT",
+                "eligibility": "string"
+              }
+            ],
+            "discounts": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "type": "CONDITIONAL",
+                "category": "PAY_ON_TIME",
+                "endDate": "string",
+                "methodUType": "percentOfBill",
+                "percentOfBill": {
+                  "rate": "string"
+                },
+                "percentOfUse": {
+                  "rate": "string"
+                },
+                "fixedAmount": {
+                  "amount": "string"
+                },
+                "percentOverThreshold": {
+                  "rate": "string",
+                  "usageAmount": "string"
+                }
+              }
+            ],
+            "greenPowerCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "GREENPOWER",
+                "type": "FIXED_PER_DAY",
+                "tiers": [
+                  {
+                    "percentGreen": "string",
+                    "rate": "string",
+                    "amount": "string"
+                  }
+                ]
+              }
+            ],
+            "eligibility": [
+              {
+                "type": "EXISTING_CUST",
+                "information": "string",
+                "description": "string"
+              }
+            ],
+            "fees": [
+              {
+                "type": "EXIT",
+                "term": "FIXED",
+                "amount": "string",
+                "rate": "string",
+                "description": "string"
+              }
+            ],
+            "solarFeedInTariff": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "PREMIUM",
+                "payerType": "GOVERNMENT",
+                "tariffUType": "GOVERNMENT",
+                "singleTariff": {
+                  "amount": "string"
+                },
+                "timeVaryingTariffs": {
+                  "type": "PEAK",
+                  "amount": "string",
+                  "timeVariations": [
+                    {}
+                  ]
+                }
+              }
+            ],
+            "tariffPeriod": [
+              {
+                "displayName": "string",
+                "startDate": "string",
+                "endDate": "string",
+                "dailySupplyCharges": "string",
+                "rateBlockUType": "singleRate",
+                "singleRate": {
+                  "displayName": "string",
+                  "description": "string",
+                  "generalUnitPrice": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "period": "string"
+                },
+                "timeOfUseRates": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "rates": [],
+                    "timeOfUse": [],
+                    "type": "PEAK"
+                  }
+                ],
+                "demandCharges": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "amount": "string",
+                    "startTime": "string",
+                    "endTime": "string",
+                    "days": {},
+                    "minDemand": "string",
+                    "maxDemand": "string",
+                    "measurementPeriod": "DAY",
+                    "chargePeriod": "DAY"
+                  }
+                ]
+              }
+            ]
+          },
+          "electricityContract": {
+            "additionalFeeInformation": "string",
+            "pricingModel": "SINGLE_RATE",
+            "timeZone": "LOCAL",
+            "isFixed": true,
+            "variation": "string",
+            "onExpiryDescription": "string",
+            "paymentOption": [
+              "PAPER_BILL"
+            ],
+            "intrinsicGreenPower": {
+              "greenPercentage": "string"
+            },
+            "controlledLoad": {
+              "displayName": "string",
+              "description": "string",
+              "dailyCharge": "string",
+              "period": "string",
+              "rates": [
+                {
+                  "unitPrice": "string",
+                  "volume": 0
+                }
+              ]
+            },
+            "incentives": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "category": "GIFT",
+                "eligibility": "string"
+              }
+            ],
+            "discounts": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "type": "CONDITIONAL",
+                "category": "PAY_ON_TIME",
+                "endDate": "string",
+                "methodUType": "percentOfBill",
+                "percentOfBill": {
+                  "rate": "string"
+                },
+                "percentOfUse": {
+                  "rate": "string"
+                },
+                "fixedAmount": {
+                  "amount": "string"
+                },
+                "percentOverThreshold": {
+                  "rate": "string",
+                  "usageAmount": "string"
+                }
+              }
+            ],
+            "greenPowerCharges": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "GREENPOWER",
+                "type": "FIXED_PER_DAY",
+                "tiers": [
+                  {
+                    "percentGreen": "string",
+                    "rate": "string",
+                    "amount": "string"
+                  }
+                ]
+              }
+            ],
+            "eligibility": [
+              {
+                "type": "EXISTING_CUST",
+                "information": "string",
+                "description": "string"
+              }
+            ],
+            "fees": [
+              {
+                "type": "EXIT",
+                "term": "FIXED",
+                "amount": "string",
+                "rate": "string",
+                "description": "string"
+              }
+            ],
+            "solarFeedInTariff": [
+              {
+                "displayName": "string",
+                "description": "string",
+                "scheme": "PREMIUM",
+                "payerType": "GOVERNMENT",
+                "tariffUType": "GOVERNMENT",
+                "singleTariff": {
+                  "amount": "string"
+                },
+                "timeVaryingTariffs": {
+                  "type": "PEAK",
+                  "amount": "string",
+                  "timeVariations": [
+                    {}
+                  ]
+                }
+              }
+            ],
+            "tariffPeriod": [
+              {
+                "displayName": "string",
+                "startDate": "string",
+                "endDate": "string",
+                "dailySupplyCharges": "string",
+                "rateBlockUType": "singleRate",
+                "singleRate": {
+                  "displayName": "string",
+                  "description": "string",
+                  "generalUnitPrice": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "period": "string"
+                },
+                "timeOfUseRates": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "rates": [],
+                    "timeOfUse": [],
+                    "type": "PEAK"
+                  }
+                ],
+                "demandCharges": [
+                  {
+                    "displayName": "string",
+                    "description": "string",
+                    "amount": "string",
+                    "startTime": "string",
+                    "endTime": "string",
+                    "days": {},
+                    "minDemand": "string",
+                    "maxDemand": "string",
+                    "measurementPeriod": "DAY",
+                    "chargePeriod": "DAY"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "authorisedContacts": [
+          {
+            "firstName": "string",
+            "lastName": "string",
+            "middleNames": [
+              "string"
+            ],
+            "prefix": "string",
+            "suffix": "string"
+          }
+        ]
       }
     ]
   },
@@ -5754,46 +5846,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|object|mandatory|none|
-|» accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
-|» accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
-|» displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|» creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
-|» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|» planOverview|object|mandatory|none|
-|»» displayName|string|optional|The name of the plan if one exists|
-|»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|» planDetail|object|mandatory|Detail on the plan applicable to this account|
-|»» fuelType|string|mandatory|The fuel types covered by the plan|
-|»» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»»» displayName|string|mandatory|Display name of the charge|
-|»»» description|string|optional|Description of the charge|
-|»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|»» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
-|» authorisedContacts|[object]|mandatory|An array of additional contacts that are authorised to act on this account|
-|»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|»» lastName|string|mandatory|For people with single names the single name should be in this field|
-|»» middleNames|[string]|optional|Field is mandatory but array may be empty|
-|»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
-|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|data|[EnergyAccountDetail](#schemacdr-energy-apienergyaccountdetail)|mandatory|none|
+|links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-#### Enumerated Values
+<h2 class="schema-toc" id="tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h2>
 
-|Property|Value|
-|---|---|
-|fuelType|ELECTRICITY|
-|fuelType|GAS|
-|fuelType|DUAL|
-
-<h2 class="schema-toc" id="tocSenergypaymentscheduledetailresponse">EnergyPaymentScheduleDetailResponse</h2>
-
-<a id="schemacdr-energy-apienergypaymentscheduledetailresponse"></a>
+<a id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
 
 ```json
 {
@@ -5828,47 +5887,13 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|object|mandatory|none|
-|» amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
-|» paymentScheduleUType|string|mandatory|The type of object present in this response|
-|» cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|»» cardScheme|string|mandatory|The type of credit card held on file|
-|»» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
-|» directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
-|»» isTokenised|string|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included|
-|»» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|»» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|»» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»» calculationType|string|mandatory|The mechanism by which the payment amount is calculated|
-|» manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
-|»» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|data|[EnergyPaymentSchedule](#schemacdr-energy-apienergypaymentschedule)|mandatory|none|
+|links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
-#### Enumerated Values
+<h2 class="schema-toc" id="tocSenergyconcessionsresponse">EnergyConcessionsResponse</h2>
 
-|Property|Value|
-|---|---|
-|paymentScheduleUType|cardDebit|
-|paymentScheduleUType|directDebit|
-|paymentScheduleUType|manualPayment|
-|cardScheme|VISA|
-|cardScheme|MASTERCARD|
-|cardScheme|AMEX|
-|cardScheme|DINERS|
-|cardScheme|OTHER|
-|cardScheme|UNKNOWN|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
-|calculationType|STATIC|
-|calculationType|BALANCE|
-|calculationType|CALCULATED|
-
-<h2 class="schema-toc" id="tocSenergyconcessionsdetailresponse">EnergyConcessionsDetailResponse</h2>
-
-<a id="schemacdr-energy-apienergyconcessionsdetailresponse"></a>
+<a id="schemacdr-energy-apienergyconcessionsresponse"></a>
 
 ```json
 {
@@ -5900,18 +5925,40 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» concessions|[object]|mandatory|Array may be empty if no concessions exist|
-|»» displayName|string|mandatory|The display name of the concession|
-|»» additionalInfo|string|optional|Display text providing more information on the concession|
-|»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
-|»» startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession|
-|»» endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
-|»» dailyDiscount|[AmountString](#common-field-types)|conditional|Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»» monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»» yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|»» percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
-|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+|» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist|
+|links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h2>
+
+<a id="schemacdr-energy-apierrorlistresponse"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {
+        "urn": "string"
+      }
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[object]|mandatory|none|
+|» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|» meta|object|optional|Additional data for customised error codes|
+|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
 
 <h2 class="schema-toc" id="tocSenergyplan">EnergyPlan</h2>
 
@@ -6034,20 +6081,10 @@ This operation does not require authentication
   "gasContract": {
     "additionalFeeInformation": "string",
     "pricingModel": "SINGLE_RATE",
-    "termType": "1_YEAR",
     "timeZone": "LOCAL",
-    "benefitPeriod": "string",
-    "terms": "string",
     "isFixed": true,
     "variation": "string",
     "onExpiryDescription": "string",
-    "meterTypes": [
-      "string"
-    ],
-    "coolingOffDays": "string",
-    "billFrequency": [
-      "string"
-    ],
     "paymentOption": [
       "PAPER_BILL"
     ],
@@ -6214,25 +6251,25 @@ This operation does not require authentication
           }
         ]
       }
+    ],
+    "termType": "1_YEAR",
+    "benefitPeriod": "string",
+    "terms": "string",
+    "meterTypes": [
+      "string"
+    ],
+    "coolingOffDays": "string",
+    "billFrequency": [
+      "string"
     ]
   },
   "electricityContract": {
     "additionalFeeInformation": "string",
     "pricingModel": "SINGLE_RATE",
-    "termType": "1_YEAR",
     "timeZone": "LOCAL",
-    "benefitPeriod": "string",
-    "terms": "string",
     "isFixed": true,
     "variation": "string",
     "onExpiryDescription": "string",
-    "meterTypes": [
-      "string"
-    ],
-    "coolingOffDays": "string",
-    "billFrequency": [
-      "string"
-    ],
     "paymentOption": [
       "PAPER_BILL"
     ],
@@ -6399,6 +6436,16 @@ This operation does not require authentication
           }
         ]
       }
+    ],
+    "termType": "1_YEAR",
+    "benefitPeriod": "string",
+    "terms": "string",
+    "meterTypes": [
+      "string"
+    ],
+    "coolingOffDays": "string",
+    "billFrequency": [
+      "string"
     ]
   }
 }
@@ -6424,8 +6471,8 @@ This operation does not require authentication
 |»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
 |»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
 |»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|» gasContract|[EnergyPlanContractFull](#schemacdr-energy-apienergyplancontractfull)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|» electricityContract|[EnergyPlanContractFull](#schemacdr-energy-apienergyplancontractfull)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
 
 <h2 class="schema-toc" id="tocSenergyplancontract">EnergyPlanContract</h2>
 
@@ -6435,20 +6482,10 @@ This operation does not require authentication
 {
   "additionalFeeInformation": "string",
   "pricingModel": "SINGLE_RATE",
-  "termType": "1_YEAR",
   "timeZone": "LOCAL",
-  "benefitPeriod": "string",
-  "terms": "string",
   "isFixed": true,
   "variation": "string",
   "onExpiryDescription": "string",
-  "meterTypes": [
-    "string"
-  ],
-  "coolingOffDays": "string",
-  "billFrequency": [
-    "string"
-  ],
   "paymentOption": [
     "PAPER_BILL"
   ],
@@ -6626,16 +6663,10 @@ This operation does not require authentication
 |---|---|---|---|
 |additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
 |pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
-|termType|string|optional|The term for the contract.  If absent assumes no specified term|
 |timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds|
-|benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
-|terms|string|optional|Free text description of the terms for the contract|
 |isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
 |variation|string|conditional|Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true|
 |onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
-|meterTypes|[string]|optional|An array of the meter types that this contract is available for|
-|coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
-|billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 |paymentOption|[string]|mandatory|Payment options for this contract|
 |intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
 |» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
@@ -6659,6 +6690,226 @@ This operation does not require authentication
 |pricingModel|FLEXIBLE|
 |pricingModel|FLEXIBLE_CONT_LOAD|
 |pricingModel|QUOTA|
+|timeZone|LOCAL|
+|timeZone|AEST|
+
+<h2 class="schema-toc" id="tocSenergyplancontractfull">EnergyPlanContractFull</h2>
+
+<a id="schemacdr-energy-apienergyplancontractfull"></a>
+
+```json
+{
+  "additionalFeeInformation": "string",
+  "pricingModel": "SINGLE_RATE",
+  "timeZone": "LOCAL",
+  "isFixed": true,
+  "variation": "string",
+  "onExpiryDescription": "string",
+  "paymentOption": [
+    "PAPER_BILL"
+  ],
+  "intrinsicGreenPower": {
+    "greenPercentage": "string"
+  },
+  "controlledLoad": {
+    "displayName": "string",
+    "description": "string",
+    "dailyCharge": "string",
+    "period": "string",
+    "rates": [
+      {
+        "unitPrice": "string",
+        "volume": 0
+      }
+    ]
+  },
+  "incentives": [
+    {
+      "displayName": "string",
+      "description": "string",
+      "category": "GIFT",
+      "eligibility": "string"
+    }
+  ],
+  "discounts": [
+    {
+      "displayName": "string",
+      "description": "string",
+      "type": "CONDITIONAL",
+      "category": "PAY_ON_TIME",
+      "endDate": "string",
+      "methodUType": "percentOfBill",
+      "percentOfBill": {
+        "rate": "string"
+      },
+      "percentOfUse": {
+        "rate": "string"
+      },
+      "fixedAmount": {
+        "amount": "string"
+      },
+      "percentOverThreshold": {
+        "rate": "string",
+        "usageAmount": "string"
+      }
+    }
+  ],
+  "greenPowerCharges": [
+    {
+      "displayName": "string",
+      "description": "string",
+      "scheme": "GREENPOWER",
+      "type": "FIXED_PER_DAY",
+      "tiers": [
+        {
+          "percentGreen": "string",
+          "rate": "string",
+          "amount": "string"
+        }
+      ]
+    }
+  ],
+  "eligibility": [
+    {
+      "type": "EXISTING_CUST",
+      "information": "string",
+      "description": "string"
+    }
+  ],
+  "fees": [
+    {
+      "type": "EXIT",
+      "term": "FIXED",
+      "amount": "string",
+      "rate": "string",
+      "description": "string"
+    }
+  ],
+  "solarFeedInTariff": [
+    {
+      "displayName": "string",
+      "description": "string",
+      "scheme": "PREMIUM",
+      "payerType": "GOVERNMENT",
+      "tariffUType": "GOVERNMENT",
+      "singleTariff": {
+        "amount": "string"
+      },
+      "timeVaryingTariffs": {
+        "type": "PEAK",
+        "amount": "string",
+        "timeVariations": [
+          {
+            "days": {
+              "weekdays": true,
+              "weekend": true
+            },
+            "startTime": "string",
+            "endTime": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "tariffPeriod": [
+    {
+      "displayName": "string",
+      "startDate": "string",
+      "endDate": "string",
+      "dailySupplyCharges": "string",
+      "rateBlockUType": "singleRate",
+      "singleRate": {
+        "displayName": "string",
+        "description": "string",
+        "generalUnitPrice": "string",
+        "rates": [
+          {
+            "unitPrice": "string",
+            "volume": 0
+          }
+        ],
+        "period": "string"
+      },
+      "timeOfUseRates": [
+        {
+          "displayName": "string",
+          "description": "string",
+          "rates": [
+            {
+              "unitPrice": "string",
+              "volume": 0
+            }
+          ],
+          "timeOfUse": [
+            {
+              "days": [
+                "SUNDAY"
+              ],
+              "startTime": "string",
+              "endTime": "string"
+            }
+          ],
+          "type": "PEAK"
+        }
+      ],
+      "demandCharges": [
+        {
+          "displayName": "string",
+          "description": "string",
+          "amount": "string",
+          "startTime": "string",
+          "endTime": "string",
+          "days": {
+            "weekdays": true,
+            "saturday": true,
+            "sunday": true
+          },
+          "minDemand": "string",
+          "maxDemand": "string",
+          "measurementPeriod": "DAY",
+          "chargePeriod": "DAY"
+        }
+      ]
+    }
+  ],
+  "termType": "1_YEAR",
+  "benefitPeriod": "string",
+  "terms": "string",
+  "meterTypes": [
+    "string"
+  ],
+  "coolingOffDays": "string",
+  "billFrequency": [
+    "string"
+  ]
+}
+
+```
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|mandatory|none|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|none|
+|» termType|string|optional|The term for the contract.  If absent assumes no specified term|
+|» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
+|» terms|string|optional|Free text description of the terms for the contract|
+|» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
+|» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
+|» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
 |termType|1_YEAR|
 |termType|2_YEAR|
 |termType|3_YEAR|
@@ -6666,8 +6917,6 @@ This operation does not require authentication
 |termType|5_YEAR|
 |termType|ONGOING|
 |termType|OTHER|
-|timeZone|LOCAL|
-|timeZone|AEST|
 
 <h2 class="schema-toc" id="tocSenergyplancontrolledload">EnergyPlanControlledLoad</h2>
 
@@ -6797,6 +7046,7 @@ This operation does not require authentication
 |---|---|
 |type|CONDITIONAL|
 |type|GUARANTEED|
+|type|OTHER|
 |category|PAY_ON_TIME|
 |category|DIRECT_DEBIT|
 |category|GUARANTEED_DISCOUNT|
@@ -6966,8 +7216,10 @@ This operation does not require authentication
 |term|PERCENT_OF_BILL|
 |term|ANNUAL|
 |term|DAILY|
+|term|WEEKLY|
 |term|MONTHLY|
 |term|BIANNUAL|
+|term|VARIABLE|
 
 <h2 class="schema-toc" id="tocSenergyplansolarfeedintariff">EnergyPlanSolarFeedInTariff</h2>
 
@@ -7172,6 +7424,599 @@ This operation does not require authentication
 |chargePeriod|DAY|
 |chargePeriod|MONTH|
 |chargePeriod|TARIFF_PERIOD|
+
+<h2 class="schema-toc" id="tocSenergyaccountbase">EnergyAccountBase</h2>
+
+<a id="schemacdr-energy-apienergyaccountbase"></a>
+
+```json
+{
+  "accountId": "string",
+  "accountNumber": "string",
+  "displayName": "string",
+  "creationDate": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
+|accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
+|displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
+|creationDate|[DateString](#common-field-types)|mandatory|The date that the account was created or opened|
+
+<h2 class="schema-toc" id="tocSenergyaccount">EnergyAccount</h2>
+
+<a id="schemacdr-energy-apienergyaccount"></a>
+
+```json
+{
+  "accountId": "string",
+  "accountNumber": "string",
+  "displayName": "string",
+  "creationDate": "string",
+  "plans": [
+    {
+      "nickname": "string",
+      "servicePointIds": [
+        "string"
+      ],
+      "planOverview": {
+        "displayName": "string",
+        "startDate": "string",
+        "endDate": "string"
+      }
+    }
+  ]
+}
+
+```
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[EnergyAccountBase](#schemacdr-energy-apienergyaccountbase)|mandatory|none|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|The array of plans containing service points and associated plan details|
+|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
+|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected|
+|»» planOverview|object|mandatory|none|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+
+<h2 class="schema-toc" id="tocSenergyaccountdetail">EnergyAccountDetail</h2>
+
+<a id="schemacdr-energy-apienergyaccountdetail"></a>
+
+```json
+{
+  "accountId": "string",
+  "accountNumber": "string",
+  "displayName": "string",
+  "creationDate": "string",
+  "plans": [
+    {
+      "nickname": "string",
+      "servicePointIds": [
+        "string"
+      ],
+      "planOverview": {
+        "displayName": "string",
+        "startDate": "string",
+        "endDate": "string"
+      },
+      "planDetail": {
+        "fuelType": "ELECTRICITY",
+        "isContingentPlan": false,
+        "meteringCharges": [
+          {
+            "displayName": "string",
+            "description": "string",
+            "minimumValue": "string",
+            "maximumValue": "string",
+            "period": "string"
+          }
+        ],
+        "gasContract": {
+          "additionalFeeInformation": "string",
+          "pricingModel": "SINGLE_RATE",
+          "timeZone": "LOCAL",
+          "isFixed": true,
+          "variation": "string",
+          "onExpiryDescription": "string",
+          "paymentOption": [
+            "PAPER_BILL"
+          ],
+          "intrinsicGreenPower": {
+            "greenPercentage": "string"
+          },
+          "controlledLoad": {
+            "displayName": "string",
+            "description": "string",
+            "dailyCharge": "string",
+            "period": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "volume": 0
+              }
+            ]
+          },
+          "incentives": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "category": "GIFT",
+              "eligibility": "string"
+            }
+          ],
+          "discounts": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "type": "CONDITIONAL",
+              "category": "PAY_ON_TIME",
+              "endDate": "string",
+              "methodUType": "percentOfBill",
+              "percentOfBill": {
+                "rate": "string"
+              },
+              "percentOfUse": {
+                "rate": "string"
+              },
+              "fixedAmount": {
+                "amount": "string"
+              },
+              "percentOverThreshold": {
+                "rate": "string",
+                "usageAmount": "string"
+              }
+            }
+          ],
+          "greenPowerCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "scheme": "GREENPOWER",
+              "type": "FIXED_PER_DAY",
+              "tiers": [
+                {
+                  "percentGreen": "string",
+                  "rate": "string",
+                  "amount": "string"
+                }
+              ]
+            }
+          ],
+          "eligibility": [
+            {
+              "type": "EXISTING_CUST",
+              "information": "string",
+              "description": "string"
+            }
+          ],
+          "fees": [
+            {
+              "type": "EXIT",
+              "term": "FIXED",
+              "amount": "string",
+              "rate": "string",
+              "description": "string"
+            }
+          ],
+          "solarFeedInTariff": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "scheme": "PREMIUM",
+              "payerType": "GOVERNMENT",
+              "tariffUType": "GOVERNMENT",
+              "singleTariff": {
+                "amount": "string"
+              },
+              "timeVaryingTariffs": {
+                "type": "PEAK",
+                "amount": "string",
+                "timeVariations": [
+                  {
+                    "days": {},
+                    "startTime": "string",
+                    "endTime": "string"
+                  }
+                ]
+              }
+            }
+          ],
+          "tariffPeriod": [
+            {
+              "displayName": "string",
+              "startDate": "string",
+              "endDate": "string",
+              "dailySupplyCharges": "string",
+              "rateBlockUType": "singleRate",
+              "singleRate": {
+                "displayName": "string",
+                "description": "string",
+                "generalUnitPrice": "string",
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "volume": 0
+                  }
+                ],
+                "period": "string"
+              },
+              "timeOfUseRates": [
+                {
+                  "displayName": "string",
+                  "description": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "timeOfUse": [
+                    {}
+                  ],
+                  "type": "PEAK"
+                }
+              ],
+              "demandCharges": [
+                {
+                  "displayName": "string",
+                  "description": "string",
+                  "amount": "string",
+                  "startTime": "string",
+                  "endTime": "string",
+                  "days": {
+                    "weekdays": true,
+                    "saturday": true,
+                    "sunday": true
+                  },
+                  "minDemand": "string",
+                  "maxDemand": "string",
+                  "measurementPeriod": "DAY",
+                  "chargePeriod": "DAY"
+                }
+              ]
+            }
+          ]
+        },
+        "electricityContract": {
+          "additionalFeeInformation": "string",
+          "pricingModel": "SINGLE_RATE",
+          "timeZone": "LOCAL",
+          "isFixed": true,
+          "variation": "string",
+          "onExpiryDescription": "string",
+          "paymentOption": [
+            "PAPER_BILL"
+          ],
+          "intrinsicGreenPower": {
+            "greenPercentage": "string"
+          },
+          "controlledLoad": {
+            "displayName": "string",
+            "description": "string",
+            "dailyCharge": "string",
+            "period": "string",
+            "rates": [
+              {
+                "unitPrice": "string",
+                "volume": 0
+              }
+            ]
+          },
+          "incentives": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "category": "GIFT",
+              "eligibility": "string"
+            }
+          ],
+          "discounts": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "type": "CONDITIONAL",
+              "category": "PAY_ON_TIME",
+              "endDate": "string",
+              "methodUType": "percentOfBill",
+              "percentOfBill": {
+                "rate": "string"
+              },
+              "percentOfUse": {
+                "rate": "string"
+              },
+              "fixedAmount": {
+                "amount": "string"
+              },
+              "percentOverThreshold": {
+                "rate": "string",
+                "usageAmount": "string"
+              }
+            }
+          ],
+          "greenPowerCharges": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "scheme": "GREENPOWER",
+              "type": "FIXED_PER_DAY",
+              "tiers": [
+                {
+                  "percentGreen": "string",
+                  "rate": "string",
+                  "amount": "string"
+                }
+              ]
+            }
+          ],
+          "eligibility": [
+            {
+              "type": "EXISTING_CUST",
+              "information": "string",
+              "description": "string"
+            }
+          ],
+          "fees": [
+            {
+              "type": "EXIT",
+              "term": "FIXED",
+              "amount": "string",
+              "rate": "string",
+              "description": "string"
+            }
+          ],
+          "solarFeedInTariff": [
+            {
+              "displayName": "string",
+              "description": "string",
+              "scheme": "PREMIUM",
+              "payerType": "GOVERNMENT",
+              "tariffUType": "GOVERNMENT",
+              "singleTariff": {
+                "amount": "string"
+              },
+              "timeVaryingTariffs": {
+                "type": "PEAK",
+                "amount": "string",
+                "timeVariations": [
+                  {
+                    "days": {},
+                    "startTime": "string",
+                    "endTime": "string"
+                  }
+                ]
+              }
+            }
+          ],
+          "tariffPeriod": [
+            {
+              "displayName": "string",
+              "startDate": "string",
+              "endDate": "string",
+              "dailySupplyCharges": "string",
+              "rateBlockUType": "singleRate",
+              "singleRate": {
+                "displayName": "string",
+                "description": "string",
+                "generalUnitPrice": "string",
+                "rates": [
+                  {
+                    "unitPrice": "string",
+                    "volume": 0
+                  }
+                ],
+                "period": "string"
+              },
+              "timeOfUseRates": [
+                {
+                  "displayName": "string",
+                  "description": "string",
+                  "rates": [
+                    {}
+                  ],
+                  "timeOfUse": [
+                    {}
+                  ],
+                  "type": "PEAK"
+                }
+              ],
+              "demandCharges": [
+                {
+                  "displayName": "string",
+                  "description": "string",
+                  "amount": "string",
+                  "startTime": "string",
+                  "endTime": "string",
+                  "days": {
+                    "weekdays": true,
+                    "saturday": true,
+                    "sunday": true
+                  },
+                  "minDemand": "string",
+                  "maxDemand": "string",
+                  "measurementPeriod": "DAY",
+                  "chargePeriod": "DAY"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "authorisedContacts": [
+        {
+          "firstName": "string",
+          "lastName": "string",
+          "middleNames": [
+            "string"
+          ],
+          "prefix": "string",
+          "suffix": "string"
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+### Properties
+
+*allOf*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[EnergyAccountBase](#schemacdr-energy-apienergyaccountbase)|mandatory|none|
+
+*and*
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|The array of plans containing service points and associated plan details|
+|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
+|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
+|»» planOverview|object|mandatory|none|
+|»»» displayName|string|optional|The name of the plan if one exists|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|»» planDetail|object|mandatory|Detail on the plan applicable to this account|
+|»»» fuelType|string|mandatory|The fuel types covered by the plan|
+|»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false|
+|»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
+|»»»» displayName|string|mandatory|Display name of the charge|
+|»»»» description|string|optional|Description of the charge|
+|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
+|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
+|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|»»» gasContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
+|»»» electricityContract|[EnergyPlanContract](#schemacdr-energy-apienergyplancontract)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
+|»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
+|»»» lastName|string|mandatory|For people with single names the single name should be in this field|
+|»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
+|»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|fuelType|ELECTRICITY|
+|fuelType|GAS|
+|fuelType|DUAL|
+
+<h2 class="schema-toc" id="tocSenergypaymentschedule">EnergyPaymentSchedule</h2>
+
+<a id="schemacdr-energy-apienergypaymentschedule"></a>
+
+```json
+{
+  "amount": "string",
+  "paymentScheduleUType": "cardDebit",
+  "cardDebit": {
+    "cardScheme": "VISA",
+    "paymentFrequency": "string",
+    "calculationType": "STATIC"
+  },
+  "directDebit": {
+    "isTokenised": "string",
+    "bsb": "string",
+    "accountNumber": "string",
+    "paymentFrequency": "string",
+    "calculationType": "STATIC"
+  },
+  "manualPayment": {
+    "billFrequency": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)|
+|paymentScheduleUType|string|mandatory|The type of object present in this response|
+|cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
+|» cardScheme|string|mandatory|The type of credit card held on file|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
+|» isTokenised|string|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included|
+|» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» calculationType|string|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
+|» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|paymentScheduleUType|cardDebit|
+|paymentScheduleUType|directDebit|
+|paymentScheduleUType|manualPayment|
+|cardScheme|VISA|
+|cardScheme|MASTERCARD|
+|cardScheme|AMEX|
+|cardScheme|DINERS|
+|cardScheme|OTHER|
+|cardScheme|UNKNOWN|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
+|calculationType|STATIC|
+|calculationType|BALANCE|
+|calculationType|CALCULATED|
+
+<h2 class="schema-toc" id="tocSenergyconcession">EnergyConcession</h2>
+
+<a id="schemacdr-energy-apienergyconcession"></a>
+
+```json
+{
+  "displayName": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string",
+  "startDate": "string",
+  "endDate": "string",
+  "dailyDiscount": "string",
+  "monthlyDiscount": "string",
+  "yearlyDiscount": "string",
+  "percentageDiscount": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|displayName|string|mandatory|The display name of the concession|
+|additionalInfo|string|optional|Display text providing more information on the concession|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
+|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
+|dailyDiscount|[AmountString](#common-field-types)|conditional|Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+|percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 
 <h2 class="schema-toc" id="tocSderrecord">derRecord</h2>
 

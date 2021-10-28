@@ -75,61 +75,7 @@
                                 "description": "Array of accounts",
                                 "type": "array",
                                 "items": {
-                                    "type": "object",
-                                    "required": [
-                                        "accountId",
-                                        "creationDate",
-                                        "servicePointIds",
-                                        "planOverview"
-                                    ],
-                                    "properties": {
-                                        "accountId": {
-                                            "description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
-                                            "type": "string"
-                                        },
-                                        "accountNumber": {
-                                            "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
-                                            "type": "string"
-                                        },
-                                        "displayName": {
-                                            "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
-                                            "type": "string"
-                                        },
-                                        "creationDate": {
-                                            "description": "The date that the account was created or opened",
-                                            "type": "string",
-                                            "x-cds-type": "DateString"
-                                        },
-                                        "servicePointIds": {
-                                            "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "planOverview": {
-                                            "type": "object",
-                                            "required": [
-                                                "startDate"
-                                            ],
-                                            "properties": {
-                                                "displayName": {
-                                                    "description": "The name of the plan if one exists",
-                                                    "type": "string"
-                                                },
-                                                "startDate": {
-                                                    "description": "The start date of the applicability of this plan",
-                                                    "type": "string",
-                                                    "x-cds-type": "DateString"
-                                                },
-                                                "endDate": {
-                                                    "description": "The end date of the applicability of this plan",
-                                                    "type": "string",
-                                                    "x-cds-type": "DateString"
-                                                }
-                                            }
-                                        }
-                                    }
+                                    "$ref": "#/components/schemas/EnergyAccount"
                                 }
                             }
                         }
@@ -151,161 +97,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "type": "object",
-                        "required": [
-                            "accountId",
-                            "creationDate",
-                            "servicePointIds",
-                            "planOverview",
-                            "planDetail",
-                            "authorisedContacts"
-                        ],
-                        "properties": {
-                            "accountId": {
-                                "description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
-                                "type": "string"
-                            },
-                            "accountNumber": {
-                                "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
-                                "type": "string"
-                            },
-                            "displayName": {
-                                "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
-                                "type": "string"
-                            },
-                            "creationDate": {
-                                "description": "The date that the account was created or opened",
-                                "type": "string",
-                                "x-cds-type": "DateString"
-                            },
-                            "servicePointIds": {
-                                "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            },
-                            "planOverview": {
-                                "type": "object",
-                                "required": [
-                                    "startDate"
-                                ],
-                                "properties": {
-                                    "displayName": {
-                                        "description": "The name of the plan if one exists",
-                                        "type": "string"
-                                    },
-                                    "startDate": {
-                                        "description": "The start date of the applicability of this plan",
-                                        "type": "string",
-                                        "x-cds-type": "DateString"
-                                    },
-                                    "endDate": {
-                                        "description": "The end date of the applicability of this plan",
-                                        "type": "string",
-                                        "x-cds-type": "DateString"
-                                    }
-                                }
-                            },
-                            "planDetail": {
-                                "description": "Detail on the plan applicable to this account",
-                                "type": "object",
-                                "required": [
-                                    "fuelType"
-                                ],
-                                "x-conditional": [
-                                    "gasContract",
-                                    "electricityContract"
-                                ],
-                                "properties": {
-                                    "fuelType": {
-                                        "type": "string",
-                                        "description": "The fuel types covered by the plan",
-                                        "enum": [
-                                            "ELECTRICITY",
-                                            "GAS",
-                                            "DUAL"
-                                        ]
-                                    },
-                                    "meteringCharges": {
-                                        "description": "Charges for metering included in the plan",
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "required": ["displayName", "minimumValue"],
-                                            "properties": {
-                                                "displayName": {
-                                                    "type": "string",
-                                                    "description": "Display name of the charge"
-                                                },
-                                                "description": {
-                                                    "type": "string",
-                                                    "description": "Description of the charge"
-                                                },
-                                                "minimumValue": {
-                                                    "type": "string",
-                                                    "x-cds-type": "AmountString",
-                                                    "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
-                                                },
-                                                "maximumValue": {
-                                                    "type": "string",
-                                                    "x-cds-type": "AmountString",
-                                                    "description": "The upper limit of the charge if the charge could occur in a range"
-                                                },
-                                                "period": {
-                                                    "type": "string",
-                                                    "x-cds-type": "ExternalRef",
-                                                    "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "gasContract": {
-                                        "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                        "$ref": "#/components/schemas/EnergyPlanContract"
-                                    },
-                                    "electricityContract": {
-                                        "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                        "$ref": "#/components/schemas/EnergyPlanContract"
-                                    }
-                                }
-                            },
-                            "authorisedContacts": {
-                                "description": "An array of additional contacts that are authorised to act on this account",
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "required": [
-                                        "lastName"
-                                    ],
-                                    "properties": {
-                                        "firstName": {
-                                            "description": "For people with single names this field need not be present. The single name should be in the lastName field",
-                                            "type": "string"
-                                        },
-                                        "lastName": {
-                                            "description": "For people with single names the single name should be in this field",
-                                            "type": "string"
-                                        },
-                                        "middleNames": {
-                                            "description": "Field is mandatory but array may be empty",
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "prefix": {
-                                            "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
-                                            "type": "string"
-                                        },
-                                        "suffix": {
-                                            "description": "Used for a trailing suffix to the name (e.g. Jr)",
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/components/schemas/EnergyAccountDetail"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -315,7 +107,7 @@
                     }
                 }
             },
-            "EnergyPaymentScheduleDetailResponse": {
+            "EnergyPaymentScheduleResponse": {
                 "type": "object",
                 "required": [
                     "data",
@@ -324,122 +116,7 @@
                 ],
                 "properties": {
                     "data": {
-                        "type": "object",
-                        "required": [
-                            "paymentScheduleUType"
-                        ],
-                        "x-conditional": [
-                            "cardDebit",
-                            "directDebit",
-                            "manualPayment"
-                        ],
-                        "properties": {
-                            "amount": {
-                                "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
-                                "type": "string",
-                                "x-cds-type": "AmountString"
-                            },
-                            "paymentScheduleUType": {
-                                "description": "The type of object present in this response",
-                                "type": "string",
-                                "enum": [
-                                    "cardDebit",
-                                    "directDebit",
-                                    "manualPayment"
-                                ]
-                            },
-                            "cardDebit": {
-                                "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
-                                "type": "object",
-                                "required": [
-                                    "cardScheme",
-                                    "paymentFrequency",
-                                    "calculationType"
-                                ],
-                                "properties": {
-                                    "cardScheme": {
-                                        "description": "The type of credit card held on file",
-                                        "type": "string",
-                                        "enum": [
-                                            "VISA",
-                                            "MASTERCARD",
-                                            "AMEX",
-                                            "DINERS",
-                                            "OTHER",
-                                            "UNKNOWN"
-                                        ]
-                                    },
-                                    "paymentFrequency": {
-                                        "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                                        "type": "string",
-                                        "x-cds-type": "ExternalRef"
-                                    },
-                                    "calculationType": {
-                                        "description": "The mechanism by which the payment amount is calculated",
-                                        "type": "string",
-                                        "enum": [
-                                            "STATIC",
-                                            "BALANCE",
-                                            "CALCULATED"
-                                        ]
-                                    }
-                                }
-                            },
-                            "directDebit": {
-                                "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
-                                "type": "object",
-                                "required": [
-                                    "paymentFrequency",
-                                    "calculationType"
-                                ],
-                                "x-conditional": [
-                                    "bsb",
-                                    "accountNumber"
-                                ],
-                                "properties": {
-                                    "isTokenised": {
-                                        "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
-                                        "type": "string"
-                                    },
-                                    "bsb": {
-                                        "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
-                                        "type": "string"
-                                    },
-                                    "accountNumber": {
-                                        "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
-                                        "type": "string"
-                                    },
-                                    "paymentFrequency": {
-                                        "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                                        "type": "string",
-                                        "x-cds-type": "ExternalRef"
-                                    },
-                                    "calculationType": {
-                                        "description": "The mechanism by which the payment amount is calculated",
-                                        "type": "string",
-                                        "enum": [
-                                            "STATIC",
-                                            "BALANCE",
-                                            "CALCULATED"
-                                        ]
-                                    }
-                                }
-                            },
-                            "manualPayment": {
-                                "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
-                                "type": "object",
-                                "required": [
-                                    "billFrequency"
-                                ],
-                                "properties": {
-                                    "billFrequency": {
-                                        "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                                        "type": "string",
-                                        "x-cds-type": "ExternalRef"
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/components/schemas/EnergyPaymentSchedule"
                     },
                     "links": {
                         "$ref": "#/components/schemas/Links"
@@ -449,7 +126,7 @@
                     }
                 }
             },
-            "EnergyConcessionsDetailResponse": {
+            "EnergyConcessionsResponse": {
                 "type": "object",
                 "required": [
                     "data",
@@ -467,61 +144,7 @@
                                 "description": "Array may be empty if no concessions exist",
                                 "type": "array",
                                 "items": {
-                                    "type": "object",
-                                    "required": [
-                                        "displayName"
-                                    ],
-                                    "x-conditional": [
-                                        "dailyDiscount",
-                                        "monthlyDiscount",
-                                        "yearlyDiscount",
-                                        "percentageDiscount"
-                                    ],
-                                    "properties": {
-                                        "displayName": {
-                                            "description": "The display name of the concession",
-                                            "type": "string"
-                                        },
-                                        "additionalInfo": {
-                                            "description": "Display text providing more information on the concession",
-                                            "type": "string"
-                                        },
-                                        "additionalInfoUri": {
-                                            "description": "Optional link to additional information regarding the concession",
-                                            "type": "string",
-                                            "x-cds-type": "URIString"
-                                        },
-                                        "startDate": {
-                                            "description": "Optional start date for the application of the concession",
-                                            "type": "string",
-                                            "x-cds-type": "DateString"
-                                        },
-                                        "endDate": {
-                                            "description": "Optional end date for the application of the concession",
-                                            "type": "string",
-                                            "x-cds-type": "DateString"
-                                        },
-                                        "dailyDiscount": {
-                                            "description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-                                            "type": "string",
-                                            "x-cds-type": "AmountString"
-                                        },
-                                        "monthlyDiscount": {
-                                            "description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-                                            "type": "string",
-                                            "x-cds-type": "AmountString"
-                                        },
-                                        "yearlyDiscount": {
-                                            "description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-                                            "type": "string",
-                                            "x-cds-type": "AmountString"
-                                        },
-                                        "percentageDiscount": {
-                                            "description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
-                                            "type": "string",
-                                            "x-cds-type": "RateString"
-                                        }
-                                    }
+                                    "$ref": "#/components/schemas/EnergyConcession"
                                 }
                             }
                         }
@@ -533,7 +156,52 @@
                         "$ref": "#/components/schemas/Meta"
                     }
                 }
-            },            
+            },
+            "ErrorListResponse": {
+                "type": "object",
+                "required": [
+                    "errors"
+                ],
+                "x-conditional": [ "meta" ],
+                "properties": {
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "code",
+                                "title",
+                                "detail"
+                            ],
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+                                },
+                                "detail": {
+                                    "type": "string",
+                                    "description": "A human-readable explanation specific to this occurrence of the problem."
+                                },
+                                "meta": {
+                                    "type" : "object",
+                                    "x-conditional" : [ "urn" ],
+                                    "description" : "Additional data for customised error codes",
+                                    "properties" : {
+                                       "urn": {
+                                          "type": "string",
+                                          "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+                                       }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "EnergyPlan": {
                 "type": "object",
                 "required": [
@@ -711,11 +379,11 @@
                             },
                             "gasContract": {
                                 "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                "$ref": "#/components/schemas/EnergyPlanContract"
+                                "$ref": "#/components/schemas/EnergyPlanContractFull"
                             },
                             "electricityContract": {
                                 "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                "$ref": "#/components/schemas/EnergyPlanContract"
+                                "$ref": "#/components/schemas/EnergyPlanContractFull"
                             }
                         }
                     }
@@ -726,15 +394,12 @@
                 "required": [
                     "pricingModel",
                     "isFixed",
-                    "billFrequency",
                     "paymentOption",
                     "tariffPeriod"
                 ],
                 "x-conditional": [
                     "timeZone",
-                    "benefitPeriod",
                     "variation",
-                    "coolingOffDays",
                     "controlledLoad"
                 ],
                 "properties": {
@@ -754,32 +419,12 @@
                             "QUOTA"
                         ]
                     },
-                    "termType": {
-                        "type": "string",
-                        "description": "The term for the contract.  If absent assumes no specified term",
-                        "enum": ["1_YEAR",
-                            "2_YEAR",
-                            "3_YEAR",
-                            "4_YEAR",
-                            "5_YEAR",
-                            "ONGOING",
-                            "OTHER"
-                        ]
-                    },
                     "timeZone": {
                         "type": "string",
                         "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
                         "enum": ["LOCAL",
                             "AEST"
                         ]
-                    },
-                    "benefitPeriod": {
-                        "type": "string",
-                        "description": "Description of the benefit period.  Should only be present if termType has the value ONGOING"
-                    },
-                    "terms": {
-                        "type": "string",
-                        "description": "Free text description of the terms for the contract"
                     },
                     "isFixed": {
                         "type": "boolean",
@@ -792,25 +437,6 @@
                     "onExpiryDescription": {
                         "type": "string",
                         "description": "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period"
-                    },
-                    "meterTypes": {
-                        "description": "An array of the meter types that this contract is available for",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "coolingOffDays": {
-                        "type": "string",
-                        "x-cds-type": "PositiveInteger",
-                        "description": "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET "
-                    },
-                    "billFrequency": {
-                        "description": "An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
                     },
                     "paymentOption": {
                         "description": "Payment options for this contract",
@@ -862,6 +488,65 @@
                         "$ref": "#/components/schemas/EnergyPlanTariffPeriod"
                     }
                 }
+            },
+            "EnergyPlanContractFull": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/EnergyPlanContract"
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "billFrequency"
+                        ],
+                        "x-conditional": [
+                            "benefitPeriod",
+                            "variation",
+                            "coolingOffDays"
+                        ],
+                        "properties": {
+                            "termType": {
+                                "type": "string",
+                                "description": "The term for the contract.  If absent assumes no specified term",
+                                "enum": ["1_YEAR",
+                                    "2_YEAR",
+                                    "3_YEAR",
+                                    "4_YEAR",
+                                    "5_YEAR",
+                                    "ONGOING",
+                                    "OTHER"
+                                ]
+                            },
+                            "benefitPeriod": {
+                                "type": "string",
+                                "description": "Description of the benefit period.  Should only be present if termType has the value ONGOING"
+                            },
+                            "terms": {
+                                "type": "string",
+                                "description": "Free text description of the terms for the contract"
+                            },
+                            "meterTypes": {
+                                "description": "An array of the meter types that this contract is available for",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "coolingOffDays": {
+                                "type": "string",
+                                "x-cds-type": "PositiveInteger",
+                                "description": "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET "
+                            },
+                            "billFrequency": {
+                                "description": "An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
             },
             "EnergyPlanControlledLoad": {
                 "type": "object",
@@ -956,7 +641,8 @@
                             "type": "string",
                             "description": "The type of the discount",
                             "enum": ["CONDITIONAL",
-                                "GUARANTEED"
+                                "GUARANTEED",
+                                "OTHER"
                             ]
                         },
                         "category": {
@@ -1188,8 +874,10 @@
                                 "PERCENT_OF_BILL",
                                 "ANNUAL",
                                 "DAILY",
+                                "WEEKLY",
                                 "MONTHLY",
-                                "BIANNUAL"
+                                "BIANNUAL",
+                                "VARIABLE"
                             ]
                         },
                         "amount": {
@@ -1558,6 +1246,435 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "EnergyAccountBase": {
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "creationDate"
+                ],
+                "properties": {
+                    "accountId": {
+                        "description": "The ID of the account.  To be created in accordance with CDR ID permanence requirements",
+                        "type": "string"
+                    },
+                    "accountNumber": {
+                        "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "description": "The date that the account was created or opened",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    }
+                }
+            },
+            "EnergyAccount": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/EnergyAccountBase"
+                    },
+                    {
+                        "description": "The array of plans containing service points and associated plan details",
+                        "type": "object",
+                        "required": [
+                            "plans"
+                        ],
+                        "properties": {
+                            "plans": {
+                                "description": "The array of plans containing service points and associated plan details",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "servicePointIds",
+                                        "planOverview"
+                                    ],
+                                    "properties": {
+                                        "nickname": {
+                                            "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+                                            "type": "string",
+                                        },
+                                        "servicePointIds": {
+                                            "description": "An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "planOverview": {
+                                            "type": "object",
+                                            "required": [
+                                                "startDate"
+                                            ],
+                                            "properties": {
+                                                "displayName": {
+                                                    "description": "The name of the plan if one exists",
+                                                    "type": "string"
+                                                },
+                                                "startDate": {
+                                                    "description": "The start date of the applicability of this plan",
+                                                    "type": "string",
+                                                    "x-cds-type": "DateString"
+                                                },
+                                                "endDate": {
+                                                    "description": "The end date of the applicability of this plan",
+                                                    "type": "string",
+                                                    "x-cds-type": "DateString"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "EnergyAccountDetail": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/EnergyAccountBase"
+                    },
+                    {
+                        "description": "The array of plans containing service points and associated plan details",
+                        "type": "object",
+                        "required": [
+                            "plans"
+                        ],
+                        "properties": {
+                            "plans": {
+                                "description": "The array of plans containing service points and associated plan details",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "servicePointIds",
+                                        "planOverview",
+                                        "planDetail"
+                                    ],
+                                    "properties": {
+                                        "nickname": {
+                                            "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+                                            "type": "string",
+                                        },
+                                        "servicePointIds": {
+                                            "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "planOverview": {
+                                            "type": "object",
+                                            "required": [
+                                                "startDate"
+                                            ],
+                                            "properties": {
+                                                "displayName": {
+                                                    "description": "The name of the plan if one exists",
+                                                    "type": "string"
+                                                },
+                                                "startDate": {
+                                                    "description": "The start date of the applicability of this plan",
+                                                    "type": "string",
+                                                    "x-cds-type": "DateString"
+                                                },
+                                                "endDate": {
+                                                    "description": "The end date of the applicability of this plan",
+                                                    "type": "string",
+                                                    "x-cds-type": "DateString"
+                                                }
+                                            }
+                                        },
+                                        "planDetail": {
+                                            "description": "Detail on the plan applicable to this account",
+                                            "type": "object",
+                                            "required": [
+                                                "fuelType"
+                                            ],
+                                            "x-conditional": [
+                                                "gasContract",
+                                                "electricityContract"
+                                            ],
+                                            "properties": {
+                                                "fuelType": {
+                                                    "type": "string",
+                                                    "description": "The fuel types covered by the plan",
+                                                    "enum": [
+                                                        "ELECTRICITY",
+                                                        "GAS",
+                                                        "DUAL"
+                                                    ]
+                                                },
+                                                "isContingentPlan": {
+                                                    "type": "boolean",
+                                                    "description": "Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false",
+                                                    "default": false
+                                                },
+                                                "meteringCharges": {
+                                                    "description": "Charges for metering included in the plan",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "required": ["displayName", "minimumValue"],
+                                                        "properties": {
+                                                            "displayName": {
+                                                                "type": "string",
+                                                                "description": "Display name of the charge"
+                                                            },
+                                                            "description": {
+                                                                "type": "string",
+                                                                "description": "Description of the charge"
+                                                            },
+                                                            "minimumValue": {
+                                                                "type": "string",
+                                                                "x-cds-type": "AmountString",
+                                                                "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
+                                                            },
+                                                            "maximumValue": {
+                                                                "type": "string",
+                                                                "x-cds-type": "AmountString",
+                                                                "description": "The upper limit of the charge if the charge could occur in a range"
+                                                            },
+                                                            "period": {
+                                                                "type": "string",
+                                                                "x-cds-type": "ExternalRef",
+                                                                "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "gasContract": {
+                                                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
+                                                    "$ref": "#/components/schemas/EnergyPlanContract"
+                                                },
+                                                "electricityContract": {
+                                                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
+                                                    "$ref": "#/components/schemas/EnergyPlanContract"
+                                                }
+                                            }
+                                        },
+                                        "authorisedContacts": {
+                                            "description": "An array of additional contacts that are authorised to act on this account",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "lastName"
+                                                ],
+                                                "properties": {
+                                                    "firstName": {
+                                                        "description": "For people with single names this field need not be present. The single name should be in the lastName field",
+                                                        "type": "string"
+                                                    },
+                                                    "lastName": {
+                                                        "description": "For people with single names the single name should be in this field",
+                                                        "type": "string"
+                                                    },
+                                                    "middleNames": {
+                                                        "description": "Field is mandatory but array may be empty",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "prefix": {
+                                                        "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+                                                        "type": "string"
+                                                    },
+                                                    "suffix": {
+                                                        "description": "Used for a trailing suffix to the name (e.g. Jr)",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "EnergyPaymentSchedule": {
+                "type": "object",
+                "required": [
+                    "paymentScheduleUType"
+                ],
+                "x-conditional": [
+                    "cardDebit",
+                    "directDebit",
+                    "manualPayment"
+                ],
+                "properties": {
+                    "amount": {
+                        "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "paymentScheduleUType": {
+                        "description": "The type of object present in this response",
+                        "type": "string",
+                        "enum": [
+                            "cardDebit",
+                            "directDebit",
+                            "manualPayment"
+                        ]
+                    },
+                    "cardDebit": {
+                        "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
+                        "type": "object",
+                        "required": [
+                            "cardScheme",
+                            "paymentFrequency",
+                            "calculationType"
+                        ],
+                        "properties": {
+                            "cardScheme": {
+                                "description": "The type of credit card held on file",
+                                "type": "string",
+                                "enum": [
+                                    "VISA",
+                                    "MASTERCARD",
+                                    "AMEX",
+                                    "DINERS",
+                                    "OTHER",
+                                    "UNKNOWN"
+                                ]
+                            },
+                            "paymentFrequency": {
+                                "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                "type": "string",
+                                "x-cds-type": "ExternalRef"
+                            },
+                            "calculationType": {
+                                "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+                                "type": "string",
+                                "enum": [
+                                    "STATIC",
+                                    "BALANCE",
+                                    "CALCULATED"
+                                ]
+                            }
+                        }
+                    },
+                    "directDebit": {
+                        "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
+                        "type": "object",
+                        "required": [
+                            "paymentFrequency",
+                            "calculationType"
+                        ],
+                        "x-conditional": [
+                            "bsb",
+                            "accountNumber"
+                        ],
+                        "properties": {
+                            "isTokenised": {
+                                "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
+                                "type": "string"
+                            },
+                            "bsb": {
+                                "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+                                "type": "string"
+                            },
+                            "accountNumber": {
+                                "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+                                "type": "string"
+                            },
+                            "paymentFrequency": {
+                                "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                "type": "string",
+                                "x-cds-type": "ExternalRef"
+                            },
+                            "calculationType": {
+                                "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+                                "type": "string",
+                                "enum": [
+                                    "STATIC",
+                                    "BALANCE",
+                                    "CALCULATED"
+                                ]
+                            }
+                        }
+                    },
+                    "manualPayment": {
+                        "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
+                        "type": "object",
+                        "required": [
+                            "billFrequency"
+                        ],
+                        "properties": {
+                            "billFrequency": {
+                                "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                                "type": "string",
+                                "x-cds-type": "ExternalRef"
+                            }
+                        }
+                    }
+                }
+            },
+            "EnergyConcession": {
+                "type": "object",
+                "required": [
+                    "displayName"
+                ],
+                "x-conditional": [
+                    "dailyDiscount",
+                    "monthlyDiscount",
+                    "yearlyDiscount",
+                    "percentageDiscount"
+                ],
+                "properties": {
+                    "displayName": {
+                        "description": "The display name of the concession",
+                        "type": "string"
+                    },
+                    "additionalInfo": {
+                        "description": "Display text providing more information on the concession",
+                        "type": "string"
+                    },
+                    "additionalInfoUri": {
+                        "description": "Optional link to additional information regarding the concession",
+                        "type": "string",
+                        "x-cds-type": "URIString"
+                    },
+                    "startDate": {
+                        "description": "Optional start date for the application of the concession",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "endDate": {
+                        "description": "Optional end date for the application of the concession",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "dailyDiscount": {
+                        "description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "monthlyDiscount": {
+                        "description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "yearlyDiscount": {
+                        "description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "percentageDiscount": {
+                        "description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+                        "type": "string",
+                        "x-cds-type": "RateString"
                     }
                 }
             },
@@ -2066,6 +2183,16 @@
 		"responses": {
 			"planList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2076,6 +2203,16 @@
 			},
 			"planDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2086,6 +2223,16 @@
 			},
 			"servicePointList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2216,6 +2363,16 @@
 			},
 			"servicePointDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2659,6 +2816,16 @@
 			},
 			"usageList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2820,6 +2987,16 @@
 			},
 			"derList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2858,6 +3035,16 @@
 			},
 			"derDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2884,6 +3071,16 @@
 			},
 			"accountList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
                         "schema": {
@@ -2894,6 +3091,16 @@
 			},
 			"accountDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
                         "schema": {
@@ -2904,26 +3111,56 @@
 			},
 			"accountPaymentScheduleDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyPaymentScheduleDetailResponse"
+                            "$ref": "#/components/schemas/EnergyPaymentScheduleResponse"
 						}
 					}
 				}
 			},
 			"accountConcessionsDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/EnergyConcessionsDetailResponse"
+                            "$ref": "#/components/schemas/EnergyConcessionsResponse"
 						}
 					}
 				}
 			},
 			"balanceList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2977,6 +3214,16 @@
 			},
 			"balanceDetail": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3014,6 +3261,16 @@
 			},
 			"invoiceList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3217,6 +3474,16 @@
 			},
 			"billingList": {
 				"description": "Successful response",
+                "headers": {
+                    "x-v": {
+                      "type": "string",
+                      "description": "The [version](#response-headers) of the API end point that the data holder has responded with."
+                    },
+                    "x-fapi-interaction-id": {
+                        "type": "string",
+                        "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                    }
+                },
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3499,7 +3766,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/planList"
-					}
+					},
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3534,7 +3813,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/planDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3575,7 +3866,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/servicePointList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3613,7 +3916,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/servicePointDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3657,7 +3972,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/usageList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3698,7 +4025,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/usageList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			},
 			"post": {
@@ -3740,7 +4079,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/usageList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3778,7 +4129,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/derDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3819,7 +4182,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/derList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			},
 			"post": {
@@ -3861,16 +4236,28 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/derList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
 		"/energy/accounts": {
 			"get": {
-				"summary": "Get Accounts",
+				"summary": "Get Energy Accounts",
 				"operationId": "listAccounts",
 				"description": "Obtain the list of energy accounts available under the authorised consent",
-                "x-cds-scopes": [
+                "x-scopes": [
                     "energy:accounts.basic:read"
                 ],
 				"tags": [
@@ -3905,16 +4292,28 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/accountList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
 		"/energy/accounts/{accountId}": {
 			"get": {
-				"summary": "Get Account Detail",
+				"summary": "Get Energy Account Detail",
 				"operationId": "getAccount",
 				"description": "Obtain detailed information for a specific energy account",
-                "x-cds-scopes": [
+                "x-scopes": [
                     "energy:accounts.detail:read"
                 ],
 				"tags": [
@@ -3946,7 +4345,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/accountDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3955,7 +4366,7 @@
 				"summary": "Get Agreed Payment Schedule",
 				"operationId": "getPaymentSchedule",
 				"description": "Obtain the agreed payment schedule and details, if any, for a specific energy account",
-                "x-cds-scopes": [
+                "x-scopes": [
                     "energy:accounts.paymentschedule:read"
                 ],
 				"tags": [
@@ -3987,7 +4398,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/accountPaymentScheduleDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -3996,7 +4419,7 @@
 				"summary": "Get Concessions",
 				"operationId": "getConcessions",
 				"description": "Obtain the details of any concessions or hardship arrangements applied to a specific energy account",
-                "x-cds-scopes": [
+                "x-scopes": [
                     "energy:accounts.concessions:read"
                 ],
 				"tags": [
@@ -4028,7 +4451,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/accountConcessionsDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -4066,7 +4501,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/balanceDetail"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -4107,7 +4554,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/balanceList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			},
 			"post": {
@@ -4149,7 +4608,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/balanceList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -4199,7 +4670,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/invoiceList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -4246,7 +4729,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/invoiceList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			},
 			"post": {
@@ -4294,7 +4789,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/invoiceList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -4344,7 +4851,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/billingList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		},
@@ -4391,7 +4910,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/billingList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			},
 			"post": {
@@ -4439,7 +4970,19 @@
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/billingList"
-					}
+                    },
+                    "4xx": {
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "headers": {
+                            "x-fapi-interaction-id": {
+                                "type": "string",
+                                "description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/components/scheme/ErrorListResponse"
+                        }
+                    }
 				}
 			}
 		}
