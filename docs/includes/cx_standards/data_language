@@ -23,7 +23,7 @@
 </tbody></table>
 
 <p><br/>
-<strong>Table 1. - Banking</strong>
+<strong>Table 1. Banking</strong>
 <span id="cx-table1"/></p>
 <h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
@@ -73,11 +73,13 @@
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h3 id='common'>Common</h3>
+<h3 id='banking-accounts'>Banking Accounts</h3>
+<p>See below for the data language standards for the banking account scopes:</p>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
-<th>Permission language</th>
+<th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
 </tr>
 </thead><tbody>
@@ -96,16 +98,49 @@
 <td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
 <td>bank:accounts.detail:read</td>
 </tr>
+</tbody></table>
+<h3 id='transactions'>Transactions</h3>
+<p>See below for the data language standards for the banking transactions scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Transaction details</strong></td>
 <td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
 <td>bank:transactions:read</td>
 </tr>
+</tbody></table>
+<h3 id='regular-payments'>Regular Payments</h3>
+<p>See below for the data language standards for the regular payments scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th><div style="width:250px">Permission language</div></th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Direct debits and scheduled payments</strong></td>
 <td>Direct debits;<br>Scheduled payments;</td>
 <td>bank:regular_payments:read</td>
 </tr>
+</tbody></table>
+<h3 id='payees'>Payees</h3>
+<p>See below for the data language standards for the payees scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Saved payees</strong></td>
 <td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
@@ -114,7 +149,7 @@
 </tbody></table>
 
 <p><br/>
-<strong>Table 2. - Energy</strong>
+<strong>Table 2. Energy</strong>
 <span id="cx-table2"/></p>
 
 <aside class="notice">
@@ -139,7 +174,7 @@ Note that the data language standards for the energy sector are currently consid
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Name, contact details &Dagger;</strong></td>
+<td><strong>Name and contact details &Dagger;</strong></td>
 <td>Name;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
 <td>common:customer.detail:read</td>
 </tr>
@@ -164,12 +199,12 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 <tr>
 <td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
 <h3 id='energy-accounts'>Energy Accounts</h3>
-<p>The below tables outline the data language standards for the energy accounts scopes:</p>
+<p>See below for the data language standards for the energy accounts scopes:</p>
 
 <table><thead>
 <tr>
@@ -189,13 +224,13 @@ Note that the data language standards for the energy sector are currently consid
 <td>energy:accounts.detail:read</td>
 </tr>
 <tr>
-<td><strong>Account and plan details</strong> &dagger;</td>
-<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users</td>
+<td><strong>Account and plan details</strong> &Dagger;</td>
+<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users;</td>
 <td>energy:accounts.detail:read</td>
 </tr>
 </tbody></table>
 <h3 id='concessions'>Concessions</h3>
-<p>The below tables outline the data language standards for the concession scope:</p>
+<p>See below for the data language standards for the concession scope:</p>
 
 <table><thead>
 <tr>
@@ -211,7 +246,7 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='payments'>Payments</h3>
-<p>The below tables outline the data language standards for the payments schedule scope:</p>
+<p>See below for the data language standards for the payments schedule scope:</p>
 
 <table><thead>
 <tr>
@@ -227,7 +262,7 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='billing'>Billing</h3>
-<p>The below tables outline the data language standards for the billing scope:</p>
+<p>See below for the data language standards for the billing scope:</p>
 
 <table><thead>
 <tr>
@@ -243,12 +278,12 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='nmi-standing-data'>NMI Standing Data</h3>
-<p>The below tables outline the data language standards for the NMI standing data scopes:</p>
+<p>See below for the data language standards for the NMI standing data scopes:</p>
 
 <table><thead>
 <tr>
 <th>Data cluster language</th>
-<th>Permission language</th>
+<th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
 </tr>
 </thead><tbody>
@@ -269,7 +304,7 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='distributed-energy-resources-der'>Distributed Energy Resources (DER)</h3>
-<p>The below tables outline the data language standards for the Distributed Energy Resources (DER) scope:</p>
+<p>See below for the data language standards for the Distributed Energy Resources (DER) scope:</p>
 
 <table><thead>
 <tr>
@@ -280,12 +315,12 @@ Note that the data language standards for the energy sector are currently consid
 </thead><tbody>
 <tr>
 <td><strong>Energy generation and storage</strong></td>
-<td>Generation information;<br>Device characteristics;<br>Generation or storage device type ;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
+<td>Generation information;<br>Generation or storage device type ;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
 <td>energy:electricity.der:read</td>
 </tr>
 </tbody></table>
 <h3 id='electricity-usage'>Electricity Usage</h3>
-<p>The below tables outline the data language standards for the electricity usage scope:</p>
+<p>See below for the data language standards for the electricity usage scope:</p>
 
 <table><thead>
 <tr>
