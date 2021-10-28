@@ -22373,7 +22373,7 @@ x-cds-client-headers: string
 <td>»»» servicePointId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The ID of the service point for use in the CDR APIs.  Created according to the rules for ID permanence</td>
+<td>Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements</td>
 </tr>
 <tr>
 <td>»»» nationalMeteringId</td>
@@ -22391,19 +22391,19 @@ x-cds-client-headers: string
 <td>»»» servicePointStatus</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Code used to indicate the status of the service point</td>
+<td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><strong>ACTIVE</strong> - An active, energised, service point</li><li><strong>DE_ENERGISED</strong> - The service point exists but is deenergised</li><li><strong>EXTINCT</strong> - The service point has been permanently decommissioned</li><li><strong>GREENFIELD</strong> - Applies to a service point that has never been energised</li><li><strong>OFF_MARKET</strong> - Applies when the service point is no longer settled in the NEM</li></ul></td>
 </tr>
 <tr>
 <td>»»» jurisdictionCode</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point</td>
+<td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><strong>ALL</strong> - All Jurisdictions</li><li><strong>ACT</strong> - Australian Capital Territory</li><li><strong>NEM</strong> - National Electricity Market</li><li><strong>NSW</strong> - New South Wales</li><li><strong>QLD</strong> - Queensland</li><li><strong>SA</strong> - South Australia</li><li><strong>TAS</strong> - Tasmania</li><li><strong>VIC</strong> - Victoria</li></ul></td>
 </tr>
 <tr>
 <td>»»» isGenerator</td>
 <td>boolean</td>
 <td>optional</td>
-<td>This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads).If absent defaults to false</td>
+<td>This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br><strong>Note:</strong> Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer</td>
 </tr>
 <tr>
 <td>»»» validFromDate</td>
@@ -22433,7 +22433,7 @@ x-cds-client-headers: string
 <td>»»»» threshold</td>
 <td>any</td>
 <td>optional</td>
-<td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
+<td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 <tr>
 <td>»»» links</td>
@@ -22509,15 +22509,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>servicePointClassification</td>
-<td>INTERCONNECTOR</td>
-</tr>
-<tr>
-<td>servicePointClassification</td>
 <td>LARGE</td>
-</tr>
-<tr>
-<td>servicePointClassification</td>
-<td>SAMPLE</td>
 </tr>
 <tr>
 <td>servicePointClassification</td>
@@ -22526,6 +22518,18 @@ x-cds-client-headers: string
 <tr>
 <td>servicePointClassification</td>
 <td>WHOLESALE</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>NON_CONTEST_UNMETERED_LOAD</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>NON_REGISTERED_EMBEDDED_GENERATOR</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>DISTRIBUTION_WHOLESALE</td>
 </tr>
 <tr>
 <td>servicePointStatus</td>
@@ -22588,26 +22592,6 @@ x-cds-client-headers: string
 <td>RESIDENTIAL</td>
 </tr>
 <tr>
-<td>classification</td>
-<td>BULK</td>
-</tr>
-<tr>
-<td>classification</td>
-<td>XBOUNDARY</td>
-</tr>
-<tr>
-<td>classification</td>
-<td>NCONUML</td>
-</tr>
-<tr>
-<td>classification</td>
-<td>NREG</td>
-</tr>
-<tr>
-<td>classification</td>
-<td>DWHOLSAL</td>
-</tr>
-<tr>
 <td>threshold</td>
 <td>LOW</td>
 </tr>
@@ -22655,8 +22639,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
 </aside></p>
 
 <h2 id='get-service-point-detail'>Get Service Point Detail</h2>
@@ -22702,7 +22687,7 @@ x-cds-client-headers: string
 
 <p><code>GET /energy/electricity/servicepoints/{servicePointId}</code></p>
 
-<p>Obtain a list of service points owned by the customer that has authorised the current session</p>
+<p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session</p>
 
 <h3 id='endpoint-version-4'>Endpoint Version</h3>
 
@@ -22794,8 +22779,8 @@ x-cds-client-headers: string
     </span><span class="s2">"servicePointStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"jurisdictionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creationDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -22808,46 +22793,46 @@ x-cds-client-headers: string
     </span><span class="s2">"relatedParticipants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"party"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRMP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRMP"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -22855,17 +22840,19 @@ x-cds-client-headers: string
         </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"streams"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"streamId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"networkTariffType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -22923,7 +22910,7 @@ x-cds-client-headers: string
 <td>»» servicePointId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The ID of the service point for use in the CDR APIs.  Created according to the rules for ID permanence</td>
+<td>The tokenised ID of the service point for use in the CDR APIs.  Created according to the CDR rules for ID permanence</td>
 </tr>
 <tr>
 <td>»» nationalMeteringId</td>
@@ -22941,31 +22928,31 @@ x-cds-client-headers: string
 <td>»» servicePointStatus</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Code used to indicate the status of the service point</td>
+<td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><strong>ACTIVE</strong> - An active, energised, service point</li><li><strong>DE_ENERGISED</strong> - The service point exists but is deenergised</li><li><strong>EXTINCT</strong> - The service point has been permanently decommissioned</li><li><strong>GREENFIELD</strong> - Applies to a service point that has never been energised</li><li><strong>OFF_MARKET</strong> - Applies when the service point is no longer settled in the NEM</li></ul></td>
 </tr>
 <tr>
 <td>»» jurisdictionCode</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point</td>
+<td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><strong>ALL</strong> - All Jurisdictions</li><li><strong>ACT</strong> - Australian Capital Territory</li><li><strong>NEM</strong> - National Electricity Market</li><li><strong>NSW</strong> - New South Wales</li><li><strong>QLD</strong> - Queensland</li><li><strong>SA</strong> - South Australia</li><li><strong>TAS</strong> - Tasmania</li><li><strong>VIC</strong> - Victoria</li></ul></td>
 </tr>
 <tr>
 <td>»» isGenerator</td>
 <td>boolean</td>
 <td>optional</td>
-<td>This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads).If absent defaults to false</td>
+<td>This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br><strong>Note:</strong> Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer</td>
+</tr>
+<tr>
+<td>»» validFromDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td>The start date from which this service point first became valid</td>
 </tr>
 <tr>
 <td>»» lastUpdateDateTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
 <td>The date and time that the information for this service point was modified</td>
-</tr>
-<tr>
-<td>»» creationDateTime</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>optional</td>
-<td>The date and time that this service point was created as a data entity</td>
 </tr>
 <tr>
 <td>»» consumerProfile</td>
@@ -22983,7 +22970,7 @@ x-cds-client-headers: string
 <td>»»» threshold</td>
 <td>any</td>
 <td>optional</td>
-<td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments</td>
+<td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><strong>LOW</strong> - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li><strong>MEDIUM</strong> - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li><strong>HIGH</strong> - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul></td>
 </tr>
 <tr>
 <td>»» distributionLossFactor</td>
@@ -23019,340 +23006,352 @@ x-cds-client-headers: string
 <td>»»» party</td>
 <td>string</td>
 <td>mandatory</td>
-<td>An identifier of the party related to this service point</td>
+<td>The name of the party/orginsation related to this service point</td>
 </tr>
 <tr>
 <td>»»» role</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The role performed by this participant in relation to the service point</td>
+<td>The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li><strong>FRMP</strong> - Financially Responsible Market Participant</li><li><strong>LNSP</strong> - Local Network Service Provider or Embedded Network Manager for child connection points</li><li><strong>DRSP</strong> - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul></td>
 </tr>
 <tr>
-<td>»»» location</td>
+<td>»» location</td>
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»»»» addressUType</td>
+<td>»»» addressUType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>The type of address object present</td>
 </tr>
 <tr>
-<td>»»»» simple</td>
+<td>»»» simple</td>
 <td>object</td>
 <td>conditional</td>
 <td>The address of the service point.  Mandatory if addressUType is set to simple</td>
 </tr>
 <tr>
-<td>»»»»» mailingName</td>
+<td>»»»» mailingName</td>
 <td>string</td>
 <td>optional</td>
 <td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
 </tr>
 <tr>
-<td>»»»»» addressLine1</td>
+<td>»»»» addressLine1</td>
 <td>string</td>
 <td>mandatory</td>
 <td>First line of the standard address object</td>
 </tr>
 <tr>
-<td>»»»»» addressLine2</td>
+<td>»»»» addressLine2</td>
 <td>string</td>
 <td>optional</td>
 <td>Second line of the standard address object</td>
 </tr>
 <tr>
-<td>»»»»» addressLine3</td>
+<td>»»»» addressLine3</td>
 <td>string</td>
 <td>optional</td>
 <td>Third line of the standard address object</td>
 </tr>
 <tr>
-<td>»»»»» postcode</td>
+<td>»»»» postcode</td>
 <td>string</td>
 <td>conditional</td>
 <td>Mandatory for Australian addresses</td>
 </tr>
 <tr>
-<td>»»»»» city</td>
+<td>»»»» city</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Name of the city or locality</td>
 </tr>
 <tr>
-<td>»»»»» state</td>
+<td>»»»» state</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
 </tr>
 <tr>
-<td>»»»»» country</td>
+<td>»»»» country</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
 <td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
 </tr>
 <tr>
-<td>»»»» paf</td>
+<td>»»» paf</td>
 <td>object</td>
 <td>conditional</td>
 <td>The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 <tr>
-<td>»»»»» dpid</td>
+<td>»»»» dpid</td>
 <td>string</td>
 <td>optional</td>
 <td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
 </tr>
 <tr>
-<td>»»»»» thoroughfareNumber1</td>
+<td>»»»» thoroughfareNumber1</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Thoroughfare number for a property (first number in a property ranged address)</td>
 </tr>
 <tr>
-<td>»»»»» thoroughfareNumber1Suffix</td>
+<td>»»»» thoroughfareNumber1Suffix</td>
 <td>string</td>
 <td>optional</td>
 <td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
 </tr>
 <tr>
-<td>»»»»» thoroughfareNumber2</td>
+<td>»»»» thoroughfareNumber2</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
 </tr>
 <tr>
-<td>»»»»» thoroughfareNumber2Suffix</td>
+<td>»»»» thoroughfareNumber2Suffix</td>
 <td>string</td>
 <td>optional</td>
 <td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
 </tr>
 <tr>
-<td>»»»»» flatUnitType</td>
+<td>»»»» flatUnitType</td>
 <td>string</td>
 <td>optional</td>
 <td>Type of flat or unit for the address</td>
 </tr>
 <tr>
-<td>»»»»» flatUnitNumber</td>
+<td>»»»» flatUnitNumber</td>
 <td>string</td>
 <td>optional</td>
 <td>Unit number (including suffix, if applicable)</td>
 </tr>
 <tr>
-<td>»»»»» floorLevelType</td>
+<td>»»»» floorLevelType</td>
 <td>string</td>
 <td>optional</td>
 <td>Type of floor or level for the address</td>
 </tr>
 <tr>
-<td>»»»»» floorLevelNumber</td>
+<td>»»»» floorLevelNumber</td>
 <td>string</td>
 <td>optional</td>
 <td>Floor or level number (including alpha characters)</td>
 </tr>
 <tr>
-<td>»»»»» lotNumber</td>
+<td>»»»» lotNumber</td>
 <td>string</td>
 <td>optional</td>
 <td>Allotment number for the address</td>
 </tr>
 <tr>
-<td>»»»»» buildingName1</td>
+<td>»»»» buildingName1</td>
 <td>string</td>
 <td>optional</td>
 <td>Building/Property name 1</td>
 </tr>
 <tr>
-<td>»»»»» buildingName2</td>
+<td>»»»» buildingName2</td>
 <td>string</td>
 <td>optional</td>
 <td>Building/Property name 2</td>
 </tr>
 <tr>
-<td>»»»»» streetName</td>
+<td>»»»» streetName</td>
 <td>string</td>
 <td>optional</td>
 <td>The name of the street</td>
 </tr>
 <tr>
-<td>»»»»» streetType</td>
+<td>»»»» streetType</td>
 <td>string</td>
 <td>optional</td>
 <td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
-<td>»»»»» streetSuffix</td>
+<td>»»»» streetSuffix</td>
 <td>string</td>
 <td>optional</td>
 <td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
-<td>»»»»» postalDeliveryType</td>
+<td>»»»» postalDeliveryType</td>
 <td>string</td>
 <td>optional</td>
 <td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
-<td>»»»»» postalDeliveryNumber</td>
+<td>»»»» postalDeliveryNumber</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
 <td>Postal delivery number if the address is a postal delivery type</td>
 </tr>
 <tr>
-<td>»»»»» postalDeliveryNumberPrefix</td>
+<td>»»»» postalDeliveryNumberPrefix</td>
 <td>string</td>
 <td>optional</td>
 <td>Postal delivery number prefix related to the postal delivery number</td>
 </tr>
 <tr>
-<td>»»»»» postalDeliveryNumberSuffix</td>
+<td>»»»» postalDeliveryNumberSuffix</td>
 <td>string</td>
 <td>optional</td>
 <td>Postal delivery number suffix related to the postal delivery number</td>
 </tr>
 <tr>
-<td>»»»»» localityName</td>
+<td>»»»» localityName</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Full name of locality</td>
 </tr>
 <tr>
-<td>»»»»» postcode</td>
+<td>»»»» postcode</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Postcode for the locality</td>
 </tr>
 <tr>
-<td>»»»»» state</td>
+<td>»»»» state</td>
 <td>string</td>
 <td>mandatory</td>
 <td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
 </tr>
 <tr>
-<td>»»»» meters</td>
+<td>»»» meters</td>
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»»»»» meterId</td>
+<td>»»»» meterId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The meter ID uniquely identifies a meter for a given service point.  Is unique in the context of the service point.  Is not globally unique</td>
+<td>The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique</td>
 </tr>
 <tr>
-<td>»»»»» specifications</td>
+<td>»»»» specifications</td>
 <td>object</td>
 <td>mandatory</td>
 <td>Technical characteristics of the meter</td>
 </tr>
 <tr>
-<td>»»»»»» status</td>
+<td>»»»»» status</td>
 <td>string</td>
 <td>mandatory</td>
-<td>A code to denote the status of the meter</td>
+<td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><strong>CURRENT</strong> -Applies when a meter is current and not disconnected</li><li><strong>DISCONNECTED</strong> - Applies when a meter is present but has been remotely disconnected</li></ul></td>
 </tr>
 <tr>
-<td>»»»»»» installationType</td>
+<td>»»»»» installationType</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The metering Installation type code indicates whether the metering installation has to be manually read</td>
+<td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><strong>BASIC</strong> - Accumulation Meter – Type 6</li><li><strong>COMMS1</strong> - Interval Meter with communications – Type 1</li><li><strong>COMMS2</strong> - Interval Meter with communications – Type 2</li><li><strong>COMMS3</strong> - Interval Meter with communications – Type 3</li><li><strong>COMMS4</strong> - Interval Meter with communications – Type 4</li><li><strong>COMMS4C</strong> - CT connected metering installation that meets the minimum services specifications</li><li><strong>COMMS4D</strong> - Whole current metering installation that meets the minimum services specifications</li><li><strong>MRAM</strong> - Small customer metering installation – Type 4A</li><li><strong>MRIM</strong> - Manually Read Interval Meter – Type 5</li><li><strong>UMCP</strong> - Unmetered Supply – Type 7</li><li><strong>VICAMI</strong> - A relevant metering installation as defined in clause 9.9C of the NER</li><li><strong>NCONUML</strong> - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul></td>
 </tr>
 <tr>
-<td>»»»»»» manufacturer</td>
+<td>»»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the manufacturer of the installed meter</td>
 </tr>
 <tr>
-<td>»»»»»» model</td>
+<td>»»»»» model</td>
 <td>string</td>
 <td>optional</td>
 <td>Free text field to identify the meter manufacturer’s designation for the meter model</td>
 </tr>
 <tr>
-<td>»»»»»» readType</td>
+<td>»»»»» readType</td>
 <td>string</td>
 <td>optional</td>
-<td>Code to denote the method and frequency of Meter Reading</td>
+<td>Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul></td>
 </tr>
 <tr>
-<td>»»»»» streams</td>
+<td>»»»»» nextScheduledReadDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required</td>
+</tr>
+<tr>
+<td>»»»» registers</td>
 <td>object</td>
 <td>mandatory</td>
-<td>Usage data streams available from the meter</td>
+<td>Usage data registers available from the meter</td>
 </tr>
 <tr>
-<td>»»»»»» streamId</td>
+<td>»»»»» registerId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique identifier of the stream within this service point.  Is not globally unique</td>
+<td>Unique identifier of the register within this service point.  Is not globally unique</td>
 </tr>
 <tr>
-<td>»»»»»» averagedDailyLoad</td>
+<td>»»»»» registerSuffix</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Register suffix of the meter register where the meter reads are obtained</td>
+</tr>
+<tr>
+<td>»»»»» averagedDailyLoad</td>
 <td>number</td>
 <td>optional</td>
-<td>The energy delivered through a connection point or metering point over an extended period normalised to a &#39;per day&#39; basis (kWh)</td>
+<td>The energy delivered through a connection point or metering point over an extended period normalised to a &#39;per day&#39; basis (kWh). This value is calculated annually.</td>
 </tr>
 <tr>
-<td>»»»»»» registerConsumptionType</td>
+<td>»»»»» registerConsumptionType</td>
 <td>string</td>
 <td>mandatory</td>
 <td>Indicates the consumption type of register</td>
 </tr>
 <tr>
-<td>»»»»»» networkTariffType</td>
+<td>»»»»» networkTariffCode</td>
 <td>string</td>
-<td>mandatory</td>
+<td>optional</td>
 <td>The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider</td>
 </tr>
 <tr>
-<td>»»»»»» unitOfMeasure</td>
+<td>»»»»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
 <td>The unit of measure for data held in this register</td>
 </tr>
 <tr>
-<td>»»»»»» timeOfDay</td>
+<td>»»»»» timeOfDay</td>
 <td>string</td>
 <td>optional</td>
 <td>Code to identify the time validity of register contents</td>
 </tr>
 <tr>
-<td>»»»»»» multiplier</td>
+<td>»»»»» multiplier</td>
 <td>number</td>
 <td>optional</td>
 <td>Multiplier required to take a register value and turn it into a value representing billable energy</td>
 </tr>
 <tr>
-<td>»»»»»» controlledLoad</td>
-<td>string</td>
+<td>»»»»» controlledLoad</td>
+<td>boolean</td>
 <td>optional</td>
-<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No&#39; if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime.</td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No&#39; if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime. ControlledLoad field will have &#39;No&#39; if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.</td>
 </tr>
 <tr>
-<td>»»»»»» consumptionType</td>
+<td>»»»»» consumptionType</td>
 <td>string</td>
 <td>optional</td>
-<td>Actual/Subtractive Indicator</td>
+<td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><strong>ACTUAL</strong> implies volume of energy actually metered between two dates</li><li><strong>CUMULATIVE</strong> indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul></td>
 </tr>
 <tr>
-<td>»»»»» links</td>
+<td>»»»» links</td>
 <td><a href="#schemacdr-energy-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»»»»»» self</td>
+<td>»»»»» self</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td>Fully qualified link that generated the current response document</td>
 </tr>
 <tr>
-<td>»»»»» meta</td>
+<td>»»»» meta</td>
 <td><a href="#schemacdr-energy-apimeta">Meta</a></td>
 <td>mandatory</td>
 <td>none</td>
@@ -23377,15 +23376,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>servicePointClassification</td>
-<td>INTERCONNECTOR</td>
-</tr>
-<tr>
-<td>servicePointClassification</td>
 <td>LARGE</td>
-</tr>
-<tr>
-<td>servicePointClassification</td>
-<td>SAMPLE</td>
 </tr>
 <tr>
 <td>servicePointClassification</td>
@@ -23394,6 +23385,18 @@ x-cds-client-headers: string
 <tr>
 <td>servicePointClassification</td>
 <td>WHOLESALE</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>NON_CONTEST_UNMETERED_LOAD</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>NON_REGISTERED_EMBEDDED_GENERATOR</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>DISTRIBUTION_WHOLESALE</td>
 </tr>
 <tr>
 <td>servicePointStatus</td>
@@ -23477,35 +23480,7 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>role</td>
-<td>LR</td>
-</tr>
-<tr>
-<td>role</td>
-<td>MDP</td>
-</tr>
-<tr>
-<td>role</td>
-<td>MPB</td>
-</tr>
-<tr>
-<td>role</td>
-<td>MPC</td>
-</tr>
-<tr>
-<td>role</td>
-<td>NEMM</td>
-</tr>
-<tr>
-<td>role</td>
-<td>NSP2</td>
-</tr>
-<tr>
-<td>role</td>
-<td>ROLR</td>
-</tr>
-<tr>
-<td>role</td>
-<td>RP</td>
+<td>DRSP</td>
 </tr>
 <tr>
 <td>addressUType</td>
@@ -23518,10 +23493,6 @@ x-cds-client-headers: string
 <tr>
 <td>status</td>
 <td>CURRENT</td>
-</tr>
-<tr>
-<td>status</td>
-<td>REMOVED</td>
 </tr>
 <tr>
 <td>status</td>
@@ -23597,19 +23568,55 @@ x-cds-client-headers: string
 </tr>
 <tr>
 <td>registerConsumptionType</td>
-<td>NON_MARKET_ACTIVE_IMPORT</td>
+<td>ACTIVE_IMPORT</td>
 </tr>
 <tr>
 <td>registerConsumptionType</td>
-<td>NON_MARKET_ACTIVE</td>
+<td>ACTIVE</td>
 </tr>
 <tr>
 <td>registerConsumptionType</td>
-<td>NON_MARKET_REACTIVE_IMPORT</td>
+<td>REACTIVE_IMPORT</td>
 </tr>
 <tr>
 <td>registerConsumptionType</td>
-<td>NON_MARKET_REACTIVE</td>
+<td>REACTIVE</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>ALLDAY</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>INTERVAL</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>PEAK</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>SHOULDER</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>EVENING</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>OFFPEAK</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>CONTROLLED</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>DEMAND</td>
 </tr>
 <tr>
 <td>consumptionType</td>
@@ -23655,8 +23662,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
 </aside></p>
 
 <h2 id='get-usage-for-service-point'>Get Usage For Service Point</h2>
