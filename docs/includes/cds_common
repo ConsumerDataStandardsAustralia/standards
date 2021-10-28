@@ -135,7 +135,7 @@
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -149,7 +149,7 @@
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V1.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPANY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -348,7 +348,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -420,7 +420,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V1.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPANY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -837,7 +837,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -846,41 +845,35 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» status</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)</td>
 </tr>
 <tr>
 <td>» explanation</td>
 <td>string</td>
 <td>conditional</td>
-<td>none</td>
 <td>Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK</td>
 </tr>
 <tr>
 <td>» detectionTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE</td>
 </tr>
 <tr>
 <td>» expectedResolutionTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.</td>
 </tr>
 <tr>
 <td>» updateTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>The date and time that this status was last updated by the Data Holder.</td>
 </tr>
 <tr>
@@ -888,13 +881,11 @@ This operation does not require authentication
 <td><a href="#schemacdr-common-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-common-apimeta">Meta</a></td>
 <td>optional</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -949,7 +940,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -958,13 +948,11 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» outages</td>
 <td>[<a href="#schemacdr-common-apidiscoveryoutage">DiscoveryOutage</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled</td>
 </tr>
 <tr>
@@ -972,13 +960,11 @@ This operation does not require authentication
 <td><a href="#schemacdr-common-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-common-apimeta">Meta</a></td>
 <td>optional</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -999,7 +985,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1007,28 +992,24 @@ This operation does not require authentication
 <td>outageTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Date and time that the outage is scheduled to begin</td>
 </tr>
 <tr>
 <td>duration</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Planned duration of the outage. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 <tr>
 <td>isPartial</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage</td>
 </tr>
 <tr>
 <td>explanation</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Provides an explanation of the current outage that can be displayed to an end customer</td>
 </tr>
 </tbody></table>
@@ -1049,7 +1030,7 @@ This operation does not require authentication
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1063,7 +1044,7 @@ This operation does not require authentication
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V1.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPANY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1081,7 +1062,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1090,27 +1070,23 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» customerUType</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The type of customer object that is present</td>
 </tr>
 <tr>
 <td>» person</td>
 <td><a href="#schemacdr-common-apicommonperson">CommonPerson</a></td>
 <td>conditional</td>
-<td>none</td>
 <td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
 <td><a href="#schemacdr-common-apicommonorganisation">CommonOrganisation</a></td>
 <td>conditional</td>
-<td>none</td>
 <td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
 <tr>
@@ -1118,13 +1094,11 @@ This operation does not require authentication
 <td><a href="#schemacdr-common-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-common-apimeta">Meta</a></td>
 <td>optional</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -1161,7 +1135,7 @@ This operation does not require authentication
       </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -1233,7 +1207,7 @@ This operation does not require authentication
       </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V1.0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPANY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1291,7 +1265,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1300,27 +1273,23 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» customerUType</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The type of customer object that is present</td>
 </tr>
 <tr>
 <td>» person</td>
 <td><a href="#schemacdr-common-apicommonpersondetail">CommonPersonDetail</a></td>
 <td>conditional</td>
-<td>none</td>
 <td>Mandatory if <code>customerUType</code> is <code>person</code></td>
 </tr>
 <tr>
 <td>» organisation</td>
 <td><a href="#schemacdr-common-apicommonorganisationdetail">CommonOrganisationDetail</a></td>
 <td>conditional</td>
-<td>none</td>
 <td>Mandatory if <code>customerUType</code> is <code>organisation</code></td>
 </tr>
 <tr>
@@ -1328,13 +1297,11 @@ This operation does not require authentication
 <td><a href="#schemacdr-common-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-common-apimeta">Meta</a></td>
 <td>optional</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -1368,7 +1335,7 @@ This operation does not require authentication
   </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="w">
+  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-6'>Properties</h3>
@@ -1377,7 +1344,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1385,56 +1351,48 @@ This operation does not require authentication
 <td>lastUpdateTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data</td>
 </tr>
 <tr>
 <td>firstName</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.</td>
 </tr>
 <tr>
 <td>lastName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>For people with single names the single name should be in this field</td>
 </tr>
 <tr>
 <td>middleNames</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Field is mandatory but array may be empty</td>
 </tr>
 <tr>
 <td>prefix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)</td>
 </tr>
 <tr>
 <td>suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 <tr>
 <td>occupationCode</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Value is a valid <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> versions, then it must not be supplied.</td>
 </tr>
 <tr>
 <td>occupationCodeVersion</td>
 <td>string</td>
 <td>conditional</td>
-<td>none</td>
 <td>The applicable <a href="http://www.abs.gov.au/ANZSCO">ANZSCO</a> release version of the occupation code provided. Mandatory if an <code>occupationCode</code> is supplied. If <code>occupationCode</code> is supplied but <code>occupationCodeVersion</code> is absent, default is <code>ANZSCO_1220.0_2013_V1.2</code></td>
 </tr>
 </tbody></table>
@@ -1476,7 +1434,7 @@ This operation does not require authentication
   </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2013_V1.2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -1545,7 +1503,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1553,7 +1510,6 @@ This operation does not require authentication
 <td><em>anonymous</em></td>
 <td><a href="#schemacdr-common-apicommonperson">CommonPerson</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -1565,7 +1521,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1574,27 +1529,23 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» phoneNumbers</td>
 <td>[<a href="#schemacdr-common-apicommonphonenumber">CommonPhoneNumber</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Array is mandatory but may be empty if no phone numbers are held</td>
 </tr>
 <tr>
 <td>» emailAddresses</td>
 <td>[<a href="#schemacdr-common-apicommonemailaddress">CommonEmailAddress</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>May be empty</td>
 </tr>
 <tr>
 <td>» physicalAddresses</td>
 <td>[<a href="#schemacdr-common-apicommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
 </tr>
 </tbody></table>
@@ -1614,7 +1565,7 @@ This operation does not require authentication
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V1.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPANY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1626,7 +1577,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1634,105 +1584,90 @@ This operation does not require authentication
 <td>lastUpdateTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data</td>
 </tr>
 <tr>
 <td>agentFirstName</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field</td>
 </tr>
 <tr>
 <td>agentLastName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field</td>
 </tr>
 <tr>
 <td>agentRole</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known</td>
 </tr>
 <tr>
 <td>businessName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Name of the organisation</td>
 </tr>
 <tr>
 <td>legalName</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Legal name, if different to the business name</td>
 </tr>
 <tr>
 <td>shortName</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Short name used for communication, if different to the business name</td>
 </tr>
 <tr>
 <td>abn</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Australian Business Number for the organisation</td>
 </tr>
 <tr>
 <td>acn</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type</td>
 </tr>
 <tr>
 <td>isACNCRegistered</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>none</td>
 <td>True if registered with the ACNC.  False if not. Absent or null if not confirmed.</td>
 </tr>
 <tr>
 <td>industryCode</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>none</td>
 <td>A valid <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> code for the organisation. If the industry code held by the data holder is not one of the supported <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> versions, then it must not be supplied.</td>
 </tr>
 <tr>
 <td>industryCodeVersion</td>
 <td>string</td>
 <td>conditional</td>
-<td>none</td>
 <td>The applicable <a href="http://www.abs.gov.au/ANZSIC">ANZSIC</a> release version of the industry code provided. Should only be supplied if <code>industryCode</code> is also supplied. If <code>industryCode</code> is supplied but <code>industryCodeVersion</code> is absent, default is <code>ANZSIC_1292.0_2006_V2.0</code></td>
 </tr>
 <tr>
 <td>organisationType</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Legal organisation type</td>
 </tr>
 <tr>
 <td>registeredCountry</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Enumeration with values from <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country codes.  Assumed to be AUS if absent</td>
 </tr>
 <tr>
 <td>establishmentDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>The date the organisation described was established</td>
 </tr>
 </tbody></table>
@@ -1792,7 +1727,7 @@ This operation does not require authentication
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isACNCRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"industryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V2.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"industryCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSIC_1292.0_2006_V1.0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPANY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1846,7 +1781,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1854,7 +1788,6 @@ This operation does not require authentication
 <td><em>anonymous</em></td>
 <td><a href="#schemacdr-common-apicommonorganisation">CommonOrganisation</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -1866,7 +1799,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1875,13 +1807,11 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» physicalAddresses</td>
 <td>[<a href="#schemacdr-common-apicommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail</td>
 </tr>
 </tbody></table>
@@ -1905,7 +1835,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1913,49 +1842,42 @@ This operation does not require authentication
 <td>isPreferred</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>none</td>
 <td>May be true for one and only one entry to indicate the preferred phone number. Assumed to be &#39;false&#39; if not present</td>
 </tr>
 <tr>
 <td>purpose</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The purpose of the number as specified by the customer</td>
 </tr>
 <tr>
 <td>countryCode</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>If absent, assumed to be Australia (+61). The + should be included</td>
 </tr>
 <tr>
 <td>areaCode</td>
 <td>string</td>
 <td>conditional</td>
-<td>none</td>
 <td>Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.</td>
 </tr>
 <tr>
 <td>number</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The actual phone number, with leading zeros as appropriate</td>
 </tr>
 <tr>
 <td>extension</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>An extension number (if applicable)</td>
 </tr>
 <tr>
 <td>fullNumber</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of <a href="https://www.ietf.org/rfc/rfc3966.txt">RFC 3966</a></td>
 </tr>
 </tbody></table>
@@ -2007,7 +1929,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2015,21 +1936,18 @@ This operation does not require authentication
 <td>isPreferred</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>none</td>
 <td>May be true for one and only one email record in the collection. Denotes the default email address</td>
 </tr>
 <tr>
 <td>purpose</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The purpose for the email, as specified by the customer (Enumeration)</td>
 </tr>
 <tr>
 <td>address</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>A correctly formatted email address, as defined by the addr_spec format in <a href="https://www.ietf.org/rfc/rfc5322.txt">RFC 5322</a></td>
 </tr>
 </tbody></table>
@@ -2108,7 +2026,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2116,7 +2033,6 @@ This operation does not require authentication
 <td><em>anonymous</em></td>
 <td><a href="#schemacdr-common-apicommonphysicaladdress">CommonPhysicalAddress</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -2128,7 +2044,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2137,13 +2052,11 @@ This operation does not require authentication
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» purpose</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Enumeration of values indicating the purpose of the physical address</td>
 </tr>
 </tbody></table>
@@ -2223,7 +2136,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2231,7 +2143,6 @@ This operation does not require authentication
 <td>addressUType</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The type of address object present</td>
 </tr>
 <tr>
@@ -2239,13 +2150,11 @@ This operation does not require authentication
 <td><a href="#schemacdr-common-apicommonsimpleaddress">CommonSimpleAddress</a></td>
 <td>conditional</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>paf</td>
 <td><a href="#schemacdr-common-apicommonpafaddress">CommonPAFAddress</a></td>
 <td>conditional</td>
-<td>none</td>
 <td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></td>
 </tr>
 </tbody></table>
@@ -2286,7 +2195,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2294,56 +2202,48 @@ This operation does not require authentication
 <td>mailingName</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Name of the individual or business formatted for inclusion in an address used for physical mail</td>
 </tr>
 <tr>
 <td>addressLine1</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>First line of the standard address object</td>
 </tr>
 <tr>
 <td>addressLine2</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Second line of the standard address object</td>
 </tr>
 <tr>
 <td>addressLine3</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Third line of the standard address object</td>
 </tr>
 <tr>
 <td>postcode</td>
 <td>string</td>
 <td>conditional</td>
-<td>none</td>
 <td>Mandatory for Australian addresses</td>
 </tr>
 <tr>
 <td>city</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Name of the city or locality</td>
 </tr>
 <tr>
 <td>state</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
 </tr>
 <tr>
 <td>country</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>none</td>
 <td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (AUS) is assumed if country is not present.</td>
 </tr>
 </tbody></table>
@@ -2384,7 +2284,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2392,154 +2291,132 @@ This operation does not require authentication
 <td>dpid</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
 </tr>
 <tr>
 <td>thoroughfareNumber1</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Thoroughfare number for a property (first number in a property ranged address)</td>
 </tr>
 <tr>
 <td>thoroughfareNumber1Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Second thoroughfare number (only used if the property has a ranged address eg 23-25)</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
 </tr>
 <tr>
 <td>flatUnitType</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Type of flat or unit for the address</td>
 </tr>
 <tr>
 <td>flatUnitNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Unit number (including suffix, if applicable)</td>
 </tr>
 <tr>
 <td>floorLevelType</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Type of floor or level for the address</td>
 </tr>
 <tr>
 <td>floorLevelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Floor or level number (including alpha characters)</td>
 </tr>
 <tr>
 <td>lotNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Allotment number for the address</td>
 </tr>
 <tr>
 <td>buildingName1</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Building/Property name 1</td>
 </tr>
 <tr>
 <td>buildingName2</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Building/Property name 2</td>
 </tr>
 <tr>
 <td>streetName</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>The name of the street</td>
 </tr>
 <tr>
 <td>streetType</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>The street type. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
 <td>streetSuffix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>The street type suffix. Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
 <td>postalDeliveryType</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file</td>
 </tr>
 <tr>
 <td>postalDeliveryNumber</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Postal delivery number if the address is a postal delivery type</td>
 </tr>
 <tr>
 <td>postalDeliveryNumberPrefix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Postal delivery number prefix related to the postal delivery number</td>
 </tr>
 <tr>
 <td>postalDeliveryNumberSuffix</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Postal delivery number suffix related to the postal delivery number</td>
 </tr>
 <tr>
 <td>localityName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Full name of locality</td>
 </tr>
 <tr>
 <td>postcode</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Postcode for the locality</td>
 </tr>
 <tr>
 <td>state</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT</td>
 </tr>
 </tbody></table>
@@ -2557,7 +2434,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2565,7 +2441,6 @@ This operation does not require authentication
 <td>self</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Fully qualified link that generated the current response document</td>
 </tr>
 </tbody></table>
@@ -2593,7 +2468,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2601,7 +2475,6 @@ This operation does not require authentication
 <td>urn</td>
 <td>string</td>
 <td>conditional</td>
-<td>none</td>
 <td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <code>code</code> is an application-specific error rather than a standardised error code.</td>
 </tr>
 </tbody></table>
@@ -2628,7 +2501,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2637,34 +2509,29 @@ This operation does not require authentication
 <td>[object]</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» code</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.</td>
 </tr>
 <tr>
 <td>» title</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.</td>
 </tr>
 <tr>
 <td>» detail</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>A human-readable explanation specific to this occurrence of the problem.</td>
 </tr>
 <tr>
 <td>» meta</td>
 <td><a href="#schemacdr-common-apimetaerror">MetaError</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Additional data for customised error codes</td>
 </tr>
 </tbody></table>

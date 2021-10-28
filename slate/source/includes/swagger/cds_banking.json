@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
     "version" : "1.14.0",
-    "title" : "Consumer Data Standards",
+    "title" : "CDR Banking API",
     "contact" : {
       "name" : "Consumer Data Standards",
       "url" : "https://consumerdatastandards.gov.au",
@@ -2342,8 +2342,8 @@
         "openStatus" : {
           "type" : "string",
           "description" : "Open or closed status for the account. If not present then OPEN is assumed",
-          "default" : "OPEN",
-          "enum" : [ "CLOSED", "OPEN" ]
+          "enum" : [ "CLOSED", "OPEN" ],
+          "default" : "OPEN"
         },
         "isOwned" : {
           "type" : "boolean",
@@ -2609,8 +2609,8 @@
         "repaymentType" : {
           "type" : "string",
           "description" : "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST",
-          "default" : "PRINCIPAL_AND_INTEREST",
-          "enum" : [ "INTEREST_ONLY", "PRINCIPAL_AND_INTEREST" ]
+          "enum" : [ "INTEREST_ONLY", "PRINCIPAL_AND_INTEREST" ],
+          "default" : "PRINCIPAL_AND_INTEREST"
         },
         "repaymentFrequency" : {
           "type" : "string",
@@ -3281,8 +3281,8 @@
         "nonBusinessDayTreatment" : {
           "type" : "string",
           "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
-          "default" : "ON",
-          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
+          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
+          "default" : "ON"
         },
         "intervals" : {
           "type" : "array",
@@ -3338,8 +3338,8 @@
         "nonBusinessDayTreatment" : {
           "type" : "string",
           "description" : "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
-          "default" : "ON",
-          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ]
+          "enum" : [ "AFTER", "BEFORE", "ON", "ONLY" ],
+          "default" : "ON"
         }
       },
       "description" : "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if recurrenceUType is set to lastWeekDay"

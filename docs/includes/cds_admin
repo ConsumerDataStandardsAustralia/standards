@@ -512,7 +512,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -521,20 +520,17 @@ This operation may only be called by the CDR Register
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» action</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-admin-apimeta">Meta</a></td>
 <td>optional</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -740,7 +736,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -749,97 +744,83 @@ This operation may only be called by the CDR Register
 <td>object</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>» requestTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>The date and time that the metrics in this payload were requested.</td>
 </tr>
 <tr>
 <td>» availability</td>
 <td><a href="#schemacdr-admin-apiavailabilitymetrics">AvailabilityMetrics</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Percentage availability of the CDR platform over time</td>
 </tr>
 <tr>
 <td>» performance</td>
 <td><a href="#schemacdr-admin-apiperformancemetrics">PerformanceMetrics</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Percentage of calls within the performance thresholds</td>
 </tr>
 <tr>
 <td>» invocations</td>
 <td><a href="#schemacdr-admin-apiinvocationmetricsv2">InvocationMetricsV2</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of API calls in each performance tier over time</td>
 </tr>
 <tr>
 <td>» averageResponse</td>
 <td><a href="#schemacdr-admin-apiaverageresponsemetricsv2">AverageResponseMetricsV2</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time in seconds, at millisecond resolution, within each performance tier</td>
 </tr>
 <tr>
 <td>» sessionCount</td>
 <td><a href="#schemacdr-admin-apisessioncountmetrics">SessionCountMetrics</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Session counts over time. Note that a session is defined as the provisioning of an Access Token.</td>
 </tr>
 <tr>
 <td>» averageTps</td>
 <td><a href="#schemacdr-admin-apiaveragetpsmetrics">AverageTPSMetrics</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Transactions per second over time</td>
 </tr>
 <tr>
 <td>» peakTps</td>
 <td><a href="#schemacdr-admin-apipeaktpsmetrics">PeakTPSMetrics</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Maximum record transactions per second over time</td>
 </tr>
 <tr>
 <td>» errors</td>
 <td><a href="#schemacdr-admin-apierrormetrics">ErrorMetrics</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of calls resulting in error due to server execution over time</td>
 </tr>
 <tr>
 <td>» rejections</td>
 <td><a href="#schemacdr-admin-apirejectionmetricsv2">RejectionMetricsV2</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of calls rejected due to traffic thresholds over time</td>
 </tr>
 <tr>
 <td>» customerCount</td>
 <td>integer</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of customers with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» recipientCount</td>
 <td>integer</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of Data Recipient Software Products with active authorisations at the time of the call</td>
 </tr>
 <tr>
 <td>» secondaryHolder</td>
 <td><a href="#schemacdr-admin-apisecondaryholdermetrics">SecondaryHolderMetrics</a></td>
 <td>conditional</td>
-<td>none</td>
 <td>Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
@@ -847,13 +828,11 @@ This operation may only be called by the CDR Register
 <td><a href="#schemacdr-admin-apilinks">Links</a></td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>meta</td>
 <td><a href="#schemacdr-admin-apimeta">Meta</a></td>
 <td>optional</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -876,7 +855,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -884,14 +862,12 @@ This operation may only be called by the CDR Register
 <td>currentMonth</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%.</td>
 </tr>
 <tr>
 <td>previousMonths</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.</td>
 </tr>
 </tbody></table>
@@ -914,7 +890,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -922,14 +897,12 @@ This operation may only be called by the CDR Register
 <td>currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%</td>
 </tr>
 <tr>
 <td>previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%</td>
 </tr>
 </tbody></table>
@@ -990,7 +963,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -998,147 +970,126 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>API call counts for the unauthenticated tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>highPriority</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>API call counts for the high priority tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>lowPriority</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>API call counts for the low priority tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>unattended</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>API call counts for the unattended tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>largePayload</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>API call counts for the large payload tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>secondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for the secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>largeSecondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for the large secondary responsibility requests tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
@@ -1215,7 +1166,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1223,203 +1173,174 @@ This operation may only be called by the CDR Register
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time for the unauthenticated tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>highPriority</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time for the high priority tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>lowPriority</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time for the low priority tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>unattended</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time for the unattended tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>largePayload</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time for the large payload tier</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>secondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for the secondary tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
 <td>» primary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time as measured for the primary data holder</td>
 </tr>
 <tr>
 <td>»» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>»» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>» secondary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time as measured for the secondary data holder</td>
 </tr>
 <tr>
 <td>»» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>»» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>» largeSecondary</td>
 <td>object</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for the large payload tier.  Mandatory for data holders designated for a secondary responsibility request data cluster</td>
 </tr>
 <tr>
 <td>»» primary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time as measured for the primary data holder</td>
 </tr>
 <tr>
 <td>»»» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>»»» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>»» secondary</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Average response time as measured for the secondary data holder</td>
 </tr>
 <tr>
 <td>»»» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for current day</td>
 </tr>
 <tr>
 <td>»»» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 </tbody></table>
@@ -1442,7 +1363,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1450,14 +1370,12 @@ This operation may only be called by the CDR Register
 <td>currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Session count for current day</td>
 </tr>
 <tr>
 <td>previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
@@ -1480,7 +1398,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1488,14 +1405,12 @@ This operation may only be called by the CDR Register
 <td>currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average TPS for current day</td>
 </tr>
 <tr>
 <td>previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
@@ -1518,7 +1433,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1526,14 +1440,12 @@ This operation may only be called by the CDR Register
 <td>currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Peak TPS for current day</td>
 </tr>
 <tr>
 <td>previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
@@ -1556,7 +1468,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1564,14 +1475,12 @@ This operation may only be called by the CDR Register
 <td>currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of errors for current day</td>
 </tr>
 <tr>
 <td>previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
@@ -1602,7 +1511,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1610,42 +1518,36 @@ This operation may only be called by the CDR Register
 <td>authenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Rejection counts for all authenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of calls rejected for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 <tr>
 <td>unauthenticated</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Rejection counts for all uauthenticated end points</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of calls rejected for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
 </tr>
 </tbody></table>
@@ -1676,7 +1578,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1684,42 +1585,36 @@ This operation may only be called by the CDR Register
 <td>errors</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of calls resulting in error due to server execution over time</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of errors for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 <tr>
 <td>rejections</td>
 <td>object</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Number of calls resulting in a rejection due to server execution over time</td>
 </tr>
 <tr>
 <td>» currentDay</td>
 <td>number</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of rejections for current day</td>
 </tr>
 <tr>
 <td>» previousDays</td>
 <td>[number]</td>
 <td>conditional</td>
-<td>none</td>
 <td>Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
 </tr>
 </tbody></table>
@@ -1737,7 +1632,6 @@ This operation may only be called by the CDR Register
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1745,7 +1639,6 @@ This operation may only be called by the CDR Register
 <td>self</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Fully qualified link to this API call</td>
 </tr>
 </tbody></table>

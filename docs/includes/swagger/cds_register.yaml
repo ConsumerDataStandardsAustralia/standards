@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   version: 1.14.0
-  title: Consumer Data Right (CDR) Register - Participant Discovery APIs
+  title: CDR Participant Discovery API
 host: register.cdr.gov.au
 basePath: /cdr-register/v1
 tags: []

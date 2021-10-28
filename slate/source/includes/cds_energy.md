@@ -665,8 +665,17 @@ Obtain a list of service points owned by the customer that has authorised the cu
       }
     ]
   },
-  "links": null,
-  "meta": null
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
 }
 ```
 
@@ -684,19 +693,26 @@ Status Code **200**
 |---|---|---|---|
 |» data|object|mandatory|none|
 |»» servicePoints|[object]|mandatory|none|
-|»»» servicePointId|string|mandatory|The ID of the service point for use in the CDR APIs.  Created according to the rules for ID permanence|
+|»»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements|
 |»»» nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI|
 |»»» servicePointClassification|string|mandatory|The classification of the service point as defined in MSATS procedures|
-|»»» servicePointStatus|string|mandatory|Code used to indicate the status of the service point|
-|»»» jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point|
-|»»» isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads).If absent defaults to false|
+|»»» servicePointStatus|string|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
+|»»» jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
+|»»» isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
 |»»» validFromDate|[DateString](#common-field-types)|mandatory|The start date from which this service point first became valid|
 |»»» lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
 |»»» consumerProfile|object|optional|none|
 |»»»» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|»»»» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|»»» links|any|mandatory|none|
-|»»» meta|any|mandatory|none|
+|»»»» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
+|»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
+|»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+|»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
+|»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 #### Enumerated Values
 
@@ -704,11 +720,12 @@ Status Code **200**
 |---|---|
 |servicePointClassification|EXTERNAL_PROFILE|
 |servicePointClassification|GENERATOR|
-|servicePointClassification|INTERCONNECTOR|
 |servicePointClassification|LARGE|
-|servicePointClassification|SAMPLE|
 |servicePointClassification|SMALL|
 |servicePointClassification|WHOLESALE|
+|servicePointClassification|NON_CONTEST_UNMETERED_LOAD|
+|servicePointClassification|NON_REGISTERED_EMBEDDED_GENERATOR|
+|servicePointClassification|DISTRIBUTION_WHOLESALE|
 |servicePointStatus|ACTIVE|
 |servicePointStatus|DE_ENERGISED|
 |servicePointStatus|EXTINCT|
@@ -724,20 +741,18 @@ Status Code **200**
 |jurisdictionCode|VIC|
 |classification|BUSINESS|
 |classification|RESIDENTIAL|
-|classification|BULK|
-|classification|XBOUNDARY|
-|classification|NCONUML|
-|classification|NREG|
-|classification|DWHOLSAL|
 |threshold|LOW|
 |threshold|MEDIUM|
 |threshold|HIGH|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
 </aside>
 
+    
   
 
 ## Get Service Point Detail
@@ -785,7 +800,7 @@ $.ajax({
 
 `GET /energy/electricity/servicepoints/{servicePointId}`
 
-Obtain a list of service points owned by the customer that has authorised the current session
+Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session
 
 ###Endpoint Version
 |   |  |
@@ -817,8 +832,8 @@ Obtain a list of service points owned by the customer that has authorised the cu
     "servicePointStatus": "ACTIVE",
     "jurisdictionCode": "ALL",
     "isGenerator": true,
+    "validFromDate": "string",
     "lastUpdateDateTime": "string",
-    "creationDateTime": "string",
     "consumerProfile": {
       "classification": "BUSINESS",
       "threshold": "LOW"
@@ -831,46 +846,46 @@ Obtain a list of service points owned by the customer that has authorised the cu
     "relatedParticipants": [
       {
         "party": "string",
-        "role": "FRMP",
-        "location": {
-          "addressUType": "simple",
-          "simple": {
-            "mailingName": "string",
-            "addressLine1": "string",
-            "addressLine2": "string",
-            "addressLine3": "string",
-            "postcode": "string",
-            "city": "string",
-            "state": "string",
-            "country": "AUS"
-          },
-          "paf": {
-            "dpid": "string",
-            "thoroughfareNumber1": 0,
-            "thoroughfareNumber1Suffix": "string",
-            "thoroughfareNumber2": 0,
-            "thoroughfareNumber2Suffix": "string",
-            "flatUnitType": "string",
-            "flatUnitNumber": "string",
-            "floorLevelType": "string",
-            "floorLevelNumber": "string",
-            "lotNumber": "string",
-            "buildingName1": "string",
-            "buildingName2": "string",
-            "streetName": "string",
-            "streetType": "string",
-            "streetSuffix": "string",
-            "postalDeliveryType": "string",
-            "postalDeliveryNumber": 0,
-            "postalDeliveryNumberPrefix": "string",
-            "postalDeliveryNumberSuffix": "string",
-            "localityName": "string",
-            "postcode": "string",
-            "state": "string"
-          }
-        }
+        "role": "FRMP"
       }
     ],
+    "location": {
+      "addressUType": "simple",
+      "simple": {
+        "mailingName": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "addressLine3": "string",
+        "postcode": "string",
+        "city": "string",
+        "state": "string",
+        "country": "AUS"
+      },
+      "paf": {
+        "dpid": "string",
+        "thoroughfareNumber1": 0,
+        "thoroughfareNumber1Suffix": "string",
+        "thoroughfareNumber2": 0,
+        "thoroughfareNumber2Suffix": "string",
+        "flatUnitType": "string",
+        "flatUnitNumber": "string",
+        "floorLevelType": "string",
+        "floorLevelNumber": "string",
+        "lotNumber": "string",
+        "buildingName1": "string",
+        "buildingName2": "string",
+        "streetName": "string",
+        "streetType": "string",
+        "streetSuffix": "string",
+        "postalDeliveryType": "string",
+        "postalDeliveryNumber": 0,
+        "postalDeliveryNumberPrefix": "string",
+        "postalDeliveryNumberSuffix": "string",
+        "localityName": "string",
+        "postcode": "string",
+        "state": "string"
+      }
+    },
     "meters": {
       "meterId": "string",
       "specifications": {
@@ -878,17 +893,19 @@ Obtain a list of service points owned by the customer that has authorised the cu
         "installationType": "BASIC",
         "manufacturer": "string",
         "model": "string",
-        "readType": "string"
+        "readType": "string",
+        "nextScheduledReadDate": "string"
       },
-      "streams": {
-        "streamId": "string",
+      "registers": {
+        "registerId": "string",
+        "registerSuffix": "string",
         "averagedDailyLoad": 0,
         "registerConsumptionType": "INTERVAL",
-        "networkTariffType": "string",
+        "networkTariffCode": "string",
         "unitOfMeasure": "string",
-        "timeOfDay": "string",
+        "timeOfDay": "ALLDAY",
         "multiplier": 0,
-        "controlledLoad": "string",
+        "controlledLoad": true,
         "consumptionType": "ACTUAL"
       }
     }
@@ -911,78 +928,80 @@ Status Code **200**
 |Name|Type|Required|Description|
 |---|---|---|---|
 |» data|object|mandatory|none|
-|»» servicePointId|string|mandatory|The ID of the service point for use in the CDR APIs.  Created according to the rules for ID permanence|
+|»» servicePointId|string|mandatory|The tokenised ID of the service point for use in the CDR APIs.  Created according to the CDR rules for ID permanence|
 |»» nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI|
 |»» servicePointClassification|string|mandatory|The classification of the service point as defined in MSATS procedures|
-|»» servicePointStatus|string|mandatory|Code used to indicate the status of the service point|
-|»» jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point|
-|»» isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads).If absent defaults to false|
+|»» servicePointStatus|string|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
+|»» jurisdictionCode|string|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
+|»» isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
+|»» validFromDate|[DateString](#common-field-types)|mandatory|The start date from which this service point first became valid|
 |»» lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
-|»» creationDateTime|[DateTimeString](#common-field-types)|optional|The date and time that this service point was created as a data entity|
 |»» consumerProfile|object|optional|none|
 |»»» classification|string|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|»»» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
+|»»» threshold|any|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
 |»» distributionLossFactor|object|mandatory|none|
 |»»» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
 |»»» description|string|mandatory|Description of the data loss factor code and value|
 |»»» lossValue|string|mandatory|The value associated with the loss factor code|
 |»» relatedParticipants|[object]|mandatory|none|
-|»»» party|string|mandatory|An identifier of the party related to this service point|
-|»»» role|string|mandatory|The role performed by this participant in relation to the service point|
-|»»» location|object|mandatory|none|
-|»»»» addressUType|string|mandatory|The type of address object present|
-|»»»» simple|object|conditional|The address of the service point.  Mandatory if addressUType is set to simple|
-|»»»»» mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|»»»»» addressLine1|string|mandatory|First line of the standard address object|
-|»»»»» addressLine2|string|optional|Second line of the standard address object|
-|»»»»» addressLine3|string|optional|Third line of the standard address object|
-|»»»»» postcode|string|conditional|Mandatory for Australian addresses|
-|»»»»» city|string|mandatory|Name of the city or locality|
-|»»»»» state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|»»»»» country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
-|»»»» paf|object|conditional|The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
-|»»»»» dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|»»»»» thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|»»»»» thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|»»»»» thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|»»»»» thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|»»»»» flatUnitType|string|optional|Type of flat or unit for the address|
-|»»»»» flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
-|»»»»» floorLevelType|string|optional|Type of floor or level for the address|
-|»»»»» floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
-|»»»»» lotNumber|string|optional|Allotment number for the address|
-|»»»»» buildingName1|string|optional|Building/Property name 1|
-|»»»»» buildingName2|string|optional|Building/Property name 2|
-|»»»»» streetName|string|optional|The name of the street|
-|»»»»» streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
-|»»»»» streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|»»»»» postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|»»»»» postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
-|»»»»» postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
-|»»»»» postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
-|»»»»» localityName|string|mandatory|Full name of locality|
-|»»»»» postcode|string|mandatory|Postcode for the locality|
-|»»»»» state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|»»»» meters|object|mandatory|none|
-|»»»»» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  Is unique in the context of the service point.  Is not globally unique|
-|»»»»» specifications|object|mandatory|Technical characteristics of the meter|
-|»»»»»» status|string|mandatory|A code to denote the status of the meter|
-|»»»»»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read|
-|»»»»»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
-|»»»»»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
-|»»»»»» readType|string|optional|Code to denote the method and frequency of Meter Reading|
-|»»»»» streams|object|mandatory|Usage data streams available from the meter|
-|»»»»»» streamId|string|mandatory|Unique identifier of the stream within this service point.  Is not globally unique|
-|»»»»»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh)|
-|»»»»»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
-|»»»»»» networkTariffType|string|mandatory|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
-|»»»»»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»»»»»» timeOfDay|string|optional|Code to identify the time validity of register contents|
-|»»»»»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»»»»»» controlledLoad|string|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime.|
-|»»»»»» consumptionType|string|optional|Actual/Subtractive Indicator|
-|»»»»» links|any|mandatory|none|
-|»»»»» meta|any|mandatory|none|
+|»»» party|string|mandatory|The name of the party/orginsation related to this service point|
+|»»» role|string|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
+|»» location|object|mandatory|none|
+|»»» addressUType|string|mandatory|The type of address object present|
+|»»» simple|object|conditional|The address of the service point.  Mandatory if addressUType is set to simple|
+|»»»» mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
+|»»»» addressLine1|string|mandatory|First line of the standard address object|
+|»»»» addressLine2|string|optional|Second line of the standard address object|
+|»»»» addressLine3|string|optional|Third line of the standard address object|
+|»»»» postcode|string|conditional|Mandatory for Australian addresses|
+|»»»» city|string|mandatory|Name of the city or locality|
+|»»»» state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|»»»» country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+|»»» paf|object|conditional|The address of the service point.  Mandatory if addressUType is set to paf. Formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)|
+|»»»» dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|»»»» thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
+|»»»» thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|»»»» thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
+|»»»» thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|»»»» flatUnitType|string|optional|Type of flat or unit for the address|
+|»»»» flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
+|»»»» floorLevelType|string|optional|Type of floor or level for the address|
+|»»»» floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
+|»»»» lotNumber|string|optional|Allotment number for the address|
+|»»»» buildingName1|string|optional|Building/Property name 1|
+|»»»» buildingName2|string|optional|Building/Property name 2|
+|»»»» streetName|string|optional|The name of the street|
+|»»»» streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
+|»»»» streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
+|»»»» postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
+|»»»» postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
+|»»»» postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
+|»»»» postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
+|»»»» localityName|string|mandatory|Full name of locality|
+|»»»» postcode|string|mandatory|Postcode for the locality|
+|»»»» state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|»»» meters|object|mandatory|none|
+|»»»» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
+|»»»» specifications|object|mandatory|Technical characteristics of the meter|
+|»»»»» status|string|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
+|»»»»» installationType|string|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
+|»»»»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
+|»»»»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
+|»»»»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
+|»»»»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
+|»»»» registers|object|mandatory|Usage data registers available from the meter|
+|»»»»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
+|»»»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
+|»»»»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
+|»»»»» registerConsumptionType|string|mandatory|Indicates the consumption type of register|
+|»»»»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
+|»»»»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
+|»»»»» timeOfDay|string|optional|Code to identify the time validity of register contents|
+|»»»»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
+|»»»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load.  If the register relates to a Controlled Load, it should contain a description of the Controlled Load regime. ControlledLoad field will have 'No' if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.|
+|»»»»» consumptionType|string|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|»»»» links|any|mandatory|none|
+|»»»» meta|any|mandatory|none|
 
 #### Enumerated Values
 
@@ -990,11 +1009,12 @@ Status Code **200**
 |---|---|
 |servicePointClassification|EXTERNAL_PROFILE|
 |servicePointClassification|GENERATOR|
-|servicePointClassification|INTERCONNECTOR|
 |servicePointClassification|LARGE|
-|servicePointClassification|SAMPLE|
 |servicePointClassification|SMALL|
 |servicePointClassification|WHOLESALE|
+|servicePointClassification|NON_CONTEST_UNMETERED_LOAD|
+|servicePointClassification|NON_REGISTERED_EMBEDDED_GENERATOR|
+|servicePointClassification|DISTRIBUTION_WHOLESALE|
 |servicePointStatus|ACTIVE|
 |servicePointStatus|DE_ENERGISED|
 |servicePointStatus|EXTINCT|
@@ -1015,18 +1035,10 @@ Status Code **200**
 |threshold|HIGH|
 |role|FRMP|
 |role|LNSP|
-|role|LR|
-|role|MDP|
-|role|MPB|
-|role|MPC|
-|role|NEMM|
-|role|NSP2|
-|role|ROLR|
-|role|RP|
+|role|DRSP|
 |addressUType|simple|
 |addressUType|paf|
 |status|CURRENT|
-|status|REMOVED|
 |status|DISCONNECTED|
 |installationType|BASIC|
 |installationType|COMMS1|
@@ -1045,18 +1057,30 @@ Status Code **200**
 |registerConsumptionType|INTERVAL|
 |registerConsumptionType|BASIC|
 |registerConsumptionType|PROFILE_DATA|
-|registerConsumptionType|NON_MARKET_ACTIVE_IMPORT|
-|registerConsumptionType|NON_MARKET_ACTIVE|
-|registerConsumptionType|NON_MARKET_REACTIVE_IMPORT|
-|registerConsumptionType|NON_MARKET_REACTIVE|
+|registerConsumptionType|ACTIVE_IMPORT|
+|registerConsumptionType|ACTIVE|
+|registerConsumptionType|REACTIVE_IMPORT|
+|registerConsumptionType|REACTIVE|
+|timeOfDay|ALLDAY|
+|timeOfDay|INTERVAL|
+|timeOfDay|PEAK|
+|timeOfDay|BUSINESS|
+|timeOfDay|SHOULDER|
+|timeOfDay|EVENING|
+|timeOfDay|OFFPEAK|
+|timeOfDay|CONTROLLED|
+|timeOfDay|DEMAND|
 |consumptionType|ACTUAL|
 |consumptionType|CUMULATIVE|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
 </aside>
 
+    
   
 
 ## Get Usage For Service Point
@@ -2814,7 +2838,7 @@ Status Code **200**
 |»»»»»»»»»»» endTime|string|mandatory|End of the period in HHMM format using 24 hour clock format|
 |»»»»»»»»»» electricityContract|object|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
 |»»»»»»»»»»» additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
-|»»»»»»»»»»» pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:  * **SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc. * **SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc. * **TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed * **TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc. * **QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage|
+|»»»»»»»»»»» pricingModel|string|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
 |»»»»»»»»»»» timeZone|string|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds|
 |»»»»»»»»»»» isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
 |»»»»»»»»»»» controlledLoad|object|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD|
@@ -6032,8 +6056,8 @@ This operation does not require authentication
 |type|string|mandatory|The type of charge|
 |tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
 |» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
-|» rate|[RateString](#common-field-types)|optional|The rate of the charge if the type implies the application of a rate|
-|» amount|[AmountString](#common-field-types)|optional|The amount of the charge if the type implies the application of a fixed amount|
+|» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
+|» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
 
 #### Enumerated Values
 

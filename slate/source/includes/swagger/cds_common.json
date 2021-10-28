@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right",
     "version" : "1.14.0",
-    "title" : "Consumer Data Standards",
+    "title" : "CDR Common API",
     "contact" : {
       "name" : "Consumer Data Standards",
       "url" : "https://consumerdatastandards.gov.au",
@@ -387,8 +387,8 @@
         "occupationCodeVersion" : {
           "type" : "string",
           "description" : "The applicable [ANZSCO](http://www.abs.gov.au/ANZSCO) release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
-          "default" : "ANZSCO_1220.0_2013_V1.2",
-          "enum" : [ "ANZSCO_1220.0_2006_V1.0", "ANZSCO_1220.0_2006_V1.1", "ANZSCO_1220.0_2013_V1.2", "ANZSCO_1220.0_2013_V1.3" ]
+          "enum" : [ "ANZSCO_1220.0_2006_V1.0", "ANZSCO_1220.0_2006_V1.1", "ANZSCO_1220.0_2013_V1.2", "ANZSCO_1220.0_2013_V1.3" ],
+          "default" : "ANZSCO_1220.0_2013_V1.2"
         }
       },
       "x-conditional" : [ "occupationCodeVersion" ]
@@ -478,8 +478,8 @@
         "industryCodeVersion" : {
           "type" : "string",
           "description" : "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
-          "default" : "ANZSIC_1292.0_2006_V2.0",
-          "enum" : [ "ANZSIC_1292.0_2006_V1.0", "ANZSIC_1292.0_2006_V2.0" ]
+          "enum" : [ "ANZSIC_1292.0_2006_V1.0", "ANZSIC_1292.0_2006_V2.0" ],
+          "default" : "ANZSIC_1292.0_2006_V2.0"
         },
         "organisationType" : {
           "type" : "string",
