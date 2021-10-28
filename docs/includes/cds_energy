@@ -6940,7 +6940,7 @@ x-cds-client-headers: string
 To perform this operation, you must be authenticated and authorised with the following scopes:
 <a href="#authorisation-scopes">energy:accounts.concessions:read</a>
 </aside></p>
-<h2 id='get-balance-for-account'>Get Balance For Account</h2>
+<h2 id='get-balance-for-energy-account'>Get Balance For Energy Account</h2>
 <p><a id="opIdgetBalanceForAccount"></a></p>
 
 <blockquote>
@@ -6994,7 +6994,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-balance-for-account-parameters">Parameters</h3>
+<h3 id="get-balance-for-energy-account-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -7071,7 +7071,7 @@ x-cds-client-headers: string
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-balance-for-account-responses">Responses</h3>
+<h3 id="get-balance-for-energy-account-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -7085,57 +7085,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergybalanceresponse">EnergyBalanceResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-balance-for-account-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» balance</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
-</tr>
-<tr>
-<td>» links</td>
-<td><a href="#schemacdr-energy-apilinks">Links</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>» meta</td>
-<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
-<td>mandatory</td>
-<td>none</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-15'>Response Headers</h3>
@@ -7171,10 +7127,11 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-bulk-balances'>Get Bulk Balances</h2>
+<h2 id='get-bulk-balances-energy'>Get Bulk Balances (Energy)</h2>
 <p><a id="opIdlistBalancesBulk"></a></p>
 
 <blockquote>
@@ -7228,7 +7185,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-bulk-balances-parameters">Parameters</h3>
+<h3 id="get-bulk-balances-(energy)-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -7324,7 +7281,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-bulk-balances-responses">Responses</h3>
+<h3 id="get-bulk-balances-(energy)-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -7338,105 +7295,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergybalancelistresponse">EnergyBalanceListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-bulk-balances-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» balances</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of account balances</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account</td>
-</tr>
-<tr>
-<td>»»» balance</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
-</tr>
-<tr>
-<td>»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-16'>Response Headers</h3>
@@ -7472,10 +7337,11 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
-<h2 id='get-balances-for-specific-accounts'>Get Balances For Specific Accounts</h2>
+<h2 id='get-balances-for-specific-energy-accounts'>Get Balances For Specific Energy Accounts</h2>
 <p><a id="opIdlistBalancesForAccounts"></a></p>
 
 <blockquote>
@@ -7543,7 +7409,7 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<h3 id="get-balances-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="get-balances-for-specific-energy-accounts-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -7667,7 +7533,7 @@ x-cds-client-headers: string
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-balances-for-specific-accounts-responses">Responses</h3>
+<h3 id="get-balances-for-specific-energy-accounts-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -7681,105 +7547,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergybalancelistresponse">EnergyBalanceListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-balances-for-specific-accounts-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» balances</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of account balances</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account</td>
-</tr>
-<tr>
-<td>»»» balance</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
-</tr>
-<tr>
-<td>»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-17'>Response Headers</h3>
@@ -7815,8 +7589,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 <h2 id='get-invoices-for-account'>Get Invoices For Account</h2>
 <p><a id="opIdgetInvoicesForAccount"></a></p>
@@ -7980,8 +7755,10 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"invoiceAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOnTimeDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discountAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"balanceAtIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7990,17 +7767,35 @@ x-cds-client-headers: string
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"gas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"electricity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"totalAccountCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalAccountDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -8032,263 +7827,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergyinvoicelistresponse">EnergyInvoiceListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-invoices-for-account-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» invoices</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of invoices sorted by date in descending order</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account for which the invoice was issued</td>
-</tr>
-<tr>
-<td>»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number assigned to this invoice by the energy Retailer</td>
-</tr>
-<tr>
-<td>»»» issueDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date that the invoice was actually issued (as opposed to generated or calculated)</td>
-</tr>
-<tr>
-<td>»»» dueDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
-<td>The date that the invoice is due to be paid</td>
-</tr>
-<tr>
-<td>»»» period</td>
-<td>object</td>
-<td>mandatory</td>
-<td>Object containing the start and end date for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» startDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The start date of the period covered by this invoice</td>
-</tr>
-<tr>
-<td>»»»» endDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The end date of the period covered by this invoice</td>
-</tr>
-<tr>
-<td>»»» invoiceAmount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>The net amount due for this invoice regardless of previous balance</td>
-</tr>
-<tr>
-<td>»»» payOnTimeDiscount</td>
-<td>object</td>
-<td>optional</td>
-<td>A discount for on time payment</td>
-</tr>
-<tr>
-<td>»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount that will be discounted if the invoice is paid by the date specified</td>
-</tr>
-<tr>
-<td>»»»» date</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date by which the invoice must be paid to receive the pay on time discount</td>
-</tr>
-<tr>
-<td>»»» balanceAtIssue</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The account balance at the time the invoice was issued</td>
-</tr>
-<tr>
-<td>»»» servicePoints</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges</td>
-</tr>
-<tr>
-<td>»»» gas</td>
-<td>object</td>
-<td>optional</td>
-<td>Object contain charges and credits related to gas usage</td>
-</tr>
-<tr>
-<td>»»»» totalUsageCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of usage charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» electricity</td>
-<td>object</td>
-<td>optional</td>
-<td>Object contain charges and credits related to electricity usage</td>
-</tr>
-<tr>
-<td>»»»» totalUsageCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of usage charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalGenerationCredits</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of generation credits for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» totalAccountCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of account level charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» totalAccountDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of account level discounts or credits for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» paymentStatus</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Indicator of the payment status for the invoice</td>
-</tr>
-<tr>
-<td>»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>paymentStatus</td>
-<td>PAID</td>
-</tr>
-<tr>
-<td>paymentStatus</td>
-<td>PARTIALLY_PAID</td>
-</tr>
-<tr>
-<td>paymentStatus</td>
-<td>NOT_PAID</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-18'>Response Headers</h3>
@@ -8324,8 +7869,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 <h2 id='get-bulk-invoices'>Get Bulk Invoices</h2>
 <p><a id="opIdlistInvoicesBulk"></a></p>
@@ -8482,8 +8028,10 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"invoiceAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOnTimeDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discountAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"balanceAtIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8492,17 +8040,35 @@ x-cds-client-headers: string
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"gas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"electricity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"totalAccountCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalAccountDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -8534,263 +8100,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergyinvoicelistresponse">EnergyInvoiceListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-bulk-invoices-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» invoices</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of invoices sorted by date in descending order</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account for which the invoice was issued</td>
-</tr>
-<tr>
-<td>»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number assigned to this invoice by the energy Retailer</td>
-</tr>
-<tr>
-<td>»»» issueDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date that the invoice was actually issued (as opposed to generated or calculated)</td>
-</tr>
-<tr>
-<td>»»» dueDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
-<td>The date that the invoice is due to be paid</td>
-</tr>
-<tr>
-<td>»»» period</td>
-<td>object</td>
-<td>mandatory</td>
-<td>Object containing the start and end date for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» startDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The start date of the period covered by this invoice</td>
-</tr>
-<tr>
-<td>»»»» endDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The end date of the period covered by this invoice</td>
-</tr>
-<tr>
-<td>»»» invoiceAmount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>The net amount due for this invoice regardless of previous balance</td>
-</tr>
-<tr>
-<td>»»» payOnTimeDiscount</td>
-<td>object</td>
-<td>optional</td>
-<td>A discount for on time payment</td>
-</tr>
-<tr>
-<td>»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount that will be discounted if the invoice is paid by the date specified</td>
-</tr>
-<tr>
-<td>»»»» date</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date by which the invoice must be paid to receive the pay on time discount</td>
-</tr>
-<tr>
-<td>»»» balanceAtIssue</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The account balance at the time the invoice was issued</td>
-</tr>
-<tr>
-<td>»»» servicePoints</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges</td>
-</tr>
-<tr>
-<td>»»» gas</td>
-<td>object</td>
-<td>optional</td>
-<td>Object contain charges and credits related to gas usage</td>
-</tr>
-<tr>
-<td>»»»» totalUsageCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of usage charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» electricity</td>
-<td>object</td>
-<td>optional</td>
-<td>Object contain charges and credits related to electricity usage</td>
-</tr>
-<tr>
-<td>»»»» totalUsageCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of usage charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalGenerationCredits</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of generation credits for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» totalAccountCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of account level charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» totalAccountDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of account level discounts or credits for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» paymentStatus</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Indicator of the payment status for the invoice</td>
-</tr>
-<tr>
-<td>»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>paymentStatus</td>
-<td>PAID</td>
-</tr>
-<tr>
-<td>paymentStatus</td>
-<td>PARTIALLY_PAID</td>
-</tr>
-<tr>
-<td>paymentStatus</td>
-<td>NOT_PAID</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-19'>Response Headers</h3>
@@ -8826,8 +8142,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 <h2 id='get-invoices-for-specific-accounts'>Get Invoices For Specific Accounts</h2>
 <p><a id="opIdlistInvoicesForAccounts"></a></p>
@@ -9026,8 +8343,10 @@ x-cds-client-headers: string
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"invoiceAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"payOnTimeDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discountAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"balanceAtIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9036,17 +8355,35 @@ x-cds-client-headers: string
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"gas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"electricity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"totalAccountCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalAccountDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -9078,263 +8415,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergyinvoicelistresponse">EnergyInvoiceListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-invoices-for-specific-accounts-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» invoices</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of invoices sorted by date in descending order</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account for which the invoice was issued</td>
-</tr>
-<tr>
-<td>»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number assigned to this invoice by the energy Retailer</td>
-</tr>
-<tr>
-<td>»»» issueDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date that the invoice was actually issued (as opposed to generated or calculated)</td>
-</tr>
-<tr>
-<td>»»» dueDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
-<td>The date that the invoice is due to be paid</td>
-</tr>
-<tr>
-<td>»»» period</td>
-<td>object</td>
-<td>mandatory</td>
-<td>Object containing the start and end date for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» startDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The start date of the period covered by this invoice</td>
-</tr>
-<tr>
-<td>»»»» endDate</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The end date of the period covered by this invoice</td>
-</tr>
-<tr>
-<td>»»» invoiceAmount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>optional</td>
-<td>The net amount due for this invoice regardless of previous balance</td>
-</tr>
-<tr>
-<td>»»» payOnTimeDiscount</td>
-<td>object</td>
-<td>optional</td>
-<td>A discount for on time payment</td>
-</tr>
-<tr>
-<td>»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount that will be discounted if the invoice is paid by the date specified</td>
-</tr>
-<tr>
-<td>»»»» date</td>
-<td><a href="#common-field-types">DateString</a></td>
-<td>mandatory</td>
-<td>The date by which the invoice must be paid to receive the pay on time discount</td>
-</tr>
-<tr>
-<td>»»» balanceAtIssue</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The account balance at the time the invoice was issued</td>
-</tr>
-<tr>
-<td>»»» servicePoints</td>
-<td>[string]</td>
-<td>mandatory</td>
-<td>Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges</td>
-</tr>
-<tr>
-<td>»»» gas</td>
-<td>object</td>
-<td>optional</td>
-<td>Object contain charges and credits related to gas usage</td>
-</tr>
-<tr>
-<td>»»»» totalUsageCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of usage charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» electricity</td>
-<td>object</td>
-<td>optional</td>
-<td>Object contain charges and credits related to electricity usage</td>
-</tr>
-<tr>
-<td>»»»» totalUsageCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of usage charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalGenerationCredits</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of generation credits for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»»» totalOnceOffDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» totalAccountCharges</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of account level charges for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» totalAccountDiscounts</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The aggregate total of account level discounts or credits for the period covered by the invoice</td>
-</tr>
-<tr>
-<td>»»» paymentStatus</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Indicator of the payment status for the invoice</td>
-</tr>
-<tr>
-<td>»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>paymentStatus</td>
-<td>PAID</td>
-</tr>
-<tr>
-<td>paymentStatus</td>
-<td>PARTIALLY_PAID</td>
-</tr>
-<tr>
-<td>paymentStatus</td>
-<td>NOT_PAID</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-20'>Response Headers</h3>
@@ -9370,8 +8457,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 <h2 id='get-billing-for-account'>Get Billing For Account</h2>
 <p><a id="opIdgetBillingForAccount"></a></p>
@@ -9528,16 +8616,47 @@ x-cds-client-headers: string
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transactionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"demand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9546,6 +8665,12 @@ x-cds-client-headers: string
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9585,303 +8710,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponse">EnergyBillingListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-billing-for-account-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» transactions</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of transactions sorted by date and time in descending order</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account for which transaction applies</td>
-</tr>
-<tr>
-<td>»»» executionDateTime</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>The date and time that the transaction occurred</td>
-</tr>
-<tr>
-<td>»»» transactionUType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Indicator of the type of transaction object present in this record</td>
-</tr>
-<tr>
-<td>»»» usage</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage</td>
-</tr>
-<tr>
-<td>»»»» servicePointId</td>
-<td>string</td>
-<td>optional</td>
-<td>The ID of the service point to which this transaction applies if any</td>
-</tr>
-<tr>
-<td>»»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number of the invoice in which this transaction is included if it has been issued</td>
-</tr>
-<tr>
-<td>»»»» timeOfUseType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The time of use type that the transaction applies to</td>
-</tr>
-<tr>
-<td>»»»» isEstimate</td>
-<td>boolean</td>
-<td>optional</td>
-<td>Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual</td>
-</tr>
-<tr>
-<td>»»»» startDate</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>Date and time when the usage period starts</td>
-</tr>
-<tr>
-<td>»»»» endDate</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>Date and time when the usage period ends</td>
-</tr>
-<tr>
-<td>»»»» usage</td>
-<td>number</td>
-<td>mandatory</td>
-<td>The usage for the period in kWh.  A negative value indicates power generated</td>
-</tr>
-<tr>
-<td>»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit</td>
-</tr>
-<tr>
-<td>»»»» adjustments</td>
-<td>[object]</td>
-<td>optional</td>
-<td>Optional array of adjustments arising for this transaction</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of the adjustment</td>
-</tr>
-<tr>
-<td>»»»»» description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>A free text description of the adjustment</td>
-</tr>
-<tr>
-<td>»»»» onceOff</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff</td>
-</tr>
-<tr>
-<td>»»»»» servicePointId</td>
-<td>string</td>
-<td>optional</td>
-<td>The ID of the service point to which this transaction applies if any</td>
-</tr>
-<tr>
-<td>»»»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number of the invoice in which this transaction is included if it has been issued</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit</td>
-</tr>
-<tr>
-<td>»»»»» description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>A free text description of the item</td>
-</tr>
-<tr>
-<td>»»»» payment</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount paid</td>
-</tr>
-<tr>
-<td>»»»»» method</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The method of payment</td>
-</tr>
-<tr>
-<td>»»»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transactionUType</td>
-<td>usage</td>
-</tr>
-<tr>
-<td>transactionUType</td>
-<td>onceOff</td>
-</tr>
-<tr>
-<td>transactionUType</td>
-<td>payment</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>PEAK</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>OFF_PEAK</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>OFF_PEAK_DC</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER1</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER2</td>
-</tr>
-<tr>
-<td>method</td>
-<td>DIRECT_DEBIT</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CARD</td>
-</tr>
-<tr>
-<td>method</td>
-<td>TRANSFER</td>
-</tr>
-<tr>
-<td>method</td>
-<td>BPAY</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CASH</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CHEQUE</td>
-</tr>
-<tr>
-<td>method</td>
-<td>OTHER</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-21'>Response Headers</h3>
@@ -9917,8 +8752,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 <h2 id='get-bulk-billing'>Get Bulk Billing</h2>
 <p><a id="opIdlistBillingBulk"></a></p>
@@ -10068,16 +8904,47 @@ x-cds-client-headers: string
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transactionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"demand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10086,6 +8953,12 @@ x-cds-client-headers: string
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10125,303 +8998,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponse">EnergyBillingListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-bulk-billing-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» transactions</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of transactions sorted by date and time in descending order</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account for which transaction applies</td>
-</tr>
-<tr>
-<td>»»» executionDateTime</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>The date and time that the transaction occurred</td>
-</tr>
-<tr>
-<td>»»» transactionUType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Indicator of the type of transaction object present in this record</td>
-</tr>
-<tr>
-<td>»»» usage</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage</td>
-</tr>
-<tr>
-<td>»»»» servicePointId</td>
-<td>string</td>
-<td>optional</td>
-<td>The ID of the service point to which this transaction applies if any</td>
-</tr>
-<tr>
-<td>»»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number of the invoice in which this transaction is included if it has been issued</td>
-</tr>
-<tr>
-<td>»»»» timeOfUseType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The time of use type that the transaction applies to</td>
-</tr>
-<tr>
-<td>»»»» isEstimate</td>
-<td>boolean</td>
-<td>optional</td>
-<td>Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual</td>
-</tr>
-<tr>
-<td>»»»» startDate</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>Date and time when the usage period starts</td>
-</tr>
-<tr>
-<td>»»»» endDate</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>Date and time when the usage period ends</td>
-</tr>
-<tr>
-<td>»»»» usage</td>
-<td>number</td>
-<td>mandatory</td>
-<td>The usage for the period in kWh.  A negative value indicates power generated</td>
-</tr>
-<tr>
-<td>»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit</td>
-</tr>
-<tr>
-<td>»»»» adjustments</td>
-<td>[object]</td>
-<td>optional</td>
-<td>Optional array of adjustments arising for this transaction</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of the adjustment</td>
-</tr>
-<tr>
-<td>»»»»» description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>A free text description of the adjustment</td>
-</tr>
-<tr>
-<td>»»»» onceOff</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff</td>
-</tr>
-<tr>
-<td>»»»»» servicePointId</td>
-<td>string</td>
-<td>optional</td>
-<td>The ID of the service point to which this transaction applies if any</td>
-</tr>
-<tr>
-<td>»»»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number of the invoice in which this transaction is included if it has been issued</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit</td>
-</tr>
-<tr>
-<td>»»»»» description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>A free text description of the item</td>
-</tr>
-<tr>
-<td>»»»» payment</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount paid</td>
-</tr>
-<tr>
-<td>»»»»» method</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The method of payment</td>
-</tr>
-<tr>
-<td>»»»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transactionUType</td>
-<td>usage</td>
-</tr>
-<tr>
-<td>transactionUType</td>
-<td>onceOff</td>
-</tr>
-<tr>
-<td>transactionUType</td>
-<td>payment</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>PEAK</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>OFF_PEAK</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>OFF_PEAK_DC</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER1</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER2</td>
-</tr>
-<tr>
-<td>method</td>
-<td>DIRECT_DEBIT</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CARD</td>
-</tr>
-<tr>
-<td>method</td>
-<td>TRANSFER</td>
-</tr>
-<tr>
-<td>method</td>
-<td>BPAY</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CASH</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CHEQUE</td>
-</tr>
-<tr>
-<td>method</td>
-<td>OTHER</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-22'>Response Headers</h3>
@@ -10457,8 +9040,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 <h2 id='get-billing-for-specific-accounts'>Get Billing For Specific Accounts</h2>
 <p><a id="opIdlistBillingForAccounts"></a></p>
@@ -10650,16 +9234,47 @@ x-cds-client-headers: string
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transactionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"demand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10668,6 +9283,12 @@ x-cds-client-headers: string
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10707,303 +9328,13 @@ x-cds-client-headers: string
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td>Inline</td>
+<td><a href="#schemacdr-energy-apienergybillinglistresponse">EnergyBillingListResponse</a></td>
 </tr>
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
 <td>None</td>
-</tr>
-</tbody></table>
-
-<h3 id="get-billing-for-specific-accounts-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» data</td>
-<td>object</td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» transactions</td>
-<td>[object]</td>
-<td>mandatory</td>
-<td>Array of transactions sorted by date and time in descending order</td>
-</tr>
-<tr>
-<td>»»» accountId</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The ID of the account for which transaction applies</td>
-</tr>
-<tr>
-<td>»»» executionDateTime</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>The date and time that the transaction occurred</td>
-</tr>
-<tr>
-<td>»»» transactionUType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>Indicator of the type of transaction object present in this record</td>
-</tr>
-<tr>
-<td>»»» usage</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage</td>
-</tr>
-<tr>
-<td>»»»» servicePointId</td>
-<td>string</td>
-<td>optional</td>
-<td>The ID of the service point to which this transaction applies if any</td>
-</tr>
-<tr>
-<td>»»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number of the invoice in which this transaction is included if it has been issued</td>
-</tr>
-<tr>
-<td>»»»» timeOfUseType</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The time of use type that the transaction applies to</td>
-</tr>
-<tr>
-<td>»»»» isEstimate</td>
-<td>boolean</td>
-<td>optional</td>
-<td>Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual</td>
-</tr>
-<tr>
-<td>»»»» startDate</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>Date and time when the usage period starts</td>
-</tr>
-<tr>
-<td>»»»» endDate</td>
-<td><a href="#common-field-types">DateTimeString</a></td>
-<td>mandatory</td>
-<td>Date and time when the usage period ends</td>
-</tr>
-<tr>
-<td>»»»» usage</td>
-<td>number</td>
-<td>mandatory</td>
-<td>The usage for the period in kWh.  A negative value indicates power generated</td>
-</tr>
-<tr>
-<td>»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit</td>
-</tr>
-<tr>
-<td>»»»» adjustments</td>
-<td>[object]</td>
-<td>optional</td>
-<td>Optional array of adjustments arising for this transaction</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of the adjustment</td>
-</tr>
-<tr>
-<td>»»»»» description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>A free text description of the adjustment</td>
-</tr>
-<tr>
-<td>»»»» onceOff</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff</td>
-</tr>
-<tr>
-<td>»»»»» servicePointId</td>
-<td>string</td>
-<td>optional</td>
-<td>The ID of the service point to which this transaction applies if any</td>
-</tr>
-<tr>
-<td>»»»»» invoiceNumber</td>
-<td>string</td>
-<td>optional</td>
-<td>The number of the invoice in which this transaction is included if it has been issued</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit</td>
-</tr>
-<tr>
-<td>»»»»» description</td>
-<td>string</td>
-<td>mandatory</td>
-<td>A free text description of the item</td>
-</tr>
-<tr>
-<td>»»»» payment</td>
-<td>object</td>
-<td>conditional</td>
-<td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
-</tr>
-<tr>
-<td>»»»»» amount</td>
-<td><a href="#common-field-types">AmountString</a></td>
-<td>mandatory</td>
-<td>The amount paid</td>
-</tr>
-<tr>
-<td>»»»»» method</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The method of payment</td>
-</tr>
-<tr>
-<td>»»»» links</td>
-<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»»»» self</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>mandatory</td>
-<td>Fully qualified link that generated the current response document</td>
-</tr>
-<tr>
-<td>»»»»» first</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the first page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»»»» prev</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
-</tr>
-<tr>
-<td>»»»»» next</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the next page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»»»» last</td>
-<td><a href="#common-field-types">URIString</a></td>
-<td>conditional</td>
-<td>URI to the last page of this set. Mandatory if this response is not the last page</td>
-</tr>
-<tr>
-<td>»»»» meta</td>
-<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
-<td>mandatory</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»»»» totalRecords</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-<tr>
-<td>»»»»» totalPages</td>
-<td><a href="#common-field-types">NaturalNumber</a></td>
-<td>mandatory</td>
-<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transactionUType</td>
-<td>usage</td>
-</tr>
-<tr>
-<td>transactionUType</td>
-<td>onceOff</td>
-</tr>
-<tr>
-<td>transactionUType</td>
-<td>payment</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>PEAK</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>OFF_PEAK</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>OFF_PEAK_DC</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER1</td>
-</tr>
-<tr>
-<td>timeOfUseType</td>
-<td>SHOULDER2</td>
-</tr>
-<tr>
-<td>method</td>
-<td>DIRECT_DEBIT</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CARD</td>
-</tr>
-<tr>
-<td>method</td>
-<td>TRANSFER</td>
-</tr>
-<tr>
-<td>method</td>
-<td>BPAY</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CASH</td>
-</tr>
-<tr>
-<td>method</td>
-<td>CHEQUE</td>
-</tr>
-<tr>
-<td>method</td>
-<td>OTHER</td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-23'>Response Headers</h3>
@@ -11039,8 +9370,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside></p>
 
 <h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
@@ -12150,6 +10482,359 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<h2 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h2>
+
+<p><a id="schemacdr-energy-apienergybalancelistresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» balances</td>
+<td>[object]</td>
+<td>mandatory</td>
+<td>Array of account balances</td>
+</tr>
+<tr>
+<td>»» accountId</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The ID of the account</td>
+</tr>
+<tr>
+<td>»» balance</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
+</tr>
+<tr>
+<td>» links</td>
+<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» meta</td>
+<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h2>
+
+<p><a id="schemacdr-energy-apienergybalanceresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» balance</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-energy-apilinks">Links</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h2>
+
+<p><a id="schemacdr-energy-apienergyinvoicelistresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"invoiceAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payOnTimeDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"discountAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"balanceAtIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"servicePoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"gas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"electricity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"accountCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-9'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» invoices</td>
+<td>[<a href="#schemacdr-energy-apienergyinvoice">EnergyInvoice</a>]</td>
+<td>mandatory</td>
+<td>Array of invoices sorted by date in descending order</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h2>
+
+<p><a id="schemacdr-energy-apienergybillinglistresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transactionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"demand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-10'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» transactions</td>
+<td>[<a href="#schemacdr-energy-apienergybillingtransaction">EnergyBillingTransaction</a>]</td>
+<td>mandatory</td>
+<td>Array of transactions sorted by date and time in descending order</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-energy-apilinkspaginated">LinksPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimetapaginated">MetaPaginated</a></td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h2>
 
 <p><a id="schemacdr-energy-apierrorlistresponse"></a></p>
@@ -12166,7 +10851,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-7'>Properties</h3>
+</span></code></pre><h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12246,7 +10931,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-8'>Properties</h3>
+</span></code></pre><h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12382,7 +11067,7 @@ This operation does not require authentication
 <td>Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12835,7 +11520,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-9'>Properties</h3>
+</span></code></pre><h3 id='properties-13'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -13099,7 +11784,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-10'>Properties</h3>
+</span></code></pre><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13211,7 +11896,7 @@ This operation does not require authentication
 <td>Array of tariff periods</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-17'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13445,7 +12130,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre><h3 id='properties-15'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -13517,7 +12202,7 @@ This operation does not require authentication
 <td>An array of the available billing schedules for this contract. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-18'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13572,7 +12257,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD</em></p>
-<h3 id='properties-12'>Properties</h3>
+<h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13639,7 +12324,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Optional list of incentives available for the contract</em></p>
-<h3 id='properties-13'>Properties</h3>
+<h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13673,7 +12358,7 @@ This operation does not require authentication
 <td>A display message outlining an eligibility criteria that may apply</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-19'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13723,7 +12408,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Optional list of discounts available for the contract</em></p>
-<h3 id='properties-14'>Properties</h3>
+<h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13823,7 +12508,7 @@ This operation does not require authentication
 <td>The usage amount threshold above which the discount applies</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-20'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13897,7 +12582,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Optional list of charges applicable to green power</em></p>
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13955,7 +12640,7 @@ This operation does not require authentication
 <td>The amount of the charge if the type implies the application of a fixed amount</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14009,7 +12694,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Eligibility restrictions or requirements</em></p>
-<h3 id='properties-16'>Properties</h3>
+<h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14037,7 +12722,7 @@ This operation does not require authentication
 <td>A description of the eligibility restriction</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14145,7 +12830,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>An array of fees applicable to the plan</em></p>
-<h3 id='properties-17'>Properties</h3>
+<h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14185,7 +12870,7 @@ This operation does not require authentication
 <td>A description of the fee</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14342,7 +13027,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Array of feed in tariffs for solar power</em></p>
-<h3 id='properties-18'>Properties</h3>
+<h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14448,7 +13133,7 @@ This operation does not require authentication
 <td>The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14560,7 +13245,7 @@ This operation does not require authentication
 
 </span></code></pre>
 <p><em>Array of tariff periods</em></p>
-<h3 id='properties-19'>Properties</h3>
+<h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14798,7 +13483,7 @@ This operation does not require authentication
 <td>Charge period for the demand tariff</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14873,7 +13558,7 @@ This operation does not require authentication
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14931,7 +13616,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-25'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -15383,7 +14068,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-26'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -15563,7 +14248,7 @@ This operation does not require authentication
 <td>Used for a trailing suffix to the name (e.g. Jr)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15607,7 +14292,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15701,7 +14386,7 @@ This operation does not require authentication
 <td>The frequency with which a bill will be issued.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a> (excludes recurrence syntax)</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15785,7 +14470,7 @@ This operation does not require authentication
   </span><span class="s2">"percentageDiscount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15850,6 +14535,1082 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<h2 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h2>
+
+<p><a id="schemacdr-energy-apienergyinvoice"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"invoiceAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payOnTimeDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"discountAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"balanceAtIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"servicePoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"gas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"electricity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"accountCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-29'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>string</td>
+<td>optional</td>
+<td>The ID of the account for which the invoice was issued</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>The number assigned to this invoice by the energy Retailer</td>
+</tr>
+<tr>
+<td>issueDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>The date that the invoice was actually issued (as opposed to generated or calculated)</td>
+</tr>
+<tr>
+<td>dueDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>The date that the invoice is due to be paid</td>
+</tr>
+<tr>
+<td>period</td>
+<td>object</td>
+<td>mandatory</td>
+<td>Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice</td>
+</tr>
+<tr>
+<td>» startDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td>The start date of the period covered by this invoice</td>
+</tr>
+<tr>
+<td>» endDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td>The end date of the period covered by this invoice</td>
+</tr>
+<tr>
+<td>invoiceAmount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The net amount due for this invoice regardless of previous balance</td>
+</tr>
+<tr>
+<td>gstAmount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The total GST amount for this invoice.  If absent then zero is assumed</td>
+</tr>
+<tr>
+<td>payOnTimeDiscount</td>
+<td>object</td>
+<td>optional</td>
+<td>A discount for on time payment</td>
+</tr>
+<tr>
+<td>» discountAmount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount that will be discounted if the invoice is paid by the date specified</td>
+</tr>
+<tr>
+<td>» gstAmount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed</td>
+</tr>
+<tr>
+<td>» date</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td>The date by which the invoice must be paid to receive the pay on time discount</td>
+</tr>
+<tr>
+<td>balanceAtIssue</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The account balance at the time the invoice was issued</td>
+</tr>
+<tr>
+<td>servicePoints</td>
+<td>[string]</td>
+<td>optional</td>
+<td>Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges</td>
+</tr>
+<tr>
+<td>gas</td>
+<td><a href="#schemacdr-energy-apienergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</a></td>
+<td>optional</td>
+<td>Object containing charges and credits related to gas usage</td>
+</tr>
+<tr>
+<td>electricity</td>
+<td><a href="#schemacdr-energy-apienergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</a></td>
+<td>optional</td>
+<td>Object containing charges and credits related to electricity usage</td>
+</tr>
+<tr>
+<td>accountCharges</td>
+<td><a href="#schemacdr-energy-apienergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</a></td>
+<td>optional</td>
+<td>Object contain charges and credits related to electricity usage</td>
+</tr>
+<tr>
+<td>paymentStatus</td>
+<td>string</td>
+<td>optional</td>
+<td>Indicator of the payment status for the invoice</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>paymentStatus</td>
+<td>PAID</td>
+</tr>
+<tr>
+<td>paymentStatus</td>
+<td>PARTIALLY_PAID</td>
+</tr>
+<tr>
+<td>paymentStatus</td>
+<td>NOT_PAID</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h2>
+
+<p><a id="schemacdr-energy-apienergyinvoicegasusagecharges"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-30'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalUsageCharges</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>totalGenerationCredits</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>totalOnceOffCharges</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>totalOnceOffDiscounts</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>otherCharges</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&amp;I consumers) (exclusive of GST)</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of charges for this item (exclusive of GST)</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the type of charge</td>
+</tr>
+<tr>
+<td>totalGst</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h2>
+
+<p><a id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalOnceOffDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-31'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalUsageCharges</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>totalGenerationCredits</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>totalOnceOffCharges</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>totalOnceOffDiscounts</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)</td>
+</tr>
+<tr>
+<td>otherCharges</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&amp;I consumers) (exclusive of GST)</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of charges for this item (exclusive of GST)</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the type of charge</td>
+</tr>
+<tr>
+<td>totalGst</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The total GST for all electricity usage charges.  If absent then zero is assumed</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h2>
+
+<p><a id="schemacdr-energy-apienergyinvoiceaccountcharges"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalGst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><em>Object contain charges and credits related to electricity usage</em></p>
+<h3 id='properties-32'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalCharges</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of account level charges for the period covered by the invoice</td>
+</tr>
+<tr>
+<td>totalDiscounts</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The aggregate total of account level discounts or credits for the period covered by the invoice</td>
+</tr>
+<tr>
+<td>totalGst</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The total GST for all account level charges.  If absent then zero is assumed</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h2>
+
+<p><a id="schemacdr-energy-apienergybillingtransaction"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"gst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"demand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"onceOff"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"otherCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-33'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The ID of the account for which transaction applies</td>
+</tr>
+<tr>
+<td>executionDateTime</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>The date and time that the transaction occurred</td>
+</tr>
+<tr>
+<td>gst</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>optional</td>
+<td>The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed</td>
+</tr>
+<tr>
+<td>transactionUType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>Indicator of the type of transaction object present in this record</td>
+</tr>
+<tr>
+<td>usage</td>
+<td><a href="#schemacdr-energy-apienergybillingusagetransaction">EnergyBillingUsageTransaction</a></td>
+<td>conditional</td>
+<td>Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage</td>
+</tr>
+<tr>
+<td>demand</td>
+<td><a href="#schemacdr-energy-apienergybillingdemandtransaction">EnergyBillingDemandTransaction</a></td>
+<td>optional</td>
+<td>Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand</td>
+</tr>
+<tr>
+<td>onceOff</td>
+<td><a href="#schemacdr-energy-apienergybillingonceofftransaction">EnergyBillingOnceOffTransaction</a></td>
+<td>conditional</td>
+<td>Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff</td>
+</tr>
+<tr>
+<td>otherCharges</td>
+<td><a href="#schemacdr-energy-apienergybillingothertransaction">EnergyBillingOtherTransaction</a></td>
+<td>optional</td>
+<td>Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge</td>
+</tr>
+<tr>
+<td>payment</td>
+<td><a href="#schemacdr-energy-apienergybillingpaymenttransaction">EnergyBillingPaymentTransaction</a></td>
+<td>conditional</td>
+<td>Represents a payment to the account.  Mandatory if transactionUType is equal to payment</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transactionUType</td>
+<td>usage</td>
+</tr>
+<tr>
+<td>transactionUType</td>
+<td>demand</td>
+</tr>
+<tr>
+<td>transactionUType</td>
+<td>onceOff</td>
+</tr>
+<tr>
+<td>transactionUType</td>
+<td>otherCharges</td>
+</tr>
+<tr>
+<td>transactionUType</td>
+<td>payment</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h2>
+
+<p><a id="schemacdr-energy-apienergybillingusagetransaction"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-34'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointId</td>
+<td>string</td>
+<td>optional</td>
+<td>The ID of the service point to which this transaction applies if any</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>The number of the invoice in which this transaction is included if it has been issued</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The time of use type that the transaction applies to</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>optional</td>
+<td>Optional description of the transaction that can be used for display purposes</td>
+</tr>
+<tr>
+<td>isEstimate</td>
+<td>boolean</td>
+<td>optional</td>
+<td>Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>Date and time when the usage period starts</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>Date and time when the usage period ends</td>
+</tr>
+<tr>
+<td>usage</td>
+<td>number</td>
+<td>mandatory</td>
+<td>The usage for the period in kWh.  A negative value indicates power generated</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit</td>
+</tr>
+<tr>
+<td>calculationFactors</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Additional calculation factors that inform the transaction</td>
+</tr>
+<tr>
+<td>» value</td>
+<td>number</td>
+<td>mandatory</td>
+<td>The value of the calculation factor</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of the calculation factor</td>
+</tr>
+<tr>
+<td>adjustments</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Optional array of adjustments arising for this transaction</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount of the adjustment</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the adjustment</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timeOfUseType</td>
+<td>PEAK</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>OFF_PEAK</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>OFF_PEAK_DEMAND_CHARGE</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SHOULDER</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SHOULDER1</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SHOULDER2</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>CONTROLLED_LOAD</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SOLAR</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>AGGREGATE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>DLF</td>
+</tr>
+<tr>
+<td>type</td>
+<td>MLF</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h2>
+
+<p><a id="schemacdr-energy-apienergybillingdemandtransaction"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timeOfUseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PEAK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isEstimate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"calculationFactors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLF"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-35'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointId</td>
+<td>string</td>
+<td>optional</td>
+<td>The ID of the service point to which this transaction applies if any</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>The number of the invoice in which this transaction is included if it has been issued</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The time of use type that the transaction applies to</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>optional</td>
+<td>Optional description of the transaction that can be used for display purposes</td>
+</tr>
+<tr>
+<td>isEstimate</td>
+<td>boolean</td>
+<td>optional</td>
+<td>Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>Date and time when the demand period starts</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td>Date and time when the demand period ends</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>number</td>
+<td>mandatory</td>
+<td>The rate for the demand charge in kVA.  A negative value indicates power generated</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit</td>
+</tr>
+<tr>
+<td>calculationFactors</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Additional calculation factors that inform the transaction</td>
+</tr>
+<tr>
+<td>» value</td>
+<td>number</td>
+<td>mandatory</td>
+<td>The value of the calculation factor</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The type of the calculation factor</td>
+</tr>
+<tr>
+<td>adjustments</td>
+<td>[object]</td>
+<td>optional</td>
+<td>Optional array of adjustments arising for this transaction</td>
+</tr>
+<tr>
+<td>» amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount of the adjustment</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the adjustment</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timeOfUseType</td>
+<td>PEAK</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>OFF_PEAK</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>OFF_PEAK_DEMAND_CHARGE</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SHOULDER</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SHOULDER1</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SHOULDER2</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>CONTROLLED_LOAD</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>SOLAR</td>
+</tr>
+<tr>
+<td>timeOfUseType</td>
+<td>AGGREGATE</td>
+</tr>
+<tr>
+<td>type</td>
+<td>DLF</td>
+</tr>
+<tr>
+<td>type</td>
+<td>MLF</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h2>
+
+<p><a id="schemacdr-energy-apienergybillingonceofftransaction"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-36'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointId</td>
+<td>string</td>
+<td>optional</td>
+<td>The ID of the service point to which this transaction applies if any</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>The number of the invoice in which this transaction is included if it has been issued</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the item</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h2>
+
+<p><a id="schemacdr-energy-apienergybillingothertransaction"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-37'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointId</td>
+<td>string</td>
+<td>optional</td>
+<td>The ID of the service point to which this transaction applies if any</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td>string</td>
+<td>optional</td>
+<td>The number of the invoice in which this transaction is included if it has been issued</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount of the charge</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A free text description of the item</td>
+</tr>
+</tbody></table>
+
+<h2 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h2>
+
+<p><a id="schemacdr-energy-apienergybillingpaymenttransaction"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-38'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td><a href="#common-field-types">AmountString</a></td>
+<td>mandatory</td>
+<td>The amount paid</td>
+</tr>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The method of payment</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>method</td>
+<td>DIRECT_DEBIT</td>
+</tr>
+<tr>
+<td>method</td>
+<td>CARD</td>
+</tr>
+<tr>
+<td>method</td>
+<td>TRANSFER</td>
+</tr>
+<tr>
+<td>method</td>
+<td>BPAY</td>
+</tr>
+<tr>
+<td>method</td>
+<td>CASH</td>
+</tr>
+<tr>
+<td>method</td>
+<td>CHEQUE</td>
+</tr>
+<tr>
+<td>method</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+
 <h2 class="schema-toc" id="tocSderrecord">derRecord</h2>
 
 <p><a id="schemacdr-energy-apiderrecord"></a></p>
@@ -15906,7 +15667,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-25'>Properties</h3>
+</span></code></pre><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16174,7 +15935,7 @@ This operation does not require authentication
 <td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16246,7 +16007,7 @@ This operation does not require authentication
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-26'>Properties</h3>
+</span></code></pre><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16268,7 +16029,7 @@ This operation does not require authentication
 <p><a id="schemacdr-energy-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-41'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
@@ -16282,7 +16043,7 @@ This operation does not require authentication
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16331,7 +16092,7 @@ This operation does not require authentication
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
