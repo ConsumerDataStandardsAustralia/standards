@@ -157,6 +157,144 @@
                     }
                 }
             },
+            "EnergyBalanceListResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "balances"
+                        ],
+                        "properties": {
+                            "balances": {
+                                "description": "Array of account balances",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "accountId",
+                                        "balance"
+                                    ],
+                                    "properties": {
+                                        "accountId": {
+                                            "description": "The ID of the account",
+                                            "type": "string"
+                                        },
+                                        "balance": {
+                                            "description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
+                                            "type": "string",
+                                            "x-cds-type": "AmountString"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/LinksPaginated"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/MetaPaginated"
+                    }
+                }
+            },
+            "EnergyBalanceResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "balance"
+                        ],
+                        "properties": {
+                            "balance": {
+                                "description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
+                                "type": "string",
+                                "x-cds-type": "AmountString"
+                            }
+                        }
+
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },
+            "EnergyInvoiceListResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "invoices"
+                        ],
+                        "properties": {
+                            "invoices": {
+                                "description": "Array of invoices sorted by date in descending order",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnergyInvoice"
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/LinksPaginated"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/MetaPaginated"
+                    }
+                }
+            },
+            "EnergyBillingListResponse": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "links",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "transactions"
+                        ],
+                        "properties": {
+                            "transactions": {
+                                "description": "Array of transactions sorted by date and time in descending order",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnergyBillingTransaction"
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "$ref": "#/components/schemas/LinksPaginated"
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/MetaPaginated"
+                    }
+                }
+            },
             "ErrorListResponse": {
                 "type": "object",
                 "required": [
@@ -1678,6 +1816,629 @@
                     }
                 }
             },
+            "EnergyInvoice": {
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "invoiceNumber",
+                    "issueDate",
+                    "period",
+                    "amountDue",
+                    "balanceAtIssue",
+                    "servicePoints",
+                    "totalAccountCharges",
+                    "totalAccountDiscounts",
+                    "paymentStatus"
+                ],
+                "required": [
+                    "period"
+                ],
+                "properties": {
+                    "accountId": {
+                        "description": "The ID of the account for which the invoice was issued",
+                        "type": "string"
+                    },
+                    "invoiceNumber": {
+                        "description": "The number assigned to this invoice by the energy Retailer",
+                        "type": "string"
+                    },
+                    "issueDate": {
+                        "description": "The date that the invoice was actually issued (as opposed to generated or calculated)",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "dueDate": {
+                        "description": "The date that the invoice is due to be paid",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "period": {
+                        "description": "Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice",
+                        "type": "object",
+                        "required": [
+                            "startDate",
+                            "endDate"
+                        ],
+                        "properties": {
+                            "startDate": {
+                                "description": "The start date of the period covered by this invoice",
+                                "type": "string",
+                                "x-cds-type": "DateString"
+                            },
+                            "endDate": {
+                                "description": "The end date of the period covered by this invoice",
+                                "type": "string",
+                                "x-cds-type": "DateString"
+                            }
+                        }
+                    },
+                    "invoiceAmount": {
+                        "description": "The net amount due for this invoice regardless of previous balance",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "gstAmount": {
+                        "description": "The total GST amount for this invoice.  If absent then zero is assumed",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "payOnTimeDiscount": {
+                        "description": "A discount for on time payment",
+                        "type": "object",
+                        "required": [
+                            "discountAmount",
+                            "date"
+                        ],
+                        "properties": {
+                            "discountAmount": {
+                                "description": "The amount that will be discounted if the invoice is paid by the date specified",
+                                "type": "string",
+                                "x-cds-type": "AmountString"
+                            },
+                            "gstAmount": {
+                                "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
+                                "type": "string",
+                                "x-cds-type": "AmountString"
+                            },
+                            "date": {
+                                "description": "The date by which the invoice must be paid to receive the pay on time discount",
+                                "type": "string",
+                                "x-cds-type": "DateString"
+                            }
+                        }
+                    },
+                    "balanceAtIssue": {
+                        "description": "The account balance at the time the invoice was issued",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "servicePoints": {
+                        "description": "Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "gas": {
+                        "description": "Object containing charges and credits related to gas usage",
+                        "$ref": "#/components/schemas/EnergyInvoiceGasUsageCharges"
+                    },
+                    "electricity": {
+                        "description": "Object containing charges and credits related to electricity usage",
+                        "$ref": "#/components/schemas/EnergyInvoiceElectricityUsageCharges"
+                    },
+                    "accountCharges": {
+                        "$ref": "#/components/schemas/EnergyInvoiceAccountCharges"
+                    },
+                    "paymentStatus": {
+                        "description": "Indicator of the payment status for the invoice",
+                        "type": "string",
+                        "enum": [
+                            "PAID",
+                            "PARTIALLY_PAID",
+                            "NOT_PAID"
+                        ]
+                    }
+                }
+            },
+            "EnergyInvoiceGasUsageCharges": {
+                "type": "object",
+                "required": [
+                    "totalUsageCharges",
+                    "totalGenerationCredits",
+                    "totalOnceOffCharges",
+                    "totalOnceOffDiscounts"
+                ],
+                "properties": {
+                    "totalUsageCharges": {
+                        "description": "The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalGenerationCredits": {
+                        "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalOnceOffCharges": {
+                        "description": "The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalOnceOffDiscounts": {
+                        "description": "The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "otherCharges": {
+                        "description": "Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "amount",
+                                "description"
+                            ],
+                            "properties": {
+                                "amount": {
+                                    "description": "The aggregate total of charges for this item (exclusive of GST)",
+                                    "type": "string",
+                                    "x-cds-type": "AmountString"
+                                },
+                                "description": {
+                                    "description": "A free text description of the type of charge",
+                                    "type": "string",
+                                }
+                            }
+                        }
+                    },
+                    "totalGst": {
+                        "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    }
+                }
+            },
+            "EnergyInvoiceElectricityUsageCharges": {
+                "type": "object",
+                "required": [
+                    "totalUsageCharges",
+                    "totalGenerationCredits",
+                    "totalOnceOffCharges",
+                    "totalOnceOffDiscounts"
+                ],
+                "properties": {
+                    "totalUsageCharges": {
+                        "description": "The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalGenerationCredits": {
+                        "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalOnceOffCharges": {
+                        "description": "The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalOnceOffDiscounts": {
+                        "description": "The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "otherCharges": {
+                        "description": "Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "amount",
+                                "description"
+                            ],
+                            "properties": {
+                                "amount": {
+                                    "description": "The aggregate total of charges for this item (exclusive of GST)",
+                                    "type": "string",
+                                    "x-cds-type": "AmountString"
+                                },
+                                "description": {
+                                    "description": "A free text description of the type of charge",
+                                    "type": "string",
+                                }
+                            }
+                        }
+                    },
+                    "totalGst": {
+                        "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    }
+                }
+            },
+            "EnergyInvoiceAccountCharges": {
+                "description": "Object contain charges and credits related to electricity usage",
+                "type": "object",
+                "required": [
+                    "totalCharges",
+                    "totalDiscounts"
+                ],
+                "properties": {
+                    "totalCharges": {
+                        "description": "The aggregate total of account level charges for the period covered by the invoice",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalDiscounts": {
+                        "description": "The aggregate total of account level discounts or credits for the period covered by the invoice",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "totalGst": {
+                        "description": "The total GST for all account level charges.  If absent then zero is assumed",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    }
+                }
+            },
+            "EnergyBillingTransaction": {
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "executionDateTime",
+                    "transactionUType"
+                ],
+                "x-conditional": [
+                    "usage",
+                    "onceOff",
+                    "payment"
+                ],
+                "properties": {
+                    "accountId": {
+                        "description": "The ID of the account for which transaction applies",
+                        "type": "string"
+                    },
+                    "executionDateTime": {
+                        "description": "The date and time that the transaction occurred",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "gst": {
+                        "description": "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "transactionUType": {
+                        "description": "Indicator of the type of transaction object present in this record",
+                        "type": "string",
+                        "enum": [
+                            "usage",
+                            "demand",
+                            "onceOff",
+                            "otherCharges",
+                            "payment"
+                        ]
+                    },
+                    "usage": {
+                        "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
+                        "$ref": "#/components/schemas/EnergyBillingUsageTransaction"
+                    },
+                    "demand": {
+                        "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand",
+                        "$ref": "#/components/schemas/EnergyBillingDemandTransaction"
+                    },
+                    "onceOff": {
+                        "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
+                        "$ref": "#/components/schemas/EnergyBillingOnceOffTransaction"
+                    },
+                    "otherCharges": {
+                        "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge",
+                        "$ref": "#/components/schemas/EnergyBillingOtherTransaction"
+                    },
+                    "payment": {
+                        "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment",
+                        "$ref": "#/components/schemas/EnergyBillingPaymentTransaction"
+                    }
+                }
+            },
+            "EnergyBillingUsageTransaction": {
+                "type": "object",
+                "required": [
+                    "timeOfUseType",
+                    "startDate",
+                    "endDate",
+                    "usage",
+                    "amount"
+                ],
+                "properties": {
+                    "servicePointId": {
+                        "description": "The ID of the service point to which this transaction applies if any",
+                        "type": "string"
+                    },
+                    "invoiceNumber": {
+                        "description": "The number of the invoice in which this transaction is included if it has been issued",
+                        "type": "string"
+                    },
+                    "timeOfUseType": {
+                        "description": "The time of use type that the transaction applies to",
+                        "type": "string",
+                        "enum": [
+                            "PEAK",
+                            "OFF_PEAK",
+                            "OFF_PEAK_DEMAND_CHARGE",
+                            "SHOULDER",
+                            "SHOULDER1",
+                            "SHOULDER2",
+                            "CONTROLLED_LOAD",
+                            "SOLAR",
+                            "AGGREGATE"
+                        ]
+                    },
+                    "description": {
+                        "description": "Optional description of the transaction that can be used for display purposes",
+                        "type": "string"
+                    },
+                    "isEstimate": {
+                        "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
+                        "type": "boolean"
+                    },
+                    "startDate": {
+                        "description": "Date and time when the usage period starts",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "endDate": {
+                        "description": "Date and time when the usage period ends",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "usage": {
+                        "description": "The usage for the period in kWh.  A negative value indicates power generated",
+                        "type": "number"
+                    },
+                    "amount": {
+                        "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "calculationFactors": {
+                        "description": "Additional calculation factors that inform the transaction",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "value",
+                                "type"
+                            ],
+                            "properties": {
+                                "value": {
+                                    "description": "The value of the calculation factor",
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "description": "The type of the calculation factor",
+                                    "type": "string",
+                                    "enum": [
+                                        "DLF",
+                                        "MLF"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "adjustments": {
+                        "description": "Optional array of adjustments arising for this transaction",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "amount",
+                                "description"
+                            ],
+                            "properties": {
+                                "amount": {
+                                    "description": "The amount of the adjustment",
+                                    "type": "string",
+                                    "x-cds-type": "AmountString"
+                                },
+                                "description": {
+                                    "description": "A free text description of the adjustment",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "EnergyBillingDemandTransaction": {
+                "type": "object",
+                "required": [
+                    "timeOfUseType",
+                    "startDate",
+                    "endDate",
+                    "rate",
+                    "amount"
+                ],
+                "properties": {
+                    "servicePointId": {
+                        "description": "The ID of the service point to which this transaction applies if any",
+                        "type": "string"
+                    },
+                    "invoiceNumber": {
+                        "description": "The number of the invoice in which this transaction is included if it has been issued",
+                        "type": "string"
+                    },
+                    "timeOfUseType": {
+                        "description": "The time of use type that the transaction applies to",
+                        "type": "string",
+                        "enum": [
+                            "PEAK",
+                            "OFF_PEAK",
+                            "OFF_PEAK_DEMAND_CHARGE",
+                            "SHOULDER",
+                            "SHOULDER1",
+                            "SHOULDER2",
+                            "CONTROLLED_LOAD",
+                            "SOLAR",
+                            "AGGREGATE"
+                        ]
+                    },
+                    "description": {
+                        "description": "Optional description of the transaction that can be used for display purposes",
+                        "type": "string"
+                    },
+                    "isEstimate": {
+                        "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
+                        "type": "boolean"
+                    },
+                    "startDate": {
+                        "description": "Date and time when the demand period starts",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "endDate": {
+                        "description": "Date and time when the demand period ends",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "rate": {
+                        "description": "The rate for the demand charge in kVA.  A negative value indicates power generated",
+                        "type": "number"
+                    },
+                    "amount": {
+                        "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "calculationFactors": {
+                        "description": "Additional calculation factors that inform the transaction",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "value",
+                                "type"
+                            ],
+                            "properties": {
+                                "value": {
+                                    "description": "The value of the calculation factor",
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "description": "The type of the calculation factor",
+                                    "type": "string",
+                                    "enum": [
+                                        "DLF",
+                                        "MLF"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "adjustments": {
+                        "description": "Optional array of adjustments arising for this transaction",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "amount",
+                                "description"
+                            ],
+                            "properties": {
+                                "amount": {
+                                    "description": "The amount of the adjustment",
+                                    "type": "string",
+                                    "x-cds-type": "AmountString"
+                                },
+                                "description": {
+                                    "description": "A free text description of the adjustment",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "EnergyBillingOnceOffTransaction": {
+                "type": "object",
+                "required": [
+                    "amount",
+                    "description"
+                ],
+                "properties": {
+                    "servicePointId": {
+                        "description": "The ID of the service point to which this transaction applies if any",
+                        "type": "string"
+                    },
+                    "invoiceNumber": {
+                        "description": "The number of the invoice in which this transaction is included if it has been issued",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "description": "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "description": {
+                        "description": "A free text description of the item",
+                        "type": "string"
+                    }
+                }
+            },
+            "EnergyBillingOtherTransaction": {
+                "type": "object",
+                "required": [
+                    "amount",
+                    "description"
+                ],
+                "properties": {
+                    "servicePointId": {
+                        "description": "The ID of the service point to which this transaction applies if any",
+                        "type": "string"
+                    },
+                    "invoiceNumber": {
+                        "description": "The number of the invoice in which this transaction is included if it has been issued",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "description": "The amount of the charge",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "description": {
+                        "description": "A free text description of the item",
+                        "type": "string"
+                    }
+                }
+            },
+            "EnergyBillingPaymentTransaction": {
+                "type": "object",
+                "required": [
+                    "amount",
+                    "method"
+                ],
+                "properties": {
+                    "amount": {
+                        "description": "The amount paid",
+                        "type": "string",
+                        "x-cds-type": "AmountString"
+                    },
+                    "method": {
+                        "description": "The method of payment",
+                        "type": "string",
+                        "enum": [
+                            "DIRECT_DEBIT",
+                            "CARD",
+                            "TRANSFER",
+                            "BPAY",
+                            "CASH",
+                            "CHEQUE",
+                            "OTHER"
+                        ]
+                    }
+                }
+            },
 			"derRecord": {
 				"type": "object",
 				"required": [
@@ -3172,51 +3933,8 @@
                 },
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"balances"
-									],
-									"properties": {
-										"balances": {
-											"description": "Array of account balances",
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"accountId",
-													"balance"
-												],
-												"properties": {
-													"accountId": {
-														"description": "The ID of the account",
-														"type": "string"
-													},
-													"balance": {
-														"description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													}
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/LinksPaginated"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/MetaPaginated"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyBalanceListResponse"
 						}
 					}
 				}
@@ -3235,35 +3953,8 @@
                 },
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"balance"
-									],
-									"properties": {
-										"balance": {
-											"description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
-											"type": "string",
-											"x-cds-type": "AmountString"
-										}
-									}
-
-								},
-								"links": {
-									"$ref": "#/components/schemas/Links"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/Meta"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyBalanceResponse"
 						}
 					}
 				}
@@ -3282,201 +3973,8 @@
                 },
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"invoices"
-									],
-									"properties": {
-										"invoices": {
-											"description": "Array of invoices sorted by date in descending order",
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"accountId",
-													"issueDate",
-													"period",
-													"amountDue",
-													"balanceAtIssue",
-													"servicePoints",
-													"totalAccountCharges",
-													"totalAccountDiscounts",
-													"paymentStatus"
-												],
-												"properties": {
-													"accountId": {
-														"description": "The ID of the account for which the invoice was issued",
-														"type": "string"
-													},
-													"invoiceNumber": {
-														"description": "The number assigned to this invoice by the energy Retailer",
-														"type": "string"
-													},
-													"issueDate": {
-														"description": "The date that the invoice was actually issued (as opposed to generated or calculated)",
-														"type": "string",
-														"x-cds-type": "DateString"
-													},
-													"dueDate": {
-														"description": "The date that the invoice is due to be paid",
-														"type": "string",
-														"x-cds-type": "DateString"
-													},
-													"period": {
-														"description": "Object containing the start and end date for the period covered by the invoice",
-														"type": "object",
-														"required": [
-															"startDate",
-															"endDate"
-														],
-														"properties": {
-															"startDate": {
-																"description": "The start date of the period covered by this invoice",
-																"type": "string",
-																"x-cds-type": "DateString"
-															},
-															"endDate": {
-																"description": "The end date of the period covered by this invoice",
-																"type": "string",
-																"x-cds-type": "DateString"
-															}
-														}
-													},
-													"invoiceAmount": {
-														"description": "The net amount due for this invoice regardless of previous balance",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"payOnTimeDiscount": {
-														"description": "A discount for on time payment",
-														"type": "object",
-														"required": [
-															"amount",
-															"date"
-														],
-														"properties": {
-															"amount": {
-																"description": "The amount that will be discounted if the invoice is paid by the date specified",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"date": {
-																"description": "The date by which the invoice must be paid to receive the pay on time discount",
-																"type": "string",
-																"x-cds-type": "DateString"
-															}
-														}
-													},
-													"balanceAtIssue": {
-														"description": "The account balance at the time the invoice was issued",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"servicePoints": {
-														"description": "Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges",
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"gas": {
-														"description": "Object contain charges and credits related to gas usage",
-														"type": "object",
-														"required": [
-															"totalUsageCharges",
-															"totalOnceOffCharges",
-															"totalOnceOffDiscounts"
-														],
-														"properties": {
-															"totalUsageCharges": {
-																"description": "The aggregate total of usage charges for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"totalOnceOffCharges": {
-																"description": "The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"totalOnceOffDiscounts": {
-																"description": "The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															}
-														}
-													},
-													"electricity": {
-														"description": "Object contain charges and credits related to electricity usage",
-														"type": "object",
-														"required": [
-															"totalUsageCharges",
-															"totalGenerationCredits",
-															"totalOnceOffCharges",
-															"totalOnceOffDiscounts"
-														],
-														"properties": {
-															"totalUsageCharges": {
-																"description": "The aggregate total of usage charges for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"totalGenerationCredits": {
-																"description": "The aggregate total of generation credits for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"totalOnceOffCharges": {
-																"description": "The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"totalOnceOffDiscounts": {
-																"description": "The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															}
-														}
-													},
-													"totalAccountCharges": {
-														"description": "The aggregate total of account level charges for the period covered by the invoice",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"totalAccountDiscounts": {
-														"description": "The aggregate total of account level discounts or credits for the period covered by the invoice",
-														"type": "string",
-														"x-cds-type": "AmountString"
-													},
-													"paymentStatus": {
-														"description": "Indicator of the payment status for the invoice",
-														"type": "string",
-														"enum": [
-															"PAID",
-															"PARTIALLY_PAID",
-															"NOT_PAID"
-														]
-													}
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/LinksPaginated"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/MetaPaginated"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyInvoiceListResponse"
 						}
 					}
 				}
@@ -3495,199 +3993,8 @@
                 },
 				"content": {
 					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"links",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"transactions"
-									],
-									"properties": {
-										"transactions": {
-											"description": "Array of transactions sorted by date and time in descending order",
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"accountId",
-													"executionDateTime",
-													"transactionUType"
-												],
-												"x-conditional": [
-													"usage",
-													"onceOff",
-													"payment"
-												],
-												"properties": {
-													"accountId": {
-														"description": "The ID of the account for which transaction applies",
-														"type": "string"
-													},
-													"executionDateTime": {
-														"description": "The date and time that the transaction occurred",
-														"type": "string",
-														"x-cds-type": "DateTimeString"
-													},
-													"transactionUType": {
-														"description": "Indicator of the type of transaction object present in this record",
-														"type": "string",
-														"enum": [
-															"usage",
-															"onceOff",
-															"payment"
-														]
-													},
-													"usage": {
-														"description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
-														"type": "object",
-														"required": [
-															"timeOfUseType",
-															"startDate",
-															"endDate",
-															"usage",
-															"amount"
-														],
-														"properties": {
-															"servicePointId": {
-																"description": "The ID of the service point to which this transaction applies if any",
-																"type": "string"
-															},
-															"invoiceNumber": {
-																"description": "The number of the invoice in which this transaction is included if it has been issued",
-																"type": "string"
-															},
-															"timeOfUseType": {
-																"description": "The time of use type that the transaction applies to",
-																"type": "string",
-																"enum": [
-																	"PEAK",
-																	"OFF_PEAK",
-																	"OFF_PEAK_DC",
-																	"SHOULDER",
-																	"SHOULDER1",
-																	"SHOULDER2"
-																]
-															},
-															"isEstimate": {
-																"description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
-																"type": "boolean"
-															},
-															"startDate": {
-																"description": "Date and time when the usage period starts",
-																"type": "string",
-																"x-cds-type": "DateTimeString"
-															},
-															"endDate": {
-																"description": "Date and time when the usage period ends",
-																"type": "string",
-																"x-cds-type": "DateTimeString"
-															},
-															"usage": {
-																"description": "The usage for the period in kWh.  A negative value indicates power generated",
-																"type": "number"
-															},
-															"amount": {
-																"description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"adjustments": {
-																"description": "Optional array of adjustments arising for this transaction",
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"required": [
-																		"amount",
-																		"description"
-																	],
-																	"properties": {
-																		"amount": {
-																			"description": "The amount of the adjustment",
-																			"type": "string",
-																			"x-cds-type": "AmountString"
-																		},
-																		"description": {
-																			"description": "A free text description of the adjustment",
-																			"type": "string"
-																		}
-																	}
-																}
-															}
-														}
-													},
-													"onceOff": {
-														"description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
-														"type": "object",
-														"required": [
-															"amount",
-															"description"
-														],
-														"properties": {
-															"servicePointId": {
-																"description": "The ID of the service point to which this transaction applies if any",
-																"type": "string"
-															},
-															"invoiceNumber": {
-																"description": "The number of the invoice in which this transaction is included if it has been issued",
-																"type": "string"
-															},
-															"amount": {
-																"description": "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"description": {
-																"description": "A free text description of the item",
-																"type": "string"
-															}
-														}
-													},
-													"payment": {
-														"description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment",
-														"type": "object",
-														"required": [
-															"amount",
-															"method"
-														],
-														"properties": {
-															"amount": {
-																"description": "The amount paid",
-																"type": "string",
-																"x-cds-type": "AmountString"
-															},
-															"method": {
-																"description": "The method of payment",
-																"type": "string",
-																"enum": [
-																	"DIRECT_DEBIT",
-																	"CARD",
-																	"TRANSFER",
-																	"BPAY",
-																	"CASH",
-																	"CHEQUE",
-																	"OTHER"
-																]
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								"links": {
-									"$ref": "#/components/schemas/LinksPaginated"
-								},
-								"meta": {
-									"$ref": "#/components/schemas/MetaPaginated"
-								}
-							}
+                        "schema": {
+                            "$ref": "#/components/schemas/EnergyBillingListResponse"
 						}
 					}
 				}
@@ -4511,9 +4818,12 @@
 		},
 		"/energy/accounts/{accountId}/balance": {
 			"get": {
-				"summary": "Get Balance For Account",
+				"summary": "Get Balance For Energy Account",
 				"operationId": "getBalanceForAccount",
 				"description": "Obtain the current balance for a specific account",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4561,9 +4871,15 @@
 		},
 		"/energy/accounts/balances": {
 			"get": {
-				"summary": "Get Bulk Balances",
+				"summary": "Get Bulk Balances (Energy)",
 				"operationId": "listBalancesBulk",
 				"description": "Obtain the current balance for all accounts",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4612,9 +4928,12 @@
 				}
 			},
 			"post": {
-				"summary": "Get Balances For Specific Accounts",
+				"summary": "Get Balances For Specific Energy Accounts",
 				"operationId": "listBalancesForAccounts",
 				"description": "Obtain the current balance for a specified set of accounts",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4671,6 +4990,9 @@
 				"summary": "Get Invoices For Account",
 				"operationId": "getInvoicesForAccount",
 				"description": "Obtain the invoices for a specific account",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4733,6 +5055,9 @@
 				"summary": "Get Bulk Invoices",
 				"operationId": "listInvoicesBulk",
 				"description": "Obtain the invoices for all accounts",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4790,6 +5115,9 @@
 				"summary": "Get Invoices For Specific Accounts",
 				"operationId": "listInvoicesForAccounts",
 				"description": "Obtain invoices for a specified set of accounts",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4852,6 +5180,9 @@
 				"summary": "Get Billing For Account",
 				"operationId": "getBillingForAccount",
 				"description": "Obtain the billing transactions for a specific account",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4914,6 +5245,9 @@
 				"summary": "Get Bulk Billing",
 				"operationId": "listBillingBulk",
 				"description": "Obtain billing transactions for all accounts",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"
@@ -4971,6 +5305,9 @@
 				"summary": "Get Billing For Specific Accounts",
 				"operationId": "listBillingForAccounts",
 				"description": "Obtain billing for a specified set of accounts",
+                "x-scopes": [
+                    "energy:billing:read"
+                ],
 				"tags": [
                     "Energy",
 					"Billing"

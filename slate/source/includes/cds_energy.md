@@ -3311,7 +3311,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Balance For Account
+## Get Balance For Energy Account
 
 <a id="opIdgetBalanceForAccount"></a>
 
@@ -3363,7 +3363,7 @@ Obtain the current balance for a specific account
 |---|--|
 |Version|**undefined**
 
-<h3 id="get-balance-for-account-parameters">Parameters</h3>
+<h3 id="get-balance-for-energy-account-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3391,24 +3391,12 @@ Obtain the current balance for a specific account
 }
 ```
 
-<h3 id="get-balance-for-account-responses">Responses</h3>
+<h3 id="get-balance-for-energy-account-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceResponse](#schemacdr-energy-apienergybalanceresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-balance-for-account-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|» links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
-|»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|» meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
 
 ### Response Headers
 
@@ -3419,13 +3407,16 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
-## Get Bulk Balances
+## Get Bulk Balances (Energy)
 
 <a id="opIdlistBalancesBulk"></a>
 
@@ -3477,7 +3468,7 @@ Obtain the current balance for all accounts
 |---|--|
 |Version|**undefined**
 
-<h3 id="get-bulk-balances-parameters">Parameters</h3>
+<h3 id="get-bulk-balances-(energy)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3518,32 +3509,12 @@ Obtain the current balance for all accounts
 }
 ```
 
-<h3 id="get-bulk-balances-responses">Responses</h3>
+<h3 id="get-bulk-balances-(energy)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceListResponse](#schemacdr-energy-apienergybalancelistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-bulk-balances-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» balances|[object]|mandatory|Array of account balances|
-|»»» accountId|string|mandatory|The ID of the account|
-|»»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 ### Response Headers
 
@@ -3554,13 +3525,16 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
-## Get Balances For Specific Accounts
+## Get Balances For Specific Energy Accounts
 
 <a id="opIdlistBalancesForAccounts"></a>
 
@@ -3627,7 +3601,7 @@ Obtain the current balance for a specified set of accounts
 |---|--|
 |Version|**undefined**
 
-<h3 id="get-balances-for-specific-accounts-parameters">Parameters</h3>
+<h3 id="get-balances-for-specific-energy-accounts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3672,32 +3646,12 @@ Obtain the current balance for a specified set of accounts
 }
 ```
 
-<h3 id="get-balances-for-specific-accounts-responses">Responses</h3>
+<h3 id="get-balances-for-specific-energy-accounts-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceListResponse](#schemacdr-energy-apienergybalancelistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-balances-for-specific-accounts-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» balances|[object]|mandatory|Array of account balances|
-|»»» accountId|string|mandatory|The ID of the account|
-|»»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
-|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
 
 ### Response Headers
 
@@ -3708,10 +3662,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 ## Get Invoices For Account
@@ -3800,8 +3757,10 @@ Obtain the invoices for a specific account
           "endDate": "string"
         },
         "invoiceAmount": "string",
+        "gstAmount": "string",
         "payOnTimeDiscount": {
-          "amount": "string",
+          "discountAmount": "string",
+          "gstAmount": "string",
           "date": "string"
         },
         "balanceAtIssue": "string",
@@ -3810,17 +3769,35 @@ Obtain the invoices for a specific account
         ],
         "gas": {
           "totalUsageCharges": "string",
+          "totalGenerationCredits": "string",
           "totalOnceOffCharges": "string",
-          "totalOnceOffDiscounts": "string"
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
         },
         "electricity": {
           "totalUsageCharges": "string",
           "totalGenerationCredits": "string",
           "totalOnceOffCharges": "string",
-          "totalOnceOffDiscounts": "string"
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
         },
-        "totalAccountCharges": "string",
-        "totalAccountDiscounts": "string",
+        "accountCharges": {
+          "totalCharges": "string",
+          "totalDiscounts": "string",
+          "totalGst": "string"
+        },
         "paymentStatus": "PAID"
       }
     ]
@@ -3843,59 +3820,8 @@ Obtain the invoices for a specific account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-invoices-for-account-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» invoices|[object]|mandatory|Array of invoices sorted by date in descending order|
-|»»» accountId|string|mandatory|The ID of the account for which the invoice was issued|
-|»»» invoiceNumber|string|optional|The number assigned to this invoice by the energy Retailer|
-|»»» issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
-|»»» dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
-|»»» period|object|mandatory|Object containing the start and end date for the period covered by the invoice|
-|»»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|»»»» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
-|»»» invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
-|»»» payOnTimeDiscount|object|optional|A discount for on time payment|
-|»»»» amount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|»»»» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
-|»»» balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
-|»»» servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
-|»»» gas|object|optional|Object contain charges and credits related to gas usage|
-|»»»» totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice|
-|»»»» totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice|
-|»»»» totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice|
-|»»» electricity|object|optional|Object contain charges and credits related to electricity usage|
-|»»»» totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice|
-|»»»» totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice|
-|»»»» totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice|
-|»»»» totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice|
-|»»» totalAccountCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
-|»»» totalAccountDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
-|»»» paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
-|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|paymentStatus|PAID|
-|paymentStatus|PARTIALLY_PAID|
-|paymentStatus|NOT_PAID|
 
 ### Response Headers
 
@@ -3906,10 +3832,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 ## Get Bulk Invoices
@@ -3997,8 +3926,10 @@ Obtain the invoices for all accounts
           "endDate": "string"
         },
         "invoiceAmount": "string",
+        "gstAmount": "string",
         "payOnTimeDiscount": {
-          "amount": "string",
+          "discountAmount": "string",
+          "gstAmount": "string",
           "date": "string"
         },
         "balanceAtIssue": "string",
@@ -4007,17 +3938,35 @@ Obtain the invoices for all accounts
         ],
         "gas": {
           "totalUsageCharges": "string",
+          "totalGenerationCredits": "string",
           "totalOnceOffCharges": "string",
-          "totalOnceOffDiscounts": "string"
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
         },
         "electricity": {
           "totalUsageCharges": "string",
           "totalGenerationCredits": "string",
           "totalOnceOffCharges": "string",
-          "totalOnceOffDiscounts": "string"
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
         },
-        "totalAccountCharges": "string",
-        "totalAccountDiscounts": "string",
+        "accountCharges": {
+          "totalCharges": "string",
+          "totalDiscounts": "string",
+          "totalGst": "string"
+        },
         "paymentStatus": "PAID"
       }
     ]
@@ -4040,59 +3989,8 @@ Obtain the invoices for all accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-bulk-invoices-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» invoices|[object]|mandatory|Array of invoices sorted by date in descending order|
-|»»» accountId|string|mandatory|The ID of the account for which the invoice was issued|
-|»»» invoiceNumber|string|optional|The number assigned to this invoice by the energy Retailer|
-|»»» issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
-|»»» dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
-|»»» period|object|mandatory|Object containing the start and end date for the period covered by the invoice|
-|»»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|»»»» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
-|»»» invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
-|»»» payOnTimeDiscount|object|optional|A discount for on time payment|
-|»»»» amount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|»»»» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
-|»»» balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
-|»»» servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
-|»»» gas|object|optional|Object contain charges and credits related to gas usage|
-|»»»» totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice|
-|»»»» totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice|
-|»»»» totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice|
-|»»» electricity|object|optional|Object contain charges and credits related to electricity usage|
-|»»»» totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice|
-|»»»» totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice|
-|»»»» totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice|
-|»»»» totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice|
-|»»» totalAccountCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
-|»»» totalAccountDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
-|»»» paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
-|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|paymentStatus|PAID|
-|paymentStatus|PARTIALLY_PAID|
-|paymentStatus|NOT_PAID|
 
 ### Response Headers
 
@@ -4103,10 +4001,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 ## Get Invoices For Specific Accounts
@@ -4213,8 +4114,10 @@ Obtain invoices for a specified set of accounts
           "endDate": "string"
         },
         "invoiceAmount": "string",
+        "gstAmount": "string",
         "payOnTimeDiscount": {
-          "amount": "string",
+          "discountAmount": "string",
+          "gstAmount": "string",
           "date": "string"
         },
         "balanceAtIssue": "string",
@@ -4223,17 +4126,35 @@ Obtain invoices for a specified set of accounts
         ],
         "gas": {
           "totalUsageCharges": "string",
+          "totalGenerationCredits": "string",
           "totalOnceOffCharges": "string",
-          "totalOnceOffDiscounts": "string"
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
         },
         "electricity": {
           "totalUsageCharges": "string",
           "totalGenerationCredits": "string",
           "totalOnceOffCharges": "string",
-          "totalOnceOffDiscounts": "string"
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
         },
-        "totalAccountCharges": "string",
-        "totalAccountDiscounts": "string",
+        "accountCharges": {
+          "totalCharges": "string",
+          "totalDiscounts": "string",
+          "totalGst": "string"
+        },
         "paymentStatus": "PAID"
       }
     ]
@@ -4256,59 +4177,8 @@ Obtain invoices for a specified set of accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-invoices-for-specific-accounts-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» invoices|[object]|mandatory|Array of invoices sorted by date in descending order|
-|»»» accountId|string|mandatory|The ID of the account for which the invoice was issued|
-|»»» invoiceNumber|string|optional|The number assigned to this invoice by the energy Retailer|
-|»»» issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
-|»»» dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
-|»»» period|object|mandatory|Object containing the start and end date for the period covered by the invoice|
-|»»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|»»»» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
-|»»» invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
-|»»» payOnTimeDiscount|object|optional|A discount for on time payment|
-|»»»» amount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|»»»» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
-|»»» balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
-|»»» servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
-|»»» gas|object|optional|Object contain charges and credits related to gas usage|
-|»»»» totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice|
-|»»»» totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice|
-|»»»» totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice|
-|»»» electricity|object|optional|Object contain charges and credits related to electricity usage|
-|»»»» totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice|
-|»»»» totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice|
-|»»»» totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice|
-|»»»» totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice|
-|»»» totalAccountCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
-|»»» totalAccountDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
-|»»» paymentStatus|string|mandatory|Indicator of the payment status for the invoice|
-|»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|paymentStatus|PAID|
-|paymentStatus|PARTIALLY_PAID|
-|paymentStatus|NOT_PAID|
 
 ### Response Headers
 
@@ -4319,10 +4189,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 ## Get Billing For Account
@@ -4404,16 +4277,47 @@ Obtain the billing transactions for a specific account
       {
         "accountId": "string",
         "executionDateTime": "string",
+        "gst": "string",
         "transactionUType": "usage",
         "usage": {
           "servicePointId": "string",
           "invoiceNumber": "string",
           "timeOfUseType": "PEAK",
+          "description": "string",
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
           "usage": 0,
           "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
+        },
+        "demand": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "timeOfUseType": "PEAK",
+          "description": "string",
+          "isEstimate": true,
+          "startDate": "string",
+          "endDate": "string",
+          "rate": 0,
+          "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
           "adjustments": [
             {
               "amount": "string",
@@ -4422,6 +4326,12 @@ Obtain the billing transactions for a specific account
           ]
         },
         "onceOff": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "amount": "string",
+          "description": "string"
+        },
+        "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
           "amount": "string",
@@ -4452,70 +4362,8 @@ Obtain the billing transactions for a specific account
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-billing-for-account-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» transactions|[object]|mandatory|Array of transactions sorted by date and time in descending order|
-|»»» accountId|string|mandatory|The ID of the account for which transaction applies|
-|»»» executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
-|»»» transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
-|»»» usage|object|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
-|»»»» servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|»»»» invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|»»»» timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
-|»»»» isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
-|»»»» startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
-|»»»» endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|»»»» usage|number|mandatory|The usage for the period in kWh.  A negative value indicates power generated|
-|»»»» amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
-|»»»» adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|»»»»» description|string|mandatory|A free text description of the adjustment|
-|»»»» onceOff|object|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
-|»»»»» servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|»»»»» invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
-|»»»»» description|string|mandatory|A free text description of the item|
-|»»»» payment|object|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|»»»»» method|string|mandatory|The method of payment|
-|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|transactionUType|usage|
-|transactionUType|onceOff|
-|transactionUType|payment|
-|timeOfUseType|PEAK|
-|timeOfUseType|OFF_PEAK|
-|timeOfUseType|OFF_PEAK_DC|
-|timeOfUseType|SHOULDER|
-|timeOfUseType|SHOULDER1|
-|timeOfUseType|SHOULDER2|
-|method|DIRECT_DEBIT|
-|method|CARD|
-|method|TRANSFER|
-|method|BPAY|
-|method|CASH|
-|method|CHEQUE|
-|method|OTHER|
 
 ### Response Headers
 
@@ -4526,10 +4374,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 ## Get Bulk Billing
@@ -4610,16 +4461,47 @@ Obtain billing transactions for all accounts
       {
         "accountId": "string",
         "executionDateTime": "string",
+        "gst": "string",
         "transactionUType": "usage",
         "usage": {
           "servicePointId": "string",
           "invoiceNumber": "string",
           "timeOfUseType": "PEAK",
+          "description": "string",
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
           "usage": 0,
           "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
+        },
+        "demand": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "timeOfUseType": "PEAK",
+          "description": "string",
+          "isEstimate": true,
+          "startDate": "string",
+          "endDate": "string",
+          "rate": 0,
+          "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
           "adjustments": [
             {
               "amount": "string",
@@ -4628,6 +4510,12 @@ Obtain billing transactions for all accounts
           ]
         },
         "onceOff": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "amount": "string",
+          "description": "string"
+        },
+        "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
           "amount": "string",
@@ -4658,70 +4546,8 @@ Obtain billing transactions for all accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-bulk-billing-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» transactions|[object]|mandatory|Array of transactions sorted by date and time in descending order|
-|»»» accountId|string|mandatory|The ID of the account for which transaction applies|
-|»»» executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
-|»»» transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
-|»»» usage|object|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
-|»»»» servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|»»»» invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|»»»» timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
-|»»»» isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
-|»»»» startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
-|»»»» endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|»»»» usage|number|mandatory|The usage for the period in kWh.  A negative value indicates power generated|
-|»»»» amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
-|»»»» adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|»»»»» description|string|mandatory|A free text description of the adjustment|
-|»»»» onceOff|object|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
-|»»»»» servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|»»»»» invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
-|»»»»» description|string|mandatory|A free text description of the item|
-|»»»» payment|object|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|»»»»» method|string|mandatory|The method of payment|
-|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|transactionUType|usage|
-|transactionUType|onceOff|
-|transactionUType|payment|
-|timeOfUseType|PEAK|
-|timeOfUseType|OFF_PEAK|
-|timeOfUseType|OFF_PEAK_DC|
-|timeOfUseType|SHOULDER|
-|timeOfUseType|SHOULDER1|
-|timeOfUseType|SHOULDER2|
-|method|DIRECT_DEBIT|
-|method|CARD|
-|method|TRANSFER|
-|method|BPAY|
-|method|CASH|
-|method|CHEQUE|
-|method|OTHER|
 
 ### Response Headers
 
@@ -4732,10 +4558,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 ## Get Billing For Specific Accounts
@@ -4835,16 +4664,47 @@ Obtain billing for a specified set of accounts
       {
         "accountId": "string",
         "executionDateTime": "string",
+        "gst": "string",
         "transactionUType": "usage",
         "usage": {
           "servicePointId": "string",
           "invoiceNumber": "string",
           "timeOfUseType": "PEAK",
+          "description": "string",
           "isEstimate": true,
           "startDate": "string",
           "endDate": "string",
           "usage": 0,
           "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
+        },
+        "demand": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "timeOfUseType": "PEAK",
+          "description": "string",
+          "isEstimate": true,
+          "startDate": "string",
+          "endDate": "string",
+          "rate": 0,
+          "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
           "adjustments": [
             {
               "amount": "string",
@@ -4853,6 +4713,12 @@ Obtain billing for a specified set of accounts
           ]
         },
         "onceOff": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "amount": "string",
+          "description": "string"
+        },
+        "otherCharges": {
           "servicePointId": "string",
           "invoiceNumber": "string",
           "amount": "string",
@@ -4883,70 +4749,8 @@ Obtain billing for a specified set of accounts
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponse](#schemacdr-energy-apienergybillinglistresponse)|
 |4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|None|
-
-<h3 id="get-billing-for-specific-accounts-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|» data|object|mandatory|none|
-|»» transactions|[object]|mandatory|Array of transactions sorted by date and time in descending order|
-|»»» accountId|string|mandatory|The ID of the account for which transaction applies|
-|»»» executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
-|»»» transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
-|»»» usage|object|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
-|»»»» servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|»»»» invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|»»»» timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
-|»»»» isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
-|»»»» startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
-|»»»» endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|»»»» usage|number|mandatory|The usage for the period in kWh.  A negative value indicates power generated|
-|»»»» amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
-|»»»» adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|»»»»» description|string|mandatory|A free text description of the adjustment|
-|»»»» onceOff|object|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
-|»»»»» servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|»»»»» invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
-|»»»»» description|string|mandatory|A free text description of the item|
-|»»»» payment|object|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
-|»»»»» amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|»»»»» method|string|mandatory|The method of payment|
-|»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
-|»»»»» self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|»»»»» first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|»»»»» prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|»»»»» next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|»»»»» last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
-|»»»» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
-|»»»»» totalRecords|[NaturalNumber](#common-field-types)|mandatory|The total number of records in the full set. See [pagination](#pagination).|
-|»»»»» totalPages|[NaturalNumber](#common-field-types)|mandatory|The total number of pages in the full set. See [pagination](#pagination).|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|transactionUType|usage|
-|transactionUType|onceOff|
-|transactionUType|payment|
-|timeOfUseType|PEAK|
-|timeOfUseType|OFF_PEAK|
-|timeOfUseType|OFF_PEAK_DC|
-|timeOfUseType|SHOULDER|
-|timeOfUseType|SHOULDER1|
-|timeOfUseType|SHOULDER2|
-|method|DIRECT_DEBIT|
-|method|CARD|
-|method|TRANSFER|
-|method|BPAY|
-|method|CASH|
-|method|CHEQUE|
-|method|OTHER|
 
 ### Response Headers
 
@@ -4957,10 +4761,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:billing:read</a>
 </aside>
 
+    
   
 
 <h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
@@ -5951,6 +5758,261 @@ This operation does not require authentication
 |» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSenergybalancelistresponse">EnergyBalanceListResponse</h2>
+
+<a id="schemacdr-energy-apienergybalancelistresponse"></a>
+
+```json
+{
+  "data": {
+    "balances": [
+      {
+        "accountId": "string",
+        "balance": "string"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» balances|[object]|mandatory|Array of account balances|
+|»» accountId|string|mandatory|The ID of the account|
+|»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
+|» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|» meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSenergybalanceresponse">EnergyBalanceResponse</h2>
+
+<a id="schemacdr-energy-apienergybalanceresponse"></a>
+
+```json
+{
+  "data": {
+    "balance": "string"
+  },
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
+|links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-energy-apimeta)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h2>
+
+<a id="schemacdr-energy-apienergyinvoicelistresponse"></a>
+
+```json
+{
+  "data": {
+    "invoices": [
+      {
+        "accountId": "string",
+        "invoiceNumber": "string",
+        "issueDate": "string",
+        "dueDate": "string",
+        "period": {
+          "startDate": "string",
+          "endDate": "string"
+        },
+        "invoiceAmount": "string",
+        "gstAmount": "string",
+        "payOnTimeDiscount": {
+          "discountAmount": "string",
+          "gstAmount": "string",
+          "date": "string"
+        },
+        "balanceAtIssue": "string",
+        "servicePoints": [
+          "string"
+        ],
+        "gas": {
+          "totalUsageCharges": "string",
+          "totalGenerationCredits": "string",
+          "totalOnceOffCharges": "string",
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
+        },
+        "electricity": {
+          "totalUsageCharges": "string",
+          "totalGenerationCredits": "string",
+          "totalOnceOffCharges": "string",
+          "totalOnceOffDiscounts": "string",
+          "otherCharges": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ],
+          "totalGst": "string"
+        },
+        "accountCharges": {
+          "totalCharges": "string",
+          "totalDiscounts": "string",
+          "totalGst": "string"
+        },
+        "paymentStatus": "PAID"
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» invoices|[[EnergyInvoice](#schemacdr-energy-apienergyinvoice)]|mandatory|Array of invoices sorted by date in descending order|
+|links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSenergybillinglistresponse">EnergyBillingListResponse</h2>
+
+<a id="schemacdr-energy-apienergybillinglistresponse"></a>
+
+```json
+{
+  "data": {
+    "transactions": [
+      {
+        "accountId": "string",
+        "executionDateTime": "string",
+        "gst": "string",
+        "transactionUType": "usage",
+        "usage": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "timeOfUseType": "PEAK",
+          "description": "string",
+          "isEstimate": true,
+          "startDate": "string",
+          "endDate": "string",
+          "usage": 0,
+          "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
+        },
+        "demand": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "timeOfUseType": "PEAK",
+          "description": "string",
+          "isEstimate": true,
+          "startDate": "string",
+          "endDate": "string",
+          "rate": 0,
+          "amount": "string",
+          "calculationFactors": [
+            {
+              "value": 0,
+              "type": "DLF"
+            }
+          ],
+          "adjustments": [
+            {
+              "amount": "string",
+              "description": "string"
+            }
+          ]
+        },
+        "onceOff": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "amount": "string",
+          "description": "string"
+        },
+        "otherCharges": {
+          "servicePointId": "string",
+          "invoiceNumber": "string",
+          "amount": "string",
+          "description": "string"
+        },
+        "payment": {
+          "amount": "string",
+          "method": "DIRECT_DEBIT"
+        }
+      }
+    ]
+  },
+  "links": {
+    "self": "string",
+    "first": "string",
+    "prev": "string",
+    "next": "string",
+    "last": "string"
+  },
+  "meta": {
+    "totalRecords": 0,
+    "totalPages": 0
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|object|mandatory|none|
+|» transactions|[[EnergyBillingTransaction](#schemacdr-energy-apienergybillingtransaction)]|mandatory|Array of transactions sorted by date and time in descending order|
+|links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSerrorlistresponse">ErrorListResponse</h2>
 
@@ -8040,6 +8102,501 @@ This operation does not require authentication
 |monthlyDiscount|[AmountString](#common-field-types)|conditional|Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |yearlyDiscount|[AmountString](#common-field-types)|conditional|Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
 |percentageDiscount|[RateString](#common-field-types)|conditional|Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided|
+
+<h2 class="schema-toc" id="tocSenergyinvoice">EnergyInvoice</h2>
+
+<a id="schemacdr-energy-apienergyinvoice"></a>
+
+```json
+{
+  "accountId": "string",
+  "invoiceNumber": "string",
+  "issueDate": "string",
+  "dueDate": "string",
+  "period": {
+    "startDate": "string",
+    "endDate": "string"
+  },
+  "invoiceAmount": "string",
+  "gstAmount": "string",
+  "payOnTimeDiscount": {
+    "discountAmount": "string",
+    "gstAmount": "string",
+    "date": "string"
+  },
+  "balanceAtIssue": "string",
+  "servicePoints": [
+    "string"
+  ],
+  "gas": {
+    "totalUsageCharges": "string",
+    "totalGenerationCredits": "string",
+    "totalOnceOffCharges": "string",
+    "totalOnceOffDiscounts": "string",
+    "otherCharges": [
+      {
+        "amount": "string",
+        "description": "string"
+      }
+    ],
+    "totalGst": "string"
+  },
+  "electricity": {
+    "totalUsageCharges": "string",
+    "totalGenerationCredits": "string",
+    "totalOnceOffCharges": "string",
+    "totalOnceOffDiscounts": "string",
+    "otherCharges": [
+      {
+        "amount": "string",
+        "description": "string"
+      }
+    ],
+    "totalGst": "string"
+  },
+  "accountCharges": {
+    "totalCharges": "string",
+    "totalDiscounts": "string",
+    "totalGst": "string"
+  },
+  "paymentStatus": "PAID"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|accountId|string|optional|The ID of the account for which the invoice was issued|
+|invoiceNumber|string|optional|The number assigned to this invoice by the energy Retailer|
+|issueDate|[DateString](#common-field-types)|optional|The date that the invoice was actually issued (as opposed to generated or calculated)|
+|dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
+|period|object|mandatory|Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice|
+|» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
+|» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
+|invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
+|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice.  If absent then zero is assumed|
+|payOnTimeDiscount|object|optional|A discount for on time payment|
+|» discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
+|» gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
+|» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
+|balanceAtIssue|[AmountString](#common-field-types)|optional|The account balance at the time the invoice was issued|
+|servicePoints|[string]|optional|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
+|gas|[EnergyInvoiceGasUsageCharges](#schemacdr-energy-apienergyinvoicegasusagecharges)|optional|Object containing charges and credits related to gas usage|
+|electricity|[EnergyInvoiceElectricityUsageCharges](#schemacdr-energy-apienergyinvoiceelectricityusagecharges)|optional|Object containing charges and credits related to electricity usage|
+|accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contain charges and credits related to electricity usage|
+|paymentStatus|string|optional|Indicator of the payment status for the invoice|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|paymentStatus|PAID|
+|paymentStatus|PARTIALLY_PAID|
+|paymentStatus|NOT_PAID|
+
+<h2 class="schema-toc" id="tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h2>
+
+<a id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
+
+```json
+{
+  "totalUsageCharges": "string",
+  "totalGenerationCredits": "string",
+  "totalOnceOffCharges": "string",
+  "totalOnceOffDiscounts": "string",
+  "otherCharges": [
+    {
+      "amount": "string",
+      "description": "string"
+    }
+  ],
+  "totalGst": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
+|totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)|
+|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
+|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
+|otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
+|» description|string|mandatory|A free text description of the type of charge|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
+
+<h2 class="schema-toc" id="tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h2>
+
+<a id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
+
+```json
+{
+  "totalUsageCharges": "string",
+  "totalGenerationCredits": "string",
+  "totalOnceOffCharges": "string",
+  "totalOnceOffDiscounts": "string",
+  "otherCharges": [
+    {
+      "amount": "string",
+      "description": "string"
+    }
+  ],
+  "totalGst": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
+|totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)|
+|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
+|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
+|otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
+|» description|string|mandatory|A free text description of the type of charge|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
+
+<h2 class="schema-toc" id="tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h2>
+
+<a id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
+
+```json
+{
+  "totalCharges": "string",
+  "totalDiscounts": "string",
+  "totalGst": "string"
+}
+
+```
+
+*Object contain charges and credits related to electricity usage*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|totalCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
+|totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
+
+<h2 class="schema-toc" id="tocSenergybillingtransaction">EnergyBillingTransaction</h2>
+
+<a id="schemacdr-energy-apienergybillingtransaction"></a>
+
+```json
+{
+  "accountId": "string",
+  "executionDateTime": "string",
+  "gst": "string",
+  "transactionUType": "usage",
+  "usage": {
+    "servicePointId": "string",
+    "invoiceNumber": "string",
+    "timeOfUseType": "PEAK",
+    "description": "string",
+    "isEstimate": true,
+    "startDate": "string",
+    "endDate": "string",
+    "usage": 0,
+    "amount": "string",
+    "calculationFactors": [
+      {
+        "value": 0,
+        "type": "DLF"
+      }
+    ],
+    "adjustments": [
+      {
+        "amount": "string",
+        "description": "string"
+      }
+    ]
+  },
+  "demand": {
+    "servicePointId": "string",
+    "invoiceNumber": "string",
+    "timeOfUseType": "PEAK",
+    "description": "string",
+    "isEstimate": true,
+    "startDate": "string",
+    "endDate": "string",
+    "rate": 0,
+    "amount": "string",
+    "calculationFactors": [
+      {
+        "value": 0,
+        "type": "DLF"
+      }
+    ],
+    "adjustments": [
+      {
+        "amount": "string",
+        "description": "string"
+      }
+    ]
+  },
+  "onceOff": {
+    "servicePointId": "string",
+    "invoiceNumber": "string",
+    "amount": "string",
+    "description": "string"
+  },
+  "otherCharges": {
+    "servicePointId": "string",
+    "invoiceNumber": "string",
+    "amount": "string",
+    "description": "string"
+  },
+  "payment": {
+    "amount": "string",
+    "method": "DIRECT_DEBIT"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|accountId|string|mandatory|The ID of the account for which transaction applies|
+|executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
+|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
+|transactionUType|string|mandatory|Indicator of the type of transaction object present in this record|
+|usage|[EnergyBillingUsageTransaction](#schemacdr-energy-apienergybillingusagetransaction)|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
+|demand|[EnergyBillingDemandTransaction](#schemacdr-energy-apienergybillingdemandtransaction)|optional|Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand|
+|onceOff|[EnergyBillingOnceOffTransaction](#schemacdr-energy-apienergybillingonceofftransaction)|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
+|otherCharges|[EnergyBillingOtherTransaction](#schemacdr-energy-apienergybillingothertransaction)|optional|Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge|
+|payment|[EnergyBillingPaymentTransaction](#schemacdr-energy-apienergybillingpaymenttransaction)|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|transactionUType|usage|
+|transactionUType|demand|
+|transactionUType|onceOff|
+|transactionUType|otherCharges|
+|transactionUType|payment|
+
+<h2 class="schema-toc" id="tocSenergybillingusagetransaction">EnergyBillingUsageTransaction</h2>
+
+<a id="schemacdr-energy-apienergybillingusagetransaction"></a>
+
+```json
+{
+  "servicePointId": "string",
+  "invoiceNumber": "string",
+  "timeOfUseType": "PEAK",
+  "description": "string",
+  "isEstimate": true,
+  "startDate": "string",
+  "endDate": "string",
+  "usage": 0,
+  "amount": "string",
+  "calculationFactors": [
+    {
+      "value": 0,
+      "type": "DLF"
+    }
+  ],
+  "adjustments": [
+    {
+      "amount": "string",
+      "description": "string"
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
+|timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
+|description|string|optional|Optional description of the transaction that can be used for display purposes|
+|isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
+|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
+|usage|number|mandatory|The usage for the period in kWh.  A negative value indicates power generated|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|timeOfUseType|PEAK|
+|timeOfUseType|OFF_PEAK|
+|timeOfUseType|OFF_PEAK_DEMAND_CHARGE|
+|timeOfUseType|SHOULDER|
+|timeOfUseType|SHOULDER1|
+|timeOfUseType|SHOULDER2|
+|timeOfUseType|CONTROLLED_LOAD|
+|timeOfUseType|SOLAR|
+|timeOfUseType|AGGREGATE|
+|type|DLF|
+|type|MLF|
+
+<h2 class="schema-toc" id="tocSenergybillingdemandtransaction">EnergyBillingDemandTransaction</h2>
+
+<a id="schemacdr-energy-apienergybillingdemandtransaction"></a>
+
+```json
+{
+  "servicePointId": "string",
+  "invoiceNumber": "string",
+  "timeOfUseType": "PEAK",
+  "description": "string",
+  "isEstimate": true,
+  "startDate": "string",
+  "endDate": "string",
+  "rate": 0,
+  "amount": "string",
+  "calculationFactors": [
+    {
+      "value": 0,
+      "type": "DLF"
+    }
+  ],
+  "adjustments": [
+    {
+      "amount": "string",
+      "description": "string"
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
+|timeOfUseType|string|mandatory|The time of use type that the transaction applies to|
+|description|string|optional|Optional description of the transaction that can be used for display purposes|
+|isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period starts|
+|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period ends|
+|rate|number|mandatory|The rate for the demand charge in kVA.  A negative value indicates power generated|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
+|» value|number|mandatory|The value of the calculation factor|
+|» type|string|mandatory|The type of the calculation factor|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
+|» description|string|mandatory|A free text description of the adjustment|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|timeOfUseType|PEAK|
+|timeOfUseType|OFF_PEAK|
+|timeOfUseType|OFF_PEAK_DEMAND_CHARGE|
+|timeOfUseType|SHOULDER|
+|timeOfUseType|SHOULDER1|
+|timeOfUseType|SHOULDER2|
+|timeOfUseType|CONTROLLED_LOAD|
+|timeOfUseType|SOLAR|
+|timeOfUseType|AGGREGATE|
+|type|DLF|
+|type|MLF|
+
+<h2 class="schema-toc" id="tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h2>
+
+<a id="schemacdr-energy-apienergybillingonceofftransaction"></a>
+
+```json
+{
+  "servicePointId": "string",
+  "invoiceNumber": "string",
+  "amount": "string",
+  "description": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
+|description|string|mandatory|A free text description of the item|
+
+<h2 class="schema-toc" id="tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h2>
+
+<a id="schemacdr-energy-apienergybillingothertransaction"></a>
+
+```json
+{
+  "servicePointId": "string",
+  "invoiceNumber": "string",
+  "amount": "string",
+  "description": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
+|description|string|mandatory|A free text description of the item|
+
+<h2 class="schema-toc" id="tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h2>
+
+<a id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
+
+```json
+{
+  "amount": "string",
+  "method": "DIRECT_DEBIT"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|amount|[AmountString](#common-field-types)|mandatory|The amount paid|
+|method|string|mandatory|The method of payment|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|method|DIRECT_DEBIT|
+|method|CARD|
+|method|TRANSFER|
+|method|BPAY|
+|method|CASH|
+|method|CHEQUE|
+|method|OTHER|
 
 <h2 class="schema-toc" id="tocSderrecord">derRecord</h2>
 
