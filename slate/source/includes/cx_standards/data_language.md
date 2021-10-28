@@ -48,6 +48,10 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 **Table 2. - Energy**
 <span id="cx-table2"/>
 
+<aside class="notice">
+Note that the data language standards for the energy sector are currently considered non-binding.  This status will be changed by a decision of the Chair after the CDR rules relating to the energy sector are finalised.
+</aside>
+
 ### Individual Consumer
 
 |Data cluster language|Permission language|Authorisation Scopes|
