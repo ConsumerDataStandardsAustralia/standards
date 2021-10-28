@@ -1237,6 +1237,8 @@ Obtain a list of electricity usage data from a particular service point
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|number|optional|Page of results to request (standard pagination)|
 |page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -1258,10 +1260,11 @@ Obtain a list of electricity usage data from a particular service point
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterSerial": "string",
+        "meterID": "string",
+        "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
-        "unitOfMeasure": "KWH",
+        "unitOfMeasure": "string",
         "readUType": "basicRead",
         "basicRead": {
           "quality": "ACTUAL",
@@ -1312,18 +1315,19 @@ Status Code **200**
 |»»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
 |»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|»»» meterSerial|string|optional|Meter serial number as it appears in customer’s bill|
+|»»» meterID|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
+|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.|
 |»»» readStartDate|[DateString](#common-field-types)|mandatory|Date time when the meter reads start|
 |»»» readEndDate|[DateString](#common-field-types)|optional|Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate|
-|»»» unitOfMeasure|string|optional|Unit of measure of the meter reads. If absent then assumed to be KWH|
+|»»» unitOfMeasure|string|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
 |»»» readUType|string|mandatory|Specify the type of the meter read data|
 |»»» basicRead|object|conditional|Mandatory if readUType is set to basicRead|
 |»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |»»» intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|»»»» readIntervalLength|[PositiveInteger](#common-field-types)|optional|Read interval length in minutes|
-|»»»» aggregateValue|number|mandatory|The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise|
-|»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
+|»»»» readIntervalLength|[PositiveInteger](#common-field-types)|mandatory|Read interval length in minutes|
+|»»»» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
+|»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
 |»»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
 |»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
@@ -1340,8 +1344,6 @@ Status Code **200**
 
 |Property|Value|
 |---|---|
-|unitOfMeasure|KWH|
-|unitOfMeasure|GWH|
 |readUType|basicRead|
 |readUType|intervalRead|
 |quality|ACTUAL|
@@ -1360,10 +1362,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside>
 
+    
   
 
 ## Get Bulk Usage
@@ -1422,6 +1427,8 @@ Obtain usage data for all service points associated with the customer
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|number|optional|Page of results to request (standard pagination)|
 |page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -1443,10 +1450,11 @@ Obtain usage data for all service points associated with the customer
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterSerial": "string",
+        "meterID": "string",
+        "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
-        "unitOfMeasure": "KWH",
+        "unitOfMeasure": "string",
         "readUType": "basicRead",
         "basicRead": {
           "quality": "ACTUAL",
@@ -1497,18 +1505,19 @@ Status Code **200**
 |»»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
 |»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|»»» meterSerial|string|optional|Meter serial number as it appears in customer’s bill|
+|»»» meterID|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
+|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.|
 |»»» readStartDate|[DateString](#common-field-types)|mandatory|Date time when the meter reads start|
 |»»» readEndDate|[DateString](#common-field-types)|optional|Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate|
-|»»» unitOfMeasure|string|optional|Unit of measure of the meter reads. If absent then assumed to be KWH|
+|»»» unitOfMeasure|string|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
 |»»» readUType|string|mandatory|Specify the type of the meter read data|
 |»»» basicRead|object|conditional|Mandatory if readUType is set to basicRead|
 |»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |»»» intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|»»»» readIntervalLength|[PositiveInteger](#common-field-types)|optional|Read interval length in minutes|
-|»»»» aggregateValue|number|mandatory|The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise|
-|»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
+|»»»» readIntervalLength|[PositiveInteger](#common-field-types)|mandatory|Read interval length in minutes|
+|»»»» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
+|»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
 |»»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
 |»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
@@ -1525,8 +1534,6 @@ Status Code **200**
 
 |Property|Value|
 |---|---|
-|unitOfMeasure|KWH|
-|unitOfMeasure|GWH|
 |readUType|basicRead|
 |readUType|intervalRead|
 |quality|ACTUAL|
@@ -1545,10 +1552,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside>
 
+    
   
 
 ## Get Usage For Specific Service Points
@@ -1622,6 +1632,8 @@ Obtain the electricity usage data for a specific set of service points
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|number|optional|Page of results to request (standard pagination)|
 |page-size|query|number|optional|Page size to request.  Default is 25 (standard pagination)|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
@@ -1647,10 +1659,11 @@ Obtain the electricity usage data for a specific set of service points
         "servicePointId": "string",
         "registerId": "string",
         "registerSuffix": "string",
-        "meterSerial": "string",
+        "meterID": "string",
+        "controlledLoad": true,
         "readStartDate": "string",
         "readEndDate": "string",
-        "unitOfMeasure": "KWH",
+        "unitOfMeasure": "string",
         "readUType": "basicRead",
         "basicRead": {
           "quality": "ACTUAL",
@@ -1701,18 +1714,19 @@ Status Code **200**
 |»»» servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
 |»»» registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
 |»»» registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|»»» meterSerial|string|optional|Meter serial number as it appears in customer’s bill|
+|»»» meterID|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
+|»»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have 'No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.|
 |»»» readStartDate|[DateString](#common-field-types)|mandatory|Date time when the meter reads start|
 |»»» readEndDate|[DateString](#common-field-types)|optional|Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate|
-|»»» unitOfMeasure|string|optional|Unit of measure of the meter reads. If absent then assumed to be KWH|
+|»»» unitOfMeasure|string|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values|
 |»»» readUType|string|mandatory|Specify the type of the meter read data|
 |»»» basicRead|object|conditional|Mandatory if readUType is set to basicRead|
 |»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
 |»»» intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|»»»» readIntervalLength|[PositiveInteger](#common-field-types)|optional|Read interval length in minutes|
-|»»»» aggregateValue|number|mandatory|The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise|
-|»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate|
+|»»»» readIntervalLength|[PositiveInteger](#common-field-types)|mandatory|Read interval length in minutes|
+|»»»» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
+|»»»» intervalReads|[object]|mandatory|Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
 |»»»»» quality|string|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
 |»»»»» value|number|mandatory|Interval value.  If positive then it means consumption, if negative it means export|
 |»»»» links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
@@ -1729,8 +1743,6 @@ Status Code **200**
 
 |Property|Value|
 |---|---|
-|unitOfMeasure|KWH|
-|unitOfMeasure|GWH|
 |readUType|basicRead|
 |readUType|intervalRead|
 |quality|ACTUAL|
@@ -1749,10 +1761,13 @@ Status Code **200**
 |4xx|x-fapi-interaction-id|undefined||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
   
-    <aside class="success">
-This operation does not require authentication
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside>
 
+    
   
 
 ## Get DER For Service Point

@@ -23745,6 +23745,20 @@ x-cds-client-headers: string
 <td>ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.</td>
 </tr>
 <tr>
+<td>oldest-date</td>
+<td>query</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+</tr>
+<tr>
+<td>newest-date</td>
+<td>query</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+</tr>
+<tr>
 <td>page</td>
 <td>query</td>
 <td>number</td>
@@ -23815,10 +23829,11 @@ x-cds-client-headers: string
         </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"meterSerial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basicRead"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"basicRead"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
@@ -23918,10 +23933,16 @@ x-cds-client-headers: string
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
-<td>»»» meterSerial</td>
+<td>»»» meterID</td>
 <td>string</td>
 <td>optional</td>
-<td>Meter serial number as it appears in customer’s bill</td>
+<td>Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.</td>
+</tr>
+<tr>
+<td>»»» controlledLoad</td>
+<td>boolean</td>
+<td>optional</td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.</td>
 </tr>
 <tr>
 <td>»»» readStartDate</td>
@@ -23939,7 +23960,7 @@ x-cds-client-headers: string
 <td>»»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
-<td>Unit of measure of the meter reads. If absent then assumed to be KWH</td>
+<td>Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values</td>
 </tr>
 <tr>
 <td>»»» readUType</td>
@@ -23974,20 +23995,20 @@ x-cds-client-headers: string
 <tr>
 <td>»»»» readIntervalLength</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Read interval length in minutes</td>
 </tr>
 <tr>
 <td>»»»» aggregateValue</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise</td>
+<td>The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export</td>
 </tr>
 <tr>
 <td>»»»» intervalReads</td>
 <td>[object]</td>
 <td>mandatory</td>
-<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate</td>
+<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)</td>
 </tr>
 <tr>
 <td>»»»»» quality</td>
@@ -24066,14 +24087,6 @@ x-cds-client-headers: string
 </tr>
 </thead><tbody>
 <tr>
-<td>unitOfMeasure</td>
-<td>KWH</td>
-</tr>
-<tr>
-<td>unitOfMeasure</td>
-<td>GWH</td>
-</tr>
-<tr>
 <td>readUType</td>
 <td>basicRead</td>
 </tr>
@@ -24141,8 +24154,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
 
 <h2 id='get-bulk-usage'>Get Bulk Usage</h2>
@@ -24216,6 +24230,20 @@ x-cds-client-headers: string
 </tr>
 </thead><tbody>
 <tr>
+<td>oldest-date</td>
+<td>query</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+</tr>
+<tr>
+<td>newest-date</td>
+<td>query</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+</tr>
+<tr>
 <td>page</td>
 <td>query</td>
 <td>number</td>
@@ -24286,10 +24314,11 @@ x-cds-client-headers: string
         </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"meterSerial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basicRead"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"basicRead"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
@@ -24389,10 +24418,16 @@ x-cds-client-headers: string
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
-<td>»»» meterSerial</td>
+<td>»»» meterID</td>
 <td>string</td>
 <td>optional</td>
-<td>Meter serial number as it appears in customer’s bill</td>
+<td>Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.</td>
+</tr>
+<tr>
+<td>»»» controlledLoad</td>
+<td>boolean</td>
+<td>optional</td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.</td>
 </tr>
 <tr>
 <td>»»» readStartDate</td>
@@ -24410,7 +24445,7 @@ x-cds-client-headers: string
 <td>»»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
-<td>Unit of measure of the meter reads. If absent then assumed to be KWH</td>
+<td>Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values</td>
 </tr>
 <tr>
 <td>»»» readUType</td>
@@ -24445,20 +24480,20 @@ x-cds-client-headers: string
 <tr>
 <td>»»»» readIntervalLength</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Read interval length in minutes</td>
 </tr>
 <tr>
 <td>»»»» aggregateValue</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise</td>
+<td>The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export</td>
 </tr>
 <tr>
 <td>»»»» intervalReads</td>
 <td>[object]</td>
 <td>mandatory</td>
-<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate</td>
+<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)</td>
 </tr>
 <tr>
 <td>»»»»» quality</td>
@@ -24537,14 +24572,6 @@ x-cds-client-headers: string
 </tr>
 </thead><tbody>
 <tr>
-<td>unitOfMeasure</td>
-<td>KWH</td>
-</tr>
-<tr>
-<td>unitOfMeasure</td>
-<td>GWH</td>
-</tr>
-<tr>
 <td>readUType</td>
 <td>basicRead</td>
 </tr>
@@ -24612,8 +24639,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
 
 <h2 id='get-usage-for-specific-service-points'>Get Usage For Specific Service Points</h2>
@@ -24699,6 +24727,20 @@ x-cds-client-headers: string
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>oldest-date</td>
+<td>query</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months days.  Format is aligned to DateString common type</td>
+</tr>
+<tr>
+<td>newest-date</td>
+<td>query</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td>Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type</td>
+</tr>
 <tr>
 <td>page</td>
 <td>query</td>
@@ -24797,10 +24839,11 @@ x-cds-client-headers: string
         </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"meterSerial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"readUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basicRead"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"basicRead"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="p">,</span><span class="w">
@@ -24900,10 +24943,16 @@ x-cds-client-headers: string
 <td>Register suffix of the meter register where the meter reads are obtained</td>
 </tr>
 <tr>
-<td>»»» meterSerial</td>
+<td>»»» meterID</td>
 <td>string</td>
 <td>optional</td>
-<td>Meter serial number as it appears in customer’s bill</td>
+<td>Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.</td>
+</tr>
+<tr>
+<td>»»» controlledLoad</td>
+<td>boolean</td>
+<td>optional</td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime. ControlledLoad field will have &#39;No if register does not relate to a Controlled Load, “Yes” if register relates to a Controlled Load If absent the status is unknown.</td>
 </tr>
 <tr>
 <td>»»» readStartDate</td>
@@ -24921,7 +24970,7 @@ x-cds-client-headers: string
 <td>»»» unitOfMeasure</td>
 <td>string</td>
 <td>optional</td>
-<td>Unit of measure of the meter reads. If absent then assumed to be KWH</td>
+<td>Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values</td>
 </tr>
 <tr>
 <td>»»» readUType</td>
@@ -24956,20 +25005,20 @@ x-cds-client-headers: string
 <tr>
 <td>»»»» readIntervalLength</td>
 <td><a href="#common-field-types">PositiveInteger</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Read interval length in minutes</td>
 </tr>
 <tr>
 <td>»»»» aggregateValue</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The aggregate sum of the interval read values.  If positive then it means net consumption, if negative it means net export from the premise</td>
+<td>The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export</td>
 </tr>
 <tr>
 <td>»»»» intervalReads</td>
 <td>[object]</td>
 <td>mandatory</td>
-<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate</td>
+<td>Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)</td>
 </tr>
 <tr>
 <td>»»»»» quality</td>
@@ -25048,14 +25097,6 @@ x-cds-client-headers: string
 </tr>
 </thead><tbody>
 <tr>
-<td>unitOfMeasure</td>
-<td>KWH</td>
-</tr>
-<tr>
-<td>unitOfMeasure</td>
-<td>GWH</td>
-</tr>
-<tr>
 <td>readUType</td>
 <td>basicRead</td>
 </tr>
@@ -25123,8 +25164,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.usage:read</a>
 </aside></p>
 
 <h2 id='get-der-for-service-point'>Get DER For Service Point</h2>
