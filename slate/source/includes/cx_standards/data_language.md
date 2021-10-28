@@ -1,4 +1,4 @@
-## Data Language Standards
+## Data Language Standards: Common
 
 >
 <img src="./images/cx_standards0.png" width=375px/> <br>
@@ -12,7 +12,10 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 |**Data Language Standards:** Detailed scope requests|<p>If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend *Basic* and *Detailed* data cluster and permission language to show that *Detailed* scopes include *Basic* data.</p><p>Data Holders and Data Recipients **MUST** use the alternative language denoted with an '&Dagger;' in the relevant table(s). See [Table 1](#cx-table1) for banking data; and [Table 2](#cx-table2) for energy data (rows greyed out for clarity).</p><p>**Example:** A Data Recipient presents the *Detailed* data cluster in a data request to a consumer, but does not present the *Basic* data cluster. The *Detailed* scope includes *Basic* data, but this is not apparent to the consumer based on the data cluster language and permissions used for the *Detailed* scope.</p>|
 
 <br/>
-**Table 1. Banking**
+
+## Banking Language
+
+**Table 1.**
 <span id="cx-table1"/>
 
 ### Individual Consumer
@@ -64,7 +67,10 @@ See below for the data language standards for the payees scope:
 |**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;*|bank:payees:read|
 
 <br/>
-**Table 2. Energy**
+
+## Energy Language
+
+**Table 2.**
 <span id="cx-table2"/>
 
 <aside class="notice">

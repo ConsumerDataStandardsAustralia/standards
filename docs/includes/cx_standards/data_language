@@ -1,4 +1,4 @@
-<h2 id='data-language-standards'>Data Language Standards</h2>
+<h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
 <font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
@@ -22,8 +22,9 @@
 </tr>
 </tbody></table>
 
-<p><br/>
-<strong>Table 1. Banking</strong>
+<p><br/></p>
+<h2 id='banking-language'>Banking Language</h2>
+<p><strong>Table 1.</strong>
 <span id="cx-table1"/></p>
 <h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
@@ -148,8 +149,9 @@
 </tr>
 </tbody></table>
 
-<p><br/>
-<strong>Table 2. Energy</strong>
+<p><br/></p>
+<h2 id='energy-language'>Energy Language</h2>
+<p><strong>Table 2.</strong>
 <span id="cx-table2"/></p>
 
 <aside class="notice">

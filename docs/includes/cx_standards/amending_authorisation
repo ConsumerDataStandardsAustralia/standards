@@ -7,7 +7,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Authorisation:</strong><br/>Amending consent</td>
-<td><strong>Effective from July 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:<br><br></td>
+<td>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:<br><br></td>
 </tr>
 <tr>
 <td>Customer Profile</td>
@@ -22,8 +22,6 @@
 <td>Data Holders <strong>MAY</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
 </tr>
 </tbody></table>
-
-<p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
 
 <table><thead>
 <tr>
