@@ -281,7 +281,13 @@
               <a href="#consumer-experience" class="toc-h1 toc-link" data-title="Consumer Experience">Consumer Experience</a>
               <ul class="toc-list-h2">
                     <li>
-                      <a href="#data-language-standards" class="toc-h2 toc-link" data-title="Data Language Standards">Data Language Standards</a>
+                      <a href="#data-language-standards-common" class="toc-h2 toc-link" data-title="Data Language Standards: Common">Data Language Standards: Common</a>
+                    </li>
+                    <li>
+                      <a href="#banking-language" class="toc-h2 toc-link" data-title="Banking Language">Banking Language</a>
+                    </li>
+                    <li>
+                      <a href="#energy-language" class="toc-h2 toc-link" data-title="Energy Language">Energy Language</a>
                     </li>
                     <li>
                       <a href="#accessibility-standards" class="toc-h2 toc-link" data-title="Accessibility Standards">Accessibility Standards</a>
@@ -742,11 +748,6 @@
 <tr>
 <td><a href="#product-amp-account-components">Banking Term Deposit Account Types</a></td>
 <td>Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021</td>
-<td>July 1st 2021</td>
-</tr>
-<tr>
-<td><a href="#amending-authorisation-standards">Amending Consent</a></td>
-<td>Data Holders MAY implement the following standards from July 1st 2021 when a CDR consumer is invited to amend a current authorisation as per rule 4.22A and the ADR has supplied a <code>cdr_arrangement_id</code></td>
 <td>July 1st 2021</td>
 </tr>
 <tr>
@@ -2138,6 +2139,26 @@ Content-Type: application/json
 <td style="text-align: left">The requested bank account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the request body.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
 </tr>
 <tr>
+<td style="text-align: left"><a id="error-422-invalid-service-point"></a>Invalid Service Point</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-energy:<br/>Authorisation/InvalidServicePoint</code></td>
+<td style="text-align: left">The requested service point is permanently unavailable. No subsequent request for the service point will be successful. Applies when the service point is provided in the request body.<br/><br/>The error <code>detail</code> is the service point ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-unavailable-service-point"></a>Unavailable Service Point</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-energy:<br/>Authorisation/UnavailableServicePoint</code></td>
+<td style="text-align: left">The requested service point is temporarily unavailable. Subsequent requests for the service point may be successful. Applies when the service point ID is provided in the request body.<br/><br/>The error <code>detail</code> is the service point ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-invalid-energy-account"></a>Invalid Energy Account</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-energy:<br/>Authorisation/InvalidEnergyAccount</code></td>
+<td style="text-align: left">The requested energy account is permanently unavailable. No subsequent request for the account will be successful. Applies when the account ID is provided in the request body.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
+</tr>
+<tr>
+<td style="text-align: left"><a id="error-422-unavailable-energy-account"></a>Unavailable Energy Account</td>
+<td style="text-align: left"><code>urn:au-cds:error:cds-energy:<br/>Authorisation/UnavailableEnergyAccount</code></td>
+<td style="text-align: left">The requested energy account is temporarily unavailable. Subsequent requests for the account may be successful. Applies when the account ID is provided in the request body.<br/><br/>The error <code>detail</code> is the account ID of the resource being requested.<br/><br/>This error code <strong>MUST</strong> be supported for authenticated APIs.</td>
+</tr>
+<tr>
 <td style="text-align: left"><a id="error-422-authorisation-invalid-arrangement"></a>Invalid Consent Arrangement</td>
 <td style="text-align: left"><code>urn:au-cds:error:cds-all:<br/>Authorisation/InvalidArrangement</code></td>
 <td style="text-align: left">The arrangement being executed has previously been revoked and no further action will be taken.<br/><br/>The error <code>detail</code> is the CDR Arrangement ID of the being executed.<br/><br/>This error code <strong>MUST</strong> be supported for the Data Recipient Software Product and Data Holder CDR Arrangement Revocation endpoint.</td>
@@ -2384,7 +2405,7 @@ standards</li>
 <ul>
 <li><a href='https://consumerdatastandards.gov.au/guidelines-and-conventions/consumer-experience-guidelines/'>CX Guidelines</a></li>
 </ul>
-<h2 id='data-language-standards'>Data Language Standards</h2>
+<h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
 
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
@@ -2401,20 +2422,17 @@ standards</li>
 </thead><tbody>
 <tr>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
-<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions. See <a href="#cx-table1">Table 1</a> for language to be used when requesting banking data; and <a href="#cx-table2">Table 2</a> for language to be used when requesting energy data.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; in the table(s) for the relevant data.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; in the table(s) for the relevant data.</p></td>
+<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions. See the <a href="#banking-language">Banking Language</a> section for language to be used when requesting banking data; and the <a href="#energy-language">Energy Language</a> section for language to be used when requesting energy data.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; for the relevant data.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; for the relevant data.</p></td>
 </tr>
 <tr>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
-<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; in the relevant table(s). See <a href="#cx-table1">Table 1</a> for banking data; and <a href="#cx-table2">Table 2</a> for energy data (rows greyed out for clarity).</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
+<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; for the relevant scope(s). See the <a href="#banking-language">Banking Language</a> section for banking data and the <a href="#energy-language">Energy Language</a> section for energy data.</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
 </tr>
 </tbody></table>
 
-<p><br/>
-<strong>Table 1. - Banking</strong>
-<span id="cx-table1"/></p>
+<p><br/></p>
 
-<h3 id='individual-consumer'>Individual Consumer</h3>
-
+<h2 id='banking-language'>Banking Language</h2><h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -2438,9 +2456,7 @@ standards</li>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-
 <h3 id='business-consumer'>Business consumer</h3>
-
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -2464,13 +2480,13 @@ standards</li>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-
-<h3 id='common'>Common</h3>
+<h3 id='banking-accounts'>Banking Accounts</h3>
+<p>See below for the data language standards for the banking account scopes:</p>
 
 <table><thead>
 <tr>
 <th>Data cluster language</th>
-<th>Permission language</th>
+<th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
 </tr>
 </thead><tbody>
@@ -2489,16 +2505,49 @@ standards</li>
 <td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
 <td>bank:accounts.detail:read</td>
 </tr>
+</tbody></table>
+<h3 id='transactions'>Transactions</h3>
+<p>See below for the data language standards for the banking transactions scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Transaction details</strong></td>
 <td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
 <td>bank:transactions:read</td>
 </tr>
+</tbody></table>
+<h3 id='regular-payments'>Regular Payments</h3>
+<p>See below for the data language standards for the regular payments scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th><div style="width:250px">Permission language</div></th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Direct debits and scheduled payments</strong></td>
 <td>Direct debits;<br>Scheduled payments;</td>
 <td>bank:regular_payments:read</td>
 </tr>
+</tbody></table>
+<h3 id='payees'>Payees</h3>
+<p>See below for the data language standards for the payees scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Saved payees</strong></td>
 <td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
@@ -2506,9 +2555,8 @@ standards</li>
 </tr>
 </tbody></table>
 
-<p><br/>
-<strong>Table 2. - Energy</strong>
-<span id="cx-table2"/></p>
+<p><br/></p>
+<h2 id='energy-language'>Energy Language</h2>
 
 <aside class="notice">
 Note that the data language standards for the energy sector are currently considered non-binding.  This status will be changed by a decision of the Chair after the CDR rules relating to the energy sector are finalised.
@@ -2534,7 +2582,7 @@ Note that the data language standards for the energy sector are currently consid
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Name, contact details &Dagger;</strong></td>
+<td><strong>Name and contact details &Dagger;</strong></td>
 <td>Name;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
 <td>common:customer.detail:read</td>
 </tr>
@@ -2561,14 +2609,14 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 <tr>
 <td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
 
 <h3 id='energy-accounts'>Energy Accounts</h3>
 
-<p>The below tables outline the data language standards for the energy accounts scopes:</p>
+<p>See below for the data language standards for the energy accounts scopes:</p>
 
 <table><thead>
 <tr>
@@ -2588,15 +2636,15 @@ Note that the data language standards for the energy sector are currently consid
 <td>energy:accounts.detail:read</td>
 </tr>
 <tr>
-<td><strong>Account and plan details</strong> &dagger;</td>
-<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users</td>
+<td><strong>Account and plan details</strong> &Dagger;</td>
+<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users;</td>
 <td>energy:accounts.detail:read</td>
 </tr>
 </tbody></table>
 
 <h3 id='concessions'>Concessions</h3>
 
-<p>The below tables outline the data language standards for the concession scope:</p>
+<p>See below for the data language standards for the concession scope:</p>
 
 <table><thead>
 <tr>
@@ -2614,7 +2662,7 @@ Note that the data language standards for the energy sector are currently consid
 
 <h3 id='payments'>Payments</h3>
 
-<p>The below tables outline the data language standards for the payments schedule scope:</p>
+<p>See below for the data language standards for the payments schedule scope:</p>
 
 <table><thead>
 <tr>
@@ -2632,7 +2680,7 @@ Note that the data language standards for the energy sector are currently consid
 
 <h3 id='billing'>Billing</h3>
 
-<p>The below tables outline the data language standards for the billing scope:</p>
+<p>See below for the data language standards for the billing scope:</p>
 
 <table><thead>
 <tr>
@@ -2643,19 +2691,19 @@ Note that the data language standards for the energy sector are currently consid
 </thead><tbody>
 <tr>
 <td><strong>Billing payments and history</strong></td>
-<td>Account balance(s);<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing dates;<br>Usage for billing period;<br>Payment date;<br>Invoice numbers;</td>
+<td>Account balance;<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;</td>
 <td>energy:billing:read</td>
 </tr>
 </tbody></table>
 
 <h3 id='nmi-standing-data'>NMI Standing Data</h3>
 
-<p>The below tables outline the data language standards for the NMI standing data scopes:</p>
+<p>See below for the data language standards for the NMI standing data scopes:</p>
 
 <table><thead>
 <tr>
 <th>Data cluster language</th>
-<th>Permission language</th>
+<th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
 </tr>
 </thead><tbody>
@@ -2678,7 +2726,7 @@ Note that the data language standards for the energy sector are currently consid
 
 <h3 id='distributed-energy-resources-der'>Distributed Energy Resources (DER)</h3>
 
-<p>The below tables outline the data language standards for the Distributed Energy Resources (DER) scope:</p>
+<p>See below for the data language standards for the Distributed Energy Resources (DER) scope:</p>
 
 <table><thead>
 <tr>
@@ -2688,15 +2736,15 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Concessions and assistance</strong></td>
-<td>Concession type;<br>Concession information;</td>
-<td>energy:accounts.concessions:read</td>
+<td><strong>Energy generation and storage</strong></td>
+<td>Generation information;<br>Generation or storage device type ;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
+<td>energy:electricity.der:read</td>
 </tr>
 </tbody></table>
 
 <h3 id='electricity-usage'>Electricity Usage</h3>
 
-<p>The below tables outline the data language standards for the electricity usage scope:</p>
+<p>See below for the data language standards for the electricity usage scope:</p>
 
 <table><thead>
 <tr>
@@ -2706,9 +2754,9 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Stored payment information</strong></td>
-<td>Payment details;<br>Scheduled payment amount;</td>
-<td>energy:accounts.paymentschedule:read</td>
+<td><strong>Electricity usage</strong></td>
+<td>Usage;<br>Meter details;</td>
+<td>energy:electricity.usage:read</td>
 </tr>
 </tbody></table>
 
@@ -2833,32 +2881,6 @@ Note that the data language standards for the energy sector are currently consid
 </tbody></table>
 
 <h2 id='amending-authorisation-standards'>Amending Authorisation Standards</h2>
-
-<table><thead>
-<tr>
-<th>Area</th>
-<th>CX Standard</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Authorisation:</strong><br/>Amending consent</td>
-<td><strong>Effective from July 2021</strong>: <br>The following standards apply when a Data Holder invites a CDR consumer to amend a current authorisation as per rule 4.22A and the ADR has supplied a <em>cdr_arrangement_id</em>:<br><br></td>
-</tr>
-<tr>
-<td>Customer Profile</td>
-<td>Where customer profile selection applies, Data Holders <strong>MAY</strong> omit the profile selection step and assume the customer profile associated with the existing authorisation. Data Holders <strong>MAY</strong> indicate which profile the authorisation relates to during the authorisation process.</td>
-</tr>
-<tr>
-<td>Account Selection</td>
-<td>Where account selection applies, Data Holders <strong>MAY</strong> pre-select accounts that were associated with the previous authorisation provided these accounts remain eligible and available. Data Holders <strong>MAY</strong> allow these accounts to be amended, and <strong>MAY</strong> provide information regarding the pre-selection of accounts.</td>
-</tr>
-<tr>
-<td>Changing Attributes</td>
-<td>Data Holders <strong>MAY</strong> indicate where a dataset is being added to an authorisation or a disclosure duration is being amended. Data Holders <strong>MAY</strong> apply this standard to other changing attributes, but this <strong>MUST ONLY</strong> apply where the attribute in the new authorisation differs to that of the previous authorisation. How a changed attributed is signified is at the Data Holder’s discretion.</td>
-</tr>
-</tbody></table>
-
-<p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
 
 <table><thead>
 <tr>
@@ -21527,7 +21549,7 @@ x-fapi-interaction-id: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -21833,7 +21855,7 @@ x-fapi-interaction-id: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -22319,7 +22341,7 @@ x-fapi-interaction-id: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -22417,7 +22439,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -22907,7 +22929,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -23091,7 +23113,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -23930,7 +23952,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -24093,7 +24115,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -24422,7 +24444,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -24920,7 +24942,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -25103,7 +25125,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -25432,7 +25454,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -25533,21 +25555,20 @@ x-cds-client-headers: string
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -25583,7 +25604,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -25628,7 +25649,7 @@ x-cds-client-headers: string
 <td>»» installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>»» islandableInstallation</td>
@@ -25646,102 +25667,102 @@ x-cds-client-headers: string
 <td>»» protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>»»» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>»»» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>»»» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>»»» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>»»» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>»»» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>»» acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -25760,55 +25781,55 @@ x-cds-client-headers: string
 <td>»»» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>»»» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>»»» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>»»» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»»» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»»»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»»»» count</td>
@@ -25820,13 +25841,13 @@ x-cds-client-headers: string
 <td>»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»» status</td>
@@ -25835,34 +25856,28 @@ x-cds-client-headers: string
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»»»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»»»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»»»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»»»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»»»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 <tr>
 <td>»»» links</td>
@@ -25892,6 +25907,14 @@ x-cds-client-headers: string
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -25984,8 +26007,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
 
 <h2 id='get-bulk-der'>Get Bulk DER</h2>
@@ -26043,7 +26067,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -26153,21 +26177,20 @@ x-cds-client-headers: string
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -26263,7 +26286,7 @@ x-cds-client-headers: string
 <td>»»» installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>»»» islandableInstallation</td>
@@ -26281,102 +26304,102 @@ x-cds-client-headers: string
 <td>»»» protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>»»»» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>»»»» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>»»»» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>»»»» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>»»» acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -26395,55 +26418,55 @@ x-cds-client-headers: string
 <td>»»»» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>»»»» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>»»»» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>»»»» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»»»» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»»»»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»»»»» count</td>
@@ -26455,13 +26478,13 @@ x-cds-client-headers: string
 <td>»»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» status</td>
@@ -26470,34 +26493,28 @@ x-cds-client-headers: string
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»»»»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»»»»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»»»»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»»»»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»»»»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 <tr>
 <td>»»»» links</td>
@@ -26563,6 +26580,14 @@ x-cds-client-headers: string
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -26655,8 +26680,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
 
 <h2 id='get-der-for-specific-service-points'>Get DER For Specific Service Points</h2>
@@ -26727,7 +26753,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -26864,21 +26890,20 @@ x-cds-client-headers: string
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"connectionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVERTER"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"manufacturerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterModelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"commissioningDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"inverterDeviceCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"derDevices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deviceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"modelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"installationStage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSSIL"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"nominalRatedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -26923,7 +26948,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -26974,7 +26999,7 @@ x-cds-client-headers: string
 <td>»»» installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>»»» islandableInstallation</td>
@@ -26992,102 +27017,102 @@ x-cds-client-headers: string
 <td>»»» protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>»»»» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>»»»» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>»»»» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>»»»» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>»»»» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>»»»» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>»»»» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>»»»» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>»»» acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -27106,55 +27131,55 @@ x-cds-client-headers: string
 <td>»»»» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>»»»» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>»»»» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>»»»» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>»»»» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>»»»» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»»»»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»»»»» count</td>
@@ -27166,13 +27191,13 @@ x-cds-client-headers: string
 <td>»»»»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»»»»» status</td>
@@ -27181,34 +27206,28 @@ x-cds-client-headers: string
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»»»»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»»»»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»»»»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»»»»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»»»»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 <tr>
 <td>»»»» links</td>
@@ -27274,6 +27293,14 @@ x-cds-client-headers: string
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>
@@ -27366,8 +27393,9 @@ x-cds-client-headers: string
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.der:read</a>
 </aside></p>
 
 <h2 id='get-energy-accounts'>Get Energy Accounts</h2>
@@ -27425,7 +27453,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -27660,7 +27688,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -28098,7 +28126,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -28197,7 +28225,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -28315,7 +28343,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -28414,7 +28442,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -28528,7 +28556,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -28627,7 +28655,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -28729,7 +28757,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -28828,7 +28856,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -29061,7 +29089,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -29209,7 +29237,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -29308,7 +29336,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -29499,7 +29527,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -29598,7 +29626,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -29894,7 +29922,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -30105,7 +30133,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -30204,7 +30232,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -30410,7 +30438,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -30509,7 +30537,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -30820,7 +30848,7 @@ x-cds-client-headers: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>undefined</strong></td>
+<td><strong>1</strong></td>
 </tr>
 </tbody></table>
 
@@ -31046,7 +31074,7 @@ x-cds-client-headers: string
 <tr>
 <td>4xx</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5"><strong>Client Error</strong></a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-energy-account">422 - Unavailable Energy Account</a></li><li><a href="#error-422-invalid-energy-account">422 - Invalid Energy Account</a></li></ul></td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -37414,21 +37442,20 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">&quot;connectionIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;equipmentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;equipmentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVERTER&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;manufacturerName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;inverterSeries&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;inverterModelNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;commissioningDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;installationStage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;inverterDeviceCapacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;derDevices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;deviceIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;manufacturer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;modelNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w">
-          </span><span class="s2">&quot;installationStage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FOSSIL&quot;</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;subtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w">
           </span><span class="s2">&quot;nominalRatedCapacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -37470,7 +37497,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>installedPhasesCount</td>
 <td>number</td>
 <td>mandatory</td>
-<td>The number of phases that DER is installed on</td>
+<td>The number of phases that DER is connected to</td>
 </tr>
 <tr>
 <td>islandableInstallation</td>
@@ -37488,102 +37515,102 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>protectionMode</td>
 <td>object</td>
 <td>conditional</td>
-<td>Required only when the hasCentralProtectionAndControl flag is set to true</td>
+<td>Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place</td>
 </tr>
 <tr>
 <td>» exportLimitkva</td>
 <td>number</td>
 <td>optional</td>
-<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. A null value indicates no limit</td>
+<td>Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit</td>
 </tr>
 <tr>
 <td>» underFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 47 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>» underFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» overFrequencyProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 52 Hz according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in Hz.</td>
 </tr>
 <tr>
 <td>» overFrequencyProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» underVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 180V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>» underVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» overVoltageProtection</td>
 <td>number</td>
 <td>optional</td>
-<td>Protective function limit. Default value 260 V according to AS4777-1: 2016 Table 2</td>
+<td>Protective function limit in V.</td>
 </tr>
 <tr>
 <td>» overVoltageProtectionDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds. Default value 2 seconds according to AS4777-1: 2016 Table 2</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» sustainedOverVoltage</td>
 <td>number</td>
 <td>optional</td>
-<td>Sustained over voltage</td>
+<td>Sustained over voltage.</td>
 </tr>
 <tr>
 <td>» sustainedOverVoltageDelay</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip delay time in seconds</td>
+<td>Trip delay time in seconds.</td>
 </tr>
 <tr>
 <td>» frequencyRateOfChange</td>
 <td>number</td>
 <td>optional</td>
-<td>Rate of change of frequency trip point (Hz/s)</td>
+<td>Rate of change of frequency trip point (Hz/s).</td>
 </tr>
 <tr>
 <td>» voltageVectorShift</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip angle in degrees</td>
+<td>Trip angle in degrees.</td>
 </tr>
 <tr>
 <td>» interTripScheme</td>
 <td>string</td>
 <td>optional</td>
-<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;)</td>
+<td>Description of the form of inter-trip (e.g. &#39;from local substation&#39;).</td>
 </tr>
 <tr>
 <td>» neutralVoltageDisplacement</td>
 <td>number</td>
 <td>optional</td>
-<td>Trip voltage</td>
+<td>Trip voltage.</td>
 </tr>
 <tr>
 <td>acConnections</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
 </tr>
 <tr>
@@ -37602,55 +37629,55 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» equipmentType</td>
 <td>string</td>
 <td>optional</td>
-<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine)</td>
+<td>Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.</td>
 </tr>
 <tr>
 <td>» manufacturerName</td>
 <td>string</td>
-<td>optional</td>
-<td>The name of the inverter manufacturer</td>
+<td>conditional</td>
+<td>The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» inverterSeries</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter series</td>
+<td>conditional</td>
+<td>The inverter series. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» inverterModelNumber</td>
 <td>string</td>
-<td>optional</td>
-<td>The inverter model number</td>
+<td>conditional</td>
+<td>The inverter model number. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» commissioningDate</td>
 <td><a href="#common-field-types">DateString</a></td>
-<td>optional</td>
+<td>mandatory</td>
 <td>The date that the DER installation is commissioned</td>
-</tr>
-<tr>
-<td>» installationStage</td>
-<td>string</td>
-<td>optional</td>
-<td>Description of the installation stage</td>
 </tr>
 <tr>
 <td>» status</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
 <td>» inverterDeviceCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>The rated AC output power that is listed in the product specified by the manufacturer</td>
+<td>conditional</td>
+<td>The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER</td>
 </tr>
 <tr>
 <td>» derDevices</td>
 <td>[object]</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>none</td>
+</tr>
+<tr>
+<td>»» deviceIdentifier</td>
+<td>number</td>
+<td>mandatory</td>
+<td>Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards</td>
 </tr>
 <tr>
 <td>»» count</td>
@@ -37662,13 +37689,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>»» manufacturer</td>
 <td>string</td>
 <td>optional</td>
-<td>The name of the device manufacturer</td>
+<td>The name of the device manufacturer. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»» modelNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>The model number of the device</td>
+<td>The model number of the device. If absent then assumed to be “unknown”</td>
 </tr>
 <tr>
 <td>»» status</td>
@@ -37677,34 +37704,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned</td>
 </tr>
 <tr>
-<td>»» installationStage</td>
-<td>number</td>
-<td>optional</td>
-<td>Description of the device installation stage</td>
-</tr>
-<tr>
 <td>»» type</td>
 <td>string</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Used to indicate the primary technology used in the DER device</td>
 </tr>
 <tr>
 <td>»» subtype</td>
 <td>string</td>
 <td>optional</td>
-<td>This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement</td>
+<td>Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”</td>
 </tr>
 <tr>
 <td>»» nominalRatedCapacity</td>
 <td>number</td>
-<td>optional</td>
+<td>mandatory</td>
 <td>Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group</td>
 </tr>
 <tr>
 <td>»» nominalStorageCapacity</td>
 <td>number</td>
-<td>optional</td>
-<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group</td>
+<td>conditional</td>
+<td>Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-27'>Enumerated Values</h4>
@@ -37714,6 +37735,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>equipmentType</td>
+<td>INVERTER</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>OTHER</td>
+</tr>
 <tr>
 <td>status</td>
 <td>ACTIVE</td>

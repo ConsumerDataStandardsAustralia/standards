@@ -1,4 +1,4 @@
-<h2 id='data-language-standards'>Data Language Standards</h2>
+<h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width=375px/> <br>
 <font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
@@ -14,18 +14,16 @@
 </thead><tbody>
 <tr>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
-<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions. See <a href="#cx-table1">Table 1</a> for language to be used when requesting banking data; and <a href="#cx-table2">Table 2</a> for language to be used when requesting energy data.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; in the table(s) for the relevant data.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; in the table(s) for the relevant data.</p></td>
+<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions. See the <a href="#banking-language">Banking Language</a> section for language to be used when requesting banking data; and the <a href="#energy-language">Energy Language</a> section for language to be used when requesting energy data.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; for the relevant data.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; for the relevant data.</p></td>
 </tr>
 <tr>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
-<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; in the relevant table(s). See <a href="#cx-table1">Table 1</a> for banking data; and <a href="#cx-table2">Table 2</a> for energy data (rows greyed out for clarity).</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
+<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; for the relevant scope(s). See the <a href="#banking-language">Banking Language</a> section for banking data and the <a href="#energy-language">Energy Language</a> section for energy data.</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
 </tr>
 </tbody></table>
 
-<p><br/>
-<strong>Table 1. - Banking</strong>
-<span id="cx-table1"/></p>
-<h3 id='individual-consumer'>Individual Consumer</h3>
+<p><br/></p>
+<h2 id='banking-language'>Banking Language</h2><h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -73,11 +71,13 @@
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
-<h3 id='common'>Common</h3>
+<h3 id='banking-accounts'>Banking Accounts</h3>
+<p>See below for the data language standards for the banking account scopes:</p>
+
 <table><thead>
 <tr>
 <th>Data cluster language</th>
-<th>Permission language</th>
+<th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
 </tr>
 </thead><tbody>
@@ -96,16 +96,49 @@
 <td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
 <td>bank:accounts.detail:read</td>
 </tr>
+</tbody></table>
+<h3 id='transactions'>Transactions</h3>
+<p>See below for the data language standards for the banking transactions scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Transaction details</strong></td>
 <td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
 <td>bank:transactions:read</td>
 </tr>
+</tbody></table>
+<h3 id='regular-payments'>Regular Payments</h3>
+<p>See below for the data language standards for the regular payments scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th><div style="width:250px">Permission language</div></th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Direct debits and scheduled payments</strong></td>
 <td>Direct debits;<br>Scheduled payments;</td>
 <td>bank:regular_payments:read</td>
 </tr>
+</tbody></table>
+<h3 id='payees'>Payees</h3>
+<p>See below for the data language standards for the payees scope:</p>
+
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><strong>Saved payees</strong></td>
 <td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
@@ -113,10 +146,8 @@
 </tr>
 </tbody></table>
 
-<p><br/>
-<strong>Table 2. - Energy</strong>
-<span id="cx-table2"/></p>
-
+<p><br/></p>
+<h2 id='energy-language'>Energy Language</h2>
 <aside class="notice">
 Note that the data language standards for the energy sector are currently considered non-binding.  This status will be changed by a decision of the Chair after the CDR rules relating to the energy sector are finalised.
 </aside>
@@ -139,7 +170,7 @@ Note that the data language standards for the energy sector are currently consid
 <td>common:customer.detail:read</td>
 </tr>
 <tr>
-<td><strong>Name, contact details &Dagger;</strong></td>
+<td><strong>Name and contact details &Dagger;</strong></td>
 <td>Name;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
 <td>common:customer.detail:read</td>
 </tr>
@@ -164,12 +195,12 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 <tr>
 <td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
-<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
 <td>common:customer.detail:read</td>
 </tr>
 </tbody></table>
 <h3 id='energy-accounts'>Energy Accounts</h3>
-<p>The below tables outline the data language standards for the energy accounts scopes:</p>
+<p>See below for the data language standards for the energy accounts scopes:</p>
 
 <table><thead>
 <tr>
@@ -189,13 +220,13 @@ Note that the data language standards for the energy sector are currently consid
 <td>energy:accounts.detail:read</td>
 </tr>
 <tr>
-<td><strong>Account and plan details</strong> &dagger;</td>
-<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users</td>
+<td><strong>Account and plan details</strong> &Dagger;</td>
+<td>Account and plan information;<br>National Meter Identifier (NMI);<br>Account type;<br>Fees, features, rates, and discounts;<br>Additional account users;</td>
 <td>energy:accounts.detail:read</td>
 </tr>
 </tbody></table>
 <h3 id='concessions'>Concessions</h3>
-<p>The below tables outline the data language standards for the concession scope:</p>
+<p>See below for the data language standards for the concession scope:</p>
 
 <table><thead>
 <tr>
@@ -211,7 +242,7 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='payments'>Payments</h3>
-<p>The below tables outline the data language standards for the payments schedule scope:</p>
+<p>See below for the data language standards for the payments schedule scope:</p>
 
 <table><thead>
 <tr>
@@ -227,7 +258,7 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='billing'>Billing</h3>
-<p>The below tables outline the data language standards for the billing scope:</p>
+<p>See below for the data language standards for the billing scope:</p>
 
 <table><thead>
 <tr>
@@ -238,17 +269,17 @@ Note that the data language standards for the energy sector are currently consid
 </thead><tbody>
 <tr>
 <td><strong>Billing payments and history</strong></td>
-<td>Account balance(s);<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing dates;<br>Usage for billing period;<br>Payment date;<br>Invoice numbers;</td>
+<td>Account balance;<br>National Meter Identifier (NMI);<br>Payment method;<br>Payment status;<br>Charges, discounts, credits;<br>Billing date;<br>Usage for billing period;<br>Payment date;<br>Invoice number;</td>
 <td>energy:billing:read</td>
 </tr>
 </tbody></table>
 <h3 id='nmi-standing-data'>NMI Standing Data</h3>
-<p>The below tables outline the data language standards for the NMI standing data scopes:</p>
+<p>See below for the data language standards for the NMI standing data scopes:</p>
 
 <table><thead>
 <tr>
 <th>Data cluster language</th>
-<th>Permission language</th>
+<th><div style="width:250px">Permission language</div></th>
 <th>Authorisation Scopes</th>
 </tr>
 </thead><tbody>
@@ -269,7 +300,7 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </tbody></table>
 <h3 id='distributed-energy-resources-der'>Distributed Energy Resources (DER)</h3>
-<p>The below tables outline the data language standards for the Distributed Energy Resources (DER) scope:</p>
+<p>See below for the data language standards for the Distributed Energy Resources (DER) scope:</p>
 
 <table><thead>
 <tr>
@@ -279,13 +310,13 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Concessions and assistance</strong></td>
-<td>Concession type;<br>Concession information;</td>
-<td>energy:accounts.concessions:read</td>
+<td><strong>Energy generation and storage</strong></td>
+<td>Generation information;<br>Generation or storage device type ;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
+<td>energy:electricity.der:read</td>
 </tr>
 </tbody></table>
 <h3 id='electricity-usage'>Electricity Usage</h3>
-<p>The below tables outline the data language standards for the electricity usage scope:</p>
+<p>See below for the data language standards for the electricity usage scope:</p>
 
 <table><thead>
 <tr>
@@ -295,8 +326,8 @@ Note that the data language standards for the energy sector are currently consid
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Stored payment information</strong></td>
-<td>Payment details;<br>Scheduled payment amount;</td>
-<td>energy:accounts.paymentschedule:read</td>
+<td><strong>Electricity usage</strong></td>
+<td>Usage;<br>Meter details;</td>
+<td>energy:electricity.usage:read</td>
 </tr>
 </tbody></table>
