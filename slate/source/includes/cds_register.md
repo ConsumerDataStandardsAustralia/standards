@@ -1,6 +1,5 @@
 
 
-
 ## Get OpenId Provider Config
 
 <a id="opIdGetOpenIdProviderConfig"></a>
@@ -85,7 +84,7 @@ Endpoint used by participants to discover the CDR Register OpenID configuration 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The OpenID Provider Configuration Metadata values|[ResponseOpenIDProviderConfigMetadata](#schemaresponseopenidproviderconfigmetadata)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|The OpenID Provider Configuration Metadata values|[ResponseOpenIDProviderConfigMetadata](#schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata)|
 
   
     <aside class="success">
@@ -159,7 +158,7 @@ JWKS endpoint containing the public keys used by the CDR Register to validate th
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|A JSON object that represents a set of JWKs|[ResponseJWKS](#schemaresponsejwks)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|A JSON object that represents a set of JWKs|[ResponseJWKS](#schemacdr-participant-discovery-apiresponsejwks)|
 
   
     <aside class="success">
@@ -290,8 +289,8 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataHolderBrandList](#schemaresponseregisterdataholderbrandlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataHolderBrandList](#schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
@@ -384,11 +383,11 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|string|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid industry path parameter</br>Invalid SoftwareProductId|[ResponseErrorList](#schemaresponseerrorlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid industry path parameter</br>Invalid SoftwareProductId|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorList](#schemaresponseerrorlist)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA fields invalid or incomplete|[ResponseErrorList](#schemaresponseerrorlist)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA fields invalid or incomplete|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 
 ### Response Headers
 
@@ -480,8 +479,8 @@ Endpoint used by participants to discover the statuses for software products fro
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[SoftwareProductsStatusList](#schemasoftwareproductsstatuslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[SoftwareProductsStatusList](#schemacdr-participant-discovery-apisoftwareproductsstatuslist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
 ### Response Headers
@@ -571,8 +570,8 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataRecipientsStatusList](#schemadatarecipientsstatuslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataRecipientsStatusList](#schemacdr-participant-discovery-apidatarecipientsstatuslist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
 ### Response Headers
@@ -684,8 +683,8 @@ Endpoint used by participants to discover data recipients and associated brands 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataRecipientList](#schemaresponseregisterdatarecipientlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemaresponseerrorlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataRecipientList](#schemacdr-participant-discovery-apiresponseregisterdatarecipientlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
 
 ### Response Headers
@@ -701,12 +700,12 @@ This operation does not require authentication
 
   
 
-<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
-<a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a>
+<h2 class="schema-heading" id="cdr-participant-discovery-api-schemas">Schemas</h2>
+<a class="schema-link" id="cdr-participant-discovery-api-schemas"></a>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 
-<a id="schemaresponseopenidproviderconfigmetadata"></a>
+<a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a>
 
 ```json
 {
@@ -749,25 +748,25 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|issuer|string|mandatory|none|URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier|
-|jwks_uri|string|mandatory|none|URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
-|token_endpoint|string|mandatory|none|URL of the CDR Register's OAuth 2.0 Token Endpoint|
-|claims_supported|[string]|mandatory|none|JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for|
-|id_token_signing_alg_values_supported|[string]|mandatory|none|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
-|subject_types_supported|[string]|mandatory|none|JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
-|code_challenge_methods_supported|[string]|mandatory|none|JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored|
-|scopes_supported|[string]|mandatory|none|JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports|
-|response_types_supported|[string]|mandatory|none|JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports|
-|grant_types_supported|[string]|mandatory|none|JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports|
-|token_endpoint_auth_methods_supported|[string]|mandatory|none|JSON array containing a list of Client Authentication methods supported by this Token Endpoint|
-|tls_client_certificate_bound_access_tokens|boolean|mandatory|none|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
-|request_object_signing_alg_values_supported|[string]|mandatory|none|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|issuer|string|mandatory|URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier|
+|jwks_uri|string|mandatory|URL of the CDR Register's JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication|
+|token_endpoint|string|mandatory|URL of the CDR Register's OAuth 2.0 Token Endpoint|
+|claims_supported|[string]|mandatory|JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for|
+|id_token_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
+|subject_types_supported|[string]|mandatory|JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored|
+|code_challenge_methods_supported|[string]|mandatory|JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored|
+|scopes_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports|
+|response_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports|
+|grant_types_supported|[string]|mandatory|JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports|
+|token_endpoint_auth_methods_supported|[string]|mandatory|JSON array containing a list of Client Authentication methods supported by this Token Endpoint|
+|tls_client_certificate_bound_access_tokens|boolean|mandatory|Boolean value indicating server support for mutual TLS client certificate bound access tokens|
+|request_object_signing_alg_values_supported|[string]|mandatory|JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.|
 
 <h2 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h2>
 
-<a id="schemaresponsejwks"></a>
+<a id="schemacdr-participant-discovery-apiresponsejwks"></a>
 
 ```json
 {
@@ -791,13 +790,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|keys|[[JWK](#schemajwk)]|mandatory|none|The value of the "keys" parameter is an array of JWK values|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|keys|[[JWK](#schemacdr-participant-discovery-apijwk)]|mandatory|The value of the "keys" parameter is an array of JWK values|
 
 <h2 class="schema-toc" id="tocSjwk">JWK</h2>
 
-<a id="schemajwk"></a>
+<a id="schemacdr-participant-discovery-apijwk"></a>
 
 ```json
 {
@@ -817,18 +816,18 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|alg|string|mandatory|none|The "alg" (algorithm) parameter identifies the algorithm intended for use with the key|
-|e|string|mandatory|none|The "e" RSA public exponent parameter|
-|key_ops|[string]|mandatory|none|The "key_ops" (key operations) parameter identifies the operation(s) for which the key is intended to be used|
-|kid|string|mandatory|none|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set|
-|kty|string|mandatory|none|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
-|n|string|mandatory|none|The "n" RSA public modulus parameter|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|alg|string|mandatory|The "alg" (algorithm) parameter identifies the algorithm intended for use with the key|
+|e|string|mandatory|The "e" RSA public exponent parameter|
+|key_ops|[string]|mandatory|The "key_ops" (key operations) parameter identifies the operation(s) for which the key is intended to be used|
+|kid|string|mandatory|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set|
+|kty|string|mandatory|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
+|n|string|mandatory|The "n" RSA public modulus parameter|
 
 <h2 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h2>
 
-<a id="schemaresponseregisterdataholderbrandlist"></a>
+<a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
 
 ```json
 {
@@ -888,15 +887,15 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|[[RegisterDataHolderBrand](#schemaregisterdataholderbrand)]|mandatory|none|Response data for the query|
-|links|[LinksPaginated](#schemalinkspaginated)|mandatory|none|none|
-|meta|[MetaPaginated](#schemametapaginated)|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[[RegisterDataHolderBrand](#schemacdr-participant-discovery-apiregisterdataholderbrand)]|mandatory|Response data for the query|
+|links|[LinksPaginated](#schemacdr-participant-discovery-apilinkspaginated)|mandatory|none|
+|meta|[MetaPaginated](#schemacdr-participant-discovery-apimetapaginated)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h2>
 
-<a id="schemaregisterdataholderbrand"></a>
+<a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
 
 ```json
 {
@@ -939,17 +938,17 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|dataHolderBrandId|string|mandatory|none|Unique id of the Data Holder Brand issued by the CDR Register|
-|brandName|string|mandatory|none|The name of Data Holder Brand|
-|industry|string|mandatory|none|The industry the Data Holder brand belongs to (Banking, etc)|
-|logoUri|[URIString](#common-field-types)|mandatory|none|Brand logo URI|
-|legalEntity|[LegalEntityDetail](#schemalegalentitydetail)|mandatory|none|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
-|status|string|mandatory|none|none|
-|endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemaregisterdataholderbrandserviceendpoint)|mandatory|none|Endpoints related to Data Holder Brand services|
-|authDetails|[[RegisterDataHolderAuth](#schemaregisterdataholderauth)]|mandatory|none|[Provides details of authorisation endpoints for Data Holders]|
-|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date/time that the Data Holder Brand data was last updated in the Register|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataHolderBrandId|string|mandatory|Unique id of the Data Holder Brand issued by the CDR Register|
+|brandName|string|mandatory|The name of Data Holder Brand|
+|industry|string|mandatory|The industry the Data Holder brand belongs to (Banking, etc)|
+|logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
+|legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
+|status|string|mandatory|none|
+|endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint)|mandatory|Endpoints related to Data Holder Brand services|
+|authDetails|[[RegisterDataHolderAuth](#schemacdr-participant-discovery-apiregisterdataholderauth)]|mandatory|[Provides details of authorisation endpoints for Data Holders]|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
 
 #### Enumerated Values
 
@@ -962,7 +961,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
 
-<a id="schemasoftwareproductsstatuslist"></a>
+<a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
 
 ```json
 {
@@ -978,13 +977,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|softwareProducts|[[SoftwareProductStatus](#schemasoftwareproductstatus)]|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|softwareProducts|[[SoftwareProductStatus](#schemacdr-participant-discovery-apisoftwareproductstatus)]|mandatory|none|
 
 <h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
 
-<a id="schemasoftwareproductstatus"></a>
+<a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a>
 
 ```json
 {
@@ -996,10 +995,10 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|softwareProductId|string|mandatory|none|Unique id of the software product issued by the CDR Register|
-|softwareProductStatus|string|mandatory|none|Software product status in the CDR Register|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|softwareProductId|string|mandatory|Unique id of the software product issued by the CDR Register|
+|softwareProductStatus|string|mandatory|Software product status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1011,7 +1010,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
 
-<a id="schemadatarecipientsstatuslist"></a>
+<a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a>
 
 ```json
 {
@@ -1027,13 +1026,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|dataRecipients|[[DataRecipientStatus](#schemadatarecipientstatus)]|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataRecipients|[[DataRecipientStatus](#schemacdr-participant-discovery-apidatarecipientstatus)]|mandatory|none|
 
 <h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
 
-<a id="schemadatarecipientstatus"></a>
+<a id="schemacdr-participant-discovery-apidatarecipientstatus"></a>
 
 ```json
 {
@@ -1045,10 +1044,10 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|dataRecipientId|string|mandatory|none|Unique id of the Data Recipient issued by the CDR Register|
-|dataRecipientStatus|string|mandatory|none|Data Recipient status in the CDR Register|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataRecipientId|string|mandatory|Unique id of the Data Recipient issued by the CDR Register|
+|dataRecipientStatus|string|mandatory|Data Recipient status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1061,7 +1060,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
 
-<a id="schemaresponseregisterdatarecipientlist"></a>
+<a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a>
 
 ```json
 {
@@ -1101,13 +1100,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|data|[[RegisterDataRecipient](#schemaregisterdatarecipient)]|mandatory|none|Response data for the query|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[[RegisterDataRecipient](#schemacdr-participant-discovery-apiregisterdatarecipient)]|mandatory|Response data for the query|
 
 <h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
 
-<a id="schemaregisterdatarecipient"></a>
+<a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a>
 
 ```json
 {
@@ -1141,16 +1140,16 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|legalEntityId|string|mandatory|none|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
-|legalEntityName|string|mandatory|none|Legal name of the Data Recipient|
-|accreditationNumber|string|mandatory|none|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
-|industry|string|mandatory|none|none|
-|logoUri|[URIString](#common-field-types)|mandatory|none|Legal Entity logo URI|
-|dataRecipientBrands|[[DataRecipientBrandMetaData](#schemadatarecipientbrandmetadata)]|optional|none|[Metadata related to Data Recipient Brand]|
-|status|string|mandatory|none|none|
-|lastUpdated|[DateTimeString](#common-field-types)|mandatory|none|The date/time that the Legal Entity was last updated in the CDR Register|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
+|legalEntityName|string|mandatory|Legal name of the Data Recipient|
+|accreditationNumber|string|mandatory|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
+|industry|string|mandatory|none|
+|logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
+|dataRecipientBrands|[[DataRecipientBrandMetaData](#schemacdr-participant-discovery-apidatarecipientbrandmetadata)]|optional|[Metadata related to Data Recipient Brand]|
+|status|string|mandatory|none|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Legal Entity was last updated in the CDR Register|
 
 #### Enumerated Values
 
@@ -1164,7 +1163,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
 
-<a id="schemadatarecipientbrandmetadata"></a>
+<a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a>
 
 ```json
 {
@@ -1189,13 +1188,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|dataRecipientBrandId|string|mandatory|none|Unique id of the Data Recipient brand issued by the CDR Register|
-|brandName|string|mandatory|none|Data Recipient Brand name|
-|logoUri|[URIString](#common-field-types)|mandatory|none|Data Recipient Brand logo URI|
-|softwareProducts|[[SoftwareProductMetaData](#schemasoftwareproductmetadata)]|optional|none|[Data Recipient Brand Software Products]|
-|status|string|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|dataRecipientBrandId|string|mandatory|Unique id of the Data Recipient brand issued by the CDR Register|
+|brandName|string|mandatory|Data Recipient Brand name|
+|logoUri|[URIString](#common-field-types)|mandatory|Data Recipient Brand logo URI|
+|softwareProducts|[[SoftwareProductMetaData](#schemacdr-participant-discovery-apisoftwareproductmetadata)]|optional|[Data Recipient Brand Software Products]|
+|status|string|mandatory|none|
 
 #### Enumerated Values
 
@@ -1207,7 +1206,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
 
-<a id="schemasoftwareproductmetadata"></a>
+<a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a>
 
 ```json
 {
@@ -1224,13 +1223,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|softwareProductId|string|mandatory|none|Unique id of the Data Recipient software product issued by the CDR Register|
-|softwareProductName|string|mandatory|none|Name of the software product|
-|softwareProductDescription|string|optional|none|Description of the software product|
-|logoUri|[URIString](#common-field-types)|mandatory|none|Software product logo URI|
-|status|string|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|softwareProductId|string|mandatory|Unique id of the Data Recipient software product issued by the CDR Register|
+|softwareProductName|string|mandatory|Name of the software product|
+|softwareProductDescription|string|optional|Description of the software product|
+|logoUri|[URIString](#common-field-types)|mandatory|Software product logo URI|
+|status|string|mandatory|none|
 
 #### Enumerated Values
 
@@ -1242,7 +1241,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
 
-<a id="schemalegalentitydetail"></a>
+<a id="schemacdr-participant-discovery-apilegalentitydetail"></a>
 
 ```json
 {
@@ -1265,19 +1264,19 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|legalEntityId|string|mandatory|none|Unique id of the organisation issued by the CDR Register|
-|legalEntityName|string|mandatory|none|Unique legal name of the organisation|
-|logoUri|[URIString](#common-field-types)|mandatory|none|Legal Entity logo URI|
-|registrationNumber|string|optional|none|Unique registration number (if the company is registered outside Australia)|
-|registrationDate|[DateString](#common-field-types)|optional|none|Date of registration (if the company is registered outside Australia)|
-|registeredCountry|string|optional|none|Country of registeration (if the company is registered outside Australia)|
-|abn|string|optional|none|Australian Business Number for the organisation|
-|acn|string|optional|none|Australian Company Number for the organisation|
-|arbn|string|optional|none|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
-|industryCode|string|optional|none|Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)|
-|organisationType|string|optional|none|Legal organisation type|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|legalEntityId|string|mandatory|Unique id of the organisation issued by the CDR Register|
+|legalEntityName|string|mandatory|Unique legal name of the organisation|
+|logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
+|registrationNumber|string|optional|Unique registration number (if the company is registered outside Australia)|
+|registrationDate|[DateString](#common-field-types)|optional|Date of registration (if the company is registered outside Australia)|
+|registeredCountry|string|optional|Country of registeration (if the company is registered outside Australia)|
+|abn|string|optional|Australian Business Number for the organisation|
+|acn|string|optional|Australian Company Number for the organisation|
+|arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
+|industryCode|string|optional|Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)|
+|organisationType|string|optional|Legal organisation type|
 
 #### Enumerated Values
 
@@ -1292,7 +1291,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
 
-<a id="schemaregisterdataholderbrandserviceendpoint"></a>
+<a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
 
 ```json
 {
@@ -1310,18 +1309,18 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|version|string|mandatory|none|The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be "v" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)|
-|publicBaseUri|[URIString](#common-field-types)|mandatory|none|Base URI for the Data Holder's Consumer Data Standard public endpoints|
-|resourceBaseUri|[URIString](#common-field-types)|mandatory|none|Base URI for the Data Holder's Consumer Data Standard resource endpoints|
-|infosecBaseUri|[URIString](#common-field-types)|mandatory|none|Base URI for the Data Holder's Consumer Data Standard information security endpoints|
-|extensionBaseUri|[URIString](#common-field-types)|optional|none|Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)|
-|websiteUri|[URIString](#common-field-types)|mandatory|none|Publicly available website or web resource URI|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|version|string|mandatory|The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be "v" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)|
+|publicBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard public endpoints|
+|resourceBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard resource endpoints|
+|infosecBaseUri|[URIString](#common-field-types)|mandatory|Base URI for the Data Holder's Consumer Data Standard information security endpoints|
+|extensionBaseUri|[URIString](#common-field-types)|optional|Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)|
+|websiteUri|[URIString](#common-field-types)|mandatory|Publicly available website or web resource URI|
 
 <h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
 
-<a id="schemaregisterdataholderauth"></a>
+<a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
 
 ```json
 {
@@ -1335,10 +1334,10 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|registerUType|string|mandatory|none|The type of authentication and authorisation mechanism in use|
-|jwksEndpoint|[URIString](#common-field-types)|mandatory|none|JWKS endpoint for private_key_jwt client authentication with Data Recipient|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|registerUType|string|mandatory|The type of authentication and authorisation mechanism in use|
+|jwksEndpoint|[URIString](#common-field-types)|mandatory|JWKS endpoint for private_key_jwt client authentication with Data Recipient|
 
 #### Enumerated Values
 
@@ -1348,7 +1347,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
 
-<a id="schemalinkspaginated"></a>
+<a id="schemacdr-participant-discovery-apilinkspaginated"></a>
 
 ```json
 {
@@ -1363,17 +1362,17 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|first|string|optional|none|URI to the first page of this set. Mandatory if this response is not the first page|
-|last|string|optional|none|URI to the last page of this set. Mandatory if this response is not the last page|
-|next|string|optional|none|URI to the next page of this set. Mandatory if this response is not the last page|
-|prev|string|optional|none|URI to the previous page of this set. Mandatory if this response is not the first page|
-|self|string|mandatory|none|Fully qualified link to this API call|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|first|string|optional|URI to the first page of this set. Mandatory if this response is not the first page|
+|last|string|optional|URI to the last page of this set. Mandatory if this response is not the last page|
+|next|string|optional|URI to the next page of this set. Mandatory if this response is not the last page|
+|prev|string|optional|URI to the previous page of this set. Mandatory if this response is not the first page|
+|self|string|mandatory|Fully qualified link to this API call|
 
 <h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
 
-<a id="schemametapaginated"></a>
+<a id="schemacdr-participant-discovery-apimetapaginated"></a>
 
 ```json
 {
@@ -1385,14 +1384,14 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|totalPages|integer(int32)|mandatory|none|The total number of pages in the full set|
-|totalRecords|integer(int32)|mandatory|none|The total number of records in the full set|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|totalPages|integer(int32)|mandatory|The total number of pages in the full set|
+|totalRecords|integer(int32)|mandatory|The total number of records in the full set|
 
 <h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<a id="schemaresponseerrorlist"></a>
+<a id="schemacdr-participant-discovery-apiresponseerrorlist"></a>
 
 ```json
 {
@@ -1410,13 +1409,13 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|errors|[[Error](#schemaerror)]|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[Error](#schemacdr-participant-discovery-apierror)]|mandatory|none|
 
 <h2 class="schema-toc" id="tocSerror">Error</h2>
 
-<a id="schemaerror"></a>
+<a id="schemacdr-participant-discovery-apierror"></a>
 
 ```json
 {
@@ -1430,10 +1429,10 @@ This operation does not require authentication
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|code|string|mandatory|none|Error code|
-|title|string|mandatory|none|Error title|
-|detail|string|mandatory|none|Error detail|
-|meta|object|optional|none|Optional additional data for specific error types|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|code|string|mandatory|Error code|
+|title|string|mandatory|Error title|
+|detail|string|mandatory|Error detail|
+|meta|object|optional|Optional additional data for specific error types|
 

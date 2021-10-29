@@ -1,0 +1,112 @@
+<h2 id='data-language-standards'>Data Language Standards</h2>
+<blockquote>
+<p><img src="./images/cx_standards0.png" width=375px/> <br>
+<font size="1"> Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</font></p>
+</blockquote>
+
+<p>In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide descriptions of the types of data to be used by CDR participants in making and responding to requests. Adherence to this language will help ensure there is a consistent interpretation and description of the consumer data that will be shared across different CDR implementations.</p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Data Language Standards:</strong> Language to be used</td>
+<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions as outlined in <a href="#individual-consumer">Table 1</a>.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; in <a href="#individual-consumer">Table 1</a>.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; in <a href="#individual-consumer">Table 1</a></p></td>
+</tr>
+<tr>
+<td><strong>Data Language Standards:</strong> Detailed scope requests</td>
+<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; in <a href="#individual-consumer">Table 1</a> (rows greyed out for clarity).</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
+</tr>
+</tbody></table>
+
+<p><strong>Table 1.</strong></p>
+<h3 id='individual-consumer'>Individual Consumer</h3>
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Name and occupation</strong></td>
+<td>Name<br>Occupation</td>
+<td>common:customer.basic:read</td>
+</tr>
+<tr>
+<td><strong>Contact Details</strong></td>
+<td>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
+<td>common:customer.detail:read</td>
+</tr>
+<tr>
+<td><strong>Name, occupation, contact details &Dagger;</strong></td>
+<td>Name;<br>Occupation;<br>Phone;<br>Email address;<br>Mail address;<br>Residential address;</td>
+<td>common:customer.detail:read</td>
+</tr>
+</tbody></table>
+<h3 id='business-consumer'>Business consumer</h3>
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Organisation profile</strong> *</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>);&dagger;<br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type<br>Country of registration;</td>
+<td>common:customer.basic:read</td>
+</tr>
+<tr>
+<td><strong>Organisation contact details</strong> *</td>
+<td>Organisation address;<br>Mail address;<br>Phone number;</td>
+<td>common:customer.detail:read</td>
+</tr>
+<tr>
+<td><strong>Organisation profile and contact details</strong> *&Dagger;</td>
+<td>Agent name and role;<br>Organisation name;<br>Organisation numbers (<i>ABN or ACN</i>),&dagger; <br>Charity status;<br>Establishment date;<br>Industry;<br>Organisation type;<br>Country of registration;<br>Organisation address;<br>Mail address;<br>Phone number;<br></td>
+<td>common:customer.detail:read</td>
+</tr>
+</tbody></table>
+<h3 id='common'>Common</h3>
+<table><thead>
+<tr>
+<th>Data cluster language</th>
+<th>Permission language</th>
+<th>Authorisation Scopes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Account name, type and balance</strong></td>
+<td>Name of account;<br>Type of account;<br>Account balance;</td>
+<td>bank:accounts.basic:read</td>
+</tr>
+<tr>
+<td><strong>Account numbers and features</strong></td>
+<td>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
+<td>bank:accounts.detail:read</td>
+</tr>
+<tr>
+<td><strong>Account balance and details&Dagger;</strong></td>
+<td>Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;</td>
+<td>bank:accounts.detail:read</td>
+</tr>
+<tr>
+<td><strong>Transaction details</strong></td>
+<td>Incoming and outgoing transactions;<br>Amounts;<br>Dates;<br>Descriptions of transactions;<br>Who you have sent money to and received money from; <em>(e.g. their name)&dagger;</em></td>
+<td>bank:transactions:read</td>
+</tr>
+<tr>
+<td><strong>Direct debits and scheduled payments</strong></td>
+<td>Direct debits;<br>Scheduled payments;</td>
+<td>bank:regular_payments:read</td>
+</tr>
+<tr>
+<td><strong>Saved payees</strong></td>
+<td>Names and details of accounts you have saved; <em>(e.g. their BSB and Account Number, BPay CRN and Biller code, or NPP PayID)&dagger;</em></td>
+<td>bank:payees:read</td>
+</tr>
+</tbody></table>

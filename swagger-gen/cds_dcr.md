@@ -1,6 +1,5 @@
 
 
-
 ## Register Data Recipient oAuth Client
 
 <a id="opIdPostDataRecipientRegistration"></a>
@@ -49,7 +48,7 @@ Register a client using a CDR Register issued Software Statement Assertion.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ClientRegistrationRequest](#schemaclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -101,8 +100,8 @@ Register a client using a CDR Register issued Software Statement Assertion.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Client registration success|[RegistrationProperties](#schemaregistrationproperties)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemaregistrationerror)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Client registration success|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemacdr-dynamic-client-registration-apiregistrationerror)|
 
   
     <aside class="success">
@@ -210,7 +209,7 @@ Get a Client Registration for a given Client ID.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration retrieval success|[RegistrationProperties](#schemaregistrationproperties)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration retrieval success|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Request failed due to unknown or invalid Client or invalid access token|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 
@@ -282,7 +281,7 @@ Update a Client Registration for a given Client ID.
 |---|---|---|---|---|
 |ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
 |Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
-|body|body|[ClientRegistrationRequest](#schemaclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -334,8 +333,8 @@ Update a Client Registration for a given Client ID.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration update success|[RegistrationProperties](#schemaregistrationproperties)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemaregistrationerror)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Client registration update success|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Request failed due to client error|[RegistrationError](#schemacdr-dynamic-client-registration-apiregistrationerror)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Request failed due to unknown or invalid Client or invalid access token|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|The client does not have permission to read, update or delete the Client|None|
 
@@ -433,7 +432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSclientregistrationrequest">ClientRegistrationRequest</h2>
 
-<a id="schemaclientregistrationrequest"></a>
+<a id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
 
 ```json
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -444,13 +443,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|string(JWT)|mandatory|none|The registration request JWT to be used to register with a Data Holder.|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|string(JWT)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 <h2 class="schema-toc" id="tocSregistrationproperties">RegistrationProperties</h2>
 
-<a id="schemaregistrationproperties"></a>
+<a id="schemacdr-dynamic-client-registration-apiregistrationproperties"></a>
 
 ```json
 {
@@ -497,38 +496,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|client_id|string|mandatory|none|Data Holder issued client identifier string|
-|client_id_issued_at|integer(int32)|optional|none|Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|client_name|string|mandatory|none|Human-readable string name of the software product to be presented to the end-user during authorization|
-|client_description|string|mandatory|none|Human-readable string name of the software product description to be presented to the end user during authorization|
-|client_uri|string|mandatory|none|URL string of a web page providing information about the client|
-|legal_entity_id|string|optional|none|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity|
-|legal_entity_name|string|optional|none|Human-readable string name of the Accredited Data Recipient Legal Entity|
-|org_id|string|mandatory|none|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand|
-|org_name|string|mandatory|none|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization|
-|redirect_uris|[string]|mandatory|none|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA|
-|sector_identifier_uri|string|optional|none|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier|
-|logo_uri|string|mandatory|none|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval|
-|tos_uri|string|optional|none|URL string that points to a human-readable terms of service document for the Software Product|
-|policy_uri|string|optional|none|URL string that points to a human-readable policy document for the Software Product|
-|jwks_uri|string|mandatory|none|URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys|
-|revocation_uri|string|optional|none|URI string that references the location of the Software Product consent revocation endpoint|
-|recipient_base_uri|string|optional|none|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints|
-|token_endpoint_auth_method|string|mandatory|none|The requested authentication method for the token endpoint|
-|token_endpoint_auth_signing_alg|string|mandatory|none|The algorithm used for signing the JWT|
-|grant_types|[string]|mandatory|none|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint|
-|response_types|[string]|mandatory|none|Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.|
-|application_type|string|optional|none|Kind of the application. The only supported application type will be `web`|
-|id_token_signed_response_alg|string|optional|none|Algorithm with which an id_token is to be signed|
-|id_token_encrypted_response_alg|string|mandatory|none|JWE `alg` algorithm with which an id_token is to be encrypted|
-|id_token_encrypted_response_enc|string|mandatory|none|JWE `enc` algorithm with which an id_token is to be encrypted|
-|request_object_signing_alg|string|mandatory|none|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
-|software_statement|string(JWT)|mandatory|none|The Software Statement Assertion, as defined in CDR standards|
-|software_id|string|mandatory|none|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
-|software_roles|string|optional|none|String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`|
-|scope|string|mandatory|none|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|client_id|string|mandatory|Data Holder issued client identifier string|
+|client_id_issued_at|integer(int32)|optional|Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
+|client_name|string|mandatory|Human-readable string name of the software product to be presented to the end-user during authorization|
+|client_description|string|mandatory|Human-readable string name of the software product description to be presented to the end user during authorization|
+|client_uri|string|mandatory|URL string of a web page providing information about the client|
+|legal_entity_id|string|optional|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity|
+|legal_entity_name|string|optional|Human-readable string name of the Accredited Data Recipient Legal Entity|
+|org_id|string|mandatory|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand|
+|org_name|string|mandatory|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization|
+|redirect_uris|[string]|mandatory|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA|
+|sector_identifier_uri|string|optional|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier|
+|logo_uri|string|mandatory|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval|
+|tos_uri|string|optional|URL string that points to a human-readable terms of service document for the Software Product|
+|policy_uri|string|optional|URL string that points to a human-readable policy document for the Software Product|
+|jwks_uri|string|mandatory|URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys|
+|revocation_uri|string|optional|URI string that references the location of the Software Product consent revocation endpoint|
+|recipient_base_uri|string|optional|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints|
+|token_endpoint_auth_method|string|mandatory|The requested authentication method for the token endpoint|
+|token_endpoint_auth_signing_alg|string|mandatory|The algorithm used for signing the JWT|
+|grant_types|[string]|mandatory|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint|
+|response_types|[string]|mandatory|Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.|
+|application_type|string|optional|Kind of the application. The only supported application type will be `web`|
+|id_token_signed_response_alg|string|optional|Algorithm with which an id_token is to be signed|
+|id_token_encrypted_response_alg|string|mandatory|JWE `alg` algorithm with which an id_token is to be encrypted|
+|id_token_encrypted_response_enc|string|mandatory|JWE `enc` algorithm with which an id_token is to be encrypted|
+|request_object_signing_alg|string|mandatory|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
+|software_statement|string(JWT)|mandatory|The Software Statement Assertion, as defined in CDR standards|
+|software_id|string|mandatory|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
+|software_roles|string|optional|String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`|
+|scope|string|mandatory|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 
 #### Enumerated Values
 
@@ -545,7 +544,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-toc" id="tocSclientregistration">ClientRegistration</h2>
 
-<a id="schemaclientregistration"></a>
+<a id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
 
 ```json
 {
@@ -599,24 +598,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *allOf*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|object|mandatory|none|none|
-|» iss|string|mandatory|none|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register|
-|» iat|integer(int32)|mandatory|none|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|» exp|integer(int32)|mandatory|none|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|» jti|string|mandatory|none|Unique identifier for the JWT, used to prevent replay of the token|
-|» aud|string|mandatory|none|'Contains the Data Holder issuer value as described in the OIDC Discovery Document|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|object|mandatory|none|
+|» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register|
+|» iat|integer(int32)|mandatory|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
+|» exp|integer(int32)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
+|» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token|
+|» aud|string|mandatory|'Contains the Data Holder issuer value as described in the OIDC Discovery Document|
 
 *and*
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[RegistrationProperties](#schemaregistrationproperties)|mandatory|none|none|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSregistrationerror">RegistrationError</h2>
 
-<a id="schemaregistrationerror"></a>
+<a id="schemacdr-dynamic-client-registration-apiregistrationerror"></a>
 
 ```json
 {
@@ -628,10 +627,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|error|string|mandatory|none|Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)|
-|error_description|string|optional|none|Additional text description of the error for debugging.|
+|Name|Type|Required|Description|
+|---|---|---|---|
+|error|string|mandatory|Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)|
+|error_description|string|optional|Additional text description of the error for debugging.|
 
 #### Enumerated Values
 

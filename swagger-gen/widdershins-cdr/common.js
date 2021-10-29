@@ -297,7 +297,7 @@ function schemaToArray(schema,offset,options,data) {
 
         if (schema["x-widdershins-oldRef"]) {
             entry.$ref = schema["x-widdershins-oldRef"].replace('#/components/schemas/','');
-            entry.safeType = '['+entry.$ref+'](#schema'+entry.$ref.toLowerCase()+')';
+            entry.safeType = '['+entry.$ref+'](#schema'+data.title_prefix+entry.$ref.toLowerCase()+')';
             if (data.options.shallowSchemas) skipDepth = entry.depth;
             if (!entry.description) {
                 let target = jptr(data.api,schema["x-widdershins-oldRef"]);
@@ -307,7 +307,7 @@ function schemaToArray(schema,offset,options,data) {
         if (schema.$ref) { // repeat for un-dereferenced schemas
             entry.$ref = schema.$ref.replace('#/components/schemas/','');
             entry.type = '$ref';
-            entry.safeType = '['+entry.$ref+'](#schema'+entry.$ref.toLowerCase()+')';
+            entry.safeType = '['+entry.$ref+'](#schema'+data.title_prefix+entry.$ref.toLowerCase()+')';
             if (data.options.shallowSchemas) skipDepth = entry.depth;
             if (!entry.description) {
                 let target = jptr(data.api,schema.$ref);
@@ -320,7 +320,7 @@ function schemaToArray(schema,offset,options,data) {
             let itemsType = schema.items.type||'any';
             if (schema.items["x-widdershins-oldRef"]) {
                 let $ref = schema.items["x-widdershins-oldRef"].replace('#/components/schemas/','');
-                itemsType = '['+$ref+'](#schema'+$ref.toLowerCase()+')';
+                itemsType = '['+$ref+'](#schema'+data.title_prefix+$ref.toLowerCase()+')';
                 if (!entry.description) {
                     let target = jptr(data.api,schema.items["x-widdershins-oldRef"]);
                     if (target.description) entry.description = '['+target.description+']';
@@ -328,7 +328,7 @@ function schemaToArray(schema,offset,options,data) {
             }
             if (schema.items.$ref) { // repeat for un-dereferenced schemas
                 let $ref = schema.items.$ref.replace('#/components/schemas/','');
-                itemsType = '['+$ref+'](#schema'+$ref.toLowerCase()+')';
+                itemsType = '['+$ref+'](#schema'+data.title_prefix+$ref.toLowerCase()+')';
                 if (!entry.description) {
                     let target = jptr(data.api,schema.items.$ref);
                     if (target.description) entry.description = '['+target.description+']';

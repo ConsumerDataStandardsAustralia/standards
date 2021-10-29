@@ -93,7 +93,7 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>The OpenID Provider Configuration Metadata values</td>
-<td><a href="#schemaresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</a></td>
 </tr>
 </tbody></table>
 
@@ -176,7 +176,7 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>A JSON object that represents a set of JWKs</td>
-<td><a href="#schemaresponsejwks">ResponseJWKS</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponsejwks">ResponseJWKS</a></td>
 </tr>
 </tbody></table>
 
@@ -366,13 +366,13 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -543,7 +543,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Invalid industry path parameter</br>Invalid SoftwareProductId</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -555,7 +555,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Invalid BrandId</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -567,7 +567,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>SSA fields invalid or incomplete</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-headers-2'>Response Headers</h3>
@@ -704,13 +704,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemasoftwareproductsstatuslist">SoftwareProductsStatusList</a></td>
+<td><a href="#schemacdr-participant-discovery-apisoftwareproductsstatuslist">SoftwareProductsStatusList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -852,13 +852,13 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemadatarecipientsstatuslist">DataRecipientsStatusList</a></td>
+<td><a href="#schemacdr-participant-discovery-apidatarecipientsstatuslist">DataRecipientsStatusList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -1022,13 +1022,13 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Success</td>
-<td><a href="#schemaresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad Request</br>Invalid industry path parameter</td>
-<td><a href="#schemaresponseerrorlist">ResponseErrorList</a></td>
+<td><a href="#schemacdr-participant-discovery-apiresponseerrorlist">ResponseErrorList</a></td>
 </tr>
 <tr>
 <td>406</td>
@@ -1060,13 +1060,13 @@ This operation does not require authentication
 This operation does not require authentication
 </aside></p>
 
-<h2 class="schema-heading" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas">Schemas</h2>
+<h2 class="schema-heading" id="cdr-participant-discovery-api-schemas">Schemas</h2>
 
-<p><a class="schema-link" id="consumer-data-right-cdr-register-participant-discovery-apis-schemas"></a></p>
+<p><a class="schema-link" id="cdr-participant-discovery-api-schemas"></a></p>
 
 <h2 class="schema-toc" id="tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h2>
 
-<p><a id="schemaresponseopenidproviderconfigmetadata"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseopenidproviderconfigmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1109,7 +1109,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1117,98 +1116,85 @@ This operation does not require authentication
 <td>issuer</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier</td>
 </tr>
 <tr>
 <td>jwks_uri</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>URL of the CDR Register&#39;s JSON Web Key Set [JWK] document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication</td>
 </tr>
 <tr>
 <td>token_endpoint</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>URL of the CDR Register&#39;s OAuth 2.0 Token Endpoint</td>
 </tr>
 <tr>
 <td>claims_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for</td>
 </tr>
 <tr>
 <td>id_token_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored</td>
 </tr>
 <tr>
 <td>subject_types_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored</td>
 </tr>
 <tr>
 <td>code_challenge_methods_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of Proof Key for Code Exchange (PKCE) [RFC7636] code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored</td>
 </tr>
 <tr>
 <td>scopes_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that the CDR Register supports</td>
 </tr>
 <tr>
 <td>response_types_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports</td>
 </tr>
 <tr>
 <td>grant_types_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_methods_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of Client Authentication methods supported by this Token Endpoint</td>
 </tr>
 <tr>
 <td>tls_client_certificate_bound_access_tokens</td>
 <td>boolean</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Boolean value indicating server support for mutual TLS client certificate bound access tokens</td>
 </tr>
 <tr>
 <td>request_object_signing_alg_values_supported</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSresponsejwks">ResponseJWKS</h2>
 
-<p><a id="schemaresponsejwks"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponsejwks"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"keys"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1232,22 +1218,20 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>keys</td>
-<td>[<a href="#schemajwk">JWK</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apijwk">JWK</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The value of the &quot;keys&quot; parameter is an array of JWK values</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSjwk">JWK</h2>
 
-<p><a id="schemajwk"></a></p>
+<p><a id="schemacdr-participant-discovery-apijwk"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1267,7 +1251,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1275,49 +1258,43 @@ This operation does not require authentication
 <td>alg</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The &quot;alg&quot; (algorithm) parameter identifies the algorithm intended for use with the key</td>
 </tr>
 <tr>
 <td>e</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The &quot;e&quot; RSA public exponent parameter</td>
 </tr>
 <tr>
 <td>key_ops</td>
 <td>[string]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The &quot;key_ops&quot; (key operations) parameter identifies the operation(s) for which the key is intended to be used</td>
 </tr>
 <tr>
 <td>kid</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The &quot;kid&quot; (key ID) parameter is partially used to match a specific key. Note the &quot;kid&quot; parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set</td>
 </tr>
 <tr>
 <td>kty</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The &quot;kty&quot; (key type) parameter identifies the cryptographic algorithm family used with the key</td>
 </tr>
 <tr>
 <td>n</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The &quot;n&quot; RSA public modulus parameter</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h2>
 
-<p><a id="schemaresponseregisterdataholderbrandlist"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1377,36 +1354,32 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemaregisterdataholderbrand">RegisterDataHolderBrand</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdataholderbrand">RegisterDataHolderBrand</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Response data for the query</td>
 </tr>
 <tr>
 <td>links</td>
-<td><a href="#schemalinkspaginated">LinksPaginated</a></td>
+<td><a href="#schemacdr-participant-discovery-apilinkspaginated">LinksPaginated</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemametapaginated">MetaPaginated</a></td>
+<td><a href="#schemacdr-participant-discovery-apimetapaginated">MetaPaginated</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrand">RegisterDataHolderBrand</h2>
 
-<p><a id="schemaregisterdataholderbrand"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1449,7 +1422,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1457,35 +1429,30 @@ This operation does not require authentication
 <td>dataHolderBrandId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the Data Holder Brand issued by the CDR Register</td>
 </tr>
 <tr>
 <td>brandName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The name of Data Holder Brand</td>
 </tr>
 <tr>
 <td>industry</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The industry the Data Holder brand belongs to (Banking, etc)</td>
 </tr>
 <tr>
 <td>logoUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Brand logo URI</td>
 </tr>
 <tr>
 <td>legalEntity</td>
-<td><a href="#schemalegalentitydetail">LegalEntityDetail</a></td>
+<td><a href="#schemacdr-participant-discovery-apilegalentitydetail">LegalEntityDetail</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)</td>
 </tr>
 <tr>
@@ -1493,27 +1460,23 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>endpointDetail</td>
-<td><a href="#schemaregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
+<td><a href="#schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Endpoints related to Data Holder Brand services</td>
 </tr>
 <tr>
 <td>authDetails</td>
-<td>[<a href="#schemaregisterdataholderauth">RegisterDataHolderAuth</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdataholderauth">RegisterDataHolderAuth</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>[Provides details of authorisation endpoints for Data Holders]</td>
 </tr>
 <tr>
 <td>lastUpdated</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>The date/time that the Data Holder Brand data was last updated in the Register</td>
 </tr>
 </tbody></table>
@@ -1544,7 +1507,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
 
-<p><a id="schemasoftwareproductsstatuslist"></a></p>
+<p><a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1560,22 +1523,20 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>softwareProducts</td>
-<td>[<a href="#schemasoftwareproductstatus">SoftwareProductStatus</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apisoftwareproductstatus">SoftwareProductStatus</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
 
-<p><a id="schemasoftwareproductstatus"></a></p>
+<p><a id="schemacdr-participant-discovery-apisoftwareproductstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"softwareProductStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -1587,7 +1548,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1595,14 +1555,12 @@ This operation does not require authentication
 <td>softwareProductId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the software product issued by the CDR Register</td>
 </tr>
 <tr>
 <td>softwareProductStatus</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Software product status in the CDR Register</td>
 </tr>
 </tbody></table>
@@ -1629,7 +1587,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
 
-<p><a id="schemadatarecipientsstatuslist"></a></p>
+<p><a id="schemacdr-participant-discovery-apidatarecipientsstatuslist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1645,22 +1603,20 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>dataRecipients</td>
-<td>[<a href="#schemadatarecipientstatus">DataRecipientStatus</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apidatarecipientstatus">DataRecipientStatus</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
 
-<p><a id="schemadatarecipientstatus"></a></p>
+<p><a id="schemacdr-participant-discovery-apidatarecipientstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"dataRecipientStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -1672,7 +1628,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1680,14 +1635,12 @@ This operation does not require authentication
 <td>dataRecipientId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the Data Recipient issued by the CDR Register</td>
 </tr>
 <tr>
 <td>dataRecipientStatus</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Data Recipient status in the CDR Register</td>
 </tr>
 </tbody></table>
@@ -1718,7 +1671,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
 
-<p><a id="schemaresponseregisterdatarecipientlist"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseregisterdatarecipientlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1758,22 +1711,20 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemaregisterdatarecipient">RegisterDataRecipient</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apiregisterdatarecipient">RegisterDataRecipient</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Response data for the query</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
 
-<p><a id="schemaregisterdatarecipient"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdatarecipient"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1807,7 +1758,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1815,21 +1765,18 @@ This operation does not require authentication
 <td>legalEntityId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the Data Recipient Legal Entity issued by the CDR Register</td>
 </tr>
 <tr>
 <td>legalEntityName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Legal name of the Data Recipient</td>
 </tr>
 <tr>
 <td>accreditationNumber</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>CDR Register issued human readable unique number given to Data Recipients upon accreditation</td>
 </tr>
 <tr>
@@ -1837,20 +1784,17 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>logoUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Legal Entity logo URI</td>
 </tr>
 <tr>
 <td>dataRecipientBrands</td>
-<td>[<a href="#schemadatarecipientbrandmetadata">DataRecipientBrandMetaData</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apidatarecipientbrandmetadata">DataRecipientBrandMetaData</a>]</td>
 <td>optional</td>
-<td>none</td>
 <td>[Metadata related to Data Recipient Brand]</td>
 </tr>
 <tr>
@@ -1858,13 +1802,11 @@ This operation does not require authentication
 <td>string</td>
 <td>mandatory</td>
 <td>none</td>
-<td>none</td>
 </tr>
 <tr>
 <td>lastUpdated</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>The date/time that the Legal Entity was last updated in the CDR Register</td>
 </tr>
 </tbody></table>
@@ -1899,7 +1841,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h2>
 
-<p><a id="schemadatarecipientbrandmetadata"></a></p>
+<p><a id="schemacdr-participant-discovery-apidatarecipientbrandmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1924,7 +1866,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1932,35 +1873,30 @@ This operation does not require authentication
 <td>dataRecipientBrandId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the Data Recipient brand issued by the CDR Register</td>
 </tr>
 <tr>
 <td>brandName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Data Recipient Brand name</td>
 </tr>
 <tr>
 <td>logoUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Data Recipient Brand logo URI</td>
 </tr>
 <tr>
 <td>softwareProducts</td>
-<td>[<a href="#schemasoftwareproductmetadata">SoftwareProductMetaData</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apisoftwareproductmetadata">SoftwareProductMetaData</a>]</td>
 <td>optional</td>
-<td>none</td>
 <td>[Data Recipient Brand Software Products]</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -1987,7 +1923,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSsoftwareproductmetadata">SoftwareProductMetaData</h2>
 
-<p><a id="schemasoftwareproductmetadata"></a></p>
+<p><a id="schemacdr-participant-discovery-apisoftwareproductmetadata"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2004,7 +1940,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2012,35 +1947,30 @@ This operation does not require authentication
 <td>softwareProductId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the Data Recipient software product issued by the CDR Register</td>
 </tr>
 <tr>
 <td>softwareProductName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Name of the software product</td>
 </tr>
 <tr>
 <td>softwareProductDescription</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Description of the software product</td>
 </tr>
 <tr>
 <td>logoUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Software product logo URI</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -2067,7 +1997,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlegalentitydetail">LegalEntityDetail</h2>
 
-<p><a id="schemalegalentitydetail"></a></p>
+<p><a id="schemacdr-participant-discovery-apilegalentitydetail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2090,7 +2020,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2098,77 +2027,66 @@ This operation does not require authentication
 <td>legalEntityId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique id of the organisation issued by the CDR Register</td>
 </tr>
 <tr>
 <td>legalEntityName</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Unique legal name of the organisation</td>
 </tr>
 <tr>
 <td>logoUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Legal Entity logo URI</td>
 </tr>
 <tr>
 <td>registrationNumber</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Unique registration number (if the company is registered outside Australia)</td>
 </tr>
 <tr>
 <td>registrationDate</td>
 <td><a href="#common-field-types">DateString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Date of registration (if the company is registered outside Australia)</td>
 </tr>
 <tr>
 <td>registeredCountry</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Country of registeration (if the company is registered outside Australia)</td>
 </tr>
 <tr>
 <td>abn</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Australian Business Number for the organisation</td>
 </tr>
 <tr>
 <td>acn</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Australian Company Number for the organisation</td>
 </tr>
 <tr>
 <td>arbn</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies</td>
 </tr>
 <tr>
 <td>industryCode</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Industry Code for the organisation. <a href="http://www.abs.gov.au/anzsic">ANZSIC (2006)</a></td>
 </tr>
 <tr>
 <td>organisationType</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>Legal organisation type</td>
 </tr>
 </tbody></table>
@@ -2207,7 +2125,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h2>
 
-<p><a id="schemaregisterdataholderbrandserviceendpoint"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2225,7 +2143,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2233,49 +2150,43 @@ This operation does not require authentication
 <td>version</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be &quot;v&quot; followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)</td>
 </tr>
 <tr>
 <td>publicBaseUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Base URI for the Data Holder&#39;s Consumer Data Standard public endpoints</td>
 </tr>
 <tr>
 <td>resourceBaseUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Base URI for the Data Holder&#39;s Consumer Data Standard resource endpoints</td>
 </tr>
 <tr>
 <td>infosecBaseUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Base URI for the Data Holder&#39;s Consumer Data Standard information security endpoints</td>
 </tr>
 <tr>
 <td>extensionBaseUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
-<td>none</td>
 <td>Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)</td>
 </tr>
 <tr>
 <td>websiteUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>Publicly available website or web resource URI</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSregisterdataholderauth">RegisterDataHolderAuth</h2>
 
-<p><a id="schemaregisterdataholderauth"></a></p>
+<p><a id="schemacdr-participant-discovery-apiregisterdataholderauth"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -2289,7 +2200,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2297,14 +2207,12 @@ This operation does not require authentication
 <td>registerUType</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The type of authentication and authorisation mechanism in use</td>
 </tr>
 <tr>
 <td>jwksEndpoint</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>none</td>
 <td>JWKS endpoint for private_key_jwt client authentication with Data Recipient</td>
 </tr>
 </tbody></table>
@@ -2323,7 +2231,7 @@ This operation does not require authentication
 
 <h2 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h2>
 
-<p><a id="schemalinkspaginated"></a></p>
+<p><a id="schemacdr-participant-discovery-apilinkspaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2338,7 +2246,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2346,42 +2253,37 @@ This operation does not require authentication
 <td>first</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>URI to the first page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>last</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>URI to the last page of this set. Mandatory if this response is not the last page</td>
 </tr>
 <tr>
 <td>next</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>URI to the next page of this set. Mandatory if this response is not the last page</td>
 </tr>
 <tr>
 <td>prev</td>
 <td>string</td>
 <td>optional</td>
-<td>none</td>
 <td>URI to the previous page of this set. Mandatory if this response is not the first page</td>
 </tr>
 <tr>
 <td>self</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Fully qualified link to this API call</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSmetapaginated">MetaPaginated</h2>
 
-<p><a id="schemametapaginated"></a></p>
+<p><a id="schemacdr-participant-discovery-apimetapaginated"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -2393,7 +2295,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2401,21 +2302,19 @@ This operation does not require authentication
 <td>totalPages</td>
 <td>integer(int32)</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The total number of pages in the full set</td>
 </tr>
 <tr>
 <td>totalRecords</td>
 <td>integer(int32)</td>
 <td>mandatory</td>
-<td>none</td>
 <td>The total number of records in the full set</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
 
-<p><a id="schemaresponseerrorlist"></a></p>
+<p><a id="schemacdr-participant-discovery-apiresponseerrorlist"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2433,22 +2332,20 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>errors</td>
-<td>[<a href="#schemaerror">Error</a>]</td>
+<td>[<a href="#schemacdr-participant-discovery-apierror">Error</a>]</td>
 <td>mandatory</td>
-<td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
 <h2 class="schema-toc" id="tocSerror">Error</h2>
 
-<p><a id="schemaerror"></a></p>
+<p><a id="schemacdr-participant-discovery-apierror"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2462,7 +2359,6 @@ This operation does not require authentication
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2470,28 +2366,24 @@ This operation does not require authentication
 <td>code</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Error code</td>
 </tr>
 <tr>
 <td>title</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Error title</td>
 </tr>
 <tr>
 <td>detail</td>
 <td>string</td>
 <td>mandatory</td>
-<td>none</td>
 <td>Error detail</td>
 </tr>
 <tr>
 <td>meta</td>
 <td>object</td>
 <td>optional</td>
-<td>none</td>
 <td>Optional additional data for specific error types</td>
 </tr>
 </tbody></table>

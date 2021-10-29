@@ -179,9 +179,9 @@ function getParameters(data) {
             }
             if (pSchema["x-widdershins-oldRef"]) {
                 let schemaName = pSchema["x-widdershins-oldRef"].replace('#/components/schemas/','');
-                param.safeType = '['+schemaName+'](#schema'+schemaName.toLowerCase()+')';
+                param.safeType = '['+schemaName+'](#schema'+data.title_prefix+schemaName.toLowerCase()+')';
             }
-            if (param.refName) param.safeType = '['+param.refName+'](#schema'+param.refName.toLowerCase()+')';
+            if (param.refName) param.safeType = '['+param.refName+'](#schema'+data.title_prefix+param.refName.toLowerCase()+')';
         }
         if (pSchema) {
             param.exampleValues.object = param.example || param.default || common.getSample(pSchema,data.options,{skipReadOnly:true},data.api);
@@ -370,8 +370,10 @@ function fakeBodyParameter(data) {
                     param.schema = prop.schema;
                     param.name = prop.displayName;
                     param.required = prop.required;
+                    param.required_text = prop.required_text;
                     param.description = prop.description;
                     param.safeType = prop.safeType;
+                    param.cdrType = prop.cdrType;
                     bodyParams.push(param);
                 }
             }
@@ -413,7 +415,7 @@ function getResponses(data) {
             }
             if (contentType.schema && contentType.schema["x-widdershins-oldRef"] && contentType.schema["x-widdershins-oldRef"].startsWith('#/components/')) {
                 let schemaName = contentType.schema["x-widdershins-oldRef"].replace('#/components/schemas/','');
-                entry.schema = '['+schemaName+'](#schema'+schemaName.toLowerCase()+')';
+                entry.schema = '['+schemaName+'](#schema'+data.title_prefix+schemaName.toLowerCase()+')';
                 entry.$ref = true;
             }
             else {

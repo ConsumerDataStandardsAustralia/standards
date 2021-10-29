@@ -46,9 +46,9 @@ Status Code **{{=response.status}}**
 {{~ blocks :block}}
 {{? block.title }}*{{=block.title}}*
 {{?}}
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-{{~block.rows :p}}|{{=p.displayName}}|{{=p.safeType}}|{{=p.required}}|{{=p.restrictions||'none'}}|{{=p.description||'none'}}|
+|Name|Type|Required|Description|
+|---|---|---|---|
+{{~block.rows :p}}|{{=p.displayName}}|{{? p.cdrType}}{{=p.cdrType}}{{??}}{{=p.safeType}}{{?}}|{{=p.required_text}}|{{=p.description||'none'}}|
 {{~}}
 {{~}}
 {{?}}

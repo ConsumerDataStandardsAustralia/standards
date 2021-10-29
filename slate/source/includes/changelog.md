@@ -4,6 +4,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail Of change|
 |-----------|-------|-----------|----------------|
+|29/10/2021| 1.14.0 | Inclusion of full candidate level standards for the energy sector | See [release notes](includes/releasenotes/releasenotes.1.14.0.html) for details |
 |22/10/2021| 1.13.0 | Changes arising from Decisions 206 (Register Standards), 191 and 192 | See [release notes](includes/releasenotes/releasenotes.1.13.0.html), [Decision 206](https://github.com/ConsumerDataStandardsAustralia/standards/issues/206), [Decision 191](https://github.com/ConsumerDataStandardsAustralia/standards/issues/191) and [Decision 192](https://github.com/ConsumerDataStandardsAustralia/standards/issues/192) for details |
 |14/10/2021|1.12.0| Inclusion of a series of decisions related to energy and non-functional requirements | See [release notes](includes/releasenotes/releasenotes.1.12.0.html) for details |
 |05/10/2021|1.11.1| Minor errata and documentation fixes | See [release notes](includes/releasenotes/releasenotes.1.11.1.html) for details |
