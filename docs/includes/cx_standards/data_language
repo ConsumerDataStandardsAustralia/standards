@@ -294,7 +294,7 @@ Note that the data language standards for the energy sector are currently consid
 <td>energy:electricity.servicepoints.detail:read</td>
 </tr>
 <tr>
-<td><strong>Electricity connection and meter</strong> &dagger;</td>
+<td><strong>Electricity connection and meter</strong> &Dagger;</td>
 <td>National Meter Identifier (NMI);<br>Supply address;<br>Customer type;<br>Connection point details;<br>Meter details;<br>Associated service providers;</td>
 <td>energy:electricity.servicepoints.detail:read</td>
 </tr>
@@ -311,7 +311,7 @@ Note that the data language standards for the energy sector are currently consid
 </thead><tbody>
 <tr>
 <td><strong>Energy generation and storage</strong></td>
-<td>Generation information;<br>Generation or storage device type ;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
+<td>Generation information;<br>Generation or storage device type;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;</td>
 <td>energy:electricity.der:read</td>
 </tr>
 </tbody></table>

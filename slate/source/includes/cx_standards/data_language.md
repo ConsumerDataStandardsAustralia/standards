@@ -126,14 +126,14 @@ See below for the data language standards for the NMI standing data scopes:
 |----------------------|------------------------------|-------------------|
 |**Electricity connection**|National Meter Identifier (NMI);<br>Customer type;<br>Connection point details;|energy:electricity.servicepoints.basic:read|
 |**Electricity meter**|Supply address;<br>Meter details;<br>Associated service providers;|energy:electricity.servicepoints.detail:read|
-|**Electricity connection and meter** &dagger;|National Meter Identifier (NMI);<br>Supply address;<br>Customer type;<br>Connection point details;<br>Meter details;<br>Associated service providers;|energy:electricity.servicepoints.detail:read|
+|**Electricity connection and meter** &Dagger;|National Meter Identifier (NMI);<br>Supply address;<br>Customer type;<br>Connection point details;<br>Meter details;<br>Associated service providers;|energy:electricity.servicepoints.detail:read|
 
 ### Distributed Energy Resources (DER)
 See below for the data language standards for the Distributed Energy Resources (DER) scope:
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
-|**Energy generation and storage**|Generation information;<br>Generation or storage device type ;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;|energy:electricity.der:read|
+|**Energy generation and storage**|Generation information;<br>Generation or storage device type;<br>Device characteristics;<br>Devices that can operate without the grid;<br>Energy conversion information;|energy:electricity.der:read|
 
 ### Electricity Usage
 See below for the data language standards for the electricity usage scope:
