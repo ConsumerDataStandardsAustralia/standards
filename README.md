@@ -8,7 +8,7 @@ These standards are maintained by the Data Standards Body (DSB), with the Data S
 
 * [Data Standards Body Web Site](https://consumerdatastandards.org.au/) - Contains additional information on the CDR and the DSB as well as notifications of the latest developments in the regime.
 * [Formal Standards Site](https://consumerdatastandardsaustralia.github.io/standards/) - The published contents of the standards in this repository.  This is the formal documentation of the binding standards.
-* [CDR Register Design Documentation](https://cdr-register.github.io/register/#introduction) - The documentation for the CDR Register which is a core piece of infrastructure that facilitates the operation of the CDR regime.
+* [CDR Register Design Documentation](https://consumerdatastandardsaustralia.github.io/standards) - The documentation for the CDR Register is incorporated into the Consumer Data Standards documentation.
 
 ## Contributing To The Standards
 
