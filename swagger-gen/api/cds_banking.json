@@ -340,7 +340,7 @@
     "/banking/accounts/{accountId}": {
       "get": {
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account",
+        "description": "Obtain detailed information on a single account\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html) ",
         "operationId": "getAccountDetail",
         "x-scopes": [
           "bank:accounts.detail:read"
