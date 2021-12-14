@@ -25,6 +25,7 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Get Account Detail v2 | Changes to accomodate lending products without an instalment date or repayment frequency | [Get Account Details](../../#get-account-detail)
+| Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
