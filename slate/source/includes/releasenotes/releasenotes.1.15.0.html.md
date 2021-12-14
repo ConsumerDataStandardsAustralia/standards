@@ -24,6 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| All authenticated resource endpoints | Updated the schema to indicate the x-fapi-auth-date header is mandatory for authenticated endpoints | N/A |
 
 ## Information Security Profile
 

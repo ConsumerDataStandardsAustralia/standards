@@ -125,7 +125,7 @@
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/EnergyUsageRead"
-                                },
+                                }
                             }
                         }
                     },
@@ -3639,6 +3639,7 @@
 				"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				}
