@@ -29,6 +29,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Certificate Mangement | Fixed broken links to statically hosted certificate trust chain files | [Certificate Management](../../#certificate-management)|
 
 ## Consumer Experience
 
