@@ -29,6 +29,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Registration Validation | Provided clarification on registration request validation JWKS endpoint usage | [Registration Validation](../../#registration-validation)|
 
 ## Consumer Experience
 
