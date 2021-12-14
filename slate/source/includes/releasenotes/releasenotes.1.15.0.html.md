@@ -24,6 +24,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Get Account Detail v2 | Changes to accomodate lending products without an instalment date or repayment frequency | [Get Account Details](../../#get-account-detail)
 
 ## Information Security Profile
 
