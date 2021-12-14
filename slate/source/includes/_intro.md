@@ -41,6 +41,7 @@ The table below highlights these areas of the standards.
 |[Get Metrics V3](#get-metrics)|Version 3 of this end point must be made available by affected data holders by October 1st 2022|October 1st 2022|
 |[Get Metrics V2](#get-metrics)|Data holders may obsolete version 2 of this end point from December 5th 2022. Data Holders in the energy sector MAY go live with only Get Metrics v3 support. The CDR Register must upgrade their implementation to use version 3 by this time|December 5th 2022|
 | [CX Standards: Withdrawals](#withdrawal-standards)|Data Holders **MUST** implement the following data standards effective from 1 February 2022:<ul><li>**Withdrawal:** Secondary User Instruction</li></ul>|February 1st 2022|
+|[Participant Statuses: Data Holder Responsibilities](#data-holder-responsibilities)|Data Holders **MUST** handle missing statuses from the Register APIs effective from July 31st 2022:<ul><li>If Data Holders do not receive a status for a Data Recipient or Data Recipient Software Product, or receives a status that is not recognised, Data Holders MUST ignore the value and use the previous status value retrieved from the Register</li></ul>|July 31st 2022|
 
 ## Endpoint Version Schedule
 A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/'>here</a>.
