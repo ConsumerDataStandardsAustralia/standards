@@ -29,6 +29,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Data Holder Responsibilities| Added requirements for CDR Register and Data Holders to cater for missing statuses in Register API responses | [Data Holder Responsibilities](../../#data-holder-responsibilities)|
 
 ## Consumer Experience
 
