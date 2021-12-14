@@ -30,6 +30,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Registration Validation | Added clarification that registration validation and responses must adhere to NFRs | [Registration Validation](../../#client_registration) |
 
 ## Consumer Experience
 
