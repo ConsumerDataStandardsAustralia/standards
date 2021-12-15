@@ -1198,8 +1198,8 @@
                         "tariffUType": {
                             "type": "string",
                             "description": "The type of the payer",
-                            "enum": ["GOVERNMENT",
-                                "RETAILER"
+                            "enum": ["singleTariff",
+                                "timeVaryingTariffs"
                             ]
                         },
                         "singleTariff": {
