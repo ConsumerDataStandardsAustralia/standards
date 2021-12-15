@@ -27,6 +27,7 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
+| [CX Standards: Joint Accounts](#consumer-experience) | Data holders MUST implement the following data standards from 1 July 2022:<ul><li>Notifications: Alternative notification schedules for joint accounts</li><li>Notifications: Joint account alerts</li><li>Authorisation: Pending status</li><li>Withdrawal: Joint accounts</li></ul> | July 1st 2022 |
 |[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Products V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Metrics V1](#get-metrics)|Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time|October 31st 2021|
