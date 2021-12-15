@@ -25,6 +25,7 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
+| Digital Wallet Payees | Changes to accomodate digital wallet payees | [Get Payees](../../#get-payees), and<br/>[Get Payee Detail](../../#get-payee-detail) |
 
 ## Information Security Profile
 

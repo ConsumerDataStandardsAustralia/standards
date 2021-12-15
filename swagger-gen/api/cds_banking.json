@@ -1062,7 +1062,7 @@
     "/banking/payees": {
       "get": {
         "summary": "Get Payees",
-        "description": "Obtain a list of pre-registered payees",
+        "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html)",
         "operationId": "listPayees",
         "x-scopes": [
           "bank:payees:read"
@@ -1081,6 +1081,7 @@
             "enum": [
               "ALL",
               "BILLER",
+              "DIGITAL_WALLET",
               "DOMESTIC",
               "INTERNATIONAL"
             ],
@@ -1125,7 +1126,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingPayeeList"
+              "$ref": "#/definitions/ResponseBankingPayeeListV2"
             }
           },
           "4xx": {
@@ -1141,13 +1142,13 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/payees/{payeeId}": {
       "get": {
         "summary": "Get Payee Detail",
-        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient",
+        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)",
         "operationId": "getPayeeDetail",
         "x-scopes": [
           "bank:payees:read"
@@ -1198,7 +1199,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingPayeeById"
+              "$ref": "#/definitions/ResponseBankingPayeeByIdV2"
             }
           },
           "4xx": {
@@ -1214,7 +1215,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/products": {
@@ -3052,7 +3053,7 @@
         }
       }
     },
-    "ResponseBankingPayeeList": {
+    "ResponseBankingPayeeListV2": {
       "type": "object",
       "required": [
         "data",
@@ -3070,7 +3071,7 @@
               "type": "array",
               "description": "The list of payees returned",
               "items": {
-                "$ref": "#/definitions/BankingPayee"
+                "$ref": "#/definitions/BankingPayeeV2"
               }
             }
           }
@@ -3083,7 +3084,7 @@
         }
       }
     },
-    "ResponseBankingPayeeById": {
+    "ResponseBankingPayeeByIdV2": {
       "type": "object",
       "required": [
         "data",
@@ -3091,7 +3092,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingPayeeDetail"
+          "$ref": "#/definitions/BankingPayeeDetailV2"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -3101,7 +3102,7 @@
         }
       }
     },
-    "BankingPayee": {
+    "BankingPayeeV2": {
       "type": "object",
       "required": [
         "payeeId",
@@ -3124,9 +3125,10 @@
         },
         "type": {
           "type": "string",
-          "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
+          "description": "The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet",
           "enum": [
             "BILLER",
+            "DIGITAL_WALLET",
             "DOMESTIC",
             "INTERNATIONAL"
           ]
@@ -3138,10 +3140,10 @@
         }
       }
     },
-    "BankingPayeeDetail": {
+    "BankingPayeeDetailV2": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingPayee"
+          "$ref": "#/definitions/BankingPayeeV2"
         },
         {
           "type": "object",
@@ -3149,8 +3151,9 @@
             "payeeUType"
           ],
           "x-conditional": [
-            "domestic",
             "biller",
+            "digitalWallet",
+            "domestic",
             "international"
           ],
           "properties": {
@@ -3159,15 +3162,19 @@
               "description": "Type of object included that describes the payee in detail",
               "enum": [
                 "biller",
+                "digitalWallet",
                 "domestic",
                 "international"
               ]
             },
+            "biller": {
+              "$ref": "#/definitions/BankingBillerPayee"
+            },
             "domestic": {
               "$ref": "#/definitions/BankingDomesticPayee"
             },
-            "biller": {
-              "$ref": "#/definitions/BankingBillerPayee"
+            "digitalWallet": {
+              "$ref": "#/definitions/BankingDigitalWalletPayee"
             },
             "international": {
               "$ref": "#/definitions/BankingInternationalPayee"
@@ -3380,6 +3387,42 @@
               "x-cds-type": "ExternalRef"
             }
           }
+        }
+      }
+    },
+    "BankingDigitalWalletPayee": {
+      "type": "object",
+      "required": [
+        "name",
+        "identifier",
+        "type",
+        "provider"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The identifier of the digital wallet (dependent on type)"
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the digital wallet identifier",
+          "enum": [
+            "EMAIL",
+            "CONTACT_NAME",
+            "TELEPHONE"
+          ]
+        },
+        "provider": {
+          "type": "string",
+          "description": "The provider of the digital wallet",
+          "enum": [
+            "PAYPAL_AU",
+            "OTHER"
+          ]
         }
       }
     },

@@ -27,6 +27,10 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
+|[Get Payee Detail V1](#get-payee-detail)|Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time|August 31st 2022|
+|[Get Payees V1](#get-payees)|Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time|August 31st 2022|
+|[Get Payee Detail V2](#get-payee-detail)|Version 2 of this end point must be made available by affected data holders by July 31st 2022|July 31st 2022|
+|[Get Payees V2](#get-payees)|Version 2 of this end point must be made available by affected data holders by July 31st 2022|July 31st 2022|
 |[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Products V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Metrics V1](#get-metrics)|Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time|October 31st 2021|
