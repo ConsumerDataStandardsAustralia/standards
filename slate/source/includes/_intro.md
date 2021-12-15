@@ -27,8 +27,10 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
-|[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
-|[Get Products V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
+|[Get Account Detail V1](#get-account-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
+|[Get Account Detail V2](#get-account-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
+|[Get Product Detail V3](#get-product-detail)|Data holders may obsolete version 3 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 4 by this time|February 28th 2023|
+|[Get Product Detail V4](#get-product-detail)|Version 4 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Metrics V1](#get-metrics)|Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time|October 31st 2021|
 |[Get Metrics V2](#get-metrics)|Version 2 of this end point must be made available by affected data holders by the end of July 2021|July 31st 2021|
 | [Get Customer V1](#get-customer) | Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold. | July 1st 2021 |

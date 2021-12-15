@@ -340,7 +340,7 @@
     "/banking/accounts/{accountId}": {
       "get": {
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account",
+        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)",
         "operationId": "getAccountDetail",
         "x-scopes": [
           "bank:accounts.detail:read"
@@ -391,7 +391,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountById"
+              "$ref": "#/definitions/ResponseBankingAccountByIdV2"
             }
           },
           "4xx": {
@@ -407,7 +407,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/transactions": {
@@ -1297,7 +1297,7 @@
     "/banking/products/{productId}": {
       "get": {
         "summary": "Get Product Detail",
-        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
+        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html) [v3](includes/obsolete/get-product-detail-v3.html)",
         "operationId": "getProductDetail",
         "tags": [
           "Banking",
@@ -1329,7 +1329,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingProductById"
+              "$ref": "#/definitions/ResponseBankingProductByIdV4"
             }
           },
           "4xx": {
@@ -1339,7 +1339,7 @@
             }
           }
         },
-        "x-version": "3"
+        "x-version": "4"
       }
     }
   },
@@ -1656,7 +1656,7 @@
         }
       }
     },
-    "ResponseBankingProductById": {
+    "ResponseBankingProductByIdV4": {
       "type": "object",
       "required": [
         "data",
@@ -1664,7 +1664,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingProductDetailV3"
+          "$ref": "#/definitions/BankingProductDetailV4"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -1674,7 +1674,7 @@
         }
       }
     },
-    "BankingProductDetailV3": {
+    "BankingProductDetailV4": {
       "allOf": [
         {
           "$ref": "#/definitions/BankingProductV3"
@@ -1693,7 +1693,7 @@
               "description": "Array of features available for the product",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductFeature"
+                "$ref": "#/definitions/BankingProductFeatureV2"
               }
             },
             "constraints": {
@@ -1769,7 +1769,7 @@
         }
       }
     },
-    "BankingProductFeature": {
+    "BankingProductFeatureV2": {
       "type": "object",
       "required": [
         "featureType"
@@ -1788,13 +1788,18 @@
             "BILL_PAYMENT",
             "BONUS_REWARDS",
             "CARD_ACCESS",
+            "CASHBACK_OFFER",
             "COMPLEMENTARY_PRODUCT_DISCOUNTS",
             "DIGITAL_BANKING",
             "DIGITAL_WALLET",
             "DONATE_INTEREST",
+            "EXTRA_REPAYMENTS",
+            "FRAUD_PROTECTION",
             "FREE_TXNS",
             "FREE_TXNS_ALLOWANCE",
+            "GUARANTOR",
             "INSURANCE",
+            "INSTALMENT_PLAN",
             "INTEREST_FREE",
             "INTEREST_FREE_TRANSFERS",
             "LOYALTY_PROGRAM",
@@ -1805,6 +1810,7 @@
             "OTHER",
             "OVERDRAFT",
             "REDRAW",
+            "RELATIONSHIP_MANAGEMENT",
             "UNLIMITED_TXNS"
           ]
         },
@@ -2420,7 +2426,7 @@
         }
       }
     },
-    "ResponseBankingAccountById": {
+    "ResponseBankingAccountByIdV2": {
       "type": "object",
       "required": [
         "data",
@@ -2428,7 +2434,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingAccountDetail"
+          "$ref": "#/definitions/BankingAccountDetailV2"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -2438,7 +2444,7 @@
         }
       }
     },
-    "BankingAccountDetail": {
+    "BankingAccountDetailV2": {
       "allOf": [
         {
           "$ref": "#/definitions/BankingAccount"
@@ -2514,7 +2520,7 @@
               "items": {
                 "allOf": [
                   {
-                    "$ref": "#/definitions/BankingProductFeature"
+                    "$ref": "#/definitions/BankingProductFeatureV2"
                   },
                   {
                     "type": "object",
