@@ -72,8 +72,8 @@ The CDR Registrar has the ability to change the status of a Software Product ind
 * The status of a Data Recipient Brand does not impact Data Holder responsibilities due to the cascade rules outlined above
 * When a Data Recipient status is Suspended, Revoked or Surrendered the Software Product status cannot be Active
 * Invalidation of consents and cleanup of registrations are bulk operations. It is reasonable to execute these as batch tasks performed overnight
-* The Register MUST NOT provide an undefined status for Data Recipient or Data Recipient Software Product Status
-* If Data Holders do not receive a status for a Data Recipient or Data Recipient Software Product, or receives a status that is not recognised, Data Holders MUST ignore the value and use the previous status value retrieved from the Register
+* The CDR Register MUST NOT provide an undefined status for Data Recipient or Data Recipient Software Product Statuses
+* If Data Holders do not receive a status for a Data Recipient or Data Recipient Software Product, or receives a status that is not recognised, Data Holders SHOULD ignore the value and use the previous status value retrieved from the CDR Register
 
 ### Metadata Cache Management
 Data Holders MUST react to Data Recipient and associated Software Statuses changes within **5 minutes** of the change occurring on the CDR Register.
