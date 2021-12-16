@@ -12,7 +12,7 @@ The non-functional requirements (NFRs) for the Consumer Data Right regime cover 
 In the following definition of NFRs specific terms have the following meanings:
 
 - **Data Recipient Software Product**: For the purposes of these NFRs a Data Recipient Software Product is defined, inline with the definition given in the [CDR Federation](#cdr-federation), as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.
-- **Secondary Responsibility Request**: A request made to a secondary data holder by a Data Holder for designated data to fulfil a Consumer Data Request made by a Data Recipient Software Product.
+- **Shared Responsibility Data Request**: A request made to a secondary data holder by a Data Holder for designated data to fulfil a Consumer Data Request made by a Data Recipient Software Product.
 - **Session**: A session is defined as the life span of a unique Access Token.  Multiple API requests made with a single, valid, Access Token would be considered part of a single Session.
 - **Customer Present**: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the Data Recipient Software Product will be considered “Customer Present”.  Technically a data holder will define an API request as “Customer Present” if, and only if, the `x-fapi-customer-ip-address` header is populated with a valid IP address of the end customer’s device.
 - **Customer Not Present**: Authenticated API requests that are not deemed to be “Customer Present”
@@ -42,7 +42,7 @@ The availability requirement does not include planned outages.  Planned outages 
 - Published to Data Recipient Software Products with at least one week lead time for normal outages,
 - May occur without notification if the change is to resolve a critical service or security issue.
 
-The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a secondary responsibility request.  This will not be taken to mean that the data holder is unavailable.
+The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.
 
 ## Performance Requirements
 
@@ -141,7 +141,7 @@ Within this proposal there is no specific requirement with regard to data latenc
 
 For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance end points should be the same as the balance presented through the mobile application.
 
-To be able to manage network efficiency using normal mechanisms, a data holder making secondary responsibility requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the Data Recipient Software Product.  Any such cache should be short lived.
+To be able to manage network efficiency using normal mechanisms, a data holder making Shared Responsibility Data Requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the Data Recipient Software Product.  Any such cache should be short lived.
 
 ## Data Quality
 Data holders are required to take reasonable steps to ensure that CDR data, having regard to the purpose for which it is held, is accurate and up to date.

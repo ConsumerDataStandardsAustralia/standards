@@ -67,10 +67,6 @@ See below for the data language standards for the payees scope:
 
 ## Energy Language
 
-<aside class="notice">
-Note that the data language standards for the energy sector are currently considered non-binding.  This status will be changed by a decision of the Chair after the CDR rules relating to the energy sector are finalised.
-</aside>
-
 ### Individual Consumer
 
 |Data cluster language|Permission language|Authorisation Scopes|
