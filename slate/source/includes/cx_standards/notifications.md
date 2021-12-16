@@ -12,7 +12,9 @@ The standards in this section apply where a relevant joint account holder is abo
 
 ### Alternative Notification Schedules for Joint Accounts
 
-Rule 4A.14(3) requires data holders to (a) provide for alternative notification schedules (including reducing the frequency of notifications or not receiving notifications) and (b) give each joint account holder a means of selecting such an alternative, and of changing an election.
+Rule 4A.14(3) requires data holders to
+(a) provide for alternative notification schedules (including reducing the frequency of notifications or not receiving notifications) and
+(b) give each joint account holder a means of selecting such an alternative, and of changing an election.
 Alternative settings under 4A.14(3) only apply to the following notifications in 4A.14(1):
 
 1. The requester has given, amended, or withdrawn an authorisation
