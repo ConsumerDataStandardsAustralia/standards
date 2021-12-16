@@ -1,5 +1,8 @@
 ## Notification Standards
 
+
+The standards in this section apply where a relevant joint account holder is about to take an action that **MAY** or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, **MAY** not result in the other joint account holder(s) being notified.
+
 ### Joint Account Alerts
 |Area|CX Standard|
 |-------------------|------------------------------|
@@ -8,6 +11,16 @@
 | **Joint account notifications:**<br/>Further information | In relation to the joint account alert standards in this section, data holders **MAY** provide further information about any services or processes in place for supporting vulnerable consumers or reporting risks of physical, psychological, or financial harm or abuse to the data holder. |
 
 ### Alternative Notification Schedules for Joint Accounts
+
+Rule 4A.14(3) requires data holders to (a) provide for alternative notification schedules (including reducing the frequency of notifications or not receiving notifications) and (b) give each joint account holder a means of selecting such an alternative, and of changing an election.
+Alternative settings under 4A.14(3) only apply to the following notifications in 4A.14(1):
+
+1. The requester has given, amended, or withdrawn an authorisation
+2. Expiration of an authorisation
+3. A relevant account holder hasn't given approval within the relevant time frame
+4. A relevant account holder has withdrawn an approval
+
+The standards in this section provide a non-exhaustive list of options that data holders may implement to support their compliance with these rules. The specific implementation of an alternative notification schedule and offering, which may or may not include options listed here, are at the data holder's discretion. It is the data holder's responsibility to ensure it is meeting its obligations under the CDR Rules. Compliance with the CDR Rules on alternative notification schedules would require, at a minimum, implementation of a combination of options (being a combination of options listed below, other measures, or both).
 
 |Area|CX Standard|
 |-------------------|------------------------------|
