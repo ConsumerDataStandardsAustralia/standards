@@ -1127,6 +1127,12 @@
                                 "MEMBERSHIP",
                                 "CONTRIBUTION",
                                 "PAPER_BILL",
+                                "ENVIRONMENTAL_CHARGE",
+                                "REGULATED_CHARGE",
+                                "NETWORK_CHARGE",
+                                "METERING_CHARGE",
+                                "RETAIL_SERVICE_CHARGE",
+                                "RCTI_CHARGE",
                                 "OTHER"
                             ]
                         },
@@ -1157,6 +1163,36 @@
                             "type": "string",
                             "x-cds-type": "RateString",
                             "description": "The fee rate. Required if term is PERCENT_OF_BILL"
+                        },                        
+                        "rateMeasurementUnit": {
+                            "type": "string",
+                            "description": "The measurement unit of rate. Assumed to be kVa if absent",
+                            "enum": ["kWh",
+                                "kVA",
+                                "kVAR",
+                                "kVARh",
+                                "kW",
+                                "Days",
+                                "Meter",
+                                "Month"
+                        ]
+                        },
+                        "rateCurrencyUnit": {
+                            "type": "string",
+                            "description": "The currency unit of rate. Assumed to be C (cents) if absent",
+                            "enum": ["C",
+                            "$"
+                        ]
+                        },
+                        "startDate": {
+                            "type": "string",
+                            "x-cds-type": "DateString",
+                            "description": "The start date of the rate period in a calendar"
+                        },
+                        "endDate": {
+                            "type": "string",
+                            "x-cds-type": "DateString",
+                            "description": "The end date of the rate period in a calendar year"
                         },
                         "description": {
                             "type": "string",
@@ -3001,6 +3037,19 @@
                                 "description"
                             ],
                             "properties": {
+                                "chargeType": {
+                                    "description": "Type of charge. Assumed to be other if absent",
+                                    "type": "string",
+                                    "enum": [
+                                        "ENVIRONMENTAL_CHARGE",
+                                        "REGULATED_CHARGE",
+                                        "NETWORK_CHARGE",
+                                        "METERING_CHARGE",
+                                        "RETAIL_SERVICE_CHARGE",
+                                        "RCTI_CHARGE",
+                                        "OTHER"
+                                    ]
+                                },
                                 "amount": {
                                     "description": "The aggregate total of charges for this item (exclusive of GST)",
                                     "type": "string",
@@ -3059,6 +3108,19 @@
                                 "description"
                             ],
                             "properties": {
+                                "chargeType": {
+                                    "description": "Type of charge. Assumed to be other if absent",
+                                    "type": "string",
+                                    "enum": [
+                                        "ENVIRONMENTAL_CHARGE",
+                                        "REGULATED_CHARGE",
+                                        "NETWORK_CHARGE",
+                                        "METERING_CHARGE",
+                                        "RETAIL_SERVICE_CHARGE",
+                                        "RCTI_CHARGE",
+                                        "OTHER"
+                                    ]
+                                },
                                 "amount": {
                                     "description": "The aggregate total of charges for this item (exclusive of GST)",
                                     "type": "string",
@@ -3421,6 +3483,19 @@
                     "invoiceNumber": {
                         "description": "The number of the invoice in which this transaction is included if it has been issued",
                         "type": "string"
+                    },
+                    "chargeType": {
+                        "description": "Type of charge. Assumed to be other if absent",
+                        "type": "string",
+                        "enum": [
+                            "ENVIRONMENTAL_CHARGE",
+                            "REGULATED_CHARGE",
+                            "NETWORK_CHARGE",
+                            "METERING_CHARGE",
+                            "RETAIL_SERVICE_CHARGE",
+                            "RCTI_CHARGE",
+                            "OTHER"
+                        ]
                     },
                     "amount": {
                         "description": "The amount of the charge",
