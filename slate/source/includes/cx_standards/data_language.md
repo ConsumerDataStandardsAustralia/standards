@@ -13,6 +13,19 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 <br/>
 
+## Profile Scope
+
+In accordance with **[OIDC]** [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [section 5.5](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter), this language refers to the **[OIDC]** profile scope and request of individually claims for the authenticated End-User.
+
+|Data cluster language |<div style="width:250px">Permission language</div> |Authorisation Scopes|
+|----------------------|---------------------------------------------------|--------------------|
+| Name                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<ul><li>name</li><li>given_name</li><li>family_name</li><li>updated_at</li></ul> |
+| Contact Details      | <ul><li>Phone number</li><li>Email address</li><li>Mail address</li></ul> |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<ul><li>name</li><li>given_name</li><li>family_name</li><li>updated_at</li></ul> |
+
+**Note:** For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.
+
+<br/>
+
 ## Banking Language
 
 ### Individual Consumer

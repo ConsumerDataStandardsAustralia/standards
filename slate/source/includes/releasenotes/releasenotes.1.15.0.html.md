@@ -30,8 +30,10 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| OIDC Profile Scope | Added supporting requirements and standards for presenting the OIDC profile scope and individual claims | [Scopes and Claims](../../#scopes-and-claims) |
 
 ## Consumer Experience
 
 |Change|Description|Link|
 |------|-----------|----|
+| OIDC Profile Scope | Added CX data language standards for presenting the OIDC profile scope and individual claims | [Profile scope CX](../../#profile-scope) |
