@@ -743,3 +743,32 @@ content: '<<< END DISCUSS?';
 .for-discussion {
   background-color: rgb(168, 81, 245);
 }
+
+.content {
+  .method {
+    display: block;
+    padding: 2px;
+    font-size: 0.8em;
+    font-weight: bold;
+    font-size: 0.8em;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+
+    &.post {
+      background: blue;
+    }
+
+    &.put {
+      background: orange;
+    }
+
+    &.delete {
+      background: #333;
+    }
+
+    &.get {
+      background: green;
+    }
+  }
+}

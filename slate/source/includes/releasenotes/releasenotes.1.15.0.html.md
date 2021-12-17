@@ -18,7 +18,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Energy and Register endpoint versioning | Added Energy and Register endpoints to the Endpoint Versioning Schedule in line with Banking | [Endpoint Versioning Schedule](../endpoint-version-schedule/)
 
 ## API End Points
 

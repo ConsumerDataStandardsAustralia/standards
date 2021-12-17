@@ -1,0 +1,33 @@
+## Energy APIs
+
+| Section         | Sub-section                               | Endpoint                                                 | Method | Version | Binding Date   | Retirement Date | Date Introduced    | Date Deprecated     |
+|-----------------|-------------------------------------------|----------------------------------------------------------|--------|---------|----------------|-----------------|--------------------|---------------------|
+| Energy APIs     | Get Generic Plans                         | /energy/plans                                            | <span class="method get">GET</span>    | V1      | 2022-10-01     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Generic Plan Detail                   | /energy/plans/{planId}                                   | <span class="method get">GET</span>    | V1      | 2022-10-01     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Energy Accounts                       | /energy/accounts                                         | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Energy Account Detail                 | /energy/accounts/{accountId}                             | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Agreed Payment Schedule               | /energy/accounts/{accountId}/payment-schedule            | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Concessions                           | /energy/accounts/{accountId}/concessions                 | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Balance For Energy Account            | /energy/accounts/{accountId}/balance                     | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Bulk Balances (Energy)                | /energy/accounts/balances                                | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Balances For Specific Energy Accounts | /energy/accounts/balances                                | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Invoices For Account                  |  /energy/accounts/{accountId}/invoices                   | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Bulk Invoices                         | /energy/accounts/invoices                                | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Invoices For Specific Accounts        | /energy/accounts/invoices                                | <span class="method post">POST</span>   | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Billing For Account                   | /energy/accounts/{accountId}/billing                     | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Bulk Billing                          | /energy/accounts/billing                                 | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Billing For Specific Accounts         | /energy/accounts/billing                                 | <span class="method post">POST</span>   | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+
+
+## Energy Shared Responsibility APIs
+
+| Section         | Sub-section                               | Endpoint                                                 | Method | Version | Binding Date   | Retirement Date | Date Introduced    | Date Deprecated     |
+|-----------------|-------------------------------------------|----------------------------------------------------------|--------|---------|----------------|-----------------|--------------------|---------------------|
+| Energy APIs     | Get Service Points                        | /energy/electricity/servicepoints                        | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Service Point Detail                  | /energy/electricity/servicepoints/{servicePointId}       | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Usage For Service Point               | /energy/electricity/servicepoints/<br/>{servicePointId}/usage | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Bulk Usage                            | /energy/electricity/servicepoints/usage                  | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Usage For Specific Service Points     | /energy/electricity/servicepoints/usage                  | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get DER For Service Point                 | /energy/electricity/servicepoints/<br/>{servicePointId}/der   | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get Bulk DER                              | /energy/electricity/servicepoints/der                    | <span class="method get">GET</span>    | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
+| Energy APIs     | Get DER For Specific Service Points       | /energy/electricity/servicepoints/der                    | <span class="method post">POST</span>   | V1      | 2022-11-15     | N/A             | 2021-10-29, V1.14.0| N/A                 |
