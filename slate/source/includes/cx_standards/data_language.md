@@ -19,8 +19,8 @@ In accordance with **[OIDC]** [section 5.4](https://openid.net/specs/openid-conn
 
 |Data cluster language |<div style="width:250px">Permission language</div> |Authorisation Scopes|
 |----------------------|---------------------------------------------------|--------------------|
-| Name                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<br/>`name`<br/>`given_name`<br/>`family_name`<br/>`updated_at` |
-| Contact Details      | Phone number;<br/>Email address;<br/>Mail address; |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<br/>`email`<br/>`email_verified`<br/>`phone_number`<br/>`phone_number_verified`<br/>`address` |
+| **Name**                 | Full name and title(s)                            |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<br/>`name`<br/>`given_name`<br/>`family_name`<br/>`updated_at` |
+| **Contact Details**      | Phone number;<br/>Email address;<br/>Mail address; |[OIDC Profile scope](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and/or one or more of these claims:<br/>`email`<br/>`email_verified`<br/>`phone_number`<br/>`phone_number_verified`<br/>`address` |
 
 **Note:** For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.
 
