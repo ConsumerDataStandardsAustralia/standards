@@ -25,6 +25,7 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
+| Additional document URIs for Banking PRD | Support for secondary additional information URIs for banking product references | [Get Products](../../#get-products) |
 
 ## Information Security Profile
 
