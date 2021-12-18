@@ -86,7 +86,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 {
    "iss":"cdr-register",
    "sub":"cdr-register",
-   "aud":"https://admin.data.holder.com.au",
+   "aud":"https://admin.data.holder.com.au/cds-au/v1/admin/metrics",
    "iat":1516239022,
    "exp":1516239322,
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
