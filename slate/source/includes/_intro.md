@@ -27,7 +27,7 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
-| [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication) | Data Recipients MUST only accept the "resource path" for the end point being accessed MUST be used from July 31st 2022. Until this time, Data Recipients MUST also accept the ``<RecipientBaseURI>`` as a valid audience value | July 31st 2022 |
+| [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication) | Until July 31st 2022, Data Recipients MUST accept the [Resource Path](#uri-resource-path) for the endpoint and the ``<RecipientBaseURI>`` as a valid audience value. From July 31st 2022, Data Holders MUST use an audience value matching the Resource Path for the endpoint and the Data Recipient MUST verify the audience matches the Resource Path for the endpoint. | July 31st 2022 |
 |[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Products V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|
 |[Get Metrics V1](#get-metrics)|Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time|October 31st 2021|

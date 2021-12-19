@@ -86,7 +86,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 {
    "iss":"cdr-register",
    "sub":"cdr-register",
-   "aud":"https://admin.data.holder.com.au/cds-au/v1/admin/metrics",
+   "aud":"https://admin.data.holder.com.au",
    "iat":1516239022,
    "exp":1516239322,
    "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
@@ -98,7 +98,7 @@ Data Recipient Software Products and Data Holders supporting the self-signed JWT
 *	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
     * `sub` - REQUIRED. Subject Identifier. The client ID of the bearer.
-    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. The "resource path" for the end point being accessed SHOULD be used.<br/>In order to facilitate interoperability and for Data Recipient hosted endpoints only, the endpoint MUST also accept the ``<RecipientBaseUri>`` as a value identifying the intended audience.<br/>**From July 31st 2022:** The "resource path" for the end point being accessed MUST be used.<br/><br/>
+    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. The [Resource Path](#uri-resource-path) for the end point being accessed SHOULD be used.<br/>In order to facilitate interoperability and for Data Recipient hosted endpoints only, the endpoint MUST also accept the ``<RecipientBaseUri>`` as a value identifying the intended audience.<br/><p>**From July 31st 2022:** The Resource Path for the end point being accessed MUST be used.</p><p>For the CDR Register calling the Data Holder, the ``<AdminBaseUri>`` for the end point being accessed MUST be used.</p>
     * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
     * `exp` - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
