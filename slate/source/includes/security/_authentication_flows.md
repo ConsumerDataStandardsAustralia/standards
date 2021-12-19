@@ -3,7 +3,65 @@ This profile supports the authentication flows specified by [OpenID Connect](htt
 
 Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
 
+From July 4th 2022, Authorization Code Flow is supported.
+
 No other flows are currently supported.
+
+### Baseline security provisions
+
+#### Data Holders
+**From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
+
+* Data Holders MUST support **[RFC9126]** (PAR)
+*	Data Holders MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Holders MUST support PKCE (**[RFC7636]**)
+* Data Holders MUST reject an authorization code (Section 1.3.1 of **[RFC6749]**) if it has been previously used
+* Data Holders MUST NOT reject requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
+*	Data Holders SHOULD require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
+* Data Holders MAY require **[RFC2196]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
+*	Data Holders that do not support **[PKCE]** MUST ignore PKCE claims and MUST NOT reject clients sending PKCE claims
+o	Data Holders MAY allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
+
+**From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the July 4th 2022 requirements:
+
+*	Data Holders SHOULD support Authorization Code Flow.
+*	Data Holders MUST require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
+* ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the Authorization Code Flow in accordance with **[FAPI-A]**.
+* Authorisation request data MUST ONLY be accepted using PAR
+*	Data Holders MUST NOT cycle refresh tokens (rotation). In other words, Refresh Tokens should be issued with an "exp" equal to the sharing duration authorised by the Customer.
+
+o	Data Holders MUST support [PAR-RFC9126] only authorisation requests and MUST set the [OIDD] "require_pushed_authorization_requests" parameter set to "true".
+
+•	Authorization Code Flow
+o	Data Holders MAY support the Authorization Code Flow in accordance with FAPI 1.0 Advanced. This requires JARM and PKCE.
+
+•	OIDC Hybrid Flow
+o	Data Holders MUST support the OIDC Hybrid Flow
+
+•	Retire Sharing Expires At and Refresh Token Expiry claims
+o	Data Holders MAY "sharing_expires_at" and "refresh_token_expires_at" claims.
+o	Data Holder MUST continue to support "exp" claim for refresh token expiry
+
+•	Refresh Token Cycling
+o	Data Holders MUST NOT cycle refresh tokens. In other words, Refresh Tokens should be issued with an expiry equal to the sharing duration authorised.
+•	Request URI Replay (PAR) is not permitted
+In addition to Phase 1,
+o	Data Holders MUST make the request URIs one-time use and reject the reuse of the request URI.
+
+**From April 7th 2023 (FAPI 1.0 Migration Phase 3)**, the following requirements apply in addition to the July 4th 2022 requirements:
+
+*	Data Holders MUST support Authorization Code Flow
+
+#### Data Recipient Software Products
+
+**From September 16th 2022**, the following requirements apply in addition to the September 16th 2022 requirements:
+
+* Data Recipients MUST use **[RFC9126]** (PAR)
+*	Data Recipients MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Recipients MUST use PKCE (**[RFC7636]**)
+*	Data Recipients MUST only send authorisation request data using [PAR-RFC7636]
+
+
 
 <a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
@@ -39,3 +97,14 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 - reference or inclusion of other documents
 
 Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
+
+<a id="authorization-code-flow"></a>
+### Authorization Code Flow
+
+From July 4th 2022,
+* Data Holders MAY support Authorization Code Flow according to **[FAPI-Adv]**
+* Data Recipient Software Products MAY us Authorization Code Flow according to **[FAPI-Adv]** if the Data Holder supports it
+
+In addition, the following statements are applicable for this flow:
+
+* Data Holders MUST also support **[JARM]**

@@ -19,14 +19,22 @@
 }
 ```
 
-ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.  In accordance with **[FAPI-RW]**, ID Tokens must be signed and encrypted when returned
-to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
+ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.
 
+#### Baseline ID Token requirements
 In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard, required claims for ID Tokens as part of Hybrid Flow authentication must align to [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (Authentication using the Hybrid Flow) of the **[OIDC]** standards and [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack) of the **[FAPI-RW]** profile.
 
 ID Tokens MUST be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**.
 
+#### OIDC Hybrid Flow requirements
+
+In accordance with **[FAPI-RW]**, ID Tokens MUST be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
+
 The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.
+
+### Authorization Code Flow requirements
+
+**From September 16th 2022**, if the Data Holder supports the Authorization Code Flow in accordance with **[FAPI-A]**, ID Tokens MUST be signed and MAY encrypted when returned to a Data Recipient Software Product from the Token End Point.
 
 #### Hashing value for state and authorisation code
 The `c_hash` value MUST be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[OIDC]**.

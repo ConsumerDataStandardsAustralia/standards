@@ -1,7 +1,13 @@
 
 ## Overview
 
+**Until September 16th 2022**,
 This information security profile builds upon the foundations of the [Financial-grade API Read Write Profile](https://openid.net/specs/openid-financial-api-part-2.html) **[FAPI-RW]** and other standards relating to
+[Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
+
+**From September 16th 2022**,
+
+This information security profile builds upon the foundations of the [Financial-grade API Advanced Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) **[FAPI-A]** and other standards relating to
 [Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
@@ -16,7 +22,7 @@ For information on the specific normative references that underpin this profile 
 -   **DR:** Data Recipient
 -   **DRSP:** Data Recipient Software Product
 -   **DTA:** Digital Transformation Agency
--   **FAPI:** Financial API
+-   **FAPI:** Financial-grade API
 -   **FQDN:** Fully Qualified Domain Name
 -   **HoK:** Holder of Key
 -   **JSON:** The JavaScript Object Notation

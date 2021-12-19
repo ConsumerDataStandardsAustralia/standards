@@ -22,6 +22,12 @@ A Data Holder assumes the role of an **[OIDC]** [OpenID Provider](https://openid
 
 For the purposes of this standard a single designated organisation may be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
 
+#### Multi-Brand Support (Separate Issuers For Data Holder Brands)
+
+**From July 4th 2022**,
+
+* Where a Data Holder has multiple brands, each brand MUST have a separate issuer.
+
 ### Secondary Data Holder
 A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.
 
