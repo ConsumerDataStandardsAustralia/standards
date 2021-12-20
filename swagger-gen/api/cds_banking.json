@@ -340,7 +340,7 @@
     "/banking/accounts/{accountId}": {
       "get": {
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account",
+        "description": "Obtain detailed information on a single account\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html) ",
         "operationId": "getAccountDetail",
         "x-scopes": [
           "bank:accounts.detail:read"
@@ -391,7 +391,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountById"
+              "$ref": "#/definitions/ResponseBankingAccountByIdV2"
             }
           },
           "4xx": {
@@ -407,7 +407,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/transactions": {
@@ -2420,7 +2420,7 @@
         }
       }
     },
-    "ResponseBankingAccountById": {
+    "ResponseBankingAccountByIdV2": {
       "type": "object",
       "required": [
         "data",
@@ -2428,7 +2428,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingAccountDetail"
+          "$ref": "#/definitions/BankingAccountDetailV2"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -2438,7 +2438,7 @@
         }
       }
     },
-    "BankingAccountDetail": {
+    "BankingAccountDetailV2": {
       "allOf": [
         {
           "$ref": "#/definitions/BankingAccount"
@@ -2482,7 +2482,7 @@
               "$ref": "#/definitions/BankingCreditCardAccount"
             },
             "loan": {
-              "$ref": "#/definitions/BankingLoanAccount"
+              "$ref": "#/definitions/BankingLoanAccountV2"
             },
             "depositRate": {
               "type": "string",
@@ -2617,13 +2617,8 @@
         }
       }
     },
-    "BankingLoanAccount": {
+    "BankingLoanAccountV2": {
       "type": "object",
-      "required": [
-        "loanEndDate",
-        "nextInstalmentDate",
-        "repaymentFrequency"
-      ],
       "properties": {
         "originalStartDate": {
           "type": "string",
