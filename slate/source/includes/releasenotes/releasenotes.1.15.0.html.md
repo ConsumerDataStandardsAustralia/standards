@@ -18,18 +18,24 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Navigation | Added schema list menu navigation and accordion to improve scrolling and usability | N/A |
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
+| Register APIs | Corrected GetDataHolderBrands `registerUType` and `jwksEndpoint` schema definitions to clarify their usage in DH to ADR client authentication | [Register APIs](../../#register-apis)|
+| Register APIs | Corrected Register Discovery Document definition defect renaming `request_object_signing_alg_values_supported` to `token_endpoint_auth_signing_alg_values_supported` | [Register APIs](../../#register-apis)|
+| Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
 |Change|Description|Link|
 |------|-----------|----|
 | Data Holder Responsibilities| Added requirements for CDR Register and Data Holders to cater for missing statuses in Register API responses | [Data Holder Responsibilities](../../#data-holder-responsibilities)|
+| Certificate Mangement | Fixed broken links to statically hosted certificate trust chain files | [Certificate Management](../../#certificate-management)|
+| Registration Validation | Provided clarification on registration request validation JWKS endpoint usage | [Registration Validation](../../#registration-validation)|
+| Authorization non-normative example | Updated the non-normative example to show the request of the `sharing_expires_at` and `refresh_token_expires_at` claims | [Authorisation End Point](../../#authorisation-end-point) |
 
 ## Consumer Experience
 
