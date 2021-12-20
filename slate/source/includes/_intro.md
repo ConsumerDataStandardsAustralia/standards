@@ -27,6 +27,8 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
+|[Get Customer Detail V1](#get-customer-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
+|[Get Customer Detail V2](#get-customer-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Account Detail V1](#get-account-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
 |[Get Account Detail V2](#get-account-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Product Detail V2](#get-products)|Data holders may obsolete version 2 of this end point from May 31st 2021.  Data recipients must upgrade their implementations to use version 3 by this time|May 31st 2021|

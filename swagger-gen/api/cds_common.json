@@ -94,7 +94,7 @@
     "/common/customer/detail": {
       "get": {
         "summary": "Get Customer Detail",
-        "description": "Obtain detailed information on the authorised customer within the current session.",
+        "description": "Obtain detailed information on the authorised customer within the current session.\n\nObsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)",
         "operationId": "getCustomerDetail",
         "x-scopes": [
           "common:customer.detail:read"
@@ -137,7 +137,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseCommonCustomerDetail"
+              "$ref": "#/definitions/ResponseCommonCustomerDetailV2"
             }
           },
           "4xx": {
@@ -153,7 +153,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/discovery/status": {
@@ -436,7 +436,7 @@
         }
       }
     },
-    "ResponseCommonCustomerDetail": {
+    "ResponseCommonCustomerDetailV2": {
       "type": "object",
       "required": [
         "data",
@@ -463,11 +463,11 @@
             },
             "person": {
               "description": "Mandatory if `customerUType` is `person`",
-              "$ref": "#/definitions/CommonPersonDetail"
+              "$ref": "#/definitions/CommonPersonDetailV2"
             },
             "organisation": {
               "description": "Mandatory if `customerUType` is `organisation`",
-              "$ref": "#/definitions/CommonOrganisationDetail"
+              "$ref": "#/definitions/CommonOrganisationDetailV2"
             }
           }
         },
@@ -535,7 +535,7 @@
         }
       }
     },
-    "CommonPersonDetail": {
+    "CommonPersonDetailV2": {
       "allOf": [
         {
           "$ref": "#/definitions/CommonPerson"
@@ -564,7 +564,7 @@
             },
             "physicalAddresses": {
               "type": "array",
-              "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+              "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
               "items": {
                 "$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
               }
@@ -665,7 +665,7 @@
         }
       }
     },
-    "CommonOrganisationDetail": {
+    "CommonOrganisationDetailV2": {
       "allOf": [
         {
           "$ref": "#/definitions/CommonOrganisation"
@@ -678,7 +678,7 @@
           "properties": {
             "physicalAddresses": {
               "type": "array",
-              "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+              "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
               "items": {
                 "$ref": "#/definitions/CommonPhysicalAddressWithPurpose"
               }
