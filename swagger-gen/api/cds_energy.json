@@ -1277,7 +1277,7 @@
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["displayName", "startDate", "endDate", "dailySupplyCharges", "rateBlockUType"],
+                    "required": ["displayName", "startDate", "endDate", "rateBlockUType"],
                     "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges"],
                     "properties": {
                         "displayName": {
