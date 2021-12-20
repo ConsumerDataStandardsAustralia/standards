@@ -40,6 +40,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| OIDC Profile Scope | Added supporting requirements and standards for presenting the OIDC profile scope and individual claims | [Scopes and Claims](../../#scopes-and-claims) |
 | Registration Validation | Added clarification that registration validation and responses must adhere to NFRs | [Registration Validation](../../#client_registration) |
 | Data Holder Responsibilities| Added requirements for CDR Register and Data Holders to cater for missing statuses in Register API responses | [Data Holder Responsibilities](../../#data-holder-responsibilities)|
 | Certificate Mangement | Fixed broken links to statically hosted certificate trust chain files | [Certificate Management](../../#certificate-management)|
@@ -50,4 +51,5 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| OIDC Profile Scope | Added CX data language standards for presenting the OIDC profile scope and individual claims | [Profile scope CX](../../#profile-scope) |
 | Joint Account CX Standards | Added the CX standards arising from Decision 162 in support of joint accounts and DOMS | [](../../#)|
