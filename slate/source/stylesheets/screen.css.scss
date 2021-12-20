@@ -204,6 +204,63 @@ html, body {
       text-decoration: none;
     }
   }
+
+
+  .toc-schema-list.toggle { position:relative; }
+  .toc-schema-list.toggle span.toggle:before {
+    content: '\02795';
+  }
+  .toc-schema-list.toggle span.toggle {
+    color: #fff;
+    float: right;
+    top: 0;
+    position: relative;
+    font-size: 0.8em;
+    padding-right: 1.5em;
+    position: absolute;
+    right: 0;
+  }
+
+  .toc-schema-list.toggle {
+    cursor: pointer;
+  }
+
+  .toc-schema-list.toggle.on span.toggle:before {
+    content: '\2796';
+  }
+
+  .toc-schema-list.active-parent:before,
+  .toc-schema-list.active-parent span.toggle,
+  .schema-list li.active-parent li:before,
+  .schema-list li.active-parent span.toggle,
+  .schema-list li.active-parent,
+  .schema-list li.active-parent:before {
+    background-color: #00A9CE;
+    color: #fff;
+  }
+
+  .schema-list {
+    display:none;
+    list-style: none;
+    margin-left: 0;
+    overflow: hidden;
+  }
+  /*.toc-schema-list.toggle.on .schema-list {
+    display:block;
+  }*/
+
+  .schema-list li {
+    padding-left: 4.4em;
+    text-indent: -14px;
+    font-size: 0.8em;
+    cursor: pointer
+  }
+
+  .schema-list li:before {
+    padding-right: 0;
+    content: '»';
+    float: left;
+  }
 }
 
 .toc-link, .toc-footer li {
@@ -371,7 +428,7 @@ html, body {
     margin-top: 0;
   }
 
-  h2 {
+  h2, h3.schema-toc {
     @extend %header-font;
     font-size: 19px;
     margin-top: 4em;
@@ -384,7 +441,7 @@ html, body {
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  h1 + h2, h1 + div + h2 {
+  h1 + h2, h1 + div + h2, h1 + h2 + h3.schema-toc, h1 + div + h2 + h3.schema-toc {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
