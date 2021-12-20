@@ -18,18 +18,20 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Navigation | Added schema list menu navigation and accordion to improve scrolling and usability | N/A |
 
 ## API End Points
 
 |Change|Description|Link|
 |------|-----------|----|
 | Register APIs | Corrected Register Discovery Document definition defect renaming `request_object_signing_alg_values_supported` to `token_endpoint_auth_signing_alg_values_supported` | [Register APIs](../../#register-apis)|
+| Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 
 |Change|Description|Link|
 |------|-----------|----|
+| Authorization non-normative example | Updated the non-normative example to show the request of the `sharing_expires_at` and `refresh_token_expires_at` claims | [Authorisation End Point](../../#authorisation-end-point) |
 
 ## Consumer Experience
 
