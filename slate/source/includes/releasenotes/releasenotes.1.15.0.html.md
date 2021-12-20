@@ -18,7 +18,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
-
+| Navigation | Added schema list menu navigation and accordion to improve scrolling and usability | N/A |
 
 ## API End Points
 
