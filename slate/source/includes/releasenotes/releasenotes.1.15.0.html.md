@@ -18,6 +18,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Data Quality NFRs | Updated the data quality definitions regarding consumer data to align to upstream CDR Privacy Safeguards based on OAIC feedback | [Data Quality](../../#data-quality) |
 | Navigation | Added schema list menu navigation and accordion to improve scrolling and usability | N/A |
 
 ## API End Points
