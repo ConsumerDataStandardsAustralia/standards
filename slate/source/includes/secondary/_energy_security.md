@@ -1,7 +1,8 @@
 
 ## Energy
 
-For the energy sector requests for the following data clusters are Shared Responsibility Data Requests for which the Australian Energy Market Operator (AEMO) is the single designated data holder:
+For the energy sector requests for the following data clusters are Shared Responsibility Data Requests for which the Australian Energy Market Operator (AEMO) is the single designated secondary data holder:
+
 * NMI Standard Data
 * Energy Usage
 * Distributed Energy Resources
