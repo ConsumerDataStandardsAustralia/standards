@@ -39,7 +39,7 @@
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**{{= data.operation["x-version"]}}**
+|Version|**{{? data.operation["x-version"]}}{{= data.operation["x-version"]}}{{??}}Versioning is not supported for this endpoint{{?}}**
 
 {{? data.parameters && data.parameters.length }}
 {{#def.parameters}}
