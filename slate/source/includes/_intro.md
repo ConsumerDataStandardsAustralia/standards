@@ -27,6 +27,10 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
+|[Get Payee Detail V1](#get-payee-detail)|Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time|August 31st 2022|
+|[Get Payees V1](#get-payees)|Data holders may obsolete version 1 of this end point from August 31st 2022.  Data recipients must upgrade their implementations to use version 2 by this time|August 31st 2022|
+|[Get Payee Detail V2](#get-payee-detail)|Version 2 of this end point must be made available by affected data holders by July 31st 2022|July 31st 2022|
+|[Get Payees V2](#get-payees)|Version 2 of this end point must be made available by affected data holders by July 31st 2022|July 31st 2022|
 |[Get Customer Detail V1](#get-customer-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
 |[Get Customer Detail V2](#get-customer-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Account Detail V1](#get-account-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
