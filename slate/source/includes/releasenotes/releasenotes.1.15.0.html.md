@@ -49,3 +49,4 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Joint Account CX Standards | Added the CX standards arising from Decision 162 in support of joint accounts and DOMS | [](../../#)|

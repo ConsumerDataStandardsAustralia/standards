@@ -27,6 +27,7 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
+|[CX Standards: Joint Accounts](#consumer-experience) | Data holders MUST implement the following data standards from 1 July 2022:<ul><li>Notifications: Alternative notification schedules for joint accounts</li><li>Notifications: Joint account alerts</li><li>Authorisation: Pending status</li><li>Withdrawal: Joint accounts</li></ul> | July 1st 2022 |
 |[Get Account Detail V1](#get-account-detail)|Data holders may obsolete version 1 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 2 by this time|February 28th 2023|
 |[Get Account Detail V2](#get-account-detail)|Version 2 of this end point must be made available by affected data holders by November 30th 2022|November 30th 2022|
 |[Get Product Detail V3](#get-product-detail)|Data holders may obsolete version 3 of this end point from February 28th 2023.  Data recipients must upgrade their implementations to use version 4 by this time|February 28th 2023|
