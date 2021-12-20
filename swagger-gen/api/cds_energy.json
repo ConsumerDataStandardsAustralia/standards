@@ -4966,7 +4966,7 @@
 			"get": {
 				"summary": "Get Concessions",
 				"operationId": "getConcessions",
-				"description": "Obtain the details of any concessions or hardship arrangements applied to a specific energy account",
+				"description": "Obtain the details of any concessions or arrangements applied to a specific energy account",
                 "x-scopes": [
                     "energy:accounts.concessions:read"
                 ],

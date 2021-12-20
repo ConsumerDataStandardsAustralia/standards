@@ -30,6 +30,7 @@ This release minor errata and documentation fixes.
 | Register APIs | Corrected GetDataHolderBrands `registerUType` and `jwksEndpoint` schema definitions to clarify their usage in DH to ADR client authentication | [Register APIs](../../#register-apis)|
 | Register APIs | Corrected Register Discovery Document definition defect renaming `request_object_signing_alg_values_supported` to `token_endpoint_auth_signing_alg_values_supported` | [Register APIs](../../#register-apis)|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
+| Binding Energy standards | Updated energy standards to remove non-binding notices and made changes to reflect "Shared Responsibility Requests" in line with the Rules where previously they were referred to as "Secondary Responsibility Requests" | [Energy Schema](../../#energy-apis) |
 | Energy schema | Made EnergyPlanTariffPeriod.dailySupplyCharges optional to cater for C&I customers| [Energy Schema](../../#energy-apis) |
 | Energy schema | Updated EnergyPlanSolarFeedInTariff.tariffUType with correct ENUM values | [Energy Schema](../../#energy-apis) |
 | Extended Banking Product feature support | Changes to accomodate additional enumerated product features | [Get Account Details](../../#get-account-detail), and <br/>[Get Product Details](../../#get-product-detail) |
@@ -46,6 +47,7 @@ This release minor errata and documentation fixes.
 | Certificate Mangement | Fixed broken links to statically hosted certificate trust chain files | [Certificate Management](../../#certificate-management)|
 | Registration Validation | Provided clarification on registration request validation JWKS endpoint usage | [Registration Validation](../../#registration-validation)|
 | Authorization non-normative example | Updated the non-normative example to show the request of the `sharing_expires_at` and `refresh_token_expires_at` claims | [Authorisation End Point](../../#authorisation-end-point) |
+
 
 ## Consumer Experience
 
