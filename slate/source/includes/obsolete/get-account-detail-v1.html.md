@@ -613,6 +613,46 @@ To perform this operation, you must be authenticated and authorised with the fol
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
+<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+
+<a id="schemacdr-banking-apibankingaccount"></a>
+
+```json
+{
+  "accountId": "string",
+  "creationDate": "string",
+  "displayName": "string",
+  "nickname": "string",
+  "openStatus": "CLOSED",
+  "isOwned": true,
+  "maskedNumber": "string",
+  "productCategory": "BUSINESS_LOANS",
+  "productName": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence|
+|creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known)|
+|displayName|string|mandatory|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.|
+|nickname|string|optional|A customer supplied nick name for the account|
+|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
+|isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
+|maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
+|productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
+|productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|openStatus|CLOSED|
+|openStatus|OPEN|
+
 <h2 class="schema-toc" id="tocSbankingaccountdetail">BankingAccountDetail</h2>
 
 <a id="schemacdr-banking-apibankingaccountdetail"></a>
