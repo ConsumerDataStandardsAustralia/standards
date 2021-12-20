@@ -20,37 +20,23 @@ No other flows are currently supported.
 *	Data Holders SHOULD require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
 * Data Holders MAY require **[RFC2196]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
 *	Data Holders that do not support **[PKCE]** MUST ignore PKCE claims and MUST NOT reject clients sending PKCE claims
-o	Data Holders MAY allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
+*	Data Holders MAY allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the July 4th 2022 requirements:
 
+*	Data Holders MUST support the OIDC Hybrid Flow
 *	Data Holders SHOULD support Authorization Code Flow.
 *	Data Holders MUST require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
 * ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the Authorization Code Flow in accordance with **[FAPI-A]**.
 * Authorisation request data MUST ONLY be accepted using PAR
 *	Data Holders MUST NOT cycle refresh tokens (rotation). In other words, Refresh Tokens should be issued with an "exp" equal to the sharing duration authorised by the Customer.
-
-o	Data Holders MUST support [PAR-RFC9126] only authorisation requests and MUST set the [OIDD] "require_pushed_authorization_requests" parameter set to "true".
-
-•	Authorization Code Flow
-o	Data Holders MAY support the Authorization Code Flow in accordance with FAPI 1.0 Advanced. This requires JARM and PKCE.
-
-•	OIDC Hybrid Flow
-o	Data Holders MUST support the OIDC Hybrid Flow
-
-•	Retire Sharing Expires At and Refresh Token Expiry claims
-o	Data Holders MAY "sharing_expires_at" and "refresh_token_expires_at" claims.
-o	Data Holder MUST continue to support "exp" claim for refresh token expiry
-
-•	Refresh Token Cycling
-o	Data Holders MUST NOT cycle refresh tokens. In other words, Refresh Tokens should be issued with an expiry equal to the sharing duration authorised.
-•	Request URI Replay (PAR) is not permitted
-In addition to Phase 1,
-o	Data Holders MUST make the request URIs one-time use and reject the reuse of the request URI.
+*	Data Holders MAY retire "sharing_expires_at" and "refresh_token_expires_at" claims.
+*	Data Holders MUST require PAR on authorisation request data in accordance with **[RFC9126]** where "require_pushed_authorization_requests" parameter is set to "true".
 
 **From April 7th 2023 (FAPI 1.0 Migration Phase 3)**, the following requirements apply in addition to the July 4th 2022 requirements:
 
 *	Data Holders MUST support Authorization Code Flow
+*	Data Holders MAY support the OIDC Hybrid Flow
 
 #### Data Recipient Software Products
 
@@ -60,8 +46,6 @@ o	Data Holders MUST make the request URIs one-time use and reject the reuse of t
 *	Data Recipients MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
 *	Data Recipients MUST use PKCE (**[RFC7636]**)
 *	Data Recipients MUST only send authorisation request data using [PAR-RFC7636]
-
-
 
 <a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
@@ -102,9 +86,9 @@ Additional requirements and guidelines for this flow are contained in the [Consu
 ### Authorization Code Flow
 
 From July 4th 2022,
-* Data Holders MAY support Authorization Code Flow according to **[FAPI-Adv]**
-* Data Recipient Software Products MAY us Authorization Code Flow according to **[FAPI-Adv]** if the Data Holder supports it
+* Data Holders MAY support Authorization Code Flow according to **[FAPI-A]**
+* Data Recipient Software Products MAY us Authorization Code Flow according to **[FAPI-A]** if the Data Holder supports it
 
 In addition, the following statements are applicable for this flow:
 
-* Data Holders MUST also support **[JARM]**
+* Data Holders MUST also support **[JARM]** and **[PKCE]**
