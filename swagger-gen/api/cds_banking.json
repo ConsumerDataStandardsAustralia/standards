@@ -340,7 +340,7 @@
     "/banking/accounts/{accountId}": {
       "get": {
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account",
+        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html)",
         "operationId": "getAccountDetail",
         "x-scopes": [
           "bank:accounts.detail:read"
@@ -391,7 +391,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingAccountById"
+              "$ref": "#/definitions/ResponseBankingAccountByIdV2"
             }
           },
           "4xx": {
@@ -407,7 +407,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/transactions": {
@@ -1062,7 +1062,7 @@
     "/banking/payees": {
       "get": {
         "summary": "Get Payees",
-        "description": "Obtain a list of pre-registered payees",
+        "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html)",
         "operationId": "listPayees",
         "x-scopes": [
           "bank:payees:read"
@@ -1081,6 +1081,7 @@
             "enum": [
               "ALL",
               "BILLER",
+              "DIGITAL_WALLET",
               "DOMESTIC",
               "INTERNATIONAL"
             ],
@@ -1125,7 +1126,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingPayeeList"
+              "$ref": "#/definitions/ResponseBankingPayeeListV2"
             }
           },
           "4xx": {
@@ -1141,13 +1142,13 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/payees/{payeeId}": {
       "get": {
         "summary": "Get Payee Detail",
-        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient",
+        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html)",
         "operationId": "getPayeeDetail",
         "x-scopes": [
           "bank:payees:read"
@@ -1198,7 +1199,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingPayeeById"
+              "$ref": "#/definitions/ResponseBankingPayeeByIdV2"
             }
           },
           "4xx": {
@@ -1214,7 +1215,7 @@
             }
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/products": {
@@ -1297,7 +1298,7 @@
     "/banking/products/{productId}": {
       "get": {
         "summary": "Get Product Detail",
-        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)",
+        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html) [v3](includes/obsolete/get-product-detail-v3.html)",
         "operationId": "getProductDetail",
         "tags": [
           "Banking",
@@ -1329,7 +1330,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/ResponseBankingProductById"
+              "$ref": "#/definitions/ResponseBankingProductByIdV4"
             }
           },
           "4xx": {
@@ -1339,7 +1340,7 @@
             }
           }
         },
-        "x-version": "3"
+        "x-version": "4"
       }
     }
   },
@@ -1365,8 +1366,10 @@
     },
     "RequestHeader_x-fapi-auth-date": {
       "name": "x-fapi-auth-date",
-      "description": "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
+      "description": "The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer has logged in. Not to be included for unauthenticated calls.",
       "in": "header",
+      "required": false,
+      "x-conditional": true,
       "type": "string"
     },
     "RequestHeader_x-fapi-customer-ip-address": {
@@ -1379,6 +1382,8 @@
       "name": "x-cds-client-headers",
       "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
       "in": "header",
+      "required": false,
+      "x-conditional": true,
       "type": "string",
       "x-cds-type": "Base64"
     },
@@ -1656,7 +1661,7 @@
         }
       }
     },
-    "ResponseBankingProductById": {
+    "ResponseBankingProductByIdV4": {
       "type": "object",
       "required": [
         "data",
@@ -1664,7 +1669,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingProductDetailV3"
+          "$ref": "#/definitions/BankingProductDetailV4"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -1674,7 +1679,7 @@
         }
       }
     },
-    "BankingProductDetailV3": {
+    "BankingProductDetailV4": {
       "allOf": [
         {
           "$ref": "#/definitions/BankingProductV3"
@@ -1693,7 +1698,7 @@
               "description": "Array of features available for the product",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductFeature"
+                "$ref": "#/definitions/BankingProductFeatureV2"
               }
             },
             "constraints": {
@@ -1769,7 +1774,7 @@
         }
       }
     },
-    "BankingProductFeature": {
+    "BankingProductFeatureV2": {
       "type": "object",
       "required": [
         "featureType"
@@ -1788,13 +1793,18 @@
             "BILL_PAYMENT",
             "BONUS_REWARDS",
             "CARD_ACCESS",
+            "CASHBACK_OFFER",
             "COMPLEMENTARY_PRODUCT_DISCOUNTS",
             "DIGITAL_BANKING",
             "DIGITAL_WALLET",
             "DONATE_INTEREST",
+            "EXTRA_REPAYMENTS",
+            "FRAUD_PROTECTION",
             "FREE_TXNS",
             "FREE_TXNS_ALLOWANCE",
+            "GUARANTOR",
             "INSURANCE",
+            "INSTALMENT_PLAN",
             "INTEREST_FREE",
             "INTEREST_FREE_TRANSFERS",
             "LOYALTY_PROGRAM",
@@ -1805,6 +1815,7 @@
             "OTHER",
             "OVERDRAFT",
             "REDRAW",
+            "RELATIONSHIP_MANAGEMENT",
             "UNLIMITED_TXNS"
           ]
         },
@@ -2420,7 +2431,7 @@
         }
       }
     },
-    "ResponseBankingAccountById": {
+    "ResponseBankingAccountByIdV2": {
       "type": "object",
       "required": [
         "data",
@@ -2428,7 +2439,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingAccountDetail"
+          "$ref": "#/definitions/BankingAccountDetailV2"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -2438,7 +2449,7 @@
         }
       }
     },
-    "BankingAccountDetail": {
+    "BankingAccountDetailV2": {
       "allOf": [
         {
           "$ref": "#/definitions/BankingAccount"
@@ -2482,7 +2493,7 @@
               "$ref": "#/definitions/BankingCreditCardAccount"
             },
             "loan": {
-              "$ref": "#/definitions/BankingLoanAccount"
+              "$ref": "#/definitions/BankingLoanAccountV2"
             },
             "depositRate": {
               "type": "string",
@@ -2514,7 +2525,7 @@
               "items": {
                 "allOf": [
                   {
-                    "$ref": "#/definitions/BankingProductFeature"
+                    "$ref": "#/definitions/BankingProductFeatureV2"
                   },
                   {
                     "type": "object",
@@ -2617,13 +2628,8 @@
         }
       }
     },
-    "BankingLoanAccount": {
+    "BankingLoanAccountV2": {
       "type": "object",
-      "required": [
-        "loanEndDate",
-        "nextInstalmentDate",
-        "repaymentFrequency"
-      ],
       "properties": {
         "originalStartDate": {
           "type": "string",
@@ -3052,7 +3058,7 @@
         }
       }
     },
-    "ResponseBankingPayeeList": {
+    "ResponseBankingPayeeListV2": {
       "type": "object",
       "required": [
         "data",
@@ -3070,7 +3076,7 @@
               "type": "array",
               "description": "The list of payees returned",
               "items": {
-                "$ref": "#/definitions/BankingPayee"
+                "$ref": "#/definitions/BankingPayeeV2"
               }
             }
           }
@@ -3083,7 +3089,7 @@
         }
       }
     },
-    "ResponseBankingPayeeById": {
+    "ResponseBankingPayeeByIdV2": {
       "type": "object",
       "required": [
         "data",
@@ -3091,7 +3097,7 @@
       ],
       "properties": {
         "data": {
-          "$ref": "#/definitions/BankingPayeeDetail"
+          "$ref": "#/definitions/BankingPayeeDetailV2"
         },
         "links": {
           "$ref": "#/definitions/Links"
@@ -3101,7 +3107,7 @@
         }
       }
     },
-    "BankingPayee": {
+    "BankingPayeeV2": {
       "type": "object",
       "required": [
         "payeeId",
@@ -3124,9 +3130,10 @@
         },
         "type": {
           "type": "string",
-          "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
+          "description": "The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet",
           "enum": [
             "BILLER",
+            "DIGITAL_WALLET",
             "DOMESTIC",
             "INTERNATIONAL"
           ]
@@ -3138,10 +3145,10 @@
         }
       }
     },
-    "BankingPayeeDetail": {
+    "BankingPayeeDetailV2": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingPayee"
+          "$ref": "#/definitions/BankingPayeeV2"
         },
         {
           "type": "object",
@@ -3149,8 +3156,9 @@
             "payeeUType"
           ],
           "x-conditional": [
-            "domestic",
             "biller",
+            "digitalWallet",
+            "domestic",
             "international"
           ],
           "properties": {
@@ -3159,15 +3167,19 @@
               "description": "Type of object included that describes the payee in detail",
               "enum": [
                 "biller",
+                "digitalWallet",
                 "domestic",
                 "international"
               ]
             },
+            "biller": {
+              "$ref": "#/definitions/BankingBillerPayee"
+            },
             "domestic": {
               "$ref": "#/definitions/BankingDomesticPayee"
             },
-            "biller": {
-              "$ref": "#/definitions/BankingBillerPayee"
+            "digitalWallet": {
+              "$ref": "#/definitions/BankingDigitalWalletPayee"
             },
             "international": {
               "$ref": "#/definitions/BankingInternationalPayee"
@@ -3380,6 +3392,42 @@
               "x-cds-type": "ExternalRef"
             }
           }
+        }
+      }
+    },
+    "BankingDigitalWalletPayee": {
+      "type": "object",
+      "required": [
+        "name",
+        "identifier",
+        "type",
+        "provider"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The identifier of the digital wallet (dependent on type)"
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the digital wallet identifier",
+          "enum": [
+            "EMAIL",
+            "CONTACT_NAME",
+            "TELEPHONE"
+          ]
+        },
+        "provider": {
+          "type": "string",
+          "description": "The provider of the digital wallet",
+          "enum": [
+            "PAYPAL_AU",
+            "OTHER"
+          ]
         }
       }
     },

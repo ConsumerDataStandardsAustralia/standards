@@ -243,6 +243,10 @@ function getParameters(data) {
         if (typeof param['x-cds-type'] === 'string') {
           param.cdrType = '[' + param['x-cds-type'] +'](#common-field-types)';
         }
+
+        if (typeof param['x-conditional'] === 'boolean') {
+          param.cdrConditional = param['x-conditional'];
+        }
     }
 
     let effSecurity;
@@ -373,6 +377,7 @@ function fakeBodyParameter(data) {
                     param.required_text = prop.required_text;
                     param.description = prop.description;
                     param.safeType = prop.safeType;
+                    param.cdrConditional = prop.cdrConditional;
                     param.cdrType = prop.cdrType;
                     bodyParams.push(param);
                 }
