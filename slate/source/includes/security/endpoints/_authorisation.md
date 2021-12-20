@@ -32,13 +32,19 @@ Host: www.holder.com.au
   "claims": {
     "sharing_duration": 7776000,
     "userinfo": {
-      "given_name": null,
+      "given_name": {"essential": true},
       "family_name": null
     },
     "id_token": {
       "acr": {
         "essential": true,
-        "values": ["urn:cds.au:cdr:3"]
+        "values": ["urn:cds.au:cdr:2"]
+      },
+      "refresh_token_expires_at": {
+        "essential": true
+      },
+      "sharing_expires_at": {
+        "essential": true
       }
     }
   }
