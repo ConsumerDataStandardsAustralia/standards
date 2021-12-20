@@ -30,6 +30,7 @@ This release minor errata and documentation fixes.
 | Register APIs | Corrected GetDataHolderBrands `registerUType` and `jwksEndpoint` schema definitions to clarify their usage in DH to ADR client authentication | [Register APIs](../../#register-apis)|
 | Register APIs | Corrected Register Discovery Document definition defect renaming `request_object_signing_alg_values_supported` to `token_endpoint_auth_signing_alg_values_supported` | [Register APIs](../../#register-apis)|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
+| Additional document URIs for Banking PRD | Support for secondary additional information URIs for banking product references | [Get Products](../../#get-products) |
 | Binding Energy standards | Updated energy standards to remove non-binding notices and made changes to reflect "Shared Responsibility Requests" in line with the Rules where previously they were referred to as "Secondary Responsibility Requests" | [Energy Schema](../../#energy-apis) |
 | Energy schema | Made EnergyPlanTariffPeriod.dailySupplyCharges optional to cater for C&I customers| [Energy Schema](../../#energy-apis) |
 | Energy schema | Updated EnergyPlanSolarFeedInTariff.tariffUType with correct ENUM values | [Energy Schema](../../#energy-apis) |

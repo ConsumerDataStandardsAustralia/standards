@@ -1515,7 +1515,7 @@
         }
       }
     },
-    "ResponseBankingProductList": {
+    "ResponseBankingProductListV2": {
       "type": "object",
       "required": [
         "data",
@@ -1533,7 +1533,7 @@
               "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/BankingProductV3"
+                "$ref": "#/definitions/BankingProductV4"
               }
             }
           }
@@ -1546,7 +1546,7 @@
         }
       }
     },
-    "BankingProductV3": {
+    "BankingProductV4": {
       "type": "object",
       "required": [
         "productId",
@@ -1608,35 +1608,7 @@
           "x-cds-type": "Boolean"
         },
         "additionalInformation": {
-          "description": "Object that contains links to additional information on specific topics",
-          "type": "object",
-          "properties": {
-            "overviewUri": {
-              "type": "string",
-              "description": "General overview of the product",
-              "x-cds-type": "URIString"
-            },
-            "termsUri": {
-              "type": "string",
-              "description": "Terms and conditions for the product",
-              "x-cds-type": "URIString"
-            },
-            "eligibilityUri": {
-              "type": "string",
-              "description": "Eligibility rules and criteria for the product",
-              "x-cds-type": "URIString"
-            },
-            "feesAndPricingUri": {
-              "type": "string",
-              "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product",
-              "x-cds-type": "URIString"
-            },
-            "bundleUri": {
-              "type": "string",
-              "description": "Description of a bundle that this product can be part of",
-              "x-cds-type": "URIString"
-            }
-          }
+          "$ref": "#/definitions/BankingProductAdditionalInformationV2"
         },
         "cardArt": {
           "description": "An array of card art images",
@@ -1661,6 +1633,94 @@
         }
       }
     },
+    "BankingProductAdditionalInformationV2": {
+      "description": "Object that contains links to additional information on specific topics",
+      "type": "object",
+      "x-conditional": [
+        "overviewUri",
+        "termsUri",
+        "eligibilityUri",
+        "feesAndPricingUri",
+        "bundleUri"
+      ],
+      "properties": {
+        "overviewUri": {
+          "type": "string",
+          "description": "General overview of the product. Mandatory if `additionalOverviewUris` includes one or more supporting documents.",
+          "x-cds-type": "URIString"
+        },
+        "termsUri": {
+          "type": "string",
+          "description": "Terms and conditions for the product. Mandatory if `additionalTermsUris` includes one or more supporting documents.",
+          "x-cds-type": "URIString"
+        },
+        "eligibilityUri": {
+          "type": "string",
+          "description": "Eligibility rules and criteria for the product. Mandatory if `additionalEligibilityUris` includes one or more supporting documents.",
+          "x-cds-type": "URIString"
+        },
+        "feesAndPricingUri": {
+          "type": "string",
+          "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if `additionalFeesAndPricingUris` includes one or more supporting documents.",
+          "x-cds-type": "URIString"
+        },
+        "bundleUri": {
+          "type": "string",
+          "description": "Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.",
+          "x-cds-type": "URIString"
+        },
+        "additionalOverviewUris": {
+          "type": "array",
+          "description": "An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.",
+          "items": {
+            "$ref": "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalTermsUris": {
+          "type": "array",
+          "description": "An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.",
+          "items": {
+            "$ref": "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+       "additionalEligibilityUris": {
+          "type": "array",
+          "description": "An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.",
+          "items": {
+            "$ref": "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalFeesAndPricingUris": {
+          "type": "array",
+          "description": "An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.",
+          "items": {
+            "$ref": "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        },
+        "additionalBundleUris": {
+          "type": "array",
+          "description": "An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.",
+          "items": {
+            "$ref": "#/definitions/BankingProductAdditionalInformationV2_additionalInformationUris"
+          }
+        }
+      }
+    },
+    "BankingProductAdditionalInformationV2_additionalInformationUris": {
+        "type": "object",
+        "required": ["additionalInfoUri"],
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Display text providing more information about the document URI"
+          },
+          "additionalInfoUri": {
+            "type": "string",
+            "description": "The URI describing the additional information",
+            "x-cds-type": "URIString"
+          }
+       }
+    },
     "ResponseBankingProductByIdV4": {
       "type": "object",
       "required": [
@@ -1682,7 +1742,7 @@
     "BankingProductDetailV4": {
       "allOf": [
         {
-          "$ref": "#/definitions/BankingProductV3"
+          "$ref": "#/definitions/BankingProductV4"
         },
         {
           "type": "object",
