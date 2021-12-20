@@ -354,7 +354,7 @@
   "definitions" : {
     "ResponseOpenIDProviderConfigMetadata" : {
       "type" : "object",
-      "required" : [ "claims_supported", "code_challenge_methods_supported", "grant_types_supported", "id_token_signing_alg_values_supported", "issuer", "jwks_uri", "request_object_signing_alg_values_supported", "response_types_supported", "scopes_supported", "subject_types_supported", "tls_client_certificate_bound_access_tokens", "token_endpoint", "token_endpoint_auth_methods_supported" ],
+      "required" : [ "claims_supported", "code_challenge_methods_supported", "grant_types_supported", "id_token_signing_alg_values_supported", "issuer", "jwks_uri", "token_endpoint_auth_signing_alg_values_supported", "response_types_supported", "scopes_supported", "subject_types_supported", "tls_client_certificate_bound_access_tokens", "token_endpoint", "token_endpoint_auth_methods_supported" ],
       "properties" : {
         "issuer" : {
           "type" : "string",
@@ -428,9 +428,9 @@
           "type" : "boolean",
           "description" : "Boolean value indicating server support for mutual TLS client certificate bound access tokens"
         },
-        "request_object_signing_alg_values_supported" : {
+        "token_endpoint_auth_signing_alg_values_supported" : {
           "type" : "array",
-          "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.",
+          "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
           "items" : {
             "type" : "string"
           }
