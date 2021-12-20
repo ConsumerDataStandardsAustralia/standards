@@ -1,5 +1,5 @@
 ---
-title: Get Account Detail v1
+title: Get Product Detail v3
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
@@ -11,27 +11,23 @@ toc_footers:
 search: false
 ---
 
-# Get Account Detail V1
-This page documents the obsolete version 1 of the Get Account Detail end point.
+# Get Product Detail V3
+This page documents the obsolete version 3 of the Get Product Detail end point.
 
 This version is to be ceased to be called by data recipients by **February 28th 2023** and can be decommissioned by data holders as of that date.
 
-## Get Account Detail
+## Get Product Detail
 
-<a id="opIdgetAccountDetail"></a>
+<a id="opIdgetProductDetail"></a>
 
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
+GET https://data.holder.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
 Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
 
 ```
 
@@ -39,16 +35,12 @@ x-cds-client-headers: string
 var headers = {
   'Accept':'application/json',
   'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
+  'x-min-v':'string'
 
 };
 
 $.ajax({
-  url: 'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
+  url: 'https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
   method: 'get',
 
   headers: headers,
@@ -59,26 +51,24 @@ $.ajax({
 
 ```
 
-`GET /banking/accounts/{accountId}`
+`GET /banking/products/{productId}`
 
-Obtain detailed information on a single account
+Obtain detailed information on a single product offered openly to the market.
+
+Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**3**
 
-<h3 id="get-account-detail-parameters">Parameters</h3>
+<h3 id="get-product-detail-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable|
+|productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested|
 |x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
 |x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|optional|The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|optional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -87,55 +77,102 @@ Obtain detailed information on a single account
 ```json
 {
   "data": {
-    "accountId": "string",
-    "creationDate": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "openStatus": "CLOSED",
-    "isOwned": true,
-    "maskedNumber": "string",
+    "productId": "string",
+    "effectiveFrom": "string",
+    "effectiveTo": "string",
+    "lastUpdated": "string",
     "productCategory": "BUSINESS_LOANS",
-    "productName": "string",
-    "bsb": "string",
-    "accountNumber": "string",
-    "bundleName": "string",
-    "specificAccountUType": "creditCard",
-    "termDeposit": [
+    "name": "string",
+    "description": "string",
+    "brand": "string",
+    "brandName": "string",
+    "applicationUri": "string",
+    "isTailored": true,
+    "additionalInformation": {
+      "overviewUri": "string",
+      "termsUri": "string",
+      "eligibilityUri": "string",
+      "feesAndPricingUri": "string",
+      "bundleUri": "string"
+    },
+    "cardArt": [
       {
-        "lodgementDate": "string",
-        "maturityDate": "string",
-        "maturityAmount": "string",
-        "maturityCurrency": "string",
-        "maturityInstructions": "HOLD_ON_MATURITY"
+        "title": "string",
+        "imageUri": "string"
       }
     ],
-    "creditCard": {
-      "minPaymentAmount": "string",
-      "paymentDueAmount": "string",
-      "paymentCurrency": "string",
-      "paymentDueDate": "string"
-    },
-    "loan": {
-      "originalStartDate": "string",
-      "originalLoanAmount": "string",
-      "originalLoanCurrency": "string",
-      "loanEndDate": "string",
-      "nextInstalmentDate": "string",
-      "minInstalmentAmount": "string",
-      "minInstalmentCurrency": "string",
-      "maxRedraw": "string",
-      "maxRedrawCurrency": "string",
-      "minRedraw": "string",
-      "minRedrawCurrency": "string",
-      "offsetAccountEnabled": true,
-      "offsetAccountIds": [
-        "string"
-      ],
-      "repaymentType": "INTEREST_ONLY",
-      "repaymentFrequency": "string"
-    },
-    "depositRate": "string",
-    "lendingRate": "string",
+    "bundles": [
+      {
+        "name": "string",
+        "description": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "productIds": [
+          "string"
+        ]
+      }
+    ],
+    "features": [
+      {
+        "featureType": "ADDITIONAL_CARDS",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "constraints": [
+      {
+        "constraintType": "MAX_BALANCE",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "eligibility": [
+      {
+        "eligibilityType": "BUSINESS",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "fees": [
+      {
+        "name": "string",
+        "feeType": "DEPOSIT",
+        "amount": "string",
+        "balanceRate": "string",
+        "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
+        "currency": "string",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "discounts": [
+          {
+            "description": "string",
+            "discountType": "BALANCE",
+            "amount": "string",
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "feeRate": "string",
+            "additionalValue": "string",
+            "additionalInfo": "string",
+            "additionalInfoUri": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "BUSINESS",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "depositRates": [
       {
         "depositRateType": "BONUS",
@@ -191,91 +228,6 @@ Obtain detailed information on a single account
         "additionalInfo": "string",
         "additionalInfoUri": "string"
       }
-    ],
-    "features": [
-      {
-        "featureType": "ADDITIONAL_CARDS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "isActivated": true
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "DEPOSIT",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
-        "currency": "string",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "discounts": [
-          {
-            "description": "string",
-            "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "feeRate": "string",
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string",
-            "eligibility": [
-              {
-                "discountEligibilityType": "BUSINESS",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "addresses": [
-      {
-        "addressUType": "paf",
-        "simple": {
-          "mailingName": "string",
-          "addressLine1": "string",
-          "addressLine2": "string",
-          "addressLine3": "string",
-          "postcode": "string",
-          "city": "string",
-          "state": "string",
-          "country": "AUS"
-        },
-        "paf": {
-          "dpid": "string",
-          "thoroughfareNumber1": 0,
-          "thoroughfareNumber1Suffix": "string",
-          "thoroughfareNumber2": 0,
-          "thoroughfareNumber2Suffix": "string",
-          "flatUnitType": "string",
-          "flatUnitNumber": "string",
-          "floorLevelType": "string",
-          "floorLevelNumber": "string",
-          "lotNumber": "string",
-          "buildingName1": "string",
-          "buildingName2": "string",
-          "streetName": "string",
-          "streetType": "string",
-          "streetSuffix": "string",
-          "postalDeliveryType": "string",
-          "postalDeliveryNumber": 0,
-          "postalDeliveryNumberPrefix": "string",
-          "postalDeliveryNumberSuffix": "string",
-          "localityName": "string",
-          "postcode": "string",
-          "state": "string"
-        }
-      }
     ]
   },
   "links": {
@@ -285,53 +237,65 @@ Obtain detailed information on a single account
 }
 ```
 
-<h3 id="get-account-detail-responses">Responses</h3>
+<h3 id="get-product-detail-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountById](#schemacdr-banking-apiresponsebankingaccountbyid)|
-|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductById](#schemacdr-banking-apiresponsebankingproductbyid)|
+|4xx|[**Client Error**](https://tools.ietf.org/html/rfc7231#section-6.5)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
-|4xx|x-fapi-interaction-id|string||An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.|
 
 
-
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.detail:read</a>
+    <aside class="success">
+This operation does not require authentication
 </aside>
 
 ### Properties
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|additionalInfo|string|optional|Display text providing more information on the condition|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on this condition|
+|data|object|mandatory|none|
+|» accountIds|[string]|mandatory|none|
+|meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSresponsebankingaccountlist">ResponseBankingAccountList</h2>
+<h2 class="schema-toc" id="tocSresponsebankingproductlist">ResponseBankingProductList</h2>
 
-<a id="schemacdr-banking-apiresponsebankingaccountlist"></a>
+<a id="schemacdr-banking-apiresponsebankingproductlist"></a>
 
 ```json
 {
   "data": {
-    "accounts": [
+    "products": [
       {
-        "accountId": "string",
-        "creationDate": "string",
-        "displayName": "string",
-        "nickname": "string",
-        "openStatus": "CLOSED",
-        "isOwned": true,
-        "maskedNumber": "string",
+        "productId": "string",
+        "effectiveFrom": "string",
+        "effectiveTo": "string",
+        "lastUpdated": "string",
         "productCategory": "BUSINESS_LOANS",
-        "productName": "string"
+        "name": "string",
+        "description": "string",
+        "brand": "string",
+        "brandName": "string",
+        "applicationUri": "string",
+        "isTailored": true,
+        "additionalInformation": {
+          "overviewUri": "string",
+          "termsUri": "string",
+          "eligibilityUri": "string",
+          "feesAndPricingUri": "string",
+          "bundleUri": "string"
+        },
+        "cardArt": [
+          {
+            "title": "string",
+            "imageUri": "string"
+          }
+        ]
       }
     ]
   },
@@ -355,25 +319,40 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[BankingAccount](#schemacdr-banking-apibankingaccount)]|mandatory|The list of accounts returned. If the filter results in an empty set then this array may have no records|
+|» products|[[BankingProductV3](#schemacdr-banking-apibankingproductv3)]|mandatory|The list of products returned.  If the filter results in an empty set then this array may have no records|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory|none|
 
-<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+<h2 class="schema-toc" id="tocSbankingproductv3">BankingProductV3</h2>
 
-<a id="schemacdr-banking-apibankingaccount"></a>
+<a id="schemacdr-banking-apibankingproductv3"></a>
 
 ```json
 {
-  "accountId": "string",
-  "creationDate": "string",
-  "displayName": "string",
-  "nickname": "string",
-  "openStatus": "CLOSED",
-  "isOwned": true,
-  "maskedNumber": "string",
+  "productId": "string",
+  "effectiveFrom": "string",
+  "effectiveTo": "string",
+  "lastUpdated": "string",
   "productCategory": "BUSINESS_LOANS",
-  "productName": "string"
+  "name": "string",
+  "description": "string",
+  "brand": "string",
+  "brandName": "string",
+  "applicationUri": "string",
+  "isTailored": true,
+  "additionalInformation": {
+    "overviewUri": "string",
+    "termsUri": "string",
+    "eligibilityUri": "string",
+    "feesAndPricingUri": "string",
+    "bundleUri": "string"
+  },
+  "cardArt": [
+    {
+      "title": "string",
+      "imageUri": "string"
+    }
+  ]
 }
 
 ```
@@ -382,79 +361,130 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence|
-|creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known)|
-|displayName|string|mandatory|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.|
-|nickname|string|optional|A customer supplied nick name for the account|
-|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
-|isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
-|maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
+|productId|[ASCIIString](#common-field-types)|mandatory|A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.|
+|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate|
+|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)|
 |productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
-|productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
+|name|string|mandatory|The display name of the product|
+|description|string|mandatory|A description of the product|
+|brand|string|mandatory|A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required|
+|brandName|string|optional|An optional display name of the brand|
+|applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this product can be applied for.|
+|isTailored|[Boolean](#common-field-types)|mandatory|Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable|
+|additionalInformation|object|optional|Object that contains links to additional information on specific topics|
+|» overviewUri|[URIString](#common-field-types)|optional|General overview of the product|
+|» termsUri|[URIString](#common-field-types)|optional|Terms and conditions for the product|
+|» eligibilityUri|[URIString](#common-field-types)|optional|Eligibility rules and criteria for the product|
+|» feesAndPricingUri|[URIString](#common-field-types)|optional|Description of fees, pricing, discounts, exemptions and bonuses for the product|
+|» bundleUri|[URIString](#common-field-types)|optional|Description of a bundle that this product can be part of|
+|cardArt|[object]|optional|An array of card art images|
+|» title|string|optional|Display label for the specific image|
+|» imageUri|[URIString](#common-field-types)|mandatory|URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)|
 
-#### Enumerated Values
+<h2 class="schema-toc" id="tocSresponsebankingproductbyid">ResponseBankingProductById</h2>
 
-|Property|Value|
-|---|---|
-|openStatus|CLOSED|
-|openStatus|OPEN|
-
-<h2 class="schema-toc" id="tocSresponsebankingaccountbyid">ResponseBankingAccountById</h2>
-
-<a id="schemacdr-banking-apiresponsebankingaccountbyid"></a>
+<a id="schemacdr-banking-apiresponsebankingproductbyid"></a>
 
 ```json
 {
   "data": {
-    "accountId": "string",
-    "creationDate": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "openStatus": "CLOSED",
-    "isOwned": true,
-    "maskedNumber": "string",
+    "productId": "string",
+    "effectiveFrom": "string",
+    "effectiveTo": "string",
+    "lastUpdated": "string",
     "productCategory": "BUSINESS_LOANS",
-    "productName": "string",
-    "bsb": "string",
-    "accountNumber": "string",
-    "bundleName": "string",
-    "specificAccountUType": "creditCard",
-    "termDeposit": [
+    "name": "string",
+    "description": "string",
+    "brand": "string",
+    "brandName": "string",
+    "applicationUri": "string",
+    "isTailored": true,
+    "additionalInformation": {
+      "overviewUri": "string",
+      "termsUri": "string",
+      "eligibilityUri": "string",
+      "feesAndPricingUri": "string",
+      "bundleUri": "string"
+    },
+    "cardArt": [
       {
-        "lodgementDate": "string",
-        "maturityDate": "string",
-        "maturityAmount": "string",
-        "maturityCurrency": "string",
-        "maturityInstructions": "HOLD_ON_MATURITY"
+        "title": "string",
+        "imageUri": "string"
       }
     ],
-    "creditCard": {
-      "minPaymentAmount": "string",
-      "paymentDueAmount": "string",
-      "paymentCurrency": "string",
-      "paymentDueDate": "string"
-    },
-    "loan": {
-      "originalStartDate": "string",
-      "originalLoanAmount": "string",
-      "originalLoanCurrency": "string",
-      "loanEndDate": "string",
-      "nextInstalmentDate": "string",
-      "minInstalmentAmount": "string",
-      "minInstalmentCurrency": "string",
-      "maxRedraw": "string",
-      "maxRedrawCurrency": "string",
-      "minRedraw": "string",
-      "minRedrawCurrency": "string",
-      "offsetAccountEnabled": true,
-      "offsetAccountIds": [
-        "string"
-      ],
-      "repaymentType": "INTEREST_ONLY",
-      "repaymentFrequency": "string"
-    },
-    "depositRate": "string",
-    "lendingRate": "string",
+    "bundles": [
+      {
+        "name": "string",
+        "description": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "productIds": [
+          "string"
+        ]
+      }
+    ],
+    "features": [
+      {
+        "featureType": "ADDITIONAL_CARDS",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "constraints": [
+      {
+        "constraintType": "MAX_BALANCE",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "eligibility": [
+      {
+        "eligibilityType": "BUSINESS",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string"
+      }
+    ],
+    "fees": [
+      {
+        "name": "string",
+        "feeType": "DEPOSIT",
+        "amount": "string",
+        "balanceRate": "string",
+        "transactionRate": "string",
+        "accruedRate": "string",
+        "accrualFrequency": "string",
+        "currency": "string",
+        "additionalValue": "string",
+        "additionalInfo": "string",
+        "additionalInfoUri": "string",
+        "discounts": [
+          {
+            "description": "string",
+            "discountType": "BALANCE",
+            "amount": "string",
+            "balanceRate": "string",
+            "transactionRate": "string",
+            "accruedRate": "string",
+            "feeRate": "string",
+            "additionalValue": "string",
+            "additionalInfo": "string",
+            "additionalInfoUri": "string",
+            "eligibility": [
+              {
+                "discountEligibilityType": "BUSINESS",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "depositRates": [
       {
         "depositRateType": "BONUS",
@@ -510,91 +540,6 @@ To perform this operation, you must be authenticated and authorised with the fol
         "additionalInfo": "string",
         "additionalInfoUri": "string"
       }
-    ],
-    "features": [
-      {
-        "featureType": "ADDITIONAL_CARDS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "isActivated": true
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "DEPOSIT",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
-        "currency": "string",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "discounts": [
-          {
-            "description": "string",
-            "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "feeRate": "string",
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string",
-            "eligibility": [
-              {
-                "discountEligibilityType": "BUSINESS",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "addresses": [
-      {
-        "addressUType": "paf",
-        "simple": {
-          "mailingName": "string",
-          "addressLine1": "string",
-          "addressLine2": "string",
-          "addressLine3": "string",
-          "postcode": "string",
-          "city": "string",
-          "state": "string",
-          "country": "AUS"
-        },
-        "paf": {
-          "dpid": "string",
-          "thoroughfareNumber1": 0,
-          "thoroughfareNumber1Suffix": "string",
-          "thoroughfareNumber2": 0,
-          "thoroughfareNumber2Suffix": "string",
-          "flatUnitType": "string",
-          "flatUnitNumber": "string",
-          "floorLevelType": "string",
-          "floorLevelNumber": "string",
-          "lotNumber": "string",
-          "buildingName1": "string",
-          "buildingName2": "string",
-          "streetName": "string",
-          "streetType": "string",
-          "streetSuffix": "string",
-          "postalDeliveryType": "string",
-          "postalDeliveryNumber": 0,
-          "postalDeliveryNumberPrefix": "string",
-          "postalDeliveryNumberSuffix": "string",
-          "localityName": "string",
-          "postcode": "string",
-          "state": "string"
-        }
-      }
     ]
   },
   "links": {
@@ -609,105 +554,112 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingAccountDetail](#schemacdr-banking-apibankingaccountdetail)|mandatory|none|
+|data|[BankingProductDetailV3](#schemacdr-banking-apibankingproductdetailv3)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h2 class="schema-toc" id="tocSbankingaccount">BankingAccount</h2>
+<h2 class="schema-toc" id="tocSbankingproductdetailv3">BankingProductDetailV3</h2>
 
-<a id="schemacdr-banking-apibankingaccount"></a>
-
-```json
-{
-  "accountId": "string",
-  "creationDate": "string",
-  "displayName": "string",
-  "nickname": "string",
-  "openStatus": "CLOSED",
-  "isOwned": true,
-  "maskedNumber": "string",
-  "productCategory": "BUSINESS_LOANS",
-  "productName": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence|
-|creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known)|
-|displayName|string|mandatory|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.|
-|nickname|string|optional|A customer supplied nick name for the account|
-|openStatus|string|optional|Open or closed status for the account. If not present then OPEN is assumed|
-|isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed|
-|maskedNumber|[MaskedAccountString](#common-field-types)|mandatory|A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number|
-|productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory|The category to which a product or account belongs. See [here](#product-categories) for more details|
-|productName|string|mandatory|The unique identifier of the account as defined by the data holder (akin to model number for the account)|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|openStatus|CLOSED|
-|openStatus|OPEN|
-
-<h2 class="schema-toc" id="tocSbankingaccountdetail">BankingAccountDetail</h2>
-
-<a id="schemacdr-banking-apibankingaccountdetail"></a>
+<a id="schemacdr-banking-apibankingproductdetailv3"></a>
 
 ```json
 {
-  "accountId": "string",
-  "creationDate": "string",
-  "displayName": "string",
-  "nickname": "string",
-  "openStatus": "CLOSED",
-  "isOwned": true,
-  "maskedNumber": "string",
+  "productId": "string",
+  "effectiveFrom": "string",
+  "effectiveTo": "string",
+  "lastUpdated": "string",
   "productCategory": "BUSINESS_LOANS",
-  "productName": "string",
-  "bsb": "string",
-  "accountNumber": "string",
-  "bundleName": "string",
-  "specificAccountUType": "creditCard",
-  "termDeposit": [
+  "name": "string",
+  "description": "string",
+  "brand": "string",
+  "brandName": "string",
+  "applicationUri": "string",
+  "isTailored": true,
+  "additionalInformation": {
+    "overviewUri": "string",
+    "termsUri": "string",
+    "eligibilityUri": "string",
+    "feesAndPricingUri": "string",
+    "bundleUri": "string"
+  },
+  "cardArt": [
     {
-      "lodgementDate": "string",
-      "maturityDate": "string",
-      "maturityAmount": "string",
-      "maturityCurrency": "string",
-      "maturityInstructions": "HOLD_ON_MATURITY"
+      "title": "string",
+      "imageUri": "string"
     }
   ],
-  "creditCard": {
-    "minPaymentAmount": "string",
-    "paymentDueAmount": "string",
-    "paymentCurrency": "string",
-    "paymentDueDate": "string"
-  },
-  "loan": {
-    "originalStartDate": "string",
-    "originalLoanAmount": "string",
-    "originalLoanCurrency": "string",
-    "loanEndDate": "string",
-    "nextInstalmentDate": "string",
-    "minInstalmentAmount": "string",
-    "minInstalmentCurrency": "string",
-    "maxRedraw": "string",
-    "maxRedrawCurrency": "string",
-    "minRedraw": "string",
-    "minRedrawCurrency": "string",
-    "offsetAccountEnabled": true,
-    "offsetAccountIds": [
-      "string"
-    ],
-    "repaymentType": "INTEREST_ONLY",
-    "repaymentFrequency": "string"
-  },
-  "depositRate": "string",
-  "lendingRate": "string",
+  "bundles": [
+    {
+      "name": "string",
+      "description": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string",
+      "productIds": [
+        "string"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "featureType": "ADDITIONAL_CARDS",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "constraints": [
+    {
+      "constraintType": "MAX_BALANCE",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "eligibility": [
+    {
+      "eligibilityType": "BUSINESS",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "fees": [
+    {
+      "name": "string",
+      "feeType": "DEPOSIT",
+      "amount": "string",
+      "balanceRate": "string",
+      "transactionRate": "string",
+      "accruedRate": "string",
+      "accrualFrequency": "string",
+      "currency": "string",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string",
+      "discounts": [
+        {
+          "description": "string",
+          "discountType": "BALANCE",
+          "amount": "string",
+          "balanceRate": "string",
+          "transactionRate": "string",
+          "accruedRate": "string",
+          "feeRate": "string",
+          "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string",
+          "eligibility": [
+            {
+              "discountEligibilityType": "BUSINESS",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "depositRates": [
     {
       "depositRateType": "BONUS",
@@ -763,91 +715,6 @@ To perform this operation, you must be authenticated and authorised with the fol
       "additionalInfo": "string",
       "additionalInfoUri": "string"
     }
-  ],
-  "features": [
-    {
-      "featureType": "ADDITIONAL_CARDS",
-      "additionalValue": "string",
-      "additionalInfo": "string",
-      "additionalInfoUri": "string",
-      "isActivated": true
-    }
-  ],
-  "fees": [
-    {
-      "name": "string",
-      "feeType": "DEPOSIT",
-      "amount": "string",
-      "balanceRate": "string",
-      "transactionRate": "string",
-      "accruedRate": "string",
-      "accrualFrequency": "string",
-      "currency": "string",
-      "additionalValue": "string",
-      "additionalInfo": "string",
-      "additionalInfoUri": "string",
-      "discounts": [
-        {
-          "description": "string",
-          "discountType": "BALANCE",
-          "amount": "string",
-          "balanceRate": "string",
-          "transactionRate": "string",
-          "accruedRate": "string",
-          "feeRate": "string",
-          "additionalValue": "string",
-          "additionalInfo": "string",
-          "additionalInfoUri": "string",
-          "eligibility": [
-            {
-              "discountEligibilityType": "BUSINESS",
-              "additionalValue": "string",
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "addresses": [
-    {
-      "addressUType": "paf",
-      "simple": {
-        "mailingName": "string",
-        "addressLine1": "string",
-        "addressLine2": "string",
-        "addressLine3": "string",
-        "postcode": "string",
-        "city": "string",
-        "state": "string",
-        "country": "AUS"
-      },
-      "paf": {
-        "dpid": "string",
-        "thoroughfareNumber1": 0,
-        "thoroughfareNumber1Suffix": "string",
-        "thoroughfareNumber2": 0,
-        "thoroughfareNumber2Suffix": "string",
-        "flatUnitType": "string",
-        "flatUnitNumber": "string",
-        "floorLevelType": "string",
-        "floorLevelNumber": "string",
-        "lotNumber": "string",
-        "buildingName1": "string",
-        "buildingName2": "string",
-        "streetName": "string",
-        "streetType": "string",
-        "streetSuffix": "string",
-        "postalDeliveryType": "string",
-        "postalDeliveryNumber": 0,
-        "postalDeliveryNumberPrefix": "string",
-        "postalDeliveryNumberSuffix": "string",
-        "localityName": "string",
-        "postcode": "string",
-        "state": "string"
-      }
-    }
   ]
 }
 
@@ -859,133 +726,34 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[BankingAccount](#schemacdr-banking-apibankingaccount)|mandatory|none|
+|*anonymous*|[BankingProductV3](#schemacdr-banking-apibankingproductv3)|mandatory|none|
 
 *and*
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» bsb|string|optional|The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» accountNumber|string|optional|The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces|
-|» bundleName|string|optional|Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer|
-|» specificAccountUType|string|optional|The type of structure to present account specific fields.|
-|» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
-|» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
-|» loan|[BankingLoanAccount](#schemacdr-banking-apibankingloanaccount)|conditional|none|
-|» depositRate|[RateString](#common-field-types)|optional|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call|
-|» lendingRate|[RateString](#common-field-types)|optional|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call|
-|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
-|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference|
-|» features|[allOf]|optional|Array of features of the account based on the equivalent structure in Product Reference with the following additional field|
+|» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also|
+|» features|[[BankingProductFeature](#schemacdr-banking-apibankingproductfeature)]|optional|Array of features available for the product|
+|» constraints|[[BankingProductConstraint](#schemacdr-banking-apibankingproductconstraint)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds|
+|» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product|
+|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable for the product|
+|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits|
+|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Interest rates charged against lending balances|
 
-*allOf*
+<h2 class="schema-toc" id="tocSbankingproductbundle">BankingProductBundle</h2>
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|»» *anonymous*|[BankingProductFeature](#schemacdr-banking-apibankingproductfeature)|mandatory|none|
-
-*and*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|»» *anonymous*|object|mandatory|none|
-|»»» isActivated|[Boolean](#common-field-types)|optional|True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)|
-
-*continued*
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|»» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees and charges applicable to the account based on the equivalent structure in Product Reference|
-|»» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional|The addresses for the account to be used for correspondence|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|specificAccountUType|creditCard|
-|specificAccountUType|loan|
-|specificAccountUType|termDeposit|
-
-<h2 class="schema-toc" id="tocSbankingtermdepositaccount">BankingTermDepositAccount</h2>
-
-<a id="schemacdr-banking-apibankingtermdepositaccount"></a>
+<a id="schemacdr-banking-apibankingproductbundle"></a>
 
 ```json
 {
-  "lodgementDate": "string",
-  "maturityDate": "string",
-  "maturityAmount": "string",
-  "maturityCurrency": "string",
-  "maturityInstructions": "HOLD_ON_MATURITY"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|lodgementDate|[DateString](#common-field-types)|mandatory|The lodgement date of the original deposit|
-|maturityDate|[DateString](#common-field-types)|mandatory|Maturity date for the term deposit|
-|maturityAmount|[AmountString](#common-field-types)|optional|Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated|
-|maturityCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|maturityInstructions|string|mandatory|Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|maturityInstructions|HOLD_ON_MATURITY|
-|maturityInstructions|PAID_OUT_AT_MATURITY|
-|maturityInstructions|ROLLED_OVER|
-
-<h2 class="schema-toc" id="tocSbankingcreditcardaccount">BankingCreditCardAccount</h2>
-
-<a id="schemacdr-banking-apibankingcreditcardaccount"></a>
-
-```json
-{
-  "minPaymentAmount": "string",
-  "paymentDueAmount": "string",
-  "paymentCurrency": "string",
-  "paymentDueDate": "string"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|minPaymentAmount|[AmountString](#common-field-types)|mandatory|The minimum payment amount due for the next card payment|
-|paymentDueAmount|[AmountString](#common-field-types)|mandatory|The amount due for the next card payment|
-|paymentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|paymentDueDate|[DateString](#common-field-types)|mandatory|Date that the next payment for the card is due|
-
-<h2 class="schema-toc" id="tocSbankingloanaccount">BankingLoanAccount</h2>
-
-<a id="schemacdr-banking-apibankingloanaccount"></a>
-
-```json
-{
-  "originalStartDate": "string",
-  "originalLoanAmount": "string",
-  "originalLoanCurrency": "string",
-  "loanEndDate": "string",
-  "nextInstalmentDate": "string",
-  "minInstalmentAmount": "string",
-  "minInstalmentCurrency": "string",
-  "maxRedraw": "string",
-  "maxRedrawCurrency": "string",
-  "minRedraw": "string",
-  "minRedrawCurrency": "string",
-  "offsetAccountEnabled": true,
-  "offsetAccountIds": [
+  "name": "string",
+  "description": "string",
+  "additionalInfo": "string",
+  "additionalInfoUri": "string",
+  "productIds": [
     "string"
-  ],
-  "repaymentType": "INTEREST_ONLY",
-  "repaymentFrequency": "string"
+  ]
 }
 
 ```
@@ -994,28 +762,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|originalStartDate|[DateString](#common-field-types)|optional|Optional original start date for the loan|
-|originalLoanAmount|[AmountString](#common-field-types)|optional|Optional original loan value|
-|originalLoanCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|loanEndDate|[DateString](#common-field-types)|mandatory|Date that the loan is due to be repaid in full|
-|nextInstalmentDate|[DateString](#common-field-types)|mandatory|Next date that an instalment is required|
-|minInstalmentAmount|[AmountString](#common-field-types)|optional|Minimum amount of next instalment|
-|minInstalmentCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|maxRedraw|[AmountString](#common-field-types)|optional|Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account|
-|maxRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|minRedraw|[AmountString](#common-field-types)|optional|Minimum redraw amount|
-|minRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes AUD|
-|offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to true if one or more offset accounts are configured for this loan account|
-|offsetAccountIds|[string]|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation|
-|repaymentType|string|optional|Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST|
-|repaymentFrequency|[ExternalRef](#common-field-types)|mandatory|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|repaymentType|INTEREST_ONLY|
-|repaymentType|PRINCIPAL_AND_INTEREST|
+|name|string|mandatory|Name of the bundle|
+|description|string|mandatory|Description of the bundle|
+|additionalInfo|string|optional|Display text providing more information on the bundle|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the bundle criteria and benefits|
+|productIds|[string]|optional|Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points|
 
 <h2 class="schema-toc" id="tocSbankingproductfeature">BankingProductFeature</h2>
 
