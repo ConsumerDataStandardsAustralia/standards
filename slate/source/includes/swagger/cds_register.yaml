@@ -739,9 +739,9 @@ definitions:
         - SIGNED-JWT
       jwksEndpoint:
         type: string
-        description: JWKS endpoint for private_key_jwt client authentication with Data Recipient
+        description: JWKS endpoint used for authentication by the Data Holder with the Data Recipient
         x-cds-type: URIString
-    description: Provides details of authorisation endpoints for Data Holders
+    description: Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication
   LinksPaginated:
     type: object
     required:
