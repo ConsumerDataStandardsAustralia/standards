@@ -3639,6 +3639,7 @@
 				"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				}
@@ -3657,6 +3658,7 @@
 				"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				},
