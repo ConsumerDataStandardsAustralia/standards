@@ -818,7 +818,7 @@
             },
             "EnergyPlanControlledLoad": {
                 "type": "object",
-                "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
+                "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
                 "required": ["displayName", "dailyCharge", "period", "rates"],
                 "properties": {
                     "displayName": {
@@ -5084,7 +5084,7 @@
 		},
 		"/energy/accounts/balances": {
 			"get": {
-				"summary": "Get Bulk Balances (Energy)",
+				"summary": "Get Bulk Balances for Energy",
 				"operationId": "listBalancesBulk",
 				"description": "Obtain the current balance for all accounts",
                 "x-scopes": [
