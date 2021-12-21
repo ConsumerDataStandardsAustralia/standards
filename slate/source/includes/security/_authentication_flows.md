@@ -1,9 +1,9 @@
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
 
-Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
+Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
 
-From July 4th 2022, Authorization Code Flow is supported.
+From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[OIDC]** is supported.
 
 No other flows are currently supported.
 
@@ -19,17 +19,17 @@ No other flows are currently supported.
 *	Data Holders MAY support PKCE (**[RFC7636]**)
 * Data Holders MAY require **[RFC2196]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
 *	Data Holders that do not support **[PKCE]** MUST ignore PKCE claims and MUST NOT reject clients sending PKCE claims
-*	Data Holders MAY allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
+*	Data Holders MAY allow the OIDC Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
 
 **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**, the following requirements apply in addition to the July 4th 2022 requirements:
 
 *	Data Holders MUST support the OIDC Hybrid Flow
-*	Data Holders SHOULD support Authorization Code Flow.
+*	Data Holders SHOULD support OIDC Authorization Code Flow.
 * Data Holders MUST support **[RFC9126]** (PAR)
 *	Data Holders MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
 *	Data Holders MUST support PKCE (**[RFC7636]**)
 *	Data Holders MUST require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
-* ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the Authorization Code Flow in accordance with **[FAPI-A]**.
+* ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[FAPI-A]**.
 * Authorisation request data MUST ONLY be accepted using PAR
 *	Data Holders MUST NOT cycle refresh tokens (rotation). In other words, Refresh Tokens should be issued with an "exp" equal to the sharing duration authorised by the Customer.
 *	Data Holders MAY retire "sharing_expires_at" and "refresh_token_expires_at" claims.
@@ -37,7 +37,7 @@ No other flows are currently supported.
 
 **From April 7th 2023 (FAPI 1.0 Migration Phase 3)**, the following requirements apply in addition to the July 4th 2022 requirements:
 
-*	Data Holders MUST support Authorization Code Flow
+*	Data Holders MUST support OIDC Authorization Code Flow
 *	Data Holders MAY support the OIDC Hybrid Flow
 
 #### Data Recipient Software Products
@@ -54,10 +54,10 @@ No other flows are currently supported.
 The **[OIDC]** Hybrid Flow is a type of redirection flow where the consumer's user
 agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an **[OIDC]** authentication
-request. The Hybrid flow incorporates aspects of the both the implicit flow and
+request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under **[OIDC]**.
 
-Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[OIDC]**) of `code id_token` SHALL be allowed.
+Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` SHALL be allowed.
 
 The `request_uri` parameter is only supported if the Data Holder supports PAR.
 
@@ -85,12 +85,13 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
 <a id="authorization-code-flow"></a>
-### Authorization Code Flow
+### OIDC Authorization Code Flow
 
 From July 4th 2022,
-* Data Holders MAY support Authorization Code Flow according to **[FAPI-A]**
-* Data Recipient Software Products MAY us Authorization Code Flow according to **[FAPI-A]** if the Data Holder supports it
+* Data Holders MAY support OIDC Authorization Code Flow according to **[FAPI-A]**
+* Data Recipient Software Products MAY us OIDC Authorization Code Flow according to **[FAPI-A]** if the Data Holder supports it.
 
 In addition, the following statements are applicable for this flow:
 
+* Only a response_type (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[OIDC]**) of code SHALL be allowed.
 * Data Holders MUST also support **[JARM]** and **[PKCE]**
