@@ -42,6 +42,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Self-Signed JWT Audience | An immediate change to re-instate interoperability for Data Holders calling the Data Recipient's CDR Arrangement Revocation endpoint to revoke consent has been introduced. A phasing out of the multiple audience value support in favour of only the "resource path" for the end point being accessed is also introduced. | [Self-Signed JWT Client Authentication](../../#self-signed-jwt-client-authentication) |
 | Data Recipient CDR Arrangement Endpoint | Armoured the Data Recipient hosted CDR arrangement endpoint by requiring the Data Holder to present the `cdr_arrangement_id` in a signed JWT  |  [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)|
 | OIDC Profile Scope | Added supporting requirements and standards for presenting the OIDC profile scope and individual claims | [Scopes and Claims](../../#scopes-and-claims) |
 | Registration Validation | Added clarification that registration validation and responses must adhere to NFRs | [Registration Validation](../../#client_registration) |
