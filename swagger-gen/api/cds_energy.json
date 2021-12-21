@@ -1157,7 +1157,7 @@
                             "type": "string",
                             "x-cds-type": "RateString",
                             "description": "The fee rate. Required if term is PERCENT_OF_BILL"
-                        },                        
+                        },
                         "description": {
                             "type": "string",
                             "description": "A description of the fee"
@@ -1351,7 +1351,7 @@
                                             },
                                             "measureUnit": {
                                                 "type": "string",
-                                                "description": "The measurement unit of rate. Assumed to be kWh if absent",
+                                                "description": "The measurement unit of rate. Assumed to be KWH if absent",
                                                 "enum": ["KWH",
                                                     "KVA",
                                                     "KVAR",
@@ -1404,7 +1404,7 @@
                                                 },
                                                 "measureUnit": {
                                                     "type": "string",
-                                                    "description": "The measurement unit of rate. Assumed to be kWh if absent",
+                                                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
                                                     "enum": ["KWH",
                                                         "KVA",
                                                         "KVAR",
@@ -1497,7 +1497,7 @@
                                     },
                                     "measureUnit": {
                                         "type": "string",
-                                        "description": "The measurement unit of charge amount. Assumed to be kWh if absent",
+                                        "description": "The measurement unit of charge amount. Assumed to be KWH if absent",
                                         "enum": ["KWH",
                                             "KVA",
                                             "KVAR",
