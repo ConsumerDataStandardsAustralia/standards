@@ -818,7 +818,7 @@
             },
             "EnergyPlanControlledLoad": {
                 "type": "object",
-                "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD",
+                "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
                 "required": ["displayName", "dailyCharge", "period", "rates"],
                 "properties": {
                     "displayName": {
@@ -1157,7 +1157,7 @@
                             "type": "string",
                             "x-cds-type": "RateString",
                             "description": "The fee rate. Required if term is PERCENT_OF_BILL"
-                        },                        
+                        },
                         "description": {
                             "type": "string",
                             "description": "A description of the fee"
@@ -1497,7 +1497,7 @@
                                     },
                                     "measureUnit": {
                                         "type": "string",
-                                        "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                        "description": "The measurement unit of charge amount. Assumed to be KWH if absent",
                                         "enum": ["KWH",
                                             "KVA",
                                             "KVAR",
@@ -5194,7 +5194,7 @@
 		},
 		"/energy/accounts/balances": {
 			"get": {
-				"summary": "Get Bulk Balances (Energy)",
+				"summary": "Get Bulk Balances for Energy",
 				"operationId": "listBalancesBulk",
 				"description": "Obtain the current balance for all accounts",
                 "x-scopes": [
