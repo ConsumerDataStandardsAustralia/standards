@@ -1351,15 +1351,15 @@
                                             },
                                             "measureUnit": {
                                                 "type": "string",
-                                                "description": "The measurement unit of rate. Assumed to be kWh if absent",
-                                                "enum": ["kWh",
-                                                    "kVA",
-                                                    "kVAR",
-                                                    "kVARh",
-                                                    "kW",
-                                                    "Days",
-                                                    "Meter",
-                                                    "Month"]
+                                                "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                                "enum": ["KWH",
+                                                    "KVA",
+                                                    "KVAR",
+                                                    "KVARH",
+                                                    "KW",
+                                                    "DAYS",
+                                                    "METER",
+                                                    "MONTH"]
                                             },                                                
                                             "volume": {
                                                 "type": "number",
@@ -1404,15 +1404,15 @@
                                                 },
                                                 "measureUnit": {
                                                     "type": "string",
-                                                    "description": "The measurement unit of rate. Assumed to be kWh if absent",
-                                                    "enum": ["kWh",
-                                                        "kVA",
-                                                        "kVAR",
-                                                        "kVARh",
-                                                        "kW",
-                                                        "Days",
-                                                        "Meter",
-                                                        "Month"]
+                                                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                                    "enum": ["KWH",
+                                                        "KVA",
+                                                        "KVAR",
+                                                        "KVARH",
+                                                        "KW",
+                                                        "DAYS",
+                                                        "METER",
+                                                        "MONTH"]
                                                 },  
                                                 "volume": {
                                                     "type": "number",
@@ -1497,15 +1497,15 @@
                                     },
                                     "measureUnit": {
                                         "type": "string",
-                                        "description": "The measurement unit of charge amount. Assumed to be kWh if absent",
-                                        "enum": ["kWh",
-                                            "kVA",
-                                            "kVAR",
-                                            "kVARh",
-                                            "kW",
-                                            "Days",
-                                            "Meter",
-                                            "Month"]
+                                        "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                                        "enum": ["KWH",
+                                            "KVA",
+                                            "KVAR",
+                                            "KVARH",
+                                            "KW",
+                                            "DAYS",
+                                            "METER",
+                                            "MONTH"]
                                     },  
                                     "startTime": {
                                         "type": "string",
@@ -3291,15 +3291,15 @@
                     },
                     "measureUnit": {
                         "type": "string",
-                        "description": "The measurement unit of rate. Assumed to be kWh if absent",
-                        "enum": ["kWh",
-                            "kVA",
-                            "kVAR",
-                            "kVARh",
-                            "kW",
-                            "Days",
-                            "Meter",
-                            "Month"]
+                        "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                        "enum": ["KWH",
+                            "KVA",
+                            "KVAR",
+                            "KVARH",
+                            "KW",
+                            "DAYS",
+                            "METER",
+                            "MONTH"]
                     },    
                     "usage": {
                         "description": "The usage for the period in measure unit.  A negative value indicates power generated",
