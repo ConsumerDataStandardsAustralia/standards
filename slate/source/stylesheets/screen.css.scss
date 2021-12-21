@@ -407,7 +407,7 @@ html, body {
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
+  &>h1, &>h2, &>div, &>h3.schema-toc {
     clear:both;
   }
 
