@@ -3289,12 +3289,24 @@
                         "type": "string",
                         "x-cds-type": "DateTimeString"
                     },
+                    "measureUnit": {
+                        "type": "string",
+                        "description": "The measurement unit of rate. Assumed to be kWh if absent",
+                        "enum": ["kWh",
+                            "kVA",
+                            "kVAR",
+                            "kVARh",
+                            "kW",
+                            "Days",
+                            "Meter",
+                            "Month"]
+                    },    
                     "usage": {
-                        "description": "The usage for the period in kWh.  A negative value indicates power generated",
+                        "description": "The usage for the period in measure unit.  A negative value indicates power generated",
                         "type": "number"
                     },
                     "amount": {
-                        "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+                        "description": "The amount charged or credited (in cents) for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },
@@ -3497,6 +3509,16 @@
                         "description": "The number of the invoice in which this transaction is included if it has been issued",
                         "type": "string"
                     },
+                    "startDate": {
+                        "description": "Optional start date for the application of the charge",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "endDate": {
+                        "description": "Optional end date for the application of the charge",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
                     "type": {
                         "description": "Type of charge. Assumed to be other if absent",
                         "type": "string",
@@ -3511,7 +3533,7 @@
                         ]
                     },
                     "amount": {
-                        "description": "The amount of the charge",
+                        "description": "The amount of the charge in cents",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },

@@ -35,6 +35,7 @@ This release minor errata and documentation fixes.
 | Binding Energy standards | Updated energy standards to remove non-binding notices and made changes to reflect "Shared Responsibility Requests" in line with the Rules where previously they were referred to as "Secondary Responsibility Requests" | [Energy Schema](../../#energy-apis) |
 | Energy schema | Made EnergyPlanTariffPeriod.dailySupplyCharges optional to cater for C&I customers| [Energy Schema](../../#energy-apis) |
 | Energy schema | Updated EnergyPlanSolarFeedInTariff.tariffUType with correct ENUM values | [Energy Schema](../../#energy-apis) |
+| Energy schema | Updated EnergyBillingUsageTransaction and EnergyBillingOtherTransaction to accomodate C&I customers | [Energy Schema](../../#energy-apis) |
 | Extended Banking Product feature support | Changes to accomodate additional enumerated product features | [Get Account Details](../../#get-account-detail), and <br/>[Get Product Details](../../#get-product-detail) |
 | Digital Wallet Payees | Changes to accomodate digital wallet payees | [Get Payees](../../#get-payees), and<br/>[Get Payee Detail](../../#get-payee-detail) |
 | Get Customer Detail v2 | Changes to accomodate customer detail without a valid physical address for individual and non-individual consumers | [Get Customer Detail](../../#get-customer-detail)
