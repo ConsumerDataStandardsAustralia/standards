@@ -30,6 +30,7 @@ This release minor errata and documentation fixes.
 | Register APIs | Corrected GetDataHolderBrands `registerUType` and `jwksEndpoint` schema definitions to clarify their usage in DH to ADR client authentication | [Register APIs](../../#register-apis)|
 | Register APIs | Corrected Register Discovery Document definition defect renaming `request_object_signing_alg_values_supported` to `token_endpoint_auth_signing_alg_values_supported` | [Register APIs](../../#register-apis)|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
+| Register APIs | Updated register swagger definitions to accomodate new endpoint versions covering multiple CDR sectors | [Register APIs](../../#register-apis) |
 | Additional document URIs for Banking PRD | Support for secondary additional information URIs for banking product references | [Get Products](../../#get-products) |
 | Binding Energy standards | Updated energy standards to remove non-binding notices and made changes to reflect "Shared Responsibility Requests" in line with the Rules where previously they were referred to as "Secondary Responsibility Requests" | [Energy Schema](../../#energy-apis) |
 | Energy schema | Made EnergyPlanTariffPeriod.dailySupplyCharges optional to cater for C&I customers| [Energy Schema](../../#energy-apis) |
@@ -43,6 +44,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Authorisation Scopes | Added scope `cdr-register:read` to accommodate authenticated Register calls for participants outside of the banking sector | [Authorisation Scopes](../../#authorisation-scopes) |
 | Self-Signed JWT Audience | An immediate change to re-instate interoperability for Data Holders calling the Data Recipient's CDR Arrangement Revocation endpoint to revoke consent has been introduced. A phasing out of the multiple audience value support in favour of only the "resource path" for the end point being accessed is also introduced. | [Self-Signed JWT Client Authentication](../../#self-signed-jwt-client-authentication) |
 | Data Recipient CDR Arrangement Endpoint | Armoured the Data Recipient hosted CDR arrangement endpoint by requiring the Data Holder to present the `cdr_arrangement_id` in a signed JWT  |  [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)|
 | OIDC Profile Scope | Added supporting requirements and standards for presenting the OIDC profile scope and individual claims | [Scopes and Claims](../../#scopes-and-claims) |
