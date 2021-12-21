@@ -12,12 +12,11 @@ No other flows are currently supported.
 #### Data Holders
 **From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
 
-* Data Holders MUST support **[RFC9126]** (PAR)
-*	Data Holders MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
-*	Data Holders MUST support PKCE (**[RFC7636]**)
 * Data Holders MUST reject an authorization code (Section 1.3.1 of **[RFC6749]**) if it has been previously used
 * Data Holders MUST NOT reject requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 *	Data Holders SHOULD require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
+*	Data Holders MAY support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Holders MAY support PKCE (**[RFC7636]**)
 * Data Holders MAY require **[RFC2196]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
 *	Data Holders that do not support **[PKCE]** MUST ignore PKCE claims and MUST NOT reject clients sending PKCE claims
 *	Data Holders MAY allow the Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
@@ -26,6 +25,9 @@ No other flows are currently supported.
 
 *	Data Holders MUST support the OIDC Hybrid Flow
 *	Data Holders SHOULD support Authorization Code Flow.
+* Data Holders MUST support **[RFC9126]** (PAR)
+*	Data Holders MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Holders MUST support PKCE (**[RFC7636]**)
 *	Data Holders MUST require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
 * ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the Authorization Code Flow in accordance with **[FAPI-A]**.
 * Authorisation request data MUST ONLY be accepted using PAR
