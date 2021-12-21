@@ -1,7 +1,7 @@
 
 ### AEMO Endpoints
 
-AEMO will expose the following end points, to retailers only, to service Secondary Responsibility Requests:
+AEMO will expose the following end points, to retailers only, to service Shared Responsibility Data Requests:
 
 * **Get Service Points**: Obtain high level details for a list of service points
 * **Get Service Point Detail**: Obtain the detail for a specific service point

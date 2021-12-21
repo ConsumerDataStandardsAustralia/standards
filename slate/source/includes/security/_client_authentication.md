@@ -79,7 +79,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 ## Decoded Bearer token JWT
 {
-   "alg":"PS256",
+   "alg":"HS256",
    "typ":"JWT",
    "kid":"12456"
 }
@@ -105,6 +105,8 @@ Data Recipient Software Products and Data Holders supporting the self-signed JWT
 
 *	Validation and use of the JWT and the claims described above MUST be performed in accordance with **[JWT]**.  
 *	The JWT MUST be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://tools.ietf.org/html/rfc6750#section-2.1) of **[RFC6750]**.
+
+**Note:** In accordance with `jti` requirements, self-signed JWTs are one-time use only. The authenticating server MUST reject JWTs reuse.
 
 ### CDR Register calling Data Holders
 
