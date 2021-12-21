@@ -13,7 +13,7 @@ Such that:
 * The CDR Register MUST issue Software Statements to **active** Data Recipients for **active** Software Products
 * The CDR Register MUST issue distinct Software Statements for each `Software Product ID`
 * Software Statements are issued with a **10 minute** expiry time
-* As per **[FAPI-RW]**, SSAs are signed by the CDR Register using **PS256**
+* As per **[FAPI-RW-Draft]**, SSAs are signed by the CDR Register using **PS256**
 * CDR Register public keys are exposed on a dedicated JWKS URI endpoint
 * The CDR Register [JWKS](#get-jwks) is an unauthenticated endpoint, using TLS
 * Data Recipients MUST present a valid SSA when undertaking dynamic client registration
@@ -181,7 +181,7 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 
 * The request MUST be presented in the format of a **[RFC7519]** compliant JWT.
 * The request MUST use the HTTP POST method, using the `application/jwt` content type.
-* The JWT MUST be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW]**
+* The JWT MUST be signed using algorithms specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations) of **[FAPI-RW-Draft]**
 
 The client registration request MUST contain the following claims in the JWT payload unless designated as Optional:
 
@@ -198,10 +198,10 @@ The client registration request MUST contain the following claims in the JWT pay
 |**grant_types**|	Required | Array of OAuth 2.0 grant type strings that the client can use at the token endpoint. Supported values: **[client_credentials, authorization_code, refresh_token]**
 |**response_types**|	Required | Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. **value: [code id_token]**
 |**application_type**|	Optional | Kind of the application. The only supported application type will be **web**
-|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by **[FAPI-RW]**
+|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by **[FAPI-RW-Draft]**
 |**id_token_encrypted_response_alg**| Required | JWE `alg` algorithm with which an id_token is to be encrypted
 |**id_token_encrypted_response_enc**| Required | JWE `enc` algorithm with which an id_token is to be encrypted
-|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[FAPI-RW]**
+|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[FAPI-RW-Draft]**
 |**software_statement**|	Required | Software statement assertion issued by the CDR Register
 
 #### ID Token Algorithm Selection Considerations

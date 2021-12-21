@@ -7,7 +7,7 @@ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https
 
 No other flows are currently supported.
 
-### Baseline security provisions
+### Baseline Security Provisions
 
 #### Data Holders
 **From July 4th 2022 (FAPI 1.0 Migration Phase 1)**, the following requirements apply:
@@ -17,7 +17,7 @@ No other flows are currently supported.
 *	Data Holders SHOULD require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
 *	Data Holders MAY support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
 *	Data Holders MAY support PKCE (**[RFC7636]**)
-* Data Holders MAY require **[RFC2196]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
+* Data Holders MAY require **[RFC9126]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
 *	Data Holders that do not support **[PKCE]** MUST ignore PKCE claims and MUST NOT reject clients sending PKCE claims
 *	Data Holders MAY allow the OIDC Authorization Code Flow, if supported, in accordance with FAPI 1.0 Advanced and MUST require **[JARM]** and **[PKCE]**.
 
@@ -48,6 +48,7 @@ No other flows are currently supported.
 *	Data Recipients MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
 *	Data Recipients MUST use PKCE (**[RFC7636]**)
 *	Data Recipients MUST only send authorisation request data using [PAR-RFC7636]
+
 
 <a id="hybrid-flow"></a>
 ### OIDC Hybrid Flow
