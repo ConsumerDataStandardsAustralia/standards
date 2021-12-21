@@ -19,7 +19,7 @@
 5. www.energyretailer.com.au/api
 ```
 
->The base path for each example is:  
+>The Base Path for each example is:  
 
 ```
 1. https://www.bank.com.au/api/cds-au/v1/banking  
@@ -29,7 +29,7 @@
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
 ```
 
->The resource path for each example is:  
+>The Resource Path for each example is:  
 
 ```
 1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
@@ -52,7 +52,7 @@ This is a static string representing the end points defined by the Consumer Data
 The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be “v” followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76).</li>
 <li><b>\<industry\></b>     = banking / energy / telco / common
 A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.
-Note that the currently accepted values for the `industry` component of the base path are:
+Note that the currently accepted values for the `industry` component of the Base Path are:
 <ul><li><b>banking</b> = "banking" string. For APIs related to banking and potentially wider financial services data,</li><li><b>energy</b>  = "energy" string. For APIs related to the energy distribution industry,</li><li><b>telco</b>   = "telco" string. For APIs related to telecommunications,</li><li><b>common</b>  = "common" string. For APIs that potentially span industries.</li></ul></li>
 <li><b>\<HID\></b>          = string.
 The Holder Identifier used to denote extension API categories for a specific holder.</li>
@@ -62,14 +62,15 @@ The URI for the specific resource requested. This end point URI will be defined 
 </pre>
 <div class="clear both"></div>
 
+<a id="uri-base-path"></a>
 **Base Path**  
-Base path is intended to be the portion of the URL up to but not including the endpoint resource. In other words, the base path is the portion of the URL up to and including the `<industry>` or `<HID>` component. The base path string is defined as follows:
+Base Path is intended to be the portion of the URL up to but not including the endpoint resource. In other words, the base path is the portion of the URL up to and including the `<industry>` or `<HID>` component. The Base Path string is defined as follows:
 
 `https:// <holder-path> / cds-au / <version> / ( <industry> | <HID> )`
 
-
+<a id="uri-resource-path"></a>
 **Resource Path**  
-The resource path is intended to be the portion of the URL including the base path and resource location. The resource path string is defined as: `<base-path> / <resource>`.
+The Resource Path is intended to be the portion of the URL including the Base Path and resource location. The Resource Path string is defined as: `<base-path> / <resource>`.
 
 ### Resource URIs
 
