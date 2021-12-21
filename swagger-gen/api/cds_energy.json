@@ -1198,8 +1198,8 @@
                         "tariffUType": {
                             "type": "string",
                             "description": "The type of the payer",
-                            "enum": ["GOVERNMENT",
-                                "RETAILER"
+                            "enum": ["singleTariff",
+                                "timeVaryingTariffs"
                             ]
                         },
                         "singleTariff": {
@@ -1277,7 +1277,7 @@
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["displayName", "startDate", "endDate", "dailySupplyCharges", "rateBlockUType"],
+                    "required": ["displayName", "startDate", "endDate", "rateBlockUType"],
                     "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges"],
                     "properties": {
                         "type": {
@@ -3727,6 +3727,7 @@
 				"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				}
@@ -3745,6 +3746,7 @@
 				"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 				"in": "header",
 				"required": false,
+				"x-conditional": true,
 				"schema": {
 					"type": "string"
 				},
@@ -5052,7 +5054,7 @@
 			"get": {
 				"summary": "Get Concessions",
 				"operationId": "getConcessions",
-				"description": "Obtain the details of any concessions or hardship arrangements applied to a specific energy account",
+				"description": "Obtain the details of any concessions or arrangements applied to a specific energy account",
                 "x-scopes": [
                     "energy:accounts.concessions:read"
                 ],
