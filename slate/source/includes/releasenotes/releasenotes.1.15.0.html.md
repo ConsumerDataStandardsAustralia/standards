@@ -25,11 +25,14 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
+| Register APIs | Updated register swagger definitions to accomodate new endpoint versions covering multiple CDR sectors | [Register APIs](../../#register-apis) |
 
 ## Information Security Profile
 
 |Change|Description|Link|
 |------|-----------|----|
+| Authorisation Scopes | Added scope `cdr-register:read` to accommodate authenticated Register calls for participants outside of the banking sector | [Authorisation Scopes](../../#authorisation-scopes) |
+
 
 ## Consumer Experience
 
