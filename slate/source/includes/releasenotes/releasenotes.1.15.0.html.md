@@ -25,7 +25,7 @@ This release minor errata and documentation fixes.
 |Change|Description|Link|
 |------|-----------|----|
 | Energy schema | Fixed a schema bug which included an extraneous comma that caused OAS3 validation issues | [Energy Schema](../../#energy-apis) |
-| Energy schema | Updated fees object in Energy Accounts and otherCharges object in Billing and Invoice schemas to cater for C&I tariffs and charges | [Energy Schema](../../#energy-apis) |
+| Energy schema | Updated EnergyPlanTariffPeriod schema in Energy Accounts and otherCharges objects in Billing and Invoice schemas to cater for C&I tariffs and charges | [Energy Schema](../../#energy-apis) |
 
 ## Information Security Profile
 

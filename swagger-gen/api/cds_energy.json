@@ -1127,12 +1127,6 @@
                                 "MEMBERSHIP",
                                 "CONTRIBUTION",
                                 "PAPER_BILL",
-                                "ENVIRONMENTAL_CHARGE",
-                                "REGULATED_CHARGE",
-                                "NETWORK_CHARGE",
-                                "METERING_CHARGE",
-                                "RETAIL_SERVICE_CHARGE",
-                                "RCTI_CHARGE",
                                 "OTHER"
                             ]
                         },
@@ -1164,36 +1158,6 @@
                             "x-cds-type": "RateString",
                             "description": "The fee rate. Required if term is PERCENT_OF_BILL"
                         },                        
-                        "rateMeasurementUnit": {
-                            "type": "string",
-                            "description": "The measurement unit of rate. Assumed to be kVa if absent",
-                            "enum": ["kWh",
-                                "kVA",
-                                "kVAR",
-                                "kVARh",
-                                "kW",
-                                "Days",
-                                "Meter",
-                                "Month"
-                        ]
-                        },
-                        "rateCurrencyUnit": {
-                            "type": "string",
-                            "description": "The currency unit of rate. Assumed to be C (cents) if absent",
-                            "enum": ["C",
-                            "$"
-                        ]
-                        },
-                        "startDate": {
-                            "type": "string",
-                            "x-cds-type": "DateString",
-                            "description": "The start date of the rate period in a calendar"
-                        },
-                        "endDate": {
-                            "type": "string",
-                            "x-cds-type": "DateString",
-                            "description": "The end date of the rate period in a calendar year"
-                        },
                         "description": {
                             "type": "string",
                             "description": "A description of the fee"
@@ -1316,6 +1280,19 @@
                     "required": ["displayName", "startDate", "endDate", "dailySupplyCharges", "rateBlockUType"],
                     "x-conditional": ["singleRate", "timeOfUseRates", "demandCharges"],
                     "properties": {
+                        "type": {
+                            "description": "Type of charge. Assumed to be other if absent",
+                            "type": "string",
+                            "enum": [
+                                "ENVIRONMENTAL",
+                                "REGULATED",
+                                "NETWORK",
+                                "METERING",
+                                "RETAIL_SERVICE",
+                                "RCTI",
+                                "OTHER"
+                            ]
+                        },
                         "displayName": {
                             "type": "string",
                             "description": "The name of the tariff period"
@@ -1370,8 +1347,20 @@
                                             "unitPrice": {
                                                 "type": "string",
                                                 "x-cds-type": "AmountString",
-                                                "description": "Unit price of usage per kWh (exclusive of GST)"
+                                                "description": "Unit price of usage per measure unit (exclusive of GST)"
                                             },
+                                            "measureUnit": {
+                                                "type": "string",
+                                                "description": "The measurement unit of rate. Assumed to be kWh if absent",
+                                                "enum": ["kWh",
+                                                    "kVA",
+                                                    "kVAR",
+                                                    "kVARh",
+                                                    "kW",
+                                                    "Days",
+                                                    "Meter",
+                                                    "Month"]
+                                            },                                                
                                             "volume": {
                                                 "type": "number",
                                                 "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
@@ -1411,8 +1400,20 @@
                                                 "unitPrice": {
                                                     "type": "string",
                                                     "x-cds-type": "AmountString",
-                                                    "description": "Unit price of usage per kWh (exclusive of GST)"
+                                                    "description": "Unit price of usage per  measure unit (exclusive of GST)"
                                                 },
+                                                "measureUnit": {
+                                                    "type": "string",
+                                                    "description": "The measurement unit of rate. Assumed to be kWh if absent",
+                                                    "enum": ["kWh",
+                                                        "kVA",
+                                                        "kVAR",
+                                                        "kVARh",
+                                                        "kW",
+                                                        "Days",
+                                                        "Meter",
+                                                        "Month"]
+                                                },  
                                                 "volume": {
                                                     "type": "number",
                                                     "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
@@ -1492,8 +1493,20 @@
                                     "amount": {
                                         "type": "string",
                                         "x-cds-type": "AmountString",
-                                        "description": "The charge amount per kWh exclusive of GST"
+                                        "description": "The charge amount per  measure unit exclusive of GST"
                                     },
+                                    "measureUnit": {
+                                        "type": "string",
+                                        "description": "The measurement unit of charge amount. Assumed to be kWh if absent",
+                                        "enum": ["kWh",
+                                            "kVA",
+                                            "kVAR",
+                                            "kVARh",
+                                            "kW",
+                                            "Days",
+                                            "Meter",
+                                            "Month"]
+                                    },  
                                     "startTime": {
                                         "type": "string",
                                         "description": "Start of the period in HHMM format using 24 hour clock format"
@@ -3037,16 +3050,16 @@
                                 "description"
                             ],
                             "properties": {
-                                "chargeType": {
+                                "type": {
                                     "description": "Type of charge. Assumed to be other if absent",
                                     "type": "string",
                                     "enum": [
-                                        "ENVIRONMENTAL_CHARGE",
-                                        "REGULATED_CHARGE",
-                                        "NETWORK_CHARGE",
-                                        "METERING_CHARGE",
-                                        "RETAIL_SERVICE_CHARGE",
-                                        "RCTI_CHARGE",
+                                        "ENVIRONMENTAL",
+                                        "REGULATED",
+                                        "NETWORK",
+                                        "METERING",
+                                        "RETAIL_SERVICE",
+                                        "RCTI",
                                         "OTHER"
                                     ]
                                 },
@@ -3108,16 +3121,16 @@
                                 "description"
                             ],
                             "properties": {
-                                "chargeType": {
+                                "type": {
                                     "description": "Type of charge. Assumed to be other if absent",
                                     "type": "string",
                                     "enum": [
-                                        "ENVIRONMENTAL_CHARGE",
-                                        "REGULATED_CHARGE",
-                                        "NETWORK_CHARGE",
-                                        "METERING_CHARGE",
-                                        "RETAIL_SERVICE_CHARGE",
-                                        "RCTI_CHARGE",
+                                        "ENVIRONMENTAL",
+                                        "REGULATED",
+                                        "NETWORK",
+                                        "METERING",
+                                        "RETAIL_SERVICE",
+                                        "RCTI",
                                         "OTHER"
                                     ]
                                 },
@@ -3484,16 +3497,16 @@
                         "description": "The number of the invoice in which this transaction is included if it has been issued",
                         "type": "string"
                     },
-                    "chargeType": {
+                    "type": {
                         "description": "Type of charge. Assumed to be other if absent",
                         "type": "string",
                         "enum": [
-                            "ENVIRONMENTAL_CHARGE",
-                            "REGULATED_CHARGE",
-                            "NETWORK_CHARGE",
-                            "METERING_CHARGE",
-                            "RETAIL_SERVICE_CHARGE",
-                            "RCTI_CHARGE",
+                            "ENVIRONMENTAL",
+                            "REGULATED",
+                            "NETWORK",
+                            "METERING",
+                            "RETAIL_SERVICE",
+                            "RCTI",
                             "OTHER"
                         ]
                     },
