@@ -15,7 +15,7 @@ No other flows are currently supported.
 * Data Holders MUST reject an authorization code (Section 1.3.1 of **[RFC6749]**) if it has been previously used
 * Data Holders MUST NOT reject requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 *	Data Holders SHOULD require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
-*	Data Holders MAY support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Holders MAY support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**)
 *	Data Holders MAY support PKCE (**[RFC7636]**)
 * Data Holders MAY require **[RFC9126]**, if supported, to use **[PKCE]** and "code_challenge_methods_supported" as defined in **[RFC8414]** with S256 as the code challenge method.
 *	Data Holders that do not support **[PKCE]** MUST ignore PKCE claims and MUST NOT reject clients sending PKCE claims
@@ -26,10 +26,10 @@ No other flows are currently supported.
 *	Data Holders MUST support the OIDC Hybrid Flow
 *	Data Holders SHOULD support OIDC Authorization Code Flow.
 * Data Holders MUST support **[RFC9126]** (PAR)
-*	Data Holders MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Holders MUST support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**)
 *	Data Holders MUST support PKCE (**[RFC7636]**)
 *	Data Holders MUST require the request object to contain an "exp" claim that has a lifetime of no longer than 60 minutes after the "nbf" claim
-* ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[FAPI-A]**.
+* ID Tokens MUST be signed and MAY be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[FAPI-1.0-Advanced]**.
 * Authorisation request data MUST ONLY be accepted using PAR
 *	Data Holders MUST NOT cycle refresh tokens (rotation). In other words, Refresh Tokens should be issued with an "exp" equal to the sharing duration authorised by the Customer.
 *	Data Holders MAY retire "sharing_expires_at" and "refresh_token_expires_at" claims.
@@ -45,7 +45,7 @@ No other flows are currently supported.
 **From September 16th 2022**, the following requirements apply in addition to the September 16th 2022 requirements:
 
 * Data Recipients MUST use **[RFC9126]** (PAR)
-*	Data Recipients MUST support FAPI 1.0 Advanced Profile (**[FAPI-A]**)
+*	Data Recipients MUST support FAPI 1.0 Advanced Profile (**[FAPI-1.0-Advanced]**)
 *	Data Recipients MUST use PKCE (**[RFC7636]**)
 *	Data Recipients MUST only send authorisation request data using [PAR-RFC7636]
 
@@ -89,8 +89,8 @@ Additional requirements and guidelines for this flow are contained in the [Consu
 ### OIDC Authorization Code Flow
 
 From July 4th 2022,
-* Data Holders MAY support OIDC Authorization Code Flow according to **[FAPI-A]**
-* Data Recipient Software Products MAY us OIDC Authorization Code Flow according to **[FAPI-A]** if the Data Holder supports it.
+* Data Holders MAY support OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]**
+* Data Recipient Software Products MAY us OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]** if the Data Holder supports it.
 
 In addition, the following statements are applicable for this flow:
 

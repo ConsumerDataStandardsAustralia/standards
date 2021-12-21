@@ -2,12 +2,13 @@
 ## Overview
 
 **Until September 16th 2022**,
+
 This information security profile builds upon the foundations of the [Financial-grade API Read Write Profile](https://openid.net/specs/openid-financial-api-part-2.html) **[FAPI-RW-Draft]** and other standards relating to
 [Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
 
 **From September 16th 2022**,
 
-This information security profile builds upon the foundations of the [Financial-grade API Advanced Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) **[FAPI-A]** and other standards relating to
+This information security profile builds upon the foundations of the [Financial-grade API Advanced Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) **[FAPI-1.0-Advanced]** and other standards relating to
 [Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]**.
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
@@ -26,6 +27,7 @@ For information on the specific normative references that underpin this profile 
 -   **FQDN:** Fully Qualified Domain Name
 -   **HoK:** Holder of Key
 -   **JSON:** The JavaScript Object Notation
+-   **JARM**: JWT Secured Authorization Response Mode
 -   **JWA:** JSON Web Algorithms
 -   **JWE:** JSON Web Encryption
 -   **JWK:** JSON Web Key
@@ -39,6 +41,7 @@ For information on the specific normative references that underpin this profile 
 -   **OIDC:** Open ID Connect
 -   **PAR:** Pushed Authorisation Requests
 -   **PI:** Personal Information
+-   **PKCE:** Proof Key for Code Exchange
 -   **PKI:** Public Key Infrastructure
 -   **PPID:** Pairwise Pseudonymous Identifier
 -   **REST:** Representational State Transfer

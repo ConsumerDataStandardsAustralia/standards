@@ -32,9 +32,9 @@ In accordance with **[FAPI-RW-Draft]**, ID Tokens MUST be signed and encrypted w
 
 The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.
 
-### Authorization Code Flow requirements
+### OIDC Authorization Code Flow requirements
 
-**From September 16th 2022**, if the Data Holder supports the Authorization Code Flow in accordance with **[FAPI-A]**, ID Tokens MUST be signed and MAY encrypted when returned to a Data Recipient Software Product from the Token End Point.
+**From September 16th 2022**, if the Data Holder supports the OIDC Authorization Code Flow in accordance with **[FAPI-1.0-Advanced]**, ID Tokens MUST be signed and MAY encrypted when returned to a Data Recipient Software Product from the Token End Point.
 
 #### Hashing value for state and authorisation code
 The `c_hash` value MUST be generated according to [section 3.3.2.11](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) of **[OIDC]**.
@@ -57,7 +57,11 @@ The expiration time for a Refresh Token MUST be set by the Data Holder.
 
 Refresh Token expiration MAY be any length of time greater than 28 days but MUST NOT exceed the end of the duration of sharing consented to by the Consumer.
 
+**Until September 16th 2022**:
 Data Holders MAY cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token MUST NOT expire before the expiration of the sharing consented by the Customer.
+
+**From September 16th 2022 (FAPI 1.0 Migration Phase 2)**:
+ *	Data Holders MUST NOT cycle refresh tokens (rotation). In other words, Refresh Tokens should be issued with an "exp" equal to the sharing duration authorised by the Customer.
 
 ### Token Expiry
 The expiry time for issued access tokens and refresh tokens must be deterministic for the Data Recipient Software Product.
@@ -65,4 +69,5 @@ The expiry time for issued access tokens and refresh tokens must be deterministi
 In order to achieve this:
 
 - The Data Holder MUST indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[OAUTH2]**).
-- The Data Holder MUST indicate the expiration time of the refresh token using the `refresh_token_expires_at` claim.
+- **Until September 16th 2022**: The Data Holder MUST indicate the expiration time of the refresh token using the `refresh_token_expires_at` claim.
+- **From September 16th 2022 (FAPI 1.0 Migration Phase 2)**:Data Holders MAY retire "sharing_expires_at" and "refresh_token_expires_at" claims.
