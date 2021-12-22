@@ -222,6 +222,14 @@ Content-Type: application/json
 
 ```
 
+```diff
+Added additional errors:
++ urn:au-cds:error:cds-energy:Authorisation/InvalidEnergyAccount
++ urn:au-cds:error:cds-energy:Authorisation/UnavailableEnergyAccount
++ urn:au-cds:error:cds-energy:Authorisation/InvalidServicePoint
++ urn:au-cds:error:cds-energy:Authorisation/UnavailableServicePoint
+```
+
 | Error Title      | Error Code            | Description |  
 | :--------------- | :-------------------- | :---------- |  
 | <a id="error-404-resource-not-implemented"></a>Resource Not Implemented | <code>urn:au-cds:error:cds-all:<br/>Resource/NotImplemented</code> | The requested resource URL is a valid API endpoint defined by the Consumer Data Standards, but it is not implemented or not currently supported.<br/><br/>This error code **SHOULD** be supported for unimplemented APIs.|
