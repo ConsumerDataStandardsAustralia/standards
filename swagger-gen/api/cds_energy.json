@@ -1308,7 +1308,7 @@
                         "dailySupplyCharges": {
                             "type": "string",
                             "x-cds-type": "AmountString",
-                            "description": "The amount of access charge for the tariff period, in cents per day exclusive of GST."
+                            "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
                         },
                         "rateBlockUType": {
                             "type": "string",
@@ -1335,7 +1335,7 @@
                                 "generalUnitPrice": {
                                     "type": "string",
                                     "x-cds-type": "AmountString",
-                                    "description": "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
+                                    "description": "The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
                                 },
                                 "rates": {
                                     "description": "Array of controlled load rates in order of usage volume",
@@ -3289,8 +3289,20 @@
                         "type": "string",
                         "x-cds-type": "DateTimeString"
                     },
+                    "measureUnit": {
+                        "type": "string",
+                        "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                        "enum": ["KWH",
+                            "KVA",
+                            "KVAR",
+                            "KVARH",
+                            "KW",
+                            "DAYS",
+                            "METER",
+                            "MONTH"]
+                    },    
                     "usage": {
-                        "description": "The usage for the period in kWh.  A negative value indicates power generated",
+                        "description": "The usage for the period in measure unit.  A negative value indicates power generated",
                         "type": "number"
                     },
                     "amount": {
@@ -3496,6 +3508,16 @@
                     "invoiceNumber": {
                         "description": "The number of the invoice in which this transaction is included if it has been issued",
                         "type": "string"
+                    },
+                    "startDate": {
+                        "description": "Optional start date for the application of the charge",
+                        "type": "string",
+                        "x-cds-type": "DateString"
+                    },
+                    "endDate": {
+                        "description": "Optional end date for the application of the charge",
+                        "type": "string",
+                        "x-cds-type": "DateString"
                     },
                     "type": {
                         "description": "Type of charge. Assumed to be other if absent",
