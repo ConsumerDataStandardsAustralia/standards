@@ -62,8 +62,11 @@ Provided a Data Holder supports PAR, they **MUST** also support the ``cdr_arrang
 
 If a Data Recipient Software Product provides the ``cdr_arrangement_id`` claim in the request object to the Data Holder's [PAR End Point](#pushed-authorisation-end-point), the Data Holder **MUST** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
 
-### Request Object Submission
+```diff
+Added the Request Object Submission section.
+```
 
+### Request Object Submission
 
 In addition:
 

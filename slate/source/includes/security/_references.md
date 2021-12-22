@@ -3,9 +3,16 @@
 ```diff
 Ordered the normative references table alphabetically.
 
-Added [RFC4627].
+Modified [FAPI-R] to [FAPI-R-Draft].
+Modified [FAPI-RW] to [FAPI-RW-Draft].
 
+Added [FAPI-1.0-Baseline].
+Added [FAPI-1.0-Advanced].
+Added [JARM].
+Added [RFC4627].
 Added [RFC5322].
+Added [PKCE].
+Added [RFC9126].
 ```
 
 | **Reference**  | **Description**  | **Version** |
@@ -44,7 +51,6 @@ Added [RFC5322].
 Ordered the informative references table alphabetically.
 
 Added [E.164].
-
 Added [RFC3966].
 ```
 

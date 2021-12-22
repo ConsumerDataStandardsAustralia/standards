@@ -95,6 +95,13 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT **MUST** do so according to the following requirements:
 
+```diff
+Replaced the statement:
+- `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. Contents MUST be the "resource path" for the end point being accessed.
+with:
++ `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token.<br/><br/><p>**_Data Recipient hosted endpoints_**<br/>The [Resource Path](#uri-resource-path) for the end point being accessed SHOULD be used.<br/>In order to facilitate interoperability and for Data Recipient Software Product hosted endpoints only, the endpoint MUST also accept the ``<RecipientBaseUri>`` as a value identifying the intended audience.<br/>**From July 31st 2022:** The Resource Path for the end point being accessed MUST be used.</p><p>**_Data Holder Metrics endpoints_**<br/>The ``<AdminBaseUri>`` for the end point being accessed MUST be used.</p>
+```
+
 *	The JWT **MUST** contain the following REQUIRED Claim Values and **MAY** contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
     * `sub` - REQUIRED. Subject Identifier. The client ID of the bearer.

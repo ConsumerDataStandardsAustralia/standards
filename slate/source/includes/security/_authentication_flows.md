@@ -1,11 +1,24 @@
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[OIDC]** as constrained further by [FAPI](https://openid.net/wg/fapi/) **[FAPI]**.
 
+```diff
+Replaced the statements:
+- Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
+with:
++ Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
++
++ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[OIDC]** is supported.
+```
+
 Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
 
 From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[OIDC]** is supported.
 
 No other flows are currently supported.
+
+```diff
+Added the Baseline Security Provisions section
+```
 
 ### Baseline Security Provisions
 
@@ -52,6 +65,13 @@ Holder’s Authorisation end point in the context of an **[OIDC]** authenticatio
 request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under **[OIDC]**.
 
+```diff
+Replaced the statement:
+- Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[OIDC]**) of `code id_token` SHALL be allowed.
+with:
++ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` **SHALL** be allowed.
+```
+
 Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` **SHALL** be allowed.
 
 The `request_uri` parameter is only supported if the Data Holder supports PAR.
@@ -79,12 +99,16 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 Additional requirements and guidelines for this flow are contained in the [Consumer Experience](#consumer-experience) section.
 
+```diff
+Added the OIDC Authorization Code Flow section.
+```
+
 <a id="authorization-code-flow"></a>
 ### OIDC Authorization Code Flow
 
 From July 4th 2022,
 * Data Holders **MAY** support OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]**
-* Data Recipient Software Products **MAY** us OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]** if the Data Holder supports it.
+* Data Recipient Software Products **MAY** use OIDC Authorization Code Flow according to **[FAPI-1.0-Advanced]** if the Data Holder supports it.
 
 In addition, the following statements are applicable for this flow:
 
