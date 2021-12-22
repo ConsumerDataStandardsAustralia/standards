@@ -13,6 +13,17 @@ In addition to CDR data scopes the following scopes **MUST** be supported:
 - `profile`: Data Holders **MUST** support the `profile` scope as described in [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) of **[OIDC]**.  This scope **MAY** be present on an authentication request.
 
 ### Claims
+
+```diff
+Replaced the statement:
+- The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[OIDC]** claims MUST be supported. This list includes, but is not limited to, **[OIDC]** [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) :
+with:
++ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[OIDC]** and [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) claims MUST be supported for the authenticated End-User*:
+```
+
+```diff
+Added the section on standard claims
+```
 The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[OIDC]** and [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) claims **MUST** be supported for the authenticated End-User*:
 
 - `sub`: [Pairwise Pseudonymous Identifier (PPID)](#identifiers) for the End-User at the Data Holder.

@@ -15,6 +15,10 @@ In accordance with CDR Rule 8.11 (1)(d), a data standard must be made to provide
 
 ## Profile Scope
 
+```diff
+Added the Profile Scope language section
+```
+
 In accordance with **[OIDC]** [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [section 5.5](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter), this language refers to the **[OIDC]** profile scope and request of individual claims for the authenticated End-User.
 
 |Data cluster language |<div style="width:250px">Permission language</div> |Authorisation Scopes|

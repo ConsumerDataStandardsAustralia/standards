@@ -34,11 +34,13 @@ Data Holders and Data Recipient Software Products MUST implement a CDR Arrangeme
 
 The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
 
-- ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
+```diff
+Addition of the following statements:
 
-**CDR Arrangement Form Parameter method**
-
-The request MUST include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
++ - ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
++
++ The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following parameters in accordance with **[JWT]**:
+```
 
 - ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
 
@@ -52,6 +54,17 @@ The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following paramete
 The location of the Data Holder CDR Arrangement Revocation End Point is determined by the ``cdr_arrangement_revocation_endpoint`` in the Data Holder's OpenID Provider metadata.
 
 This end point will be implemented according to the following:
+
+```diff
+Removed statements:
+- Data Recipient Software Products and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
+- Data Recipient Software Products MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
+- For Data Recipient Software Products, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
+
+Added statements:
++ Data Holders MUST only support "CDR Arrangement Form Parameter" method
++ Data Recipient Software Products MUST revoke consent by calling the CDR Arrangement Revocation End Point with a valid CDR Arrangement ID
+```
 
 * Data Holders MUST only support "CDR Arrangement Form Parameter" method
 * Data Recipient Software Products MUST revoke consent by calling the CDR Arrangement Revocation End Point with a valid CDR Arrangement ID
@@ -100,6 +113,9 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 ```
 
+```diff
+Added Data Recipient hosted endpoint section.
+```
 **Data Recipient hosted endpoint**
 
 The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
@@ -123,6 +139,14 @@ Response Code | Situation | Description
 204 No Content | Success | The sharing arrangement has been revoked successfully
 422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
+```diff
+Remove the following statements:
+- **Data Holders calling Data Recipients**
+- The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
+-
+- **Data Recipients calling Data Holders**
+- The location of the Data Holder CDR Arrangement Revocation End Point is determined by the ``cdr_arrangement_revocation_endpoint`` in the Data Holder's OpenID Provider metadata.
+```
 **Revoking consent**
 
 Data Recipient Software Products MUST use the Data Holder's CDR Arrangement Revocation End Point with a valid ``cdr_arrangement_id`` to notify the Data Holder when consent is revoked by the consumer via the Data Recipient Software Product.

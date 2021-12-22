@@ -1,5 +1,13 @@
 ## Normative References
 
+```diff
+Ordered the normative references table alphabetically.
+
+Added [RFC4627].
+
+Added [RFC5322].
+```
+
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
 | <a id="DCR"></a>**[DCR]**          | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591>                                                                                |Jul 2015
@@ -30,8 +38,15 @@
 | <a id="RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662>                                                                                                          |Oct 2015
 | <a id="RFC9126"></a>**[RFC9126]**          | OAuth 2.0 Pushed Authorization Requests: <OAuth 2.0 Pushed Authorization Requests>                                                                                |Sep 2021
 
-
 ## Informative References
+
+```diff
+Ordered the informative references table alphabetically.
+
+Added [E.164].
+
+Added [RFC3966].
+```
 
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
