@@ -31,7 +31,17 @@ For the purposes of this standard a single designated organisation **MAY** be re
 ### Secondary Data Holder
 A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.
 
+```diff
+Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+```
+
 A request for data from a Secondary Data Holder by a standard Data Holder is known as a *Shared Responsibility Data Request*.
+
+```diff
+Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+```
 
 See the [Shared Responsibility](#shared-responsibility) section contains standards related to Secondary Data Holders and Shared Responsibility Data Requests.
 

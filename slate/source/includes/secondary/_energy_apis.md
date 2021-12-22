@@ -1,6 +1,11 @@
 
 ### AEMO Endpoints
 
+```diff
+Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+```
+
 AEMO will expose the following end points, to retailers only, to service Shared Responsibility Data Requests:
 
 * **Get Service Points**: Obtain high level details for a list of service points

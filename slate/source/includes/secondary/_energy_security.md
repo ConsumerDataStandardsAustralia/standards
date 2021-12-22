@@ -1,6 +1,11 @@
 
 ## Energy
 
+```diff
+Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+```
+
 For the energy sector requests for the following data clusters are Shared Responsibility Data Requests for which the Australian Energy Market Operator (AEMO) is the single designated secondary data holder:
 
 * NMI Standard Data
@@ -18,6 +23,11 @@ RESTful APIs. This is done via the platform known as the e-Hub.
 These processes currently include support processes for registration, maintenance of certificates,
 and the management of change. Documentation includes a developer portal, API documentation
 and a security profile. More information is published by AEMO.
+
+```diff
+Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+```
 
 The e-Hub platform and associated mechanisms (**[EHUB]**) will be considered a normative standard for the requesting of data from AEMO to fulfil Shared Responsibility Data Requests.
 

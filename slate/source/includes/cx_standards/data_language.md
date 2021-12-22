@@ -80,6 +80,10 @@ See below for the data language standards for the payees scope:
 
 ## Energy Language
 
+```diff
+Removed the statement of non-binding for energy
+```
+
 ### Individual Consumer
 
 |Data cluster language|Permission language|Authorisation Scopes|

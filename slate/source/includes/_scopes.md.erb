@@ -18,6 +18,13 @@ Scope Name | Scope ID |Description
 ## CDR Data
 These scopes are used to access authenticated resource endpoints that can be used to obtain CDR Data.
 
+```diff
+Replaced the table row:
+- **Energy Concession & Hardship Data** | energy:accounts.concessions:read | The scope would allow the third party to access the details of any concessions or hardship arrangement data for a customer’s energy account.
+with:
++ **Energy Concession Data** | energy:accounts.concessions:read | The scope would allow the third party to access the details of any concessions for a customer’s energy account.
+```
+
 Scope Name | Scope ID |Description
 -----------|----------|-----------
 **Basic Bank Account Data** | bank:accounts.basic:read | This scope would allow for the third party to access basic information of the customer’s accounts.<br/><br/>Includes simple account information including balance.<br/>Does not include detailed account information such as account numbers, product information or transaction data.
