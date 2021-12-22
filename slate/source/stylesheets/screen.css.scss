@@ -757,6 +757,13 @@ html, body {
   background-color: $code-bg;
 }
 
+.highlight .gi {
+  color: #a6e22e;
+}
+
+.highlight .gd {
+  color: #e6db74;
+}
 
 .content-flagged:before {
 display: block;
