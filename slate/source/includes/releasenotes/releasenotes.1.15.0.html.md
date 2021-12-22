@@ -46,6 +46,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Adoption of FAPI 1.0 Final | FAPI 1.0 adoption is introduced across three phases in accordance with Decision 209:<ul><li>Phase 1: Voluntary FAPI 1.0 support & hygiene enhancements</li><li>Phase 2: FAPI 1.0 Final (Baseline & Advanced)</li><li>Phase 3: Retire Hybrid Flow</li></ul> | [Security Profile](../../#security-profile)|
 | Authorisation Scopes | Added scope `cdr-register:read` to accommodate authenticated Register calls for participants outside of the banking sector | [Authorisation Scopes](../../#authorisation-scopes) |
 | Self-Signed JWT Audience | An immediate change to re-instate interoperability for Data Holders calling the Data Recipient's CDR Arrangement Revocation endpoint to revoke consent has been introduced. A phasing out of the multiple audience value support in favour of only the "resource path" for the end point being accessed is also introduced. | [Self-Signed JWT Client Authentication](../../#self-signed-jwt-client-authentication) |
 | Data Recipient CDR Arrangement Endpoint | Armoured the Data Recipient hosted CDR arrangement endpoint by requiring the Data Holder to present the `cdr_arrangement_id` in a signed JWT  |  [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)|
