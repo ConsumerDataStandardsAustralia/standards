@@ -218,8 +218,11 @@ Validation and use of the JWT and the claims described above **MUST** be perform
 
 SSA JWT signatures **MUST** be verified against the associated JWK published at the CDR Register [JWKS endpoint](#get-jwks).
 
+The registration request JWT **MUST** be verified against the associated JWK published by the Data Recipient. Data Holders are required to verify the request JWT signature against an associated JWK from the `jwks_uri` extracted from the SSA.
+
 Data Holders **MUST NOT** allow multiple active registrations for the same `software_id`.
 
+Data Holders **MUST** adhere to the [NFR performance requirements](#performance-requirements) when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) **MUST NOT** prevent specified response times being met.
 
 ### Registration Response
 

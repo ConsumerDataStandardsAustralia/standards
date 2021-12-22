@@ -1,14 +1,13 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.14.0",
+    "version": "1.15.0",
     "title": "CDR Participant Discovery API"
   },
   "schemes": [
     "https"
   ],
-  "host": "register.cdr.gov.au",
-  "basePath": "/cdr-register/v1",
+  "host": "<register-base-url>",
   "paths": {
     "/.well-known/openid-configuration": {
       "get": {
@@ -52,7 +51,7 @@
         }
       }
     },
-    "/{industry}/data-holders/brands": {
+    "/cdr-register/v1/{industry}/data-holders/brands": {
       "get": {
         "tags": [
           "Register"
@@ -69,7 +68,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/Industry"
+            "name": "industry",
+            "in": "path",
+            "required": true,
+            "description": "The industry the participant is retrieving data for (Banking, etc)",
+            "type": "string",
+            "enum": [
+              "banking"
+            ]
           },
           {
             "name": "updated-since",
@@ -133,15 +139,15 @@
         ]
       }
     },
-    "/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
+    "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
       "get": {
         "tags": [
           "Register"
         ],
-        "summary": "Get Data Recipient Software Statement Assertion (SSA)",
+        "summary": "Get Software Statement Assertion (SSA)",
         "operationId": "GetSoftwareStatementAssertion",
-        "description": "Get a Software Statement Assertion (SSA) for a Data Recipient software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.",
-        "x-version": "2",
+        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
+        "x-version": "3",
         "consumes": [
           "application/json"
         ],
@@ -168,9 +174,6 @@
           },
           {
             "$ref": "#/parameters/Authorization"
-          },
-          {
-            "$ref": "#/parameters/XV"
           }
         ],
         "responses": {
@@ -187,47 +190,45 @@
             }
           },
           "400": {
-            "description": "Invalid industry path parameter</br>Invalid SoftwareProductId",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
-            }
+            "$ref": "#/responses/BadRequest"
           },
           "401": {
-            "description": "Invalid Bearer Token"
+            "$ref": "#/responses/InvalidBearerToken"
           },
           "403": {
             "description": "Invalid BrandId",
             "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
+              "$ref": "#/definitions/ResponseErrorListV2"
             }
           },
-          "406": {
-            "description": "Invalid x-v header</br>Invalid Accept header"
+          "404": {
+            "description": "Invalid Software Product",
+            "schema": {
+              "$ref": "#/definitions/ResponseErrorListV2"
+            }
           },
           "422": {
-            "description": "SSA fields invalid or incomplete",
+            "description": "SSA validation failed",
             "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
+              "$ref": "#/definitions/ResponseErrorListV2"
             }
           }
         },
         "x-scopes": [
-          "cdr-register:bank:read"
+          "cdr-register:bank:read",
+          "cdr-register:read"
         ]
       }
     },
-    "/{industry}/data-recipients/brands/software-products/status": {
+    "/cdr-register/v1/{industry}/data-holders/status": {
       "get": {
         "tags": [
           "Register"
         ],
-        "summary": "Get Data Recipient Software Products Statuses",
-        "operationId": "GetSoftwareProductsStatus",
-        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register.",
+        "summary": "Get Data Holder Statuses",
+        "operationId": "GetDataHolderStatuses",
+        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
         "x-version": "1",
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/json"
         ],
@@ -237,6 +238,12 @@
           },
           {
             "$ref": "#/parameters/XV"
+          },
+          {
+            "$ref": "#/parameters/XMinV"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
           }
         ],
         "responses": {
@@ -246,80 +253,36 @@
               "x-v": {
                 "type": "string",
                 "description": "The version of the API end point that the CDR Register has responded with."
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/SoftwareProductsStatusList"
-            }
-          },
-          "400": {
-            "description": "Bad Request</br>Invalid industry path parameter",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
-            }
-          },
-          "406": {
-            "description": "Invalid x-v header</br>Invalid Accept header"
-          }
-        }
-      }
-    },
-    "/{industry}/data-recipients/status": {
-      "get": {
-        "tags": [
-          "Register"
-        ],
-        "summary": "Get Data Recipient Statuses",
-        "operationId": "GetDataRecipientsStatus",
-        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.",
-        "x-version": "1",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/Industry"
-          },
-          {
-            "$ref": "#/parameters/XV"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "x-v": {
+              },
+              "Etag": {
                 "type": "string",
-                "description": "The version of the API end point that the CDR Register has responded with."
+                "description": "Entity tag that uniquely represents the requested resource."
               }
             },
             "schema": {
-              "$ref": "#/definitions/DataRecipientsStatusList"
+              "$ref": "#/definitions/DataHoldersStatusList"
             }
+          },
+          "304": {
+            "$ref": "#/responses/NotModified"
           },
           "400": {
-            "description": "Bad Request</br>Invalid industry path parameter",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
-            }
+            "$ref": "#/responses/BadRequest"
           },
           "406": {
-            "description": "Invalid x-v header</br>Invalid Accept header"
+            "$ref": "#/responses/UnsupportedVersion"
           }
         }
       }
     },
-    "/{industry}/data-recipients": {
+    "/cdr-register/v1/{industry}/data-recipients/brands/software-products/status": {
       "get": {
         "tags": [
           "Register"
         ],
-        "summary": "Get Data Recipients",
-        "operationId": "GetDataRecipients",
-        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.",
+        "summary": "Get Software Products Statuses",
+        "operationId": "GetSoftwareProductsStatuses",
+        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)",
         "x-version": "2",
         "consumes": [
           "application/json"
@@ -333,6 +296,12 @@
           },
           {
             "$ref": "#/parameters/XV"
+          },
+          {
+            "$ref": "#/parameters/XMinV"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
           }
         ],
         "responses": {
@@ -342,20 +311,140 @@
               "x-v": {
                 "type": "string",
                 "description": "The version of the API end point that the CDR Register has responded with."
+              },
+              "Etag": {
+                "type": "string",
+                "description": "Entity tag that uniquely represents the requested resource."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/SoftwareProductsStatusList"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/NotModified"
+          },
+          "400": {
+            "$ref": "#/responses/BadRequest"
+          },
+          "406": {
+            "$ref": "#/responses/UnsupportedVersion"
+          }
+        }
+      }
+    },
+    "/cdr-register/v1/{industry}/data-recipients/status": {
+      "get": {
+        "tags": [
+          "Register"
+        ],
+        "summary": "Get Data Recipients Statuses",
+        "operationId": "GetDataRecipientsStatuses",
+        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)",
+        "x-version": "2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          },
+          {
+            "$ref": "#/parameters/XMinV"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The version of the API end point that the CDR Register has responded with."
+              },
+              "Etag": {
+                "type": "string",
+                "description": "Entity tag that uniquely represents the requested resource."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/DataRecipientsStatusList"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/NotModified"
+          },
+          "400": {
+            "$ref": "#/responses/BadRequest"
+          },
+          "406": {
+            "$ref": "#/responses/UnsupportedVersion"
+          }
+        }
+      }
+    },
+    "/cdr-register/v1/{industry}/data-recipients": {
+      "get": {
+        "tags": [
+          "Register"
+        ],
+        "summary": "Get Data Recipients",
+        "operationId": "GetDataRecipients",
+        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)",
+        "x-version": "3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Industry"
+          },
+          {
+            "$ref": "#/parameters/XV"
+          },
+          {
+            "$ref": "#/parameters/XMinV"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "x-v": {
+                "type": "string",
+                "description": "The version of the API end point that the CDR Register has responded with."
+              },
+              "Etag": {
+                "type": "string",
+                "description": "Entity tag that uniquely represents the requested resource."
               }
             },
             "schema": {
               "$ref": "#/definitions/ResponseRegisterDataRecipientList"
             }
           },
+          "304": {
+            "$ref": "#/responses/NotModified"
+          },
           "400": {
-            "description": "Bad Request</br>Invalid industry path parameter",
-            "schema": {
-              "$ref": "#/definitions/ResponseErrorList"
-            }
+            "$ref": "#/responses/BadRequest"
           },
           "406": {
-            "description": "Invalid x-v header</br>Invalid Accept header"
+            "$ref": "#/responses/UnsupportedVersion"
           }
         }
       }
@@ -363,7 +452,7 @@
   },
   "parameters": {
     "Authorization": {
-      "name": "Authorization Endpoint (Register)",
+      "name": "Authorization",
       "in": "header",
       "required": true,
       "description": "An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).",
@@ -372,19 +461,65 @@
     "XV": {
       "name": "x-v",
       "in": "header",
-      "required": false,
+      "required": true,
       "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
       "type": "string"
     },
     "Industry": {
       "name": "industry",
       "in": "path",
-      "description": "The industry the participant is retrieving data for (Banking, etc)",
       "required": true,
+      "description": "The industry the participant is retrieving data for (Banking, etc)",
+      "type": "string",
       "enum": [
-        "banking"
-      ],
+        "banking",
+        "energy",
+        "telco",
+        "all"
+      ]
+    },
+    "XMinV": {
+      "name": "x-min-v",
+      "in": "header",
+      "required": false,
+      "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
       "type": "string"
+    },
+    "IfNoneMatch": {
+      "name": "If-None-Match",
+      "in": "header",
+      "required": false,
+      "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+      "type": "string"
+    }
+  },
+  "responses": {
+    "InvalidBearerToken": {
+      "description": "Invalid Bearer Token",
+      "schema": {
+        "$ref": "#/definitions/ResponseErrorListV2"
+      }
+    },
+    "NotModified": {
+      "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+      "headers": {
+        "Etag": {
+          "type": "string",
+          "description": "Entity tag that uniquely represents the requested resource."
+        }
+      }
+    },
+    "BadRequest": {
+      "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
+      "schema": {
+        "$ref": "#/definitions/ResponseErrorListV2"
+      }
+    },
+    "UnsupportedVersion": {
+      "description": "Unsupported Version",
+      "schema": {
+        "$ref": "#/definitions/ResponseErrorListV2"
+      }
     }
   },
   "definitions": {
@@ -633,33 +768,91 @@
         }
       }
     },
-    "SoftwareProductsStatusList": {
+    "DataHoldersStatusList": {
       "required": [
-        "softwareProducts"
+        "data",
+        "links",
+        "meta"
       ],
       "type": "object",
       "properties": {
-        "softwareProducts": {
-          "uniqueItems": true,
+        "data": {
+          "description": "Response data for the query",
           "type": "array",
+          "minimum": 0,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/DataHolderStatus"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
+    "DataHolderStatus": {
+      "required": [
+        "legalEntityId",
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "legalEntityId": {
+          "description": "Unique id of the Data Holdert Legal Entity issued by the CDR Register.",
+          "type": "string",
+          "maxLength": 36
+        },
+        "status": {
+          "description": "Data Holder status in the CDR Register",
+          "enum": [
+            "ACTIVE",
+            "REMOVED"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "SoftwareProductsStatusList": {
+      "required": [
+        "data",
+        "links",
+        "meta"
+      ],
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "Response data for the query",
+          "type": "array",
+          "minimum": 0,
+          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/SoftwareProductStatus"
           }
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
         }
       }
     },
     "SoftwareProductStatus": {
       "required": [
         "softwareProductId",
-        "softwareProductStatus"
+        "status"
       ],
       "type": "object",
       "properties": {
         "softwareProductId": {
           "description": "Unique id of the software product issued by the CDR Register",
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
-        "softwareProductStatus": {
+        "status": {
           "description": "Software product status in the CDR Register",
           "enum": [
             "ACTIVE",
@@ -672,31 +865,42 @@
     },
     "DataRecipientsStatusList": {
       "required": [
-        "dataRecipients"
+        "data",
+        "links",
+        "meta"
       ],
       "type": "object",
       "properties": {
-        "dataRecipients": {
-          "uniqueItems": true,
+        "data": {
+          "description": "Response data for the query",
           "type": "array",
+          "minimum": 0,
+          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/DataRecipientStatus"
           }
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
         }
       }
     },
     "DataRecipientStatus": {
       "required": [
-        "dataRecipientId",
-        "dataRecipientStatus"
+        "legalEntityId",
+        "status"
       ],
       "type": "object",
       "properties": {
-        "dataRecipientId": {
+        "legalEntityId": {
           "description": "Unique id of the Data Recipient issued by the CDR Register",
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
-        "dataRecipientStatus": {
+        "status": {
           "description": "Data Recipient status in the CDR Register",
           "enum": [
             "ACTIVE",
@@ -719,11 +923,18 @@
       "properties": {
         "data": {
           "description": "Response data for the query",
-          "uniqueItems": false,
           "type": "array",
+          "minimum": 0,
+          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/RegisterDataRecipient"
           }
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
         }
       }
     },
@@ -732,7 +943,7 @@
         "legalEntityId",
         "legalEntityName",
         "accreditationNumber",
-        "industry",
+        "accreditationLevel",
         "logoUri",
         "status",
         "lastUpdated"
@@ -740,36 +951,44 @@
       "type": "object",
       "properties": {
         "legalEntityId": {
-          "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
-          "type": "string"
+          "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register.",
+          "type": "string",
+          "maxLength": 36
         },
         "legalEntityName": {
           "description": "Legal name of the Data Recipient",
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "accreditationNumber": {
           "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation",
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
-        "industry": {
+        "accreditationLevel": {
+          "description": "Accreditation level of the Data Recipient in the CDR Register",
           "enum": [
-            "banking"
+            "UNRESTRICTED",
+            "SPONSORED"
           ],
           "type": "string"
         },
         "logoUri": {
           "description": "Legal Entity logo URI",
           "type": "string",
-          "x-cds-type": "URIString"
+          "x-cds-type": "URIString",
+          "maxLength": 1000
         },
         "dataRecipientBrands": {
-          "uniqueItems": true,
           "type": "array",
+          "minimum": 0,
+          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/DataRecipientBrandMetaData"
           }
         },
         "status": {
+          "description": "Data Recipient status in the CDR Register",
           "enum": [
             "ACTIVE",
             "SUSPENDED",
@@ -798,25 +1017,30 @@
       "properties": {
         "dataRecipientBrandId": {
           "description": "Unique id of the Data Recipient brand issued by the CDR Register",
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "brandName": {
           "description": "Data Recipient Brand name",
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "logoUri": {
           "description": "Data Recipient Brand logo URI",
           "type": "string",
-          "x-cds-type": "URIString"
+          "x-cds-type": "URIString",
+          "maxLength": 1000
         },
         "softwareProducts": {
           "uniqueItems": true,
           "type": "array",
+          "minimum": 0,
           "items": {
             "$ref": "#/definitions/SoftwareProductMetaData"
           }
         },
         "status": {
+          "description": "Data Recipient Brand status in the CDR Register",
           "enum": [
             "ACTIVE",
             "INACTIVE",
@@ -838,22 +1062,27 @@
       "properties": {
         "softwareProductId": {
           "description": "Unique id of the Data Recipient software product issued by the CDR Register",
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "softwareProductName": {
           "description": "Name of the software product",
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "softwareProductDescription": {
           "description": "Description of the software product",
-          "type": "string"
+          "type": "string",
+          "maxLength": 4000
         },
         "logoUri": {
           "description": "Software product logo URI",
           "type": "string",
-          "x-cds-type": "URIString"
+          "x-cds-type": "URIString",
+          "maxLength": 1000
         },
         "status": {
+          "description": "Software Product status in the CDR Register",
           "enum": [
             "ACTIVE",
             "INACTIVE",
@@ -1037,6 +1266,77 @@
           "format": "int32",
           "description": "The total number of records in the full set",
           "type": "integer"
+        }
+      }
+    },
+    "Links": {
+      "required": [
+        "self"
+      ],
+      "type": "object",
+      "properties": {
+        "self": {
+          "description": "Fully qualified link to this API call",
+          "type": "string"
+        }
+      }
+    },
+    "Meta": {
+      "type": "object"
+    },
+    "MetaError": {
+      "type": "object",
+      "properties": {
+        "urn": {
+          "type": "string",
+          "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+        }
+      },
+      "description": "Additional data for customised error codes",
+      "x-conditional": [
+        "urn"
+      ]
+    },
+    "ResponseErrorListV2": {
+      "type": "object",
+      "required": [
+        "errors"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "$ref": "#/definitions/ResponseErrorListV2_errors"
+          }
+        }
+      },
+      "x-conditional": [
+        "meta"
+      ]
+    },
+    "ResponseErrorListV2_errors": {
+      "type": "object",
+      "required": [
+        "code",
+        "detail",
+        "title"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+        },
+        "title": {
+          "type": "string",
+          "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+        },
+        "detail": {
+          "type": "string",
+          "description": "A human-readable explanation specific to this occurrence of the problem."
+        },
+        "meta": {
+          "$ref": "#/definitions/MetaError"
         }
       }
     },
