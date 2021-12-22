@@ -5,7 +5,7 @@ title: Consumer Data Standards
 #  - shell
 language_tabs:
   - examples: Non-normative Examples
-  - delta: Version Delta
+  - diff: Version Delta
 
 toc_footers:
   - <a href='https://consumerdatastandards.gov.au/'>Consumer Data Standards Home</a>

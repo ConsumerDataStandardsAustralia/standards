@@ -31,7 +31,7 @@ under the License.
     $(".lang-selector a").removeClass('active');
     $(".lang-selector a[data-language-name='" + language + "']").addClass('active');
 
-    if (language == 'delta') {
+    if (language == 'diff') {
         $("blockquote").hide();
         $(".highlight").hide();
         $(".highlight.tab-" + language).show();
