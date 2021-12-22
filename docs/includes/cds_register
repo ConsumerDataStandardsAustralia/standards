@@ -216,6 +216,8 @@ x-v: string
 <p><code>GET /cdr-register/v1/{industry}/data-holders/brands</code></p>
 
 <p>Allows Data Recipients to discover data holder brands available in the CDR ecosystem.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holders-v1.html">v1</a></p>
 <h3 id='endpoint-version-3'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -225,7 +227,7 @@ x-v: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -293,6 +295,18 @@ x-v: string
 <tr>
 <td>industry</td>
 <td>banking</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>telco</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>all</td>
 </tr>
 </tbody></table>
 
@@ -408,7 +422,8 @@ x-v: string
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read</a>
+<a href="#authorisation-scopes">cdr-register:bank:read,
+cdr-register:read</a>
 </aside></p>
 <h2 id='get-software-statement-assertion-ssa'>Get Software Statement Assertion (SSA)</h2>
 <p><a id="opIdGetSoftwareStatementAssertion"></a></p>
@@ -637,7 +652,9 @@ If-None-Match: string
 </code></pre>
 <p><code>GET /cdr-register/v1/{industry}/data-holders/status</code></p>
 
-<p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register</p>
+<p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. </p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holder-statuses-v1.html">v1</a></p>
 <h3 id='endpoint-version-5'>Endpoint Version</h3>
 <table><thead>
 <tr>
@@ -647,7 +664,7 @@ If-None-Match: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1837,7 +1854,7 @@ This operation does not require authentication
 <td>industry</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The industry the Data Holder brand belongs to (Banking, etc)</td>
+<td>The industry the participant is retrieving data for (Banking, etc)</td>
 </tr>
 <tr>
 <td>logoUri</td>
@@ -1886,6 +1903,18 @@ This operation does not require authentication
 <tr>
 <td>industry</td>
 <td>banking</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>telco</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>all</td>
 </tr>
 <tr>
 <td>status</td>
@@ -1967,7 +1996,7 @@ This operation does not require authentication
 <td>legalEntityId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique id of the Data Holdert Legal Entity issued by the CDR Register.</td>
+<td>Unique id of the Data Holder Legal Entity issued by the CDR Register.</td>
 </tr>
 <tr>
 <td>status</td>

@@ -43,7 +43,7 @@ paths:
       tags:
       - Register
       summary: Get Data Holder Brands
-      description: Allows Data Recipients to discover data holder brands available in the CDR ecosystem.
+      description: "Allows Data Recipients to discover data holder brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)"
       operationId: GetDataHolderBrands
       consumes:
       - application/json
@@ -57,6 +57,9 @@ paths:
         type: string
         enum:
         - banking
+        - energy
+        - telco
+        - all
       - name: updated-since
         in: query
         description: query filter returns data holder brands updated since the specified date-time
@@ -102,9 +105,10 @@ paths:
           description: Invalid Bearer Token
         "406":
           description: Invalid x-v header</br>Invalid Accept header
-      x-version: "1"
+      x-version: "2"
       x-scopes:
       - cdr-register:bank:read
+      - cdr-register:read
   /cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa:
     get:
       tags:
@@ -180,7 +184,7 @@ paths:
       tags:
       - Register
       summary: Get Data Holder Statuses
-      description: Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
+      description: "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. \n\nObsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html)"
       operationId: GetDataHolderStatuses
       produces:
       - application/json
@@ -236,7 +240,7 @@ paths:
           description: Unsupported Version
           schema:
             $ref: '#/definitions/ResponseErrorListV2'
-      x-version: "1"
+      x-version: "2"
   /cdr-register/v1/{industry}/data-recipients/brands/software-products/status:
     get:
       tags:
@@ -585,9 +589,12 @@ definitions:
         description: The name of Data Holder Brand
       industry:
         type: string
-        description: "The industry the Data Holder brand belongs to (Banking, etc)"
+        description: "The industry the participant is retrieving data for (Banking, etc)"
         enum:
         - banking
+        - energy
+        - telco
+        - all
       logoUri:
         type: string
         description: Brand logo URI
@@ -636,7 +643,7 @@ definitions:
     properties:
       legalEntityId:
         type: string
-        description: Unique id of the Data Holdert Legal Entity issued by the CDR Register.
+        description: Unique id of the Data Holder Legal Entity issued by the CDR Register.
         maxLength: 36
       status:
         type: string

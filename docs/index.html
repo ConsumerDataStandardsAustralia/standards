@@ -1274,7 +1274,20 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+        <h1 id='introduction'>Introduction</h1><pre class="highlight diff tab-diff"><code>The Version Delta tab can be used to see in context changes between
+this version of the standards and the immediately previous version
+of the standards.
+
+This text is an example of a new addition to the standards:
+<span class="gi">+ New text added here
+</span>
+This text is an example of text removed from the standards:
+<span class="gd">- Old text removed
+</span>
+Note: changes to request and response payloads are listed at the
+beginning of the relevant API section due to the documentation
+being auto generated from OpenAPI specification files.
+</code></pre>
 <p>These standards have been developed as part of the Australian Government&#39;s introduction of the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right" title="ACCC Consumer Data Right webpage">Consumer Data Right</a> legislation to give Australians greater control over their data.</p>
 
 <p>The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.</p>
@@ -1287,10 +1300,7 @@
 <li>where the rules require compliance with the standards, non-compliance with the standards may constitute a breach of the rules.</li>
 <li>where the standards are specified as binding standards as required by the Consumer Data Right rules for the purposes of s56FA of the legislation, they apply as under contract between a data holder and an accredited data recipient.  The legal effect of binding standards as between data holders and accredited data recipients is fully set out in s56FD and s56FE of the legislation.</li>
 </ul>
-<pre class="highlight diff tab-diff"><code>This is a version delta message
-<span class="gi">+new text
-</span><span class="gd">-old text
-</span></code></pre><h2 id='version'>Version</h2>
+<h2 id='version'>Version</h2>
 <p>These standards represent version 1.15.0 of the high level standards.  See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 <h2 id='interpretation'>Interpretation</h2>
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC2119</a>.</p>
@@ -2683,7 +2693,12 @@ Content-Type: application/json
   ]
 }
 
-</code></pre>
+</code></pre><pre class="highlight diff tab-diff"><code>Added additional errors:
+<span class="gi">+ urn:au-cds:error:cds-energy:Authorisation/InvalidEnergyAccount
++ urn:au-cds:error:cds-energy:Authorisation/UnavailableEnergyAccount
++ urn:au-cds:error:cds-energy:Authorisation/InvalidServicePoint
++ urn:au-cds:error:cds-energy:Authorisation/UnavailableServicePoint
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -3120,8 +3135,8 @@ standards</li>
 
 <p><br/></p>
 
-<h2 id='profile-scope'>Profile Scope</h2>
-
+<h2 id='profile-scope'>Profile Scope</h2><pre class="highlight diff tab-diff"><code>Added the Profile Scope language section
+</code></pre>
 <p>In accordance with <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong>[OIDC]</strong> profile scope and request of individual claims for the authenticated End-User.</p>
 
 <table><thead>
@@ -3146,7 +3161,6 @@ standards</li>
 <p><strong>Note:</strong> For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.</p>
 
 <p><br/></p>
-
 <h2 id='banking-language'>Banking Language</h2><h3 id='individual-consumer'>Individual Consumer</h3>
 <table><thead>
 <tr>
@@ -3271,7 +3285,8 @@ standards</li>
 </tbody></table>
 
 <p><br/></p>
-<h2 id='energy-language'>Energy Language</h2><h3 id='individual-consumer-2'>Individual Consumer</h3>
+<h2 id='energy-language'>Energy Language</h2><pre class="highlight diff tab-diff"><code>Removed the statement of non-binding for energy
+</code></pre><h3 id='individual-consumer-2'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
@@ -3534,8 +3549,15 @@ standards</li>
 </tr>
 </tbody></table>
 
-<h2 id='authorisation-standards'>Authorisation Standards</h2>
-
+<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>The following table rows were removed:
+<span class="gd">- |**Unavailable Accounts:**&lt;br/&gt;Displaying accounts|&lt;p&gt;If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step. &lt;/p&gt;&lt;p&gt;Data holders **SHOULD** communicate why these accounts cannot be selected, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.&lt;/p&gt;&lt;p&gt;Data holders **MAY** provide instructions on how to make these accounts available to share, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.&lt;/p&gt;&lt;p&gt;*Note:* Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.&lt;/p&gt;|
+- |**Authorisation:**&lt;br&gt;Account confirm|Data holders **MUST** show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder **MAY** omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).|
+</span>
+The following table rows were added:
+<span class="gi">+ |**Authorisation:**&lt;br&gt;Account confirm|Data holders **MUST** show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder **MAY** omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).|
++ |**Authorisation:**&lt;br&gt;Pending status|&lt;p&gt;Where an account requires further actions or approvals before data can be disclosed, data holders **MUST** indicate this to the user visually and **MUST** provide an explanation of what is required or expected.&lt;/p&gt;&lt;p&gt;This **MAY**, for example, be achieved with a visual icon to indicate that the account is 'pending'. This indication **MUST** be accompanied by an in-context explanation to describe what the status means. This explanation **SHOULD** include any required actions and any specified time frames.&lt;/p&gt;|
++ |**Unavailable Accounts:**&lt;br/&gt;Displaying accounts|&lt;p&gt;If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step. &lt;/p&gt;&lt;p&gt;Data holders **SHOULD** communicate why these accounts cannot be selected, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.&lt;/p&gt;&lt;p&gt;Data holders **MAY** provide instructions on how to make these accounts available to share, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.&lt;/p&gt;&lt;p&gt;**Note:** Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.&lt;/p&gt;|
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3604,12 +3626,10 @@ standards</li>
 
 <p><br>Refer also to <a href="#future-dated-obligations">Future Dated obligations</a><br></p>
 
-<h2 id='notification-standards'>Notification Standards</h2>
-
+<p><h2 id='notification-standards'>Notification Standards</h2><pre class="highlight diff tab-diff"><code>The Notification Standards has been added
+</code></pre>
 <p>The standards in this section apply where a relevant joint account holder is about to take an action that may or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, may not result in the other joint account holder(s) being notified.</p>
-
 <h3 id='notifications-joint-account-alerts'>Notifications: Joint Account Alerts</h3>
-
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3629,12 +3649,10 @@ standards</li>
 <td>In relation to the joint account alert standards in this section, data holders <strong>MAY</strong> provide further information about any services or processes in place for supporting vulnerable consumers or reporting risks of physical, psychological, or financial harm or abuse to the data holder.</td>
 </tr>
 </tbody></table>
-
 <h3 id='alternative-notification-schedules-for-joint-accounts'>Alternative Notification Schedules for Joint Accounts</h3>
-
 <p>Rule 4A.14(3) requires data holders to
 (a) provide for alternative notification schedules (including reducing the frequency of notifications or not receiving notifications) and
-(b) give each joint account holder a means of selecting such an alternative, and of changing an election.</p>
+(b) give each joint account holder a means of selecting such an alternative, and of changing an election.</p></p>
 
 <p>Alternative settings under 4A.14(3) only apply to the following notifications in 4A.14(1):</p>
 
@@ -3683,8 +3701,11 @@ standards</li>
 </tr>
 </tbody></table>
 
-<h2 id='withdrawal-standards'>Withdrawal Standards</h2>
-
+<p><h2 id='withdrawal-standards'>Withdrawal Standards</h2><pre class="highlight diff tab-diff"><code>
+The following table rows were added:
+<span class="gi">+ |<strong>Withdrawal:</strong>&lt;br&gt;Joint accounts| As part of the process of removing a joint account approval or changing to a more restrictive disclosure option, the data holder <strong>MUST</strong> advise the consumer:&lt;br/&gt;&lt;ol&gt;&lt;li&gt;that doing this may impact existing services, including arrangements initiated by the other account holder(s)&lt;/li&gt;&lt;li&gt;when removing an approval:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;that even though sharing for this service has now stopped, the other account holder(s) can still create new data sharing arrangements for the joint account&lt;/li&gt;&lt;li&gt;how to change their disclosure option&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;<strong>Note:</strong> The exact phrasing of the withdrawal message is at the discretion of the data holder. This standard does not affect data holders’ other notification obligations, including under rule 4A.7(3).&lt;/p&gt; |
+</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -3715,25 +3736,25 @@ standards</li>
 <td><strong>Withdrawal:</strong><br>Joint accounts</td>
 <td>As part of the process of removing a joint account approval or changing to a more restrictive disclosure option, the data holder <strong>MUST</strong> advise the consumer:<br/><ol><li>that doing this may impact existing services, including arrangements initiated by the other account holder(s)</li><li>when removing an approval:<br/><ul><li>that even though sharing for this service has now stopped, the other account holder(s) can still create new data sharing arrangements for the joint account</li><li>how to change their disclosure option</li></ul></li></ol><p><strong>Note:</strong> The exact phrasing of the withdrawal message is at the discretion of the data holder. This standard does not affect data holders’ other notification obligations, including under rule 4A.7(3).</p></td>
 </tr>
-</tbody></table>
+</tbody></table></p>
 <h1 style="display:none"></h1>
 <h1 id='security-profile'>Security Profile</h1>
-<h2 id='overview'>Overview</h2>
-
+<h2 id='overview'>Overview</h2><pre class="highlight diff tab-diff"><code>Added the `Until September 16th 2022` section
+</code></pre>
 <p><strong>Until September 16th 2022</strong></p>
 
 <p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2.html">Financial-grade API Read Write Profile</a> <strong>[FAPI-RW-Draft]</strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong>[OIDC]</strong>.</p>
-
+<pre class="highlight diff tab-diff"><code>Added the `From September 16th 2022` section
+</code></pre>
 <p><strong>From September 16th 2022</strong></p>
 
 <p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html">Financial-grade API Advanced Profile</a> <strong>[FAPI-1.0-Advanced]</strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong>[OIDC]</strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
-
-<h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
-
+<pre class="highlight diff tab-diff"><code>Added JARM and PKCE.
+</code></pre><h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
 <ul>
 <li>  <strong>API</strong>: Application Programming Interface</li>
 <li>  <strong>CA</strong>: Certificate Authority</li>
@@ -3814,19 +3835,24 @@ Recipient, and issues an authorisation for that Data Recipient to access the Cus
 
 <p>For the purposes of this standard a single designated organisation <strong>MAY</strong> be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.</p>
 
-<h4 id='multi-brand-support-separate-issuers-for-data-holder-brands'>Multi-Brand Support (Separate Issuers For Data Holder Brands)</h4>
-
+<pre class="highlight diff tab-diff"><code>Added the Multi-Brand Support section.
+</code></pre><h4 id='multi-brand-support-separate-issuers-for-data-holder-brands'>Multi-Brand Support (Separate Issuers For Data Holder Brands)</h4>
 <p><strong>From July 4th 2022</strong></p>
 
 <ul>
 <li>Where a Data Holder has multiple brands, each brand <strong>MUST</strong> have a separate issuer.</li>
 </ul>
-
 <h3 id='secondary-data-holder'>Secondary Data Holder</h3>
-
 <p>A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.</p>
+<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
 
 <p>A request for data from a Secondary Data Holder by a standard Data Holder is known as a <em>Shared Responsibility Data Request</em>.</p>
+
+<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
 
 <p>See the <a href="#shared-responsibility">Shared Responsibility</a> section contains standards related to Secondary Data Holders and Shared Responsibility Data Requests.</p>
 
@@ -3867,13 +3893,22 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong>[OIDC]</strong> as constrained further by <a href="https://openid.net/wg/fapi/">FAPI</a> <strong>[FAPI]</strong>.</p>
 
+<pre class="highlight diff tab-diff"><code>Replaced the statements:
+<span class="gd">- Specifically the Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
+</span>with:
+<span class="gi">+ Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**.
++
++ From July 4th 2022, OIDC Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[OIDC]** is supported.
+</span></code></pre>
+
 <p>Specifically the OIDC Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong>[OIDC]</strong>.</p>
 
 <p>From July 4th 2022, OIDC Authorization Code Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a>  of <strong>[OIDC]</strong> is supported.</p>
 
 <p>No other flows are currently supported.</p>
 
-<h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
+<pre class="highlight diff tab-diff"><code>Added the Baseline Security Provisions section
+</code></pre><h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
 <p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
 
 <ul>
@@ -3917,12 +3952,16 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p><a id="hybrid-flow"></a></p>
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
-
 <p>The <strong>[OIDC]</strong> Hybrid Flow is a type of redirection flow where the consumer&#39;s user
 agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
 Holder’s Authorisation end point in the context of an <strong>[OIDC]</strong> authentication
 request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
 authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
+<pre class="highlight diff tab-diff"><code>Replaced the statement:
+<span class="gd">- Only a `response_type` (see [section 3](https://openid.net/specs/openid-connect-core-1_0.html#Authentication) of **[OIDC]**) of `code id_token` SHALL be allowed.
+</span>with:
+<span class="gi">+ Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[OIDC]**) of `code id_token` **SHALL** be allowed.
+</span></code></pre>
 
 <p>Only a <code>response_type</code> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong>[OIDC]</strong>) of <code>code id_token</code> <strong>SHALL</strong> be allowed.</p>
 
@@ -3955,13 +3994,16 @@ authorisation code flow detailed under <strong>[OIDC]</strong>.</p>
 
 <p>Additional requirements and guidelines for this flow are contained in the <a href="#consumer-experience">Consumer Experience</a> section.</p>
 
+<pre class="highlight diff tab-diff"><code>Added the OIDC Authorization Code Flow section.
+</code></pre>
+
 <p><a id="authorization-code-flow"></a></p>
 
 <h3 id='oidc-authorization-code-flow'>OIDC Authorization Code Flow</h3>
 
 <p>From July 4th 2022,
 * Data Holders <strong>MAY</strong> support OIDC Authorization Code Flow according to <strong>[FAPI-1.0-Advanced]</strong>
-* Data Recipient Software Products <strong>MAY</strong> us OIDC Authorization Code Flow according to <strong>[FAPI-1.0-Advanced]</strong> if the Data Holder supports it.</p>
+* Data Recipient Software Products <strong>MAY</strong> use OIDC Authorization Code Flow according to <strong>[FAPI-1.0-Advanced]</strong> if the Data Holder supports it.</p>
 
 <p>In addition, the following statements are applicable for this flow:</p>
 
@@ -4080,6 +4122,12 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 <p>Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT <strong>MUST</strong> do so according to the following requirements:</p>
 
+<pre class="highlight diff tab-diff"><code>Replaced the statement:
+<span class="gd">- `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. Contents MUST be the "resource path" for the end point being accessed.
+</span>with:
+<span class="gi">+ `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token.&lt;br/&gt;&lt;br/&gt;&lt;p&gt;**_Data Recipient hosted endpoints_**&lt;br/&gt;The [Resource Path](#uri-resource-path) for the end point being accessed SHOULD be used.&lt;br/&gt;In order to facilitate interoperability and for Data Recipient Software Product hosted endpoints only, the endpoint MUST also accept the ``&lt;RecipientBaseUri&gt;`` as a value identifying the intended audience.&lt;br/&gt;**From July 31st 2022:** The Resource Path for the end point being accessed MUST be used.&lt;/p&gt;&lt;p&gt;**_Data Holder Metrics endpoints_**&lt;br/&gt;The ``&lt;AdminBaseUri&gt;`` for the end point being accessed MUST be used.&lt;/p&gt;
+</span></code></pre>
+
 <ul>
 <li><p>The JWT <strong>MUST</strong> contain the following REQUIRED Claim Values and <strong>MAY</strong> contain the following OPTIONAL Claim Values:</p>
 
@@ -4094,6 +4142,10 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <li><p>Validation and use of the JWT and the claims described above <strong>MUST</strong> be performed in accordance with <strong>[JWT]</strong>.  </p></li>
 <li><p>The JWT <strong>MUST</strong> be accepted from the client at the requested endpoint using the &quot;Authorization Request Header Field&quot; mechanism as described in <a href="https://tools.ietf.org/html/rfc6750#section-2.1">section 2.1</a> of <strong>[RFC6750]</strong>.</p></li>
 </ul>
+
+<pre class="highlight diff tab-diff"><code>Added:
+<span class="gi">+ **Note:** In accordance with `jti` requirements, self-signed JWTs are one-time use only. The authenticating server MUST reject JWTs reuse.
+</span></code></pre>
 
 <p><strong>Note:</strong> In accordance with <code>jti</code> requirements, self-signed JWTs are one-time use only. The authenticating server <strong>MUST</strong> reject JWTs reuse.</p>
 
@@ -4649,11 +4701,15 @@ Accept: application/json
 <p>Validation and use of the JWT and the claims described above <strong>MUST</strong> be performed in accordance with <strong>[JWT]</strong>.</p>
 
 <p>SSA JWT signatures <strong>MUST</strong> be verified against the associated JWK published at the CDR Register <a href="#get-jwks">JWKS endpoint</a>.</p>
-
+<pre class="highlight diff tab-diff"><code>Added the following statement:
+<span class="gi">+ The registration request JWT **MUST** be verified against the associated JWK published by the Data Recipient. Data Holders are required to verify the request JWT signature against an associated JWK from the `jwks_uri` extracted from the SSA.
+</span></code></pre>
 <p>The registration request JWT <strong>MUST</strong> be verified against the associated JWK published by the Data Recipient. Data Holders are required to verify the request JWT signature against an associated JWK from the <code>jwks_uri</code> extracted from the SSA.</p>
 
 <p>Data Holders <strong>MUST NOT</strong> allow multiple active registrations for the same <code>software_id</code>.</p>
-
+<pre class="highlight diff tab-diff"><code>Added the following statement:
+<span class="gi">+ Data Holders **MUST** adhere to the [NFR performance requirements](#performance-requirements) when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) **MUST NOT** prevent specified response times being met.
+</span></code></pre>
 <p>Data Holders <strong>MUST</strong> adhere to the <a href="#performance-requirements">NFR performance requirements</a> when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) <strong>MUST NOT</strong> prevent specified response times being met.</p>
 <h3 id='registration-response'>Registration Response</h3>
 <blockquote>
@@ -4996,7 +5052,10 @@ grant_type=client_credentials&amp;
 <td><i class="icon-check"></i></td>
 </tr>
 </tbody></table>
-
+<pre class="highlight diff tab-diff"><code>The following statements are added:
+<span class="gi">+ The CDR Register MUST NOT provide an undefined status for Data Recipient or Data Recipient Software Product Statuses
++ If Data Holders do not receive a status for a Data Recipient or Data Recipient Software Product, or receives a status that is not recognised, Data Holders SHOULD ignore the value and use the previous status value retrieved from the CDR Register
+</span></code></pre>
 <ul>
 <li>Disclosure of CDR data <strong>MUST</strong> be in response to valid requests in accordance with the CDR rules and standards</li>
 <li>The status of a Data Recipient Brand does not impact Data Holder responsibilities due to the cascade rules outlined above</li>
@@ -5086,7 +5145,12 @@ grant_type=client_credentials&amp;
 <li><code>openid</code>: As described as <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">section 3.1.2.1</a> of <strong>[OIDC]</strong>, this scope <strong>MUST</strong> be present on each authentication request.</li>
 <li><code>profile</code>: Data Holders <strong>MUST</strong> support the <code>profile</code> scope as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> of <strong>[OIDC]</strong>.  This scope <strong>MAY</strong> be present on an authentication request.</li>
 </ul>
-<h3 id='claims'>Claims</h3>
+<h3 id='claims'>Claims</h3><pre class="highlight diff tab-diff"><code>Replaced the statement:
+<span class="gd">- The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[OIDC]** claims MUST be supported. This list includes, but is not limited to, **[OIDC]** [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) :
+</span>with:
+<span class="gi">+ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[OIDC]** and [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) claims MUST be supported for the authenticated End-User*:
+</span></code></pre><pre class="highlight diff tab-diff"><code>Added the section on standard claims
+</code></pre>
 <p>The following <a href="https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims">normal</a> <strong>[OIDC]</strong> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard claims</a> claims <strong>MUST</strong> be supported for the authenticated End-User*:</p>
 
 <ul>
@@ -5138,23 +5202,34 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
   "refresh_token_expires_at": 1311281970,
   "sharing_expires_at": 1311281970
 }
-</code></pre>
+</code></pre><pre class="highlight diff tab-diff"><code>Replaced the statements:
+<span class="gd">- ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.  In accordance with **[FAPI-RW]**, ID Tokens must be signed and encrypted when returned
+- to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
+</span>with:
+<span class="gi">+ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[OIDC]** standard.
+</span></code></pre>
 <p>ID Tokens are specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard.</p>
 <h4 id='baseline-id-token-requirements'>Baseline ID Token requirements</h4>
 <p>In addition to the mandatory claims specified in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of the <strong>[OIDC]</strong> standard, required claims for ID Tokens as part of Hybrid Flow authentication <strong>MUST</strong> align to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> (Authentication using the Hybrid Flow) of the <strong>[OIDC]</strong> standards and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-server">section 5.2.2</a> and <a href="https://openid.net/specs/openid-financial-api-part-2.html#authorization-response-parameter-injection-attack">section 8.4.3</a> of the <strong>[FAPI-RW-Draft]</strong> profile.</p>
 
 <p>ID Tokens <strong>MUST</strong> be signed by Data Holders as specified in <a href="https://openid.net/specs/openid-financial-api-part-2.html#jws-algorithm-considerations">section 8.6</a> of <strong>[FAPI-RW-Draft]</strong>.</p>
-
+<pre class="highlight diff tab-diff"><code>Removed the statement:
+<span class="gd">- The ID Token returned from the Authorisation End Point MUST NOT contain any Personal Information (PI) claims.
+</span>
+Added the FAPI 1.0 Migration Phase 2 section.
+</code></pre>
 <p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>, the following requirements apply:</p>
 
 <ul>
 <li>ID Tokens <strong>MUST</strong> be signed and <strong>MAY</strong> be encrypted when returned to a Data Recipient Software Product from the Token End Point, if the Data Holder supports the OIDC Authorization Code Flow in accordance with <strong>[FAPI-1.0-Advanced]</strong>.</li>
 </ul>
-<h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4>
+<pre class="highlight diff tab-diff"><code>Added the OIDC Hybrid Flow requirements section
+</code></pre><h4 id='oidc-hybrid-flow-requirements'>OIDC Hybrid Flow requirements</h4>
 <p>In accordance with <strong>[FAPI-RW-Draft]</strong>, ID Tokens <strong>MUST</strong> be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.</p>
 
 <p>The ID Token returned from the Authorisation End Point <strong>MUST NOT</strong> contain any Personal Information (PI) claims.</p>
-<h3 id='oidc-authorization-code-flow-requirements'>OIDC Authorization Code Flow requirements</h3>
+<pre class="highlight diff tab-diff"><code>Added the OIDC Authorization Code Flow requirements section
+</code></pre><h3 id='oidc-authorization-code-flow-requirements'>OIDC Authorization Code Flow requirements</h3>
 <p><strong>From September 16th 2022</strong>, if the Data Holder supports the OIDC Authorization Code Flow in accordance with <strong>[FAPI-1.0-Advanced]</strong>, ID Tokens <strong>MUST</strong> be signed and <strong>MAY</strong> encrypted when returned to a Data Recipient Software Product from the Token End Point.</p>
 <h4 id='hashing-value-for-state-and-authorisation-code'>Hashing value for state and authorisation code</h4>
 <p>The <code>c_hash</code> value <strong>MUST</strong> be generated according to <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken">section 3.3.2.11</a> of <strong>[OIDC]</strong>.</p>
@@ -5166,7 +5241,8 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>An Access Token <strong>MUST</strong> expire between <strong>2 minutes</strong> to <strong>10 minutes</strong> after the Data Holder issues it (at the discretion of the Data Holder).</p>
 
 <p>The process for refreshing an Access Token is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken">section 12.1</a> of <strong>[OIDC]</strong>.</p>
-
+<pre class="highlight diff tab-diff"><code>Added the FAPI 1.0 Migration Phase 1 section.
+</code></pre>
 <p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
 
 <ul>
@@ -5186,7 +5262,8 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <ul>
 <li>Data Holders <strong>MAY</strong> cycle Refresh Tokens when an Access Token is issued.  If Refresh Token cycling is not performed then the Refresh Token <strong>MUST NOT</strong> expire before the expiration of the sharing consented by the Customer.</li>
 </ul>
-
+<pre class="highlight diff tab-diff"><code>Added the FAPI 1.0 Migration Phase 2 section.
+</code></pre>
 <p><strong>From September 16th 2022 (FAPI 1.0 Migration Phase 2)</strong>:</p>
 
 <ul>
@@ -5196,7 +5273,12 @@ Data Holders <strong>SHOULD</strong> explicitly capture Claims requested by the 
 <p>The expiry time for issued access tokens and refresh tokens <strong>MUST</strong> be deterministic for the Data Recipient Software Product.</p>
 
 <p>In order to achieve this:</p>
-
+<pre class="highlight diff tab-diff"><code>Replaced the statement:
+<span class="gd">- - The Data Holder **MUST** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[OAUTH2]**).
+</span>with:
+<span class="gi">+ - **Until September 16th 2022**: The Data Holder **MUST** indicate the expiration time of the refresh token using the `refresh_token_expires_at` claim.
++ - **From September 16th 2022 (FAPI 1.0 Migration Phase 2)** Data Holders **MAY** retire "sharing_expires_at" and "refresh_token_expires_at" claims.
+</span></code></pre>
 <ul>
 <li>The Data Holder <strong>MUST</strong> indicate the lifetime in seconds of the access token in the <code>expires_in</code> field of the JSON object returned by the token end-point (see <a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">section 4.2.2</a> of <strong>[OAUTH2]</strong>).</li>
 <li><strong>Until September 16th 2022</strong>: The Data Holder <strong>MUST</strong> indicate the expiration time of the refresh token using the <code>refresh_token_expires_at</code> claim.</li>
@@ -5406,7 +5488,8 @@ client_id=s6BhdRkqt3
 <p>The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by <a href="#participant-endpoints">Data Holders</a>, <a href="#participant-endpoints">Data Recipients</a> and the <a href="#consumer-data-right-cdr-register-apis">Register</a>.</p>
 
 <p>This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.</p>
-
+<pre class="highlight diff tab-diff"><code>Corrected the links for the test and production certificates.
+</code></pre>
 <table><thead>
 <tr>
 <th></th>
@@ -5585,8 +5668,8 @@ client_id=s6BhdRkqt3
 
 <p>If a Data Recipient Software Product provides the <code>cdr_arrangement_id</code> claim in the request object to the Data Holder&#39;s <a href="#pushed-authorisation-end-point">PAR End Point</a>, the Data Holder <strong>MUST</strong> revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.</p>
 
-<h3 id='request-object-submission'>Request Object Submission</h3>
-
+<pre class="highlight diff tab-diff"><code>Added the Request Object Submission section.
+</code></pre><h3 id='request-object-submission'>Request Object Submission</h3>
 <p>In addition:</p>
 
 <ul>
@@ -5598,9 +5681,7 @@ client_id=s6BhdRkqt3
 <li>If the <code>cdr_arrangement_id</code> is not related to the consumer being authenticated it <strong>MUST</strong> be rejected</li>
 <li>If the <code>cdr_arrangement_id</code> is not recognised by to the Data Holder it <strong>MUST</strong> be rejected</li>
 </ul>
-
 <h4 id='data-holders'>Data Holders</h4>
-
 <p>Data Holders <strong>MUST</strong> support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
 
 <p><strong>From July 4th 2022 (FAPI 1.0 Migration Phase 1)</strong>, the following requirements apply:</p>
@@ -5624,9 +5705,7 @@ client_id=s6BhdRkqt3
 <li>Data Holders <strong>MUST</strong> reject authorisation request containing &quot;request&quot; parameter</li>
 <li>  Data Holders <strong>MUST</strong> reject the reuse of &quot;request_uri&quot; values.</li>
 </ul>
-
 <h4 id='data-recipient-software-products'>Data Recipient Software Products</h4>
-
 <p>Data Recipient Software Products <strong>MAY</strong> send authorisation requests using <strong>[PAR]</strong> if supported by the Data Holder.</p>
 
 <p>Request objects which contain the <code>cdr_arrangement_id</code> claim <strong>MUST ONLY</strong> be sent using PAR.</p>
@@ -5649,7 +5728,6 @@ client_id=s6BhdRkqt3
 </ul>
 
 <h2 id='security-endpoints'>Security Endpoints</h2>
-
 <h3 id='openid-provider-configuration-end-point'>OpenID Provider Configuration End Point</h3>
 
 <blockquote>
@@ -5852,8 +5930,8 @@ Host: www.holder.com.au
 
 <p>Data Holders MUST support a JWKS End Point.</p>
 
-<h4 id='jwks-uris'>JWKS URIs</h4>
-
+<pre class="highlight diff tab-diff"><code>Added the JWKS URIs section.
+</code></pre><h4 id='jwks-uris'>JWKS URIs</h4>
 <p>In addition to <strong>[FAPI-A]</strong> section 8.9 <strong>from July 4th 2022</strong>, the following requirements apply:</p>
 
 <ul>
@@ -5861,7 +5939,6 @@ Host: www.holder.com.au
 </ul>
 
 <h3 id='token-end-point'>Token End Point</h3>
-
 <table><thead>
 <tr>
 <th>Description</th>
@@ -5893,7 +5970,6 @@ Host: www.holder.com.au
 <p>Data Holders MUST support a Token End Point.</p>
 
 <h3 id='userinfo-end-point'>UserInfo End Point</h3>
-
 <table><thead>
 <tr>
 <th>Description</th>
@@ -5923,7 +5999,6 @@ Host: www.holder.com.au
 <p>Data Holders MUST support a UserInfo End Point.</p>
 
 <h3 id='introspection-end-point'>Introspection End Point</h3>
-
 <table><thead>
 <tr>
 <th>Description</th>
@@ -5967,7 +6042,6 @@ Host: www.holder.com.au
 <p>A Token Introspection End Point Response MAY include claims defined in Section 2.2 of <strong>[RFC7662]</strong> but <code>username</code> SHALL NOT be allowed.</p>
 
 <h3 id='token-revocation-end-point'>Token Revocation End Point</h3>
-
 <table><thead>
 <tr>
 <th>Description</th>
@@ -6001,13 +6075,11 @@ Host: www.holder.com.au
 <p>Revocation of Refresh Tokens and Access Tokens MUST be supported.</p>
 
 <h3 id='cdr-arrangement-revocation-end-point'>CDR Arrangement Revocation End Point</h3>
-
 <blockquote>
 <p>Non-Normative Example: Data Holder end point<br>
 <em>(Data Recipients calling Data Holders)</em><br>
 Request</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>POST https://data.holder.com.au/arrangements/revoke
 HTTP/1.1
 Host: data.holder.com.au
@@ -6054,13 +6126,12 @@ Content-Type: application/x-www-form-urlencoded
 
 <p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body:</p>
 
-<ul>
-<li><code>cdr_arrangement_id</code>: The ID of the arrangement that the client wants to revoke.</li>
-</ul>
+<pre class="highlight diff tab-diff"><code>Addition of the following statements:
 
-<p><strong>CDR Arrangement Form Parameter method</strong></p>
-
-<p>The request MUST include the following parameters using the <code>application/x-www-form-urlencoded</code> format in the HTTP request entity-body:</p>
+<span class="gi">+ - ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
++
++ The `cdr_arrangement_jwt` MUST be a newly signed JWT with the following parameters in accordance with **[JWT]**:
+</span></code></pre>
 
 <ul>
 <li><code>cdr_arrangement_jwt</code>: A signed JWT that includes the <code>cdr_arrangement_id</code>.</li>
@@ -6077,6 +6148,16 @@ Content-Type: application/x-www-form-urlencoded
 <p>The location of the Data Holder CDR Arrangement Revocation End Point is determined by the <code>cdr_arrangement_revocation_endpoint</code> in the Data Holder&#39;s OpenID Provider metadata.</p>
 
 <p>This end point will be implemented according to the following:</p>
+
+<pre class="highlight diff tab-diff"><code>Removed statements:
+<span class="gd">- Data Recipient Software Products and Data Holders MUST revoke consent by calling the CDR Arrangement Revocation End Point  with a valid CDR Arrangement ID
+- Data Recipient Software Products MUST expose their CDR Arrangement Revocation End Point under their `recipient_base_uri` published in their Software Statement Assertion
+- For Data Recipient Software Products, Data Holder must be authenticated when they call this end point according to the guidance in the Client Authentication section.
+</span>
+Added statements:
+<span class="gi">+ Data Holders MUST only support "CDR Arrangement Form Parameter" method
++ Data Recipient Software Products MUST revoke consent by calling the CDR Arrangement Revocation End Point with a valid CDR Arrangement ID
+</span></code></pre>
 
 <ul>
 <li>Data Holders MUST only support &quot;CDR Arrangement Form Parameter&quot; method</li>
@@ -6126,6 +6207,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 {
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0"
 }
+</code></pre><pre class="highlight diff tab-diff"><code>Added Data Recipient hosted endpoint section.
 </code></pre>
 
 <p><strong>Data Recipient hosted endpoint</strong></p>
@@ -6165,6 +6247,14 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 <td>The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with <a href="#error-422-authorisation-invalid-arrangement">Invalid Consent Arrangement</a>.</td>
 </tr>
 </tbody></table>
+
+<pre class="highlight diff tab-diff"><code>Remove the following statements:
+<span class="gd">- **Data Holders calling Data Recipients**
+- The location of the Data Recipient Software Product CDR Arrangement Revocation End Point is determined by the `RecipientBaseURI` provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
+-
+- **Data Recipients calling Data Holders**
+- The location of the Data Holder CDR Arrangement Revocation End Point is determined by the ``cdr_arrangement_revocation_endpoint`` in the Data Holder's OpenID Provider metadata.
+</span></code></pre>
 
 <p><strong>Revoking consent</strong></p>
 
@@ -6274,9 +6364,25 @@ Host: data.holder.com.au
 
 <p>Data Holders <strong>MUST</strong> support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to <strong>[PAR]</strong>.</p>
 
+<pre class="highlight diff tab-diff"><code>Replaced the statement:
+<span class="gd">- Data Recipient Software Products MAY send authorisation requests using **[PAR]** if supported by the Data Holder. Request objects which contain the ``cdr_arrangement_id`` claim MUST only be sent using **[PAR]**. If a Data Holder does not support **[PAR]**, a Data Recipient Software Product SHOULD NOT provide the ``cdr_arrangement_id`` claim in the request object.
+</span>with:
+<span class="gi">+ Data Recipient Software Products **MAY** send authorisation requests using **[PAR]** if supported by the Data Holder.
+</span></code></pre>
+
 <p>Data Recipient Software Products <strong>MAY</strong> send authorisation requests using <strong>[PAR]</strong> if supported by the Data Holder.</p>
 
 <p>The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder’s Authorisation End Point to initiate an authorisation flow.</p>
+
+<pre class="highlight diff tab-diff"><code>Removed the statements:
+<span class="gd">- In addition:
+-
+- * Request Object references SHALL NOT be supported in any mode of use other than **[PAR]**. If a Data Holder does not support **[PAR]**, it MUST NOT support Request Object references.
+- * The Request URI MUST expire between 10 seconds and 90 seconds
+- * Data Recipient Software Products MAY provide an existing ``cdr_arrangement_id`` claim in an authorisation request object to establish a new consent under an existing arrangement
+- * Data Holders MUST revoke existing refresh tokens and access tokens when a ``cdr_arrangement_id`` is provided in the Request Object but only after successful authorisation
+- * If the ``cdr_arrangement_id`` is not related to the consumer being authenticated it MUST be rejected
+</span></code></pre>
 
 <h3 id='dynamic-client-registration-endpoints'>Dynamic Client Registration Endpoints</h3>
 
@@ -6441,8 +6547,19 @@ Host: cdr.register
 </tr>
 </tbody></table>
 
-<h2 id='normative-references'>Normative References</h2>
+<p><h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code>Ordered the normative references table alphabetically.</p>
 
+<p>Modified [FAPI-R] to [FAPI-R-Draft].
+Modified [FAPI-RW] to [FAPI-RW-Draft].</p>
+
+<p>Added [FAPI-1.0-Baseline].
+Added [FAPI-1.0-Advanced].
+Added [JARM].
+Added [RFC4627].
+Added [RFC5322].
+Added [PKCE].
+Added [RFC9126].
+</code></pre>
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -6586,9 +6703,11 @@ Host: cdr.register
 <td>Sep 2021</td>
 </tr>
 </tbody></table>
+<h2 id='informative-references'>Informative References</h2><pre class="highlight diff tab-diff"><code>Ordered the informative references table alphabetically.</p>
 
-<h2 id='informative-references'>Informative References</h2>
-
+<p>Added [E.164].
+Added [RFC3966].
+</code></pre>
 <table><thead>
 <tr>
 <th><strong>Reference</strong></th>
@@ -6627,7 +6746,7 @@ Host: cdr.register
 <td><a id="X.1254"></a><strong>[X.1254]</strong></td>
 <td>X.1254 - Entity authentication assurance framework: <a href="https://www.itu.int/rec/T-REC-X1254-201209-I/en">https://www.itu.int/rec/T-REC-X1254-201209-I/en</a></td>
 </tr>
-</tbody></table>
+</tbody></table></p>
 <h1 id='dcr-apis'>DCR APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.</p>
 
@@ -7774,10 +7893,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>unapproved_software_statement</td>
 </tr>
 </tbody></table></p>
-<h1 id='register-apis'>Register APIs</h1>
+<h1 id='register-apis'>Register APIs</h1><pre class="highlight diff tab-diff"><code>The statement:
+<span class="gd">- This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
+</span>changed to:
+<span class="gi">+ This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
+</span></code></pre>
 <p>This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
-
+<pre class="highlight diff tab-diff"><code>The phrase:
+<span class="gd">- ...Data Recipient Software Productss are required...
+</span>corrected to:
+<span class="gi">+ ...Data Recipient Software Products are required...
+</span></code></pre>
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -7789,7 +7916,16 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <tr><td><a href='./includes/swagger/cds_register.json'>Register Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_register.yaml'>Register Swagger (YAML)</a></td></tr>
 </table></p>
-
+<pre class="highlight diff tab-diff"><code>The following table row:
+<span class="gd">- | Get Data Recipient Software Statement Assertion | Data Recipient Brand or Software Product | Get SSA for a Software Product to be used in [Dynamic Client Registration](#dynamic-client-registration) | &lt;i class="icon-check"&gt;&lt;/i&gt; | | &lt;i class="icon-check"&gt;&lt;/i&gt; |
+</span>replaced with:
+<span class="gi">+ | Get Software Statement Assertion | Data Recipient Brand or Software Product | Get SSA for a Software Product to be used in [Dynamic Client Registration](#dynamic-client-registration) | &lt;i class="icon-check"&gt;&lt;/i&gt; | | &lt;i class="icon-check"&gt;&lt;/i&gt; |
+</span></code></pre><pre class="highlight diff tab-diff"><code>The following table row:
+<span class="gd">- | Get Data Recipient Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | &lt;i class="icon-check"&gt;&lt;/i&gt; | |
+</span>replaced with:
+<span class="gi">+ | Get Data Holder Statuses | Data Recipient | Data Holder Statuses to check validity of Data Holder | | &lt;i class="icon-check"&gt;&lt;/i&gt; | |
++ | Get Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | &lt;i class="icon-check"&gt;&lt;/i&gt; | |
+</span></code></pre>
 <table><thead>
 <tr>
 <th>API</th>
@@ -7881,7 +8017,96 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <td>https://secure.api.cdr.gov.au</td>
 </tr>
 </tbody></table>
+<pre class="highlight diff tab-diff"><code>
+Below are the changes to the Register APIs section of the
+standards.
 
+
+Added `/cdr-register/v1` as a prefix to paths for participant endpoints.
+
+
+Modified the description of the `RegisterDataHolderAuth` object from:
+<span class="gd">- Provides details of authorisation endpoints for Data Holders
+</span>to:
+<span class="gi">+ Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication
+</span>
+
+Modified the description of the `jwksEndpoint` field from:
+<span class="gd">- JWKS endpoint for private_key_jwt client authentication with Data Recipient
+</span>to:
+<span class="gi">+ JWKS endpoint used for authentication by the Data Holder with the Data Recipient
+</span>
+
+In the `ResponseOpenIDProviderConfigMetadata` model changed
+field name from:
+<span class="gd">- request_object_signing_alg_values_supported
+</span>to:
+<span class="gi">+ token_endpoint_auth_signing_alg_values_supported
+</span>The description of this field changed from:
+<span class="gd">- JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for Request Objects.
+</span>to:
+<span class="gi">+ JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT [JWT] used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method
+</span>
+
+Added the new endpoint `Get Data Holder Statuses`.
+
+
+Bumped `Get Software Statement Assertion (SSA)` from v2 to v3. v3 includes:
+  Aligned payloads to standard CDR structure
+  Support for multiple industries
+  Removal of the `x-v` header
+  Uplift of error structure to latest CDR error structures
+  Additional support scope: `cdr-register:read`
+
+
+Bumped `Get Software Products Statuses` from v1 to v2. v2 includes:
+  Aligned payloads to standard CDR structure
+  Support for multiple industries
+  Addition of the `x-min-v` request header
+  Addition of the `If-None-Match` request header
+  Addition of the `Etag` response header
+  Support for HTTP response 304
+  Uplift of error structure to latest CDR error structures
+
+
+Bumped `Get Data Recipient Statuses` from v1 to v2. v2 includes:
+  Aligned payloads to standard CDR structure
+  Support for multiple industries
+  Addition of the `x-min-v` request header
+  Addition of the `If-None-Match` request header
+  Addition of the `Etag` response header
+  Support for HTTP response 304
+  Uplift of error structure to latest CDR error structures
+
+
+Bumped `Get Data Recipients` from v2 to v3. v3 includes:
+  Aligned payloads to standard CDR structure
+  Support for multiple industries
+  Addition of the `x-min-v` request header
+  Addition of the `If-None-Match` request header
+  Addition of the `Etag` response header
+  Support for HTTP response 304
+  Uplift of error structure to latest CDR error structures
+
+
+In the `SoftwareProductStatus` model changed the name of
+the `softwareProductStatus` field to `status`.
+
+
+In the `DataRecipientsStatusList` model changed the name of
+the `dataRecipientId` to `legalEntityId`.
+
+
+In the `DataRecipientsStatusList` model changed the name of
+the `dataRecipientStatus` to `status`.
+
+
+In the `RegisterDataRecipient` model removed the 'industry' field.
+
+
+In the `RegisterDataRecipient` model added the 'accreditationLevel'
+field.
+</code></pre>
 <h2 id='get-openid-provider-config'>Get OpenId Provider Config</h2>
 
 <p><a id="opIdGetOpenIdProviderConfig"></a></p>
@@ -8120,6 +8345,8 @@ x-v: string
 
 <p>Allows Data Recipients to discover data holder brands available in the CDR ecosystem.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holders-v1.html">v1</a></p>
+
 <h3 id='endpoint-version-3'>Endpoint Version</h3>
 
 <table><thead>
@@ -8130,7 +8357,7 @@ x-v: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -8200,6 +8427,18 @@ x-v: string
 <tr>
 <td>industry</td>
 <td>banking</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>telco</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>all</td>
 </tr>
 </tbody></table>
 
@@ -8319,7 +8558,8 @@ x-v: string
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read</a>
+<a href="#authorisation-scopes">cdr-register:bank:read,
+cdr-register:read</a>
 </aside></p>
 
 <h2 id='get-software-statement-assertion-ssa'>Get Software Statement Assertion (SSA)</h2>
@@ -8564,7 +8804,9 @@ If-None-Match: string
 
 <p><code>GET /cdr-register/v1/{industry}/data-holders/status</code></p>
 
-<p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register</p>
+<p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. </p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holder-statuses-v1.html">v1</a></p>
 
 <h3 id='endpoint-version-5'>Endpoint Version</h3>
 
@@ -8576,7 +8818,7 @@ If-None-Match: string
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -9825,7 +10067,7 @@ This operation does not require authentication
 <td>industry</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The industry the Data Holder brand belongs to (Banking, etc)</td>
+<td>The industry the participant is retrieving data for (Banking, etc)</td>
 </tr>
 <tr>
 <td>logoUri</td>
@@ -9874,6 +10116,18 @@ This operation does not require authentication
 <tr>
 <td>industry</td>
 <td>banking</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>telco</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>all</td>
 </tr>
 <tr>
 <td>status</td>
@@ -9955,7 +10209,7 @@ This operation does not require authentication
 <td>legalEntityId</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Unique id of the Data Holdert Legal Entity issued by the CDR Register.</td>
+<td>Unique id of the Data Holder Legal Entity issued by the CDR Register.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -11110,7 +11364,8 @@ This operation does not require authentication
 </tbody></table>
 <h2 id='openid-connect-end-user-data'>OpenID Connect End-User Data</h2>
 <p>These scopes are used to access <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">OpenID Connect</a> scopes and individually requested claims of the authenticated End-User.</p>
-
+<pre class="highlight diff tab-diff"><code>Added the Profile Data scope
+</code></pre>
 <table><thead>
 <tr>
 <th>Scope Name</th>
@@ -11126,7 +11381,11 @@ This operation does not require authentication
 </tbody></table>
 <h2 id='cdr-data'>CDR Data</h2>
 <p>These scopes are used to access authenticated resource endpoints that can be used to obtain CDR Data.</p>
-
+<pre class="highlight diff tab-diff"><code>Replaced the table row:
+<span class="gd">- **Energy Concession &amp; Hardship Data** | energy:accounts.concessions:read | The scope would allow the third party to access the details of any concessions or hardship arrangement data for a customer’s energy account.
+</span>with:
+<span class="gi">+ **Energy Concession Data** | energy:accounts.concessions:read | The scope would allow the third party to access the details of any concessions for a customer’s energy account.
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Scope Name</th>
@@ -11217,7 +11476,13 @@ This operation does not require authentication
 </tbody></table>
 <h2 id='admin-amp-registration'>Admin &amp; Registration</h2>
 <p>The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.</p>
-
+<pre class="highlight diff tab-diff"><code>The following table row:
+<span class="gd">- **Bank Data Holders List** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to Data Holder metadata held by the Register.
+</span>replaced with:
+<span class="gi">+ **Bank Participant Data** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to participant metadata in the banking sector, held by the CDR Register.
+</span></code></pre><pre class="highlight diff tab-diff"><code>The following table row added:
+<span class="gi">+ **Participant Data** | cdr-register:read | This scope would allow Data Recipients and Data Holders access to participant metadata held by the CDR Register.
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Scope Name</th>
@@ -11267,6 +11532,10 @@ This operation does not require authentication
 
 <p>In the following definition of NFRs specific terms have the following meanings:</p>
 
+<pre class="highlight diff tab-diff"><code>Replaced the definition `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
+
 <ul>
 <li><strong>Data Recipient Software Product</strong>: For the purposes of these NFRs a Data Recipient Software Product is defined, inline with the definition given in the <a href="#cdr-federation">CDR Federation</a>, as a configured application presented in the register meta data.  This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
 <li><strong>Shared Responsibility Data Request</strong>: A request made to a secondary data holder by a Data Holder for designated data to fulfil a Consumer Data Request made by a Data Recipient Software Product.</li>
@@ -11303,6 +11572,10 @@ This operation does not require authentication
 <li>Published to Data Recipient Software Products with at least one week lead time for normal outages,</li>
 <li>May occur without notification if the change is to resolve a critical service or security issue.</li>
 </ul>
+
+<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request.  This will not be taken to mean that the data holder is unavailable.</p>
 
@@ -11455,10 +11728,23 @@ This operation does not require authentication
 
 <p>For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance end points should be the same as the balance presented through the mobile application.</p>
 
+<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
+
 <p>To be able to manage network efficiency using normal mechanisms, a data holder making Shared Responsibility Data Requests may cache the results from the secondary data holder for a short period of time to accommodate repeated, duplicate, calls from the Data Recipient Software Product.  Any such cache should be short lived.</p>
 
-<h2 id='data-quality'>Data Quality</h2>
-
+<h2 id='data-quality'>Data Quality</h2><pre class="highlight diff tab-diff"><code>Modified the following statements:
+<span class="gd">- Data holders are required to take reasonable steps to ensure that CDR data, having regard to the purpose for which it is held, is accurate and up to date.
+-
+- A data holder is required to be able to demonstrate that reasonable steps to maintain data quality are being undertaken.
+</span>to:
+<span class="gi">+ If a Data Holder of CDR data is required or authorised under the Consumer Data Rules to disclose product data, the Data Holder must take reasonable steps to ensure that the product data is, having regard to the purpose for which it is held, accurate, up to date and complete.
++
++ Data Holders are required to be able to demonstrate that reasonable steps to maintain data quality of product data are being undertaken.
++
++ Note: For the data quality requirements that apply to CDR data for which there are one or more CDR consumers, see Privacy Safeguard 11 (section 56EN of the Competition and Consumer Act 2010). There are requirements in Privacy Safeguard 11 for both Data Holders and Data Recipients. See [Chapter 11 (Privacy Safeguard 11)](https://www.oaic.gov.au/consumer-data-right/cdr-privacy-safeguard-guidelines/chapter-11-privacy-safeguard-11-quality-of-cdr-data/) of the OAIC’s CDR Privacy Safeguard Guidelines for further information.
+</span></code></pre>
 <p>If a Data Holder of CDR data is required or authorised under the Consumer Data Rules to disclose product data, the Data Holder must take reasonable steps to ensure that the product data is, having regard to the purpose for which it is held, accurate, up to date and complete.</p>
 
 <p>Data Holders are required to be able to demonstrate that reasonable steps to maintain data quality of product data are being undertaken.</p>
@@ -11483,7 +11769,75 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking Swagger (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>Below are the changes to the Banking APIs section of the
+standards.
 
+
+Bumped the version of the `Get Account Detail` endpoint (and associated
+models) from v1 to v2.
+
+
+Made the `loanEndDate`, `nextInstalmentDate` and `repaymentFrequency`
+fields of the `BankingLoanAccountV2` model optional.
+
+
+Bumped the version of the `Get Payees` endpoint (and associated
+models) from v1 to v2.
+
+
+Bumped the version of the `Get Payee Detail` endpoint (and associated
+models) from v1 to v2.
+
+
+Add the following enum value to the `type` query parameter for
+the `Get Payees` endpoint:
+<span class="gi">+ DIGITAL_WALLET
+</span>
+
+Modified the description of the `type` field in the `BankingPayeeV2` model:
+<span class="gd">- The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY
+</span>to:
+<span class="gi">+ The type of payee.&lt;br/&gt;DOMESTIC means a registered payee for domestic payments including NPP. &lt;br/&gt;INTERNATIONAL means a registered payee for international payments. &lt;br/&gt;BILLER means a registered payee for BPAY. &lt;br/&gt;DIGITAL_WALLET means a registered payee for a bank's digital wallet
+</span>Also addition the following enum value to tye `type` field:
+<span class="gi">+ DIGITAL_WALLET
+</span>
+
+Add the following enum value to the `payeeUType` field in \
+the `BankingPayeeDetailV2` model:
+<span class="gi">+ digitalWallet
+</span>
+
+Added the `digitalWallet` field to the `BankingPayeeDetailV2` model.
+
+
+Modified the `BankingProductV3` model to `BankingProductV4` and
+amended the `additionalInformation` object as follows:
+  Add the `additionalOverviewUris` array
+  Add the `additionalTermsUris` array
+  Add the `additionalEligibilityUris` array
+  Add the `additionalFeesAndPricingUris` array
+  Add the `additionalBundleUris` array
+
+
+Modified the description of the `x-fapi-auth-date` request header from:
+<span class="gd">- The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+</span>to:
+<span class="gi">+ The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
+</span>
+
+Updated the `BankingProductFeature` model to `BankingProductFeatureV2`
+and added the following enum values:
+<span class="gi">+ CASHBACK_OFFER
++ EXTRA_REPAYMENTS
++ FRAUD_PROTECTION
++ GUARANTOR
++ INSTALMENT_PLAN
++ RELATIONSHIP_MANAGEMENT
+</span>
+
+Made the `x-fapi-auth-date` and `x-cds-client-headers` request headers conditional.
+
+</code></pre>
 <h2 id='get-accounts'>Get Accounts</h2>
 
 <p><a id="opIdlistAccounts"></a></p>
@@ -23179,6 +23533,15 @@ This operation does not require authentication
 
 <p>Description of the usage of the featureType field as it applies to products.</p>
 
+<pre class="highlight diff tab-diff"><code>Added table rows for the following new values:
+<span class="gi">+ CASHBACK_OFFER
++ EXTRA_REPAYMENTS
++ FRAUD_PROTECTION
++ GUARANTOR
++ INSTALMENT_PLAN
++ RELATIONSHIP_MANAGEMENT
+</span></code></pre>
+
 <table><thead>
 <tr>
 <th>Value</th>
@@ -23766,12 +24129,99 @@ This operation does not require authentication
 </tbody></table>
 <h1 id='energy-apis'>Energy APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Energy endpoints.</p>
-
+<pre class="highlight diff tab-diff"><code>Removed the statement of non-binding for energy
+</code></pre>
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy Swagger (YAML)</a></td></tr>
 </table>
+<pre class="highlight diff tab-diff"><code>
+Below are the changes to the Energy APIs section of the
+standards.
 
+The description for the `EnergyPlanControlledLoad` model
+was changed from:
+<span class="gd">- Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
+</span>to:
+<span class="gi">+ Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD
+</span>
+
+The title of the bulk balances API changed from:
+<span class="gd">- Get Bulk Balances (Energy)
+</span>to:
+<span class="gi">+ Get Bulk Balances for Energy
+</span>
+
+The enum values for the `tariffUType` field in the
+`EnergyPlanSolarFeedInTariff` model changed from:
+<span class="gd">- GOVERNMENT
+- RETAILER
+</span>to:
+<span class="gi">+ singleTariff
++ timeVaryingTariffs
+</span>
+
+Made the `dailySupplyCharges` in the `EnergyPlanTariffPeriod` model
+optional rather than mandatory.
+
+
+Added the `type` enumeration field to the following:
+  `EnergyPlanTariffPeriod` model
+  `otherCharges` object in the `EnergyInvoiceGasUsageCharges` model
+  `otherCharges` object in the `EnergyInvoiceElectricityUsageCharges` model
+  `EnergyBillingOtherTransaction` model
+The `type` field has the following enumeration values;
+<span class="gi">+ ENVIRONMENTAL
++ REGULATED
++ NETWORK
++ METERING
++ RETAIL_SERVICE
++ RCTI
++ OTHER
+</span>
+
+Added the `measureUnit` enumeration field to the following:
+  `singleRate` object in the `EnergyPlanTariffPeriod` model
+  `timeOfUseRates` object in the `EnergyPlanTariffPeriod` model
+  `demandCharges` object in the `EnergyPlanTariffPeriod` model
+  `EnergyBillingUsageTransaction` model
+The `measureUnit` field has the following enumeration values;
+<span class="gi">+ KVA
++ KVAR
++ KVARH
++ KW
++ DAYS
++ METER
++ MONTH
+</span>
+
+Addition of `startDate` and `endDate` fields to the
+`EnergyBillingOtherTransaction` model.
+
+
+Modified the description of the `dailySupplyCharges` field from:
+<span class="gd">- The amount of access charge for the tariff period, in cents per day exclusive of GST.
+</span>to:
+<span class="gi">+ The amount of access charge for the tariff period, in dollars per day exclusive of GST.
+</span>
+
+Modified the description of the `generalUnitPrice` field from:
+<span class="gd">- The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’
+</span>to:
+<span class="gi">+ The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’
+</span>
+
+Made the `x-cds-client-headers` and `x-fapi-auth-date` headers conditional.
+
+Added additional errors for 404 status code:
+  urn:au-cds:error:cds-energy:Authorisation/InvalidEnergyAccount
+  urn:au-cds:error:cds-energy:Authorisation/UnavailableEnergyAccount
+  urn:au-cds:error:cds-energy:Authorisation/InvalidServicePoint
+  urn:au-cds:error:cds-energy:Authorisation/UnavailableServicePoint
+
+Removed references to hardship in descriptions.
+
+</code></pre>
 <h2 id='get-generic-plans'>Get Generic Plans</h2>
 
 <p><a id="opIdlistPlans"></a></p>
@@ -39412,7 +39862,35 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr><td><a href='./includes/swagger/cds_common.json'>Common Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common Swagger (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>Below are the changes to the Common APIs section of the
+standards.
 
+
+Bumped the version of the `Get Customer Detail` endpoint from v1 to v2.
+
+
+The description of the 'physicalAddresses' array in both the
+`CommonPersonDetail` model and the `CommonOrganisationDetail` model
+changed from:
+<span class="gd">- Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail
+</span>to:
+<span class="gi">+ Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail
+</span>
+
+`CommonPersonDetail` model updated to `CommonPersonDetailV2`.
+
+
+`CommonOrganisationDetail` model updated to `CommonOrganisationDetailV2`.
+
+Modified the description of the `x-fapi-auth-date` request header from:
+<span class="gd">- The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.
+</span>to:
+<span class="gi">+ The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
+</span>
+
+Made the `x-fapi-auth-date` and `x-cds-client-headers` request headers conditional.
+
+</code></pre>
 <h2 id='get-customer'>Get Customer</h2>
 
 <p><a id="opIdgetCustomer"></a></p>
@@ -42012,7 +42490,16 @@ This operation does not require authentication
 <tr><td><a href='./includes/swagger/cds_admin.json'>Admin Swagger (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_admin.yaml'>Admin Swagger (YAML)</a></td></tr>
 </table></p>
+<pre class="highlight diff tab-diff"><code>
+Below are the changes to the Admin APIs section of the
+standards.
 
+
+The phrase `secondary responsibility requests` has been
+replaced with `Shared Responsibility Data Requests` in
+field descriptions.
+
+</code></pre>
 <h2 id='metadata-update'>Metadata Update</h2>
 
 <p><a id="opIdmetadataUpdate"></a></p>
@@ -43722,13 +44209,18 @@ This operation may only be called by the CDR Register
 <p><em>None</em></p></p>
 <h1 style="display:none"></h1>
 <h1 id='shared-responsibility'>Shared Responsibility</h1>
+<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
+
 <p>This section outlines standards related to Shared Responsibility Data Requests.  These standards are applicable to CDR data clusters that are designated to be provided by a Secondary Data Holder via a CDR request to a Data Holder.</p>
 
 <p>These standards define the information security mechanisms by which a Data Holder will connect with a Secondary Data Holder to fulfil a valid CDR request and the endpoints that the Secondary Data Holder will expose to fulfil such a request.</p>
 
-<h2 id='energy'>Energy</h2>
-
-<p>For the energy sector requests for the following data clusters are Shared Responsibility Data Requests for which the Australian Energy Market Operator (AEMO) is the single designated secondary data holder:</p>
+<p><h2 id='energy'>Energy</h2><pre class="highlight diff tab-diff"><code>Replaced the phrase <code>secondary responsibility requests</code> with
+<code>Shared Responsibility Data Requests</code>.
+</code></pre>
+<p>For the energy sector requests for the following data clusters are Shared Responsibility Data Requests for which the Australian Energy Market Operator (AEMO) is the single designated secondary data holder:</p></p>
 
 <ul>
 <li>NMI Standard Data</li>
@@ -43748,6 +44240,10 @@ RESTful APIs. This is done via the platform known as the e-Hub.</p>
 and the management of change. Documentation includes a developer portal, API documentation
 and a security profile. More information is published by AEMO.</p>
 
+<pre class="highlight diff tab-diff"><code>Replaced the phrase `secondary responsibility requests` with
+`Shared Responsibility Data Requests`.
+</code></pre>
+
 <p>The e-Hub platform and associated mechanisms (<strong>[EHUB]</strong>) will be considered a normative standard for the requesting of data from AEMO to fulfil Shared Responsibility Data Requests.</p>
 
 <h4 id='normative-references'>Normative References</h4>
@@ -43766,9 +44262,10 @@ and a security profile. More information is published by AEMO.</p>
 </tr>
 </tbody></table>
 
-<h3 id='aemo-endpoints'>AEMO Endpoints</h3>
-
-<p>AEMO will expose the following end points, to retailers only, to service Shared Responsibility Data Requests:</p>
+<p><h3 id='aemo-endpoints'>AEMO Endpoints</h3><pre class="highlight diff tab-diff"><code>Replaced the phrase <code>secondary responsibility requests</code> with
+<code>Shared Responsibility Data Requests</code>.
+</code></pre>
+<p>AEMO will expose the following end points, to retailers only, to service Shared Responsibility Data Requests:</p></p>
 
 <ul>
 <li><strong>Get Service Points</strong>: Obtain high level details for a list of service points</li>

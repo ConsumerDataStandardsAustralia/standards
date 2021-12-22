@@ -4,6 +4,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Releases Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.14.0/'>29/10/2021</a>|1.14.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.14.0/'>Inclusion of full candidate level standards for the energy sector</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.13.0/'>22/10/2021</a>|1.13.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.13.0/'>Changes arising from Decisions 206 (Register Standards), 191 and 192</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.12.0/'>22/10/2021</a>|1.12.0|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.12.0/'>Inclusion of a series of decisions related to energy and non-functional requirements</a>|
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.11.1/'>05/10/2021</a>|1.11.1|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.11.1/'>Changes arising from Decision Proposals 193 and 208.</a> See [Decision 193](https://github.com/ConsumerDataStandardsAustralia/standards/issues/193) and [Decision 208](https://github.com/ConsumerDataStandardsAustralia/standards/issues/208) for details |

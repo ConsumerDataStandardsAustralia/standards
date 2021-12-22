@@ -206,10 +206,12 @@ $.ajax({
 
 Allows Data Recipients to discover data holder brands available in the CDR ecosystem.
 
+Obsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)
+
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-data-holder-brands-parameters">Parameters</h3>
 
@@ -227,6 +229,9 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 |Parameter|Value|
 |---|---|
 |industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
 
 > Example responses
 
@@ -304,7 +309,8 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read</a>
+<a href="#authorisation-scopes">cdr-register:bank:read,
+cdr-register:read</a>
 </aside>
 
     
@@ -449,12 +455,14 @@ $.ajax({
 
 `GET /cdr-register/v1/{industry}/data-holders/status`
 
-Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
+Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. 
+
+Obsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="get-data-holder-statuses-parameters">Parameters</h3>
 
@@ -1116,7 +1124,7 @@ This operation does not require authentication
 |---|---|---|---|
 |dataHolderBrandId|string|mandatory|Unique id of the Data Holder Brand issued by the CDR Register|
 |brandName|string|mandatory|The name of Data Holder Brand|
-|industry|string|mandatory|The industry the Data Holder brand belongs to (Banking, etc)|
+|industry|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |logoUri|[URIString](#common-field-types)|mandatory|Brand logo URI|
 |legalEntity|[LegalEntityDetail](#schemacdr-participant-discovery-apilegalentitydetail)|mandatory|The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)|
 |status|string|mandatory|none|
@@ -1129,6 +1137,9 @@ This operation does not require authentication
 |Property|Value|
 |---|---|
 |industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
 |status|ACTIVE|
 |status|INACTIVE|
 |status|REMOVED|
@@ -1177,7 +1188,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|legalEntityId|string|mandatory|Unique id of the Data Holdert Legal Entity issued by the CDR Register.|
+|legalEntityId|string|mandatory|Unique id of the Data Holder Legal Entity issued by the CDR Register.|
 |status|string|mandatory|Data Holder status in the CDR Register|
 
 #### Enumerated Values

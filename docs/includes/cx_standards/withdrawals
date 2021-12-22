@@ -1,4 +1,8 @@
-<h2 id='withdrawal-standards'>Withdrawal Standards</h2>
+<h2 id='withdrawal-standards'>Withdrawal Standards</h2><pre class="highlight diff tab-diff"><code>
+The following table rows were added:
+<span class="gi">+ |**Withdrawal:**&lt;br&gt;Joint accounts| As part of the process of removing a joint account approval or changing to a more restrictive disclosure option, the data holder **MUST** advise the consumer:&lt;br/&gt;&lt;ol&gt;&lt;li&gt;that doing this may impact existing services, including arrangements initiated by the other account holder(s)&lt;/li&gt;&lt;li&gt;when removing an approval:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;that even though sharing for this service has now stopped, the other account holder(s) can still create new data sharing arrangements for the joint account&lt;/li&gt;&lt;li&gt;how to change their disclosure option&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;**Note:** The exact phrasing of the withdrawal message is at the discretion of the data holder. This standard does not affect data holders’ other notification obligations, including under rule 4A.7(3).&lt;/p&gt; |
+</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Area</th>

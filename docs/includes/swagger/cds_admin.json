@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
-    "version" : "1.14.0",
+    "version" : "1.15.0",
     "title" : "CDR Admin API",
     "contact" : {
       "name" : "Consumer Data Standards Administration End Points",

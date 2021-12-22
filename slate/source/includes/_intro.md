@@ -46,8 +46,6 @@ The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
-|[Banking Term Deposit Account Types](#product-amp-account-components) | Data Holders who support maturity instructions for term deposits whereby funds are held in a facility or similar mechanism upon maturity must update relevant product data no later than July 1st 2021 | July 1st 2021 |
-|[Get Customer V1](#get-customer) | Data Holders providing valid ANZSIC and ANZSCO codes whose version is not ANZSIC_1292.0_2006_V2.0 and ANZSCO_1220.0_2013_V1.2 respectively must supply the appropriate version enumeration no later than July 1st 2021. The version codes allow data holders to reference the applicable document versions for the codes they hold. | July 1st 2021 |
 |[Standard Error Codes](#error-codes) | Data Recipients and Data Holders MAY implement the standard error codes from July 1st 2021 | July 1st 2021 |
 |[Get Metrics V2](#get-metrics)|Version 2 of this end point must be made available by affected data holders by the end of July 2021|July 31st 2021|
 |[Get Metrics V1](#get-metrics)|Data holders may obsolete version 1 of this end point from October 31st 2021. Data Holders who go live with consumer data sharing from July 1st 2021 MAY go live with only Get Metrics v2 support. The CDR Register must upgrade their implementation to use version 2 by this time|October 31st 2021|

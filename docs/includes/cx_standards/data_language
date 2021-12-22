@@ -23,7 +23,8 @@
 </tbody></table>
 
 <p><br/></p>
-<h2 id='profile-scope'>Profile Scope</h2>
+<h2 id='profile-scope'>Profile Scope</h2><pre class="highlight diff tab-diff"><code>Added the Profile Scope language section
+</code></pre>
 <p>In accordance with <strong>[OIDC]</strong> <a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">section 5.4</a> and <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">section 5.5</a>, this language refers to the <strong>[OIDC]</strong> profile scope and request of individual claims for the authenticated End-User.</p>
 
 <table><thead>
@@ -172,7 +173,8 @@
 </tbody></table>
 
 <p><br/></p>
-<h2 id='energy-language'>Energy Language</h2><h3 id='individual-consumer-2'>Individual Consumer</h3>
+<h2 id='energy-language'>Energy Language</h2><pre class="highlight diff tab-diff"><code>Removed the statement of non-binding for energy
+</code></pre><h3 id='individual-consumer-2'>Individual Consumer</h3>
 <table><thead>
 <tr>
 <th>Data cluster language</th>
