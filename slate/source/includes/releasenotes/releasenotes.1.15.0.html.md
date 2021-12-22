@@ -39,6 +39,7 @@ This release minor errata and documentation fixes.
 | Energy schema | Updated EnergyPlanSolarFeedInTariff.tariffUType with correct ENUM values | [Energy Schema](../../#energy-apis) |
 | Energy schema | Updated EnergyBillingUsageTransaction and EnergyBillingOtherTransaction to accomodate C&I customers | [Energy Schema](../../#energy-apis) |
 | Energy schema | Updated Energy controlledLoad attribute description and Energy bulk balance endpoint menu text for clarity and consistency | [Energy Schema](../../#energy-apis) |
+| Energy schema | Update the list of mandatory attributes in EnergyInvoice schema with correct values and update swagger version to 1.15.0 | [Energy Schema](../../#energy-apis) |
 | Extended Banking Product feature support | Changes to accomodate additional enumerated product features | [Get Account Details](../../#get-account-detail), and <br/>[Get Product Details](../../#get-product-detail) |
 | Digital Wallet Payees | Changes to accomodate digital wallet payees | [Get Payees](../../#get-payees), and<br/>[Get Payee Detail](../../#get-payee-detail) |
 | Get Customer Detail v2 | Changes to accomodate customer detail without a valid physical address for individual and non-individual consumers | [Get Customer Detail](../../#get-customer-detail)
@@ -47,6 +48,7 @@ This release minor errata and documentation fixes.
 
 |Change|Description|Link|
 |------|-----------|----|
+| Adoption of FAPI 1.0 Final | FAPI 1.0 adoption is introduced across three phases in accordance with Decision 209:<ul><li>Phase 1: Voluntary FAPI 1.0 support & hygiene enhancements</li><li>Phase 2: FAPI 1.0 Final (Baseline & Advanced)</li><li>Phase 3: Retire Hybrid Flow</li></ul> | [Security Profile](../../#security-profile)|
 | Authorisation Scopes | Added scope `cdr-register:read` to accommodate authenticated Register calls for participants outside of the banking sector | [Authorisation Scopes](../../#authorisation-scopes) |
 | Self-Signed JWT Audience | An immediate change to re-instate interoperability for Data Holders calling the Data Recipient's CDR Arrangement Revocation endpoint to revoke consent has been introduced. A phasing out of the multiple audience value support in favour of only the "resource path" for the end point being accessed is also introduced. | [Self-Signed JWT Client Authentication](../../#self-signed-jwt-client-authentication) |
 | Data Recipient CDR Arrangement Endpoint | Armoured the Data Recipient hosted CDR arrangement endpoint by requiring the Data Holder to present the `cdr_arrangement_id` in a signed JWT  |  [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)|

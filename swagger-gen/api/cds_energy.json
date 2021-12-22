@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.14.0"
+		"version": "1.15.0"
 	},
 	"components": {
 		"schemas": {
@@ -2893,11 +2893,8 @@
                     "accountId",
                     "invoiceNumber",
                     "issueDate",
-                    "amountDue",
                     "balanceAtIssue",
                     "servicePoints",
-                    "totalAccountCharges",
-                    "totalAccountDiscounts",
                     "paymentStatus"
                 ],
                 "x-conditional": [

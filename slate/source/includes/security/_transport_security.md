@@ -24,7 +24,7 @@ OAUTB SHALL NOT be supported due to a lack industry support.
 **[MTLS]** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess) of **[MTLS]**.
 
 ### Ciphers
-Only the following cipher suites SHALL be permitted in accordance with [section 8.5](https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations) of **[FAPI-RW]**:
+Only the following cipher suites SHALL be permitted in accordance with [section 8.5](https://openid.net/specs/openid-financial-api-part-2.html#tls-considerations) of **[FAPI-RW-Draft]**:
 
 -   TLS\_DHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256
 -   TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256

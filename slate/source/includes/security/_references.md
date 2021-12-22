@@ -3,19 +3,23 @@
 | **Reference**  | **Description**  | **Version** |
 | --- | --- | --- |
 | <a id="DCR"></a>**[DCR]**          | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591>                                                                                |Jul 2015
-| <a id="FAPI-R"></a>**[FAPI-R]**    | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1-ID2.html>                                                     |Draft-06
-| <a id="FAPI-RW"></a>**[FAPI-RW]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2-ID2.html>                                                |Draft-06
+| <a id="FAPI-R-Draft"></a>**[FAPI-R-Draft]**    | Financial-grade API - Part 1: Read Only API Security Profile: <https://openid.net/specs/openid-financial-api-part-1-ID2.html>                                                     |Draft-06
+| <a id="FAPI-RW-Draft"></a>**[FAPI-RW-Draft]**  | Financial-grade API - Part 2: Read and Write API Security Profile: <https://openid.net/specs/openid-financial-api-part-2-ID2.html>                                                |Draft-06
+| <a id="FAPI-1.0-Baseline"></a>**[FAPI-1.0-Baseline]**  | Financial-grade API Security Profile 1.0 - Part 1: Baseline: <https://openid.net/specs/openid-financial-api-part-1-1_0.html> | March 2021
+| <a id="FAPI-1.0-Advanced"></a>**[FAPI-1.0-Advanced]**  | Financial-grade API Security Profile 1.0 - Part 2: Advanced: <https://openid.net/specs/openid-financial-api-part-2-1_0.html> | March 2021
+| <a id="JARM"></a>**[JARM]**        | Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM): <https://bitbucket.org/openid/fapi/src/master/Financial_API_JWT_Secured_Authorization_Response_Mode.md>                                                                          |October 2020
 | <a id="JSON"></a>**[JSON]**        | The JavaScript Object Notation (JSON) Data Interchange Format: <https://tools.ietf.org/html/rfc8259>                                                                          |Dec 2017
 | <a id="JWA"></a>**[JWA]**          | JSON Web Algorithms (JWA): <https://tools.ietf.org/html/rfc7518>                                                                                                              |May 2015
-| <a id="JWK"></a>**[JWK]**          | JSON Web Key (JWK): <https://tools.ietf.org/html/rfc7517>                                                                                                                     |May 2015
-| <a id="JWT"></a>**[JWT]**          | JSON Web Token (JWT): <https://tools.ietf.org/html/rfc7519>                                                                                                                   |May 2015
-| <a id="JWS"></a>**[JWS]**          | JSON Web Signature (JWS): <https://tools.ietf.org/html/rfc7797>                                                                                                               |Feb 2016
 | <a id="JWE"></a>**[JWE]**          | JSON Web Encryption (JWE): <https://tools.ietf.org/html/rfc7516>                                                                                                              |May 2015
+| <a id="JWK"></a>**[JWK]**          | JSON Web Key (JWK): <https://tools.ietf.org/html/rfc7517>                                                                                                                     |May 2015
+| <a id="JWS"></a>**[JWS]**          | JSON Web Signature (JWS): <https://tools.ietf.org/html/rfc7797>                                                                                                               |Feb 2016
+| <a id="JWT"></a>**[JWT]**          | JSON Web Token (JWT): <https://tools.ietf.org/html/rfc7519>                                                                                                                   |May 2015
 | <a id="MTLS"></a>**[MTLS]**        | OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <https://tools.ietf.org/html/rfc8705>                                                         |Feb 2020
 | <a id="OAUTH2"></a>**[OAUTH2]**    | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                  |Oct 2012
 | <a id="OIDC"></a>**[OIDC]**        | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                    |Nov 2014
 | <a id="OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |Nov 2014
 | <a id="PAR"></a>**[PAR]**          | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/draft-ietf-oauth-par-01>                                                                                |Feb 2020
+| <a id="PKCE"></a>**[PKCE]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
 | <a id="TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework>                  |Apr 2019
 | <a id="RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |Mar 1997
 | <a id="RFC4627"></a>**[RFC4627]**  | The application/json Media Type for JavaScript Object Notation (JSON): <https://tools.ietf.org/html/rfc4627>        |October 2006
@@ -24,6 +28,8 @@
 | <a id="RFC7009"></a>**[RFC7009]**  | OAuth 2.0 Token Revocation: <https://tools.ietf.org/html/rfc7009>                                                                                                             |Aug 2013
 | <a id="RFC7523"></a>**[RFC7523]**  | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <https://tools.ietf.org/html/rfc7523>                                              |May 2015
 | <a id="RFC7662"></a>**[RFC7662]**  | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662>                                                                                                          |Oct 2015
+| <a id="RFC9126"></a>**[RFC9126]**          | OAuth 2.0 Pushed Authorization Requests: <OAuth 2.0 Pushed Authorization Requests>                                                                                |Sep 2021
+
 
 ## Informative References
 
