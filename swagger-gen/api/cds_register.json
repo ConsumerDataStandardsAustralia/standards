@@ -58,8 +58,8 @@
         ],
         "summary": "Get Data Holder Brands",
         "operationId": "GetDataHolderBrands",
-        "description": "Allows Data Recipients to discover data holder brands available in the CDR ecosystem.",
-        "x-version": "1",
+        "description": "Allows Data Recipients to discover data holder brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holders-v1.html)",
+        "x-version": "2",
         "consumes": [
           "application/json"
         ],
@@ -128,7 +128,8 @@
           }
         },
         "x-scopes": [
-          "cdr-register:bank:read"
+          "cdr-register:bank:read",
+          "cdr-register:read"
         ]
       }
     },
@@ -220,8 +221,8 @@
         ],
         "summary": "Get Data Holder Statuses",
         "operationId": "GetDataHolderStatuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
-        "x-version": "1",
+        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register. \n\nObsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html)",
+        "x-version": "2",
         "produces": [
           "application/json"
         ],
@@ -798,7 +799,7 @@
       "type": "object",
       "properties": {
         "legalEntityId": {
-          "description": "Unique id of the Data Holdert Legal Entity issued by the CDR Register.",
+          "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
           "type": "string",
           "maxLength": 36
         },
