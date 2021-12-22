@@ -69,6 +69,24 @@ The `measureUnit` field has the following enumeration values;
 + METER
 + MONTH
 
+
+Addition of `startDate` and `endDate` fields to the
+`EnergyBillingOtherTransaction` model.
+
+
+Modified the description of the `dailySupplyCharges` field from:
+- The amount of access charge for the tariff period, in cents per day exclusive of GST.
+to:
++ The amount of access charge for the tariff period, in dollars per day exclusive of GST.
+
+
+Modified the description of the `generalUnitPrice` field from:
+- The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’
+to:
++ The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’
+
+
+Made the `x-cds-client-headers` and `x-fapi-auth-date` headers conditional.
 ```
 
 <%= partial "includes/cds_energy.md" %>
