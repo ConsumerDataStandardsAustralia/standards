@@ -1308,7 +1308,7 @@
                         "dailySupplyCharges": {
                             "type": "string",
                             "x-cds-type": "AmountString",
-                            "description": "The amount of access charge for the tariff period, in cents per day exclusive of GST."
+                            "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
                         },
                         "rateBlockUType": {
                             "type": "string",
@@ -1335,7 +1335,7 @@
                                 "generalUnitPrice": {
                                     "type": "string",
                                     "x-cds-type": "AmountString",
-                                    "description": "The block rate (unit price) for any usage above the included fixed usage, in cents per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
+                                    "description": "The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
                                 },
                                 "rates": {
                                     "description": "Array of controlled load rates in order of usage volume",
@@ -3306,7 +3306,7 @@
                         "type": "number"
                     },
                     "amount": {
-                        "description": "The amount charged or credited (in cents) for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+                        "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
                         "type": "string",
                         "x-cds-type": "AmountString"
                     },
