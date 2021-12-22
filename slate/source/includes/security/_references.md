@@ -18,8 +18,8 @@
 | <a id="OAUTH2"></a>**[OAUTH2]**    | The OAuth 2.0 Authorization Framework: <https://tools.ietf.org/html/rfc6749>                                                                                                  |Oct 2012
 | <a id="OIDC"></a>**[OIDC]**        | OpenID Connect Core 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-core-1_0.html>                                                                    |Nov 2014
 | <a id="OIDD"></a>**[OIDD]**        | OpenID Connect Discovery 1.0 incorporating errata set 1: <http://openid.net/specs/openid-connect-discovery-1_0.html>                                                          |Nov 2014
-| <a id="PAR"></a>**[PAR]**          | OAuth 2.0 Pushed Authorization Requests: <OAuth 2.0 Pushed Authorization Requests>                                                                                |September 2021
-| <a id="PAR-Draft"></a>**[PAR-Draft]**          | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/draft-ietf-oauth-par-01>                                                                                |Feb 2020
+| <a id="RFC9126"></a>**[RFC9126]**          | OAuth 2.0 Pushed Authorization Requests: <OAuth 2.0 Pushed Authorization Requests>                                                                                |September 2021
+| <a id="PAR"></a>**[PAR]**          | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/draft-ietf-oauth-par-01>                                                                                |Feb 2020
 | <a id="PKCE"></a>**[PKCE]**        | Proof Key for Code Exchange by OAuth Public Clients: <https://datatracker.ietf.org/doc/html/rfc7636> | September 2015
 | <a id="TDIF"></a>**[TDIF]**        | Digital Transformation Agency - Trusted Digital Identity Framework <https://www.dta.gov.au/our-projects/digital-identity/trusted-digital-identity-framework>                  |Apr 2019
 | <a id="RFC2119"></a>**[RFC2119]**  | Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>                                                                                |Mar 1997
