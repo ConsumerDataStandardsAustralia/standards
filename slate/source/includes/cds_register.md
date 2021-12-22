@@ -7,8 +7,8 @@
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/.well-known/openid-configuration HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/.well-known/openid-configuration HTTP/1.1
+
 Accept: application/json
 
 ```
@@ -20,7 +20,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/.well-known/openid-configuration',
+  url: 'https://<register-base-url>/.well-known/openid-configuration',
   method: 'get',
 
   headers: headers,
@@ -100,8 +100,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/jwks HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/jwks HTTP/1.1
+
 Accept: application/json
 
 ```
@@ -113,7 +113,7 @@ var headers = {
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/jwks',
+  url: 'https://<register-base-url>/jwks',
   method: 'get',
 
   headers: headers,
@@ -174,10 +174,10 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/{industry}/data-holders/brands HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands HTTP/1.1
+
 Accept: application/json
-Authorization Endpoint (Register): string
+Authorization: string
 x-v: string
 
 ```
@@ -185,13 +185,13 @@ x-v: string
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization Endpoint (Register)':'string',
+  'Authorization':'string',
   'x-v':'string'
 
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/{industry}/data-holders/brands',
+  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands',
   method: 'get',
 
   headers: headers,
@@ -202,7 +202,7 @@ $.ajax({
 
 ```
 
-`GET /{industry}/data-holders/brands`
+`GET /cdr-register/v1/{industry}/data-holders/brands`
 
 Allows Data Recipients to discover data holder brands available in the CDR ecosystem.
 
@@ -219,8 +219,8 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 |updated-since|query|string(date-time)|optional|query filter returns data holder brands updated since the specified date-time|
 |page|query|integer(int32)|optional|the page number to return|
 |page-size|query|integer(int32)|optional|the number of records to return per page|
-|Authorization Endpoint (Register)|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
+|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -310,31 +310,29 @@ To perform this operation, you must be authenticated and authorised with the fol
     
   
 
-## Get Data Recipient Software Statement Assertion (SSA)
+## Get Software Statement Assertion (SSA)
 
 <a id="opIdGetSoftwareStatementAssertion"></a>
 
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
+
 Accept: application/json
-Authorization Endpoint (Register): string
-x-v: string
+Authorization: string
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization Endpoint (Register)':'string',
-  'x-v':'string'
+  'Authorization':'string'
 
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa',
+  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa',
   method: 'get',
 
   headers: headers,
@@ -345,30 +343,34 @@ $.ajax({
 
 ```
 
-`GET /{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa`
+`GET /cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa`
 
-Get a Software Statement Assertion (SSA) for a Data Recipient software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.
+Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.
+
+Obsolete versions: [v2](includes/obsolete/get-software-statement-assertion-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
-<h3 id="get-data-recipient-software-statement-assertion-(ssa)-parameters">Parameters</h3>
+<h3 id="get-software-statement-assertion-(ssa)-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |dataRecipientBrandId|path|string|mandatory|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register|
 |softwareProductId|path|string|mandatory|Unique id for the Accredited Data Recipient Software Product in the CDR Register|
-|Authorization Endpoint (Register)|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
+|Authorization|header|string|mandatory|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750).|
 
 #### Enumerated Values
 
 |Parameter|Value|
 |---|---|
 |industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
 
 > Example responses
 
@@ -378,16 +380,18 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
 "string"
 ```
 
-<h3 id="get-data-recipient-software-statement-assertion-(ssa)-responses">Responses</h3>
+> 400 Response
+
+<h3 id="get-software-statement-assertion-(ssa)-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|string|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid industry path parameter</br>Invalid SoftwareProductId|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA fields invalid or incomplete|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Invalid Software Product|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA validation failed|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
 
@@ -399,35 +403,40 @@ Get a Software Statement Assertion (SSA) for a Data Recipient software product o
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr-register:bank:read</a>
+<a href="#authorisation-scopes">cdr-register:bank:read,
+cdr-register:read</a>
 </aside>
 
     
   
 
-## Get Data Recipient Software Products Statuses
+## Get Data Holder Statuses
 
-<a id="opIdGetSoftwareProductsStatus"></a>
+<a id="opIdGetDataHolderStatuses"></a>
 
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/software-products/status HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status HTTP/1.1
+
 Accept: application/json
 x-v: string
+x-min-v: string
+If-None-Match: string
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string'
+  'x-v':'string',
+  'x-min-v':'string',
+  'If-None-Match':'string'
 
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/software-products/status',
+  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status',
   method: 'get',
 
   headers: headers,
@@ -438,27 +447,32 @@ $.ajax({
 
 ```
 
-`GET /{industry}/data-recipients/brands/software-products/status`
+`GET /cdr-register/v1/{industry}/data-holders/status`
 
-Endpoint used by participants to discover the statuses for software products from the CDR Register.
+Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
 
 ###Endpoint Version
 |   |  |
 |---|--|
 |Version|**1**
 
-<h3 id="get-data-recipient-software-products-statuses-parameters">Parameters</h3>
+<h3 id="get-data-holder-statuses-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
 
 |Parameter|Value|
 |---|---|
 |industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
 
 > Example responses
 
@@ -466,28 +480,37 @@ Endpoint used by participants to discover the statuses for software products fro
 
 ```json
 {
-  "softwareProducts": [
+  "data": [
     {
-      "softwareProductId": "string",
-      "softwareProductStatus": "ACTIVE"
+      "legalEntityId": "string",
+      "status": "ACTIVE"
     }
-  ]
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
-<h3 id="get-data-recipient-software-products-statuses-responses">Responses</h3>
+> 400 Response
+
+<h3 id="get-data-holder-statuses-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[SoftwareProductsStatusList](#schemacdr-participant-discovery-apisoftwareproductsstatuslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataHoldersStatusList](#schemacdr-participant-discovery-apidataholdersstatuslist)|
+|304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|Etag|string||Entity tag that uniquely represents the requested resource.|
+|304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
   
     <aside class="success">
@@ -496,29 +519,33 @@ This operation does not require authentication
 
   
 
-## Get Data Recipient Statuses
+## Get Software Products Statuses
 
-<a id="opIdGetDataRecipientsStatus"></a>
+<a id="opIdGetSoftwareProductsStatuses"></a>
 
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/status HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/software-products/status HTTP/1.1
+
 Accept: application/json
 x-v: string
+x-min-v: string
+If-None-Match: string
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string'
+  'x-v':'string',
+  'x-min-v':'string',
+  'If-None-Match':'string'
 
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/status',
+  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/brands/software-products/status',
   method: 'get',
 
   headers: headers,
@@ -529,27 +556,34 @@ $.ajax({
 
 ```
 
-`GET /{industry}/data-recipients/status`
+`GET /cdr-register/v1/{industry}/data-recipients/brands/software-products/status`
 
-Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.
+Endpoint used by participants to discover the statuses for software products from the CDR Register.
+
+Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
-<h3 id="get-data-recipient-statuses-parameters">Parameters</h3>
+<h3 id="get-software-products-statuses-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
 
 |Parameter|Value|
 |---|---|
 |industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
 
 > Example responses
 
@@ -557,28 +591,148 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 
 ```json
 {
-  "dataRecipients": [
+  "data": [
     {
-      "dataRecipientId": "string",
-      "dataRecipientStatus": "ACTIVE"
+      "softwareProductId": "string",
+      "status": "ACTIVE"
     }
-  ]
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
 
-<h3 id="get-data-recipient-statuses-responses">Responses</h3>
+> 400 Response
+
+<h3 id="get-software-products-statuses-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataRecipientsStatusList](#schemacdr-participant-discovery-apidatarecipientsstatuslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[SoftwareProductsStatusList](#schemacdr-participant-discovery-apisoftwareproductsstatuslist)|
+|304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|Etag|string||Entity tag that uniquely represents the requested resource.|
+|304|Etag|string||Entity tag that uniquely represents the requested resource.|
+
+  
+    <aside class="success">
+This operation does not require authentication
+</aside>
+
+  
+
+## Get Data Recipients Statuses
+
+<a id="opIdGetDataRecipientsStatuses"></a>
+
+> Code samples
+
+```http
+GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/status HTTP/1.1
+
+Accept: application/json
+x-v: string
+x-min-v: string
+If-None-Match: string
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'x-v':'string',
+  'x-min-v':'string',
+  'If-None-Match':'string'
+
+};
+
+$.ajax({
+  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients/status',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+`GET /cdr-register/v1/{industry}/data-recipients/status`
+
+Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.
+
+Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)
+
+###Endpoint Version
+|   |  |
+|---|--|
+|Version|**2**
+
+<h3 id="get-data-recipients-statuses-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "legalEntityId": "string",
+      "status": "ACTIVE"
+    }
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+```
+
+> 400 Response
+
+<h3 id="get-data-recipients-statuses-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[DataRecipientsStatusList](#schemacdr-participant-discovery-apidatarecipientsstatuslist)|
+|304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|Etag|string||Entity tag that uniquely represents the requested resource.|
+|304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
   
     <aside class="success">
@@ -594,22 +748,26 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients HTTP/1.1
-Host: register.cdr.gov.au
+GET https://<register-base-url>/cdr-register/v1/{industry}/data-recipients HTTP/1.1
+
 Accept: application/json
 x-v: string
+x-min-v: string
+If-None-Match: string
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'x-v':'string'
+  'x-v':'string',
+  'x-min-v':'string',
+  'If-None-Match':'string'
 
 };
 
 $.ajax({
-  url: 'https://register.cdr.gov.au/cdr-register/v1/{industry}/data-recipients',
+  url: 'https://<register-base-url>/cdr-register/v1/{industry}/data-recipients',
   method: 'get',
 
   headers: headers,
@@ -620,27 +778,34 @@ $.ajax({
 
 ```
 
-`GET /{industry}/data-recipients`
+`GET /cdr-register/v1/{industry}/data-recipients`
 
 Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.
+
+Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)
 
 ###Endpoint Version
 |   |  |
 |---|--|
-|Version|**2**
+|Version|**3**
 
 <h3 id="get-data-recipients-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|If-None-Match|header|string|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 #### Enumerated Values
 
 |Parameter|Value|
 |---|---|
 |industry|banking|
+|industry|energy|
+|industry|telco|
+|industry|all|
 
 > Example responses
 
@@ -653,7 +818,7 @@ Endpoint used by participants to discover data recipients and associated brands 
       "legalEntityId": "string",
       "legalEntityName": "string",
       "accreditationNumber": "string",
-      "industry": "banking",
+      "accreditationLevel": "UNRESTRICTED",
       "logoUri": "string",
       "dataRecipientBrands": [
         {
@@ -675,23 +840,32 @@ Endpoint used by participants to discover data recipients and associated brands 
       "status": "ACTIVE",
       "lastUpdated": "2019-08-24T14:15:22Z"
     }
-  ]
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 ```
+
+> 400 Response
 
 <h3 id="get-data-recipients-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseRegisterDataRecipientList](#schemacdr-participant-discovery-apiresponseregisterdatarecipientlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request</br>Invalid industry path parameter|[ResponseErrorList](#schemacdr-participant-discovery-apiresponseerrorlist)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Invalid x-v header</br>Invalid Accept header|None|
+|304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-participant-discovery-apiresponseerrorlistv2)|
 
 ### Response Headers
 
 |Status|Header|Type|Format|Description|
 |---|---|---|---|---|
 |200|x-v|string||The version of the API end point that the CDR Register has responded with.|
+|200|Etag|string||Entity tag that uniquely represents the requested resource.|
+|304|Etag|string||Entity tag that uniquely represents the requested resource.|
 
   
     <aside class="success">
@@ -959,18 +1133,22 @@ This operation does not require authentication
 |status|INACTIVE|
 |status|REMOVED|
 
-<h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
+<h2 class="schema-toc" id="tocSdataholdersstatuslist">DataHoldersStatusList</h2>
 
-<a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
+<a id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
 
 ```json
 {
-  "softwareProducts": [
+  "data": [
     {
-      "softwareProductId": "string",
-      "softwareProductStatus": "ACTIVE"
+      "legalEntityId": "string",
+      "status": "ACTIVE"
     }
-  ]
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 
 ```
@@ -979,7 +1157,63 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|softwareProducts|[[SoftwareProductStatus](#schemacdr-participant-discovery-apisoftwareproductstatus)]|mandatory|none|
+|data|[[DataHolderStatus](#schemacdr-participant-discovery-apidataholderstatus)]|mandatory|Response data for the query|
+|links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
+
+<h2 class="schema-toc" id="tocSdataholderstatus">DataHolderStatus</h2>
+
+<a id="schemacdr-participant-discovery-apidataholderstatus"></a>
+
+```json
+{
+  "legalEntityId": "string",
+  "status": "ACTIVE"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|legalEntityId|string|mandatory|Unique id of the Data Holdert Legal Entity issued by the CDR Register.|
+|status|string|mandatory|Data Holder status in the CDR Register|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|status|ACTIVE|
+|status|REMOVED|
+
+<h2 class="schema-toc" id="tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h2>
+
+<a id="schemacdr-participant-discovery-apisoftwareproductsstatuslist"></a>
+
+```json
+{
+  "data": [
+    {
+      "softwareProductId": "string",
+      "status": "ACTIVE"
+    }
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|data|[[SoftwareProductStatus](#schemacdr-participant-discovery-apisoftwareproductstatus)]|mandatory|Response data for the query|
+|links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSsoftwareproductstatus">SoftwareProductStatus</h2>
 
@@ -988,7 +1222,7 @@ This operation does not require authentication
 ```json
 {
   "softwareProductId": "string",
-  "softwareProductStatus": "ACTIVE"
+  "status": "ACTIVE"
 }
 
 ```
@@ -998,15 +1232,15 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |softwareProductId|string|mandatory|Unique id of the software product issued by the CDR Register|
-|softwareProductStatus|string|mandatory|Software product status in the CDR Register|
+|status|string|mandatory|Software product status in the CDR Register|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|softwareProductStatus|ACTIVE|
-|softwareProductStatus|INACTIVE|
-|softwareProductStatus|REMOVED|
+|status|ACTIVE|
+|status|INACTIVE|
+|status|REMOVED|
 
 <h2 class="schema-toc" id="tocSdatarecipientsstatuslist">DataRecipientsStatusList</h2>
 
@@ -1014,12 +1248,16 @@ This operation does not require authentication
 
 ```json
 {
-  "dataRecipients": [
+  "data": [
     {
-      "dataRecipientId": "string",
-      "dataRecipientStatus": "ACTIVE"
+      "legalEntityId": "string",
+      "status": "ACTIVE"
     }
-  ]
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 
 ```
@@ -1028,7 +1266,9 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dataRecipients|[[DataRecipientStatus](#schemacdr-participant-discovery-apidatarecipientstatus)]|mandatory|none|
+|data|[[DataRecipientStatus](#schemacdr-participant-discovery-apidatarecipientstatus)]|mandatory|Response data for the query|
+|links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSdatarecipientstatus">DataRecipientStatus</h2>
 
@@ -1036,8 +1276,8 @@ This operation does not require authentication
 
 ```json
 {
-  "dataRecipientId": "string",
-  "dataRecipientStatus": "ACTIVE"
+  "legalEntityId": "string",
+  "status": "ACTIVE"
 }
 
 ```
@@ -1046,17 +1286,17 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dataRecipientId|string|mandatory|Unique id of the Data Recipient issued by the CDR Register|
-|dataRecipientStatus|string|mandatory|Data Recipient status in the CDR Register|
+|legalEntityId|string|mandatory|Unique id of the Data Recipient issued by the CDR Register|
+|status|string|mandatory|Data Recipient status in the CDR Register|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|dataRecipientStatus|ACTIVE|
-|dataRecipientStatus|SUSPENDED|
-|dataRecipientStatus|REVOKED|
-|dataRecipientStatus|SURRENDERED|
+|status|ACTIVE|
+|status|SUSPENDED|
+|status|REVOKED|
+|status|SURRENDERED|
 
 <h2 class="schema-toc" id="tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h2>
 
@@ -1069,7 +1309,7 @@ This operation does not require authentication
       "legalEntityId": "string",
       "legalEntityName": "string",
       "accreditationNumber": "string",
-      "industry": "banking",
+      "accreditationLevel": "UNRESTRICTED",
       "logoUri": "string",
       "dataRecipientBrands": [
         {
@@ -1091,7 +1331,11 @@ This operation does not require authentication
       "status": "ACTIVE",
       "lastUpdated": "2019-08-24T14:15:22Z"
     }
-  ]
+  ],
+  "links": {
+    "self": "string"
+  },
+  "meta": {}
 }
 
 ```
@@ -1103,6 +1347,8 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|[[RegisterDataRecipient](#schemacdr-participant-discovery-apiregisterdatarecipient)]|mandatory|Response data for the query|
+|links|[Links](#schemacdr-participant-discovery-apilinks)|mandatory|none|
+|meta|[Meta](#schemacdr-participant-discovery-apimeta)|mandatory|none|
 
 <h2 class="schema-toc" id="tocSregisterdatarecipient">RegisterDataRecipient</h2>
 
@@ -1113,7 +1359,7 @@ This operation does not require authentication
   "legalEntityId": "string",
   "legalEntityName": "string",
   "accreditationNumber": "string",
-  "industry": "banking",
+  "accreditationLevel": "UNRESTRICTED",
   "logoUri": "string",
   "dataRecipientBrands": [
     {
@@ -1142,20 +1388,21 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register|
+|legalEntityId|string|mandatory|Unique id of the Data Recipient Legal Entity issued by the CDR Register.|
 |legalEntityName|string|mandatory|Legal name of the Data Recipient|
 |accreditationNumber|string|mandatory|CDR Register issued human readable unique number given to Data Recipients upon accreditation|
-|industry|string|mandatory|none|
+|accreditationLevel|string|mandatory|Accreditation level of the Data Recipient in the CDR Register|
 |logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
 |dataRecipientBrands|[[DataRecipientBrandMetaData](#schemacdr-participant-discovery-apidatarecipientbrandmetadata)]|optional|[Metadata related to Data Recipient Brand]|
-|status|string|mandatory|none|
+|status|string|mandatory|Data Recipient status in the CDR Register|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Legal Entity was last updated in the CDR Register|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|industry|banking|
+|accreditationLevel|UNRESTRICTED|
+|accreditationLevel|SPONSORED|
 |status|ACTIVE|
 |status|SUSPENDED|
 |status|REVOKED|
@@ -1194,7 +1441,7 @@ This operation does not require authentication
 |brandName|string|mandatory|Data Recipient Brand name|
 |logoUri|[URIString](#common-field-types)|mandatory|Data Recipient Brand logo URI|
 |softwareProducts|[[SoftwareProductMetaData](#schemacdr-participant-discovery-apisoftwareproductmetadata)]|optional|[Data Recipient Brand Software Products]|
-|status|string|mandatory|none|
+|status|string|mandatory|Data Recipient Brand status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1229,7 +1476,7 @@ This operation does not require authentication
 |softwareProductName|string|mandatory|Name of the software product|
 |softwareProductDescription|string|optional|Description of the software product|
 |logoUri|[URIString](#common-field-types)|mandatory|Software product logo URI|
-|status|string|mandatory|none|
+|status|string|mandatory|Software Product status in the CDR Register|
 
 #### Enumerated Values
 
@@ -1388,6 +1635,106 @@ This operation does not require authentication
 |---|---|---|---|
 |totalPages|integer(int32)|mandatory|The total number of pages in the full set|
 |totalRecords|integer(int32)|mandatory|The total number of records in the full set|
+
+<h2 class="schema-toc" id="tocSlinks">Links</h2>
+
+<a id="schemacdr-participant-discovery-apilinks"></a>
+
+```json
+{
+  "self": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|self|string|mandatory|Fully qualified link to this API call|
+
+<h2 class="schema-toc" id="tocSmeta">Meta</h2>
+
+<a id="schemacdr-participant-discovery-apimeta"></a>
+
+```json
+{}
+
+```
+
+### Properties
+
+*None*
+
+<h2 class="schema-toc" id="tocSmetaerror">MetaError</h2>
+
+<a id="schemacdr-participant-discovery-apimetaerror"></a>
+
+```json
+{
+  "urn": "string"
+}
+
+```
+
+*Additional data for customised error codes*
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+
+<h2 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
+
+```json
+{
+  "errors": [
+    {
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {
+        "urn": "string"
+      }
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|errors|[[ResponseErrorListV2_errors](#schemacdr-participant-discovery-apiresponseerrorlistv2_errors)]|mandatory|none|
+
+<h2 class="schema-toc" id="tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h2>
+
+<a id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
+
+```json
+{
+  "code": "string",
+  "title": "string",
+  "detail": "string",
+  "meta": {
+    "urn": "string"
+  }
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
+|title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
+|detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
+|meta|[MetaError](#schemacdr-participant-discovery-apimetaerror)|optional|Additional data for customised error codes|
 
 <h2 class="schema-toc" id="tocSresponseerrorlist">ResponseErrorList</h2>
 

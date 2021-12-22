@@ -79,7 +79,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 
 ## Decoded Bearer token JWT
 {
-   "alg":"PS256",
+   "alg":"HS256",
    "typ":"JWT",
    "kid":"12456"
 }
@@ -98,13 +98,15 @@ Data Recipient Software Products and Data Holders supporting the self-signed JWT
 *	The JWT MUST contain the following REQUIRED Claim Values and MAY contain the following OPTIONAL Claim Values:
     * `iss` - REQUIRED. Issuer Identifier for the Issuer of the response. The client ID of the bearer.
     * `sub` - REQUIRED. Subject Identifier. The client ID of the bearer.
-    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token. Contents MUST be the "resource path" for the end point being accessed.
+    * `aud` - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product MUST verify that it is an intended audience for the token.<br/><br/><p>**_Data Recipient hosted endpoints_**<br/>The [Resource Path](#uri-resource-path) for the end point being accessed SHOULD be used.<br/>In order to facilitate interoperability and for Data Recipient Software Product hosted endpoints only, the endpoint MUST also accept the ``<RecipientBaseUri>`` as a value identifying the intended audience.<br/>**From July 31st 2022:** The Resource Path for the end point being accessed MUST be used.</p><p>**_Data Holder Metrics endpoints_**<br/>The ``<AdminBaseUri>`` for the end point being accessed MUST be used.</p>
     * `jti` - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once.
     * `exp` - REQUIRED. Expiration time on or after which the ID Token MUST NOT be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
     * `iat` - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC issued at time.
 
 *	Validation and use of the JWT and the claims described above MUST be performed in accordance with **[JWT]**.  
 *	The JWT MUST be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://tools.ietf.org/html/rfc6750#section-2.1) of **[RFC6750]**.
+
+**Note:** In accordance with `jti` requirements, self-signed JWTs are one-time use only. The authenticating server MUST reject JWTs reuse.
 
 ### CDR Register calling Data Holders
 
@@ -129,26 +131,26 @@ If the Data Holder supports the [Self-signed JWT Client Authentication](#self-si
 
 ### Data Holders calling Data Recipients
 
-> Non-Normative Example - Data Holder calls the Data Recipient Software Product's revocation end point (note that the "aud" claim is "resource path" to the revocation end point).
+> Non-Normative Example - Data Holder calls the Data Recipient Software Product's CDR Arrangement Revocation end point (note that the "aud" claim is "resource path" to the revocation end point).
 
 ```
-POST https://data.recipient.com.au/revocation HTTP/1.1
+POST https://data.recipient.com.au/arrangements/revoke HTTP/1.1
 Host: data.recipient.com.au
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
 
-token=45ghiukldjahdnhzdauz&token_type_hint=refresh_token
+cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey ...
 
 ## Decoded Bearer token JWT
 {
    "alg":"PS256",
    "typ":"JWT",
-   "kid":"67890"
+   "kid":"12456"
 }
 {
    "iss":"dataholderbrand-123",
    "sub":"dataholderbrand-123",
-   "aud":"https://data.recipient.com.au/revocation",
+   "aud":"https://data.recipient.com.au/arrangements/revoke",
    "iat":1516239022,
    "exp":1516239322,
    "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
