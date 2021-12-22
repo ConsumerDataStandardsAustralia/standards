@@ -9,4 +9,66 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy Swagger (YAML)</a></td></tr>
 </table>
 
+```diff
+
+Below are the changes to the Energy APIs section of the
+standards.
+
+The description for the `EnergyPlanControlledLoad` model
+was changed from:
+- Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD
+to:
++ Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD
+
+
+The title of the bulk balances API changed from:
+- Get Bulk Balances (Energy)
+to:
++ Get Bulk Balances for Energy
+
+
+The enum values for the `tariffUType` field in the
+`EnergyPlanSolarFeedInTariff` model changed from:
+- GOVERNMENT
+- RETAILER
+to:
++ singleTariff
++ timeVaryingTariffs
+
+
+Made the `dailySupplyCharges` in the `EnergyPlanTariffPeriod` model
+optional rather than mandatory.
+
+
+Added the `type` enumeration field to the following:
+  `EnergyPlanTariffPeriod` model
+  `otherCharges` object in the `EnergyInvoiceGasUsageCharges` model
+  `otherCharges` object in the `EnergyInvoiceElectricityUsageCharges` model
+  `EnergyBillingOtherTransaction` model
+The `type` field has the following enumeration values;
++ ENVIRONMENTAL
++ REGULATED
++ NETWORK
++ METERING
++ RETAIL_SERVICE
++ RCTI
++ OTHER
+
+
+Added the `measureUnit` enumeration field to the following:
+  `singleRate` object in the `EnergyPlanTariffPeriod` model
+  `timeOfUseRates` object in the `EnergyPlanTariffPeriod` model
+  `demandCharges` object in the `EnergyPlanTariffPeriod` model
+  `EnergyBillingUsageTransaction` model
+The `measureUnit` field has the following enumeration values;
++ KVA
++ KVAR
++ KVARH
++ KW
++ DAYS
++ METER
++ MONTH
+
+```
+
 <%= partial "includes/cds_energy.md" %>
