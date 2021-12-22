@@ -67,6 +67,16 @@ to:
 + The time when the customer last logged in to the Data Recipient Software Product. Required for all resource calls (customer present and unattended) if the customer is currently logged. Otherwise optional where the customer has not logged in. Not to be included for unauthenticated calls.
 
 
+Updated the `BankingProductFeature` model to `BankingProductFeatureV2`
+and added the following enum values:
++ CASHBACK_OFFER
++ EXTRA_REPAYMENTS
++ FRAUD_PROTECTION
++ GUARANTOR
++ INSTALMENT_PLAN
++ RELATIONSHIP_MANAGEMENT
+
+
 Made the `x-fapi-auth-date` and `x-cds-client-headers` request headers conditional.
 
 ```

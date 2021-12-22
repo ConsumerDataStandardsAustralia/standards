@@ -1,5 +1,16 @@
 ## Authorisation Standards
 
+```diff
+The following table rows were removed:
+- |**Unavailable Accounts:**<br/>Displaying accounts|<p>If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step. </p><p>Data holders **SHOULD** communicate why these accounts cannot be selected, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.</p><p>Data holders **MAY** provide instructions on how to make these accounts available to share, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.</p><p>*Note:* Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</p>|
+- |**Authorisation:**<br>Account confirm|Data holders **MUST** show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder **MAY** omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).|
+
+The following table rows were added:
++ |**Authorisation:**<br>Account confirm|Data holders **MUST** show which accounts the data is being shared from prior to confirming authorisation if the data request includes account-specific data. The data holder **MAY** omit this information if none of the data being requested is specific to an account (e.g. Saved Payees).|
++ |**Authorisation:**<br>Pending status|<p>Where an account requires further actions or approvals before data can be disclosed, data holders **MUST** indicate this to the user visually and **MUST** provide an explanation of what is required or expected.</p><p>This **MAY**, for example, be achieved with a visual icon to indicate that the account is 'pending'. This indication **MUST** be accompanied by an in-context explanation to describe what the status means. This explanation **SHOULD** include any required actions and any specified time frames.</p>|
++ |**Unavailable Accounts:**<br/>Displaying accounts|<p>If certain accounts are unavailable to share, data holders **SHOULD** show these unavailable accounts in the account-selection step. </p><p>Data holders **SHOULD** communicate why these accounts cannot be selected, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.</p><p>Data holders **MAY** provide instructions on how to make these accounts available to share, and this **SHOULD** be communicated as in-line help or as a modal to reduce on-screen content.</p><p>**Note:** Unavailable accounts are to be interpreted in accordance with the rules on eligible consumers and required consumer data.</p>|
+```
+
 |Area|CX Standard|
 |-------------------|------------------------------|
 |**Authorisation:**<br/> Account selection |Data holders **MUST** allow the consumer to select which of their accounts to share data from if the data request includes account-specific data and if there are multiple accounts available. The Data holder **MAY** omit this step if none of the data being requested is specific to an account (e.g. Saved Payees).|
