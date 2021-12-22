@@ -1,8 +1,20 @@
 # Register APIs
 
+```diff
+The statement:
+- This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
+changed to:
++ This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
+```
 This following provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata exclusively for the banking sector.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.
 
+```diff
+The phrase:
+- ...Data Recipient Software Productss are required...
+corrected to:
++ ...Data Recipient Software Products are required...
+```
 <aside class="warning">
   These endpoints are not implemented by Data Holders and Data Recipients. They are hosted by the Register for consumption by participants.
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
@@ -16,6 +28,19 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 <tr><td><a href='./includes/swagger/cds_register.yaml'>Register Swagger (YAML)</a></td></tr>
 </table>
 
+```diff
+The following table row:
+- | Get Data Recipient Software Statement Assertion | Data Recipient Brand or Software Product | Get SSA for a Software Product to be used in [Dynamic Client Registration](#dynamic-client-registration) | <i class="icon-check"></i> | | <i class="icon-check"></i> |
+replaced with:
++ | Get Software Statement Assertion | Data Recipient Brand or Software Product | Get SSA for a Software Product to be used in [Dynamic Client Registration](#dynamic-client-registration) | <i class="icon-check"></i> | | <i class="icon-check"></i> |
+```
+```diff
+The following table row:
+- | Get Data Recipient Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | <i class="icon-check"></i> | |
+replaced with:
++ | Get Data Holder Statuses | Data Recipient | Data Holder Statuses to check validity of Data Holder | | <i class="icon-check"></i> | |
++ | Get Software Products Status | Data Holder Brand | Software Product Statuses to check validity of ADR [requests](#accredited-data-recipient-and-software-product-statuses) | | <i class="icon-check"></i> | |
+```
 |API|Caller|Description|MTLS|TLS|Bearer Token|
 |---|---|---|---|---|---|
 | Get Register OpenId Provider Config | Data Recipient Brand or Software Product | Discovery of CDR Register OpenID Configuration | | <i class="icon-check"></i> | |

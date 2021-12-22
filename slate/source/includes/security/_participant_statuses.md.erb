@@ -68,6 +68,13 @@ The CDR Registrar has the ability to change the status of a Software Product ind
 |Revoked|Removed|	| | | <i class="icon-check"></i> | <i class="icon-check"></i> |
 |Surrendered|Removed| | | | <i class="icon-check"></i> | <i class="icon-check"></i> |
 
+
+```diff
+The following statements are added:
++ The CDR Register MUST NOT provide an undefined status for Data Recipient or Data Recipient Software Product Statuses
++ If Data Holders do not receive a status for a Data Recipient or Data Recipient Software Product, or receives a status that is not recognised, Data Holders SHOULD ignore the value and use the previous status value retrieved from the CDR Register
+```
+
 * Disclosure of CDR data **MUST** be in response to valid requests in accordance with the CDR rules and standards
 * The status of a Data Recipient Brand does not impact Data Holder responsibilities due to the cascade rules outlined above
 * When a Data Recipient status is Suspended, Revoked or Surrendered the Software Product status cannot be Active

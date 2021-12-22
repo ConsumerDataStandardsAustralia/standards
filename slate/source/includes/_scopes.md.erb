@@ -40,6 +40,16 @@ Scope Name | Scope ID |Description
 ## Admin &amp; Registration
 The following scopes are used for administrative interactions.  These scopes MUST never be included in the same access token as a CDR Data scope.
 
+```diff
+The following table row:
+- **Bank Data Holders List** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to Data Holder metadata held by the Register.
+replaced with:
++ **Bank Participant Data** | cdr-register:bank:read | This scope would allow Data Recipients and Data Holders access to participant metadata in the banking sector, held by the CDR Register.
+```
+```diff
+The following table row added:
++ **Participant Data** | cdr-register:read | This scope would allow Data Recipients and Data Holders access to participant metadata held by the CDR Register.
+```
 Scope Name | Scope ID |Description
 -----------|----------|-----------
 **Basic Admin Metrics Data** | admin:metrics.basic:read | Metrics data accessible ONLY to the CDR Register. If the Data Holder uses Private Key JWT Client Authentication to authenticate the CDR Register, this scope is required.<br/><br/>Includes access to basic Metrics data.
