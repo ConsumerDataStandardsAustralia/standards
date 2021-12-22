@@ -3,7 +3,9 @@ title: Consumer Data Standards
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
-#  - javascript
+language_tabs:
+  - examples: Non-normative Examples
+  - delta: Version Delta
 
 toc_footers:
   - <a href='https://consumerdatastandards.gov.au/'>Consumer Data Standards Home</a>
